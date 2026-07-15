@@ -1,0 +1,247 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="theme-color" content="#f6f3ea"/>
+<title>Precios — OI Studio</title>
+<meta name="description" content="Precios cerrados y sin sorpresas: Landing 199€, Web Negocio 299€ y mantenimiento opcional 20€/mes. Propuesta en 48h y 30 días de ajustes gratis."/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="OI Studio"/>
+<meta property="og:title" content="Precios — OI Studio"/>
+<meta property="og:description" content="Precios cerrados y sin sorpresas. Propuesta en 48h y 30 días de ajustes gratis."/>
+<meta property="og:locale" content="es_ES"/>
+<meta property="og:locale:alternate" content="eu_ES"/>
+<meta name="twitter:card" content="summary"/>
+<link rel="icon" href="assets/logo-mark-bw.png" type="image/png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/styles.css"/>
+<style>
+  .pre-hero{padding:150px 0 26px;text-align:center;}
+  .pre-hero h1{font-size:clamp(38px,6vw,64px);margin-top:18px;}
+  .pre-hero .lede{font-size:19px;color:var(--text-muted);margin:18px auto 0;max-width:52ch;}
+  .pre-iva{font-size:13px;color:var(--text-faint);margin-top:10px;}
+  .siempre{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:30px;}
+  .siempre span{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-pill);padding:9px 16px;color:var(--text);}
+  .siempre span::before{content:"✓";color:var(--ok);font-weight:700;}
+  .faq-pre{max-width:720px;margin:0 auto;display:grid;gap:12px;}
+  .faq-pre details{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:4px 22px;}
+  .faq-pre details[open]{border-color:var(--border-strong);}
+  .faq-pre summary{cursor:pointer;padding:16px 0;font-weight:600;color:var(--ink);list-style:none;position:relative;padding-right:28px;}
+  .faq-pre summary::-webkit-details-marker{display:none;}
+  .faq-pre summary::after{content:"+";position:absolute;right:0;top:12px;font-size:22px;font-weight:400;color:var(--terra);transition:transform .25s;}
+  .faq-pre details[open] summary::after{transform:rotate(45deg);}
+  .faq-pre p{padding:0 0 18px;color:var(--text-muted);font-size:15px;}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿El precio es cerrado de verdad?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Antes de empezar te doy el precio por escrito y no cambia, salvo que tú pidas cosas nuevas a mitad de proyecto — y en ese caso también te lo presupuesto antes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa con el dominio y el hosting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Te los dejo configurados y a tu nombre: la web es tuya, no queda atada a mí. El coste del dominio (~12€/año) va aparte."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto se tarda?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Una Landing suele estar en una semana; una Web Negocio, en dos o tres. El plazo exacto te lo confirmo con la propuesta."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Y si luego quiero cambios?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Los primeros 30 días los ajustes van incluidos. Después, puedes contratar el mantenimiento (20€/mes) o pedirme cambios sueltos con presupuesto por adelantado."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<div class="nav-wrap">
+<nav class="nav">
+<a href="index.html" class="nav__logo"><img src="assets/logo-nav-black.png" alt="OI Studio" class="nav__logo-img"/></a>
+<ul class="nav__links">
+<li><a href="index.html" data-t="nav_inicio">Inicio</a></li>
+<li><a href="sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
+<li><a href="trabajos.html" data-t="nav_trabajos">Trabajos</a></li>
+<li><a href="precios.html" class="is-active" data-t="nav_precios">Precios</a></li>
+</ul>
+<div class="nav__right">
+<a href="tel:+34680956755" class="nav__phone" aria-label="Llamar al 680 95 67 55">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+<span>680 95 67 55</span>
+</a>
+<div class="lang-switch" role="group" aria-label="Idioma / Hizkuntza">
+<button type="button" data-lang="es">ES</button>
+<button type="button" data-lang="eu">EU</button>
+</div>
+<a href="contacto.html" class="btn btn--accent nav__cta" data-t="btn_presupuesto">Solicitar presupuesto</a>
+<button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+</button>
+</div>
+</nav>
+</div>
+<div class="mobile-menu">
+<ul>
+<li><a href="index.html" data-t="nav_inicio">Inicio</a></li>
+<li><a href="sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
+<li><a href="trabajos.html" data-t="nav_trabajos">Trabajos</a></li>
+<li><a href="precios.html" data-t="nav_precios">Precios</a></li>
+<li><a href="contacto.html" data-t="nav_contacto">Contacto</a></li>
+</ul>
+</div>
+
+<header class="pre-hero">
+<div class="container">
+<span class="eyebrow reveal" data-t="pre_eyebrow">Precios</span>
+<h1 class="reveal" data-d="1" data-t="pre_h2">Una inversión que <span class="grad">se recupera sola</span>.</h1>
+<p class="lede reveal" data-d="2" data-t="pre_p">Sin cuotas escondidas. Eliges el nivel que tu negocio necesita ahora mismo.</p>
+<p class="pre-iva reveal" data-d="2" data-t="pre_iva">Precios sin IVA.</p>
+<div class="siempre reveal" data-d="3">
+<span data-t="pre_s1">Propuesta en 48h</span>
+<span data-t="pre_s2">Precio cerrado por escrito</span>
+<span data-t="pre_s3">30 días de ajustes gratis</span>
+<span data-t="pre_s4">Sin permanencia</span>
+</div>
+</div>
+</header>
+
+<section class="section" id="planes">
+<div class="container">
+<div class="pricing">
+<article class="price reveal">
+<div class="price__name">Landing</div>
+<p class="price__desc" data-t="p1_desc">Una sola página para darte a conocer rápido y empezar a recibir contactos.</p>
+<div class="price__amount"><b>199€</b><span data-t="pre_pago">pago único</span></div>
+<a href="contacto.html" class="btn btn--ghost btn--full" data-t="p1_btn">Elegir Landing</a>
+<ul class="price__list">
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p1_l1">Diseño a medida (1 página)</span></li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p1_l2">Adaptación móvil perfecta</span></li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p1_l3">Formulario de contacto</span></li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p1_l4">Botón directo a WhatsApp</span></li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p1_l5">Dominio y hosting configurados</span></li>
+</ul>
+</article>
+<article class="price price--featured reveal" data-d="1">
+<div class="price__flag" data-t="p2_flag">Más elegido</div>
+<div class="price__name" data-t="p2_name">Web Negocio</div>
+<p class="price__desc" data-t="p2_desc">Web completa con varias páginas para negocios ya consolidados.</p>
+<div class="price__amount"><b>299€</b><span data-t="pre_pago">pago único</span></div>
+<a href="contacto.html" class="btn btn--accent btn--full" data-t="p2_btn">Elegir Web Negocio</a>
+<ul class="price__list">
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p2_l1">Diseño a medida (hasta 5 páginas)</span></li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p2_l2">Todo lo del plan Landing</span></li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p2_l3">Optimización SEO básica</span></li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p2_l4">Integración con Google Maps</span></li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p2_l5">Panel autogestionable</span></li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p2_l6">Optimización extra de velocidad</span></li>
+</ul>
+</article>
+<article class="price reveal" data-d="2">
+<div class="price__name" data-t="p3_name">Mantenimiento</div>
+<p class="price__desc" data-t="p3_desc">Para despreocuparte del todo. Yo me encargo de que siga funcionando.</p>
+<div class="price__amount"><b>20€</b><span data-t="pre_mes">/mes</span></div>
+<a href="contacto.html" class="btn btn--ghost btn--full" data-t="p3_btn">Añadir mantenimiento</a>
+<ul class="price__list">
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p3_l1">Actualizaciones de seguridad</span></li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p3_l2">Copias de seguridad semanales</span></li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p3_l3">Soporte por email/WhatsApp</span></li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p3_l4">Pequeños cambios de texto/fotos</span></li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p3_l5">Monitorización de caídas</span></li>
+</ul>
+</article>
+</div>
+</div>
+</section>
+
+<section class="section section--subtle">
+<div class="container">
+<div class="section-head reveal">
+<span class="eyebrow" data-t="pre_faq_eyebrow">Dudas frecuentes</span>
+<h2 data-t="pre_faq_h2">Lo que todo el mundo pregunta</h2>
+</div>
+<div class="faq-pre reveal" data-d="1">
+<details><summary data-t="pf1_q">¿El precio es cerrado de verdad?</summary><p data-t="pf1_a">Sí. Antes de empezar te doy el precio por escrito y no cambia, salvo que tú pidas cosas nuevas a mitad de proyecto — y en ese caso también te lo presupuesto antes.</p></details>
+<details><summary data-t="pf2_q">¿Qué pasa con el dominio y el hosting?</summary><p data-t="pf2_a">Te los dejo configurados y a tu nombre: la web es tuya, no queda atada a mí. El coste del dominio (~12€/año) va aparte.</p></details>
+<details><summary data-t="pf3_q">¿Cuánto se tarda?</summary><p data-t="pf3_a">Una Landing suele estar en una semana; una Web Negocio, en dos o tres. El plazo exacto te lo confirmo con la propuesta.</p></details>
+<details><summary data-t="pf4_q">¿Y si luego quiero cambios?</summary><p data-t="pf4_a">Los primeros 30 días los ajustes van incluidos. Después, puedes contratar el mantenimiento (20€/mes) o pedirme cambios sueltos con presupuesto por adelantado.</p></details>
+</div>
+</div>
+</section>
+
+<section class="section dark-section cta">
+<div class="container">
+<div class="reveal">
+<h2 data-t="cta_index_h">¿Listo para tener una web a tu altura?</h2>
+<p data-t="cta_index_p">Cuéntame en qué consiste tu negocio y te preparo una propuesta honesta en menos de 48 horas.</p>
+<div class="hero__actions">
+<a href="contacto.html" class="btn btn--light btn--lg" data-t="btn_presupuesto">Solicitar presupuesto</a>
+<a href="https://wa.me/34680956755" target="_blank" rel="noopener" class="btn btn--dark-ghost btn--lg" data-t="btn_whatsapp">Escribir por WhatsApp</a>
+</div>
+</div>
+</div>
+</section>
+
+<footer class="footer">
+<div class="container">
+<div class="footer__grid">
+<div>
+<a href="index.html" class="footer__logo"><img src="assets/logo-nav-black.png" alt="OI Studio" class="footer__logo-img"/></a>
+<p class="footer__desc" data-t="foot_desc" style="margin-top:20px;">Webs rápidas, modernas y efectivas para negocios locales que quieren destacar en internet.</p>
+</div>
+<div>
+<h4 data-t="foot_secciones">Secciones</h4>
+<ul>
+<li><a href="sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
+<li><a href="trabajos.html" data-t="foot_portfolio">Portfolio</a></li>
+<li><a href="precios.html" data-t="nav_precios">Precios</a></li>
+<li><a href="contacto.html" data-t="nav_contacto">Contacto</a></li>
+</ul>
+</div>
+<div>
+<h4 data-t="nav_contacto">Contacto</h4>
+<ul>
+<li><a href="mailto:contactoiwebstudio@gmail.com">contactoiwebstudio@gmail.com</a></li>
+<li><a href="https://wa.me/34680956755">+34 680 95 67 55</a></li>
+<li><a href="https://instagram.com/oi.webstudio" target="_blank" rel="noopener">Instagram · @oi.webstudio</a></li>
+<li>Tolosa, País Vasco</li>
+</ul>
+</div>
+</div>
+<div class="footer__bottom">
+<p>© 2026 OI Studio · <a href="legal.html" data-t="foot_legal">Aviso legal y privacidad</a></p>
+<p data-t="foot_made">Diseñado y desarrollado en Tolosa</p>
+</div>
+</div>
+<div class="footer__mark" aria-hidden="true">OI STUDIO</div>
+</footer>
+
+<script src="assets/i18n.js"></script>
+<script src="assets/main.js"></script>
+<a class="wa-float" href="https://wa.me/34680956755?text=Hola%2C%20vengo%20de%20tu%20web%20y%20quiero%20informaci%C3%B3n%20para%20la%20web%20de%20mi%20negocio." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2.05 22l5.27-1.38c1.45.79 3.08 1.21 4.72 1.21 5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.05-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29z"/></svg>
+</a>
+</body>
+</html>

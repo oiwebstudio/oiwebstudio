@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build & deployment
+dist/
+build/
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local development
+.clauemd/
+LEEME.md
+server.js
