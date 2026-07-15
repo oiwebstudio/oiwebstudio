@@ -1,27 +1,275 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
-  <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>OI Web Studio</title>
-      <style>
-                * { margin: 0; padding: 0; box-sizing: border-box; }
-                body { font-family: Arial, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; display: flex; justify-content: center; align-items: center; }
-                .container { text-align: center; color: white; }
-                h1 { font-size: 48px; margin-bottom: 20px; }
-                p { font-size: 24px; margin-bottom: 40px; }
-                .button { display: inline-block; padding: 12px 30px; background-color: #fff; color: #667eea; border-radius: 50px; text-decoration: none; font-weight: bold; transition: all 0.3s; }
-                .button:hover { transform: scale(1.05); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-            </style>
-  </head>
-  <body>
-        <div class="container">
-                  <h1>Bienvenido a OI Web Studio</h1>
-                <p>Sitio web en construcción</p>
-                <a href="#" class="button">Saber más</a>a>
-        </div>div>
-  </body>
-</html>html></p></h1>
-  </body>
-      </style></title>
-  </head>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="theme-color" content="#f6f3ea"/>
+<title>OI Studio — Webs premium para negocios locales</title>
+<meta name="description" content="Diseño y desarrollo de webs rápidas y elegantes para negocios locales. Acabado de estudio, precisión de ingeniería. Estudio con base en Tolosa."/>
+<!-- Al publicar con dominio propio: añadir og:url y cambiar og:image por la URL absoluta (https://tudominio.com/assets/logo.png) -->
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="OI Studio"/>
+<meta property="og:title" content="OI Studio — Webs premium para negocios locales"/>
+<meta property="og:description" content="Webs rápidas y elegantes para negocios locales. Propuesta en 48h, precios cerrados y 30 días de ajustes gratis."/>
+<meta property="og:locale" content="es_ES"/>
+<meta property="og:locale:alternate" content="eu_ES"/>
+<meta name="twitter:card" content="summary"/>
+<link rel="icon" href="assets/logo-mark-bw.png" type="image/png"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "OI Studio",
+  "description": "Diseño y desarrollo de páginas web para negocios locales.",
+  "email": "contactoiwebstudio@gmail.com",
+  "telephone": "+34680956755",
+  "address": { "@type": "PostalAddress", "addressLocality": "Tolosa", "addressRegion": "Gipuzkoa", "addressCountry": "ES" },
+  "areaServed": "Tolosaldea, Gipuzkoa",
+  "priceRange": "199€ - 299€",
+  "sameAs": ["https://instagram.com/oi.webstudio"]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/styles.css"/>
+</head>
+<body>
+
+<div class="nav-wrap">
+<nav class="nav">
+<a href="index.html" class="nav__logo"><img src="assets/logo-nav-black.png" alt="OI Studio" class="nav__logo-img"/></a>
+<ul class="nav__links">
+<li><a href="index.html" class="is-active" data-t="nav_inicio">Inicio</a></li>
+<li><a href="sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
+<li><a href="trabajos.html" data-t="nav_trabajos">Trabajos</a></li>
+<li><a href="precios.html" data-t="nav_precios">Precios</a></li>
+</ul>
+<div class="nav__right">
+<a href="tel:+34680956755" class="nav__phone" aria-label="Llamar al 680 95 67 55">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+<span>680 95 67 55</span>
+</a>
+<div class="lang-switch" role="group" aria-label="Idioma / Hizkuntza">
+<button type="button" data-lang="es">ES</button>
+<button type="button" data-lang="eu">EU</button>
+</div>
+<a href="contacto.html" class="btn btn--accent nav__cta" data-t="btn_presupuesto">Solicitar presupuesto</a>
+<button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+</button>
+</div>
+</nav>
+</div>
+<div class="mobile-menu">
+<ul>
+<li><a href="index.html" data-t="nav_inicio">Inicio</a></li>
+<li><a href="sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
+<li><a href="trabajos.html" data-t="nav_trabajos">Trabajos</a></li>
+<li><a href="precios.html" data-t="nav_precios">Precios</a></li>
+<li><a href="contacto.html" data-t="nav_contacto">Contacto</a></li>
+</ul>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+<div class="hero__bg"><div class="hero__grid"></div></div>
+<div class="container">
+<div class="hero__inner">
+<span class="hero__badge reveal"><span class="dot"></span><span data-t="hero_badge">Disponible para nuevos proyectos</span></span>
+<h1 class="reveal" data-d="1" data-t="hero_h1">Webs que hacen que tu negocio <span class="grad">se vea tan bueno</span> como es.</h1>
+<p class="hero__lede reveal" data-d="2" data-t="hero_lede">Diseño y desarrollo a medida para negocios locales. Rápidas, cuidadas hasta el último píxel y pensadas para convertir visitas en clientes.</p>
+<div class="hero__actions reveal" data-d="3">
+<a href="contacto.html" class="btn btn--accent btn--lg" data-t="btn_presupuesto">Solicitar presupuesto</a>
+<a href="trabajos.html" class="btn btn--ghost btn--lg" data-t="btn_vertrabajos">Ver trabajos</a>
+</div>
+<div class="hero__trust reveal" data-d="4">
+<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="hero_trust1">Propuesta en 48h</span></span>
+<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="hero_trust2">Sin permanencia</span></span>
+<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="hero_trust3">30 días de ajustes gratis</span></span>
+</div>
+</div>
+
+<div class="hero__mockup reveal" data-d="4">
+<div class="devices">
+<div class="dv-laptop"><div class="scr"><img id="dvDesk" src="assets/cafe-desk.jpg" alt="Web de ejemplo en ordenador" width="900" height="562" fetchpriority="high"/></div></div>
+<div class="dv-tablet"><div class="scr"><img id="dvTab" src="assets/cafe-tablet.jpg" alt="Web de ejemplo en tablet" width="640" height="844"/></div></div>
+<div class="dv-phone"><img id="dvMob" src="assets/cafe-mobile.jpg" alt="Web de ejemplo en móvil" width="266" height="561"/></div>
+</div>
+</div>
+</div>
+</header>
+
+<!-- SECTORES -->
+<section class="section--sm">
+<div class="container">
+<p class="marquee-label reveal" data-t="sectors_label">Diseño webs para todo tipo de negocio local</p>
+<div class="sectors reveal" data-d="1">
+<button type="button" class="sector" data-shot="pan"><i style="background:#c07a35"></i><span data-t="sector_pan">Panaderías</span></button>
+<button type="button" class="sector" data-shot="vet"><i style="background:#2ba8a4"></i><span data-t="sector_vet">Veterinarios</span></button>
+<button type="button" class="sector" data-shot="pelu"><i style="background:#cfa96b"></i><span data-t="sector_pel">Peluquerías</span></button>
+<button type="button" class="sector" data-shot="rest"><i style="background:#d4552b"></i><span data-t="sector_res">Restaurantes</span></button>
+<button type="button" class="sector" data-shot="gym"><i style="background:#d7ff3e"></i><span data-t="sector_gim">Gimnasios</span></button>
+<button type="button" class="sector is-active" data-shot="cafe"><i style="background:#b07d4f"></i><span data-t="sector_cafe">Cafeterías</span></button>
+<button type="button" class="sector" data-shot="taller"><i style="background:#ffb400"></i><span data-t="sector_tal">Talleres</span></button>
+<button type="button" class="sector" data-shot="flor"><i style="background:#c98a8e"></i><span data-t="sector_flo">Floristerías</span></button>
+</div>
+</div>
+</section>
+
+<!-- BENEFICIOS -->
+<section class="section section--subtle" id="beneficios">
+<div class="container">
+<div class="section-head reveal">
+<span class="eyebrow" data-t="ben_eyebrow">Lo que consigues</span>
+<h2 data-t="ben_h2">No es solo una web. Es tu mejor comercial, trabajando 24/7.</h2>
+</div>
+<div class="cards">
+<article class="card reveal">
+<div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+<h3 data-t="ben1_h">Te encuentran en Google</h3>
+<p data-t="ben1_p">Estructura, velocidad y textos pensados para aparecer cuando alguien busca tu negocio en tu ciudad.</p>
+</article>
+<article class="card reveal" data-d="1">
+<div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M11 18h2"/></svg></div>
+<h3 data-t="ben2_h">Perfecta en el móvil</h3>
+<p data-t="ben2_p">El 80% de tus clientes te busca desde el móvil. La web se diseña y se prueba ahí primero, no como un añadido.</p>
+</article>
+<article class="card reveal" data-d="2">
+<div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+<h3 data-t="ben3_h">Confianza a primera vista</h3>
+<p data-t="ben3_p">Un diseño cuidado dice, sin palabras, que detrás hay un negocio serio. Es lo primero que evalúa un cliente nuevo.</p>
+</article>
+<article class="card reveal" data-d="1">
+<div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div>
+<h3 data-t="ben4_h">Carga en menos de 2 segundos</h3>
+<p data-t="ben4_p">Sin plantillas infladas de plugins que no usas. Código ligero para no perder ni una visita por lentitud.</p>
+</article>
+<article class="card reveal" data-d="2">
+<div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div>
+<h3 data-t="ben5_h">La editas tú, sin depender de nadie</h3>
+<p data-t="ben5_p">Textos, fotos y horarios cambiados por ti en minutos. Sin llamar a nadie para arreglar una coma.</p>
+</article>
+<article class="card reveal" data-d="3">
+<div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+<h3 data-t="ben6_h">Más contactos por WhatsApp</h3>
+<p data-t="ben6_p">Botón directo al chat para que reservar o preguntar sea cuestión de un toque, sin fricción.</p>
+</article>
+</div>
+</div>
+</section>
+
+<!-- TRABAJOS -->
+<section class="section">
+<div class="container">
+<div class="section-head reveal">
+<span class="eyebrow" data-t="work_eyebrow">Proyectos</span>
+<h2 data-t="work_h2">Diseños que no parecen plantillas.</h2>
+<p data-t="work_p">Algunos ya están publicados y en vivo. Haz clic para verlos por dentro.</p>
+</div>
+<div class="mini-board reveal">
+<a class="mbp mbp-1" href="webs-clientes/panaderia/index.html" target="_blank">
+<img src="assets/pan-desk.jpg" alt="Web de panadería" width="900" height="562" loading="lazy"/>
+<span class="cap"><span class="num">01</span><b data-t="tag_pan">Panadería</b><span class="live" data-t="badge_live">En vivo</span><span class="sw"><i style="background:#c07a35"></i><i style="background:#2c231b"></i><i style="background:#f5f0e8"></i></span></span>
+</a>
+<a class="mbp mbp-2" href="webs-clientes/gimnasio/index.html" target="_blank">
+<img src="assets/gym-desk.jpg" alt="Web de gimnasio" width="900" height="562" loading="lazy"/>
+<span class="cap"><span class="num">05</span><b data-t="tag_gim">Gimnasio</b><span class="live" data-t="badge_live">En vivo</span><span class="sw"><i style="background:#d7ff3e"></i><i style="background:#0b0b0d"></i><i style="background:#ffffff"></i></span></span>
+</a>
+<a class="mbp mbp-3" href="webs-clientes/cafeteria/index.html" target="_blank">
+<img src="assets/cafe-desk.jpg" alt="Web de cafetería" width="900" height="562" loading="lazy"/>
+<span class="cap"><span class="num">03</span><b data-t="tag_cafe">Cafetería</b><span class="live" data-t="badge_live">En vivo</span><span class="sw"><i style="background:#b07d4f"></i><i style="background:#2f2119"></i><i style="background:#faf6f0"></i></span></span>
+</a>
+</div>
+<div style="text-align:center; margin-top:36px;" class="reveal"><a href="trabajos.html" class="btn btn--soft btn--lg" data-t="work_ver5">Ver todos los proyectos</a></div>
+</div>
+</section>
+
+<!-- HECHOS -->
+<section class="section section--subtle">
+<div class="container">
+<div class="stats-head reveal">
+<span class="eyebrow" data-t="stats_eyebrow">El estudio, en números</span>
+</div>
+<div class="stats reveal" data-d="1">
+<div class="stat"><b><span class="cnum" data-count="8">0</span></b><span data-t="stat1">proyectos publicados y en vivo</span></div>
+<div class="stat"><b><span class="cnum" data-count="48">0</span><em>h</em></b><span data-t="stat2">para recibir tu propuesta</span></div>
+<div class="stat"><b><span class="cnum" data-count="30">0</span></b><span data-t="stat3">días de ajustes gratis</span></div>
+<div class="stat"><b><span class="cnum" data-count="100">0</span><em>%</em></b><span data-t="stat4">a medida, cero plantillas</span></div>
+</div>
+<p class="stats-nota reveal" data-d="2" data-t="stats_nota">Cada web se diseña desde cero para el negocio que la va a usar.</p>
+</div>
+</section>
+
+<!-- PRECIOS -->
+<section class="section" id="precios">
+<div class="container">
+<div class="section-head reveal">
+<span class="eyebrow" data-t="pre_eyebrow">Precios</span>
+<h2 data-t="pre_h2">Una inversión que <span class="grad">se recupera sola</span>.</h2>
+<p data-t="pre_p">Sin cuotas escondidas. Eliges el nivel que tu negocio necesita ahora mismo.</p>
+</div>
+<div class="pre-mini reveal" data-d="1">
+<a class="pm" href="precios.html"><span class="pm__name">Landing</span><b>199€</b><span class="pm__note" data-t="pre_pago">pago único</span></a>
+<a class="pm pm--feat" href="precios.html"><span class="pm__flag" data-t="p2_flag">Más elegido</span><span class="pm__name" data-t="p2_name">Web Negocio</span><b>299€</b><span class="pm__note" data-t="pre_pago">pago único</span></a>
+<a class="pm" href="precios.html"><span class="pm__name" data-t="p3_name">Mantenimiento</span><b>20€</b><span class="pm__note" data-t="pre_mes">/mes</span></a>
+</div>
+<div style="text-align:center; margin-top:36px;" class="reveal" data-d="2"><a href="precios.html" class="btn btn--accent btn--lg" data-t="pre_ver">Ver todo lo que incluyen →</a></div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="section dark-section cta">
+<div class="container">
+<div class="reveal">
+<h2 data-t="cta_index_h">¿Listo para tener una web a tu altura?</h2>
+<p data-t="cta_index_p">Cuéntame en qué consiste tu negocio y te preparo una propuesta honesta en menos de 48 horas.</p>
+<div class="hero__actions">
+<a href="contacto.html" class="btn btn--light btn--lg" data-t="btn_presupuesto">Solicitar presupuesto</a>
+<a href="https://wa.me/34680956755" target="_blank" rel="noopener" class="btn btn--dark-ghost btn--lg" data-t="btn_whatsapp">Escribir por WhatsApp</a>
+</div>
+</div>
+</div>
+</section>
+
+<footer class="footer">
+<div class="container">
+<div class="footer__grid">
+<div>
+<a href="index.html" class="footer__logo"><img src="assets/logo-nav-black.png" alt="OI Studio" class="footer__logo-img"/></a>
+<p class="footer__desc" data-t="foot_desc" style="margin-top:20px;">Webs rápidas, modernas y efectivas para negocios locales que quieren destacar en internet.</p>
+</div>
+<div>
+<h4 data-t="foot_secciones">Secciones</h4>
+<ul>
+<li><a href="sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
+<li><a href="trabajos.html" data-t="foot_portfolio">Portfolio</a></li>
+<li><a href="precios.html" data-t="nav_precios">Precios</a></li>
+<li><a href="contacto.html" data-t="nav_contacto">Contacto</a></li>
+</ul>
+</div>
+<div>
+<h4 data-t="nav_contacto">Contacto</h4>
+<ul>
+<li><a href="mailto:contactoiwebstudio@gmail.com">contactoiwebstudio@gmail.com</a></li>
+<li><a href="https://wa.me/34680956755">+34 680 95 67 55</a></li>
+<li><a href="https://instagram.com/oi.webstudio" target="_blank" rel="noopener">Instagram · @oi.webstudio</a></li>
+<li>Tolosa, País Vasco</li>
+</ul>
+</div>
+</div>
+<div class="footer__bottom">
+<p>© 2026 OI Studio · <a href="legal.html" data-t="foot_legal">Aviso legal y privacidad</a></p>
+<p data-t="foot_made">Diseñado y desarrollado en Tolosa</p>
+</div>
+</div>
+<div class="footer__mark" aria-hidden="true">OI STUDIO</div>
+</footer>
+
+<script src="assets/i18n.js"></script>
+<script src="assets/main.js"></script>
+<a class="wa-float" href="https://wa.me/34680956755?text=Hola%2C%20vengo%20de%20tu%20web%20y%20quiero%20informaci%C3%B3n%20para%20la%20web%20de%20mi%20negocio." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2.05 22l5.27-1.38c1.45.79 3.08 1.21 4.72 1.21 5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.05-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29z"/></svg>
+</a>
+</body>
+</html>

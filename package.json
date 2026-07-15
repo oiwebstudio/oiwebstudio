@@ -1,0 +1,23 @@
+{
+  "name": "oi-studio-web",
+  "version": "1.0.0",
+  "description": "Sitio web profesional de OI Studio - Diseño y desarrollo web para negocios locales",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000 || npx http-server",
+    "dev": "python -m http.server 8000"
+  },
+  "keywords": [
+    "web design",
+    "desarrollo web",
+    "diseño web",
+    "portafolio",
+    "OI Studio"
+  ],
+  "author": "OI Studio",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tu-usuario/oi-studio"
+  }
+}
