@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Reservar cita — Studio Noir · Peluquería de autor en Tolosa</title>
+<meta name="description" content="Reserva tu cita en Studio Noir en un minuto: elige servicio, día y hora, y te confirmamos por WhatsApp."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Jost:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --bg:#111013; --bg2:#1a181c; --line:rgba(255,255,255,.1);
+    --ink:#f2efe9; --body:#b5b0a8; --muted:#8a857d;
+    --gold:#cfa96b; --gold-dark:#b8934f;
+    --serif:"Marcellus",Georgia,serif; --sans:"Jost",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;}
+  body{font-family:var(--sans);background:var(--bg);color:var(--body);line-height:1.7;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2{font-family:var(--serif);color:var(--ink);font-weight:400;line-height:1.1;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 28px;}
+  .label{text-transform:uppercase;letter-spacing:.3em;font-size:11px;font-weight:600;color:var(--gold);}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;font-size:12.5px;padding:16px 32px;cursor:pointer;border:1px solid transparent;transition:all .2s;font-family:var(--sans);}
+  .btn-gold{background:var(--gold);color:#191408;}
+  .btn-gold:hover{background:var(--gold-dark);}
+  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:2px;}
+  @media(prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important;} }
+
+  header{position:sticky;top:0;z-index:50;background:rgba(17,16,19,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:76px;max-width:1040px;margin:0 auto;padding:0 28px;}
+  .logo{font-family:var(--serif);font-size:22px;color:var(--ink);letter-spacing:.14em;text-transform:uppercase;}
+  .logo b{color:var(--gold);font-weight:400;}
+  .back{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--body);}
+  .back:hover{color:var(--gold);}
+
+  .page{padding:70px 0 100px;}
+  .page-grid{display:grid;gap:50px;align-items:start;grid-template-columns:1fr;}
+  @media(min-width:900px){ .page-grid{grid-template-columns:1fr 1.3fr;} }
+  .page h1{font-size:clamp(36px,5vw,58px);margin:14px 0 16px;}
+  .page h1 em{font-style:italic;color:var(--gold);}
+  .side p{max-width:44ch;font-size:16px;}
+  .side .horas{margin-top:30px;border:1px solid var(--line);padding:22px 24px;}
+  .side .horas b{color:var(--ink);display:block;font-family:var(--serif);font-size:17px;margin-bottom:8px;}
+  .side .horas span{display:block;font-size:14px;}
+
+  .form-card{border:1px solid var(--line);background:var(--bg2);padding:36px;}
+  .form-card h2{font-size:22px;margin-bottom:24px;letter-spacing:.04em;}
+  .fgrid{display:grid;gap:18px;grid-template-columns:1fr;}
+  @media(min-width:620px){ .fgrid{grid-template-columns:1fr 1fr;} .fw{grid-column:1/-1;} }
+  label{display:block;text-transform:uppercase;letter-spacing:.12em;font-weight:600;font-size:11px;color:var(--ink);margin-bottom:8px;}
+  input,select,textarea{width:100%;font-family:var(--sans);font-size:15px;color:var(--ink);background:var(--bg);border:1px solid var(--line);padding:13px 15px;transition:border-color .15s;}
+  input:hover,select:hover,textarea:hover{border-color:rgba(255,255,255,.28);}
+  select option{background:var(--bg);}
+  textarea{resize:vertical;min-height:84px;}
+  .form-foot{margin-top:26px;display:grid;gap:12px;}
+  .form-foot small{color:var(--muted);font-size:12.5px;}
+  .ok{display:none;border:1px solid var(--gold);color:var(--gold);padding:13px 16px;font-size:13.5px;}
+  .ok.show{display:block;}
+
+  footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;font-size:13px;color:var(--muted);}
+</style>
+</head>
+<body>
+
+<header>
+<div class="nav">
+<a href="index.html" class="logo">Studio <b>Noir</b></a>
+<a href="index.html" class="back">← Volver</a>
+</div>
+</header>
+
+<section class="page">
+<div class="wrap page-grid">
+
+<div class="side">
+<span class="label">Reservas</span>
+<h1>Tu silla te <em>espera.</em></h1>
+<p>Elige servicio, día y hora, y te confirmamos por WhatsApp en cuanto lo veamos. Si tu cita es para un evento, cuéntanoslo en las notas.</p>
+<div class="horas">
+<b>Horario del estudio</b>
+<span>Martes – Viernes · 9:30 – 19:00</span>
+<span>Sábado · 9:00 – 14:00</span>
+<span>Domingo y lunes · cerrado</span>
+</div>
+</div>
+
+<form class="form-card" id="f" novalidate>
+<h2>Datos de la cita</h2>
+<div class="fgrid">
+<div><label for="nom">Tu nombre</label><input id="nom" name="nombre" type="text" autocomplete="name" required placeholder="June Otaegi"/></div>
+<div><label for="tel">Teléfono</label><input id="tel" name="telefono" type="tel" autocomplete="tel" required placeholder="600 000 000"/></div>
+<div><label for="srv">Servicio</label>
+<select id="srv" name="servicio">
+<option>Corte de autor — 32€</option>
+<option>Color completo — desde 55€</option>
+<option>Mechas / balayage — desde 75€</option>
+<option>Tratamiento reconstructor — 28€</option>
+<option>Peinado de evento — desde 40€</option>
+<option>No lo sé, aconsejadme</option>
+</select>
+</div>
+<div><label for="dia">Día preferido</label><input id="dia" name="dia" type="date"/></div>
+<div class="fw"><label for="franja">Franja horaria</label>
+<select id="franja" name="franja">
+<option>Primera hora (9:30 – 11:30)</option>
+<option>Media mañana (11:30 – 14:00)</option>
+<option>Tarde (16:00 – 19:00)</option>
+<option>Sábado por la mañana</option>
+<option>Me adapto</option>
+</select>
+</div>
+<div class="fw"><label for="msg">Notas <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0;">(opcional)</span></label><textarea id="msg" name="notas" placeholder="Referencias, largo actual, si es para un evento…"></textarea></div>
+</div>
+<div class="form-foot">
+<button type="submit" class="btn btn-gold">Enviar reserva por WhatsApp</button>
+<small>Se abre WhatsApp con tu solicitud ya escrita; solo tienes que enviarla. Te confirmamos hora exacta en el día.</small>
+<div class="ok" id="ok">✓ Reserva preparada. Si WhatsApp no se ha abierto, llámanos al 600 00 00 00.</div>
+</div>
+</form>
+
+</div>
+</section>
+
+<footer>© 2026 Studio Noir · Calle Correo 8, Tolosa · <a href="index.html" style="color:var(--gold);">studio noir — inicio</a></footer>
+
+<script>
+  document.getElementById('f').addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var f = ev.target;
+    if (!f.nombre.value.trim() || !f.telefono.value.trim()) {
+      (!f.nombre.value.trim() ? f.nombre : f.telefono).focus();
+      return;
+    }
+    var lineas = [
+      'Hola, quiero reservar cita en Studio Noir:',
+      '• Nombre: ' + f.nombre.value.trim(),
+      '• Teléfono: ' + f.telefono.value.trim(),
+      '• Servicio: ' + f.servicio.value,
+      '• Día: ' + (f.dia.value || 'a concretar'),
+      '• Franja: ' + f.franja.value
+    ];
+    if (f.notas.value.trim()) lineas.push('• Notas: ' + f.notas.value.trim());
+    window.open('https://wa.me/34600000000?text=' + encodeURIComponent(lineas.join('\n')), '_blank', 'noopener');
+    document.getElementById('ok').classList.add('show');
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Del grano al pan — Errotaberri</title>
+<meta name="description" content="Cómo hacemos el pan en Errotaberri: masa madre, fermentación de 24 horas y horno de piedra. El proceso completo, paso a paso."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --cream:#f5f0e8; --cream2:#efe8dc; --paper:#fbf8f2;
+    --ink:#2c231b; --body:#6b5f52; --muted:#7d7060;
+    --terra:#c07a35; --terra-dark:#a5652a; --line:#e2d9ca;
+    --serif:"Playfair Display",Georgia,serif; --sans:"Lora",Georgia,serif;
+  }
+  *{box-sizing:border-box;margin:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--sans);background:var(--cream);color:var(--body);line-height:1.7;-webkit-font-smoothing:antialiased;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{font-family:var(--serif);color:var(--ink);font-weight:600;line-height:1.12;}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 26px;}
+  .label{font-family:var(--sans);text-transform:uppercase;letter-spacing:.24em;font-size:12px;font-weight:600;color:var(--terra);}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:13px;padding:16px 30px;cursor:pointer;border:1px solid transparent;transition:all .2s;border-radius:999px;background:var(--terra);color:#fff;}
+  .btn:hover{background:var(--terra-dark);}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--terra);outline-offset:2px;}
+  @media(prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important;} }
+  [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+  [data-reveal].is-visible{opacity:1;transform:translateY(0);}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(245,240,232,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px;max-width:1000px;margin:0 auto;padding:0 26px;}
+  .brand{font-family:var(--serif);font-size:20px;color:var(--ink);font-weight:600;}
+  .back{font-size:14px;font-weight:600;color:var(--body);}
+  .back:hover{color:var(--terra-dark);}
+
+  .cab{padding:60px 0 40px;text-align:center;}
+  .cab h1{font-size:clamp(36px,5.6vw,58px);margin-top:14px;}
+  .cab p{margin-top:14px;max-width:56ch;margin-left:auto;margin-right:auto;font-size:17px;}
+
+  /* Timeline del proceso */
+  .proceso{padding:20px 0 80px;}
+  .fase{display:grid;gap:32px;grid-template-columns:1fr;align-items:center;padding:44px 0;border-top:1px solid var(--line);}
+  @media(min-width:820px){ .fase{grid-template-columns:1fr 1fr;gap:56px;} .fase.inv .ph{order:2;} }
+  .fase:first-child{border-top:none;}
+  .fase .ph{border-radius:22px;overflow:hidden;aspect-ratio:4/3.2;box-shadow:0 24px 48px -24px rgba(44,35,27,.35);}
+  .fase .ph img{width:100%;height:100%;object-fit:cover;}
+  .fase .hh{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--terra);}
+  .fase h2{font-size:clamp(24px,3.4vw,34px);margin:8px 0 12px;}
+  .fase p{font-size:15.5px;}
+  .fase .horas{display:inline-block;margin-top:16px;background:var(--cream2);border-radius:999px;padding:7px 16px;font-size:13px;color:var(--ink);font-weight:600;}
+
+  .cierre{background:var(--paper);border-top:1px solid var(--line);padding:64px 0;text-align:center;}
+  .cierre h2{font-size:clamp(26px,3.8vw,36px);margin-top:10px;}
+  .cierre p{margin:14px 0 26px;max-width:52ch;margin-left:auto;margin-right:auto;}
+
+  footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;font-size:13.5px;color:var(--muted);}
+</style>
+</head>
+<body>
+
+<header>
+<div class="nav">
+<span class="brand">Errotaberri</span>
+<a href="index.html" class="back">← Volver al inicio</a>
+</div>
+</header>
+
+<div class="cab">
+<div class="wrap">
+<span class="label">El obrador</span>
+<h1>Del grano al pan</h1>
+<p>No hay atajos en el pan bueno. Así es nuestro proceso, el mismo desde 1962, con 33 horas por delante antes de que entre al horno.</p>
+</div>
+</div>
+
+<section class="proceso wrap">
+
+<div class="fase" data-reveal>
+<div class="ph"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80" alt="Harina y masa madre" loading="lazy"/></div>
+<div>
+<span class="hh">Fase 1</span>
+<h2>La masa madre</h2>
+<p>Nuestra masa madre tiene más de quince años. La alimentamos cada mañana con harina y agua, y nunca ha dejado de fermentar. Es lo que da al pan su sabor ligeramente ácido y su miga duradera.</p>
+<span class="horas">Cultivo diario · 15 años</span>
+</div>
+</div>
+
+<div class="fase inv" data-reveal>
+<div class="ph"><img src="https://images.unsplash.com/photo-1517686469429-8bdb88b9f907?auto=format&fit=crop&w=800&q=80" alt="Amasado de la masa" loading="lazy"/></div>
+<div>
+<span class="hh">Fase 2</span>
+<h2>El amasado</h2>
+<p>Harinas del país, agua, sal y la masa madre. Amasamos despacio, dejando que el gluten se desarrolle solo, sin forzar. Diez minutos que se notan en cada rebanada.</p>
+<span class="horas">10 minutos de amasado</span>
+</div>
+</div>
+
+<div class="fase" data-reveal>
+<div class="ph"><img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=800&q=80" alt="Masa fermentando" loading="lazy"/></div>
+<div>
+<span class="hh">Fase 3</span>
+<h2>Fermentación lenta</h2>
+<p>24 horas en frío. Es la parte que no se puede acelerar: el tiempo desarrolla el sabor, hace la miga más digestiva y le da esa corteza que cruje al partirla.</p>
+<span class="horas">24 horas en cámara fría</span>
+</div>
+</div>
+
+<div class="fase inv" data-reveal>
+<div class="ph"><img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80" alt="Pan horneándose" loading="lazy"/></div>
+<div>
+<span class="hh">Fase 4</span>
+<h2>El horno de piedra</h2>
+<p>Piedra refractaria y vapor los primeros minutos, para que la corteza se forme bien antes de dorarse. El mismo horno desde que abrió el obrador.</p>
+<span class="horas">45 minutos a 230°C</span>
+</div>
+</div>
+
+<div class="fase" data-reveal>
+<div class="ph"><img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?auto=format&fit=crop&w=800&q=80" alt="Cesta de pan recién hecho" loading="lazy"/></div>
+<div>
+<span class="hh">Fase 5</span>
+<h2>Y a la mesa</h2>
+<p>Tres hornadas al día para que siempre haya pan recién hecho: a las 8:00, a las 12:30 y a las 17:30. El que no se vende, no se guarda para el día siguiente.</p>
+<span class="horas">3 hornadas diarias</span>
+</div>
+</div>
+
+</section>
+
+<div class="cierre">
+<div class="wrap">
+<span class="label">¿Te lo has quedado con hambre?</span>
+<h2>Pruébalo tú mismo</h2>
+<p>Pásate cuando quieras o resérvalo con antelación si es para una ocasión especial.</p>
+<a href="encargos.html" class="btn">Hacer un encargo →</a>
+</div>
+</div>
+
+<footer>© 2026 Errotaberri · Panadería artesana desde 1962 · Tolosa, Gipuzkoa</footer>
+
+<script>
+  var revealEls = document.querySelectorAll('[data-reveal]');
+  var reduceMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+  } else {
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } }); }, {threshold:.01});
+    revealEls.forEach(function(el){ io.observe(el); });
+    setTimeout(function(){ revealEls.forEach(function(el){ el.classList.add('is-visible'); }); }, 2500);
+  }
+</script>
+</body>
+</html>
