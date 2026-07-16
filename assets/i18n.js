@@ -85,7 +85,6 @@ const EU = {
   tag_cafe: "Kafetegia",
   tag_taller: "Tailer mekanikoa",
   tag_flor: "Loradenda",
-  hs_label: "/ Aukeratu zure sektorea",
   tra_ver: 'Ikusi lanak <span class="ar">↓</span>',
   gal_p: "Web bakoitza, merezi duen bezala zintzilikatuta. Ukitu koadro bat sartzeko.",
   gal_medium: "HTML, CSS eta JS nabigatzailearen gainean · 2026",
