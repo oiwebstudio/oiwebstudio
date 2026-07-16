@@ -139,14 +139,14 @@
 <div class="container">
 <p class="marquee-label reveal" data-t="sectors_label">Diseño webs para todo tipo de negocio local</p>
 <div class="hsx-row reveal" data-d="1" id="hsxRow">
-<a class="hsx" data-shot="pan" href="https://oiwebstudio.vercel.app/panaderia/" target="_blank" rel="noopener"><i style="background:#c07a35"></i><span class="hs-txt" data-t="sector_pan">Panaderías</span></a>
-<a class="hsx" data-shot="vet" href="https://oiwebstudio.vercel.app/veterinaria/" target="_blank" rel="noopener"><i style="background:#2ba8a4"></i><span class="hs-txt" data-t="sector_vet">Veterinarios</span></a>
-<a class="hsx" data-shot="pelu" href="https://oiwebstudio.vercel.app/peluqueria/" target="_blank" rel="noopener"><i style="background:#cfa96b"></i><span class="hs-txt" data-t="sector_pel">Peluquerías</span></a>
-<a class="hsx" data-shot="rest" href="https://oiwebstudio.vercel.app/restaurante/" target="_blank" rel="noopener"><i style="background:#d4552b"></i><span class="hs-txt" data-t="sector_res">Restaurantes</span></a>
-<a class="hsx" data-shot="gym" href="https://oiwebstudio.vercel.app/gimnasio/" target="_blank" rel="noopener"><i style="background:#d7ff3e"></i><span class="hs-txt" data-t="sector_gim">Gimnasios</span></a>
-<a class="hsx is-active" data-shot="cafe" href="https://oiwebstudio.vercel.app/cafeteria/" target="_blank" rel="noopener"><i style="background:#b07d4f"></i><span class="hs-txt" data-t="sector_cafe">Cafeterías</span></a>
-<a class="hsx" data-shot="taller" href="https://oiwebstudio.vercel.app/taller/" target="_blank" rel="noopener"><i style="background:#ffb400"></i><span class="hs-txt" data-t="sector_tal">Talleres</span></a>
-<a class="hsx" data-shot="flor" href="https://oiwebstudio.vercel.app/floristeria/" target="_blank" rel="noopener"><i style="background:#c98a8e"></i><span class="hs-txt" data-t="sector_flo">Floristerías</span></a>
+<button type="button" class="hsx" data-shot="pan"><i style="background:#c07a35"></i><span class="hs-txt" data-t="sector_pan">Panaderías</span></button>
+<button type="button" class="hsx" data-shot="vet"><i style="background:#2ba8a4"></i><span class="hs-txt" data-t="sector_vet">Veterinarios</span></button>
+<button type="button" class="hsx" data-shot="pelu"><i style="background:#cfa96b"></i><span class="hs-txt" data-t="sector_pel">Peluquerías</span></button>
+<button type="button" class="hsx" data-shot="rest"><i style="background:#d4552b"></i><span class="hs-txt" data-t="sector_res">Restaurantes</span></button>
+<button type="button" class="hsx" data-shot="gym"><i style="background:#d7ff3e"></i><span class="hs-txt" data-t="sector_gim">Gimnasios</span></button>
+<button type="button" class="hsx is-active" data-shot="cafe"><i style="background:#b07d4f"></i><span class="hs-txt" data-t="sector_cafe">Cafeterías</span></button>
+<button type="button" class="hsx" data-shot="taller"><i style="background:#ffb400"></i><span class="hs-txt" data-t="sector_tal">Talleres</span></button>
+<button type="button" class="hsx" data-shot="flor"><i style="background:#c98a8e"></i><span class="hs-txt" data-t="sector_flo">Floristerías</span></button>
 </div>
 </div>
 </section>
@@ -350,6 +350,7 @@
   items.forEach(function(t){
     t.addEventListener('mouseenter', function(){ activate(t); });
     t.addEventListener('focus', function(){ activate(t); });
+    t.addEventListener('click', function(){ activate(t); });
   });
 
   splitChars();
