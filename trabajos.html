@@ -22,6 +22,37 @@
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="assets/styles.css"/>
 <style>
+  /* Fondo de trazos animados en el hero (BackgroundPaths, vanilla) */
+  .hero-paths{position:absolute;inset:0;width:100%;height:100%;color:#1c2430;pointer-events:none;}
+  .hero-paths path{fill:none;stroke:currentColor;stroke-dasharray:1 1;animation:hpDraw var(--dur,26s) linear infinite;}
+  @keyframes hpDraw{0%{stroke-dashoffset:2;opacity:.15;}50%{opacity:.5;}100%{stroke-dashoffset:0;opacity:.15;}}
+  @media(prefers-reduced-motion:reduce){ .hero-paths path{animation:none;opacity:.2;} }
+
+  /* Selector hover de las 8 webs (animated-slideshow, vanilla) */
+  .hs-sec{background:var(--bg,#f6f3ea);padding:90px 0 100px;border-bottom:1px solid rgba(28,36,48,.08);}
+  .hs-grid{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-evenly;gap:34px 48px;max-width:1200px;margin:0 auto;padding:0 clamp(20px,4vw,56px);}
+  .hs-label{font-family:"Geist Mono",monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent,#c96442);max-width:1200px;margin:0 auto 34px;padding:0 clamp(20px,4vw,56px);display:block;}
+  .hs-titles{display:flex;flex-direction:column;gap:10px;}
+  .hs-title{display:flex;align-items:baseline;gap:14px;cursor:pointer;text-decoration:none;}
+  .hs-title .hs-num{font-family:"Geist Mono",monospace;font-size:12px;color:#9aa0aa;transition:color .3s;}
+  .hs-title.is-active .hs-num{color:var(--accent,#c96442);}
+  .hs-txt{font-weight:800;font-size:clamp(26px,3.4vw,40px);letter-spacing:-.03em;text-transform:uppercase;line-height:1.1;color:#1c2430;}
+  .hs-ch{position:relative;display:inline-block;overflow:hidden;vertical-align:bottom;}
+  .hs-ch b{display:inline-block;font-weight:inherit;transition:transform .3s cubic-bezier(.25,.46,.45,.94);transition-delay:var(--d,0s);}
+  .hs-ch .a{opacity:.22;transform:translateY(0);}
+  .hs-ch .b{position:absolute;left:0;top:0;opacity:1;transform:translateY(110%);}
+  .hs-title.is-active .hs-ch .a{transform:translateY(-110%);}
+  .hs-title.is-active .hs-ch .b{transform:translateY(0);}
+  .hs-images{position:relative;display:grid;width:min(560px,92vw);border-radius:18px;overflow:hidden;box-shadow:0 30px 60px -28px rgba(28,36,48,.4);}
+  .hs-images img{grid-area:1/1;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;display:block;
+    clip-path:polygon(0% 0%,100% 0%,100% 0%,0% 0%);transition:clip-path .8s cubic-bezier(.33,1,.68,1);}
+  .hs-images img.is-active{clip-path:polygon(0% 0%,100% 0%,100% 100%,0% 100%);}
+  @media(max-width:880px){ .hs-grid{flex-direction:column-reverse;} .hs-titles{width:100%;} }
+  @media(prefers-reduced-motion:reduce){
+    .hs-ch b{transition:none;} .hs-ch .a{opacity:1;} .hs-ch .b{display:none;}
+    .hs-images img{transition:none;}
+  }
+
   /* Moodboard editorial: capturas planas sobre lienzo crema, con paletas y etiquetas mono */
   .mb-wall{background:#f2eee4;position:relative;padding:110px 0 96px;}
   .mb-corner{position:absolute;font-family:"Geist Mono",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#55524a;}
@@ -107,7 +138,7 @@
 </div>
 
 <header class="hero" style="padding-bottom:0;">
-<div class="hero__bg"><div class="hero__grid"></div></div>
+<div class="hero__bg"><div class="hero__grid"></div><svg class="hero-paths" id="heroPaths" viewBox="0 0 696 316" fill="none" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg></div>
 <div class="container">
 <div class="hero__inner">
 <span class="eyebrow reveal" data-t="tra_eyebrow">Proyectos</span>
@@ -117,6 +148,32 @@
 </div>
 </div>
 </header>
+
+<section class="hs-sec" aria-label="Elige un sector">
+<span class="hs-label" data-t="hs_label">/ Elige tu sector</span>
+<div class="hs-grid">
+<div class="hs-titles" id="hsTitles">
+<a class="hs-title" href="https://oiwebstudio.vercel.app/panaderia/" target="_blank" rel="noopener" data-idx="0"><span class="hs-num">01</span><span class="hs-txt" data-t="tag_pan">Panadería</span></a>
+<a class="hs-title" href="https://oiwebstudio.vercel.app/veterinaria/" target="_blank" rel="noopener" data-idx="1"><span class="hs-num">02</span><span class="hs-txt" data-t="tag_vet">Veterinaria</span></a>
+<a class="hs-title" href="https://oiwebstudio.vercel.app/cafeteria/" target="_blank" rel="noopener" data-idx="2"><span class="hs-num">03</span><span class="hs-txt" data-t="tag_cafe">Cafetería</span></a>
+<a class="hs-title" href="https://oiwebstudio.vercel.app/peluqueria/" target="_blank" rel="noopener" data-idx="3"><span class="hs-num">04</span><span class="hs-txt" data-t="tag_pel">Peluquería</span></a>
+<a class="hs-title" href="https://oiwebstudio.vercel.app/gimnasio/" target="_blank" rel="noopener" data-idx="4"><span class="hs-num">05</span><span class="hs-txt" data-t="tag_gim">Gimnasio</span></a>
+<a class="hs-title" href="https://oiwebstudio.vercel.app/floristeria/" target="_blank" rel="noopener" data-idx="5"><span class="hs-num">06</span><span class="hs-txt" data-t="tag_flor">Floristería</span></a>
+<a class="hs-title" href="https://oiwebstudio.vercel.app/restaurante/" target="_blank" rel="noopener" data-idx="6"><span class="hs-num">07</span><span class="hs-txt" data-t="tag_res">Restaurante</span></a>
+<a class="hs-title" href="https://oiwebstudio.vercel.app/taller/" target="_blank" rel="noopener" data-idx="7"><span class="hs-num">08</span><span class="hs-txt" data-t="tag_taller">Taller mecánico</span></a>
+</div>
+<div class="hs-images" id="hsImages">
+<img src="assets/pan-desk.jpg" alt="Web de panadería" class="is-active" loading="lazy"/>
+<img src="assets/vet-desk.jpg" alt="Web de veterinaria" loading="lazy"/>
+<img src="assets/cafe-desk.jpg" alt="Web de cafetería" loading="lazy"/>
+<img src="assets/pelu-desk.jpg" alt="Web de peluquería" loading="lazy"/>
+<img src="assets/gym-desk.jpg" alt="Web de gimnasio" loading="lazy"/>
+<img src="assets/flor-desk.jpg" alt="Web de floristería" loading="lazy"/>
+<img src="assets/rest-desk.jpg" alt="Web de restaurante" loading="lazy"/>
+<img src="assets/taller-desk.jpg" alt="Web de taller mecánico" loading="lazy"/>
+</div>
+</div>
+</section>
 
 <section class="mb-wall">
 <span class="mb-corner tl"><span data-t="tra_eyebrow">Proyectos</span> — OI Studio</span>
@@ -228,6 +285,74 @@
 
 <script src="assets/i18n.js"></script>
 <script src="assets/main.js"></script>
+<script>
+(function(){
+  /* --- Fondo de trazos animados (BackgroundPaths en vanilla) --- */
+  var svg = document.getElementById('heroPaths');
+  if (svg) {
+    var NS = 'http://www.w3.org/2000/svg';
+    [1, -1].forEach(function(pos){
+      for (var i = 0; i < 18; i++) {
+        var p = document.createElementNS(NS, 'path');
+        p.setAttribute('d',
+          'M-' + (380 - i * 10 * pos) + ' -' + (189 + i * 12) +
+          'C-' + (380 - i * 10 * pos) + ' -' + (189 + i * 12) +
+          ' -' + (312 - i * 10 * pos) + ' ' + (216 - i * 12) +
+          ' ' + (152 - i * 10 * pos) + ' ' + (343 - i * 12) +
+          'C' + (616 - i * 10 * pos) + ' ' + (470 - i * 12) +
+          ' ' + (684 - i * 10 * pos) + ' ' + (875 - i * 12) +
+          ' ' + (684 - i * 10 * pos) + ' ' + (875 - i * 12));
+        p.setAttribute('stroke-width', (0.6 + i * 0.05).toFixed(2));
+        p.setAttribute('stroke-opacity', (0.12 + i * 0.025).toFixed(3));
+        p.setAttribute('pathLength', '1');
+        p.style.setProperty('--dur', (20 + Math.random() * 10).toFixed(1) + 's');
+        svg.appendChild(p);
+      }
+    });
+  }
+
+  /* --- Selector hover de las 8 webs --- */
+  var titles = Array.prototype.slice.call(document.querySelectorAll('#hsTitles .hs-title'));
+  var images = Array.prototype.slice.call(document.querySelectorAll('#hsImages img'));
+  if (!titles.length) return;
+
+  function splitChars(){
+    titles.forEach(function(t){
+      var txt = t.querySelector('.hs-txt');
+      if (!txt || txt.querySelector('.hs-ch')) return;
+      var raw = txt.textContent;
+      txt.textContent = '';
+      raw.split('').forEach(function(ch, i){
+        var w = document.createElement('span');
+        w.className = 'hs-ch';
+        w.style.setProperty('--d', (i * 0.025).toFixed(3) + 's');
+        var a = document.createElement('b'); a.className = 'a'; a.innerHTML = ch === ' ' ? '&nbsp;' : ch;
+        var b = document.createElement('b'); b.className = 'b'; b.innerHTML = ch === ' ' ? '&nbsp;' : ch;
+        w.appendChild(a); w.appendChild(b);
+        txt.appendChild(w);
+      });
+    });
+  }
+
+  function activate(idx){
+    titles.forEach(function(t, i){ t.classList.toggle('is-active', i === idx); });
+    images.forEach(function(img, i){ img.classList.toggle('is-active', i === idx); });
+  }
+
+  titles.forEach(function(t, i){
+    t.addEventListener('mouseenter', function(){ activate(i); });
+    t.addEventListener('focus', function(){ activate(i); });
+  });
+
+  splitChars();
+  activate(0);
+
+  /* Al cambiar ES/EU el i18n reescribe el texto plano: volvemos a partir en letras */
+  document.addEventListener('click', function(e){
+    if (e.target.closest('[data-lang]')) setTimeout(function(){ splitChars(); activate(0); }, 60);
+  });
+})();
+</script>
 <a class="wa-float" href="https://wa.me/34680956755?text=Hola%2C%20vengo%20de%20tu%20web%20y%20quiero%20informaci%C3%B3n%20para%20la%20web%20de%20mi%20negocio." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2.05 22l5.27-1.38c1.45.79 3.08 1.21 4.72 1.21 5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.05-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29z"/></svg>
 </a>
