@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pedir cita — Garaje Norte</title>
+<meta name="description" content="Pide cita en Garaje Norte: cuéntanos qué le pasa a tu coche y te confirmamos hora y presupuesto orientativo por WhatsApp."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Saira:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --negro:#101418; --panel:#171c22; --linea:rgba(255,255,255,.1);
+    --blanco:#eef1f4; --cuerpo:#9aa7b2; --acero:#5d6b78;
+    --senal:#ffb400; --senal2:#e09e00;
+    --disp:"Chakra Petch",sans-serif; --sans:"Saira",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;}
+  body{font-family:var(--sans);background:var(--negro);color:var(--cuerpo);line-height:1.65;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{font-family:var(--disp);color:var(--blanco);text-transform:uppercase;line-height:1.08;}
+  .wrap{max-width:860px;margin:0 auto;padding:0 26px;}
+  .label{font-family:var(--disp);text-transform:uppercase;letter-spacing:.24em;font-size:11.5px;font-weight:600;color:var(--senal);}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--disp);font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:.06em;padding:16px 30px;cursor:pointer;border:2px solid transparent;transition:all .18s;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);background:var(--senal);color:#171309;width:100%;}
+  .btn:hover{background:var(--senal2);}
+  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--senal);outline-offset:2px;}
+  @media(prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important;} }
+
+  header{position:sticky;top:0;z-index:50;background:rgba(16,20,24,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--linea);}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:70px;max-width:860px;margin:0 auto;padding:0 26px;}
+  .logo{font-family:var(--disp);font-weight:700;font-size:19px;color:var(--blanco);text-transform:uppercase;}
+  .logo em{font-style:normal;color:var(--senal);}
+  .back{font-family:var(--disp);text-transform:uppercase;letter-spacing:.06em;font-size:13px;}
+  .back:hover{color:var(--senal);}
+
+  .cab{padding:56px 0 36px;}
+  .cab h1{font-size:clamp(30px,5vw,48px);margin-top:12px;}
+  .cab p{margin-top:12px;max-width:60ch;}
+
+  .tarjeta{background:var(--panel);border:1px solid var(--linea);padding:34px;margin:20px 0 70px;clip-path:polygon(16px 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%,0 16px);}
+  .campo{margin-bottom:20px;}
+  label{display:block;font-family:var(--disp);text-transform:uppercase;letter-spacing:.06em;font-weight:600;font-size:12.5px;color:var(--blanco);margin-bottom:7px;}
+  input,select,textarea{width:100%;font-family:var(--sans);font-size:15px;color:var(--blanco);background:var(--negro);border:1px solid var(--linea);padding:13px 15px;transition:border-color .15s;}
+  input:focus,select:focus,textarea:focus{border-color:var(--senal);outline:none;}
+  input::placeholder,textarea::placeholder{color:var(--acero);}
+  .fila2{display:grid;gap:16px;grid-template-columns:1fr;}
+  @media(min-width:640px){ .fila2{grid-template-columns:1fr 1fr;} }
+  .matricula{font-family:var(--disp);letter-spacing:.28em;text-transform:uppercase;text-align:center;font-size:18px;}
+  .aviso{border-left:3px solid var(--senal);background:rgba(255,180,0,.07);padding:14px 18px;font-size:13.5px;margin:24px 0;}
+  .aviso b{color:var(--blanco);}
+
+  .como{padding:0 0 80px;}
+  .como h2{font-size:clamp(24px,3.6vw,34px);margin-bottom:26px;}
+  .pasos{display:grid;gap:1px;background:var(--linea);border:1px solid var(--linea);}
+  @media(min-width:720px){ .pasos{grid-template-columns:repeat(4,1fr);} }
+  .paso{background:var(--panel);padding:24px 22px;}
+  .paso .n{font-family:var(--disp);color:var(--senal);font-size:24px;font-weight:700;}
+  .paso h3{font-size:15px;margin:10px 0 6px;}
+  .paso p{font-size:13.5px;}
+
+  footer{border-top:1px solid var(--linea);padding:26px 0;text-align:center;font-size:13px;color:var(--acero);}
+</style>
+</head>
+<body>
+
+<header>
+<div class="nav">
+<a href="index.html" class="logo">Garaje <em>Norte</em></a>
+<a href="index.html" class="back">← Volver</a>
+</div>
+</header>
+
+<div class="cab wrap">
+<span class="label">Cita previa</span>
+<h1>Cuéntanos qué le pasa</h1>
+<p>Rellena la ficha y te confirmamos <b style="color:var(--blanco);">hora y presupuesto orientativo</b> por WhatsApp en horario de taller. Sin compromiso.</p>
+</div>
+
+<div class="wrap">
+<form class="tarjeta" id="formCita">
+<div class="fila2">
+<div class="campo"><label for="nombre">Tu nombre</label><input id="nombre" name="nombre" required placeholder="Iker"/></div>
+<div class="campo"><label for="tel">Teléfono</label><input id="tel" name="tel" type="tel" required placeholder="600 00 00 00"/></div>
+</div>
+<div class="fila2">
+<div class="campo"><label for="coche">Marca y modelo</label><input id="coche" name="coche" required placeholder="VW Golf VI 1.6 TDI"/></div>
+<div class="campo"><label for="matricula">Matrícula</label><input id="matricula" name="matricula" class="matricula" required placeholder="0000 XXX" maxlength="8"/></div>
+</div>
+<div class="campo">
+<label for="tipo">¿Qué necesita?</label>
+<select id="tipo" name="tipo">
+<option>Revisión + aceite</option>
+<option>Frenos</option>
+<option>Embrague</option>
+<option>Distribución</option>
+<option>Testigo encendido / diagnosis</option>
+<option>Pre-ITV / ITV</option>
+<option>Neumáticos / alineado</option>
+<option>Otra cosa (lo cuento abajo)</option>
+</select>
+</div>
+<div class="campo"><label for="sintomas">Síntomas <span style="color:var(--acero);text-transform:none;">(opcional, pero ayuda mucho)</span></label><textarea id="sintomas" name="sintomas" rows="3" placeholder="Hace un ruido al girar a la izquierda, sobre todo en frío…"></textarea></div>
+<div class="fila2">
+<div class="campo"><label for="dia">Día preferido</label><input id="dia" name="dia" type="date"/></div>
+<div class="campo"><label for="franja">Franja</label><select id="franja" name="franja"><option>Mañana (8:30–13:00)</option><option>Tarde (15:00–18:30)</option></select></div>
+</div>
+<div class="aviso"><b>Coche de cortesía</b> sujeto a disponibilidad — pídelo en el mensaje si lo necesitas.</div>
+<button type="submit" class="btn">Enviar ficha por WhatsApp →</button>
+</form>
+</div>
+
+<section class="como wrap">
+<h2>Qué pasa después</h2>
+<div class="pasos">
+<div class="paso"><span class="n">1</span><h3>Te confirmamos</h3><p>Hora y presupuesto orientativo por WhatsApp, normalmente en el día.</p></div>
+<div class="paso"><span class="n">2</span><h3>Diagnosis</h3><p>Miramos el coche y te pasamos el presupuesto CERRADO por escrito.</p></div>
+<div class="paso"><span class="n">3</span><h3>Tú decides</h3><p>Sin presión. Si no compensa arreglar, te lo decimos también.</p></div>
+<div class="paso"><span class="n">4</span><h3>Fotos y entrega</h3><p>Te enviamos fotos de lo cambiado y recoges el coche cuando se dijo.</p></div>
+</div>
+</section>
+
+<footer>© 2026 Garaje Norte · Taller mecánico · Tolosa, Gipuzkoa</footer>
+
+<script>
+  document.getElementById('formCita').addEventListener('submit', function(e){
+    e.preventDefault();
+    var v = function(id){ return (document.getElementById(id).value || '').trim(); };
+    var lineas = [
+      'Hola, quiero pedir cita en Garaje Norte:',
+      '• Nombre: ' + v('nombre'),
+      '• Teléfono: ' + v('tel'),
+      '• Coche: ' + v('coche') + ' — ' + v('matricula').toUpperCase(),
+      '• Necesito: ' + v('tipo')
+    ];
+    if (v('sintomas')) lineas.push('• Síntomas: ' + v('sintomas'));
+    if (v('dia')) lineas.push('• Día preferido: ' + v('dia') + ' (' + v('franja') + ')');
+    window.open('https://wa.me/34600000000?text=' + encodeURIComponent(lineas.join('\n')), '_blank', 'noopener');
+  });
+</script>
+</body>
+</html>

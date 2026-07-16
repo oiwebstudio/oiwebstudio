@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Horario de clases — IRONPULSE</title>
+<meta name="description" content="Horario completo de clases dirigidas en IronPulse: HIIT, spinning, movilidad, boxeo y cross. 28 clases a la semana."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --bg:#0b0b0d; --bg2:#141417; --line:rgba(255,255,255,.12);
+    --white:#fff; --muted:#a2a2a8; --volt:#d7ff3e;
+    --disp:"Anton",sans-serif; --ui:"Oswald",sans-serif; --body:"Barlow",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;}
+  body{font-family:var(--body);background:var(--bg);color:#e9e9ec;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{color:#fff;line-height:1;text-transform:uppercase;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 26px;}
+  .eyebrow{font-family:var(--ui);color:var(--volt);font-weight:600;text-transform:uppercase;letter-spacing:.18em;font-size:13px;}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--ui);font-weight:600;font-size:15px;text-transform:uppercase;letter-spacing:.06em;padding:15px 30px;cursor:pointer;border:2px solid transparent;transition:all .18s;background:#fff;color:#0b0b0d;}
+  .btn:hover{background:var(--volt);}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--volt);outline-offset:2px;}
+  @media(prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important;} }
+  [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+  [data-reveal].is-visible{opacity:1;transform:translateY(0);}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(11,11,13,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:74px;max-width:1100px;margin:0 auto;padding:0 26px;}
+  .logo{font-family:var(--disp);font-size:22px;letter-spacing:1px;}
+  .back{font-family:var(--ui);text-transform:uppercase;letter-spacing:.06em;font-size:13px;color:#cfcfd4;}
+  .back:hover{color:var(--volt);}
+
+  .cab{padding:56px 0 40px;text-align:center;}
+  .cab h1{font-family:var(--disp);font-size:clamp(36px,6vw,64px);margin-top:12px;}
+  .cab p{margin-top:14px;color:var(--muted);max-width:56ch;margin-left:auto;margin-right:auto;font-size:16px;}
+
+  .filtros{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:30px 0 44px;}
+  .filtros button{font-family:var(--ui);text-transform:uppercase;letter-spacing:.06em;font-size:12.5px;background:var(--bg2);border:1px solid var(--line);color:#cfcfd4;padding:9px 16px;cursor:pointer;transition:all .2s;}
+  .filtros button.on{background:var(--volt);color:#0b0b0d;border-color:var(--volt);}
+
+  .tabla-wrap{overflow-x:auto;padding-bottom:60px;}
+  table{width:100%;border-collapse:collapse;min-width:760px;}
+  th{font-family:var(--ui);text-transform:uppercase;letter-spacing:.08em;font-size:12px;color:var(--volt);text-align:left;padding:14px 12px;border-bottom:2px solid var(--line);}
+  td{padding:12px;border-bottom:1px solid var(--line);font-size:14px;vertical-align:top;}
+  .hora{font-family:var(--ui);color:#fff;font-weight:600;white-space:nowrap;}
+  .clase{display:inline-block;padding:6px 12px;font-size:12.5px;font-family:var(--ui);text-transform:uppercase;letter-spacing:.04em;margin:2px 0;}
+  .clase.hiit{background:rgba(215,255,62,.14);color:var(--volt);}
+  .clase.spin{background:rgba(255,120,80,.14);color:#ff9b7a;}
+  .clase.mov{background:rgba(120,180,255,.14);color:#9cc4ff;}
+  .clase.box{background:rgba(255,80,150,.14);color:#ff9dc4;}
+  .clase.cross{background:rgba(255,255,255,.1);color:#fff;}
+  .vacio{color:#4f4f56;}
+
+  .leyenda{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;padding-bottom:60px;font-size:13px;color:var(--muted);}
+  .leyenda span{display:inline-flex;align-items:center;gap:8px;}
+  .leyenda i{width:10px;height:10px;display:inline-block;}
+
+  .cierre{background:var(--bg2);border-top:1px solid var(--line);padding:64px 0;text-align:center;}
+  .cierre h2{font-family:var(--disp);font-size:clamp(28px,4.4vw,42px);}
+  .cierre p{margin:14px 0 24px;color:var(--muted);max-width:52ch;margin-left:auto;margin-right:auto;}
+
+  footer{padding:28px 0;text-align:center;font-size:13px;color:#5a5a60;}
+</style>
+</head>
+<body>
+
+<header>
+<div class="nav">
+<span class="logo">IRONPULSE</span>
+<a href="index.html" class="back">← Volver al inicio</a>
+</div>
+</header>
+
+<div class="cab wrap">
+<span class="eyebrow">28 clases a la semana</span>
+<h1>Horario completo</h1>
+<p>Grupos de máximo 14 personas. Reserva tu plaza desde el móvil con al menos 2 horas de antelación.</p>
+</div>
+
+<div class="filtros wrap" id="filtros">
+<button class="on" data-f="all">Todas</button>
+<button data-f="hiit">HIIT</button>
+<button data-f="spin">Spinning</button>
+<button data-f="mov">Movilidad</button>
+<button data-f="box">Boxeo</button>
+<button data-f="cross">Cross</button>
+</div>
+
+<div class="tabla-wrap wrap">
+<table id="tabla">
+<thead><tr><th>Hora</th><th>Lunes</th><th>Martes</th><th>Miércoles</th><th>Jueves</th><th>Viernes</th><th>Sábado</th></tr></thead>
+<tbody>
+<tr><td class="hora">7:00</td><td><span class="clase hiit">HIIT</span></td><td class="vacio">—</td><td><span class="clase hiit">HIIT</span></td><td class="vacio">—</td><td><span class="clase hiit">HIIT</span></td><td class="vacio">—</td></tr>
+<tr><td class="hora">9:00</td><td class="vacio">—</td><td><span class="clase mov">Movilidad</span></td><td class="vacio">—</td><td><span class="clase mov">Movilidad</span></td><td class="vacio">—</td><td><span class="clase cross">Cross</span></td></tr>
+<tr><td class="hora">10:30</td><td class="vacio">—</td><td class="vacio">—</td><td class="vacio">—</td><td class="vacio">—</td><td class="vacio">—</td><td><span class="clase spin">Spinning</span></td></tr>
+<tr><td class="hora">13:00</td><td><span class="clase spin">Spinning</span></td><td class="vacio">—</td><td><span class="clase spin">Spinning</span></td><td class="vacio">—</td><td><span class="clase spin">Spinning</span></td><td class="vacio">—</td></tr>
+<tr><td class="hora">18:00</td><td><span class="clase box">Boxeo</span></td><td><span class="clase cross">Cross</span></td><td><span class="clase box">Boxeo</span></td><td><span class="clase cross">Cross</span></td><td><span class="clase box">Boxeo</span></td><td class="vacio">—</td></tr>
+<tr><td class="hora">19:15</td><td><span class="clase cross">Cross</span></td><td><span class="clase hiit">HIIT</span></td><td><span class="clase cross">Cross</span></td><td><span class="clase hiit">HIIT</span></td><td><span class="clase cross">Cross</span></td><td class="vacio">—</td></tr>
+<tr><td class="hora">20:30</td><td><span class="clase mov">Movilidad</span></td><td><span class="clase box">Boxeo</span></td><td><span class="clase mov">Movilidad</span></td><td><span class="clase box">Boxeo</span></td><td class="vacio">—</td><td class="vacio">—</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="leyenda wrap">
+<span><i style="background:#d7ff3e"></i>HIIT — 45 min, alta intensidad</span>
+<span><i style="background:#ff9b7a"></i>Spinning — 45 min</span>
+<span><i style="background:#9cc4ff"></i>Movilidad — 40 min, baja intensidad</span>
+<span><i style="background:#ff9dc4"></i>Boxeo — 50 min</span>
+<span><i style="background:#fff"></i>Cross — 55 min, box</span>
+</div>
+
+<div class="cierre">
+<div class="wrap">
+<h2>Tu primera clase, gratis</h2>
+<p>Ven a probar cualquiera de estas clases sin compromiso. Solo trae ropa de deporte.</p>
+<a href="apuntate.html" class="btn">Reservar día gratis →</a>
+</div>
+</div>
+
+<footer>© 2026 IronPulse Gym · Tolosa. Todos los derechos reservados.</footer>
+
+<script>
+  var revealEls = document.querySelectorAll('[data-reveal]');
+  var reduceMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+  } else {
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } }); }, {threshold:.01});
+    revealEls.forEach(function(el){ io.observe(el); });
+  }
+
+  var filtros = document.querySelectorAll('#filtros button');
+  var filas = document.querySelectorAll('#tabla tbody tr');
+  filtros.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      filtros.forEach(function(b){ b.classList.remove('on'); });
+      btn.classList.add('on');
+      var f = btn.dataset.f;
+      filas.forEach(function(fila){
+        fila.style.display = (f === 'all' || fila.querySelector('.clase.' + f)) ? '' : 'none';
+      });
+    });
+  });
+</script>
+</body>
+</html>

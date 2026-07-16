@@ -1,0 +1,369 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Madera — Café de especialidad en Tolosa</title>
+<meta name="description" content="Café de especialidad en Tolosa. Tueste propio, métodos de filtrado y repostería casera. Un sitio para quedarse."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --crema:#faf6f0; --papel:#fffdf9; --linea:#e8dfd2;
+    --tinta:#2f2119; --cuerpo:#6d5c4d; --suave:#9b8977;
+    --caramelo:#b07d4f; --caramelo2:#96633a; --espresso:#3a2a1e;
+    --disp:"Space Grotesk",sans-serif; --sans:"DM Sans",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--sans);background:var(--crema);color:var(--cuerpo);line-height:1.7;-webkit-font-smoothing:antialiased;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{font-family:var(--disp);color:var(--tinta);letter-spacing:-.02em;line-height:1.08;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 26px;}
+  .label{font-family:var(--disp);text-transform:uppercase;letter-spacing:.22em;font-size:11.5px;font-weight:600;color:var(--caramelo);}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:600;font-size:14.5px;padding:15px 28px;border-radius:14px;cursor:pointer;border:1.5px solid transparent;transition:all .2s;}
+  .btn-cafe{background:var(--espresso);color:var(--crema);}
+  .btn-cafe:hover{background:var(--tinta);transform:translateY(-2px);}
+  .btn-linea{background:transparent;border-color:var(--tinta);color:var(--tinta);}
+  .btn-linea:hover{background:var(--tinta);color:var(--crema);}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--caramelo);outline-offset:2px;}
+  @media(prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important;} }
+
+  .progress{position:fixed;top:0;left:0;height:3px;background:var(--caramelo);z-index:200;width:0%;}
+  [data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
+  [data-reveal].is-visible{opacity:1;transform:translateY(0);}
+  .stagger>*{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease;}
+  .stagger.is-visible>*{opacity:1;transform:translateY(0);}
+  .stagger>*:nth-child(1){transition-delay:.02s;} .stagger>*:nth-child(2){transition-delay:.1s;} .stagger>*:nth-child(3){transition-delay:.18s;} .stagger>*:nth-child(4){transition-delay:.26s;}
+  @keyframes heroIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+  .hero .label{animation:heroIn .8s cubic-bezier(.16,1,.3,1) .05s both;}
+  .hero h1{animation:heroIn .8s cubic-bezier(.16,1,.3,1) .18s both;}
+  .hero p{animation:heroIn .8s cubic-bezier(.16,1,.3,1) .3s both;}
+  .hero-cta{animation:heroIn .8s cubic-bezier(.16,1,.3,1) .42s both;}
+  .hero-media{animation:heroIn 1s cubic-bezier(.16,1,.3,1) .25s both;}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(250,246,240,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--linea);}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px;max-width:1120px;margin:0 auto;padding:0 26px;}
+  .logo{font-family:var(--disp);font-weight:700;font-size:21px;color:var(--tinta);display:flex;align-items:center;gap:9px;}
+  .logo .bean{width:12px;height:12px;border-radius:50% 50% 50% 4px;background:var(--caramelo);display:inline-block;}
+  .menu{display:none;gap:30px;list-style:none;font-size:14.5px;font-weight:500;}
+  .menu a:hover{color:var(--caramelo2);}
+  @media(min-width:860px){ .menu{display:flex;} }
+  .nav .btn{padding:10px 18px;}
+
+  .hero{padding:74px 0 90px;overflow:hidden;}
+  .hero-grid{display:grid;gap:44px;align-items:center;grid-template-columns:1fr;}
+  @media(min-width:920px){ .hero-grid{grid-template-columns:1.02fr .98fr;gap:60px;} }
+  .hero h1{font-size:clamp(42px,6.4vw,74px);margin:18px 0 20px;}
+  .hero h1 .brew{color:var(--caramelo);position:relative;}
+  .hero p{font-size:17px;max-width:48ch;}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;}
+  .hero-media{position:relative;}
+  .hero-media .ph{border-radius:26px 120px 26px 26px;overflow:hidden;aspect-ratio:4/4.4;box-shadow:0 30px 60px -24px rgba(47,33,25,.4);}
+  .hero-media .ph img{width:100%;height:100%;object-fit:cover;}
+  .steam{position:absolute;top:-22px;left:34px;display:flex;gap:10px;}
+  .steam i{width:3px;height:34px;border-radius:99px;background:var(--suave);opacity:.5;animation:steam 2.6s ease-in-out infinite;}
+  .steam i:nth-child(2){animation-delay:.5s;height:26px;}
+  .steam i:nth-child(3){animation-delay:1s;height:30px;}
+  @keyframes steam{0%,100%{transform:translateY(0) scaleY(1);opacity:.5;}50%{transform:translateY(-8px) scaleY(1.15);opacity:.2;}}
+
+  section{padding:88px 0;}
+  .sec-head{max-width:600px;margin:0 auto 52px;text-align:center;}
+  .sec-head h2{font-size:clamp(30px,4.2vw,46px);margin-top:12px;}
+  .sec-head p{margin-top:10px;font-size:16px;}
+
+  /* Métodos: fichas con tueste de la semana */
+  .metodos{background:var(--papel);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);}
+  .met-grid{display:grid;gap:20px;grid-template-columns:1fr;}
+  @media(min-width:820px){ .met-grid{grid-template-columns:repeat(3,1fr);} }
+  .met{border:1px solid var(--linea);border-radius:20px;padding:30px 28px;background:var(--crema);transition:transform .25s,box-shadow .25s;}
+  .met:hover{transform:translateY(-5px);box-shadow:0 22px 44px -22px rgba(47,33,25,.3);}
+  .met .n{font-family:var(--disp);font-size:13px;color:var(--caramelo);letter-spacing:.14em;}
+  .met h3{font-size:21px;margin:10px 0 8px;}
+  .met p{font-size:14.5px;}
+  .met .tiempo{display:inline-block;margin-top:14px;font-family:var(--disp);font-size:12.5px;background:var(--linea);border-radius:99px;padding:5px 13px;color:var(--tinta);}
+  .tueste{margin-top:26px;border:1.5px dashed var(--caramelo);border-radius:20px;padding:22px 26px;display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;justify-content:center;text-align:center;background:rgba(176,125,79,.06);}
+  .tueste b{font-family:var(--disp);color:var(--tinta);}
+  .tueste span{font-size:14px;}
+
+  /* Carta corta */
+  .carta-grid{display:grid;gap:14px 46px;max-width:820px;margin:0 auto;grid-template-columns:1fr;}
+  @media(min-width:760px){ .carta-grid{grid-template-columns:1fr 1fr;} }
+  .item{display:flex;align-items:baseline;gap:12px;padding:13px 0;border-bottom:1px solid var(--linea);}
+  .item b{color:var(--tinta);font-weight:600;font-size:15.5px;}
+  .item small{display:block;color:var(--suave);font-size:13px;}
+  .item .dots{flex:1;border-bottom:2px dotted var(--linea);transform:translateY(-4px);min-width:20px;}
+  .item .pr{font-family:var(--disp);color:var(--tinta);font-weight:600;}
+
+  /* Pedido según la hora */
+  .pedido{background:var(--crema);}
+  .ped-box{max-width:820px;margin:0 auto;border:1px solid var(--linea);border-radius:26px;background:var(--papel);padding:38px 40px;}
+  .ped-chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px;justify-content:center;}
+  .ped-chip{border:1.5px solid var(--linea);background:var(--crema);color:var(--tinta);font-family:var(--disp);font-weight:600;font-size:13.5px;padding:11px 20px;border-radius:99px;cursor:pointer;transition:all .2s;}
+  .ped-chip:hover{border-color:var(--caramelo);}
+  .ped-chip.on{background:var(--tinta);border-color:var(--tinta);color:var(--crema);}
+  .ped-result{display:flex;gap:24px;align-items:center;border-top:1px dashed var(--linea);padding-top:28px;flex-wrap:wrap;}
+  .ped-result .ic{width:70px;height:70px;border-radius:18px;background:var(--linea);color:var(--caramelo2);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .ped-result .ic svg{width:34px;height:34px;}
+  .ped-result .rt{flex:1;min-width:220px;}
+  .ped-result .rt .rlabel{font-family:var(--disp);text-transform:uppercase;letter-spacing:.14em;font-size:11px;color:var(--caramelo2);margin-bottom:6px;display:block;}
+  .ped-result .rt h3{font-size:22px;margin-bottom:6px;}
+  .ped-result .rt p{font-size:14.5px;}
+
+  /* Reseñas: tazas que giran en noria */
+  .rese{background:var(--espresso);color:#d9cbbd;}
+  .rese .sec-head h2,.rese .sec-head b{color:var(--crema);}
+  .rese .label{color:#d8a870;}
+  .noria{position:relative;max-width:680px;margin:0 auto;min-height:230px;}
+  .taza{position:absolute;inset:0;opacity:0;transform:translateY(18px) rotate(-1deg);transition:opacity .6s ease,transform .6s cubic-bezier(.16,1,.3,1);text-align:center;padding:30px 28px;border:1px solid rgba(217,203,189,.25);border-radius:24px;background:rgba(250,246,240,.05);}
+  .taza.on{opacity:1;transform:translateY(0) rotate(0);}
+  .taza p{font-size:18px;line-height:1.6;color:#f1e7da;font-weight:500;}
+  .taza b{display:block;margin-top:16px;font-family:var(--disp);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#d8a870;}
+  .taza small{color:#a8917b;font-size:12.5px;}
+  .noria-dots{display:flex;gap:9px;justify-content:center;margin-top:24px;}
+  .noria-dots button{width:26px;height:5px;border-radius:99px;border:none;background:rgba(217,203,189,.28);cursor:pointer;padding:0;transition:all .3s;}
+  .noria-dots button.on{background:#d8a870;width:40px;}
+
+  /* Visita */
+  .visita-grid{display:grid;gap:40px;grid-template-columns:1fr;}
+  @media(min-width:880px){ .visita-grid{grid-template-columns:1fr 1fr;align-items:center;} }
+  .visita h2{font-size:clamp(30px,4.2vw,44px);margin-bottom:20px;}
+  .fila{display:flex;gap:13px;margin-bottom:15px;font-size:15px;}
+  .fila b{color:var(--tinta);display:block;font-weight:600;}
+  .fila svg{width:19px;height:19px;color:var(--caramelo);flex-shrink:0;margin-top:4px;}
+  .map{border-radius:24px;overflow:hidden;border:1px solid var(--linea);box-shadow:0 24px 48px -24px rgba(47,33,25,.35);min-height:320px;}
+  .map iframe{width:100%;height:100%;min-height:320px;border:0;display:block;}
+
+  .sticky-cta{position:fixed;left:50%;bottom:20px;transform:translate(-50%,140%);z-index:150;display:flex;align-items:center;gap:14px;background:var(--tinta);color:var(--crema);border-radius:999px;padding:8px 8px 8px 22px;box-shadow:0 20px 44px -14px rgba(0,0,0,.4);transition:transform .4s cubic-bezier(.16,1,.3,1);max-width:calc(100% - 32px);}
+  .sticky-cta.show{transform:translate(-50%,0);}
+  .sticky-cta .btn{border-radius:999px;}
+  .sticky-cta .info{display:flex;flex-direction:column;line-height:1.25;white-space:nowrap;}
+  .sticky-cta .info b{font-family:var(--disp);font-size:15.5px;}
+  .sticky-cta .info span{font-size:11.5px;color:#c8b39d;}
+  @media(max-width:560px){ .sticky-cta .info span{display:none;} }
+
+  footer{border-top:1px solid var(--linea);padding:28px 0;text-align:center;font-size:13.5px;color:var(--suave);}
+  /* Mapa con tiempos andando */
+  .map{border-radius:26px 110px 26px 26px;position:relative;}
+  .map-tiempos{position:absolute;left:12px;bottom:12px;z-index:2;display:flex;flex-wrap:wrap;gap:8px;}
+  .map-tiempos span{background:var(--tinta);color:var(--crema);font-family:var(--disp);font-size:11.5px;padding:7px 13px;border-radius:99px;box-shadow:0 8px 16px -8px rgba(0,0,0,.4);}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header>
+<div class="nav">
+<a href="#inicio" class="logo"><span class="bean"></span>Madera</a>
+<ul class="menu">
+<li><a href="#pedido">¿Qué me pido?</a></li>
+<li><a href="#metodos">Métodos</a></li>
+<li><a href="carta.html">La carta</a></li>
+<li><a href="origen.html">De dónde viene</a></li>
+<li><a href="#visita">Dónde estamos</a></li>
+</ul>
+<a href="https://wa.me/34600000000?text=Hola%2C%20quiero%20reservar%20mesa%20en%20Madera" target="_blank" rel="noopener" class="btn btn-cafe">Reservar mesa</a>
+</div>
+</header>
+
+<section class="hero wrap" id="inicio">
+<div class="hero-grid">
+<div>
+<span class="label">Café de especialidad · Tolosa</span>
+<h1>El café, <span class="brew">despacio</span>.<br/>Como todo lo bueno.</h1>
+<p>Tostamos en lotes pequeños, filtramos con mimo y horneamos la repostería cada mañana. Sin prisa, sin cafés quemados, sin wifi caído.</p>
+<div class="hero-cta">
+<a href="carta.html" class="btn btn-cafe">Ver la carta completa</a>
+<a href="#metodos" class="btn btn-linea">Nuestros métodos ↓</a>
+</div>
+</div>
+<div class="hero-media">
+<div class="steam" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="ph"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80" alt="Café de filtro recién servido" width="900" height="990" fetchpriority="high"/></div>
+</div>
+</div>
+</section>
+
+<section class="metodos" id="metodos">
+<div class="wrap">
+<div class="sec-head" data-reveal>
+<span class="label">Cómo lo hacemos</span>
+<h2>Tres formas de entender una taza</h2>
+</div>
+<div class="met-grid stagger">
+<div class="met"><span class="n">MÉTODO 01</span><h3>Espresso</h3><p>Base de nuestro tueste medio. Cuerpo dulce, acidez amable y crema que aguanta la cucharilla.</p><span class="tiempo">25–30 segundos</span></div>
+<div class="met"><span class="n">MÉTODO 02</span><h3>V60 de filtro</h3><p>Para los cafés de origen. Taza limpia y aromática: aquí es donde el café te cuenta de dónde viene.</p><span class="tiempo">2:30–3:00 min</span></div>
+<div class="met"><span class="n">MÉTODO 03</span><h3>Cold brew</h3><p>12 horas de extracción en frío. Suave, dulce y con muy poca acidez. El favorito del verano.</p><span class="tiempo">12 horas · en frío</span></div>
+</div>
+<div class="tueste" data-reveal>
+<b>☕ Tueste de la semana:</b><span id="tuesteTxt">Etiopía Sidamo — floral, té negro y albaricoque</span>
+</div>
+</div>
+</section>
+
+<section id="carta">
+<div class="wrap">
+<div class="sec-head" data-reveal>
+<span class="label">La carta</span>
+<h2>Corta y honesta</h2>
+<p>Todo el café es de tueste propio. Toda la repostería sale de nuestro horno. <a href="carta.html" style="color:var(--caramelo2);font-weight:600;border-bottom:1px solid currentColor;">Carta completa y guía del V60 →</a></p>
+</div>
+<div class="carta-grid stagger">
+<div class="item"><div><b>Espresso / cortado</b><small>Tueste medio de la casa</small></div><span class="dots"></span><span class="pr">1,60€</span></div>
+<div class="item"><div><b>Flat white</b><small>Doble espresso y leche sedosa</small></div><span class="dots"></span><span class="pr">3,20€</span></div>
+<div class="item"><div><b>V60 de origen</b><small>Pregunta el origen de la semana</small></div><span class="dots"></span><span class="pr">3,80€</span></div>
+<div class="item"><div><b>Cold brew</b><small>Con o sin tónica</small></div><span class="dots"></span><span class="pr">3,50€</span></div>
+<div class="item"><div><b>Tarta de queso al horno</b><small>Cremosa, receta de la casa</small></div><span class="dots"></span><span class="pr">4,90€</span></div>
+<div class="item"><div><b>Rollo de canela</b><small>Sale del horno a las 9:00</small></div><span class="dots"></span><span class="pr">3,20€</span></div>
+</div>
+</div>
+</section>
+
+<section class="pedido" id="pedido">
+<div class="wrap">
+<div class="sec-head" data-reveal>
+<span class="label">Para indecisos</span>
+<h2>¿Qué me pido ahora?</h2>
+<p>Te lo decimos según la hora que sea — o elige tú el momento del día.</p>
+</div>
+<div class="ped-box" data-reveal>
+<div class="ped-chips" id="pedChips">
+<button type="button" class="ped-chip" data-v="manana">Recién abierto</button>
+<button type="button" class="ped-chip" data-v="punta">Hora punta</button>
+<button type="button" class="ped-chip" data-v="tarde">Sobremesa / tarde</button>
+</div>
+<div class="ped-result" id="pedResult">
+<div class="ic" id="pedIcon"></div>
+<div class="rt">
+<span class="rlabel">Te proponemos</span>
+<h3 id="pedNombre"></h3>
+<p id="pedTexto"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="rese" aria-label="Opiniones">
+<div class="wrap">
+<div class="sec-head" data-reveal>
+<span class="label">Se dice en la barra</span>
+<h2>Gente que volvió al día siguiente</h2>
+</div>
+<div class="noria" id="noria">
+<div class="taza on"><p>"Pedí un V60 sin saber lo que era y me lo explicaron con una sonrisa. Ahora no sé volver al café de cápsulas."</p><b>Nerea A.</b><small>Descubrió el filtrado hace 3 meses</small></div>
+<div class="taza"><p>"El rollo de canela de las 9:00 debería estar protegido por la UNESCO. Llego pronto solo por eso."</p><b>Mikel S.</b><small>Cliente de desayunos</small></div>
+<div class="taza"><p>"Trabajo aquí con el portátil los martes. Buen café, buena luz y nadie te mete prisa. Se nota que quieren que te quedes."</p><b>Leire U.</b><small>Teletrabaja los martes</small></div>
+<div class="taza"><p>"El cold brew con tónica me parecía una moda. Me lo bebí en tres tragos y pedí otro."</p><b>Ander G.</b><small>Converso del verano</small></div>
+</div>
+<div class="noria-dots" id="noriaDots" role="tablist" aria-label="Cambiar reseña">
+<button type="button" class="on" aria-label="Reseña 1"></button>
+<button type="button" aria-label="Reseña 2"></button>
+<button type="button" aria-label="Reseña 3"></button>
+<button type="button" aria-label="Reseña 4"></button>
+</div>
+</div>
+</section>
+
+<section id="visita">
+<div class="wrap visita-grid stagger">
+<div class="visita">
+<span class="label">Dónde estamos</span>
+<h2>Un banco al sol y café bueno</h2>
+<div class="fila"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><b>Horario</b>Lu–Vi 8:00–19:00 · Sá–Do 9:00–14:30</div></div>
+<div class="fila"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-7-10a7 7 0 0 1 14 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.5"/></svg><div><b>Dirección</b>Calle Rondilla 3, Tolosa (Gipuzkoa)</div></div>
+<div class="fila"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><div><b>Grupos y tardes de cata</b>+34 600 00 00 00 — escríbenos por WhatsApp</div></div>
+<div style="margin-top:26px;"><a href="https://wa.me/34600000000?text=Hola%2C%20quiero%20reservar%20mesa%20en%20Madera" target="_blank" rel="noopener" class="btn btn-cafe">Reservar por WhatsApp</a></div>
+</div>
+<div class="map"><span class="map-tiempos"><span>🚶 Estación · 4 min</span><span>Plaza · 2 min</span><span>Parking · 5 min</span></span><iframe title="Ubicación Madera Café" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-2.0930%2C43.1280%2C-2.0640%2C43.1420&amp;layer=mapnik&amp;marker=43.1350%2C-2.0785"></iframe></div>
+</div>
+</section>
+
+<div class="sticky-cta" id="stickyCta">
+<div class="info"><b>Madera</b><span id="stickyTxt">Hoy tostamos: Etiopía Sidamo</span></div>
+<a href="https://wa.me/34600000000?text=Hola%2C%20quiero%20reservar%20mesa%20en%20Madera" target="_blank" rel="noopener" class="btn btn-cafe" style="padding:12px 22px;">Reservar →</a>
+</div>
+
+<footer>© 2026 Madera · Café de especialidad · Tolosa, Gipuzkoa</footer>
+
+<script>
+  var progress = document.getElementById('progress');
+  var stickyCta = document.getElementById('stickyCta');
+  var reduceMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  addEventListener('scroll', function(){
+    var h = document.documentElement;
+    progress.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+    stickyCta.classList.toggle('show', scrollY > innerHeight * 0.6);
+  }, {passive:true});
+
+  // Tueste de la semana rotando por semana del año
+  var TUESTES = [
+    'Etiopía Sidamo — floral, té negro y albaricoque',
+    'Colombia Huila — cacao, caramelo y naranja dulce',
+    'Brasil Cerrado — avellana, chocolate con leche',
+    'Guatemala Antigua — miel, manzana asada y especias'
+  ];
+  var semana = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 1)) / 604800000);
+  var tueste = TUESTES[semana % TUESTES.length];
+  document.getElementById('tuesteTxt').textContent = tueste;
+  document.getElementById('stickyTxt').textContent = 'Hoy tostamos: ' + tueste.split(' — ')[0];
+
+  // Qué me pido según la hora
+  (function(){
+    var ICONS = {
+      manana: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h13a3 3 0 0 1 0 6h-1M4 8v7a4 4 0 0 0 4 4h5a4 4 0 0 0 4-4v-1M8 3v2M11 3v2M14 3v2"/></svg>',
+      punta: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5h14l-2 5H7L5 5z"/><path d="M7 10l1.5 9h7L17 10"/><circle cx="12" cy="18" r="1.4"/></svg>',
+      tarde: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h10l-1 15a3 3 0 0 1-3 3h-2a3 3 0 0 1-3-3L7 3z"/><path d="M8 9h8M11 3v18"/></svg>'
+    };
+    var DATA = {
+      manana: {n:'Flat white + rollo de canela', t:'Para empezar bien: espresso suave con leche sedosa, y el rollo de canela recién salido del horno a las 9:00.'},
+      punta: {n:'V60 del origen de la semana', t:'A media mañana es cuando más disfrutamos preparándolo despacio. Pregunta el origen que estamos tostando esta semana.'},
+      tarde: {n:'Cold brew con o sin tónica', t:'Para la sobremesa larga: suave, dulce y sin acidez que te quite la siesta. Con tónica, si quieres darle un punto especial.'}
+    };
+    function periodoActual(){
+      var h = new Date().getHours();
+      if (h < 11) return 'manana';
+      if (h < 14) return 'punta';
+      return 'tarde';
+    }
+    function show(key){
+      document.querySelectorAll('#pedChips .ped-chip').forEach(function(b){ b.classList.toggle('on', b.dataset.v === key); });
+      document.getElementById('pedIcon').innerHTML = ICONS[key];
+      document.getElementById('pedNombre').textContent = DATA[key].n;
+      document.getElementById('pedTexto').textContent = DATA[key].t;
+    }
+    document.querySelectorAll('#pedChips .ped-chip').forEach(function(b){
+      b.addEventListener('click', function(){ show(b.dataset.v); });
+    });
+    show(periodoActual());
+  })();
+
+  // Noria de reseñas
+  var tazas = document.querySelectorAll('.taza');
+  var ndots = document.querySelectorAll('#noriaDots button');
+  var nIdx = 0, nTimer = null;
+  function nShow(i){
+    nIdx = i;
+    tazas.forEach(function(el, j){ el.classList.toggle('on', j === i); });
+    ndots.forEach(function(el, j){ el.classList.toggle('on', j === i); });
+  }
+  function nRestart(){
+    if (nTimer) clearInterval(nTimer);
+    if (!reduceMotion) nTimer = setInterval(function(){ nShow((nIdx + 1) % tazas.length); }, 5200);
+  }
+  ndots.forEach(function(d, i){ d.addEventListener('click', function(){ nShow(i); nRestart(); }); });
+  nRestart();
+
+  var revealEls = document.querySelectorAll('[data-reveal], .stagger');
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+  } else {
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } }); }, {threshold:.01, rootMargin:'0px 0px -10px 0px'});
+    revealEls.forEach(function(el){ io.observe(el); });
+    setTimeout(function(){ revealEls.forEach(function(el){ el.classList.add('is-visible'); }); }, 2500);
+  }
+</script>
+</body>
+</html>

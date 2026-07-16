@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>La carta — Fuego &amp; Sal · Cocina de brasa en Tolosa</title>
+<meta name="description" content="Carta completa de Fuego &amp; Sal: entrantes, brasa, postres y bodega. Producto de mercado y fuego lento."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --bg:#161210; --bg2:#1f1915; --line:rgba(255,255,255,.1);
+    --ink:#f4ede4; --body:#bdb2a5; --muted:#93897c;
+    --ember:#d4552b; --ember-dark:#b8441f;
+    --serif:"Fraunces",Georgia,serif; --sans:"Work Sans",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;}
+  body{font-family:var(--sans);background:var(--bg);color:var(--body);line-height:1.7;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{font-family:var(--serif);color:var(--ink);font-weight:500;line-height:1.08;}
+  .wrap{max-width:860px;margin:0 auto;padding:0 28px;}
+  .label{text-transform:uppercase;letter-spacing:.28em;font-size:11px;font-weight:600;color:var(--ember);}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;font-size:13px;padding:14px 28px;cursor:pointer;border:1px solid transparent;transition:all .2s;font-family:var(--sans);}
+  .btn-ember{background:var(--ember);color:#fff;}
+  .btn-ember:hover{background:var(--ember-dark);}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--ember);outline-offset:2px;}
+  @media(prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important;} }
+
+  header{position:sticky;top:0;z-index:50;background:rgba(22,18,16,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:76px;max-width:860px;margin:0 auto;padding:0 28px;}
+  .logo{font-family:var(--serif);font-size:23px;color:var(--ink);}
+  .logo em{font-style:italic;color:var(--ember);}
+  .back{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;}
+  .back:hover{color:var(--ember);}
+
+  .page{padding:70px 0 100px;}
+  .page-head{text-align:center;margin-bottom:44px;}
+  .page-head h1{font-size:clamp(38px,5.5vw,62px);margin-top:14px;}
+  .page-head h1 em{font-style:italic;color:var(--ember);}
+  .page-head p{margin-top:12px;font-size:15.5px;max-width:52ch;margin-left:auto;margin-right:auto;}
+
+  .tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:46px;}
+  .tab{border:1px solid var(--line);background:transparent;color:var(--body);font-family:var(--sans);font-size:13px;letter-spacing:.1em;text-transform:uppercase;padding:12px 22px;cursor:pointer;transition:all .2s;}
+  .tab:hover{border-color:var(--ember);color:var(--ink);}
+  .tab.on{background:var(--ember);border-color:var(--ember);color:#fff;}
+
+  .panel{display:none;animation:fadeUp .45s ease both;}
+  .panel.on{display:block;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+  .panel h2{font-size:26px;font-style:italic;color:var(--ember);margin-bottom:8px;}
+  .panel .nota{font-size:13.5px;color:var(--muted);margin-bottom:22px;}
+  .dish{display:flex;align-items:baseline;gap:12px;padding:15px 0;border-bottom:1px solid var(--line);}
+  .dish:last-child{border-bottom:none;}
+  .dish b{color:var(--ink);font-weight:500;font-size:16.5px;}
+  .dish small{display:block;color:var(--muted);font-size:13px;}
+  .dish .dots{flex:1;border-bottom:1px dotted rgba(255,255,255,.2);transform:translateY(-4px);min-width:24px;}
+  .dish .pr{font-family:var(--serif);color:var(--ink);white-space:nowrap;}
+  .cta-line{text-align:center;margin-top:52px;}
+
+  footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;font-size:13px;color:var(--muted);}
+  footer a{color:var(--ember);}
+</style>
+</head>
+<body>
+
+<header>
+<div class="nav">
+<a href="index.html" class="logo">Fuego <em>&amp;</em> Sal</a>
+<a href="index.html" class="back">← Volver</a>
+</div>
+</header>
+
+<section class="page">
+<div class="wrap">
+<div class="page-head">
+<span class="label">De mercado, a fuego</span>
+<h1>La carta <em>completa.</em></h1>
+<p>Cambia con la temporada y con lo que encontramos cada mañana. Precios con IVA. Si tienes alergias o intolerancias, dínoslo en sala.</p>
+</div>
+
+<div class="tabs" role="tablist" aria-label="Secciones de la carta">
+<button class="tab on" role="tab" aria-selected="true" data-panel="p1">Entrantes</button>
+<button class="tab" role="tab" aria-selected="false" data-panel="p2">A la brasa</button>
+<button class="tab" role="tab" aria-selected="false" data-panel="p3">Postres</button>
+<button class="tab" role="tab" aria-selected="false" data-panel="p4">Bodega</button>
+</div>
+
+<div class="panel on" id="p1" role="tabpanel">
+<h2>Entrantes</h2>
+<p class="nota">Para el centro de la mesa. Pensados para compartir sin discutir demasiado.</p>
+<div class="dish"><div><b>Tomate de caserío</b><small>Ventresca, cebolleta y aceite de la casa</small></div><span class="dots"></span><span class="pr">12€</span></div>
+<div class="dish"><div><b>Croquetas de txuleta</b><small>Cremosas, de puchero lento — 6 uds</small></div><span class="dots"></span><span class="pr">10€</span></div>
+<div class="dish"><div><b>Pimientos asados al sarmiento</b><small>Del país, con su jugo</small></div><span class="dots"></span><span class="pr">9€</span></div>
+<div class="dish"><div><b>Anchoas del Cantábrico</b><small>Sobre pan de brasa con mantequilla ahumada — 6 uds</small></div><span class="dots"></span><span class="pr">14€</span></div>
+<div class="dish"><div><b>Ensalada de temporada</b><small>Lo que diga la huerta esta semana</small></div><span class="dots"></span><span class="pr">9,50€</span></div>
+</div>
+
+<div class="panel" id="p2" role="tabpanel">
+<h2>A la brasa</h2>
+<p class="nota">Brasa de encina. Cada corte pide su punto y cada punto pide su tiempo.</p>
+<div class="dish"><div><b>Txuleta de vaca vieja</b><small>Maduración 45 días — precio por kg</small></div><span class="dots"></span><span class="pr">52€/kg</span></div>
+<div class="dish"><div><b>Costilla a fuego lento</b><small>8 horas de brasa, glaseada — nuestra firma</small></div><span class="dots"></span><span class="pr">19€</span></div>
+<div class="dish"><div><b>Pescado del día</b><small>Según lonja — preguntar en sala</small></div><span class="dots"></span><span class="pr">s/m</span></div>
+<div class="dish"><div><b>Pollo de caserío</b><small>Medio pollo, adobo de pimentón y limón</small></div><span class="dots"></span><span class="pr">16€</span></div>
+<div class="dish"><div><b>Verduras a la llama</b><small>De temporada, con romesco de la casa</small></div><span class="dots"></span><span class="pr">11€</span></div>
+</div>
+
+<div class="panel" id="p3" role="tabpanel">
+<h2>Postres</h2>
+<p class="nota">Caseros, del día. Cuando se acaban, se acaban.</p>
+<div class="dish"><div><b>Torrija a la brasa</b><small>Brioche, helado de leche quemada</small></div><span class="dots"></span><span class="pr">7€</span></div>
+<div class="dish"><div><b>Queso con membrillo</b><small>Idiazabal ahumado, nuez y pan tostado</small></div><span class="dots"></span><span class="pr">6,50€</span></div>
+<div class="dish"><div><b>Tarta de queso al horno de leña</b><small>Corazón cremoso, base fina</small></div><span class="dots"></span><span class="pr">6,50€</span></div>
+<div class="dish"><div><b>Fruta de temporada</b><small>Tal cual, o a la brasa con miel</small></div><span class="dots"></span><span class="pr">5€</span></div>
+</div>
+
+<div class="panel" id="p4" role="tabpanel">
+<h2>Bodega</h2>
+<p class="nota">Corta y con criterio, como la carta. Pregunta por el vino del mes.</p>
+<div class="dish"><div><b>Tinto de la casa</b><small>Rioja alavesa, cosechero</small></div><span class="dots"></span><span class="pr">14€</span></div>
+<div class="dish"><div><b>Blanco de la casa</b><small>Getariako Txakolina</small></div><span class="dots"></span><span class="pr">16€</span></div>
+<div class="dish"><div><b>Sidra natural</b><small>De sagardotegi de la comarca</small></div><span class="dots"></span><span class="pr">9€</span></div>
+<div class="dish"><div><b>Vinos por copa</b><small>Selección que rota cada semana</small></div><span class="dots"></span><span class="pr">desde 3,50€</span></div>
+</div>
+
+<div class="cta-line"><a href="index.html#reservas" class="btn btn-ember">Reservar mesa</a></div>
+</div>
+</section>
+
+<footer>© 2026 Fuego &amp; Sal · Plaza Euskal Herria 2, Tolosa · <a href="index.html">fuego &amp; sal — inicio</a></footer>
+
+<script>
+  var tabs = document.querySelectorAll('.tab');
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){
+      tabs.forEach(function(x){ x.classList.remove('on'); x.setAttribute('aria-selected','false'); });
+      document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('on'); });
+      t.classList.add('on');
+      t.setAttribute('aria-selected','true');
+      document.getElementById(t.dataset.panel).classList.add('on');
+    });
+  });
+</script>
+</body>
+</html>
