@@ -28,6 +28,22 @@ document.addEventListener('DOMContentLoaded', () => {
   if (reduceMotion) {
     revealEls.forEach(el => el.classList.add('is-visible'));
   } else {
+    // Dirección de entrada: las columnas entran desde su lado; los bloques
+    // a todo el ancho alternan izquierda/derecha. El héroe y las cabeceras
+    // de sección conservan la entrada desde abajo.
+    let alt = 0;
+    const vw = window.innerWidth;
+    revealEls.forEach(el => {
+      if (el.closest('.hero') || el.classList.contains('section-head')) return;
+      const r = el.getBoundingClientRect();
+      const center = r.left + r.width / 2;
+      if (r.width < vw * 0.66) {
+        if (center < vw * 0.44) el.classList.add('reveal--left');
+        else if (center > vw * 0.56) el.classList.add('reveal--right');
+      } else {
+        el.classList.add(alt++ % 2 ? 'reveal--right' : 'reveal--left');
+      }
+    });
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
     }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
