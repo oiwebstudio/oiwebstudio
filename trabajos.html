@@ -32,9 +32,7 @@
   .bp-hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;}
   .bp-hero .hero__inner{max-width:900px;}
   .bp-hero h1{font-size:clamp(46px,8vw,96px)!important;letter-spacing:-.045em;}
-  .bp-ch{display:inline-block;overflow:hidden;vertical-align:bottom;}
-  .bp-ch b{display:inline-block;font-weight:inherit;transform:translateY(110%);opacity:0;
-    animation:bpUp .7s cubic-bezier(.2,.9,.3,1) var(--d,0s) forwards;}
+  #bpTitle{opacity:0;transform:translateY(28px);animation:bpUp .9s cubic-bezier(.2,.9,.3,1) .15s forwards;}
   @keyframes bpUp{to{transform:translateY(0);opacity:1;}}
   .bp-btn-wrap{display:inline-block;margin-top:44px;padding:1px;border-radius:20px;
     background:linear-gradient(180deg,rgba(28,36,48,.18),rgba(255,255,255,.25));
@@ -278,43 +276,6 @@
     });
   }
 
-  /* --- Título de entrada letra a letra (como BackgroundPaths) --- */
-  var title = document.getElementById('bpTitle');
-  function splitTitle(){
-    if (!title || title.querySelector('.bp-ch')) return;
-    var delay = 0;
-    function wrapNode(node, parent){
-      if (node.nodeType === 3) {
-        var frag = document.createDocumentFragment();
-        node.textContent.split(' ').forEach(function(word, wi, arr){
-          if (word) {
-            var wordWrap = document.createElement('span');
-            wordWrap.style.cssText = 'display:inline-block;white-space:nowrap;';
-            word.split('').forEach(function(ch){
-              var w = document.createElement('span');
-              w.className = 'bp-ch';
-              var b = document.createElement('b');
-              b.style.setProperty('--d', (delay).toFixed(3) + 's');
-              b.textContent = ch;
-              delay += 0.03;
-              w.appendChild(b);
-              wordWrap.appendChild(w);
-            });
-            frag.appendChild(wordWrap);
-          }
-          if (wi < arr.length - 1) frag.appendChild(document.createTextNode(' '));
-        });
-        parent.replaceChild(frag, node);
-      } else if (node.nodeType === 1) {
-        Array.prototype.slice.call(node.childNodes).forEach(function(c){ wrapNode(c, node); });
-      }
-    }
-    Array.prototype.slice.call(title.childNodes).forEach(function(c){ wrapNode(c, title); });
-  }
-  splitTitle();
-  document.addEventListener('click', function(e){
-    if (e.target.closest('[data-lang]')) setTimeout(splitTitle, 60);
-  });
 })();
 </script>
 <a class="wa-float" href="https://wa.me/34680956755?text=Hola%2C%20vengo%20de%20tu%20web%20y%20quiero%20informaci%C3%B3n%20para%20la%20web%20de%20mi%20negocio." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
