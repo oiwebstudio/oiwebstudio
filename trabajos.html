@@ -24,34 +24,27 @@
 <style>
   /* Fondo de trazos animados en el hero (BackgroundPaths, vanilla) */
   .hero-paths{position:absolute;inset:0;width:100%;height:100%;color:#1c2430;pointer-events:none;}
-  .hero-paths path{fill:none;stroke:currentColor;stroke-dasharray:1 1;animation:hpDraw var(--dur,26s) linear infinite;}
-  @keyframes hpDraw{0%{stroke-dashoffset:2;opacity:.15;}50%{opacity:.5;}100%{stroke-dashoffset:0;opacity:.15;}}
+  .hero-paths path{fill:none;stroke:currentColor;stroke-dasharray:1.4 .6;animation:hpDraw var(--dur,26s) linear infinite;}
+  @keyframes hpDraw{0%{stroke-dashoffset:2;opacity:.2;}50%{opacity:.55;}100%{stroke-dashoffset:0;opacity:.2;}}
   @media(prefers-reduced-motion:reduce){ .hero-paths path{animation:none;opacity:.2;} }
 
-  /* Selector hover de las 8 webs (animated-slideshow, vanilla) */
-  .hs-sec{background:var(--bg,#f6f3ea);padding:90px 0 100px;border-bottom:1px solid rgba(28,36,48,.08);}
-  .hs-grid{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-evenly;gap:34px 48px;max-width:1200px;margin:0 auto;padding:0 clamp(20px,4vw,56px);}
-  .hs-label{font-family:"Geist Mono",monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent,#c96442);max-width:1200px;margin:0 auto 34px;padding:0 clamp(20px,4vw,56px);display:block;}
-  .hs-titles{display:flex;flex-direction:column;gap:10px;}
-  .hs-title{display:flex;align-items:baseline;gap:14px;cursor:pointer;text-decoration:none;}
-  .hs-title .hs-num{font-family:"Geist Mono",monospace;font-size:12px;color:#9aa0aa;transition:color .3s;}
-  .hs-title.is-active .hs-num{color:var(--accent,#c96442);}
-  .hs-txt{font-weight:800;font-size:clamp(26px,3.4vw,40px);letter-spacing:-.03em;text-transform:uppercase;line-height:1.1;color:#1c2430;}
-  .hs-ch{position:relative;display:inline-block;overflow:hidden;vertical-align:bottom;}
-  .hs-ch b{display:inline-block;font-weight:inherit;transition:transform .3s cubic-bezier(.25,.46,.45,.94);transition-delay:var(--d,0s);}
-  .hs-ch .a{opacity:.22;transform:translateY(0);}
-  .hs-ch .b{position:absolute;left:0;top:0;opacity:1;transform:translateY(110%);}
-  .hs-title.is-active .hs-ch .a{transform:translateY(-110%);}
-  .hs-title.is-active .hs-ch .b{transform:translateY(0);}
-  .hs-images{position:relative;display:grid;width:min(560px,92vw);border-radius:18px;overflow:hidden;box-shadow:0 30px 60px -28px rgba(28,36,48,.4);}
-  .hs-images img{grid-area:1/1;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;display:block;
-    clip-path:polygon(0% 0%,100% 0%,100% 0%,0% 0%);transition:clip-path .8s cubic-bezier(.33,1,.68,1);}
-  .hs-images img.is-active{clip-path:polygon(0% 0%,100% 0%,100% 100%,0% 100%);}
-  @media(max-width:880px){ .hs-grid{flex-direction:column-reverse;} .hs-titles{width:100%;} }
-  @media(prefers-reduced-motion:reduce){
-    .hs-ch b{transition:none;} .hs-ch .a{opacity:1;} .hs-ch .b{display:none;}
-    .hs-images img{transition:none;}
-  }
+  /* Intro a pantalla completa: hay que pulsar el botón para bajar a los trabajos */
+  .bp-hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;}
+  .bp-hero .hero__inner{max-width:900px;}
+  .bp-hero h1{font-size:clamp(46px,8vw,96px)!important;letter-spacing:-.045em;}
+  .bp-ch{display:inline-block;overflow:hidden;vertical-align:bottom;}
+  .bp-ch b{display:inline-block;font-weight:inherit;transform:translateY(110%);opacity:0;
+    animation:bpUp .7s cubic-bezier(.2,.9,.3,1) var(--d,0s) forwards;}
+  @keyframes bpUp{to{transform:translateY(0);opacity:1;}}
+  .bp-btn-wrap{display:inline-block;margin-top:44px;padding:1px;border-radius:20px;
+    background:linear-gradient(180deg,rgba(28,36,48,.18),rgba(255,255,255,.25));
+    box-shadow:0 14px 34px -14px rgba(28,36,48,.35);backdrop-filter:blur(8px);transition:transform .3s,box-shadow .3s;}
+  .bp-btn-wrap:hover{transform:translateY(-3px);box-shadow:0 22px 44px -16px rgba(28,36,48,.45);}
+  .bp-btn{display:inline-flex;align-items:center;gap:12px;border-radius:19px;padding:20px 36px;
+    background:rgba(255,255,255,.92);color:#1c2430;font-weight:600;font-size:17px;border:1px solid rgba(28,36,48,.1);}
+  .bp-btn .ar{transition:transform .3s;opacity:.7;}
+  .bp-btn-wrap:hover .ar{transform:translateY(4px);opacity:1;}
+  @media(prefers-reduced-motion:reduce){ .bp-ch b{animation:none;transform:none;opacity:1;} }
 
   /* Moodboard editorial: capturas planas sobre lienzo crema, con paletas y etiquetas mono */
   .mb-wall{background:#f2eee4;position:relative;padding:110px 0 96px;}
@@ -137,45 +130,19 @@
 </ul>
 </div>
 
-<header class="hero" style="padding-bottom:0;">
+<header class="hero bp-hero" style="padding-bottom:0;">
 <div class="hero__bg"><div class="hero__grid"></div><svg class="hero-paths" id="heroPaths" viewBox="0 0 696 316" fill="none" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg></div>
 <div class="container">
 <div class="hero__inner">
 <span class="eyebrow reveal" data-t="tra_eyebrow">Proyectos</span>
-<h1 class="reveal" data-d="1" data-t="tra_h1" style="font-size:clamp(38px,6vw,64px); margin-top:18px;">Proyectos reales, <span class="grad">en vivo</span>.</h1>
+<h1 id="bpTitle" data-t="tra_h1" style="margin-top:18px;">Proyectos reales, <span class="grad">en vivo</span>.</h1>
 <p class="hero__lede reveal" data-d="2" data-t="tra_lede">Ocho webs en vivo que puedes abrir y explorar, cada una de un sector distinto.</p>
-<p class="reveal" data-d="3" data-t="tra_honesty" style="max-width:600px; margin:22px auto 0; background:var(--accent-soft); color:var(--accent-press); border-radius:14px; padding:14px 20px; font-size:14.5px; font-weight:500;">Las ocho webs están publicadas y se pueden navegar. Tres son proyectos para clientes; el resto las construí yo para enseñar cómo trabajo cada sector.</p>
+<span class="bp-btn-wrap reveal" data-d="3"><a class="bp-btn" href="#galeria" data-t="tra_ver">Ver los trabajos <span class="ar">↓</span></a></span>
 </div>
 </div>
 </header>
 
-<section class="hs-sec" aria-label="Elige un sector">
-<span class="hs-label" data-t="hs_label">/ Elige tu sector</span>
-<div class="hs-grid">
-<div class="hs-titles" id="hsTitles">
-<a class="hs-title" href="https://oiwebstudio.vercel.app/panaderia/" target="_blank" rel="noopener" data-idx="0"><span class="hs-num">01</span><span class="hs-txt" data-t="tag_pan">Panadería</span></a>
-<a class="hs-title" href="https://oiwebstudio.vercel.app/veterinaria/" target="_blank" rel="noopener" data-idx="1"><span class="hs-num">02</span><span class="hs-txt" data-t="tag_vet">Veterinaria</span></a>
-<a class="hs-title" href="https://oiwebstudio.vercel.app/cafeteria/" target="_blank" rel="noopener" data-idx="2"><span class="hs-num">03</span><span class="hs-txt" data-t="tag_cafe">Cafetería</span></a>
-<a class="hs-title" href="https://oiwebstudio.vercel.app/peluqueria/" target="_blank" rel="noopener" data-idx="3"><span class="hs-num">04</span><span class="hs-txt" data-t="tag_pel">Peluquería</span></a>
-<a class="hs-title" href="https://oiwebstudio.vercel.app/gimnasio/" target="_blank" rel="noopener" data-idx="4"><span class="hs-num">05</span><span class="hs-txt" data-t="tag_gim">Gimnasio</span></a>
-<a class="hs-title" href="https://oiwebstudio.vercel.app/floristeria/" target="_blank" rel="noopener" data-idx="5"><span class="hs-num">06</span><span class="hs-txt" data-t="tag_flor">Floristería</span></a>
-<a class="hs-title" href="https://oiwebstudio.vercel.app/restaurante/" target="_blank" rel="noopener" data-idx="6"><span class="hs-num">07</span><span class="hs-txt" data-t="tag_res">Restaurante</span></a>
-<a class="hs-title" href="https://oiwebstudio.vercel.app/taller/" target="_blank" rel="noopener" data-idx="7"><span class="hs-num">08</span><span class="hs-txt" data-t="tag_taller">Taller mecánico</span></a>
-</div>
-<div class="hs-images" id="hsImages">
-<img src="assets/pan-desk.jpg" alt="Web de panadería" class="is-active" loading="lazy"/>
-<img src="assets/vet-desk.jpg" alt="Web de veterinaria" loading="lazy"/>
-<img src="assets/cafe-desk.jpg" alt="Web de cafetería" loading="lazy"/>
-<img src="assets/pelu-desk.jpg" alt="Web de peluquería" loading="lazy"/>
-<img src="assets/gym-desk.jpg" alt="Web de gimnasio" loading="lazy"/>
-<img src="assets/flor-desk.jpg" alt="Web de floristería" loading="lazy"/>
-<img src="assets/rest-desk.jpg" alt="Web de restaurante" loading="lazy"/>
-<img src="assets/taller-desk.jpg" alt="Web de taller mecánico" loading="lazy"/>
-</div>
-</div>
-</section>
-
-<section class="mb-wall">
+<section class="mb-wall" id="galeria">
 <span class="mb-corner tl"><span data-t="tra_eyebrow">Proyectos</span> — OI Studio</span>
 <span class="mb-corner tr">oistudio · Tolosa<br/>@oi.webstudio</span>
 <span class="mb-corner bl">2026 — <span data-t="gal_note">Colección abierta · Se admiten encargos</span></span>
@@ -311,45 +278,42 @@
     });
   }
 
-  /* --- Selector hover de las 8 webs --- */
-  var titles = Array.prototype.slice.call(document.querySelectorAll('#hsTitles .hs-title'));
-  var images = Array.prototype.slice.call(document.querySelectorAll('#hsImages img'));
-  if (!titles.length) return;
-
-  function splitChars(){
-    titles.forEach(function(t){
-      var txt = t.querySelector('.hs-txt');
-      if (!txt || txt.querySelector('.hs-ch')) return;
-      var raw = txt.textContent;
-      txt.textContent = '';
-      raw.split('').forEach(function(ch, i){
-        var w = document.createElement('span');
-        w.className = 'hs-ch';
-        w.style.setProperty('--d', (i * 0.025).toFixed(3) + 's');
-        var a = document.createElement('b'); a.className = 'a'; a.innerHTML = ch === ' ' ? '&nbsp;' : ch;
-        var b = document.createElement('b'); b.className = 'b'; b.innerHTML = ch === ' ' ? '&nbsp;' : ch;
-        w.appendChild(a); w.appendChild(b);
-        txt.appendChild(w);
-      });
-    });
+  /* --- Título de entrada letra a letra (como BackgroundPaths) --- */
+  var title = document.getElementById('bpTitle');
+  function splitTitle(){
+    if (!title || title.querySelector('.bp-ch')) return;
+    var delay = 0;
+    function wrapNode(node, parent){
+      if (node.nodeType === 3) {
+        var frag = document.createDocumentFragment();
+        node.textContent.split(' ').forEach(function(word, wi, arr){
+          if (word) {
+            var wordWrap = document.createElement('span');
+            wordWrap.style.cssText = 'display:inline-block;white-space:nowrap;';
+            word.split('').forEach(function(ch){
+              var w = document.createElement('span');
+              w.className = 'bp-ch';
+              var b = document.createElement('b');
+              b.style.setProperty('--d', (delay).toFixed(3) + 's');
+              b.textContent = ch;
+              delay += 0.03;
+              w.appendChild(b);
+              wordWrap.appendChild(w);
+            });
+            frag.appendChild(wordWrap);
+          }
+          if (wi < arr.length - 1) frag.appendChild(document.createTextNode(' '));
+        });
+        parent.replaceChild(frag, node);
+      } else if (node.nodeType === 1) {
+        Array.prototype.slice.call(node.childNodes).forEach(function(c){ wrapNode(c, node); });
+      }
+    }
+    Array.prototype.slice.call(title.childNodes).forEach(function(c){ wrapNode(c, title); });
   }
-
-  function activate(idx){
-    titles.forEach(function(t, i){ t.classList.toggle('is-active', i === idx); });
-    images.forEach(function(img, i){ img.classList.toggle('is-active', i === idx); });
-  }
-
-  titles.forEach(function(t, i){
-    t.addEventListener('mouseenter', function(){ activate(i); });
-    t.addEventListener('focus', function(){ activate(i); });
-  });
-
-  splitChars();
-  activate(0);
-
-  /* Al cambiar ES/EU el i18n reescribe el texto plano: volvemos a partir en letras */
+  splitTitle();
   document.addEventListener('click', function(e){
-    if (e.target.closest('[data-lang]')) setTimeout(function(){ splitChars(); activate(0); }, 60);
+    if (e.target.closest('[data-lang]')) setTimeout(splitTitle, 60);
   });
 })();
 </script>
