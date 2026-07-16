@@ -1,0 +1,383 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Studio Noir — Peluquería de autor en Tolosa</title>
+<meta name="description" content="Peluquería de autor en Tolosa. Cortes editoriales, color y tratamientos. Reserva tu cita online."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Jost:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --bg:#111013; --bg2:#1a181c; --line:rgba(255,255,255,.1);
+    --ink:#f2efe9; --body:#b5b0a8; --muted:#8a857d;
+    --gold:#cfa96b; --gold-dark:#b8934f;
+    --serif:"Marcellus",Georgia,serif; --sans:"Jost",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--sans);background:var(--bg);color:var(--body);line-height:1.7;-webkit-font-smoothing:antialiased;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{font-family:var(--serif);color:var(--ink);font-weight:400;line-height:1.1;}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 28px;}
+  .label{text-transform:uppercase;letter-spacing:.3em;font-size:11px;font-weight:600;color:var(--gold);}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;font-size:12.5px;padding:16px 32px;cursor:pointer;border:1px solid transparent;transition:all .2s;}
+  .btn-gold{background:var(--gold);color:#191408;}
+  .btn-gold:hover{background:var(--gold-dark);}
+  .btn-line{background:transparent;color:var(--ink);border-color:rgba(255,255,255,.3);}
+  .btn-line:hover{border-color:var(--gold);color:var(--gold);}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:2px;}
+  @media(prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important;} }
+
+  .progress{position:fixed;top:0;left:0;height:2px;background:var(--gold);z-index:200;width:0%;}
+  [data-reveal]{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
+  [data-reveal].is-visible{opacity:1;transform:translateY(0);}
+  .stagger>*{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
+  .stagger.is-visible>*{opacity:1;transform:translateY(0);}
+  .stagger>*:nth-child(1){transition-delay:.02s;} .stagger>*:nth-child(2){transition-delay:.1s;} .stagger>*:nth-child(3){transition-delay:.18s;} .stagger>*:nth-child(4){transition-delay:.26s;}
+  @keyframes heroIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+  .hero .label{animation:heroIn .8s cubic-bezier(.16,1,.3,1) .1s both;}
+  .hero h1{animation:heroIn .8s cubic-bezier(.16,1,.3,1) .25s both;}
+  .hero p{animation:heroIn .8s cubic-bezier(.16,1,.3,1) .4s both;}
+  .hero-cta{animation:heroIn .8s cubic-bezier(.16,1,.3,1) .55s both;}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(17,16,19,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:76px;max-width:1140px;margin:0 auto;padding:0 28px;}
+  .logo{font-family:var(--serif);font-size:22px;color:var(--ink);letter-spacing:.14em;text-transform:uppercase;}
+  .logo b{color:var(--gold);font-weight:400;}
+  .menu{display:none;gap:34px;list-style:none;font-size:13px;letter-spacing:.1em;text-transform:uppercase;}
+  .menu a{color:var(--body);}
+  .menu a:hover{color:var(--gold);}
+  @media(min-width:900px){ .menu{display:flex;} }
+  .nav .btn{padding:11px 20px;}
+
+  .hero{position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden;}
+  .hero .bg{position:absolute;inset:-6% 0 0 0;height:112%;background:url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1600&q=80') center/cover;filter:grayscale(1) brightness(.55);will-change:transform;}
+  .hero .inner{position:relative;z-index:2;max-width:680px;padding:100px 0 60px;}
+  .hero h1{font-size:clamp(44px,7vw,86px);}
+  .hero h1 em{font-style:italic;color:var(--gold);}
+  .hero p{margin-top:22px;font-size:17px;max-width:46ch;color:#d8d3ca;}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px;}
+
+  section{padding:96px 0;}
+  .sec-head{max-width:600px;margin:0 auto 56px;text-align:center;}
+  .sec-head h2{font-size:clamp(30px,4.4vw,46px);margin-top:14px;}
+
+  /* Carta de servicios */
+  .services{background:var(--bg2);}
+  .price-list{max-width:720px;margin:0 auto;display:grid;gap:4px;}
+  .pl-row{display:flex;align-items:baseline;gap:14px;padding:18px 4px;border-bottom:1px solid var(--line);}
+  .pl-row h3{font-size:20px;white-space:nowrap;}
+  .pl-row .dots{flex:1;border-bottom:1px dotted rgba(255,255,255,.22);transform:translateY(-4px);}
+  .pl-row .pr{font-family:var(--serif);color:var(--gold);font-size:18px;white-space:nowrap;}
+  .pl-row small{display:block;color:var(--muted);font-size:13px;margin-top:2px;}
+
+  /* Galería */
+  .gal{display:grid;gap:16px;grid-template-columns:1fr;}
+  @media(min-width:700px){ .gal{grid-template-columns:1.4fr 1fr;} }
+  .gal .ph{overflow:hidden;position:relative;}
+  .gal img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3;filter:grayscale(1) contrast(1.02);transition:filter .5s,transform .6s;}
+  .gal .ph:hover img{filter:grayscale(0);transform:scale(1.03);}
+  .gal .tall img{aspect-ratio:3/4;}
+
+  /* Comparador antes/después (arrastrable) */
+  /* Tarjeta regalo 3D */
+  .gift{background:var(--bg);}
+  .gcard{width:min(430px,88vw);aspect-ratio:1.62;margin:0 auto;position:relative;transform-style:preserve-3d;transition:transform .85s cubic-bezier(.2,.75,.25,1);cursor:pointer;}
+  .gcard.flip{transform:rotateY(180deg);}
+  .gcard:focus-visible{outline:3px solid var(--gold);outline-offset:4px;}
+  .g-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:1px solid rgba(207,169,107,.55);background:linear-gradient(135deg,#201d22,#131114 60%,#1a1417);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px;box-shadow:0 30px 60px -18px rgba(0,0,0,.7);}
+  .g-front::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(207,169,107,.12) 48%,transparent 62%);background-size:220% 100%;background-position:120% 0;transition:background-position 1s ease;pointer-events:none;}
+  .gcard:hover .g-front::after{background-position:-60% 0;}
+  .g-mono{font-size:11px;letter-spacing:.42em;color:var(--gold);}
+  .g-big{font-family:var(--serif,serif);font-size:clamp(26px,4.5vw,36px);color:var(--ink);margin:12px 0 6px;font-style:italic;}
+  .g-amount{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
+  .g-flip{position:absolute;right:16px;bottom:12px;color:rgba(207,169,107,.6);font-size:17px;}
+  .g-back{transform:rotateY(180deg);}
+  .g-back p{font-size:14.5px;color:#d8d3ca;max-width:34ch;line-height:1.7;}
+  .g-back .g-cta{margin-top:16px;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid rgba(207,169,107,.5);padding-bottom:4px;}
+  .g-hint{text-align:center;margin-top:20px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+  @media(prefers-reduced-motion:reduce){ .gcard{transition:none;} }
+
+  .cmp-wrap{max-width:480px;margin:0 auto;}
+  .cmp{position:relative;overflow:hidden;user-select:none;}
+  .cmp img{width:100%;aspect-ratio:9/16;object-fit:cover;display:block;}
+  .cmp .after{position:relative;}
+  .cmp .before{position:absolute;inset:0;width:100%;height:100%;clip-path:inset(0 50% 0 0);}
+  .cmp .bar{position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--gold);transform:translateX(-1px);pointer-events:none;}
+  .cmp .knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;background:var(--gold);color:#191408;display:flex;align-items:center;justify-content:center;font-size:15px;letter-spacing:2px;pointer-events:none;box-shadow:0 10px 26px -8px rgba(0,0,0,.6);}
+  .cmp input[type=range]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0;}
+  .cmp-tags{display:flex;justify-content:space-between;margin-top:12px;font-size:11px;text-transform:uppercase;letter-spacing:.2em;color:var(--muted);}
+
+  /* Muro de reseñas (mosaico tipo Google) */
+  .wall{display:flex;gap:16px;max-width:1040px;margin:0 auto;height:540px;overflow:hidden;
+    -webkit-mask-image:linear-gradient(to bottom,transparent,#000 9%,#000 91%,transparent);
+    mask-image:linear-gradient(to bottom,transparent,#000 9%,#000 91%,transparent);}
+  .wcol{flex:1;min-width:0;animation:wall-up 34s linear infinite;}
+  .wcol:nth-child(2){animation-duration:44s;animation-delay:-8s;}
+  .wcol:nth-child(3){animation-duration:28s;animation-delay:-15s;}
+  .wall:hover .wcol{animation-play-state:paused;}
+  @keyframes wall-up{from{transform:translateY(0);}to{transform:translateY(-50%);}}
+  @media(max-width:639px){ .wcol:nth-child(3){display:none;} .wall{height:460px;} }
+  @media(prefers-reduced-motion:reduce){
+    .wall{height:auto;overflow:visible;-webkit-mask-image:none;mask-image:none;flex-wrap:wrap;}
+    .wcol{animation:none;}
+    .wcol .wcard:nth-child(n+3){display:none;}
+  }
+  .wcard{margin-bottom:16px;border:1px solid var(--line);background:var(--bg2);border-radius:14px;padding:22px 24px;}
+  .wcard .st{color:#e8b64c;letter-spacing:2px;font-size:13px;}
+  .wcard p{font-size:14.5px;color:#d8d3ca;margin:12px 0 18px;line-height:1.6;}
+  .wcard .who{display:flex;align-items:center;gap:11px;}
+  .wcard .who .av{width:38px;height:38px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+  .wcard .who .avl{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:15px;color:#191408;flex-shrink:0;}
+  .wcard .who b{display:block;font-size:13.5px;color:var(--ink);font-weight:600;}
+  .wcard .who small{display:block;font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.14em;}
+
+  /* Carrusel de servicios con foto (etiqueta cristal) */
+  .svc-car{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:6px 4px 14px;scrollbar-width:none;}
+  .svc-car::-webkit-scrollbar{display:none;}
+  .svc{position:relative;flex:0 0 min(320px,78vw);scroll-snap-align:start;border-radius:18px;overflow:hidden;}
+  .svc img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;transition:transform .6s;}
+  .svc:hover img{transform:scale(1.04);}
+  .svc .tag{position:absolute;left:14px;right:14px;bottom:14px;background:rgba(17,16,19,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:13px 16px;}
+  .svc .tag b{display:block;font-family:var(--serif);font-size:18px;color:#fff;font-weight:400;}
+  .svc .tag span{display:block;font-size:9.5px;text-transform:uppercase;letter-spacing:.24em;color:var(--gold);margin-top:3px;}
+
+  /* Manifiesto */
+  .manifesto{max-width:760px;margin:0 auto;text-align:center;}
+  .manifesto p{font-family:var(--serif);font-size:clamp(22px,3vw,30px);line-height:1.45;color:var(--ink);}
+  .manifesto .label{display:block;margin-bottom:22px;}
+
+  /* Reserva */
+  .visit{background:var(--bg2);}
+  .visit-grid{display:grid;gap:44px;grid-template-columns:1fr;}
+  @media(min-width:860px){ .visit-grid{grid-template-columns:1fr 1fr;align-items:center;} }
+  .visit h2{font-size:clamp(30px,4.4vw,44px);margin-bottom:22px;}
+  .row{display:flex;gap:14px;margin-bottom:16px;font-size:15px;}
+  .row b{color:var(--ink);display:block;font-weight:600;}
+  .row svg{width:19px;height:19px;color:var(--gold);flex-shrink:0;margin-top:4px;}
+  .map{min-height:320px;border:1px solid var(--line);overflow:hidden;box-shadow:0 20px 44px -18px rgba(0,0,0,.6);}
+  .map iframe{width:100%;height:100%;min-height:320px;border:0;display:block;}
+
+  .sticky-cta{position:fixed;left:50%;bottom:22px;transform:translate(-50%,140%);z-index:150;display:flex;align-items:center;gap:16px;background:#0c0b0e;border:1px solid rgba(207,169,107,.4);color:var(--ink);border-radius:999px;padding:8px 8px 8px 22px;box-shadow:0 20px 44px -14px rgba(0,0,0,.6);transition:transform .4s cubic-bezier(.16,1,.3,1);max-width:calc(100% - 32px);}
+  .sticky-cta.show{transform:translate(-50%,0);}
+  .sticky-cta .btn{border-radius:999px;}
+  .sticky-cta .info{display:flex;flex-direction:column;line-height:1.25;white-space:nowrap;}
+  .sticky-cta .info b{font-family:var(--serif);font-size:16px;letter-spacing:.08em;}
+  .sticky-cta .info span{font-size:11px;color:var(--gold);text-transform:uppercase;letter-spacing:.12em;}
+  @media(max-width:560px){ .sticky-cta .info span{display:none;} }
+
+  footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;font-size:13px;color:var(--muted);}
+  /* Mapa: el barrio en color al pasar el raton */
+  .map{position:relative;border:1px solid rgba(207,169,107,.4);}
+  .map iframe{filter:grayscale(1) contrast(1.02);transition:filter .6s ease;}
+  .map:hover iframe{filter:grayscale(0);}
+  .map-nota{position:absolute;left:0;right:0;bottom:0;z-index:2;text-align:center;padding:9px 14px;background:rgba(17,16,19,.82);color:var(--gold);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;pointer-events:none;}
+  @media(hover:none){ .map iframe{filter:grayscale(0);} .map-nota{display:none;} }
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header>
+<div class="nav">
+<a href="#inicio" class="logo">Studio <b>Noir</b></a>
+<ul class="menu">
+<li><a href="#servicios">Servicios</a></li>
+<li><a href="galeria.html">Galería</a></li>
+<li><a href="#estudio">El estudio</a></li>
+<li><a href="#reservas">Reservas</a></li>
+</ul>
+<a href="reservar.html" class="btn btn-gold">Reservar</a>
+</div>
+</header>
+
+<section class="hero" id="inicio">
+<div class="bg"></div>
+<div class="wrap"><div class="inner">
+<span class="label">Peluquería de autor · Tolosa</span>
+<h1>Tu cabello, <em>nuestra obra.</em></h1>
+<p>Cortes editoriales, color a medida y un espacio pensado para que salgas mejor de lo que entraste. Sin prisas y sin fórmulas de catálogo.</p>
+<div class="hero-cta">
+<a href="reservar.html" class="btn btn-gold">Reservar cita</a>
+<a href="#galeria" class="btn btn-line">Ver galería</a>
+</div>
+</div></div>
+</section>
+
+<section class="services" id="servicios">
+<div class="wrap">
+<div class="sec-head" data-reveal>
+<span class="label">La carta</span>
+<h2>Servicios y precios</h2>
+</div>
+<div class="price-list stagger">
+<div class="pl-row"><div><h3>Corte de autor</h3><small>Estudio de facciones, lavado y peinado incluidos</small></div><span class="dots"></span><span class="pr">32€</span></div>
+<div class="pl-row"><div><h3>Color completo</h3><small>Coloración a medida con diagnóstico previo</small></div><span class="dots"></span><span class="pr">desde 55€</span></div>
+<div class="pl-row"><div><h3>Mechas / balayage</h3><small>Técnicas de luz naturales, matiz incluido</small></div><span class="dots"></span><span class="pr">desde 75€</span></div>
+<div class="pl-row"><div><h3>Tratamiento reconstructor</h3><small>Recupera fibra y brillo en una sesión</small></div><span class="dots"></span><span class="pr">28€</span></div>
+<div class="pl-row"><div><h3>Peinado de evento</h3><small>Bodas, celebraciones y sesiones de fotos</small></div><span class="dots"></span><span class="pr">desde 40€</span></div>
+</div>
+
+<div class="svc-car" data-reveal style="margin-top:56px;">
+<div class="svc"><img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=700&q=80" alt="Corte y peinado en el estudio" loading="lazy"/><div class="tag"><b>Corte de autor</b><span>Hecho a tu medida</span></div></div>
+<div class="svc"><img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=700&q=80" alt="Sillas del estudio" loading="lazy"/><div class="tag"><b>Color y balayage</b><span>Luz natural</span></div></div>
+<div class="svc"><img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=700&q=80" alt="Interior de Studio Noir" loading="lazy"/><div class="tag"><b>El estudio</b><span>Un espacio para ti</span></div></div>
+</div>
+</div>
+</section>
+
+<section id="galeria">
+<div class="wrap">
+<div class="sec-head" data-reveal>
+<span class="label">Trabajo real</span>
+<h2>La galería habla por nosotros</h2>
+<p style="margin-top:10px;"><a href="galeria.html" style="color:var(--gold);text-decoration:underline;">Ver galería completa →</a></p>
+</div>
+<div class="gal stagger">
+<div class="ph"><img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1000&q=80" alt="Corte en el salón" loading="lazy"/></div>
+<div class="ph tall"><img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=800&q=80" alt="Interior del estudio" loading="lazy"/></div>
+</div>
+<p style="text-align:center;margin-top:18px;font-size:13px;color:var(--muted);">Pasa el ratón por encima: el color aparece cuando lo trabajamos nosotros.</p>
+
+<div class="cmp-wrap" data-reveal style="margin-top:70px;">
+<div class="sec-head" style="margin-bottom:34px;">
+<span class="label">Antes / después</span>
+<h2>Arrastra y compara</h2>
+</div>
+<div class="cmp" id="cmp">
+<img class="after" src="img/despues.jpg" alt="Después: balayage con ondas recién hecho en el salón" width="487" height="837"/>
+<img class="before" id="cmpBefore" src="img/antes.jpg" alt="" aria-hidden="true" width="393" height="837"/>
+<div class="bar" id="cmpBar"></div>
+<div class="knob" id="cmpKnob">↔</div>
+<input type="range" min="0" max="100" value="50" id="cmpRange" aria-label="Comparar antes y después"/>
+</div>
+<div class="cmp-tags"><span>Antes</span><span>Después</span></div>
+</div>
+
+<div style="margin-top:70px;">
+<div class="sec-head" data-reveal style="margin-bottom:34px;">
+<span class="label">Sillas con historia</span>
+<h2>Lo que cuentan al salir</h2>
+</div>
+<div class="wall" data-reveal>
+<div class="wcol">
+<div class="wcard"><div class="st">★★★★★</div><p>"Llegué con una foto de Pinterest imposible y salí con algo mejor: un corte que me queda a MÍ. Estudiaron mi cara, mi rutina de mañanas y hasta cómo me pongo la coleta antes de tocar unas tijeras."</p><div class="who"><img class="av" src="https://i.pravatar.cc/80?img=47" alt=""/><div><b>June Otaegi</b><small>Hace 2 meses</small></div></div></div>
+<div class="wcard"><div class="st">★★★★★</div><p>"El balayage más natural que me han hecho nunca. Tres meses después sigue creciendo bonito."</p><div class="who"><span class="avl" style="background:#cfa96b;">P</span><div><b>Paula Sarasola</b><small>Hace 5 meses</small></div></div></div>
+</div>
+<div class="wcol">
+<div class="wcard"><div class="st">★★★★★</div><p>"Me peinaron para mi boda. Aguantó baile, lluvia y abrazos. Ni un alfiler fuera de sitio."</p><div class="who"><img class="av" src="https://i.pravatar.cc/80?img=44" alt=""/><div><b>Irati Zubeldia</b><small>Hace 1 año</small></div></div></div>
+<div class="wcard"><div class="st">★★★★★</div><p>"Años huyendo de peluquerías porque salía siempre con lo mismo. Aquí me escucharon de verdad. He vuelto tres veces y pienso seguir."</p><div class="who"><span class="avl" style="background:#a8bfa1;">M</span><div><b>Maider Garmendia</b><small>Hace 3 semanas</small></div></div></div>
+</div>
+<div class="wcol">
+<div class="wcard"><div class="st">★★★★★</div><p>"Trato de diez y un espacio precioso. Se nota el mimo en cada detalle."</p><div class="who"><img class="av" src="https://i.pravatar.cc/80?img=32" alt=""/><div><b>Nora Elizalde</b><small>Hace 4 meses</small></div></div></div>
+<div class="wcard"><div class="st">★★★★★</div><p>"Vine por el tratamiento reconstructor después de un verano de sol y playa. Mi pelo revivió en una sesión."</p><div class="who"><span class="avl" style="background:#d3b8a2;">A</span><div><b>Ane Iturrioz</b><small>Hace 6 meses</small></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="manifesto-wrap" id="estudio" style="background:var(--bg);">
+<div class="wrap manifesto" data-reveal>
+<span class="label">El estudio</span>
+<p>"No cortamos el pelo por catálogo. Estudiamos tu rostro, tu rutina y tu estilo — y entonces cogemos las tijeras."</p>
+</div>
+</section>
+
+<section class="gift" aria-label="Tarjeta regalo">
+<div class="wrap">
+<div class="sec-head" data-reveal style="margin-bottom:38px;">
+<span class="label">Regala Studio Noir</span>
+<h2>El regalo que nunca se equivoca</h2>
+</div>
+<div data-reveal>
+<div class="gcard" id="gcard" role="button" tabindex="0" aria-label="Girar la tarjeta regalo">
+<div class="g-face g-front">
+<span class="g-mono">STUDIO NOIR</span>
+<span class="g-big">Tarjeta regalo</span>
+<span class="g-amount">desde 30€</span>
+<span class="g-flip">↻</span>
+</div>
+<div class="g-face g-back">
+<p>Válida para cualquier servicio del estudio. Sin caducidad, con el nombre de quien tú quieras grabado a mano.</p>
+<span class="g-cta">Pídela al reservar o en recepción</span>
+</div>
+</div>
+<p class="g-hint">Toca la tarjeta para girarla</p>
+</div>
+</div>
+</section>
+
+<section class="visit" id="reservas">
+<div class="wrap visit-grid stagger">
+<div>
+<span class="label">Reservas</span>
+<h2>Reserva tu silla</h2>
+<div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><div><b>Cita por WhatsApp o llamada</b>+34 600 00 00 00 — te confirmamos al momento</div></div>
+<div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><b>Horario</b>Ma-Vi 9:30–19:00 · Sábado 9:00–14:00 · Lunes cerrado</div></div>
+<div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-7-10a7 7 0 0 1 14 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.5"/></svg><div><b>Dirección</b>Calle Correo 8, Tolosa (Gipuzkoa)</div></div>
+<div style="margin-top:28px;"><a href="https://wa.me/34600000000?text=Hola%2C%20quiero%20reservar%20cita%20en%20Studio%20Noir" class="btn btn-gold" target="_blank" rel="noopener">Reservar por WhatsApp</a></div>
+</div>
+<div class="map"><span class="map-nota">Pasa el ratón — el barrio en color</span><iframe title="Ubicación Studio Noir" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-2.0930%2C43.1280%2C-2.0640%2C43.1420&amp;layer=mapnik&amp;marker=43.1350%2C-2.0785"></iframe></div>
+</div>
+</section>
+
+<div class="sticky-cta" id="stickyCta">
+<div class="info"><b>STUDIO NOIR</b><span>Citas disponibles esta semana</span></div>
+<a href="reservar.html" class="btn btn-gold" style="padding:12px 22px;">Reservar →</a>
+</div>
+
+<footer>© 2026 Studio Noir · Peluquería de autor · Tolosa, Gipuzkoa</footer>
+
+<script>
+  var progress = document.getElementById('progress');
+  var heroBg = document.querySelector('.hero .bg');
+  var stickyCta = document.getElementById('stickyCta');
+  var reduceMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  addEventListener('scroll', function(){
+    var h = document.documentElement;
+    progress.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+    stickyCta.classList.toggle('show', scrollY > innerHeight * 0.6);
+    if (heroBg && !reduceMotion && scrollY < innerHeight) heroBg.style.transform = 'translateY(' + (scrollY * 0.22) + 'px)';
+  }, {passive:true});
+  // Comparador antes/después
+  var cmpRange = document.getElementById('cmpRange');
+  if (cmpRange) {
+    var before = document.getElementById('cmpBefore');
+    var bar = document.getElementById('cmpBar');
+    var knob = document.getElementById('cmpKnob');
+    cmpRange.addEventListener('input', function(){
+      var v = cmpRange.value;
+      before.style.clipPath = 'inset(0 ' + (100 - v) + '% 0 0)';
+      bar.style.left = v + '%';
+      knob.style.left = v + '%';
+    });
+  }
+
+  var revealEls = document.querySelectorAll('[data-reveal], .stagger');
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+  } else {
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } }); }, {threshold:.01, rootMargin:'0px 0px -10px 0px'});
+    revealEls.forEach(function(el){ io.observe(el); });
+    setTimeout(function(){ revealEls.forEach(function(el){ el.classList.add('is-visible'); }); }, 2500);
+  }
+
+  // Tarjeta regalo: giro 3D
+  var gcard = document.getElementById('gcard');
+  if (gcard) {
+    var gFlip = function(){ gcard.classList.toggle('flip'); };
+    gcard.addEventListener('click', gFlip);
+    gcard.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); gFlip(); } });
+  }
+
+  // Muro de reseñas: duplicar cada columna para que el bucle vertical sea continuo
+  if (!reduceMotion) {
+    document.querySelectorAll('.wall .wcol').forEach(function(col){ col.innerHTML += col.innerHTML; });
+  }
+</script>
+</body>
+</html>

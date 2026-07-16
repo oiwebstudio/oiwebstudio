@@ -1,0 +1,302 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Garaje Norte — Taller mecánico en Tolosa</title>
+<meta name="description" content="Taller mecánico en Tolosa. Diagnóstico honesto, presupuesto cerrado antes de tocar nada y coche listo cuando se dijo. Mecánica, electrónica e ITV."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Saira:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --negro:#101418; --panel:#171c22; --linea:rgba(255,255,255,.1);
+    --blanco:#eef1f4; --cuerpo:#9aa7b2; --acero:#5d6b78;
+    --senal:#ffb400; --senal2:#e09e00;
+    --disp:"Chakra Petch",sans-serif; --sans:"Saira",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--sans);background:var(--negro);color:var(--cuerpo);line-height:1.65;-webkit-font-smoothing:antialiased;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{font-family:var(--disp);color:var(--blanco);text-transform:uppercase;letter-spacing:.01em;line-height:1.06;}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 26px;}
+  .label{font-family:var(--disp);text-transform:uppercase;letter-spacing:.24em;font-size:11.5px;font-weight:600;color:var(--senal);}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:.06em;padding:15px 28px;cursor:pointer;border:2px solid transparent;transition:all .18s;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);}
+  .btn-senal{background:var(--senal);color:#171309;}
+  .btn-senal:hover{background:var(--senal2);}
+  .btn-linea{background:transparent;color:var(--blanco);border-color:rgba(255,255,255,.35);}
+  .btn-linea:hover{border-color:var(--senal);color:var(--senal);}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--senal);outline-offset:2px;}
+  @media(prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important;} }
+
+  .progress{position:fixed;top:0;left:0;height:3px;background:var(--senal);z-index:200;width:0%;}
+  [data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+  [data-reveal].is-visible{opacity:1;transform:translateY(0);}
+  .stagger>*{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease;}
+  .stagger.is-visible>*{opacity:1;transform:translateY(0);}
+  .stagger>*:nth-child(1){transition-delay:.02s;} .stagger>*:nth-child(2){transition-delay:.1s;} .stagger>*:nth-child(3){transition-delay:.18s;} .stagger>*:nth-child(4){transition-delay:.26s;}
+  @keyframes heroIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+  .hero .label{animation:heroIn .7s ease .05s both;}
+  .hero h1{animation:heroIn .7s ease .16s both;}
+  .hero p{animation:heroIn .7s ease .28s both;}
+  .hero-cta{animation:heroIn .7s ease .4s both;}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(16,20,24,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--linea);}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:74px;max-width:1140px;margin:0 auto;padding:0 26px;}
+  .logo{font-family:var(--disp);font-weight:700;font-size:20px;color:var(--blanco);text-transform:uppercase;letter-spacing:.04em;}
+  .logo em{font-style:normal;color:var(--senal);}
+  .menu{display:none;gap:30px;list-style:none;font-family:var(--disp);font-size:13px;text-transform:uppercase;letter-spacing:.08em;}
+  .menu a:hover{color:var(--senal);}
+  @media(min-width:880px){ .menu{display:flex;} }
+  .nav .btn{padding:10px 18px;}
+
+  .hero{position:relative;min-height:88vh;display:flex;align-items:center;overflow:hidden;}
+  .hero .bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1600&q=80') center/cover;}
+  .hero .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(16,20,24,.94) 30%,rgba(16,20,24,.55));}
+  /* Rejilla de plano tecnico: diferencia el garaje del resto de heroes oscuros */
+  .hero .grid-plano{position:absolute;inset:0;z-index:1;opacity:.35;pointer-events:none;
+    background-image:linear-gradient(rgba(255,180,0,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(255,180,0,.14) 1px,transparent 1px);
+    background-size:42px 42px;mask-image:linear-gradient(90deg,#000 0%,#000 55%,transparent 92%);}
+  .hero .inner{position:relative;z-index:2;padding:90px 0;}
+  .hero .inner::before{content:"◆ FICHA DE DIAGNÓSTICO";position:absolute;top:-38px;left:0;font-family:var(--disp);font-size:11px;letter-spacing:.22em;color:var(--senal);opacity:.8;}
+  .hero h1{font-size:clamp(40px,6.6vw,78px);max-width:14ch;}
+  .hero h1 em{font-style:normal;color:var(--senal);}
+  .hero p{margin-top:20px;font-size:17px;max-width:50ch;color:#c4ced7;}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;}
+  .hero-check{margin-top:34px;display:flex;flex-wrap:wrap;gap:10px 26px;font-size:14px;color:#c4ced7;}
+  .hero-check span::before{content:"✓ ";color:var(--senal);font-weight:700;}
+
+  section{padding:92px 0;}
+  .sec-head{max-width:640px;margin:0 auto 52px;text-align:center;}
+  .sec-head h2{font-size:clamp(28px,4.4vw,48px);margin-top:12px;}
+  .sec-head p{margin-top:10px;font-size:16px;}
+
+  /* Servicios */
+  .serv{background:var(--panel);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);}
+  .serv-grid{display:grid;gap:1px;background:var(--linea);border:1px solid var(--linea);}
+  @media(min-width:760px){ .serv-grid{grid-template-columns:repeat(3,1fr);} }
+  .sv{background:var(--panel);padding:34px 30px;position:relative;overflow:hidden;}
+  .sv::after{content:"";position:absolute;left:0;bottom:0;width:0;height:3px;background:var(--senal);transition:width .35s;}
+  .sv:hover::after{width:100%;}
+  .sv .ic{font-family:var(--disp);color:var(--senal);font-size:13px;letter-spacing:.16em;}
+  .sv h3{font-size:19px;margin:12px 0 8px;}
+  .sv p{font-size:14.5px;}
+
+  /* Presupuesto exprés */
+  .presu{max-width:760px;margin:0 auto;border:1px solid var(--linea);background:var(--panel);padding:36px;clip-path:polygon(18px 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%,0 18px);}
+  .presu .paso{font-family:var(--disp);font-size:12px;letter-spacing:.18em;color:var(--senal);text-transform:uppercase;}
+  .presu h3{font-size:22px;margin:8px 0 18px;}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;}
+  .chips label{cursor:pointer;}
+  .chips input{position:absolute;opacity:0;pointer-events:none;}
+  .chips span{display:inline-block;border:1.5px solid var(--linea);padding:10px 18px;font-size:14px;color:var(--cuerpo);transition:all .2s;}
+  .chips input:checked+span{border-color:var(--senal);background:rgba(255,180,0,.1);color:var(--blanco);}
+  .chips input:focus-visible+span{outline:3px solid var(--senal);outline-offset:2px;}
+  .presu-res{margin-top:26px;padding-top:22px;border-top:1px dashed var(--linea);display:flex;flex-wrap:wrap;gap:16px 30px;align-items:center;justify-content:space-between;}
+  .presu-res .cifra{font-family:var(--disp);font-size:40px;color:var(--senal);font-weight:700;}
+  .presu-res .cifra small{font-size:15px;color:var(--cuerpo);font-weight:500;}
+  .presu-res p{font-size:13px;max-width:38ch;}
+
+  /* Reseñas: ficha de trabajo que se desliza */
+  .fichas{background:var(--panel);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);}
+  .ficha-visor{position:relative;max-width:720px;margin:0 auto;overflow:hidden;min-height:210px;}
+  .ficha{position:absolute;inset:0;background:var(--negro);border:1px solid var(--linea);border-left:4px solid var(--senal);padding:28px 30px;opacity:0;transform:translateY(100%);transition:opacity .55s ease,transform .55s cubic-bezier(.16,1,.3,1);}
+  .ficha.on{opacity:1;transform:translateY(0);}
+  .ficha.out{opacity:0;transform:translateY(-100%);}
+  .ficha .ref{font-family:var(--disp);font-size:11.5px;letter-spacing:.18em;color:var(--senal);text-transform:uppercase;}
+  .ficha p{margin:12px 0 16px;font-size:16.5px;color:var(--blanco);line-height:1.6;}
+  .ficha b{font-family:var(--disp);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--cuerpo);}
+  .ficha .st{color:var(--senal);letter-spacing:2px;font-size:14px;margin-left:10px;}
+
+  /* Visita */
+  .visita-grid{display:grid;gap:40px;grid-template-columns:1fr;}
+  @media(min-width:880px){ .visita-grid{grid-template-columns:1fr 1fr;align-items:center;} }
+  .visita h2{font-size:clamp(28px,4.2vw,42px);margin-bottom:20px;}
+  .fila{display:flex;gap:13px;margin-bottom:15px;font-size:15px;}
+  .fila b{color:var(--blanco);display:block;font-weight:600;}
+  .fila svg{width:19px;height:19px;color:var(--senal);flex-shrink:0;margin-top:4px;}
+  .map{overflow:hidden;border:1px solid var(--linea);min-height:320px;}
+  .map iframe{width:100%;height:100%;min-height:320px;border:0;display:block;filter:grayscale(.4) contrast(1.05);}
+
+  .sticky-cta{position:fixed;left:50%;bottom:20px;transform:translate(-50%,140%);z-index:150;display:flex;align-items:center;gap:14px;background:#0b0e11;border:1px solid rgba(255,180,0,.5);color:var(--blanco);border-radius:999px;padding:8px 8px 8px 22px;box-shadow:0 20px 44px -14px rgba(0,0,0,.6);transition:transform .4s cubic-bezier(.16,1,.3,1);max-width:calc(100% - 32px);}
+  .sticky-cta.show{transform:translate(-50%,0);}
+  .sticky-cta .btn{border-radius:999px;clip-path:none;}
+  .sticky-cta .info{display:flex;flex-direction:column;line-height:1.25;white-space:nowrap;}
+  .sticky-cta .info b{font-family:var(--disp);font-size:14.5px;text-transform:uppercase;}
+  .sticky-cta .info span{font-size:11px;color:var(--senal);text-transform:uppercase;letter-spacing:.1em;font-family:var(--disp);}
+  @media(max-width:560px){ .sticky-cta .info span{display:none;} }
+
+  footer{border-top:1px solid var(--linea);padding:28px 0;text-align:center;font-size:13px;color:var(--acero);}
+  /* Mapa con franja de senalizacion */
+  .map{position:relative;}
+  .map::before{content:"";position:absolute;top:0;left:0;right:0;height:12px;z-index:2;background:repeating-linear-gradient(45deg,var(--senal) 0 16px,#171309 16px 32px);}
+  .map-nave{position:absolute;left:12px;bottom:12px;z-index:2;background:#0b0e11;border:1px solid var(--senal);color:var(--blanco);font-family:var(--disp);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;padding:9px 14px;}
+  .map-nave b{color:var(--senal);}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header>
+<div class="nav">
+<a href="#inicio" class="logo">Garaje <em>Norte</em></a>
+<ul class="menu">
+<li><a href="#servicios">Servicios</a></li>
+<li><a href="servicios.html">Precios</a></li>
+<li><a href="#presupuesto">Presupuesto</a></li>
+<li><a href="#visita">Dónde estamos</a></li>
+</ul>
+<a href="cita.html" class="btn btn-senal">Pedir cita</a>
+</div>
+</header>
+
+<section class="hero" id="inicio">
+<div class="bg"></div>
+<div class="grid-plano" aria-hidden="true"></div>
+<div class="wrap inner">
+<span class="label">Taller mecánico · Tolosa</span>
+<h1>Tu coche, listo <em>cuando se dijo</em>.</h1>
+<p>Diagnóstico honesto, presupuesto cerrado antes de tocar una sola pieza y fotos de lo que cambiamos. Así de simple, así de raro.</p>
+<div class="hero-cta">
+<a href="#presupuesto" class="btn btn-senal">Presupuesto exprés</a>
+<a href="#servicios" class="btn btn-linea">Ver servicios</a>
+</div>
+<div class="hero-check"><span>Sin sorpresas en la factura</span><span>Coche de cortesía</span><span>Garantía 2 años en reparaciones</span></div>
+</div>
+</section>
+
+<section class="serv" id="servicios">
+<div class="wrap">
+<div class="sec-head" data-reveal>
+<span class="label">Servicios</span>
+<h2>Del ruido raro a la ITV</h2>
+</div>
+<div class="serv-grid stagger">
+<div class="sv"><span class="ic">— 01</span><h3>Mecánica general</h3><p>Frenos, embrague, distribución, suspensión. Lo de siempre, bien hecho y con recambio de primera marca.</p></div>
+<div class="sv"><span class="ic">— 02</span><h3>Diagnosis electrónica</h3><p>Testigo encendido sin motivo aparente. Leemos la centralita, te enseñamos el fallo y decides con datos.</p></div>
+<div class="sv"><span class="ic">— 03</span><h3>Pre-ITV + ITV</h3><p>Revisamos lo que van a mirar, corregimos lo justo y te llevamos el coche a pasar la ITV si quieres.</p></div>
+<div class="sv"><span class="ic">— 04</span><h3>Mantenimiento oficial</h3><p>Revisiones por libro sin perder la garantía de marca. Sello, registro digital y factura detallada.</p></div>
+<div class="sv"><span class="ic">— 05</span><h3>Neumáticos y alineado</h3><p>Montaje, equilibrado y alineado 3D en el día. Guardamos tus ruedas de temporada si no te caben.</p></div>
+<div class="sv"><span class="ic">— 06</span><h3>Aire acondicionado</h3><p>Carga, higienización y detección de fugas. Para que el verano no te pille con el ventilador a tope.</p></div>
+</div>
+</div>
+</section>
+
+<section id="presupuesto">
+<div class="wrap">
+<div class="sec-head" data-reveal>
+<span class="label">Presupuesto exprés</span>
+<h2>Hazte una idea en 10 segundos</h2>
+<p>Orientativo y sin compromiso. El presupuesto real, cerrado por escrito antes de empezar.</p>
+</div>
+<div class="presu" data-reveal>
+<span class="paso">Paso único — ¿Qué le pasa a tu coche?</span>
+<h3>Elige la avería</h3>
+<div class="chips" role="radiogroup" aria-label="Tipo de avería">
+<label><input type="radio" name="averia" value="0" checked/><span>Revisión + aceite</span></label>
+<label><input type="radio" name="averia" value="1"/><span>Frenos delanteros</span></label>
+<label><input type="radio" name="averia" value="2"/><span>Embrague</span></label>
+<label><input type="radio" name="averia" value="3"/><span>Distribución</span></label>
+<label><input type="radio" name="averia" value="4"/><span>Testigo encendido</span></label>
+<label><input type="radio" name="averia" value="5"/><span>Pre-ITV</span></label>
+</div>
+<div class="presu-res" aria-live="polite">
+<div><span class="cifra" id="presuCifra">desde 89€</span><small id="presuNota"> · recambios incluidos</small></div>
+<p id="presuDetalle">Aceite 5W30 de marca, filtro y revisión de 20 puntos con informe.</p>
+<a href="cita.html" class="btn btn-senal" id="presuBtn">Cerrar presupuesto real →</a>
+</div>
+</div>
+</div>
+</section>
+
+<section class="fichas" aria-label="Opiniones">
+<div class="wrap">
+<div class="sec-head" data-reveal>
+<span class="label">Fichas de trabajo</span>
+<h2>Lo que dicen al recoger las llaves</h2>
+</div>
+<div class="ficha-visor" id="fichaVisor">
+<div class="ficha on"><span class="ref">Orden nº 2107 · Golf VI · Embrague</span><p>"Me dieron el presupuesto por escrito, me enseñaron el embrague viejo al recogerlo y me llevé el coche el día que dijeron. Nunca me había pasado."</p><b>Iker M.</b><span class="st">★★★★★</span></div>
+<div class="ficha"><span class="ref">Orden nº 2093 · Clio IV · Testigo motor</span><p>"Otro taller me pedía 600€ a ciegas. Aquí leyeron la centralita, era un sensor de 60€. Honestidad de la que ya no se ve."</p><b>Sara G.</b><span class="st">★★★★★</span></div>
+<div class="ficha"><span class="ref">Orden nº 2118 · Ibiza · Pre-ITV</span><p>"Me revisaron el coche, cambiaron una lámpara y me lo llevaron ellos a la ITV. Volví a casa con la pegatina puesta sin pisar la estación."</p><b>Joseba R.</b><span class="st">★★★★★</span></div>
+<div class="ficha"><span class="ref">Orden nº 2101 · C4 · Distribución</span><p>"Fotos del antes y el después por WhatsApp mientras trabajaban. Se nota cuando un taller no tiene nada que esconder."</p><b>Maialen A.</b><span class="st">★★★★★</span></div>
+</div>
+</div>
+</section>
+
+<section id="visita">
+<div class="wrap visita-grid stagger">
+<div class="visita">
+<span class="label">Dónde estamos</span>
+<h2>Pásate o escribe</h2>
+<div class="fila"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><b>Horario</b>Lu–Vi 8:30–13:00 · 15:00–18:30</div></div>
+<div class="fila"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-7-10a7 7 0 0 1 14 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.5"/></svg><div><b>Dirección</b>Polígono Usabal 12, Tolosa (Gipuzkoa)</div></div>
+<div class="fila"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><div><b>Cita previa</b>+34 600 00 00 00 — respondemos en horario de taller</div></div>
+<div style="margin-top:26px;"><a href="https://wa.me/34600000000?text=Hola%2C%20quiero%20pedir%20cita%20en%20Garaje%20Norte" target="_blank" rel="noopener" class="btn btn-senal">Pedir cita por WhatsApp</a></div>
+</div>
+<div class="map"><span class="map-nave">Nave 12 — busca la <b>puerta amarilla</b></span><iframe title="Ubicación Garaje Norte" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-2.0930%2C43.1280%2C-2.0640%2C43.1420&amp;layer=mapnik&amp;marker=43.1350%2C-2.0785"></iframe></div>
+</div>
+</section>
+
+<div class="sticky-cta" id="stickyCta">
+<div class="info"><b>Garaje Norte</b><span>Presupuesto cerrado por escrito</span></div>
+<a href="cita.html" class="btn btn-senal" style="padding:12px 22px;">Pedir cita →</a>
+</div>
+
+<footer>© 2026 Garaje Norte · Taller mecánico · Tolosa, Gipuzkoa</footer>
+
+<script>
+  var progress = document.getElementById('progress');
+  var stickyCta = document.getElementById('stickyCta');
+  var reduceMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  addEventListener('scroll', function(){
+    var h = document.documentElement;
+    progress.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+    stickyCta.classList.toggle('show', scrollY > innerHeight * 0.6);
+  }, {passive:true});
+
+  // Presupuesto exprés
+  var PRECIOS = [
+    ['desde 89€', ' · recambios incluidos', 'Aceite 5W30 de marca, filtro y revisión de 20 puntos con informe.'],
+    ['desde 160€', ' · pastillas y discos', 'Primera marca, mano de obra y prueba en carretera incluidas.'],
+    ['desde 520€', ' · kit completo', 'Kit de embrague, volante bimasa aparte si procede. Te lo confirmamos en la diagnosis.'],
+    ['desde 390€', ' · kit + bomba de agua', 'Correa, tensores y bomba. El seguro de vida de tu motor.'],
+    ['desde 35€', ' · diagnosis completa', 'Lectura de centralita con informe. Si reparas con nosotros, la diagnosis va gratis.'],
+    ['desde 49€', ' · revisión de 30 puntos', 'Luces, frenos, gases y holguras. Opción de llevarte el coche a la ITV.']
+  ];
+  var cifra = document.getElementById('presuCifra'), nota = document.getElementById('presuNota'), det = document.getElementById('presuDetalle');
+  document.querySelectorAll('input[name="averia"]').forEach(function(r){
+    r.addEventListener('change', function(){
+      var p = PRECIOS[parseInt(r.value, 10)];
+      cifra.textContent = p[0]; nota.textContent = p[1]; det.textContent = p[2];
+    });
+  });
+
+  // Fichas de trabajo: ticker vertical
+  var fichas = document.querySelectorAll('.ficha');
+  var fIdx = 0;
+  if (fichas.length && !reduceMotion) {
+    setInterval(function(){
+      fichas[fIdx].classList.remove('on');
+      fichas[fIdx].classList.add('out');
+      var prev = fIdx;
+      fIdx = (fIdx + 1) % fichas.length;
+      fichas[fIdx].classList.remove('out');
+      fichas[fIdx].classList.add('on');
+      setTimeout(function(){ fichas[prev].classList.remove('out'); }, 600);
+    }, 5000);
+  }
+
+  var revealEls = document.querySelectorAll('[data-reveal], .stagger');
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+  } else {
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } }); }, {threshold:.01, rootMargin:'0px 0px -10px 0px'});
+    revealEls.forEach(function(el){ io.observe(el); });
+    setTimeout(function(){ revealEls.forEach(function(el){ el.classList.add('is-visible'); }); }, 2500);
+  }
+</script>
+</body>
+</html>

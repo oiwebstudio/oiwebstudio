@@ -1,0 +1,581 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>VetCare — Clínica Veterinaria · Urgencias 24h en Tolosa</title>
+<meta name="description" content="Clínica veterinaria moderna en Tolosa. Medicina general, vacunas, cirugía avanzada, diagnóstico por imagen y urgencias 24h. Cuidamos de ellos como si fueran nuestros."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --teal:#2ba8a4; --teal-dark:#1f8f8b; --teal-soft:#e4f4f3;
+    --orange:#f26b3a; --orange-dark:#e05628;
+    --ink:#26333f; --body:#5c6b76; --muted:#64727d;
+    --cream:#faf8f4; --white:#fff; --line:#ecebe6;
+    --radius:16px; --radius-lg:26px; --shadow:0 18px 40px -18px rgba(38,51,63,.22);
+    --font:"Poppins",system-ui,sans-serif; --font-body:"Nunito",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--font-body);color:var(--body);background:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3,h4,.logo,.btn,.counter,.c-res .big{font-family:var(--font);}
+  h1,h2,h3{color:var(--ink);line-height:1.15;font-weight:700;letter-spacing:-.02em;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15px;padding:14px 24px;border-radius:999px;cursor:pointer;border:none;transition:transform .15s,box-shadow .15s,background .15s;}
+  .btn svg{width:18px;height:18px;}
+  .btn-teal{background:var(--teal);color:#fff;box-shadow:0 10px 22px -10px rgba(43,168,164,.7);}
+  .btn-teal:hover{background:var(--teal-dark);transform:translateY(-2px);}
+  .btn-orange{background:var(--orange);color:#fff;box-shadow:0 10px 22px -10px rgba(242,107,58,.7);}
+  .btn-orange:hover{background:var(--orange-dark);transform:translateY(-2px);}
+  a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--teal);outline-offset:2px;}
+  @media(prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important;} }
+
+  .progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--orange));z-index:200;width:0%;}
+  [data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+  [data-reveal].is-visible{opacity:1;transform:translateY(0);}
+  .stagger>*{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease;}
+  .stagger.is-visible>*{opacity:1;transform:translateY(0);}
+  .stagger>*:nth-child(1){transition-delay:.02s;} .stagger>*:nth-child(2){transition-delay:.09s;} .stagger>*:nth-child(3){transition-delay:.16s;} .stagger>*:nth-child(4){transition-delay:.23s;} .stagger>*:nth-child(5){transition-delay:.3s;} .stagger>*:nth-child(6){transition-delay:.37s;} .stagger>*:nth-child(7){transition-delay:.44s;} .stagger>*:nth-child(8){transition-delay:.51s;}
+  @keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+  .cert{animation:floatY 4.5s ease-in-out infinite;}
+  @keyframes heroIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+  .hero .badge{animation:heroIn .7s cubic-bezier(.16,1,.3,1) .05s both;}
+  .hero h1{animation:heroIn .7s cubic-bezier(.16,1,.3,1) .15s both;}
+  .hero .lead{animation:heroIn .7s cubic-bezier(.16,1,.3,1) .25s both;}
+  .hero-cta{animation:heroIn .7s cubic-bezier(.16,1,.3,1) .35s both;}
+  .hero-social{animation:heroIn .7s cubic-bezier(.16,1,.3,1) .45s both;}
+  .hero-media{animation:heroIn .9s cubic-bezier(.16,1,.3,1) .2s both;}
+
+  .sticky-cta{position:fixed;left:50%;bottom:22px;transform:translate(-50%,140%);z-index:150;display:flex;align-items:center;gap:16px;background:var(--ink);color:#fff;border-radius:999px;padding:8px 8px 8px 22px;box-shadow:0 20px 44px -14px rgba(0,0,0,.4);transition:transform .4s cubic-bezier(.16,1,.3,1);max-width:calc(100% - 32px);}
+  .sticky-cta.show{transform:translate(-50%,0);}
+  .sticky-cta .info{display:flex;flex-direction:column;line-height:1.25;white-space:nowrap;}
+  .sticky-cta .info b{font-size:14px;}
+  .sticky-cta .info span{font-size:12px;color:#b7c1c9;}
+  @media(max-width:560px){ .sticky-cta .info span{display:none;} .sticky-cta{padding-left:16px;} }
+
+  header{position:sticky;top:14px;z-index:50;padding:0 16px;}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:66px;background:rgba(255,255,255,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.7);border-radius:999px;max-width:1180px;margin:0 auto;padding:0 10px 0 24px;box-shadow:0 16px 36px -18px rgba(38,51,63,.3);}
+  .logo{display:flex;align-items:center;gap:11px;font-weight:800;font-size:22px;color:var(--ink);}
+  .logo .mk{width:40px;height:40px;border-radius:12px;background:var(--teal-soft);display:flex;align-items:center;justify-content:center;color:var(--teal);}
+  .logo .mk svg{width:23px;height:23px;}
+  .menu{display:none;gap:34px;list-style:none;}
+  .menu a{font-weight:500;font-size:15px;color:var(--body);}
+  .menu a:hover{color:var(--teal);}
+  .nav-right{display:flex;align-items:center;gap:14px;}
+  .burger{display:flex;background:none;border:none;color:var(--ink);cursor:pointer;padding:6px;}
+  .burger svg{width:26px;height:26px;}
+  @media(min-width:940px){ .menu{display:flex;} .burger{display:none;} }
+  .mobile{display:none;flex-direction:column;max-width:1180px;margin:10px auto 0;padding:8px 22px 14px;border:1px solid var(--line);border-radius:20px;background:var(--white);box-shadow:0 16px 36px -18px rgba(38,51,63,.3);}
+  .mobile.open{display:flex;}
+  .mobile a{padding:12px 6px;font-weight:500;border-bottom:1px solid var(--line);}
+  .mobile a:last-child{border-bottom:none;}
+  @media(min-width:940px){ .mobile{display:none!important;} }
+  @media(max-width:480px){ .nav-cta{padding:12px;} .nav-cta .t{display:none;} .nav-right{gap:8px;} .nav{padding:0 8px 0 18px;} }
+
+  .hero{padding:56px 0 90px;position:relative;overflow:hidden;}
+  .hero::before{content:"VetCare";position:absolute;top:-30px;left:50%;transform:translateX(-50%);font-size:clamp(130px,20vw,300px);font-weight:800;color:var(--teal);opacity:.05;white-space:nowrap;letter-spacing:-.03em;pointer-events:none;z-index:0;}
+  .hero-grid{display:grid;gap:44px;align-items:center;position:relative;z-index:1;}
+  @media(min-width:940px){ .hero-grid{grid-template-columns:1.05fr 1fr;gap:56px;} }
+  .badge{display:inline-flex;align-items:center;gap:9px;background:var(--teal-soft);color:var(--teal-dark);font-weight:600;font-size:14px;padding:9px 16px;border-radius:999px;}
+  .badge .dot{width:9px;height:9px;border-radius:50%;background:var(--teal);}
+  .hero h1{font-size:clamp(38px,5.4vw,60px);font-weight:800;margin:22px 0 20px;}
+  .hero h1 .hl{color:var(--teal);position:relative;white-space:nowrap;}
+  .hero h1 .hl::after{content:"";position:absolute;left:0;right:0;bottom:6px;height:8px;background:rgba(43,168,164,.28);border-radius:4px;z-index:-1;}
+  .hero p.lead{font-size:18px;max-width:520px;}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px;}
+  .hero-social{display:flex;align-items:center;gap:14px;margin-top:30px;}
+  .avatars{display:flex;}
+  .avatars span{width:38px;height:38px;border-radius:50%;border:3px solid var(--cream);background:var(--teal-soft) center/cover;margin-left:-12px;}
+  .avatars span:first-child{margin-left:0;}
+  .stars{color:#f5a623;font-size:15px;letter-spacing:1px;}
+  .hero-social small{display:block;color:var(--muted);font-size:13px;font-weight:500;}
+  .hero-media{position:relative;}
+  .hero-media .photo{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/3.2;}
+  .hero-media .photo img{width:100%;height:100%;object-fit:cover;}
+  .cert{position:absolute;left:-14px;bottom:-18px;background:var(--white);border-radius:16px;box-shadow:var(--shadow);padding:14px 18px;display:flex;align-items:center;gap:12px;}
+  .cert .ic{width:40px;height:40px;border-radius:11px;background:#e9f7ec;color:#2fa85a;display:flex;align-items:center;justify-content:center;}
+  .cert b{color:var(--ink);font-size:14px;display:block;}
+  .cert small{color:var(--muted);font-size:12px;}
+
+  section{padding:80px 0;}
+  .eyebrow{color:var(--teal);font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase;}
+  .sec-head{text-align:center;max-width:660px;margin:0 auto 52px;}
+  .sec-head h2{font-size:clamp(30px,4vw,44px);margin:12px 0 14px;}
+  .sec-head p{font-size:17px;}
+
+  .services{background:var(--white);}
+  .bento{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  @media(max-width:700px){ .bento{grid-template-columns:repeat(2,1fr);} }
+  .b-card{border:1px solid var(--line);border-radius:var(--radius);padding:26px;background:var(--cream);transition:transform .25s,box-shadow .25s;}
+  .b-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);}
+  .b-span2{grid-column:span 2;}
+  .b-ic{width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+  .b-ic svg{width:23px;height:23px;}
+  .b-ic-blue{background:var(--teal-soft);color:var(--teal-dark);}
+  .b-ic-green{background:var(--teal-soft);color:var(--teal-dark);}
+  .b-ic-orange{background:#fdeee7;color:var(--orange);}
+  .b-card h3{font-size:18px;margin-bottom:6px;}
+  .b-card p{font-size:14.5px;}
+  .b-blue{background:var(--orange-dark);color:#fff;display:flex;flex-direction:column;justify-content:center;}
+  .b-blue .b-ic{background:rgba(255,255,255,.18);color:#fff;font-size:26px;font-weight:800;}
+  .b-blue h3{color:#fff;font-size:24px;margin-bottom:10px;}
+  .b-blue p{color:rgba(255,255,255,.88);margin-bottom:20px;}
+  .b-blue .btn-white{align-self:flex-start;background:#fff;color:var(--orange-dark);font-weight:600;font-size:14.5px;padding:12px 22px;border-radius:999px;}
+  .b-blue .btn-white:hover{background:#fdeee7;}
+  .b-green{background:var(--teal-dark);color:#fff;}
+  .b-green .b-ic{background:rgba(255,255,255,.18);color:#fff;}
+  .b-green h3{color:#fff;}
+  .b-green p{color:rgba(255,255,255,.88);}
+
+  /* Why band */
+  .why{background:var(--teal);color:#fff;}
+  .why-grid{display:grid;gap:40px;align-items:center;}
+  @media(min-width:900px){ .why-grid{grid-template-columns:1fr 1fr;} }
+  .why h2{color:#fff;font-size:clamp(30px,4vw,42px);}
+  .why p.big{color:rgba(255,255,255,.9);font-size:17px;margin-top:18px;}
+  .why-cards{display:grid;gap:16px;grid-template-columns:1fr 1fr;}
+  .why-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:var(--radius);padding:22px;}
+  .why-card .ic{width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+  .why-card .ic svg{width:22px;height:22px;color:#fff;}
+  .why-card h3{color:#fff;font-size:17px;margin-bottom:6px;}
+  .why-card p{color:rgba(255,255,255,.85);font-size:14px;}
+
+  .team-grid{display:grid;gap:26px;grid-template-columns:1fr;}
+  @media(min-width:760px){ .team-grid{grid-template-columns:repeat(3,1fr);} }
+  .member{background:var(--white);border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);}
+  .member .ph{aspect-ratio:1/1;background:var(--teal-soft) center/cover;}
+  .member .info{padding:20px 22px 24px;}
+  .member h3{font-size:19px;}
+  .member .role{color:var(--teal);font-size:14px;font-weight:600;margin:2px 0 10px;}
+  .member p{font-size:14px;}
+
+  .tst{background:var(--white);}
+  .deck{position:relative;max-width:660px;margin:0 auto;height:340px;cursor:pointer;}
+  @media(max-width:600px){ .deck{height:430px;} }
+  .deck .quote{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
+    transition:transform .65s cubic-bezier(.22,.8,.3,1),opacity .65s;}
+  .deck .quote.p0{transform:translateY(0) scale(1);opacity:1;z-index:3;}
+  .deck .quote.p1{transform:translateY(20px) scale(.955);opacity:.5;z-index:2;pointer-events:none;}
+  .deck .quote.p2{transform:translateY(38px) scale(.91);opacity:.22;z-index:1;pointer-events:none;}
+  .deck .quote.phide{transform:translateY(38px) scale(.91);opacity:0;z-index:0;pointer-events:none;}
+  .deck .quote.pout{transform:translateY(-30px) scale(1.02);opacity:0;z-index:4;pointer-events:none;}
+  .deck-hint{text-align:center;color:var(--muted);font-size:12.5px;margin-top:54px;}
+  @media(prefers-reduced-motion:reduce){
+    .deck{height:auto;cursor:default;}
+    .deck .quote{position:static;opacity:1 !important;transform:none !important;margin-bottom:16px;}
+    .deck-hint{display:none;}
+  }
+  .quote{border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:var(--cream);}
+  .quote .stars{margin-bottom:14px;}
+  .quote p{color:var(--ink);font-size:15.5px;}
+  .quote .who{display:flex;align-items:center;gap:12px;margin-top:20px;}
+  .quote .who span{width:44px;height:44px;border-radius:50%;background:var(--teal-soft) center/cover;}
+  .quote .who b{color:var(--ink);font-size:15px;display:block;}
+  .quote .who small{color:var(--muted);}
+
+  .contact-grid{display:grid;gap:40px;grid-template-columns:1fr;}
+  @media(min-width:900px){ .contact-grid{grid-template-columns:1fr 1fr;} }
+  .cbox{background:var(--white);border:1px solid var(--line);border-radius:var(--radius-lg);padding:34px;box-shadow:var(--shadow);}
+  .info-item{display:flex;gap:16px;margin-bottom:22px;}
+  .info-item:last-child{margin-bottom:0;}
+  .info-item .ic{width:48px;height:48px;border-radius:13px;background:var(--teal-soft);color:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .info-item.urg .ic{background:#fdeee7;color:var(--orange);}
+  .info-item b{color:var(--ink);display:block;}
+  .info-item .big-tel{color:var(--orange);font-size:22px;font-weight:800;letter-spacing:.5px;}
+  .map{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);min-height:340px;border:3px solid var(--white);outline:1px solid var(--line);}
+  .map iframe{width:100%;height:100%;min-height:340px;border:0;display:block;}
+
+  /* Calculadora edad mascota */
+  .calc-sec{background:var(--cream);}
+  .calc{max-width:640px;margin:0 auto;background:var(--white);border:1px solid var(--line);border-radius:var(--radius-lg);padding:34px;box-shadow:var(--shadow);}
+  .c-chips{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
+  .c-chips label{cursor:pointer;}
+  .c-chips input{position:absolute;opacity:0;pointer-events:none;}
+  .c-chips span{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--line);border-radius:999px;padding:10px 18px;font-weight:600;font-size:14.5px;color:var(--body);transition:all .2s;}
+  .c-chips input:checked+span{border-color:var(--teal);background:var(--teal-soft);color:var(--teal-dark);}
+  .c-chips input:focus-visible+span{outline:3px solid var(--teal);outline-offset:2px;}
+  .c-age{display:block;margin:28px 0 6px;text-align:center;font-weight:600;color:var(--ink);}
+  .c-age output{color:var(--teal-dark);}
+  .calc input[type=range]{width:100%;margin-top:14px;accent-color:var(--teal);cursor:pointer;}
+  .c-res{text-align:center;margin-top:26px;padding-top:24px;border-top:1px dashed var(--line);}
+  .c-res .big{font-size:64px;font-weight:800;color:var(--teal-dark);line-height:1;display:block;transition:transform .15s;}
+  .c-res .big.pop{transform:scale(1.12);}
+  .c-res small{display:block;text-transform:uppercase;letter-spacing:.12em;font-size:12px;color:var(--muted);margin-top:6px;}
+  .c-res p{margin-top:14px;font-size:14.5px;max-width:44ch;margin-left:auto;margin-right:auto;}
+  .c-res p b{color:var(--ink);}
+
+  .faq{background:var(--white);}
+  .faq-list{display:grid;gap:14px;max-width:760px;margin:0 auto;}
+  .faq-item{border:1px solid var(--line);border-radius:var(--radius);background:var(--cream);padding:2px 24px;transition:border-color .2s;}
+  .faq-item[open]{border-color:var(--teal);}
+  .faq-item summary{cursor:pointer;padding:20px 30px 20px 0;font-weight:600;color:var(--ink);list-style:none;position:relative;}
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:"+";position:absolute;right:0;top:16px;font-size:24px;font-weight:400;color:var(--teal);transition:transform .25s;}
+  .faq-item[open] summary::after{transform:rotate(45deg);}
+  .faq-item p{padding:0 0 22px;color:var(--body);font-size:15px;max-width:60ch;}
+
+  footer{background:var(--ink);color:#c3cdd4;padding:60px 0 30px;}
+  .foot-grid{display:grid;gap:36px;grid-template-columns:1fr;}
+  @media(min-width:760px){ .foot-grid{grid-template-columns:2fr 1fr 1fr 1fr;} }
+  footer .logo{color:#fff;}
+  footer .logo .mk{background:rgba(255,255,255,.1);color:#fff;}
+  footer h4{color:#fff;font-size:15px;margin-bottom:16px;}
+  footer ul{list-style:none;display:grid;gap:10px;}
+  footer a:hover{color:#fff;}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:40px;padding-top:24px;font-size:13px;color:#8b98a1;display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;}
+  /* Mapa con tarjeta de urgencias */
+  .map{position:relative;}
+  .map-urg{position:absolute;left:14px;bottom:14px;z-index:2;background:var(--white);border-radius:14px;box-shadow:var(--shadow);padding:12px 16px;display:flex;align-items:center;gap:11px;font-size:13px;}
+  .map-urg .pt{width:10px;height:10px;border-radius:50%;background:var(--orange);animation:heroIn 0s, floatY 0s;box-shadow:0 0 0 0 rgba(242,107,58,.5);animation:urgPulse 2s infinite;}
+  @keyframes urgPulse{0%{box-shadow:0 0 0 0 rgba(242,107,58,.45);}70%{box-shadow:0 0 0 8px rgba(242,107,58,0);}100%{box-shadow:0 0 0 0 rgba(242,107,58,0);}}
+  .map-urg b{color:var(--ink);display:block;font-size:13px;}
+  .map-urg a{color:var(--teal-dark);font-weight:600;}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header>
+<div class="nav">
+<a href="#inicio" class="logo"><span class="mk"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21c-.5 0-1-.2-1.4-.5C7 17.7 4 14.9 4 11.3 4 8.9 5.9 7 8.2 7c1.4 0 2.7.7 3.8 1.9C13.1 7.7 14.4 7 15.8 7 18.1 7 20 8.9 20 11.3c0 3.6-3 6.4-6.6 9.2-.4.3-.9.5-1.4.5z"/></svg></span>VetCare</a>
+<ul class="menu">
+<li><a href="#inicio">Inicio</a></li>
+<li><a href="#servicios">Servicios</a></li>
+<li><a href="#equipo">Equipo</a></li>
+<li><a href="#testimonios">Testimonios</a></li>
+<li><a href="consejos.html">Primeros auxilios</a></li>
+<li><a href="#faq">FAQ</a></li>
+<li><a href="#contacto">Contacto</a></li>
+</ul>
+<div class="nav-right">
+<a href="tel:+34900123456" class="btn btn-orange nav-cta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span class="t">Urgencias 24h</span></a>
+<button class="burger" aria-label="Menú" onclick="document.getElementById('m').classList.toggle('open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+</div>
+</div>
+<div class="mobile" id="m">
+<a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#equipo">Equipo</a><a href="#testimonios">Testimonios</a><a href="consejos.html">Primeros auxilios</a><a href="#faq">FAQ</a><a href="#contacto">Contacto</a><a href="cita.html">Pedir cita online</a>
+</div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+<div class="wrap hero-grid">
+<div>
+<span class="badge"><span class="dot"></span>Clínica Abierta · Urgencias 24h</span>
+<h1>Cuidamos de ellos como si fueran <span class="hl">nuestros</span></h1>
+<p class="lead">Una clínica veterinaria moderna donde la tecnología avanzada se une con un amor incondicional por los animales. Porque tu tranquilidad y su bienestar son nuestra prioridad.</p>
+<div class="hero-cta">
+<a href="cita.html" class="btn btn-teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Pedir Cita Online →</a>
+<a href="tel:+34900123456" class="btn btn-orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>Urgencias 24h</a>
+</div>
+<div class="hero-social">
+<div class="avatars">
+<span style="background-image:url('https://i.pravatar.cc/80?img=32')"></span>
+<span style="background-image:url('https://i.pravatar.cc/80?img=11')"></span>
+<span style="background-image:url('https://i.pravatar.cc/80?img=45')"></span>
+<span style="background-image:url('https://i.pravatar.cc/80?img=5')"></span>
+</div>
+<div><div class="stars">★★★★★</div><small><span class="counter" data-count="2000">0</span>+ mascotas felices</small></div>
+</div>
+</div>
+<div class="hero-media">
+<div class="photo"><img src="https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb?auto=format&fit=crop&w=900&q=80" alt="Veterinaria atendiendo a un gato en consulta"/></div>
+<div class="cert">
+<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></span>
+<div><b>Certificados</b><small>Cat Friendly Clinic</small></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="services" id="servicios">
+<div class="wrap">
+<div class="sec-head" data-reveal>
+<span class="eyebrow">Nuestros servicios</span>
+<h2>Atención integral para cada etapa de su vida</h2>
+<p>Desde su primer cachorro hasta sus años dorados, ofrecemos todo lo que tu compañero necesita bajo un mismo techo, con tecnología de vanguardia y mucho amor.</p>
+</div>
+<div class="bento stagger">
+<div class="b-card b-blue b-span2">
+<span class="b-ic">*</span>
+<h3>Urgencias veterinarias</h3>
+<p>Atención inmediata cuando más lo necesitas. Priorizamos los casos críticos para salvar vidas.</p>
+<a href="tel:+34900123456" class="btn-white">Llamar ahora</a>
+</div>
+<div class="b-card"><div class="b-ic b-ic-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3h6M9 8h6M9 13h4"/></svg></div><h3>Consultas</h3><p>Revisiones generales y seguimiento de patologías.</p></div>
+<div class="b-card"><div class="b-ic b-ic-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg></div><h3>Vacunaciones</h3><p>Protocolos preventivos para todas las edades.</p></div>
+<div class="b-card"><div class="b-ic b-ic-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.1 15.9M14.5 14.5L20 20M8.1 8.1L12 12"/></svg></div><h3>Cirugía</h3><p>Quirófano equipado para intervenciones seguras.</p></div>
+<div class="b-card"><div class="b-ic b-ic-orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.2 4.2l2.8 2.8M17 17l2.8 2.8M1 12h4M19 12h4M4.2 19.8l2.8-2.8M17 7l2.8-2.8"/></svg></div><h3>Diagnóstico</h3><p>Radiografía digital y analíticas completas.</p></div>
+<div class="b-card b-green b-span2"><div class="b-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 2v6a2 2 0 1 1-4 0V2"/><path d="M5 8v14"/><path d="M19 2c-1.5 0-3 1.5-3 4s1.5 4 3 4v10"/></svg></div><h3>Asesoramiento Nutricional</h3><p>Dietas personalizadas para cada etapa de vida.</p></div>
+<div class="b-card"><div class="b-ic b-ic-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div><h3>Peluquería</h3><p>Higiene y estética para tu mascota.</p></div>
+<div class="b-card"><div class="b-ic b-ic-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg></div><h3>A domicilio</h3><p>Llevamos el cuidado a la puerta de tu casa.</p></div>
+</div>
+</div>
+</section>
+
+<!-- WHY (teal) -->
+<section class="why">
+<div class="wrap why-grid">
+<div data-reveal>
+<h2>¿Por qué confiar en nosotros?</h2>
+<p class="big">Creemos que la medicina veterinaria moderna no debe estar reñida con la calidad y la empatía. Combinamos la mejor ciencia con el mayor cuidado humano.</p>
+</div>
+<div class="why-cards stagger">
+<div class="why-card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Bienestar sin estrés</h3><p>Ofrecemos una experiencia calmada y protocolos Cat Friendly para minimizar el miedo y la ansiedad.</p></div>
+<div class="why-card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg></div><h3>Tecnología avanzada</h3><p>Equipamiento moderno para un diagnóstico preciso y tratamientos de última generación.</p></div>
+<div class="why-card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><h3>Trato cercano</h3><p>Te explicamos todo con claridad y te acompañamos en cada decisión sobre tu mascota.</p></div>
+<div class="why-card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Siempre disponibles</h3><p>Urgencias 24 horas, porque las emergencias no entienden de horarios.</p></div>
+</div>
+</div>
+</section>
+
+<!-- EQUIPO -->
+<section id="equipo">
+<div class="wrap">
+<div class="sec-head" data-reveal>
+<span class="eyebrow">Nuestro equipo</span>
+<h2>Profesionales con vocación real</h2>
+<p>Detrás de cada diagnóstico acertado hay un veterinario que no dejó de estudiar, y detrás de cada caricia hay alguien que ama genuinamente a los animales.</p>
+</div>
+<div class="team-grid stagger">
+<div class="member"><div class="ph" style="background-image:url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=600&q=80')"></div><div class="info"><h3>Dra. Elena Valdés</h3><div class="role">Directora Médica &amp; Cirugía</div><p>Especialista en cirugía de tejidos blandos y traumatología. +15 años salvando vidas.</p></div></div>
+<div class="member"><div class="ph" style="background-image:url('https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&q=80')"></div><div class="info"><h3>Dr. Carlos Mendoza</h3><div class="role">Medicina Interna &amp; Eco</div><p>Apasionado del diagnóstico por imagen y la medicina interna felina. Certificado ISFM.</p></div></div>
+<div class="member"><div class="ph" style="background-image:url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80')"></div><div class="info"><h3>Dra. Sofía Torres</h3><div class="role">Dermatología &amp; General</div><p>Dedicada a devolver el confort a pacientes con alergias complejas. Amorosa y paciente.</p></div></div>
+</div>
+</div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="tst" id="testimonios">
+<div class="wrap">
+<div class="sec-head" data-reveal>
+<span class="eyebrow">Familias felices</span>
+<h2>La confianza se gana día a día</h2>
+</div>
+<div class="deck" id="tstDeck" data-reveal aria-live="polite">
+<div class="quote"><div class="stars">★★★★★</div><p>"Llegamos de urgencia a las 3AM con nuestro perro Max intoxicado. La rapidez, el trato y la calma que nos transmitieron fue increíble. Le salvaron la vida."</p><div class="who"><span style="background-image:url('https://i.pravatar.cc/80?img=15')"></span><div><b>María Fernández</b><small>Dueña de Max (Golden Retriever)</small></div></div></div>
+<div class="quote"><div class="stars">★★★★★</div><p>"Mi gata Luna es muy asustadiza y aquí la tratan con una paciencia y un cariño increíbles. Se nota que aman lo que hacen. No iría a ningún otro sitio."</p><div class="who"><span style="background-image:url('https://i.pravatar.cc/80?img=52')"></span><div><b>Javier Ruiz</b><small>Dueño de Luna (Gato Común Europeo)</small></div></div></div>
+<div class="quote"><div class="stars">★★★★★</div><p>"Acompañaron a nuestra Kira hasta el final con un respeto y una humanidad enormes. Son grandes profesionales y mejores personas. Gracias de corazón."</p><div class="who"><span style="background-image:url('https://i.pravatar.cc/80?img=24')"></span><div><b>Laura Gómez</b><small>Dueña de Kira (Mastín, 14 años)</small></div></div></div>
+<div class="quote"><div class="stars">★★★★★</div><p>"Seguimos el postoperatorio de Rocky por WhatsApp con fotos y respuestas al momento. Nunca habíamos sentido tanta tranquilidad tras una cirugía."</p><div class="who"><span style="background-image:url('https://i.pravatar.cc/80?img=68')"></span><div><b>Andoni Etxebeste</b><small>Dueño de Rocky (Border Collie)</small></div></div></div>
+</div>
+<p class="deck-hint">Toca la tarjeta para pasar a la siguiente</p>
+</div>
+</section>
+
+<!-- CALCULADORA -->
+<section class="calc-sec" id="calculadora" aria-label="Calculadora de edad">
+<div class="wrap">
+<div class="sec-head" data-reveal>
+<span class="eyebrow">Para curiosos</span>
+<h2>¿Cuántos años "humanos" tiene tu mascota?</h2>
+<p>Una estimación orientativa según especie y tamaño. Su edad real la cuenta mejor una revisión.</p>
+</div>
+<div class="calc" data-reveal>
+<div class="c-chips" role="radiogroup" aria-label="Tipo de mascota">
+<label><input type="radio" name="cPet" value="gato" checked/><span>🐱 Gato</span></label>
+<label><input type="radio" name="cPet" value="pperro"/><span>🐶 Perro pequeño</span></label>
+<label><input type="radio" name="cPet" value="gperro"/><span>🐕 Perro grande</span></label>
+</div>
+<label class="c-age" for="cAge">Edad real: <output id="cAgeOut">3</output> años
+<input type="range" min="1" max="18" step="1" value="3" id="cAge"/>
+</label>
+<div class="c-res" aria-live="polite">
+<span class="big" id="cRes">28</span>
+<small>años humanos aproximados</small>
+<p id="cNote">En plena forma. Una revisión anual y vacunas al día es todo lo que pide.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+<div class="wrap">
+<div class="sec-head" data-reveal>
+<span class="eyebrow">Preguntas frecuentes</span>
+<h2>Resolvemos tus dudas</h2>
+</div>
+<div class="faq-list stagger">
+<details class="faq-item"><summary>¿Necesito pedir cita previa?</summary><p>Para consultas y revisiones sí, para agilizar tu visita. Las urgencias las atendemos siempre, con o sin cita, a cualquier hora.</p></details>
+<details class="faq-item"><summary>¿Qué animales atendéis?</summary><p>Perros, gatos y otros animales de compañía. Si tienes dudas sobre una especie en concreto, llámanos y te lo confirmamos.</p></details>
+<details class="faq-item"><summary>¿Trabajáis con seguros veterinarios?</summary><p>Sí, trabajamos con las principales aseguradoras. Trae tu póliza el día de la cita y te lo gestionamos en el momento.</p></details>
+<details class="faq-item"><summary>¿Cuánto tarda una consulta general?</summary><p>Entre 20 y 30 minutos, dependiendo del motivo. En cirugías y pruebas de diagnóstico te damos un tiempo estimado al reservar.</p></details>
+</div>
+</div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+<div class="wrap">
+<div class="sec-head" data-reveal>
+<span class="eyebrow">Contacto</span>
+<h2>Estamos aquí para vosotros</h2>
+<p>Ya sea para una revisión rutinaria o una emergencia en mitad de la noche, las puertas de VetCare están abiertas.</p>
+</div>
+<div class="contact-grid stagger">
+<div class="cbox">
+<div class="info-item urg"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><div><b>Urgencias 24 horas</b><span class="big-tel">900 123 456</span><br/><small>Llama antes de venir para preparar todo.</small></div></div>
+<div class="info-item"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><b>Horario de Consultas</b>Lunes a Viernes: 09:00 – 20:30<br/>Sábados: 10:00 – 14:00</div></div>
+<div class="info-item"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-7-10a7 7 0 0 1 14 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.5"/></svg></span><div><b>Ubicación</b>Calle Mayor 12<br/>20400 Tolosa, Gipuzkoa</div></div>
+<a href="cita.html" class="btn btn-teal" style="margin-top:8px;">Pedir Cita Online →</a>
+</div>
+<div class="map">
+<iframe title="Ubicación" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-2.0930%2C43.1280%2C-2.0640%2C43.1420&amp;layer=mapnik&amp;marker=43.1350%2C-2.0785"></iframe>
+</div>
+</div>
+</div>
+</section>
+
+<div class="sticky-cta" id="stickyCta">
+<div class="info"><b>VetCare</b><span>Urgencias 24h · Tolosa</span></div>
+<a href="cita.html" class="btn btn-teal" style="padding:11px 20px;">Pedir Cita →</a>
+</div>
+
+<footer>
+<div class="wrap">
+<div class="foot-grid">
+<div>
+<a href="#inicio" class="logo"><span class="mk"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21c-.5 0-1-.2-1.4-.5C7 17.7 4 14.9 4 11.3 4 8.9 5.9 7 8.2 7c1.4 0 2.7.7 3.8 1.9C13.1 7.7 14.4 7 15.8 7 18.1 7 20 8.9 20 11.3c0 3.6-3 6.4-6.6 9.2-.4.3-.9.5-1.4.5z"/></svg></span>VetCare</a>
+<p style="margin-top:16px;max-width:32ch;font-size:14px;">Cuidamos de ellos como si fueran nuestros. Medicina veterinaria avanzada con corazón, para que estén siempre mejor.</p>
+</div>
+<div>
+<h4>Enlaces Rápidos</h4>
+<ul>
+<li><a href="#inicio">Inicio</a></li>
+<li><a href="#servicios">Nuestros Servicios</a></li>
+<li><a href="#equipo">El Equipo Médico</a></li>
+<li><a href="#testimonios">Testimonios</a></li>
+<li><a href="#contacto">Contacto y Citas</a></li>
+</ul>
+</div>
+<div>
+<h4>Servicios</h4>
+<ul>
+<li><a href="#servicios">Medicina Preventiva</a></li>
+<li><a href="#servicios">Cirugía Especializada</a></li>
+<li><a href="#servicios">Diagnóstico por Imagen</a></li>
+<li><a href="#servicios">Planes de Salud</a></li>
+<li><a href="#servicios">Urgencias 24h</a></li>
+</ul>
+</div>
+<div>
+<h4>Legal</h4>
+<ul>
+<li><a href="#">Aviso Legal</a></li>
+<li><a href="#">Política de Privacidad</a></li>
+<li><a href="#">Política de Cookies</a></li>
+<li><a href="#">Términos de Servicio</a></li>
+</ul>
+</div>
+</div>
+<div class="foot-bottom">
+<span>© 2026 VetCare · Clínica Veterinaria. Todos los derechos reservados.</span>
+<span>Hecho con amor para las mascotas 🐾</span>
+</div>
+</div>
+</footer>
+
+<script>
+  document.querySelectorAll('#m a').forEach(function(a){ a.onclick=function(){ document.getElementById('m').classList.remove('open'); }; });
+
+  var progress = document.getElementById('progress');
+  var stickyCta = document.getElementById('stickyCta');
+  addEventListener('scroll', function(){
+    var h = document.documentElement;
+    var pct = h.scrollTop / (h.scrollHeight - h.clientHeight) * 100;
+    progress.style.width = pct + '%';
+    stickyCta.classList.toggle('show', scrollY > innerHeight * 0.6);
+  }, {passive:true});
+
+  var reduceMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var revealEls = document.querySelectorAll('[data-reveal], .stagger');
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+      });
+    }, {threshold:.01, rootMargin:'0px 0px -10px 0px'});
+    revealEls.forEach(function(el){ io.observe(el); });
+    // Red de seguridad: si algo no se revela solo por scroll, se muestra igualmente
+    setTimeout(function(){ revealEls.forEach(function(el){ el.classList.add('is-visible'); }); }, 2500);
+  }
+
+  function animateCounter(el){
+    var target = parseInt(el.dataset.count, 10), start = null, dur = 1400;
+    function step(ts){
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      el.textContent = Math.floor(p * target).toLocaleString('es-ES');
+      if (p < 1) requestAnimationFrame(step); else el.textContent = target.toLocaleString('es-ES');
+    }
+    requestAnimationFrame(step);
+  }
+  var counters = document.querySelectorAll('.counter');
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    counters.forEach(function(el){ el.textContent = parseInt(el.dataset.count, 10).toLocaleString('es-ES'); });
+  } else {
+    var cio = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { animateCounter(e.target); cio.unobserve(e.target); }
+      });
+    }, {threshold:.6});
+    counters.forEach(function(el){ cio.observe(el); });
+  }
+
+  // Calculadora de edad
+  var cAge = document.getElementById('cAge');
+  if (cAge) {
+    var cRes = document.getElementById('cRes'), cNote = document.getElementById('cNote'), cAgeOut = document.getElementById('cAgeOut');
+    function calcEdad(){
+      var pet = document.querySelector('input[name="cPet"]:checked').value;
+      var y = parseInt(cAge.value, 10);
+      var extra = pet === 'gperro' ? 5.5 : 4;
+      var res = y === 1 ? 15 : Math.round(24 + (y - 2) * extra);
+      cAgeOut.textContent = y;
+      cRes.textContent = res;
+      cRes.classList.add('pop');
+      setTimeout(function(){ cRes.classList.remove('pop'); }, 160);
+      var esGato = pet === 'gato';
+      if (res < 30) cNote.innerHTML = 'En plena forma. Una <b>revisión anual</b> y vacunas al día es todo lo que pide.';
+      else if (res < 55) cNote.innerHTML = 'Edad adulta: buen momento para una <b>revisión dental</b> y control de peso.';
+      else cNote.innerHTML = (esGato ? 'Ya es un abuelete respetable. ' : 'Etapa senior. ') + 'Le cuidamos con el <b>plan senior</b>: analítica y chequeo cada 6 meses.';
+    }
+    cAge.addEventListener('input', calcEdad);
+    document.querySelectorAll('input[name="cPet"]').forEach(function(r){ r.addEventListener('change', calcEdad); });
+    calcEdad();
+  }
+
+  // Baraja de testimonios: rota sola y avanza al tocarla
+  var deck = document.getElementById('tstDeck');
+  if (deck && !reduceMotion) {
+    var dCards = Array.prototype.slice.call(deck.children);
+    var dHead = 0;
+    var paint = function(){
+      dCards.forEach(function(c, i){
+        var pos = (i - dHead + dCards.length) % dCards.length;
+        c.className = 'quote ' + (pos < 3 ? 'p' + pos : 'phide');
+      });
+    };
+    var advance = function(){
+      dCards[dHead].classList.add('pout');
+      dHead = (dHead + 1) % dCards.length;
+      setTimeout(paint, 320);
+    };
+    paint();
+    var deckTimer = setInterval(advance, 5000);
+    deck.addEventListener('click', function(){
+      clearInterval(deckTimer);
+      advance();
+      deckTimer = setInterval(advance, 5000);
+    });
+  }
+</script>
+</body>
+</html>

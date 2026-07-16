@@ -1,0 +1,226 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Encargos — Errotaberri · Panadería artesana en Tolosa</title>
+<meta name="description" content="Haz tu encargo en Errotaberri: elige productos, cantidad y día de recogida. Te lo confirmamos por WhatsApp y lo tienes recién hecho."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --cream:#f5f0e8; --cream2:#efe8dc; --paper:#fbf8f2;
+    --ink:#2c231b; --body:#6b5f52; --muted:#7d7060;
+    --terra:#c07a35; --terra-dark:#a5652a; --line:#e2d9ca;
+    --serif:"Playfair Display",Georgia,serif; --sans:"Lora",Georgia,serif;
+  }
+  *{box-sizing:border-box;margin:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--sans);background:var(--cream);color:var(--body);line-height:1.7;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{font-family:var(--serif);color:var(--ink);font-weight:600;line-height:1.12;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+  .label{font-family:var(--sans);text-transform:uppercase;letter-spacing:.24em;font-size:12px;font-weight:600;color:var(--terra);}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--sans);font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:13px;padding:16px 30px;cursor:pointer;border:1px solid transparent;transition:all .2s;}
+  .btn-terra{background:var(--terra);color:#fff;}
+  .btn-terra:hover{background:var(--terra-dark);}
+  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--terra);outline-offset:2px;}
+  @media(prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important;} }
+
+  header{position:sticky;top:0;z-index:40;padding:0 16px;}
+  .nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:78px;color:#fff;background:rgba(33,26,19,.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.14);border-radius:0 0 22px 22px;max-width:1180px;margin:0 auto;padding:0 30px;box-shadow:0 18px 40px -18px rgba(0,0,0,.4);}
+  .back{font-size:13px;letter-spacing:.12em;text-transform:uppercase;}
+  .back:hover{color:#e7c9a3;}
+  .brand{text-align:center;}
+  .brand .nm{font-family:var(--serif);font-size:24px;color:#fff;font-weight:600;}
+  .brand .sb{font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.8);margin-top:2px;}
+
+  .page{padding:64px 0 100px;}
+  .page-head{max-width:640px;margin:0 auto 50px;text-align:center;}
+  .page-head h1{font-size:clamp(36px,5vw,58px);margin:16px 0 14px;}
+  .page-head p{font-size:16.5px;}
+
+  .order-grid{display:grid;gap:36px;align-items:start;}
+  @media(min-width:960px){ .order-grid{grid-template-columns:1.5fr 1fr;} }
+
+  .prods{display:grid;gap:14px;}
+  .prod-row{display:flex;align-items:center;gap:18px;background:var(--paper);border:1px solid var(--line);padding:18px 22px;}
+  .prod-row .tx{flex:1;}
+  .prod-row h3{font-size:20px;}
+  .prod-row small{font-size:13px;color:var(--muted);display:block;}
+  .prod-row .pr{font-family:var(--serif);color:var(--terra);font-size:16px;white-space:nowrap;}
+  .qty{display:flex;align-items:center;gap:0;border:1px solid var(--line);background:var(--cream);}
+  .qty button{width:38px;height:38px;border:none;background:none;font-size:19px;color:var(--terra);cursor:pointer;font-family:var(--sans);transition:background .15s;}
+  .qty button:hover{background:var(--cream2);}
+  .qty output{width:34px;text-align:center;font-weight:600;color:var(--ink);font-size:15px;}
+
+  .summary{background:var(--ink);color:#d8ccbb;padding:30px;position:sticky;top:100px;}
+  .summary h2{color:#fff;font-size:24px;margin-bottom:6px;}
+  .summary .sub{font-size:13px;color:#b6a893;margin-bottom:18px;}
+  .sum-list{display:grid;gap:8px;font-size:14px;min-height:24px;margin-bottom:14px;}
+  .sum-list .row{display:flex;justify-content:space-between;gap:12px;}
+  .sum-list .row span:last-child{color:#fff;white-space:nowrap;}
+  .sum-empty{font-size:13.5px;color:#8a7c69;font-style:italic;}
+  .total{display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,.15);padding-top:14px;margin-bottom:22px;font-family:var(--serif);font-size:20px;color:#fff;}
+  .fgrid{display:grid;gap:14px;}
+  label{display:block;font-weight:600;font-size:12.5px;color:#fff;margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em;}
+  input,select,textarea{width:100%;font-family:var(--sans);font-size:14.5px;color:var(--ink);background:var(--cream);border:1px solid var(--line);padding:12px 14px;}
+  textarea{resize:vertical;min-height:70px;}
+  .summary .btn{width:100%;margin-top:20px;}
+  .summary small.note{display:block;margin-top:12px;font-size:12px;color:#8a7c69;}
+  .ok{display:none;margin-top:14px;border:1px solid #e7c9a3;color:#e7c9a3;padding:12px 15px;font-size:13.5px;}
+  .ok.show{display:block;}
+
+  footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;font-size:13px;color:var(--muted);}
+  footer a{color:var(--terra);font-weight:600;}
+</style>
+</head>
+<body>
+
+<header>
+<div class="nav">
+<a href="index.html" class="back">← Volver</a>
+<div class="brand"><div class="nm">Errotaberri</div><div class="sb">Encargos</div></div>
+<div></div>
+</div>
+</header>
+
+<section class="page">
+<div class="wrap">
+<div class="page-head">
+<span class="label">Recién hecho, para ti</span>
+<h1>Haz tu encargo</h1>
+<p>Elige lo que quieras, dinos cuándo lo recoges y te lo tenemos preparado y recién hecho. Confirmamos todos los encargos por WhatsApp.</p>
+</div>
+
+<div class="order-grid">
+
+<div class="prods" id="prods">
+<div class="prod-row" data-name="Hogaza de masa madre" data-price="3.80">
+<div class="tx"><h3>Hogaza de masa madre</h3><small>Fermentación lenta de 24h, corteza crujiente</small></div>
+<span class="pr">3,80€</span>
+<div class="qty"><button type="button" data-d="-1" aria-label="Quitar una hogaza">−</button><output>0</output><button type="button" data-d="1" aria-label="Añadir una hogaza">+</button></div>
+</div>
+<div class="prod-row" data-name="Barra artesana" data-price="1.40">
+<div class="tx"><h3>Barra artesana</h3><small>La de todos los días, con harinas del país</small></div>
+<span class="pr">1,40€</span>
+<div class="qty"><button type="button" data-d="-1" aria-label="Quitar una barra">−</button><output>0</output><button type="button" data-d="1" aria-label="Añadir una barra">+</button></div>
+</div>
+<div class="prod-row" data-name="Croissant de mantequilla" data-price="1.50">
+<div class="tx"><h3>Croissant de mantequilla</h3><small>Hojaldrado a mano, mantequilla de verdad</small></div>
+<span class="pr">1,50€</span>
+<div class="qty"><button type="button" data-d="-1" aria-label="Quitar un croissant">−</button><output>0</output><button type="button" data-d="1" aria-label="Añadir un croissant">+</button></div>
+</div>
+<div class="prod-row" data-name="Napolitana de chocolate" data-price="1.60">
+<div class="tx"><h3>Napolitana de chocolate</h3><small>Chocolate del bueno, hojaldre crujiente</small></div>
+<span class="pr">1,60€</span>
+<div class="qty"><button type="button" data-d="-1" aria-label="Quitar una napolitana">−</button><output>0</output><button type="button" data-d="1" aria-label="Añadir una napolitana">+</button></div>
+</div>
+<div class="prod-row" data-name="Pastel vasco" data-price="14.00">
+<div class="tx"><h3>Pastel vasco</h3><small>Receta de la abuela, para 6-8 personas</small></div>
+<span class="pr">14,00€</span>
+<div class="qty"><button type="button" data-d="-1" aria-label="Quitar un pastel vasco">−</button><output>0</output><button type="button" data-d="1" aria-label="Añadir un pastel vasco">+</button></div>
+</div>
+<div class="prod-row" data-name="Caja de tejas (12 uds)" data-price="7.50">
+<div class="tx"><h3>Caja de tejas <small style="display:inline;">(12 uds)</small></h3><small>El dulce de siempre para regalar o compartir</small></div>
+<span class="pr">7,50€</span>
+<div class="qty"><button type="button" data-d="-1" aria-label="Quitar una caja de tejas">−</button><output>0</output><button type="button" data-d="1" aria-label="Añadir una caja de tejas">+</button></div>
+</div>
+<div class="prod-row" data-name="Tarta por encargo" data-price="0">
+<div class="tx"><h3>Tarta por encargo</h3><small>Bodas, cumpleaños, celebraciones — precio según tamaño</small></div>
+<span class="pr">a consultar</span>
+<div class="qty"><button type="button" data-d="-1" aria-label="Quitar una tarta">−</button><output>0</output><button type="button" data-d="1" aria-label="Añadir una tarta">+</button></div>
+</div>
+</div>
+
+<form class="summary" id="f" novalidate>
+<h2>Tu encargo</h2>
+<div class="sub">Pago al recoger, en el obrador.</div>
+<div class="sum-list" id="sumList"><span class="sum-empty">Aún no has añadido nada.</span></div>
+<div class="total"><span>Total</span><span id="total">0,00€</span></div>
+<div class="fgrid">
+<div><label for="nom">Tu nombre</label><input id="nom" name="nombre" type="text" autocomplete="name" required placeholder="Miren Aranburu"/></div>
+<div><label for="tel">Teléfono</label><input id="tel" name="telefono" type="tel" autocomplete="tel" required placeholder="600 000 000"/></div>
+<div><label for="dia">Día de recogida</label><input id="dia" name="dia" type="date"/></div>
+<div><label for="hora">Hora aproximada</label>
+<select id="hora" name="hora">
+<option>Por la mañana (7:00 – 14:00)</option>
+<option>Por la tarde (17:00 – 20:00)</option>
+</select>
+</div>
+<div><label for="nota">Nota <span style="text-transform:none;letter-spacing:0;color:#8a7c69;">(opcional)</span></label><textarea id="nota" name="nota" placeholder="Sin gluten, dedicatoria de la tarta…"></textarea></div>
+</div>
+<button type="submit" class="btn btn-terra">Enviar encargo por WhatsApp</button>
+<small class="note">Se abre WhatsApp con el pedido ya escrito; solo tienes que enviarlo. No es un pago, solo la reserva.</small>
+<div class="ok" id="ok">✓ Encargo preparado. Si WhatsApp no se ha abierto, llámanos al 600 00 00 00.</div>
+</form>
+
+</div>
+</div>
+</section>
+
+<footer>© 2026 Errotaberri · Plaza Zaharra 3, Tolosa · <a href="index.html">errotaberri — inicio</a></footer>
+
+<script>
+  var rows = Array.prototype.slice.call(document.querySelectorAll('.prod-row'));
+  var sumList = document.getElementById('sumList');
+  var totalEl = document.getElementById('total');
+
+  function fmt(n){ return n.toFixed(2).replace('.', ',') + '€'; }
+
+  function render(){
+    var items = [], total = 0, consult = false;
+    rows.forEach(function(row){
+      var q = parseInt(row.querySelector('output').textContent, 10);
+      if (q > 0) {
+        var price = parseFloat(row.dataset.price);
+        items.push({name: row.dataset.name, q: q, sub: price * q, consult: price === 0});
+        total += price * q;
+        if (price === 0) consult = true;
+      }
+    });
+    if (!items.length) {
+      sumList.innerHTML = '<span class="sum-empty">Aún no has añadido nada.</span>';
+    } else {
+      sumList.innerHTML = items.map(function(it){
+        return '<div class="row"><span>' + it.q + '× ' + it.name + '</span><span>' + (it.consult ? 'a consultar' : fmt(it.sub)) + '</span></div>';
+      }).join('');
+    }
+    totalEl.textContent = fmt(total) + (consult ? ' + tarta' : '');
+    return items;
+  }
+
+  rows.forEach(function(row){
+    row.querySelectorAll('.qty button').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var out = row.querySelector('output');
+        var q = Math.max(0, parseInt(out.textContent, 10) + parseInt(btn.dataset.d, 10));
+        out.textContent = q;
+        render();
+      });
+    });
+  });
+
+  document.getElementById('f').addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var f = ev.target;
+    var items = render();
+    if (!f.nombre.value.trim() || !f.telefono.value.trim()) {
+      (!f.nombre.value.trim() ? f.nombre : f.telefono).focus();
+      return;
+    }
+    if (!items.length) { alert('Añade al menos un producto a tu encargo.'); return; }
+    var lineas = ['Hola, quiero hacer un encargo en Errotaberri:'];
+    items.forEach(function(it){ lineas.push('• ' + it.q + '× ' + it.name); });
+    lineas.push('• Total aprox.: ' + totalEl.textContent);
+    lineas.push('• Recogida: ' + (f.dia.value || 'a concretar') + ' · ' + f.hora.value);
+    lineas.push('• Nombre: ' + f.nombre.value.trim() + ' · Tel: ' + f.telefono.value.trim());
+    if (f.nota.value.trim()) lineas.push('• Nota: ' + f.nota.value.trim());
+    var url = 'https://wa.me/34600000000?text=' + encodeURIComponent(lineas.join('\n'));
+    window.open(url, '_blank');
+    document.getElementById('ok').classList.add('show');
+  });
+</script>
+</body>
+</html>

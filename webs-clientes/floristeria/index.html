@@ -1,0 +1,312 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lore — Floristería en Tolosa</title>
+<meta name="description" content="Floristería en Tolosa. Ramos de temporada, flores de proximidad y encargos para bodas y eventos. Flores que cuentan lo que no sabes decir."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Karla:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --blush:#f9f2f0; --papel:#fffcfb; --linea:#ecdcd6;
+    --tinta:#43373a; --cuerpo:#7d6b6e; --suave:#a59292;
+    --salvia:#6f7d64; --salvia2:#5a684f; --rosa:#c98a8e;
+    --serif:"Cormorant Garamond",Georgia,serif; --sans:"Karla",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--sans);background:var(--blush);color:var(--cuerpo);line-height:1.7;-webkit-font-smoothing:antialiased;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{font-family:var(--serif);color:var(--tinta);font-weight:600;line-height:1.08;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 26px;}
+  .label{text-transform:uppercase;letter-spacing:.26em;font-size:11px;font-weight:600;color:var(--salvia);}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:13.5px;text-transform:uppercase;letter-spacing:.1em;padding:15px 30px;border-radius:999px;cursor:pointer;border:1.5px solid transparent;transition:all .2s;}
+  .btn-salvia{background:var(--salvia);color:#fff;}
+  .btn-salvia:hover{background:var(--salvia2);transform:translateY(-2px);}
+  .btn-linea{background:transparent;border-color:var(--tinta);color:var(--tinta);}
+  .btn-linea:hover{background:var(--tinta);color:var(--blush);}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--salvia);outline-offset:2px;}
+  @media(prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important;} }
+
+  .progress{position:fixed;top:0;left:0;height:3px;background:var(--rosa);z-index:200;width:0%;}
+  [data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
+  [data-reveal].is-visible{opacity:1;transform:translateY(0);}
+  .stagger>*{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease;}
+  .stagger.is-visible>*{opacity:1;transform:translateY(0);}
+  .stagger>*:nth-child(1){transition-delay:.02s;} .stagger>*:nth-child(2){transition-delay:.1s;} .stagger>*:nth-child(3){transition-delay:.18s;} .stagger>*:nth-child(4){transition-delay:.26s;}
+  @keyframes heroIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+  .hero .label{animation:heroIn .8s ease .05s both;}
+  .hero h1{animation:heroIn .8s ease .18s both;}
+  .hero p{animation:heroIn .8s ease .3s both;}
+  .hero-cta{animation:heroIn .8s ease .42s both;}
+  .hero-media{animation:heroIn 1s ease .25s both;}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(249,242,240,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--linea);}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px;max-width:1120px;margin:0 auto;padding:0 26px;}
+  .logo{font-family:var(--serif);font-weight:600;font-size:26px;color:var(--tinta);letter-spacing:.02em;}
+  .logo em{font-style:italic;color:var(--salvia);}
+  .menu{display:none;gap:30px;list-style:none;font-size:13px;text-transform:uppercase;letter-spacing:.12em;}
+  .menu a:hover{color:var(--salvia);}
+  @media(min-width:860px){ .menu{display:flex;} }
+  .nav .btn{padding:10px 20px;}
+
+  .hero{padding:70px 0 0;}
+  .hero-top{max-width:640px;margin:0 auto;text-align:center;}
+  .hero h1{font-size:clamp(40px,6.4vw,72px);margin:18px 0 20px;}
+  .hero h1 em{font-style:italic;color:var(--salvia);}
+  .hero p{font-size:16.5px;max-width:46ch;margin:0 auto;}
+  .hero-cta{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:32px;}
+
+  /* Cabecera que se expande con el scroll: el ramo pasa de tarjeta pequeña a foto a pantalla completa */
+  .hero-expand{position:relative;height:190vh;margin-top:20px;}
+  .hero-expand__pin{position:sticky;top:84px;height:calc(100vh - 84px);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+  .hero-expand__media{position:relative;overflow:hidden;box-shadow:0 30px 70px -26px rgba(67,55,58,.45);max-width:94vw;max-height:80vh;}
+  .hero-expand__media img{width:100%;height:100%;object-fit:cover;display:block;}
+  .hero-expand__media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(67,55,58,0) 55%,rgba(67,55,58,.5));opacity:var(--fade,1);}
+  .petalo{position:absolute;font-size:22px;animation:petalo 7s linear infinite;opacity:0;z-index:2;}
+  .petalo:nth-child(2){left:12%;animation-delay:0s;}
+  .petalo:nth-child(3){left:55%;animation-delay:2.4s;}
+  .petalo:nth-child(4){left:85%;animation-delay:4.8s;}
+  @keyframes petalo{0%{transform:translateY(-30px) rotate(0deg);opacity:0;}12%{opacity:.75;}88%{opacity:.6;}100%{transform:translateY(105%) rotate(200deg);opacity:0;}}
+  @media(prefers-reduced-motion:reduce){ .hero-expand{height:auto;} .hero-expand__pin{position:relative;top:0;height:auto;padding:20px 0 60px;} }
+
+  section{padding:88px 0;}
+  .sec-head{max-width:600px;margin:0 auto 52px;text-align:center;}
+  .sec-head h2{font-size:clamp(32px,4.6vw,50px);margin-top:12px;}
+  .sec-head p{margin-top:10px;font-size:15.5px;}
+
+  /* Ramos */
+  .ramos{background:var(--papel);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);}
+  .ram-grid{display:grid;gap:22px;grid-template-columns:1fr;}
+  @media(min-width:820px){ .ram-grid{grid-template-columns:repeat(3,1fr);} }
+  .ram{border:1px solid var(--linea);border-radius:22px;overflow:hidden;background:var(--blush);transition:transform .3s,box-shadow .3s;}
+  .ram:hover{transform:translateY(-6px);box-shadow:0 26px 50px -24px rgba(67,55,58,.35);}
+  .ram .ph{aspect-ratio:4/3.4;overflow:hidden;}
+  .ram .ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1);}
+  .ram:hover .ph img{transform:scale(1.05);}
+  .ram .info{padding:22px 24px 26px;}
+  .ram h3{font-size:24px;}
+  .ram p{font-size:14px;margin:6px 0 12px;}
+  .ram .pr{font-family:var(--serif);font-size:20px;color:var(--salvia);font-weight:600;}
+  .temporada{margin-top:26px;text-align:center;border:1.5px dashed var(--rosa);border-radius:22px;padding:20px 26px;background:rgba(201,138,142,.06);font-size:14.5px;}
+  .temporada b{font-family:var(--serif);font-size:19px;color:var(--tinta);display:block;margin-bottom:4px;}
+
+  /* Reseñas: postales colgadas de un cordel */
+  .cordel-sec{overflow:hidden;}
+  .cordel{position:relative;padding-top:26px;}
+  .cordel::before{content:"";position:absolute;top:12px;left:-4%;right:-4%;height:2px;background:var(--suave);opacity:.5;transform:rotate(-.6deg);}
+  .postales{display:flex;gap:26px;width:max-content;animation:cuerda 46s linear infinite;padding:10px 0 16px;}
+  .cordel:hover .postales{animation-play-state:paused;}
+  @keyframes cuerda{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  .postal{flex:0 0 300px;background:var(--papel);border:1px solid var(--linea);border-radius:6px;padding:22px 22px 18px;box-shadow:0 16px 30px -16px rgba(67,55,58,.3);position:relative;transform:rotate(var(--g,1.4deg));}
+  .postal::before{content:"";position:absolute;top:-14px;left:50%;transform:translateX(-50%);width:16px;height:16px;border-radius:50%;background:var(--rosa);box-shadow:0 2px 4px rgba(0,0,0,.2);}
+  .postal .st{color:#d9a441;letter-spacing:2px;font-size:13px;}
+  .postal p{font-family:var(--serif);font-style:italic;font-size:16.5px;color:var(--tinta);line-height:1.5;margin:10px 0 12px;}
+  .postal b{font-size:13px;color:var(--tinta);}
+  .postal small{display:block;color:var(--suave);font-size:11.5px;}
+  @media(prefers-reduced-motion:reduce){ .postales{animation:none;} .cordel{overflow-x:auto;} }
+
+  /* Visita */
+  .visita-grid{display:grid;gap:40px;grid-template-columns:1fr;}
+  @media(min-width:880px){ .visita-grid{grid-template-columns:1fr 1fr;align-items:center;} }
+  .visita h2{font-size:clamp(30px,4.4vw,46px);margin-bottom:20px;}
+  .fila{display:flex;gap:13px;margin-bottom:15px;font-size:15px;}
+  .fila b{color:var(--tinta);display:block;font-weight:600;}
+  .fila svg{width:19px;height:19px;color:var(--salvia);flex-shrink:0;margin-top:4px;}
+  .map{border-radius:24px;overflow:hidden;border:1px solid var(--linea);box-shadow:0 24px 48px -24px rgba(67,55,58,.3);min-height:320px;}
+  .map iframe{width:100%;height:100%;min-height:320px;border:0;display:block;}
+
+  .sticky-cta{position:fixed;left:50%;bottom:20px;transform:translate(-50%,140%);z-index:150;display:flex;align-items:center;gap:14px;background:var(--tinta);color:var(--blush);border-radius:999px;padding:8px 8px 8px 22px;box-shadow:0 20px 44px -14px rgba(0,0,0,.35);transition:transform .4s cubic-bezier(.16,1,.3,1);max-width:calc(100% - 32px);}
+  .sticky-cta.show{transform:translate(-50%,0);}
+  .sticky-cta .btn{border-radius:999px;}
+  .sticky-cta .info{display:flex;flex-direction:column;line-height:1.25;white-space:nowrap;}
+  .sticky-cta .info b{font-family:var(--serif);font-size:17px;}
+  .sticky-cta .info span{font-size:11.5px;color:#dcc2c4;}
+  @media(max-width:560px){ .sticky-cta .info span{display:none;} }
+
+  footer{border-top:1px solid var(--linea);padding:28px 0;text-align:center;font-size:13px;color:var(--suave);}
+  /* Mapa en arco */
+  .map{border-radius:230px 230px 24px 24px;position:relative;}
+  .map-flor{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);z-index:2;background:var(--papel);border:1px solid var(--linea);border-radius:999px;padding:8px 18px;font-size:12.5px;color:var(--tinta);box-shadow:0 10px 22px -10px rgba(67,55,58,.35);white-space:nowrap;}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header>
+<div class="nav">
+<a href="#inicio" class="logo">Lore<em>.</em></a>
+<ul class="menu">
+<li><a href="#ramos">Ramos</a></li>
+<li><a href="bodas.html">Bodas y eventos</a></li>
+<li><a href="#visita">La tienda</a></li>
+</ul>
+<a href="encargo.html" class="btn btn-salvia">Encargar ramo</a>
+</div>
+</header>
+
+<section class="hero" id="inicio">
+<div class="wrap hero-top">
+<span class="label">Floristería · Tolosa</span>
+<h1>Flores que dicen lo que <em>no sabes decir.</em></h1>
+<p>Trabajamos con flor de temporada y productores cercanos. Cada ramo se monta al momento, para esa persona y esa ocasión — no salen dos iguales.</p>
+<div class="hero-cta">
+<a href="#ramos" class="btn btn-salvia">Ver ramos</a>
+<a href="encargo.html" class="btn btn-linea">Cuéntanos la ocasión</a>
+</div>
+</div>
+<div class="hero-expand" id="heroExpand">
+<div class="hero-expand__pin">
+<div class="hero-expand__media" id="heroMedia">
+<span class="petalo" aria-hidden="true">🌸</span><span class="petalo" aria-hidden="true">🌸</span><span class="petalo" aria-hidden="true">🌺</span><span class="petalo" aria-hidden="true">🌸</span>
+<img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1400&q=80" alt="Ramo de flores frescas" width="1400" height="1600" fetchpriority="high"/>
+</div>
+</div>
+</div>
+</section>
+
+<section class="ramos" id="ramos">
+<div class="wrap">
+<div class="sec-head" data-reveal>
+<span class="label">Nuestros ramos</span>
+<h2>Tres maneras de acertar</h2>
+</div>
+<div class="ram-grid stagger">
+<div class="ram"><div class="ph"><img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=700&q=80" alt="Ramo de temporada" loading="lazy"/></div><div class="info"><h3>El de temporada</h3><p>Lo mejor del mercado esta semana, combinado por nosotras. Déjate sorprender.</p><span class="pr">desde 25€</span></div></div>
+<div class="ram"><div class="ph"><img src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?auto=format&fit=crop&w=700&q=80" alt="Ramo a medida" loading="lazy"/></div><div class="info"><h3>El de "es para…"</h3><p>Nos cuentas la persona y la ocasión, y lo montamos hablando contigo. El que más se regala.</p><span class="pr">desde 35€</span></div></div>
+<div class="ram"><div class="ph"><img src="https://images.unsplash.com/photo-1469259943454-aa100abba749?auto=format&fit=crop&w=700&q=80" alt="Flores para eventos" loading="lazy"/></div><div class="info"><h3>El de los días grandes</h3><p>Bodas, bautizos y mesas que se recuerdan. Con visita previa y propuesta por escrito.</p><span class="pr">a presupuesto</span></div></div>
+</div>
+<div class="temporada" data-reveal id="eventos">
+<b id="tempTitulo">🌷 Ahora es temporada de: peonías</b>
+<span id="tempTxt">Duran poco y por eso son especiales. Avísanos y te guardamos las del jueves.</span>
+</div>
+</div>
+</section>
+
+<section class="cordel-sec" aria-label="Opiniones">
+<div class="wrap">
+<div class="sec-head" data-reveal>
+<span class="label">Notas de agradecimiento</span>
+<h2>Postales que nos llegan</h2>
+</div>
+</div>
+<div class="cordel" data-reveal>
+<div class="postales" id="postales">
+<div class="postal" style="--g:-1.6deg"><div class="st">★★★★★</div><p>"El ramo de aniversario hizo llorar a mi madre. Cuarenta años de casada y dice que nunca le habían regalado flores así."</p><b>Amaia G.</b><small>Encargo de aniversario</small></div>
+<div class="postal" style="--g:1.2deg"><div class="st">★★★★★</div><p>"Les conté tres cosas de mi novia y montaron un ramo que parecía conocerla de toda la vida."</p><b>Unai M.</b><small>El de "es para…"</small></div>
+<div class="postal" style="--g:-.9deg"><div class="st">★★★★★</div><p>"Las flores de nuestra boda siguen apareciendo en las fotos que nos manda la gente. Gracias por tanto mimo."</p><b>Julen & Nora</b><small>Boda · septiembre 2025</small></div>
+<div class="postal" style="--g:1.5deg"><div class="st">★★★★★</div><p>"Voy cada viernes a por el de temporada. Ya ni pregunto qué lleva: nunca han fallado."</p><b>Itxaso L.</b><small>Clienta de los viernes</small></div>
+<div class="postal" style="--g:-1.2deg"><div class="st">★★★★★</div><p>"Pedí flores para un funeral y supieron estar a la altura con una delicadeza que no olvidaré."</p><b>Familia Arrieta</b><small>Con cariño</small></div>
+</div>
+</div>
+</section>
+
+<section id="visita">
+<div class="wrap visita-grid stagger">
+<div class="visita">
+<span class="label">La tienda</span>
+<h2>Huele mejor de lo que se ve</h2>
+<div class="fila"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><b>Horario</b>Lu–Sá 9:30–13:30 · 16:30–19:30 · Domingo cerrado</div></div>
+<div class="fila"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-7-10a7 7 0 0 1 14 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.5"/></svg><div><b>Dirección</b>Plaza Verdura 4, Tolosa (Gipuzkoa)</div></div>
+<div class="fila"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><div><b>Encargos y envíos en Tolosaldea</b>+34 600 00 00 00 — pedidos antes de las 12:00, entrega el mismo día</div></div>
+<div style="margin-top:26px;"><a href="https://wa.me/34600000000?text=Hola%2C%20quiero%20encargar%20un%20ramo%20en%20Lore" target="_blank" rel="noopener" class="btn btn-salvia">Encargar por WhatsApp</a></div>
+</div>
+<div class="map"><span class="map-flor">🌸 Plaza Verdura 4 — junto al mercado</span><iframe title="Ubicación Lore Floristería" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-2.0930%2C43.1280%2C-2.0640%2C43.1420&amp;layer=mapnik&amp;marker=43.1350%2C-2.0785"></iframe></div>
+</div>
+</section>
+
+<div class="sticky-cta" id="stickyCta">
+<div class="info"><b>Lore.</b><span>Pedidos antes de las 12:00 → hoy mismo</span></div>
+<a href="encargo.html" class="btn btn-salvia" style="padding:12px 22px;">Encargar →</a>
+</div>
+
+<footer>© 2026 Lore Floristería · Tolosa, Gipuzkoa</footer>
+
+<script>
+  var progress = document.getElementById('progress');
+  var stickyCta = document.getElementById('stickyCta');
+  var reduceMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  addEventListener('scroll', function(){
+    var h = document.documentElement;
+    progress.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+    stickyCta.classList.toggle('show', scrollY > innerHeight * 0.6);
+  }, {passive:true});
+
+  // Flor de temporada según el mes
+  var FLORES = [
+    ['🌷 Ahora es temporada de: tulipanes', 'Han llegado en veinte colores. Los holandeses, celosos.'],
+    ['🌷 Ahora es temporada de: tulipanes', 'Han llegado en veinte colores. Los holandeses, celosos.'],
+    ['🌼 Ahora es temporada de: mimosa y ranúnculos', 'La primavera empieza en el mostrador.'],
+    ['🌸 Ahora es temporada de: peonías', 'Duran poco y por eso son especiales. Avísanos y te guardamos las del jueves.'],
+    ['🌸 Ahora es temporada de: peonías', 'Duran poco y por eso son especiales. Avísanos y te guardamos las del jueves.'],
+    ['🌻 Ahora es temporada de: girasoles y lisianthus', 'El verano en un jarrón.'],
+    ['🌻 Ahora es temporada de: girasoles y lisianthus', 'El verano en un jarrón.'],
+    ['💜 Ahora es temporada de: lavanda y hortensias', 'Se secan de maravilla: belleza que se queda.'],
+    ['🍂 Ahora es temporada de: dalias', 'La reina del otoño, en mil formas imposibles.'],
+    ['🍂 Ahora es temporada de: dalias y crisantemos', 'Colores de otoño para alegrar los días cortos.'],
+    ['❄️ Ahora es temporada de: anémonas', 'Elegancia de invierno en blanco y burdeos.'],
+    ['🎄 Ahora es temporada de: ilex y amaryllis', 'Las fiestas también se decoran con flor fresca.']
+  ];
+  var mes = new Date().getMonth();
+  document.getElementById('tempTitulo').textContent = FLORES[mes][0];
+  document.getElementById('tempTxt').textContent = FLORES[mes][1];
+
+  // Cordel de postales: duplicar para el bucle infinito
+  var postales = document.getElementById('postales');
+  if (postales && !reduceMotion) postales.innerHTML += postales.innerHTML;
+
+  // Cabecera que se expande con el scroll (sin bloquear el gesto de scroll,
+  // para que en movil sea fluido: se calcula el progreso a partir de la
+  // posicion real del contenedor, igual que un position:sticky normal).
+  var heroExpand = document.getElementById('heroExpand');
+  var heroMedia = document.getElementById('heroMedia');
+  if (heroExpand && heroMedia && !reduceMotion) {
+    var HEADER_OFF = 84;
+    var ticking = false;
+    var sizeFor = function (p) {
+      var mobile = innerWidth < 640;
+      var bw = mobile ? 210 : 380, aw = mobile ? innerWidth - 20 - 210 : 720;
+      var bh = mobile ? 280 : 430, ah = mobile ? 380 : 470;
+      var w = bw + p * aw, h = bh + p * ah;
+      var rTop = 250 - p * 224;
+      return { w: w, h: h, rTop: rTop };
+    };
+    var update = function () {
+      ticking = false;
+      var rect = heroExpand.getBoundingClientRect();
+      var pinH = innerHeight - HEADER_OFF;
+      var scrollable = rect.height - pinH;
+      var p = scrollable > 0 ? (HEADER_OFF - rect.top) / scrollable : 1;
+      p = Math.max(0, Math.min(1, p));
+      var s = sizeFor(p);
+      heroMedia.style.width = s.w + 'px';
+      heroMedia.style.height = s.h + 'px';
+      heroMedia.style.borderRadius = s.rTop + 'px ' + s.rTop + 'px 26px 26px';
+      heroMedia.style.setProperty('--fade', String(1 - p * 0.6));
+    };
+    var onScroll = function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    };
+    update();
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', onScroll);
+  } else if (heroMedia) {
+    heroMedia.style.width = '100%';
+    heroMedia.style.height = '480px';
+    heroMedia.style.borderRadius = '26px';
+  }
+
+  var revealEls = document.querySelectorAll('[data-reveal], .stagger');
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+  } else {
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } }); }, {threshold:.01, rootMargin:'0px 0px -10px 0px'});
+    revealEls.forEach(function(el){ io.observe(el); });
+    setTimeout(function(){ revealEls.forEach(function(el){ el.classList.add('is-visible'); }); }, 2500);
+  }
+</script>
+</body>
+</html>

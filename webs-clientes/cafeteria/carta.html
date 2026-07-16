@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>La carta — Madera Café</title>
+<meta name="description" content="Carta completa de Madera: cafés de especialidad, métodos de filtrado, brunch y repostería de horno propio. Y nuestra guía para pedir sin miedo."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --crema:#faf6f0; --papel:#fffdf9; --linea:#e8dfd2;
+    --tinta:#2f2119; --cuerpo:#6d5c4d; --suave:#9b8977;
+    --caramelo:#b07d4f; --caramelo2:#96633a; --espresso:#3a2a1e;
+    --disp:"Space Grotesk",sans-serif; --sans:"DM Sans",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--sans);background:var(--crema);color:var(--cuerpo);line-height:1.7;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{font-family:var(--disp);color:var(--tinta);letter-spacing:-.02em;line-height:1.1;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 26px;}
+  .label{font-family:var(--disp);text-transform:uppercase;letter-spacing:.22em;font-size:11.5px;font-weight:600;color:var(--caramelo);}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:600;font-size:14.5px;padding:14px 26px;border-radius:14px;cursor:pointer;border:1.5px solid transparent;transition:all .2s;background:var(--espresso);color:var(--crema);}
+  .btn:hover{background:var(--tinta);}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--caramelo);outline-offset:2px;}
+  @media(prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important;} }
+  [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+  [data-reveal].is-visible{opacity:1;transform:translateY(0);}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(250,246,240,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--linea);}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:70px;max-width:920px;margin:0 auto;padding:0 26px;}
+  .logo{font-family:var(--disp);font-weight:700;font-size:20px;color:var(--tinta);display:flex;align-items:center;gap:9px;}
+  .logo .bean{width:11px;height:11px;border-radius:50% 50% 50% 4px;background:var(--caramelo);display:inline-block;}
+  .back{font-size:14px;font-weight:500;color:var(--cuerpo);}
+  .back:hover{color:var(--caramelo2);}
+
+  .cab{padding:64px 0 40px;text-align:center;}
+  .cab h1{font-size:clamp(36px,5.6vw,58px);margin-top:14px;}
+  .cab p{margin-top:12px;max-width:52ch;margin-left:auto;margin-right:auto;}
+
+  section{padding:44px 0 56px;}
+  .bloque h2{font-size:24px;color:var(--caramelo2);margin-bottom:18px;display:flex;align-items:baseline;gap:14px;}
+  .bloque h2::after{content:"";flex:1;border-bottom:2px dotted var(--linea);}
+  .item{display:flex;align-items:baseline;gap:12px;padding:12px 0;border-bottom:1px solid var(--linea);}
+  .item:last-child{border-bottom:none;}
+  .item b{color:var(--tinta);font-weight:600;font-size:15.5px;}
+  .item small{display:block;color:var(--suave);font-size:13px;}
+  .item .dots{flex:1;border-bottom:2px dotted var(--linea);transform:translateY(-4px);min-width:20px;}
+  .item .pr{font-family:var(--disp);color:var(--tinta);font-weight:600;white-space:nowrap;}
+  .bloque + .bloque{margin-top:44px;}
+
+  /* Guía V60 */
+  .guia{background:var(--papel);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);}
+  .pasos{max-width:640px;margin:0 auto;position:relative;padding-left:34px;}
+  .pasos::before{content:"";position:absolute;left:10px;top:8px;bottom:8px;width:2px;background:var(--linea);}
+  .paso{position:relative;padding:0 0 30px;}
+  .paso:last-child{padding-bottom:0;}
+  .paso::before{content:"";position:absolute;left:-30px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--caramelo);border:3px solid var(--crema);box-shadow:0 0 0 2px var(--linea);}
+  .paso .t{font-family:var(--disp);font-size:12.5px;letter-spacing:.14em;color:var(--caramelo);text-transform:uppercase;}
+  .paso h3{font-size:18px;margin:4px 0 6px;}
+  .paso p{font-size:14.5px;}
+
+  .cierre{text-align:center;padding:60px 0 80px;}
+  footer{border-top:1px solid var(--linea);padding:26px 0;text-align:center;font-size:13.5px;color:var(--suave);}
+</style>
+</head>
+<body>
+
+<header>
+<div class="nav">
+<a href="index.html" class="logo"><span class="bean"></span>Madera</a>
+<a href="index.html" class="back">← Volver al inicio</a>
+</div>
+</header>
+
+<div class="cab">
+<div class="wrap">
+<span class="label">La carta completa</span>
+<h1>Café, horno y poco más</h1>
+<p>Carta corta a propósito: preferimos hacer poco y hacerlo cada día. Todo el café es de tueste propio y la repostería sale de nuestro horno por la mañana.</p>
+</div>
+</div>
+
+<section>
+<div class="wrap">
+<div class="bloque" data-reveal>
+<h2>Cafés</h2>
+<div class="item"><div><b>Espresso / cortado</b><small>Tueste medio de la casa</small></div><span class="dots"></span><span class="pr">1,60€</span></div>
+<div class="item"><div><b>Café con leche / capuchino</b><small>Leche de caserío o bebida de avena (+0,30)</small></div><span class="dots"></span><span class="pr">2,40€</span></div>
+<div class="item"><div><b>Flat white</b><small>Doble espresso y leche sedosa</small></div><span class="dots"></span><span class="pr">3,20€</span></div>
+<div class="item"><div><b>V60 de origen</b><small>El origen cambia cada semana — pregunta</small></div><span class="dots"></span><span class="pr">3,80€</span></div>
+<div class="item"><div><b>Aeropress</b><small>Más cuerpo que el V60, misma limpieza</small></div><span class="dots"></span><span class="pr">3,80€</span></div>
+<div class="item"><div><b>Cold brew</b><small>12 h de extracción en frío · con tónica +1€</small></div><span class="dots"></span><span class="pr">3,50€</span></div>
+</div>
+<div class="bloque" data-reveal>
+<h2>Del horno</h2>
+<div class="item"><div><b>Rollo de canela</b><small>Sale a las 9:00 · vuelan</small></div><span class="dots"></span><span class="pr">3,20€</span></div>
+<div class="item"><div><b>Tarta de queso al horno</b><small>Cremosa, receta de la casa</small></div><span class="dots"></span><span class="pr">4,90€</span></div>
+<div class="item"><div><b>Banana bread</b><small>Con nueces, ligeramente tostado</small></div><span class="dots"></span><span class="pr">3,50€</span></div>
+<div class="item"><div><b>Galleta de mantequilla y sal</b><small>La compañera oficial del espresso</small></div><span class="dots"></span><span class="pr">2,20€</span></div>
+</div>
+<div class="bloque" data-reveal>
+<h2>Brunch — fines de semana</h2>
+<div class="item"><div><b>Tosta de aguacate y huevo poché</b><small>Pan de masa madre de Errotaberri</small></div><span class="dots"></span><span class="pr">8,90€</span></div>
+<div class="item"><div><b>Yogur, granola casera y fruta</b><small>La granola también se vende en bote</small></div><span class="dots"></span><span class="pr">6,50€</span></div>
+<div class="item"><div><b>Sándwich caliente de queso</b><small>Tres quesos y mantequilla dorada</small></div><span class="dots"></span><span class="pr">7,90€</span></div>
+</div>
+</div>
+</section>
+
+<section class="guia">
+<div class="wrap">
+<div style="text-align:center;margin-bottom:40px;" data-reveal>
+<span class="label">Para curiosos</span>
+<h2 style="font-size:clamp(26px,4vw,38px);margin-top:10px;">Así preparamos tu V60</h2>
+</div>
+<div class="pasos" data-reveal>
+<div class="paso"><span class="t">0:00 — 18 g de café</span><h3>Molemos al momento</h3><p>Molienda media-fina, solo cuando lo pides. El café molido pierde el aroma en minutos.</p></div>
+<div class="paso"><span class="t">0:10 — 50 ml de agua</span><h3>Floración</h3><p>Mojamos el café y esperamos 30 segundos. Verás cómo "respira": es el CO₂ del tueste saliendo.</p></div>
+<div class="paso"><span class="t">0:45 — vertidos en círculo</span><h3>Vertido lento</h3><p>Hasta 300 ml en dos tandas, dibujando círculos. Aquí es donde se decide la taza.</p></div>
+<div class="paso"><span class="t">2:45 — listo</span><h3>Y a la mesa</h3><p>Te lo servimos en jarra con la taza aparte, para que huela antes de probarlo. Sin azúcar primero, ¿trato?</p></div>
+</div>
+</div>
+</section>
+
+<div class="cierre">
+<span class="label">¿Mesa para hoy?</span><br/><br/>
+<a href="https://wa.me/34600000000?text=Hola%2C%20quiero%20reservar%20mesa%20en%20Madera" target="_blank" rel="noopener" class="btn">Reservar por WhatsApp</a>
+</div>
+
+<footer>© 2026 Madera · Café de especialidad · Tolosa, Gipuzkoa</footer>
+
+<script>
+  var revealEls = document.querySelectorAll('[data-reveal]');
+  var reduceMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+  } else {
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } }); }, {threshold:.01});
+    revealEls.forEach(function(el){ io.observe(el); });
+    setTimeout(function(){ revealEls.forEach(function(el){ el.classList.add('is-visible'); }); }, 2500);
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>De dónde viene tu café — Madera</title>
+<meta name="description" content="De la finca al tueste: así elegimos y trabajamos el café de origen que sirvo cada día en Madera."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --crema:#faf6f0; --papel:#fffdf9; --linea:#e8dfd2;
+    --tinta:#2f2119; --cuerpo:#6d5c4d; --suave:#9b8977;
+    --caramelo:#b07d4f; --caramelo2:#96633a; --espresso:#3a2a1e;
+    --disp:"Space Grotesk",sans-serif; --sans:"DM Sans",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;}
+  body{font-family:var(--sans);background:var(--crema);color:var(--cuerpo);line-height:1.7;-webkit-font-smoothing:antialiased;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{font-family:var(--disp);color:var(--tinta);letter-spacing:-.02em;line-height:1.1;}
+  .wrap{max-width:980px;margin:0 auto;padding:0 26px;}
+  .label{font-family:var(--disp);text-transform:uppercase;letter-spacing:.22em;font-size:11.5px;font-weight:600;color:var(--caramelo);}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:600;font-size:14.5px;padding:15px 28px;border-radius:14px;cursor:pointer;border:1.5px solid transparent;background:var(--espresso);color:var(--crema);transition:all .2s;}
+  .btn:hover{background:var(--tinta);}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--caramelo);outline-offset:2px;}
+  @media(prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important;} }
+  [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+  [data-reveal].is-visible{opacity:1;transform:translateY(0);}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(250,246,240,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--linea);}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:70px;max-width:980px;margin:0 auto;padding:0 26px;}
+  .logo{font-family:var(--disp);font-weight:700;font-size:20px;color:var(--tinta);display:flex;align-items:center;gap:9px;}
+  .logo .bean{width:11px;height:11px;border-radius:50% 50% 50% 4px;background:var(--caramelo);display:inline-block;}
+  .back{font-size:14px;font-weight:500;color:var(--cuerpo);}
+  .back:hover{color:var(--caramelo2);}
+
+  .cab{padding:64px 0 40px;text-align:center;}
+  .cab h1{font-size:clamp(36px,5.6vw,58px);margin-top:14px;}
+  .cab p{margin-top:14px;max-width:56ch;margin-left:auto;margin-right:auto;font-size:17px;}
+
+  .mapa-origen{display:grid;gap:16px;grid-template-columns:1fr;padding:20px 0 60px;}
+  @media(min-width:760px){ .mapa-origen{grid-template-columns:repeat(3,1fr);} }
+  .origen{border:1px solid var(--linea);border-radius:20px;padding:28px 26px;background:var(--papel);}
+  .origen .bandera{font-size:30px;}
+  .origen h3{font-size:20px;margin:12px 0 6px;}
+  .origen .finca{font-size:13px;color:var(--caramelo2);font-weight:600;}
+  .origen p{font-size:14px;margin-top:10px;}
+  .origen .notas{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;}
+  .origen .notas span{font-size:11.5px;background:var(--cream2,var(--crema));border:1px solid var(--linea);border-radius:99px;padding:4px 11px;}
+
+  .criterios{background:var(--papel);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);padding:64px 0;}
+  .crit-grid{display:grid;gap:26px;grid-template-columns:1fr;margin-top:36px;}
+  @media(min-width:760px){ .crit-grid{grid-template-columns:repeat(3,1fr);} }
+  .crit .num{font-family:var(--disp);font-size:32px;color:var(--caramelo);}
+  .crit h3{font-size:18px;margin:10px 0 8px;}
+  .crit p{font-size:14px;}
+
+  .cierre{padding:64px 0;text-align:center;}
+  .cierre h2{font-size:clamp(26px,3.8vw,36px);}
+  .cierre p{margin:14px 0 26px;max-width:52ch;margin-left:auto;margin-right:auto;}
+
+  footer{border-top:1px solid var(--linea);padding:26px 0;text-align:center;font-size:13.5px;color:var(--suave);}
+</style>
+</head>
+<body>
+
+<header>
+<div class="nav">
+<a href="index.html" class="logo"><span class="bean"></span>Madera</a>
+<a href="index.html" class="back">← Volver al inicio</a>
+</div>
+</header>
+
+<div class="cab wrap">
+<span class="label">Trazabilidad</span>
+<h1>De dónde viene tu café</h1>
+<p>Compramos directamente a productores que conocemos por su nombre, pagamos por encima del precio de mercado y tostamos en lotes pequeños para no perder matices. Esto es lo que hay hoy en el molino.</p>
+</div>
+
+<section class="mapa-origen wrap">
+
+<div class="origen" data-reveal>
+<div class="bandera">🇪🇹</div>
+<h3>Etiopía</h3>
+<div class="finca">Región de Sidamo — 1.900 m</div>
+<p>Lavado, cultivado por una cooperativa de 400 familias. El origen que más rota en la V60.</p>
+<div class="notas"><span>Floral</span><span>Té negro</span><span>Albaricoque</span></div>
+</div>
+
+<div class="origen" data-reveal data-d="1">
+<div class="bandera">🇨🇴</div>
+<h3>Colombia</h3>
+<div class="finca">Finca El Paraíso, Huila — 1.700 m</div>
+<p>Variedad Castillo, proceso honey. Trabajamos con esta finca desde hace tres años.</p>
+<div class="notas"><span>Cacao</span><span>Caramelo</span><span>Naranja</span></div>
+</div>
+
+<div class="origen" data-reveal data-d="2">
+<div class="bandera">🇬🇹</div>
+<h3>Guatemala</h3>
+<div class="finca">Antigua — 1.500 m</div>
+<p>Suelo volcánico y sombra de árboles altos. Nuestra base habitual para el espresso de la casa.</p>
+<div class="notas"><span>Miel</span><span>Manzana asada</span><span>Especias</span></div>
+</div>
+
+</section>
+
+<section class="criterios">
+<div class="wrap">
+<div style="text-align:center;" data-reveal>
+<span class="label">Cómo elegimos</span>
+<h2 style="margin-top:10px;font-size:clamp(26px,4vw,38px);">Tres criterios, sin excepción</h2>
+</div>
+<div class="crit-grid">
+<div class="crit" data-reveal><span class="num">01</span><h3>Trazabilidad real</h3><p>Sabemos el nombre de la finca o cooperativa. Si no lo sabemos, no lo compramos.</p></div>
+<div class="crit" data-reveal data-d="1"><span class="num">02</span><h3>Precio justo</h3><p>Pagamos por encima del precio de mercado. Un café bueno empieza por pagarlo bien.</p></div>
+<div class="crit" data-reveal data-d="2"><span class="num">03</span><h3>Lotes pequeños</h3><p>Tostamos poca cantidad cada vez, para que el café nunca esté más de tres semanas tostado.</p></div>
+</div>
+</div>
+</section>
+
+<div class="cierre wrap">
+<h2>Pruébalo tú mismo</h2>
+<p>Pide el V60 de origen de la semana y pregunta: te contamos toda la historia mientras se hace.</p>
+<a href="carta.html" class="btn">Ver la carta →</a>
+</div>
+
+<footer>© 2026 Madera · Café de especialidad · Tolosa, Gipuzkoa</footer>
+
+<script>
+  var revealEls = document.querySelectorAll('[data-reveal]');
+  var reduceMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+  } else {
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } }); }, {threshold:.01});
+    revealEls.forEach(function(el){ io.observe(el); });
+    setTimeout(function(){ revealEls.forEach(function(el){ el.classList.add('is-visible'); }); }, 2500);
+  }
+</script>
+</body>
+</html>

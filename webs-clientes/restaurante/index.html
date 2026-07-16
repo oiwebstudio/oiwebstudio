@@ -1,0 +1,490 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Fuego &amp; Sal — Cocina de brasa en Tolosa</title>
+<meta name="description" content="Restaurante de brasa en Tolosa. Producto de temporada, fuego lento y una carta corta que cambia con el mercado. Reserva tu mesa."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --bg:#161210; --bg2:#1f1915; --line:rgba(255,255,255,.1);
+    --ink:#f4ede4; --body:#bdb2a5; --muted:#93897c;
+    --ember:#d4552b; --ember-dark:#b8441f;
+    --serif:"Fraunces",Georgia,serif; --sans:"Work Sans",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--sans);background:var(--bg);color:var(--body);line-height:1.7;-webkit-font-smoothing:antialiased;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{font-family:var(--serif);color:var(--ink);font-weight:500;line-height:1.08;}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 28px;}
+  .label{text-transform:uppercase;letter-spacing:.28em;font-size:11px;font-weight:600;color:var(--ember);}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;font-size:13px;padding:16px 32px;cursor:pointer;border:1px solid transparent;transition:all .2s;}
+  .btn-ember{background:var(--ember);color:#fff;}
+  .btn-ember:hover{background:var(--ember-dark);}
+  .btn-line{background:transparent;color:var(--ink);border-color:rgba(255,255,255,.3);}
+  .btn-line:hover{border-color:var(--ember);color:var(--ember);}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--ember);outline-offset:2px;}
+  @media(prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important;} }
+
+  .progress{position:fixed;top:0;left:0;height:2px;background:var(--ember);z-index:200;width:0%;}
+  [data-reveal]{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
+  [data-reveal].is-visible{opacity:1;transform:translateY(0);}
+  .stagger>*{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
+  .stagger.is-visible>*{opacity:1;transform:translateY(0);}
+  .stagger>*:nth-child(1){transition-delay:.02s;} .stagger>*:nth-child(2){transition-delay:.1s;} .stagger>*:nth-child(3){transition-delay:.18s;} .stagger>*:nth-child(4){transition-delay:.26s;} .stagger>*:nth-child(5){transition-delay:.34s;} .stagger>*:nth-child(6){transition-delay:.42s;}
+  @keyframes heroIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+  .hero .label{animation:heroIn .8s cubic-bezier(.16,1,.3,1) .1s both;}
+  .hero h1{animation:heroIn .8s cubic-bezier(.16,1,.3,1) .25s both;}
+  .hero p{animation:heroIn .8s cubic-bezier(.16,1,.3,1) .4s both;}
+  .hero-cta{animation:heroIn .8s cubic-bezier(.16,1,.3,1) .55s both;}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(22,18,16,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:76px;max-width:1140px;margin:0 auto;padding:0 28px;}
+  .logo{font-family:var(--serif);font-size:23px;color:var(--ink);}
+  .logo em{font-style:italic;color:var(--ember);}
+  .menu{display:none;gap:34px;list-style:none;font-size:13px;letter-spacing:.1em;text-transform:uppercase;}
+  .menu a{color:var(--body);}
+  .menu a:hover{color:var(--ember);}
+  @media(min-width:900px){ .menu{display:flex;} }
+  .nav .btn{padding:11px 20px;}
+
+  /* Vídeo cinematográfico con scrubbing por scroll */
+  .svid{position:relative;background:var(--bg);padding:0;}
+  .svid-track{position:relative;height:340vh;}
+  .svid-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:flex-end;}
+  .svid-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:var(--bg);}
+  .svid-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,18,16,.34) 0%,rgba(22,18,16,.12) 42%,rgba(22,18,16,.7) 82%,rgba(22,18,16,.96) 100%);}
+  .svid-copy{position:relative;z-index:2;width:100%;max-width:1140px;margin:0 auto;padding:0 28px 13vh;}
+  .svid-copy .label{display:inline-block;margin-bottom:20px;}
+  .svid-copy h1{font-size:clamp(58px,11vw,150px);line-height:.92;color:var(--ink);}
+  .svid-copy h1 em{font-style:italic;color:var(--ember);}
+  .svid-copy p{margin-top:22px;font-size:17px;max-width:46ch;color:#e2d8cb;}
+  .svid-hint{display:inline-flex;align-items:center;gap:10px;margin-top:34px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#e2d8cb;}
+  .svid-hint .arw{display:inline-block;width:16px;height:16px;border-right:2px solid var(--ember);border-bottom:2px solid var(--ember);transform:rotate(45deg);animation:svArw 1.8s ease-in-out infinite;}
+  @keyframes svArw{0%,100%{transform:rotate(45deg) translate(0,0);opacity:.5;}50%{transform:rotate(45deg) translate(4px,4px);opacity:1;}}
+  @media(prefers-reduced-motion:reduce){ .svid-track{height:auto;} .svid-sticky{position:relative;height:92vh;} .svid-hint{display:none;} }
+
+  .hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;overflow:hidden;}
+  .hero .bg{position:absolute;inset:-6% 0 0 0;height:112%;background:url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80') center/cover;will-change:transform;}
+  .hero .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,18,16,.4),rgba(22,18,16,.92) 90%);}
+  #embers{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;}
+  .hero .inner{position:relative;z-index:2;width:100%;padding:120px 0 80px;}
+  .live{display:inline-flex;align-items:center;gap:9px;margin-top:26px;font-size:13px;color:#e2d8cb;border:1px solid var(--line);padding:9px 16px;background:rgba(22,18,16,.55);backdrop-filter:blur(6px);}
+  .live .ld{width:8px;height:8px;border-radius:50%;background:#5fbf77;box-shadow:0 0 0 0 rgba(95,191,119,.5);animation:ldPulse 2.2s infinite;}
+  .live.closed .ld{background:var(--ember);box-shadow:0 0 0 0 rgba(212,85,43,.5);}
+  @keyframes ldPulse{0%{box-shadow:0 0 0 0 rgba(95,191,119,.45);}70%{box-shadow:0 0 0 9px rgba(95,191,119,0);}100%{box-shadow:0 0 0 0 rgba(95,191,119,0);}}
+  .hero h1{font-size:clamp(46px,7.5vw,92px);}
+  .hero h1 em{font-style:italic;color:var(--ember);}
+  .hero p{margin-top:20px;font-size:17px;max-width:52ch;color:#e2d8cb;}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;}
+
+  section{padding:96px 0;}
+  .sec-head{max-width:620px;margin:0 auto 56px;text-align:center;}
+  .sec-head h2{font-size:clamp(30px,4.4vw,48px);margin-top:14px;}
+  .sec-head p{margin-top:12px;font-size:16px;}
+
+  /* Carta */
+  .carta{background:var(--bg2);}
+  .menu-grid{display:grid;gap:56px;grid-template-columns:1fr;max-width:860px;margin:0 auto;}
+  @media(min-width:800px){ .menu-grid{grid-template-columns:1fr 1fr;} }
+  .menu-col h3{font-size:24px;margin-bottom:20px;color:var(--ember);font-style:italic;}
+  .dish{display:flex;align-items:baseline;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);}
+  .dish:last-child{border-bottom:none;}
+  .dish b{color:var(--ink);font-weight:500;font-size:16px;}
+  .dish small{display:block;color:var(--muted);font-size:13px;}
+  .dish .dots{flex:1;border-bottom:1px dotted rgba(255,255,255,.2);transform:translateY(-4px);min-width:24px;}
+  .dish .pr{font-family:var(--serif);color:var(--ink);white-space:nowrap;}
+  .menu-note{text-align:center;margin-top:36px;font-size:13.5px;color:var(--muted);}
+  .dish[data-img]{cursor:crosshair;}
+  .dish[data-img]:hover b{color:var(--ember);transition:color .2s;}
+  #dishPeek{position:fixed;width:210px;height:150px;object-fit:cover;pointer-events:none;z-index:140;opacity:0;transform:scale(.9) rotate(-2.5deg);transition:opacity .22s ease,transform .22s ease;box-shadow:0 24px 50px -12px rgba(0,0,0,.75);border:1px solid rgba(255,255,255,.14);}
+  #dishPeek.on{opacity:1;transform:scale(1) rotate(-2.5deg);}
+  .peek-hint{text-align:center;margin-top:14px;font-size:12px;color:var(--muted);letter-spacing:.06em;}
+  @media(hover:none){ .peek-hint{display:none;} }
+
+  /* Ritual: línea de tiempo horizontal */
+  .ritual{background:var(--bg);}
+  .rit-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 4px 22px;scrollbar-width:thin;scrollbar-color:var(--ember) transparent;}
+  .rit-step{flex:0 0 min(295px,76vw);scroll-snap-align:start;border:1px solid var(--line);background:var(--bg2);padding:28px 26px 26px;position:relative;transition:border-color .25s,transform .25s;}
+  .rit-step:hover{border-color:rgba(212,85,43,.55);transform:translateY(-4px);}
+  .rit-step::before{content:"";position:absolute;top:0;left:0;width:44px;height:2px;background:var(--ember);}
+  .rit-step .t{font-family:var(--serif);font-style:italic;font-size:30px;color:var(--ember);display:block;}
+  .rit-step h3{font-size:17.5px;margin:12px 0 8px;}
+  .rit-step p{font-size:14px;line-height:1.65;}
+  .rit-hint{text-align:center;font-size:12px;color:var(--muted);letter-spacing:.06em;margin-top:6px;}
+  @media(min-width:1200px){ .rit-hint{display:none;} }
+
+  /* Split brasa */
+  .split{display:grid;gap:46px;align-items:center;grid-template-columns:1fr;}
+  @media(min-width:900px){ .split{grid-template-columns:1fr 1fr;} }
+  .split .ph{overflow:hidden;}
+  .split img{width:100%;aspect-ratio:4/5;object-fit:cover;}
+  .split h2{font-size:clamp(30px,4.4vw,46px);margin:14px 0 20px;}
+  .split p{margin-bottom:14px;}
+  .split .firma{font-family:var(--serif);font-style:italic;font-size:20px;color:var(--ink);border-left:3px solid var(--ember);padding-left:18px;margin-top:24px;}
+
+  /* Plato estrella strip */
+  .strip{position:relative;min-height:420px;display:flex;align-items:center;background:url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1600&q=80') center/cover fixed;}
+  .strip::before{content:"";position:absolute;inset:0;background:rgba(22,18,16,.72);}
+  .strip .wrap{position:relative;z-index:2;text-align:center;}
+  .strip h2{font-size:clamp(28px,4.4vw,44px);max-width:20ch;margin:14px auto 0;}
+
+  /* Reseñas rotatorias */
+  .quotes{background:var(--bg2);text-align:center;}
+  .q-stage{position:relative;max-width:760px;margin:0 auto;min-height:190px;}
+  .q-item{position:absolute;inset:0;opacity:0;transition:opacity .7s ease;pointer-events:none;}
+  .q-item.on{opacity:1;pointer-events:auto;}
+  .q-item p{font-family:var(--serif);font-size:clamp(21px,3vw,29px);font-style:italic;color:var(--ink);line-height:1.4;}
+  .q-item b{display:block;margin-top:18px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ember);font-weight:600;}
+  .q-item small{display:block;color:var(--muted);font-size:12.5px;}
+  .q-dots{display:flex;gap:10px;justify-content:center;margin-top:26px;}
+  .q-dots button{width:10px;height:10px;border-radius:50%;border:none;background:rgba(255,255,255,.22);cursor:pointer;padding:0;transition:all .25s;}
+  .q-dots button.on{background:var(--ember);transform:scale(1.3);}
+
+  /* Reserva */
+  .visit-grid{display:grid;gap:44px;grid-template-columns:1fr;}
+  @media(min-width:860px){ .visit-grid{grid-template-columns:1fr 1fr;align-items:center;} }
+  .visit-grid h2{font-size:clamp(30px,4.4vw,44px);margin-bottom:22px;}
+  .row{display:flex;gap:14px;margin-bottom:16px;font-size:15px;}
+  .row b{color:var(--ink);display:block;font-weight:600;}
+  .row svg{width:19px;height:19px;color:var(--ember);flex-shrink:0;margin-top:4px;}
+  .map{min-height:320px;border:1px solid var(--line);overflow:hidden;box-shadow:0 20px 44px -18px rgba(0,0,0,.6);}
+  .map iframe{width:100%;height:100%;min-height:320px;border:0;display:block;}
+
+  .sticky-cta{position:fixed;left:50%;bottom:22px;transform:translate(-50%,140%);z-index:150;display:flex;align-items:center;gap:16px;background:#100d0b;border:1px solid rgba(212,85,43,.45);color:var(--ink);border-radius:999px;padding:8px 8px 8px 22px;box-shadow:0 20px 44px -14px rgba(0,0,0,.6);transition:transform .4s cubic-bezier(.16,1,.3,1);max-width:calc(100% - 32px);}
+  .sticky-cta.show{transform:translate(-50%,0);}
+  .sticky-cta .btn{border-radius:999px;}
+  .sticky-cta .info{display:flex;flex-direction:column;line-height:1.25;white-space:nowrap;}
+  .sticky-cta .info b{font-family:var(--serif);font-size:17px;}
+  .sticky-cta .info span{font-size:11px;color:var(--ember);text-transform:uppercase;letter-spacing:.12em;}
+  @media(max-width:560px){ .sticky-cta .info span{display:none;} }
+
+  footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;font-size:13px;color:var(--muted);}
+  /* Mapa con esquina cortada y nota de sala */
+  .map{clip-path:polygon(26px 0,100% 0,100% 100%,0 100%,0 26px);border:none;position:relative;}
+  .map iframe{filter:sepia(.15) saturate(.9) contrast(1.02);}
+  .map-nota{position:absolute;right:0;bottom:0;z-index:2;background:var(--ember);color:#fff;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;padding:9px 16px;}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header>
+<div class="nav">
+<a href="#inicio" class="logo">Fuego <em>&amp;</em> Sal</a>
+<ul class="menu">
+<li><a href="carta.html">La carta</a></li>
+<li><a href="#brasa">La brasa</a></li>
+<li><a href="eventos.html">Eventos y grupos</a></li>
+<li><a href="#reservas">Reservas</a></li>
+</ul>
+<a href="#reservas" class="btn btn-ember">Reservar mesa</a>
+</div>
+</header>
+
+<section class="svid" id="svid" aria-label="Chuletón a la brasa">
+<div class="svid-track">
+<div class="svid-sticky">
+<video class="svid-video" id="brasaVid" muted playsinline preload="auto" poster="brasa-poster.jpg" aria-hidden="true">
+<source src="brasa.mp4" type="video/mp4"/>
+</video>
+<div class="svid-veil"></div>
+<div class="wrap svid-copy">
+<span class="label">Cocina de brasa · Tolosa</span>
+<h1>Fuego <em>&amp;</em> Sal</h1>
+<p>Baja despacio: la brasa hace el resto.</p>
+<span class="svid-hint">Desliza para encender la brasa <i class="arw"></i></span>
+</div>
+</div>
+</div>
+</section>
+
+<section class="hero" id="inicio">
+<div class="bg"></div>
+<canvas id="embers" aria-hidden="true"></canvas>
+<div class="wrap"><div class="inner">
+<span class="label">Cocina de brasa · Tolosa</span>
+<h1>Fuego lento.<br/><em>Producto honesto.</em></h1>
+<p>Carta corta que cambia con el mercado, brasa de encina y una sala pensada para quedarse de sobremesa. Cocinamos lo que compraríamos nosotros.</p>
+<div class="hero-cta">
+<a href="#reservas" class="btn btn-ember">Reservar mesa</a>
+<a href="carta.html" class="btn btn-line">Ver la carta completa</a>
+</div>
+<div class="live" id="liveBadge"><span class="ld"></span><span id="liveTxt">Mi–Do 13:00–15:30 · Vi–Sá noche</span></div>
+</div></div>
+</section>
+
+<section class="carta" id="carta">
+<div class="wrap">
+<div class="sec-head" data-reveal>
+<span class="label">La carta</span>
+<h2>Corta, de temporada, a fuego</h2>
+<p>Lo que hay hoy es lo mejor que encontramos esta mañana.</p>
+</div>
+<div class="menu-grid stagger">
+<div class="menu-col">
+<h3>Para empezar</h3>
+<div class="dish" data-img="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=420&h=300&q=70"><div><b>Tomate de caserío</b><small>Ventresca, cebolleta y aceite de la casa</small></div><span class="dots"></span><span class="pr">12€</span></div>
+<div class="dish"><div><b>Croquetas de txuleta</b><small>Cremosas, de puchero lento — 6 uds</small></div><span class="dots"></span><span class="pr">10€</span></div>
+<div class="dish"><div><b>Pimientos asados al sarmiento</b><small>Del país, con su jugo</small></div><span class="dots"></span><span class="pr">9€</span></div>
+</div>
+<div class="menu-col">
+<h3>A la brasa</h3>
+<div class="dish" data-img="https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=420&h=300&q=70"><div><b>Txuleta de vaca vieja</b><small>Maduración 45 días — precio por kg</small></div><span class="dots"></span><span class="pr">52€/kg</span></div>
+<div class="dish" data-img="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=420&h=300&q=70"><div><b>Pescado del día</b><small>Según lonja — preguntar en sala</small></div><span class="dots"></span><span class="pr">s/m</span></div>
+<div class="dish" data-img="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=420&h=300&q=70"><div><b>Costilla a fuego lento</b><small>8 horas de brasa, glaseada</small></div><span class="dots"></span><span class="pr">19€</span></div>
+</div>
+</div>
+<p class="menu-note">Postres caseros del día · Menú de mediodía entre semana: 18€ · Opciones sin gluten avisando en sala</p>
+<p class="peek-hint">Pasa el ratón por los platos marcados: la brasa se deja ver.</p>
+<div style="text-align:center;margin-top:26px;"><a href="carta.html" class="btn btn-line">Carta completa: postres y bodega →</a></div>
+</div>
+</section>
+
+<section id="brasa">
+<div class="wrap split">
+<div class="ph" data-reveal><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80" alt="Plato emplatado en sala" loading="lazy"/></div>
+<div data-reveal>
+<span class="label">La brasa</span>
+<h2>El fuego no se controla. Se respeta.</h2>
+<p>Cocinamos con brasa de encina, sin atajos ni planchas eléctricas. Cada corte pide su punto y cada punto pide su tiempo: por eso la carta es corta y la sala tranquila.</p>
+<p>El producto llega cada mañana del mercado y de productores de la comarca. Si no hay, no se sirve.</p>
+<div class="firma">"La sobremesa es parte del menú."</div>
+</div>
+</div>
+</section>
+
+<section class="ritual" aria-label="Un día en Fuego y Sal">
+<div class="wrap">
+<div class="sec-head" data-reveal>
+<span class="label">Un día de fuego</span>
+<h2>El ritual, hora a hora</h2>
+</div>
+<div class="rit-track" data-reveal>
+<div class="rit-step"><span class="t">07:30</span><h3>La lonja y el mercado</h3><p>Elegimos el pescado en la lonja y el tomate donde siempre. Si el género no convence, ese plato no sale hoy.</p></div>
+<div class="rit-step"><span class="t">10:00</span><h3>Entra la costilla</h3><p>Ocho horas por delante a fuego muy bajo. Nadie la toca: la brasa hace su trabajo y nosotros el nuestro.</p></div>
+<div class="rit-step"><span class="t">12:00</span><h3>Se enciende la encina</h3><p>Una hora antes del primer pase. La brasa buena no tiene prisa: se espera a que la llama se calle.</p></div>
+<div class="rit-step"><span class="t">13:00</span><h3>Primer pase</h3><p>Sala tranquila, carta corta y el punto de cada corte cantado en la parrilla, no en un temporizador.</p></div>
+<div class="rit-step"><span class="t">18:00</span><h3>La costilla, lista</h3><p>Se glasea y reposa. Es el plato que más se pide y el único que no se puede improvisar.</p></div>
+<div class="rit-step"><span class="t">20:30</span><h3>Segundo pase</h3><p>Viernes y sábados. Las brasas de la tarde reciben a la cena, y la sobremesa no tiene hora de cierre.</p></div>
+</div>
+<p class="rit-hint">Desliza para recorrer el día →</p>
+</div>
+</section>
+
+<section class="strip">
+<div class="wrap" data-reveal>
+<span class="label">De la brasa a la mesa</span>
+<h2>Costilla 8 horas: nuestra firma desde el primer día</h2>
+</div>
+</section>
+
+<section class="quotes" aria-label="Opiniones">
+<div class="wrap">
+<span class="label" data-reveal>Se dice en la sobremesa</span>
+<div class="q-stage" id="qStage" style="margin-top:34px;">
+<div class="q-item on"><p>"La txuleta con 45 días de maduración es de las tres mejores que he comido. Y he comido muchas."</p><b>Iñaki B.</b><small>Mesa de 4 · marzo 2026</small></div>
+<div class="q-item"><p>"Fuimos por la costilla de 8 horas y volvimos a la semana siguiente por todo lo demás."</p><b>Carmen y Luis</b><small>Sobremesa de domingo</small></div>
+<div class="q-item"><p>"Carta corta, producto serio y nadie mirando el reloj. Así se hace."</p><b>Eneko L.</b><small>Comida de trabajo que se alargó</small></div>
+</div>
+<div class="q-dots" id="qDots" role="tablist" aria-label="Cambiar reseña">
+<button type="button" class="on" aria-label="Reseña 1"></button>
+<button type="button" aria-label="Reseña 2"></button>
+<button type="button" aria-label="Reseña 3"></button>
+</div>
+</div>
+</section>
+
+<section id="reservas">
+<div class="wrap visit-grid stagger">
+<div>
+<span class="label">Reservas</span>
+<h2>Guarda tu mesa</h2>
+<div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><div><b>Reserva por teléfono o WhatsApp</b>+34 600 00 00 00 — grupos de más de 8, llamar</div></div>
+<div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><b>Horario</b>Mi-Do 13:00–15:30 · Vi-Sá también 20:30–23:00 · Lu-Ma cerrado</div></div>
+<div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-7-10a7 7 0 0 1 14 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.5"/></svg><div><b>Dirección</b>Plaza Euskal Herria 2, Tolosa (Gipuzkoa)</div></div>
+<div style="margin-top:28px;"><a href="https://wa.me/34600000000?text=Hola%2C%20quiero%20reservar%20mesa%20en%20Fuego%20%26%20Sal" class="btn btn-ember" target="_blank" rel="noopener">Reservar por WhatsApp</a></div>
+</div>
+<div class="map"><span class="map-nota">Parking de la plaza — 3 min a pie</span><iframe title="Ubicación Fuego y Sal" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-2.0930%2C43.1280%2C-2.0640%2C43.1420&amp;layer=mapnik&amp;marker=43.1350%2C-2.0785"></iframe></div>
+</div>
+</section>
+
+<div class="sticky-cta" id="stickyCta">
+<div class="info"><b>Fuego &amp; Sal</b><span id="liveTxt2">Reservas abiertas</span></div>
+<a href="#reservas" class="btn btn-ember" style="padding:12px 22px;">Reservar mesa →</a>
+</div>
+
+<footer>© 2026 Fuego &amp; Sal · Cocina de brasa · Tolosa, Gipuzkoa</footer>
+
+<script>
+  var progress = document.getElementById('progress');
+  var heroBg = document.querySelector('.hero .bg');
+  var stickyCta = document.getElementById('stickyCta');
+  var reduceMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  addEventListener('scroll', function(){
+    var h = document.documentElement;
+    progress.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+    stickyCta.classList.toggle('show', scrollY > innerHeight * 0.6);
+    if (heroBg && !reduceMotion && scrollY < innerHeight) heroBg.style.transform = 'translateY(' + (scrollY * 0.22) + 'px)';
+  }, {passive:true});
+
+  // Vídeo del chuletón controlado por el scroll (baja = avanza, sube = retrocede)
+  (function(){
+    var sec = document.getElementById('svid');
+    var vid = document.getElementById('brasaVid');
+    if (!sec || !vid) return;
+    if (reduceMotion) { try { vid.pause(); vid.currentTime = vid.duration || 0; } catch(e){} return; }
+    var dur = 0, target = 0, current = 0, raf = null, unlocked = false;
+    function setDur(){ if (isFinite(vid.duration) && vid.duration > 0) dur = vid.duration; }
+    vid.addEventListener('loadedmetadata', function(){ setDur(); onScroll(); });
+    vid.addEventListener('loadeddata', function(){ setDur(); onScroll(); });
+    // "Desbloqueo" para móviles: un play/pause silencioso permite el seek fluido
+    function unlock(){ if (unlocked) return; unlocked = true; var p = vid.play(); if (p && p.then) p.then(function(){ vid.pause(); }).catch(function(){}); }
+    addEventListener('touchstart', unlock, {passive:true, once:true});
+    addEventListener('pointerdown', unlock, {passive:true, once:true});
+    function prog(){
+      var total = sec.offsetHeight - innerHeight;
+      if (total <= 0) return 0;
+      var p = -sec.getBoundingClientRect().top / total;
+      return p < 0 ? 0 : (p > 1 ? 1 : p);
+    }
+    function tick(){
+      current += (target - current) * 0.16;
+      if (Math.abs(target - current) < 0.004) current = target;
+      if (vid.readyState >= 1) { try { vid.currentTime = current; } catch(e){} }
+      raf = (Math.abs(target - current) > 0.004) ? requestAnimationFrame(tick) : null;
+    }
+    function onScroll(){
+      if (!dur) { setDur(); if (!dur) return; }
+      target = prog() * dur;
+      if (raf === null) raf = requestAnimationFrame(tick);
+    }
+    addEventListener('scroll', onScroll, {passive:true});
+    addEventListener('resize', onScroll);
+    setDur(); onScroll();
+  })();
+
+  // Reseñas rotatorias
+  var qItems = document.querySelectorAll('#qStage .q-item');
+  var qDots = document.querySelectorAll('#qDots button');
+  var qIdx = 0, qTimer = null;
+  function qShow(i){
+    qIdx = i;
+    qItems.forEach(function(el, j){ el.classList.toggle('on', j === i); });
+    qDots.forEach(function(el, j){ el.classList.toggle('on', j === i); });
+  }
+  if (qItems.length) {
+    qDots.forEach(function(d, i){ d.addEventListener('click', function(){ qShow(i); qRestart(); }); });
+    function qRestart(){
+      if (qTimer) clearInterval(qTimer);
+      if (!reduceMotion) qTimer = setInterval(function(){ qShow((qIdx + 1) % qItems.length); }, 6000);
+    }
+    qRestart();
+  }
+
+  // Ascuas del hero
+  var emberCv = document.getElementById('embers');
+  if (emberCv && !reduceMotion) {
+    var ectx = emberCv.getContext('2d');
+    var hero = document.querySelector('.hero');
+    var parts = [];
+    function emberSize(){ emberCv.width = hero.offsetWidth; emberCv.height = hero.offsetHeight; }
+    emberSize();
+    addEventListener('resize', emberSize);
+    function newPart(y){
+      return { x: Math.random() * emberCv.width, y: (y === undefined ? emberCv.height + 10 : y),
+        r: .8 + Math.random() * 2.1, vy: .35 + Math.random() * .85, drift: Math.random() * 2 * Math.PI,
+        ds: .004 + Math.random() * .012, a: .25 + Math.random() * .5, warm: Math.random() };
+    }
+    for (var i = 0; i < 34; i++) parts.push(newPart(Math.random() * emberCv.height));
+    (function emberLoop(){
+      ectx.clearRect(0, 0, emberCv.width, emberCv.height);
+      parts.forEach(function(p, i){
+        p.y -= p.vy; p.drift += p.ds * 8; p.x += Math.sin(p.drift) * .35;
+        var flicker = .7 + .3 * Math.sin(p.drift * 3);
+        ectx.beginPath();
+        ectx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
+        ectx.fillStyle = 'rgba(' + (p.warm > .5 ? '232,147,91' : '212,85,43') + ',' + (p.a * flicker) + ')';
+        ectx.fill();
+        if (p.y < -12) parts[i] = newPart();
+      });
+      requestAnimationFrame(emberLoop);
+    })();
+  }
+
+  // Estado en vivo según horario real (Mi-Do 13:00-15:30 · Vi-Sá 20:30-23:00)
+  var liveTxt = document.getElementById('liveTxt');
+  if (liveTxt) {
+    var DIAS = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+    function tramosDe(d){ // d: 0=Do..6=Sá
+      var t = [];
+      if (d >= 3 || d === 0) t.push([13 * 60, 15 * 60 + 30, '15:30']);
+      if (d === 5 || d === 6) t.push([20 * 60 + 30, 23 * 60, '23:00']);
+      return t;
+    }
+    function pintaEstado(){
+      var now = new Date(), d = now.getDay(), m = now.getHours() * 60 + now.getMinutes();
+      var abierto = null, siguiente = null;
+      tramosDe(d).forEach(function(tr){
+        if (m >= tr[0] && m < tr[1]) abierto = tr;
+        else if (m < tr[0] && !siguiente) siguiente = tr;
+      });
+      var badge = document.getElementById('liveBadge');
+      var txt;
+      if (abierto) {
+        badge.classList.remove('closed');
+        txt = 'Abierto ahora · cocina hasta las ' + abierto[2];
+      } else {
+        badge.classList.add('closed');
+        if (siguiente) {
+          var h = Math.floor(siguiente[0] / 60), mm = ('0' + siguiente[0] % 60).slice(-2);
+          txt = 'Hoy abrimos a las ' + h + ':' + mm;
+        } else {
+          for (var k = 1; k <= 7; k++) {
+            var nd = (d + k) % 7;
+            if (tramosDe(nd).length) {
+              txt = 'Cerrado · abrimos ' + (k === 1 ? 'mañana' : 'el ' + DIAS[nd]) + ' a las 13:00';
+              break;
+            }
+          }
+        }
+      }
+      liveTxt.textContent = txt;
+      var lt2 = document.getElementById('liveTxt2');
+      if (lt2) lt2.textContent = txt;
+    }
+    pintaEstado();
+    setInterval(pintaEstado, 60000);
+  }
+
+  // Foto del plato siguiendo al cursor
+  if (window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
+    var peek = document.createElement('img');
+    peek.id = 'dishPeek'; peek.alt = ''; peek.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(peek);
+    document.querySelectorAll('.dish[data-img]').forEach(function(dish){
+      dish.addEventListener('mouseenter', function(){ peek.src = dish.dataset.img; peek.classList.add('on'); });
+      dish.addEventListener('mouseleave', function(){ peek.classList.remove('on'); });
+      dish.addEventListener('mousemove', function(e){
+        peek.style.left = Math.min(e.clientX + 22, innerWidth - 230) + 'px';
+        peek.style.top = (e.clientY - 165) + 'px';
+      });
+    });
+  }
+
+  var revealEls = document.querySelectorAll('[data-reveal], .stagger');
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+  } else {
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } }); }, {threshold:.01, rootMargin:'0px 0px -10px 0px'});
+    revealEls.forEach(function(el){ io.observe(el); });
+    setTimeout(function(){ revealEls.forEach(function(el){ el.classList.add('is-visible'); }); }, 2500);
+  }
+</script>
+</body>
+</html>
