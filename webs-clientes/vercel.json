@@ -1,0 +1,38 @@
+{
+    "buildCommand": "echo 'Static site - no build needed'",
+    "outputDirectory": ".",
+    "rewrites": [
+          {
+                  "source": "/cafeteria/:match*",
+                  "destination": "/cafeteria/$match"
+          },
+          {
+                  "source": "/floristerìa/:match*",
+                  "destination": "/floristerìa/$match"
+          },
+          {
+                  "source": "/gimnasio/:match*",
+                  "destination": "/gimnasio/$match"
+          },
+          {
+                  "source": "/panaderia/:match*",
+                  "destination": "/panaderia/$match"
+          },
+          {
+                  "source": "/peluqueria/:match*",
+                  "destination": "/peluqueria/$match"
+          },
+          {
+                  "source": "/restaurante/:match*",
+                  "destination": "/restaurante/$match"
+          },
+          {
+                  "source": "/taller/:match*",
+                  "destination": "/taller/$match"
+          },
+          {
+                  "source": "/veterinaria/:match*",
+                  "destination": "/veterinaria/$match"
+          }
+    ]
+}
