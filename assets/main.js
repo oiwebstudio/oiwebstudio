@@ -140,27 +140,3 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Hero: los chips de sector cambian la web mostrada en los dispositivos
-document.addEventListener('DOMContentLoaded', function () {
-  var desk = document.getElementById('dvDesk');
-  var tab = document.getElementById('dvTab');
-  var mob = document.getElementById('dvMob');
-  var chips = document.querySelectorAll('.sector[data-shot]');
-  if (!desk || !chips.length) return;
-  chips.forEach(function (chip) {
-    chip.addEventListener('click', function () {
-      var k = chip.dataset.shot;
-      chips.forEach(function (c) { c.classList.toggle('is-active', c === chip); });
-      [[desk, 'desk'], [tab, 'tablet'], [mob, 'mobile']].forEach(function (par) {
-        var img = par[0];
-        if (!img) return;
-        var src = 'assets/' + k + '-' + par[1] + '.jpg';
-        var pre = new Image();
-        img.style.opacity = '0';
-        pre.onload = function () { img.src = src; img.style.opacity = '1'; };
-        pre.onerror = function () { img.style.opacity = '1'; };
-        pre.src = src;
-      });
-    });
-  });
-});
