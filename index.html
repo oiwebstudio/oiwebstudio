@@ -138,15 +138,15 @@
 <section class="section--sm">
 <div class="container">
 <p class="marquee-label reveal" data-t="sectors_label">Diseño webs para todo tipo de negocio local</p>
-<div class="sectors reveal" data-d="1">
-<button type="button" class="sector" data-shot="pan"><i style="background:#c07a35"></i><span data-t="sector_pan">Panaderías</span></button>
-<button type="button" class="sector" data-shot="vet"><i style="background:#2ba8a4"></i><span data-t="sector_vet">Veterinarios</span></button>
-<button type="button" class="sector" data-shot="pelu"><i style="background:#cfa96b"></i><span data-t="sector_pel">Peluquerías</span></button>
-<button type="button" class="sector" data-shot="rest"><i style="background:#d4552b"></i><span data-t="sector_res">Restaurantes</span></button>
-<button type="button" class="sector" data-shot="gym"><i style="background:#d7ff3e"></i><span data-t="sector_gim">Gimnasios</span></button>
-<button type="button" class="sector is-active" data-shot="cafe"><i style="background:#b07d4f"></i><span data-t="sector_cafe">Cafeterías</span></button>
-<button type="button" class="sector" data-shot="taller"><i style="background:#ffb400"></i><span data-t="sector_tal">Talleres</span></button>
-<button type="button" class="sector" data-shot="flor"><i style="background:#c98a8e"></i><span data-t="sector_flo">Floristerías</span></button>
+<div class="hsx-row reveal" data-d="1" id="hsxRow">
+<a class="hsx" data-shot="pan" href="https://oiwebstudio.vercel.app/panaderia/" target="_blank" rel="noopener"><i style="background:#c07a35"></i><span class="hs-txt" data-t="sector_pan">Panaderías</span></a>
+<a class="hsx" data-shot="vet" href="https://oiwebstudio.vercel.app/veterinaria/" target="_blank" rel="noopener"><i style="background:#2ba8a4"></i><span class="hs-txt" data-t="sector_vet">Veterinarios</span></a>
+<a class="hsx" data-shot="pelu" href="https://oiwebstudio.vercel.app/peluqueria/" target="_blank" rel="noopener"><i style="background:#cfa96b"></i><span class="hs-txt" data-t="sector_pel">Peluquerías</span></a>
+<a class="hsx" data-shot="rest" href="https://oiwebstudio.vercel.app/restaurante/" target="_blank" rel="noopener"><i style="background:#d4552b"></i><span class="hs-txt" data-t="sector_res">Restaurantes</span></a>
+<a class="hsx" data-shot="gym" href="https://oiwebstudio.vercel.app/gimnasio/" target="_blank" rel="noopener"><i style="background:#d7ff3e"></i><span class="hs-txt" data-t="sector_gim">Gimnasios</span></a>
+<a class="hsx is-active" data-shot="cafe" href="https://oiwebstudio.vercel.app/cafeteria/" target="_blank" rel="noopener"><i style="background:#b07d4f"></i><span class="hs-txt" data-t="sector_cafe">Cafeterías</span></a>
+<a class="hsx" data-shot="taller" href="https://oiwebstudio.vercel.app/taller/" target="_blank" rel="noopener"><i style="background:#ffb400"></i><span class="hs-txt" data-t="sector_tal">Talleres</span></a>
+<a class="hsx" data-shot="flor" href="https://oiwebstudio.vercel.app/floristeria/" target="_blank" rel="noopener"><i style="background:#c98a8e"></i><span class="hs-txt" data-t="sector_flo">Floristerías</span></a>
 </div>
 </div>
 </section>
@@ -302,6 +302,64 @@
 
 <script src="assets/i18n.js"></script>
 <script src="assets/main.js"></script>
+<script>
+(function(){
+  /* Sectores con letras escalonadas: hover anima el texto y cambia los dispositivos */
+  var items = Array.prototype.slice.call(document.querySelectorAll('#hsxRow .hsx'));
+  if (!items.length) return;
+  var desk = document.getElementById('dvDesk');
+  var tab = document.getElementById('dvTab');
+  var mob = document.getElementById('dvMob');
+
+  function splitChars(){
+    items.forEach(function(t){
+      var txt = t.querySelector('.hs-txt');
+      if (!txt || txt.querySelector('.hs-ch')) return;
+      var raw = txt.textContent;
+      txt.textContent = '';
+      raw.split('').forEach(function(ch, i){
+        var w = document.createElement('span');
+        w.className = 'hs-ch';
+        w.style.setProperty('--d', (i * 0.025).toFixed(3) + 's');
+        var a = document.createElement('b'); a.className = 'a'; a.innerHTML = ch === ' ' ? '&nbsp;' : ch;
+        var b = document.createElement('b'); b.className = 'b'; b.innerHTML = ch === ' ' ? '&nbsp;' : ch;
+        w.appendChild(a); w.appendChild(b);
+        txt.appendChild(w);
+      });
+    });
+  }
+
+  function swapDevices(k){
+    [[desk, 'desk'], [tab, 'tablet'], [mob, 'mobile']].forEach(function(par){
+      var img = par[0];
+      if (!img) return;
+      var src = 'assets/' + k + '-' + par[1] + '.jpg';
+      var pre = new Image();
+      img.style.opacity = '0';
+      pre.onload = function(){ img.src = src; img.style.opacity = '1'; };
+      pre.onerror = function(){ img.style.opacity = '1'; };
+      pre.src = src;
+    });
+  }
+
+  function activate(item){
+    items.forEach(function(t){ t.classList.toggle('is-active', t === item); });
+    swapDevices(item.dataset.shot);
+  }
+
+  items.forEach(function(t){
+    t.addEventListener('mouseenter', function(){ activate(t); });
+    t.addEventListener('focus', function(){ activate(t); });
+  });
+
+  splitChars();
+
+  /* Reconstruir letras cuando el i18n reescribe los textos (toggle ES/EU) */
+  document.addEventListener('click', function(e){
+    if (e.target.closest('[data-lang]')) setTimeout(splitChars, 60);
+  });
+})();
+</script>
 <a class="wa-float" href="https://wa.me/34680956755?text=Hola%2C%20vengo%20de%20tu%20web%20y%20quiero%20informaci%C3%B3n%20para%20la%20web%20de%20mi%20negocio." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2.05 22l5.27-1.38c1.45.79 3.08 1.21 4.72 1.21 5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.05-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29z"/></svg>
 </a>
