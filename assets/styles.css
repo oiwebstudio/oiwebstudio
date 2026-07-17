@@ -326,7 +326,7 @@ h1 .grad { font-family: var(--font-serif); font-style: italic; font-weight: 500;
   .hero__sectors { flex: none; }
 }
 /* Parallax sutil ligado al scroll (sin bucle infinito); ver capa moderna al final */
-.devices { position: relative; padding: 10px 0 40px; }
+.devices { display: block; position: relative; padding: 10px 0 40px; }
 /* Portátil: pieza central, al fondo */
 .dv-laptop { position: relative; z-index: 1; width: 68%; margin: 0 auto; background: #0e1622; border-radius: 15px 15px 5px 5px; padding: 8px; box-shadow: var(--shadow-lg); }
 .dv-laptop::after { content: ""; position: absolute; left: 50%; transform: translateX(-50%); bottom: -8px; width: 122%; height: 8px; background: linear-gradient(#cfd4dc, #a6adb8); border-radius: 0 0 14px 14px; box-shadow: 0 6px 14px -6px rgba(9,10,15,.25); }
