@@ -794,7 +794,7 @@ body::after {
   box-shadow:0 10px 24px -12px rgba(28,36,48,.5); }
 .hsx i{ display:none; }
 .hsx .hs-txt{ font-weight:600; font-size:clamp(13px,1.5vw,15px); letter-spacing:.04em;
-  text-transform:uppercase; color:var(--ink,#1c2430); line-height:1.2; transition:color .25s; }
+  text-transform:uppercase; color:var(--ink,#1c2430); line-height:1.2; transition:color .25s; white-space:nowrap; }
 .hsx.is-active .hs-txt{ color:#fff; }
 /* Letras escalonadas dentro de la pill */
 .hs-ch{ position:relative; display:inline-block; overflow:hidden; vertical-align:bottom; }
