@@ -835,13 +835,15 @@ body::after {
 
 /* Spring letter animation para heading */
 .hero-heading{ font-size:clamp(48px, 7vw, 72px); line-height:1.15; font-weight:600; color:#1c2430; margin:24px 0 0; position:relative; z-index:2; font-family:var(--font-sans); letter-spacing:-0.02em; }
+.hero-heading .word{ display:inline-block; white-space:nowrap; }
+.hero-heading .word-space{ display:inline-block; }
 .hero-heading .letter{ display:inline-block; will-change:transform; transform-origin:bottom; }
-.hero-heading .gradient-text{ background:linear-gradient(135deg, #1c2430 0%, #78725f 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.hero-heading .gradient-text{ background:linear-gradient(135deg, #a3673a 0%, #c07a35 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
 
 /* Hero CTA premium con glassmorphism */
 .hero-cta-wrapper{ margin:32px 0; }
-.hero-cta-btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:14px 32px; background:rgba(28, 36, 48, 0.7); backdrop-filter:blur(12px); border:1px solid rgba(28, 36, 48, 0.2); border-radius:28px; font-family:var(--font-sans); font-size:15px; font-weight:500; color:#1c2430; cursor:pointer; transition:all .35s cubic-bezier(.25,.46,.45,.94); box-shadow:0 8px 32px -8px rgba(28,36,48,.12), inset 0 1px 0 rgba(255,255,255,.3); }
-.hero-cta-btn:hover{ background:rgba(28, 36, 48, 0.85); border-color:rgba(28, 36, 48, 0.4); transform:translateY(-2px); box-shadow:0 16px 48px -12px rgba(28,36,48,.2), inset 0 1px 0 rgba(255,255,255,.3); }
+.hero-cta-btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:14px 32px; background:rgba(255, 255, 255, 0.55); backdrop-filter:blur(14px) saturate(1.2); -webkit-backdrop-filter:blur(14px) saturate(1.2); border:1px solid rgba(255, 255, 255, 0.7); border-radius:28px; font-family:var(--font-sans); font-size:15px; font-weight:600; color:#1c2430; cursor:pointer; transition:all .35s cubic-bezier(.25,.46,.45,.94); box-shadow:0 8px 32px -8px rgba(28,36,48,.18), inset 0 1px 0 rgba(255,255,255,.9); }
+.hero-cta-btn:hover{ background:rgba(255, 255, 255, 0.75); border-color:rgba(255, 255, 255, 0.9); transform:translateY(-2px); box-shadow:0 16px 48px -12px rgba(28,36,48,.28), inset 0 1px 0 rgba(255,255,255,.9); }
 .hero-cta-btn:active{ transform:translateY(0); }
 .hero-cta-text{ position:relative; }
 .hero-cta-arrow{ display:inline-block; transition:transform .35s cubic-bezier(.25,.46,.45,.94); }
