@@ -141,11 +141,11 @@
 </div>
 </div>
 <div class="hero__mockup">
-<div class="devices">
+<a class="devices" id="dvLink" href="https://oiwebstudio.vercel.app/cafeteria/" target="_blank" rel="noopener" aria-label="Ver esta web de ejemplo en vivo">
 <div class="dv-laptop"><div class="scr"><img id="dvDesk" src="assets/cafe-desk.jpg" alt="Web de ejemplo en ordenador" width="900" height="562" fetchpriority="high"/></div></div>
 <div class="dv-tablet"><div class="scr"><img id="dvTab" src="assets/cafe-tablet.jpg" alt="Web de ejemplo en tablet" width="640" height="844"/></div></div>
 <div class="dv-phone"><img id="dvMob" src="assets/cafe-mobile.jpg" alt="Web de ejemplo en móvil" width="266" height="561"/></div>
-</div>
+</a>
 </div>
 </div>
 </header>
@@ -310,6 +310,17 @@
   var desk = document.getElementById('dvDesk');
   var tab = document.getElementById('dvTab');
   var mob = document.getElementById('dvMob');
+  var dvLink = document.getElementById('dvLink');
+  var demoUrls = {
+    pan: 'https://oiwebstudio.vercel.app/panaderia/',
+    vet: 'https://oiwebstudio.vercel.app/veterinaria/',
+    pelu: 'https://oiwebstudio.vercel.app/peluqueria/',
+    rest: 'https://oiwebstudio.vercel.app/restaurante/',
+    gym: 'https://oiwebstudio.vercel.app/gimnasio/',
+    cafe: 'https://oiwebstudio.vercel.app/cafeteria/',
+    taller: 'https://oiwebstudio.vercel.app/taller/',
+    flor: 'https://oiwebstudio.vercel.app/floristeria/'
+  };
 
   function splitChars(){
     items.forEach(function(t){
@@ -344,7 +355,9 @@
 
   function activate(item){
     items.forEach(function(t){ t.classList.toggle('is-active', t === item); });
-    swapDevices(item.dataset.shot);
+    var k = item.dataset.shot;
+    swapDevices(k);
+    if (dvLink && demoUrls[k]) dvLink.href = demoUrls[k];
   }
 
   items.forEach(function(t){
