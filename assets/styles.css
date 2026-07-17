@@ -317,7 +317,14 @@ h1 .grad { font-family: var(--font-serif); font-style: italic; font-weight: 500;
 .hero__trust span { display: inline-flex; align-items: center; gap: 7px; }
 .hero__trust svg { width: 15px; height: 15px; color: var(--ok); }
 
-.hero__mockup { position: relative; z-index: 1; max-width: 960px; margin: 52px auto 0; }
+.hero__showcase { position: relative; z-index: 1; max-width: 1080px; margin: 52px auto 0; display: flex; align-items: center; gap: 44px; }
+.hero__sectors { flex: 0 0 200px; text-align: left; }
+.hero__sectors .marquee-label { margin-bottom: 18px; }
+.hero__mockup { position: relative; z-index: 1; flex: 1; min-width: 0; margin: 0; }
+@media (max-width: 900px) {
+  .hero__showcase { flex-direction: column; align-items: stretch; gap: 24px; }
+  .hero__sectors { flex: none; }
+}
 /* Parallax sutil ligado al scroll (sin bucle infinito); ver capa moderna al final */
 .devices { position: relative; padding: 10px 0 40px; }
 /* Portátil: pieza central, al fondo */
@@ -774,11 +781,15 @@ body::after {
 @media (max-width:640px){ .wa-float{ right:calc(14px + env(safe-area-inset-right, 0px)); bottom:calc(14px + env(safe-area-inset-bottom, 0px)); width:54px; height:54px; } }
 
 /* Selector de sectores tipo pill (animated-slideshow en vanilla) */
-.hsx-row{ display:flex; flex-wrap:wrap; justify-content:flex-start; gap:12px 14px; margin-top:26px; }
-.hsx{ display:inline-flex; align-items:center; gap:10px; cursor:pointer; font:inherit;
+.hsx-row{ display:flex; flex-direction:column; align-items:flex-start; gap:8px; margin-top:26px; }
+.hsx{ display:inline-flex; align-items:center; gap:10px; cursor:pointer; font:inherit; width:100%;
   background:transparent; border:1px solid rgba(28,36,48,.12); border-radius:999px;
   padding:10px 20px; transition:background .25s, border-color .25s, transform .25s, box-shadow .25s; }
-.hsx:hover{ border-color:rgba(28,36,48,.28); transform:translateY(-2px); }
+.hsx:hover{ border-color:rgba(28,36,48,.28); transform:translateX(2px); }
+@media (max-width:900px){
+  .hsx-row{ flex-direction:row; flex-wrap:nowrap; overflow-x:auto; gap:10px; padding-bottom:6px; scrollbar-width:thin; -webkit-overflow-scrolling:touch; }
+  .hsx{ width:auto; }
+}
 .hsx.is-active{ background:var(--ink,#1c2430); border-color:var(--ink,#1c2430);
   box-shadow:0 10px 24px -12px rgba(28,36,48,.5); }
 .hsx i{ display:none; }
