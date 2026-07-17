@@ -127,9 +127,8 @@
 
 <header class="hero hero--modern" style="padding-bottom:0;">
 <div class="hero__bg">
-<div class="hero__flows" id="heroFlows" aria-hidden="true"></div>
+<canvas id="ballpitCanvas" class="hero__ballpit" aria-hidden="true"></canvas>
 <div class="hero__grid"></div>
-<div class="bp-svg" id="bpSvg"></div>
 </div>
 <div class="container hero__container">
 <div class="hero__inner">
@@ -261,48 +260,6 @@
 <script src="assets/main.js"></script>
 <script>
 (function(){
-  // Modern Hero — SVG Flows animados en direcciones opuestas
-  var flowsContainer = document.getElementById('heroFlows');
-  if (flowsContainer) {
-    var svg1 = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg1.setAttribute('viewBox', '0 0 1200 400');
-    svg1.setAttribute('preserveAspectRatio', 'none');
-    svg1.style.animation = 'flowLeft 20s linear infinite';
-
-    var svg2 = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg2.setAttribute('viewBox', '0 0 1200 400');
-    svg2.setAttribute('preserveAspectRatio', 'none');
-    svg2.style.animation = 'flowRight 20s linear infinite';
-
-    // Generar paths curvos suaves para flujos
-    for (var s = 0; s < 2; s++) {
-      var svg = s === 0 ? svg1 : svg2;
-      for (var i = 0; i < 8; i++) {
-        var y = 50 + i * 50;
-        var offset = Math.random() * 50;
-        var d = 'M0,' + y + ' Q300,' + (y - 40 + offset) + ' 600,' + y + ' T1200,' + y;
-        var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        path.setAttribute('d', d);
-        path.setAttribute('stroke', '#1c2430');
-        path.setAttribute('stroke-width', '1.5');
-        path.setAttribute('fill', 'none');
-        path.setAttribute('opacity', (0.08 + i * 0.04).toFixed(2));
-        svg.appendChild(path);
-      }
-    }
-
-    flowsContainer.appendChild(svg1);
-    flowsContainer.appendChild(svg2);
-
-    // Inyectar keyframes para flows
-    if (!document.querySelector('style [data-flows]')) {
-      var style = document.createElement('style');
-      style.setAttribute('data-flows', '');
-      style.textContent = '@keyframes flowLeft{0%{transform:translateX(0)}100%{transform:translateX(-50%)}} @keyframes flowRight{0%{transform:translateX(0)}100%{transform:translateX(50%)}}';
-      document.head.appendChild(style);
-    }
-  }
-
   // Hero Heading — Letter spring animation (agrupado por palabras para no romper)
   var heading = document.getElementById('heroHeading');
   if (heading) {
@@ -311,7 +268,7 @@
 
     var words = text.split(' ');
     var letterIdx = 0;
-    // Detectar qué palabras van con gradiente ("en", "vivo.")
+    // Palabras con gradiente ("en", "vivo.")
     var gradWords = ['en', 'vivo.', 'vivo'];
 
     words.forEach(function(word, wIdx) {
@@ -332,7 +289,6 @@
 
       heading.appendChild(wordSpan);
 
-      // Espacio entre palabras (excepto la última)
       if (wIdx < words.length - 1) {
         var space = document.createElement('span');
         space.className = 'word-space';
@@ -342,7 +298,6 @@
       }
     });
 
-    // Inyectar keyframe si no existe
     if (!document.querySelector('style [data-spring]')) {
       var style = document.createElement('style');
       style.setAttribute('data-spring', '');
@@ -350,49 +305,178 @@
       document.head.appendChild(style);
     }
   }
+})();
+</script>
 
-  // BackgroundPaths — trazos animados detrás (mantener para compatibilidad)
-  var bpContainer = document.getElementById('bpSvg');
-  if (!bpContainer) return;
+<!-- Hero 3D Ballpit — motor Three.js real (esferas metálicas con física que siguen el cursor) -->
+<script type="importmap">
+{ "imports": {
+  "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
-  var bpSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-  bpSvg.setAttribute('viewBox', '0 0 696 900');
-  bpSvg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
-  bpSvg.setAttribute('style', 'width:100%;height:100%;');
+(function(){
+  const canvas = document.getElementById('ballpitCanvas');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!canvas || reduce) return;
 
-  for (var i = 0; i < 36; i++) {
-    var dur = (20 + Math.random() * 10).toFixed(1);
-    var delay = (Math.random() * 5).toFixed(2);
-    var pos = Math.random() > 0.5 ? 1 : -1;
-    var opacity = (0.08 + i * 0.008).toFixed(3);
+  // Paleta cálida OI Studio (terracota, ocre, crema, carbón)
+  const warmColors = ['#c07a35', '#a3673a', '#d99a5b', '#2c231b', '#e8d5b5'];
+  const isMobile = window.innerWidth < 768;
 
-    var d = 'M-' + (380 - i * 10 * pos) + ' -' + (189 + i * 12) +
-            'C-' + (380 - i * 10 * pos) + ' -' + (189 + i * 12) +
-            ' -' + (312 - i * 10 * pos) + ' ' + (216 - i * 12) +
-            ' ' + (152 - i * 10 * pos) + ' ' + (343 - i * 12) +
-            'C' + (616 - i * 10 * pos) + ' ' + (470 - i * 12) +
-            ' ' + (684 - i * 10 * pos) + ' ' + (875 - i * 12) +
-            ' ' + (684 - i * 10 * pos) + ' ' + (875 - i * 12);
+  const cfg = {
+    count: isMobile ? 60 : 120,
+    gravity: 0.4, friction: 0.995, wallBounce: 0.2, maxVelocity: 0.12,
+    minSize: 0.4, maxSize: 0.95, size0: 0.9,
+    maxX: 10, maxY: 10, maxZ: 10,
+    controlSphere0: true, followCursor: true
+  };
 
-    var bpPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    bpPath.setAttribute('d', d);
-    bpPath.setAttribute('stroke', '#1c2430');
-    bpPath.setAttribute('stroke-width', (0.6 + i * 0.05).toFixed(2));
-    bpPath.setAttribute('fill', 'none');
-    bpPath.setAttribute('opacity', opacity);
-    bpPath.style.animation = 'bpWave ' + dur + 's linear ' + delay + 's infinite';
+  // --- Renderer / escena / cámara ---
+  let renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: 'high-performance' });
+  } catch (e) { return; } // sin WebGL → fondo crema limpio
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
 
-    bpSvg.appendChild(bpPath);
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
+  camera.position.set(0, 0, 20);
+
+  // --- Datos de física ---
+  const positionData = new Float32Array(3 * cfg.count);
+  const velocityData = new Float32Array(3 * cfg.count);
+  const sizeData = new Float32Array(cfg.count);
+  const center = new THREE.Vector3();
+
+  center.toArray(positionData, 0);
+  sizeData[0] = cfg.size0;
+  for (let i = 1; i < cfg.count; i++) {
+    const idx = 3 * i;
+    positionData[idx]   = THREE.MathUtils.randFloatSpread(2 * cfg.maxX);
+    positionData[idx+1] = THREE.MathUtils.randFloatSpread(2 * cfg.maxY);
+    positionData[idx+2] = THREE.MathUtils.randFloatSpread(2 * cfg.maxZ);
+    sizeData[i] = THREE.MathUtils.randFloat(cfg.minSize, cfg.maxSize);
   }
 
-  bpContainer.appendChild(bpSvg);
+  const _p = new THREE.Vector3(), _v = new THREE.Vector3();
+  const _op = new THREE.Vector3(), _diff = new THREE.Vector3();
 
-  if (!document.querySelector('style [data-bp]')) {
-    var bpStyle = document.createElement('style');
-    bpStyle.setAttribute('data-bp', '');
-    bpStyle.textContent = '@keyframes bpWave{0%{opacity:0.08;stroke-dashoffset:50;}50%{opacity:0.25;}100%{opacity:0.08;stroke-dashoffset:0;}}';
-    document.head.appendChild(bpStyle);
+  function physicsUpdate(delta) {
+    const startIdx = cfg.controlSphere0 ? 1 : 0;
+    if (cfg.controlSphere0) {
+      _p.fromArray(positionData, 0).lerp(center, 0.1).toArray(positionData, 0);
+      velocityData[0] = velocityData[1] = velocityData[2] = 0;
+    }
+    for (let i = startIdx; i < cfg.count; i++) {
+      const base = 3 * i;
+      _p.fromArray(positionData, base);
+      _v.fromArray(velocityData, base);
+      _v.y -= delta * cfg.gravity * sizeData[i];
+      _v.multiplyScalar(cfg.friction);
+      _v.clampLength(0, cfg.maxVelocity);
+      _p.add(_v);
+      for (let j = i + 1; j < cfg.count; j++) {
+        const ob = 3 * j;
+        _op.fromArray(positionData, ob);
+        _diff.subVectors(_op, _p);
+        const dist = _diff.length();
+        const sum = sizeData[i] + sizeData[j];
+        if (dist < sum) {
+          const overlap = (sum - dist) * 0.5;
+          _diff.normalize();
+          _p.addScaledVector(_diff, -overlap);
+          _op.addScaledVector(_diff, overlap);
+          _op.toArray(positionData, ob);
+        }
+      }
+      if (Math.abs(_p.x) + sizeData[i] > cfg.maxX) { _p.x = Math.sign(_p.x) * (cfg.maxX - sizeData[i]); _v.x *= -cfg.wallBounce; }
+      if (_p.y - sizeData[i] < -cfg.maxY) { _p.y = -cfg.maxY + sizeData[i]; _v.y *= -cfg.wallBounce; }
+      if (Math.abs(_p.z) + sizeData[i] > cfg.maxZ) { _p.z = Math.sign(_p.z) * (cfg.maxZ - sizeData[i]); _v.z *= -cfg.wallBounce; }
+      _p.toArray(positionData, base);
+      _v.toArray(velocityData, base);
+    }
   }
+
+  // --- Mesh instanciado con reflejos ---
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  const envTex = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+  pmrem.dispose();
+
+  const geometry = new THREE.SphereGeometry(1, 24, 24);
+  const material = new THREE.MeshPhysicalMaterial({
+    envMap: envTex, metalness: 0.6, roughness: 0.35, clearcoat: 1, clearcoatRoughness: 0.25
+  });
+  const mesh = new THREE.InstancedMesh(geometry, material, cfg.count);
+  const colorObjs = warmColors.map(c => new THREE.Color(c));
+  for (let i = 0; i < cfg.count; i++) mesh.setColorAt(i, colorObjs[i % colorObjs.length]);
+  if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true;
+  scene.add(mesh);
+
+  scene.add(new THREE.AmbientLight(0xffffff, 1.6));
+  const pointLight = new THREE.PointLight(0xffffff, 3, 100, 1);
+  scene.add(pointLight);
+
+  const dummy = new THREE.Object3D();
+
+  // --- Cursor ---
+  const pointer = new THREE.Vector2(0, -0.9); // reposo abajo, fuera del título
+  const raycaster = new THREE.Raycaster();
+  const plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
+  const hit = new THREE.Vector3();
+  function onPointerMove(e) {
+    pointer.set((e.clientX / window.innerWidth) * 2 - 1, -(e.clientY / window.innerHeight) * 2 + 1);
+  }
+  if (cfg.followCursor) window.addEventListener('pointermove', onPointerMove);
+
+  // --- Resize ---
+  function resize() {
+    const parent = canvas.parentNode;
+    const w = parent.offsetWidth, h = parent.offsetHeight;
+    if (!w || !h) return;
+    camera.aspect = w / h; camera.updateProjectionMatrix();
+    const fovRad = camera.fov * Math.PI / 180;
+    const wHeight = 2 * Math.tan(fovRad / 2) * camera.position.z;
+    const wWidth = wHeight * camera.aspect;
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(w, h, false);
+    cfg.maxX = wWidth / 2; cfg.maxY = wHeight / 2; cfg.maxZ = wWidth / 4;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // --- Loop con pausa fuera de pantalla ---
+  const clock = new THREE.Clock();
+  let raf = 0, running = false;
+  function frame() {
+    raf = requestAnimationFrame(frame);
+    const delta = Math.min(clock.getDelta(), 0.1);
+    if (cfg.followCursor) {
+      raycaster.setFromCamera(pointer, camera);
+      if (raycaster.ray.intersectPlane(plane, hit)) center.copy(hit);
+    }
+    physicsUpdate(delta);
+    for (let i = 0; i < cfg.count; i++) {
+      dummy.position.fromArray(positionData, 3 * i);
+      dummy.scale.setScalar(sizeData[i]);
+      dummy.updateMatrix();
+      mesh.setMatrixAt(i, dummy.matrix);
+    }
+    mesh.instanceMatrix.needsUpdate = true;
+    if (cfg.controlSphere0) pointLight.position.fromArray(positionData, 0);
+    renderer.render(scene, camera);
+  }
+  const io = new IntersectionObserver(function(entries){
+    const vis = entries[0].isIntersecting;
+    if (vis && !running) { running = true; clock.start(); frame(); }
+    else if (!vis && running) { running = false; cancelAnimationFrame(raf); clock.stop(); }
+  }, { threshold: 0 });
+  io.observe(canvas);
 })();
 </script>
 <a class="wa-float" href="https://wa.me/34680956755?text=Hola%2C%20vengo%20de%20tu%20web%20y%20quiero%20informaci%C3%B3n%20para%20la%20web%20de%20mi%20negocio." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
