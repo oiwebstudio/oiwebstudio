@@ -313,7 +313,7 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
   if (!canvas || reduce) return;
 
   // Paleta cálida OI Studio (terracota, ocre, crema, carbón)
-  const warmColors = ['#c07a35', '#a3673a', '#d99a5b', '#2c231b', '#e8d5b5'];
+  const warmColors = ['#c07a35', '#a3673a', '#d99a5b', '#2c231b', '#e8d5b5', '#8a4a28', '#f0c896'];
   const isMobile = window.innerWidth < 768;
 
   const cfg = {
@@ -396,18 +396,31 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
   const envTex = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
   pmrem.dispose();
 
-  const geometry = new THREE.SphereGeometry(1, 24, 24);
+  const geometry = new THREE.SphereGeometry(1, 32, 32);
   const material = new THREE.MeshPhysicalMaterial({
-    envMap: envTex, metalness: 0.6, roughness: 0.35, clearcoat: 1, clearcoatRoughness: 0.25
+    envMap: envTex, envMapIntensity: 1.3, metalness: 0.6, roughness: 0.32, clearcoat: 1, clearcoatRoughness: 0.2
   });
   const mesh = new THREE.InstancedMesh(geometry, material, cfg.count);
   const colorObjs = warmColors.map(c => new THREE.Color(c));
-  for (let i = 0; i < cfg.count; i++) mesh.setColorAt(i, colorObjs[i % colorObjs.length]);
+  for (let i = 0; i < cfg.count; i++) mesh.setColorAt(i, colorObjs[Math.floor(Math.random() * colorObjs.length)]);
   if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true;
   scene.add(mesh);
 
-  scene.add(new THREE.AmbientLight(0xffffff, 1.6));
-  const pointLight = new THREE.PointLight(0xffffff, 3, 100, 1);
+  // Rotación propia sutil por esfera, para que los reflejos metálicos cobren vida
+  const rotSpeed = new Float32Array(3 * cfg.count);
+  const rotAngle = new Float32Array(3 * cfg.count);
+  for (let i = 0; i < 3 * cfg.count; i++) rotSpeed[i] = (Math.random() - 0.5) * 1.4;
+
+  scene.add(new THREE.AmbientLight(0xfff3e6, 1.05));
+  const hemi = new THREE.HemisphereLight(0xfff3e0, 0x3a2b1c, 0.7);
+  scene.add(hemi);
+  const keyLight = new THREE.DirectionalLight(0xffe4bf, 1.4);
+  keyLight.position.set(-6, 9, 8);
+  scene.add(keyLight);
+  const fillLight = new THREE.PointLight(0xffd9a0, 1.6, 100, 1.4);
+  fillLight.position.set(6, 4, 10);
+  scene.add(fillLight);
+  const pointLight = new THREE.PointLight(0xffffff, 2.4, 100, 1);
   scene.add(pointLight);
 
   const dummy = new THREE.Object3D();
@@ -450,8 +463,13 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
     }
     physicsUpdate(delta);
     for (let i = 0; i < cfg.count; i++) {
-      dummy.position.fromArray(positionData, 3 * i);
+      const rb = 3 * i;
+      dummy.position.fromArray(positionData, rb);
       dummy.scale.setScalar(sizeData[i]);
+      rotAngle[rb] += rotSpeed[rb] * delta;
+      rotAngle[rb+1] += rotSpeed[rb+1] * delta;
+      rotAngle[rb+2] += rotSpeed[rb+2] * delta;
+      dummy.rotation.set(rotAngle[rb], rotAngle[rb+1], rotAngle[rb+2]);
       dummy.updateMatrix();
       mesh.setMatrixAt(i, dummy.matrix);
     }
