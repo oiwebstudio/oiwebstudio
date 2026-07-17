@@ -21,6 +21,16 @@ build/
 Thumbs.db
 
 # Local development
-.clauemd/
+.claude/
 LEEME.md
 server.js
+
+# Material local (no forma parte de la web desplegada)
+localai/
+mi web/
+_check5/
+instagram/
+promo-instagram.html
+*.bat
+cm-semana-1.txt
+estrategia-de-ventas.txt
