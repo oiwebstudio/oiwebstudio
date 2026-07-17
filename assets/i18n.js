@@ -153,6 +153,10 @@ const EU = {
   cta_index_h: "Prest zure mailako webgune bat izateko?",
   cta_index_p: "Kontatu zure negozioa zertan datzan eta proposamen zintzo bat prestatuko dizut 48 ordu baino gutxiagotan.",
 
+  /* CTA trabajos */
+  cta_label: "Lanak zuzenean",
+  cta_btn: "Lanak ikusi",
+
   /* Footer */
   foot_desc: "Webgune azkarrak, modernoak eta eraginkorrak, interneten nabarmendu nahi duten tokiko negozioentzat.",
   foot_secciones: "Atalak",
