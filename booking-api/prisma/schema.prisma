@@ -1,0 +1,126 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Business {
+  id             String   @id @default(cuid())
+  slug           String   @unique
+  name           String
+  category       String?
+  phone          String?
+  whatsappNumber String?  @map("whatsapp_number")
+  openingHours   String?  @map("opening_hours") // formato OSM, ej: "Mo-Fr 09:00-19:00; Sa 10:00-14:00"
+  timezone       String   @default("Europe/Madrid")
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  bookingConfig BookingConfig?
+  services      Service[]
+  customers     Customer[]
+  bookings      Booking[]
+  chatSessions  ChatSession[]
+
+  @@map("businesses")
+}
+
+model BookingConfig {
+  id                     String   @id @default(cuid())
+  businessId             String   @unique @map("business_id")
+  business               Business @relation(fields: [businessId], references: [id])
+  slotIntervalMinutes    Int      @default(30) @map("slot_interval_minutes")
+  capacity               Int      @default(1) // reservas simultáneas por franja (sillas/mesas)
+  leadTimeMinutes        Int      @default(60) @map("lead_time_minutes")
+  maxAdvanceDays         Int      @default(30) @map("max_advance_days")
+  whatsappEnabled        Boolean  @default(false) @map("whatsapp_enabled")
+  whatsappPhoneNumberId  String?  @map("whatsapp_phone_number_id")
+  whatsappVerifyToken    String?  @map("whatsapp_verify_token")
+  whatsappAccessToken    String?  @map("whatsapp_access_token")
+  updatedAt              DateTime @updatedAt @map("updated_at")
+
+  @@map("booking_configs")
+}
+
+model Service {
+  id              String    @id @default(cuid())
+  businessId      String    @map("business_id")
+  business        Business  @relation(fields: [businessId], references: [id])
+  name            String
+  durationMinutes Int       @map("duration_minutes")
+  priceLabel      String?   @map("price_label")
+  capacity        Int?      // si está seteado, pisa BookingConfig.capacity
+  active          Boolean   @default(true)
+  sortOrder       Int       @default(0) @map("sort_order")
+  createdAt       DateTime  @default(now()) @map("created_at")
+  bookings        Booking[]
+
+  @@index([businessId])
+  @@map("services")
+}
+
+model Customer {
+  id         String    @id @default(cuid())
+  businessId String    @map("business_id")
+  business   Business  @relation(fields: [businessId], references: [id])
+  name       String
+  phone      String
+  email      String?
+  createdAt  DateTime  @default(now()) @map("created_at")
+  bookings   Booking[]
+
+  @@unique([businessId, phone])
+  @@map("customers")
+}
+
+model Booking {
+  id            String   @id @default(cuid())
+  businessId    String   @map("business_id")
+  business      Business @relation(fields: [businessId], references: [id])
+  serviceId     String   @map("service_id")
+  service       Service  @relation(fields: [serviceId], references: [id])
+  customerId    String   @map("customer_id")
+  customer      Customer @relation(fields: [customerId], references: [id])
+  startsAt      DateTime @map("starts_at")
+  endsAt        DateTime @map("ends_at")
+  status        String   @default("CONFIRMED") // CONFIRMED | CANCELLED | COMPLETED | NO_SHOW
+  source        String   @default("WEB") // WEB | WHATSAPP
+  notes         String?
+  chatSessionId String?  @map("chat_session_id")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  @@index([businessId, startsAt])
+  @@map("bookings")
+}
+
+model ChatSession {
+  id             String    @id @default(cuid())
+  businessId     String    @map("business_id")
+  business       Business  @relation(fields: [businessId], references: [id])
+  channel        String // WEB | WHATSAPP
+  externalUserId String?   @map("external_user_id") // número de WA, o id anónimo web
+  state          String // JSON: { step, serviceId?, date?, slotStartsAt?, name?, phone? }
+  status         String    @default("ACTIVE") // ACTIVE | COMPLETED | ABANDONED
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime  @updatedAt @map("updated_at")
+  messages       Message[]
+
+  @@index([businessId, channel, externalUserId])
+  @@map("chat_sessions")
+}
+
+model Message {
+  id            String      @id @default(cuid())
+  chatSessionId String      @map("chat_session_id")
+  chatSession   ChatSession @relation(fields: [chatSessionId], references: [id])
+  role          String // "user" | "bot"
+  text          String
+  payload       String? // JSON: opciones rápidas ofrecidas, etc.
+  createdAt     DateTime    @default(now()) @map("created_at")
+
+  @@index([chatSessionId])
+  @@map("messages")
+}
