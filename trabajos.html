@@ -125,13 +125,23 @@
 </ul>
 </div>
 
-<header class="hero" style="padding-bottom:0;">
-<div class="hero__bg"><div class="hero__grid"></div><div class="bp-svg" id="bpSvg"></div></div>
-<div class="container">
+<header class="hero hero--modern" style="padding-bottom:0;">
+<div class="hero__bg">
+<div class="hero__flows" id="heroFlows" aria-hidden="true"></div>
+<div class="hero__grid"></div>
+<div class="bp-svg" id="bpSvg"></div>
+</div>
+<div class="container hero__container">
 <div class="hero__inner">
 <span class="eyebrow reveal" data-t="tra_eyebrow">Proyectos</span>
-<h1 class="reveal" data-d="1" data-t="tra_h1" style="font-size:clamp(38px,6vw,64px); margin-top:18px;">Proyectos reales, <span class="grad">en vivo</span>.</h1>
+<h1 class="hero-heading" id="heroHeading" data-t="tra_h1">Proyectos reales, en vivo.</h1>
 <p class="hero__lede reveal" data-d="2" data-t="tra_lede">Ocho webs en vivo que puedes abrir y explorar, cada una de un sector distinto.</p>
+<div class="hero-cta-wrapper">
+<button class="hero-cta-btn" onclick="document.querySelector('.mb-wall').scrollIntoView({behavior:'smooth'})">
+<span class="hero-cta-text">Ver los trabajos</span>
+<span class="hero-cta-arrow">→</span>
+</button>
+</div>
 <p class="reveal" data-d="3" data-t="tra_honesty" style="max-width:600px; margin:22px auto 0; background:var(--accent-soft); color:var(--accent-press); border-radius:14px; padding:14px 20px; font-size:14.5px; font-weight:500;">Las ocho webs están publicadas y se pueden navegar. Tres son proyectos para clientes; el resto las construí yo para enseñar cómo trabajo cada sector.</p>
 </div>
 </div>
@@ -198,16 +208,18 @@
 </div>
 </section>
 
-<section class="section dark-section cta">
-<div class="container">
-<div class="reveal">
-<h2 data-t="tra_cta_h">¿Tu negocio es el siguiente?</h2>
-<p data-t="tra_cta_p">Cuéntame en qué consiste y te preparo una propuesta honesta en menos de 48 horas.</p>
-<div class="hero__actions">
-<a href="contacto.html" class="btn btn--light btn--lg" data-t="btn_presupuesto">Solicitar presupuesto</a>
-<a href="https://wa.me/34680956755" target="_blank" rel="noopener" class="btn btn--dark-ghost btn--lg" data-t="btn_whatsapp">Escribir por WhatsApp</a>
+<section class="cta-premium">
+<div class="cta-box">
+<div class="cta-badge">
+<span class="cta-ping"></span>
+<span data-t="cta_label">Proyectos en vivo</span>
 </div>
-</div>
+<h2 class="cta-headline" data-t="tra_cta_h">Tus ideas,<br/><span class="cta-muted">ejecutadas perfectamente.</span></h2>
+<p class="cta-desc" data-t="tra_cta_p">Ocho webs reales de negocios locales. Rápidas, elegantes y diseñadas para convertir visitas en clientes.</p>
+<button class="cta-btn" onclick="window.scrollTo({top:document.querySelector('.mb-wall').offsetTop,behavior:'smooth'})">
+<span data-t="cta_btn">Ver los trabajos</span>
+<span class="cta-arrow">→</span>
+</button>
 </div>
 </section>
 
@@ -249,15 +261,95 @@
 <script src="assets/main.js"></script>
 <script>
 (function(){
-  var container = document.getElementById('bpSvg');
-  if (!container) return;
+  // Modern Hero — SVG Flows animados en direcciones opuestas
+  var flowsContainer = document.getElementById('heroFlows');
+  if (flowsContainer) {
+    var svg1 = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg1.setAttribute('viewBox', '0 0 1200 400');
+    svg1.setAttribute('preserveAspectRatio', 'none');
+    svg1.style.animation = 'flowLeft 20s linear infinite';
 
-  var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-  svg.setAttribute('viewBox', '0 0 696 900');
-  svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
-  svg.setAttribute('style', 'width:100%;height:100%;');
+    var svg2 = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg2.setAttribute('viewBox', '0 0 1200 400');
+    svg2.setAttribute('preserveAspectRatio', 'none');
+    svg2.style.animation = 'flowRight 20s linear infinite';
 
-  // Generar 36 paths con animación
+    // Generar paths curvos suaves para flujos
+    for (var s = 0; s < 2; s++) {
+      var svg = s === 0 ? svg1 : svg2;
+      for (var i = 0; i < 8; i++) {
+        var y = 50 + i * 50;
+        var offset = Math.random() * 50;
+        var d = 'M0,' + y + ' Q300,' + (y - 40 + offset) + ' 600,' + y + ' T1200,' + y;
+        var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', d);
+        path.setAttribute('stroke', '#1c2430');
+        path.setAttribute('stroke-width', '1.5');
+        path.setAttribute('fill', 'none');
+        path.setAttribute('opacity', (0.08 + i * 0.04).toFixed(2));
+        svg.appendChild(path);
+      }
+    }
+
+    flowsContainer.appendChild(svg1);
+    flowsContainer.appendChild(svg2);
+
+    // Inyectar keyframes para flows
+    if (!document.querySelector('style [data-flows]')) {
+      var style = document.createElement('style');
+      style.setAttribute('data-flows', '');
+      style.textContent = '@keyframes flowLeft{0%{transform:translateX(0)}100%{transform:translateX(-50%)}} @keyframes flowRight{0%{transform:translateX(0)}100%{transform:translateX(50%)}}';
+      document.head.appendChild(style);
+    }
+  }
+
+  // Hero Heading — Letter spring animation
+  var heading = document.getElementById('heroHeading');
+  if (heading) {
+    var text = heading.textContent;
+    heading.innerHTML = '';
+
+    text.split('').forEach(function(char, idx) {
+      var span = document.createElement('span');
+      span.textContent = char;
+
+      if (char === ' ') {
+        span.style.width = '0.25em';
+        span.style.display = 'inline-block';
+      } else if (char === ',' || char === '.') {
+        span.className = 'letter';
+        span.style.animation = 'springIn 0.8s cubic-bezier(.34,1.56,.64,1) forwards';
+        span.style.animationDelay = (idx * 0.04) + 's';
+      } else {
+        span.className = 'letter';
+        if (char === 'e' && text.substring(idx).startsWith('en vivo')) {
+          span.classList.add('gradient-text');
+        }
+        span.style.animation = 'springIn 0.8s cubic-bezier(.34,1.56,.64,1) forwards';
+        span.style.animationDelay = (idx * 0.04) + 's';
+      }
+
+      heading.appendChild(span);
+    });
+
+    // Inyectar keyframe si no existe
+    if (!document.querySelector('style [data-spring]')) {
+      var style = document.createElement('style');
+      style.setAttribute('data-spring', '');
+      style.textContent = '@keyframes springIn{0%{opacity:0;transform:translateY(30px) scale(0.95)}100%{opacity:1;transform:translateY(0) scale(1)}}';
+      document.head.appendChild(style);
+    }
+  }
+
+  // BackgroundPaths — trazos animados detrás (mantener para compatibilidad)
+  var bpContainer = document.getElementById('bpSvg');
+  if (!bpContainer) return;
+
+  var bpSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  bpSvg.setAttribute('viewBox', '0 0 696 900');
+  bpSvg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+  bpSvg.setAttribute('style', 'width:100%;height:100%;');
+
   for (var i = 0; i < 36; i++) {
     var dur = (20 + Math.random() * 10).toFixed(1);
     var delay = (Math.random() * 5).toFixed(2);
@@ -272,25 +364,24 @@
             ' ' + (684 - i * 10 * pos) + ' ' + (875 - i * 12) +
             ' ' + (684 - i * 10 * pos) + ' ' + (875 - i * 12);
 
-    var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    path.setAttribute('d', d);
-    path.setAttribute('stroke', '#1c2430');
-    path.setAttribute('stroke-width', (0.6 + i * 0.05).toFixed(2));
-    path.setAttribute('fill', 'none');
-    path.setAttribute('opacity', opacity);
-    path.style.animation = 'bpWave ' + dur + 's linear ' + delay + 's infinite';
+    var bpPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    bpPath.setAttribute('d', d);
+    bpPath.setAttribute('stroke', '#1c2430');
+    bpPath.setAttribute('stroke-width', (0.6 + i * 0.05).toFixed(2));
+    bpPath.setAttribute('fill', 'none');
+    bpPath.setAttribute('opacity', opacity);
+    bpPath.style.animation = 'bpWave ' + dur + 's linear ' + delay + 's infinite';
 
-    svg.appendChild(path);
+    bpSvg.appendChild(bpPath);
   }
 
-  container.appendChild(svg);
+  bpContainer.appendChild(bpSvg);
 
-  // Inyectar keyframe si no existe
   if (!document.querySelector('style [data-bp]')) {
-    var style = document.createElement('style');
-    style.setAttribute('data-bp', '');
-    style.textContent = '@keyframes bpWave{0%{opacity:0.08;stroke-dashoffset:50;}50%{opacity:0.25;}100%{opacity:0.08;stroke-dashoffset:0;}}';
-    document.head.appendChild(style);
+    var bpStyle = document.createElement('style');
+    bpStyle.setAttribute('data-bp', '');
+    bpStyle.textContent = '@keyframes bpWave{0%{opacity:0.08;stroke-dashoffset:50;}50%{opacity:0.25;}100%{opacity:0.08;stroke-dashoffset:0;}}';
+    document.head.appendChild(bpStyle);
   }
 })();
 </script>

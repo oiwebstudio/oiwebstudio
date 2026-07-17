@@ -797,3 +797,58 @@ body::after {
   .hs-ch b{ transition:none; } .hs-ch .b{ display:none; }
   .hsx, .hsx i{ transition:none; }
 }
+
+/* CTA Premium — Badge con ping + Headline Serif + Botón flecha */
+.cta-premium{ background:linear-gradient(135deg, #f6f3ea 0%, #f2eee4 100%); padding:clamp(60px,10vw,100px) 0; position:relative; }
+.cta-box{ max-width:640px; margin:0 auto; padding:0 clamp(20px,4vw,40px); text-align:center; }
+
+/* Badge con ping animation */
+.cta-badge{ display:inline-flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:#1c2430; margin-bottom:24px; }
+.cta-ping{ position:relative; width:8px; height:8px; background:#23c17a; border-radius:50%; }
+.cta-ping::before{ content:''; position:absolute; inset:-4px; border:2px solid #23c17a; border-radius:50%; animation:ctaPing 2s cubic-bezier(0,0,0.2,1) infinite; }
+@keyframes ctaPing{ 75%, 100%{ transform:scale(2); opacity:0; } }
+
+/* Headline serif grande */
+.cta-headline{ font-family:var(--font-serif); font-size:clamp(32px, 5vw, 56px); line-height:1.2; font-weight:500; color:#1c2430; margin:0 0 16px; }
+.cta-muted{ color:#78725f; font-weight:400; }
+
+/* Descripción */
+.cta-desc{ font-size:clamp(14px, 1.8vw, 16px); color:#4a463d; line-height:1.6; margin:0 0 32px; }
+
+/* Botón con arrow */
+.cta-btn{ display:inline-flex; align-items:center; gap:8px; padding:12px 28px; background:#1c2430; color:#f6f3ea; border:none; border-radius:20px; font-family:var(--font-sans); font-size:14px; font-weight:500; cursor:pointer; transition:all .3s cubic-bezier(.25,.46,.45,.94); box-shadow:0 4px 12px -2px rgba(28,36,48,.15); }
+.cta-btn:hover{ transform:translateY(-2px); box-shadow:0 12px 24px -4px rgba(28,36,48,.25); }
+.cta-btn:active{ transform:translateY(0); }
+.cta-arrow{ display:inline-block; transition:transform .3s cubic-bezier(.25,.46,.45,.94); }
+.cta-btn:hover .cta-arrow{ transform:translateX(4px); }
+
+@media(max-width:768px){
+  .cta-premium{ padding:clamp(50px, 8vw, 80px) 0; }
+  .cta-headline{ margin-bottom:12px; }
+  .cta-desc{ margin-bottom:24px; }
+}
+
+/* Modern Hero — SVG Flows animados */
+.hero--modern{ position:relative; }
+.hero__flows{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none; overflow:hidden; opacity:0.4; }
+.hero__flows svg{ position:absolute; width:200%; height:100%; }
+
+/* Spring letter animation para heading */
+.hero-heading{ font-size:clamp(48px, 7vw, 72px); line-height:1.15; font-weight:600; color:#1c2430; margin:24px 0 0; position:relative; z-index:2; font-family:var(--font-sans); letter-spacing:-0.02em; }
+.hero-heading .letter{ display:inline-block; will-change:transform; transform-origin:bottom; }
+.hero-heading .gradient-text{ background:linear-gradient(135deg, #1c2430 0%, #78725f 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+
+/* Hero CTA premium con glassmorphism */
+.hero-cta-wrapper{ margin:32px 0; }
+.hero-cta-btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:14px 32px; background:rgba(28, 36, 48, 0.7); backdrop-filter:blur(12px); border:1px solid rgba(28, 36, 48, 0.2); border-radius:28px; font-family:var(--font-sans); font-size:15px; font-weight:500; color:#1c2430; cursor:pointer; transition:all .35s cubic-bezier(.25,.46,.45,.94); box-shadow:0 8px 32px -8px rgba(28,36,48,.12), inset 0 1px 0 rgba(255,255,255,.3); }
+.hero-cta-btn:hover{ background:rgba(28, 36, 48, 0.85); border-color:rgba(28, 36, 48, 0.4); transform:translateY(-2px); box-shadow:0 16px 48px -12px rgba(28,36,48,.2), inset 0 1px 0 rgba(255,255,255,.3); }
+.hero-cta-btn:active{ transform:translateY(0); }
+.hero-cta-text{ position:relative; }
+.hero-cta-arrow{ display:inline-block; transition:transform .35s cubic-bezier(.25,.46,.45,.94); }
+.hero-cta-btn:hover .hero-cta-arrow{ transform:translateX(6px); }
+
+@media(max-width:768px){
+  .hero-heading{ font-size:clamp(36px, 5.5vw, 56px); }
+  .hero-cta-btn{ padding:12px 28px; font-size:14px; }
+  .hero-cta-wrapper{ margin:28px 0; }
+}
