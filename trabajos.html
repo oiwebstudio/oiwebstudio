@@ -303,33 +303,43 @@
     }
   }
 
-  // Hero Heading — Letter spring animation
+  // Hero Heading — Letter spring animation (agrupado por palabras para no romper)
   var heading = document.getElementById('heroHeading');
   if (heading) {
-    var text = heading.textContent;
+    var text = heading.textContent.trim();
     heading.innerHTML = '';
 
-    text.split('').forEach(function(char, idx) {
-      var span = document.createElement('span');
-      span.textContent = char;
+    var words = text.split(' ');
+    var letterIdx = 0;
+    // Detectar qué palabras van con gradiente ("en", "vivo.")
+    var gradWords = ['en', 'vivo.', 'vivo'];
 
-      if (char === ' ') {
-        span.style.width = '0.25em';
-        span.style.display = 'inline-block';
-      } else if (char === ',' || char === '.') {
+    words.forEach(function(word, wIdx) {
+      var wordSpan = document.createElement('span');
+      wordSpan.className = 'word';
+      var isGrad = gradWords.indexOf(word.toLowerCase()) !== -1;
+
+      word.split('').forEach(function(char) {
+        var span = document.createElement('span');
+        span.textContent = char;
         span.className = 'letter';
-        span.style.animation = 'springIn 0.8s cubic-bezier(.34,1.56,.64,1) forwards';
-        span.style.animationDelay = (idx * 0.04) + 's';
-      } else {
-        span.className = 'letter';
-        if (char === 'e' && text.substring(idx).startsWith('en vivo')) {
-          span.classList.add('gradient-text');
-        }
-        span.style.animation = 'springIn 0.8s cubic-bezier(.34,1.56,.64,1) forwards';
-        span.style.animationDelay = (idx * 0.04) + 's';
+        if (isGrad) span.classList.add('gradient-text');
+        span.style.animation = 'springIn 0.7s cubic-bezier(.34,1.56,.64,1) both';
+        span.style.animationDelay = (letterIdx * 0.035) + 's';
+        wordSpan.appendChild(span);
+        letterIdx++;
+      });
+
+      heading.appendChild(wordSpan);
+
+      // Espacio entre palabras (excepto la última)
+      if (wIdx < words.length - 1) {
+        var space = document.createElement('span');
+        space.className = 'word-space';
+        space.innerHTML = '&nbsp;';
+        heading.appendChild(space);
+        letterIdx++;
       }
-
-      heading.appendChild(span);
     });
 
     // Inyectar keyframe si no existe
