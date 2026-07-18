@@ -5,6 +5,9 @@
   var businessSlug = scriptEl.getAttribute("data-business");
   var apiBase = scriptEl.getAttribute("data-api") || new URL(scriptEl.src).origin;
   var launchLabel = scriptEl.getAttribute("data-label") || "Reservar cita";
+  // Colores personalizables por negocio: <script … data-accent="#8a2f4f" data-ink="#1c1518">
+  var accent = scriptEl.getAttribute("data-accent") || "#c07a35";
+  var ink = scriptEl.getAttribute("data-ink") || "#191712";
 
   if (!businessSlug) {
     console.error("[booking-widget] falta data-business en el <script>");
@@ -12,8 +15,10 @@
   }
 
   var STYLE = "" +
-    ":root{--oib-ink:#17151c;--oib-ink2:#232028;--oib-accent:#e8623d;--oib-accent2:#d4522f;" +
-    "--oib-cream:#faf7f2;--oib-line:#eee9e1;--oib-radius:22px}" +
+    ":root{--oib-ink:" + ink + ";--oib-ink2:color-mix(in srgb," + ink + " 82%,#5a4a38);" +
+    "--oib-accent:" + accent + ";--oib-accent2:color-mix(in srgb," + accent + " 82%,#000);" +
+    "--oib-accent-soft:color-mix(in srgb," + accent + " 14%,#fff);" +
+    "--oib-cream:#faf7f2;--oib-line:#ece5da;--oib-radius:22px}" +
 
     /* ---- Botón lanzador: círculo con robot ---- */
     ".oib-launch{position:fixed;right:20px;bottom:20px;z-index:99998;display:flex;align-items:center;justify-content:center;" +
@@ -46,7 +51,7 @@
 
     /* ---- Cabecera ---- */
     ".oib-head{background:linear-gradient(135deg,var(--oib-ink) 0%,var(--oib-ink2) 100%);color:#fff;" +
-    "padding:18px 18px 16px;display:flex;align-items:center;gap:12px;flex:none}" +
+    "padding:18px 18px 16px;display:flex;align-items:center;gap:12px;flex:none;border-bottom:3px solid var(--oib-accent)}" +
     ".oib-avatar{width:42px;height:42px;border-radius:14px;background:var(--oib-accent);flex:none;display:flex;" +
     "align-items:center;justify-content:center}" +
     ".oib-avatar svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}" +
@@ -72,7 +77,7 @@
     "@keyframes oib-msg{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}}" +
     ".oib-msg.bot{align-self:flex-start;background:#fff;color:#2a2732;border:1px solid var(--oib-line);" +
     "border-radius:16px 16px 16px 5px;box-shadow:0 2px 6px rgba(23,21,28,.05)}" +
-    ".oib-msg.user{align-self:flex-end;background:var(--oib-ink);color:#fff;border-radius:16px 16px 5px 16px}" +
+    ".oib-msg.user{align-self:flex-end;background:linear-gradient(135deg,var(--oib-accent),var(--oib-accent2));color:#fff;border-radius:16px 16px 5px 16px}" +
 
     /* ---- Escribiendo… ---- */
     ".oib-typing{align-self:flex-start;background:#fff;border:1px solid var(--oib-line);border-radius:16px 16px 16px 5px;" +
@@ -85,10 +90,10 @@
 
     /* ---- Respuestas rápidas ---- */
     ".oib-quick{display:flex;flex-wrap:wrap;gap:8px;align-self:flex-start;max-width:95%}" +
-    ".oib-quick button{border:1.5px solid var(--oib-ink);background:transparent;color:var(--oib-ink);" +
+    ".oib-quick button{border:1.5px solid var(--oib-accent);background:var(--oib-accent-soft);color:var(--oib-accent2);" +
     "border-radius:999px;padding:8px 15px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;" +
     "transition:background .18s,color .18s,transform .18s}" +
-    ".oib-quick button:hover{background:var(--oib-ink);color:#fff;transform:translateY(-1px)}" +
+    ".oib-quick button:hover{background:var(--oib-accent);color:#fff;transform:translateY(-1px)}" +
     ".oib-quick button:active{transform:scale(.96)}" +
     ".oib-quick button:focus-visible{outline:2px solid var(--oib-accent);outline-offset:2px}" +
 
@@ -100,7 +105,7 @@
     ".oib-foot{flex:none;padding:12px 14px 14px;background:var(--oib-cream);border-top:1px solid var(--oib-line)}" +
     ".oib-input{display:flex;gap:8px;background:#fff;border:1.5px solid var(--oib-line);border-radius:999px;" +
     "padding:5px 5px 5px 18px;transition:border-color .2s,box-shadow .2s}" +
-    ".oib-input:focus-within{border-color:var(--oib-ink);box-shadow:0 0 0 3px rgba(23,21,28,.07)}" +
+    ".oib-input:focus-within{border-color:var(--oib-accent);box-shadow:0 0 0 3px var(--oib-accent-soft)}" +
     ".oib-input input{flex:1;border:none;outline:none;background:transparent;font-size:14px;font-family:inherit;" +
     "color:#2a2732;min-width:0}" +
     ".oib-input input::placeholder{color:#b0a798}" +
@@ -213,22 +218,58 @@
     textEl.value = "";
     addMessage("user", value);
 
-    // Si el bot no está esperando un dato concreto (nombre, teléfono…),
-    // intenta responder la pregunta localmente sin tocar el flujo de reserva.
+    // Si el bot no está esperando un dato concreto (nombre, teléfono…):
+    //  1. intención de reservar → sigue el flujo normal
+    //  2. coincide con una FAQ → respuesta local instantánea
+    //  3. cualquier otra pregunta → IA en el servidor (n8n o Claude)
     if (!expectingFreeText) {
-      var faq = answerFaq(value);
-      if (faq) {
-        busy = true;
-        var typing = showTyping();
-        setTimeout(function () {
-          typing.remove();
-          busy = false;
-          addMessage("bot", faq);
-        }, Math.min(400 + faq.length * 5, 900));
+      var wantsBooking = /reserv|cita|encargo|pedir hora|disponib|hueco/.test(normalize(value));
+      if (!wantsBooking) {
+        var faq = answerFaq(value);
+        if (faq) {
+          busy = true;
+          var typing = showTyping();
+          setTimeout(function () {
+            typing.remove();
+            busy = false;
+            addMessage("bot", faq);
+          }, Math.min(400 + faq.length * 5, 900));
+          return;
+        }
+        askAI(value);
         return;
       }
     }
     sendInput(value);
+  }
+
+  function askAI(question) {
+    busy = true;
+    var typing = showTyping();
+    fetch(apiBase + "/api/chat/ai", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        businessSlug: businessSlug,
+        question: question,
+        context: typeof window.OIB_CONTEXT === "string" ? window.OIB_CONTEXT : undefined,
+      }),
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        typing.remove();
+        busy = false;
+        if (data && data.answer) {
+          addMessage("bot", data.answer);
+        } else {
+          addMessage("bot", "Esa no me la sé 😅 Puedo ayudarte a reservar, o escríbenos directamente y te contestamos enseguida.");
+        }
+      })
+      .catch(function () {
+        typing.remove();
+        busy = false;
+        addMessage("bot", "Esa no me la sé 😅 Puedo ayudarte a reservar, o escríbenos directamente y te contestamos enseguida.");
+      });
   }
 
   function addMessage(role, text, extraClass) {
