@@ -62,6 +62,7 @@
   .sticky-cta .info span{font-family:var(--sans);font-size:10px;color:#e0b98a;text-transform:uppercase;letter-spacing:.08em;display:flex;align-items:center;gap:4px;}
   .sticky-cta .info span::before{content:"";width:6px;height:6px;border-radius:50%;background:#7fbf6a;box-shadow:0 0 0 3px rgba(127,191,106,.25);}
   @media(max-width:560px){ .sticky-cta .info span{display:none;} .sticky-cta .info b{font-size:12px;} }
+  @media(max-width:640px){ .sticky-cta{bottom:100px;} }
 
   /* Nav */
   header{position:sticky;top:0;z-index:40;padding:0 16px;}
@@ -200,10 +201,29 @@
   .rev-card{border-radius:14px;}
   .faq-item{border-radius:12px;}
 
-  .contact-float{position:fixed;right:20px;bottom:100px;display:flex;flex-direction:column;gap:12px;z-index:140;}
-  .contact-float a{width:54px;height:54px;border-radius:50%;background:var(--terra);color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;transition:all .3s;box-shadow:0 8px 20px -8px rgba(192,122,53,.5);text-decoration:none;}
-  .contact-float a:hover{background:var(--terra-dark);transform:scale(1.12);box-shadow:0 12px 28px -10px rgba(192,122,53,.6);}
-  @media(max-width:640px){.contact-float{right:14px;bottom:80px;}.contact-float a{width:48px;height:48px;font-size:20px;}}
+  /* Menú fluido de contacto (mismo componente que la web principal de OI Studio) */
+  .fmenu{position:fixed;right:20px;bottom:190px;z-index:140;width:54px}
+  .fmenu__toggle,.fmenu__item{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .fmenu__toggle{position:relative;z-index:95;background:var(--ink);color:var(--cream);box-shadow:0 4px 12px rgba(9,10,15,.22),0 14px 34px -10px rgba(9,10,15,.4);transition:transform .25s cubic-bezier(.34,1.56,.64,1),background .2s}
+  .fmenu__toggle:hover{transform:translateY(-2px) scale(1.05)}
+  .fmenu__toggle:active{transform:scale(.95)}
+  .fmenu__toggle:focus-visible{outline:3px solid var(--terra);outline-offset:3px}
+  .fmenu__ico{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transition:opacity .3s,transform .3s cubic-bezier(.4,0,.2,1)}
+  .fmenu__ico svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round}
+  .fmenu__ico--close{opacity:0;transform:rotate(-180deg) scale(0)}
+  .fmenu.is-open .fmenu__ico--open{opacity:0;transform:rotate(180deg) scale(0)}
+  .fmenu.is-open .fmenu__ico--close{opacity:1;transform:none}
+  .fmenu__item{position:absolute;left:0;top:0;background:var(--ink);color:var(--cream);opacity:0;transform:translateY(0);clip-path:circle(50% at 50% 52%);box-shadow:0 4px 12px rgba(9,10,15,.18);transition:transform .3s cubic-bezier(.4,0,.2,1),opacity .3s,background .2s;pointer-events:none;text-decoration:none}
+  .fmenu__item svg{width:22px;height:22px}
+  .fmenu__item--wa{background:#25d366;color:#0b3b2e}
+  .fmenu__item:hover{background:var(--terra);color:#fff}
+  .fmenu__item--wa:hover{background:#1fb959;color:#0b3b2e}
+  .fmenu.is-open .fmenu__item{opacity:1;pointer-events:auto}
+  .fmenu.is-open .fmenu__item[data-i="1"]{transform:translateY(-62px)}
+  .fmenu.is-open .fmenu__item[data-i="2"]{transform:translateY(-124px)}
+  .fmenu.is-open .fmenu__item[data-i="3"]{transform:translateY(-186px)}
+  @media(prefers-reduced-motion:reduce){.fmenu__toggle,.fmenu__ico,.fmenu__item{transition:none}}
+  @media(max-width:640px){.fmenu{right:14px;bottom:190px}}
 
   .modal-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:160;backdrop-filter:blur(4px);}
   .modal-backdrop.show{display:flex;align-items:center;justify-content:center;}
@@ -419,10 +439,20 @@
 <button class="btn btn-terra" style="padding:12px 22px;" onclick="document.getElementById('modalEncargo').classList.add('show')" data-t="cta_b">Hacer un encargo →</button>
 </div>
 
-<div class="contact-float">
-<a href="tel:+34600000000" title="Llamar" aria-label="Llamar">☎️</a>
-<a href="https://wa.me/34600000000?text=Hola%20Errotaberri%2C%20me%20gustaria%20hacer%20un%20encargo" title="WhatsApp" aria-label="WhatsApp">💬</a>
-<a href="mailto:hola@errotaberri.eus" title="Email" aria-label="Email">✉️</a>
+<div class="fmenu" id="fmenu">
+<a class="fmenu__item fmenu__item--wa" data-i="1" href="https://wa.me/34600000000?text=Hola%20Errotaberri%2C%20me%20gustaria%20hacer%20un%20encargo" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2.05 22l5.27-1.38c1.45.79 3.08 1.21 4.72 1.21 5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.05-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29z"/></svg>
+</a>
+<a class="fmenu__item" data-i="2" href="tel:+34600000000" aria-label="Llamar">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+</a>
+<a class="fmenu__item" data-i="3" href="mailto:hola@errotaberri.eus" aria-label="Enviar email">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+</a>
+<button class="fmenu__toggle" type="button" aria-expanded="false" aria-label="Abrir menú de contacto">
+<span class="fmenu__ico fmenu__ico--open" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></span>
+<span class="fmenu__ico fmenu__ico--close" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></span>
+</button>
 </div>
 
 <div class="modal-backdrop" id="modalEncargo">
@@ -490,6 +520,32 @@
   };
 
   document.querySelectorAll('#d a').forEach(function(a){ a.onclick=function(){ document.getElementById('d').classList.remove('open'); }; });
+
+  // Menú fluido de contacto (mismo componente que la web principal de OI Studio)
+  (function(){
+    var menu = document.getElementById('fmenu');
+    if (!menu) return;
+    var toggle = menu.querySelector('.fmenu__toggle');
+    toggle.addEventListener('click', function(){
+      var open = menu.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Cerrar menú de contacto' : 'Abrir menú de contacto');
+    });
+    document.addEventListener('click', function(e){
+      if (menu.classList.contains('is-open') && !menu.contains(e.target)) {
+        menu.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+        menu.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.focus();
+      }
+    });
+    if (location.hash === '#preview-open') setTimeout(function(){ menu.classList.add('is-open'); toggle.setAttribute('aria-expanded','true'); }, 300);
+  })();
 
   var progress = document.getElementById('progress');
   var heroBg = document.querySelector('.hero .bg');
@@ -716,6 +772,6 @@
   if (location.hash === '#eu') saved = 'eu';
   applyLang(saved);
 </script>
-  <script src="https://oi-studio-booking-api-delta.vercel.app/widget.js" data-business="panaderia" defer></script>
+  <script src="https://oi-studio-booking-api-delta.vercel.app/widget.js" data-business="panaderia" data-label="Hacer un encargo" defer></script>
 </body>
 </html>
