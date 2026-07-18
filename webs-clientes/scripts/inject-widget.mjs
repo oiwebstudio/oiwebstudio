@@ -6,7 +6,7 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
-const API_BASE = process.env.BOOKING_API_BASE || "https://oi-studio-booking-api.vercel.app";
+const API_BASE = process.env.BOOKING_API_BASE || "https://oi-studio-booking-api-delta.vercel.app";
 
 const SITES = [
   "cafeteria",
