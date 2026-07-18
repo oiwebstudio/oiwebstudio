@@ -15,7 +15,8 @@
     "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
-    "@prisma/client": "^6.2.1"
+    "@prisma/client": "^6.2.1",
+    "googleapis": "^173.0.0"
   },
   "devDependencies": {
     "@types/node": "^22.10.5",

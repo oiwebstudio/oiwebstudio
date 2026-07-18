@@ -310,7 +310,7 @@ a:hover .roll > span, a:focus-visible .roll > span { transform: translateY(-100%
 
 .hero h1 { font-size: clamp(42px, 7vw, 84px); letter-spacing: -0.048em; line-height: 1.01; }
 .hero h1 .grad,
-h1 .grad { font-family: var(--font-serif); font-style: italic; font-weight: 500; color: var(--terra); letter-spacing: -0.01em; }
+h1 .grad { font-family: var(--font-serif); font-style: italic; font-weight: 500; color: var(--terra); letter-spacing: -0.01em; white-space: nowrap; }
 .hero__lede { font-size: clamp(17px, 2.2vw, 21px); color: var(--text-muted); margin: 24px auto 0; max-width: 580px; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 36px; }
 .hero__trust { margin-top: 24px; font-size: 13.5px; color: var(--text-faint); display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; }
