@@ -1,7 +1,5 @@
 import { PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient();
-
 interface SeedService {
   name: string;
   durationMinutes: number;
@@ -113,7 +111,7 @@ const BUSINESSES: SeedBusiness[] = [
   },
 ];
 
-async function main() {
+export async function seedAll(prisma: PrismaClient) {
   for (const b of BUSINESSES) {
     const business = await prisma.business.upsert({
       where: { slug: b.slug },
@@ -162,9 +160,13 @@ async function main() {
   }
 }
 
-main()
-  .catch((err) => {
-    console.error(err);
-    process.exitCode = 1;
-  })
-  .finally(() => prisma.$disconnect());
+const isMain = process.argv[1] && process.argv[1].endsWith("seed.ts");
+if (isMain) {
+  const prisma = new PrismaClient();
+  seedAll(prisma)
+    .catch((err) => {
+      console.error(err);
+      process.exitCode = 1;
+    })
+    .finally(() => prisma.$disconnect());
+}
