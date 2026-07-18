@@ -4,6 +4,7 @@
   var scriptEl = document.currentScript;
   var businessSlug = scriptEl.getAttribute("data-business");
   var apiBase = scriptEl.getAttribute("data-api") || new URL(scriptEl.src).origin;
+  var launchLabel = scriptEl.getAttribute("data-label") || "Reservar cita";
 
   if (!businessSlug) {
     console.error("[booking-widget] falta data-business en el <script>");
@@ -122,8 +123,8 @@
 
   var launch = document.createElement("button");
   launch.className = "oib-launch";
-  launch.setAttribute("aria-label", "Abrir chat para reservar cita");
-  launch.innerHTML = '<span class="oib-ico">' + ICO_CAL + '<span class="oib-dot"></span></span><span>Reservar cita</span>';
+  launch.setAttribute("aria-label", "Abrir chat: " + launchLabel);
+  launch.innerHTML = '<span class="oib-ico">' + ICO_CAL + '<span class="oib-dot"></span></span><span>' + launchLabel + '</span>';
 
   var panel = document.createElement("div");
   panel.className = "oib-panel";
@@ -132,7 +133,7 @@
   panel.innerHTML =
     '<div class="oib-head">' +
     '<span class="oib-avatar">' + ICO_CAL + "</span>" +
-    '<div class="oib-head-txt"><strong>Reservar cita</strong>' +
+    '<div class="oib-head-txt"><strong>' + launchLabel + '</strong>' +
     '<span class="oib-status">Asistente en línea</span></div>' +
     '<button class="oib-close" aria-label="Cerrar chat">✕</button>' +
     "</div>" +
