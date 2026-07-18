@@ -293,7 +293,7 @@ a:hover .roll > span, a:focus-visible .roll > span { transform: translateY(-100%
   -webkit-mask-image: radial-gradient(75% 60% at 50% 25%, #000 30%, transparent 100%);
 }
 
-.hero__inner { position: relative; z-index: 1; text-align: center; max-width: 820px; margin: 0 auto; }
+.hero__inner { position: relative; z-index: 1; text-align: center; max-width: 920px; margin: 0 auto; padding: 0 20px; }
 
 .hero__badge {
   display: inline-flex; align-items: center; gap: 8px;
@@ -870,3 +870,4 @@ body::after {
   .hero-cta-btn{ padding:12px 28px; font-size:14px; }
   .hero-cta-wrapper{ margin:28px 0; }
 }
+.orb-char { display: inline-block; will-change: transform; }
