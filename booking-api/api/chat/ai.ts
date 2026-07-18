@@ -5,10 +5,11 @@ import { withCors } from "../../src/http.js";
 /**
  * Respuestas con IA para preguntas libres que las reglas del widget no cubren.
  *
- * Dos backends, por orden de prioridad:
- *  1. AI_WEBHOOK_URL  — webhook (n8n, Make…) que recibe {question, context, business}
- *                       y devuelve {answer: "..."}.
- *  2. ANTHROPIC_API_KEY — llamada directa a la API de Claude (modelo Haiku, barato).
+ * Backends, por orden de prioridad:
+ *  1. AI_WEBHOOK_URL   — webhook (n8n, Make…) que recibe {question, context, business}
+ *                        y devuelve {answer: "..."}.
+ *  2. GEMINI_API_KEY   — Google Gemini, capa GRATUITA (clave en aistudio.google.com/apikey).
+ *  3. ANTHROPIC_API_KEY — API de Claude (modelo Haiku, de pago, céntimos).
  *
  * Sin ninguno configurado responde {answer: null} y el widget usa su mensaje de cortesía.
  */
@@ -49,7 +50,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     (typeof context === "string" && context.trim() ? `Información adicional:\n${context.slice(0, 2000)}\n` : "");
 
   const webhookUrl = process.env.AI_WEBHOOK_URL;
+  const geminiKey = process.env.GEMINI_API_KEY;
   const anthropicKey = process.env.ANTHROPIC_API_KEY;
+
+  const systemPrompt =
+    "Eres el asistente del chat de reservas de un negocio local. Responde SIEMPRE en el idioma del cliente " +
+    "(castellano o euskera), en 1-3 frases, tono cercano y profesional. Usa solo la información del negocio " +
+    "que te doy; si no sabes algo, dilo y sugiere escribir al negocio o reservar cita. Nunca inventes " +
+    "precios ni horarios. Si el cliente quiere reservar, dile que pulse el botón Reservar del chat.\n\n" +
+    businessInfo;
 
   try {
     if (webhookUrl) {
@@ -60,6 +69,30 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       });
       const data: any = await r.json();
       const answer = typeof data?.answer === "string" ? data.answer : null;
+      res.status(200).json({ answer });
+      return;
+    }
+
+    if (geminiKey) {
+      const model = process.env.GEMINI_MODEL || "gemini-2.5-flash";
+      const r = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${geminiKey}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            system_instruction: { parts: [{ text: systemPrompt }] },
+            contents: [{ role: "user", parts: [{ text: question }] }],
+            generationConfig: { maxOutputTokens: 300, temperature: 0.4 },
+          }),
+        },
+      );
+      const data: any = await r.json();
+      const answer =
+        data?.candidates?.[0]?.content?.parts
+          ?.map((p: any) => p.text ?? "")
+          .join("")
+          .trim() || null;
       res.status(200).json({ answer });
       return;
     }
@@ -75,12 +108,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         body: JSON.stringify({
           model: "claude-haiku-4-5-20251001",
           max_tokens: 300,
-          system:
-            "Eres el asistente del chat de reservas de un negocio local. Responde SIEMPRE en el idioma del cliente " +
-            "(castellano o euskera), en 1-3 frases, tono cercano y profesional. Usa solo la información del negocio " +
-            "que te doy; si no sabes algo, dilo y sugiere escribir al negocio o reservar cita. Nunca inventes " +
-            "precios ni horarios. Si el cliente quiere reservar, dile que pulse el botón Reservar del chat.\n\n" +
-            businessInfo,
+          system: systemPrompt,
           messages: [{ role: "user", content: question }],
         }),
       });
