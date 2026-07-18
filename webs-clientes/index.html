@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis Webs</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:linear-gradient(135deg,#1a1a1a 0%,#2d2d2d 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;}
+    .container{max-width:1000px;width:100%;}
+    h1{text-align:center;color:#fff;margin-bottom:50px;font-size:clamp(28px,6vw,48px);letter-spacing:-1px;}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;}
+    a{text-decoration:none;display:flex;align-items:center;justify-content:center;padding:clamp(24px,5vw,40px);border-radius:12px;font-size:clamp(16px,4vw,18px);font-weight:600;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.3);color:#fff;min-height:120px;}
+    a:hover{transform:translateY(-4px);box-shadow:0 8px 25px rgba(0,0,0,0.4);}
+    a:active{transform:scale(0.95);}
+
+    @media(max-width:768px){
+      .grid{grid-template-columns:repeat(2,1fr);gap:16px;}
+      a{min-height:140px;padding:28px 16px;font-size:16px;border-radius:14px;}
+    }
+    @media(max-width:480px){
+      .grid{grid-template-columns:1fr;gap:12px;}
+      a{min-height:160px;padding:32px 20px;font-size:18px;border-radius:16px;}
+    }
+
+    .panaderia{background:linear-gradient(135deg,#d4a574 0%,#c49060 100%);}
+    .veterinaria{background:linear-gradient(135deg,#7fb3d5 0%,#5a9fd4 100%);}
+    .gimnasio{background:linear-gradient(135deg,#e8504b 0%,#d63835 100%);}
+    .peluqueria{background:linear-gradient(135deg,#d4a5a5 0%,#c98a8a 100%);}
+    .restaurante{background:linear-gradient(135deg,#c9714d 0%,#b85a38 100%);}
+    .cafeteria{background:linear-gradient(135deg,#d4a574 0%,#c49060 100%);}
+    .taller{background:linear-gradient(135deg,#6b7280 0%,#4b5563 100%);}
+    .floristeria{background:linear-gradient(135deg,#9b7a9b 0%,#7a5a7a 100%);}
+
+    @media(max-width:640px){
+      h1{margin-bottom:30px;}
+      .grid{gap:15px;}
+      a{padding:18px 16px;min-height:100px;font-size:14px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Mis Webs 🚀</h1>
+    <div class="grid">
+      <a href="panaderia/" class="panaderia">🍞 Panadería</a>
+      <a href="veterinaria/" class="veterinaria">🐾 Veterinaria</a>
+      <a href="gimnasio/" class="gimnasio">💪 Gimnasio</a>
+      <a href="peluqueria/" class="peluqueria">✂️ Peluquería</a>
+      <a href="restaurante/" class="restaurante">🍽️ Restaurante</a>
+      <a href="cafeteria/" class="cafeteria">☕ Cafetería</a>
+      <a href="taller/" class="taller">🔧 Taller</a>
+      <a href="floristeria/" class="floristeria">🌸 Floristería</a>
+    </div>
+  </div>
+</body>
+</html>
