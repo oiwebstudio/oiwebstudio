@@ -19,7 +19,7 @@ const EU = {
 
   /* Hero index */
   hero_badge: "Proiektu berrietarako prest",
-  hero_h1: 'Zure negozioa <span class="grad">den bezain ona</span> erakusten duten webguneak.',
+  hero_h1: 'OI Studio-k diseinatutako webak negozioak <span class="grad">nahi bezain onak</span> erakusteko.',
   hero_lede: "Diseinua eta garapena neurrira, tokiko negozioentzat. Azkarrak, azken pixeleraino zainduak eta bisitak bezero bihurtzeko pentsatuak.",
   hero_trust1: "Proposamena 48 ordutan",
   hero_trust2: "Iraunkortasunik gabe",
