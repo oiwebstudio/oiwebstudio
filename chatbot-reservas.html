@@ -223,6 +223,14 @@
 <script src="assets/main.js"></script>
 <!-- Demo del widget de reservas: apunta al tenant "peluqueria" seedeado en booking-api. -->
 <script>
+/* Contexto extra que la IA usa al responder preguntas libres en esta página. */
+window.OIB_CONTEXT =
+  "Esta demo está en la web de OI Studio, estudio de diseño web en Tolosa (Gipuzkoa) para negocios locales. " +
+  "Precios de OI Studio: Landing 199€, Web Negocio 299€ (pago único, precio cerrado, propuesta en 48h), " +
+  "mantenimiento opcional 20€/mes, dominio ~12€/año aparte. Plazos: landing 1 semana, web negocio 2-3 semanas. " +
+  "La web, dominio y hosting quedan a nombre del cliente. Este mismo chatbot de reservas se puede instalar " +
+  "en la web de cualquier negocio. Contacto: WhatsApp 680 95 67 55, contactoiwebstudio@gmail.com.";
+
 /* Respuestas del robot a preguntas sobre OI Studio (se suman a las genéricas del widget). */
 window.OIB_FAQ = [
   { k: ["cuanto cuesta una web", "precio de la web", "precio web", "cuesta la web", "cuanto vale una web", "presupuesto"],
