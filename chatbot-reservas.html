@@ -221,8 +221,26 @@
 
 <script src="assets/i18n.js"></script>
 <script src="assets/main.js"></script>
-<!-- Demo del widget de reservas: apunta al tenant "peluqueria" seedeado en booking-api.
-     Actualizar data-api / el dominio del script cuando booking-api esté desplegado en Vercel. -->
+<!-- Demo del widget de reservas: apunta al tenant "peluqueria" seedeado en booking-api. -->
+<script>
+/* Respuestas del robot a preguntas sobre OI Studio (se suman a las genéricas del widget). */
+window.OIB_FAQ = [
+  { k: ["cuanto cuesta una web", "precio de la web", "precio web", "cuesta la web", "cuanto vale una web", "presupuesto"],
+    a: "Una Landing cuesta 199€ y una Web Negocio completa 299€ — pago único, precio cerrado por escrito y propuesta en 48h. Tienes el detalle en la página de Precios." },
+  { k: ["chatbot", "este bot", "el robot", "asistente como este"],
+    a: "Este mismo chatbot se puede añadir a tu web: tus clientes reservan solos, 24/7, sin doble reserva. Pide presupuesto y te decimos precio cerrado según tu negocio." },
+  { k: ["cuanto tarda", "plazo", "cuanto tiempo", "cuando estaria"],
+    a: "Una Landing suele estar lista en una semana; una Web Negocio, en dos o tres. El plazo exacto va por escrito en la propuesta." },
+  { k: ["mantenimiento", "cada mes", "mensual", "cuota"],
+    a: "El mantenimiento es opcional: 20€/mes con cambios, copias de seguridad y soporte. Sin permanencia." },
+  { k: ["dominio", "hosting", "sera mia", "a mi nombre"],
+    a: "La web, el dominio y el hosting quedan a tu nombre desde el primer día. No dependes de nadie para seguir usándola." },
+  { k: ["trabajos", "ejemplos", "portfolio", "otras webs"],
+    a: "Tenemos 8 webs reales publicadas y navegables en la sección Trabajos: panadería, peluquería, restaurante, veterinaria y más." },
+  { k: ["contacto", "hablar con oier", "presupuesto real", "contratar"],
+    a: "Escríbenos por WhatsApp al 680 95 67 55 o desde la página de Contacto — respondemos en menos de 24h." }
+];
+</script>
 <script src="https://oi-studio-booking-api-delta.vercel.app/widget.js" data-business="peluqueria" defer></script>
 </body>
 </html>
