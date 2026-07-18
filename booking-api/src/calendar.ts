@@ -4,22 +4,30 @@ const CLIENT_ID = "741570566228-68i15r3uhuafuksu29qs2pol420594ve.apps.googleuser
 const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET || "";
 const REDIRECT_URI = process.env.GOOGLE_REDIRECT_URI || "http://localhost:3000/api/calendar/callback";
 
-export const oauth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
+let oauth2Client: any = null;
+
+function getOAuth2Client() {
+  if (!oauth2Client) {
+    oauth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
+  }
+  return oauth2Client;
+}
 
 export function getAuthUrl() {
-  return oauth2Client.generateAuthUrl({
-    access_type: "offline",
-    scope: ["https://www.googleapis.com/auth/calendar"],
-  });
+  const scope = encodeURIComponent("https://www.googleapis.com/auth/calendar");
+  const redirectUri = encodeURIComponent(REDIRECT_URI);
+  return `https://accounts.google.com/o/oauth2/v2/auth?client_id=${CLIENT_ID}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}&access_type=offline`;
 }
 
 export async function exchangeCodeForToken(code: string) {
-  const { tokens } = await oauth2Client.getToken(code);
+  const client = getOAuth2Client();
+  const { tokens } = await client.getToken(code);
   return tokens;
 }
 
 export async function setCredentials(tokens: any) {
-  oauth2Client.setCredentials(tokens);
+  const client = getOAuth2Client();
+  client.setCredentials(tokens);
 }
 
 export async function createCalendarEvent(
@@ -30,7 +38,8 @@ export async function createCalendarEvent(
   startsAt: Date,
   endsAt: Date,
 ) {
-  const calendar = google.calendar({ version: "v3", auth: oauth2Client });
+  const client = getOAuth2Client();
+  const calendar = google.calendar({ version: "v3", auth: client });
 
   const event = {
     summary: `${serviceName} - ${customerName}`,

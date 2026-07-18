@@ -15,20 +15,17 @@
     ":root{--oib-ink:#17151c;--oib-ink2:#232028;--oib-accent:#e8623d;--oib-accent2:#d4522f;" +
     "--oib-cream:#faf7f2;--oib-line:#eee9e1;--oib-radius:22px}" +
 
-    /* ---- Botón lanzador: píldora con icono + texto ---- */
-    ".oib-launch{position:fixed;right:20px;bottom:20px;z-index:99998;display:flex;align-items:center;gap:10px;" +
-    "background:var(--oib-ink);color:#fff;border:none;cursor:pointer;border-radius:999px;" +
-    "padding:14px 22px 14px 16px;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;" +
-    "font-size:15px;font-weight:600;letter-spacing:.01em;" +
+    /* ---- Botón lanzador: círculo con robot ---- */
+    ".oib-launch{position:fixed;right:20px;bottom:20px;z-index:99998;display:flex;align-items:center;justify-content:center;" +
+    "width:62px;height:62px;background:var(--oib-ink);color:#fff;border:none;cursor:pointer;border-radius:50%;" +
+    "padding:0;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;position:fixed;" +
     "box-shadow:0 6px 18px rgba(23,21,28,.28),0 22px 45px -18px rgba(23,21,28,.45);" +
     "transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s ease}" +
-    ".oib-launch:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 10px 24px rgba(23,21,28,.32),0 30px 55px -18px rgba(23,21,28,.5)}" +
-    ".oib-launch:active{transform:scale(.97)}" +
+    ".oib-launch:hover{transform:translateY(-2px) scale(1.06);box-shadow:0 10px 24px rgba(23,21,28,.32),0 30px 55px -18px rgba(23,21,28,.5)}" +
+    ".oib-launch:active{transform:scale(.94)}" +
     ".oib-launch:focus-visible{outline:3px solid var(--oib-accent);outline-offset:3px}" +
-    ".oib-launch .oib-ico{width:38px;height:38px;border-radius:50%;background:var(--oib-accent);display:flex;" +
-    "align-items:center;justify-content:center;flex:none;position:relative}" +
-    ".oib-launch .oib-ico svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}" +
-    ".oib-launch .oib-dot{position:absolute;top:-1px;right:-1px;width:11px;height:11px;border-radius:50%;" +
+    ".oib-launch svg{width:30px;height:30px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}" +
+    ".oib-launch .oib-dot{position:absolute;top:3px;right:3px;width:12px;height:12px;border-radius:50%;" +
     "background:#3ddc84;border:2px solid var(--oib-ink)}" +
     "@media(prefers-reduced-motion:no-preference){" +
     ".oib-launch .oib-dot{animation:oib-pulse 2.2s ease-in-out infinite}" +
@@ -114,7 +111,7 @@
     ".oib-send svg{width:17px;height:17px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}" +
     ".oib-brand{text-align:center;font-size:10.5px;color:#b0a798;margin-top:8px;letter-spacing:.04em}";
 
-  var ICO_CAL = '<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18M9 15l2 2 4-4"/></svg>';
+  var ICO_BOT = '<svg viewBox="0 0 24 24"><rect x="4" y="9" width="16" height="11" rx="4"/><path d="M12 9V6"/><circle cx="12" cy="4.2" r="1.3"/><circle cx="9" cy="14" r="1.1" fill="currentColor" stroke="none"/><circle cx="15" cy="14" r="1.1" fill="currentColor" stroke="none"/><path d="M9.5 17.2h5M2 13v3M22 13v3"/></svg>';
   var ICO_SEND = '<svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg>';
 
   var styleTag = document.createElement("style");
@@ -124,7 +121,7 @@
   var launch = document.createElement("button");
   launch.className = "oib-launch";
   launch.setAttribute("aria-label", "Abrir chat: " + launchLabel);
-  launch.innerHTML = '<span class="oib-ico">' + ICO_CAL + '<span class="oib-dot"></span></span><span>' + launchLabel + '</span>';
+  launch.innerHTML = ICO_BOT + '<span class="oib-dot"></span>';
 
   var panel = document.createElement("div");
   panel.className = "oib-panel";
@@ -132,7 +129,7 @@
   panel.setAttribute("aria-label", "Chat de reservas");
   panel.innerHTML =
     '<div class="oib-head">' +
-    '<span class="oib-avatar">' + ICO_CAL + "</span>" +
+    '<span class="oib-avatar">' + ICO_BOT + "</span>" +
     '<div class="oib-head-txt"><strong>' + launchLabel + '</strong>' +
     '<span class="oib-status">Asistente en línea</span></div>' +
     '<button class="oib-close" aria-label="Cerrar chat">✕</button>' +
@@ -156,6 +153,37 @@
 
   var sessionId = null;
   var busy = false;
+  var expectingFreeText = false;
+
+  /* ---- Mini-cerebro de preguntas frecuentes ----
+     La página puede definir window.OIB_FAQ = [{k:["precio","cuesta"], a:"..."}] para
+     añadir respuestas propias; se comprueban antes que las genéricas. */
+  function normalize(s) {
+    return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  }
+  var DEFAULT_FAQ = [
+    { k: ["hola", "buenas", "hey", "kaixo"], a: "¡Hola! 👋 Puedo reservarte una cita o responder tus dudas. ¿En qué te ayudo?" },
+    { k: ["gracias", "genial", "perfecto", "vale"], a: "¡A ti! 😊 Si quieres algo más, aquí estoy." },
+    { k: ["horario", "abris", "abierto", "cerrais", "que hora abr"], a: "Los huecos libres los ves al reservar: pulsa “Reservar” y te enseño días y horas disponibles en tiempo real." },
+    { k: ["cancelar", "anular", "cambiar la cita", "mover la cita"], a: "Para cambiar o anular una cita, escríbenos directamente y lo gestionamos al momento." },
+    { k: ["humano", "persona", "telefono", "llamar", "whatsapp", "contacto"], a: "Puedes hablar con una persona por teléfono o WhatsApp — los datos de contacto están en la propia web, al pie de página." },
+    { k: ["precio", "cuesta", "cuanto vale", "tarifa"], a: "Los precios aparecen junto a cada servicio al empezar la reserva. Pulsa “Reservar” y los ves todos." },
+  ];
+  function answerFaq(text) {
+    var t = " " + normalize(text) + " ";
+    var sets = [];
+    if (Array.isArray(window.OIB_FAQ)) sets.push(window.OIB_FAQ);
+    sets.push(DEFAULT_FAQ);
+    for (var s = 0; s < sets.length; s++) {
+      for (var i = 0; i < sets[s].length; i++) {
+        var rule = sets[s][i];
+        for (var j = 0; j < rule.k.length; j++) {
+          if (t.indexOf(normalize(rule.k[j])) !== -1) return rule.a;
+        }
+      }
+    }
+    return null;
+  }
 
   function openPanel() {
     panel.classList.add("oib-open");
@@ -184,6 +212,22 @@
     if (!value || busy) return;
     textEl.value = "";
     addMessage("user", value);
+
+    // Si el bot no está esperando un dato concreto (nombre, teléfono…),
+    // intenta responder la pregunta localmente sin tocar el flujo de reserva.
+    if (!expectingFreeText) {
+      var faq = answerFaq(value);
+      if (faq) {
+        busy = true;
+        var typing = showTyping();
+        setTimeout(function () {
+          typing.remove();
+          busy = false;
+          addMessage("bot", faq);
+        }, Math.min(400 + faq.length * 5, 900));
+        return;
+      }
+    }
     sendInput(value);
   }
 
@@ -244,6 +288,7 @@
         var isFinal = status === "COMPLETED" && i === messages.length - 1;
         addMessage("bot", m.text, isFinal ? "oib-done" : "");
         if (m.quickReplies && m.quickReplies.length) addQuickReplies(m.quickReplies);
+        expectingFreeText = !!m.expectsFreeText;
         if (m.expectsFreeText) textEl.focus();
         i++;
         next();
