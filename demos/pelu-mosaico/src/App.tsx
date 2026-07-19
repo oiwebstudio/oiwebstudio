@@ -211,9 +211,24 @@ function SplashScreen({ onComplete }: { onComplete: () => void }) {
   );
 }
 
+/* Abre el chat de reservas real (widget); si aún no cargó, WhatsApp de respaldo. */
+function openBooking() {
+  const launcher = document.querySelector<HTMLButtonElement>(".oib-launch");
+  if (launcher) {
+    launcher.click();
+    return;
+  }
+  window.open(
+    "https://wa.me/34680956755?text=Hola%2C%20quiero%20pedir%20cita",
+    "_blank",
+    "noopener",
+  );
+}
+
 /* ---------------- Navbar ---------------- */
 function Navbar() {
   const [open, setOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -222,11 +237,31 @@ function Navbar() {
     };
   }, [open]);
 
-  const links = ["Inicio", "Servicios", "Trabajos", "Tarifas", "Contacto"];
+  // La barra se esconde al bajar y reaparece al subir: los titulares de cada
+  // sección quedan siempre visibles al aterrizar en ellas.
+  useEffect(() => {
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setHidden(y > lastY && y > 120);
+      lastY = y;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const links: [string, string][] = [
+    ["Inicio", "#inicio"],
+    ["Servicios", "#servicios"],
+    ["Trabajos", "#trabajos"],
+    ["Color", "#color"],
+  ];
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 md:px-6 py-2 md:py-3 bg-white/80 backdrop-blur-md">
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 md:px-6 py-2 md:py-3 bg-white/80 backdrop-blur-md transition-transform duration-300 ease-[cubic-bezier(0.76,0,0.24,1)] ${hidden && !open ? "-translate-y-full" : "translate-y-0"}`}
+      >
         <div className="flex flex-col">
           <span className="text-xl md:text-2xl font-extrabold uppercase tracking-tight leading-none">
             Studio
@@ -241,8 +276,11 @@ function Navbar() {
 
         <div className="hidden md:flex items-center gap-6">
           <span className="text-sm font-semibold text-black">Cita el mismo día</span>
-          <button className="px-6 py-3 bg-white rounded-full border border-black text-sm font-semibold hover:bg-black hover:text-white transition-colors duration-200">
-            Menú
+          <button
+            onClick={() => setOpen(!open)}
+            className="px-6 py-3 bg-white rounded-full border border-black text-sm font-semibold hover:bg-black hover:text-white transition-colors duration-200"
+          >
+            {open ? "Cerrar" : "Menú"}
           </button>
         </div>
 
@@ -263,7 +301,7 @@ function Navbar() {
         </button>
       </nav>
 
-      <div className={`md:hidden fixed inset-0 z-40 ${open ? "" : "pointer-events-none"}`}>
+      <div className={`fixed inset-0 z-40 ${open ? "" : "pointer-events-none"}`}>
         <div
           onClick={() => setOpen(false)}
           className={`absolute inset-0 bg-black/20 backdrop-blur-sm transition-opacity duration-500 ${open ? "opacity-100" : "opacity-0"}`}
@@ -272,15 +310,15 @@ function Navbar() {
           className={`absolute top-0 right-0 h-full w-[85%] max-w-sm bg-white shadow-2xl transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] ${open ? "translate-x-0" : "translate-x-full"}`}
         >
           <div className="flex flex-col justify-center h-full px-8 gap-1">
-            {links.map((l, i) => (
+            {links.map(([label, href], i) => (
               <a
-                key={l}
-                href="#"
+                key={label}
+                href={href}
                 onClick={() => setOpen(false)}
                 className={`text-4xl font-bold text-black hover:text-neutral-500 transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] ${open ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"}`}
                 style={{ transitionDelay: open ? `${100 + i * 60}ms` : "0ms" }}
               >
-                {l}
+                {label}
               </a>
             ))}
             <div
@@ -288,7 +326,13 @@ function Navbar() {
               style={{ transitionDelay: open ? "450ms" : "0ms" }}
             >
               <p className="text-sm font-semibold text-black mb-4">Cita el mismo día</p>
-              <button className="w-full px-6 py-4 bg-black rounded-full text-white text-sm font-semibold hover:bg-neutral-800 transition-colors duration-200">
+              <button
+                onClick={() => {
+                  setOpen(false);
+                  openBooking();
+                }}
+                className="w-full px-6 py-4 bg-black rounded-full text-white text-sm font-semibold hover:bg-neutral-800 transition-colors duration-200"
+              >
                 Reservar cita
               </button>
             </div>
@@ -337,6 +381,7 @@ export default function App() {
 
       {/* ============ SECCIÓN 1 · HERO ============ */}
       <section
+        id="inicio"
         ref={(el) => {
           section1Ref.current = el;
           s1Reveal.containerRef.current = el;
@@ -392,14 +437,18 @@ export default function App() {
               Noir
             </h1>
           </div>
-          <p className="absolute bottom-6 right-4 md:bottom-10 md:right-8 text-white text-xs md:text-sm font-semibold z-10 bg-black/35 backdrop-blur-sm px-4 py-2 rounded-full">
+          <button
+            onClick={openBooking}
+            className="absolute bottom-6 right-4 md:bottom-10 md:right-8 text-white text-xs md:text-sm font-semibold z-10 bg-black/35 backdrop-blur-sm px-4 py-2 rounded-full hover:bg-black/60 transition-colors"
+          >
             Cita online en 1 minuto
-          </p>
+          </button>
         </MaskedCard>
       </section>
 
       {/* ============ SECCIÓN 2 · ANTES Y DESPUÉS ============ */}
       <section
+        id="trabajos"
         ref={(el) => {
           section2Ref.current = el;
           s2Reveal.containerRef.current = el;
@@ -446,7 +495,10 @@ export default function App() {
               <br />
               Escríbenos y te asesoramos sin compromiso.
             </p>
-            <button className="absolute bottom-4 right-4 md:bottom-6 md:right-6 px-5 py-3 md:px-8 md:py-5 bg-white rounded-full text-black text-base md:text-xl font-bold z-10 hover:scale-105 transition-transform">
+            <button
+              onClick={openBooking}
+              className="absolute bottom-4 right-4 md:bottom-6 md:right-6 px-5 py-3 md:px-8 md:py-5 bg-white rounded-full text-black text-base md:text-xl font-bold z-10 hover:scale-105 transition-transform"
+            >
               Reservar
             </button>
           </MaskedCard>
@@ -480,6 +532,7 @@ export default function App() {
             className="col-span-1 md:col-span-2 rounded-xl md:rounded-2xl overflow-hidden relative min-h-[200px] md:min-h-0"
             style={s2Reveal.getAnimStyle(3)}
           >
+            <div id="servicios" className="absolute -top-24" aria-hidden="true" />
             <div className="absolute inset-0 z-10 flex flex-wrap md:flex-nowrap gap-1.5 md:gap-2 p-2 md:p-3">
               {services.map((svc) => (
                 <div
@@ -508,6 +561,7 @@ export default function App() {
 
       {/* ============ SECCIÓN 3 · COLOR DE AUTOR ============ */}
       <section
+        id="color"
         ref={(el) => {
           s3Reveal.containerRef.current = el;
         }}
@@ -565,7 +619,10 @@ export default function App() {
                   gratis
                 </h3>
               </div>
-              <button className="px-5 py-3 md:px-8 md:py-5 bg-white rounded-full text-black text-base md:text-xl font-bold hover:scale-105 transition-transform">
+              <button
+                onClick={openBooking}
+                className="px-5 py-3 md:px-8 md:py-5 bg-white rounded-full text-black text-base md:text-xl font-bold hover:scale-105 transition-transform"
+              >
                 Reservar cita
               </button>
             </div>
