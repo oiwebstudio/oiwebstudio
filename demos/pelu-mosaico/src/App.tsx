@@ -25,10 +25,10 @@ const SECTION3_BG =
 const featureBars = ["Corte y estilo", "Color y mechas", "Tratamientos de brillo"];
 
 const services = [
-  { name: "Corte\ny peinado", num: "01", active: true },
-  { name: "Color\ny mechas", num: "02", active: false },
-  { name: "Balayage", num: "03", active: false },
-  { name: "Tratamientos", num: null, active: false },
+  { name: "Corte\ny peinado", num: "01" },
+  { name: "Color\ny mechas", num: "02" },
+  { name: "Balayage", num: "03" },
+  { name: "Tratamientos", num: "04" },
 ];
 
 const WINE = "#8a2f4f";
@@ -346,6 +346,7 @@ function Navbar() {
 /* ---------------- App ---------------- */
 export default function App() {
   const [showSplash, setShowSplash] = useState(true);
+  const [activeService, setActiveService] = useState(0);
   const isMobile = useIsMobile();
 
   /* sección 1 */
@@ -419,23 +420,25 @@ export default function App() {
             className="absolute inset-0 bg-gradient-to-r from-white/85 via-white/35 to-transparent"
             aria-hidden="true"
           />
-          <p className="absolute top-4 left-4 md:top-7 md:left-7 text-black text-xs md:text-sm font-semibold leading-4 md:leading-5 max-w-[200px] md:max-w-[300px] z-10">
-            Técnica de salón grande,
-            <br />
-            trato de peluquería de barrio
-          </p>
-          <div className="absolute bottom-5 left-3 md:bottom-8 md:left-4 z-10">
-            <span
-              className="block text-xs md:text-sm font-semibold mb-1 md:mb-2"
-              style={{ color: WINE }}
-            >
-              Tu peluquería de confianza en Tolosa
-            </span>
-            <h1 className="font-display text-black text-[clamp(3rem,11vw,11rem)] leading-[0.79] tracking-tight">
-              Studio
+          <div className="relative z-10 h-full flex flex-col justify-between gap-4 p-4 md:p-7 min-h-0">
+            <p className="text-black text-xs md:text-sm font-semibold leading-4 md:leading-5 max-w-[200px] md:max-w-[300px]">
+              Técnica de salón grande,
               <br />
-              Noir
-            </h1>
+              trato de peluquería de barrio
+            </p>
+            <div className="min-h-0">
+              <span
+                className="block text-xs md:text-sm font-semibold mb-1 md:mb-2"
+                style={{ color: WINE }}
+              >
+                Tu peluquería de confianza en Tolosa
+              </span>
+              <h1 className="font-display text-black text-[clamp(2.5rem,10vw,10rem)] leading-[0.82] tracking-tight">
+                Studio
+                <br />
+                Noir
+              </h1>
+            </div>
           </div>
           <button
             onClick={openBooking}
@@ -534,26 +537,30 @@ export default function App() {
           >
             <div id="servicios" className="absolute -top-24" aria-hidden="true" />
             <div className="absolute inset-0 z-10 flex flex-wrap md:flex-nowrap gap-1.5 md:gap-2 p-2 md:p-3">
-              {services.map((svc) => (
-                <div
-                  key={svc.name}
-                  className={`flex-1 min-w-[calc(50%-4px)] md:min-w-0 rounded-xl md:rounded-2xl p-3 md:p-5 flex flex-col justify-between ${svc.active ? "bg-white/90 backdrop-blur-md" : "bg-white/20 backdrop-blur-xl"}`}
-                >
-                  <h3
-                    className={`text-xl md:text-4xl font-bold leading-[1.05] whitespace-pre-line ${svc.active ? "" : "text-white"}`}
-                    style={svc.active ? { color: WINE } : undefined}
+              {services.map((svc, i) => {
+                const active = i === activeService;
+                return (
+                  <button
+                    type="button"
+                    key={svc.name}
+                    onClick={() => setActiveService(i)}
+                    aria-pressed={active}
+                    className={`flex-1 min-w-[calc(50%-4px)] md:min-w-0 rounded-xl md:rounded-2xl p-3 md:p-5 flex flex-col justify-between text-left cursor-pointer transition-all duration-300 ${active ? "bg-white/90 backdrop-blur-md scale-[1.02]" : "bg-white/20 backdrop-blur-xl hover:bg-white/35"}`}
                   >
-                    {svc.name}
-                  </h3>
-                  {svc.num && (
+                    <h3
+                      className={`text-xl md:text-4xl font-bold leading-[1.05] whitespace-pre-line transition-colors duration-300 ${active ? "" : "text-white"}`}
+                      style={active ? { color: WINE } : undefined}
+                    >
+                      {svc.name}
+                    </h3>
                     <span
-                      className={`self-end w-8 h-8 md:w-12 md:h-12 rounded-full border flex items-center justify-center text-xs md:text-sm font-semibold ${svc.active ? "border-black text-black" : "border-white text-white"}`}
+                      className={`self-end w-8 h-8 md:w-12 md:h-12 rounded-full border flex items-center justify-center text-xs md:text-sm font-semibold transition-colors duration-300 ${active ? "border-black text-black" : "border-white text-white"}`}
                     >
                       {svc.num}
                     </span>
-                  )}
-                </div>
-              ))}
+                  </button>
+                );
+              })}
             </div>
           </MaskedCard>
         </div>
