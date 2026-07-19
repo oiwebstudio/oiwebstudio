@@ -23,9 +23,11 @@
     /* ---- Botón lanzador: círculo con robot ---- */
     ".oib-launch{position:fixed;right:20px;bottom:20px;z-index:99998;display:flex;align-items:center;justify-content:center;" +
     "width:62px;height:62px;background:var(--oib-ink);color:#fff;border:none;cursor:pointer;border-radius:50%;" +
-    "padding:0;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;position:fixed;" +
+    "padding:0;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;" +
+    "opacity:0;visibility:hidden;pointer-events:none;transform:translateY(16px) scale(.9);" +
     "box-shadow:0 6px 18px rgba(23,21,28,.28),0 22px 45px -18px rgba(23,21,28,.45);" +
-    "transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s ease}" +
+    "transition:opacity .3s ease,transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .25s ease,visibility .3s}" +
+    ".oib-launch.oib-revealed{opacity:1;visibility:visible;pointer-events:auto;transform:none}" +
     ".oib-launch:hover{transform:translateY(-2px) scale(1.06);box-shadow:0 10px 24px rgba(23,21,28,.32),0 30px 55px -18px rgba(23,21,28,.5)}" +
     ".oib-launch:active{transform:scale(.94)}" +
     ".oib-launch:focus-visible{outline:3px solid var(--oib-accent);outline-offset:3px}" +
@@ -151,6 +153,18 @@
   document.body.appendChild(launch);
   document.body.appendChild(panel);
 
+  // El botón aparece al bajar (evita taparse con el hero y con los CTA propios
+  // de la web). Umbral: media pantalla. Si el panel está abierto, no lo tocamos.
+  var revealThreshold = function () { return window.innerHeight * 0.5; };
+  function updateLaunchVisibility() {
+    if (panel.classList.contains("oib-open")) return;
+    if (window.scrollY > revealThreshold()) launch.classList.add("oib-revealed");
+    else launch.classList.remove("oib-revealed");
+  }
+  window.addEventListener("scroll", updateLaunchVisibility, { passive: true });
+  window.addEventListener("resize", updateLaunchVisibility, { passive: true });
+  updateLaunchVisibility();
+
   var bodyEl = panel.querySelector(".oib-body");
   var textEl = panel.querySelector("input");
   var sendBtn = panel.querySelector(".oib-send");
@@ -199,6 +213,7 @@
   function closePanel() {
     panel.classList.remove("oib-open");
     launch.classList.remove("oib-hide");
+    updateLaunchVisibility();
   }
 
   launch.addEventListener("click", openPanel);
