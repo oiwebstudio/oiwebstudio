@@ -1,27 +1,35 @@
 import { chromium } from "playwright-core";
 
 const out = process.argv[2];
-const browser = await chromium.launch({
-  channel: "chrome",
-  headless: true,
-});
+const errors = [];
+const browser = await chromium.launch({ channel: "chrome", headless: true });
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+page.on("console", (m) => {
+  if (m.type() === "error") errors.push(m.text());
+});
+page.on("pageerror", (e) => errors.push(String(e)));
+
 await page.goto("http://localhost:4173/", { waitUntil: "networkidle" });
-await page.waitForTimeout(3500); // splash + revelado
+await page.waitForTimeout(3500);
 
-await page.screenshot({ path: `${out}/pw-s1.png` });
-await page.evaluate(() => window.scrollTo(0, window.innerHeight));
-await page.waitForTimeout(1200);
-await page.screenshot({ path: `${out}/pw-s2.png` });
-await page.evaluate(() => window.scrollTo(0, window.innerHeight * 2));
-await page.waitForTimeout(1200);
-await page.screenshot({ path: `${out}/pw-s3.png` });
+// 1) hero + widget robot presente
+const hasWidget = await page.locator(".oib-launch").count();
+await page.screenshot({ path: `${out}/fix-s1.png` });
 
-// móvil
-const m = await browser.newPage({ viewport: { width: 390, height: 844 } });
-await m.goto("http://localhost:4173/", { waitUntil: "networkidle" });
-await m.waitForTimeout(3500);
-await m.screenshot({ path: `${out}/pw-m1.png` });
+// 2) botón "Cita online" abre el chat de reservas
+await page.click("text=Cita online en 1 minuto");
+await page.waitForTimeout(2500);
+await page.screenshot({ path: `${out}/fix-booking.png` });
+await page.keyboard.press("Escape");
+await page.waitForTimeout(400);
 
+// 3) menú de escritorio + ancla a Trabajos
+await page.click("text=Menú");
+await page.waitForTimeout(700);
+await page.screenshot({ path: `${out}/fix-menu.png` });
+await page.click('a[href="#trabajos"]');
+await page.waitForTimeout(1600);
+await page.screenshot({ path: `${out}/fix-s2-anchor.png` });
+
+console.log(JSON.stringify({ hasWidget, errors }, null, 2));
 await browser.close();
-console.log("ok");
