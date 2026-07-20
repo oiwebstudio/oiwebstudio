@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.className+=' js'</script>
+<title>Peluquería Kalea (PRUEBA) · Peluquería en 20003 Donostia-San Sebastián</title>
+<meta name="description" content="Peluquería Kalea (PRUEBA) — El pelo que quieres, con la cercanía de siempre.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Peluquería Kalea (PRUEBA) · Peluquería en 20003 Donostia-San Sebastián">
+<meta property="og:description" content="Peluquería Kalea (PRUEBA) — El pelo que quieres, con la cercanía de siempre.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1626383137804-ff908d2753a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8M3x8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDU3MTQ0OHww&ixlib=rb-4.1.0&q=80&w=1080">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✂️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --accent:#8a2f4f; --deep:#6b2340; --cream:#faf7f4; --paper:#f7f2ef;
+    --ink:#26221f; --muted:#6b6660; --line:#e5e1db; --soft:#57524c;
+    --display:'Instrument Serif', serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.65;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+  h1,h2,h3,h4{font-family:var(--display);font-weight:400;line-height:1;letter-spacing:-.01em}
+  em{font-style:italic;color:var(--accent)}
+  .eyebrow{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+
+  /* ---------- nav ---------- */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+    padding:14px 20px;background:color-mix(in srgb,var(--cream) 82%,transparent);backdrop-filter:blur(12px);
+    transition:transform .3s cubic-bezier(.76,0,.24,1),box-shadow .3s ease}
+  .nav.hide{transform:translateY(-100%)}
+  .nav.scrolled{box-shadow:0 8px 30px -22px rgba(28,22,24,.5)}
+  .nav .brand{font-family:var(--display);font-size:24px;line-height:.92;letter-spacing:-.02em;min-width:0;overflow:hidden}
+  .nav .brand small{display:block;font-family:'Inter',sans-serif;font-size:9px;font-weight:600;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--muted);margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .nav-right{display:flex;align-items:center;gap:18px;flex:none}
+  .nav-right .n-phone{font-size:14px;font-weight:600;color:var(--ink)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-weight:600;
+    font-size:14.5px;padding:12px 24px;border-radius:999px;cursor:pointer;border:1px solid var(--ink);
+    background:var(--ink);color:var(--cream);transition:transform .2s ease,background .25s ease,color .25s ease,border-color .25s ease}
+  .btn:hover{transform:translateY(-1px);background:var(--accent);border-color:var(--accent);color:#fff}
+  .btn:active{transform:scale(.97)}
+  .btn.ghost{background:transparent;color:var(--ink);border-color:color-mix(in srgb,var(--ink) 22%,transparent)}
+  .btn.ghost:hover{background:#fff;color:var(--ink);border-color:var(--ink)}
+  .btn.light{background:#fff;color:var(--deep);border-color:#fff}
+  .btn.light:hover{background:var(--cream);color:var(--deep);border-color:var(--cream)}
+  @media(max-width:640px){
+    .nav-right .n-phone{display:none}
+    .nav{padding:12px 16px;gap:12px}
+    .nav .brand{font-size:18px}
+    .nav .brand small{display:none}
+    .nav .btn{padding:10px 16px;font-size:13px}
+  }
+
+  /* ---------- hero bento ---------- */
+  .hero{padding:92px 0 16px}
+  .bento{display:grid;grid-template-columns:1.5fr 1fr;grid-template-rows:auto auto;gap:14px}
+  .cell{border-radius:26px;overflow:hidden;position:relative}
+  .b-intro{grid-column:1;grid-row:1 / span 2;background:var(--paper);border:1px solid var(--line);
+    padding:clamp(28px,3.6vw,52px);display:flex;flex-direction:column;justify-content:center}
+  .b-intro .script{font-family:var(--display);font-style:italic;font-size:clamp(22px,2.6vw,30px);color:var(--accent);margin-bottom:10px}
+  .hero h1{font-size:clamp(54px,9.5vw,128px);line-height:.9;letter-spacing:-.035em;text-wrap:balance;margin-bottom:20px}
+  .b-intro .promise{font-size:clamp(17px,2vw,20px);color:var(--soft);max-width:34ch;margin-bottom:12px}
+  .b-intro .rating{font-size:15px;color:var(--soft);margin-bottom:22px}
+  .b-intro .rating b{color:var(--ink)}
+  .b-intro .rating .star{color:#e2a13b}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:12px}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
+  .chips span{font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.04em;color:var(--ink);
+    background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 15px}
+  .b-photo{grid-column:2;min-height:270px}
+  .b-photo.tall{grid-row:1 / span 2}
+  .b-photo img{width:100%;height:100%;object-fit:cover}
+  @media(max-width:880px){
+    .hero{padding:84px 0 14px}
+    .bento{grid-template-columns:1fr;grid-template-rows:none}
+    .b-intro{grid-column:1;grid-row:auto}
+    .b-photo{grid-column:1}
+    .b-photo.tall{grid-row:auto;min-height:300px}
+    .hero h1{font-size:clamp(48px,15vw,84px)}
+  }
+
+  /* ---------- marquee ---------- */
+  .marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    background:var(--paper);padding:14px 0;margin-top:32px}
+  .mq{display:flex;gap:34px;width:max-content;animation:mq 30s linear infinite;padding-right:34px}
+  .mq span{font-family:var(--display);font-style:italic;font-size:20px;color:var(--soft);white-space:nowrap}
+  .mq .dot{color:var(--accent)}
+  @keyframes mq{to{transform:translateX(-50%)}}
+  @media(prefers-reduced-motion:reduce){.mq{animation:none}}
+
+  /* ---------- servicios interactivos ---------- */
+  .servicios{padding:72px 0}
+  .sec-head{margin-bottom:34px}
+  .sec-head h2{font-size:clamp(34px,5vw,58px);letter-spacing:-.02em}
+  .svc-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+  .svc-tab{position:relative;text-align:left;cursor:pointer;border:1px solid var(--line);background:#fff;
+    border-radius:18px;padding:20px 22px;min-height:120px;display:flex;flex-direction:column;justify-content:space-between;
+    transition:transform .3s cubic-bezier(.22,1,.36,1),border-color .3s ease,background .3s ease}
+  .svc-tab:hover{transform:translateY(-3px)}
+  .svc-tab.is-active{background:var(--accent);border-color:var(--accent)}
+  .svc-tab .svc-name{font-family:var(--display);font-size:clamp(20px,2.4vw,28px);color:var(--ink);transition:color .3s ease}
+  .svc-tab.is-active .svc-name{color:#fff}
+  .svc-tab .svc-num{align-self:flex-end;font-family:'Inter',sans-serif;font-size:12px;font-weight:600;
+    width:34px;height:34px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;
+    color:var(--muted);transition:color .3s ease,border-color .3s ease}
+  .svc-tab.is-active .svc-num{color:#fff;border-color:rgba(255,255,255,.6)}
+  .svc-panel{display:grid;grid-template-columns:1fr 1.15fr;gap:14px;min-height:360px}
+  .svc-detail{background:#fff;border:1px solid var(--line);border-radius:24px;padding:34px 36px;
+    display:flex;flex-direction:column;justify-content:space-between}
+  .svc-detail h3{font-size:clamp(30px,4vw,50px);letter-spacing:-.02em;white-space:pre-line}
+  .svc-detail .d-desc{color:var(--soft);font-size:16px;margin-top:14px;max-width:42ch}
+  .svc-detail .d-tags{font-size:13.5px;font-weight:600;color:var(--accent);margin-top:24px;letter-spacing:.02em}
+  .svc-img{border-radius:24px;overflow:hidden}
+  .svc-img img{width:100%;height:100%;min-height:280px;object-fit:cover}
+  .fade{opacity:0;transform:translateY(10px);transition:opacity .45s cubic-bezier(.16,1,.3,1),transform .45s cubic-bezier(.16,1,.3,1)}
+  .fade.in{opacity:1;transform:none}
+  @media(max-width:880px){
+    .svc-tabs{grid-template-columns:1fr 1fr}
+    .svc-panel{grid-template-columns:1fr}
+    .svc-img img{min-height:220px}
+  }
+
+  /* ---------- tarifas ---------- */
+  .tarifas{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:72px 0}
+  .tarifas-in{display:grid;grid-template-columns:.8fr 1.2fr;gap:52px;align-items:start}
+  .tarifas-head h2{font-size:clamp(30px,4vw,48px);margin-top:10px}
+  .tarifas-head .note{color:var(--muted);font-size:13.5px;margin-top:14px;max-width:32ch}
+  .carta{list-style:none;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 30px 18px;position:relative}
+  .carta::before{content:"";position:absolute;inset:8px;border:1px solid var(--line);border-radius:10px;pointer-events:none}
+  .carta li{display:flex;align-items:baseline;gap:12px;padding:15px 0;border-bottom:1px solid var(--line);position:relative}
+  .carta li:last-child{border-bottom:0}
+  .p-name{font-family:var(--display);font-size:20px}
+  .p-dots{flex:1;border-bottom:2px dotted color-mix(in srgb,var(--ink) 22%,transparent);transform:translateY(-4px)}
+  .p-val{font-family:var(--display);font-style:italic;font-size:20px;color:var(--accent)}
+  @media(max-width:880px){.tarifas-in{grid-template-columns:1fr;gap:26px}}
+
+  /* ---------- banda cita ---------- */
+  .bookband{background:var(--accent);color:#fff;text-align:center;padding:80px 0}
+  .bookband .script{font-family:var(--display);font-style:italic;font-size:clamp(20px,2.4vw,26px);color:var(--cream);opacity:.9;margin-bottom:10px}
+  .bookband h2{font-size:clamp(36px,5.5vw,64px);margin-bottom:28px;color:#fff}
+  .bb-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+  /* ---------- sobre + horario ---------- */
+  .sobre{padding:72px 0}
+  .sobre-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:52px;align-items:start}
+  .sobre h2{font-size:clamp(30px,4vw,48px);letter-spacing:-.02em}
+  .sobre p{color:var(--soft);max-width:52ch;margin-top:14px}
+  .horario{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px 30px}
+  .horario h3{font-family:var(--display);font-size:22px;margin-bottom:12px}
+  .horario ul{list-style:none}
+  .horario li{padding:11px 0;border-bottom:1px solid var(--line);font-size:14.5px;color:var(--soft)}
+  .horario li:last-child{border-bottom:0}
+  .horario .note{margin-top:12px;font-size:12.5px;color:var(--muted)}
+  @media(max-width:880px){.sobre-grid{grid-template-columns:1fr;gap:28px}}
+
+  /* ---------- galería ---------- */
+  .galeria{padding:0 0 72px}
+  .gal-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:240px;gap:14px}
+  .gal-item{border-radius:18px;overflow:hidden;margin:0}
+  .gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.22,1,.36,1)}
+  .gal-item:hover img{transform:scale(1.05)}
+  .gal-0{grid-row:span 2}
+  .gal-note{font-size:12.5px;color:var(--muted);margin-top:12px}
+  @media(max-width:880px){.gal-grid{grid-template-columns:1fr 1fr;grid-auto-rows:170px}.gal-0{grid-row:span 1}.gal-item:nth-child(n+5){display:none}}
+
+  /* ---------- contacto ---------- */
+  .contacto{background:var(--paper);border-top:1px solid var(--line);padding:72px 0}
+  .contacto-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+  .contacto h2{font-size:clamp(30px,4vw,48px);letter-spacing:-.02em}
+  .contacto ul{list-style:none;margin-top:20px}
+  .contacto li{padding:15px 0;border-bottom:1px solid var(--line);font-size:16px}
+  .contacto li span{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:3px}
+  .contacto li a:hover{color:var(--accent)}
+  .contacto .btn{margin-top:22px}
+  .mapa{border:1px solid var(--line);border-radius:20px;overflow:hidden;height:400px}
+  .mapa iframe{width:100%;height:100%;border:0;display:block}
+  @media(max-width:880px){.contacto-grid{grid-template-columns:1fr;gap:28px}}
+
+  footer{padding:30px 0 90px;font-size:14px;color:var(--muted)}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  @media(min-width:721px){footer{padding-bottom:30px}}
+
+  /* ---------- flotantes ---------- */
+  .callbar{display:none}
+  @media(max-width:720px){
+    .callbar{display:block;position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--accent);color:#fff;
+      text-align:center;font-weight:700;font-size:16px;padding:16px;box-shadow:0 -4px 16px rgba(0,0,0,.18)}
+    .demo-badge{bottom:64px}
+  }
+  .demo-badge{position:fixed;right:14px;bottom:14px;z-index:50;background:#211d24;color:#fff;font-size:12px;
+    font-weight:600;padding:7px 13px;border-radius:6px;opacity:.88}
+  .demo-badge:hover{opacity:1}
+
+  /* ---------- revelado ---------- */
+  .js .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+  .js .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    .js .reveal{opacity:1;transform:none;transition:none}
+    .fade{opacity:1;transform:none;transition:none}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="#top" class="brand">Peluquería Kalea<small>Peluquería · 20003 Donostia-San Sebastián</small></a>
+  <div class="nav-right">
+    <a class="n-phone" href="tel:+34943000000">+34 943 00 00 00</a>
+    <button class="btn" type="button" data-book>Reservar cita</button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap bento">
+    <div class="cell b-intro reveal">
+      <p class="script">El arte del cabello</p>
+      <h1>Peluquería Kalea (PRUEBA)</h1>
+      <p class="promise">El pelo que quieres, con la cercanía de siempre.</p>
+      <p class="rating"><span aria-hidden="true">★</span> <strong>4.7</strong> · 128 reseñas en Google</p>
+      <div class="hero-cta">
+        <button class="btn" type="button" data-book>Reservar cita</button>
+        <a class="btn ghost" href="tel:+34943000000">Llamar · +34 943 00 00 00</a>
+      </div>
+      <div class="chips"><span>Corte</span><span>Color</span><span>Mechas</span></div>
+    </div>
+    <div class="cell b-photo reveal">
+      <img src="https://images.unsplash.com/photo-1626383137804-ff908d2753a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8M3x8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDU3MTQ0OHww&ixlib=rb-4.1.0&q=80&w=1080" alt="woman in white shirt standing near black leather chairs" width="560" height="360" fetchpriority="high">
+    </div>
+    <div class="cell b-photo reveal"><img src="https://images.unsplash.com/photo-1637777277337-f114350fb088?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8NHx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDU3MTQ0OHww&ixlib=rb-4.1.0&q=80&w=1080" alt="a hair salon with chairs and neon signs" width="560" height="360" loading="lazy"></div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="mq"><span>Corte</span><span class="dot">·</span><span>Color</span><span class="dot">·</span><span>Mechas</span><span class="dot">·</span><span>Brillo</span><span class="dot">·</span><span>Estilo</span><span class="dot">·</span><span>Cuidado</span><span class="dot">·</span><span>Corte</span><span class="dot">·</span><span>Color</span><span class="dot">·</span><span>Mechas</span><span class="dot">·</span><span>Brillo</span><span class="dot">·</span><span>Estilo</span><span class="dot">·</span><span>Cuidado</span><span class="dot">·</span></div>
+</div>
+
+<section class="servicios" id="servicios">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Servicios</span>
+      <h2>Lo que hacemos</h2>
+    </div>
+    <div class="svc-tabs reveal"><button type="button" class="svc-tab is-active" data-i="0">
+        <span class="svc-name">Corte y peinado</span>
+        <span class="svc-num">01</span>
+      </button><button type="button" class="svc-tab" data-i="1">
+        <span class="svc-name">Color y mechas</span>
+        <span class="svc-num">02</span>
+      </button><button type="button" class="svc-tab" data-i="2">
+        <span class="svc-name">Tratamientos</span>
+        <span class="svc-num">03</span>
+      </button></div>
+    <div class="svc-panel reveal">
+      <div class="svc-detail">
+        <div>
+          <h3 id="svc-title"></h3>
+          <p class="d-desc" id="svc-desc"></p>
+        </div>
+        <p class="d-tags" id="svc-tags"></p>
+      </div>
+      <div class="svc-img"><img id="svc-img" src="" alt="" loading="lazy" decoding="async"></div>
+    </div>
+  </div>
+</section>
+
+<section class="tarifas" id="precios">
+    <div class="wrap tarifas-in">
+      <div class="tarifas-head reveal">
+        <span class="eyebrow">Tarifas</span>
+        <h2>Precios claros,<br><em>sin sorpresas</em></h2>
+        <p class="note">Lista orientativa — en tu web irían tus precios reales.</p>
+      </div>
+      <ul class="carta reveal">
+        <li><span class="p-name">Corte mujer</span><span class="p-dots" aria-hidden="true"></span><span class="p-val">desde 22 €</span></li><li><span class="p-name">Corte hombre</span><span class="p-dots" aria-hidden="true"></span><span class="p-val">16 €</span></li><li><span class="p-name">Color raíz</span><span class="p-dots" aria-hidden="true"></span><span class="p-val">desde 35 €</span></li><li><span class="p-name">Mechas / balayage</span><span class="p-dots" aria-hidden="true"></span><span class="p-val">desde 55 €</span></li><li><span class="p-name">Peinado y brushing</span><span class="p-dots" aria-hidden="true"></span><span class="p-val">18 €</span></li><li><span class="p-name">Tratamiento hidratante</span><span class="p-dots" aria-hidden="true"></span><span class="p-val">desde 25 €</span></li>
+      </ul>
+    </div>
+  </section>
+
+<section class="sobre" id="nosotros">
+  <div class="wrap sobre-grid">
+    <div class="reveal">
+      <span class="eyebrow">El salón</span>
+      <h2>De barrio, de verdad</h2>
+      <p>Peluquería de barrio en la parte vieja de Donostia. Sin web propia, solo Instagram.</p>
+    </div>
+    <div class="horario reveal">
+      <h3>Horario</h3>
+      <ul><li>Lunes a viernes · 9:30 – 19:30</li><li>Sábado · 9:00 – 14:00</li><li>Domingo · Cerrado</li></ul>
+      <p class="note">Horario orientativo — se confirma con el negocio.</p>
+    </div>
+  </div>
+</section>
+
+<section class="galeria" aria-label="Galería" id="galeria">
+    <div class="wrap">
+      <div class="gal-grid reveal">
+        <figure class="gal-item gal-0"><img src="https://images.unsplash.com/photo-1637777277337-f114350fb088?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8NHx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDU3MTQ0OHww&ixlib=rb-4.1.0&q=80&w=1080" alt="a hair salon with chairs and neon signs" loading="lazy" decoding="async"></figure><figure class="gal-item gal-1"><img src="https://images.unsplash.com/photo-1746723378067-83a345ff3160?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8NXx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDU3MTQ0OHww&ixlib=rb-4.1.0&q=80&w=1080" alt="A hair salon interior with hair products and clients." loading="lazy" decoding="async"></figure><figure class="gal-item gal-2"><img src="https://images.unsplash.com/photo-1626383120723-2a941488860d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8Nnx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDU3MTQ0OHww&ixlib=rb-4.1.0&q=80&w=1080" alt="black and gray chair beside white wall" loading="lazy" decoding="async"></figure>
+      </div>
+      <p class="gal-note">Fotos de ambiente — en tu web irían las de tu salón.</p>
+    </div>
+  </section>
+
+<section class="bookband">
+  <div class="wrap">
+    <p class="script">Te esperamos en 20003 Donostia-San Sebastián</p>
+    <h2>¿Te vemos esta semana?</h2>
+    <div class="bb-cta">
+      <button class="btn light" type="button" data-book>Pedir cita ahora</button>
+      <a class="btn ghost" style="border-color:rgba(255,255,255,.55);color:#fff" href="https://wa.me/34943000000?text=Hola%20Peluquer%C3%ADa%20Kalea%20(PRUEBA)%20%F0%9F%91%8B%20Me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<section class="contacto" id="contacto">
+  <div class="wrap contacto-grid">
+    <div class="reveal">
+      <span class="eyebrow">Contacto</span>
+      <h2>Dónde estamos</h2>
+      <ul><li><span>Dirección</span>Kale Nagusia 12, 20003 Donostia-San Sebastián</li><li><span>Teléfono</span><a href="tel:+34943000000">+34 943 00 00 00</a></li><li><span>Instagram</span><a href="https://instagram.com/peluqueria_kalea" target="_blank" rel="noopener">@peluqueria_kalea</a></li></ul>
+      <a class="btn" href="tel:+34943000000">Llamar ahora</a>
+    </div>
+    
+      <div class="map">
+        <iframe title="Ubicación de Peluquería Kalea (PRUEBA)" loading="lazy"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-1.9888000000000001%2C43.32%2C-1.9818%2C43.327000000000005&layer=mapnik&marker=43.3235%2C-1.9853"></iframe>
+      </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Peluquería Kalea (PRUEBA)</span>
+    <span>Peluquería en 20003 Donostia-San Sebastián</span>
+  </div>
+</footer>
+
+<a class="callbar" href="tel:+34943000000">Llamar · +34 943 00 00 00</a>
+<a class="demo-badge" href="#top" title="Demo generada por OI Studio">Demo · propuesta de web</a>
+
+<script>
+(function(){
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // nav: auto-ocultar al bajar, sombra al hacer scroll
+  var nav = document.getElementById('nav');
+  var lastY = 0;
+  window.addEventListener('scroll', function(){
+    var y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 20);
+    nav.classList.toggle('hide', y > lastY && y > 140);
+    lastY = y;
+  }, {passive:true});
+
+  // abrir chat de reservas (widget) o WhatsApp de respaldo
+  function openBooking(){
+    var l = document.querySelector('.oib-launch');
+    if(l){ l.click(); return; }
+    window.open("https://wa.me/34943000000?text=Hola%20Peluquer%C3%ADa%20Kalea%20(PRUEBA)%20%F0%9F%91%8B%20Me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%B3n", '_blank', 'noopener');
+  }
+  document.querySelectorAll('[data-book]').forEach(function(b){ b.addEventListener('click', openBooking); });
+
+  // servicios seleccionables con fade
+  var SVC = [{"title":"Corte y peinado","desc":"Asesoramiento personalizado según tu estilo, tu rostro y tu día a día.","tags":"Corte mujer · Corte hombre · Flequillos · Recogidos","img":"https://images.unsplash.com/photo-1637777277337-f114350fb088?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8NHx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDU3MTQ0OHww&ixlib=rb-4.1.0&q=80&w=1080","alt":"a hair salon with chairs and neon signs"},{"title":"Color y mechas","desc":"Coloración profesional, balayage y babylights con productos que cuidan.","tags":"Balayage · Babylights · Rubios fríos · Color raíz","img":"https://images.unsplash.com/photo-1746723378067-83a345ff3160?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8NXx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDU3MTQ0OHww&ixlib=rb-4.1.0&q=80&w=1080","alt":"A hair salon interior with hair products and clients."},{"title":"Tratamientos","desc":"Hidratación profunda, keratina y rituales de brillo para un pelo sano.","tags":"Hidratación · Keratina · Detox capilar · Brillo","img":"https://images.unsplash.com/photo-1626383120723-2a941488860d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8Nnx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDU3MTQ0OHww&ixlib=rb-4.1.0&q=80&w=1080","alt":"black and gray chair beside white wall"}];
+  var elT = document.getElementById('svc-title');
+  var elD = document.getElementById('svc-desc');
+  var elG = document.getElementById('svc-tags');
+  var elI = document.getElementById('svc-img');
+  var panel = elT.closest('.svc-panel');
+  function paint(i){
+    var s = SVC[i]; if(!s) return;
+    elT.textContent = s.title.replace(/ /,'\n');
+    elD.textContent = s.desc;
+    elG.textContent = s.tags;
+    elI.src = s.img; elI.alt = s.alt;
+    panel.classList.remove('in');
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ panel.classList.add('in'); }); });
+  }
+  panel.classList.add('fade');
+  document.querySelectorAll('.svc-tab').forEach(function(t){
+    t.addEventListener('click', function(){
+      document.querySelectorAll('.svc-tab').forEach(function(x){ x.classList.remove('is-active'); });
+      t.classList.add('is-active');
+      paint(parseInt(t.getAttribute('data-i'),10));
+    });
+  });
+  paint(0);
+
+  // revelado al hacer scroll
+  var rev = document.querySelectorAll('.reveal');
+  if(reduced){ rev.forEach(function(e){ e.classList.add('in'); }); }
+  else{
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, {threshold:.12});
+    rev.forEach(function(e){ io.observe(e); });
+  }
+})();
+</script>
+
+</body>
+</html>
