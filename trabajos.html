@@ -296,21 +296,40 @@
 })();
 </script>
 
-<!-- Hero 3D Ballpit — motor Three.js real (esferas metálicas con física que siguen el cursor) -->
-<script type="importmap">
-{ "imports": {
-  "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-  "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
-}}
-</script>
-<script type="module">
-import * as THREE from 'three';
-import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
-
-(function(){
+<!-- Hero 3D Ballpit — motor Three.js real (esferas metálicas con física que siguen el cursor).
+     Carga diferida: Three.js (~1.3MB desde unpkg) solo se descarga tras la primera
+     interacción del usuario (o pasados unos segundos si no interactúa), para no competir
+     por ancho de banda con el resto de la página en la carga inicial. -->
+<script>
+(function () {
   const canvas = document.getElementById('ballpitCanvas');
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!canvas || reduce) return;
+
+  let booted = false;
+  function boot() {
+    if (booted) return;
+    booted = true;
+    triggers.forEach(function (t) { t.target.removeEventListener(t.type, boot); });
+    clearTimeout(idleTimer);
+    Promise.all([
+      import('https://unpkg.com/three@0.160.0/build/three.module.js'),
+      import('https://unpkg.com/three@0.160.0/examples/jsm/environments/RoomEnvironment.js')
+    ]).then(function (mods) {
+      runBallpit(mods[0], mods[1].RoomEnvironment);
+    }).catch(function () { /* sin red/CDN → fondo crema limpio, sin animación */ });
+  }
+
+  const triggers = [
+    { target: window, type: 'scroll' },
+    { target: window, type: 'pointerdown' },
+    { target: window, type: 'touchstart' },
+    { target: window, type: 'keydown' }
+  ];
+  triggers.forEach(function (t) { t.target.addEventListener(t.type, boot, { passive: true, once: true }); });
+  const idleTimer = setTimeout(boot, 2500); // por si el usuario no interactúa: arranca igualmente
+
+  function runBallpit(THREE, RoomEnvironment) {
 
   // Paleta cálida OI Studio (terracota, ocre, crema, carbón)
   const warmColors = ['#c07a35', '#a3673a', '#d99a5b', '#2c231b', '#e8d5b5', '#8a4a28', '#f0c896'];
@@ -483,6 +502,7 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
     else if (!vis && running) { running = false; cancelAnimationFrame(raf); clock.stop(); }
   }, { threshold: 0 });
   io.observe(canvas);
+  } // fin runBallpit
 })();
 </script>
 <a class="wa-float" href="https://wa.me/34680956755?text=Hola%2C%20vengo%20de%20tu%20web%20y%20quiero%20informaci%C3%B3n%20para%20la%20web%20de%20mi%20negocio." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
