@@ -14,8 +14,6 @@ const HERO_IMAGE =
   "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=2200&h=1000&q=80&auto=format&fit=crop";
 const SECTION2_IMAGE =
   "https://images.unsplash.com/photo-1562322140-8baeececf3df?w=2200&h=1000&q=80&auto=format&fit=crop";
-const SECTION3_IMG1 =
-  "https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=800&q=80&auto=format&fit=crop";
 const SECTION3_IMG2 =
   "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&q=80&auto=format&fit=crop";
 const SECTION3_BG =
@@ -29,6 +27,34 @@ const services = [
   { name: "Color\ny mechas", num: "02" },
   { name: "Balayage", num: "03" },
   { name: "Tratamientos", num: "04" },
+];
+
+/** Detalle de cada categoría — se muestra en la sección "Color de autor" según la pestaña activa. */
+const SERVICE_DETAILS = [
+  {
+    title: "Estilo y\nEstructura",
+    tags: "Corte clásico · Desfilado · Flequillos · Bob styling",
+    image: SECTION3_BG,
+    alt: "Peluquero realizando un corte de precisión",
+  },
+  {
+    title: "Color\nde autor",
+    tags: "Balayage · Babylights · Rubios fríos",
+    image: SECTION3_IMG2,
+    alt: "Proceso de coloración profesional",
+  },
+  {
+    title: "Luz y\nDimensión",
+    tags: "Melted balayage · Contouring · Iluminación natural",
+    image: SECTION2_IMAGE,
+    alt: "Balayage con transición suave expuesto a la luz",
+  },
+  {
+    title: "Cuidado\nProfundo",
+    tags: "Hidratación molecular · Queratina · Detox capilar",
+    image: HERO_IMAGE,
+    alt: "Ambiente cuidado del salón para el tratamiento",
+  },
 ];
 
 const WINE = "#8a2f4f";
@@ -176,6 +202,38 @@ function MaskedCard({
   }
   return (
     <div ref={cardRef} className={className} style={{ ...bgStyle, ...style }}>
+      {children}
+    </div>
+  );
+}
+
+/** Envuelve su contenido con un fade-in + subida suave cada vez que `swapKey` cambia. */
+function FadeSwap({
+  swapKey,
+  className,
+  children,
+}: {
+  swapKey: string | number;
+  className?: string;
+  children: ReactNode;
+}) {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    setShow(false);
+    const raf = requestAnimationFrame(() => setShow(true));
+    return () => cancelAnimationFrame(raf);
+  }, [swapKey]);
+
+  return (
+    <div
+      className={className}
+      style={{
+        opacity: show ? 1 : 0,
+        transform: show ? "translateY(0)" : "translateY(10px)",
+        transition: "opacity 0.45s cubic-bezier(0.16,1,0.3,1), transform 0.45s cubic-bezier(0.16,1,0.3,1)",
+      }}
+    >
       {children}
     </div>
   );
@@ -576,39 +634,26 @@ export default function App() {
       >
         <div className="flex-1 min-h-0 grid grid-cols-1 md:grid-cols-2 gap-1.5 md:gap-2">
           <div className="flex flex-col gap-1.5 md:gap-2">
-            <div
-              className="rounded-xl md:rounded-2xl bg-stone-50 p-5 md:p-7 flex flex-col justify-between flex-[1.2] min-h-[180px] md:min-h-0"
-              style={s3Reveal.getAnimStyle(0)}
+            <FadeSwap
+              swapKey={activeService}
+              className="grid grid-cols-1 md:grid-cols-2 gap-1.5 md:gap-2 flex-[2.2] min-h-[320px] md:min-h-0"
             >
-              <h2 className="font-display text-[clamp(3rem,7vw,6.5rem)] leading-[0.95] text-black">
-                Color
-                <br />
-                de autor
-              </h2>
-              <p className="text-xs md:text-sm font-semibold" style={{ color: WINE }}>
-                Balayage · Babylights · Rubios fríos
-              </p>
-            </div>
-
-            <div
-              className="flex gap-1.5 md:gap-2 flex-1 min-h-[140px] md:min-h-0"
-              style={s3Reveal.getAnimStyle(1)}
-            >
-              <div className="flex-1 rounded-xl md:rounded-2xl overflow-hidden">
+              <div className="rounded-2xl md:rounded-3xl bg-white p-6 md:p-8 flex flex-col justify-between min-h-[160px] md:min-h-0 shadow-sm">
+                <h2 className="font-display whitespace-pre-line text-[clamp(2.4rem,5.4vw,4.2rem)] leading-[0.95] text-black">
+                  {SERVICE_DETAILS[activeService].title}
+                </h2>
+                <p className="text-xs md:text-sm font-semibold mt-6" style={{ color: WINE }}>
+                  {SERVICE_DETAILS[activeService].tags}
+                </p>
+              </div>
+              <div className="rounded-2xl md:rounded-3xl overflow-hidden min-h-[200px] md:min-h-0">
                 <img
-                  src={SECTION3_IMG1}
-                  alt="Trabajo de peluquería en salón"
+                  src={SERVICE_DETAILS[activeService].image}
+                  alt={SERVICE_DETAILS[activeService].alt}
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="flex-1 rounded-xl md:rounded-2xl overflow-hidden">
-                <img
-                  src={SECTION3_IMG2}
-                  alt="Secado y peinado profesional"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
+            </FadeSwap>
 
             <div
               className="rounded-xl md:rounded-2xl bg-zinc-200 p-5 md:p-7 flex items-end justify-between flex-[0.8] min-h-[160px] md:min-h-0"
