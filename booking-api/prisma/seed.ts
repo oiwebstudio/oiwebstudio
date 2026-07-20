@@ -20,7 +20,7 @@ const BUSINESSES: SeedBusiness[] = [
     slug: "cafeteria",
     name: "Madera Café",
     category: "cafeteria",
-    openingHours: "Mo-Fr 08:00-21:00; Sa-Su 10:00-22:00",
+    openingHours: "Mo-Fr 08:00-19:00; Sa-Su 09:00-14:30",
     capacity: 4,
     services: [
       { name: "Mesa para 2", durationMinutes: 60 },
@@ -32,7 +32,7 @@ const BUSINESSES: SeedBusiness[] = [
     slug: "floristeria",
     name: "Lore Floristería",
     category: "floristeria",
-    openingHours: "Mo-Sa 09:30-13:30,16:30-20:00",
+    openingHours: "Mo-Sa 09:30-13:30,16:30-19:30",
     capacity: 1,
     services: [
       { name: "Recogida de encargo", durationMinutes: 15 },
@@ -54,7 +54,7 @@ const BUSINESSES: SeedBusiness[] = [
     slug: "panaderia",
     name: "Errotaberri",
     category: "panaderia",
-    openingHours: "Mo-Sa 07:00-14:00,17:00-20:30",
+    openingHours: "Mo-Sa 07:00-14:00,17:00-20:00; Su 08:00-13:00",
     capacity: 2,
     services: [
       { name: "Encargo tarta especial", durationMinutes: 15 },
@@ -65,7 +65,7 @@ const BUSINESSES: SeedBusiness[] = [
     slug: "peluqueria",
     name: "Studio Noir",
     category: "peluqueria",
-    openingHours: "Tu-Fr 10:00-20:00; Sa 09:00-19:00",
+    openingHours: "Tu-Fr 09:30-19:00; Sa 09:00-14:00",
     capacity: 2,
     services: [
       { name: "Corte", durationMinutes: 30, priceLabel: "desde 25€" },
@@ -77,7 +77,7 @@ const BUSINESSES: SeedBusiness[] = [
     slug: "restaurante",
     name: "Fuego & Sal",
     category: "restaurante",
-    openingHours: "Tu-Su 13:00-16:00,20:00-23:30",
+    openingHours: "We-Su 13:00-15:30; Fr-Sa 20:30-23:00",
     capacity: 6,
     services: [
       { name: "Mesa comida", durationMinutes: 90 },
@@ -89,7 +89,7 @@ const BUSINESSES: SeedBusiness[] = [
     slug: "taller",
     name: "Garaje Norte",
     category: "taller",
-    openingHours: "Mo-Fr 09:00-13:30,15:30-19:30; Sa 09:00-13:00",
+    openingHours: "Mo-Fr 08:30-13:00,15:00-18:30",
     capacity: 2,
     services: [
       { name: "Revisión general", durationMinutes: 45, priceLabel: "desde 40€" },
@@ -101,7 +101,7 @@ const BUSINESSES: SeedBusiness[] = [
     slug: "veterinaria",
     name: "VetCare",
     category: "veterinaria",
-    openingHours: "Mo-Fr 09:00-13:00,16:00-20:00; Sa 10:00-13:00",
+    openingHours: "Mo-Fr 09:00-20:30; Sa 10:00-14:00",
     capacity: 1,
     services: [
       { name: "Consulta general", durationMinutes: 30, priceLabel: "desde 30€" },
