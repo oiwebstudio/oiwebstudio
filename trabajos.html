@@ -312,12 +312,24 @@
     booted = true;
     triggers.forEach(function (t) { t.target.removeEventListener(t.type, boot); });
     clearTimeout(idleTimer);
+
+    // RoomEnvironment.js importa 'three' internamente con specifier corto, así que
+    // necesita un import map resuelto ANTES de pedirlo (aunque sea insertado ahora,
+    // en el primer uso, y no en la carga inicial de la página).
+    var im = document.createElement('script');
+    im.type = 'importmap';
+    im.textContent = JSON.stringify({ imports: {
+      'three': 'https://unpkg.com/three@0.160.0/build/three.module.js',
+      'three/addons/': 'https://unpkg.com/three@0.160.0/examples/jsm/'
+    }});
+    document.head.appendChild(im);
+
     Promise.all([
-      import('https://unpkg.com/three@0.160.0/build/three.module.js'),
-      import('https://unpkg.com/three@0.160.0/examples/jsm/environments/RoomEnvironment.js')
+      import('three'),
+      import('three/addons/environments/RoomEnvironment.js')
     ]).then(function (mods) {
       runBallpit(mods[0], mods[1].RoomEnvironment);
-    }).catch(function () { /* sin red/CDN → fondo crema limpio, sin animación */ });
+    }).catch(function (e) { console.warn('[ballpit] no se pudo cargar Three.js:', e); });
   }
 
   const triggers = [
