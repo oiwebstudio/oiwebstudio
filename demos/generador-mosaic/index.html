@@ -14,11 +14,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --accent:#8a2f4f; --deep:#6b2340; --cream:#faf7f4; --paper:#f7f2ef;
     --ink:#26221f; --muted:#6b6660; --line:#e5e1db; --soft:#57524c;
     --display:'Instrument Serif', serif;
+    --mono:'Geist Mono',ui-monospace,'SFMono-Regular',Menlo,monospace;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -28,7 +30,10 @@
   .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
   h1,h2,h3,h4{font-family:var(--display);font-weight:400;line-height:1;letter-spacing:-.01em}
   em{font-style:italic;color:var(--accent)}
-  .eyebrow{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:11.5px;font-weight:500;
+    letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+  .eyebrow::before{content:"";width:14px;height:1px;background:var(--accent);flex:none}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 
   /* ---------- nav ---------- */
   .nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
@@ -37,7 +42,7 @@
   .nav.hide{transform:translateY(-100%)}
   .nav.scrolled{box-shadow:0 8px 30px -22px rgba(28,22,24,.5)}
   .nav .brand{font-family:var(--display);font-size:24px;line-height:.92;letter-spacing:-.02em;min-width:0;overflow:hidden}
-  .nav .brand small{display:block;font-family:'Inter',sans-serif;font-size:9px;font-weight:600;letter-spacing:.14em;
+  .nav .brand small{display:block;font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.14em;
     text-transform:uppercase;color:var(--muted);margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .nav-right{display:flex;align-items:center;gap:18px;flex:none}
   .nav-right .n-phone{font-size:14px;font-weight:600;color:var(--ink)}
@@ -64,12 +69,23 @@
   .cell{border-radius:26px;overflow:hidden;position:relative}
   .b-intro{grid-column:1;grid-row:1 / span 2;background:var(--paper);border:1px solid var(--line);
     padding:clamp(28px,3.6vw,52px);display:flex;flex-direction:column;justify-content:center}
+  .raya{display:flex;align-items:center;gap:14px;margin-bottom:24px;height:150px}
+  .raya-line{width:1px;height:142px;background:linear-gradient(var(--accent),color-mix(in srgb,var(--accent) 12%,transparent));
+    transform:scaleY(0);transform-origin:top;transition:transform 1.1s cubic-bezier(.16,1,.3,1) .2s}
+  .raya-label{writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--mono);font-size:10.5px;font-weight:500;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--muted);height:142px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  @media(max-width:880px){
+    .raya{height:100px}
+    .raya-line{height:92px}
+    .raya-label{height:92px}
+  }
+  .js .b-intro.reveal.in .raya-line{transform:scaleY(1)}
   .b-intro .script{font-family:var(--display);font-style:italic;font-size:clamp(22px,2.6vw,30px);color:var(--accent);margin-bottom:10px}
   .hero h1{font-size:clamp(54px,9.5vw,128px);line-height:.9;letter-spacing:-.035em;text-wrap:balance;margin-bottom:20px}
   .b-intro .promise{font-size:clamp(17px,2vw,20px);color:var(--soft);max-width:34ch;margin-bottom:12px}
   .b-intro .rating{font-size:15px;color:var(--soft);margin-bottom:22px}
-  .b-intro .rating b{color:var(--ink)}
-  .b-intro .rating .star{color:#e2a13b}
+  .b-intro .rating b{color:var(--ink);font-variant-numeric:tabular-nums}
+  .b-intro .rating span{color:#e2a13b}
   .hero-cta{display:flex;flex-wrap:wrap;gap:12px}
   .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
   .chips span{font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.04em;color:var(--ink);
@@ -89,8 +105,8 @@
   /* ---------- marquee ---------- */
   .marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
     background:var(--paper);padding:14px 0;margin-top:32px}
-  .mq{display:flex;gap:34px;width:max-content;animation:mq 30s linear infinite;padding-right:34px}
-  .mq span{font-family:var(--display);font-style:italic;font-size:20px;color:var(--soft);white-space:nowrap}
+  .mq{display:flex;gap:28px;width:max-content;animation:mq 34s linear infinite;padding-right:28px}
+  .mq span{font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);white-space:nowrap}
   .mq .dot{color:var(--accent)}
   @keyframes mq{to{transform:translateX(-50%)}}
   @media(prefers-reduced-motion:reduce){.mq{animation:none}}
@@ -107,16 +123,19 @@
   .svc-tab.is-active{background:var(--accent);border-color:var(--accent)}
   .svc-tab .svc-name{font-family:var(--display);font-size:clamp(20px,2.4vw,28px);color:var(--ink);transition:color .3s ease}
   .svc-tab.is-active .svc-name{color:#fff}
-  .svc-tab .svc-num{align-self:flex-end;font-family:'Inter',sans-serif;font-size:12px;font-weight:600;
+  .svc-tab .svc-num{align-self:flex-end;font-family:var(--mono);font-size:11.5px;font-weight:500;
     width:34px;height:34px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;
     color:var(--muted);transition:color .3s ease,border-color .3s ease}
   .svc-tab.is-active .svc-num{color:#fff;border-color:rgba(255,255,255,.6)}
   .svc-panel{display:grid;grid-template-columns:1fr 1.15fr;gap:14px;min-height:360px}
-  .svc-detail{background:#fff;border:1px solid var(--line);border-radius:24px;padding:34px 36px;
+  .svc-detail{position:relative;z-index:0;overflow:hidden;background:#fff;border:1px solid var(--line);border-radius:24px;padding:34px 36px;
     display:flex;flex-direction:column;justify-content:space-between}
+  .svc-ghost{position:absolute;z-index:-1;top:10px;right:22px;font-family:var(--mono);font-weight:500;
+    font-size:clamp(90px,11vw,150px);line-height:1;color:color-mix(in srgb,var(--accent) 13%,transparent);
+    font-variant-numeric:tabular-nums;user-select:none}
   .svc-detail h3{font-size:clamp(30px,4vw,50px);letter-spacing:-.02em;white-space:pre-line}
   .svc-detail .d-desc{color:var(--soft);font-size:16px;margin-top:14px;max-width:42ch}
-  .svc-detail .d-tags{font-size:13.5px;font-weight:600;color:var(--accent);margin-top:24px;letter-spacing:.02em}
+  .svc-detail .d-tags{font-family:var(--mono);font-size:12.5px;font-weight:500;color:var(--accent);margin-top:24px;letter-spacing:.03em}
   .svc-img{border-radius:24px;overflow:hidden}
   .svc-img img{width:100%;height:100%;min-height:280px;object-fit:cover}
   .fade{opacity:0;transform:translateY(10px);transition:opacity .45s cubic-bezier(.16,1,.3,1),transform .45s cubic-bezier(.16,1,.3,1)}
@@ -132,13 +151,15 @@
   .tarifas-in{display:grid;grid-template-columns:.8fr 1.2fr;gap:52px;align-items:start}
   .tarifas-head h2{font-size:clamp(30px,4vw,48px);margin-top:10px}
   .tarifas-head .note{color:var(--muted);font-size:13.5px;margin-top:14px;max-width:32ch}
-  .carta{list-style:none;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 30px 18px;position:relative}
+  .carta{list-style:none;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 30px 18px;
+    position:relative;counter-reset:tarifa}
   .carta::before{content:"";position:absolute;inset:8px;border:1px solid var(--line);border-radius:10px;pointer-events:none}
-  .carta li{display:flex;align-items:baseline;gap:12px;padding:15px 0;border-bottom:1px solid var(--line);position:relative}
+  .carta li{counter-increment:tarifa;display:flex;align-items:baseline;gap:12px;padding:15px 0;border-bottom:1px solid var(--line);position:relative}
   .carta li:last-child{border-bottom:0}
+  .carta li::before{content:counter(tarifa,decimal-leading-zero);font-family:var(--mono);font-size:11px;color:var(--muted);flex:none}
   .p-name{font-family:var(--display);font-size:20px}
   .p-dots{flex:1;border-bottom:2px dotted color-mix(in srgb,var(--ink) 22%,transparent);transform:translateY(-4px)}
-  .p-val{font-family:var(--display);font-style:italic;font-size:20px;color:var(--accent)}
+  .p-val{font-family:var(--display);font-style:italic;font-size:20px;color:var(--accent);font-variant-numeric:tabular-nums}
   @media(max-width:880px){.tarifas-in{grid-template-columns:1fr;gap:26px}}
 
   /* ---------- banda cita ---------- */
@@ -176,15 +197,17 @@
   .contacto h2{font-size:clamp(30px,4vw,48px);letter-spacing:-.02em}
   .contacto ul{list-style:none;margin-top:20px}
   .contacto li{padding:15px 0;border-bottom:1px solid var(--line);font-size:16px}
-  .contacto li span{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:3px}
+  .contacto li span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:4px}
   .contacto li a:hover{color:var(--accent)}
   .contacto .btn{margin-top:22px}
   .mapa{border:1px solid var(--line);border-radius:20px;overflow:hidden;height:400px}
   .mapa iframe{width:100%;height:100%;border:0;display:block}
   @media(max-width:880px){.contacto-grid{grid-template-columns:1fr;gap:28px}}
 
-  footer{padding:30px 0 90px;font-size:14px;color:var(--muted)}
+  footer{position:relative;padding:52px 0 90px;font-size:14px;color:var(--muted)}
+  .foot-mark{position:absolute;top:0;left:50%;transform:translateX(-50%);width:1px;height:32px;background:var(--accent)}
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  footer .f-meta{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
   @media(min-width:721px){footer{padding-bottom:30px}}
 
   /* ---------- flotantes ---------- */
@@ -204,6 +227,7 @@
   @media(prefers-reduced-motion:reduce){
     .js .reveal{opacity:1;transform:none;transition:none}
     .fade{opacity:1;transform:none;transition:none}
+    .raya-line{transform:scaleY(1);transition:none}
   }
 </style>
 </head>
@@ -220,6 +244,10 @@
 <header class="hero" id="top">
   <div class="wrap bento">
     <div class="cell b-intro reveal">
+      <div class="raya" aria-hidden="true">
+        <span class="raya-line"></span>
+        <span class="raya-label">Peluquería</span>
+      </div>
       <p class="script">El arte del cabello</p>
       <h1>Peluquería Kalea (PRUEBA)</h1>
       <p class="promise">El pelo que quieres, con la cercanía de siempre.</p>
@@ -259,6 +287,7 @@
       </button></div>
     <div class="svc-panel reveal">
       <div class="svc-detail">
+        <span class="svc-ghost" id="svc-ghost" aria-hidden="true"></span>
         <div>
           <h3 id="svc-title"></h3>
           <p class="d-desc" id="svc-desc"></p>
@@ -335,9 +364,10 @@
 </section>
 
 <footer>
+  <span class="foot-mark" aria-hidden="true"></span>
   <div class="wrap">
     <span>© 2026 Peluquería Kalea (PRUEBA)</span>
-    <span>Peluquería en 20003 Donostia-San Sebastián</span>
+    <span class="f-meta">Peluquería · 20003 Donostia-San Sebastián</span>
   </div>
 </footer>
 
@@ -372,6 +402,7 @@
   var elD = document.getElementById('svc-desc');
   var elG = document.getElementById('svc-tags');
   var elI = document.getElementById('svc-img');
+  var elN = document.getElementById('svc-ghost');
   var panel = elT.closest('.svc-panel');
   function paint(i){
     var s = SVC[i]; if(!s) return;
@@ -379,6 +410,7 @@
     elD.textContent = s.desc;
     elG.textContent = s.tags;
     elI.src = s.img; elI.alt = s.alt;
+    elN.textContent = String(i+1).padStart(2,'0');
     panel.classList.remove('in');
     requestAnimationFrame(function(){ requestAnimationFrame(function(){ panel.classList.add('in'); }); });
   }
