@@ -838,9 +838,15 @@ body::after {
   .cta-desc{ margin-bottom:24px; }
 }
 
-/* Modern Hero — Ballpit 3D (esferas con fisica que siguen el cursor) */
+/* Modern Hero — Gradient de fondo limpio (sin animación 3D pesada) */
 .hero--modern{ position:relative; }
-.hero__ballpit{ position:absolute; inset:0; width:100%; height:100%; display:block; z-index:0;
+
+/* VERSIÓN 1 (RECOMENDADA): Hero limpio, sin animación */
+.hero__gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #f2eee4 0%, #f5f0e8 50%, #f0e8dc 100%);
+  z-index: 0;
   mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 78%, transparent 100%),
               radial-gradient(120% 100% at 50% 60%, #000 60%, transparent 100%);
   mask-composite: intersect;
@@ -848,6 +854,32 @@ body::after {
               radial-gradient(120% 100% at 50% 60%, #000 60%, transparent 100%);
   -webkit-mask-composite: source-in;
 }
+
+/* VERSIÓN 2 (OPCIONAL): Hero con animación CSS sutil — descomenta para usar */
+/*
+.hero__gradient {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, #f2eee4 0%, #f5f0e8 50%, #f0e8dc 100%),
+    radial-gradient(circle at 20% 30%, rgba(200, 120, 50, 0.08) 0%, transparent 30%),
+    radial-gradient(circle at 80% 70%, rgba(100, 130, 100, 0.06) 0%, transparent 40%);
+  background-size: 100% 100%, 200% 200%, 200% 200%;
+  z-index: 0;
+  animation: gradientShift 8s ease-in-out infinite;
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 78%, transparent 100%),
+              radial-gradient(120% 100% at 50% 60%, #000 60%, transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 78%, transparent 100%),
+              radial-gradient(120% 100% at 50% 60%, #000 60%, transparent 100%);
+  -webkit-mask-composite: source-in;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 0%, 0% 0%, 100% 100%; }
+  50% { background-position: 0% 0%, 50% 50%, 50% 50%; }
+}
+*/
 
 /* Spring letter animation para heading */
 .hero-heading{ font-size:clamp(48px, 7vw, 72px); line-height:1.15; font-weight:600; color:#1c2430; margin:24px 0 0; position:relative; z-index:2; font-family:var(--font-sans); letter-spacing:-0.02em; }
