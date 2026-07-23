@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Widget de reservas · OI Studio</title>
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Estilos oficiales de @n8n/chat -->
+  <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+
+  <style>
+    /* ---- Tema de @n8n/chat: lo adaptamos a la marca (redondeado, suave) ---- */
+    :root {
+      --chat--color-primary: #6d28d9;          /* violeta principal */
+      --chat--color-primary-shade-50: #5b21b6;
+      --chat--color-primary-shade-100: #4c1d95;
+      --chat--color-secondary: #7c3aed;
+      --chat--color-white: #ffffff;
+      --chat--color-light: #f7f6fb;
+      --chat--color-typing: #9ca3af;
+
+      --chat--spacing: 1rem;
+      --chat--border-radius: 0.9rem;
+      --chat--transition-duration: 0.2s;
+
+      /* Ocupa todo el contenedor (nuestro panel controla el tamaño) */
+      --chat--window--width: 100%;
+      --chat--window--height: 100%;
+
+      --chat--header--background: transparent;
+      --chat--header--padding: 0;
+      --chat--heading--font-size: 0;             /* ocultamos el título interno */
+
+      --chat--message--font-size: 0.95rem;
+      --chat--message--bot--background: #f3f0fb;
+      --chat--message--bot--color: #1f2937;
+      --chat--message--user--background: #6d28d9;
+      --chat--message--user--color: #ffffff;
+      --chat--message--border-radius: 0.9rem;
+
+      --chat--textarea--height: 3rem;
+      --chat--input--border-radius: 0.75rem;
+    }
+
+    /* Ocultamos la cabecera propia de n8n: usamos la nuestra (Tailwind) */
+    #n8n-chat-mount .chat-header { display: none !important; }
+
+    /* El chat de n8n rellena su contenedor */
+    #n8n-chat-mount, #n8n-chat-mount .chat-layout, #n8n-chat-mount .chat-body {
+      height: 100%;
+    }
+
+    /* Animación de entrada del panel */
+    @keyframes panel-in {
+      from { opacity: 0; transform: translateY(16px) scale(0.98); }
+      to   { opacity: 1; transform: translateY(0)    scale(1); }
+    }
+    .panel-open { animation: panel-in 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
+
+    /* Pulso sutil del botón flotante */
+    @keyframes soft-pulse {
+      0%, 100% { box-shadow: 0 10px 30px -5px rgba(109, 40, 217, 0.5); }
+      50%      { box-shadow: 0 10px 40px 0 rgba(109, 40, 217, 0.75); }
+    }
+    .btn-pulse { animation: soft-pulse 2.8s ease-in-out infinite; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .panel-open, .btn-pulse { animation: none; }
+    }
+  </style>
+</head>
+
+<body class="bg-slate-100 min-h-screen">
+
+  <!-- ===== Contenido de ejemplo de la página (sustituible) ===== -->
+  <main class="max-w-3xl mx-auto px-6 py-24">
+    <h1 class="text-4xl font-bold text-slate-800">Tu página web</h1>
+    <p class="mt-4 text-slate-500">
+      El widget de reservas aparece abajo a la derecha. Pruébalo.
+    </p>
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- ==============  WIDGET FLOTANTE DE RESERVAS (autocontenido)  ========= -->
+  <!-- ===================================================================== -->
+
+  <!-- Ventana de chat -->
+  <div id="chat-panel"
+       class="hidden fixed z-50 bottom-24 right-6
+              w-[calc(100vw-3rem)] max-w-[400px] h-[70vh] max-h-[640px]
+              sm:bottom-24 sm:right-6
+              bg-white rounded-3xl shadow-2xl ring-1 ring-slate-900/5
+              flex flex-col overflow-hidden">
+
+    <!-- Cabecera propia (Tailwind) -->
+    <header class="relative px-5 py-4 bg-gradient-to-br from-violet-600 to-indigo-600 text-white shrink-0">
+      <button id="chat-close"
+              class="absolute top-4 right-4 text-white/80 hover:text-white transition"
+              aria-label="Cerrar chat">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <div class="flex items-center gap-3">
+        <span class="flex items-center justify-center w-10 h-10 rounded-full bg-white/15 backdrop-blur">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
+               viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+        </span>
+        <div>
+          <h2 class="text-base font-semibold leading-tight">Reserva tu cita en 1 minuto</h2>
+          <p class="text-xs text-white/80 leading-tight">Respuesta al instante · sin llamadas</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Aquí se monta el chat de n8n -->
+    <div id="n8n-chat-mount" class="flex-1 min-h-0"></div>
+  </div>
+
+  <!-- Botón flotante -->
+  <button id="chat-toggle"
+          class="btn-pulse fixed z-50 bottom-6 right-6
+                 flex items-center justify-center w-16 h-16 rounded-full
+                 bg-gradient-to-br from-violet-600 to-indigo-600 text-white
+                 hover:scale-105 active:scale-95 transition-transform duration-200"
+          aria-label="Abrir reservas">
+    <!-- Icono calendario/chat -->
+    <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none"
+         viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+      <path stroke-linecap="round" stroke-linejoin="round"
+            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+    </svg>
+    <!-- Icono cerrar (oculto por defecto) -->
+    <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="hidden w-7 h-7" fill="none"
+         viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+
+  <!-- ===== Lógica: n8n chat + abrir/cerrar ===== -->
+  <script type="module">
+    import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+    // 1) Inicializa el chat de n8n dentro de nuestro panel.
+    createChat({
+      // 👇 SUSTITUYE ESTO por la URL de tu webhook de n8n en producción
+      webhookUrl: 'TU_URL_DE_WEBHOOK_DE_PRODUCCION_AQUI',
+
+      target: '#n8n-chat-mount',
+      mode: 'fullscreen',          // rellena nuestro contenedor (no crea botón propio)
+      showWelcomeScreen: false,    // usamos nuestra cabecera y mensaje de bienvenida
+
+      // Mensaje automático de la IA al abrir
+      initialMessages: [
+        '¡Hola! 👋 Estoy aquí para ayudarte a agendar tu cita.',
+        '¿Qué día y hora te vendrían mejor?'
+      ],
+
+      i18n: {
+        en: {
+          title: '',
+          subtitle: '',
+          getStarted: 'Nueva conversación',
+          inputPlaceholder: 'Escribe tu mensaje…',
+          footer: '',
+          closeButtonTooltip: 'Cerrar'
+        }
+      }
+    });
+
+    // 2) Control de estados: abrir / cerrar el panel.
+    const panel     = document.getElementById('chat-panel');
+    const toggleBtn = document.getElementById('chat-toggle');
+    const closeBtn  = document.getElementById('chat-close');
+    const iconOpen  = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+
+    function openPanel() {
+      panel.classList.remove('hidden');
+      panel.classList.add('panel-open');
+      iconOpen.classList.add('hidden');
+      iconClose.classList.remove('hidden');
+      toggleBtn.classList.remove('btn-pulse');
+    }
+    function closePanel() {
+      panel.classList.add('hidden');
+      panel.classList.remove('panel-open');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+      toggleBtn.classList.add('btn-pulse');
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      panel.classList.contains('hidden') ? openPanel() : closePanel();
+    });
+    closeBtn.addEventListener('click', closePanel);
+
+    // Cerrar con la tecla Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !panel.classList.contains('hidden')) closePanel();
+    });
+  </script>
+
+</body>
+</html>
