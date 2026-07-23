@@ -1,33 +1,56 @@
-import { google } from "googleapis";
+const CLIENT_ID = "741570566228-dvtud1nhk5v62ls8b974vv1f63cj5h2d.apps.googleusercontent.com";
+const TOKEN_URL = "https://oauth2.googleapis.com/token";
 
-const CLIENT_ID = "741570566228-68i15r3uhuafuksu29qs2pol420594ve.apps.googleusercontent.com";
-const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET || "";
-const REDIRECT_URI = process.env.GOOGLE_REDIRECT_URI || "http://localhost:3000/api/calendar/callback";
+let credentials: any = null;
 
-let oauth2Client: any = null;
-
-function getOAuth2Client() {
-  if (!oauth2Client) {
-    oauth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
-  }
-  return oauth2Client;
-}
-
-export function getAuthUrl() {
-  const scope = encodeURIComponent("https://www.googleapis.com/auth/calendar");
-  const redirectUri = encodeURIComponent(REDIRECT_URI);
-  return `https://accounts.google.com/o/oauth2/v2/auth?client_id=${CLIENT_ID}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}&access_type=offline`;
+export function setCredentials(tokens: any) {
+  credentials = tokens;
 }
 
 export async function exchangeCodeForToken(code: string) {
-  const client = getOAuth2Client();
-  const { tokens } = await client.getToken(code);
-  return tokens;
+  const clientSecret = process.env.GOOGLE_CLIENT_SECRET || "";
+  const redirectUri = process.env.GOOGLE_REDIRECT_URI || "http://localhost:3000/api/calendar/callback";
+
+  const res = await fetch(TOKEN_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      code,
+      client_id: CLIENT_ID,
+      client_secret: clientSecret,
+      redirect_uri: redirectUri,
+      grant_type: "authorization_code",
+    }),
+  });
+
+  const data: any = await res.json();
+  if (!res.ok) {
+    throw new Error(data.error_description || data.error || "Token exchange failed");
+  }
+
+  return data;
 }
 
-export async function setCredentials(tokens: any) {
-  const client = getOAuth2Client();
-  client.setCredentials(tokens);
+export async function getAccessToken(refreshToken: string) {
+  const clientSecret = process.env.GOOGLE_CLIENT_SECRET || "";
+
+  const res = await fetch(TOKEN_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      client_id: CLIENT_ID,
+      client_secret: clientSecret,
+      refresh_token: refreshToken,
+      grant_type: "refresh_token",
+    }),
+  });
+
+  const data: any = await res.json();
+  if (!res.ok) {
+    throw new Error(data.error_description || data.error || "Token refresh failed");
+  }
+
+  return data.access_token as string;
 }
 
 export async function createCalendarEvent(
@@ -36,33 +59,61 @@ export async function createCalendarEvent(
   customerName: string,
   customerPhone: string,
   startsAt: Date,
-  endsAt: Date,
+  endsAt: Date
 ) {
-  const client = getOAuth2Client();
-  const calendar = google.calendar({ version: "v3", auth: client });
+  if (!credentials?.refresh_token && !process.env.GOOGLE_REFRESH_TOKEN) {
+    throw new Error("No Google Calendar refresh token configured");
+  }
 
-  const event = {
-    summary: `${serviceName} - ${customerName}`,
-    description: `Cliente: ${customerName}\nTeléfono: ${customerPhone}\nServicio: ${serviceName}`,
-    start: {
-      dateTime: startsAt.toISOString(),
-      timeZone: "Europe/Madrid",
-    },
-    end: {
-      dateTime: endsAt.toISOString(),
-      timeZone: "Europe/Madrid",
-    },
-  };
+  const refreshToken = credentials?.refresh_token || process.env.GOOGLE_REFRESH_TOKEN;
+  const accessToken = await getAccessToken(refreshToken);
 
-  try {
-    const response = await calendar.events.insert({
-      calendarId: "primary",
-      requestBody: event,
-    });
-    console.log(`Evento creado en Calendar: ${response.data.id}`);
-    return response.data;
-  } catch (err: any) {
-    console.error("Error creating calendar event:", err.message);
-    throw err;
+  const eventRes = await fetch(
+    "https://www.googleapis.com/calendar/v3/calendars/primary/events",
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        summary: `${serviceName} - ${customerName}`,
+        description: `Negocio: ${businessName}\nCliente: ${customerName}\nTeléfono: ${customerPhone}\nServicio: ${serviceName}`,
+        start: {
+          dateTime: startsAt.toISOString(),
+          timeZone: "Europe/Madrid",
+        },
+        end: {
+          dateTime: endsAt.toISOString(),
+          timeZone: "Europe/Madrid",
+        },
+      }),
+    }
+  );
+
+  const event: any = await eventRes.json();
+  if (!eventRes.ok) {
+    throw new Error(event.error?.message || "Failed to create calendar event");
+  }
+
+  return event;
+}
+
+export async function deleteCalendarEvent(refreshToken: string, eventId: string) {
+  const accessToken = await getAccessToken(refreshToken);
+
+  const res = await fetch(
+    `https://www.googleapis.com/calendar/v3/calendars/primary/events/${eventId}`,
+    {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }
+  );
+
+  if (!res.ok) {
+    const data: any = await res.json();
+    throw new Error(data.error?.message || "Failed to delete calendar event");
   }
 }

@@ -76,21 +76,22 @@ model Customer {
 }
 
 model Booking {
-  id            String   @id @default(cuid())
-  businessId    String   @map("business_id")
-  business      Business @relation(fields: [businessId], references: [id])
-  serviceId     String   @map("service_id")
-  service       Service  @relation(fields: [serviceId], references: [id])
-  customerId    String   @map("customer_id")
-  customer      Customer @relation(fields: [customerId], references: [id])
-  startsAt      DateTime @map("starts_at")
-  endsAt        DateTime @map("ends_at")
-  status        String   @default("CONFIRMED") // CONFIRMED | CANCELLED | COMPLETED | NO_SHOW
-  source        String   @default("WEB") // WEB | WHATSAPP
-  notes         String?
-  chatSessionId String?  @map("chat_session_id")
-  createdAt     DateTime @default(now()) @map("created_at")
-  updatedAt     DateTime @updatedAt @map("updated_at")
+  id                      String   @id @default(cuid())
+  businessId              String   @map("business_id")
+  business                Business @relation(fields: [businessId], references: [id])
+  serviceId               String   @map("service_id")
+  service                 Service  @relation(fields: [serviceId], references: [id])
+  customerId              String   @map("customer_id")
+  customer                Customer @relation(fields: [customerId], references: [id])
+  startsAt                DateTime @map("starts_at")
+  endsAt                  DateTime @map("ends_at")
+  status                  String   @default("CONFIRMED") // CONFIRMED | CANCELLED | COMPLETED | NO_SHOW
+  source                  String   @default("WEB") // WEB | WHATSAPP
+  notes                   String?
+  googleCalendarEventId   String?  @map("google_calendar_event_id")
+  chatSessionId           String?  @map("chat_session_id")
+  createdAt               DateTime @default(now()) @map("created_at")
+  updatedAt               DateTime @updatedAt @map("updated_at")
 
   @@index([businessId, startsAt])
   @@map("bookings")
