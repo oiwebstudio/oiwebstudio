@@ -5,42 +5,40 @@
    ========================================================================== */
 
 :root {
-  /* Fondos — Dark Mode Ultra Oscuro */
-  --bg: #0a0a0a;
-  --bg-subtle: #121212;
-  --surface: #1a1a1a;
-  --surface-2: #242424;
+  /* Neutrals — lienzo crema editorial, a juego con la galería/moodboard */
+  --bg: #fbf9f4;
+  --bg-subtle: #f2eee4;
+  --surface: #fffdf9;
+  --surface-2: #f7f3ea;
 
-  /* Tipografía — Blanco puro y grises claros */
-  --ink: #ffffff;
-  --text: #e5e5e5;
-  --text-muted: #a0a0a0;
-  --text-faint: #707070;
+  --ink: #191712;
+  --text: #4a463d;
+  --text-muted: #78725f;
+  --text-faint: #9c9583;
 
-  /* Bordes — Grises sutiles */
-  --border: #333333;
-  --border-strong: #404040;
-  --hairline: rgba(255, 255, 255, 0.05);
+  --border: #e6ded0;
+  --border-strong: #d9cfb9;
+  --hairline: rgba(25, 23, 18, 0.08);
 
-  /* Acento — Gris claro y blanco para CTAs */
-  --accent: #ffffff;
-  --accent-hover: #f0f0f0;
-  --accent-press: #e0e0e0;
-  --accent-soft: rgba(255, 255, 255, 0.05);
-  --accent-ring: rgba(255, 255, 255, 0.1);
-  --accent-glow: rgba(255, 255, 255, 0.15);
-  --blue-light: #a0a0a0;
-  --terra: #808080;
-  --terra-soft: rgba(128, 128, 128, 0.1);
+  /* Accent — negro editorial + terracota de acento (swatches del moodboard) */
+  --accent: #191712;
+  --accent-hover: #000000;
+  --accent-press: #2f2b22;
+  --accent-soft: #f2eee4;
+  --accent-ring: rgba(25, 23, 18, 0.14);
+  --accent-glow: rgba(25, 23, 18, 0.26);
+  --blue-light: #a3673a;
+  --terra: #c07a35;
+  --terra-soft: #f3e4d2;
 
-  /* Dark surfaces alternativas */
-  --dark: #0f0f0f;
-  --dark-2: #050505;
-  --dark-text: #ffffff;
-  --dark-text-muted: #d0d0d0;
-  --dark-border: #333333;
+  /* Dark surfaces (hero atmosphere, CTA, footer) — marrón carbón cálido */
+  --dark: #14110c;
+  --dark-2: #0d0b08;
+  --dark-text: #efe9db;
+  --dark-text-muted: #a89d87;
+  --dark-border: rgba(240, 233, 219, 0.14);
 
-  --ok: #4ade80;
+  --ok: #23c17a;
 
   /* Type — sans para estructura, mono para etiquetas (como en la galería), serif itálica de acento editorial */
   --font-sans: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
