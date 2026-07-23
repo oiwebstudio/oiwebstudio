@@ -148,6 +148,19 @@
 </div>
 </header>
 
+<!-- Scroll Parallax Section — efecto ContainerScroll en CSS puro -->
+<section class="scroll-parallax-container" data-parallax>
+<div class="scroll-parallax-header">
+<h2>Ocho casos reales</h2>
+<p>Cada web está viva y navegable. Baja para explorar cada proyecto.</p>
+</div>
+<div class="scroll-parallax-card" data-parallax-card>
+<div class="scroll-parallax-content">
+<img src="https://images.unsplash.com/photo-1499750148896-adac6b6817e4?w=1400&q=80" alt="Diseño web responsive" />
+</div>
+</div>
+</section>
+
 <section class="mb-wall">
 <span class="mb-corner tl"><span data-t="tra_eyebrow">Proyectos</span> — OI Studio</span>
 <span class="mb-corner tr">oistudio · Tolosa<br/>@oi.webstudio</span>
@@ -293,6 +306,64 @@
       document.head.appendChild(style);
     }
   }
+})();
+</script>
+
+<!-- Scroll Parallax Controller — calcula transformaciones basadas en scroll -->
+<script>
+(function() {
+  const container = document.querySelector('[data-parallax]');
+  const header = document.querySelector('.scroll-parallax-header');
+  const card = document.querySelector('[data-parallax-card]');
+
+  if (!container || !header || !card) return;
+
+  const contentEl = card.querySelector('.scroll-parallax-content');
+  const headerH2 = header.querySelector('h2');
+  const headerP = header.querySelector('p');
+
+  function updateParallax() {
+    const containerRect = container.getBoundingClientRect();
+    const containerTop = containerRect.top;
+    const containerHeight = containerRect.height;
+    const windowHeight = window.innerHeight;
+
+    // Progress: 0 (antes) → 1 (después) del contenedor
+    const progress = Math.max(0, Math.min(1, -containerTop / (containerHeight - windowHeight)));
+
+    // Transformaciones inspiradas en ContainerScroll
+    const isMobile = window.innerWidth <= 768;
+
+    // Escala: 0.7 (móvil) / 1.05 (desktop) al inicio → 1 al final
+    const scaleStart = isMobile ? 0.7 : 1.05;
+    const scale = scaleStart + (1 - scaleStart) * progress;
+
+    // Rotación X: 20° → 0°
+    const rotateX = 20 - progress * 20;
+
+    // Translación Y: 0 → -100
+    const translateY = -100 * progress;
+
+    // Aplicar transforms a la card
+    contentEl.style.transform = `
+      perspective(1200px)
+      rotateX(${rotateX}deg)
+      scale(${scale})
+      translateY(${translateY}px)
+    `;
+
+    // Header sube mientras scrolleas
+    const headerTranslateY = -120 * progress;
+    headerH2.style.transform = `translateY(${headerTranslateY}px)`;
+    headerP.style.transform = `translateY(${headerTranslateY * 0.8}px)`;
+
+    // Opacidad del header se desvanece
+    const opacity = Math.max(0, 1 - progress * 0.8);
+    header.style.opacity = opacity;
+  }
+
+  window.addEventListener('scroll', updateParallax, { passive: true });
+  updateParallax();
 })();
 </script>
 
