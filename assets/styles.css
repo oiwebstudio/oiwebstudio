@@ -841,22 +841,7 @@ body::after {
 /* Modern Hero — Gradient de fondo limpio (sin animación 3D pesada) */
 .hero--modern{ position:relative; }
 
-/* VERSIÓN 1 (RECOMENDADA): Hero limpio, sin animación */
-.hero__gradient {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, #f2eee4 0%, #f5f0e8 50%, #f0e8dc 100%);
-  z-index: 0;
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 78%, transparent 100%),
-              radial-gradient(120% 100% at 50% 60%, #000 60%, transparent 100%);
-  mask-composite: intersect;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 78%, transparent 100%),
-              radial-gradient(120% 100% at 50% 60%, #000 60%, transparent 100%);
-  -webkit-mask-composite: source-in;
-}
-
-/* VERSIÓN 2 (OPCIONAL): Hero con animación CSS sutil — descomenta para usar */
-/*
+/* VERSIÓN 2 (ACTIVA): Hero con animación CSS sutil — gradientes flotantes */
 .hero__gradient {
   position: absolute;
   inset: 0;
@@ -879,7 +864,6 @@ body::after {
   0%, 100% { background-position: 0% 0%, 0% 0%, 100% 100%; }
   50% { background-position: 0% 0%, 50% 50%, 50% 50%; }
 }
-*/
 
 /* Spring letter animation para heading */
 .hero-heading{ font-size:clamp(48px, 7vw, 72px); line-height:1.15; font-weight:600; color:#1c2430; margin:24px 0 0; position:relative; z-index:2; font-family:var(--font-sans); letter-spacing:-0.02em; }
