@@ -248,24 +248,38 @@
 <script src="assets/i18n.js"></script>
 <script src="assets/main.js"></script>
 
-<!-- Pricing Glassmorphism Mouse Tracking -->
+<!-- Pricing Glassmorphism + 3D Tilt -->
 <script>
 (function() {
   const priceCards = document.querySelectorAll('.price');
+  const MAX_TILT = 8;
 
   priceCards.forEach(card => {
     card.addEventListener('mousemove', function(e) {
       const rect = this.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
 
+      // Gradiente radial
       this.style.setProperty('--mouse-x', x + 'px');
       this.style.setProperty('--mouse-y', y + 'px');
+
+      // 3D Tilt
+      const rotateY = ((x - rect.width / 2) / rect.width) * MAX_TILT;
+      const rotateX = -((y - rect.height / 2) / rect.height) * MAX_TILT;
+
+      this.style.setProperty('--rotate-x', rotateX + 'deg');
+      this.style.setProperty('--rotate-y', rotateY + 'deg');
     });
 
     card.addEventListener('mouseleave', function() {
       this.style.setProperty('--mouse-x', '50%');
       this.style.setProperty('--mouse-y', '50%');
+      this.style.setProperty('--rotate-x', '0deg');
+      this.style.setProperty('--rotate-y', '0deg');
     });
   });
 })();
