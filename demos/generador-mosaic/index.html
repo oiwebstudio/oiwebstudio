@@ -35,6 +35,21 @@
   .eyebrow::before{content:"";width:14px;height:1px;background:var(--accent);flex:none}
   :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 
+  /* ---------- glass (cristal esmerilado sobre foto) ---------- */
+  .glass{position:relative;background:rgba(255,255,255,.16);backdrop-filter:blur(16px) saturate(160%);
+    -webkit-backdrop-filter:blur(16px) saturate(160%);box-shadow:inset 0 1px 1px rgba(255,255,255,.5),0 6px 20px -8px rgba(0,0,0,.35);
+    overflow:hidden}
+  .glass::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.2px;
+    background:linear-gradient(180deg,rgba(255,255,255,.75) 0%,rgba(255,255,255,.25) 20%,rgba(255,255,255,0) 40%,
+      rgba(255,255,255,0) 60%,rgba(255,255,255,.25) 80%,rgba(255,255,255,.75) 100%);
+    -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;
+    pointer-events:none}
+
+  /* ---------- titular por palabras (blur-in) ---------- */
+  .bw{display:inline-block;filter:blur(10px);opacity:0;transform:translateY(24px);
+    transition:filter .6s cubic-bezier(.22,1,.36,1),opacity .6s ease,transform .6s cubic-bezier(.22,1,.36,1)}
+  .reveal.in .bw{filter:blur(0);opacity:1;transform:translateY(0)}
+
   /* ---------- nav ---------- */
   .nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
     padding:14px 20px;background:color-mix(in srgb,var(--cream) 82%,transparent);backdrop-filter:blur(12px);
@@ -93,6 +108,10 @@
   .b-photo{grid-column:2;min-height:270px}
   .b-photo.tall{grid-row:1 / span 2}
   .b-photo img{width:100%;height:100%;object-fit:cover}
+  .photo-badge{position:absolute;left:16px;bottom:16px;z-index:2;display:inline-flex;align-items:center;gap:7px;
+    padding:10px 16px;border-radius:999px;font-size:13.5px;font-weight:500;font-family:'Inter',sans-serif;color:#fff}
+  .photo-badge, .photo-badge strong{color:#fff}
+  .photo-badge span{color:#ffcf6b}
   @media(max-width:880px){
     .hero{padding:84px 0 14px}
     .bento{grid-template-columns:1fr;grid-template-rows:none}
@@ -228,6 +247,7 @@
     .js .reveal{opacity:1;transform:none;transition:none}
     .fade{opacity:1;transform:none;transition:none}
     .raya-line{transform:scaleY(1);transition:none}
+    .bw{filter:none;opacity:1;transform:none;transition:none}
   }
 </style>
 </head>
@@ -249,9 +269,8 @@
         <span class="raya-label">Peluquería</span>
       </div>
       <p class="script">El arte del cabello</p>
-      <h1>Peluquería Kalea (PRUEBA)</h1>
+      <h1><span class="bw" style="transition-delay:0ms">Peluquería</span> <span class="bw" style="transition-delay:90ms">Kalea</span> <span class="bw" style="transition-delay:180ms">(PRUEBA)</span></h1>
       <p class="promise">El pelo que quieres, con la cercanía de siempre.</p>
-      <p class="rating"><span aria-hidden="true">★</span> <strong>4.7</strong> · 128 reseñas en Google</p>
       <div class="hero-cta">
         <button class="btn" type="button" data-book>Reservar cita</button>
         <a class="btn ghost" href="tel:+34943000000">Llamar · +34 943 00 00 00</a>
@@ -260,6 +279,7 @@
     </div>
     <div class="cell b-photo reveal">
       <img src="https://images.unsplash.com/photo-1626383137804-ff908d2753a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8M3x8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDU3MTQ0OHww&ixlib=rb-4.1.0&q=80&w=1080" alt="woman in white shirt standing near black leather chairs" width="560" height="360" fetchpriority="high">
+      <div class="photo-badge glass"><span aria-hidden="true">★</span> <strong>4.7</strong> · 128 reseñas en Google</div>
     </div>
     <div class="cell b-photo reveal"><img src="https://images.unsplash.com/photo-1637777277337-f114350fb088?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8NHx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDU3MTQ0OHww&ixlib=rb-4.1.0&q=80&w=1080" alt="a hair salon with chairs and neon signs" width="560" height="360" loading="lazy"></div>
   </div>
