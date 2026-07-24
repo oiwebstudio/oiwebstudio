@@ -130,6 +130,28 @@
     .hero h1{font-size:clamp(48px,15vw,84px)}
   }
 
+  /* ---------- carrusel magnético (dock-style) ---------- */
+  .mag-wrap{margin-top:22px}
+  .mag-caption{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:12px}
+  .mag-carousel{display:flex;align-items:center;justify-content:center;gap:9px;position:relative;
+    height:190px;overflow:visible;padding:0 4px}
+  .mag-backdrop{position:fixed;inset:0;z-index:40;display:none;
+    background:color-mix(in srgb,var(--cream) 82%,transparent);backdrop-filter:blur(6px)}
+  .mag-backdrop.show{display:block}
+  .mag-bar{flex:none;width:62px;height:170px;background-size:cover;background-position:center;
+    border-radius:12px;cursor:pointer;position:relative;z-index:2;will-change:width,height;
+    box-shadow:0 4px 16px -8px rgba(20,14,10,.35);outline-offset:3px}
+  .mag-bar.is-open{z-index:41}
+  .mag-bar.is-blurred{filter:blur(3px);opacity:.5}
+  .mag-bar.transitioning{transition:width .32s cubic-bezier(.34,1.1,.64,1),height .32s cubic-bezier(.34,1.1,.64,1),
+    filter .32s ease,opacity .32s ease}
+  @media(max-width:880px){
+    .mag-carousel{height:140px;gap:6px}
+    .mag-bar{width:44px;height:130px;border-radius:9px}
+  }
+  @media(prefers-reduced-motion:reduce){.mag-bar{transition:none!important}}
+
   /* ---------- marquee ---------- */
   .marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
     background:var(--paper);padding:14px 0;margin-top:32px}
@@ -292,6 +314,13 @@
     </div>
     <div class="cell b-photo reveal"><img src="https://images.unsplash.com/photo-1746723378067-83a345ff3160?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8NHx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="A hair salon interior with hair products and clients." width="560" height="360" loading="lazy"></div>
   </div>
+  <div class="mag-wrap reveal">
+    <p class="mag-caption">Pasa el cursor — cada corte, en detalle</p>
+    <div class="mag-carousel" id="magCarousel">
+      <div class="mag-backdrop" id="magBackdrop"></div>
+      <div class="mag-bar" data-i="0" role="img" aria-label="woman in white shirt standing near black leather chairs" style="background-image:url('https://images.unsplash.com/photo-1626383137804-ff908d2753a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8M3x8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080')"></div><div class="mag-bar" data-i="1" role="img" aria-label="A hair salon interior with hair products and clients." style="background-image:url('https://images.unsplash.com/photo-1746723378067-83a345ff3160?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8NHx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080')"></div><div class="mag-bar" data-i="2" role="img" aria-label="a hair salon with chairs and neon signs" style="background-image:url('https://images.unsplash.com/photo-1637777277337-f114350fb088?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8NXx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080')"></div><div class="mag-bar" data-i="3" role="img" aria-label="black and gray chair beside white wall" style="background-image:url('https://images.unsplash.com/photo-1626383120723-2a941488860d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8Nnx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080')"></div><div class="mag-bar" data-i="4" role="img" aria-label="Barbers cutting hair in a modern salon" style="background-image:url('https://images.unsplash.com/photo-1776850476481-2bccba2e35c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8N3x8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080')"></div><div class="mag-bar" data-i="5" role="img" aria-label="Two barbers stand at the entrance of a shop." style="background-image:url('https://images.unsplash.com/photo-1759134155377-4207d89b39ec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8OXx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080')"></div><div class="mag-bar" data-i="6" role="img" aria-label="An empty barbershop interior with several chairs and mirrors." style="background-image:url('https://images.unsplash.com/photo-1781455793310-8427c96454c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8MTB8fGhhaXIlMjBzYWxvbiUyMGludGVyaW9yfGVufDB8MHx8fDE3ODQ5MTA3ODd8MA&ixlib=rb-4.1.0&q=80&w=1080')"></div>
+    </div>
+  </div>
 </header>
 
 <div class="marquee" aria-hidden="true">
@@ -452,6 +481,109 @@
     });
   });
   paint(0);
+
+  // carrusel magnético (dock-style): magnifica la barra bajo el cursor y sus
+  // vecinas por proximidad, con un bucle de easing continuo (rAF) en vez de
+  // transición CSS — para que el tamaño siga al ratón sin tirones.
+  var magCarousel = document.getElementById('magCarousel');
+  if(magCarousel){
+    var magBars = Array.prototype.slice.call(magCarousel.querySelectorAll('.mag-bar'));
+    var magBackdrop = document.getElementById('magBackdrop');
+    var N = magBars.length;
+    var COLLAPSED_W = window.innerWidth <= 880 ? 44 : 62;
+    var COLLAPSED_H = window.innerWidth <= 880 ? 130 : 170;
+    var HOVER_W = COLLAPSED_W * 1.7;
+    var HOVER_H = COLLAPSED_H * 1.1;
+    var GAP = window.innerWidth <= 880 ? 6 : 9;
+    var INFLUENCE = 130;
+    var OPEN_SIZE = Math.min(420, window.innerWidth * 0.86);
+
+    var target = magBars.map(function(){ return 0; });
+    var cur = magBars.map(function(){ return 0; });
+    var openIndex = null;
+    var magRaf = 0;
+    var closeTimer = null;
+
+    function applySizes(){
+      magBars.forEach(function(el, i){
+        if(openIndex !== null){
+          if(i === openIndex){ el.style.width = OPEN_SIZE + 'px'; el.style.height = OPEN_SIZE + 'px'; }
+          else { el.style.width = COLLAPSED_W + 'px'; el.style.height = COLLAPSED_H + 'px'; }
+        } else {
+          var f = cur[i];
+          el.style.width = (COLLAPSED_W + (HOVER_W - COLLAPSED_W) * f) + 'px';
+          el.style.height = (COLLAPSED_H + (HOVER_H - COLLAPSED_H) * f) + 'px';
+        }
+      });
+    }
+
+    function loop(){
+      var moving = false;
+      for(var i = 0; i < N; i++){
+        var d = target[i] - cur[i];
+        if(Math.abs(d) > 0.001){ cur[i] += d * 0.22; moving = true; }
+        else { cur[i] = target[i]; }
+      }
+      applySizes();
+      magRaf = moving ? requestAnimationFrame(loop) : 0;
+    }
+    function startLoop(){ if(!magRaf) magRaf = requestAnimationFrame(loop); }
+
+    function setTargetFromCursor(clientX){
+      var rect = magCarousel.getBoundingClientRect();
+      var cx = clientX - rect.left;
+      var totalBase = N * COLLAPSED_W + (N - 1) * GAP;
+      var startX = (rect.width - totalBase) / 2;
+      target = magBars.map(function(_, i){
+        var center = startX + i * (COLLAPSED_W + GAP) + COLLAPSED_W / 2;
+        var dist = Math.abs(cx - center);
+        var f = Math.max(0, 1 - dist / INFLUENCE);
+        return f * f * (3 - 2 * f);
+      });
+      startLoop();
+    }
+
+    if(!reduced){
+      magCarousel.addEventListener('mousemove', function(e){
+        if(openIndex !== null) return;
+        setTargetFromCursor(e.clientX);
+      });
+      magCarousel.addEventListener('mouseleave', function(){
+        if(openIndex !== null) return;
+        target = magBars.map(function(){ return 0; });
+        startLoop();
+      });
+    }
+
+    function closeOpen(){
+      magBars.forEach(function(el){ el.classList.add('transitioning'); el.classList.remove('is-blurred'); el.classList.remove('is-open'); });
+      magBackdrop.classList.remove('show');
+      openIndex = null;
+      target = magBars.map(function(){ return 0; });
+      cur = magBars.map(function(){ return 0; });
+      applySizes();
+      clearTimeout(closeTimer);
+      closeTimer = setTimeout(function(){ magBars.forEach(function(el){ el.classList.remove('transitioning'); }); }, 340);
+    }
+
+    magBars.forEach(function(el, i){
+      el.addEventListener('click', function(){
+        if(openIndex === i){ closeOpen(); return; }
+        magBars.forEach(function(x){ x.classList.add('transitioning'); });
+        openIndex = i;
+        magBars.forEach(function(x, j){ x.classList.toggle('is-blurred', j !== i); x.classList.toggle('is-open', j === i); });
+        magBackdrop.classList.add('show');
+        applySizes();
+        clearTimeout(closeTimer);
+        closeTimer = setTimeout(function(){ magBars.forEach(function(x){ x.classList.remove('transitioning'); }); }, 340);
+      });
+      el.setAttribute('tabindex', '0');
+      el.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); el.click(); } });
+    });
+    magBackdrop.addEventListener('click', closeOpen);
+
+    applySizes();
+  }
 
   // revelado al hacer scroll
   var rev = document.querySelectorAll('.reveal');
