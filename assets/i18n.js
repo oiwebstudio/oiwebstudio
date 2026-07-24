@@ -12,6 +12,7 @@ const EU = {
   nav_trabajos: "Lanak",
   nav_precios: "Prezioak",
   nav_chatbot: "Txatbota",
+  nav_articulos: "Artikuluak",
   nav_contacto: "Kontaktua",
   btn_presupuesto: "Aurrekontua eskatu",
   btn_vertrabajos: "Lanak ikusi",
