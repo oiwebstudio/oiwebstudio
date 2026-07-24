@@ -290,7 +290,11 @@
   function addMessage(role, text, extraClass) {
     var el = document.createElement("div");
     el.className = "oib-msg " + role + (extraClass ? " " + extraClass : "");
-    el.textContent = text;
+    var urlRegex = /(https?:\/\/[^\s]+)/g;
+    var html = text.replace(urlRegex, function(url) {
+      return '<a href="' + url + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;cursor:pointer;">' + url + '</a>';
+    });
+    el.innerHTML = html;
     bodyEl.appendChild(el);
     scrollDown();
     return el;
