@@ -79,7 +79,7 @@ const EU = {
 
   /* Página trabajos */
   tra_eyebrow: "Portfolioa",
-  tra_h1: 'Benetako proiektuak, <span class="grad">zuzenean</span>.',
+  tra_h1: "Nire lanak, zuzenean.",
   tra_lede: "Zortzi web zuzenean, ireki eta arakatzeko — bakoitza sektore ezberdin batekoa.",
   tra_hint: "Kolorea gainetik pasatzean agertzen da — negozio batek weba estreinatzean bezala.",
   gal_eyebrow: "Galeria",
