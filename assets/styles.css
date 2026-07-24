@@ -538,6 +538,24 @@ a.work:hover .work__link { gap: 11px; color: var(--accent-hover); }
   -webkit-backdrop-filter: blur(30px) saturate(1.4) brightness(1.15);
   border: 1px solid rgba(192, 122, 53, 0.25);
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6), inset 0 -1px 1px rgba(255, 255, 255, 0.05), 0 20px 48px -12px rgba(0, 0, 0, 0.2);
+  animation: featuredGlow 2.8s ease-in-out infinite;
+}
+
+@keyframes featuredGlow {
+  0%, 100% {
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6), inset 0 -1px 1px rgba(255, 255, 255, 0.05), 0 20px 48px -12px rgba(0, 0, 0, 0.2), 0 0 0 0 rgba(192, 122, 53, 0.28);
+  }
+  50% {
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6), inset 0 -1px 1px rgba(255, 255, 255, 0.05), 0 20px 48px -12px rgba(0, 0, 0, 0.2), 0 0 0 10px rgba(192, 122, 53, 0);
+  }
+}
+
+.price--featured:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .price--featured { animation: none; }
 }
 
 .price--featured:hover {
