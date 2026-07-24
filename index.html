@@ -65,14 +65,17 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap" rel="stylesheet"/>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap" rel="stylesheet"/></noscript>
 <link rel="stylesheet" href="assets/styles.css"/>
+<link rel="preload" as="image" href="assets/cafe-desk.webp" fetchpriority="high"/>
 </head>
 <body>
 
 <div class="nav-wrap">
 <nav class="nav">
-<a href="index.html" class="nav__logo"><img src="assets/logo-nav-black.png" alt="OI Studio" class="nav__logo-img"/></a>
+<a href="index.html" class="nav__logo"><img src="assets/logo-nav-black.png" alt="OI Studio" class="nav__logo-img" width="97" height="26"/></a>
 <ul class="nav__links">
 <li><a href="index.html" class="is-active" data-t="nav_inicio">Inicio</a></li>
 <li><a href="sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
@@ -144,9 +147,9 @@
 </div>
 <div class="hero__mockup">
 <a class="devices" id="dvLink" href="https://oiwebstudio.vercel.app/cafeteria/" target="_blank" rel="noopener" aria-label="Ver esta web de ejemplo en vivo">
-<div class="dv-laptop"><div class="scr"><img id="dvDesk" src="assets/cafe-desk.jpg" alt="Web de ejemplo en ordenador" width="900" height="562" fetchpriority="high"/></div></div>
-<div class="dv-tablet"><div class="scr"><img id="dvTab" src="assets/cafe-tablet.jpg" alt="Web de ejemplo en tablet" width="640" height="844"/></div></div>
-<div class="dv-phone"><img id="dvMob" src="assets/cafe-mobile.jpg" alt="Web de ejemplo en móvil" width="266" height="561"/></div>
+<div class="dv-laptop"><div class="scr"><picture><source srcset="assets/cafe-desk.webp" type="image/webp"/><img id="dvDesk" src="assets/cafe-desk.jpg" alt="Web de ejemplo en ordenador" width="900" height="562" fetchpriority="high"/></picture></div></div>
+<div class="dv-tablet"><div class="scr"><picture><source srcset="assets/cafe-tablet.webp" type="image/webp"/><img id="dvTab" src="assets/cafe-tablet.jpg" alt="Web de ejemplo en tablet" width="640" height="844"/></picture></div></div>
+<div class="dv-phone"><picture><source srcset="assets/cafe-mobile.webp" type="image/webp"/><img id="dvMob" src="assets/cafe-mobile.jpg" alt="Web de ejemplo en móvil" width="266" height="561"/></picture></div>
 </a>
 </div>
 </div>
@@ -204,15 +207,15 @@
 </div>
 <div class="mini-board reveal">
 <a class="mbp mbp-1" href="https://oiwebstudio.vercel.app/panaderia/" target="_blank" rel="noopener">
-<img src="assets/pan-desk.jpg" alt="Web de panadería" width="900" height="562" loading="lazy"/>
+<picture><source srcset="assets/pan-desk.webp" type="image/webp"/><img src="assets/pan-desk.jpg" alt="Web de panadería" width="900" height="562" loading="lazy"/></picture>
 <span class="cap"><span class="num">01</span><b data-t="tag_pan">Panadería</b><span class="live" data-t="badge_live">En vivo</span><span class="sw"><i style="background:#c07a35"></i><i style="background:#2c231b"></i><i style="background:#f5f0e8"></i></span></span>
 </a>
 <a class="mbp mbp-2" href="https://oiwebstudio.vercel.app/gimnasio/" target="_blank" rel="noopener">
-<img src="assets/gym-desk.jpg" alt="Web de gimnasio" width="900" height="562" loading="lazy"/>
+<picture><source srcset="assets/gym-desk.webp" type="image/webp"/><img src="assets/gym-desk.jpg" alt="Web de gimnasio" width="900" height="562" loading="lazy"/></picture>
 <span class="cap"><span class="num">05</span><b data-t="tag_gim">Gimnasio</b><span class="live" data-t="badge_live">En vivo</span><span class="sw"><i style="background:#d7ff3e"></i><i style="background:#0b0b0d"></i><i style="background:#ffffff"></i></span></span>
 </a>
 <a class="mbp mbp-3" href="https://oiwebstudio.vercel.app/cafeteria/" target="_blank" rel="noopener">
-<img src="assets/cafe-desk.jpg" alt="Web de cafetería" width="900" height="562" loading="lazy"/>
+<picture><source srcset="assets/cafe-desk.webp" type="image/webp"/><img src="assets/cafe-desk.jpg" alt="Web de cafetería" width="900" height="562" loading="lazy"/></picture>
 <span class="cap"><span class="num">03</span><b data-t="tag_cafe">Cafetería</b><span class="live" data-t="badge_live">En vivo</span><span class="sw"><i style="background:#b07d4f"></i><i style="background:#2f2119"></i><i style="background:#faf6f0"></i></span></span>
 </a>
 </div>
@@ -272,7 +275,7 @@
 <div class="container">
 <div class="footer__grid">
 <div>
-<a href="index.html" class="footer__logo"><img src="assets/logo-nav-black.png" alt="OI Studio" class="footer__logo-img"/></a>
+<a href="index.html" class="footer__logo"><img src="assets/logo-nav-black.png" alt="OI Studio" class="footer__logo-img" width="112" height="30"/></a>
 <p class="footer__desc" data-t="foot_desc" style="margin-top:20px;">Webs rápidas, modernas y efectivas para negocios locales que quieren destacar en internet.</p>
 </div>
 <div>

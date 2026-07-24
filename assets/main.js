@@ -33,9 +33,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // de sección conservan la entrada desde abajo.
     let alt = 0;
     const vw = window.innerWidth;
-    revealEls.forEach(el => {
-      if (el.closest('.hero') || el.classList.contains('section-head')) return;
-      const r = el.getBoundingClientRect();
+    // Fase de lectura (getBoundingClientRect) separada de la de escritura
+    // (classList.add) para no forzar recálculos de layout en cada iteración.
+    const measured = Array.from(revealEls).map(el => {
+      if (el.closest('.hero') || el.classList.contains('section-head')) return null;
+      return { el, r: el.getBoundingClientRect() };
+    });
+    measured.forEach(m => {
+      if (!m) return;
+      const { el, r } = m;
       const center = r.left + r.width / 2;
       if (r.width < vw * 0.66) {
         if (center < vw * 0.44) el.classList.add('reveal--left');
