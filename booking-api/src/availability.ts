@@ -98,7 +98,9 @@ export function computeSlotsForDate(
     ) {
       const slotStart = new Date(date);
       slotStart.setHours(0, 0, 0, 0);
-      slotStart.setMinutes(minutes);
+      const hours = Math.floor(minutes / 60);
+      const mins = minutes % 60;
+      slotStart.setHours(hours, mins, 0, 0);
       if (slotStart >= earliestAllowed) slots.push(slotStart);
     }
   }

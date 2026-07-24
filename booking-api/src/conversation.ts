@@ -481,7 +481,7 @@ function findAvailableDates(
     const slots = computeSlotsForDate(openingHours, candidate, {
       slotIntervalMinutes: config?.slotIntervalMinutes ?? 30,
       durationMinutes,
-      leadTimeMinutes: config?.leadTimeMinutes ?? 60,
+      leadTimeMinutes: config?.leadTimeMinutes ?? 120,
     });
     if (slots.length > 0) out.push(candidate);
   }
@@ -504,7 +504,7 @@ async function handleSelectDate(businessId: string, state: ChatState, input: Cha
   const rawSlots = computeSlotsForDate(business.openingHours ?? "", date, {
     slotIntervalMinutes: config?.slotIntervalMinutes ?? 30,
     durationMinutes: service.durationMinutes,
-    leadTimeMinutes: config?.leadTimeMinutes ?? 60,
+    leadTimeMinutes: config?.leadTimeMinutes ?? 120,
   });
 
   const freeSlots: Date[] = [];
@@ -618,7 +618,7 @@ async function handleSelectNewSlotForModify(businessId: string, state: ChatState
   const rawSlots = computeSlotsForDate(business.openingHours ?? "", date, {
     slotIntervalMinutes: config?.slotIntervalMinutes ?? 30,
     durationMinutes: service.durationMinutes,
-    leadTimeMinutes: config?.leadTimeMinutes ?? 60,
+    leadTimeMinutes: config?.leadTimeMinutes ?? 120,
   });
 
   const freeSlots: Date[] = [];
