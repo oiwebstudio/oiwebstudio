@@ -44,6 +44,8 @@
 
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
     clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  /* el nav es fijo: sin esto el título de cada sección queda debajo al saltar */
+  section[id],header[id]{scroll-margin-top:96px}
 
   /* ---------- nav (píldora flotante) ---------- */
   .nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:50;width:min(1180px,92vw);
@@ -61,9 +63,33 @@
   .nav-links a{font-size:13px;font-weight:600;letter-spacing:.03em;color:var(--ink);opacity:.75;transition:opacity .2s ease}
   .nav-links a:hover{opacity:1}
   @media(min-width:900px){.nav-links{display:flex}}
+  /* hamburguesa + panel (bajo 900px no cabían los enlaces y no había menú) */
+  .nav-burger{display:inline-flex;flex-direction:column;justify-content:center;gap:5px;width:42px;height:42px;
+    padding:0 10px;border:0;background:transparent;cursor:pointer;flex:none}
+  .nav-burger span{display:block;height:1.5px;background:var(--ink);border-radius:2px;
+    transition:transform .35s cubic-bezier(.76,0,.24,1),opacity .25s ease}
+  .nav-burger span:nth-child(1){width:20px}
+  .nav-burger span:nth-child(2){width:14px;margin-left:auto}
+  .nav.menu-open .nav-burger span:nth-child(1){transform:translateY(3.25px) rotate(45deg)}
+  .nav.menu-open .nav-burger span:nth-child(2){width:20px;transform:translateY(-3.25px) rotate(-45deg)}
+  @media(min-width:900px){.nav-burger{display:none}}
+  .menu-panel{position:fixed;inset:0;z-index:49;display:flex;flex-direction:column;justify-content:center;gap:6px;
+    padding:0 32px;background:color-mix(in srgb,var(--cream) 96%,transparent);
+    backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+    opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s}
+  .menu-panel.open{opacity:1;visibility:visible}
+  .menu-panel a{font-family:var(--display);font-size:clamp(30px,9vw,46px);line-height:1.25;color:var(--ink);
+    opacity:0;transform:translateY(14px);transition:opacity .4s ease,transform .45s cubic-bezier(.22,1,.36,1)}
+  .menu-panel.open a{opacity:1;transform:none}
+  .menu-panel a:nth-child(1){transition-delay:.08s}
+  .menu-panel a:nth-child(2){transition-delay:.14s}
+  .menu-panel a:nth-child(3){transition-delay:.2s}
+  .menu-panel a:nth-child(4){transition-delay:.26s}
+  .menu-panel a:nth-child(5){transition-delay:.32s}
+  @media(min-width:900px){.menu-panel{display:none}}
   .btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;
     font-family:'Inter',sans-serif;font-weight:600;letter-spacing:.02em;
-    font-size:14.5px;padding:13px 24px;border-radius:999px;cursor:pointer;border:1px solid color-mix(in srgb,var(--ink) 88%,#000 12%);
+    font-size:14.5px;padding:13px 24px;border-radius:999px;cursor:pointer;white-space:nowrap;border:1px solid color-mix(in srgb,var(--ink) 88%,#000 12%);
     background:color-mix(in srgb,var(--ink) 94%,#000 6%);
     color:#fff;box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 6px 18px -8px rgba(0,0,0,.5);
     transition:transform .2s ease,filter .25s ease,box-shadow .25s ease}
@@ -91,9 +117,10 @@
   .btn.glass-cta:hover{background:#fff;filter:none}
   .btn.glass-cta .btn-arrow{width:38px;height:38px;background:var(--ink);color:#fff}
   @media(max-width:640px){
-    .nav{padding:8px 8px 8px 16px;gap:10px}
-    .nav-logo{font-size:12.5px}
-    .nav .btn{padding:9px 16px;font-size:12.5px}
+    .nav{padding:8px 6px 8px 14px;gap:6px}
+    .nav-logo{font-size:11.5px;letter-spacing:.04em}
+    .nav .btn{padding:9px 14px;font-size:12px}
+    .nav-burger{width:36px;padding:0 8px}
   }
 
   /* ---------- hero (foto a sangre + nombre de partículas) ---------- */
@@ -195,6 +222,14 @@
   .carta::before{content:"";position:absolute;inset:8px;border:1px solid var(--line);border-radius:10px;pointer-events:none}
   .carta li{counter-increment:tarifa;display:flex;align-items:baseline;gap:12px;padding:15px 0;
     border-bottom:1px solid color-mix(in srgb,var(--gold) 45%,transparent);position:relative}
+  /* las tarifas entran en cascada, una línea tras otra, al llegar a la sección */
+  .js .carta li{opacity:0;transform:translateY(16px);
+    transition:opacity .55s ease,transform .6s cubic-bezier(.22,1,.36,1);
+    transition-delay:calc(var(--i,0) * 80ms)}
+  .js .carta.in li{opacity:1;transform:none}
+  .js .carta li .p-dots{transform:translateY(-4px) scaleX(0);transform-origin:left;
+    transition:transform .7s cubic-bezier(.22,1,.36,1);transition-delay:calc(var(--i,0) * 80ms + 120ms)}
+  .js .carta.in li .p-dots{transform:translateY(-4px) scaleX(1)}
   .carta li:last-child{border-bottom:0}
   .carta li::before{content:counter(tarifa,decimal-leading-zero);font-family:var(--mono);font-size:11px;color:var(--muted);flex:none}
   .p-name{font-family:var(--display);font-size:20px}
@@ -202,10 +237,15 @@
   .p-val{font-family:var(--display);font-style:italic;font-size:20px;color:var(--accent);font-variant-numeric:tabular-nums}
   @media(max-width:880px){.tarifas-in{grid-template-columns:1fr;gap:26px}}
 
-  /* ---------- banda cita ---------- */
-  .bookband{background:var(--accent);color:#fff;text-align:center;padding:80px 0}
-  .bookband .script{font-family:var(--display);font-style:italic;font-size:clamp(20px,2.4vw,26px);color:var(--cream);opacity:.9;margin-bottom:10px}
-  .bookband h2{font-size:clamp(36px,5.5vw,64px);margin-bottom:28px;color:#fff}
+  /* ---------- banda cita (eco del hero: foto a sangre + velo oscuro) ---------- */
+  .bookband{position:relative;overflow:hidden;color:#fff;text-align:center;
+    padding:clamp(90px,13vw,150px) 0;isolation:isolate}
+  .bookband-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+  .bookband::before{content:"";position:absolute;inset:0;z-index:-1;
+    background:linear-gradient(0deg,rgba(15,10,6,.72) 0%,rgba(15,10,6,.44) 55%,rgba(15,10,6,.6) 100%)}
+  .bookband .script{font-family:var(--display);font-style:italic;font-size:clamp(20px,2.4vw,26px);
+    color:rgba(255,255,255,.88);margin-bottom:10px}
+  .bookband h2{font-size:clamp(36px,5.5vw,64px);margin-bottom:30px;color:#fff}
   .bb-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 
   /* ---------- sobre + horario ---------- */
@@ -266,6 +306,9 @@
   @media(prefers-reduced-motion:reduce){
     .js .reveal{opacity:1;transform:none;transition:none}
     .fade{opacity:1;transform:none;transition:none}
+    .js .carta li{opacity:1;transform:none;transition:none}
+    .js .carta li .p-dots{transform:translateY(-4px) scaleX(1);transition:none}
+    .menu-panel a{opacity:1;transform:none;transition:none}
   }
 </style>
 </head>
@@ -281,7 +324,18 @@
     <li><a href="#contacto">Contacto</a></li>
   </ul>
   <button class="btn" type="button" data-book>Reservar cita</button>
+  <button class="nav-burger" id="navBurger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menuPanel">
+    <span></span><span></span>
+  </button>
 </nav>
+
+<div class="menu-panel" id="menuPanel">
+  <a href="#top">Inicio</a>
+  <a href="#nosotros">Sobre nosotros</a>
+  <a href="#servicios">Servicios</a>
+  <a href="#galeria">Galería</a>
+  <a href="#contacto">Contacto</a>
+</div>
 
 <header class="hero" id="top">
   <img class="hero-bg" src="https://images.unsplash.com/photo-1626383137804-ff908d2753a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8M3x8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="woman in white shirt standing near black leather chairs" fetchpriority="high">
@@ -348,7 +402,7 @@
         <p class="note">Lista orientativa — en tu web irían tus precios reales.</p>
       </div>
       <ul class="carta reveal">
-        <li><span class="p-name">Corte mujer</span><span class="p-dots" aria-hidden="true"></span><span class="p-val">desde 22 €</span></li><li><span class="p-name">Corte hombre</span><span class="p-dots" aria-hidden="true"></span><span class="p-val">16 €</span></li><li><span class="p-name">Color raíz</span><span class="p-dots" aria-hidden="true"></span><span class="p-val">desde 35 €</span></li><li><span class="p-name">Mechas / balayage</span><span class="p-dots" aria-hidden="true"></span><span class="p-val">desde 55 €</span></li><li><span class="p-name">Peinado y brushing</span><span class="p-dots" aria-hidden="true"></span><span class="p-val">18 €</span></li><li><span class="p-name">Tratamiento hidratante</span><span class="p-dots" aria-hidden="true"></span><span class="p-val">desde 25 €</span></li>
+        <li style="--i:0"><span class="p-name">Corte mujer</span><span class="p-dots" aria-hidden="true"></span><span class="p-val">desde 22 €</span></li><li style="--i:1"><span class="p-name">Corte hombre</span><span class="p-dots" aria-hidden="true"></span><span class="p-val">16 €</span></li><li style="--i:2"><span class="p-name">Color raíz</span><span class="p-dots" aria-hidden="true"></span><span class="p-val">desde 35 €</span></li><li style="--i:3"><span class="p-name">Mechas / balayage</span><span class="p-dots" aria-hidden="true"></span><span class="p-val">desde 55 €</span></li><li style="--i:4"><span class="p-name">Peinado y brushing</span><span class="p-dots" aria-hidden="true"></span><span class="p-val">18 €</span></li><li style="--i:5"><span class="p-name">Tratamiento hidratante</span><span class="p-dots" aria-hidden="true"></span><span class="p-val">desde 25 €</span></li>
       </ul>
     </div>
   </section>
@@ -378,11 +432,12 @@
   </section>
 
 <section class="bookband">
+  <img class="bookband-bg" src="https://images.unsplash.com/photo-1781455793310-8427c96454c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8MTB8fGhhaXIlMjBzYWxvbiUyMGludGVyaW9yfGVufDB8MHx8fDE3ODQ5MTA3ODd8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="" aria-hidden="true" loading="lazy" decoding="async">
   <div class="wrap">
     <p class="script">Te esperamos en 20003 Donostia-San Sebastián</p>
     <h2>¿Te vemos esta semana?</h2>
     <div class="bb-cta">
-      <button class="btn light" type="button" data-book>Pedir cita ahora</button>
+      <button class="btn glass-cta" type="button" data-book>Pedir cita ahora<span class="btn-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></button>
       <a class="btn ghost" style="border-color:rgba(255,255,255,.55);color:#fff" href="https://wa.me/34943000000?text=Hola%20Peluquer%C3%ADa%20Kalea%20(PRUEBA)%20%F0%9F%91%8B%20Me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener">WhatsApp</a>
     </div>
   </div>
@@ -419,15 +474,38 @@
 (function(){
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // nav: auto-ocultar al bajar, sombra al hacer scroll
+  // nav: auto-ocultar al bajar, sombra al hacer scroll.
+  // holdUntil evita que el nav se esconda durante el desplazamiento suave que
+  // provoca pulsar un enlace del menú (antes desaparecía justo al usarlo).
   var nav = document.getElementById('nav');
   var lastY = 0;
+  var holdUntil = 0;
   window.addEventListener('scroll', function(){
     var y = window.scrollY;
     nav.classList.toggle('scrolled', y > 20);
-    nav.classList.toggle('hide', y > lastY && y > 140);
+    if(Date.now() > holdUntil && !nav.classList.contains('menu-open')){
+      nav.classList.toggle('hide', y > lastY && y > 140);
+    }
     lastY = y;
   }, {passive:true});
+  function holdNav(){ holdUntil = Date.now() + 1200; nav.classList.remove('hide'); }
+
+  // menú móvil (menuPanel, no "panel": más abajo hay otro var panel para los servicios)
+  var burger = document.getElementById('navBurger');
+  var menuPanel = document.getElementById('menuPanel');
+  function setMenu(open){
+    nav.classList.toggle('menu-open', open);
+    menuPanel.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  burger.addEventListener('click', function(){ setMenu(!menuPanel.classList.contains('open')); });
+  menuPanel.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ setMenu(false); holdNav(); });
+  });
+  document.querySelectorAll('.nav-links a').forEach(function(a){ a.addEventListener('click', holdNav); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && menuPanel.classList.contains('open')) setMenu(false); });
 
   // nombre en partículas: se muestrean los píxeles del texto renderizado en un
   // canvas oculto para colocar una partícula por punto; el cursor las repele
