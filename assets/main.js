@@ -56,6 +56,20 @@ document.addEventListener('DOMContentLoaded', () => {
     revealEls.forEach(el => observer.observe(el));
   }
 
+  // Párrafos en cascada palabra a palabra (par-word-cascade, biblioteca-animaciones)
+  const cascadeEls = document.querySelectorAll('.par-cascade');
+  if (cascadeEls.length) {
+    cascadeEls.forEach(el => {
+      const words = el.textContent.trim().split(/\s+/);
+      el.innerHTML = words.map((w, i) => `<span style="transition-delay:${(i * 0.022).toFixed(3)}s">${w}</span>`).join(' ');
+      if (reduceMotion) { el.classList.add('vis'); return; }
+      const io = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) { el.classList.add('vis'); io.disconnect(); }
+      }, { threshold: 0.35 });
+      io.observe(el);
+    });
+  }
+
   // Rodillo en enlaces de nav y footer (el i18n reescribe el innerHTML al
   // cambiar de idioma, así que hay que re-envolver tras cada toggle)
   const setupRoll = () => {
