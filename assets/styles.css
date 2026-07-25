@@ -237,7 +237,24 @@ p { margin: 0; }
 .nav__logo .mark svg { width: 14px; height: 14px; color: #fff; }
 
 .nav__links { display: none; list-style: none; margin: 0; padding: 0; gap: 4px; }
-@media (min-width: 880px) { .nav__links { display: flex; } }
+@media (min-width: 880px) {
+  .nav__links {
+    display: flex;
+    max-width: 640px;
+    overflow: hidden;
+    transition: max-width 0.5s var(--ease), opacity 0.35s ease, margin-left 0.5s var(--ease);
+  }
+  /* Nav-isla: se contrae cuando el cursor no está encima */
+  .nav:not(:hover):not(:focus-within) .nav__links {
+    max-width: 0;
+    opacity: 0;
+    margin-left: 0;
+    pointer-events: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav__links { transition: none; }
+}
 .nav__links a {
   display: block;
   padding: 8px 14px;
