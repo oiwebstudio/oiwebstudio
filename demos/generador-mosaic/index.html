@@ -61,13 +61,20 @@
   .nav-links a{font-size:13px;font-weight:600;letter-spacing:.03em;color:var(--ink);opacity:.75;transition:opacity .2s ease}
   .nav-links a:hover{opacity:1}
   @media(min-width:900px){.nav-links{display:flex}}
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:'Inter',sans-serif;font-weight:600;
+  .btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    font-family:'Inter',sans-serif;font-weight:600;
     font-size:14.5px;padding:12px 22px;border-radius:999px;cursor:pointer;border:1px solid color-mix(in srgb,var(--gold) 55%,#8a6d33);
     background:linear-gradient(155deg,color-mix(in srgb,var(--gold) 82%,#fff 18%) 0%,var(--gold) 55%,color-mix(in srgb,var(--gold) 78%,#3f3115) 100%);
     color:#332810;box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 4px 14px -6px rgba(60,45,10,.45);
     transition:transform .2s ease,filter .25s ease,box-shadow .25s ease}
   .btn:hover{transform:translateY(-1px);filter:brightness(1.06);box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 8px 20px -6px rgba(60,45,10,.5)}
   .btn:active{transform:scale(.97)}
+  /* adv-glass-spotlight: brillo que sigue al cursor dentro del botón */
+  .btn::after{content:"";position:absolute;inset:0;z-index:1;border-radius:inherit;pointer-events:none;
+    background:radial-gradient(160px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.65),transparent 65%);
+    opacity:0;transition:opacity .35s ease;mix-blend-mode:soft-light}
+  .btn:hover::after{opacity:1}
+  .btn > *{position:relative;z-index:2}
   .btn.ghost{background:transparent;color:var(--ink);border-color:color-mix(in srgb,var(--ink) 22%,transparent)}
   .btn.ghost:hover{background:#fff;color:var(--ink);border-color:var(--ink)}
   .btn.light{background:#fff;color:var(--deep);border-color:#fff}
@@ -450,7 +457,7 @@
       octx.fillText(NAME, (w - mw) / 2, h * 0.78);
       var data = octx.getImageData(0, 0, w, h).data;
 
-      var step = w > 700 ? 4 : 3;
+      var step = w > 700 ? 3 : 2.5;
       var next = [];
       for(var y = 0; y < h; y += step){
         for(var x = 0; x < w; x += step){
@@ -481,6 +488,8 @@
     var REPEL = 64;
     function drawFrame(animate){
       ctx.clearRect(0, 0, w, h);
+      ctx.shadowColor = 'rgba(0,0,0,.6)';
+      ctx.shadowBlur = 3;
       for(var i = 0; i < particles.length; i++){
         var p = particles[i];
         if(animate){
@@ -488,18 +497,18 @@
           var dist = Math.hypot(dx, dy) || 0.001;
           if(dist < REPEL){
             var f = (REPEL - dist) / REPEL;
-            p.vx += (dx / dist) * f * 3.2;
-            p.vy += (dy / dist) * f * 3.2;
+            p.vx += (dx / dist) * f * 2.2;
+            p.vy += (dy / dist) * f * 2.2;
           }
-          p.vx += (p.tx - p.x) * 0.07;
-          p.vy += (p.ty - p.y) * 0.07;
-          p.vx *= 0.83; p.vy *= 0.83;
+          p.vx += (p.tx - p.x) * 0.032;
+          p.vy += (p.ty - p.y) * 0.032;
+          p.vx *= 0.92; p.vy *= 0.92;
           p.x += p.vx; p.y += p.vy;
         }
-        var shimmer = animate ? 0.55 + Math.sin(performance.now() * 0.0016 + p.tx * 0.08) * 0.35 : 0.75;
-        ctx.fillStyle = 'rgba(255,255,255,' + Math.max(0.2, shimmer) + ')';
+        var shimmer = animate ? 0.78 + Math.sin(performance.now() * 0.0006 + p.tx * 0.08) * 0.2 : 0.92;
+        ctx.fillStyle = 'rgba(255,255,255,' + Math.max(0.55, shimmer) + ')';
         ctx.beginPath();
-        ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+        ctx.arc(p.x, p.y, 1.7, 0, Math.PI * 2);
         ctx.fill();
       }
     }
@@ -517,6 +526,17 @@
     window.open("https://wa.me/34943000000?text=Hola%20Peluquer%C3%ADa%20Kalea%20(PRUEBA)%20%F0%9F%91%8B%20Me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%B3n", '_blank', 'noopener');
   }
   document.querySelectorAll('[data-book]').forEach(function(b){ b.addEventListener('click', openBooking); });
+
+  // adv-glass-spotlight: el brillo del botón sigue la posición real del cursor
+  if(!reduced){
+    document.querySelectorAll('.btn').forEach(function(b){
+      b.addEventListener('mousemove', function(e){
+        var r = b.getBoundingClientRect();
+        b.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+        b.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+      });
+    });
+  }
 
   // servicios seleccionables con fade
   var SVC = [{"title":"Corte y peinado","desc":"Asesoramiento personalizado según tu estilo, tu rostro y tu día a día.","tags":"Corte mujer · Corte hombre · Flequillos · Recogidos","img":"https://images.unsplash.com/photo-1746723378067-83a345ff3160?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8NHx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080","alt":"A hair salon interior with hair products and clients."},{"title":"Color y mechas","desc":"Coloración profesional, balayage y babylights con productos que cuidan.","tags":"Balayage · Babylights · Rubios fríos · Color raíz","img":"https://images.unsplash.com/photo-1637777277337-f114350fb088?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8NXx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080","alt":"a hair salon with chairs and neon signs"},{"title":"Tratamientos","desc":"Hidratación profunda, keratina y rituales de brillo para un pelo sano.","tags":"Hidratación · Keratina · Detox capilar · Brillo","img":"https://images.unsplash.com/photo-1626383120723-2a941488860d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8Nnx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080","alt":"black and gray chair beside white wall"}];
