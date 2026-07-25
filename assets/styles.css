@@ -193,6 +193,12 @@ p { margin: 0; }
 }
 .nav-wrap.is-scrolled .nav { box-shadow: var(--shadow-md); background: rgba(255,255,255,0.82); }
 
+/* Nav-isla: la propia píldora se ciñe al contenido para que encoja de verdad,
+   no solo el texto interior (si no, el fondo se queda con el ancho completo). */
+@media (min-width: 880px) {
+  .nav { width: fit-content; }
+}
+
 /* adv-spotlight-cards — spotlight + anillo de borde que sigue al cursor en el nav */
 .nav::before {
   content: '';
@@ -255,6 +261,32 @@ p { margin: 0; }
 @media (prefers-reduced-motion: reduce) {
   .nav__links { transition: none; }
 }
+
+/* Nav-isla: teléfono, selector de idioma y CTA también se contraen (no solo
+   el texto del menú), para que la píldora entera encoja de verdad. */
+@media (min-width: 880px) {
+  .nav__phone, .lang-switch, .nav__cta {
+    transition: max-width 0.5s var(--ease), opacity 0.3s ease, margin 0.5s var(--ease), padding 0.5s var(--ease);
+    overflow: hidden;
+    max-width: 260px;
+  }
+  .nav__right { transition: gap 0.5s var(--ease); }
+  .nav:not(:hover):not(:focus-within) .nav__phone,
+  .nav:not(:hover):not(:focus-within) .lang-switch,
+  .nav:not(:hover):not(:focus-within) .nav__cta {
+    max-width: 0;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+    pointer-events: none;
+  }
+  .nav:not(:hover):not(:focus-within) .nav__right { gap: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav__phone, .lang-switch, .nav__cta, .nav__right { transition: none; }
+}
+
 .nav__links a {
   display: block;
   padding: 8px 14px;
