@@ -732,7 +732,7 @@ a.work:hover .work__link { gap: 11px; color: var(--accent-hover); }
 }
 
 /* Párrafos en cascada palabra a palabra (par-word-cascade) */
-.par-cascade span { display: inline-block; opacity: 0; filter: blur(3px); transform: translateY(16px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease), filter 0.6s var(--ease); }
+.par-cascade span { display: inline-block; opacity: 0; filter: blur(3px); transform: translateY(16px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease), filter 0.9s var(--ease); }
 .par-cascade.vis span { opacity: 1; filter: blur(0); transform: none; }
 @media (prefers-reduced-motion: reduce) {
   .par-cascade span { opacity: 1; filter: none; transform: none; transition: none; }
