@@ -209,8 +209,10 @@ p { margin: 0; }
   display: block;
   padding: 8px 14px;
   border-radius: var(--r-xs);
-  font-size: 14.5px;
-  font-weight: 450;
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
   color: var(--text-muted);
   transition: color 0.15s, background 0.15s;
 }
