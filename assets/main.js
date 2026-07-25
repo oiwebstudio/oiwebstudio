@@ -75,13 +75,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
             const span = document.createElement('span');
             span.textContent = part;
-            span.style.transitionDelay = Math.min(i * 0.035, 0.6).toFixed(3) + 's';
+            span.style.transitionDelay = Math.min(i * 0.06, 1.1).toFixed(3) + 's';
             i++;
             frag.appendChild(span);
           });
         } else {
           const span = document.createElement('span');
-          span.style.transitionDelay = Math.min(i * 0.035, 0.6).toFixed(3) + 's';
+          span.style.transitionDelay = Math.min(i * 0.06, 1.1).toFixed(3) + 's';
           span.appendChild(node.cloneNode(true));
           i++;
           frag.appendChild(span);
