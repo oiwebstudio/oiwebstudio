@@ -57,11 +57,39 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Párrafos en cascada palabra a palabra (par-word-cascade, biblioteca-animaciones)
+  // En páginas de artículo, cascadea todos los párrafos del cuerpo del texto.
+  document.querySelectorAll('.art p').forEach(p => p.classList.add('par-cascade'));
+
   const cascadeEls = document.querySelectorAll('.par-cascade');
   if (cascadeEls.length) {
     cascadeEls.forEach(el => {
-      const words = el.textContent.trim().split(/\s+/);
-      el.innerHTML = words.map((w, i) => `<span style="transition-delay:${(i * 0.022).toFixed(3)}s">${w}</span>`).join(' ');
+      // Recorre los nodos hijos en vez de usar textContent, para no perder
+      // <strong>/<a>/<em> dentro del párrafo: cada palabra suelta se envuelve
+      // en un span, y cada elemento inline se envuelve entero como una unidad.
+      let i = 0;
+      const frag = document.createDocumentFragment();
+      Array.from(el.childNodes).forEach(node => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          node.textContent.split(/(\s+)/).forEach(part => {
+            if (part === '') return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+            const span = document.createElement('span');
+            span.textContent = part;
+            span.style.transitionDelay = (i * 0.022).toFixed(3) + 's';
+            i++;
+            frag.appendChild(span);
+          });
+        } else {
+          const span = document.createElement('span');
+          span.style.transitionDelay = (i * 0.022).toFixed(3) + 's';
+          span.appendChild(node.cloneNode(true));
+          i++;
+          frag.appendChild(span);
+        }
+      });
+      el.innerHTML = '';
+      el.appendChild(frag);
+
       if (reduceMotion) { el.classList.add('vis'); return; }
       const io = new IntersectionObserver(entries => {
         if (entries[0].isIntersecting) { el.classList.add('vis'); io.disconnect(); }
