@@ -175,6 +175,7 @@ p { margin: 0; }
   transition: padding 0.3s var(--ease);
 }
 .nav {
+  position: relative;
   max-width: var(--container);
   margin: 0 auto;
   height: 60px;
@@ -191,6 +192,38 @@ p { margin: 0; }
   transition: box-shadow 0.3s var(--ease), background 0.3s var(--ease);
 }
 .nav-wrap.is-scrolled .nav { box-shadow: var(--shadow-md); background: rgba(255,255,255,0.82); }
+
+/* adv-spotlight-cards — spotlight + anillo de borde que sigue al cursor en el nav */
+.nav::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(360px circle at var(--nav-mx, 50%) var(--nav-my, 50%), rgba(192, 122, 53, 0.12), transparent 65%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.nav::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: radial-gradient(260px circle at var(--nav-mx, 50%) var(--nav-my, 50%), var(--terra), transparent 62%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.nav:hover::before, .nav:hover::after { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .nav::before, .nav::after { transition: none; }
+}
 
 .nav__logo { font-size: 18px; font-weight: 600; letter-spacing: -0.03em; color: var(--ink); display: inline-flex; align-items: center; gap: 9px; }
 .nav__logo-img { height: 26px; width: auto; display: block; filter: brightness(0); }
