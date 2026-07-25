@@ -731,6 +731,13 @@ a.work:hover .work__link { gap: 11px; color: var(--accent-hover); }
   html { scroll-behavior: auto; }
 }
 
+/* Párrafos en cascada palabra a palabra (par-word-cascade) */
+.par-cascade span { display: inline-block; opacity: 0; transform: translateY(8px); transition: 0.5s var(--ease); }
+.par-cascade.vis span { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .par-cascade span { opacity: 1; transform: none; transition: none; }
+}
+
 /* Language switch ----------------------------------------------------------- */
 
 .lang-switch { display: inline-flex; align-items: center; background: var(--bg-subtle); border: 1px solid var(--border); border-radius: var(--r-pill); padding: 2px; }
