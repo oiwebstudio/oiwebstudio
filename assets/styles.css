@@ -875,6 +875,30 @@ a.work:hover .work__link { gap: 11px; color: var(--accent-hover); }
 .lang-switch button:hover { color: var(--ink); }
 .lang-switch button.is-active { background: #fff; color: var(--ink); box-shadow: var(--shadow-xs); }
 
+/* Nav-isla en móvil: sin :hover, se contrae/expande según la dirección del
+   scroll (toggled por JS en .nav-wrap.is-contracted). El logo y el botón
+   de menú (hamburguesa) quedan siempre visibles y accesibles. */
+@media (max-width: 879.98px) {
+  .lang-switch {
+    transition: max-width 0.4s var(--ease), opacity 0.3s ease, margin 0.4s var(--ease), padding 0.4s var(--ease);
+    overflow: hidden;
+    max-width: 100px;
+  }
+  .nav-wrap.is-contracted .lang-switch {
+    max-width: 0;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+    pointer-events: none;
+  }
+  .nav-wrap.is-contracted .nav__right { gap: 6px; }
+  .nav-wrap.is-contracted .nav { width: fit-content; margin: 0 auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lang-switch { transition: none; }
+}
+
 /* Realistic mini-site mockups (5 real examples) ----------------------------- */
 
 .site {

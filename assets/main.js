@@ -6,6 +6,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const onScroll = () => navWrap.classList.toggle('is-scrolled', window.scrollY > 12);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Nav-isla en móvil: sin ratón no hay :hover, así que se contrae al
+    // bajar y se expande al subir (o cerca del top), igual que el hover
+    // en escritorio pero disparado por la dirección del scroll.
+    let lastY = window.scrollY;
+    const onScrollDir = () => {
+      const y = window.scrollY;
+      if (y > lastY + 4 && y > 60) navWrap.classList.add('is-contracted');
+      else if (y < lastY - 4 || y < 60) navWrap.classList.remove('is-contracted');
+      lastY = y;
+    };
+    window.addEventListener('scroll', onScrollDir, { passive: true });
   }
 
   // adv-spotlight-cards en el nav: el spotlight y el anillo de borde siguen al cursor
