@@ -8,6 +8,16 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
+  // adv-spotlight-cards en el nav: el spotlight y el anillo de borde siguen al cursor
+  const navEl = document.querySelector('.nav');
+  if (navEl) {
+    navEl.addEventListener('mousemove', (e) => {
+      const r = navEl.getBoundingClientRect();
+      navEl.style.setProperty('--nav-mx', (e.clientX - r.left) + 'px');
+      navEl.style.setProperty('--nav-my', (e.clientY - r.top) + 'px');
+    });
+  }
+
   // Mobile nav toggle
   const toggle = document.querySelector('.nav__toggle');
   const menu = document.querySelector('.mobile-menu');
