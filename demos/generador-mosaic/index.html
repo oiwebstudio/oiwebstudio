@@ -171,6 +171,7 @@
   /* ---------- marquee ---------- */
   .marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
     background:var(--paper);padding:14px 0;margin-top:32px}
+  .mq-shift{will-change:transform}
   .mq{display:flex;gap:28px;width:max-content;animation:mq 34s linear infinite;padding-right:28px}
   .mq span{font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);white-space:nowrap}
   .mq .dot{color:var(--accent)}
@@ -261,6 +262,28 @@
   .horario .note{margin-top:12px;font-size:12.5px;color:var(--muted)}
   @media(max-width:880px){.sobre-grid{grid-template-columns:1fr;gap:28px}}
 
+  /* ---------- prueba social ---------- */
+  .social{padding:80px 0}
+  .social-grid{display:grid;grid-template-columns:.62fr 1.38fr;gap:44px;align-items:start}
+  .social-score{border:1px solid var(--line);border-radius:22px;padding:34px 30px;background:#fff;
+    display:flex;flex-direction:column;gap:6px;position:relative;overflow:hidden}
+  .social-score::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;
+    background:linear-gradient(90deg,var(--gold),transparent)}
+  .ss-num{font-family:var(--display);font-size:clamp(62px,8vw,96px);line-height:.9;letter-spacing:-.03em;
+    font-variant-numeric:tabular-nums}
+  .ss-stars{color:var(--gold);font-size:19px;letter-spacing:.14em}
+  .ss-label{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+  .quotes{display:grid;gap:14px}
+  .quote{margin:0;border:1px solid var(--line);border-radius:20px;padding:26px 30px;background:#fff;
+    position:relative;padding-left:56px}
+  .quote::before{content:"\201C";position:absolute;left:22px;top:14px;font-family:var(--display);
+    font-size:60px;line-height:1;color:color-mix(in srgb,var(--gold) 55%,transparent)}
+  .quote blockquote{font-family:var(--display);font-size:clamp(19px,2.1vw,23px);line-height:1.42;letter-spacing:-.01em}
+  .quote figcaption{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--muted);margin-top:14px}
+  .social-note{font-size:12.5px;color:var(--muted);margin-top:20px;max-width:62ch}
+  @media(max-width:880px){.social{padding:60px 0}.social-grid{grid-template-columns:1fr;gap:22px}}
+
   /* ---------- galería ---------- */
   .galeria{padding:0 0 72px}
   .gal-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:230px;gap:14px}
@@ -303,12 +326,25 @@
   /* ---------- revelado ---------- */
   .js .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
   .js .reveal.in{opacity:1;transform:none}
+  /* las citas entran en cascada dentro de su columna */
+  .js .quote{transition-delay:calc(var(--i,0) * 110ms)}
+  /* cortina: la foto se destapa de abajo a arriba y el zoom se asienta.
+     El clip-path va en la <img>, no en la <figure>: recortar el elemento
+     observado lo deja a área cero y el IntersectionObserver nunca dispara. */
+  .js .gal-item.reveal{opacity:1;transform:none}
+  .js .gal-item img{clip-path:inset(0 0 100% 0);transform:scale(1.14);
+    transition:clip-path 1s cubic-bezier(.22,1,.36,1),transform 1.2s cubic-bezier(.22,1,.36,1)}
+  .js .gal-item.in img{clip-path:inset(0 0 0 0);transform:scale(1)}
+  .js .gal-item.in:hover img{transform:scale(1.05)}
+  /* parallax: solo la capa de foto se desplaza, gobernada por JS */
+  .hero-bg,.bookband-bg{will-change:transform}
   @media(prefers-reduced-motion:reduce){
     .js .reveal{opacity:1;transform:none;transition:none}
     .fade{opacity:1;transform:none;transition:none}
     .js .carta li{opacity:1;transform:none;transition:none}
     .js .carta li .p-dots{transform:translateY(-4px) scaleX(1);transition:none}
     .menu-panel a{opacity:1;transform:none;transition:none}
+    .js .gal-item img{clip-path:none;transform:none;transition:none}
   }
 </style>
 </head>
@@ -320,6 +356,7 @@
     <li><a href="#top">Inicio</a></li>
     <li><a href="#nosotros">Sobre nosotros</a></li>
     <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#opiniones">Opiniones</a></li>
     <li><a href="#galeria">Galería</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
@@ -333,6 +370,7 @@
   <a href="#top">Inicio</a>
   <a href="#nosotros">Sobre nosotros</a>
   <a href="#servicios">Servicios</a>
+  <a href="#opiniones">Opiniones</a>
   <a href="#galeria">Galería</a>
   <a href="#contacto">Contacto</a>
 </div>
@@ -361,7 +399,7 @@
   </div>
 
 <div class="marquee" aria-hidden="true">
-  <div class="mq"><span>Corte</span><span class="dot">·</span><span>Color</span><span class="dot">·</span><span>Mechas</span><span class="dot">·</span><span>Brillo</span><span class="dot">·</span><span>Estilo</span><span class="dot">·</span><span>Cuidado</span><span class="dot">·</span><span>Corte</span><span class="dot">·</span><span>Color</span><span class="dot">·</span><span>Mechas</span><span class="dot">·</span><span>Brillo</span><span class="dot">·</span><span>Estilo</span><span class="dot">·</span><span>Cuidado</span><span class="dot">·</span></div>
+  <div class="mq-shift" id="mqShift"><div class="mq"><span>Corte</span><span class="dot">·</span><span>Color</span><span class="dot">·</span><span>Mechas</span><span class="dot">·</span><span>Brillo</span><span class="dot">·</span><span>Estilo</span><span class="dot">·</span><span>Cuidado</span><span class="dot">·</span><span>Corte</span><span class="dot">·</span><span>Color</span><span class="dot">·</span><span>Mechas</span><span class="dot">·</span><span>Brillo</span><span class="dot">·</span><span>Estilo</span><span class="dot">·</span><span>Cuidado</span><span class="dot">·</span></div></div>
 </div>
 
 <section class="servicios" id="servicios">
@@ -422,10 +460,39 @@
   </div>
 </section>
 
+<section class="social" id="opiniones">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Opiniones</span>
+        <h2>Lo que dicen<br><em>quienes ya vienen</em></h2>
+      </div>
+      <div class="social-grid">
+        <div class="social-score reveal">
+          <span class="ss-num">4.7</span>
+          <span class="ss-stars" aria-hidden="true">★★★★★</span>
+          <span class="ss-label">128 reseñas en Google</span>
+        </div>
+        <div class="quotes">
+          <figure class="quote reveal" style="--i:0">
+              <blockquote>Salí con el corte que llevaba años buscando. Escuchan de verdad antes de coger las tijeras.</blockquote>
+              <figcaption>Reseña de ejemplo</figcaption>
+            </figure><figure class="quote reveal" style="--i:1">
+              <blockquote>El color quedó exactamente como lo habíamos hablado. Y el pelo, sin estropear.</blockquote>
+              <figcaption>Reseña de ejemplo</figcaption>
+            </figure><figure class="quote reveal" style="--i:2">
+              <blockquote>Trato cercano y sin prisas. Se nota el oficio en cada detalle.</blockquote>
+              <figcaption>Reseña de ejemplo</figcaption>
+            </figure>
+        </div>
+      </div>
+      <p class="social-note">La nota y el número de reseñas son los reales de Google. Las frases son de ejemplo — en tu web irían tus reseñas.</p>
+    </div>
+  </section>
+
 <section class="galeria" aria-label="Galería" id="galeria">
     <div class="wrap">
-      <div class="gal-grid reveal">
-        <figure class="gal-item gal-0"><img src="https://images.unsplash.com/photo-1746723378067-83a345ff3160?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8NHx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="A hair salon interior with hair products and clients." loading="lazy" decoding="async"></figure><figure class="gal-item gal-1"><img src="https://images.unsplash.com/photo-1637777277337-f114350fb088?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8NXx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="a hair salon with chairs and neon signs" loading="lazy" decoding="async"></figure><figure class="gal-item gal-2"><img src="https://images.unsplash.com/photo-1626383120723-2a941488860d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8Nnx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="black and gray chair beside white wall" loading="lazy" decoding="async"></figure><figure class="gal-item gal-3"><img src="https://images.unsplash.com/photo-1776850476481-2bccba2e35c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8N3x8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="Barbers cutting hair in a modern salon" loading="lazy" decoding="async"></figure><figure class="gal-item gal-4"><img src="https://images.unsplash.com/photo-1759134155377-4207d89b39ec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8OXx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="Two barbers stand at the entrance of a shop." loading="lazy" decoding="async"></figure><figure class="gal-item gal-5"><img src="https://images.unsplash.com/photo-1781455793310-8427c96454c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8MTB8fGhhaXIlMjBzYWxvbiUyMGludGVyaW9yfGVufDB8MHx8fDE3ODQ5MTA3ODd8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="An empty barbershop interior with several chairs and mirrors." loading="lazy" decoding="async"></figure>
+      <div class="gal-grid">
+        <figure class="gal-item reveal gal-0" style="transition-delay:0ms"><img src="https://images.unsplash.com/photo-1746723378067-83a345ff3160?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8NHx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="A hair salon interior with hair products and clients." loading="lazy" decoding="async"></figure><figure class="gal-item reveal gal-1" style="transition-delay:90ms"><img src="https://images.unsplash.com/photo-1637777277337-f114350fb088?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8NXx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="a hair salon with chairs and neon signs" loading="lazy" decoding="async"></figure><figure class="gal-item reveal gal-2" style="transition-delay:180ms"><img src="https://images.unsplash.com/photo-1626383120723-2a941488860d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8Nnx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="black and gray chair beside white wall" loading="lazy" decoding="async"></figure><figure class="gal-item reveal gal-3" style="transition-delay:270ms"><img src="https://images.unsplash.com/photo-1776850476481-2bccba2e35c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8N3x8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="Barbers cutting hair in a modern salon" loading="lazy" decoding="async"></figure><figure class="gal-item reveal gal-4" style="transition-delay:360ms"><img src="https://images.unsplash.com/photo-1759134155377-4207d89b39ec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8OXx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="Two barbers stand at the entrance of a shop." loading="lazy" decoding="async"></figure><figure class="gal-item reveal gal-5" style="transition-delay:450ms"><img src="https://images.unsplash.com/photo-1781455793310-8427c96454c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8MTB8fGhhaXIlMjBzYWxvbiUyMGludGVyaW9yfGVufDB8MHx8fDE3ODQ5MTA3ODd8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="An empty barbershop interior with several chairs and mirrors." loading="lazy" decoding="async"></figure>
       </div>
       <p class="gal-note">Fotos de ambiente — en tu web irían las de tu salón.</p>
     </div>
@@ -768,6 +835,46 @@
     magBackdrop.addEventListener('click', closeOpen);
 
     applySizes();
+  }
+
+  // parallax de las fotos a sangre + marquee que responde a la velocidad del
+  // scroll. Un solo rAF gobierna ambos: leer scrollY en el evento y escribir
+  // transforms en el frame evita el layout thrashing.
+  if(!reduced){
+    var pxLayers = [];
+    [['.hero-bg', 0.14], ['.bookband-bg', 0.10]].forEach(function(pair){
+      var el = document.querySelector(pair[0]);
+      if(!el) return;
+      // la capa se agranda y se sube para que al desplazarse no descubra bordes
+      var over = Math.round(pair[1] * 900);
+      el.style.height = 'calc(100% + ' + over + 'px)';
+      el.style.top = '-' + Math.round(over / 2) + 'px';
+      el.style.bottom = 'auto';
+      pxLayers.push({ el: el, k: pair[1], parent: el.parentElement });
+    });
+    var mqShiftEl = document.getElementById('mqShift');
+    var lastPY = window.scrollY, vel = 0, pxRaf = 0, shift = 0;
+    function pxFrame(){
+      var y = window.scrollY;
+      vel += ((y - lastPY) - vel) * 0.2;
+      lastPY = y;
+      for(var i = 0; i < pxLayers.length; i++){
+        var L = pxLayers[i];
+        var r = L.parent.getBoundingClientRect();
+        if(r.bottom > -300 && r.top < window.innerHeight + 300){
+          L.el.style.transform = 'translate3d(0,' + (r.top * -L.k).toFixed(2) + 'px,0)';
+        }
+      }
+      if(mqShiftEl){
+        // el scroll empuja la cinta y esta vuelve sola a su sitio
+        shift = Math.max(-90, Math.min(90, shift + vel * 0.5)) * 0.9;
+        mqShiftEl.style.transform = 'translate3d(' + shift.toFixed(2) + 'px,0,0)';
+      }
+      if(Math.abs(vel) > 0.05 || Math.abs(shift) > 0.3){ pxRaf = requestAnimationFrame(pxFrame); }
+      else { pxRaf = 0; vel = 0; }
+    }
+    window.addEventListener('scroll', function(){ if(!pxRaf) pxRaf = requestAnimationFrame(pxFrame); }, {passive:true});
+    pxFrame();
   }
 
   // revelado al hacer scroll
