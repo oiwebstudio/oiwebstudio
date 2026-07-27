@@ -64,7 +64,6 @@
     -webkit-backdrop-filter:blur(18px) saturate(160%);border:1px solid rgba(255,255,255,.4);
     box-shadow:inset 0 1px 1px rgba(255,255,255,.6),0 10px 30px -14px rgba(20,14,10,.35);
     transition:transform .3s cubic-bezier(.76,0,.24,1),background .3s ease,box-shadow .3s ease}
-  .nav.hide{transform:translateX(-50%) translateY(-140%)}
   .nav.scrolled{background:rgba(255,255,255,.86);box-shadow:0 10px 30px -18px rgba(20,14,10,.4)}
   .nav-logo{display:flex;align-items:center;gap:10px;font-family:'Inter',sans-serif;font-size:14.5px;font-weight:700;
     letter-spacing:.06em;text-transform:uppercase;color:var(--ink);flex:none}
@@ -209,6 +208,16 @@
   .tarifas-in{display:grid;grid-template-columns:.8fr 1.2fr;gap:52px;align-items:start}
   .tarifas-head h2{font-size:clamp(30px,4vw,48px);margin-top:10px}
   .tarifas-head .note{color:var(--muted);font-size:13.5px;margin-top:14px;max-width:32ch}
+  /* img-shutter-open: dos paneles cubren la foto y se abren desde el centro, como un obturador */
+  .tarifas-img{position:relative;margin-top:28px;max-width:300px;aspect-ratio:4/5;border-radius:20px;overflow:hidden}
+  .tarifas-img img{width:100%;height:100%;object-fit:cover;display:block}
+  .tarifas-img .sh{position:absolute;left:0;right:0;height:50%;background:var(--ink);z-index:2;
+    transition:transform 1s cubic-bezier(.4,0,.2,1)}
+  .tarifas-img .sh.t{top:0}
+  .tarifas-img .sh.b{bottom:0}
+  .js .tarifas-img.in .sh.t{transform:translateY(-100%)}
+  .js .tarifas-img.in .sh.b{transform:translateY(100%)}
+  @media(prefers-reduced-motion:reduce){.tarifas-img .sh{transition:none;transform:translateY(-100%)}.tarifas-img .sh.b{transform:translateY(100%)}}
   .carta{list-style:none;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 30px 18px;
     position:relative;counter-reset:tarifa}
   .carta::before{content:"";position:absolute;inset:8px;border:1px solid var(--line);border-radius:10px;pointer-events:none}
@@ -423,6 +432,10 @@
         <span class="eyebrow">Tarifas</span>
         <h2><span class="ln"><span>Precios claros,</span></span><span class="ln"><span><em>sin sorpresas</em></span></span></h2>
         <p class="note">Lista orientativa — en tu web irían tus precios reales.</p>
+        <div class="tarifas-img reveal">
+          <img src="https://images.unsplash.com/photo-1637777277337-f114350fb088?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8NXx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="a hair salon with chairs and neon signs" loading="lazy" decoding="async">
+          <div class="sh t"></div><div class="sh b"></div>
+        </div>
       </div>
       <ul class="carta reveal">
         <li style="--i:0"><span class="p-name">Corte mujer</span><span class="p-dots" aria-hidden="true"></span><span class="p-val">desde 22 €</span></li><li style="--i:1"><span class="p-name">Corte hombre</span><span class="p-dots" aria-hidden="true"></span><span class="p-val">16 €</span></li><li style="--i:2"><span class="p-name">Color raíz</span><span class="p-dots" aria-hidden="true"></span><span class="p-val">desde 35 €</span></li><li style="--i:3"><span class="p-name">Mechas / balayage</span><span class="p-dots" aria-hidden="true"></span><span class="p-val">desde 55 €</span></li><li style="--i:4"><span class="p-name">Peinado y brushing</span><span class="p-dots" aria-hidden="true"></span><span class="p-val">18 €</span></li><li style="--i:5"><span class="p-name">Tratamiento hidratante</span><span class="p-dots" aria-hidden="true"></span><span class="p-val">desde 25 €</span></li>
@@ -526,21 +539,13 @@
 (function(){
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // nav: auto-ocultar al bajar, sombra al hacer scroll.
-  // holdUntil evita que el nav se esconda durante el desplazamiento suave que
-  // provoca pulsar un enlace del menú (antes desaparecía justo al usarlo).
+  // nav: siempre visible, solo cambia de estilo (sombra + fondo sólido) al
+  // hacer scroll. Antes se ocultaba al bajar; el usuario pidió que se quede
+  // fijo pase lo que pase.
   var nav = document.getElementById('nav');
-  var lastY = 0;
-  var holdUntil = 0;
   window.addEventListener('scroll', function(){
-    var y = window.scrollY;
-    nav.classList.toggle('scrolled', y > 20);
-    if(Date.now() > holdUntil && !nav.classList.contains('menu-open')){
-      nav.classList.toggle('hide', y > lastY && y > 140);
-    }
-    lastY = y;
+    nav.classList.toggle('scrolled', window.scrollY > 20);
   }, {passive:true});
-  function holdNav(){ holdUntil = Date.now() + 1200; nav.classList.remove('hide'); }
 
   // menú móvil (menuPanel, no "panel": más abajo hay otro var panel para los servicios)
   var burger = document.getElementById('navBurger');
@@ -554,9 +559,8 @@
   }
   burger.addEventListener('click', function(){ setMenu(!menuPanel.classList.contains('open')); });
   menuPanel.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){ setMenu(false); holdNav(); });
+    a.addEventListener('click', function(){ setMenu(false); });
   });
-  document.querySelectorAll('.nav-links a').forEach(function(a){ a.addEventListener('click', holdNav); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && menuPanel.classList.contains('open')) setMenu(false); });
 
   // text-typewriter: el nombre del hero se escribe letra a letra. El tamaño
