@@ -635,21 +635,21 @@
       var data = octx.getImageData(0, 0, w, h).data;
 
       var TINTS = ['255,255,255','255,236,246','232,255,244','236,244,255','255,248,230'];
-      var step = w > 700 ? 3.4 : 2.8;
+      var step = w > 700 ? 2.2 : 2.0;
       var next = [];
       for(var y = 0; y < h; y += step){
         for(var x = 0; x < w; x += step){
-          if(data[(Math.floor(y) * w + Math.floor(x)) * 4 + 3] > 100){
+          if(data[(Math.floor(y) * w + Math.floor(x)) * 4 + 3] > 80){
             next.push({
               tx: x, ty: y, x: x, y: y, vx: 0, vy: 0,
-              r: 0.9 + Math.random() * 1.1,
+              r: 0.85 + Math.random() * 0.9,
               tint: TINTS[(Math.random() * TINTS.length) | 0],
               ph: Math.random() * 6.28
             });
           }
         }
       }
-      particles = next.slice(0, 2000);
+      particles = next.slice(0, 1200);
     }
     build();
     if(document.fonts && document.fonts.ready){ document.fonts.ready.then(build); }
@@ -677,7 +677,7 @@
     function drawFrame(animate){
       ctx.clearRect(0, 0, w, h);
       if(animate) shimmerPhase = (shimmerPhase + 0.012) % 6.28;
-      var len = Math.min(particles.length, 600);
+      var len = particles.length;
       var mouseActive = mouseNear && (mouse.x !== lastMouseX || mouse.y !== lastMouseY);
       if(mouseActive){ lastMouseX = mouse.x; lastMouseY = mouse.y; }
       for(var i = 0; i < len; i++){
