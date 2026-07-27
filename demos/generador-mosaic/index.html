@@ -634,23 +634,22 @@
       octx.strokeText(NAME, (w - mw) / 2, h * 0.78);
       var data = octx.getImageData(0, 0, w, h).data;
 
-      // Tintes holográficos muy suaves (blanco perlado con destellos).
       var TINTS = ['255,255,255','255,236,246','232,255,244','236,244,255','255,248,230'];
-      var step = w > 700 ? 2.6 : 2.2;
+      var step = w > 700 ? 3.4 : 2.8;
       var next = [];
       for(var y = 0; y < h; y += step){
         for(var x = 0; x < w; x += step){
           if(data[(Math.floor(y) * w + Math.floor(x)) * 4 + 3] > 100){
             next.push({
               tx: x, ty: y, x: x, y: y, vx: 0, vy: 0,
-              r: 1.1 + Math.random() * 1.5,
+              r: 0.9 + Math.random() * 1.1,
               tint: TINTS[(Math.random() * TINTS.length) | 0],
               ph: Math.random() * 6.28
             });
           }
         }
       }
-      particles = next;
+      particles = next.slice(0, 2000);
     }
     build();
     if(document.fonts && document.fonts.ready){ document.fonts.ready.then(build); }
@@ -670,26 +669,30 @@
     }
 
     var REPEL = 64;
+    var shimmerPhase = 0;
     function drawFrame(animate){
       ctx.clearRect(0, 0, w, h);
       ctx.shadowColor = 'rgba(0,0,0,.6)';
       ctx.shadowBlur = 3;
+      if(animate) shimmerPhase = (shimmerPhase + 0.02) % 6.28;
       for(var i = 0; i < particles.length; i++){
         var p = particles[i];
         if(animate){
           var dx = p.x - mouse.x, dy = p.y - mouse.y;
-          var dist = Math.hypot(dx, dy) || 0.001;
-          if(dist < REPEL){
+          var distSq = dx*dx + dy*dy;
+          var REPEL2 = REPEL * REPEL;
+          if(distSq < REPEL2){
+            var dist = Math.sqrt(distSq) || 0.001;
             var f = (REPEL - dist) / REPEL;
-            p.vx += (dx / dist) * f * 2.2;
-            p.vy += (dy / dist) * f * 2.2;
+            var fw = f * 2.2 / dist;
+            p.vx += dx * fw; p.vy += dy * fw;
           }
           p.vx += (p.tx - p.x) * 0.032;
           p.vy += (p.ty - p.y) * 0.032;
           p.vx *= 0.92; p.vy *= 0.92;
           p.x += p.vx; p.y += p.vy;
         }
-        var shimmer = animate ? 0.82 + Math.sin(performance.now() * 0.0006 + p.ph) * 0.18 : 0.94;
+        var shimmer = animate ? 0.82 + Math.sin(shimmerPhase + p.ph) * 0.18 : 0.94;
         ctx.fillStyle = 'rgba(' + p.tint + ',' + Math.max(0.6, shimmer) + ')';
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
@@ -699,7 +702,12 @@
     if(reduced){
       requestAnimationFrame(function(){ drawFrame(false); });
     } else {
-      (function tick(){ drawFrame(true); requestAnimationFrame(tick); })();
+      var frameCount = 0;
+      (function tick(){
+        if(++frameCount % 2 === 0) drawFrame(true);
+        else ctx.clearRect(0, 0, w, h);
+        requestAnimationFrame(tick);
+      })();
     }
   })();
 
@@ -861,7 +869,6 @@
     [['.hero-bg', 0.14], ['.bookband-bg', 0.10]].forEach(function(pair){
       var el = document.querySelector(pair[0]);
       if(!el) return;
-      // la capa se agranda y se sube para que al desplazarse no descubra bordes
       var over = Math.round(pair[1] * 900);
       el.style.height = 'calc(100% + ' + over + 'px)';
       el.style.top = '-' + Math.round(over / 2) + 'px';
@@ -869,28 +876,28 @@
       pxLayers.push({ el: el, k: pair[1], parent: el.parentElement });
     });
     var mqShiftEl = document.getElementById('mqShift');
-    var lastPY = window.scrollY, vel = 0, pxRaf = 0, shift = 0;
+    var lastPY = window.scrollY, vel = 0, pxRaf = 0, shift = 0, lastUpdateY = 0;
     function pxFrame(){
       var y = window.scrollY;
-      vel += ((y - lastPY) - vel) * 0.2;
+      if(Math.abs(y - lastUpdateY) < 10) return;
+      lastUpdateY = y;
+      vel += ((y - lastPY) - vel) * 0.12;
       lastPY = y;
       for(var i = 0; i < pxLayers.length; i++){
         var L = pxLayers[i];
         var r = L.parent.getBoundingClientRect();
         if(r.bottom > -300 && r.top < window.innerHeight + 300){
-          L.el.style.transform = 'translate3d(0,' + (r.top * -L.k).toFixed(2) + 'px,0)';
+          L.el.style.transform = 'translate3d(0,' + (Math.round(r.top * -L.k)) + 'px,0)';
         }
       }
       if(mqShiftEl){
-        // el scroll empuja la cinta y esta vuelve sola a su sitio
-        shift = Math.max(-90, Math.min(90, shift + vel * 0.5)) * 0.9;
-        mqShiftEl.style.transform = 'translate3d(' + shift.toFixed(2) + 'px,0,0)';
+        shift = Math.max(-90, Math.min(90, shift + vel * 0.3)) * 0.85;
+        mqShiftEl.style.transform = 'translate3d(' + Math.round(shift) + 'px,0,0)';
       }
-      if(Math.abs(vel) > 0.05 || Math.abs(shift) > 0.3){ pxRaf = requestAnimationFrame(pxFrame); }
+      if(Math.abs(vel) > 0.04 || Math.abs(shift) > 0.4){ pxRaf = requestAnimationFrame(pxFrame); }
       else { pxRaf = 0; vel = 0; }
     }
     window.addEventListener('scroll', function(){ if(!pxRaf) pxRaf = requestAnimationFrame(pxFrame); }, {passive:true});
-    pxFrame();
   }
 
   // la nota de Google sube desde 0 al entrar en pantalla
