@@ -649,7 +649,19 @@
           }
         }
       }
-      particles = next.slice(0, 1200);
+      // Tope de partículas por rendimiento: NUNCA cortar next.slice(0,N), que
+      // solo se queda con las primeras filas del escaneo (arriba del todo) y
+      // deja el resto de la letra sin muestrear. Hay que diezmar de forma
+      // uniforme para conservar la silueta completa del nombre.
+      var MAX_PARTICLES = 1200;
+      if(next.length > MAX_PARTICLES){
+        var stride = next.length / MAX_PARTICLES;
+        var sampled = [];
+        for(var k = 0; k < MAX_PARTICLES; k++){ sampled.push(next[Math.floor(k * stride)]); }
+        particles = sampled;
+      } else {
+        particles = next;
+      }
     }
     build();
     if(document.fonts && document.fonts.ready){ document.fonts.ready.then(build); }
