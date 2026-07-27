@@ -626,12 +626,22 @@
       var fontSize = Math.max(28, Math.min(maxFontSize, h * 0.88));
       octx.font = '500 ' + fontSize + 'px ' + DISPLAY_FONT;
       var mw = octx.measureText(NAME).width;
-      octx.strokeStyle = '#fff';
-      octx.lineWidth = Math.max(2.2, fontSize * 0.024);
-      octx.lineJoin = 'round';
-      octx.lineCap = 'round';
+      // Con el contorno solo (sin relleno) hacen falta muchos puntos de
+      // muestreo para que el ojo separe una letra de la siguiente. A tamaños
+      // de fuente pequeños (viewports estrechos) esa densidad no compensa
+      // y las letras se leen fundidas unas con otras — se rellena en su
+      // lugar, que es legible con muchos menos puntos.
       var xPos = Math.max(0, (w - mw) / 2);
-      octx.strokeText(NAME, xPos, h * 0.77);
+      if(fontSize < 190){
+        octx.fillStyle = '#fff';
+        octx.fillText(NAME, xPos, h * 0.77);
+      } else {
+        octx.strokeStyle = '#fff';
+        octx.lineWidth = Math.max(2.2, fontSize * 0.024);
+        octx.lineJoin = 'round';
+        octx.lineCap = 'round';
+        octx.strokeText(NAME, xPos, h * 0.77);
+      }
       var data = octx.getImageData(0, 0, w, h).data;
 
       var TINTS = ['255,255,255','255,236,246','232,255,244','236,244,255','255,248,230'];
