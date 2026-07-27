@@ -622,16 +622,16 @@
       octx.textBaseline = 'alphabetic';
       octx.font = '500 100px ' + DISPLAY_FONT;
       var w100 = octx.measureText(NAME).width || 1;
-      var fontSize = Math.floor(Math.min((w * 0.94) / w100 * 100, h * 0.9));
+      var maxFontSize = Math.floor((w * 0.98) / w100 * 100);
+      var fontSize = Math.max(28, Math.min(maxFontSize, h * 0.88));
       octx.font = '500 ' + fontSize + 'px ' + DISPLAY_FONT;
       var mw = octx.measureText(NAME).width;
-      // Contorno (no relleno): las partículas se posan sobre el trazo de las
-      // letras, como en la referencia — el interior queda hueco.
       octx.strokeStyle = '#fff';
-      octx.lineWidth = Math.max(2.5, fontSize * 0.028);
+      octx.lineWidth = Math.max(2.2, fontSize * 0.024);
       octx.lineJoin = 'round';
       octx.lineCap = 'round';
-      octx.strokeText(NAME, (w - mw) / 2, h * 0.78);
+      var xPos = Math.max(0, (w - mw) / 2);
+      octx.strokeText(NAME, xPos, h * 0.77);
       var data = octx.getImageData(0, 0, w, h).data;
 
       var TINTS = ['255,255,255','255,236,246','232,255,244','236,244,255','255,248,230'];
@@ -661,35 +661,43 @@
     });
 
     if(!reduced){
+      var lastMouseUpdate = 0;
       canvas.addEventListener('mousemove', function(e){
+        var now = Date.now();
+        if(now - lastMouseUpdate < 50) return;
+        lastMouseUpdate = now;
         var r = canvas.getBoundingClientRect();
         mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top;
       });
       canvas.addEventListener('mouseleave', function(){ mouse.x = -9999; mouse.y = -9999; });
     }
 
-    var REPEL = 64, rAF = 0, canvasVisible = true, mouseNear = false;
-    var shimmerPhase = 0;
+    var REPEL = 64, REPEL2 = 4096, rAF = 0, canvasVisible = true, mouseNear = false;
+    var shimmerPhase = 0, lastMouseX = -9999, lastMouseY = -9999;
     function drawFrame(animate){
       ctx.clearRect(0, 0, w, h);
-      if(animate) shimmerPhase = (shimmerPhase + 0.015) % 6.28;
-      var len = Math.min(particles.length, 800);
+      if(animate) shimmerPhase = (shimmerPhase + 0.012) % 6.28;
+      var len = Math.min(particles.length, 600);
+      var mouseActive = mouseNear && (mouse.x !== lastMouseX || mouse.y !== lastMouseY);
+      if(mouseActive){ lastMouseX = mouse.x; lastMouseY = mouse.y; }
       for(var i = 0; i < len; i++){
         var p = particles[i];
-        if(animate && mouseNear){
-          var dx = p.x - mouse.x, dy = p.y - mouse.y;
-          var distSq = dx*dx + dy*dy;
-          if(distSq < 4096){
-            var dist = Math.sqrt(distSq) || 0.001;
-            p.vx += (dx / dist) * (1 - dist/64) * 1.8;
-            p.vy += (dy / dist) * (1 - dist/64) * 1.8;
+        if(animate){
+          if(mouseActive){
+            var dx = p.x - mouse.x, dy = p.y - mouse.y;
+            var distSq = dx*dx + dy*dy;
+            if(distSq < REPEL2 && distSq > 1){
+              var dist = Math.sqrt(distSq);
+              p.vx += (dx / dist) * (1 - dist/64) * 1.6;
+              p.vy += (dy / dist) * (1 - dist/64) * 1.6;
+            }
           }
-          p.vx += (p.tx - p.x) * 0.025;
-          p.vy += (p.ty - p.y) * 0.025;
-          p.vx *= 0.91; p.vy *= 0.91;
+          p.vx += (p.tx - p.x) * 0.022;
+          p.vy += (p.ty - p.y) * 0.022;
+          p.vx *= 0.90; p.vy *= 0.90;
           p.x += p.vx; p.y += p.vy;
         }
-        var shimmer = animate ? 0.8 + Math.sin(shimmerPhase + p.ph) * 0.15 : 0.92;
+        var shimmer = animate ? 0.78 + Math.sin(shimmerPhase + p.ph) * 0.15 : 0.91;
         ctx.fillStyle = 'rgba(' + p.tint + ',' + shimmer + ')';
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, 6.28);
