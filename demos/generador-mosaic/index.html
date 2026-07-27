@@ -668,46 +668,50 @@
       canvas.addEventListener('mouseleave', function(){ mouse.x = -9999; mouse.y = -9999; });
     }
 
-    var REPEL = 64;
+    var REPEL = 64, rAF = 0, canvasVisible = true, mouseNear = false;
     var shimmerPhase = 0;
     function drawFrame(animate){
       ctx.clearRect(0, 0, w, h);
-      ctx.shadowColor = 'rgba(0,0,0,.6)';
-      ctx.shadowBlur = 3;
-      if(animate) shimmerPhase = (shimmerPhase + 0.02) % 6.28;
-      for(var i = 0; i < particles.length; i++){
+      if(animate) shimmerPhase = (shimmerPhase + 0.015) % 6.28;
+      var len = Math.min(particles.length, 800);
+      for(var i = 0; i < len; i++){
         var p = particles[i];
-        if(animate){
+        if(animate && mouseNear){
           var dx = p.x - mouse.x, dy = p.y - mouse.y;
           var distSq = dx*dx + dy*dy;
-          var REPEL2 = REPEL * REPEL;
-          if(distSq < REPEL2){
+          if(distSq < 4096){
             var dist = Math.sqrt(distSq) || 0.001;
-            var f = (REPEL - dist) / REPEL;
-            var fw = f * 2.2 / dist;
-            p.vx += dx * fw; p.vy += dy * fw;
+            p.vx += (dx / dist) * (1 - dist/64) * 1.8;
+            p.vy += (dy / dist) * (1 - dist/64) * 1.8;
           }
-          p.vx += (p.tx - p.x) * 0.032;
-          p.vy += (p.ty - p.y) * 0.032;
-          p.vx *= 0.92; p.vy *= 0.92;
+          p.vx += (p.tx - p.x) * 0.025;
+          p.vy += (p.ty - p.y) * 0.025;
+          p.vx *= 0.91; p.vy *= 0.91;
           p.x += p.vx; p.y += p.vy;
         }
-        var shimmer = animate ? 0.82 + Math.sin(shimmerPhase + p.ph) * 0.18 : 0.94;
-        ctx.fillStyle = 'rgba(' + p.tint + ',' + Math.max(0.6, shimmer) + ')';
+        var shimmer = animate ? 0.8 + Math.sin(shimmerPhase + p.ph) * 0.15 : 0.92;
+        ctx.fillStyle = 'rgba(' + p.tint + ',' + shimmer + ')';
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.arc(p.x, p.y, p.r, 0, 6.28);
         ctx.fill();
       }
     }
-    if(reduced){
-      requestAnimationFrame(function(){ drawFrame(false); });
-    } else {
-      var frameCount = 0;
+    if(!reduced){
+      // pausar canvas cuando está fuera de viewport
+      new IntersectionObserver(function(entries){
+        canvasVisible = entries[0].isIntersecting;
+        if(!canvasVisible) ctx.clearRect(0, 0, w, h);
+      }, {threshold:.01}).observe(canvas);
+
+      canvas.addEventListener('mouseenter', function(){ mouseNear = true; });
+      canvas.addEventListener('mouseleave', function(){ mouseNear = false; mouse.x = -9999; });
+
       (function tick(){
-        if(++frameCount % 2 === 0) drawFrame(true);
-        else ctx.clearRect(0, 0, w, h);
-        requestAnimationFrame(tick);
+        if(canvasVisible) drawFrame(true);
+        rAF = requestAnimationFrame(tick);
       })();
+    } else {
+      drawFrame(false);
     }
   })();
 
