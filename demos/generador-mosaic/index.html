@@ -160,28 +160,6 @@
     .hero-side{flex-basis:auto}
   }
 
-  /* ---------- carrusel magnético (dock-style) ---------- */
-  .mag-wrap{margin-top:22px}
-  .mag-caption{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
-    color:var(--muted);margin-bottom:12px}
-  .mag-carousel{display:flex;align-items:center;justify-content:center;gap:9px;position:relative;
-    height:190px;overflow:visible;padding:0 4px}
-  .mag-backdrop{position:fixed;inset:0;z-index:40;display:none;
-    background:color-mix(in srgb,var(--cream) 82%,transparent);backdrop-filter:blur(6px)}
-  .mag-backdrop.show{display:block}
-  .mag-bar{flex:none;width:62px;height:170px;background-size:cover;background-position:center;
-    border-radius:12px;cursor:pointer;position:relative;z-index:2;will-change:width,height;
-    box-shadow:0 4px 16px -8px rgba(20,14,10,.35);outline-offset:3px}
-  .mag-bar.is-open{z-index:41}
-  .mag-bar.is-blurred{filter:blur(3px);opacity:.5}
-  .mag-bar.transitioning{transition:width .32s cubic-bezier(.34,1.1,.64,1),height .32s cubic-bezier(.34,1.1,.64,1),
-    filter .32s ease,opacity .32s ease}
-  @media(max-width:880px){
-    .mag-carousel{height:140px;gap:6px}
-    .mag-bar{width:44px;height:130px;border-radius:9px}
-  }
-  @media(prefers-reduced-motion:reduce){.mag-bar{transition:none!important}}
-
   /* ---------- marquee ---------- */
   .marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
     background:var(--paper);padding:14px 0;margin-top:32px}
@@ -192,39 +170,43 @@
   @keyframes mq{to{transform:translateX(-50%)}}
   @media(prefers-reduced-motion:reduce){.mq{animation:none}}
 
-  /* ---------- servicios interactivos ---------- */
+  /* ---------- servicios: filas alternadas (zig-zag) ---------- */
   .servicios{padding:72px 0}
-  .sec-head{margin-bottom:34px}
+  .sec-head{margin-bottom:56px}
   .sec-head h2{font-size:clamp(34px,5vw,58px);letter-spacing:-.02em}
-  .svc-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
-  .svc-tab{position:relative;text-align:left;cursor:pointer;border:1px solid var(--line);background:#fff;
-    border-radius:18px;padding:20px 22px;min-height:120px;display:flex;flex-direction:column;justify-content:space-between;
-    transition:transform .3s cubic-bezier(.22,1,.36,1),border-color .3s ease,background .3s ease}
-  .svc-tab:hover{transform:translateY(-3px)}
-  .svc-tab.is-active{background:var(--accent);border-color:var(--accent)}
-  .svc-tab .svc-name{font-family:var(--display);font-size:clamp(20px,2.4vw,28px);color:var(--ink);transition:color .3s ease}
-  .svc-tab.is-active .svc-name{color:#fff}
-  .svc-tab .svc-num{align-self:flex-end;font-family:var(--mono);font-size:11.5px;font-weight:500;
-    width:34px;height:34px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;
-    color:var(--muted);transition:color .3s ease,border-color .3s ease}
-  .svc-tab.is-active .svc-num{color:#fff;border-color:rgba(255,255,255,.6)}
-  .svc-panel{display:grid;grid-template-columns:1fr 1.15fr;gap:14px;min-height:360px}
-  .svc-detail{position:relative;z-index:0;overflow:hidden;background:#fff;border:1px solid var(--line);border-radius:24px;padding:34px 36px;
-    display:flex;flex-direction:column;justify-content:space-between}
-  .svc-ghost{position:absolute;z-index:-1;top:-6px;right:22px;font-family:var(--display);font-weight:400;
-    font-size:clamp(110px,13vw,190px);line-height:1;color:color-mix(in srgb,var(--gold) 16%,transparent);
-    font-variant-numeric:tabular-nums;user-select:none}
-  .svc-detail h3{font-size:clamp(30px,4vw,50px);letter-spacing:-.02em;white-space:pre-line}
-  .svc-detail .d-desc{color:var(--soft);font-size:16px;margin-top:14px;max-width:42ch}
-  .svc-detail .d-tags{font-family:var(--mono);font-size:12.5px;font-weight:500;color:var(--accent);margin-top:24px;letter-spacing:.03em}
-  .svc-img{border-radius:24px;overflow:hidden}
-  .svc-img img{width:100%;height:100%;min-height:280px;object-fit:cover}
-  .fade{opacity:0;transform:translateY(10px);transition:opacity .45s cubic-bezier(.16,1,.3,1),transform .45s cubic-bezier(.16,1,.3,1)}
-  .fade.in{opacity:1;transform:none}
-  @media(max-width:880px){
-    .svc-tabs{grid-template-columns:1fr 1fr}
-    .svc-panel{grid-template-columns:1fr}
-    .svc-img img{min-height:220px}
+  /* subrayado a mano bajo la palabra clave, se traza al entrar en vista */
+  .brush{position:relative;display:inline-block;padding-bottom:.1em}
+  .brush svg{position:absolute;left:-4%;bottom:-.05em;width:108%;height:.4em;overflow:visible}
+  .brush path{fill:none;stroke:var(--accent);stroke-width:6;stroke-linecap:round;
+    stroke-dasharray:340;stroke-dashoffset:340;transition:stroke-dashoffset 1.1s cubic-bezier(.5,0,.2,1) .55s}
+  .js .sec-head.reveal.in .brush path{stroke-dashoffset:0}
+
+  .svc-rows{display:flex;flex-direction:column;gap:clamp(56px,8vw,100px)}
+  .svc-row{display:flex;align-items:center;gap:clamp(32px,5vw,72px)}
+  .svc-row:nth-child(even){flex-direction:row-reverse}
+  .svc-row-media{flex:0 0 45%;min-width:0}
+  .svc-row-media img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:22px;display:block}
+  .svc-row-text{flex:1 1 auto;min-width:0;max-width:48ch}
+  .svc-row-num{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.13em;color:var(--muted)}
+  .svc-row-text h3{font-size:clamp(28px,3.4vw,42px);letter-spacing:-.02em;margin:12px 0 16px}
+  .svc-row-desc{color:var(--soft);font-size:16.5px;line-height:1.6}
+  .svc-row-tags{font-family:var(--mono);font-size:12.5px;font-weight:500;color:var(--accent);margin-top:22px;letter-spacing:.03em}
+  /* la imagen entra deslizándose desde su lado; el resto de la fila hereda el alzado de .reveal */
+  .js .svc-row-media{transition:transform 1s cubic-bezier(.22,1,.36,1),opacity .8s ease}
+  .js .svc-row:not(.in) .svc-row-media{opacity:0}
+  .svc-row:nth-child(odd) .svc-row-media{transform:translateX(-30px)}
+  .svc-row:nth-child(even) .svc-row-media{transform:translateX(30px)}
+  .js .svc-row.in .svc-row-media{transform:none;opacity:1}
+  @media(max-width:820px){
+    .svc-row,.svc-row:nth-child(even){flex-direction:column;align-items:stretch}
+    .svc-row-media{flex-basis:auto}
+    .svc-row-media img{aspect-ratio:16/10}
+    .svc-row:nth-child(odd) .svc-row-media,.svc-row:nth-child(even) .svc-row-media{transform:translateY(20px)}
+    .js .svc-row.in .svc-row-media{transform:none}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .brush path{transition:none;stroke-dashoffset:0}
+    .js .svc-row-media{transition:none;opacity:1;transform:none}
   }
 
   /* ---------- tarifas ---------- */
@@ -406,14 +388,6 @@
   </div>
 </header>
 
-<div class="mag-wrap reveal">
-    <p class="mag-caption">Pasa el cursor — cada corte, en detalle</p>
-    <div class="mag-carousel" id="magCarousel">
-      <div class="mag-backdrop" id="magBackdrop"></div>
-      <div class="mag-bar" data-i="0" role="img" aria-label="woman in white shirt standing near black leather chairs" style="background-image:url('https://images.unsplash.com/photo-1626383137804-ff908d2753a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8M3x8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080')"></div><div class="mag-bar" data-i="1" role="img" aria-label="A hair salon interior with hair products and clients." style="background-image:url('https://images.unsplash.com/photo-1746723378067-83a345ff3160?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8NHx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080')"></div><div class="mag-bar" data-i="2" role="img" aria-label="a hair salon with chairs and neon signs" style="background-image:url('https://images.unsplash.com/photo-1637777277337-f114350fb088?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8NXx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080')"></div><div class="mag-bar" data-i="3" role="img" aria-label="black and gray chair beside white wall" style="background-image:url('https://images.unsplash.com/photo-1626383120723-2a941488860d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8Nnx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080')"></div><div class="mag-bar" data-i="4" role="img" aria-label="Barbers cutting hair in a modern salon" style="background-image:url('https://images.unsplash.com/photo-1776850476481-2bccba2e35c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8N3x8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080')"></div><div class="mag-bar" data-i="5" role="img" aria-label="Two barbers stand at the entrance of a shop." style="background-image:url('https://images.unsplash.com/photo-1759134155377-4207d89b39ec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8OXx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080')"></div><div class="mag-bar" data-i="6" role="img" aria-label="An empty barbershop interior with several chairs and mirrors." style="background-image:url('https://images.unsplash.com/photo-1781455793310-8427c96454c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8MTB8fGhhaXIlMjBzYWxvbiUyMGludGVyaW9yfGVufDB8MHx8fDE3ODQ5MTA3ODd8MA&ixlib=rb-4.1.0&q=80&w=1080')"></div>
-    </div>
-  </div>
-
 <div class="marquee" aria-hidden="true">
   <div class="mq-shift" id="mqShift"><div class="mq"><span>Corte</span><span class="dot">·</span><span>Color</span><span class="dot">·</span><span>Mechas</span><span class="dot">·</span><span>Brillo</span><span class="dot">·</span><span>Estilo</span><span class="dot">·</span><span>Cuidado</span><span class="dot">·</span><span>Corte</span><span class="dot">·</span><span>Color</span><span class="dot">·</span><span>Mechas</span><span class="dot">·</span><span>Brillo</span><span class="dot">·</span><span>Estilo</span><span class="dot">·</span><span>Cuidado</span><span class="dot">·</span></div></div>
 </div>
@@ -422,29 +396,33 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">Servicios</span>
-      <h2><span class="ln"><span>Lo que hacemos</span></span></h2>
+      <h2><span class="ln"><span>Lo que <span class="brush">hacemos<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M4,13 C60,4 110,17 160,9 C210,2 250,14 296,7"/></svg></span></span></span></h2>
     </div>
-    <div class="svc-tabs reveal"><button type="button" class="svc-tab is-active" data-i="0">
-        <span class="svc-name">Corte y peinado</span>
-        <span class="svc-num">01</span>
-      </button><button type="button" class="svc-tab" data-i="1">
-        <span class="svc-name">Color y mechas</span>
-        <span class="svc-num">02</span>
-      </button><button type="button" class="svc-tab" data-i="2">
-        <span class="svc-name">Tratamientos</span>
-        <span class="svc-num">03</span>
-      </button></div>
-    <div class="svc-panel reveal">
-      <div class="svc-detail">
-        <span class="svc-ghost" id="svc-ghost" aria-hidden="true"></span>
-        <div>
-          <h3 id="svc-title"></h3>
-          <p class="d-desc" id="svc-desc"></p>
+    <div class="svc-rows"><div class="svc-row reveal" style="--i:0">
+        <div class="svc-row-media"><img src="https://images.unsplash.com/photo-1746723378067-83a345ff3160?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8NHx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="A hair salon interior with hair products and clients." loading="lazy" decoding="async"></div>
+        <div class="svc-row-text">
+          <span class="svc-row-num">01</span>
+          <h3>Corte y peinado</h3>
+          <p class="svc-row-desc">Asesoramiento personalizado según tu estilo, tu rostro y tu día a día.</p>
+          <p class="svc-row-tags">Corte mujer · Corte hombre · Flequillos · Recogidos</p>
         </div>
-        <p class="d-tags" id="svc-tags"></p>
-      </div>
-      <div class="svc-img"><img id="svc-img" src="" alt="" loading="lazy" decoding="async"></div>
-    </div>
+      </div><div class="svc-row reveal" style="--i:1">
+        <div class="svc-row-media"><img src="https://images.unsplash.com/photo-1637777277337-f114350fb088?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8NXx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="a hair salon with chairs and neon signs" loading="lazy" decoding="async"></div>
+        <div class="svc-row-text">
+          <span class="svc-row-num">02</span>
+          <h3>Color y mechas</h3>
+          <p class="svc-row-desc">Coloración profesional, balayage y babylights con productos que cuidan.</p>
+          <p class="svc-row-tags">Balayage · Babylights · Rubios fríos · Color raíz</p>
+        </div>
+      </div><div class="svc-row reveal" style="--i:2">
+        <div class="svc-row-media"><img src="https://images.unsplash.com/photo-1626383120723-2a941488860d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8Nnx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="black and gray chair beside white wall" loading="lazy" decoding="async"></div>
+        <div class="svc-row-text">
+          <span class="svc-row-num">03</span>
+          <h3>Tratamientos</h3>
+          <p class="svc-row-desc">Hidratación profunda, keratina y rituales de brillo para un pelo sano.</p>
+          <p class="svc-row-tags">Hidratación · Keratina · Detox capilar · Brillo</p>
+        </div>
+      </div></div>
   </div>
 </section>
 
@@ -764,136 +742,6 @@
     });
   }
 
-  // servicios seleccionables con fade
-  var SVC = [{"title":"Corte y peinado","desc":"Asesoramiento personalizado según tu estilo, tu rostro y tu día a día.","tags":"Corte mujer · Corte hombre · Flequillos · Recogidos","img":"https://images.unsplash.com/photo-1746723378067-83a345ff3160?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8NHx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080","alt":"A hair salon interior with hair products and clients."},{"title":"Color y mechas","desc":"Coloración profesional, balayage y babylights con productos que cuidan.","tags":"Balayage · Babylights · Rubios fríos · Color raíz","img":"https://images.unsplash.com/photo-1637777277337-f114350fb088?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8NXx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080","alt":"a hair salon with chairs and neon signs"},{"title":"Tratamientos","desc":"Hidratación profunda, keratina y rituales de brillo para un pelo sano.","tags":"Hidratación · Keratina · Detox capilar · Brillo","img":"https://images.unsplash.com/photo-1626383120723-2a941488860d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDAzMDYwfDB8MXxzZWFyY2h8Nnx8aGFpciUyMHNhbG9uJTIwaW50ZXJpb3J8ZW58MHwwfHx8MTc4NDkxMDc4N3ww&ixlib=rb-4.1.0&q=80&w=1080","alt":"black and gray chair beside white wall"}];
-  var elT = document.getElementById('svc-title');
-  var elD = document.getElementById('svc-desc');
-  var elG = document.getElementById('svc-tags');
-  var elI = document.getElementById('svc-img');
-  var elN = document.getElementById('svc-ghost');
-  var panel = elT.closest('.svc-panel');
-  function paint(i){
-    var s = SVC[i]; if(!s) return;
-    elT.textContent = s.title.replace(/ /,'\n');
-    elD.textContent = s.desc;
-    elG.textContent = s.tags;
-    elI.src = s.img; elI.alt = s.alt;
-    elN.textContent = String(i+1).padStart(2,'0');
-    panel.classList.remove('in');
-    requestAnimationFrame(function(){ requestAnimationFrame(function(){ panel.classList.add('in'); }); });
-  }
-  panel.classList.add('fade');
-  document.querySelectorAll('.svc-tab').forEach(function(t){
-    t.addEventListener('click', function(){
-      document.querySelectorAll('.svc-tab').forEach(function(x){ x.classList.remove('is-active'); });
-      t.classList.add('is-active');
-      paint(parseInt(t.getAttribute('data-i'),10));
-    });
-  });
-  paint(0);
-
-  // carrusel magnético (dock-style): magnifica la barra bajo el cursor y sus
-  // vecinas por proximidad, con un bucle de easing continuo (rAF) en vez de
-  // transición CSS — para que el tamaño siga al ratón sin tirones.
-  var magCarousel = document.getElementById('magCarousel');
-  if(magCarousel){
-    var magBars = Array.prototype.slice.call(magCarousel.querySelectorAll('.mag-bar'));
-    var magBackdrop = document.getElementById('magBackdrop');
-    var N = magBars.length;
-    var COLLAPSED_W = window.innerWidth <= 880 ? 44 : 62;
-    var COLLAPSED_H = window.innerWidth <= 880 ? 130 : 170;
-    var HOVER_W = COLLAPSED_W * 1.7;
-    var HOVER_H = COLLAPSED_H * 1.1;
-    var GAP = window.innerWidth <= 880 ? 6 : 9;
-    var INFLUENCE = 130;
-    var OPEN_SIZE = Math.min(420, window.innerWidth * 0.86);
-
-    var target = magBars.map(function(){ return 0; });
-    var cur = magBars.map(function(){ return 0; });
-    var openIndex = null;
-    var magRaf = 0;
-    var closeTimer = null;
-
-    function applySizes(){
-      magBars.forEach(function(el, i){
-        if(openIndex !== null){
-          if(i === openIndex){ el.style.width = OPEN_SIZE + 'px'; el.style.height = OPEN_SIZE + 'px'; }
-          else { el.style.width = COLLAPSED_W + 'px'; el.style.height = COLLAPSED_H + 'px'; }
-        } else {
-          var f = cur[i];
-          el.style.width = (COLLAPSED_W + (HOVER_W - COLLAPSED_W) * f) + 'px';
-          el.style.height = (COLLAPSED_H + (HOVER_H - COLLAPSED_H) * f) + 'px';
-        }
-      });
-    }
-
-    function loop(){
-      var moving = false;
-      for(var i = 0; i < N; i++){
-        var d = target[i] - cur[i];
-        if(Math.abs(d) > 0.001){ cur[i] += d * 0.22; moving = true; }
-        else { cur[i] = target[i]; }
-      }
-      applySizes();
-      magRaf = moving ? requestAnimationFrame(loop) : 0;
-    }
-    function startLoop(){ if(!magRaf) magRaf = requestAnimationFrame(loop); }
-
-    function setTargetFromCursor(clientX){
-      var rect = magCarousel.getBoundingClientRect();
-      var cx = clientX - rect.left;
-      var totalBase = N * COLLAPSED_W + (N - 1) * GAP;
-      var startX = (rect.width - totalBase) / 2;
-      target = magBars.map(function(_, i){
-        var center = startX + i * (COLLAPSED_W + GAP) + COLLAPSED_W / 2;
-        var dist = Math.abs(cx - center);
-        var f = Math.max(0, 1 - dist / INFLUENCE);
-        return f * f * (3 - 2 * f);
-      });
-      startLoop();
-    }
-
-    if(!reduced){
-      magCarousel.addEventListener('mousemove', function(e){
-        if(openIndex !== null) return;
-        setTargetFromCursor(e.clientX);
-      });
-      magCarousel.addEventListener('mouseleave', function(){
-        if(openIndex !== null) return;
-        target = magBars.map(function(){ return 0; });
-        startLoop();
-      });
-    }
-
-    function closeOpen(){
-      magBars.forEach(function(el){ el.classList.add('transitioning'); el.classList.remove('is-blurred'); el.classList.remove('is-open'); });
-      magBackdrop.classList.remove('show');
-      openIndex = null;
-      target = magBars.map(function(){ return 0; });
-      cur = magBars.map(function(){ return 0; });
-      applySizes();
-      clearTimeout(closeTimer);
-      closeTimer = setTimeout(function(){ magBars.forEach(function(el){ el.classList.remove('transitioning'); }); }, 340);
-    }
-
-    magBars.forEach(function(el, i){
-      el.addEventListener('click', function(){
-        if(openIndex === i){ closeOpen(); return; }
-        magBars.forEach(function(x){ x.classList.add('transitioning'); });
-        openIndex = i;
-        magBars.forEach(function(x, j){ x.classList.toggle('is-blurred', j !== i); x.classList.toggle('is-open', j === i); });
-        magBackdrop.classList.add('show');
-        applySizes();
-        clearTimeout(closeTimer);
-        closeTimer = setTimeout(function(){ magBars.forEach(function(x){ x.classList.remove('transitioning'); }); }, 340);
-      });
-      el.setAttribute('tabindex', '0');
-      el.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); el.click(); } });
-    });
-    magBackdrop.addEventListener('click', closeOpen);
-
-    applySizes();
-  }
 
   // parallax de las fotos a sangre + marquee que responde a la velocidad del
   // scroll. Un solo rAF gobierna ambos: leer scrollY en el evento y escribir
