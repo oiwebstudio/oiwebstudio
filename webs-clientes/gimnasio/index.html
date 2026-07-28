@@ -197,7 +197,7 @@
   .sticky-cta .info b{font-family:var(--disp);font-size:16px;letter-spacing:.5px;}
   .sticky-cta .info span{font-family:var(--ui);font-size:11px;color:var(--volt);text-transform:uppercase;letter-spacing:.06em;}
   @media(max-width:560px){ .sticky-cta .info span{display:none;} .sticky-cta{padding-left:16px;} }
-  @media(max-width:640px){ .sticky-cta{bottom:100px;} }
+  @media(max-width:640px){ .sticky-cta{bottom:100px;padding:6px 6px 6px 14px;gap:8px;} .sticky-cta .btn{padding:9px 15px !important;font-size:12.5px !important;} .sticky-cta .info b{font-size:12.5px;} .sticky-cta .thumb{width:36px;height:36px;} }
 
   footer{background:#050506;border-top:1px solid var(--line);padding:56px 0 28px;}
   .foot-grid{display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between;align-items:center;}
@@ -473,7 +473,8 @@
     hd.classList.toggle('solid', scrollY > 20);
     var h = document.documentElement;
     progress.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
-    stickyCta.classList.toggle('show', scrollY > innerHeight * 0.6);
+    var nearBottom = (scrollY + innerHeight) > (document.documentElement.scrollHeight - 160);
+    stickyCta.classList.toggle('show', scrollY > innerHeight * 0.6 && !nearBottom);
     if (heroBg && !reduceMotion && scrollY < innerHeight) {
       heroBg.style.transform = 'translateY(' + (scrollY * 0.25) + 'px)';
     }

@@ -73,7 +73,7 @@
   .sticky-cta .info b{font-size:14px;}
   .sticky-cta .info span{font-size:12px;color:#b7c1c9;}
   @media(max-width:560px){ .sticky-cta .info span{display:none;} .sticky-cta{padding-left:16px;} }
-  @media(max-width:640px){ .sticky-cta{bottom:100px;} }
+  @media(max-width:640px){ .sticky-cta{bottom:100px;padding:6px 6px 6px 14px;gap:8px;} .sticky-cta .btn{padding:9px 15px !important;font-size:12.5px !important;} .sticky-cta .info b{font-size:12.5px;} .sticky-cta .thumb{width:36px;height:36px;} }
 
   header{position:sticky;top:14px;z-index:50;padding:0 16px;}
   .nav{display:flex;align-items:center;justify-content:space-between;height:66px;background:rgba(255,255,255,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.7);border-radius:999px;max-width:1180px;margin:0 auto;padding:0 10px 0 24px;box-shadow:0 16px 36px -18px rgba(38,51,63,.3);}
@@ -545,7 +545,8 @@
     var h = document.documentElement;
     var pct = h.scrollTop / (h.scrollHeight - h.clientHeight) * 100;
     progress.style.width = pct + '%';
-    stickyCta.classList.toggle('show', scrollY > innerHeight * 0.6);
+    var nearBottom = (scrollY + innerHeight) > (document.documentElement.scrollHeight - 160);
+    stickyCta.classList.toggle('show', scrollY > innerHeight * 0.6 && !nearBottom);
   }, {passive:true});
 
   var reduceMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
