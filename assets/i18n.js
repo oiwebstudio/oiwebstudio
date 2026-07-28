@@ -11,6 +11,7 @@ const EU = {
   nav_sobre: "Niri buruz",
   nav_trabajos: "Lanak",
   nav_precios: "Prezioak",
+  nav_zonas: "Eremuak",
   nav_chatbot: "Txatbota",
   nav_articulos: "Artikuluak",
   nav_contacto: "Kontaktua",
