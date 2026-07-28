@@ -172,6 +172,20 @@ const pic = (key, cls, alt, eager) => {
   return `<picture><source srcset="${UP}assets/${file}.webp" type="image/webp"/><img src="${UP}assets/${file}.jpg" alt="${alt || label + ', web para negocio local diseñada por OI Studio'}" width="900" height="562"${cls ? ` class="${cls}"` : ''}${eager ? ' fetchpriority="high"' : ' loading="lazy"'}/></picture>`;
 };
 
+/* Fotos de tema (Unsplash, vía assets/stock/) para el hero de cada zona —
+   nada de capturas de webs ahí arriba. El mosaico de portfolio, más abajo,
+   sí sigue enseñando las webs reales: es justo lo que demuestra ese bloque. */
+const STOCK_COUNT = { pan: 4, gym: 2, cafe: 3, pelu: 3, flor: 2, rest: 3, taller: 3, vet: 2 };
+const stockFile = (key, seed) => {
+  const n = STOCK_COUNT[key];
+  const i = (seed % n) + 1;
+  return `sec-${key}-${i}`;
+};
+const stockPic = (key, seed, alt, eager) => {
+  const file = stockFile(key, seed);
+  return `<picture><source srcset="${UP}assets/stock/${file}.webp" type="image/webp"/><img src="${UP}assets/stock/${file}.jpg" alt="${alt}" width="1000" height="700"${eager ? ' fetchpriority="high"' : ' loading="lazy"'}/></picture>`;
+};
+
 /* CSS propio de las páginas de zona: compacto, sin huecos muertos */
 const ZONA_CSS = `
   .zh{padding:118px 0 0;}
@@ -398,7 +412,8 @@ const footer = () => `<footer class="footer">
 if (!fs.existsSync(OUT)) fs.mkdirSync(OUT);
 
 // ---------- páginas de localidad ----------
-for (const z of ZONAS) {
+ZONAS.forEach((z, zIdx) => {
+  const heroFile = stockFile(z.hero, zIdx);
   const canonical = `https://oiwebstudio.com/zonas/${z.slug}.html`;
   const title = `Diseño web en ${z.name} — Páginas web para negocios | OI Studio`;
   const desc = `Diseño y desarrollo de páginas web para negocios de ${z.name} (${z.comarca}). Precio cerrado desde 199€, propuesta en 48h. Estudio en Tolosa, a ${z.dist}.`;
@@ -422,7 +437,7 @@ for (const z of ZONAS) {
 <meta property="og:url" content="${canonical}"/>
 <meta property="og:title" content="${title}"/>
 <meta property="og:description" content="${desc}"/>
-<meta property="og:image" content="https://oiwebstudio.com/assets/${IMG[z.hero][0]}.jpg"/>
+<meta property="og:image" content="https://oiwebstudio.com/assets/stock/${heroFile}.jpg"/>
 <meta property="og:locale" content="es_ES"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <link rel="canonical" href="${canonical}"/>
@@ -444,7 +459,7 @@ for (const z of ZONAS) {
   "@type":"ProfessionalService",
   "name":"OI Studio — Diseño web en ${z.name}",
   "url":"${canonical}",
-  "image":"https://oiwebstudio.com/assets/${IMG[z.hero][0]}.jpg",
+  "image":"https://oiwebstudio.com/assets/stock/${heroFile}.jpg",
   "description":${JSON.stringify(desc)},
   "email":"contactoiwebstudio@gmail.com",
   "telephone":"+34680956755",
@@ -490,8 +505,8 @@ ${navLink()}
 </div>
 </div>
 <div class="zh__shot" data-anim="clip">
-${pic(z.hero, null, `${IMG[z.hero][1]} — ejemplo de web para un negocio de ${z.name}`, true)}
-<span class="zh__tag">${IMG[z.hero][1]} · proyecto real</span>
+${stockPic(z.hero, zIdx, `${IMG[z.hero][1]} en ${z.name}`, true)}
+<span class="zh__tag">${IMG[z.hero][1]}</span>
 </div>
 </div>
 
@@ -578,6 +593,6 @@ ${footer()}`;
 
   fs.writeFileSync(path.join(OUT, `${z.slug}.html`), html, 'utf8');
   console.log(`✓ zonas/${z.slug}.html`);
-}
+});
 console.log(`\n${ZONAS.length} páginas en /zonas/`);
-module.exports = { ZONAS, IMG };
+module.exports = { ZONAS, IMG, stockFile };
