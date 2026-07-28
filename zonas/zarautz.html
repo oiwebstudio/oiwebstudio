@@ -61,7 +61,7 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap"/>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
 <noscript><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap" rel="stylesheet"/></noscript>
-<link rel="stylesheet" href="../assets/styles.css?v=10"/>
+<link rel="stylesheet" href="../assets/styles.css?v=11"/>
 <style>
   .zh{padding:118px 0 0;}
   .zh__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;}
@@ -144,7 +144,60 @@
   .zcard__b{padding:15px 17px 17px;}
   .zcard__b h3{font-size:17px;margin:0;letter-spacing:-.015em;}
   .zcard__meta{font-family:var(--font-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--terra);margin-top:5px;}
-  .zcard__b p{font-size:13.5px;color:var(--text-muted);line-height:1.55;margin:9px 0 0;}</style>
+  .zcard__b p{font-size:13.5px;color:var(--text-muted);line-height:1.55;margin:9px 0 0;}
+
+  /* ── Animaciones de entrada (biblioteca-animaciones) ──────────────────
+     El observador de main.js pone .is-in al entrar en pantalla.          */
+
+  /* img-clip-reveal — la captura se descubre de arriba abajo.
+     El clip va en el <picture> interior, no en el elemento observado:
+     Chromium considera que un elemento totalmente recortado por clip-path
+     no intersecta, y el IntersectionObserver nunca llegaba a dispararlo. */
+  [data-anim="clip"] picture{display:block;clip-path:inset(0 0 100% 0);transition:clip-path 1s cubic-bezier(.4,0,.2,1);}
+  [data-anim="clip"].is-in picture{clip-path:inset(0 0 0 0);}
+
+  /* img-grid-assemble — el mosaico se ensambla desde arriba y abajo */
+  [data-anim="assemble"] .zshot{opacity:0;transition:opacity .6s ease,transform .75s cubic-bezier(.3,1.3,.4,1);}
+  [data-anim="assemble"] .zshot:nth-child(odd){transform:translateY(34px) scale(.92);}
+  [data-anim="assemble"] .zshot:nth-child(even){transform:translateY(-34px) scale(.92);}
+  [data-anim="assemble"].is-in .zshot{opacity:1;transform:none;}
+  [data-anim="assemble"] .zshot:nth-child(2){transition-delay:.09s;}
+  [data-anim="assemble"] .zshot:nth-child(3){transition-delay:.18s;}
+
+  /* Entrada suave hacia arriba para bloques de texto */
+  [data-anim="up"]{opacity:0;transform:translateY(24px);transition:opacity .75s var(--ease),transform .75s var(--ease);}
+  [data-anim="up"].is-in{opacity:1;transform:none;}
+  [data-anim="up"][data-d="1"]{transition-delay:.1s;}
+  [data-anim="up"][data-d="2"]{transition-delay:.2s;}
+
+  /* Cifras del hero, escalonadas */
+  [data-anim="facts"] .zfact{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s var(--ease);}
+  [data-anim="facts"].is-in .zfact{opacity:1;transform:none;}
+  [data-anim="facts"] .zfact:nth-child(2){transition-delay:.08s;}
+  [data-anim="facts"] .zfact:nth-child(3){transition-delay:.16s;}
+  [data-anim="facts"] .zfact:nth-child(4){transition-delay:.24s;}
+
+  /* Chips de sectores, uno detrás de otro */
+  [data-anim="chips"] .zchip{opacity:0;transform:translateY(12px) scale(.96);transition:opacity .45s ease,transform .5s cubic-bezier(.3,1.3,.4,1);}
+  [data-anim="chips"].is-in .zchip{opacity:1;transform:none;}
+  [data-anim="chips"] .zchip:nth-child(2){transition-delay:.06s;}
+  [data-anim="chips"] .zchip:nth-child(3){transition-delay:.12s;}
+  [data-anim="chips"] .zchip:nth-child(4){transition-delay:.18s;}
+  [data-anim="chips"] .zchip:nth-child(5){transition-delay:.24s;}
+  [data-anim="chips"] .zchip:nth-child(6){transition-delay:.3s;}
+
+  /* Pasos del proceso */
+  [data-anim="steps"] .zstep{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .65s var(--ease);}
+  [data-anim="steps"].is-in .zstep{opacity:1;transform:none;}
+  [data-anim="steps"] .zstep:nth-child(2){transition-delay:.09s;}
+  [data-anim="steps"] .zstep:nth-child(3){transition-delay:.18s;}
+  [data-anim="steps"] .zstep:nth-child(4){transition-delay:.27s;}
+
+  @media (prefers-reduced-motion: reduce){
+    [data-anim],[data-anim] picture,[data-anim] .zshot,[data-anim] .zchip,[data-anim] .zfact,[data-anim] .zstep{
+      clip-path:none!important;opacity:1!important;transform:none!important;transition:none!important;
+    }
+  }</style>
 </head>
 <body>
 
@@ -201,13 +254,13 @@
 <a href="../trabajos.html" class="btn btn--ghost">Ver trabajos</a>
 </div>
 </div>
-<div class="zh__shot">
+<div class="zh__shot" data-anim="clip">
 <picture><source srcset="../assets/rest-desk.webp" type="image/webp"/><img src="../assets/rest-desk.jpg" alt="Restaurante — ejemplo de web para un negocio de Zarautz" width="900" height="562" fetchpriority="high"/></picture>
 <span class="zh__tag">Restaurante · proyecto real</span>
 </div>
 </div>
 
-<div class="zfacts">
+<div class="zfacts" data-anim="facts">
 <div class="zfact"><b>35 km</b><span>Desde Tolosa</span></div>
 <div class="zfact"><b>23.000</b><span>Habitantes</span></div>
 <div class="zfact"><b>199€</b><span>Desde, precio cerrado</span></div>
@@ -226,7 +279,7 @@
 </div>
 <div>
 <div class="zhead"><span class="k">Sectores</span><h2>Con quién trabajo</h2></div>
-<div class="zchips">
+<div class="zchips" data-anim="chips">
 <span class="zchip">Hostelería y restauración</span>
 <span class="zchip">Alojamiento y apartamentos</span>
 <span class="zchip">Surf y deporte</span>
@@ -242,7 +295,7 @@
 <section class="zsec--tight zsec" style="padding-top:0;">
 <div class="container">
 <div class="zhead"><span class="k">Portfolio</span><h2>Webs reales, publicadas y navegables</h2></div>
-<div class="zmosaic">
+<div class="zmosaic" data-anim="assemble">
 <a class="zshot" href="../trabajos.html"><picture><source srcset="../assets/rest-desk.webp" type="image/webp"/><img src="../assets/rest-desk.jpg" alt="Restaurante, ejemplo de web para negocio local" width="900" height="562" loading="lazy"/></picture><span class="zshot__lbl">Restaurante</span></a>
 <a class="zshot" href="../trabajos.html"><picture><source srcset="../assets/cafe-desk.webp" type="image/webp"/><img src="../assets/cafe-desk.jpg" alt="Cafetería, ejemplo de web para negocio local" width="900" height="562" loading="lazy"/></picture><span class="zshot__lbl">Cafetería</span></a>
 <a class="zshot" href="../trabajos.html"><picture><source srcset="../assets/gym-desk.webp" type="image/webp"/><img src="../assets/gym-desk.jpg" alt="Gimnasio, ejemplo de web para negocio local" width="900" height="562" loading="lazy"/></picture><span class="zshot__lbl">Gimnasio</span></a>
@@ -254,7 +307,7 @@
 <section class="zsec" style="padding-top:0;">
 <div class="container">
 <div class="zhead"><span class="k">Proceso</span><h2>De la primera llamada a la web publicada</h2></div>
-<div class="zsteps">
+<div class="zsteps" data-anim="steps">
 <div class="zstep"><i>01</i><h3>Hablamos 15 min</h3><p>Entiendo tu negocio en Zarautz y si de verdad puedo ayudarte.</p></div>
 <div class="zstep"><i>02</i><h3>Propuesta en 48h</h3><p>Estructura, referencias y precio cerrado por escrito.</p></div>
 <div class="zstep"><i>03</i><h3>Construyo la web</h3><p>Rápida, adaptada a móvil y con SEO local desde el primer día.</p></div>
@@ -268,7 +321,7 @@
 <div class="zsplit">
 <div>
 <div class="zhead"><span class="k">Dudas</span><h2>Preguntas frecuentes</h2></div>
-<div class="zfaq">
+<div class="zfaq" data-anim="up">
 <details><summary>¿Trabajas con negocios de Zarautz?</summary><p>Sí. El estudio está en Tolosa, a 35 km, y trabajo habitualmente con negocios de Urola Kosta. Las reuniones pueden ser presenciales o por videollamada, como te venga mejor.</p></details>
 <details><summary>¿El precio cambia por estar fuera de Tolosa?</summary><p>No. Precio cerrado e igual para toda Gipuzkoa: Landing desde 199€ y Web Negocio desde 299€, con 30 días de ajustes gratis.</p></details>
 <details><summary>¿Saldré en Google cuando busquen en Zarautz?</summary><p>Todas las webs llevan SEO local orientado a Zarautz. Aparecer arriba depende también de tu ficha de Google Business — lo explico en <a href="../google-business-profile-guia.html">esta guía</a>.</p></details>
@@ -276,7 +329,7 @@
 </div>
 </div>
 <div>
-<div class="zcta">
+<div class="zcta" data-anim="up">
 <div>
 <h2>¿Tienes un negocio en Zarautz?</h2>
 <p>Propuesta con precio cerrado en menos de 48 horas. Gratis y sin compromiso.</p>
@@ -329,7 +382,7 @@
 </footer>
 
 <script src="../assets/i18n.js"></script>
-<script src="../assets/main.js?v=6"></script>
+<script src="../assets/main.js?v=7"></script>
 <a class="wa-float" href="https://wa.me/34680956755?text=Hola%2C%20quiero%20informaci%C3%B3n%20para%20la%20web%20de%20mi%20negocio." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2.05 22l5.27-1.38c1.45.79 3.08 1.21 4.72 1.21 5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.05-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29z"/></svg>
 </a>
