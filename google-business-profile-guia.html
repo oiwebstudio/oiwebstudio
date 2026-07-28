@@ -4,17 +4,19 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="theme-color" content="#f6f3ea"/>
-<title>¿Página Web o Solo Instagram? Lo Que le Pasa a tu Negocio si No Tienes Web</title>
-<meta name="description" content="¿Tu negocio solo tiene Instagram? Descubre por qué depender solo de redes sociales te hace perder clientes que buscan en Google, y qué hacer al respecto."/>
+<title>Google Business Profile: Guía Paso a Paso para Negocios Locales</title>
+<meta name="description" content="Cómo crear y optimizar tu ficha de Google Business paso a paso: categorías, fotos, horarios, reseñas y los errores que te dejan fuera del mapa."/>
+<meta name="keywords" content="Google Business Profile, ficha Google negocio, Google My Business, aparecer en Google Maps, SEO local ficha"/>
+<meta name="robots" content="index, follow"/>
 <meta property="og:type" content="article"/>
 <meta property="og:site_name" content="OI Studio"/>
-<meta property="og:url" content="https://oiwebstudio.com/pagina-web-o-solo-instagram.html"/>
-<meta property="og:title" content="¿Página Web o Solo Instagram? Lo Que le Pasa a tu Negocio si No Tienes Web"/>
-<meta property="og:description" content="Instagram no es tuyo: no controlas el algoritmo, no sales en Google y puedes perderlo todo en un bloqueo. Por qué necesitas web propia."/>
-<meta property="og:image" content="https://oiwebstudio.com/assets/gym-desk.jpg"/>
+<meta property="og:url" content="https://oiwebstudio.com/google-business-profile-guia.html"/>
+<meta property="og:title" content="Google Business Profile: Guía Paso a Paso para Negocios Locales"/>
+<meta property="og:description" content="La ficha de Google decide si sales en el mapa. Guía práctica para configurarla bien."/>
+<meta property="og:image" content="https://oiwebstudio.com/assets/vet-desk.jpg"/>
 <meta property="og:locale" content="es_ES"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<link rel="canonical" href="https://oiwebstudio.com/pagina-web-o-solo-instagram.html"/>
+<link rel="canonical" href="https://oiwebstudio.com/google-business-profile-guia.html"/>
 <link rel="icon" href="assets/logo-mark-bw.png" type="image/png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -32,13 +34,12 @@
   .art-hero .lede{font-size:18.5px;color:var(--text-muted);margin-top:18px;max-width:58ch;line-height:1.65;}
   .art-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;font-family:var(--font-mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-faint);}
   .art-meta span{display:inline-flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-pill);padding:8px 14px;}
-
   .art{max-width:760px;margin:0 auto;padding:26px 0 40px;}
   .art h2{font-size:clamp(25px,3.4vw,33px);letter-spacing:-.015em;margin:54px 0 16px;line-height:1.15;}
   .art h3{font-size:19px;margin:32px 0 10px;color:var(--ink);}
   .art p{color:var(--text-muted);line-height:1.75;margin:0 0 16px;font-size:16.5px;}
   .art p strong{color:var(--ink);}
-  .art ul{margin:0 0 18px;padding-left:22px;color:var(--text-muted);line-height:1.75;font-size:16.5px;}
+  .art ul,.art ol{margin:0 0 18px;padding-left:22px;color:var(--text-muted);line-height:1.75;font-size:16.5px;}
   .art li{margin-bottom:8px;}
   .art li strong{color:var(--ink);}
   .art a{color:var(--terra);text-decoration:underline;text-underline-offset:3px;}
@@ -50,10 +51,6 @@
   .browser__dots{display:flex;gap:6px;}
   .browser__dots i{width:10px;height:10px;border-radius:50%;background:var(--border-strong);}
   .browser__url{flex:1;text-align:center;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;color:var(--text-faint);background:var(--bg,#f6f3ea);border:1px solid var(--border);border-radius:var(--r-pill);padding:5px 14px;max-width:280px;margin:0 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-  .shots{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:28px 0;}
-  .shots figure{margin:0;}
-  @media(max-width:640px){.shots{grid-template-columns:1fr;}}
-
   .tbl-wrap{overflow-x:auto;margin:26px 0;}
   .tbl{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);overflow:hidden;font-size:15px;min-width:520px;}
   .tbl th{font-family:var(--font-mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;text-align:left;color:var(--text-faint);padding:14px 16px;border-bottom:1px solid var(--border-strong);background:var(--surface-2);}
@@ -62,23 +59,19 @@
   .tbl td:first-child{color:var(--ink);font-weight:600;}
   .tbl .si{color:var(--ok);font-weight:700;}
   .tbl .no{color:#c25b4a;font-weight:700;}
-
   .dev-tip{background:var(--surface);border:1px solid var(--border-strong);border-left:4px solid var(--terra);border-radius:var(--r-md);padding:22px 24px;margin:30px 0;}
   .dev-tip .who{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
   .dev-tip .who img{width:38px;height:38px;border-radius:50%;}
   .dev-tip .who b{font-size:14px;color:var(--ink);display:block;}
   .dev-tip .who small{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-faint);}
   .dev-tip p{margin:0;font-size:15.5px;font-style:italic;}
-
   .cta-band{background:var(--ink);color:#fff;border-radius:var(--r-md);padding:34px 32px;margin:40px 0;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;}
   .cta-band h3{margin:0 0 6px;font-size:21px;color:#fff;}
   .cta-band p{margin:0;color:#c9c2b2;font-size:15px;max-width:44ch;}
   .cta-band .btn{white-space:nowrap;}
-
   .check{list-style:none;padding:0;margin:22px 0;display:grid;gap:10px;}
   .check li{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:14px 18px 14px 44px;position:relative;margin:0;color:var(--text-muted);font-size:15.5px;}
   .check li::before{content:"✓";position:absolute;left:18px;top:13px;color:var(--ok);font-weight:700;}
-
   .faq-pre{display:grid;gap:12px;margin-top:22px;}
   .faq-pre details{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:4px 22px;}
   .faq-pre details[open]{border-color:var(--border-strong);}
@@ -94,41 +87,31 @@
   "@graph": [
     {
       "@type": "Article",
-      "headline": "¿Página web o solo Instagram? Lo que le pasa a tu negocio si no tienes web",
-      "description": "Por qué depender solo de redes sociales te hace perder clientes que buscan en Google, y qué hacer al respecto.",
-      "image": "https://oiwebstudio.com/assets/gym-desk.jpg",
+      "headline": "Google Business Profile: guía paso a paso para negocios locales",
+      "description": "Cómo crear y optimizar tu ficha de Google Business paso a paso: categorías, fotos, horarios, reseñas y los errores que te dejan fuera del mapa.",
+      "image": "https://oiwebstudio.com/assets/vet-desk.jpg",
       "author": {"@type": "Organization", "name": "OI Studio", "url": "https://oiwebstudio.com/sobre-mi.html"},
       "publisher": {"@type": "Organization", "name": "OI Studio", "logo": {"@type": "ImageObject", "url": "https://oiwebstudio.com/assets/logo-nav-black.png"}},
-      "datePublished": "2026-07-24",
-      "dateModified": "2026-07-24",
-      "mainEntityOfPage": "https://oiwebstudio.com/pagina-web-o-solo-instagram.html",
+      "datePublished": "2026-07-26",
+      "dateModified": "2026-07-26",
+      "mainEntityOfPage": "https://oiwebstudio.com/google-business-profile-guia.html",
       "inLanguage": "es"
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://oiwebstudio.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Web o Instagram", "item": "https://oiwebstudio.com/pagina-web-o-solo-instagram.html"}
+        {"@type": "ListItem", "position": 2, "name": "Artículos", "item": "https://oiwebstudio.com/articulos.html"},
+        {"@type": "ListItem", "position": 3, "name": "Guía de Google Business", "item": "https://oiwebstudio.com/google-business-profile-guia.html"}
       ]
     },
     {
       "@type": "FAQPage",
       "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "¿Instagram sustituye a una página web?",
-          "acceptedAnswer": {"@type": "Answer", "text": "No del todo. Instagram es una buena vitrina y funciona muy bien para mostrar trabajo y conectar con clientes que ya te siguen. Pero no aparece en Google, no la controlas del todo y depende de un algoritmo externo. La combinación ideal es Instagram para conectar y web propia para que te encuentren y confíen en ti."}
-        },
-        {
-          "@type": "Question",
-          "name": "¿Puede Instagram cerrarme la cuenta sin avisar?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Sí, ocurre con más frecuencia de lo que parece: denuncias falsas, errores del sistema automático o cambios de política pueden bloquear una cuenta sin previo aviso. Si esa cuenta es tu único canal, pierdes de golpe seguidores, contenido y forma de contacto."}
-        },
-        {
-          "@type": "Question",
-          "name": "¿Merece la pena tener web si ya tengo muchos seguidores en Instagram?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Sí, precisamente por eso. Los seguidores no son tuyos, son de la plataforma. Una web te permite convertir esos seguidores en clientes con datos que sí controlas (reservas, contactos, reseñas en Google) y aparecer en Google para gente que no te sigue todavía."}
-        }
+        {"@type":"Question","name":"¿Google Business Profile es gratis?","acceptedAnswer":{"@type":"Answer","text":"Sí, crear y mantener la ficha es totalmente gratuito. Google no cobra por aparecer en el mapa ni por posicionar mejor — si alguien te dice lo contrario, desconfía."}},
+        {"@type":"Question","name":"¿Cuánto tarda en verificarse una ficha nueva?","acceptedAnswer":{"@type":"Answer","text":"Depende del método: la verificación por vídeo o llamada puede resolverse en días, y la postal tarda entre una y dos semanas en llegar. Hasta que no está verificada, la ficha no compite en el mapa."}},
+        {"@type":"Question","name":"¿Necesito local físico para tener ficha de Google?","acceptedAnswer":{"@type":"Answer","text":"No necesariamente. Si trabajas a domicilio o das servicio en una zona, puedes crear una ficha de \"área de servicio\" sin mostrar la dirección, indicando los municipios donde trabajas."}},
+        {"@type":"Question","name":"¿Puedo tener ficha de Google sin página web?","acceptedAnswer":{"@type":"Answer","text":"Sí, y es mejor que nada. Pero la ficha y la web se refuerzan: Google confía más en un negocio cuyos datos puede contrastar con una web propia, y la web es donde el cliente acaba de decidirse."}}
       ]
     }
   ]
@@ -180,123 +163,130 @@
 
 <div class="container">
 <header class="art-hero">
-<p class="crumbs"><a href="index.html">Inicio</a> / Web vs Instagram</p>
-<h1>¿Página web o solo Instagram? <em>Lo que nadie te cuenta</em></h1>
-<p class="lede par-cascade">"Ya tengo Instagram, para qué quiero una web" es la frase que más veces oímos antes de perder un cliente potencial. Instagram no está mal — el problema es depender solo de él. Esto es lo que pasa cuando esa es tu única puerta de entrada.</p>
+<p class="crumbs"><a href="index.html">Inicio</a> / <a href="articulos.html">Artículos</a> / Guía de Google Business</p>
+<h1>Tu ficha de Google, <em>bien puesta</em></h1>
+<p class="lede par-cascade">Es gratis, se configura en una tarde y es lo que más mueve tu posición en el mapa local — más que tu web. Aun así, la mayoría de negocios la tienen a medias: sin categoría correcta, con cuatro fotos del año pasado y sin responder a una sola reseña.</p>
 <div class="art-meta">
 <span>Actualizado · Julio 2026</span>
-<span>Lectura · 6 min</span>
+<span>Lectura · 9 min</span>
 <span>Por OI Studio, Tolosa</span>
 </div>
 </header>
 
 <article class="art">
+<h2 id="por-que">Por qué la ficha importa más que la web</h2>
+<p>Cuando alguien busca "veterinario cerca de mí" o "peluquería en Andoain", Google muestra primero un mapa con tres fichas destacadas. Eso se llama <strong>Local Pack</strong>, y se lleva la mayoría de los clics — por encima de cualquier web, incluida la tuya.</p>
+<p>Entrar en esas tres posiciones no depende de lo bonita que sea tu página. Depende de tu ficha de Google Business: lo completa que esté, la distancia al que busca, y las reseñas. Por eso es lo primero que hay que arreglar en cualquier negocio local.</p>
 
-<h2 id="no-es-tuyo">Instagram no es tuyo: es un local alquilado</h2>
-<p>Cuando publicas en Instagram, ese contenido vive en los servidores de Meta, sujeto a sus reglas, su algoritmo y sus decisiones. Tu perfil puede perder alcance de un día para otro por un cambio de algoritmo que no controlas, o directamente puede ser <strong>bloqueado por error</strong> — pasa más de lo que parece, y recuperar una cuenta bloqueada puede llevar semanas sin garantía de éxito.</p>
-<p>Una página web es distinto: el dominio y el hosting están a tu nombre. Nadie puede cerrártela, cambiarle las reglas de un día para otro, ni decidir que ya no la va a mostrar tanto.</p>
+<h2 id="crear">Paso 1: crear o reclamar la ficha</h2>
+<p>Puede que tu negocio ya exista en Google aunque tú no lo hayas creado — Google genera fichas automáticamente a partir de datos públicos. Búscate primero:</p>
+<ol>
+<li>Busca el nombre de tu negocio en Google Maps.</li>
+<li>Si aparece, pulsa <strong>"¿Eres el propietario de esta empresa?"</strong> para reclamarla.</li>
+<li>Si no aparece, créala desde Google Business Profile con tu cuenta de Google.</li>
+<li>Verifica: Google manda una postal, una llamada o un vídeo según el caso. <strong>Sin verificar, no compites.</strong></li>
+</ol>
+
+<h2 id="categoria">Paso 2: la categoría (el campo más importante)</h2>
+<p>La categoría principal le dice a Google en qué búsquedas debe mostrarte. Es el campo que más impacto tiene y el que más gente rellena mal.</p>
+<ul class="check">
+<li><strong>Sé específico.</strong> "Taller de reparación de automóviles" en vez de "Empresa". "Panadería artesanal" en vez de "Tienda de alimentación".</li>
+<li><strong>Una principal, varias secundarias.</strong> La principal es la que más pesa; las secundarias añaden búsquedas sin diluirla.</li>
+<li><strong>No inventes.</strong> Poner categorías que no te corresponden puede suspenderte la ficha.</li>
+</ul>
+
+<h2 id="datos">Paso 3: datos que tienen que coincidir con tu web</h2>
+<p>Google compara los datos de tu ficha con los de tu web y con otros directorios. Si el teléfono o la dirección no coinciden exactamente, desconfía y te baja posiciones. Es lo que en SEO local se llama coherencia NAP (nombre, dirección, teléfono).</p>
 
 <div class="tbl-wrap">
 <table class="tbl">
 <thead>
-<tr><th>Qué necesitas</th><th>Solo Instagram</th><th>Web propia</th></tr>
+<tr><th>Campo</th><th>Qué poner</th><th>Error común</th></tr>
 </thead>
 <tbody>
-<tr><td>Aparecer en búsquedas de Google</td><td class="no">✗</td><td class="si">✓</td></tr>
-<tr><td>Control total del contenido</td><td class="no">Depende de Meta</td><td class="si">100% tuyo</td></tr>
-<tr><td>Reservas o pedidos integrados</td><td class="no">Limitado</td><td class="si">✓</td></tr>
-<tr><td>Riesgo de bloqueo o suspensión</td><td class="no">Real</td><td class="si">Ninguno</td></tr>
-<tr><td>Transmite seriedad a un cliente nuevo</td><td>A medias</td><td class="si">✓</td></tr>
-<tr><td>Funciona sin conexión a redes sociales</td><td class="no">✗</td><td class="si">✓</td></tr>
+<tr><td>Nombre</td><td>El nombre real del negocio</td><td>Meter palabras clave: "Peluquería Ana - la mejor de Tolosa"</td></tr>
+<tr><td>Dirección</td><td>Idéntica a la de tu web</td><td>Abreviar en un sitio y no en otro</td></tr>
+<tr><td>Teléfono</td><td>Un número local y fijo en el tiempo</td><td>Cambiarlo sin actualizar la ficha</td></tr>
+<tr><td>Horario</td><td>Real, con festivos marcados</td><td>Dejarlo desactualizado en vacaciones</td></tr>
+<tr><td>Web</td><td>Tu dominio propio</td><td>Enlazar a un perfil de Facebook</td></tr>
 </tbody>
 </table>
 </div>
 
-<h2 id="google">La razón principal: en Instagram no te encuentran, en Google sí</h2>
-<p>Cuando alguien necesita un servicio <strong>ahora mismo</strong> —un taller, un veterinario de urgencia, una peluquería con hueco esta semana— no abre Instagram y busca por hashtags. Abre Google y escribe "taller cerca de mí" o "veterinario Tolosa". Si ahí solo aparece tu competencia, ese cliente nunca llega a saber que existes, por muy bueno que sea tu contenido en redes.</p>
-<p>Instagram es fantástico para mantener el contacto con quien <strong>ya te conoce</strong>. Pero no resuelve el problema de captar al cliente que todavía no sabe que existes.</p>
+<div class="cta-band">
+<div>
+<h3>¿No sabes si tu ficha está bien puesta?</h3>
+<p>La reviso gratis junto con tu web y te digo qué cambiar, por orden de importancia.</p>
+</div>
+<a class="btn btn--light" href="contacto.html">Pedir revisión gratuita</a>
+</div>
+
+<h2 id="fotos">Paso 4: fotos (mínimo 10, actualizadas)</h2>
+<p>Las fichas con fotos reciben bastantes más clics y peticiones de indicaciones que las que solo tienen el logo. Y no vale cualquier foto:</p>
+<ul>
+<li><strong>Fachada:</strong> para que te reconozcan al llegar. Es más importante de lo que parece.</li>
+<li><strong>Interior:</strong> dos o tres, que se vea el ambiente real.</li>
+<li><strong>Producto o servicio:</strong> lo que vendes, bien iluminado.</li>
+<li><strong>Equipo:</strong> transmite confianza, sobre todo en servicios.</li>
+<li><strong>Sube fotos nuevas cada pocos meses.</strong> Google valora las fichas activas.</li>
+</ul>
 
 <figure>
 <div class="browser">
-<div class="browser__bar"><span class="browser__dots"><i></i><i></i><i></i></span><span class="browser__url">gimnasio · proyecto real</span><span style="width:34px;"></span></div>
-<picture><source srcset="assets/gym-desk.webp" type="image/webp"/><img src="assets/gym-desk.jpg" alt="Web de gimnasio en Tolosa con reservas online, ejemplo de portfolio OI Studio" loading="lazy"/></picture>
+<div class="browser__bar"><span class="browser__dots"><i></i><i></i><i></i></span><span class="browser__url">veterinaria · proyecto real</span><span style="width:34px;"></span></div>
+<picture><source srcset="assets/vet-desk.webp" type="image/webp"/><img src="assets/vet-desk.jpg" alt="Web de veterinaria conectada con su ficha de Google Business, proyecto de OI Studio" width="900" height="562" loading="lazy"/></picture>
 </div>
-<figcaption>Una web propia trabaja para ti 24 horas, incluso cuando no publicas nada nuevo.</figcaption>
+<figcaption>La web y la ficha tienen que contar lo mismo: mismos horarios, mismo teléfono, mismos servicios.</figcaption>
 </figure>
 
-<h2 id="casos">Cuándo Instagram sin web te está costando clientes</h2>
-
+<h2 id="resenas">Paso 5: reseñas, la parte que casi nadie trabaja</h2>
+<p>El número de reseñas, la nota media y la frecuencia con que llegan nuevas son factores directos de posicionamiento en el mapa. Y además deciden si la gente hace clic en ti o en el de al lado.</p>
 <ul class="check">
-<li><strong>Alguien busca tu negocio en Google</strong> y no encuentra nada — asume que has cerrado o que no eres de fiar.</li>
-<li><strong>Un cliente quiere reservar fuera de horario</strong> y en Instagram solo puede mandar un DM que quizá no veas hasta el día siguiente.</li>
-<li><strong>Comparan precios y servicios</strong> entre varios negocios, y tú eres el único sin una página clara donde verlo todo junto.</li>
-<li><strong>Buscan reseñas o referencias</strong> antes de confiar, y no hay nada que enlazar más allá de un perfil.</li>
+<li><strong>Pide la reseña en caliente</strong>, justo después de un buen servicio — no dos semanas después por email.</li>
+<li><strong>Manda el enlace directo</strong> por WhatsApp, que abra la ventana de escribir. "Búscanos en Google" no lo hace nadie.</li>
+<li><strong>Responde a todas</strong>, también a las malas. Una respuesta educada a una crítica genera más confianza que diez cincos sin contestar.</li>
+<li><strong>Nunca compres reseñas.</strong> Google las detecta y penaliza la ficha entera.</li>
 </ul>
 
-<div class="cta-band">
-<div>
-<h3>¿Solo tienes Instagram y quieres dar el salto?</h3>
-<p>Te enviamos una propuesta con precio cerrado en menos de 48 horas. Mantén Instagram, pero deja de depender solo de él.</p>
-</div>
-<a class="btn btn--light" href="contacto.html">Pedir presupuesto gratuito</a>
-</div>
-
-<h2 id="mejor-combo">La combinación que mejor funciona</h2>
-<p>No se trata de elegir uno u otro. Los negocios que mejor funcionan usan cada canal para lo que sirve:</p>
-
-<h3>Instagram: para conectar y mostrar</h3>
-<p>Contenido del día a día, detrás de cámaras, promociones puntuales, conexión directa con quien ya te sigue. Es tu escaparate vivo.</p>
-
-<h3>Web propia: para que te encuentren y confíen</h3>
-<p>Información completa, horarios, precios, reservas, y sobre todo: <strong>visibilidad en Google</strong> para quien todavía no te conoce. Es tu comercial trabajando aunque tú estés atendiendo el negocio.</p>
-
-<p>Y lo mejor: puedes enlazar ambos. Tu web con tu Instagram embebido, tu bio de Instagram con el enlace a tu web. No compiten, se refuerzan.</p>
+<h2 id="errores">Errores que te dejan fuera del mapa</h2>
+<ul>
+<li>Ficha sin verificar (no compite, directamente).</li>
+<li>Meter palabras clave en el nombre del negocio — es motivo de suspensión.</li>
+<li>Dirección distinta a la de la web.</li>
+<li>Categoría genérica tipo "Empresa" o "Servicio".</li>
+<li>Horario sin actualizar en festivos: genera reseñas negativas de gente que se ha desplazado en balde.</li>
+<li>Fichas duplicadas del mismo negocio: se canibalizan entre ellas. Hay que fusionarlas.</li>
+</ul>
 
 <div class="dev-tip">
 <div class="who">
 <img src="assets/logo-mark-bw.png" alt="OI Studio" style="object-fit:contain;background:#fff;border:1px solid var(--border);"/>
 <div><b>Consejo del desarrollador</b><small>OI Studio · Tolosa</small></div>
 </div>
-<p>"He visto negocios con 5.000 seguidores en Instagram perder clientes frente a otro con la mitad de seguidores pero con web propia bien indexada en Google. La razón es simple: el cliente que busca por necesidad no pasa por Instagram, pasa por el buscador. Si no estás ahí, para él no existes."</p>
+<p>"Si tienes que elegir entre gastar dinero en una web nueva o media hora en dejar la ficha de Google perfecta, empieza por la ficha. Es gratis y el efecto se nota en días. La web viene después, para convertir en cliente al que llega desde ahí."</p>
 </div>
-
-<div class="shots">
-<figure>
-<div class="browser">
-<div class="browser__bar"><span class="browser__dots"><i></i><i></i><i></i></span><span class="browser__url">restaurante · proyecto real</span></div>
-<picture><source srcset="assets/rest-desk.webp" type="image/webp"/><img src="assets/rest-desk.jpg" alt="Web de restaurante en Tolosa con reservas, complementa Instagram como canal de captación" loading="lazy"/></picture>
-</div>
-<figcaption>Restaurante con reservas directas desde la web, sin depender solo de DMs.</figcaption>
-</figure>
-<figure>
-<div class="browser">
-<div class="browser__bar"><span class="browser__dots"><i></i><i></i><i></i></span><span class="browser__url">peluquería · proyecto real</span></div>
-<picture><source srcset="assets/pelu-desk.webp" type="image/webp"/><img src="assets/pelu-desk.jpg" alt="Web de peluquería en Tolosa que complementa su Instagram con reservas propias" loading="lazy"/></picture>
-</div>
-<figcaption>Peluquería con Instagram activo y web propia para reservas y SEO.</figcaption>
-</figure>
-</div>
-<p style="text-align:center;font-size:14px;color:var(--text-faint);margin-top:-6px;">Todas estas webs están online y navegables en <a href="trabajos.html">nuestra página de trabajos</a>.</p>
 
 <h2 id="faq">Preguntas frecuentes</h2>
 <div class="faq-pre">
 <details>
-<summary>¿Instagram sustituye a una página web?</summary>
-<p>No del todo. Instagram es una buena vitrina y funciona muy bien para mostrar trabajo y conectar con clientes que ya te siguen. Pero no aparece en Google, no la controlas del todo y depende de un algoritmo externo. La combinación ideal es Instagram para conectar y web propia para que te encuentren y confíen en ti.</p>
+<summary>¿Google Business Profile es gratis?</summary>
+<p>Sí, crear y mantener la ficha es totalmente gratuito. Google no cobra por aparecer en el mapa ni por posicionar mejor — si alguien te dice lo contrario, desconfía.</p>
 </details>
 <details>
-<summary>¿Puede Instagram cerrarme la cuenta sin avisar?</summary>
-<p>Sí, ocurre con más frecuencia de lo que parece: denuncias falsas, errores del sistema automático o cambios de política pueden bloquear una cuenta sin previo aviso. Si esa cuenta es tu único canal, pierdes de golpe seguidores, contenido y forma de contacto.</p>
+<summary>¿Cuánto tarda en verificarse una ficha nueva?</summary>
+<p>Depende del método: la verificación por vídeo o llamada puede resolverse en días, y la postal tarda entre una y dos semanas en llegar. Hasta que no está verificada, la ficha no compite en el mapa.</p>
 </details>
 <details>
-<summary>¿Merece la pena tener web si ya tengo muchos seguidores en Instagram?</summary>
-<p>Sí, precisamente por eso. Los seguidores no son tuyos, son de la plataforma. Una web te permite convertir esos seguidores en clientes con datos que sí controlas y aparecer en Google para gente que no te sigue todavía.</p>
+<summary>¿Necesito local físico para tener ficha de Google?</summary>
+<p>No necesariamente. Si trabajas a domicilio o das servicio en una zona, puedes crear una ficha de "área de servicio" sin mostrar la dirección, indicando los municipios donde trabajas.</p>
+</details>
+<details>
+<summary>¿Puedo tener ficha de Google sin página web?</summary>
+<p>Sí, y es mejor que nada. Pero la ficha y la web se refuerzan: Google confía más en un negocio cuyos datos puede contrastar con una web propia, y la web es donde el cliente acaba de decidirse.</p>
 </details>
 </div>
 
-<p style="margin-top:40px;">¿Quieres mantener Instagram y sumar una web que trabaje para ti en Google? <a href="contacto.html">Escríbenos</a>, o mira antes <a href="trabajos.html">los proyectos reales que tenemos publicados</a> y <a href="precios.html">nuestros precios cerrados</a>.</p>
-
-<p>Sigue leyendo: <a href="seo-local-tolosa-google-maps.html">cómo aparecer en Google cuando buscan tu negocio en Tolosa</a> y <a href="precio-diseno-web-profesional.html">cuánto cuesta realmente una web profesional</a>.</p>
+<p style="margin-top:40px;">Si quieres que revise tu ficha y tu web juntos, <a href="contacto.html">escríbeme</a> y te digo gratis qué falta. También te puede interesar <a href="seo-local-tolosa-google-maps.html">la guía completa de SEO local</a> o ver <a href="zonas.html">las zonas donde trabajo</a>.</p>
 
 </article>
 </div>
@@ -315,7 +305,6 @@
 <li><a href="trabajos.html" data-t="foot_portfolio">Portfolio</a></li>
 <li><a href="precios.html" data-t="nav_precios">Precios</a></li>
 <li><a href="zonas.html" data-t="nav_zonas">Zonas</a></li>
-<li><a href="chatbot-reservas.html" data-t="nav_chatbot">Chatbot</a></li>
 <li><a href="articulos.html" data-t="nav_articulos">Artículos</a></li>
 <li><a href="contacto.html" data-t="nav_contacto">Contacto</a></li>
 </ul>
@@ -340,7 +329,7 @@
 
 <script src="assets/i18n.js"></script>
 <script src="assets/main.js?v=6"></script>
-<a class="wa-float" href="https://wa.me/34680956755?text=Hola%2C%20he%20leido%20el%20articulo%20de%20web%20vs%20instagram%20y%20quiero%20un%20presupuesto." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+<a class="wa-float" href="https://wa.me/34680956755?text=Hola%2C%20he%20leido%20un%20articulo%20de%20vuestra%20web%20y%20quiero%20mas%20informaci%C3%B3n." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2.05 22l5.27-1.38c1.45.79 3.08 1.21 4.72 1.21 5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.05-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29z"/></svg>
 </a>
 </body>
