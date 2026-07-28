@@ -11,8 +11,8 @@ const path = require('path');
 const OUT = 'zonas';
 const UP = '../';                       // las páginas viven un nivel más abajo
 const FONTS = 'https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap';
-const CSS_V = UP + 'assets/styles.css?v=10';
-const JS_V = UP + 'assets/main.js?v=6';
+const CSS_V = UP + 'assets/styles.css?v=11';
+const JS_V = UP + 'assets/main.js?v=7';
 
 const ZONAS = [
   { slug:'ibarra', name:'Ibarra', comarca:'Tolosaldea', dist:'2 km', pob:'4.300',
@@ -255,7 +255,60 @@ const ZONA_CSS = `
   .zcard__b{padding:15px 17px 17px;}
   .zcard__b h3{font-size:17px;margin:0;letter-spacing:-.015em;}
   .zcard__meta{font-family:var(--font-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--terra);margin-top:5px;}
-  .zcard__b p{font-size:13.5px;color:var(--text-muted);line-height:1.55;margin:9px 0 0;}`;
+  .zcard__b p{font-size:13.5px;color:var(--text-muted);line-height:1.55;margin:9px 0 0;}
+
+  /* ── Animaciones de entrada (biblioteca-animaciones) ──────────────────
+     El observador de main.js pone .is-in al entrar en pantalla.          */
+
+  /* img-clip-reveal — la captura se descubre de arriba abajo.
+     El clip va en el <picture> interior, no en el elemento observado:
+     Chromium considera que un elemento totalmente recortado por clip-path
+     no intersecta, y el IntersectionObserver nunca llegaba a dispararlo. */
+  [data-anim="clip"] picture{display:block;clip-path:inset(0 0 100% 0);transition:clip-path 1s cubic-bezier(.4,0,.2,1);}
+  [data-anim="clip"].is-in picture{clip-path:inset(0 0 0 0);}
+
+  /* img-grid-assemble — el mosaico se ensambla desde arriba y abajo */
+  [data-anim="assemble"] .zshot{opacity:0;transition:opacity .6s ease,transform .75s cubic-bezier(.3,1.3,.4,1);}
+  [data-anim="assemble"] .zshot:nth-child(odd){transform:translateY(34px) scale(.92);}
+  [data-anim="assemble"] .zshot:nth-child(even){transform:translateY(-34px) scale(.92);}
+  [data-anim="assemble"].is-in .zshot{opacity:1;transform:none;}
+  [data-anim="assemble"] .zshot:nth-child(2){transition-delay:.09s;}
+  [data-anim="assemble"] .zshot:nth-child(3){transition-delay:.18s;}
+
+  /* Entrada suave hacia arriba para bloques de texto */
+  [data-anim="up"]{opacity:0;transform:translateY(24px);transition:opacity .75s var(--ease),transform .75s var(--ease);}
+  [data-anim="up"].is-in{opacity:1;transform:none;}
+  [data-anim="up"][data-d="1"]{transition-delay:.1s;}
+  [data-anim="up"][data-d="2"]{transition-delay:.2s;}
+
+  /* Cifras del hero, escalonadas */
+  [data-anim="facts"] .zfact{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s var(--ease);}
+  [data-anim="facts"].is-in .zfact{opacity:1;transform:none;}
+  [data-anim="facts"] .zfact:nth-child(2){transition-delay:.08s;}
+  [data-anim="facts"] .zfact:nth-child(3){transition-delay:.16s;}
+  [data-anim="facts"] .zfact:nth-child(4){transition-delay:.24s;}
+
+  /* Chips de sectores, uno detrás de otro */
+  [data-anim="chips"] .zchip{opacity:0;transform:translateY(12px) scale(.96);transition:opacity .45s ease,transform .5s cubic-bezier(.3,1.3,.4,1);}
+  [data-anim="chips"].is-in .zchip{opacity:1;transform:none;}
+  [data-anim="chips"] .zchip:nth-child(2){transition-delay:.06s;}
+  [data-anim="chips"] .zchip:nth-child(3){transition-delay:.12s;}
+  [data-anim="chips"] .zchip:nth-child(4){transition-delay:.18s;}
+  [data-anim="chips"] .zchip:nth-child(5){transition-delay:.24s;}
+  [data-anim="chips"] .zchip:nth-child(6){transition-delay:.3s;}
+
+  /* Pasos del proceso */
+  [data-anim="steps"] .zstep{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .65s var(--ease);}
+  [data-anim="steps"].is-in .zstep{opacity:1;transform:none;}
+  [data-anim="steps"] .zstep:nth-child(2){transition-delay:.09s;}
+  [data-anim="steps"] .zstep:nth-child(3){transition-delay:.18s;}
+  [data-anim="steps"] .zstep:nth-child(4){transition-delay:.27s;}
+
+  @media (prefers-reduced-motion: reduce){
+    [data-anim],[data-anim] picture,[data-anim] .zshot,[data-anim] .zchip,[data-anim] .zfact,[data-anim] .zstep{
+      clip-path:none!important;opacity:1!important;transform:none!important;transition:none!important;
+    }
+  }`;
 
 const navLink = (active) => `<div class="nav-wrap">
 <nav class="nav">
@@ -436,13 +489,13 @@ ${navLink()}
 <a href="${UP}trabajos.html" class="btn btn--ghost">Ver trabajos</a>
 </div>
 </div>
-<div class="zh__shot">
+<div class="zh__shot" data-anim="clip">
 ${pic(z.hero, null, `${IMG[z.hero][1]} — ejemplo de web para un negocio de ${z.name}`, true)}
 <span class="zh__tag">${IMG[z.hero][1]} · proyecto real</span>
 </div>
 </div>
 
-<div class="zfacts">
+<div class="zfacts" data-anim="facts">
 <div class="zfact"><b>${z.dist}</b><span>Desde Tolosa</span></div>
 <div class="zfact"><b>${z.pob}</b><span>Habitantes</span></div>
 <div class="zfact"><b>199€</b><span>Desde, precio cerrado</span></div>
@@ -461,7 +514,7 @@ ${pic(z.hero, null, `${IMG[z.hero][1]} — ejemplo de web para un negocio de ${z
 </div>
 <div>
 <div class="zhead"><span class="k">Sectores</span><h2>Con quién trabajo</h2></div>
-<div class="zchips">
+<div class="zchips" data-anim="chips">
 ${z.sectores.map(s => `<span class="zchip">${s}</span>`).join('\n')}
 </div>
 <p style="font-size:14px;color:var(--text-faint);margin-top:16px;">¿El tuyo no está? Escríbeme igual — trabajo con cualquier negocio local.</p>
@@ -473,7 +526,7 @@ ${z.sectores.map(s => `<span class="zchip">${s}</span>`).join('\n')}
 <section class="zsec--tight zsec" style="padding-top:0;">
 <div class="container">
 <div class="zhead"><span class="k">Portfolio</span><h2>Webs reales, publicadas y navegables</h2></div>
-<div class="zmosaic">
+<div class="zmosaic" data-anim="assemble">
 ${z.mosaico.map(k => `<a class="zshot" href="${UP}trabajos.html">${pic(k, null, `${IMG[k][1]}, ejemplo de web para negocio local`)}<span class="zshot__lbl">${IMG[k][1]}</span></a>`).join('\n')}
 </div>
 <p style="text-align:center;margin-top:16px;font-size:14px;color:var(--text-muted);">No enseño maquetas: las ocho webs del <a href="${UP}trabajos.html" style="color:var(--terra);">portfolio</a> están online y puedes abrirlas.</p>
@@ -483,7 +536,7 @@ ${z.mosaico.map(k => `<a class="zshot" href="${UP}trabajos.html">${pic(k, null, 
 <section class="zsec" style="padding-top:0;">
 <div class="container">
 <div class="zhead"><span class="k">Proceso</span><h2>De la primera llamada a la web publicada</h2></div>
-<div class="zsteps">
+<div class="zsteps" data-anim="steps">
 <div class="zstep"><i>01</i><h3>Hablamos 15 min</h3><p>Entiendo tu negocio en ${z.name} y si de verdad puedo ayudarte.</p></div>
 <div class="zstep"><i>02</i><h3>Propuesta en 48h</h3><p>Estructura, referencias y precio cerrado por escrito.</p></div>
 <div class="zstep"><i>03</i><h3>Construyo la web</h3><p>Rápida, adaptada a móvil y con SEO local desde el primer día.</p></div>
@@ -497,7 +550,7 @@ ${z.mosaico.map(k => `<a class="zshot" href="${UP}trabajos.html">${pic(k, null, 
 <div class="zsplit">
 <div>
 <div class="zhead"><span class="k">Dudas</span><h2>Preguntas frecuentes</h2></div>
-<div class="zfaq">
+<div class="zfaq" data-anim="up">
 <details><summary>¿Trabajas con negocios de ${z.name}?</summary><p>Sí. El estudio está en Tolosa, a ${z.dist}, y trabajo habitualmente con negocios de ${z.comarca}. Las reuniones pueden ser presenciales o por videollamada, como te venga mejor.</p></details>
 <details><summary>¿El precio cambia por estar fuera de Tolosa?</summary><p>No. Precio cerrado e igual para toda Gipuzkoa: Landing desde 199€ y Web Negocio desde 299€, con 30 días de ajustes gratis.</p></details>
 <details><summary>¿Saldré en Google cuando busquen en ${z.name}?</summary><p>Todas las webs llevan SEO local orientado a ${z.name}. Aparecer arriba depende también de tu ficha de Google Business — lo explico en <a href="${UP}google-business-profile-guia.html">esta guía</a>.</p></details>
@@ -505,7 +558,7 @@ ${z.mosaico.map(k => `<a class="zshot" href="${UP}trabajos.html">${pic(k, null, 
 </div>
 </div>
 <div>
-<div class="zcta">
+<div class="zcta" data-anim="up">
 <div>
 <h2>¿Tienes un negocio en ${z.name}?</h2>
 <p>Propuesta con precio cerrado en menos de 48 horas. Gratis y sin compromiso.</p>

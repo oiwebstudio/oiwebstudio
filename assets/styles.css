@@ -194,9 +194,16 @@ p { margin: 0; }
 .nav-wrap.is-scrolled .nav { box-shadow: var(--shadow-md); background: rgba(255,255,255,0.82); }
 
 /* Nav-isla: la propia píldora se ciñe al contenido para que encoja de verdad,
-   no solo el texto interior (si no, el fondo se queda con el ancho completo). */
-@media (min-width: 880px) {
-  .nav { width: fit-content; }
+   no solo el texto interior (si no, el fondo se queda con el ancho completo).
+   El max-width sube por encima de --container porque con 7 entradas + teléfono
+   + idioma + CTA la barra necesita más sitio del que da el contenedor base. */
+@media (min-width: 1200px) {
+  .nav { width: fit-content; max-width: min(1340px, calc(100vw - 32px)); }
+}
+/* Entre 880 y 1180px no cabe todo: el teléfono es lo primero que sobra,
+   porque el número sigue estando en el footer y en el botón de WhatsApp. */
+@media (min-width: 1200px) and (max-width: 1330px) {
+  .nav__phone { display: none; }
 }
 
 /* adv-spotlight-cards — spotlight + anillo de borde que sigue al cursor en el nav */
@@ -243,11 +250,14 @@ p { margin: 0; }
 .nav__logo .mark svg { width: 14px; height: 14px; color: #fff; }
 
 .nav__links { display: none; list-style: none; margin: 0; padding: 0; gap: 4px; }
-@media (min-width: 880px) {
+@media (min-width: 1200px) {
   .nav__links {
     display: flex;
-    max-width: 640px;
+    /* Tope alto a propósito: con 7 entradas el menú mide ~690px y un
+       max-width menor lo recortaba por el overflow:hidden de la isla. */
+    max-width: 860px;
     overflow: hidden;
+    white-space: nowrap;
     transition: max-width 0.5s var(--ease), opacity 0.35s ease, margin-left 0.5s var(--ease);
   }
   /* Nav-isla: se contrae cuando el cursor no está encima */
@@ -264,7 +274,7 @@ p { margin: 0; }
 
 /* Nav-isla: teléfono, selector de idioma y CTA también se contraen (no solo
    el texto del menú), para que la píldora entera encoja de verdad. */
-@media (min-width: 880px) {
+@media (min-width: 1200px) {
   .nav__phone, .lang-switch, .nav__cta {
     transition: max-width 0.5s var(--ease), opacity 0.3s ease, margin 0.5s var(--ease), padding 0.5s var(--ease);
     overflow: hidden;
@@ -319,7 +329,7 @@ a:hover .roll > span, a:focus-visible .roll > span { transform: translateY(-100%
   background: transparent; border: none; color: var(--ink); cursor: pointer;
 }
 .nav__toggle svg { width: 20px; height: 20px; }
-@media (min-width: 880px) { .nav__toggle { display: none; } }
+@media (min-width: 1200px) { .nav__toggle { display: none; } }
 
 .mobile-menu {
   position: fixed; inset: 84px 16px auto; z-index: 99;
@@ -338,7 +348,7 @@ a:hover .roll > span, a:focus-visible .roll > span { transform: translateY(-100%
 .mobile-menu ul { list-style: none; margin: 0; padding: 0; }
 .mobile-menu a { display: block; padding: 13px 14px; border-radius: var(--r-sm); font-size: 15.5px; font-weight: 450; color: var(--text); }
 .mobile-menu a:hover { background: var(--bg-subtle); color: var(--ink); }
-@media (min-width: 880px) { .mobile-menu { display: none !important; } }
+@media (min-width: 1200px) { .mobile-menu { display: none !important; } }
 
 /* Sections ------------------------------------------------------------------ */
 
@@ -878,7 +888,7 @@ a.work:hover .work__link { gap: 11px; color: var(--accent-hover); }
 /* Nav-isla en móvil: sin :hover, se contrae/expande según la dirección del
    scroll (toggled por JS en .nav-wrap.is-contracted). El logo y el botón
    de menú (hamburguesa) quedan siempre visibles y accesibles. */
-@media (max-width: 879.98px) {
+@media (max-width: 1199.98px) {
   .lang-switch {
     transition: max-width 0.4s var(--ease), opacity 0.3s ease, margin 0.4s var(--ease), padding 0.4s var(--ease);
     overflow: hidden;

@@ -78,6 +78,25 @@ document.addEventListener('DOMContentLoaded', () => {
     revealEls.forEach(el => observer.observe(el));
   }
 
+  // Animaciones de entrada genéricas: [data-anim="..."] recibe .is-in al
+  // entrar en pantalla. El tipo concreto lo define el CSS de cada página
+  // (clip-reveal, grid-assemble, etc. — biblioteca-animaciones).
+  const animEls = document.querySelectorAll('[data-anim]');
+  if (animEls.length) {
+    if (reduceMotion) {
+      animEls.forEach(el => el.classList.add('is-in'));
+    } else {
+      const animObs = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-in');
+          obs.unobserve(entry.target);
+        });
+      }, { threshold: 0.2, rootMargin: '0px 0px -40px 0px' });
+      animEls.forEach(el => animObs.observe(el));
+    }
+  }
+
   // Párrafos en cascada palabra a palabra (par-word-cascade, biblioteca-animaciones)
   // En páginas de artículo, cascadea todos los párrafos del cuerpo del texto.
   document.querySelectorAll('.art p').forEach(p => p.classList.add('par-cascade'));
