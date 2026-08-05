@@ -172,7 +172,15 @@ p { margin: 0; }
   top: 0; left: 0; right: 0;
   z-index: 100;
   padding: 14px 16px;
-  transition: padding 0.3s var(--ease);
+  transition: padding 0.3s var(--ease), transform 0.38s var(--ease);
+}
+/* La isla se retira al bajar: contraída queda centrada y semitransparente,
+   justo encima de los títulos de sección, que también van centrados. Vuelve
+   en cuanto se sube, así que nunca hay que ir a buscarla. */
+.nav-wrap.is-hidden { transform: translateY(calc(-100% - 10px)); }
+@media (prefers-reduced-motion: reduce) {
+  .nav-wrap { transition: none; }
+  .nav-wrap.is-hidden { transform: none; }
 }
 .nav {
   position: relative;

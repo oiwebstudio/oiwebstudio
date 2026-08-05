@@ -11,10 +11,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // bajar y se expande al subir (o cerca del top), igual que el hover
     // en escritorio pero disparado por la dirección del scroll.
     let lastY = window.scrollY;
+    const menuEl = document.querySelector('.mobile-menu');
     const onScrollDir = () => {
       const y = window.scrollY;
-      if (y > lastY + 4 && y > 60) navWrap.classList.add('is-contracted');
-      else if (y < lastY - 4 || y < 60) navWrap.classList.remove('is-contracted');
+      const down = y > lastY + 4;
+      const up = y < lastY - 4;
+      if (down && y > 60) navWrap.classList.add('is-contracted');
+      else if (up || y < 60) navWrap.classList.remove('is-contracted');
+
+      // Y además se aparta del todo al bajar: la píldora contraída queda
+      // centrada sobre los títulos de sección (que también van centrados) y
+      // los tapaba a media lectura. Con el menú móvil abierto no se mueve.
+      const menuOpen = menuEl && menuEl.classList.contains('is-open');
+      if (!menuOpen && down && y > 160) navWrap.classList.add('is-hidden');
+      else if (menuOpen || up || y < 160) navWrap.classList.remove('is-hidden');
+
       lastY = y;
     };
     window.addEventListener('scroll', onScrollDir, { passive: true });
@@ -37,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     toggle.addEventListener('click', () => {
       const open = menu.classList.toggle('is-open');
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open && navWrap) navWrap.classList.remove('is-hidden');
     });
     menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
       menu.classList.remove('is-open');
