@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="theme-color" content="#f6f3ea"/>
 <title>Chatbot de reservas — OI Studio</title>
-<meta name="description" content="Añade un chatbot de reservas real a tu web: tus clientes eligen servicio, día y hora, y reciben confirmación al instante. Web y WhatsApp con el mismo motor."/>
+<meta name="description" content="Chatbot de reservas y automatizaciones para tu negocio: citas, dudas frecuentes y avisos, en web y WhatsApp. Servicio a presupuesto según tu caso, cerrado en 48h."/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="OI Studio"/>
 <meta property="og:url" content="https://oiwebstudio.com/chatbot-reservas.html"/>
@@ -56,6 +56,19 @@
   .faq-pre details[open] summary::after{transform:rotate(45deg);}
   .faq-pre p{padding:0 0 18px;color:var(--text-muted);font-size:15px;}
   .demo-note{max-width:640px;margin:20px auto 0;text-align:center;font-size:13.5px;color:var(--text-faint);}
+  .quote{max-width:860px;margin:0 auto;background:var(--surface);border:1px solid var(--border-strong);border-radius:var(--r-md);padding:38px 34px;text-align:center;}
+  .quote .amount{font-size:clamp(30px,4.4vw,42px);letter-spacing:-.02em;color:var(--ink);margin:0;line-height:1.1;}
+  .quote .amount em{font-family:"Fraunces",serif;font-style:italic;font-weight:500;color:var(--terra);}
+  .quote .sub{font-size:16px;color:var(--text-muted);margin:14px auto 0;max-width:52ch;line-height:1.7;}
+  .quote .why{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:30px;text-align:left;}
+  .quote .why div{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-md);padding:16px 18px;}
+  .quote .why b{display:block;font-size:14.5px;color:var(--ink);margin-bottom:5px;}
+  .quote .why span{font-size:13.5px;color:var(--text-muted);line-height:1.55;}
+  .quote .fine{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-faint);margin-top:26px;}
+  .auto-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;max-width:960px;margin:0 auto;}
+  .auto-list li{list-style:none;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:20px 22px 20px 46px;position:relative;color:var(--text-muted);font-size:15px;line-height:1.6;}
+  .auto-list li::before{content:"→";position:absolute;left:20px;top:19px;color:var(--terra);font-weight:700;}
+  .auto-list li b{display:block;color:var(--ink);font-size:15.5px;margin-bottom:4px;}
 </style>
 </head>
 <body>
@@ -103,7 +116,7 @@
 
 <header class="pre-hero">
 <div class="container">
-<span class="eyebrow reveal" data-t="bot_eyebrow">Nuevo servicio</span>
+<span class="eyebrow reveal" data-t="bot_eyebrow">Servicio a presupuesto</span>
 <h1 class="reveal" data-d="1" data-t="bot_h1">Un chatbot que <span class="grad">reserva por ti</span>, 24 horas al día.</h1>
 <p class="lede reveal" data-d="2" data-t="bot_lede">Tus clientes eligen el servicio, el día y la hora directamente en tu web — sin llamadas, sin mensajes cruzados, sin que se te olvide confirmar. Tú solo ves la cita ya cerrada.</p>
 <div class="siempre reveal" data-d="3">
@@ -111,6 +124,7 @@
 <span data-t="bot_s2">Disponible 24/7</span>
 <span data-t="bot_s3">Sin doble reserva</span>
 <span data-t="bot_s4">Web y WhatsApp</span>
+<span data-t="bot_s5">Precio a medida</span>
 </div>
 </div>
 </header>
@@ -172,6 +186,44 @@
 </div>
 </section>
 
+<section class="section section--subtle" id="automatizar">
+<div class="container">
+<div class="section-head reveal">
+<span class="eyebrow" data-t="bot_auto_eyebrow">Más allá de las reservas</span>
+<h2 data-t="bot_auto_h2">Qué se puede automatizar en tu negocio</h2>
+<p data-t="bot_auto_p">Las reservas son el caso más pedido, pero no el único. Según lo que te coma el tiempo cada día, la automatización se plantea de una forma u otra.</p>
+</div>
+<ul class="auto-list reveal" data-d="1">
+<li><b data-t="bot_a1_h">Citas y reservas</b><span data-t="bot_a1_p">Servicio, día y hora con huecos reales, sin solapes ni confirmaciones a mano.</span></li>
+<li><b data-t="bot_a2_h">Las preguntas de siempre</b><span data-t="bot_a2_p">Horarios, precios, dirección, aparcamiento, si hay que pedir cita. Respondidas al momento, también de madrugada.</span></li>
+<li><b data-t="bot_a3_h">Captación de contactos</b><span data-t="bot_a3_p">El chat recoge nombre, teléfono y qué necesita cada persona, y te lo hace llegar ordenado.</span></li>
+<li><b data-t="bot_a4_h">Avisos y recordatorios</b><span data-t="bot_a4_p">Recordar la cita del día siguiente reduce los plantones, que es dinero que ya no se recupera.</span></li>
+<li><b data-t="bot_a5_h">Pedidos y encargos</b><span data-t="bot_a5_p">Encargos sencillos recogidos por el chat y enviados a tu WhatsApp o a tu correo.</span></li>
+<li><b data-t="bot_a6_h">Conexión con tus herramientas</b><span data-t="bot_a6_p">Que la cita caiga en tu calendario o el contacto en tu hoja de siempre, sin copiar nada a mano.</span></li>
+</ul>
+</div>
+</section>
+
+<section class="section" id="precio">
+<div class="container">
+<div class="section-head reveal">
+<span class="eyebrow" data-t="bot_pre_eyebrow">Precio</span>
+<h2 data-t="bot_pre_h2">Este servicio va a presupuesto</h2>
+</div>
+<div class="quote reveal" data-d="1">
+<p class="amount" data-t="bot_pre_amount">Presupuesto <em>cerrado</em>, según tu caso</p>
+<p class="sub" data-t="bot_pre_sub">A diferencia de las webs, aquí no publico una tarifa fija: automatizar la agenda de una peluquería de una persona y la de un taller con tres mecánicos y piezas de por medio no cuesta lo mismo. Cuéntame tu caso y te doy un precio cerrado por escrito, antes de empezar.</p>
+<div class="why">
+<div><b data-t="bot_pre_w1_h">Qué quieres automatizar</b><span data-t="bot_pre_w1_p">No es igual responder dudas frecuentes que gestionar una agenda completa con varios profesionales.</span></div>
+<div><b data-t="bot_pre_w2_h">Dónde tiene que funcionar</b><span data-t="bot_pre_w2_p">Solo en la web, o también en WhatsApp — que exige verificar tu número con Meta.</span></div>
+<div><b data-t="bot_pre_w3_h">Con qué se conecta</b><span data-t="bot_pre_w3_p">Si tiene que hablar con tu calendario, tu programa de citas u otra herramienta que ya uses.</span></div>
+<div><b data-t="bot_pre_w4_h">Cuánto volumen mueve</b><span data-t="bot_pre_w4_p">Un negocio con cuatro citas al día y otro con cuarenta no necesitan lo mismo por detrás.</span></div>
+</div>
+<p class="fine" data-t="bot_pre_fine">Propuesta en 48 h · Precio cerrado por escrito · Sin permanencia</p>
+</div>
+</div>
+</section>
+
 <section class="section section--subtle">
 <div class="container">
 <div class="section-head reveal">
@@ -182,7 +234,9 @@
 <details><summary data-t="bf1_q">¿Necesito ya una web para tener el chatbot?</summary><p data-t="bf1_a">Sí, se añade sobre tu web actual o sobre la que construyamos juntos — es una línea de código más, no un proyecto aparte.</p></details>
 <details><summary data-t="bf2_q">¿Puedo activarlo también en WhatsApp?</summary><p data-t="bf2_a">Sí, usa el mismo motor de reservas. Para activarlo en WhatsApp necesitas verificar tu número como cuenta de WhatsApp Business con Meta — te acompaño en ese trámite.</p></details>
 <details><summary data-t="bf3_q">¿Qué pasa si dos clientes quieren la misma hora?</summary><p data-t="bf3_a">El sistema comprueba la disponibilidad justo al confirmar, así que solo uno se queda con el hueco y al otro se le ofrecen horas alternativas.</p></details>
-<details><summary data-t="bf4_q">¿Puedo cambiar mis servicios y horarios más adelante?</summary><p data-t="bf4_a">Sí, te lo actualizo cuando lo necesites — o, si lo prefieres, te dejo acceso para gestionarlo tú mismo.</p></details>
+<details><summary data-t="bf4_q">¿Puedo cambiar mis servicios y horarios más adelante?</summary><p data-t="bf4_a">Sí. Me escribes con los cambios de servicios, duraciones u horarios y te lo dejo actualizado. Es parte del acuerdo, no un extra que se factura cada vez.</p></details>
+<details><summary data-t="bf5_q">¿Cuánto cuesta el chatbot?</summary><p data-t="bf5_a">Va a presupuesto, porque depende mucho del caso: qué quieres automatizar, si va solo en la web o también en WhatsApp, y con qué herramientas tuyas tiene que conectarse. Cuéntame tu situación y te doy un precio cerrado por escrito en 48 horas, sin compromiso.</p></details>
+<details><summary data-t="bf6_q">¿Y si no sé si mi negocio lo necesita?</summary><p data-t="bf6_a">Te lo digo con honestidad. Si gestionas bien las citas por teléfono y WhatsApp y no se te escapa ninguna, probablemente no te compense todavía. Tiene sentido cuando pierdes reservas fuera de horario o pasas demasiado tiempo respondiendo siempre lo mismo.</p></details>
 </div>
 </div>
 </section>
@@ -191,7 +245,7 @@
 <div class="container">
 <div class="reveal">
 <h2 data-t="bot_cta_h">¿Le añadimos un chatbot de reservas a tu web?</h2>
-<p data-t="bot_cta_p">Cuéntame qué servicios ofreces y tu horario, y te preparo una demo con tus propios datos.</p>
+<p data-t="bot_cta_p">Cuéntame qué servicios ofreces, tu horario y qué te gustaría automatizar. Te preparo una demo con tus propios datos y un presupuesto cerrado en 48 horas.</p>
 <div class="hero__actions">
 <a href="contacto.html" class="btn btn--light btn--lg" data-t="btn_presupuesto">Solicitar presupuesto</a>
 <a href="https://wa.me/34680956755?text=Hola%2C%20me%20interesa%20el%20chatbot%20de%20reservas%20para%20mi%20negocio" target="_blank" rel="noopener" class="btn btn--dark-ghost btn--lg" data-t="btn_whatsapp">Escribir por WhatsApp</a>
@@ -247,14 +301,16 @@ window.OIB_CONTEXT =
   "Precios de OI Studio: Landing 199€, Web Negocio 299€ (pago único, precio cerrado, propuesta en 48h), " +
   "mantenimiento opcional 20€/mes, dominio ~12€/año aparte. Plazos: landing 1 semana, web negocio 2-3 semanas. " +
   "La web, dominio y hosting quedan a nombre del cliente. Este mismo chatbot de reservas se puede instalar " +
-  "en la web de cualquier negocio. Contacto: WhatsApp 680 95 67 55, contactoiwebstudio@gmail.com.";
+  "en la web de cualquier negocio: ese servicio va a presupuesto cerrado (no tiene tarifa fija publicada), " +
+  "porque el precio depende de qué se automatice, de si funciona solo en web o también en WhatsApp, y de " +
+  "con qué herramientas del negocio tenga que conectarse. Contacto: WhatsApp 680 95 67 55, contactoiwebstudio@gmail.com.";
 
 /* Respuestas del robot a preguntas sobre OI Studio (se suman a las genéricas del widget). */
 window.OIB_FAQ = [
   { k: ["cuanto cuesta una web", "precio de la web", "precio web", "cuesta la web", "cuanto vale una web", "presupuesto"],
     a: "Una Landing cuesta 199€ y una Web Negocio completa 299€ — pago único, precio cerrado por escrito y propuesta en 48h. Tienes el detalle en la página de Precios." },
-  { k: ["chatbot", "este bot", "el robot", "asistente como este"],
-    a: "Este mismo chatbot se puede añadir a tu web: tus clientes reservan solos, 24/7, sin doble reserva. Pide presupuesto y te decimos precio cerrado según tu negocio." },
+  { k: ["chatbot", "este bot", "el robot", "asistente como este", "automatizar", "automatizacion"],
+    a: "Este mismo chatbot se puede añadir a tu web: tus clientes reservan solos, 24/7, sin doble reserva. Va a presupuesto, porque depende de qué quieras automatizar y con qué se tenga que conectar — te damos precio cerrado en 48h." },
   { k: ["cuanto tarda", "plazo", "cuanto tiempo", "cuando estaria"],
     a: "Una Landing suele estar lista en una semana; una Web Negocio, en dos o tres. El plazo exacto va por escrito en la propuesta." },
   { k: ["mantenimiento", "cada mes", "mensual", "cuota"],
