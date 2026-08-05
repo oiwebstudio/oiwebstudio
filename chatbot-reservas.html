@@ -103,7 +103,8 @@
   .quote .amount{font-size:clamp(30px,4.4vw,42px);letter-spacing:-.02em;color:var(--ink);margin:0;line-height:1.1;}
   .quote .amount em{font-family:"Fraunces",serif;font-style:italic;font-weight:500;color:var(--terra);}
   .quote .sub{font-size:16px;color:var(--text-muted);margin:14px auto 0;max-width:52ch;line-height:1.7;}
-  .quote .why{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:30px;text-align:left;}
+  .quote .why{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:30px;text-align:left;}
+  @media(max-width:620px){.quote .why{grid-template-columns:1fr;}}
   .quote .why div{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-md);padding:16px 18px;}
   .quote .why b{display:block;font-size:14.5px;color:var(--ink);margin-bottom:5px;}
   .quote .why span{font-size:13.5px;color:var(--text-muted);line-height:1.55;}
