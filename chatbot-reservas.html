@@ -34,16 +34,59 @@
 <noscript><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap" rel="stylesheet"/></noscript>
 <link rel="stylesheet" href="assets/styles.css?v=11"/>
 <style>
-  .pre-hero{padding:150px 0 26px;text-align:center;}
-  .pre-hero h1{font-size:clamp(38px,6vw,64px);margin-top:18px;}
-  .pre-hero .lede{font-size:19px;color:var(--text-muted);margin:18px auto 0;max-width:56ch;}
-  .siempre{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:30px;}
+  /* ---- Hero en dos columnas con maqueta de conversación ---- */
+  .bot-hero{padding:140px 0 30px;}
+  .bot-hero__grid{display:grid;grid-template-columns:1.02fr .98fr;gap:60px;align-items:center;}
+  .bot-hero h1{font-size:clamp(36px,4.8vw,58px);margin-top:16px;line-height:1.06;}
+  .bot-hero .lede{font-size:18.5px;color:var(--text-muted);margin:18px 0 0;max-width:46ch;}
+  @media(max-width:960px){
+    .bot-hero{padding:130px 0 20px;}
+    .bot-hero__grid{grid-template-columns:1fr;gap:48px;}
+    .bot-hero__copy{text-align:center;}
+    .bot-hero .lede{margin-left:auto;margin-right:auto;}
+    .bot-hero .siempre{justify-content:center;}
+  }
+
+  /* Teléfono */
+  .phone{width:100%;max-width:335px;margin:0 auto;background:var(--dark);border-radius:40px;padding:9px;box-shadow:var(--shadow-xl);position:relative;}
+  .phone::before{content:"";position:absolute;top:20px;left:50%;transform:translateX(-50%);width:80px;height:5px;border-radius:99px;background:rgba(255,255,255,.16);z-index:2;}
+  .phone__screen{background:var(--bg);border-radius:32px;overflow:hidden;}
+  .chat__head{display:flex;align-items:center;gap:11px;padding:30px 16px 13px;background:var(--surface);border-bottom:1px solid var(--border);}
+  .chat__av{width:34px;height:34px;border-radius:50%;background:var(--ink);display:grid;place-items:center;flex:none;}
+  .chat__av svg{width:17px;height:17px;color:#fff;}
+  .chat__who b{font-size:13.5px;color:var(--ink);display:block;line-height:1.25;}
+  .chat__who span{font-size:11px;color:var(--ok);display:flex;align-items:center;gap:5px;line-height:1.4;}
+  .chat__who span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--ok);}
+  .chat__body{padding:16px 14px 18px;display:flex;flex-direction:column;gap:9px;min-height:388px;}
+  .bub{max-width:84%;padding:10px 13px;border-radius:17px;font-size:13.5px;line-height:1.45;opacity:0;animation:bubIn .5s var(--ease) forwards;animation-delay:var(--d,0s);}
+  .bub--bot{background:var(--surface);border:1px solid var(--border);color:var(--text);border-bottom-left-radius:5px;align-self:flex-start;}
+  .bub--me{background:var(--ink);color:#efe9db;border-bottom-right-radius:5px;align-self:flex-end;}
+  .bub-chips{display:flex;flex-wrap:wrap;gap:6px;align-self:flex-start;max-width:92%;opacity:0;animation:bubIn .5s var(--ease) forwards;animation-delay:var(--d,0s);}
+  .bub-chips b{font-size:11.5px;font-weight:500;padding:7px 11px;border-radius:99px;border:1px solid var(--border-strong);background:var(--surface);color:var(--text-muted);}
+  .bub-chips b.on{background:var(--terra-soft);border-color:var(--terra);color:#8a5320;font-weight:600;}
+  .bub-card{align-self:stretch;background:var(--surface);border:1px solid var(--border-strong);border-radius:15px;padding:14px 15px;box-shadow:var(--shadow-md);opacity:0;animation:bubIn .55s var(--ease) forwards;animation-delay:var(--d,0s);}
+  .bub-card .ok{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ok);font-weight:700;margin-bottom:11px;}
+  .bub-card .ok svg{width:15px;height:15px;}
+  .bub-card dl{display:grid;grid-template-columns:auto 1fr;gap:7px 14px;margin:0;font-size:13px;}
+  .bub-card dt{color:var(--text-faint);font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;align-self:center;}
+  .bub-card dd{margin:0;color:var(--ink);font-weight:600;}
+  .chat__bar{display:flex;align-items:center;gap:9px;padding:11px 12px 15px;background:var(--surface);border-top:1px solid var(--border);}
+  .chat__bar span{flex:1;font-size:12.5px;color:var(--text-faint);background:var(--bg);border:1px solid var(--border);border-radius:99px;padding:8px 14px;}
+  .chat__bar i{width:31px;height:31px;border-radius:50%;background:var(--ink);display:grid;place-items:center;flex:none;}
+  .chat__bar i svg{width:15px;height:15px;color:#fff;}
+  @keyframes bubIn{from{opacity:0;transform:translateY(10px) scale(.97);}to{opacity:1;transform:none;}}
+  @media(prefers-reduced-motion:reduce){.bub,.bub-chips,.bub-card{animation:none;opacity:1;}}
+
+  .siempre{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px;}
   .siempre span{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-pill);padding:9px 16px;color:var(--text);}
   .siempre span::before{content:"✓";color:var(--ok);font-weight:700;}
-  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:step;}
-  .step{border:1px solid var(--border);border-radius:var(--r-md);background:var(--surface);padding:24px 22px;position:relative;}
-  .step::before{counter-increment:step;content:counter(step);position:absolute;top:-14px;left:22px;width:28px;height:28px;border-radius:50%;background:var(--terra);color:#fff;font-family:var(--font-mono);font-size:13px;display:flex;align-items:center;justify-content:center;font-weight:700;}
-  .step h3{font-size:17px;margin:10px 0 8px;}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:step;position:relative;}
+  .step{border:1px solid var(--border);border-radius:var(--r-md);background:var(--surface);padding:26px 22px 24px;position:relative;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s;}
+  .step:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--border-strong);}
+  .step::before{counter-increment:step;content:counter(step);position:absolute;top:-14px;left:22px;width:28px;height:28px;border-radius:50%;background:var(--terra);color:#fff;font-family:var(--font-mono);font-size:13px;display:flex;align-items:center;justify-content:center;font-weight:700;box-shadow:0 4px 12px -4px rgba(192,122,53,.6);}
+  .step__ic{width:42px;height:42px;border-radius:12px;background:var(--surface-2);border:1px solid var(--border);display:grid;place-items:center;margin:8px 0 14px;}
+  .step__ic svg{width:20px;height:20px;color:var(--terra);}
+  .step h3{font-size:17px;margin:0 0 8px;}
   .step p{font-size:14.5px;color:var(--text-muted);}
   @media(max-width:860px){.steps{grid-template-columns:1fr 1fr;}}
   @media(max-width:560px){.steps{grid-template-columns:1fr;}}
@@ -66,8 +109,10 @@
   .quote .why span{font-size:13.5px;color:var(--text-muted);line-height:1.55;}
   .quote .fine{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-faint);margin-top:26px;}
   .auto-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;max-width:960px;margin:0 auto;}
-  .auto-list li{list-style:none;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:20px 22px 20px 46px;position:relative;color:var(--text-muted);font-size:15px;line-height:1.6;}
-  .auto-list li::before{content:"→";position:absolute;left:20px;top:19px;color:var(--terra);font-weight:700;}
+  .auto-list li{list-style:none;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:22px 22px 22px 20px;display:flex;gap:15px;color:var(--text-muted);font-size:14.5px;line-height:1.6;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s;}
+  .auto-list li:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--border-strong);}
+  .auto-list .ic{width:38px;height:38px;border-radius:11px;background:var(--terra-soft);display:grid;place-items:center;flex:none;}
+  .auto-list .ic svg{width:19px;height:19px;color:#a3673a;}
   .auto-list li b{display:block;color:var(--ink);font-size:15.5px;margin-bottom:4px;}
 </style>
 </head>
@@ -114,8 +159,11 @@
 </ul>
 </div>
 
-<header class="pre-hero">
+<header class="bot-hero">
 <div class="container">
+<div class="bot-hero__grid">
+
+<div class="bot-hero__copy">
 <span class="eyebrow reveal" data-t="bot_eyebrow">Servicio a presupuesto</span>
 <h1 class="reveal" data-d="1" data-t="bot_h1">Un chatbot que <span class="grad">reserva por ti</span>, 24 horas al día.</h1>
 <p class="lede reveal" data-d="2" data-t="bot_lede">Tus clientes eligen el servicio, el día y la hora directamente en tu web — sin llamadas, sin mensajes cruzados, sin que se te olvide confirmar. Tú solo ves la cita ya cerrada.</p>
@@ -127,6 +175,58 @@
 <span data-t="bot_s5">Precio a medida</span>
 </div>
 </div>
+
+<div class="bot-hero__demo reveal" data-d="2">
+<div class="phone" role="img" aria-label="Ejemplo de conversación: el cliente elige servicio, día y hora, y el chatbot confirma la cita">
+<div class="phone__screen">
+
+<div class="chat__head">
+<span class="chat__av"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="7" width="16" height="12" rx="3"/><path d="M12 3v4M9 13h.01M15 13h.01"/></svg></span>
+<div class="chat__who"><b data-t="bot_chat_name">Reservas · Tu negocio</b><span data-t="bot_chat_status">Responde al instante</span></div>
+</div>
+
+<div class="chat__body">
+<div class="bub bub--bot" style="--d:.35s" data-t="bot_chat_1">¡Hola! ¿Quieres pedir cita? Dime qué necesitas 👇</div>
+
+<div class="bub-chips" style="--d:.95s">
+<b class="on" data-t="bot_chat_chip1">Corte + color</b>
+<b data-t="bot_chat_chip2">Corte</b>
+<b data-t="bot_chat_chip3">Peinado</b>
+</div>
+
+<div class="bub bub--me" style="--d:1.55s" data-t="bot_chat_2">Corte + color</div>
+
+<div class="bub bub--bot" style="--d:2.1s" data-t="bot_chat_3">Perfecto, son 90 min. ¿Qué día te viene bien?</div>
+
+<div class="bub-chips" style="--d:2.65s">
+<b data-t="bot_chat_chip4">Jue 6</b>
+<b class="on" data-t="bot_chat_chip5">Vie 7</b>
+<b data-t="bot_chat_chip6">Sáb 8</b>
+</div>
+
+<div class="bub bub--me" style="--d:3.25s" data-t="bot_chat_4">El viernes a las 17:30</div>
+
+<div class="bub-card" style="--d:3.9s">
+<div class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span data-t="bot_chat_ok">Cita confirmada</span></div>
+<dl>
+<dt data-t="bot_chat_k1">Servicio</dt><dd data-t="bot_chat_v1">Corte + color</dd>
+<dt data-t="bot_chat_k2">Cuándo</dt><dd data-t="bot_chat_v2">Viernes 7 · 17:30</dd>
+<dt data-t="bot_chat_k3">Dónde</dt><dd data-t="bot_chat_v3">Tolosa, Gipuzkoa</dd>
+</dl>
+</div>
+</div>
+
+<div class="chat__bar">
+<span data-t="bot_chat_ph">Escribe tu mensaje…</span>
+<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></i>
+</div>
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
 </header>
 
 <section class="section" id="como-funciona">
@@ -136,10 +236,18 @@
 <h2 data-t="bot_steps_h2">Cuatro pasos, sin que tú tengas que hacer nada</h2>
 </div>
 <div class="steps reveal" data-d="1">
-<div class="step"><h3 data-t="bot_step1_h">Elige servicio</h3><p data-t="bot_step1_p">Corte, mesa, revisión... el cliente ve tus servicios reales, con su duración y precio orientativo.</p></div>
-<div class="step"><h3 data-t="bot_step2_h">Elige día y hora</h3><p data-t="bot_step2_p">El bot solo ofrece huecos que existen de verdad, según tu horario y lo que ya está reservado.</p></div>
-<div class="step"><h3 data-t="bot_step3_h">Confirma sus datos</h3><p data-t="bot_step3_p">Nombre y teléfono de contacto, para que sepas quién viene y puedas avisarle si hace falta.</p></div>
-<div class="step"><h3 data-t="bot_step4_h">Reserva cerrada</h3><p data-t="bot_step4_p">La cita queda guardada al instante — sin solapes, sin doble reserva del mismo hueco.</p></div>
+<div class="step">
+<div class="step__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h10M4 18h7"/><circle cx="19" cy="16" r="3"/></svg></div>
+<h3 data-t="bot_step1_h">Elige servicio</h3><p data-t="bot_step1_p">Corte, mesa, revisión... el cliente ve tus servicios reales, con su duración y precio orientativo.</p></div>
+<div class="step">
+<div class="step__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/><path d="M12 14v3l2 1"/></svg></div>
+<h3 data-t="bot_step2_h">Elige día y hora</h3><p data-t="bot_step2_p">El bot solo ofrece huecos que existen de verdad, según tu horario y lo que ya está reservado.</p></div>
+<div class="step">
+<div class="step__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+<h3 data-t="bot_step3_h">Confirma sus datos</h3><p data-t="bot_step3_p">Nombre y teléfono de contacto, para que sepas quién viene y puedas avisarle si hace falta.</p></div>
+<div class="step">
+<div class="step__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg></div>
+<h3 data-t="bot_step4_h">Reserva cerrada</h3><p data-t="bot_step4_p">La cita queda guardada al instante — sin solapes, sin doble reserva del mismo hueco.</p></div>
 </div>
 </div>
 </section>
@@ -194,12 +302,24 @@
 <p data-t="bot_auto_p">Las reservas son el caso más pedido, pero no el único. Según lo que te coma el tiempo cada día, la automatización se plantea de una forma u otra.</p>
 </div>
 <ul class="auto-list reveal" data-d="1">
-<li><b data-t="bot_a1_h">Citas y reservas</b><span data-t="bot_a1_p">Servicio, día y hora con huecos reales, sin solapes ni confirmaciones a mano.</span></li>
-<li><b data-t="bot_a2_h">Las preguntas de siempre</b><span data-t="bot_a2_p">Horarios, precios, dirección, aparcamiento, si hay que pedir cita. Respondidas al momento, también de madrugada.</span></li>
-<li><b data-t="bot_a3_h">Captación de contactos</b><span data-t="bot_a3_p">El chat recoge nombre, teléfono y qué necesita cada persona, y te lo hace llegar ordenado.</span></li>
-<li><b data-t="bot_a4_h">Avisos y recordatorios</b><span data-t="bot_a4_p">Recordar la cita del día siguiente reduce los plantones, que es dinero que ya no se recupera.</span></li>
-<li><b data-t="bot_a5_h">Pedidos y encargos</b><span data-t="bot_a5_p">Encargos sencillos recogidos por el chat y enviados a tu WhatsApp o a tu correo.</span></li>
-<li><b data-t="bot_a6_h">Conexión con tus herramientas</b><span data-t="bot_a6_p">Que la cita caiga en tu calendario o el contacto en tu hoja de siempre, sin copiar nada a mano.</span></li>
+<li>
+<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg></span>
+<span><b data-t="bot_a1_h">Citas y reservas</b><span data-t="bot_a1_p">Servicio, día y hora con huecos reales, sin solapes ni confirmaciones a mano.</span></span></li>
+<li>
+<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.5 8.5 0 0 1-4-1L3 20l1-5.5A8.5 8.5 0 1 1 21 11.5z"/><path d="M10 9.5a2 2 0 1 1 3 1.7c-.6.4-1 .8-1 1.6"/><path d="M12 16h.01"/></svg></span>
+<span><b data-t="bot_a2_h">Las preguntas de siempre</b><span data-t="bot_a2_p">Horarios, precios, dirección, aparcamiento, si hay que pedir cita. Respondidas al momento, también de madrugada.</span></span></li>
+<li>
+<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+<span><b data-t="bot_a3_h">Captación de contactos</b><span data-t="bot_a3_p">El chat recoge nombre, teléfono y qué necesita cada persona, y te lo hace llegar ordenado.</span></span></li>
+<li>
+<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span>
+<span><b data-t="bot_a4_h">Avisos y recordatorios</b><span data-t="bot_a4_p">Recordar la cita del día siguiente reduce los plantones, que es dinero que ya no se recupera.</span></span></li>
+<li>
+<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg></span>
+<span><b data-t="bot_a5_h">Pedidos y encargos</b><span data-t="bot_a5_p">Encargos sencillos recogidos por el chat y enviados a tu WhatsApp o a tu correo.</span></span></li>
+<li>
+<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></span>
+<span><b data-t="bot_a6_h">Conexión con tus herramientas</b><span data-t="bot_a6_p">Que la cita caiga en tu calendario o el contacto en tu hoja de siempre, sin copiar nada a mano.</span></span></li>
 </ul>
 </div>
 </section>
