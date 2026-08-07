@@ -116,7 +116,7 @@
     ".oib-send:hover{background:var(--oib-accent2)}" +
     ".oib-send:active{transform:scale(.92)}" +
     ".oib-send svg{width:17px;height:17px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}" +
-    ".oib-brand{text-align:center;font-size:10.5px;color:#b0a798;margin-top:8px;letter-spacing:.04em}";
+    ".oib-brand{text-align:center;font-size:10.5px;color:#6f6a5e;margin-top:8px;letter-spacing:.04em}";
 
   var ICO_BOT = '<svg viewBox="0 0 24 24"><rect x="4" y="9" width="16" height="11" rx="4"/><path d="M12 9V6"/><circle cx="12" cy="4.2" r="1.3"/><circle cx="9" cy="14" r="1.1" fill="currentColor" stroke="none"/><circle cx="15" cy="14" r="1.1" fill="currentColor" stroke="none"/><path d="M9.5 17.2h5M2 13v3M22 13v3"/></svg>';
   var ICO_SEND = '<svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg>';

@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
-Disallow: /legal.html
 
-# Al publicar con dominio propio, descomenta y ajusta:
+# Páginas de trabajo interno, no forman parte del sitio público
+Disallow: /_borradores/
+
 Sitemap: https://oiwebstudio.com/sitemap.xml

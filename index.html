@@ -68,7 +68,8 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap"/>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
 <noscript><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap" rel="stylesheet"/></noscript>
-<link rel="stylesheet" href="assets/styles.css?v=11"/>
+<link rel="stylesheet" href="assets/styles.css?v=14"/>
+<script>document.documentElement.classList.add('js');</script>
 <link rel="preload" as="image" href="assets/cafe-desk.webp" fetchpriority="high"/>
 </head>
 <body>
@@ -255,7 +256,7 @@
 <a class="pm" href="precios.html"><span class="pm__name" data-t="p3_name">Mantenimiento</span><b>20€</b><span class="pm__note" data-t="pre_mes">/mes</span></a>
 </div>
 <div style="text-align:center; margin-top:36px;" class="reveal" data-d="2"><a href="precios.html" class="btn btn--accent btn--lg" data-t="pre_ver">Ver todo lo que incluyen →</a></div>
-<p class="reveal" data-d="3" style="text-align:center;margin-top:18px;font-size:14.5px;color:var(--text-muted);">¿Comparando presupuestos? Lee nuestra <a href="precio-diseno-web-profesional.html" style="color:var(--terra);">guía honesta de precios de diseño web en 2026</a>, <a href="seo-local-tolosa-google-maps.html" style="color:var(--terra);">cómo aparecer en Google en Tolosa</a> o <a href="pagina-web-o-solo-instagram.html" style="color:var(--terra);">por qué Instagram solo no basta</a>.</p>
+<p class="reveal" data-d="3" style="text-align:center;margin-top:18px;font-size:14.5px;color:var(--text-muted);">¿Comparando presupuestos? Lee nuestra <a href="precio-diseno-web-profesional.html" class="link-terra">guía honesta de precios de diseño web en 2026</a>, <a href="seo-local-tolosa-google-maps.html" class="link-terra">cómo aparecer en Google en Tolosa</a> o <a href="pagina-web-o-solo-instagram.html" class="link-terra">por qué Instagram solo no basta</a>.</p>
 </div>
 </section>
 
@@ -315,7 +316,7 @@
 <p class="footer__desc" data-t="foot_desc" style="margin-top:20px;">Webs rápidas, modernas y efectivas para negocios locales que quieren destacar en internet.</p>
 </div>
 <div>
-<h4 data-t="foot_secciones">Secciones</h4>
+<p class="foot-h" data-t="foot_secciones">Secciones</p>
 <ul>
 <li><a href="sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
 <li><a href="trabajos.html" data-t="foot_portfolio">Portfolio</a></li>
@@ -327,7 +328,7 @@
 </ul>
 </div>
 <div>
-<h4 data-t="nav_contacto">Contacto</h4>
+<p class="foot-h" data-t="nav_contacto">Contacto</p>
 <ul>
 <li><a href="mailto:contactoiwebstudio@gmail.com">contactoiwebstudio@gmail.com</a></li>
 <li><a href="https://wa.me/34680956755">+34 680 95 67 55</a></li>
@@ -344,8 +345,8 @@
 <div class="footer__mark" aria-hidden="true">OI STUDIO</div>
 </footer>
 
-<script src="assets/i18n.js"></script>
-<script src="assets/main.js?v=7"></script>
+<script src="assets/i18n.js?v=2"></script>
+<script src="assets/main.js?v=9"></script>
 <script>
 (function(){
   /* Sectores con letras escalonadas: hover anima el texto y cambia los dispositivos */
@@ -389,11 +390,30 @@
       var img = par[0];
       if (!img) return;
       var src = 'assets/' + k + '-' + par[1] + '.jpg';
-      var pre = new Image();
+      // Cada <img> vive dentro de un <picture> con un <source> WebP que tiene
+      // prioridad sobre el src: si no se cambia también el srcset, el navegador
+      // sigue pintando la imagen anterior aunque el src ya sea el nuevo.
+      var source = img.parentNode && img.parentNode.querySelector
+        ? img.parentNode.querySelector('source')
+        : null;
+      var webp = 'assets/' + k + '-' + par[1] + '.webp';
       img.style.opacity = '0';
-      pre.onload = function(){ img.src = src; img.style.opacity = '1'; };
-      pre.onerror = function(){ img.style.opacity = '1'; };
-      pre.src = src;
+      var show = function(){
+        if (source) source.srcset = webp;
+        img.src = src;
+        img.style.opacity = '1';
+      };
+      // Se precarga el formato que el navegador va a pintar de verdad (el WebP
+      // si lo soporta) para que el cambio no parpadee.
+      var pre = new Image();
+      pre.onload = show;
+      pre.onerror = function(){
+        var jpg = new Image();
+        jpg.onload = function(){ img.src = src; img.style.opacity = '1'; };
+        jpg.onerror = function(){ img.style.opacity = '1'; };
+        jpg.src = src;
+      };
+      pre.src = source ? webp : src;
     });
   }
 

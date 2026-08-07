@@ -32,13 +32,14 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap"/>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
 <noscript><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap" rel="stylesheet"/></noscript>
-<link rel="stylesheet" href="assets/styles.css?v=11"/>
+<link rel="stylesheet" href="assets/styles.css?v=14"/>
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
 <div class="nav-wrap">
 <nav class="nav">
-<a href="index.html" class="nav__logo"><img src="assets/logo-nav-black.png" alt="OI Studio" class="nav__logo-img"/></a>
+<a href="index.html" class="nav__logo"><img src="assets/logo-nav-black.png" alt="OI Studio" class="nav__logo-img" width="320" height="86"/></a>
 <ul class="nav__links">
 <li><a href="index.html" data-t="nav_inicio">Inicio</a></li>
 <li><a href="sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
@@ -101,7 +102,10 @@
 </div>
 </div>
 
-<form id="contact-form" class="form-card reveal" data-d="1">
+<!-- action/method reales: sin JS el formulario sigue enviando (abre el cliente
+     de correo) en vez de no hacer nada. Con JS, main.js lo intercepta y usa
+     WhatsApp, que es más cómodo, dejando el correo como salida alternativa. -->
+<form id="contact-form" class="form-card reveal" data-d="1" action="mailto:contactoiwebstudio@gmail.com" method="post" enctype="text/plain">
 <div class="field-row">
 <div class="field"><label for="nombre" data-t="con_l_nombre">Tu nombre</label><input required id="nombre" name="nombre" type="text" placeholder="María García" data-tp="con_ph_nombre"/></div>
 <div class="field"><label for="email" data-t="con_l_email">Tu email</label><input required id="email" name="email" type="email" placeholder="maria@empresa.com" data-tp="con_ph_email"/></div>
@@ -151,11 +155,11 @@
 <div class="container">
 <div class="footer__grid">
 <div>
-<a href="index.html" class="footer__logo"><img src="assets/logo-nav-black.png" alt="OI Studio" class="footer__logo-img"/></a>
+<a href="index.html" class="footer__logo"><img src="assets/logo-nav-black.png" alt="OI Studio" class="footer__logo-img" width="320" height="86"/></a>
 <p class="footer__desc" data-t="foot_desc" style="margin-top:20px;">Webs rápidas, modernas y efectivas para negocios locales que quieren destacar en internet.</p>
 </div>
 <div>
-<h4 data-t="foot_secciones">Secciones</h4>
+<p class="foot-h" data-t="foot_secciones">Secciones</p>
 <ul>
 <li><a href="sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
 <li><a href="trabajos.html" data-t="foot_portfolio">Portfolio</a></li>
@@ -167,7 +171,7 @@
 </ul>
 </div>
 <div>
-<h4 data-t="nav_contacto">Contacto</h4>
+<p class="foot-h" data-t="nav_contacto">Contacto</p>
 <ul>
 <li><a href="mailto:contactoiwebstudio@gmail.com">contactoiwebstudio@gmail.com</a></li>
 <li><a href="https://wa.me/34680956755">+34 680 95 67 55</a></li>
@@ -188,7 +192,7 @@
 .contact-grid { display: grid; gap: 40px; grid-template-columns: 1fr; text-align: left; }
 @media (min-width: 900px) { .contact-grid { grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; } }
 </style>
-<script src="assets/i18n.js"></script>
-<script src="assets/main.js?v=7"></script>
+<script src="assets/i18n.js?v=2"></script>
+<script src="assets/main.js?v=9"></script>
 </body>
 </html>
