@@ -1397,3 +1397,143 @@ summary:focus-visible,
 .footer .link-terra {
   color: var(--terra);
 }
+
+/* ==========================================================================
+   TESTIMONIOS — prueba social
+   El componente existe aquí; el contenido se rellena en las páginas. No hay
+   testimonios de relleno a propósito: uno inventado destruye justo la
+   confianza que esta sección busca construir.
+   ========================================================================== */
+
+.testi-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+@media (min-width: 720px)  { .testi-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .testi-grid--3 { grid-template-columns: repeat(3, 1fr); } }
+
+/* Un solo testimonio: se centra y se agranda en vez de quedarse cojo */
+.testi-grid:has(> .testi:only-child) { max-width: 620px; }
+.testi-grid > .testi:only-child blockquote { font-size: 21px; }
+
+.testi {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 32px 28px 26px;
+  box-shadow: var(--shadow-xs);
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
+}
+.testi:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--border-strong); }
+
+/* Comilla de apertura, en la serif del sitio */
+.testi::before {
+  content: "\201C";
+  position: absolute;
+  top: 6px; left: 22px;
+  font-family: var(--font-serif);
+  font-size: 74px;
+  line-height: 1;
+  color: var(--terra);
+  opacity: 0.16;
+  pointer-events: none;
+}
+
+.testi blockquote {
+  margin: 0;
+  position: relative;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--text);
+  text-wrap: pretty;
+}
+
+.testi figcaption {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+/* Inicial del negocio: evita pedir una foto que quizá no exista */
+.testi__ini {
+  flex: 0 0 auto;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--terra-soft);
+  color: var(--terra-link);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: inset 0 0 0 1px rgba(192, 122, 53, 0.22);
+}
+.testi__quien { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.testi__negocio { font-size: 14.5px; font-weight: 600; color: var(--ink); }
+.testi__donde {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+/* Enlace a la web del cliente: el testimonio se puede comprobar */
+.testi__ver {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--terra-link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testi { transition: none; }
+  .testi:hover { transform: none; }
+}
+
+/* ==========================================================================
+   FICHAS DE CASO — el proyecto contado, no solo enseñado
+   ========================================================================== */
+
+.caso {
+  display: grid;
+  gap: 28px;
+  align-items: start;
+  max-width: 1080px;
+  margin: 0 auto 56px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 900px) { .caso { grid-template-columns: 1.05fr 1fr; gap: 44px; } }
+.caso__media { border-radius: var(--r-md); overflow: hidden; box-shadow: var(--shadow-md); }
+.caso__media img { display: block; width: 100%; height: auto; }
+.caso__sector {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--terra-link);
+}
+.caso h3 { font-size: clamp(22px, 2.6vw, 29px); letter-spacing: -0.02em; margin: 10px 0 18px; }
+.caso__bloques { display: grid; gap: 16px; }
+.caso__b { display: grid; gap: 5px; }
+.caso__b dt {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.caso__b dd { margin: 0; font-size: 15.5px; line-height: 1.65; color: var(--text-muted); }
+.caso__pie { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
