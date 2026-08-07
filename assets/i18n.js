@@ -58,7 +58,7 @@ const EU = {
   work_eyebrow: "Proiektuak",
   work_h2: "Txantiloiak ez diruditen diseinuak.",
   work_p: "Batzuk dagoeneko argitaratuta eta linean daude. Egin klik barrutik ikusteko.",
-  tra_honesty: "Web guztiak argitaratuta daude eta nabigatu daitezke. Hiru bezeroentzako proiektuak dira; gainerakoak nik eraiki ditut sektore bakoitza nola lantzen dudan erakusteko.",
+  tra_honesty: "Web guztiak argitaratuta daude eta benetan nabigatu daitezke: ez dira maketak. Nik eraiki ditut, sektore bakoitzeko bat, nola lan egiten dudan erakusteko.",
   badge_live: "Zuzenean",
   badge_concept: "Kontzeptua",
   badge_demo: "Demoa",
