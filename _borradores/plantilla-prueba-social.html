@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="robots" content="noindex, nofollow"/>
+<title>Plantilla — testimonios y fichas de caso (borrador interno)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/styles.css?v=14"/>
+<script>document.documentElement.classList.add('js');</script>
+<style>
+  body { padding: 40px 20px 80px; }
+  .aviso { max-width: 900px; margin: 0 auto 48px; background: #fff7e0; border: 1px dashed #e0c268; border-radius: 14px; padding: 22px 26px; }
+  .aviso h1 { font-size: 22px; margin-bottom: 10px; }
+  .aviso p { font-size: 15px; line-height: 1.65; color: #6b5a20; margin-bottom: 10px; }
+  .aviso code { font-family: var(--font-mono); font-size: 13px; background: rgba(0,0,0,.06); padding: 2px 6px; border-radius: 4px; }
+  .rellenar { background: #fff7e0; outline: 1px dashed #d8b45a; border-radius: 4px; padding: 0 4px; }
+  .sep { max-width: 900px; margin: 70px auto 30px; border-top: 1px solid var(--border); padding-top: 22px; }
+  .sep h2 { font-size: 20px; }
+  .sep p { font-size: 14.5px; color: var(--text-muted); margin-top: 6px; }
+</style>
+</head>
+<body>
+
+<div class="aviso">
+  <h1>Borrador interno — no forma parte de la web</h1>
+  <p>Esta página está en <code>_borradores/</code>, fuera del sitemap y bloqueada en <code>robots.txt</code>. Sirve para dos cosas: <b>ver cómo quedan</b> los dos componentes que faltan, y <b>tener el HTML listo</b> para pegar en cuanto tengas el contenido.</p>
+  <p>Todo lo resaltado en amarillo es un hueco por rellenar. <b>No hay ni un testimonio de ejemplo con nombre realista a propósito</b>: si esto se colara en producción, no engañaría a nadie.</p>
+</div>
+
+<div class="sep">
+  <h2>1 · Testimonios</h2>
+  <p>Van en <code>index.html</code> (entre «El estudio, en números» y «Precios») y en <code>precios.html</code> (justo debajo de las tres tarjetas, que es donde aparece la objeción del precio). Con uno solo ya funciona: la rejilla se centra sola.</p>
+</div>
+
+<section class="section">
+<div class="container">
+  <div class="section-head">
+    <span class="eyebrow">Lo que dicen</span>
+    <h2>Negocios que ya lo tienen <span class="grad">funcionando</span>.</h2>
+  </div>
+
+  <div class="testi-grid testi-grid--3">
+
+    <figure class="testi">
+      <blockquote><span class="rellenar">Una o dos frases del cliente, tal cual las diga. Sin pulir demasiado: si suena a folleto, deja de parecer real.</span></blockquote>
+      <figcaption>
+        <span class="testi__ini" aria-hidden="true">?</span>
+        <span class="testi__quien">
+          <span class="testi__negocio"><span class="rellenar">Nombre del negocio</span></span>
+          <span class="testi__donde"><span class="rellenar">Localidad</span></span>
+        </span>
+        <a class="testi__ver" href="#">Ver web</a>
+      </figcaption>
+    </figure>
+
+    <figure class="testi">
+      <blockquote><span class="rellenar">Frase del segundo cliente.</span></blockquote>
+      <figcaption>
+        <span class="testi__ini" aria-hidden="true">?</span>
+        <span class="testi__quien">
+          <span class="testi__negocio"><span class="rellenar">Nombre del negocio</span></span>
+          <span class="testi__donde"><span class="rellenar">Localidad</span></span>
+        </span>
+        <a class="testi__ver" href="#">Ver web</a>
+      </figcaption>
+    </figure>
+
+    <figure class="testi">
+      <blockquote><span class="rellenar">Frase del tercer cliente.</span></blockquote>
+      <figcaption>
+        <span class="testi__ini" aria-hidden="true">?</span>
+        <span class="testi__quien">
+          <span class="testi__negocio"><span class="rellenar">Nombre del negocio</span></span>
+          <span class="testi__donde"><span class="rellenar">Localidad</span></span>
+        </span>
+        <a class="testi__ver" href="#">Ver web</a>
+      </figcaption>
+    </figure>
+
+  </div>
+</div>
+</section>
+
+<div class="sep">
+  <h2>Cómo se rellena cada tarjeta</h2>
+  <p>
+    <code>.testi__ini</code> → la inicial del negocio (evita pedir una foto que quizá no exista).<br/>
+    <code>.testi__negocio</code> → nombre real del negocio. <code>.testi__donde</code> → localidad.<br/>
+    <code>.testi__ver</code> → enlace a su web publicada. Esto es lo que hace el testimonio <b>comprobable</b>, que es la diferencia entre prueba social y decoración. Si el cliente no quiere que se enlace, se quita el <code>&lt;a&gt;</code> entero.
+  </p>
+</div>
+
+<div class="sep">
+  <h2>2 · Ficha de caso</h2>
+  <p>Va en <code>trabajos.html</code>, una por cada proyecto de cliente real. Ahora esa página son ocho miniaturas y 224 palabras: esto es lo que le falta para que un visitante entienda <b>cómo trabajas</b>, no solo qué aspecto tiene el resultado.</p>
+</div>
+
+<section class="section section--subtle">
+<div class="container">
+
+  <article class="caso">
+    <div class="caso__media">
+      <img src="../assets/pan-desk.webp" alt="Ejemplo de maquetación de la ficha de caso" width="900" height="562"/>
+    </div>
+    <div>
+      <span class="caso__sector"><span class="rellenar">Sector · Localidad</span></span>
+      <h3><span class="rellenar">Una frase que resuma qué cambió</span></h3>
+      <dl class="caso__bloques">
+        <div class="caso__b">
+          <dt>El punto de partida</dt>
+          <dd><span class="rellenar">Qué tenía antes: nada, solo Instagram, una web vieja de 2015…</span></dd>
+        </div>
+        <div class="caso__b">
+          <dt>El problema</dt>
+          <dd><span class="rellenar">Con qué vino. Lo que le dolía, en sus palabras si puede ser.</span></dd>
+        </div>
+        <div class="caso__b">
+          <dt>Qué decidimos</dt>
+          <dd><span class="rellenar">Una decisión concreta y por qué. «La carta en la home, sin PDF», «reservas por WhatsApp en vez de formulario»… Aquí es donde se ve el criterio.</span></dd>
+        </div>
+        <div class="caso__b">
+          <dt>Qué ha pasado desde entonces</dt>
+          <dd><span class="rellenar">Aunque no haya métrica: «ahora le escriben por WhatsApp en vez de llamar» ya vale.</span></dd>
+        </div>
+      </dl>
+      <div class="caso__pie">
+        <a class="btn btn--soft" href="#">Ver la web en vivo</a>
+        <a class="btn btn--ghost" href="../contacto.html">Quiero algo parecido</a>
+      </div>
+    </div>
+  </article>
+
+</div>
+</section>
+
+<div class="sep">
+  <h2>3 · Marcado de reseñas para Google (cuando haya testimonios reales)</h2>
+  <p>Este <code>JSON-LD</code> hace que Google pueda entender las reseñas. <b>Solo se activa con testimonios reales y verificables</b>: marcar reseñas inventadas incumple las directrices de Google y puede penalizar el dominio entero. Se pega en el <code>&lt;head&gt;</code> de <code>index.html</code>, con un bloque por testimonio.</p>
+</div>
+
+<div class="sep">
+<pre style="font-family:var(--font-mono);font-size:12.5px;line-height:1.7;background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:20px;overflow-x:auto;">&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "OI Studio",
+  "url": "https://oiwebstudio.com/",
+  "review": [
+    {
+      "@type": "Review",
+      "author": { "@type": "Organization", "name": "NOMBRE DEL NEGOCIO" },
+      "reviewBody": "FRASE DEL CLIENTE",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+    }
+  ]
+}
+&lt;/script&gt;</pre>
+</div>
+
+</body>
+</html>
