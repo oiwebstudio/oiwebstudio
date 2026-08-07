@@ -1,3 +1,8 @@
+/* Primera línea del fichero a propósito: marca que el JS se está ejecutando.
+   El CSS parte de "todo visible" y sólo oculta lo animable cuando existe esta
+   clase, así que si este script no llega a cargarse la web se lee entera. */
+document.documentElement.classList.add('js');
+
 document.addEventListener('DOMContentLoaded', () => {
 
   // Navbar scroll state
@@ -236,8 +241,267 @@ document.addEventListener('DOMContentLoaded', () => {
       const mensaje = (data.get('mensaje') || '').toString().trim();
       if (negocio) lineas.push(`• Negocio: ${negocio}`);
       if (mensaje) lineas.push(`• Detalles: ${mensaje}`);
-      window.open('https://wa.me/34680956755?text=' + encodeURIComponent(lineas.join('\n')), '_blank', 'noopener');
+      const texto = lineas.join('\n');
+      window.open('https://wa.me/34680956755?text=' + encodeURIComponent(texto), '_blank', 'noopener');
+
+      // WhatsApp no siempre está disponible (escritorio sin app, bloqueo de
+      // ventanas emergentes). Se deja a la vista una salida por correo con el
+      // mismo mensaje, para que ningún contacto se pierda por el camino.
+      let salida = form.querySelector('.form-fallback');
+      if (!salida) {
+        salida = document.createElement('p');
+        salida.className = 'form-note form-fallback';
+        form.appendChild(salida);
+      }
+      const asunto = encodeURIComponent('Presupuesto web — ' + ((data.get('nombre') || '').toString().trim() || 'nuevo contacto'));
+      salida.innerHTML = '¿No se ha abierto WhatsApp? <a class="link-terra" href="mailto:contactoiwebstudio@gmail.com?subject=' +
+        asunto + '&body=' + encodeURIComponent(texto) + '">Envíamelo por email</a> con el mismo mensaje.';
     });
   }
 });
 
+/* ==========================================================================
+   ANIMACIONES AVANZADAS — piezas de biblioteca-animaciones/ adaptadas.
+   Bloque autónomo: si algo falla aquí, el resto de main.js sigue intacto.
+   ========================================================================== */
+(function () {
+  const start = () => {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    /* 01 · adv-aurora — blobs a la deriva bajo la rejilla del hero ------------ */
+    const heroBg = document.querySelector('.hero__bg');
+    if (heroBg && !heroBg.querySelector('.aur')) {
+      for (let i = 1; i <= 3; i++) {
+        const b = document.createElement('span');
+        b.className = 'aur aur-' + i;
+        b.setAttribute('aria-hidden', 'true');
+        heroBg.insertBefore(b, heroBg.firstChild);
+      }
+    }
+
+    /* 02 · card-cursor-glow — la luz sigue al cursor dentro de la tarjeta ----- */
+    if (fine) {
+      document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+          const r = card.getBoundingClientRect();
+          card.style.setProperty('--gx', (e.clientX - r.left) + 'px');
+          card.style.setProperty('--gy', (e.clientY - r.top) + 'px');
+        });
+      });
+    }
+
+    /* 03 · btn-magnetic — los CTA principales se acercan al cursor ------------ */
+    if (fine && !reduce) {
+      document.querySelectorAll('.btn--lg.btn--accent, .btn--lg.btn--light, .nav__cta').forEach(btn => {
+        btn.classList.add('is-magnetic');
+        btn.addEventListener('mousemove', e => {
+          const r = btn.getBoundingClientRect();
+          const x = e.clientX - (r.left + r.width / 2);
+          const y = e.clientY - (r.top + r.height / 2);
+          btn.style.transform = 'translate(' + (x * 0.22).toFixed(1) + 'px,' + (y * 0.28).toFixed(1) + 'px)';
+        });
+        btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+      });
+    }
+
+    /* 04 · card-tilt-3d — los planes de precio se inclinan con el ratón ------- */
+    if (fine && !reduce) {
+      document.querySelectorAll('.pm').forEach(pm => {
+        pm.addEventListener('mousemove', e => {
+          const r = pm.getBoundingClientRect();
+          const px = (e.clientX - r.left) / r.width - 0.5;
+          const py = (e.clientY - r.top) / r.height - 0.5;
+          pm.style.transform = 'translateY(-4px) rotateY(' + (px * 9).toFixed(2) + 'deg) rotateX(' + (-py * 9).toFixed(2) + 'deg)';
+        });
+        pm.addEventListener('mouseleave', () => { pm.style.transform = ''; });
+      });
+    }
+
+    /* 06 · img-tilt-shine — tilt y destello diagonal en las miniaturas -------- */
+    document.querySelectorAll('.mbp').forEach(mbp => {
+      const img = mbp.querySelector('img');
+      if (!img || mbp.querySelector('.mbp__shine')) return;
+      const shine = document.createElement('span');
+      shine.className = 'mbp__shine';
+      shine.setAttribute('aria-hidden', 'true');
+      mbp.appendChild(shine);
+      if (!fine || reduce) return;
+      mbp.addEventListener('mousemove', e => {
+        const r = mbp.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        img.style.transform = 'translateY(-6px) scale(1.015) rotateY(' + (px * 7).toFixed(2) + 'deg) rotateX(' + (-py * 7).toFixed(2) + 'deg)';
+        shine.style.setProperty('--sx', (px * 220).toFixed(0) + '%');
+      });
+      mbp.addEventListener('mouseleave', () => {
+        img.style.transform = '';
+        shine.style.setProperty('--sx', '-130%');
+      });
+    });
+
+    /* 07 · adv-scroll-progress — barra de progreso de lectura ----------------- */
+    if (!reduce) {
+      const bar = document.createElement('div');
+      bar.className = 'readbar';
+      bar.setAttribute('aria-hidden', 'true');
+      bar.innerHTML = '<i></i>';
+      document.body.appendChild(bar);
+      const fill = bar.firstChild;
+      let ticking = false;
+      const paint = () => {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const p = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
+        fill.style.transform = 'scaleX(' + p.toFixed(4) + ')';
+        ticking = false;
+      };
+      window.addEventListener('scroll', () => {
+        if (!ticking) { ticking = true; requestAnimationFrame(paint); }
+      }, { passive: true });
+      window.addEventListener('resize', paint, { passive: true });
+      paint();
+    }
+
+    /* 08 · text-scramble-scroll — las etiquetas se descifran al entrar -------- */
+    const eyebrows = document.querySelectorAll('.eyebrow');
+    if (eyebrows.length && !reduce) {
+      const pool = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%/*';
+      const scramble = el => {
+        const finalTxt = el.textContent;
+        if (!finalTxt.trim()) return;
+        el.classList.add('is-scrambling');
+        let n = 0;
+        const iv = setInterval(() => {
+          el.textContent = Array.from(finalTxt).map((c, i) => (
+            c === ' ' ? ' ' : (i < n ? c : pool[Math.random() * pool.length | 0])
+          )).join('');
+          if (n >= finalTxt.length) {
+            clearInterval(iv);
+            el.textContent = finalTxt;
+            el.classList.remove('is-scrambling');
+          }
+          n += 0.6;
+        }, 36);
+      };
+      const eyeObs = new IntersectionObserver((entries, obs) => {
+        entries.forEach(en => {
+          if (!en.isIntersecting) return;
+          scramble(en.target);
+          obs.unobserve(en.target);
+        });
+      }, { threshold: 0.9 });
+      eyebrows.forEach(el => eyeObs.observe(el));
+    }
+
+    /* 09 · text-highlighter — marcador que se pinta bajo la palabra clave ----- */
+    const marks = document.querySelectorAll('h2 .grad');
+    if (marks.length) {
+      if (reduce) {
+        marks.forEach(el => el.classList.add('is-marked'));
+      } else {
+        const markObs = new IntersectionObserver((entries, obs) => {
+          entries.forEach(en => {
+            if (!en.isIntersecting) return;
+            setTimeout(() => en.target.classList.add('is-marked'), 260);
+            obs.unobserve(en.target);
+          });
+        }, { threshold: 0.85 });
+        marks.forEach(el => markObs.observe(el));
+      }
+    }
+
+    /* 10 · adv-dot-grid  +  11 · adv-film-grain — sección oscura -------------- */
+    document.querySelectorAll('.dark-section').forEach(sec => {
+      if (sec.querySelector('.film-grain')) return;
+
+      const grain = document.createElement('span');
+      grain.className = 'film-grain';
+      grain.setAttribute('aria-hidden', 'true');
+      sec.insertBefore(grain, sec.firstChild);
+
+      if (reduce) return;
+      const cv = document.createElement('canvas');
+      cv.className = 'dotgrid';
+      cv.setAttribute('aria-hidden', 'true');
+      sec.insertBefore(cv, sec.firstChild);
+
+      const ctx = cv.getContext('2d');
+      let w = 0, h = 0, pts = [], mx = -9999, my = -9999, visible = false, running = false;
+
+      const build = () => {
+        const r = sec.getBoundingClientRect();
+        if (r.width < 2 || r.height < 2) return false;
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        w = r.width; h = r.height;
+        cv.width = Math.round(w * dpr);
+        cv.height = Math.round(h * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        pts = [];
+        const gap = 30;
+        for (let y = gap / 2; y < h; y += gap) {
+          for (let x = gap / 2; x < w; x += gap) pts.push({ x: x, y: y, ox: x, oy: y });
+        }
+        return true;
+      };
+
+      const draw = () => {
+        if (!visible) { running = false; return; }
+        if (!pts.length && !build()) { requestAnimationFrame(draw); return; }
+        ctx.clearRect(0, 0, w, h);
+        for (let i = 0; i < pts.length; i++) {
+          const p = pts[i];
+          const dx = p.ox - mx, dy = p.oy - my;
+          const d = Math.hypot(dx, dy) || 1;
+          const f = d < 110 ? (1 - d / 110) : 0;
+          p.x += (p.ox + dx / d * f * 24 - p.x) * 0.16;
+          p.y += (p.oy + dy / d * f * 24 - p.y) * 0.16;
+          ctx.fillStyle = 'rgba(232,210,178,' + (0.16 + f * 0.6).toFixed(3) + ')';
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, 1.1 + f * 2.1, 0, 6.2832);
+          ctx.fill();
+        }
+        requestAnimationFrame(draw);
+      };
+
+      const kick = () => { if (!running) { running = true; requestAnimationFrame(draw); } };
+
+      if (fine) {
+        sec.addEventListener('mousemove', e => {
+          const r = sec.getBoundingClientRect();
+          mx = e.clientX - r.left; my = e.clientY - r.top;
+        });
+        sec.addEventListener('mouseleave', () => { mx = my = -9999; });
+      }
+      window.addEventListener('resize', () => { build(); kick(); }, { passive: true });
+
+      new IntersectionObserver(entries => {
+        visible = entries[0].isIntersecting;
+        if (visible) { if (!pts.length) build(); kick(); }
+      }, { threshold: 0 }).observe(sec);
+
+      build();
+    });
+
+    /* 12 · loc-city-tags — la botonera de zonas entra en cascada -------------- */
+    const tagGroups = new Set();
+    document.querySelectorAll('a.btn--ghost, a.zcard').forEach(a => {
+      if (a.parentElement) tagGroups.add(a.parentElement);
+    });
+    tagGroups.forEach(group => {
+      const links = Array.from(group.children).filter(el => el.tagName === 'A');
+      if (links.length < 6) return;
+      group.classList.add('city-tags');
+      links.forEach((a, i) => a.style.setProperty('--i', i));
+      if (reduce) { group.classList.add('is-in'); return; }
+      const io = new IntersectionObserver(entries => {
+        if (!entries[0].isIntersecting) return;
+        group.classList.add('is-in');
+        io.disconnect();
+      }, { threshold: 0.12 });
+      io.observe(group);
+    });
+  };
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+  else start();
+})();

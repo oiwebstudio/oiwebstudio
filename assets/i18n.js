@@ -247,6 +247,23 @@ const EU = {
   const nodes = document.querySelectorAll('[data-t]');
   const phNodes = document.querySelectorAll('[data-tp]');
 
+  /* Cobertura real de la página. El menú y el pie suman unas 27 claves en
+     todas: si una página no pasa de ahí, su cuerpo está solo en castellano y
+     ofrecer el conmutador engañaría (se marcaría lang="eu" sobre texto en
+     castellano, que confunde a Google y a los lectores de pantalla). En esas
+     páginas se oculta el selector y se fuerza el castellano.
+     En cuanto se traduzca el cuerpo, el selector reaparece solo. */
+  const MARCO = 30;                      // claves de navegación + pie
+  const MINIMO_PROPIO = 12;              // claves propias que exigimos al cuerpo
+  const traducibles = [...nodes].filter(el => EU[el.dataset.t] != null).length;
+  const paginaTraducida = traducibles - MARCO >= MINIMO_PROPIO;
+
+  if (!paginaTraducida) {
+    document.querySelectorAll('.lang-switch').forEach(s => s.remove());
+    document.documentElement.lang = 'es';
+    return;
+  }
+
   // Capturar el español base (una sola vez)
   nodes.forEach(el => { el.dataset._es = el.innerHTML; });
   phNodes.forEach(el => { el.dataset._esp = el.getAttribute('placeholder') || ''; });
