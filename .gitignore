@@ -35,8 +35,7 @@ promo-instagram.html
 cm-semana-1.txt
 estrategia-de-ventas.txt
 
-# Biblioteca de animaciones: se publica sólo el HTML como /biblioteca.html.
-# Las capturas y los scripts de auditoría son herramientas de taller.
-biblioteca-animaciones/*.png
-biblioteca-animaciones/*.js
-!biblioteca-animaciones/publicar.js
+# Biblioteca de animaciones: sólo se publica biblioteca.html en la raíz.
+# La carpeta de trabajo — fuente, catálogo, brief e investigación — se
+# queda en local: es el criterio, y eso no se regala.
+biblioteca-animaciones/
