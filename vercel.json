@@ -1,0 +1,27 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    { "source": "/diseno-web-alegia.html", "destination": "/zonas/alegia.html", "permanent": true },
+    { "source": "/diseno-web-andoain.html", "destination": "/zonas/andoain.html", "permanent": true },
+    { "source": "/diseno-web-anoeta.html", "destination": "/zonas/anoeta.html", "permanent": true },
+    { "source": "/diseno-web-arrasate-mondragon.html", "destination": "/zonas/arrasate-mondragon.html", "permanent": true },
+    { "source": "/diseno-web-azpeitia.html", "destination": "/zonas/azpeitia.html", "permanent": true },
+    { "source": "/diseno-web-beasain.html", "destination": "/zonas/beasain.html", "permanent": true },
+    { "source": "/diseno-web-bergara.html", "destination": "/zonas/bergara.html", "permanent": true },
+    { "source": "/diseno-web-donostia-san-sebastian.html", "destination": "/zonas/donostia-san-sebastian.html", "permanent": true },
+    { "source": "/diseno-web-eibar.html", "destination": "/zonas/eibar.html", "permanent": true },
+    { "source": "/diseno-web-errenteria.html", "destination": "/zonas/errenteria.html", "permanent": true },
+    { "source": "/diseno-web-hernani.html", "destination": "/zonas/hernani.html", "permanent": true },
+    { "source": "/diseno-web-hondarribia.html", "destination": "/zonas/hondarribia.html", "permanent": true },
+    { "source": "/diseno-web-ibarra.html", "destination": "/zonas/ibarra.html", "permanent": true },
+    { "source": "/diseno-web-irun.html", "destination": "/zonas/irun.html", "permanent": true },
+    { "source": "/diseno-web-lasarte-oria.html", "destination": "/zonas/lasarte-oria.html", "permanent": true },
+    { "source": "/diseno-web-onati.html", "destination": "/zonas/onati.html", "permanent": true },
+    { "source": "/diseno-web-ordizia.html", "destination": "/zonas/ordizia.html", "permanent": true },
+    { "source": "/diseno-web-villabona.html", "destination": "/zonas/villabona.html", "permanent": true },
+    { "source": "/diseno-web-zarautz.html", "destination": "/zonas/zarautz.html", "permanent": true },
+    { "source": "/diseno-web-zumarraga.html", "destination": "/zonas/zumarraga.html", "permanent": true },
+
+    { "source": "/widget-n8n-reservas.html", "destination": "/chatbot-reservas.html", "permanent": true }
+  ]
+}
