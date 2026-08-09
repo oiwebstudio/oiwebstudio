@@ -9,7 +9,7 @@ import Magnetic from "@/components/motion/Magnetic";
 import RevealText from "@/components/motion/RevealText";
 import Scramble from "@/components/motion/Scramble";
 import { useLocale } from "@/lib/i18n";
-import { stores } from "@/lib/stores";
+import { directionsUrl, stores } from "@/lib/stores";
 import { cn } from "@/lib/utils";
 
 const TiendasMap = dynamic(() => import("@/components/TiendasMap"), {
@@ -25,7 +25,7 @@ export default function Mapa() {
   // La tienda elegida manda al mapa volar hasta ella.
   const [activeId, setActiveId] = useState(stores[0].id);
   const active = stores.find((s) => s.id === activeId) ?? stores[0];
-  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(active.mapsQuery)}`;
+  const mapsUrl = directionsUrl(active);
 
   return (
     <section id="mapa" className="relative bg-lino/25 py-24 md:py-32">
