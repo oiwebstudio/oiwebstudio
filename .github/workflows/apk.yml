@@ -25,11 +25,13 @@ jobs:
       - name: Descargar el repositorio
         uses: actions/checkout@v5
 
-      - name: Preparar Java 17
+      # Capacitor 8 compila sus fuentes con nivel de lenguaje 21: con Java 17
+      # falla en :capacitor-android con "invalid source release: 21".
+      - name: Preparar Java 21
         uses: actions/setup-java@v5
         with:
           distribution: temurin
-          java-version: '17'
+          java-version: '21'
 
       - name: Preparar Node
         uses: actions/setup-node@v5
@@ -68,6 +70,29 @@ jobs:
       - name: Compilar el APK
         run: ./gradlew assembleDebug --no-daemon --stacktrace
         working-directory: proyectos/mi-panel-movil/android
+
+      # Si Gradle falla, el motivo real queda enterrado entre cientos de líneas
+      # de rastro. Esto deja a mano solo lo que importa.
+      - name: Qué ha fallado
+        if: failure()
+        run: |
+          echo "════════ MOTIVO DEL FALLO ════════"
+          ./gradlew assembleDebug --no-daemon 2>&1 \
+            | grep -A 25 "FAILURE: Build failed" \
+            | grep -v "^\s*at org.gradle" || echo "(sin bloque FAILURE)"
+        working-directory: proyectos/mi-panel-movil/android
+        continue-on-error: true
+
+      - name: Guardar los informes de Gradle
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: informes-gradle
+          path: |
+            proyectos/mi-panel-movil/android/app/build/reports/
+            proyectos/mi-panel-movil/android/build/reports/
+          retention-days: 7
+          if-no-files-found: ignore
 
       - name: Publicar el APK como resultado
         uses: actions/upload-artifact@v4
