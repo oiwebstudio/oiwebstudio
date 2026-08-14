@@ -23,7 +23,7 @@ jobs:
 
     steps:
       - name: Descargar el repositorio
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Preparar Java 17
         uses: actions/setup-java@v5
@@ -32,12 +32,26 @@ jobs:
           java-version: '17'
 
       - name: Preparar Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: '22'
 
       - name: Preparar el SDK de Android
         uses: android-actions/setup-android@v3
+        with:
+          # Los que pide el proyecto: si Gradle tuviera que bajarlos por su
+          # cuenta, fallaría por licencias sin aceptar.
+          packages: 'platform-tools platforms;android-36 build-tools;36.0.0'
+
+      # Deja constancia de con qué se está compilando: si algo falla, el log
+      # dice si el problema es la versión de Java, Node o el SDK.
+      - name: Qué versiones hay
+        run: |
+          echo "Node:   $(node -v)"
+          echo "npm:    $(npm -v)"
+          echo "Java:   $(java -version 2>&1 | head -1)"
+          echo "SDK:    ${ANDROID_HOME:-sin definir}"
+          ls "$ANDROID_HOME/platforms" 2>/dev/null || echo "  (sin plataformas)"
 
       - name: Instalar dependencias
         run: npm ci
