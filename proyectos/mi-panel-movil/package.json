@@ -1,0 +1,16 @@
+{
+  "name": "mi-panel-movil",
+  "version": "1.0.0",
+  "private": true,
+  "description": "App de finanzas, hábitos y metas. Los datos viven en el dispositivo.",
+  "scripts": {
+    "start": "npx --yes http-server www -p 4500 -c-1",
+    "iconos": "node scripts/iconos.mjs",
+    "sync": "npx cap sync android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.5.0",
+    "@capacitor/cli": "^8.5.0",
+    "@capacitor/core": "^8.5.0"
+  }
+}
