@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Mi panel">
+<title>Mi panel</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="iconos/icono-180.png">
+<link rel="icon" href="iconos/icono-192.png">
+<link rel="stylesheet" href="assets/estilos.css">
+</head>
+<body>
+
+<main class="envoltura">
+
+  <!-- ══ Inicio ══════════════════════════════════════════════════════════ -->
+  <section class="pantalla" data-pantalla="inicio">
+    <header class="cabecera">
+      <div>
+        <small id="etqInicio">Tu día</small>
+        <h1 id="saludo">Hola</h1>
+        <p id="fecha"></p>
+      </div>
+      <button class="circular" id="btnAjustes" aria-label="Ajustes">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1A1.7 1.7 0 0 0 8.9 19a1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1A1.7 1.7 0 0 0 5 8.9a1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9.5a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9v.1a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+      </button>
+    </header>
+
+    <div class="bento" id="bento"></div>
+  </section>
+
+  <!-- ══ Dinero ══════════════════════════════════════════════════════════ -->
+  <section class="pantalla oculto" data-pantalla="dinero">
+    <header class="cabecera">
+      <div>
+        <small>Finanzas</small>
+        <h1>Dinero</h1>
+        <p id="mesDinero"></p>
+      </div>
+      <button class="circular" id="mesAtras" aria-label="Mes anterior">‹</button>
+      <button class="circular" id="mesAdelante" aria-label="Mes siguiente">›</button>
+    </header>
+
+    <div class="segmentado" role="tablist" aria-label="Ámbito">
+      <button role="tab" data-ambito="personal" aria-selected="true">Casa</button>
+      <button role="tab" data-ambito="negocio" aria-selected="false">Negocio</button>
+    </div>
+
+    <div id="resumenDinero"></div>
+
+    <section class="seccion">
+      <div class="seccion-cab"><h2>Movimientos</h2><span class="badge apagado" id="cuentaDinero"></span></div>
+      <div class="tarjeta" id="listaDinero"></div>
+    </section>
+  </section>
+
+  <!-- ══ Hábitos ═════════════════════════════════════════════════════════ -->
+  <section class="pantalla oculto" data-pantalla="habitos">
+    <header class="cabecera">
+      <div>
+        <small>Seguimiento</small>
+        <h1>Hábitos</h1>
+        <p id="etiquetaMesHabitos"></p>
+      </div>
+      <button class="circular" id="habAtras" aria-label="Mes anterior">‹</button>
+      <button class="circular" id="habAdelante" aria-label="Mes siguiente">›</button>
+    </header>
+
+    <div class="segmentado" role="tablist" aria-label="Vista">
+      <button role="tab" data-vista="dia" aria-selected="true">Día</button>
+      <button role="tab" data-vista="mes" aria-selected="false">Mes</button>
+      <button role="tab" data-vista="anio" aria-selected="false">Año</button>
+    </div>
+
+    <div class="tarjeta seccion" id="calendario">
+      <div id="vistaDia">
+        <div class="semana-cab" aria-hidden="true"><span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
+        <div class="rejilla" id="rejilla"></div>
+      </div>
+      <div id="vistaResumen" class="oculto"></div>
+    </div>
+
+    <section class="seccion" id="bloqueChecklist">
+      <div class="seccion-cab"><h2 id="fechaElegida">—</h2><span class="badge" id="ratio" style="--tono: var(--naranja)"></span></div>
+      <div class="tarjeta">
+        <ul class="lista-habitos" id="listaHabitos"></ul>
+        <div class="stats">
+          <div class="stat"><b class="num" id="statRacha">0</b><span>RACHA</span></div>
+          <div class="stat"><b class="num" id="statMes">0 %</b><span>ESTE MES</span></div>
+          <div class="stat"><b class="num" id="statPlenos">0</b><span>DÍAS PLENOS</span></div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- ══ Metas ═══════════════════════════════════════════════════════════ -->
+  <section class="pantalla oculto" data-pantalla="metas">
+    <header class="cabecera">
+      <div>
+        <small>Objetivos</small>
+        <h1>Metas</h1>
+        <p id="resumenMetas"></p>
+      </div>
+    </header>
+
+    <div class="segmentado" role="tablist" aria-label="Plazo">
+      <button role="tab" data-plazo="" aria-selected="true">Todas</button>
+      <button role="tab" data-plazo="Mes" aria-selected="false">Mes</button>
+      <button role="tab" data-plazo="Año" aria-selected="false">Año</button>
+      <button role="tab" data-plazo="Largo plazo" aria-selected="false">Largo</button>
+    </div>
+
+    <div id="listaMetas" style="display:grid; gap:12px"></div>
+  </section>
+
+  <!-- ══ Ajustes ═════════════════════════════════════════════════════════ -->
+  <section class="pantalla oculto" data-pantalla="ajustes">
+    <header class="cabecera">
+      <div>
+        <small>Tu app</small>
+        <h1>Ajustes</h1>
+        <p>Todo se guarda en este dispositivo</p>
+      </div>
+    </header>
+
+    <section class="seccion">
+      <div class="seccion-cab"><h2>Tus datos</h2></div>
+      <div class="tarjeta">
+        <div class="fila"><div class="fila-txt"><b>Movimientos</b><span>gastos e ingresos</span></div><div class="fila-cifra num" id="cntMovimientos">0</div></div>
+        <div class="fila"><div class="fila-txt"><b>Metas</b><span>objetivos y fondos</span></div><div class="fila-cifra num" id="cntObjetivos">0</div></div>
+        <div class="fila"><div class="fila-txt"><b>Días de hábitos</b><span>con algo marcado</span></div><div class="fila-cifra num" id="cntHabitos">0</div></div>
+        <div class="fila"><div class="fila-txt"><b>Espacio usado</b><span>en el almacenamiento</span></div><div class="fila-cifra num" id="espacio">—</div></div>
+      </div>
+    </section>
+
+    <section class="seccion">
+      <div class="seccion-cab"><h2>Copia de seguridad</h2></div>
+      <div class="tarjeta">
+        <p class="pie" style="margin:6px 0 14px">
+          Tus datos viven <b>solo aquí</b>. Si pierdes o formateas el móvil, se van con él.
+          Exporta de vez en cuando y guarda el archivo donde quieras.
+        </p>
+        <div style="display:grid; gap:9px">
+          <button class="hoja-pie-boton principal" id="btnExportar" style="padding:13px; border-radius:13px; background:var(--azul); color:#fff; font-weight:600">Exportar mis datos</button>
+          <button id="btnImportar" style="padding:13px; border-radius:13px; background:rgba(120,120,128,.24); font-weight:600">Importar una copia</button>
+          <button id="btnVaciar" style="padding:13px; border-radius:13px; background:rgba(255,55,95,.16); color:var(--rosa); font-weight:600">Borrar todo</button>
+        </div>
+        <input type="file" id="ficheroImportar" accept="application/json" class="oculto">
+      </div>
+    </section>
+
+    <section class="seccion">
+      <div class="seccion-cab"><h2>Sobre la app</h2></div>
+      <div class="tarjeta">
+        <div class="fila"><div class="fila-txt"><b>Sin conexión</b><span>funciona con el avión puesto</span></div><div class="fila-cifra pos">✓</div></div>
+        <div class="fila"><div class="fila-txt"><b>Sin cuentas</b><span>no hay registro ni servidor</span></div><div class="fila-cifra pos">✓</div></div>
+        <div class="fila"><div class="fila-txt"><b>Datos protegidos</b><span id="estadoPersistencia">comprobando…</span></div><div class="fila-cifra" id="iconoPersistencia">—</div></div>
+      </div>
+    </section>
+  </section>
+
+</main>
+
+<button class="flotante" id="btnAnadir" aria-label="Añadir">+</button>
+
+<nav class="pestanas" role="tablist" aria-label="Secciones">
+  <button class="pestana" role="tab" data-ir="inicio" aria-selected="true">
+    <svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/></svg>Inicio
+  </button>
+  <button class="pestana" role="tab" data-ir="dinero" aria-selected="false">
+    <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="13" rx="2.5"/><path d="M2 10.5h20"/></svg>Dinero
+  </button>
+  <button class="pestana" role="tab" data-ir="habitos" aria-selected="false">
+    <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>Hábitos
+  </button>
+  <button class="pestana" role="tab" data-ir="metas" aria-selected="false">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg>Metas
+  </button>
+  <button class="pestana" role="tab" data-ir="ajustes" aria-selected="false">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg>Ajustes
+  </button>
+</nav>
+
+<div class="brindis" id="brindis" role="status" aria-live="polite"></div>
+
+<!-- ══ Hoja: movimiento ═════════════════════════════════════════════════ -->
+<dialog id="hojaMovimiento">
+  <form method="dialog" class="hoja" id="formMovimiento">
+    <div class="hoja-cab">
+      <h3 id="tituloMovimiento">Nuevo movimiento</h3>
+      <button type="button" data-cerrar="hojaMovimiento">Cerrar</button>
+    </div>
+
+    <div class="hoja-cuerpo">
+      <div class="segmentado">
+        <label><input type="radio" name="ambito" value="personal" checked><span>Casa</span></label>
+        <label><input type="radio" name="ambito" value="negocio"><span>Negocio</span></label>
+      </div>
+      <div class="segmentado">
+        <label><input type="radio" name="tipo" value="Gasto" checked><span>Sale</span></label>
+        <label><input type="radio" name="tipo" value="Ingreso"><span>Entra</span></label>
+      </div>
+
+      <label class="campo"><span>Concepto</span><input name="concepto" required placeholder="Suscripción, cobro…" autocomplete="off"></label>
+
+      <div class="par">
+        <label class="campo"><span>Importe (€)</span><input name="importe" required inputmode="decimal" placeholder="22" autocomplete="off"></label>
+        <label class="campo"><span>Fecha</span><input type="date" name="fecha" required></label>
+      </div>
+
+      <label class="campo"><span>Categoría</span><select name="categoria"></select></label>
+
+      <label class="campo" id="campoRecurrente"><span>¿Se repite cada mes?</span>
+        <select name="recurrente"><option>No</option><option>Sí</option></select>
+      </label>
+
+      <p class="error" id="errorMovimiento"></p>
+    </div>
+
+    <div class="hoja-pie">
+      <button type="button" class="secundario" data-cerrar="hojaMovimiento">Cancelar</button>
+      <button type="submit" class="principal">Guardar</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- ══ Hoja: meta ═══════════════════════════════════════════════════════ -->
+<dialog id="hojaMeta">
+  <form method="dialog" class="hoja" id="formMeta">
+    <div class="hoja-cab">
+      <h3>Nueva meta</h3>
+      <button type="button" data-cerrar="hojaMeta">Cerrar</button>
+    </div>
+
+    <div class="hoja-cuerpo">
+      <label class="campo"><span>Nombre</span><input name="nombre" required placeholder="Fondo de seguridad" autocomplete="off"></label>
+
+      <div class="par">
+        <label class="campo"><span>Meta</span><input name="meta" required inputmode="decimal" placeholder="3000" autocomplete="off"></label>
+        <label class="campo"><span>Unidad</span><input name="unidad" value="€" autocomplete="off"></label>
+      </div>
+
+      <div class="par">
+        <label class="campo"><span>Ya llevas</span><input name="progreso" inputmode="decimal" placeholder="0" autocomplete="off"></label>
+        <label class="campo"><span>Plazo</span>
+          <select name="plazo"><option>Mes</option><option>Año</option><option selected>Largo plazo</option></select>
+        </label>
+      </div>
+
+      <label class="campo"><span>Área</span>
+        <select name="area"><option>Dinero</option><option>Negocio</option><option>Salud</option><option>Aprendizaje</option><option>Personal</option></select>
+      </label>
+
+      <p class="error" id="errorMeta"></p>
+    </div>
+
+    <div class="hoja-pie">
+      <button type="button" class="secundario" data-cerrar="hojaMeta">Cancelar</button>
+      <button type="submit" class="principal">Guardar</button>
+    </div>
+  </form>
+</dialog>
+
+<script type="module" src="assets/app.js"></script>
+</body>
+</html>
