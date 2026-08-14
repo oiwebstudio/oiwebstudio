@@ -47,13 +47,22 @@ jobs:
 
       # Deja constancia de con qué se está compilando: si algo falla, el log
       # dice si el problema es la versión de Java, Node o el SDK.
-      - name: Qué versiones hay
+      # Si Java no es 21, no tiene sentido seguir: se para aquí con un mensaje
+      # claro en vez de morir 40 s después dentro de Gradle.
+      - name: Comprobar el entorno
         run: |
-          echo "Node:   $(node -v)"
-          echo "npm:    $(npm -v)"
-          echo "Java:   $(java -version 2>&1 | head -1)"
-          echo "SDK:    ${ANDROID_HOME:-sin definir}"
-          ls "$ANDROID_HOME/platforms" 2>/dev/null || echo "  (sin plataformas)"
+          echo "Node:      $(node -v)"
+          echo "npm:       $(npm -v)"
+          echo "Java:      $(java -version 2>&1 | head -1)"
+          echo "JAVA_HOME: $JAVA_HOME"
+          echo "SDK:       ${ANDROID_HOME:-sin definir}"
+
+          VERSION=$(java -version 2>&1 | head -1 | grep -oE '"[0-9]+' | tr -d '"')
+          if [ "$VERSION" -lt 21 ]; then
+            echo "::error::Capacitor 8 necesita Java 21 y aquí hay Java $VERSION."
+            exit 1
+          fi
+          echo "Java $VERSION: correcto."
 
       - name: Instalar dependencias
         run: npm ci
@@ -67,8 +76,12 @@ jobs:
         run: chmod +x gradlew
         working-directory: proyectos/mi-panel-movil/android
 
+      # -Dorg.gradle.java.home fuerza el JDK: sin esto Gradle puede elegir otro
+      # de los que trae la máquina y volver al "invalid source release: 21".
       - name: Compilar el APK
-        run: ./gradlew assembleDebug --no-daemon --stacktrace
+        run: |
+          ./gradlew -version
+          ./gradlew assembleDebug --no-daemon --stacktrace -Dorg.gradle.java.home="$JAVA_HOME"
         working-directory: proyectos/mi-panel-movil/android
 
       # Si Gradle falla, el motivo real queda enterrado entre cientos de líneas
@@ -77,7 +90,7 @@ jobs:
         if: failure()
         run: |
           echo "════════ MOTIVO DEL FALLO ════════"
-          ./gradlew assembleDebug --no-daemon 2>&1 \
+          ./gradlew assembleDebug --no-daemon -Dorg.gradle.java.home="$JAVA_HOME" 2>&1 \
             | grep -A 25 "FAILURE: Build failed" \
             | grep -v "^\s*at org.gradle" || echo "(sin bloque FAILURE)"
         working-directory: proyectos/mi-panel-movil/android
