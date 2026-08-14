@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Mi panel</string>
+    <string name="title_activity_main">Mi panel</string>
+    <string name="package_name">com.oistudio.mipanel</string>
+    <string name="custom_url_scheme">com.oistudio.mipanel</string>
+</resources>

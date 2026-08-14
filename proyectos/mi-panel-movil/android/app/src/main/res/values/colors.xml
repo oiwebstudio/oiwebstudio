@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Negro OLED: el mismo fondo que usa la web, para que no haya un
+         parpadeo blanco entre la pantalla de arranque y la app. -->
+    <color name="negro">#000000</color>
+    <color name="azul_ios">#0A84FF</color>
+</resources>
