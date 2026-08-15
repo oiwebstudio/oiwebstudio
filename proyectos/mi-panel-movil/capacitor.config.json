@@ -3,7 +3,7 @@
   "appName": "Mi panel",
   "webDir": "www",
   "android": {
-    "backgroundColor": "#000000",
+    "backgroundColor": "#F2F4F7",
     "allowMixedContent": false
   },
   "server": {

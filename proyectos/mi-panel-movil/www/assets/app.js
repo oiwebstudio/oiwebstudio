@@ -700,7 +700,7 @@ function conectar() {
   // Pide al sistema no borrar los datos: viven solo aquí.
   pedirPersistencia();
 
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js').catch(() => {});
-  }
+  // Ya no se registra el service worker: esta pantalla es ahora la versión
+  // clásica (clasico.html) y el index es la nueva. Si registrase el sw, este
+  // guardaría en caché el index nuevo y lo serviría desde la versión vieja.
 })();

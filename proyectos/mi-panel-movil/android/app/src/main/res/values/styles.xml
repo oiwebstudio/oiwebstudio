@@ -2,22 +2,26 @@
 <resources>
 
     <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/negro</item>
-        <item name="colorPrimaryDark">@color/negro</item>
+        <item name="colorPrimary">@color/fondo</item>
+        <item name="colorPrimaryDark">@color/fondo</item>
         <item name="colorAccent">@color/azul_ios</item>
     </style>
 
-    <!-- Sin barra de acción y con fondo negro: la interfaz la pinta la web. -->
+    <!-- Sin barra de acción y con el fondo claro de la app: la interfaz la
+         pinta la web. windowLightStatusBar deja la hora y los iconos en negro,
+         que sobre gris claro es lo único legible. -->
     <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:background">@color/negro</item>
-        <item name="android:statusBarColor">@color/negro</item>
-        <item name="android:navigationBarColor">@color/negro</item>
+        <item name="android:background">@color/fondo</item>
+        <item name="android:statusBarColor">@color/fondo</item>
+        <item name="android:navigationBarColor">@color/fondo</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <style name="AppTheme.NoActionBarLaunch" parent="Theme.SplashScreen">
-        <item name="android:background">@color/negro</item>
-        <item name="android:statusBarColor">@color/negro</item>
+        <item name="android:background">@color/fondo</item>
+        <item name="android:statusBarColor">@color/fondo</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 </resources>
