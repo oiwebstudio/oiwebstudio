@@ -1009,6 +1009,14 @@ const numF = new Intl.NumberFormat('es-ES',{maximumFractionDigits:1});
 const numU = new Intl.NumberFormat('es-ES',{maximumFractionDigits:6});
 const euro = n => eur0.format(n||0);
 const euroDec = n => eur2.format(n||0);
+// Un activo puede valer 54.000 € o 0,86 €: los decimales se ajustan al tamaño,
+// que si no una cripto barata se queda en "0,86 €" perdiendo lo que importa.
+function euroUd(n){
+  const v=Math.abs(n||0);
+  const dec = v>=1000?2 : v>=1?4 : 6;
+  return new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',
+    minimumFractionDigits:2, maximumFractionDigits:dec}).format(n||0);
+}
 const pct = n => pctF.format(Number.isFinite(n)?n:0);
 const esc = s => String(s??'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
@@ -1018,9 +1026,10 @@ function aNum(v){
   if (!s) return 0;
   const c=s.lastIndexOf(','), p=s.lastIndexOf('.');
   if (c>-1&&p>-1){ const d=c>p?',':'.'; s=s.split(d===','?'.':',').join('').replace(d,'.'); }
-  // Un solo tipo de separador en grupos de tres es miles, no decimales:
-  // "3.200" son tres mil doscientos, y "3.200,50" ya lo resuelve la línea de arriba.
-  else if (/^-?\d{1,3}([.,]\d{3})+$/.test(s)) s=s.replace(/[.,]/g,'');
+  // Solo el punto hace de separador de miles: "3.200" son tres mil doscientos.
+  // La coma es siempre decimal, que es como se escribe aquí: "1,638" es uno
+  // coma seiscientos treinta y ocho, no mil seiscientos treinta y ocho.
+  else if (/^-?\d{1,3}(\.\d{3})+$/.test(s)) s=s.replace(/\./g,'');
   else if (c>-1) s=s.replace(',','.');
   const n=parseFloat(s); return Number.isFinite(n)?n:0;
 }
@@ -1347,7 +1356,7 @@ function pintarResumenDinero(){
         return `<div class="fila">
           <div class="fila-icono">${ICONO_INV[i.tipo]||'📊'}</div>
           <div class="fila-txt"><b>${esc(i.nombre)}</b>
-            <span>${numU.format(aNum(i.unidades))} ud · ${euroDec(precioDe(i))}/ud · ${cuando}</span></div>
+            <span>${numU.format(aNum(i.unidades))} ud · ${euroUd(precioDe(i))}/ud · ${cuando}</span></div>
           <div class="fila-cifra num">${euro(valor)}<small class="${dif>=0?'pos':'neg'}">${dif>=0?'+':'−'}${euro(Math.abs(dif))} · ${dif>=0?'+':'−'}${pct(Math.abs(rent))}</small></div>
           <button class="editar" data-editar-inv="${i.id}" aria-label="Editar activo">✎</button>
           <button class="borrar" data-borrar-inv="${i.id}" aria-label="Borrar">✕</button>
@@ -1549,6 +1558,21 @@ function verCategoria(cat){
    nada personal. Si un relé está caído se prueba el siguiente.               */
 const RELES = ['https://corsproxy.io/?url=', 'https://api.allorigins.win/raw?url='];
 
+// CoinGecko no entiende los símbolos, quiere sus identificadores: XRP es
+// "ripple" y BTC es "bitcoin". Estos son los que se escriben a diario; para
+// cualquier otro está su buscador, más abajo.
+const ALIAS_CRIPTO = {
+  btc:'bitcoin', xbt:'bitcoin', eth:'ethereum', xrp:'ripple', ada:'cardano',
+  sol:'solana', doge:'dogecoin', dot:'polkadot', bnb:'binancecoin', ltc:'litecoin',
+  link:'chainlink', avax:'avalanche-2', xlm:'stellar', trx:'tron', atom:'cosmos',
+  matic:'matic-network', pol:'polygon-ecosystem-token', shib:'shiba-inu',
+  usdt:'tether', usdc:'usd-coin', near:'near', arb:'arbitrum', op:'optimism',
+  ton:'the-open-network', sui:'sui', apt:'aptos', hbar:'hedera-hashgraph',
+  fil:'filecoin', etc:'ethereum-classic', bch:'bitcoin-cash', uni:'uniswap',
+  aave:'aave', algo:'algorand', vet:'vechain', icp:'internet-computer',
+  inj:'injective-protocol', rndr:'render-token', pepe:'pepe', kas:'kaspa',
+};
+
 async function conTiempo(url, ms=9000){
   const c=new AbortController();
   const reloj=setTimeout(()=>c.abort(), ms);
@@ -1583,6 +1607,31 @@ async function aEuros(importe, moneda){
   return importe/cacheCambio[moneda];
 }
 
+/** Precios en euros de una lista de identificadores de CoinGecko. */
+async function preciosCripto(ids){
+  if (!ids.length) return {};
+  try {
+    const r=await conTiempo(`https://api.coingecko.com/api/v3/simple/price?ids=${encodeURIComponent(ids.join(','))}&vs_currencies=eur`);
+    return r.ok ? await r.json() : {};
+  } catch { return {}; }
+}
+
+/** Busca una cripto por símbolo o nombre y devuelve su identificador.
+    Ante varias con el mismo símbolo manda la más grande: "xrp" → "ripple". */
+async function buscarCripto(texto){
+  const t=texto.trim().toLowerCase();
+  if (!t) return null;
+  try {
+    const r=await conTiempo(`https://api.coingecko.com/api/v3/search?query=${encodeURIComponent(t)}`);
+    if (!r.ok) return null;
+    const monedas=(await r.json()).coins||[];
+    if (!monedas.length) return null;
+    const exactas=monedas.filter(c=>c.symbol?.toLowerCase()===t||c.id===t||c.name?.toLowerCase()===t);
+    return (exactas.length?exactas:monedas)
+      .sort((a,b)=>(a.market_cap_rank??1e9)-(b.market_cap_rank??1e9))[0]?.id || null;
+  } catch { return null; }
+}
+
 async function actualizarPrecios(){
   const conId = E.inversiones.filter(i=>i.ticker?.trim());
   if (!conId.length){ avisar('Ningún activo tiene identificador. Ponle uno con ✎.'); return; }
@@ -1595,16 +1644,33 @@ async function actualizarPrecios(){
     // 1 · Cripto, todas en una sola llamada
     const criptos=conId.filter(i=>i.tipo==='Cripto');
     if (criptos.length){
-      const ids=[...new Set(criptos.map(i=>i.ticker.trim().toLowerCase()))].join(',');
-      try {
-        const r=await conTiempo(`https://api.coingecko.com/api/v3/simple/price?ids=${encodeURIComponent(ids)}&vs_currencies=eur`);
-        const d=r.ok ? await r.json() : {};
-        for (const inv of criptos){
-          const p=d[inv.ticker.trim().toLowerCase()]?.eur;
-          if (p){ inv.precioActual=p; inv.moneda='EUR'; inv.actualizado=Date.now(); ok++; }
-          else fallidos.push(inv.nombre);
+      const ids=new Map();   // inversión -> identificador de CoinGecko
+      for (const inv of criptos){
+        const t=inv.ticker.trim().toLowerCase();
+        ids.set(inv.id, ALIAS_CRIPTO[t]||t);
+      }
+      const precios=await preciosCripto([...new Set(ids.values())]);
+
+      // A las que no ha reconocido se les busca el identificador bueno.
+      const perdidas=criptos.filter(inv=>!precios[ids.get(inv.id)]);
+      if (perdidas.length){
+        for (const inv of perdidas){
+          const hallado=await buscarCripto(inv.ticker);
+          if (hallado) ids.set(inv.id, hallado);
         }
-      } catch { fallidos.push(...criptos.map(i=>i.nombre)); }
+        const pendientes=[...new Set(perdidas.map(i=>ids.get(i.id)))].filter(x=>x&&!precios[x]);
+        if (pendientes.length) Object.assign(precios, await preciosCripto(pendientes));
+      }
+
+      for (const inv of criptos){
+        const id=ids.get(inv.id);
+        const p=precios[id]?.eur;
+        if (p){
+          inv.precioActual=p; inv.moneda='EUR'; inv.actualizado=Date.now();
+          inv.ticker=id;   // se guarda el identificador bueno: la próxima vez va directo
+          ok++;
+        } else fallidos.push(inv.nombre);
+      }
     }
 
     // 2 · El resto, uno a uno por Yahoo
@@ -2289,7 +2355,7 @@ function ajustarCamposInversion(){
   const f=$('#formInv');
   const t=f.tipo.value;
   const guia={
-    'Cripto':               ['Id de CoinGecko', 'bitcoin, ethereum, solana…', 'Es el identificador de CoinGecko, en minúsculas: «bitcoin», no «BTC».'],
+    'Cripto':               ['Identificador o símbolo', 'bitcoin, XRP, ETH…', 'Vale tanto el nombre («bitcoin») como el símbolo («XRP»): si hace falta lo busco en CoinGecko y me quedo con el identificador bueno.'],
     'Acciones':             ['Símbolo de Yahoo', 'AAPL, SAN.MC, ITX.MC…', 'Símbolo de Yahoo Finanzas. La bolsa española lleva «.MC»: SAN.MC, ITX.MC.'],
     'Fondos / ETF':         ['Símbolo de Yahoo', 'VWCE.DE, IWDA.AS…', 'Solo cotizan solos los ETF. Un fondo indexado clásico no tiene símbolo: actualízalo a mano.'],
     'Metales':              ['Símbolo de Yahoo', 'GC=F (oro), SI=F (plata)', 'GC=F es la onza de oro y SI=F la de plata, en dólares; el panel las pasa a euros.'],
