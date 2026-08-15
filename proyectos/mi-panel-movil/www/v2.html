@@ -1,0 +1,2576 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<meta name="theme-color" content="#F2F4F7">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Mi panel">
+<title>Mi panel · V3</title>
+<style>
+/* ═══════════════════════════════════════════════════════════════════════════
+   MI PANEL V3 · iOS 18 Wellness, modo claro.
+   Monolito: CSS y JS viven aquí. Todo el estado persiste en localStorage.
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root {
+  color-scheme: light;
+
+  --fondo: #F2F4F7;
+  --carta: #FFFFFF;
+  --borde: 1px solid rgba(0, 0, 0, 0.04);
+  --sombra: 0 10px 30px rgba(0, 0, 0, 0.04);
+  --sombra-alta: 0 18px 50px rgba(0, 0, 0, 0.10);
+
+  --tinta: #111111;
+  --txt: #1B1D21;
+  --txt-2: rgba(27, 29, 33, 0.55);
+  --txt-3: rgba(27, 29, 33, 0.34);
+
+  --verde: #30D158;
+  --rojo: #FF3B30;
+  --azul: #0A84FF;
+  --naranja: #FF9F0A;
+  --morado: #BF5AF2;
+
+  --r: 28px;
+  --r-s: 18px;
+  --hueco: 14px;
+
+  --sf: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text',
+        'Segoe UI Variable Display', 'Segoe UI', Roboto, system-ui, sans-serif;
+  --muelle: cubic-bezier(.32, .72, 0, 1);
+
+  --dock-alto: calc(78px + env(safe-area-inset-bottom));
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html { min-height: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--fondo);
+  color: var(--txt);
+  font-family: var(--sf);
+  font-size: 15px;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: calc(var(--dock-alto) + 18px);
+  overscroll-behavior-y: none;
+}
+
+.telefono { position: relative; max-width: 520px; margin: 0 auto; padding: 0 18px; }
+
+.num { font-variant-numeric: tabular-nums; font-feature-settings: 'tnum' 1; }
+.oculto { display: none !important; }
+.pos { color: var(--verde); }
+.neg { color: var(--rojo); }
+
+button { font: inherit; color: inherit; background: none; border: none; padding: 0; cursor: pointer; letter-spacing: inherit; text-align: inherit; }
+button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outline-offset: 2px; border-radius: 10px; }
+
+/* ── Cabecera ───────────────────────────────────────────────────────────── */
+.cabecera { display: flex; align-items: center; gap: 12px; padding: calc(18px + env(safe-area-inset-top)) 0 14px; }
+.avatar { width: 46px; height: 46px; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--tinta); color: #fff; font-size: 17px; font-weight: 700; }
+.cabecera .quien { flex: 1; min-width: 0; }
+.cabecera .quien small { display: block; font-size: 12.5px; color: var(--txt-2); }
+.cabecera .quien b { font-size: 17px; font-weight: 700; letter-spacing: -0.02em; }
+
+.campana { position: relative; width: 44px; height: 44px; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--carta); border: var(--borde); box-shadow: var(--sombra); }
+.campana svg { width: 20px; height: 20px; fill: none; stroke: var(--txt); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.campana .puntito { position: absolute; top: 10px; right: 11px; width: 8px; height: 8px; border-radius: 50%; background: var(--rojo); }
+
+/* ── Banner ─────────────────────────────────────────────────────────────── */
+.banner { display: flex; align-items: center; gap: 10px; background: var(--tinta); color: #fff; border-radius: 20px; padding: 12px 16px; margin-bottom: var(--hueco); font-size: 13.5px; box-shadow: var(--sombra-alta); }
+.banner b { font-weight: 600; }
+.banner .ir { margin-left: auto; flex: none; background: #fff; color: var(--tinta); font-weight: 700; font-size: 12.5px; padding: 7px 14px; border-radius: 16px; }
+
+/* ── Títulos ────────────────────────────────────────────────────────────── */
+.titulo-seccion { display: flex; align-items: center; gap: 10px; margin: 22px 3px 12px; }
+.titulo-seccion h2 { margin: 0 auto 0 0; font-size: 21px; font-weight: 800; letter-spacing: -0.03em; }
+.titulo-seccion .accion { font-size: 13.5px; font-weight: 600; color: var(--txt-2); }
+.titulo-seccion .accion.azul { color: var(--azul); font-weight: 700; }
+
+/* ── Tarjetas ───────────────────────────────────────────────────────────── */
+.carta { background: var(--carta); border: var(--borde); border-radius: var(--r); box-shadow: var(--sombra); padding: 18px; }
+
+.hero { position: relative; background: var(--tinta); color: #fff; border-radius: var(--r); padding: 22px 20px 20px; box-shadow: var(--sombra-alta); overflow: hidden; }
+.hero .etq { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+.hero .cifra { font-size: 40px; font-weight: 800; letter-spacing: -0.045em; line-height: 1.05; margin-top: 4px; }
+.hero .mas { position: absolute; top: 18px; right: 18px; width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: #fff; color: var(--tinta); font-size: 24px; font-weight: 600; line-height: 1; transition: transform .18s var(--muelle); }
+.hero .mas:active { transform: scale(.9); }
+.hero .submetricas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.12); }
+.hero .sub small { display: block; font-size: 10.5px; letter-spacing: .05em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 3px; }
+.hero .sub b { font-size: 15.5px; font-weight: 700; letter-spacing: -0.02em; white-space: nowrap; }
+
+/* ── Filas ──────────────────────────────────────────────────────────────── */
+.fila { display: flex; align-items: center; gap: 13px; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,.05); }
+.fila:last-child { border-bottom: none; padding-bottom: 4px; }
+.fila:first-child { padding-top: 4px; }
+.fila-icono { width: 42px; height: 42px; flex: none; border-radius: 50%; display: grid; place-items: center; font-size: 18px; background: var(--fondo); }
+.fila-txt { flex: 1; min-width: 0; }
+.fila-txt b { display: block; font-size: 14.5px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fila-txt span { font-size: 12px; color: var(--txt-2); }
+.fila-cifra { font-size: 15px; font-weight: 700; letter-spacing: -0.02em; white-space: nowrap; text-align: right; }
+.fila-cifra small { display: block; font-size: 11px; font-weight: 600; }
+.fila .borrar, .fila .editar { color: var(--txt-3); font-size: 13px; padding: 6px; flex: none; }
+
+.vacio { padding: 22px 8px; text-align: center; color: var(--txt-2); font-size: 13.5px; line-height: 1.55; }
+.vacio b { display: block; font-weight: 700; color: var(--txt); margin-bottom: 3px; }
+
+/* ── Segmentado ─────────────────────────────────────────────────────────── */
+.segmentado { display: flex; gap: 4px; background: rgba(0,0,0,.05); border-radius: 20px; padding: 4px; margin-bottom: var(--hueco); }
+.segmentado button { flex: 1; text-align: center; padding: 9px 6px; border-radius: 16px; font-size: 13.5px; font-weight: 600; color: var(--txt-2); transition: background .22s var(--muelle), color .18s ease, box-shadow .22s ease; }
+.segmentado button[aria-selected='true'] { background: var(--carta); color: var(--txt); box-shadow: 0 4px 14px rgba(0,0,0,.07); }
+
+/* ── Hábitos ────────────────────────────────────────────────────────────── */
+.habito { display: flex; align-items: center; gap: 13px; width: 100%; padding: 13px 4px; border-bottom: 1px solid rgba(0,0,0,.05); transition: transform .15s var(--muelle); }
+.habito:last-child { border-bottom: none; }
+.habito:active { transform: scale(.985); }
+.habito .emoji { width: 42px; height: 42px; flex: none; border-radius: 14px; display: grid; place-items: center; font-size: 19px; background: var(--fondo); }
+.habito .nombre { flex: 1; min-width: 0; font-size: 15px; font-weight: 600; }
+.habito .pista { display: block; font-size: 12px; font-weight: 400; color: var(--txt-2); }
+
+.check { width: 28px; height: 28px; flex: none; border-radius: 50%; border: 2px solid rgba(0,0,0,.15); display: grid; place-items: center; transition: background .22s var(--muelle), border-color .22s ease, transform .2s var(--muelle); }
+.check svg { width: 14px; height: 14px; stroke: #fff; stroke-width: 3.4; fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 22; stroke-dashoffset: 22; transition: stroke-dashoffset .3s var(--muelle); }
+.habito[aria-pressed='true'] .check, .check.hecho { background: var(--verde); border-color: var(--verde); transform: scale(1.05); }
+.habito[aria-pressed='true'] .check svg, .check.hecho svg { stroke-dashoffset: 0; }
+
+/* ── Progreso ───────────────────────────────────────────────────────────── */
+.progreso { padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,.05); }
+.progreso:last-child { border-bottom: none; }
+.progreso-cab { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.progreso-cab b { flex: 1; min-width: 0; font-size: 14.5px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.progreso-pct { font-size: 14.5px; font-weight: 800; letter-spacing: -0.02em; }
+.progreso-pie { display: flex; justify-content: space-between; gap: 10px; margin-top: 6px; font-size: 12px; color: var(--txt-2); }
+
+.carril { height: 10px; border-radius: 6px; background: rgba(0,0,0,.06); overflow: hidden; }
+.relleno { display: block; height: 100%; border-radius: 6px; background: var(--tinta); transition: width .6s var(--muelle); }
+.relleno.v { background: var(--verde); }
+.relleno.a { background: var(--azul); }
+.relleno.n { background: var(--naranja); }
+.relleno.m { background: var(--morado); }
+
+.progreso .mini-acciones { display: flex; gap: 8px; margin-top: 8px; }
+.progreso .mini-acciones button { font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 13px; background: var(--fondo); }
+.progreso .mini-acciones .quitar { margin-left: auto; color: var(--txt-3); }
+
+/* ── Calendario ─────────────────────────────────────────────────────────── */
+.cal-nav { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.cal-nav b { flex: 1; text-align: center; font-size: 16px; font-weight: 700; letter-spacing: -0.02em; }
+.circular { width: 40px; height: 40px; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--fondo); font-size: 18px; color: var(--txt-2); transition: transform .15s var(--muelle); }
+.circular:active { transform: scale(.88); }
+
+.semana-cab, .rejilla { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
+.semana-cab { margin-bottom: 7px; }
+.semana-cab span { text-align: center; font-size: 10.5px; font-weight: 700; letter-spacing: .05em; color: var(--txt-3); text-transform: uppercase; }
+.celda { aspect-ratio: 1 / 1.08; min-height: 46px; border-radius: 14px; background: var(--fondo); display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 6px 2px 4px; transition: transform .15s var(--muelle), background .18s ease, box-shadow .18s ease; }
+.celda:active { transform: scale(.9); }
+.celda.fuera { opacity: .32; }
+.celda .dia { width: 24px; height: 24px; display: grid; place-items: center; border-radius: 50%; font-size: 13px; font-weight: 700; }
+.celda.hoy .dia { background: var(--tinta); color: #fff; }
+.celda.elegida { background: #fff; box-shadow: 0 0 0 2px var(--azul), var(--sombra); }
+.ticks { display: flex; gap: 3px; flex-wrap: wrap; justify-content: center; min-height: 6px; }
+.tick { width: 5.5px; height: 5.5px; border-radius: 50%; background: var(--verde); }
+
+.detalle-dia { margin-top: var(--hueco); }
+.detalle-dia h3 { margin: 0 0 4px; font-size: 16px; font-weight: 800; letter-spacing: -0.02em; }
+.detalle-dia .sub { font-size: 12.5px; color: var(--txt-2); margin-bottom: 10px; }
+
+/* ── Entreno ────────────────────────────────────────────────────────────── */
+.tira-semana { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-bottom: var(--hueco); }
+.dia-chip { border-radius: 16px; background: var(--carta); border: var(--borde); box-shadow: var(--sombra); padding: 9px 4px 8px; text-align: center; transition: transform .15s var(--muelle); }
+.dia-chip:active { transform: scale(.93); }
+.dia-chip small { display: block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--txt-3); }
+.dia-chip b { display: block; font-size: 15px; font-weight: 800; margin: 2px 0; }
+.dia-chip.hoy b { color: var(--azul); }
+.dia-chip.elegido { background: var(--tinta); }
+.dia-chip.elegido small, .dia-chip.elegido b { color: #fff; }
+.dia-chip .marca { display: block; width: 6px; height: 6px; border-radius: 50%; margin: 2px auto 0; background: transparent; }
+.dia-chip .marca.plan { background: var(--naranja); }
+.dia-chip .marca.hecha { background: var(--verde); }
+
+.sesion-carta { display: flex; align-items: center; gap: 12px; padding: 13px 4px; border-bottom: 1px solid rgba(0,0,0,.05); width: 100%; }
+.sesion-carta:last-child { border-bottom: none; }
+.sesion-carta .icono { width: 44px; height: 44px; flex: none; border-radius: 15px; display: grid; place-items: center; font-size: 20px; background: var(--fondo); }
+.sesion-carta .qué { flex: 1; min-width: 0; }
+.sesion-carta .qué b { display: block; font-size: 15px; font-weight: 700; }
+.sesion-carta .qué span { font-size: 12px; color: var(--txt-2); }
+.sesion-carta .estado { font-size: 11.5px; font-weight: 700; padding: 5px 11px; border-radius: 14px; background: rgba(255,159,10,.14); color: #B26A00; white-space: nowrap; }
+.sesion-carta .estado.hecha { background: rgba(48,209,88,.15); color: #1E7E3C; }
+
+.ejercicio { padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,.05); }
+.ejercicio:last-child { border-bottom: none; }
+.ejercicio-cab { display: flex; align-items: center; gap: 9px; margin-bottom: 8px; }
+.ejercicio-cab b { flex: 1; font-size: 14.5px; font-weight: 700; }
+.grupo-badge { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; padding: 4px 10px; border-radius: 12px; background: var(--fondo); color: var(--txt-2); }
+
+.serie { display: grid; grid-template-columns: 26px 1fr 1fr 38px 30px; gap: 7px; align-items: center; margin-bottom: 6px; }
+.serie small { font-size: 12px; font-weight: 700; color: var(--txt-3); text-align: center; }
+.serie input { text-align: center; padding: 9px 4px; font-size: 15px; }
+.serie .check { width: 32px; height: 32px; margin: 0 auto; }
+.serie .quitar-serie { color: var(--txt-3); font-size: 15px; text-align: center; }
+
+.aniadir-linea { width: 100%; text-align: center; font-size: 13px; font-weight: 700; color: var(--azul); padding: 9px; border-radius: 13px; background: rgba(10,132,255,.07); margin-top: 6px; }
+
+.carga-fila { padding: 9px 0; }
+.carga-cab { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+.carga-cab .num { font-weight: 800; }
+
+/* Evolución de cargas: mini gráfico de barras */
+.evo { padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,.05); }
+.evo:last-child { border-bottom: none; }
+.evo-cab { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 8px; }
+.evo-cab b { font-size: 14px; font-weight: 700; }
+.evo-cab span { font-size: 12px; color: var(--txt-2); }
+.evo-barras { display: flex; gap: 7px; align-items: flex-end; height: 58px; }
+.evo-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.evo-col .barra-v { width: 100%; max-width: 34px; border-radius: 7px 7px 3px 3px; background: var(--tinta); min-height: 3px; transition: height .5s var(--muelle); }
+.evo-col.actual .barra-v { background: var(--azul); }
+.evo-col small { font-size: 9.5px; color: var(--txt-3); font-weight: 600; }
+.evo-col .kg { font-size: 10px; font-weight: 700; }
+
+/* Bloques de resistencia */
+.bloque { border-radius: var(--r-s); background: var(--fondo); padding: 12px 14px; margin-bottom: 10px; }
+.bloque > b { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--txt-2); margin-bottom: 8px; }
+
+/* ── Metas del día ──────────────────────────────────────────────────────── */
+.rejilla-emoji { display: grid; grid-template-columns: repeat(8, 1fr); gap: 6px; }
+.rejilla-emoji button { aspect-ratio: 1; border-radius: 13px; background: var(--fondo); display: grid; place-items: center; font-size: 19px; transition: transform .15s var(--muelle), box-shadow .18s ease; }
+.rejilla-emoji button:active { transform: scale(.88); }
+.rejilla-emoji button[aria-pressed='true'] { background: var(--tinta); box-shadow: var(--sombra-alta); }
+
+.habito-fila { display: flex; align-items: center; gap: 4px; border-bottom: 1px solid rgba(0,0,0,.05); }
+.habito-fila:last-child { border-bottom: none; }
+.habito-fila .habito { flex: 1; min-width: 0; border-bottom: none; }
+.editar-habito { width: 34px; height: 34px; flex: none; border-radius: 50%; display: grid; place-items: center; font-size: 13px; color: var(--txt-3); background: var(--fondo); transition: transform .15s var(--muelle); }
+.editar-habito:active { transform: scale(.88); }
+
+/* ── Evolución del patrimonio ───────────────────────────────────────────── */
+.pie-nota { font-size: 11.5px; color: var(--txt-3); margin: 8px 4px 0; line-height: 1.45; }
+
+.grafico-cab { display: flex; align-items: baseline; gap: 10px; margin-bottom: 10px; }
+.grafico-cab .valor { font-size: 26px; font-weight: 800; letter-spacing: -0.035em; }
+.grafico-cab .delta { font-size: 13px; font-weight: 700; margin-left: auto; }
+.grafico-cab .rango-txt { display: block; font-size: 11.5px; font-weight: 500; color: var(--txt-2); }
+
+.lienzo { width: 100%; height: auto; display: block; overflow: visible; }
+.lienzo .linea { fill: none; stroke: var(--tinta); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.lienzo .area { stroke: none; }
+.lienzo .rejilla { stroke: rgba(0,0,0,.07); stroke-width: 1; stroke-dasharray: 3 4; }
+.lienzo .punto { fill: var(--tinta); }
+.lienzo .halo { fill: rgba(17,17,17,.14); }
+.eje-x { display: flex; justify-content: space-between; margin-top: 7px; font-size: 11px; color: var(--txt-3); }
+
+/* Aro de reparto */
+.aro-fila { display: flex; align-items: center; gap: 18px; }
+.aro { width: 132px; height: 132px; flex: none; transform: rotate(-90deg); }
+.aro circle { fill: none; stroke-width: 13; }
+.aro-centro { position: relative; }
+.aro-centro > span { position: absolute; inset: 0; display: grid; place-items: center; align-content: center; text-align: center; }
+.aro-centro b { display: block; font-size: 15px; font-weight: 800; letter-spacing: -0.02em; }
+.aro-centro small { display: block; font-size: 10px; color: var(--txt-2); }
+.leyenda { flex: 1; min-width: 0; display: grid; gap: 7px; }
+.leyenda .li { display: flex; align-items: center; gap: 8px; font-size: 12.5px; }
+.leyenda .pastilla { width: 9px; height: 9px; border-radius: 3px; flex: none; }
+.leyenda .li span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.leyenda .li b { font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* ── Gasto por categorías ───────────────────────────────────────────────── */
+.cat-fila { display: flex; align-items: center; gap: 12px; width: 100%; padding: 11px 0; border-bottom: 1px solid rgba(0,0,0,.05); text-align: left; }
+.cat-fila:last-child { border-bottom: none; }
+.cat-fila:active { opacity: .6; }
+.cat-fila .aro-mini { width: 38px; height: 38px; flex: none; border-radius: 50%; display: grid; place-items: center; font-size: 17px; background: var(--fondo); }
+.cat-fila .cuerpo { flex: 1; min-width: 0; }
+.cat-fila .linea1 { display: flex; align-items: baseline; gap: 8px; margin-bottom: 5px; }
+.cat-fila .linea1 b { flex: 1; min-width: 0; font-size: 14px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cat-fila .linea1 .imp { font-size: 14px; font-weight: 800; letter-spacing: -0.02em; }
+.cat-fila .pie { display: flex; justify-content: space-between; font-size: 11.5px; color: var(--txt-2); margin-top: 4px; }
+
+.resumen-tri { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding-top: 8px; }
+.resumen-tri div { text-align: center; padding: 10px 4px; border-radius: var(--r-s); background: var(--fondo); }
+.resumen-tri small { display: block; font-size: 10.5px; letter-spacing: .04em; text-transform: uppercase; color: var(--txt-2); margin-bottom: 3px; }
+.resumen-tri b { font-size: 15px; font-weight: 800; letter-spacing: -0.025em; }
+
+.barras-mes { display: flex; align-items: flex-end; gap: 6px; height: 92px; }
+.barras-mes .col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.barras-mes .barra-v { width: 100%; max-width: 30px; border-radius: 7px 7px 3px 3px; background: rgba(17,17,17,.16); min-height: 3px; }
+.barras-mes .col.actual .barra-v { background: var(--tinta); }
+.barras-mes small { font-size: 9.5px; color: var(--txt-3); font-weight: 600; }
+.barras-mes .cifra-mini { font-size: 9.5px; font-weight: 700; }
+
+/* ── Diario ─────────────────────────────────────────────────────────────── */
+.animo-fila { display: flex; gap: 8px; justify-content: space-between; margin: 6px 0 4px; }
+.animo { flex: 1; max-width: 62px; border-radius: 18px; display: grid; place-items: center; padding: 8px 0 6px; background: var(--fondo); transition: transform .18s var(--muelle), background .18s ease, box-shadow .18s ease; }
+.animo:active { transform: scale(.88); }
+.animo .cara { font-size: 22px; }
+.animo .nivel { display: block; font-size: 10px; font-weight: 800; color: var(--txt-3); text-align: center; }
+.animo[aria-pressed='true'] { background: var(--tinta); box-shadow: var(--sombra-alta); transform: scale(1.05); }
+.animo[aria-pressed='true'] .nivel { color: rgba(255,255,255,.7); }
+
+.diario-entrada { padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,.05); }
+.diario-entrada:last-child { border-bottom: none; }
+.diario-entrada .fecha { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--txt-2); margin-bottom: 5px; }
+.diario-entrada .ambito-chip { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; padding: 3px 9px; border-radius: 10px; }
+.diario-entrada .ambito-chip.personal { background: rgba(10,132,255,.1); color: var(--azul); }
+.diario-entrada .ambito-chip.empresa { background: rgba(191,90,242,.12); color: #8E44AD; }
+.diario-entrada p { margin: 3px 0; font-size: 14px; }
+.diario-entrada p b { font-weight: 700; }
+
+/* ── Botones ────────────────────────────────────────────────────────────── */
+.btn-negro { display: block; width: 100%; background: var(--tinta); color: #fff; font-size: 15.5px; font-weight: 700; text-align: center; padding: 15px; border-radius: 20px; box-shadow: var(--sombra-alta); transition: transform .16s var(--muelle); }
+.btn-negro:active { transform: scale(.97); }
+.btn-suave { display: block; width: 100%; background: var(--fondo); font-size: 14.5px; font-weight: 700; text-align: center; padding: 13px; border-radius: 18px; }
+.btn-suave.peligro { color: var(--rojo); }
+
+/* ── Dock ───────────────────────────────────────────────────────────────── */
+.dock {
+  position: fixed; left: 50%; bottom: calc(12px + env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  z-index: 50;
+  width: min(500px, calc(100vw - 24px));
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  border: 1px solid rgba(0,0,0,.05);
+  border-radius: 40px;
+  box-shadow: 0 18px 50px rgba(0,0,0,.12);
+  padding: 8px;
+}
+
+.dock button { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 9px 2px; border-radius: 30px; font-size: 10px; font-weight: 600; color: var(--txt-2); transition: background .2s ease, color .2s ease; }
+.dock button svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.dock button[aria-selected='true'] { background: var(--tinta); color: #fff; }
+.dock button:active { opacity: .7; }
+
+/* ── Hojas ──────────────────────────────────────────────────────────────── */
+dialog { padding: 0; border: none; background: transparent; max-width: 100vw; max-height: 100dvh; width: 100vw; margin: auto auto 0; }
+dialog::backdrop { background: rgba(17,17,17,.4); backdrop-filter: blur(3px); }
+
+.hoja { width: min(520px, 100vw); margin: 0 auto; background: var(--carta); border-radius: 30px 30px 0 0; box-shadow: 0 -20px 60px rgba(0,0,0,.18); padding-bottom: env(safe-area-inset-bottom); animation: subir .36s var(--muelle); max-height: 90dvh; display: flex; flex-direction: column; }
+@keyframes subir { from { transform: translateY(100%); } to { transform: none; } }
+
+.hoja-asa { width: 40px; height: 5px; border-radius: 3px; background: rgba(0,0,0,.14); margin: 10px auto 2px; flex: none; }
+.hoja-cab { display: flex; align-items: center; gap: 12px; padding: 8px 20px 12px; flex: none; }
+.hoja-cab h3 { margin: 0 auto 0 0; font-size: 18px; font-weight: 800; letter-spacing: -0.025em; }
+.hoja-cab .cerrar { font-size: 14px; font-weight: 600; color: var(--txt-2); }
+.hoja-cuerpo { padding: 2px 20px 8px; overflow-y: auto; }
+.hoja-pie { display: flex; gap: 10px; padding: 12px 20px 18px; flex: none; }
+.hoja-pie .btn-negro { flex: 1.6; }
+.hoja-pie .btn-suave { flex: 1; }
+
+.campo { display: block; margin-bottom: 13px; }
+.campo > span { display: block; font-size: 12.5px; font-weight: 600; color: var(--txt-2); margin-bottom: 6px; }
+input, select, textarea { width: 100%; font: inherit; font-size: 16px; color: var(--txt); background: var(--fondo); border: 1px solid transparent; border-radius: 15px; padding: 12px 14px; appearance: none; }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--tinta); background: #fff; }
+textarea { resize: vertical; min-height: 64px; }
+.par { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.trio { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+.error { color: var(--rojo); font-size: 13px; min-height: 17px; margin: 2px 0 4px; }
+
+/* ── Brindis ────────────────────────────────────────────────────────────── */
+.brindis { position: fixed; left: 50%; bottom: calc(var(--dock-alto) + 14px); transform: translate(-50%, 12px); z-index: 70; background: var(--tinta); color: #fff; font-size: 13.5px; font-weight: 600; padding: 11px 20px; border-radius: 20px; box-shadow: var(--sombra-alta); opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .3s var(--muelle); max-width: calc(100vw - 36px); text-align: center; }
+.brindis.visible { opacity: 1; transform: translate(-50%, 0); }
+
+@keyframes surgir { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.anima { animation: surgir .45s var(--muelle) backwards; }
+@media (prefers-reduced-motion: reduce) { * { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+</style>
+</head>
+<body>
+
+<div class="telefono">
+
+  <header class="cabecera">
+    <button class="avatar" id="avatar">OI</button>
+    <div class="quien">
+      <small id="saludoPeq">Bienvenido</small>
+      <b id="nombre">Oier</b>
+    </div>
+    <button class="campana" id="btnCampana" aria-label="Diario matutino">
+      <svg viewBox="0 0 24 24"><path d="M18 9a6 6 0 1 0-12 0c0 6-2 7-2 7h16s-2-1-2-7"/><path d="M10.3 20a2 2 0 0 0 3.4 0"/></svg>
+      <span class="puntito oculto" id="puntitoDiario"></span>
+    </button>
+  </header>
+
+  <div class="banner oculto anima" id="bannerDiario">
+    <span>🌅</span>
+    <span><b>¿Cómo empieza tu día hoy?</b><br>Aún no has escrito tu diario matutino.</span>
+    <button class="ir" data-ir-diario>Escribir</button>
+  </div>
+
+  <!-- ══ VISTA 1 · AGENDA DE HOY ═════════════════════════════════════════ -->
+  <section class="vista" data-vista="home">
+    <div class="hero anima" style="margin-bottom:14px">
+      <span class="etq">Prioridad #1 de hoy</span>
+      <div style="font-size:21px; font-weight:800; letter-spacing:-0.03em; margin-top:6px; line-height:1.25" id="prioridadHoy">—</div>
+      <button class="mas" data-ir-diario aria-label="Editar en el diario">✍</button>
+      <div style="font-size:13px; color:rgba(255,255,255,.6); margin-top:10px" id="prioridadPie"></div>
+    </div>
+
+    <div class="titulo-seccion"><h2>Metas del día</h2>
+      <button class="accion azul" data-editar-metas-dia>Editar</button>
+      <span class="accion" id="agendaRatio"></span></div>
+    <div class="carta" id="agendaHabitos"></div>
+
+    <div class="titulo-seccion"><h2>Entreno de hoy</h2><button class="accion azul" data-ir-tab="entreno">Planificar</button></div>
+    <div class="carta" id="agendaEntreno"></div>
+
+    <div class="titulo-seccion"><h2>Próximos vencimientos</h2></div>
+    <div class="carta" id="agendaVencimientos"></div>
+  </section>
+
+  <!-- ══ VISTA 2 · PATRIMONIO ════════════════════════════════════════════ -->
+  <section class="vista oculto" data-vista="patrimonio">
+    <div class="hero anima" style="margin-top:6px">
+      <span class="etq">Patrimonio total</span>
+      <div class="cifra num" id="patrimonio">0 €</div>
+      <button class="mas" id="btnNuevoMov" aria-label="Registrar movimiento">+</button>
+      <div class="submetricas">
+        <div class="sub"><small>Líquido</small><b class="num" id="liquidoTotal">0 €</b></div>
+        <div class="sub"><small>Inversiones</small><b class="num" id="valorInversiones">0 €</b></div>
+        <div class="sub"><small>Ahorro mes</small><b class="num" id="tasaAhorro">—</b></div>
+      </div>
+    </div>
+
+    <div class="segmentado" id="segDinero" style="margin-top:14px">
+      <button data-sub-dinero="resumen" aria-selected="true">Resumen</button>
+      <button data-sub-dinero="evolucion" aria-selected="false">Evolución</button>
+      <button data-sub-dinero="gastos" aria-selected="false">Gastos</button>
+    </div>
+
+    <!-- ── Sub 2.1 · Resumen ── -->
+    <div id="dineroResumen">
+      <div class="titulo-seccion" style="margin-top:6px"><h2>Dinero líquido</h2><button class="accion" id="btnBase">Base inicial</button></div>
+      <div class="carta">
+        <div class="fila"><div class="fila-icono">👤</div><div class="fila-txt"><b>Caja personal</b><span>flujo real de casa</span></div><div class="fila-cifra num" id="cajaPersonal">0 €</div></div>
+        <div class="fila"><div class="fila-icono">💼</div><div class="fila-txt"><b>Caja de la empresa</b><span>flujo real del negocio</span></div><div class="fila-cifra num" id="cajaNegocio">0 €</div></div>
+        <div class="fila"><div class="fila-icono">🏦</div><div class="fila-txt"><b>Base inicial</b><span>lo que ya tenías</span></div><div class="fila-cifra num" id="baseTxt">0 €</div></div>
+      </div>
+
+      <div class="titulo-seccion"><h2>Cartera de inversiones</h2><button class="accion azul" id="btnActualizarPrecios">↻ Cotizaciones</button></div>
+      <div class="carta" id="listaInversiones"></div>
+      <p class="pie-nota" id="pieCotizaciones"></p>
+      <button class="btn-negro" id="btnNuevaInversion" style="margin-top:10px">+ Añadir activo</button>
+
+      <div class="titulo-seccion"><h2>Actividad reciente</h2></div>
+      <div class="carta" id="listaMovimientos"></div>
+    </div>
+
+    <!-- ── Sub 2.2 · Evolución del patrimonio ── -->
+    <div id="dineroEvolucion" class="oculto">
+      <div class="segmentado" id="segRango">
+        <button data-rango="30" aria-selected="false">1M</button>
+        <button data-rango="180" aria-selected="true">6M</button>
+        <button data-rango="365" aria-selected="false">1A</button>
+        <button data-rango="0" aria-selected="false">Todo</button>
+      </div>
+      <div class="carta" id="graficoPatrimonio"></div>
+
+      <div class="titulo-seccion"><h2>Reparto por tipo</h2></div>
+      <div class="carta" id="repartoTipos"></div>
+
+      <div class="titulo-seccion"><h2>Rendimiento por activo</h2></div>
+      <div class="carta" id="rendimientoActivos"></div>
+    </div>
+
+    <!-- ── Sub 2.3 · En qué se va el dinero ── -->
+    <div id="dineroGastos" class="oculto">
+      <div class="segmentado" id="segAmbitoGasto">
+        <button data-ambito-gasto="" aria-selected="true">Todo</button>
+        <button data-ambito-gasto="personal" aria-selected="false">Personal</button>
+        <button data-ambito-gasto="empresa" aria-selected="false">Empresa</button>
+      </div>
+
+      <div class="carta">
+        <div class="cal-nav" style="margin-bottom:6px">
+          <button class="circular" id="gastoAtras">‹</button>
+          <b class="num" id="gastoTitulo"></b>
+          <button class="circular" id="gastoAdelante">›</button>
+        </div>
+        <div id="resumenMes"></div>
+      </div>
+
+      <div class="titulo-seccion"><h2>En qué se va</h2><span class="accion" id="gastoTotalMes"></span></div>
+      <div class="carta" id="listaCategorias"></div>
+
+      <div class="titulo-seccion"><h2>Tendencia por meses</h2></div>
+      <div class="carta" id="tendenciaGasto"></div>
+    </div>
+  </section>
+
+  <!-- ══ VISTA 3 · METAS & CALENDARIO ════════════════════════════════════ -->
+  <section class="vista oculto" data-vista="metas">
+    <div class="titulo-seccion" style="margin-top:6px"><h2>Metas</h2><button class="accion azul" id="btnNuevaMeta">+ Nueva</button></div>
+
+    <div class="segmentado" id="segAlcance">
+      <button data-alcance="dia" aria-selected="true">Día</button>
+      <button data-alcance="semana" aria-selected="false">Semana</button>
+      <button data-alcance="mes" aria-selected="false">Mes</button>
+      <button data-alcance="anio" aria-selected="false">Año</button>
+    </div>
+
+    <div class="carta" id="panelMetas"></div>
+
+    <div class="titulo-seccion"><h2>Calendario</h2></div>
+    <div class="segmentado" id="segCal">
+      <button data-modo="dia" aria-selected="true">Día</button>
+      <button data-modo="mes" aria-selected="false">Mes</button>
+      <button data-modo="anio" aria-selected="false">Año</button>
+    </div>
+
+    <div class="carta">
+      <div class="cal-nav">
+        <button class="circular" id="calAtras">‹</button>
+        <b class="num" id="calTitulo"></b>
+        <button class="circular" id="calAdelante">›</button>
+      </div>
+      <div id="calCuerpo"></div>
+    </div>
+
+    <div class="carta detalle-dia oculto" id="detalleDia"></div>
+  </section>
+
+  <!-- ══ VISTA 4 · ENTRENO ═══════════════════════════════════════════════ -->
+  <section class="vista oculto" data-vista="entreno">
+    <div class="titulo-seccion" style="margin-top:6px"><h2>Entreno</h2><button class="accion" id="btnPlantillas">Plantillas</button></div>
+
+    <div class="segmentado" id="segEntreno">
+      <button data-sub="semana" aria-selected="true">Semana</button>
+      <button data-sub="carga" aria-selected="false">Carga & Evolución</button>
+    </div>
+
+    <div id="subSemana">
+      <div class="cal-nav" style="margin-bottom:10px">
+        <button class="circular" id="semAtras">‹</button>
+        <b class="num" id="semTitulo"></b>
+        <button class="circular" id="semAdelante">›</button>
+      </div>
+      <div class="tira-semana" id="tiraSemana"></div>
+      <div class="carta" id="sesionesDia"></div>
+    </div>
+
+    <div id="subCarga" class="oculto">
+      <div class="titulo-seccion" style="margin-top:4px"><h2 style="font-size:16px">Volumen semanal por grupo</h2></div>
+      <div class="carta" id="cargaSemanal"></div>
+      <div class="titulo-seccion"><h2 style="font-size:16px">Evolución de cargas</h2><span class="accion">mejor kg por semana</span></div>
+      <div class="carta" id="evolucionCargas"></div>
+    </div>
+  </section>
+
+  <!-- ══ VISTA 5 · DIARIO ════════════════════════════════════════════════ -->
+  <section class="vista oculto" data-vista="diario">
+    <div class="titulo-seccion" style="margin-top:6px"><h2>Diario</h2></div>
+
+    <div class="hero anima" style="margin-bottom:14px">
+      <span class="etq">Diario matutino</span>
+      <div style="font-size:22px; font-weight:800; letter-spacing:-0.03em; margin-top:4px" id="preguntaDiario">¿Cómo empieza tu día hoy?</div>
+      <button class="mas" data-ir-diario aria-label="Escribir en el diario">✍</button>
+      <div style="font-size:13px; color:rgba(255,255,255,.6); margin-top:10px" id="rachaDiario"></div>
+    </div>
+
+    <div class="titulo-seccion"><h2>Historial</h2></div>
+    <div class="segmentado" id="segDiario">
+      <button data-filtro="" aria-selected="true">Todas</button>
+      <button data-filtro="personal" aria-selected="false">Personal</button>
+      <button data-filtro="empresa" aria-selected="false">Empresa</button>
+    </div>
+    <div class="carta" id="listaDiario"></div>
+  </section>
+
+</div>
+
+<!-- ══ Dock ══════════════════════════════════════════════════════════════ -->
+<nav class="dock" role="tablist" aria-label="Secciones">
+  <button role="tab" data-ir="home" aria-selected="true">
+    <svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/></svg>Hoy
+  </button>
+  <button role="tab" data-ir="patrimonio" aria-selected="false">
+    <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="13" rx="2.5"/><path d="M2 10.5h20"/><path d="M6 15h3"/></svg>Dinero
+  </button>
+  <button role="tab" data-ir="metas" aria-selected="false">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg>Metas
+  </button>
+  <button role="tab" data-ir="entreno" aria-selected="false">
+    <svg viewBox="0 0 24 24"><path d="M6.5 6.5v11M17.5 6.5v11M3 9v6M21 9v6M6.5 12h11"/></svg>Entreno
+  </button>
+  <button role="tab" data-ir="diario" aria-selected="false">
+    <svg viewBox="0 0 24 24"><path d="M12 3v2M5.6 5.6l1.4 1.4M3 12h2M19 12h2M17 7l1.4-1.4"/><path d="M7 21a5 5 0 0 1 10 0z"/><circle cx="12" cy="13" r="3"/></svg>Diario
+  </button>
+</nav>
+
+<div class="brindis" id="brindis" role="status" aria-live="polite"></div>
+
+<!-- ══ Hoja: movimiento ══════════════════════════════════════════════════ -->
+<dialog id="hojaMov">
+  <form method="dialog" class="hoja" id="formMov">
+    <div class="hoja-asa"></div>
+    <div class="hoja-cab"><h3>Registrar movimiento</h3><button type="button" class="cerrar" data-cerrar="hojaMov">Cerrar</button></div>
+    <div class="hoja-cuerpo">
+      <div class="segmentado">
+        <button type="button" data-radio="tipo" data-valor="Gasto" aria-selected="true">Gasto</button>
+        <button type="button" data-radio="tipo" data-valor="Ingreso" aria-selected="false">Ingreso</button>
+      </div>
+      <div class="segmentado">
+        <button type="button" data-radio="ambito" data-valor="personal" aria-selected="true">Personal</button>
+        <button type="button" data-radio="ambito" data-valor="empresa" aria-selected="false">Empresa</button>
+      </div>
+      <label class="campo"><span>Concepto</span><input name="concepto" required placeholder="Suscripción, cobro de cliente…" autocomplete="off"></label>
+      <div class="par">
+        <label class="campo"><span>Importe (€)</span><input name="importe" required inputmode="decimal" placeholder="22" autocomplete="off"></label>
+        <label class="campo"><span>Fecha</span><input type="date" name="fecha" required></label>
+      </div>
+      <label class="campo"><span>Categoría</span><select name="categoria"></select></label>
+      <p class="error" id="errMov"></p>
+    </div>
+    <div class="hoja-pie"><button type="button" class="btn-suave" data-cerrar="hojaMov">Cancelar</button><button type="submit" class="btn-negro">Guardar</button></div>
+  </form>
+</dialog>
+
+<!-- ══ Hoja: base inicial ════════════════════════════════════════════════ -->
+<dialog id="hojaBase">
+  <form method="dialog" class="hoja" id="formBase">
+    <div class="hoja-asa"></div>
+    <div class="hoja-cab"><h3>Base inicial</h3><button type="button" class="cerrar" data-cerrar="hojaBase">Cerrar</button></div>
+    <div class="hoja-cuerpo">
+      <p style="font-size:13.5px; color:var(--txt-2); margin:0 0 12px">El dinero líquido que ya tenías antes de empezar a apuntar. No incluyas aquí las inversiones: esas van en la cartera con su precio.</p>
+      <label class="campo"><span>Importe (€)</span><input name="base" inputmode="decimal" placeholder="0" autocomplete="off"></label>
+    </div>
+    <div class="hoja-pie"><button type="button" class="btn-suave" data-cerrar="hojaBase">Cancelar</button><button type="submit" class="btn-negro">Guardar</button></div>
+  </form>
+</dialog>
+
+<!-- ══ Hoja: alta y edición de inversión ═════════════════════════════════ -->
+<dialog id="hojaInv">
+  <form method="dialog" class="hoja" id="formInv">
+    <div class="hoja-asa"></div>
+    <div class="hoja-cab"><h3 id="tituloInv">Añadir activo</h3><button type="button" class="cerrar" data-cerrar="hojaInv">Cerrar</button></div>
+    <div class="hoja-cuerpo">
+      <label class="campo"><span>Nombre</span><input name="nombre" required placeholder="Bitcoin, MSCI World, oro…" autocomplete="off"></label>
+      <div class="par">
+        <label class="campo"><span>Tipo</span>
+          <select name="tipo" id="invTipo">
+            <option>Cripto</option><option>Acciones</option><option>Fondos / ETF</option>
+            <option>Metales</option><option>Inmuebles</option><option>Liquidez remunerada</option>
+          </select></label>
+        <label class="campo"><span id="etqTicker">Id de CoinGecko</span><input name="ticker" placeholder="bitcoin, ethereum…" autocomplete="off"></label>
+      </div>
+      <div class="par">
+        <label class="campo"><span>Unidades</span><input name="unidades" required inputmode="decimal" placeholder="0,05"></label>
+        <label class="campo"><span>Precio de compra (€/ud)</span><input name="precioCompra" required inputmode="decimal" placeholder="60000"></label>
+      </div>
+      <div class="par">
+        <label class="campo"><span>Precio actual (€/ud)</span><input name="precioActual" inputmode="decimal" placeholder="lo trae «↻ Cotizaciones»"></label>
+        <label class="campo"><span>Fecha de compra</span><input type="date" name="compradoEl"></label>
+      </div>
+      <p style="font-size:12.5px; color:var(--txt-2); margin:0 0 8px" id="notaInv">Pon el identificador y «↻ Cotizaciones» traerá el precio solo.</p>
+      <p class="error" id="errInv"></p>
+    </div>
+    <div class="hoja-pie">
+      <button type="button" class="btn-suave" data-cerrar="hojaInv">Cancelar</button>
+      <button type="submit" class="btn-negro" id="btnGuardarInv">Añadir</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- ══ Hoja: movimientos de una categoría ════════════════════════════════ -->
+<dialog id="hojaCategoria">
+  <div class="hoja">
+    <div class="hoja-asa"></div>
+    <div class="hoja-cab"><h3 id="tituloCategoria">Categoría</h3><button type="button" class="cerrar" data-cerrar="hojaCategoria">Cerrar</button></div>
+    <div class="hoja-cuerpo" id="cuerpoCategoria"></div>
+    <div class="hoja-pie"><button type="button" class="btn-suave" data-cerrar="hojaCategoria" style="flex:1">Cerrar</button></div>
+  </div>
+</dialog>
+
+<!-- ══ Hoja: alta y edición de meta ══════════════════════════════════════ -->
+<dialog id="hojaMeta">
+  <form method="dialog" class="hoja" id="formMeta">
+    <div class="hoja-asa"></div>
+    <div class="hoja-cab"><h3 id="tituloMeta">Nueva meta</h3><button type="button" class="cerrar" data-cerrar="hojaMeta">Cerrar</button></div>
+    <div class="hoja-cuerpo">
+      <label class="campo"><span>Alcance</span>
+        <select name="alcance"><option value="semana">Semana</option><option value="mes" selected>Mes</option><option value="anio">Año</option></select>
+      </label>
+      <label class="campo"><span>Nombre</span><input name="nombre" required placeholder="Ahorrar 500 €, leer 2 libros…" autocomplete="off"></label>
+      <div class="trio">
+        <label class="campo"><span>Meta</span><input name="meta" required inputmode="decimal" placeholder="500"></label>
+        <label class="campo"><span>Ya llevas</span><input name="progreso" inputmode="decimal" placeholder="0"></label>
+        <label class="campo"><span>Unidad</span><input name="unidad" value="€"></label>
+      </div>
+      <label class="campo"><span>Fecha límite (opcional)</span><input type="date" name="limite"></label>
+      <p class="error" id="errMeta"></p>
+      <button type="button" class="btn-suave peligro oculto" id="btnBorrarMeta" style="margin-top:2px">Borrar esta meta</button>
+    </div>
+    <div class="hoja-pie">
+      <button type="button" class="btn-suave" data-cerrar="hojaMeta">Cancelar</button>
+      <button type="submit" class="btn-negro" id="btnGuardarMeta">Crear</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- ══ Hoja: alta y edición de meta del día ══════════════════════════════ -->
+<dialog id="hojaHabito">
+  <form method="dialog" class="hoja" id="formHabito">
+    <div class="hoja-asa"></div>
+    <div class="hoja-cab"><h3 id="tituloHabito">Nueva meta del día</h3><button type="button" class="cerrar" data-cerrar="hojaHabito">Cerrar</button></div>
+    <div class="hoja-cuerpo">
+      <label class="campo"><span>Nombre</span><input name="nombre" required placeholder="Gimnasio, meditar, estudiar…" autocomplete="off"></label>
+      <label class="campo"><span>Pista (opcional)</span><input name="pista" placeholder="Lo que te recuerde por qué lo haces" autocomplete="off"></label>
+
+      <span style="display:block; font-size:12.5px; font-weight:600; color:var(--txt-2); margin-bottom:6px">Icono</span>
+      <div class="rejilla-emoji" id="rejillaEmoji"></div>
+      <label class="campo" style="margin-top:10px"><span>O escribe el tuyo</span><input name="emoji" maxlength="4" placeholder="🎯" autocomplete="off" style="text-align:center; font-size:22px"></label>
+
+      <p class="error" id="errHabito"></p>
+      <button type="button" class="btn-suave peligro oculto" id="btnBorrarHabito">Borrar esta meta del día</button>
+      <p class="pie-nota oculto" id="notaBorrarHabito">Se irá también de los días que ya tenías marcados.</p>
+    </div>
+    <div class="hoja-pie">
+      <button type="button" class="btn-suave" data-cerrar="hojaHabito">Cancelar</button>
+      <button type="submit" class="btn-negro" id="btnGuardarHabito">Crear</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- ══ Hoja: nueva sesión ════════════════════════════════════════════════ -->
+<dialog id="hojaSesion">
+  <form method="dialog" class="hoja" id="formSesion">
+    <div class="hoja-asa"></div>
+    <div class="hoja-cab"><h3 id="tituloSesion">Nueva sesión</h3><button type="button" class="cerrar" data-cerrar="hojaSesion">Cerrar</button></div>
+    <div class="hoja-cuerpo">
+      <div class="segmentado">
+        <button type="button" data-radio="clase" data-valor="fuerza" aria-selected="true">🏋️ Fuerza</button>
+        <button type="button" data-radio="clase" data-valor="resistencia" aria-selected="false">🏃 Resistencia</button>
+      </div>
+      <label class="campo"><span>Nombre de la sesión</span><input name="nombre" required placeholder="Pierna fuerza, Series 300m…" autocomplete="off"></label>
+      <div id="camposResistencia" class="oculto">
+        <label class="campo"><span>Deporte</span><select name="deporte"><option value="running">🏃 Running</option><option value="ciclismo">🚴 Ciclismo</option></select></label>
+      </div>
+      <p class="error" id="errSesion"></p>
+    </div>
+    <div class="hoja-pie"><button type="button" class="btn-suave" data-cerrar="hojaSesion">Cancelar</button><button type="submit" class="btn-negro">Crear sesión</button></div>
+  </form>
+</dialog>
+
+<!-- ══ Hoja: detalle de sesión ═══════════════════════════════════════════ -->
+<dialog id="hojaDetalleSesion">
+  <div class="hoja">
+    <div class="hoja-asa"></div>
+    <div class="hoja-cab"><h3 id="dsNombre">Sesión</h3><button type="button" class="cerrar" data-cerrar="hojaDetalleSesion">Cerrar</button></div>
+    <div class="hoja-cuerpo" id="dsCuerpo"></div>
+    <div class="hoja-pie" id="dsPie"></div>
+  </div>
+</dialog>
+
+<!-- ══ Hoja: plantillas ══════════════════════════════════════════════════ -->
+<dialog id="hojaPlantillas">
+  <div class="hoja">
+    <div class="hoja-asa"></div>
+    <div class="hoja-cab"><h3>Plantillas</h3><button type="button" class="cerrar" data-cerrar="hojaPlantillas">Cerrar</button></div>
+    <div class="hoja-cuerpo" id="listaPlantillas"></div>
+    <div class="hoja-pie"><button type="button" class="btn-suave" data-cerrar="hojaPlantillas" style="flex:1">Cerrar</button></div>
+  </div>
+</dialog>
+
+<!-- ══ Hoja: diario ══════════════════════════════════════════════════════ -->
+<dialog id="hojaDiario">
+  <form method="dialog" class="hoja" id="formDiario">
+    <div class="hoja-asa"></div>
+    <div class="hoja-cab"><h3 id="tituloDiario">Diario matutino</h3><button type="button" class="cerrar" data-cerrar="hojaDiario">Cerrar</button></div>
+    <div class="hoja-cuerpo">
+      <div class="segmentado">
+        <button type="button" data-radio="ambitoD" data-valor="personal" aria-selected="true">🏡 Personal</button>
+        <button type="button" data-radio="ambitoD" data-valor="empresa" aria-selected="false">💼 Empresa</button>
+      </div>
+
+      <span style="display:block; font-size:12.5px; font-weight:600; color:var(--txt-2); margin-bottom:4px">Nivel de energía</span>
+      <div class="animo-fila" id="animoFila">
+        <button type="button" class="animo" data-animo="1"><span><span class="cara">😫</span><span class="nivel">1</span></span></button>
+        <button type="button" class="animo" data-animo="2"><span><span class="cara">😕</span><span class="nivel">2</span></span></button>
+        <button type="button" class="animo" data-animo="3"><span><span class="cara">😐</span><span class="nivel">3</span></span></button>
+        <button type="button" class="animo" data-animo="4"><span><span class="cara">🙂</span><span class="nivel">4</span></span></button>
+        <button type="button" class="animo" data-animo="5"><span><span class="cara">🚀</span><span class="nivel">5</span></span></button>
+      </div>
+
+      <label class="campo"><span>Prioridad #1 no negociable de hoy</span><input name="prioridad" placeholder="Terminar la propuesta del cliente" autocomplete="off"></label>
+      <label class="campo"><span id="etqGratitud">¿Qué agradezco hoy?</span><input name="gratitud" placeholder="Tres cosas pequeñas cuentan" autocomplete="off"></label>
+      <label class="campo"><span id="etqEnfoque">Enfoque y notas del día</span><textarea name="enfoque" placeholder="Objetivos, ideas, lo que ronde la cabeza…"></textarea></label>
+
+      <label class="campo"><span>Recordatorio matutino</span>
+        <div class="par">
+          <input type="time" name="hora" id="horaRecordatorio" value="07:30">
+          <button type="button" class="btn-suave" id="btnNotificaciones" style="padding:12px">Activar avisos</button>
+        </div>
+      </label>
+    </div>
+    <div class="hoja-pie"><button type="button" class="btn-suave" data-cerrar="hojaDiario">Cancelar</button><button type="submit" class="btn-negro">Guardar entrada</button></div>
+  </form>
+</dialog>
+
+<script>
+(() => {
+'use strict';
+
+/* ═══════════════════════════ ESTADO Y PERSISTENCIA ═══════════════════════ */
+const $ = (s, r=document) => r.querySelector(s);
+const $$ = (s, r=document) => [...r.querySelectorAll(s)];
+const CLAVE = 'panel:v2';
+
+// Las metas del día con las que arranca la app. A partir de ahí son tuyas:
+// viven en el estado y se añaden, se editan y se borran desde la pestaña Día.
+const HABITOS_INICIALES = [
+  { id:'gym',     emoji:'🏋️', nombre:'Gimnasio',         pista:'Entrenar hoy' },
+  { id:'lectura', emoji:'📚', nombre:'Lectura',           pista:'Desarrollo personal' },
+  { id:'negocio', emoji:'💻', nombre:'Avance de negocio', pista:'Emprendimiento' },
+  { id:'cardio',  emoji:'🏃', nombre:'Running / Cardio',  pista:'Salir a moverse' },
+];
+const habitos = () => E.habitos;
+
+const EMOJIS_HABITO = ['🏋️','🏃','🚴','🧘','📚','💻','✍️','🎯','💧','🥗','😴','🧹','🎸','🗣️','💊','☀️'];
+
+// Clasificación estricta de grupos musculares
+const GRUPOS = ['Pecho','Espalda','Core','Hombro','Tríceps','Bíceps','Femoral','Cuádriceps','Gemelo'];
+
+const CATEGORIAS = {
+  'personal-Gasto': ['Vivienda','Alimentación','Transporte','Suscripciones','Ocio','Deporte','Salud','Ropa','Formación','Otros'],
+  'personal-Ingreso': ['Retiro de la empresa','Nómina / trabajo','Otros ingresos'],
+  'empresa-Gasto': ['Software y hosting','Gestoría','Marketing','Equipamiento','Retiro a personal','Otras salidas'],
+  'empresa-Ingreso': ['Cobro de cliente','Servicios recurrentes','Otros cobros'],
+};
+
+const PLANTILLA_ESTADO = () => ({
+  nombre: 'Oier',
+  base: 0,
+  tx: [],                  // {id, tipo, ambito, concepto, categoria, importe, fecha}
+  metas: [],               // {id, alcance, nombre, meta, progreso, unidad, limite?}
+  ticks: {},               // {'aaaa-mm-dd': [ids]}
+  sesiones: {},            // {'aaaa-mm-dd': [sesion]}
+  plantillas: [],
+  habitos: HABITOS_INICIALES.map(h=>({...h})),   // metas del día: {id, emoji, nombre, pista}
+  entradas: [],            // diario: {id, fecha, ambito, animo, prioridad, gratitud, enfoque}
+  inversiones: [],         // {id, nombre, tipo, ticker, unidades, precioCompra, precioActual?, actualizado?, compradoEl?, moneda?}
+  historial: [],           // una foto al día: {f, liq, inv, total, tipos:{tipo:valor}}
+  recordatorio: { hora: '07:30', activo: false },
+});
+
+let E = cargar();
+
+function cargar(){
+  try {
+    const crudo = localStorage.getItem(CLAVE);
+    if (!crudo) return PLANTILLA_ESTADO();
+    const d = Object.assign(PLANTILLA_ESTADO(), JSON.parse(crudo));
+    // Migración desde la V2: el diario era {fecha:{...}}, ahora es lista con ámbito.
+    if (d.diario && !Array.isArray(d.diario)){
+      for (const [fecha, e] of Object.entries(d.diario))
+        d.entradas.push({ id:nuevoId(), fecha, ambito:'personal', ...e });
+      delete d.diario;
+    }
+    // Los hábitos antes vivían en el código: quien venga de esa versión los recibe.
+    if (!Array.isArray(d.habitos) || !d.habitos.length) d.habitos = HABITOS_INICIALES.map(h=>({...h}));
+    return d;
+  } catch { return PLANTILLA_ESTADO(); }
+}
+
+function guardar(){
+  try { localStorage.setItem(CLAVE, JSON.stringify(E)); }
+  catch { avisar('No he podido guardar en este navegador'); }
+}
+
+function nuevoId(){ return 'x' + Date.now().toString(36) + Math.random().toString(36).slice(2,6); }
+
+/* ── Formato ─────────────────────────────────────────────────────────────── */
+const eur0 = new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:0,useGrouping:'always'});
+const eur2 = new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',minimumFractionDigits:2,maximumFractionDigits:2,useGrouping:'always'});
+const pctF = new Intl.NumberFormat('es-ES',{style:'percent',maximumFractionDigits:0});
+const numF = new Intl.NumberFormat('es-ES',{maximumFractionDigits:1});
+// Las unidades de cripto pueden ser 0,01 o menos: un decimal las dejaría en "0".
+const numU = new Intl.NumberFormat('es-ES',{maximumFractionDigits:6});
+const euro = n => eur0.format(n||0);
+const euroDec = n => eur2.format(n||0);
+const pct = n => pctF.format(Number.isFinite(n)?n:0);
+const esc = s => String(s??'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+function aNum(v){
+  if (typeof v==='number') return Number.isFinite(v)?v:0;
+  let s = String(v??'').replace(/[^\d,.-]/g,'');
+  if (!s) return 0;
+  const c=s.lastIndexOf(','), p=s.lastIndexOf('.');
+  if (c>-1&&p>-1){ const d=c>p?',':'.'; s=s.split(d===','?'.':',').join('').replace(d,'.'); }
+  // Un solo tipo de separador en grupos de tres es miles, no decimales:
+  // "3.200" son tres mil doscientos, y "3.200,50" ya lo resuelve la línea de arriba.
+  else if (/^-?\d{1,3}([.,]\d{3})+$/.test(s)) s=s.replace(/[.,]/g,'');
+  else if (c>-1) s=s.replace(',','.');
+  const n=parseFloat(s); return Number.isFinite(n)?n:0;
+}
+
+/* ── Fechas ──────────────────────────────────────────────────────────────── */
+const dos = n => String(n).padStart(2,'0');
+const claveDe = d => `${d.getFullYear()}-${dos(d.getMonth()+1)}-${dos(d.getDate())}`;
+const desdeClave = k => { const [a,m,d]=k.split('-').map(Number); return new Date(a,m-1,d); };
+const diasEnMes = (a,m) => new Date(a,m+1,0).getDate();
+const esFutura = k => desdeClave(k) > new Date(new Date().setHours(23,59,59,999));
+const HOY = claveDe(new Date());
+const MESES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+const DIAS_CORTO = ['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'];
+
+function lunesDe(d){ const x=new Date(d.getFullYear(),d.getMonth(),d.getDate()); x.setDate(x.getDate()-((x.getDay()+6)%7)); return x; }
+function mismaSemana(k, lunes){ return claveDe(lunesDe(desdeClave(k)))===claveDe(lunes); }
+const mismoMes = (k,a,m) => { const [y,mm]=k.split('-').map(Number); return y===a && mm-1===m; };
+const mismoAnio = (k,a) => Number(k.slice(0,4))===a;
+
+/* ── Aviso ───────────────────────────────────────────────────────────────── */
+let relojBrindis;
+function avisar(t){
+  const el=$('#brindis'); el.textContent=t; el.classList.add('visible');
+  clearTimeout(relojBrindis); relojBrindis=setTimeout(()=>el.classList.remove('visible'),2400);
+}
+const vibrar = (ms=12) => navigator.vibrate?.(ms);
+
+/* ═══════════════════════════ ESTADO DE INTERFAZ ══════════════════════════ */
+const UI = {
+  vista: 'home',
+  alcance: 'dia',
+  calModo: 'dia',
+  calCursor: new Date(),
+  calElegido: HOY,
+  semLunes: lunesDe(new Date()),
+  entrenoDia: HOY,
+  entrenoSub: 'semana',
+  sesionAbierta: null,
+  animoElegido: 3,
+  filtroDiario: '',
+  metaEditando: null,      // id de la meta abierta en la hoja, o null si es alta
+  habitoEditando: null,    // ídem para las metas del día
+  subDinero: 'resumen',
+  rango: 180,              // días que abarca el gráfico de patrimonio; 0 = todo
+  gastoCursor: new Date(), // mes que se está mirando en «Gastos»
+  ambitoGasto: '',
+  invEditando: null,       // id de la inversión abierta en la hoja, o null si es alta
+};
+
+/* ═══════════════════════════ CÁLCULOS ════════════════════════════════════ */
+const suma = l => l.reduce((a,t)=>a+t.importe,0);
+const txDe = a => E.tx.filter(t=>t.ambito===a);
+const caja = a => suma(txDe(a).filter(t=>t.tipo==='Ingreso')) - suma(txDe(a).filter(t=>t.tipo==='Gasto'));
+const liquido = () => E.base + caja('personal') + caja('empresa');
+const precioDe = i => aNum(i.precioActual ?? i.precioCompra);
+const valorCartera = () => E.inversiones.reduce((a,i)=>a + aNum(i.unidades)*precioDe(i), 0);
+const patrimonio = () => liquido() + valorCartera();
+
+const r2 = n => Math.round((n||0)*100)/100;
+
+/* ── Historial de patrimonio ─────────────────────────────────────────────────
+   Se guarda una foto al día. El líquido de días pasados se puede reconstruir
+   exacto a partir de los movimientos; el valor de la cartera no (no guardamos
+   cotizaciones antiguas), así que para los días sin foto se usa lo que costó.  */
+function valorPorTipo(){
+  const m = {};
+  for (const i of E.inversiones) m[i.tipo] = (m[i.tipo]||0) + aNum(i.unidades)*precioDe(i);
+  return m;
+}
+
+/** Guarda (o refresca) la foto de hoy. Se llama tras cada cambio de dinero. */
+function anotarHoy(){
+  // Sin nada que retratar no se guarda foto: así el historial no arranca con ceros.
+  if (!E.historial.length && !E.tx.length && !E.inversiones.length && !E.base) return;
+  const foto = { f:HOY, liq:r2(liquido()), inv:r2(valorCartera()), total:r2(patrimonio()), tipos:{} };
+  for (const [t,v] of Object.entries(valorPorTipo())) foto.tipos[t]=r2(v);
+  const i = E.historial.findIndex(x=>x.f===HOY);
+  if (i>=0) E.historial[i]=foto; else E.historial.push(foto);
+  E.historial.sort((a,b)=>a.f.localeCompare(b.f));
+}
+
+const liquidoEn = k => E.base + E.tx.filter(t=>t.fecha<=k)
+  .reduce((a,t)=>a + (t.tipo==='Ingreso'?t.importe:-t.importe), 0);
+
+/** Valor de la cartera ese día: la última foto que haya, y si no, el coste. */
+function inversionesEn(k){
+  let foto=null;
+  for (const h of E.historial){ if (h.f<=k) foto=h; else break; }
+  if (foto) return foto.inv;
+  return E.inversiones
+    .filter(i=>!i.compradoEl || i.compradoEl<=k)
+    .reduce((a,i)=>a + aNum(i.unidades)*aNum(i.precioCompra), 0);
+}
+
+const patrimonioEn = k => k===HOY ? patrimonio() : liquidoEn(k) + inversionesEn(k);
+
+/** Primer día con algo que contar: movimiento, foto o compra más antigua. */
+function primerDia(){
+  const fechas = [
+    ...E.tx.map(t=>t.fecha),
+    ...E.historial.map(h=>h.f),
+    ...E.inversiones.map(i=>i.compradoEl).filter(Boolean),
+  ].filter(Boolean).sort();
+  return fechas[0] || HOY;
+}
+
+/** Serie de puntos {k, v} para el gráfico: como mucho 32, repartidos parejos. */
+function seriePatrimonio(dias){
+  const hoyD = desdeClave(HOY);
+  let desde;
+  if (dias>0){ desde=new Date(hoyD); desde.setDate(desde.getDate()-dias); }
+  else desde = desdeClave(primerDia());
+  const inicioReal = desdeClave(primerDia());
+  if (desde < inicioReal) desde = inicioReal;
+
+  const total = Math.max(1, Math.round((hoyD-desde)/86400000));
+  const puntos = Math.min(32, total+1);
+  const paso = total/(puntos-1||1);
+  const serie = [];
+  for (let i=0;i<puntos;i++){
+    const d=new Date(desde); d.setDate(d.getDate()+Math.round(i*paso));
+    const k=claveDe(d);
+    serie.push({ k, v: patrimonioEn(k) });
+  }
+  if (serie[serie.length-1].k!==HOY) serie.push({ k:HOY, v:patrimonio() });
+  return serie;
+}
+
+/* ── Gasto por categorías ────────────────────────────────────────────────── */
+function txMes(a, m){
+  return E.tx.filter(t=>mismoMes(t.fecha,a,m) && (!UI.ambitoGasto || t.ambito===UI.ambitoGasto));
+}
+
+function gastoPorCategoria(a, m){
+  const mapa = {};
+  for (const t of txMes(a,m)){
+    if (t.tipo!=='Gasto') continue;
+    const c = t.categoria || 'Sin categoría';
+    (mapa[c] ||= { categoria:c, total:0, n:0 }).total += t.importe;
+    mapa[c].n++;
+  }
+  return Object.values(mapa).sort((x,y)=>y.total-x.total);
+}
+
+const gastoTotal = (a,m) => suma(txMes(a,m).filter(t=>t.tipo==='Gasto'));
+
+function tasaAhorroMes(){
+  const a=new Date().getFullYear(), m=new Date().getMonth();
+  const mes = txDe('personal').filter(t=>mismoMes(t.fecha,a,m));
+  const ing = suma(mes.filter(t=>t.tipo==='Ingreso'));
+  if (!ing) return null;
+  return (ing - suma(mes.filter(t=>t.tipo==='Gasto'))) / ing;
+}
+
+const ticksDe = k => E.ticks[k] || [];
+const sesionesDe = k => E.sesiones[k] || [];
+const cumplidosDia = k => ticksDe(k).length + sesionesDe(k).filter(s=>s.hecha).length;
+const entradasDe = k => E.entradas.filter(e=>e.fecha===k);
+
+function seriesSemana(lunes){
+  const porGrupo = Object.fromEntries(GRUPOS.map(g=>[g,0]));
+  let kmRun=0, kmBici=0, hechas=0, plan=0;
+  for (const [fecha, lista] of Object.entries(E.sesiones)){
+    if (!mismaSemana(fecha, lunes)) continue;
+    for (const s of lista){
+      plan++;
+      if (s.hecha) hechas++;
+      if (s.clase==='fuerza'){
+        for (const ej of s.ejercicios||[]){
+          const n=(ej.series||[]).filter(x=>x.hecha).length;
+          if (porGrupo[ej.grupo]!==undefined) porGrupo[ej.grupo]+=n;
+        }
+      } else {
+        const km=aNum(s.kmReal)||0;
+        if (s.deporte==='ciclismo') kmBici+=km; else kmRun+=km;
+      }
+    }
+  }
+  return { porGrupo, kmRun, kmBici, hechas, plan };
+}
+
+/** Mejor kg por semana y ejercicio, para la evolución de cargas. */
+function evolucionDatos(){
+  const porEj = {};
+  for (const [fecha, lista] of Object.entries(E.sesiones))
+    for (const s of lista) if (s.clase==='fuerza')
+      for (const ej of s.ejercicios||[])
+        for (const se of ej.series||[])
+          if (se.hecha && aNum(se.kg)>0){
+            const w = claveDe(lunesDe(desdeClave(fecha)));
+            const m = (porEj[ej.nombre] ||= {});
+            m[w] = Math.max(m[w]||0, aNum(se.kg));
+          }
+  return porEj;
+}
+
+function porcentajeMesHabitos(a,m){
+  const total=diasEnMes(a,m);
+  let dias=0, acc=0;
+  for (let d=1; d<=total; d++){
+    const k=`${a}-${dos(m+1)}-${dos(d)}`;
+    if (esFutura(k)) break;
+    dias++; acc+=Math.min(1,ticksDe(k).length/(habitos().length||1));
+  }
+  return dias?acc/dias:0;
+}
+
+function rachaDiario(){
+  let n=0; const d=new Date();
+  if (!entradasDe(claveDe(d)).length) d.setDate(d.getDate()-1);
+  while (entradasDe(claveDe(d)).length){ n++; d.setDate(d.getDate()-1); }
+  return n;
+}
+
+/* ═══════════════════════════ VISTA 1 · AGENDA DE HOY ═════════════════════ */
+function pintarHome(){
+  const hora=new Date().getHours();
+  $('#saludoPeq').textContent = hora<6?'Buenas noches':hora<14?'Buenos días':hora<21?'Buenas tardes':'Buenas noches';
+  $('#nombre').textContent = E.nombre;
+  $('#avatar').textContent = E.nombre.trim().split(/\s+/).slice(0,2).map(p=>p[0]).join('').toUpperCase()||'OI';
+
+  // Prioridad #1 del diario de hoy (la personal manda; si no, la de empresa)
+  const deHoy = entradasDe(HOY);
+  const conPrioridad = deHoy.find(e=>e.ambito==='personal'&&e.prioridad) || deHoy.find(e=>e.prioridad);
+  $('#prioridadHoy').textContent = conPrioridad ? conPrioridad.prioridad : 'Sin prioridad marcada';
+  $('#prioridadPie').textContent = conPrioridad
+    ? `Del diario de hoy · energía ${conPrioridad.animo}/5`
+    : 'Escribe el diario matutino y tu prioridad aparecerá aquí.';
+
+  // Hábitos de hoy
+  const hechos = ticksDe(HOY);
+  $('#agendaRatio').textContent = `${hechos.length}/${habitos().length}`;
+  $('#agendaHabitos').innerHTML = habitos().length
+    ? habitos().map(h=>`
+      <button class="habito" data-habito="${h.id}" data-fecha="${HOY}" aria-pressed="${hechos.includes(h.id)}">
+        <span class="emoji">${esc(h.emoji)}</span>
+        <span class="nombre">${esc(h.nombre)}${h.pista?`<span class="pista">${esc(h.pista)}</span>`:''}</span>
+        <span class="check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
+      </button>`).join('')
+    : `<div class="vacio"><b>Sin metas del día</b>Pulsa «Editar» y añade lo que quieras hacer cada día.</div>`;
+
+  // Entreno de hoy
+  const sesiones = sesionesDe(HOY);
+  $('#agendaEntreno').innerHTML = sesiones.length
+    ? sesiones.map(s=>`
+      <button class="sesion-carta" data-abrir-sesion="${HOY}|${s.id}">
+        <span class="icono">${s.clase==='fuerza'?'🏋️':s.deporte==='ciclismo'?'🚴':'🏃'}</span>
+        <span class="qué"><b>${esc(s.nombre)}</b>
+          <span>${s.clase==='fuerza' ? `${(s.ejercicios||[]).length} ejercicio(s)` : esc(s.modo||'resistencia')}</span></span>
+        <span class="estado ${s.hecha?'hecha':''}">${s.hecha?'Hecha':'▶ Empezar'}</span>
+      </button>`).join('')
+    : `<div class="vacio"><b>Nada programado para hoy</b>Descanso también es entrenar. O planifica algo en Entreno.</div>`;
+
+  // Próximos vencimientos: metas con fecha límite en los próximos 10 días
+  const limite10 = new Date(); limite10.setDate(limite10.getDate()+10);
+  const proximos = E.metas
+    .filter(x=>x.limite && x.progreso<x.meta && desdeClave(x.limite)<=limite10)
+    .sort((a,b)=>a.limite.localeCompare(b.limite));
+
+  $('#agendaVencimientos').innerHTML = proximos.length
+    ? proximos.map(x=>{
+        const dias = Math.round((desdeClave(x.limite)-desdeClave(HOY))/86400000);
+        const cuando = dias<0?`venció hace ${-dias} día(s)`:dias===0?'vence hoy':`quedan ${dias} día(s)`;
+        const avance = x.meta?x.progreso/x.meta:0;
+        return `<div class="progreso">
+          <div class="progreso-cab"><b>${esc(x.nombre)}</b><span class="progreso-pct num ${dias<=1?'neg':''}">${pct(avance)}</span></div>
+          <div class="carril"><span class="relleno ${dias<=1?'':'m'}" style="width:${(Math.min(1,avance)*100).toFixed(1)}%; ${dias<=1?'background:var(--rojo)':''}"></span></div>
+          <div class="progreso-pie"><span>${esc(x.alcance)}</span><span>${cuando}</span></div>
+          <div class="mini-acciones"><button data-meta-sumar="${x.id}">+ Progreso</button>
+            <button data-meta-editar="${x.id}">✎ Editar</button></div>
+        </div>`;
+      }).join('')
+    : `<div class="vacio"><b>Nada urgente</b>Las metas con fecha límite cercana aparecerán aquí.</div>`;
+
+  const sinDiario = !deHoy.length;
+  $('#bannerDiario').classList.toggle('oculto', !sinDiario);
+  $('#puntitoDiario').classList.toggle('oculto', !sinDiario);
+}
+
+/* ═══════════════════════════ VISTA 2 · PATRIMONIO ════════════════════════ */
+const ICONO_CAT = { Vivienda:'🏠','Alimentación':'🛒',Transporte:'🚌',Suscripciones:'📱',Ocio:'🎬',Deporte:'🏋️',
+  Salud:'💊',Ropa:'👕','Formación':'📚','Software y hosting':'💻','Gestoría':'📋',Marketing:'📣',
+  Equipamiento:'🎒','Cobro de cliente':'💼','Servicios recurrentes':'🔁','Nómina / trabajo':'💶',
+  'Retiro de la empresa':'🏦','Retiro a personal':'🏦' };
+
+const ICONO_INV = { Cripto:'₿', Acciones:'📈', 'Fondos / ETF':'🌍', Metales:'🥇', Inmuebles:'🏢', 'Liquidez remunerada':'💧' };
+
+const COLOR_TIPO = { Cripto:'#FF9F0A', Acciones:'#0A84FF', 'Fondos / ETF':'#BF5AF2', Metales:'#D4A017',
+  Inmuebles:'#30D158', 'Liquidez remunerada':'#5AC8FA', 'Líquido':'#1B1D21' };
+
+function pintarPatrimonio(){
+  $('#patrimonio').textContent = euro(patrimonio());
+  $('#liquidoTotal').textContent = euro(liquido());
+  $('#valorInversiones').textContent = euro(valorCartera());
+  const t=tasaAhorroMes();
+  $('#tasaAhorro').textContent = t===null?'—':pct(t);
+
+  $('#dineroResumen').classList.toggle('oculto', UI.subDinero!=='resumen');
+  $('#dineroEvolucion').classList.toggle('oculto', UI.subDinero!=='evolucion');
+  $('#dineroGastos').classList.toggle('oculto', UI.subDinero!=='gastos');
+
+  if (UI.subDinero==='resumen') pintarResumenDinero();
+  else if (UI.subDinero==='evolucion') pintarEvolucion();
+  else pintarGastos();
+}
+
+function pintarResumenDinero(){
+  $('#cajaPersonal').textContent = euro(caja('personal'));
+  $('#cajaNegocio').textContent = euro(caja('empresa'));
+  $('#baseTxt').textContent = euro(E.base);
+
+  // Cartera
+  $('#listaInversiones').innerHTML = E.inversiones.length
+    ? E.inversiones.map(i=>{
+        const valor = aNum(i.unidades)*precioDe(i);
+        const coste = aNum(i.unidades)*aNum(i.precioCompra);
+        const dif = valor-coste;
+        const rent = coste ? dif/coste : 0;
+        const cuando = i.actualizado
+          ? new Date(i.actualizado).toLocaleDateString('es-ES',{day:'numeric',month:'short'})
+          : 'precio de compra';
+        return `<div class="fila">
+          <div class="fila-icono">${ICONO_INV[i.tipo]||'📊'}</div>
+          <div class="fila-txt"><b>${esc(i.nombre)}</b>
+            <span>${numU.format(aNum(i.unidades))} ud · ${euroDec(precioDe(i))}/ud · ${cuando}</span></div>
+          <div class="fila-cifra num">${euro(valor)}<small class="${dif>=0?'pos':'neg'}">${dif>=0?'+':'−'}${euro(Math.abs(dif))} · ${dif>=0?'+':'−'}${pct(Math.abs(rent))}</small></div>
+          <button class="editar" data-editar-inv="${i.id}" aria-label="Editar activo">✎</button>
+          <button class="borrar" data-borrar-inv="${i.id}" aria-label="Borrar">✕</button>
+        </div>`;
+      }).join('')
+    : `<div class="vacio"><b>Cartera vacía</b>Da de alta acciones, fondos, cripto o metales y súmalos al patrimonio.</div>`;
+
+  const auto = E.inversiones.filter(i=>i.ticker?.trim()).length;
+  $('#pieCotizaciones').textContent = E.inversiones.length
+    ? `${auto} de ${E.inversiones.length} activo(s) se actualizan solos. Cripto vía CoinGecko; acciones, ETF y metales vía Yahoo Finanzas. Los que no tengan identificador, con ✎ a mano.`
+    : '';
+
+  // Actividad
+  const recientes=[...E.tx].sort((a,b)=>b.fecha.localeCompare(a.fecha)).slice(0,12);
+  $('#listaMovimientos').innerHTML = recientes.length
+    ? recientes.map(t=>`
+      <div class="fila">
+        <div class="fila-icono">${ICONO_CAT[t.categoria]||(t.tipo==='Ingreso'?'💶':'💳')}</div>
+        <div class="fila-txt"><b>${esc(t.concepto)}</b>
+          <span>${esc(t.categoria)} · ${t.ambito} · ${desdeClave(t.fecha).toLocaleDateString('es-ES',{day:'numeric',month:'short'})}</span></div>
+        <div class="fila-cifra num ${t.tipo==='Ingreso'?'pos':''}">${t.tipo==='Ingreso'?'+':'−'}${euroDec(t.importe)}</div>
+        <button class="borrar" data-borrar-tx="${t.id}">✕</button>
+      </div>`).join('')
+    : `<div class="vacio"><b>Sin movimientos todavía</b>Pulsa el + de la tarjeta negra.</div>`;
+}
+
+/* ── Evolución: gráfico de área + reparto + rendimiento ──────────────────── */
+function pintarEvolucion(){
+  const serie = seriePatrimonio(UI.rango);
+  const caja1 = $('#graficoPatrimonio');
+
+  if (serie.length<2 || serie.every(p=>!p.v)){
+    caja1.innerHTML = `<div class="vacio"><b>Todavía no hay recorrido</b>Apunta movimientos o da de alta un activo: el panel guarda una foto al día y aquí verás la curva.</div>`;
+  } else {
+    const ini = serie[0].v, fin = serie[serie.length-1].v;
+    const dif = fin-ini;
+    const etqRango = UI.rango===30?'último mes':UI.rango===180?'últimos 6 meses':UI.rango===365?'último año':'desde el principio';
+    // Un porcentaje sobre un patrimonio inicial cero o negativo no dice nada:
+    // en ese caso se enseña solo la diferencia en euros.
+    const variacion = ini>0 ? `${dif>=0?'+':'−'}${pct(Math.abs(dif/ini))} · ` : '';
+
+    const An=320, Al=118, pad=6;
+    const vals = serie.map(p=>p.v);
+    const max = Math.max(...vals), min = Math.min(...vals, 0);
+    const rec = (max-min)||1;
+    const x = i => pad + i*(An-pad*2)/(serie.length-1);
+    const y = v => Al-pad - ((v-min)/rec)*(Al-pad*2);
+    const linea = serie.map((p,i)=>`${i?'L':'M'}${x(i).toFixed(1)} ${y(p.v).toFixed(1)}`).join(' ');
+    const area = `${linea} L${x(serie.length-1).toFixed(1)} ${Al} L${x(0).toFixed(1)} ${Al} Z`;
+    const fmtCorto = k => desdeClave(k).toLocaleDateString('es-ES',{day:'numeric',month:'short'});
+
+    caja1.innerHTML = `
+      <div class="grafico-cab">
+        <div><span class="valor num">${euroDec(fin)}</span><span class="rango-txt">patrimonio hoy</span></div>
+        <div class="delta ${dif>=0?'pos':'neg'}">${dif>=0?'▲':'▼'} ${euro(Math.abs(dif))}
+          <span class="rango-txt" style="text-align:right">${variacion}${etqRango}</span></div>
+      </div>
+      <svg class="lienzo" viewBox="0 0 ${An} ${Al}" role="img" aria-label="Evolución del patrimonio">
+        <defs><linearGradient id="degradado" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="rgba(17,17,17,.16)"/><stop offset="100%" stop-color="rgba(17,17,17,0)"/>
+        </linearGradient></defs>
+        <line class="rejilla" x1="0" y1="${y(max).toFixed(1)}" x2="${An}" y2="${y(max).toFixed(1)}"/>
+        <line class="rejilla" x1="0" y1="${y(min).toFixed(1)}" x2="${An}" y2="${y(min).toFixed(1)}"/>
+        <path class="area" d="${area}" fill="url(#degradado)"/>
+        <path class="linea" d="${linea}"/>
+        <circle class="halo" cx="${x(serie.length-1).toFixed(1)}" cy="${y(fin).toFixed(1)}" r="6"/>
+        <circle class="punto" cx="${x(serie.length-1).toFixed(1)}" cy="${y(fin).toFixed(1)}" r="3.2"/>
+      </svg>
+      <div class="eje-x"><span>${fmtCorto(serie[0].k)}</span><span class="num">máx ${euro(max)}</span><span>hoy</span></div>`;
+  }
+
+  // Reparto por tipo de activo, con el líquido incluido
+  const tipos = valorPorTipo();
+  const trozos = Object.entries(tipos).map(([t,v])=>({ nombre:t, valor:v, color:COLOR_TIPO[t]||'#8E8E93' }))
+    .concat([{ nombre:'Líquido', valor:Math.max(0,liquido()), color:COLOR_TIPO['Líquido'] }])
+    .filter(x=>x.valor>0).sort((a,b)=>b.valor-a.valor);
+  const totalR = trozos.reduce((a,x)=>a+x.valor,0);
+
+  $('#repartoTipos').innerHTML = totalR
+    ? (()=>{
+        const R=52, C=2*Math.PI*R;
+        let acumulado=0;
+        const anillos = trozos.map(x=>{
+          const frac = x.valor/totalR;
+          const seg = `<circle r="${R}" cx="66" cy="66" stroke="${x.color}"
+            stroke-dasharray="${(frac*C-1.5).toFixed(2)} ${C.toFixed(2)}"
+            stroke-dashoffset="${(-acumulado*C).toFixed(2)}" stroke-linecap="butt"/>`;
+          acumulado += frac;
+          return seg;
+        }).join('');
+        return `<div class="aro-fila">
+          <div class="aro-centro" style="width:132px;height:132px;flex:none">
+            <svg class="aro" viewBox="0 0 132 132">${anillos}</svg>
+            <span><b class="num">${euro(totalR)}</b><small>${trozos.length} bloque(s)</small></span>
+          </div>
+          <div class="leyenda">${trozos.map(x=>`
+            <div class="li"><i class="pastilla" style="background:${x.color}"></i>
+              <span>${esc(x.nombre)}</span><b>${pct(x.valor/totalR)}</b></div>`).join('')}</div>
+        </div>
+        <div style="margin-top:14px">${trozos.map(x=>`
+          <div class="fila" style="padding:9px 0">
+            <div class="fila-icono" style="width:34px;height:34px;font-size:15px">${x.nombre==='Líquido'?'💶':(ICONO_INV[x.nombre]||'📊')}</div>
+            <div class="fila-txt"><b>${esc(x.nombre)}</b><span>${pct(x.valor/totalR)} del patrimonio</span></div>
+            <div class="fila-cifra num">${euroDec(x.valor)}</div>
+          </div>`).join('')}</div>`;
+      })()
+    : `<div class="vacio"><b>Nada que repartir aún</b>Añade tu base inicial o un activo a la cartera.</div>`;
+
+  // Rendimiento por activo
+  $('#rendimientoActivos').innerHTML = E.inversiones.length
+    ? [...E.inversiones].map(i=>{
+        const valor=aNum(i.unidades)*precioDe(i), coste=aNum(i.unidades)*aNum(i.precioCompra);
+        return { i, valor, coste, dif:valor-coste, rent: coste?(valor-coste)/coste:0 };
+      }).sort((a,b)=>b.rent-a.rent).map(({i,valor,coste,dif,rent})=>`
+        <div class="progreso">
+          <div class="progreso-cab"><b>${ICONO_INV[i.tipo]||'📊'} ${esc(i.nombre)}</b>
+            <span class="progreso-pct num ${dif>=0?'pos':'neg'}">${dif>=0?'+':'−'}${pct(Math.abs(rent))}</span></div>
+          <div class="carril"><span class="relleno ${dif>=0?'v':''}"
+            style="width:${Math.min(100,Math.abs(rent)*100).toFixed(1)}%; ${dif<0?'background:var(--rojo)':''}"></span></div>
+          <div class="progreso-pie"><span class="num">${euroDec(coste)} → ${euroDec(valor)}</span>
+            <span class="${dif>=0?'pos':'neg'}">${dif>=0?'+':'−'}${euroDec(Math.abs(dif))}</span></div>
+        </div>`).join('')
+    : `<div class="vacio"><b>Sin activos</b>Cuando tengas cartera, aquí verás cuál tira del carro y cuál lastra.</div>`;
+}
+
+/* ── Gastos: en qué se va el dinero ──────────────────────────────────────── */
+function pintarGastos(){
+  const a=UI.gastoCursor.getFullYear(), m=UI.gastoCursor.getMonth();
+  $('#gastoTitulo').textContent = `${MESES[m]} ${a}`;
+
+  const delMes = txMes(a,m);
+  const ing = suma(delMes.filter(t=>t.tipo==='Ingreso'));
+  const gas = suma(delMes.filter(t=>t.tipo==='Gasto'));
+  $('#resumenMes').innerHTML = `
+    <div class="resumen-tri">
+      <div><small>Ingresos</small><b class="num pos">${euro(ing)}</b></div>
+      <div><small>Gastos</small><b class="num">${euro(gas)}</b></div>
+      <div><small>Balance</small><b class="num ${ing-gas>=0?'pos':'neg'}">${euro(ing-gas)}</b></div>
+    </div>`;
+
+  // Mes anterior, para comparar
+  const ant=new Date(a,m-1,1);
+  const gasAnt=gastoTotal(ant.getFullYear(),ant.getMonth());
+  const cats=gastoPorCategoria(a,m);
+  $('#gastoTotalMes').textContent = gasAnt
+    ? `${gas>=gasAnt?'+':'−'}${pct(Math.abs((gas-gasAnt)/gasAnt))} vs ${MESES[ant.getMonth()].slice(0,3).toLowerCase()}.`
+    : '';
+
+  $('#listaCategorias').innerHTML = cats.length
+    ? cats.map(c=>`
+      <button class="cat-fila" data-ver-categoria="${esc(c.categoria)}">
+        <span class="aro-mini">${ICONO_CAT[c.categoria]||'💳'}</span>
+        <span class="cuerpo">
+          <span class="linea1"><b>${esc(c.categoria)}</b><span class="imp num">${euroDec(c.total)}</span></span>
+          <span class="carril" style="height:8px"><span class="relleno" style="width:${(c.total/cats[0].total*100).toFixed(1)}%"></span></span>
+          <span class="pie"><span>${c.n} movimiento(s)</span><span class="num">${pct(gas?c.total/gas:0)} del gasto</span></span>
+        </span>
+      </button>`).join('')
+    : `<div class="vacio"><b>Sin gastos este mes</b>${UI.ambitoGasto?'Prueba con otro ámbito o cambia de mes.':'Cambia de mes o apunta movimientos con el + de arriba.'}</div>`;
+
+  // Últimos 6 meses de gasto, para ver la tendencia
+  const meses=[];
+  for (let i=5;i>=0;i--){ const d=new Date(a,m-i,1); meses.push({ d, total:gastoTotal(d.getFullYear(),d.getMonth()) }); }
+  const maxM=Math.max(1,...meses.map(x=>x.total));
+  $('#tendenciaGasto').innerHTML = meses.some(x=>x.total)
+    ? `<div class="barras-mes">${meses.map((x,i)=>`
+        <div class="col ${i===5?'actual':''}">
+          <span class="cifra-mini num">${x.total?euro(x.total):''}</span>
+          <span class="barra-v" style="height:${x.total?Math.max(6,x.total/maxM*58):3}px"></span>
+          <small>${MESES[x.d.getMonth()].slice(0,3)}</small>
+        </div>`).join('')}</div>
+       <p class="pie-nota" style="margin-top:10px">Media de los 6 meses: <b class="num">${euroDec(meses.reduce((s,x)=>s+x.total,0)/6)}</b> al mes.</p>`
+    : `<div class="vacio"><b>Aún sin historial</b>Con dos o tres meses apuntados esta gráfica empieza a decir cosas.</div>`;
+}
+
+function verCategoria(cat){
+  const a=UI.gastoCursor.getFullYear(), m=UI.gastoCursor.getMonth();
+  const lista=txMes(a,m).filter(t=>t.tipo==='Gasto'&&(t.categoria||'Sin categoría')===cat)
+    .sort((x,y)=>y.fecha.localeCompare(x.fecha));
+  const total=suma(lista);
+  $('#tituloCategoria').textContent=`${ICONO_CAT[cat]||'💳'} ${cat}`;
+  $('#cuerpoCategoria').innerHTML=`
+    <p style="font-size:13px;color:var(--txt-2);margin:0 0 10px">
+      ${lista.length} movimiento(s) en ${MESES[m].toLowerCase()} · <b class="num">${euroDec(total)}</b> en total</p>
+    ${lista.map(t=>`
+      <div class="fila">
+        <div class="fila-icono">${t.ambito==='empresa'?'💼':'🏡'}</div>
+        <div class="fila-txt"><b>${esc(t.concepto)}</b>
+          <span>${desdeClave(t.fecha).toLocaleDateString('es-ES',{weekday:'short',day:'numeric',month:'short'})} · ${t.ambito}</span></div>
+        <div class="fila-cifra num">−${euroDec(t.importe)}</div>
+      </div>`).join('')}`;
+  $('#hojaCategoria').showModal();
+}
+
+/* ── Cotizaciones ────────────────────────────────────────────────────────────
+   Cripto: CoinGecko, que responde directo al navegador.
+   Bolsa, ETF y metales: Yahoo Finanzas, que NO manda cabeceras CORS, así que
+   hay que pasar por un relé público. Solo viaja el símbolo (AAPL, SAN.MC…),
+   nada personal. Si un relé está caído se prueba el siguiente.               */
+const RELES = ['https://corsproxy.io/?url=', 'https://api.allorigins.win/raw?url='];
+
+async function conTiempo(url, ms=9000){
+  const c=new AbortController();
+  const reloj=setTimeout(()=>c.abort(), ms);
+  try { return await fetch(url, { signal:c.signal }); }
+  finally { clearTimeout(reloj); }
+}
+
+/** Consulta Yahoo a través de los relés. Si uno falla, se prueba el siguiente. */
+async function yahoo(simbolo){
+  const url=`https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(simbolo)}?range=1d&interval=1d`;
+  for (const via of RELES){
+    try {
+      const r=await conTiempo(via+encodeURIComponent(url));
+      if (!r.ok) continue;
+      const meta=(await r.json())?.chart?.result?.[0]?.meta;
+      if (meta?.regularMarketPrice) return { precio:meta.regularMarketPrice, moneda:meta.currency||'EUR' };
+    } catch { /* siguiente vía */ }
+  }
+  return null;
+}
+
+/** Cambio a euros. 1 EUR = X moneda, así que se divide. */
+const cacheCambio = {};
+async function aEuros(importe, moneda){
+  if (!moneda || moneda==='EUR') return importe;
+  if (moneda==='GBp'){ const l=await aEuros(1,'GBP'); return importe*l/100; } // Londres cotiza en peniques
+  if (!cacheCambio[moneda]){
+    const c=await yahoo(`EUR${moneda}=X`);
+    if (!c?.precio) return null;
+    cacheCambio[moneda]=c.precio;
+  }
+  return importe/cacheCambio[moneda];
+}
+
+async function actualizarPrecios(){
+  const conId = E.inversiones.filter(i=>i.ticker?.trim());
+  if (!conId.length){ avisar('Ningún activo tiene identificador. Ponle uno con ✎.'); return; }
+
+  const btn=$('#btnActualizarPrecios');
+  btn.textContent='…'; btn.disabled=true;
+  let ok=0; const fallidos=[];
+
+  try {
+    // 1 · Cripto, todas en una sola llamada
+    const criptos=conId.filter(i=>i.tipo==='Cripto');
+    if (criptos.length){
+      const ids=[...new Set(criptos.map(i=>i.ticker.trim().toLowerCase()))].join(',');
+      try {
+        const r=await conTiempo(`https://api.coingecko.com/api/v3/simple/price?ids=${encodeURIComponent(ids)}&vs_currencies=eur`);
+        const d=r.ok ? await r.json() : {};
+        for (const inv of criptos){
+          const p=d[inv.ticker.trim().toLowerCase()]?.eur;
+          if (p){ inv.precioActual=p; inv.moneda='EUR'; inv.actualizado=Date.now(); ok++; }
+          else fallidos.push(inv.nombre);
+        }
+      } catch { fallidos.push(...criptos.map(i=>i.nombre)); }
+    }
+
+    // 2 · El resto, uno a uno por Yahoo
+    for (const inv of conId.filter(i=>i.tipo!=='Cripto')){
+      const c=await yahoo(inv.ticker.trim());
+      const enEur=c ? await aEuros(c.precio, c.moneda) : null;
+      if (enEur){ inv.precioActual=enEur; inv.moneda=c.moneda; inv.actualizado=Date.now(); ok++; }
+      else fallidos.push(inv.nombre);
+    }
+
+    anotarHoy(); guardar(); pintarPatrimonio();
+    if (ok && !fallidos.length) avisar(`${ok} cotización(es) al día`);
+    else if (ok) avisar(`${ok} al día · sin datos de ${fallidos.slice(0,2).join(', ')}`);
+    else avisar('No he podido traer precios. Revisa los identificadores o la conexión.');
+  } finally {
+    btn.textContent='↻ Cotizaciones'; btn.disabled=false;
+  }
+}
+
+/* ═══════════════════════════ VISTA 3 · METAS + CALENDARIO ════════════════ */
+function barraHTML(nombre, avance, izq, der, tono='', acciones=''){
+  return `<div class="progreso">
+    <div class="progreso-cab"><b>${nombre}</b><span class="progreso-pct num">${pct(avance)}</span></div>
+    <div class="carril"><span class="relleno ${tono}" style="width:${(Math.min(1,avance)*100).toFixed(1)}%"></span></div>
+    <div class="progreso-pie"><span class="num">${izq}</span><span>${der}</span></div>
+    ${acciones}
+  </div>`;
+}
+
+function pintarMetas(){
+  const panel=$('#panelMetas');
+  const a=new Date().getFullYear(), m=new Date().getMonth();
+  const lunes=lunesDe(new Date());
+
+  if (UI.alcance==='dia'){
+    const hechos=ticksDe(HOY);
+    panel.innerHTML = (habitos().length
+      ? habitos().map(h=>`
+        <div class="habito-fila">
+          <button class="habito" data-habito="${h.id}" data-fecha="${HOY}" aria-pressed="${hechos.includes(h.id)}">
+            <span class="emoji">${esc(h.emoji)}</span>
+            <span class="nombre">${esc(h.nombre)}${h.pista?`<span class="pista">${esc(h.pista)}</span>`:''}</span>
+            <span class="check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
+          </button>
+          <button class="editar-habito" data-habito-editar="${h.id}" aria-label="Editar ${esc(h.nombre)}">✎</button>
+        </div>`).join('')
+      : `<div class="vacio"><b>Sin metas del día</b>Añade las cosas que quieras hacer cada día: entrenar, leer, avanzar el negocio…</div>`)
+      + `<button class="aniadir-linea" data-nuevo-habito style="margin-top:10px">+ Nueva meta del día</button>`
+      + (habitos().length?`<div style="padding:10px 4px 0; font-size:12.5px; color:var(--txt-2); text-align:center">${hechos.length}/${habitos().length} completados hoy</div>`:'');
+    return;
+  }
+
+  const propias=E.metas.filter(x=>x.alcance===UI.alcance);
+  const autos=[];
+
+  if (UI.alcance==='semana'){
+    const c=seriesSemana(lunes);
+    autos.push(barraHTML('Sesiones de entreno', c.plan?c.hechas/c.plan:0, `${c.hechas}/${c.plan||0} sesiones`, 'esta semana', 'v'));
+    autos.push(barraHTML('Km de running', c.kmRun?1:0, `${numF.format(c.kmRun)} km reales`, 'suma de sesiones', 'a'));
+    if (c.kmBici) autos.push(barraHTML('Km de ciclismo', 1, `${numF.format(c.kmBici)} km reales`, 'suma de sesiones', 'a'));
+  } else if (UI.alcance==='mes'){
+    const mes=txDe('personal').filter(t=>mismoMes(t.fecha,a,m));
+    const ahorro=suma(mes.filter(t=>t.tipo==='Ingreso'))-suma(mes.filter(t=>t.tipo==='Gasto'));
+    const cobros=suma(txDe('empresa').filter(t=>t.tipo==='Ingreso'&&mismoMes(t.fecha,a,m)));
+    autos.push(barraHTML('Ahorro neto del mes', ahorro>0?1:0, euroDec(ahorro), 'ingresos − gastos personales', ahorro>=0?'v':''));
+    autos.push(barraHTML('Cobros del negocio', cobros>0?1:0, euroDec(cobros), 'facturación real', 'a'));
+    autos.push(barraHTML('Consistencia de hábitos', porcentajeMesHabitos(a,m), MESES[m], 'media diaria', 'n'));
+  } else {
+    const anioTx=E.tx.filter(t=>mismoAnio(t.fecha,a));
+    const bal=suma(anioTx.filter(t=>t.tipo==='Ingreso'))-suma(anioTx.filter(t=>t.tipo==='Gasto'));
+    autos.push(barraHTML('Patrimonio total', 1, euroDec(patrimonio()), 'líquido + inversiones', 'm'));
+    autos.push(barraHTML('Balance del año', bal>=0?1:0, euroDec(bal), 'todo lo registrado', bal>=0?'v':''));
+  }
+
+  const propiasHTML = propias.map(x=>{
+    const avance=x.meta?x.progreso/x.meta:0;
+    const esE=x.unidad==='€';
+    const v=n=>esE?euroDec(n):`${numF.format(n)} ${esc(x.unidad)}`;
+    const lim=x.limite?` · hasta ${desdeClave(x.limite).toLocaleDateString('es-ES',{day:'numeric',month:'short'})}`:'';
+    return barraHTML(esc(x.nombre), avance, `${v(x.progreso)} de ${v(x.meta)}`, (avance>=1?'¡conseguida!':'meta propia')+lim, 'm',
+      `<div class="mini-acciones"><button data-meta-sumar="${x.id}">+ Progreso</button>
+        <button data-meta-editar="${x.id}">✎ Editar</button>
+        <button class="quitar" data-meta-borrar="${x.id}">Borrar</button></div>`);
+  }).join('');
+
+  panel.innerHTML = autos.join('') + propiasHTML +
+    (propias.length?'':`<div class="vacio" style="padding-top:14px"><b>Añade tus propias metas</b>Con «+ Nueva»: ahorro, libros, retos…</div>`);
+}
+
+function pintarCalendario(){
+  const a=UI.calCursor.getFullYear(), m=UI.calCursor.getMonth();
+  $('#calTitulo').textContent = UI.calModo==='anio'?String(a):`${MESES[m]} ${a}`;
+  const cuerpo=$('#calCuerpo');
+
+  if (UI.calModo==='dia'){
+    const desplaz=(new Date(a,m,1).getDay()+6)%7;
+    const total=diasEnMes(a,m);
+    const celdas=Math.ceil((desplaz+total)/7)*7;
+    let html=`<div class="semana-cab">${DIAS_CORTO.map(d=>`<span>${d[0]}</span>`).join('')}</div><div class="rejilla">`;
+    for (let i=0;i<celdas;i++){
+      const f=new Date(a,m,1-desplaz+i);
+      const k=claveDe(f);
+      html+=`<button class="celda ${f.getMonth()!==m?'fuera':''} ${k===HOY?'hoy':''} ${k===UI.calElegido?'elegida':''}" data-cal-dia="${k}">
+        <span class="dia num">${f.getDate()}</span>
+        <span class="ticks">${'<i class="tick"></i>'.repeat(Math.min(4,cumplidosDia(k)))}</span>
+      </button>`;
+    }
+    cuerpo.innerHTML=html+'</div>';
+    pintarDetalleDia();
+  } else if (UI.calModo==='mes'){
+    const total=diasEnMes(a,m);
+    let html=''; let semana=1;
+    for (let desde=1; desde<=total; desde+=7, semana++){
+      const hasta=Math.min(desde+6,total);
+      let dias=0, acc=0;
+      for (let d=desde; d<=hasta; d++){
+        const k=`${a}-${dos(m+1)}-${dos(d)}`;
+        if (esFutura(k)) break;
+        dias++; acc+=Math.min(1,ticksDe(k).length/(habitos().length||1));
+      }
+      const p=dias?acc/dias:0;
+      html+=barraHTML(`Semana ${semana}`, p, `${desde}–${hasta} de ${MESES[m]}`, `${dias} día(s) contados`, p>=.75?'v':'n');
+    }
+    cuerpo.innerHTML=html;
+    $('#detalleDia').classList.add('oculto');
+  } else {
+    const hoyR=new Date();
+    cuerpo.innerHTML=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">${MESES.map((nom,mm)=>{
+      const futuro=a>hoyR.getFullYear()||(a===hoyR.getFullYear()&&mm>hoyR.getMonth());
+      const p=futuro?0:porcentajeMesHabitos(a,mm);
+      return `<button class="carta" data-cal-mes="${mm}" style="padding:13px;border-radius:20px;box-shadow:none;border:1px solid rgba(0,0,0,.06)">
+        <div style="display:flex;justify-content:space-between;font-weight:700;font-size:13.5px"><span>${nom}</span><span class="num">${futuro?'—':pct(p)}</span></div>
+        <div class="carril" style="margin-top:8px;height:8px"><span class="relleno v" style="width:${(p*100).toFixed(1)}%"></span></div>
+      </button>`;
+    }).join('')}</div>`;
+    $('#detalleDia').classList.add('oculto');
+  }
+}
+
+function pintarDetalleDia(){
+  const panel=$('#detalleDia');
+  const k=UI.calElegido;
+  const f=desdeClave(k);
+  const hechos=ticksDe(k);
+  const sesiones=sesionesDe(k);
+  const entradas=entradasDe(k);
+
+  panel.classList.remove('oculto');
+  panel.innerHTML=`
+    <h3>${k===HOY?'Hoy':f.toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'}).replace(/^./,c=>c.toUpperCase())}</h3>
+    <div class="sub">${hechos.length}/${habitos().length} hábitos · ${sesiones.length} sesión(es) · ${entradas.length?'con diario':'sin diario'}</div>
+    ${habitos().map(h=>`
+      <button class="habito" data-habito="${h.id}" data-fecha="${k}" aria-pressed="${hechos.includes(h.id)}">
+        <span class="emoji">${esc(h.emoji)}</span><span class="nombre">${esc(h.nombre)}</span>
+        <span class="check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
+      </button>`).join('')}
+    ${sesiones.map(s=>`
+      <button class="sesion-carta" data-abrir-sesion="${k}|${s.id}">
+        <span class="icono">${s.clase==='fuerza'?'🏋️':s.deporte==='ciclismo'?'🚴':'🏃'}</span>
+        <span class="qué"><b>${esc(s.nombre)}</b><span>${s.clase==='fuerza'?'fuerza':esc(s.modo||'resistencia')}</span></span>
+        <span class="estado ${s.hecha?'hecha':''}">${s.hecha?'Hecha':'Planificada'}</span>
+      </button>`).join('')}
+    ${entradas.map(e=>`
+      <div class="diario-entrada" style="border:none">
+        <div class="fecha">📓 <span class="ambito-chip ${e.ambito}">${e.ambito}</span> energía ${e.animo}/5</div>
+        ${e.prioridad?`<p><b>Prioridad:</b> ${esc(e.prioridad)}</p>`:''}
+      </div>`).join('')}`;
+}
+
+/* ═══════════════════════════ VISTA 4 · ENTRENO ═══════════════════════════ */
+function pintarEntreno(){
+  const esSemana=UI.entrenoSub==='semana';
+  $('#subSemana').classList.toggle('oculto', !esSemana);
+  $('#subCarga').classList.toggle('oculto', esSemana);
+  if (esSemana) pintarSemanaEntreno(); else pintarCarga();
+}
+
+function pintarSemanaEntreno(){
+  const lunes=UI.semLunes;
+  const domingo=new Date(lunes); domingo.setDate(domingo.getDate()+6);
+  const fmt=d=>d.toLocaleDateString('es-ES',{day:'numeric',month:'short'});
+  $('#semTitulo').textContent=`${fmt(lunes)} – ${fmt(domingo)}`;
+
+  $('#tiraSemana').innerHTML = DIAS_CORTO.map((nom,i)=>{
+    const f=new Date(lunes); f.setDate(f.getDate()+i);
+    const k=claveDe(f);
+    const lista=sesionesDe(k);
+    const marca=lista.length?(lista.every(s=>s.hecha)?'hecha':'plan'):'';
+    return `<button class="dia-chip ${k===HOY?'hoy':''} ${k===UI.entrenoDia?'elegido':''}" data-entreno-dia="${k}">
+      <small>${nom}</small><b class="num">${f.getDate()}</b><span class="marca ${marca}"></span>
+    </button>`;
+  }).join('');
+
+  const k=UI.entrenoDia;
+  const lista=sesionesDe(k);
+  const f=desdeClave(k);
+  $('#sesionesDia').innerHTML=`
+    <div class="titulo-seccion" style="margin:2px 0 8px"><h2 style="font-size:16px">${k===HOY?'Hoy':f.toLocaleDateString('es-ES',{weekday:'long',day:'numeric'})}</h2>
+      <button class="accion azul" data-nueva-sesion="${k}">+ Sesión</button></div>
+    ${lista.length
+      ? lista.map(s=>`
+        <button class="sesion-carta" data-abrir-sesion="${k}|${s.id}">
+          <span class="icono">${s.clase==='fuerza'?'🏋️':s.deporte==='ciclismo'?'🚴':'🏃'}</span>
+          <span class="qué"><b>${esc(s.nombre)}</b>
+            <span>${s.clase==='fuerza'
+              ? `${(s.ejercicios||[]).length} ejercicio(s)`
+              : `${esc(s.modo||'')} ${s.kmReal?'· '+numF.format(aNum(s.kmReal))+' km reales':''}`}</span></span>
+          <span class="estado ${s.hecha?'hecha':''}">${s.hecha?'Hecha':'Planificada'}</span>
+        </button>`).join('')
+      : `<div class="vacio"><b>Día libre</b>Añade una sesión o importa una plantilla.</div>`}`;
+}
+
+function pintarCarga(){
+  const c=seriesSemana(UI.semLunes);
+  const max=Math.max(1,...Object.values(c.porGrupo));
+  $('#cargaSemanal').innerHTML=`
+    ${GRUPOS.map(g=>`
+      <div class="carga-fila">
+        <div class="carga-cab"><span>${g}</span><span class="num">${c.porGrupo[g]} series</span></div>
+        <div class="carril" style="height:8px"><span class="relleno" style="width:${(c.porGrupo[g]/max*100).toFixed(1)}%"></span></div>
+      </div>`).join('')}
+    <div class="carga-fila" style="border-top:1px solid rgba(0,0,0,.05);padding-top:12px;margin-top:4px">
+      <div class="carga-cab"><span>🏃 Running semanal</span><span class="num">${numF.format(c.kmRun)} km</span></div>
+      <div class="carga-cab" style="margin-top:6px"><span>🚴 Ciclismo semanal</span><span class="num">${numF.format(c.kmBici)} km</span></div>
+    </div>`;
+
+  // Evolución: hasta 4 ejercicios con más historia, últimas 6 semanas
+  const datos=evolucionDatos();
+  const semanas=[];
+  const l0=lunesDe(new Date());
+  for (let i=5;i>=0;i--){ const l=new Date(l0); l.setDate(l.getDate()-i*7); semanas.push(claveDe(l)); }
+
+  const ejercicios=Object.entries(datos)
+    .map(([nombre,m])=>({nombre, m, sem:Object.keys(m).length}))
+    .sort((a,b)=>b.sem-a.sem)
+    .slice(0,4);
+
+  $('#evolucionCargas').innerHTML = ejercicios.length
+    ? ejercicios.map(e=>{
+        const maxKg=Math.max(...semanas.map(w=>e.m[w]||0),1);
+        const ultimo=semanas.map(w=>e.m[w]||0).filter(Boolean).pop()||0;
+        return `<div class="evo">
+          <div class="evo-cab"><b>${esc(e.nombre)}</b><span class="num">mejor: ${numF.format(Math.max(...Object.values(e.m)))} kg</span></div>
+          <div class="evo-barras">${semanas.map((w,i)=>{
+            const kg=e.m[w]||0;
+            const alto=kg?Math.max(8,kg/maxKg*46):3;
+            const d=desdeClave(w);
+            return `<div class="evo-col ${i===5?'actual':''}">
+              ${kg?`<span class="kg num">${numF.format(kg)}</span>`:''}
+              <span class="barra-v" style="height:${alto}px; ${kg?'':'background:rgba(0,0,0,.08)'}"></span>
+              <small class="num">${d.getDate()}/${d.getMonth()+1}</small>
+            </div>`;
+          }).join('')}</div>
+        </div>`;
+      }).join('')
+    : `<div class="vacio"><b>Aún sin historial</b>Marca series con peso y aquí verás tu progresión semana a semana.</div>`;
+}
+
+/* ── Detalle de sesión ───────────────────────────────────────────────────── */
+function sesionActual(){
+  if (!UI.sesionAbierta) return null;
+  return sesionesDe(UI.sesionAbierta.fecha).find(s=>s.id===UI.sesionAbierta.id)||null;
+}
+
+function pintarDetalleSesion(){
+  const s=sesionActual(); if (!s) return;
+  $('#dsNombre').textContent=s.nombre;
+  const cuerpo=$('#dsCuerpo');
+
+  if (s.clase==='fuerza'){
+    cuerpo.innerHTML=`
+      ${(s.ejercicios||[]).map((ej,ei)=>`
+        <div class="ejercicio">
+          <div class="ejercicio-cab"><b>${esc(ej.nombre)}</b><span class="grupo-badge">${esc(ej.grupo)}</span>
+            <button class="borrar" style="color:var(--txt-3)" data-quitar-ej="${ei}">✕</button></div>
+          ${(ej.series||[]).map((se,si)=>`
+            <div class="serie">
+              <small>${si+1}</small>
+              <input inputmode="numeric" placeholder="reps" value="${se.reps??''}" data-serie="${ei}|${si}|reps">
+              <input inputmode="decimal" placeholder="kg" value="${se.kg??''}" data-serie="${ei}|${si}|kg">
+              <button type="button" class="check ${se.hecha?'hecho':''}" data-check-serie="${ei}|${si}" aria-label="Serie hecha">
+                <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></button>
+              <button type="button" class="quitar-serie" data-quitar-serie="${ei}|${si}" aria-label="Eliminar serie">−</button>
+            </div>`).join('')}
+          <button class="aniadir-linea" data-mas-serie="${ei}">+ Serie</button>
+        </div>`).join('')}
+      <div style="padding:10px 0 4px; display:grid; gap:9px">
+        <div class="par">
+          <input id="nuevoEjNombre" placeholder="Nuevo ejercicio…" autocomplete="off">
+          <select id="nuevoEjGrupo">${GRUPOS.map(g=>`<option>${g}</option>`).join('')}</select>
+        </div>
+        <button class="aniadir-linea" id="btnMasEjercicio">+ Añadir ejercicio</button>
+      </div>`;
+  } else {
+    const modo=s.modo||'Continuo / Tirada';
+    cuerpo.innerHTML=`
+      <div class="bloque">
+        <b>🔥 Calentamiento</b>
+        <input placeholder="15 min Z2 suave" value="${esc(s.calentamiento??'')}" data-campo-sesion="calentamiento">
+      </div>
+
+      <div class="bloque">
+        <b>⚡ Parte principal</b>
+        <label class="campo" style="margin-bottom:10px"><span>Modo</span>
+          <select data-campo-sesion="modo">
+            ${['Series con descanso','Intervalos activos','Continuo / Tirada'].map(x=>`<option ${modo===x?'selected':''}>${x}</option>`).join('')}
+          </select></label>
+        ${modo==='Series con descanso'?`
+          <div class="trio">
+            <label class="campo"><span>Series</span><input inputmode="numeric" placeholder="10" value="${esc(s.nSeries??'')}" data-campo-sesion="nSeries"></label>
+            <label class="campo"><span>Distancia (m)</span><input inputmode="numeric" placeholder="300" value="${esc(s.distSerie??'')}" data-campo-sesion="distSerie"></label>
+            <label class="campo"><span>Descanso (s)</span><input inputmode="numeric" placeholder="30" value="${esc(s.descanso??'')}" data-campo-sesion="descanso"></label>
+          </div>`
+        : modo==='Intervalos activos'?`
+          <div class="trio">
+            <label class="campo"><span>Repeticiones</span><input inputmode="numeric" placeholder="8" value="${esc(s.nSeries??'')}" data-campo-sesion="nSeries"></label>
+            <label class="campo"><span>Intenso (m)</span><input inputmode="numeric" placeholder="300" value="${esc(s.tramoInt??'')}" data-campo-sesion="tramoInt"></label>
+            <label class="campo"><span>Suave (m)</span><input inputmode="numeric" placeholder="300" value="${esc(s.tramoSuave??'')}" data-campo-sesion="tramoSuave"></label>
+          </div>`
+        :`
+          <div class="par">
+            <label class="campo"><span>Km planificados</span><input inputmode="decimal" placeholder="10" value="${esc(s.kmPlan??'')}" data-campo-sesion="kmPlan"></label>
+            <label class="campo"><span>Ritmo objetivo</span><input placeholder="5:30 min/km" value="${esc(s.ritmoObj??'')}" data-campo-sesion="ritmoObj"></label>
+          </div>`}
+      </div>
+
+      <div class="bloque">
+        <b>🧊 Enfriamiento</b>
+        <input placeholder="10 min trote + estiramientos" value="${esc(s.enfriamiento??'')}" data-campo-sesion="enfriamiento">
+      </div>
+
+      <div class="bloque" style="background:rgba(48,209,88,.08)">
+        <b style="color:#1E7E3C">✅ Datos reales</b>
+        <div class="trio">
+          <label class="campo" style="margin-bottom:0"><span>Km reales</span><input inputmode="decimal" placeholder="—" value="${esc(s.kmReal??'')}" data-campo-sesion="kmReal"></label>
+          <label class="campo" style="margin-bottom:0"><span>Tiempo (min)</span><input inputmode="numeric" placeholder="52" value="${esc(s.tiempoMin??'')}" data-campo-sesion="tiempoMin"></label>
+          <label class="campo" style="margin-bottom:0"><span>Desnivel +m</span><input inputmode="numeric" placeholder="240" value="${esc(s.desnivel??'')}" data-campo-sesion="desnivel"></label>
+        </div>
+        <p style="font-size:13px; color:var(--txt-2); margin:8px 0 0" id="ritmoCalc"></p>
+      </div>`;
+    calcularRitmo();
+  }
+
+  $('#dsPie').innerHTML=`
+    <button type="button" class="btn-suave" data-guardar-plantilla>Plantilla</button>
+    <button type="button" class="btn-suave peligro" data-borrar-sesion>Borrar</button>
+    <button type="button" class="btn-negro" data-alternar-hecha style="flex:1.4">${s.hecha?'Marcar pendiente':'✓ Completada'}</button>`;
+}
+
+function calcularRitmo(){
+  const s=sesionActual(); if (!s||s.clase==='fuerza') return;
+  const el=$('#ritmoCalc'); if (!el) return;
+  const km=aNum(s.kmReal), min=aNum(s.tiempoMin);
+  if (!km||!min){ el.textContent='Ritmo medio: — (rellena km y tiempo reales)'; return; }
+  if (s.deporte==='ciclismo') el.textContent=`Velocidad media: ${numF.format(km/(min/60))} km/h`;
+  else { const r=min/km; const mm=Math.floor(r), ss=Math.round((r-mm)*60); el.textContent=`Ritmo medio: ${mm}:${dos(ss)} min/km`; }
+}
+
+function pintarPlantillas(){
+  $('#listaPlantillas').innerHTML = E.plantillas.length
+    ? E.plantillas.map(p=>`
+      <div class="fila">
+        <div class="fila-icono">${p.sesion.clase==='fuerza'?'🏋️':'🏃'}</div>
+        <div class="fila-txt"><b>${esc(p.nombre)}</b>
+          <span>${p.sesion.clase==='fuerza'?`${(p.sesion.ejercicios||[]).length} ejercicio(s)`:esc(p.sesion.modo||'resistencia')}</span></div>
+        <button class="accion" style="color:var(--azul);font-weight:700;font-size:13px" data-importar-plantilla="${p.id}">Importar</button>
+        <button class="borrar" data-borrar-plantilla="${p.id}">✕</button>
+      </div>`).join('')
+    : `<div class="vacio"><b>Sin plantillas</b>Abre una sesión y pulsa «Plantilla» para reutilizarla.</div>`;
+}
+
+/* ═══════════════════════════ VISTA 5 · DIARIO ════════════════════════════ */
+function pintarDiario(){
+  const racha=rachaDiario();
+  $('#rachaDiario').textContent = racha?`🔥 Racha de ${racha} día(s) escribiendo`:'Empieza hoy tu primera entrada';
+  $('#preguntaDiario').textContent = entradasDe(HOY).length?'Hoy ya has escrito ✓':'¿Cómo empieza tu día hoy?';
+
+  const lista=[...E.entradas]
+    .filter(e=>!UI.filtroDiario||e.ambito===UI.filtroDiario)
+    .sort((a,b)=>b.fecha.localeCompare(a.fecha))
+    .slice(0,20);
+
+  const CARAS=['','😫','😕','😐','🙂','🚀'];
+  $('#listaDiario').innerHTML = lista.length
+    ? lista.map(e=>`
+      <div class="diario-entrada">
+        <div class="fecha"><b>${desdeClave(e.fecha).toLocaleDateString('es-ES',{weekday:'short',day:'numeric',month:'short'})}</b>
+          <span class="ambito-chip ${e.ambito}">${e.ambito}</span> ${CARAS[e.animo]||'😐'} ${e.animo}/5</div>
+        ${e.prioridad?`<p><b>Prioridad:</b> ${esc(e.prioridad)}</p>`:''}
+        ${e.gratitud?`<p><b>${e.ambito==='empresa'?'Situación destacada':'Gratitud'}:</b> ${esc(e.gratitud)}</p>`:''}
+        ${e.enfoque?`<p>${esc(e.enfoque)}</p>`:''}
+      </div>`).join('')
+    : `<div class="vacio"><b>${E.entradas.length?'Nada con este filtro':'El diario está vacío'}</b>${E.entradas.length?'Prueba con otro ámbito.':'Dos minutos por la mañana cambian el día.'}</div>`;
+}
+
+/* ── Notificaciones ──────────────────────────────────────────────────────── */
+let relojNotif=null;
+
+function programarRecordatorio(){
+  clearTimeout(relojNotif);
+  if (!E.recordatorio.activo || !('Notification' in window) || Notification.permission!=='granted') return;
+  const [h,m]=E.recordatorio.hora.split(':').map(Number);
+  const ahora=new Date();
+  const objetivo=new Date(ahora.getFullYear(),ahora.getMonth(),ahora.getDate(),h,m,0);
+  if (objetivo<=ahora) objetivo.setDate(objetivo.getDate()+1);
+  relojNotif=setTimeout(()=>{
+    if (!entradasDe(claveDe(new Date())).length)
+      new Notification('Diario matutino',{body:'¿Cómo empieza tu día hoy? Dos minutos y listo.'});
+    programarRecordatorio();
+  }, objetivo-ahora);
+}
+
+async function alternarNotificaciones(){
+  if (!('Notification' in window)){ avisar('Este navegador no soporta notificaciones'); return; }
+  if (Notification.permission!=='granted'){
+    const r=await Notification.requestPermission();
+    if (r!=='granted'){ avisar('Permiso denegado'); return; }
+  }
+  E.recordatorio.activo=!E.recordatorio.activo;
+  E.recordatorio.hora=$('#horaRecordatorio').value||'07:30';
+  guardar(); programarRecordatorio();
+  $('#btnNotificaciones').textContent=E.recordatorio.activo?'Avisos activados ✓':'Activar avisos';
+  avisar(E.recordatorio.activo?`Recordatorio a las ${E.recordatorio.hora}`:'Recordatorio desactivado');
+}
+
+/* ═══════════════════════════ ROUTER ══════════════════════════════════════ */
+function ir(vista){
+  UI.vista=vista;
+  $$('.vista').forEach(v=>v.classList.toggle('oculto', v.dataset.vista!==vista));
+  $$('.dock button').forEach(b=>b.setAttribute('aria-selected', String(b.dataset.ir===vista)));
+  window.scrollTo({top:0});
+  pintar();
+}
+
+function pintar(){
+  if (UI.vista==='home') pintarHome();
+  else if (UI.vista==='patrimonio') pintarPatrimonio();
+  else if (UI.vista==='metas'){ pintarMetas(); pintarCalendario(); }
+  else if (UI.vista==='entreno') pintarEntreno();
+  else pintarDiario();
+
+  const sinDiario=!entradasDe(HOY).length;
+  $('#bannerDiario').classList.toggle('oculto', !sinDiario || UI.vista==='diario');
+  $('#puntitoDiario').classList.toggle('oculto', !sinDiario);
+}
+
+/* ═══════════════════════════ HOJAS Y RADIOS ══════════════════════════════ */
+const radio=(form,nombre)=>form.querySelector(`[data-radio="${nombre}"][aria-selected="true"]`)?.dataset.valor;
+
+function conectarRadios(form){
+  form.addEventListener('click', e=>{
+    const b=e.target.closest('[data-radio]');
+    if (!b) return;
+    e.preventDefault();
+    $$(`[data-radio="${b.dataset.radio}"]`, form).forEach(x=>x.setAttribute('aria-selected', String(x===b)));
+    if (form.id==='formMov') refrescarCategorias();
+    if (form.id==='formSesion') $('#camposResistencia').classList.toggle('oculto', radio(form,'clase')!=='resistencia');
+    if (form.id==='formDiario') ajustarEtiquetasDiario();
+  });
+}
+
+function refrescarCategorias(){
+  const f=$('#formMov');
+  f.categoria.innerHTML=(CATEGORIAS[`${radio(f,'ambito')}-${radio(f,'tipo')}`]||[]).map(c=>`<option>${c}</option>`).join('');
+}
+
+function ajustarEtiquetasDiario(){
+  const esEmpresa=radio($('#formDiario'),'ambitoD')==='empresa';
+  $('#etqGratitud').textContent = esEmpresa?'Situación destacada del negocio':'¿Qué agradezco hoy?';
+  $('#etqEnfoque').textContent = esEmpresa?'Retos del negocio y notas':'Enfoque y notas del día';
+}
+
+/* ═══════════════════════════ EVENTOS ═════════════════════════════════════ */
+$$('.dock button').forEach(b=>b.addEventListener('click',()=>ir(b.dataset.ir)));
+
+// Patrimonio
+$('#btnNuevoMov').addEventListener('click',()=>{
+  const f=$('#formMov'); f.reset(); f.fecha.value=HOY;
+  refrescarCategorias(); $('#errMov').textContent='';
+  $('#hojaMov').showModal();
+});
+
+$('#formMov').addEventListener('submit', e=>{
+  e.preventDefault();
+  const f=e.target;
+  const importe=aNum(f.importe.value);
+  if (!importe||importe<=0){ $('#errMov').textContent='Pon un importe mayor que cero.'; return; }
+  if (!f.concepto.value.trim()){ $('#errMov').textContent='Falta el concepto.'; return; }
+  E.tx.push({ id:nuevoId(), tipo:radio(f,'tipo'), ambito:radio(f,'ambito'),
+    concepto:f.concepto.value.trim(), categoria:f.categoria.value,
+    importe:Math.round(importe*100)/100, fecha:f.fecha.value });
+  anotarHoy(); guardar(); $('#hojaMov').close(); vibrar(); pintar(); avisar('Movimiento registrado');
+});
+
+$('#btnBase').addEventListener('click',()=>{ $('#formBase').base.value=E.base||''; $('#hojaBase').showModal(); });
+$('#formBase').addEventListener('submit', e=>{
+  e.preventDefault();
+  E.base=Math.round(aNum(e.target.base.value)*100)/100;
+  anotarHoy(); guardar(); $('#hojaBase').close(); pintar(); avisar('Base inicial actualizada');
+});
+
+/** Abre la hoja de la cartera: sin id da de alta, con id edita lo que ya hay. */
+function abrirInversion(id){
+  const f=$('#formInv'); f.reset(); $('#errInv').textContent='';
+  UI.invEditando=id||null;
+  const i=id?E.inversiones.find(x=>x.id===id):null;
+
+  if (i){
+    f.nombre.value=i.nombre; f.tipo.value=i.tipo; f.ticker.value=i.ticker||'';
+    f.unidades.value=String(aNum(i.unidades)).replace('.',',');
+    f.precioCompra.value=String(aNum(i.precioCompra)).replace('.',',');
+    f.precioActual.value=i.precioActual!=null?String(aNum(i.precioActual)).replace('.',','):'';
+    f.compradoEl.value=i.compradoEl||'';
+  } else {
+    f.compradoEl.value=HOY;
+  }
+
+  $('#tituloInv').textContent=i?'Editar activo':'Añadir activo';
+  $('#btnGuardarInv').textContent=i?'Guardar cambios':'Añadir';
+  ajustarCamposInversion();
+  $('#hojaInv').showModal();
+}
+
+/** El identificador cambia de nombre y de ejemplo según el tipo de activo. */
+function ajustarCamposInversion(){
+  const f=$('#formInv');
+  const t=f.tipo.value;
+  const guia={
+    'Cripto':               ['Id de CoinGecko', 'bitcoin, ethereum, solana…', 'Es el identificador de CoinGecko, en minúsculas: «bitcoin», no «BTC».'],
+    'Acciones':             ['Símbolo de Yahoo', 'AAPL, SAN.MC, ITX.MC…', 'Símbolo de Yahoo Finanzas. La bolsa española lleva «.MC»: SAN.MC, ITX.MC.'],
+    'Fondos / ETF':         ['Símbolo de Yahoo', 'VWCE.DE, IWDA.AS…', 'Solo cotizan solos los ETF. Un fondo indexado clásico no tiene símbolo: actualízalo a mano.'],
+    'Metales':              ['Símbolo de Yahoo', 'GC=F (oro), SI=F (plata)', 'GC=F es la onza de oro y SI=F la de plata, en dólares; el panel las pasa a euros.'],
+    'Inmuebles':            ['Referencia', 'piso Tolosa', 'No hay cotización posible: pon tú la valoración con ✎ cuando cambie.'],
+    'Liquidez remunerada':  ['Referencia', 'cuenta naranja', 'Sin cotización. Actualiza el valor a mano cuando te paguen intereses.'],
+  }[t] || ['Identificador','',''];
+  $('#etqTicker').textContent=guia[0];
+  f.ticker.placeholder=guia[1];
+  $('#notaInv').textContent=guia[2];
+}
+
+$('#btnNuevaInversion').addEventListener('click',()=>abrirInversion(null));
+$('#invTipo').addEventListener('change', ajustarCamposInversion);
+
+$('#formInv').addEventListener('submit', e=>{
+  e.preventDefault();
+  const f=e.target;
+  const unidades=aNum(f.unidades.value), precio=aNum(f.precioCompra.value);
+  const actual=f.precioActual.value.trim()?aNum(f.precioActual.value):null;
+  if (!f.nombre.value.trim()){ $('#errInv').textContent='Falta el nombre.'; return; }
+  if (!unidades||unidades<=0){ $('#errInv').textContent='Las unidades tienen que ser mayores que cero.'; return; }
+  if (!precio||precio<=0){ $('#errInv').textContent='Falta el precio de compra.'; return; }
+  if (actual!==null&&actual<=0){ $('#errInv').textContent='El precio actual tiene que ser mayor que cero.'; return; }
+
+  const datos={ nombre:f.nombre.value.trim(), tipo:f.tipo.value, ticker:f.ticker.value.trim(),
+    unidades, precioCompra:precio, compradoEl:f.compradoEl.value||null };
+
+  const previa=UI.invEditando?E.inversiones.find(x=>x.id===UI.invEditando):null;
+  if (previa){
+    Object.assign(previa, datos);
+    // Si el precio se toca a mano, la fecha de actualización pasa a ser ahora.
+    if (actual!==null && actual!==aNum(previa.precioActual)){ previa.precioActual=actual; previa.actualizado=Date.now(); }
+    else if (actual===null){ delete previa.precioActual; delete previa.actualizado; }
+  } else {
+    const nueva={ id:nuevoId(), ...datos };
+    if (actual!==null){ nueva.precioActual=actual; nueva.actualizado=Date.now(); }
+    E.inversiones.push(nueva);
+  }
+
+  UI.invEditando=null;
+  anotarHoy(); guardar(); $('#hojaInv').close(); pintar();
+  avisar(previa?'Activo actualizado':'Activo añadido a la cartera');
+});
+
+$('#btnActualizarPrecios').addEventListener('click', actualizarPrecios);
+
+// Sub-pestañas de Dinero
+$('#segDinero').addEventListener('click', e=>{
+  const b=e.target.closest('[data-sub-dinero]'); if (!b) return;
+  UI.subDinero=b.dataset.subDinero;
+  $$('#segDinero button').forEach(x=>x.setAttribute('aria-selected',String(x===b)));
+  window.scrollTo({top:0,behavior:'smooth'});
+  pintarPatrimonio();
+});
+
+$('#segRango').addEventListener('click', e=>{
+  const b=e.target.closest('[data-rango]'); if (!b) return;
+  UI.rango=Number(b.dataset.rango);
+  $$('#segRango button').forEach(x=>x.setAttribute('aria-selected',String(x===b)));
+  pintarEvolucion();
+});
+
+$('#segAmbitoGasto').addEventListener('click', e=>{
+  const b=e.target.closest('[data-ambito-gasto]'); if (!b) return;
+  UI.ambitoGasto=b.dataset.ambitoGasto;
+  $$('#segAmbitoGasto button').forEach(x=>x.setAttribute('aria-selected',String(x===b)));
+  pintarGastos();
+});
+
+$('#gastoAtras').addEventListener('click',()=>{
+  const c=UI.gastoCursor; UI.gastoCursor=new Date(c.getFullYear(),c.getMonth()-1,1); pintarGastos();
+});
+$('#gastoAdelante').addEventListener('click',()=>{
+  const c=UI.gastoCursor;
+  const sig=new Date(c.getFullYear(),c.getMonth()+1,1);
+  if (sig>new Date()){ avisar('Ese mes aún no ha llegado'); return; }
+  UI.gastoCursor=sig; pintarGastos();
+});
+
+$('#avatar').addEventListener('click',()=>{
+  const n=prompt('¿Cómo te llamas?', E.nombre);
+  if (n&&n.trim()){ E.nombre=n.trim(); guardar(); pintar(); }
+});
+
+// Metas
+$('#segAlcance').addEventListener('click', e=>{
+  const b=e.target.closest('[data-alcance]'); if (!b) return;
+  UI.alcance=b.dataset.alcance;
+  $$('#segAlcance button').forEach(x=>x.setAttribute('aria-selected',String(x===b)));
+  pintarMetas();
+});
+
+/** Abre la hoja de metas: sin id crea una nueva, con id edita la que ya existe. */
+function abrirMeta(id){
+  const f=$('#formMeta'); f.reset(); $('#errMeta').textContent='';
+  UI.metaEditando=id||null;
+  const x=id?E.metas.find(y=>y.id===id):null;
+
+  if (x){
+    f.alcance.value=x.alcance;
+    f.nombre.value=x.nombre;
+    f.meta.value=String(aNum(x.meta)).replace('.',',');
+    f.progreso.value=String(aNum(x.progreso)).replace('.',',');
+    f.unidad.value=x.unidad||'';
+    f.limite.value=x.limite||'';
+  } else if (['semana','mes','anio'].includes(UI.alcance)){
+    f.alcance.value=UI.alcance;
+  }
+
+  $('#tituloMeta').textContent=x?'Editar meta':'Nueva meta';
+  $('#btnGuardarMeta').textContent=x?'Guardar cambios':'Crear';
+  $('#btnBorrarMeta').classList.toggle('oculto', !x);
+  $('#hojaMeta').showModal();
+}
+
+// En la pestaña Día lo que se crea son metas del día; en el resto, metas con cifra.
+$('#btnNuevaMeta').addEventListener('click',()=>{
+  if (UI.alcance==='dia') abrirHabito(null); else abrirMeta(null);
+});
+
+/** Abre la hoja de metas del día: sin id crea una, con id edita la que ya hay. */
+function abrirHabito(id){
+  const f=$('#formHabito'); f.reset(); $('#errHabito').textContent='';
+  UI.habitoEditando=id||null;
+  const h=id?habitos().find(x=>x.id===id):null;
+
+  f.nombre.value=h?.nombre||'';
+  f.pista.value=h?.pista||'';
+  f.emoji.value=h?.emoji||'';
+  pintarRejillaEmoji(f.emoji.value||'🎯');
+  if (!h) f.emoji.value='🎯';
+
+  $('#tituloHabito').textContent=h?'Editar meta del día':'Nueva meta del día';
+  $('#btnGuardarHabito').textContent=h?'Guardar cambios':'Crear';
+  $('#btnBorrarHabito').classList.toggle('oculto', !h);
+  $('#notaBorrarHabito').classList.toggle('oculto', !h);
+  $('#hojaHabito').showModal();
+}
+
+function pintarRejillaEmoji(elegido){
+  $('#rejillaEmoji').innerHTML = EMOJIS_HABITO.map(x=>
+    `<button type="button" data-emoji="${x}" aria-pressed="${x===elegido}">${x}</button>`).join('');
+}
+
+$('#rejillaEmoji').addEventListener('click', e=>{
+  const b=e.target.closest('[data-emoji]'); if (!b) return;
+  $('#formHabito').emoji.value=b.dataset.emoji;
+  $$('#rejillaEmoji button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
+});
+
+// Si lo escribes a mano, la rejilla se entera
+$('#formHabito').emoji.addEventListener('input', e=>{
+  $$('#rejillaEmoji button').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.emoji===e.target.value)));
+});
+
+$('#formHabito').addEventListener('submit', e=>{
+  e.preventDefault();
+  const f=e.target;
+  const nombre=f.nombre.value.trim();
+  if (!nombre){ $('#errHabito').textContent='Falta el nombre.'; return; }
+
+  const datos={ nombre, pista:f.pista.value.trim(), emoji:f.emoji.value.trim()||'🎯' };
+  const previa=UI.habitoEditando?E.habitos.find(x=>x.id===UI.habitoEditando):null;
+  if (previa) Object.assign(previa, datos);
+  else E.habitos.push({ id:nuevoId(), ...datos });
+  UI.habitoEditando=null;
+
+  guardar(); $('#hojaHabito').close(); pintar();
+  avisar(previa?'Meta del día actualizada':'Meta del día creada');
+});
+
+$('#btnBorrarHabito').addEventListener('click',()=>{
+  const h=E.habitos.find(x=>x.id===UI.habitoEditando); if (!h) return;
+  if (!confirm(`¿Borrar "${h.nombre}" de las metas del día?`)) return;
+  E.habitos=E.habitos.filter(x=>x.id!==h.id);
+  // Y fuera de los días marcados, para que las rachas no cuenten algo que ya no existe.
+  for (const [k,lista] of Object.entries(E.ticks)){
+    const limpio=lista.filter(x=>x!==h.id);
+    if (limpio.length) E.ticks[k]=limpio; else delete E.ticks[k];
+  }
+  UI.habitoEditando=null;
+  guardar(); $('#hojaHabito').close(); pintar(); avisar('Meta del día borrada');
+});
+
+$('#btnBorrarMeta').addEventListener('click',()=>{
+  const x=E.metas.find(y=>y.id===UI.metaEditando); if (!x) return;
+  if (!confirm(`¿Borrar la meta "${x.nombre}"?`)) return;
+  E.metas=E.metas.filter(y=>y.id!==x.id);
+  UI.metaEditando=null;
+  guardar(); $('#hojaMeta').close(); pintar(); avisar('Meta borrada');
+});
+
+$('#formMeta').addEventListener('submit', e=>{
+  e.preventDefault();
+  const f=e.target;
+  const meta=aNum(f.meta.value);
+  if (!f.nombre.value.trim()){ $('#errMeta').textContent='Falta el nombre.'; return; }
+  if (!meta||meta<=0){ $('#errMeta').textContent='La meta tiene que ser mayor que cero.'; return; }
+
+  const datos={ alcance:f.alcance.value, nombre:f.nombre.value.trim(),
+    meta:Math.round(meta*100)/100, progreso:Math.max(0,Math.round(aNum(f.progreso.value)*100)/100),
+    unidad:f.unidad.value.trim()||'ud.', limite:f.limite.value||null };
+
+  const previa=UI.metaEditando?E.metas.find(y=>y.id===UI.metaEditando):null;
+  if (previa) Object.assign(previa, datos);
+  else E.metas.push({ id:nuevoId(), ...datos });
+  UI.metaEditando=null;
+
+  guardar(); $('#hojaMeta').close();
+  UI.alcance=f.alcance.value;
+  $$('#segAlcance button').forEach(x=>x.setAttribute('aria-selected',String(x.dataset.alcance===UI.alcance)));
+  pintar();
+  avisar(previa
+    ? (datos.progreso>=datos.meta ? '¡Meta conseguida! 🎉' : 'Meta actualizada')
+    : 'Meta creada');
+});
+
+// Calendario
+$('#segCal').addEventListener('click', e=>{
+  const b=e.target.closest('[data-modo]'); if (!b) return;
+  UI.calModo=b.dataset.modo;
+  $$('#segCal button').forEach(x=>x.setAttribute('aria-selected',String(x===b)));
+  pintarCalendario();
+});
+
+$('#calAtras').addEventListener('click',()=>{
+  const c=UI.calCursor;
+  UI.calCursor=UI.calModo==='anio'?new Date(c.getFullYear()-1,c.getMonth(),1):new Date(c.getFullYear(),c.getMonth()-1,1);
+  pintarCalendario();
+});
+
+$('#calAdelante').addEventListener('click',()=>{
+  const c=UI.calCursor;
+  UI.calCursor=UI.calModo==='anio'?new Date(c.getFullYear()+1,c.getMonth(),1):new Date(c.getFullYear(),c.getMonth()+1,1);
+  pintarCalendario();
+});
+
+// Entreno
+$('#segEntreno').addEventListener('click', e=>{
+  const b=e.target.closest('[data-sub]'); if (!b) return;
+  UI.entrenoSub=b.dataset.sub;
+  $$('#segEntreno button').forEach(x=>x.setAttribute('aria-selected',String(x===b)));
+  pintarEntreno();
+});
+
+$('#semAtras').addEventListener('click',()=>{ UI.semLunes.setDate(UI.semLunes.getDate()-7); UI.entrenoDia=claveDe(UI.semLunes); pintarEntreno(); });
+$('#semAdelante').addEventListener('click',()=>{ UI.semLunes.setDate(UI.semLunes.getDate()+7); UI.entrenoDia=claveDe(UI.semLunes); pintarEntreno(); });
+
+$('#formSesion').addEventListener('submit', e=>{
+  e.preventDefault();
+  const f=e.target;
+  if (!f.nombre.value.trim()){ $('#errSesion').textContent='Ponle nombre a la sesión.'; return; }
+  const clase=radio(f,'clase');
+  const s={ id:nuevoId(), clase, nombre:f.nombre.value.trim(), hecha:false };
+  if (clase==='fuerza') s.ejercicios=[];
+  else { s.deporte=f.deporte.value; s.modo='Continuo / Tirada'; }
+  (E.sesiones[UI.entrenoDia] ||= []).push(s);
+  guardar(); $('#hojaSesion').close(); pintarEntreno();
+  UI.sesionAbierta={fecha:UI.entrenoDia, id:s.id};
+  pintarDetalleSesion(); $('#hojaDetalleSesion').showModal();
+});
+
+$('#btnPlantillas').addEventListener('click',()=>{ pintarPlantillas(); $('#hojaPlantillas').showModal(); });
+
+// Diario
+$('#btnCampana').addEventListener('click', abrirDiario);
+$('#animoFila').addEventListener('click', e=>{
+  const b=e.target.closest('[data-animo]'); if (!b) return;
+  UI.animoElegido=Number(b.dataset.animo);
+  $$('#animoFila .animo').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
+});
+
+$('#formDiario').addEventListener('submit', e=>{
+  e.preventDefault();
+  const f=e.target;
+  const ambito=radio(f,'ambitoD')||'personal';
+  // Una entrada por día y ámbito: si ya existe, se actualiza.
+  const previa=E.entradas.find(x=>x.fecha===HOY&&x.ambito===ambito);
+  const datos={ ambito, animo:UI.animoElegido, prioridad:f.prioridad.value.trim(),
+    gratitud:f.gratitud.value.trim(), enfoque:f.enfoque.value.trim() };
+  if (previa) Object.assign(previa, datos);
+  else E.entradas.push({ id:nuevoId(), fecha:HOY, ...datos });
+  E.recordatorio.hora=f.hora.value||'07:30';
+  guardar(); $('#hojaDiario').close(); vibrar(); pintar(); avisar('Entrada guardada 🌅');
+});
+
+$('#segDiario').addEventListener('click', e=>{
+  const b=e.target.closest('[data-filtro]'); if (b===null||!b) return;
+  UI.filtroDiario=b.dataset.filtro;
+  $$('#segDiario button').forEach(x=>x.setAttribute('aria-selected',String(x===b)));
+  pintarDiario();
+});
+
+$('#btnNotificaciones').addEventListener('click', alternarNotificaciones);
+
+function abrirDiario(){
+  const f=$('#formDiario');
+  f.reset();
+  const ambito=radio(f,'ambitoD')||'personal';
+  const previa=E.entradas.find(x=>x.fecha===HOY&&x.ambito===ambito);
+  UI.animoElegido=previa?.animo||3;
+  $$('#animoFila .animo').forEach(x=>x.setAttribute('aria-pressed',String(Number(x.dataset.animo)===UI.animoElegido)));
+  f.prioridad.value=previa?.prioridad||'';
+  f.gratitud.value=previa?.gratitud||'';
+  f.enfoque.value=previa?.enfoque||'';
+  f.hora.value=E.recordatorio.hora;
+  $('#btnNotificaciones').textContent=E.recordatorio.activo?'Avisos activados ✓':'Activar avisos';
+  $('#tituloDiario').textContent=new Date().toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'}).replace(/^./,c=>c.toUpperCase());
+  ajustarEtiquetasDiario();
+  $('#hojaDiario').showModal();
+}
+
+/* ── Delegación global ───────────────────────────────────────────────────── */
+document.addEventListener('click', e=>{
+  const cerrar=e.target.closest('[data-cerrar]');
+  if (cerrar){ $('#'+cerrar.dataset.cerrar).close(); return; }
+
+  if (e.target.closest('[data-ir-diario]')){ abrirDiario(); return; }
+
+  const irTab=e.target.closest('[data-ir-tab]');
+  if (irTab){ ir(irTab.dataset.irTab); return; }
+
+  // Ojo al orden: el lápiz vive dentro de la fila del hábito, así que se mira antes.
+  const editarHab=e.target.closest('[data-habito-editar]');
+  if (editarHab){ abrirHabito(editarHab.dataset.habitoEditar); return; }
+
+  if (e.target.closest('[data-nuevo-habito]')){ abrirHabito(null); return; }
+
+  if (e.target.closest('[data-editar-metas-dia]')){
+    UI.alcance='dia';
+    $$('#segAlcance button').forEach(x=>x.setAttribute('aria-selected',String(x.dataset.alcance==='dia')));
+    ir('metas');
+    return;
+  }
+
+  const hab=e.target.closest('[data-habito]');
+  if (hab){
+    const k=hab.dataset.fecha;
+    if (esFutura(k)){ avisar('Ese día todavía no ha llegado'); return; }
+    const set=new Set(ticksDe(k));
+    set.has(hab.dataset.habito)?set.delete(hab.dataset.habito):set.add(hab.dataset.habito);
+    if (set.size) E.ticks[k]=[...set]; else delete E.ticks[k];
+    guardar(); vibrar(); pintar();
+    if (set.size===habitos().length) avisar('¡Día completo! 🎉');
+    return;
+  }
+
+  const dia=e.target.closest('[data-cal-dia]');
+  if (dia){
+    UI.calElegido=dia.dataset.calDia;
+    const f=desdeClave(UI.calElegido);
+    if (f.getMonth()!==UI.calCursor.getMonth()) UI.calCursor=new Date(f.getFullYear(),f.getMonth(),1);
+    pintarCalendario(); return;
+  }
+
+  const mesT=e.target.closest('[data-cal-mes]');
+  if (mesT){
+    UI.calCursor=new Date(UI.calCursor.getFullYear(),Number(mesT.dataset.calMes),1);
+    UI.calModo='dia';
+    $$('#segCal button').forEach(x=>x.setAttribute('aria-selected',String(x.dataset.modo==='dia')));
+    pintarCalendario(); return;
+  }
+
+  const chip=e.target.closest('[data-entreno-dia]');
+  if (chip){ UI.entrenoDia=chip.dataset.entrenoDia; pintarEntreno(); return; }
+
+  const nueva=e.target.closest('[data-nueva-sesion]');
+  if (nueva){
+    const f=$('#formSesion'); f.reset();
+    $$('[data-radio="clase"]',f).forEach(x=>x.setAttribute('aria-selected',String(x.dataset.valor==='fuerza')));
+    $('#camposResistencia').classList.add('oculto');
+    $('#errSesion').textContent='';
+    $('#tituloSesion').textContent=`Sesión · ${desdeClave(UI.entrenoDia).toLocaleDateString('es-ES',{weekday:'long',day:'numeric'})}`;
+    $('#hojaSesion').showModal(); return;
+  }
+
+  const abrirS=e.target.closest('[data-abrir-sesion]');
+  if (abrirS){
+    const [fecha,id]=abrirS.dataset.abrirSesion.split('|');
+    UI.sesionAbierta={fecha,id};
+    pintarDetalleSesion(); $('#hojaDetalleSesion').showModal(); return;
+  }
+
+  const checkSerie=e.target.closest('[data-check-serie]');
+  if (checkSerie){
+    const [ei,si]=checkSerie.dataset.checkSerie.split('|').map(Number);
+    const s=sesionActual(); if (!s) return;
+    s.ejercicios[ei].series[si].hecha=!s.ejercicios[ei].series[si].hecha;
+    guardar(); vibrar(); pintarDetalleSesion(); return;
+  }
+
+  const masSerie=e.target.closest('[data-mas-serie]');
+  if (masSerie){
+    const s=sesionActual(); if (!s) return;
+    const ej=s.ejercicios[Number(masSerie.dataset.masSerie)];
+    const ultima=ej.series[ej.series.length-1];
+    ej.series.push({ reps:ultima?.reps??'', kg:ultima?.kg??'', hecha:false });
+    guardar(); pintarDetalleSesion(); return;
+  }
+
+  const quitarSerie=e.target.closest('[data-quitar-serie]');
+  if (quitarSerie){
+    const [ei,si]=quitarSerie.dataset.quitarSerie.split('|').map(Number);
+    const s=sesionActual(); if (!s) return;
+    s.ejercicios[ei].series.splice(si,1);
+    guardar(); pintarDetalleSesion(); return;
+  }
+
+  const quitarEj=e.target.closest('[data-quitar-ej]');
+  if (quitarEj){
+    const s=sesionActual(); if (!s) return;
+    s.ejercicios.splice(Number(quitarEj.dataset.quitarEj),1);
+    guardar(); pintarDetalleSesion(); return;
+  }
+
+  if (e.target.closest('#btnMasEjercicio')){
+    const s=sesionActual(); if (!s) return;
+    const nombre=$('#nuevoEjNombre').value.trim();
+    if (!nombre){ avisar('Ponle nombre al ejercicio'); return; }
+    s.ejercicios.push({ nombre, grupo:$('#nuevoEjGrupo').value, series:[{reps:'',kg:'',hecha:false}] });
+    guardar(); pintarDetalleSesion(); return;
+  }
+
+  if (e.target.closest('[data-alternar-hecha]')){
+    const s=sesionActual(); if (!s) return;
+    s.hecha=!s.hecha;
+    guardar(); vibrar(); pintarDetalleSesion();
+    if (UI.vista==='entreno') pintarEntreno(); else pintar();
+    if (s.hecha) avisar('Sesión completada 💪');
+    return;
+  }
+
+  if (e.target.closest('[data-borrar-sesion]')){
+    const s=sesionActual(); if (!s) return;
+    if (!confirm(`¿Borrar la sesión "${s.nombre}"?`)) return;
+    E.sesiones[UI.sesionAbierta.fecha]=sesionesDe(UI.sesionAbierta.fecha).filter(x=>x.id!==s.id);
+    if (!E.sesiones[UI.sesionAbierta.fecha].length) delete E.sesiones[UI.sesionAbierta.fecha];
+    guardar(); $('#hojaDetalleSesion').close();
+    if (UI.vista==='entreno') pintarEntreno(); else pintar();
+    avisar('Sesión borrada'); return;
+  }
+
+  if (e.target.closest('[data-guardar-plantilla]')){
+    const s=sesionActual(); if (!s) return;
+    const nombre=prompt('Nombre de la plantilla:', s.nombre);
+    if (!nombre||!nombre.trim()) return;
+    const copia=JSON.parse(JSON.stringify(s));
+    delete copia.id; copia.hecha=false;
+    delete copia.kmReal; delete copia.tiempoMin; delete copia.desnivel;
+    (copia.ejercicios||[]).forEach(ej=>ej.series.forEach(x=>x.hecha=false));
+    E.plantillas.push({ id:nuevoId(), nombre:nombre.trim(), sesion:copia });
+    guardar(); avisar('Plantilla guardada'); return;
+  }
+
+  const imp=e.target.closest('[data-importar-plantilla]');
+  if (imp){
+    const p=E.plantillas.find(x=>x.id===imp.dataset.importarPlantilla); if (!p) return;
+    const s=JSON.parse(JSON.stringify(p.sesion));
+    s.id=nuevoId(); s.hecha=false;
+    (E.sesiones[UI.entrenoDia] ||= []).push(s);
+    guardar(); $('#hojaPlantillas').close();
+    if (UI.vista!=='entreno') ir('entreno'); else pintarEntreno();
+    avisar(`"${p.nombre}" importada`); return;
+  }
+
+  const borrarP=e.target.closest('[data-borrar-plantilla]');
+  if (borrarP){
+    E.plantillas=E.plantillas.filter(x=>x.id!==borrarP.dataset.borrarPlantilla);
+    guardar(); pintarPlantillas(); return;
+  }
+
+  const borrarTx=e.target.closest('[data-borrar-tx]');
+  if (borrarTx){
+    const t=E.tx.find(x=>x.id===borrarTx.dataset.borrarTx);
+    if (!t||!confirm(`¿Borrar "${t.concepto}" de ${euroDec(t.importe)}?`)) return;
+    E.tx=E.tx.filter(x=>x.id!==t.id);
+    anotarHoy(); guardar(); pintar(); avisar('Movimiento borrado'); return;
+  }
+
+  const editarInv=e.target.closest('[data-editar-inv]');
+  if (editarInv){ abrirInversion(editarInv.dataset.editarInv); return; }
+
+  const borrarInv=e.target.closest('[data-borrar-inv]');
+  if (borrarInv){
+    const i=E.inversiones.find(x=>x.id===borrarInv.dataset.borrarInv);
+    if (!i||!confirm(`¿Quitar "${i.nombre}" de la cartera?`)) return;
+    E.inversiones=E.inversiones.filter(x=>x.id!==i.id);
+    anotarHoy(); guardar(); pintar(); avisar('Activo eliminado'); return;
+  }
+
+  const verCat=e.target.closest('[data-ver-categoria]');
+  if (verCat){ verCategoria(verCat.dataset.verCategoria); return; }
+
+  const sumarM=e.target.closest('[data-meta-sumar]');
+  if (sumarM){
+    const x=E.metas.find(y=>y.id===sumarM.dataset.metaSumar); if (!x) return;
+    const r=prompt(`¿Cuánto sumas a "${x.nombre}"?\n\nVas por ${numF.format(x.progreso)} de ${numF.format(x.meta)} ${x.unidad}.`,'');
+    if (r===null||!r.trim()) return;
+    x.progreso=Math.max(0,Math.round((x.progreso+aNum(r))*100)/100);
+    guardar(); pintar();
+    avisar(x.progreso>=x.meta?'¡Meta conseguida! 🎉':'Progreso actualizado');
+    return;
+  }
+
+  const editarM=e.target.closest('[data-meta-editar]');
+  if (editarM){ abrirMeta(editarM.dataset.metaEditar); return; }
+
+  const borrarM=e.target.closest('[data-meta-borrar]');
+  if (borrarM){
+    const x=E.metas.find(y=>y.id===borrarM.dataset.metaBorrar);
+    if (!x||!confirm(`¿Borrar la meta "${x.nombre}"?`)) return;
+    E.metas=E.metas.filter(y=>y.id!==x.id);
+    guardar(); pintar(); return;
+  }
+});
+
+// Ediciones en vivo (inputs de series y campos de sesión)
+document.addEventListener('input', e=>{
+  const serie=e.target.closest('[data-serie]');
+  if (serie){
+    const [ei,si,campo]=serie.dataset.serie.split('|');
+    const s=sesionActual(); if (!s) return;
+    s.ejercicios[Number(ei)].series[Number(si)][campo]=serie.value;
+    guardar(); return;
+  }
+  const campo=e.target.closest('[data-campo-sesion]');
+  if (campo){
+    const s=sesionActual(); if (!s) return;
+    s[campo.dataset.campoSesion]=campo.value;
+    guardar(); calcularRitmo();
+  }
+});
+
+document.addEventListener('change', e=>{
+  const campo=e.target.closest('[data-campo-sesion]');
+  if (campo){
+    const s=sesionActual(); if (!s) return;
+    s[campo.dataset.campoSesion]=campo.value;
+    guardar();
+    // Cambiar el modo redibuja los campos del bloque principal
+    if (campo.dataset.campoSesion==='modo'||campo.dataset.campoSesion==='deporte') pintarDetalleSesion();
+  }
+});
+
+conectarRadios($('#formMov'));
+conectarRadios($('#formSesion'));
+conectarRadios($('#formDiario'));
+
+/* ═══════════════════════════ ARRANQUE ════════════════════════════════════ */
+refrescarCategorias();
+ajustarCamposInversion();
+anotarHoy();          // deja la foto de hoy antes de pintar nada
+guardar();
+pintar();
+programarRecordatorio();
+})();
+</script>
+</body>
+</html>
