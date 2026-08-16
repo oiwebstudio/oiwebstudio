@@ -1,0 +1,24 @@
+# Webs de demostración de OI Studio (oiwebstudio.vercel.app).
+#
+# Son negocios de ejemplo, no reales: están online para que se puedan navegar
+# desde el portfolio, pero no deben aparecer en Google como si fueran negocios
+# de Tolosa. Eso lo hace la etiqueta <meta name="robots" content="noindex">
+# de cada página.
+#
+# Importante: aquí NO se pone Disallow. Si se bloquea el rastreo, Google no
+# puede leer el noindex y las páginas ya indexadas se quedarían dentro.
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+Disallow: /*.json$
+
+Crawl-delay: 1
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
