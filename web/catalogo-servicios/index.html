@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, follow"/>
+<title>Catálogo de servicios · OI Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Geist+Mono:wght@400;600&family=Geist:wght@300..800&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--page:#fdfdfc; --soft:#f4f4f2; --line:#e4e4e0; --ink:#131315; --dim:#6a6a72; --mute:#9a9aa2;
+    --acc:#7b5cff; --sans:'Geist',system-ui,sans-serif; --disp:'Bricolage Grotesque',serif; --mono:'Geist Mono',monospace;
+    --listo:#1f9d63; --facil:#b8790a; --idea:#5c6ac4;}
+  body{font-family:var(--sans); background:var(--page); color:var(--ink); line-height:1.6; -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1100px; margin:0 auto; padding:52px 24px 90px;}
+  header{border-bottom:1px solid var(--line); padding-bottom:26px; margin-bottom:30px;}
+  .eyebrow{font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute);}
+  h1{font-family:var(--disp); font-size:clamp(30px,5vw,46px); font-weight:800; letter-spacing:-.035em; line-height:1.08; margin:10px 0 12px;}
+  header p{color:var(--dim); max-width:64ch; text-wrap:pretty;}
+
+  .leyenda{display:flex; gap:16px; flex-wrap:wrap; margin-top:18px; font-size:12.5px;}
+  .leyenda span{display:inline-flex; align-items:center; gap:6px; color:var(--dim);}
+  .leyenda i{width:8px; height:8px; border-radius:50%; display:inline-block;}
+
+  .search{margin:26px 0 8px;}
+  .search input{width:100%; padding:14px 18px; font:inherit; font-size:15px; border:1px solid var(--line);
+    border-radius:12px; background:#fff; color:var(--ink); outline:none; transition:.25s;}
+  .search input:focus{border-color:var(--acc); box-shadow:0 0 0 4px rgba(123,92,255,.1);}
+
+  .filtros{display:flex; gap:7px; flex-wrap:wrap; margin:14px 0 30px;}
+  .filtros button{font:inherit; font-size:12.5px; font-weight:600; padding:7px 14px; border-radius:100px;
+    border:1px solid var(--line); background:#fff; color:var(--dim); cursor:pointer; transition:.2s;}
+  .filtros button.on{background:var(--ink); color:#fff; border-color:var(--ink);}
+
+  .grupo{margin-bottom:8px;}
+  .grupo h2{font-family:var(--disp); font-size:22px; font-weight:700; letter-spacing:-.02em; margin:38px 0 4px;}
+  .grupo .sub{color:var(--mute); font-size:13.5px; margin-bottom:16px;}
+
+  .card{border:1px solid var(--line); border-radius:16px; background:#fff; padding:20px; margin-bottom:12px;
+    transition:box-shadow .3s cubic-bezier(.16,1,.3,1), transform .3s cubic-bezier(.16,1,.3,1), border-color .3s;}
+  .card:hover{box-shadow:0 14px 40px -18px rgba(19,19,21,.28); transform:translateY(-2px); border-color:#d4d4ce;}
+  .top{display:flex; align-items:flex-start; gap:12px; flex-wrap:wrap;}
+  .ic{font-size:22px; line-height:1.2;}
+  .ttl{flex:1; min-width:220px;}
+  .ttl h3{font-family:var(--disp); font-size:18px; font-weight:700; letter-spacing:-.02em; line-height:1.25;}
+  .estado{font-family:var(--mono); font-size:10.5px; font-weight:700; letter-spacing:.04em; padding:3px 9px;
+    border-radius:100px; white-space:nowrap; text-transform:uppercase;}
+  .e-listo{background:rgba(31,157,99,.1); color:var(--listo); border:1px solid rgba(31,157,99,.25);}
+  .e-facil{background:rgba(184,121,10,.1); color:var(--facil); border:1px solid rgba(184,121,10,.25);}
+  .e-idea{background:rgba(92,106,196,.1); color:var(--idea); border:1px solid rgba(92,106,196,.25);}
+
+  .para{font-size:12px; color:var(--mute); margin-top:3px;}
+  .que{margin:11px 0; color:var(--dim); text-wrap:pretty; font-size:14px;}
+  .como{font-size:13px; color:#4a4a52; background:var(--soft); border-radius:10px; padding:10px 13px; margin-top:10px;}
+  .como b{font-weight:700; color:var(--ink);}
+  .piezas{display:flex; flex-wrap:wrap; gap:5px; margin-top:10px;}
+  .piezas span{font-family:var(--mono); font-size:10.5px; background:#f2effe; border:1px solid #e2dbfd; color:var(--acc);
+    padding:3px 8px; border-radius:6px;}
+
+  .none{display:none; text-align:center; color:var(--mute); padding:40px 0;}
+  footer{margin-top:40px; padding-top:22px; border-top:1px solid var(--line); font-size:13px; color:var(--mute);}
+  footer code{font-family:var(--mono); background:var(--soft); padding:2px 6px; border-radius:5px; color:#4a4a52;}
+  @media (max-width:560px){ .top{flex-direction:column;} .estado{align-self:flex-start;} }
+</style></head>
+<body><div class="wrap">
+
+<header>
+  <div class="eyebrow">OI Studio · catálogo interno</div>
+  <h1>Servicios que podría ofrecer</h1>
+  <p>No son productos terminados: es el menú completo de lo que sé montar, para elegir sólo cuando aparece el cliente que lo necesita. Cada ficha dice para quién es, qué resuelve y con qué piezas ya construidas se arma.</p>
+  <div class="leyenda">
+    <span><i style="background:#1f9d63"></i>Listo — ya existe la pieza, es enchufarla</span>
+    <span><i style="background:#b8790a"></i>Fácil — se monta en una sesión de trabajo</span>
+    <span><i style="background:#5c6ac4"></i>Idea — hay que validarla con el cliente antes</span>
+  </div>
+</header>
+
+<div class="search"><input id="q" placeholder="Buscar: reservas, seo, whatsapp, tienda, mantenimiento…" autocomplete="off"></div>
+<div class="filtros" id="filtros">
+  <button class="on" data-f="todos">Todos</button>
+  <button data-f="listo">Listo</button>
+  <button data-f="facil">Fácil</button>
+  <button data-f="idea">Idea</button>
+</div>
+
+<div id="lista"></div>
+<p class="none" id="none">Sin resultados. Probá con: reserva, seo, chat, tienda, factura, redes.</p>
+
+<footer>
+  Para hacer real un servicio: elegí la ficha y decime <code>"montemos &lt;nombre&gt;"</code> — reviso qué piezas de <code>biblioteca-animaciones</code>, <code>biblioteca-automatizaciones</code>, <code>booking-api</code> o <code>localai</code> reutilizar y lo construyo a medida del cliente.
+</footer>
+</div>
+
+<script>
+const SERVICIOS = [
+
+{grupo:'Presencia web', sub:'La base: que el negocio se explique bien y venda solo.', items:[
+  {ic:'🖥️', n:'Web a medida de una página', estado:'listo', para:'Negocios locales sin web o con una desactualizada',
+    que:'Landing con hero, servicios, ubicación, testimonios y contacto. Diseño propio, no plantilla.',
+    como:'Se compone con la <b>biblioteca de animaciones</b> (600 efectos catalogados) más SEO técnico ya inyectado.',
+    piezas:['biblioteca-animaciones','inject-seo.mjs']},
+  {ic:'🛍️', n:'Tienda online sencilla', estado:'idea', para:'Comercios que venden pocos productos y no necesitan un carrito complejo',
+    que:'Catálogo con fotos, precios y botón de compra por WhatsApp o pasarela simple, sin la complejidad de Shopify.',
+    como:'Falta validar volumen y método de cobro con el primer cliente antes de fijar el patrón.', piezas:['por definir']},
+  {ic:'✍️', n:'Rediseño de web existente', estado:'facil', para:'Quien ya tiene web pero no convierte ni carga rápido',
+    que:'Auditoría de velocidad y SEO, y rediseño manteniendo dominio y contenidos que funcionan.',
+    como:'Usa el mismo pipeline SEO y la biblioteca de animaciones; el trabajo extra es el diagnóstico inicial.',
+    piezas:['auto-informe-seo','biblioteca-animaciones']},
+]},
+
+{grupo:'Reservas y citas', sub:'Que el calendario se llene solo, sin llamadas perdidas.', items:[
+  {ic:'📅', n:'Motor de reservas web + WhatsApp', estado:'listo', para:'Peluquerías, talleres, clínicas, restaurantes',
+    que:'El cliente reserva desde la web o por WhatsApp, comprueba el hueco real y confirma sin intervención tuya.',
+    como:'Es <code>booking-api</code> + <code>widget-n8n-reservas</code>, ya construidos; sólo se adapta el calendario y los servicios del negocio.',
+    piezas:['booking-api','widget-n8n-reservas.html','auto-reserva-cita']},
+  {ic:'⏰', n:'Recordatorios automáticos de cita', estado:'listo', para:'Cualquier negocio con ausencias sin avisar',
+    que:'Aviso 24 h antes por email, con resumen del día para el negocio.',
+    como:'Flujo ya generado en la biblioteca de automatizaciones, se enchufa al Google Calendar del cliente.',
+    piezas:['auto-recordatorio-cita']},
+  {ic:'🤖', n:'Chatbot de reservas en la web', estado:'listo', para:'Negocios que quieren atender fuera de horario',
+    que:'Un asistente que entiende "quiero cita el jueves a las 5" y la crea directamente.',
+    como:'Ya existe como <code>chatbot-reservas.html</code>; conecta con el mismo booking-api.',
+    piezas:['chatbot-reservas.html','booking-api']},
+]},
+
+{grupo:'Automatización interna', sub:'Para que el negocio del cliente (o el tuyo) pierda menos tiempo en tareas repetidas.', items:[
+  {ic:'📥', n:'Captura de leads sin fugas', estado:'listo', para:'Cualquiera con un formulario de contacto',
+    que:'Cada mensaje se filtra de spam, se guarda, avisa al móvil y se contesta al cliente en segundos.',
+    como:'Flujo ya generado, coste 0 €.', piezas:['auto-lead-form']},
+  {ic:'⭐', n:'Petición automática de reseñas', estado:'listo', para:'Negocios que dependen de Google Maps',
+    que:'A los 7 días de un trabajo entregado, pide la reseña con el enlace directo.',
+    como:'Flujo ya generado; sólo hace falta la hoja de trabajos entregados del cliente.', piezas:['auto-pide-resena']},
+  {ic:'💶', n:'Recordatorio de facturas pendientes', estado:'listo', para:'Autónomos y pequeños negocios que facturan y cobran tarde',
+    que:'Tres avisos escalonados (suave, firme, final) sin que tengas que escribir ni uno.',
+    como:'Flujo ya generado, sólo pide la hoja de facturas.', piezas:['auto-cobro-pendiente']},
+  {ic:'💾', n:'Copia de seguridad de la web', estado:'listo', para:'Cualquier cliente con web propia',
+    que:'Copia semanal automática con informe, para vender el mantenimiento con un argumento real.',
+    como:'Flujo ya generado, corre en tu equipo.', piezas:['auto-backup-webs']},
+  {ic:'🔗', n:'Automatización a medida', estado:'idea', para:'Negocios con un proceso repetitivo específico (pedidos, stock, turnos de personal…)',
+    que:'Se estudia el proceso del cliente y se monta un flujo de n8n hecho a su medida.',
+    como:'No hay patrón fijo: es consultoría corta + un flujo nuevo en la biblioteca.', piezas:['n8n a medida']},
+]},
+
+{grupo:'SEO y visibilidad local', sub:'Que te encuentren cuando buscan en Tolosa o alrededores.', items:[
+  {ic:'📊', n:'Informe mensual de rendimiento', estado:'listo', para:'Clientes con contrato de mantenimiento',
+    que:'PageSpeed cada mes, redactado en lenguaje llano por IA local, sin coste de API.',
+    como:'Flujo ya generado; usa Ollama en tu equipo, cero tokens de pago.', piezas:['auto-informe-seo']},
+  {ic:'🗺️', n:'Ficha de Google Business optimizada', estado:'facil', para:'Cualquier negocio local',
+    que:'Se completa y ordena la ficha de Maps: categorías, horarios, fotos, preguntas frecuentes.',
+    como:'Trabajo manual guiado por checklist propio; no requiere desarrollo.', piezas:['checklist propio']},
+  {ic:'🔍', n:'SEO técnico inyectado', estado:'listo', para:'Webs que ya existen pero no traen tráfico',
+    que:'Meta tags, Open Graph, datos estructurados, sitemap y robots.txt correctos.',
+    como:'Ya existe el script que lo inyecta en cualquier web del estudio.', piezas:['inject-seo.mjs']},
+]},
+
+{grupo:'Contenido y redes', sub:'Constancia en Instagram sin que sea un trabajo aparte.', items:[
+  {ic:'📱', n:'Plantilla de carrusel de Instagram', estado:'listo', para:'Negocios que quieren publicar pero no diseñan',
+    que:'Carruseles con la identidad de marca ya montada, sólo cambia texto y fotos.',
+    como:'Es <code>build-ig-clean.html</code>, ya usado en producción.', piezas:['build-ig-clean.html']},
+  {ic:'✏️', n:'Borrador semanal desde el blog', estado:'listo', para:'Quien ya escribe artículos y no tiene tiempo para redes',
+    que:'Cada lunes, la IA local propone carrusel y pie de foto a partir del último artículo.',
+    como:'Flujo ya generado, se manda a Telegram para aprobar.', piezas:['auto-borrador-instagram']},
+  {ic:'🗓️', n:'Calendario de contenidos a medida', estado:'idea', para:'Clientes que quieren presencia constante y no saben por dónde empezar',
+    que:'Plan mensual de publicaciones adaptado al negocio, con temas y formatos fijados de antemano.',
+    como:'Es trabajo de estrategia, no de código; se apoya en el borrador automático de arriba.', piezas:['auto-borrador-instagram']},
+]},
+
+{grupo:'IA y atención al cliente', sub:'Todo corriendo en local: sin cuota mensual y sin mandar datos del cliente fuera.', items:[
+  {ic:'💬', n:'Chat de FAQ en la web', estado:'listo', para:'Negocios con preguntas repetidas (horarios, precios, disponibilidad)',
+    que:'Responde con las FAQ del propio negocio y deriva a una persona cuando no sabe.',
+    como:'Flujo ya generado, usa Ollama en local, coste 0 €.', piezas:['auto-chat-faq']},
+  {ic:'🧠', n:'Generador de contenido con IA local', estado:'idea', para:'Cualquier cliente que necesite textos recurrentes (fichas de producto, avisos, respuestas)',
+    que:'Un pequeño generador a medida corriendo en tu equipo, sin depender de OpenAI.',
+    como:'Se apoya en <code>localai/</code>, que ya tiene generador y base de datos propios.', piezas:['localai']},
+]},
+
+{grupo:'Mantenimiento y confianza', sub:'Lo que convierte un proyecto puntual en un cliente fijo.', items:[
+  {ic:'🚨', n:'Vigilancia de caídas', estado:'listo', para:'Cualquier web en producción',
+    que:'Aviso al móvil en minutos si una web deja de responder, antes de que lo note el cliente.',
+    como:'Flujo ya generado, revisa cada 15 minutos.', piezas:['auto-monitor-webs']},
+  {ic:'📄', n:'Pack de mantenimiento mensual', estado:'facil', para:'Vender continuidad después de entregar la web',
+    que:'Empaqueta vigilancia + backup + informe SEO + cambios menores en una cuota fija.',
+    como:'Es unir tres automatizaciones ya listas y ponerles precio.', piezas:['auto-monitor-webs','auto-backup-webs','auto-informe-seo']},
+]},
+
+];
+
+const grid = document.getElementById('lista');
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const badge = {listo:['Listo','e-listo'], facil:['Fácil','e-facil'], idea:['Idea','e-idea']};
+
+SERVICIOS.forEach(g=>{
+  const sec = document.createElement('div'); sec.className='grupo';
+  sec.innerHTML = `<h2>${esc(g.grupo)}</h2><p class="sub">${esc(g.sub)}</p>`;
+  g.items.forEach(it=>{
+    const [lbl, cls] = badge[it.estado];
+    const card = document.createElement('article');
+    card.className = 'card'; card.dataset.estado = it.estado;
+    card.dataset.t = (it.n+' '+it.para+' '+it.que+' '+it.piezas.join(' ')).toLowerCase();
+    card.innerHTML = `<div class="top">
+      <span class="ic">${it.ic}</span>
+      <div class="ttl"><h3>${esc(it.n)}</h3><div class="para">${esc(it.para)}</div></div>
+      <span class="estado ${cls}">${lbl}</span>
+    </div>
+    <p class="que">${esc(it.que)}</p>
+    <div class="como">${it.como}</div>
+    <div class="piezas">${it.piezas.map(p=>`<span>${esc(p)}</span>`).join('')}</div>`;
+    sec.appendChild(card);
+  });
+  grid.appendChild(sec);
+});
+
+const q = document.getElementById('q'), none = document.getElementById('none');
+const cards = () => [...document.querySelectorAll('.card')];
+let filtro = 'todos';
+const limpia = s => s.normalize('NFD').replace(new RegExp('[\\u0300-\\u036f]','g'),'').toLowerCase();
+
+function aplicar(){
+  const t = limpia(q.value.trim());
+  let n = 0;
+  cards().forEach(c=>{
+    const okF = filtro === 'todos' || c.dataset.estado === filtro;
+    const okT = !t || limpia(c.dataset.t).includes(t);
+    const visible = okF && okT;
+    c.style.display = visible ? '' : 'none';
+    if(visible) n++;
+  });
+  document.querySelectorAll('.grupo').forEach(g=>{
+    const vis = [...g.querySelectorAll('.card')].some(c=>c.style.display !== 'none');
+    g.style.display = vis ? '' : 'none';
+  });
+  none.style.display = n ? 'none' : 'block';
+}
+q.addEventListener('input', aplicar);
+document.getElementById('filtros').addEventListener('click', e=>{
+  const b = e.target.closest('button'); if(!b) return;
+  document.querySelectorAll('#filtros button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); filtro = b.dataset.f; aplicar();
+});
+</script>
+</body></html>
