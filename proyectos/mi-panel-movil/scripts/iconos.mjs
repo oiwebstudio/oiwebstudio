@@ -1,6 +1,11 @@
-// Genera los iconos PNG del PWA sin dependencias: pinta un lienzo RGBA a mano
-// y lo codifica en PNG con zlib. Sirven tal cual para empaquetar el APK.
+// Genera los iconos de la app sin dependencias: dibuja el logo a mano con
+// distancias (cada píxel sabe lo lejos que está del trazo) y lo codifica en PNG
+// con zlib. Al ser vectorial de origen, sale nítido en cualquier tamaño.
+//
 //   npm run iconos
+//
+// El logo son tres barras ascendentes de trazo redondeado —la primera con su
+// tilde encima— y la última se prolonga en una flecha hacia arriba.
 
 import { deflateSync } from 'node:zlib';
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
@@ -10,58 +15,115 @@ import { fileURLToPath } from 'node:url';
 const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const DESTINO = resolve(RAIZ, 'www', 'iconos');
 
-const FONDO = [11, 13, 16];        // #0b0d10, el fondo de la app
-const ACENTO = [110, 139, 255];    // #6e8bff
-const VERDE = [52, 211, 153];      // #34d399
+const FONDO = [11, 11, 12];        // #0B0B0C, el negro del logo
+const TRAZO = [255, 255, 255];
 
-// ── Lienzo ────────────────────────────────────────────────────────────────────
-function lienzo(lado, relleno = [0, 0, 0, 0]) {
+/* ── Geometría del logo, en un lienzo imaginario de 100 × 100 ──────────────
+   Cambiar estos números es cambiar el logo: todo lo demás se adapta.        */
+const GROSOR = 6.2;                // ancho del trazo
+const LOGO = {
+  // Barras: [x izquierda, x derecha, y arriba, y abajo]
+  barras: [
+    [8, 26, 62, 92],
+    [33, 51, 48, 92],
+    [58, 76, 34, 92],
+  ],
+  tilde: [8, 26, 52],              // la rayita sobre la primera barra
+  // Trazos sueltos: el gancho de la barra del medio y la flecha de la alta
+  lineas: [
+    [[33, 48], [37, 38], [49, 36]],           // gancho de la segunda barra
+    [[58, 34], [68, 20], [88, 6]],            // cuerpo de la flecha
+    [[88, 6], [72, 8]],                       // punta, lado izquierdo
+    [[88, 6], [85, 21]],                      // punta, lado derecho
+  ],
+};
+
+/* ── Distancias ──────────────────────────────────────────────────────────── */
+const dist = (x, y) => Math.hypot(x, y);
+
+/** Distancia de un punto a un segmento: la base de todo el dibujo. */
+function aSegmento(px, py, [ax, ay], [bx, by]) {
+  const vx = bx - ax, vy = by - ay;
+  const wx = px - ax, wy = py - ay;
+  const largo = vx * vx + vy * vy;
+  const t = largo ? Math.max(0, Math.min(1, (wx * vx + wy * vy) / largo)) : 0;
+  return dist(wx - vx * t, wy - vy * t);
+}
+
+/** Distancia al contorno de una barra: un rectángulo con las esquinas redondas. */
+function aBarra(px, py, [x0, x1, y0, y1]) {
+  const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
+  const mitadAncho = (x1 - x0) / 2, mitadAlto = (y1 - y0) / 2;
+  const r = Math.min(mitadAncho, mitadAlto);       // radio de las esquinas
+  // Distancia con signo a un rectángulo redondeado, centrado en (cx, cy).
+  const qx = Math.abs(px - cx) - (mitadAncho - r);
+  const qy = Math.abs(py - cy) - (mitadAlto - r);
+  const fuera = dist(Math.max(qx, 0), Math.max(qy, 0));
+  const dentro = Math.min(Math.max(qx, qy), 0);
+  return Math.abs(fuera + dentro - r);             // en valor absoluto: el borde
+}
+
+/** Lo cerca que está un punto del trazo del logo. 0 = justo encima. */
+function alLogo(px, py) {
+  let d = Infinity;
+  for (const b of LOGO.barras) d = Math.min(d, aBarra(px, py, b));
+  const [tx0, tx1, ty] = LOGO.tilde;
+  d = Math.min(d, aSegmento(px, py, [tx0 + GROSOR / 2, ty], [tx1 - GROSOR / 2, ty]));
+  for (const linea of LOGO.lineas)
+    for (let i = 0; i < linea.length - 1; i++)
+      d = Math.min(d, aSegmento(px, py, linea[i], linea[i + 1]));
+  return d;
+}
+
+/* ── Lienzo y pintado ────────────────────────────────────────────────────── */
+function lienzo(lado, relleno) {
   const pix = new Uint8Array(lado * lado * 4);
-  for (let i = 0; i < lado * lado; i++) {
-    pix[i * 4] = relleno[0];
-    pix[i * 4 + 1] = relleno[1];
-    pix[i * 4 + 2] = relleno[2];
-    pix[i * 4 + 3] = relleno[3] ?? 255;
+  if (relleno) {
+    for (let i = 0; i < lado * lado; i++) {
+      pix[i * 4] = relleno[0];
+      pix[i * 4 + 1] = relleno[1];
+      pix[i * 4 + 2] = relleno[2];
+      pix[i * 4 + 3] = 255;
+    }
   }
   return { lado, pix };
 }
 
-function punto(c, x, y, [r, g, b], alfa = 1) {
-  if (x < 0 || y < 0 || x >= c.lado || y >= c.lado) return;
-  const i = (y * c.lado + x) * 4;
-  const previo = c.pix[i + 3] / 255;
-  const mezcla = (canal, nuevo) => Math.round(nuevo * alfa + canal * previo * (1 - alfa));
-  c.pix[i] = mezcla(c.pix[i], r);
-  c.pix[i + 1] = mezcla(c.pix[i + 1], g);
-  c.pix[i + 2] = mezcla(c.pix[i + 2], b);
-  c.pix[i + 3] = Math.round(Math.min(1, alfa + previo * (1 - alfa)) * 255);
-}
+/**
+ * Dibuja el logo.
+ *   margen  cuánto aire dejar alrededor (los iconos recortables piden más)
+ *   fondo   null para dejarlo transparente
+ */
+function dibujar(lado, { margen = 0.14, fondo = FONDO, trazo = TRAZO } = {}) {
+  const c = lienzo(lado, fondo);
+  const util = lado * (1 - margen * 2);
+  const desde = lado * margen;
+  const escala = util / 100;
+  const grosor = (GROSOR / 2) * escala;
+  const suave = Math.max(0.6, lado / 260);     // ancho del difuminado del borde
 
-/** Rectángulo redondeado con antialias por supermuestreo de los bordes. */
-function rectRedondo(c, x0, y0, ancho, alto, radio, color) {
-  const dentro = (px, py) => {
-    const dx = Math.max(x0 + radio - px, 0, px - (x0 + ancho - radio));
-    const dy = Math.max(y0 + radio - py, 0, py - (y0 + alto - radio));
-    if (px < x0 || py < y0 || px > x0 + ancho || py > y0 + alto) return 0;
-    if (dx === 0 || dy === 0) return 1;
-    return Math.hypot(dx, dy) <= radio ? 1 : 0;
-  };
+  for (let y = 0; y < lado; y++) {
+    for (let x = 0; x < lado; x++) {
+      // Del píxel al sistema de coordenadas del logo
+      const lx = (x + 0.5 - desde) / escala;
+      const ly = (y + 0.5 - desde) / escala;
+      if (lx < -12 || ly < -12 || lx > 112 || ly > 112) continue;
 
-  for (let y = Math.floor(y0); y < Math.ceil(y0 + alto); y++) {
-    for (let x = Math.floor(x0); x < Math.ceil(x0 + ancho); x++) {
-      // 4×4 muestras: suficiente para que las esquinas no se vean escalonadas.
-      let dentroCuenta = 0;
-      for (let sy = 0; sy < 4; sy++) {
-        for (let sx = 0; sx < 4; sx++) {
-          dentroCuenta += dentro(x + (sx + 0.5) / 4, y + (sy + 0.5) / 4);
-        }
-      }
-      if (dentroCuenta) punto(c, x, y, color, dentroCuenta / 16);
+      const d = alLogo(lx, ly) * escala - grosor;
+      const alfa = 1 - Math.min(1, Math.max(0, (d + suave / 2) / suave));
+      if (alfa <= 0) continue;
+
+      const i = (y * c.lado + x) * 4;
+      const previo = c.pix[i + 3] / 255;
+      for (let k = 0; k < 3; k++)
+        c.pix[i + k] = Math.round(trazo[k] * alfa + c.pix[i + k] * previo * (1 - alfa));
+      c.pix[i + 3] = Math.round(Math.min(1, alfa + previo * (1 - alfa)) * 255);
     }
   }
+  return c;
 }
 
-// ── PNG ───────────────────────────────────────────────────────────────────────
+/* ── PNG ─────────────────────────────────────────────────────────────────── */
 const TABLA_CRC = (() => {
   const t = new Uint32Array(256);
   for (let n = 0; n < 256; n++) {
@@ -93,10 +155,9 @@ function aPng(c) {
   cabecera.writeUInt32BE(c.lado, 4);
   cabecera[8] = 8; // bits por canal
   cabecera[9] = 6; // RGBA
-  // Una fila por scanline, con byte de filtro 0 delante.
   const crudo = Buffer.alloc(c.lado * (c.lado * 4 + 1));
   for (let y = 0; y < c.lado; y++) {
-    crudo[y * (c.lado * 4 + 1)] = 0;
+    crudo[y * (c.lado * 4 + 1)] = 0;   // byte de filtro
     Buffer.from(c.pix.buffer, y * c.lado * 4, c.lado * 4).copy(crudo, y * (c.lado * 4 + 1) + 1);
   }
   return Buffer.concat([
@@ -107,79 +168,48 @@ function aPng(c) {
   ]);
 }
 
-// ── El icono: barras ascendentes sobre fondo oscuro ───────────────────────────
-// `transparente` deja solo las barras: es lo que necesita la capa de primer plano
-// del icono adaptativo de Android, que pone el fondo por su cuenta.
-function icono(lado, { recortable = false, transparente = false } = {}) {
-  const c = transparente ? lienzo(lado, [0, 0, 0, 0]) : lienzo(lado, [...FONDO, 255]);
-  // En modo maskable Android recorta un círculo: hay que dejar margen de sobra.
-  const margen = recortable ? lado * 0.26 : lado * 0.2;
-  const util = lado - margen * 2;
+const png = (lado, opciones) => aPng(dibujar(lado, opciones));
 
-  const barras = [
-    { alto: 0.42, color: ACENTO, alfa: 0.55 },
-    { alto: 0.68, color: ACENTO, alfa: 1 },
-    { alto: 1.0, color: VERDE, alfa: 1 },
-  ];
-  const hueco = util * 0.12;
-  const ancho = (util - hueco * 2) / 3;
-  const radio = Math.max(2, ancho * 0.28);
-
-  barras.forEach((b, i) => {
-    const alto = util * b.alto;
-    const x = margen + i * (ancho + hueco);
-    const y = margen + (util - alto);
-    const color = b.alfa < 1 ? b.color.map((v) => Math.round(v * b.alfa + FONDO[0] * (1 - b.alfa))) : b.color;
-    rectRedondo(c, x, y, ancho, alto, Math.min(radio, alto / 2), color);
-  });
-
-  return aPng(c);
-}
-
-// ── .ico para el acceso directo de Windows ────────────────────────────────────
-// Desde Vista un .ico puede llevar el PNG dentro tal cual: basta con la cabecera.
+/* ── .ico para el acceso directo de Windows ──────────────────────────────── */
 function aIco(pngs) {
   const cabecera = Buffer.alloc(6);
-  cabecera.writeUInt16LE(0, 0); // reservado
-  cabecera.writeUInt16LE(1, 2); // tipo 1 = icono
+  cabecera.writeUInt16LE(0, 0);
+  cabecera.writeUInt16LE(1, 2);
   cabecera.writeUInt16LE(pngs.length, 4);
 
   let desplazamiento = 6 + pngs.length * 16;
   const entradas = [];
-
   for (const { lado, datos } of pngs) {
     const e = Buffer.alloc(16);
-    e[0] = lado >= 256 ? 0 : lado; // 0 significa 256
+    e[0] = lado >= 256 ? 0 : lado;
     e[1] = lado >= 256 ? 0 : lado;
-    e.writeUInt16LE(1, 4);  // planos
-    e.writeUInt16LE(32, 6); // bits por píxel
+    e.writeUInt16LE(1, 4);
+    e.writeUInt16LE(32, 6);
     e.writeUInt32LE(datos.length, 8);
     e.writeUInt32LE(desplazamiento, 12);
     desplazamiento += datos.length;
     entradas.push(e);
   }
-
   return Buffer.concat([cabecera, ...entradas, ...pngs.map((p) => p.datos)]);
 }
 
+/* ── A escribir ──────────────────────────────────────────────────────────── */
 mkdirSync(DESTINO, { recursive: true });
 
-// ── Iconos de la web ──────────────────────────────────────────────────────────
 const salidas = [
-  ['icono-192.png', icono(192)],
-  ['icono-512.png', icono(512)],
-  ['icono-maskable-512.png', icono(512, { recortable: true })],
-  ['icono-180.png', icono(180)], // iOS
+  ['icono-192.png', png(192)],
+  ['icono-512.png', png(512)],
+  ['icono-maskable-512.png', png(512, { margen: 0.26 })],
+  ['icono-180.png', png(180)],
 ];
+salidas.forEach(([nombre, datos]) => writeFileSync(resolve(DESTINO, nombre), datos));
+writeFileSync(resolve(DESTINO, 'icono.ico'), aIco([16, 32, 48, 256].map((lado) => ({ lado, datos: png(lado) }))));
+console.log(`\n  ${salidas.length + 1} iconos web en ${DESTINO}`);
 
-salidas.forEach(([nombre, png]) => writeFileSync(resolve(DESTINO, nombre), png));
-console.log(`\n  ${salidas.length} iconos web en ${DESTINO}`);
-
-// ── Iconos del lanzador de Android ────────────────────────────────────────────
-// Android pide el icono en cinco densidades. El adaptativo va en dos capas:
-// el fondo lo pone el sistema con un color, y el primer plano es este PNG.
+// Android pide el icono en cinco densidades. El adaptativo va en dos capas: el
+// fondo lo pone el sistema y el primer plano es este PNG, con margen de sobra
+// porque el sistema lo recorta en círculo, cuadrado o lo que toque.
 const RES = resolve(RAIZ, 'android', 'app', 'src', 'main', 'res');
-
 const DENSIDADES = [
   ['mdpi', 48, 108],
   ['hdpi', 72, 162],
@@ -193,15 +223,19 @@ if (existsSync(RES)) {
   for (const [densidad, lado, ladoCapa] of DENSIDADES) {
     const carpeta = resolve(RES, `mipmap-${densidad}`);
     mkdirSync(carpeta, { recursive: true });
-
-    const completo = icono(lado);
+    const completo = png(lado);
     writeFileSync(resolve(carpeta, 'ic_launcher.png'), completo);
     writeFileSync(resolve(carpeta, 'ic_launcher_round.png'), completo);
-    // La capa de primer plano va transparente y con margen: el sistema la recorta.
-    writeFileSync(resolve(carpeta, 'ic_launcher_foreground.png'), icono(ladoCapa, { recortable: true, transparente: true }));
+    writeFileSync(resolve(carpeta, 'ic_launcher_foreground.png'), png(ladoCapa, { margen: 0.3, fondo: null }));
     n += 3;
   }
   console.log(`  ${n} iconos de Android en ${RES}`);
+
+  // La barra de estado solo pinta la silueta: blanco puro sobre transparente.
+  const drawable = resolve(RES, 'drawable');
+  mkdirSync(drawable, { recursive: true });
+  writeFileSync(resolve(drawable, 'ic_stat_icon.png'), png(96, { margen: 0.1, fondo: null }));
+  console.log(`  icono de notificación en ${drawable}`);
 } else {
   console.log('  (sin proyecto Android: me salto sus iconos)');
 }
