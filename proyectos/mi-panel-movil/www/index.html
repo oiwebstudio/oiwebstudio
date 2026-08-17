@@ -462,6 +462,9 @@ body.en-foco .dock { display: none; }
       <small id="saludoPeq">Bienvenido</small>
       <b id="nombre">Oier</b>
     </div>
+    <button class="campana" id="btnBuscar" aria-label="Buscar" style="margin-right:-4px">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    </button>
     <button class="campana" id="btnCampana" aria-label="Diario matutino">
       <svg viewBox="0 0 24 24"><path d="M18 9a6 6 0 1 0-12 0c0 6-2 7-2 7h16s-2-1-2-7"/><path d="M10.3 20a2 2 0 0 0 3.4 0"/></svg>
       <span class="puntito oculto" id="puntitoDiario"></span>
@@ -585,6 +588,7 @@ body.en-foco .dock { display: none; }
       </div>
 
       <div class="titulo-seccion"><h2>En qué se va</h2>
+        <button class="accion azul" id="btnFijos">Fijos</button>
         <button class="accion azul" id="btnTopes">Topes</button>
         <span class="accion" id="gastoTotalMes"></span></div>
       <div class="carta" id="listaCategorias"></div>
@@ -687,6 +691,9 @@ body.en-foco .dock { display: none; }
       <div class="carta" id="cargaSemanal"></div>
       <div class="titulo-seccion"><h2 style="font-size:16px">Evolución de cargas</h2><span class="accion">mejor kg por semana</span></div>
       <div class="carta" id="evolucionCargas"></div>
+
+      <div class="titulo-seccion"><h2 style="font-size:16px">Récords</h2><span class="accion">lo mejor que has hecho</span></div>
+      <div class="carta" id="records"></div>
     </div>
 
     <div id="subCuerpo" class="oculto">
@@ -921,6 +928,49 @@ body.en-foco .dock { display: none; }
   </div>
 </section>
 
+<!-- ══ Hoja: buscador ════════════════════════════════════════════════════ -->
+<dialog id="hojaBuscar">
+  <div class="hoja">
+    <div class="hoja-asa"></div>
+    <div class="hoja-cab"><h3>Buscar</h3><button type="button" class="cerrar" data-cerrar="hojaBuscar">Cerrar</button></div>
+    <div class="hoja-cuerpo">
+      <input id="campoBuscar" placeholder="Cliente, concepto, tarea, ejercicio…" autocomplete="off" style="margin-bottom:12px">
+      <div id="resultados"></div>
+    </div>
+  </div>
+</dialog>
+
+<!-- ══ Hoja: gastos fijos ════════════════════════════════════════════════ -->
+<dialog id="hojaFijos">
+  <div class="hoja">
+    <div class="hoja-asa"></div>
+    <div class="hoja-cab"><h3>Gastos e ingresos fijos</h3><button type="button" class="cerrar" data-cerrar="hojaFijos">Cerrar</button></div>
+    <div class="hoja-cuerpo">
+      <p style="font-size:13px; color:var(--txt-2); margin:0 0 12px">Lo que se repite cada mes: el dominio, las suscripciones, el alquiler. La app los apunta sola el día que toca.</p>
+      <div id="listaFijos"></div>
+      <form id="formFijo" style="margin-top:14px; border-top:1px solid rgba(0,0,0,.06); padding-top:14px">
+        <div class="segmentado">
+          <button type="button" data-radio="tipoF" data-valor="Gasto" aria-selected="true">Gasto</button>
+          <button type="button" data-radio="tipoF" data-valor="Ingreso" aria-selected="false">Ingreso</button>
+        </div>
+        <div class="segmentado">
+          <button type="button" data-radio="ambitoF" data-valor="personal" aria-selected="true">Personal</button>
+          <button type="button" data-radio="ambitoF" data-valor="empresa" aria-selected="false">Empresa</button>
+        </div>
+        <label class="campo"><span>Concepto</span><input name="concepto" required placeholder="Dominio, Claude, alquiler…" autocomplete="off"></label>
+        <div class="trio">
+          <label class="campo"><span>Importe (€)</span><input name="importe" required inputmode="decimal" placeholder="22"></label>
+          <label class="campo"><span>Día del mes</span><input name="dia" required inputmode="numeric" placeholder="1" value="1"></label>
+          <label class="campo"><span>Categoría</span><select name="categoria"></select></label>
+        </div>
+        <p class="error" id="errFijo"></p>
+        <button type="submit" class="btn-suave">+ Añadir fijo</button>
+      </form>
+    </div>
+    <div class="hoja-pie"><button type="button" class="btn-negro" data-cerrar="hojaFijos" style="flex:1">Listo</button></div>
+  </div>
+</dialog>
+
 <!-- ══ Hoja: tarea de la agenda ══════════════════════════════════════════ -->
 <dialog id="hojaTarea">
   <form method="dialog" class="hoja" id="formTarea">
@@ -1032,6 +1082,15 @@ body.en-foco .dock { display: none; }
       <div class="titulo-seccion" style="margin:16px 3px 10px"><h2 style="font-size:16px">Avisos</h2></div>
       <p style="font-size:13px; color:var(--txt-2); margin:0 0 10px" id="estadoAvisos"></p>
       <button class="btn-suave" id="btnPermisoAvisos">Activar avisos</button>
+      <button class="btn-suave oculto" id="btnAlarmasExactas" style="margin-top:8px">Permitir alarmas exactas</button>
+
+      <div id="interruptoresAviso" style="margin-top:12px"></div>
+      <label class="campo" style="display:flex; align-items:center; gap:10px; margin-top:4px">
+        <span style="flex:1; margin:0">Hora del repaso de la noche</span>
+        <input type="time" id="horaCierre" style="width:120px">
+      </label>
+      <p class="pie-nota" id="proximoAviso"></p>
+      <button class="btn-suave" id="btnProbarAviso" style="margin-top:8px">Mandarme uno de prueba</button>
 
       <div class="titulo-seccion" style="margin:20px 3px 10px"><h2 style="font-size:16px">Copia de seguridad</h2></div>
       <p style="font-size:13px; color:var(--txt-2); margin:0 0 10px" id="resumenDatos"></p>
@@ -1203,6 +1262,11 @@ const PLANTILLA_ESTADO = () => ({
   cobros: [],              // facturas: {id, cliente, concepto, importe, emitida, vence, cobrada}
   pesos: [],               // cuerpo: {fecha, kg, cintura, nota}
   topes: {},               // gasto máximo por categoría: {categoria: importe}
+  fijos: [],               // gastos que se repiten: {id, dia, tipo, ambito, concepto, categoria, importe, ultimo}
+  avisos: {                // qué quieres que te avise el móvil
+    tareas: true, diario: true, cierre: true, horaCierre: '21:30',
+    semana: true, cobros: true, metas: true,
+  },
   entradas: [],            // diario: {id, fecha, ambito, animo, prioridad, gratitud, enfoque}
   inversiones: [],         // {id, nombre, tipo, ticker, unidades, precioCompra, precioActual?, actualizado?, compradoEl?, moneda?}
   historial: [],           // una foto al día: {f, liq, inv, total, tipos:{tipo:valor}}
@@ -1635,6 +1699,7 @@ function pintarAgenda(){
               <span>${t.hora?`<i class="hora num">${t.hora}</i> · `:''}${t.ambito==='empresa'?'💼 empresa':'🏡 personal'}${t.repite&&t.repite!=='no'?` · ${ETIQUETA_REPITE[t.repite]}`:''}${t.aviso!==''&&t.aviso!=null&&t.hora?' · 🔔':''}</span>
               ${t.notas?`<span class="notas">${esc(t.notas)}</span>`:''}
             </button>
+            ${hecha||(t.repite&&t.repite!=='no')?'':`<button class="editar-habito" data-posponer="${t.id}" aria-label="Pasar a mañana">→</button>`}
           </div>`;
         }).join('')
       : `<div class="vacio"><b>Día libre</b>Nada apuntado. Añade una tarea o disfruta del hueco.</div>`}`;
@@ -1939,12 +2004,24 @@ function pintarGastos(){
   const delMes = txMes(a,m);
   const ing = suma(delMes.filter(t=>t.tipo==='Ingreso'));
   const gas = suma(delMes.filter(t=>t.tipo==='Gasto'));
+  // Previsión: al ritmo que llevas, cómo acabará el mes (solo tiene sentido
+  // mirando el mes en curso, y a partir del tercer día).
+  const esMesActual = a===new Date().getFullYear() && m===new Date().getMonth();
+  const diaHoy=new Date().getDate();
+  const totalDias=diasEnMes(a,m);
+  const prevision = esMesActual && diaHoy>=3 ? gas/diaHoy*totalDias : null;
+  const topeTotal = Object.values(E.topes).reduce((s,v)=>s+aNum(v),0);
+
   $('#resumenMes').innerHTML = `
     <div class="resumen-tri">
       <div><small>Ingresos</small><b class="num pos">${euro(ing)}</b></div>
       <div><small>Gastos</small><b class="num">${euro(gas)}</b></div>
       <div><small>Balance</small><b class="num ${ing-gas>=0?'pos':'neg'}">${euro(ing-gas)}</b></div>
-    </div>`;
+    </div>
+    ${prevision!==null?`
+      <p class="pie-nota" style="margin-top:12px">A este ritmo acabarás el mes en
+        <b class="num">${euro(prevision)}</b> de gasto${topeTotal?` · tus topes suman <b class="num">${euro(topeTotal)}</b>${prevision>topeTotal?' <span class="neg">(te pasarías)</span>':' <span class="pos">(cabes)</span>'}`:''}.
+        Van ${diaHoy} de ${totalDias} días.</p>`:''}`;
 
   // Mes anterior, para comparar
   const ant=new Date(a,m-1,1);
@@ -2437,6 +2514,47 @@ function pintarCarga(){
         </div>`;
       }).join('')
     : `<div class="vacio"><b>Aún sin historial</b>Marca series con peso y aquí verás tu progresión semana a semana.</div>`;
+
+  pintarRecords();
+}
+
+/** Lo mejor de cada ejercicio y de cada distancia de series, con su fecha. */
+function pintarRecords(){
+  const fuerza={};   // ejercicio -> {kg, reps, fecha}
+  const correr={};   // metros -> {seg, fecha}
+
+  for (const [fecha,lista] of Object.entries(E.sesiones))
+    for (const s of lista){
+      for (const ej of s.ejercicios||[])
+        for (const se of ej.series||[]){
+          const kg=aNum(se.kg);
+          if (se.hecha && kg>0 && kg>(fuerza[ej.nombre]?.kg||0))
+            fuerza[ej.nombre]={ kg, reps:se.reps, fecha };
+        }
+      for (const se of s.series||[]){
+        const m=Math.round(aNum(se.dist)), seg=aSeg(se.tiempo);
+        if (se.hecha && m>0 && seg>0 && (!correr[m] || seg<correr[m].seg))
+          correr[m]={ seg, fecha };
+      }
+    }
+
+  const filas=[
+    ...Object.entries(fuerza).sort((a,b)=>b[1].kg-a[1].kg).map(([nombre,r])=>({
+      icono:'🏋️', titulo:nombre, cifra:`${numF.format(r.kg)} kg`,
+      pista:`${r.reps?r.reps+' reps · ':''}${desdeClave(r.fecha).toLocaleDateString('es-ES',{day:'numeric',month:'short',year:'2-digit'})}` })),
+    ...Object.entries(correr).sort((a,b)=>Number(a[0])-Number(b[0])).map(([m,r])=>({
+      icono:'🏃', titulo:`${numF.format(Number(m))} m`, cifra:deSeg(r.seg),
+      pista:`${deSeg(r.seg/(Number(m)/1000))} min/km · ${desdeClave(r.fecha).toLocaleDateString('es-ES',{day:'numeric',month:'short',year:'2-digit'})}` })),
+  ];
+
+  $('#records').innerHTML = filas.length
+    ? filas.map(f=>`
+      <div class="fila">
+        <div class="fila-icono">${f.icono}</div>
+        <div class="fila-txt"><b>${esc(f.titulo)}</b><span>${esc(f.pista)}</span></div>
+        <div class="fila-cifra num">${f.cifra}</div>
+      </div>`).join('')
+    : `<div class="vacio"><b>Sin récords todavía</b>Marca series con peso o con tiempo y aquí quedará lo mejor de cada una.</div>`;
 }
 
 /* ── Detalle de sesión ───────────────────────────────────────────────────── */
@@ -2927,37 +3045,74 @@ let relojesAviso=[];
 function avisosPendientes(){
   const lista=[];
   const ahora=Date.now();
+  const A=E.avisos;
+  const aLas=(k,hhmm,resta=0)=>{
+    const [h,m]=String(hhmm).split(':').map(Number);
+    const d=desdeClave(k); d.setHours(h, m-resta, 0, 0); return d;
+  };
+  const meter=(id,cuando,titulo,cuerpo)=>{ if (cuando.getTime()>ahora) lista.push({id,cuando,titulo,cuerpo}); };
 
   for (let i=0;i<7;i++){
     const k=correrDias(HOY,i);
-    for (const t of tareasDe(k)){
+
+    // Tareas con hora
+    if (A.tareas) for (const t of tareasDe(k)){
       if (t.aviso==null || !t.hora || tareaHecha(t,k)) continue;
-      const [h,m]=t.hora.split(':').map(Number);
-      const d=desdeClave(k); d.setHours(h, m-t.aviso, 0, 0);
-      if (d.getTime()>ahora) lista.push({
-        id: Math.abs(hashTexto(t.id+k))%2000000,
-        cuando: d,
-        titulo: t.titulo,
-        cuerpo: t.aviso?`En ${t.aviso} minutos · ${t.hora}`:`Es la hora · ${t.hora}`,
-      });
+      meter(Math.abs(hashTexto(t.id+k))%900000, aLas(k,t.hora,t.aviso), t.titulo,
+        t.aviso?`En ${t.aviso} minutos · ${t.hora}`:`Es la hora · ${t.hora}`);
     }
-    // Y el diario matutino, si lo tienes activado
-    if (E.recordatorio.activo && !entradasDe(k).length){
-      const [h,m]=E.recordatorio.hora.split(':').map(Number);
-      const d=desdeClave(k); d.setHours(h,m,0,0);
-      if (d.getTime()>ahora) lista.push({
-        id: 1000000+i, cuando:d, titulo:'Diario matutino',
-        cuerpo:'¿Cómo empieza tu día hoy? Dos minutos y listo.',
-      });
+
+    // Diario matutino
+    if (A.diario && E.recordatorio.activo && !entradasDe(k).length)
+      meter(1000000+i, aLas(k,E.recordatorio.hora), 'Diario matutino',
+        '¿Cómo empieza tu día hoy? Dos minutos y listo.');
+
+    // Cierre del día: lo que quede suelto
+    if (A.cierre){
+      const sueltas=pendientesDe(k).length;
+      const metas=habitos().length-ticksDe(k).length;
+      if (sueltas||metas)
+        meter(1100000+i, aLas(k,A.horaCierre), 'Cierra el día',
+          [sueltas?`${sueltas} tarea(s) sin hacer`:'', metas?`${metas} meta(s) del día sin marcar`:'']
+            .filter(Boolean).join(' · '));
     }
+
+    // Resumen de la semana, el domingo por la tarde
+    if (A.semana && desdeClave(k).getDay()===0)
+      meter(1200000+i, aLas(k,'19:00'), 'Tu semana en dos minutos',
+        'Mira cómo ha ido comparada con la anterior.');
+
+    // Facturas que vencen
+    if (A.cobros) for (const c of E.cobros.filter(x=>!x.cobrada&&x.vence===k))
+      meter(Math.abs(hashTexto('c'+c.id))%90000+1300000, aLas(k,'09:00'),
+        `Vence lo de ${c.cliente}`, `${euroDec(aNum(c.importe))}${c.concepto?' · '+c.concepto:''}`);
+
+    // Metas con fecha límite: dos días antes
+    if (A.metas) for (const x of E.metas.filter(y=>y.limite&&y.progreso<y.meta))
+      if (correrDias(x.limite,-2)===k)
+        meter(Math.abs(hashTexto('m'+x.id))%90000+1400000, aLas(k,'10:00'),
+          `Quedan 2 días: ${x.nombre}`, `Vas por ${pct(x.meta?x.progreso/x.meta:0)}.`);
   }
-  return lista.sort((a,b)=>a.cuando-b.cuando).slice(0,60);
+  return lista.sort((a,b)=>a.cuando-b.cuando).slice(0,64);
 }
 
 function hashTexto(s){
   let h=0;
   for (let i=0;i<s.length;i++) h=(h*31+s.charCodeAt(i))|0;
   return h;
+}
+
+let canalListo=false;
+let avisosExactos=null;   // null = aún sin comprobar
+
+/** Android 14 no deja poner alarmas exactas sin permiso aparte. Si no lo hay,
+    se programan igual pero pueden llegar con unos minutos de retraso.        */
+async function compruebaExactas(nativo){
+  try {
+    const r=await nativo.checkExactNotificationSetting?.();
+    avisosExactos = r ? r.exact_alarm==='granted' : true;
+  } catch { avisosExactos=true; }
+  return avisosExactos;
 }
 
 async function programarAvisos(){
@@ -2968,10 +3123,18 @@ async function programarAvisos(){
   const nativo=NATIVO();
   if (nativo){
     try {
+      if (!canalListo){
+        await nativo.createChannel?.({ id:'mi-panel', name:'Mi panel',
+          description:'Tareas, diario y cierre del día', importance:4, visibility:1, vibration:true });
+        canalListo=true;
+      }
+      if (avisosExactos===null) await compruebaExactas(nativo);
+
       const puestas=await nativo.getPending();
       if (puestas?.notifications?.length) await nativo.cancel({ notifications:puestas.notifications });
       if (lista.length) await nativo.schedule({ notifications: lista.map(a=>({
-        id:a.id, title:a.titulo, body:a.cuerpo, schedule:{ at:a.cuando, allowWhileIdle:true },
+        id:a.id, title:a.titulo, body:a.cuerpo, channelId:'mi-panel', smallIcon:'ic_stat_icon',
+        schedule:{ at:a.cuando, allowWhileIdle:!!avisosExactos },
       })) });
       return;
     } catch { /* si el plugin falla, se sigue con lo del navegador */ }
@@ -3004,11 +3167,22 @@ async function pedirPermisoAvisos(){
 }
 
 function textoEstadoAvisos(){
-  if (hayNativo()) return 'Los avisos saltan aunque la app esté cerrada.';
+  if (hayNativo()) return avisosExactos===false
+    ? 'Saltan con la app cerrada, pero sin permiso de «alarmas exactas» pueden llegar unos minutos tarde.'
+    : 'Los avisos saltan aunque la app esté cerrada y sobreviven a reiniciar el móvil.';
   if (!('Notification' in window)) return 'Este navegador no admite avisos.';
   if (Notification.permission==='granted')
     return 'Concedidos. En el navegador solo suenan con la app abierta; en el APK saltan siempre.';
   return 'Sin permiso todavía.';
+}
+
+/** Cuántos avisos hay puestos y cuál es el siguiente. */
+function resumenAvisos(){
+  const lista=avisosPendientes();
+  if (!lista.length) return 'Ahora mismo no hay ningún aviso programado.';
+  const p=lista[0];
+  const cuando=p.cuando.toLocaleString('es-ES',{weekday:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
+  return `${lista.length} aviso(s) puestos. El próximo, «${p.titulo}» el ${cuando}.`;
 }
 
 async function alternarNotificaciones(){
@@ -3052,6 +3226,7 @@ function conectarRadios(form){
     e.preventDefault();
     $$(`[data-radio="${b.dataset.radio}"]`, form).forEach(x=>x.setAttribute('aria-selected', String(x===b)));
     if (form.id==='formMov') refrescarCategorias();
+    if (form.id==='formFijo') refrescarCategoriasFijo();
     if (form.id==='formSesion') $('#camposResistencia').classList.toggle('oculto', radio(form,'clase')!=='resistencia');
     if (form.id==='formDiario') ajustarEtiquetasDiario();
   });
@@ -3271,12 +3446,76 @@ $('#gastoAdelante').addEventListener('click',()=>{
   UI.gastoCursor=sig; pintarGastos();
 });
 
+/* ── Buscador y fijos: eventos ───────────────────────────────────────────── */
+$('#btnBuscar').addEventListener('click',()=>{
+  $('#campoBuscar').value='';
+  pintarBusqueda();
+  $('#hojaBuscar').showModal();
+  setTimeout(()=>$('#campoBuscar').focus(), 120);
+});
+
+$('#campoBuscar').addEventListener('input', pintarBusqueda);
+
+$('#resultados').addEventListener('click', e=>{
+  const b=e.target.closest('[data-ir-resultado]'); if (!b) return;
+  const destino=b.dataset.irResultado;
+  if (b.dataset.dia){
+    if (destino==='agenda') UI.agendaDia=b.dataset.dia;
+    if (destino==='entreno'){ UI.entrenoDia=b.dataset.dia; UI.semLunes=lunesDe(desdeClave(b.dataset.dia)); UI.entrenoSub='semana'; }
+  }
+  if (b.dataset.sub){
+    UI.subDinero=b.dataset.sub;
+    $$('#segDinero button').forEach(x=>x.setAttribute('aria-selected',String(x.dataset.subDinero===b.dataset.sub)));
+  }
+  $('#hojaBuscar').close();
+  ir(destino);
+});
+
+$('#btnFijos').addEventListener('click',()=>{ pintarFijos(); $('#hojaFijos').showModal(); });
+
+$('#formFijo').addEventListener('submit', e=>{
+  e.preventDefault();
+  const f=e.target;
+  const importe=aNum(f.importe.value);
+  const dia=Math.round(aNum(f.dia.value));
+  if (!f.concepto.value.trim()){ $('#errFijo').textContent='Falta el concepto.'; return; }
+  if (!importe||importe<=0){ $('#errFijo').textContent='Pon un importe mayor que cero.'; return; }
+  if (!dia||dia<1||dia>28){ $('#errFijo').textContent='El día tiene que estar entre 1 y 28.'; return; }
+  E.fijos.push({ id:nuevoId(), dia, tipo:radio(f,'tipoF'), ambito:radio(f,'ambitoF'),
+    concepto:f.concepto.value.trim(), categoria:f.categoria.value, importe:Math.round(importe*100)/100, ultimo:null });
+  f.reset(); $('#errFijo').textContent='';
+  aplicarFijos(); guardar(); pintarFijos(); pintar(); avisar('Fijo añadido');
+});
+
 /* ── Ajustes y copia de seguridad ────────────────────────────────────────── */
 $('#avatar').addEventListener('click', abrirAjustes);
 
-function abrirAjustes(){
+const TIPOS_AVISO = [
+  ['tareas', '📋', 'Tareas con hora', 'a la hora que le pongas a cada una'],
+  ['diario', '🌅', 'Diario matutino', 'a la hora que elijas en el diario'],
+  ['cierre', '🌙', 'Repaso de la noche', 'lo que quede sin hacer'],
+  ['semana', '📊', 'Resumen del domingo', 'a las siete de la tarde'],
+  ['cobros', '🧾', 'Facturas que vencen', 'la mañana del vencimiento'],
+  ['metas', '🎯', 'Metas con fecha', 'dos días antes'],
+];
+
+function pintarInterruptores(){
+  $('#interruptoresAviso').innerHTML = TIPOS_AVISO.map(([id,emoji,nombre,pista])=>`
+    <button class="habito" data-aviso="${id}" aria-pressed="${!!E.avisos[id]}" style="padding:10px 2px">
+      <span class="emoji" style="width:36px;height:36px;font-size:17px">${emoji}</span>
+      <span class="nombre" style="font-size:14px">${nombre}<span class="pista">${pista}</span></span>
+      <span class="check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
+    </button>`).join('');
+  $('#horaCierre').value=E.avisos.horaCierre||'21:30';
+  $('#proximoAviso').textContent=resumenAvisos();
+  $('#btnAlarmasExactas').classList.toggle('oculto', avisosExactos!==false);
+}
+
+async function abrirAjustes(){
   $('#ajusteNombre').value=E.nombre;
+  if (hayNativo() && avisosExactos===null) await compruebaExactas(NATIVO());
   $('#estadoAvisos').textContent=textoEstadoAvisos();
+  pintarInterruptores();
   $('#resumenDatos').textContent=[
     `${E.tx.length} movimiento(s)`, `${E.tareas.length} tarea(s)`,
     `${Object.keys(E.sesiones).length} día(s) de entreno`, `${E.entradas.length} entrada(s) de diario`,
@@ -3292,11 +3531,60 @@ $('#ajusteNombre').addEventListener('change', e=>{
 
 $('#btnPermisoAvisos').addEventListener('click', async ()=>{
   if (await pedirPermisoAvisos()){
-    programarAvisos();
+    await programarAvisos();
     $('#estadoAvisos').textContent=textoEstadoAvisos();
+    pintarInterruptores();
     avisar('Avisos activados');
   }
 });
+
+$('#btnAlarmasExactas').addEventListener('click', async ()=>{
+  const nativo=NATIVO(); if (!nativo) return;
+  try {
+    await nativo.changeExactNotificationSetting?.();
+    avisosExactos=null;
+    avisar('Vuelve a abrir Ajustes para comprobarlo');
+  } catch { avisar('No he podido abrir esa pantalla'); }
+});
+
+$('#interruptoresAviso').addEventListener('click', e=>{
+  const b=e.target.closest('[data-aviso]'); if (!b) return;
+  const id=b.dataset.aviso;
+  E.avisos[id]=!E.avisos[id];
+  b.setAttribute('aria-pressed', String(E.avisos[id]));
+  guardar(); programarAvisos().then(()=>$('#proximoAviso').textContent=resumenAvisos());
+});
+
+$('#horaCierre').addEventListener('change', e=>{
+  E.avisos.horaCierre=e.target.value||'21:30';
+  guardar(); programarAvisos().then(()=>$('#proximoAviso').textContent=resumenAvisos());
+});
+
+/** Un aviso a los cinco segundos, para ver que llega de verdad. */
+$('#btnProbarAviso').addEventListener('click', async ()=>{
+  if (!await pedirPermisoAvisos()) return;
+  const cuando=new Date(Date.now()+5000);
+  const nativo=NATIVO();
+  if (nativo){
+    try {
+      if (!canalListo){
+        await nativo.createChannel?.({ id:'mi-panel', name:'Mi panel', importance:4, vibration:true });
+        canalListo=true;
+      }
+      await nativo.schedule({ notifications:[{ id:999999, title:'Prueba de Mi panel',
+        body:'Si ves esto, los avisos funcionan. Puedes cerrar la app.', channelId:'mi-panel',
+        schedule:{ at:cuando, allowWhileIdle:true } }] });
+      avisar('En 5 segundos. Puedes cerrar la app.');
+      return;
+    } catch {}
+  }
+  setTimeout(()=>{ try { new Notification('Prueba de Mi panel',{body:'Los avisos funcionan.'}); } catch {} }, 5000);
+  avisar('En 5 segundos, con la app abierta');
+});
+
+// Al volver a la app se reprograma: las repetidas van saliendo del horizonte
+// de siete días y hay que reponerlas.
+document.addEventListener('visibilitychange', ()=>{ if (!document.hidden) programarAvisos(); });
 
 /** Saca todo a un archivo. En el móvil abre el menú de compartir de Android. */
 async function exportarDatos(){
@@ -3350,6 +3638,127 @@ $('#btnBorrarTodo').addEventListener('click',()=>{
   guardar(); programarAvisos(); $('#hojaAjustes').close(); pintar();
   avisar('Todo borrado');
 });
+
+/* ── Buscador ────────────────────────────────────────────────────────────── */
+// NFD separa la tilde de la letra y \p{Diacritic} se la lleva: así "diseño"
+// aparece buscando "diseno" y "gestoría" buscando "gestoria".
+const sinTildes = s => String(s??'').toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu,'');
+
+function buscar(texto){
+  const q=sinTildes(texto).trim();
+  if (q.length<2) return [];
+  const cae = (...campos) => campos.some(c=>sinTildes(c).includes(q));
+  const r=[];
+
+  for (const t of E.tx) if (cae(t.concepto,t.categoria))
+    r.push({ grupo:'Movimientos', icono:ICONO_CAT[t.categoria]||'💳', titulo:t.concepto,
+      pista:`${t.categoria} · ${desdeClave(t.fecha).toLocaleDateString('es-ES',{day:'numeric',month:'short',year:'2-digit'})}`,
+      cifra:`${t.tipo==='Ingreso'?'+':'−'}${euroDec(t.importe)}`, ir:'patrimonio' });
+
+  for (const t of E.tareas) if (cae(t.titulo,t.notas))
+    r.push({ grupo:'Tareas', icono:'📋', titulo:t.titulo,
+      pista:`${desdeClave(t.fecha).toLocaleDateString('es-ES',{day:'numeric',month:'short'})}${t.hora?' · '+t.hora:''}`,
+      ir:'agenda', dia:t.fecha });
+
+  for (const c of E.cobros) if (cae(c.cliente,c.concepto))
+    r.push({ grupo:'Cobros', icono:c.cobrada?'✅':'🧾', titulo:c.cliente,
+      pista:`${c.concepto||'sin concepto'} · ${c.cobrada?'cobrada':'pendiente'}`,
+      cifra:euroDec(aNum(c.importe)), ir:'patrimonio', sub:'cobros' });
+
+  for (const x of E.metas) if (cae(x.nombre))
+    r.push({ grupo:'Metas', icono:'🎯', titulo:x.nombre,
+      pista:`${x.alcance} · ${pct(x.meta?x.progreso/x.meta:0)}`, ir:'metas' });
+
+  for (const i of E.inversiones) if (cae(i.nombre,i.ticker))
+    r.push({ grupo:'Cartera', icono:ICONO_INV[i.tipo]||'📊', titulo:i.nombre,
+      pista:`${numU.format(aNum(i.unidades))} ud`, cifra:euro(aNum(i.unidades)*precioDe(i)), ir:'patrimonio' });
+
+  for (const [fecha,lista] of Object.entries(E.sesiones))
+    for (const s of lista){
+      const ejercicio=(s.ejercicios||[]).find(ej=>cae(ej.nombre));
+      if (cae(s.nombre) || ejercicio)
+        r.push({ grupo:'Entrenos', icono:s.clase==='fuerza'?'🏋️':'🏃', titulo:s.nombre,
+          pista:`${desdeClave(fecha).toLocaleDateString('es-ES',{day:'numeric',month:'short'})}${ejercicio?' · '+ejercicio.nombre:''}`,
+          ir:'entreno', dia:fecha });
+    }
+
+  for (const e of E.entradas) if (cae(e.prioridad,e.gratitud,e.enfoque))
+    r.push({ grupo:'Diario', icono:'📓', titulo:e.prioridad||e.enfoque||e.gratitud,
+      pista:desdeClave(e.fecha).toLocaleDateString('es-ES',{weekday:'short',day:'numeric',month:'short'}), ir:'diario' });
+
+  return r.slice(0,40);
+}
+
+function pintarBusqueda(){
+  const q=$('#campoBuscar').value;
+  const res=buscar(q);
+  const caja=$('#resultados');
+
+  if (q.trim().length<2){
+    caja.innerHTML=`<div class="vacio"><b>Escribe al menos dos letras</b>Busca a la vez en movimientos, tareas, cobros, metas, cartera, entrenos y diario.</div>`;
+    return;
+  }
+  if (!res.length){
+    caja.innerHTML=`<div class="vacio"><b>Nada con «${esc(q)}»</b>Prueba con otra palabra.</div>`;
+    return;
+  }
+  const grupos={};
+  for (const x of res) (grupos[x.grupo] ||= []).push(x);
+  caja.innerHTML=Object.entries(grupos).map(([g,lista])=>`
+    <div class="titulo-seccion" style="margin:14px 3px 6px"><h2 style="font-size:14px">${g}</h2>
+      <span class="accion">${lista.length}</span></div>
+    ${lista.map(x=>`
+      <button class="fila" style="width:100%" data-ir-resultado="${x.ir}" ${x.dia?`data-dia="${x.dia}"`:''} ${x.sub?`data-sub="${x.sub}"`:''}>
+        <span class="fila-icono">${x.icono}</span>
+        <span class="fila-txt"><b>${esc(x.titulo)}</b><span>${esc(x.pista)}</span></span>
+        ${x.cifra?`<span class="fila-cifra num">${x.cifra}</span>`:''}
+      </button>`).join('')}`).join('');
+}
+
+/* ── Gastos e ingresos fijos ─────────────────────────────────────────────── */
+/** Apunta los fijos que hayan vencido desde la última vez que se abrió la app. */
+function aplicarFijos(){
+  let puestos=0;
+  const hoyD=desdeClave(HOY);
+  for (const f of E.fijos){
+    const dia=Math.min(28, Math.max(1, Math.round(aNum(f.dia))||1));
+    // Se empieza por el mes siguiente al último apuntado, o por el mes en curso.
+    let cursor=f.ultimo ? new Date(desdeClave(f.ultimo).getFullYear(), desdeClave(f.ultimo).getMonth()+1, dia)
+                        : new Date(hoyD.getFullYear(), hoyD.getMonth(), dia);
+    while (cursor<=hoyD){
+      const k=claveDe(cursor);
+      const yaEsta=E.tx.some(t=>t.fecha===k && t.concepto===f.concepto && aNum(t.importe)===aNum(f.importe));
+      if (!yaEsta){
+        E.tx.push({ id:nuevoId(), tipo:f.tipo, ambito:f.ambito, concepto:f.concepto,
+          categoria:f.categoria, importe:Math.round(aNum(f.importe)*100)/100, fecha:k, fijo:true });
+        puestos++;
+      }
+      f.ultimo=k;
+      cursor=new Date(cursor.getFullYear(), cursor.getMonth()+1, dia);
+    }
+  }
+  if (puestos){ anotarHoy(); guardar(); avisar(`${puestos} movimiento(s) fijo(s) apuntados`); }
+  return puestos;
+}
+
+function pintarFijos(){
+  $('#listaFijos').innerHTML = E.fijos.length
+    ? E.fijos.map(f=>`
+      <div class="fila">
+        <div class="fila-icono">${ICONO_CAT[f.categoria]||(f.tipo==='Ingreso'?'💶':'🔁')}</div>
+        <div class="fila-txt"><b>${esc(f.concepto)}</b>
+          <span>día ${f.dia} · ${f.ambito} · ${esc(f.categoria)}</span></div>
+        <div class="fila-cifra num ${f.tipo==='Ingreso'?'pos':''}">${f.tipo==='Ingreso'?'+':'−'}${euroDec(aNum(f.importe))}</div>
+        <button class="borrar" data-borrar-fijo="${f.id}">✕</button>
+      </div>`).join('')
+    : `<div class="vacio" style="padding:14px 8px"><b>Sin fijos todavía</b>&nbsp;</div>`;
+  refrescarCategoriasFijo();
+}
+
+function refrescarCategoriasFijo(){
+  const f=$('#formFijo');
+  f.categoria.innerHTML=(CATEGORIAS[`${radio(f,'ambitoF')}-${radio(f,'tipoF')}`]||[]).map(c=>`<option>${c}</option>`).join('');
+}
 
 /* ── Resumen de la semana ────────────────────────────────────────────────── */
 function verResumenSemana(){
@@ -3912,6 +4321,22 @@ document.addEventListener('click', e=>{
   const edCobro=e.target.closest('[data-editar-cobro]');
   if (edCobro){ abrirCobro(edCobro.dataset.editarCobro); return; }
 
+  const borrarFijo=e.target.closest('[data-borrar-fijo]');
+  if (borrarFijo){
+    const f=E.fijos.find(x=>x.id===borrarFijo.dataset.borrarFijo);
+    if (!f||!confirm(`¿Dejar de apuntar "${f.concepto}" cada mes?\n\nLo ya apuntado se queda.`)) return;
+    E.fijos=E.fijos.filter(x=>x.id!==f.id);
+    guardar(); pintarFijos(); avisar('Fijo eliminado'); return;
+  }
+
+  const posponer=e.target.closest('[data-posponer]');
+  if (posponer){
+    const t=E.tareas.find(x=>x.id===posponer.dataset.posponer); if (!t) return;
+    if (t.repite&&t.repite!=='no'){ avisar('Esta se repite: cámbiala desde la tarea'); return; }
+    t.fecha=correrDias(t.fecha,1);
+    guardar(); programarAvisos(); pintar(); avisar('Pasada a mañana'); return;
+  }
+
   const borrarPeso=e.target.closest('[data-borrar-peso]');
   if (borrarPeso){
     E.pesos=E.pesos.filter(p=>p.fecha!==borrarPeso.dataset.borrarPeso);
@@ -3980,6 +4405,7 @@ conectarRadios($('#formMov'));
 conectarRadios($('#formSesion'));
 conectarRadios($('#formDiario'));
 conectarRadios($('#formTarea'));
+conectarRadios($('#formFijo'));
 
 /* ═══════════════════════════ ARRANQUE ════════════════════════════════════ */
 // Si vienes de la versión anterior instalada como PWA, su service worker
@@ -3992,7 +4418,9 @@ if ('serviceWorker' in navigator){
 }
 
 refrescarCategorias();
+refrescarCategoriasFijo();
 ajustarCamposInversion();
+aplicarFijos();
 anotarHoy();          // deja la foto de hoy antes de pintar nada
 guardar();
 pintar();
