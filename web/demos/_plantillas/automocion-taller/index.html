@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="robots" content="noindex, follow"/>
+<title>Talleres Zubieta — Taller mecánico y neumáticos en Tolosa</title>
+<meta name="description" content="Taller mecánico multimarca en Tolosa. Tarifas cerradas publicadas, pre-ITV gratis y coche de sustitución sin coste. Cambio de aceite desde 69 €."/>
+<meta name="theme-color" content="#101215"/>
+<meta property="og:title" content="Talleres Zubieta — Taller mecánico en Tolosa"/>
+<meta property="og:description" content="Tarifas cerradas publicadas. Coche de sustitución sin coste."/>
+<meta property="og:type" content="website"/>
+<meta property="og:image" content="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=1200&h=630&q=80&auto=format&fit=crop"/>
+<!--
+  ═══ PLANTILLA DE SECTOR · AUTOMOCIÓN / TALLERES ═══
+  Spec: docs/PROMPT-PLANTILLAS-SECTOR.md · Dirección: docs/PROMPT-DIRECCION-VISUAL.md
+  Tipografía (Google Fonts, autoalojadas en fuentes/):
+    Archivo · Chivo · Spline Sans Mono
+
+  Estructura por bloque — ninguna se repite, cero rejillas de tarjetas:
+    2 hero        body-full-hero        foto a sangre con degradado
+    3 confianza   body-logos-strip      fila corrida
+    4 servicios   body-alternating      tres filas en zig-zag con foto
+    4b tarifas    body-comparison       dos tablas de precios cerrados
+    5 nosotros    body-media-left
+    6 taller      body-masonry
+    7 reseñas     body-feed             apiladas, sin cajas
+    8 dónde       body-map-listings     con loc-route-draw
+    9 contacto    body-end-cta          con grano de película
+
+  Piezas de biblioteca-animaciones:
+    heropro-imagen-sangre · text-scramble-scroll · img-tilt-shine · adv-film-grain
+    loc-route-draw · btn-magnetic · loc-hours-today · micro-live-clock
+    micro-count-up · font-tabular-nums · scroll-reveal-soft
+
+  Único sector en oscuro por defecto: lo espera el público y contrasta con la
+  web genérica del taller de al lado.
+
+  PARA PERSONALIZAR: editar SOLO el bloque DATOS (abajo), :root si hay color
+  de marca, y las URLs de las imágenes.
+-->
+
+<style>
+/* ═══ FUENTES AUTOALOJADAS ═══
+   Se sirven desde esta misma carpeta: la demo no depende de ningún CDN.
+   Google Fonts, licencias OFL / Apache 2.0 — permiten el autoalojamiento.
+   Regenerar con: node scripts/autoalojar-fuentes.mjs automocion-taller  */
+@font-face{font-family:'Archivo';font-style:normal;font-weight:600;font-display:swap;src:url('fuentes/archivo-600-normal-0.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Archivo';font-style:normal;font-weight:600;font-display:swap;src:url('fuentes/archivo-600-normal-1.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Archivo';font-style:normal;font-weight:700;font-display:swap;src:url('fuentes/archivo-700-normal-2.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Archivo';font-style:normal;font-weight:700;font-display:swap;src:url('fuentes/archivo-700-normal-3.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Chivo';font-style:normal;font-weight:400;font-display:swap;src:url('fuentes/chivo-400-normal-4.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Chivo';font-style:normal;font-weight:400;font-display:swap;src:url('fuentes/chivo-400-normal-5.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Chivo';font-style:normal;font-weight:500;font-display:swap;src:url('fuentes/chivo-500-normal-6.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Chivo';font-style:normal;font-weight:500;font-display:swap;src:url('fuentes/chivo-500-normal-7.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Chivo';font-style:normal;font-weight:700;font-display:swap;src:url('fuentes/chivo-700-normal-8.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Chivo';font-style:normal;font-weight:700;font-display:swap;src:url('fuentes/chivo-700-normal-9.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Spline Sans Mono';font-style:normal;font-weight:400;font-display:swap;src:url('fuentes/spline-sans-mono-400-normal-10.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Spline Sans Mono';font-style:normal;font-weight:400;font-display:swap;src:url('fuentes/spline-sans-mono-400-normal-11.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Spline Sans Mono';font-style:normal;font-weight:600;font-display:swap;src:url('fuentes/spline-sans-mono-600-normal-12.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Spline Sans Mono';font-style:normal;font-weight:600;font-display:swap;src:url('fuentes/spline-sans-mono-600-normal-13.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+</style>
+<style>
+/* ═══════════════ CONTRATO DE TOKENS ═══════════════ */
+:root{
+  --fondo:#101215;
+  --fondo-alt:#181C21;
+  --filete:#2A3037;
+
+  --tinta:#F0F2F4;
+  --tinta-sec:#939DA7;
+
+  --acento:#F26D21;
+  --acento-con:#101215;
+
+  --ok:#3D9A5F;
+  --alerta:#E8C13A;
+
+  /* derivados */
+  --acento-osc:#C95412;
+  --acento-claro:#FF9457;
+  --acento-suave:#251710;
+  --filete-fuerte:#3D444C;
+  --osc:#0A0C0E;
+  --osc-filete:#22272C;
+  --osc-tinta3:#69737C;
+
+  --display:"Archivo",Georgia,serif;
+  --texto:"Chivo",system-ui,sans-serif;
+  --detalle:"Spline Sans Mono",system-ui,sans-serif;
+
+  --ease:cubic-bezier(.16,1,.3,1);
+  --gutter:clamp(20px,5vw,60px);
+  --radio:0px;                 /* recto: chapa, no app */
+
+  /* escala razón 1.25 desde 16.5px */
+  --t0:13.2px; --t1:16.5px; --t2:20.6px; --t3:25.8px; --t4:32.2px; --t5:40.3px; --t6:50.4px;
+}
+
+*{box-sizing:border-box;margin:0;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+:target,section[id]{scroll-margin-top:80px;}
+body{background:var(--fondo);color:var(--tinta);font-family:var(--texto);
+  font-size:var(--t1);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+img{display:block;max-width:100%;height:auto;}
+a{color:inherit;text-decoration:none;}
+button{font:inherit;color:inherit;}
+/* Archivo con el eje de anchura al máximo: la expandida es la firma del sector */
+h1,h2,h3{font-family:var(--display);font-variation-settings:"wdth" 112;font-weight:700;
+  text-transform:uppercase;text-wrap:balance;}
+h1{letter-spacing:-.02em;line-height:.96;}
+h2{letter-spacing:-.018em;line-height:1;font-size:clamp(var(--t4),5.4vw,var(--t6));}
+h3{letter-spacing:-.01em;line-height:1.12;font-size:var(--t2);font-weight:600;}
+p{text-wrap:pretty;}
+
+.wrap{max-width:1220px;margin:0 auto;padding:0 var(--gutter);}
+.rotulo{font-family:var(--detalle);font-size:11px;font-weight:600;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--acento);}
+.lead{color:var(--tinta-sec);font-size:var(--t2);line-height:1.45;max-width:36ch;}
+
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+/* z-index: 10 contenido · 20 cabecera · 30 barra móvil · 50 skip */
+.skip{position:absolute;left:-9999px;top:0;background:var(--acento);color:var(--acento-con);
+  padding:12px 18px;z-index:50;font-weight:600;}
+.skip:focus{left:0;top:0;}
+:focus-visible{outline:2px solid var(--acento);outline-offset:3px;}
+
+/* ── btn-arrow-slide + btn-magnetic ─────────────── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:48px;padding:14px 25px;border-radius:var(--radio);
+  font-family:var(--detalle);font-size:11.5px;font-weight:600;letter-spacing:.11em;
+  text-transform:uppercase;border:1px solid var(--tinta);background:transparent;cursor:pointer;
+  transition:background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease),
+             transform .18s var(--ease);}
+.btn .ar{transition:transform .35s var(--ease);}
+.btn:hover .ar,.btn:focus-visible .ar{transform:translateX(6px);}
+.btn--fill{background:var(--acento);border-color:var(--acento);color:var(--acento-con);}
+.btn--fill:hover,.btn--fill:focus-visible{background:var(--acento-osc);border-color:var(--acento-osc);}
+.btn--ghost:hover,.btn--ghost:focus-visible{background:var(--tinta);color:var(--fondo);}
+
+/* ── 1 · cabecera ───────────────────────────────── */
+.top{position:sticky;top:0;z-index:20;background:rgba(16,18,21,.94);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--filete);}
+.top__in{display:flex;align-items:center;justify-content:space-between;gap:18px;height:68px;}
+.marca{display:flex;align-items:baseline;gap:10px;min-height:44px;align-self:center;
+  font-family:var(--display);font-variation-settings:"wdth" 112;font-size:var(--t2);
+  font-weight:700;letter-spacing:-.015em;text-transform:uppercase;}
+.marca em{font-family:var(--detalle);font-style:normal;font-size:9.5px;font-weight:400;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-sec);}
+.nav{display:none;gap:28px;}
+.nav a{font-family:var(--detalle);font-size:11px;letter-spacing:.11em;text-transform:uppercase;
+  padding:8px 0;border-bottom:1px solid transparent;transition:border-color .3s,color .3s;}
+.nav a:hover{color:var(--acento);}
+.nav a[aria-current]{color:var(--acento);border-color:var(--acento);}
+.top__cta{display:none;}
+@media(min-width:1030px){.nav{display:flex;}.top__cta{display:inline-flex;}}
+
+/* micro-live-clock */
+.estado{display:flex;align-items:center;gap:8px;font-family:var(--detalle);
+  font-size:11px;color:var(--tinta-sec);}
+.estado i{width:6px;height:6px;border-radius:50%;background:var(--tinta-sec);flex:none;}
+.estado.abierto i{background:var(--ok);box-shadow:0 0 0 0 rgba(61,154,95,.55);
+  animation:latir 2.6s ease-out infinite;}
+@keyframes latir{70%{box-shadow:0 0 0 8px rgba(61,154,95,0);}100%{box-shadow:0 0 0 0 rgba(61,154,95,0);}}
+@media(max-width:700px){.estado span{display:none;}}
+
+/* ── 2 · body-full-hero ─────────────────────────── */
+.hero{position:relative;padding:0;min-height:clamp(470px,74vh,680px);
+  display:flex;align-items:flex-end;overflow:hidden;border-bottom:1px solid var(--filete);}
+.hero__foto{position:absolute;inset:0;}
+.hero__foto img{width:100%;height:100%;object-fit:cover;}
+/* el degradado hace legible el titular sobre cualquier foto de taller */
+.hero__foto::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(16,18,21,.55) 0%,rgba(16,18,21,.78) 46%,rgba(16,18,21,.97) 100%);}
+.hero__txt{position:relative;z-index:1;width:100%;padding:clamp(38px,6vw,70px) 0 clamp(34px,4.5vw,56px);}
+.hero h1{font-size:clamp(36px,6.6vw,80px);margin:16px 0 0;max-width:15ch;}
+.hero h1 em{font-style:normal;color:var(--acento);}
+.hero__pie{display:grid;gap:22px;margin-top:24px;}
+@media(min-width:900px){.hero__pie{grid-template-columns:1.05fr .95fr;align-items:end;}}
+.hero__btns{display:flex;flex-wrap:wrap;gap:11px;}
+.hero__tags{display:flex;flex-wrap:wrap;gap:0;margin-top:22px;border-top:1px solid var(--filete);}
+.hero__tags span{flex:1 1 auto;padding:12px 18px 0 0;font-family:var(--detalle);font-size:11px;
+  letter-spacing:.09em;text-transform:uppercase;color:var(--tinta-sec);}
+.hero__tags span::before{content:"— ";color:var(--acento);}
+
+/* ── 3 · body-logos-strip ───────────────────────── */
+.cifras{padding:clamp(30px,4vw,50px) 0;border-bottom:1px solid var(--filete);}
+.cifras ul{list-style:none;display:flex;flex-wrap:wrap;}
+.cifras li{flex:1 1 46%;padding:14px 20px 14px 0;display:flex;align-items:baseline;gap:11px;}
+@media(min-width:880px){
+  .cifras li{flex:1;padding:0 26px;border-left:1px solid var(--filete);}
+  .cifras li:first-child{padding-left:0;border-left:0;}
+}
+.cifras b{font-family:var(--display);font-variation-settings:"wdth" 112;
+  font-size:clamp(28px,3.6vw,42px);font-weight:700;letter-spacing:-.02em;line-height:1;
+  color:var(--acento);font-variant-numeric:tabular-nums;}
+.cifras small{font-family:var(--detalle);font-size:10.5px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--tinta-sec);line-height:1.35;}
+
+/* ── 4 · body-alternating · servicios ───────────── */
+.serv{padding:clamp(46px,6.5vw,90px) 0;}
+.serv__f{display:grid;gap:clamp(20px,3vw,44px);align-items:center;
+  padding:clamp(26px,3.5vw,44px) 0;border-top:1px solid var(--filete);}
+@media(min-width:880px){
+  .serv__f{grid-template-columns:.92fr 1.08fr;}
+  .serv__f:nth-of-type(even) .serv__m{order:2;}
+}
+.serv__m{position:relative;overflow:hidden;}
+.serv__m img{width:100%;height:clamp(210px,32vh,320px);object-fit:cover;
+  transition:transform .65s var(--ease);}
+/* img-tilt-shine */
+.serv__m::after{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(240,242,244,.13),transparent);
+  transform:skewX(-18deg);transition:left .75s var(--ease);}
+@media(hover:hover) and (pointer:fine){
+  .serv__f:hover .serv__m img{transform:scale(1.05);}
+  .serv__f:hover .serv__m::after{left:125%;}
+}
+.serv__n{font-family:var(--detalle);font-size:11px;font-weight:600;letter-spacing:.15em;color:var(--acento);}
+.serv__f h3{font-size:var(--t3);margin:9px 0 9px;}
+.serv__f > div > p{color:var(--tinta-sec);font-size:15.5px;max-width:48ch;}
+.serv__l{list-style:none;display:flex;flex-wrap:wrap;gap:6px 20px;margin-top:16px;
+  padding-top:14px;border-top:1px solid var(--filete);}
+.serv__l li{font-family:var(--detalle);font-size:12px;color:var(--tinta-sec);}
+.serv__l li b{color:var(--acento);font-weight:600;font-variant-numeric:tabular-nums;}
+
+/* ── 4b · body-comparison · tarifas ─────────────── */
+.tarifas{padding:clamp(46px,6.5vw,90px) 0;background:var(--fondo-alt);}
+.tarifas__cab{display:grid;gap:18px;margin-bottom:clamp(24px,3.5vw,42px);}
+@media(min-width:900px){.tarifas__cab{grid-template-columns:.5fr .5fr;align-items:end;}}
+.tablas{display:grid;gap:clamp(26px,4vw,50px);}
+@media(min-width:940px){.tablas{grid-template-columns:1fr 1fr;}}
+.tabla-env{overflow-x:auto;}          /* la tabla scrollea sola, la página no */
+table.tarifa{width:100%;border-collapse:collapse;min-width:340px;}
+table.tarifa caption{text-align:left;font-family:var(--detalle);font-size:11px;font-weight:600;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--acento);padding-bottom:12px;}
+table.tarifa th{text-align:left;font-family:var(--detalle);font-size:10px;font-weight:600;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--tinta-sec);
+  padding:0 12px 10px 0;border-bottom:1px solid var(--filete-fuerte);}
+table.tarifa th:last-child,table.tarifa td:last-child{text-align:right;padding-right:0;}
+table.tarifa td{padding:15px 12px 15px 0;border-bottom:1px solid var(--filete);vertical-align:top;}
+table.tarifa td:last-child{font-family:var(--detalle);font-weight:600;color:var(--acento);
+  white-space:nowrap;font-variant-numeric:tabular-nums;}
+table.tarifa td small{display:block;font-size:12.5px;color:var(--tinta-sec);margin-top:3px;}
+.tarifas__pie{margin-top:24px;padding-top:18px;border-top:1px solid var(--filete-fuerte);
+  font-size:15px;color:var(--tinta-sec);}
+.tarifas__pie b{color:var(--tinta);font-family:var(--detalle);font-variant-numeric:tabular-nums;}
+
+/* sustitución: la respuesta grande, es lo que decide la llamada */
+.susti{margin-top:clamp(28px,4vw,46px);border-top:1px solid var(--filete-fuerte);}
+.susti div{padding:20px 0;border-bottom:1px solid var(--filete);display:grid;gap:5px;}
+@media(min-width:820px){.susti div{grid-template-columns:88px .3fr .7fr;gap:24px;align-items:baseline;}}
+.susti .si{font-family:var(--display);font-variation-settings:"wdth" 112;font-size:var(--t3);
+  font-weight:700;line-height:1;color:var(--acento);text-transform:uppercase;}
+.susti h3{font-size:var(--t2);}
+.susti p{color:var(--tinta-sec);font-size:15px;max-width:58ch;}
+
+.marcas{margin-top:clamp(26px,4vw,44px);padding-top:20px;border-top:1px solid var(--filete);}
+.marcas p{font-family:var(--detalle);font-size:11px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--tinta-sec);margin-bottom:12px;}
+.marcas ul{list-style:none;display:flex;flex-wrap:wrap;gap:5px 18px;}
+.marcas li{font-family:var(--detalle);font-size:12.5px;color:var(--tinta-sec);}
+
+/* ── 5 · body-media-left ────────────────────────── */
+.nosotros{padding:clamp(46px,6.5vw,90px) 0;}
+.nosotros__in{display:grid;gap:clamp(24px,4vw,50px);align-items:center;}
+@media(min-width:900px){.nosotros__in{grid-template-columns:.9fr 1.1fr;}}
+.nosotros img{width:100%;height:clamp(250px,42vh,440px);object-fit:cover;}
+.nosotros p{color:var(--tinta-sec);margin-top:15px;}
+.subr{position:relative;color:var(--tinta);font-weight:600;white-space:nowrap;}
+.subr::after{content:"";position:absolute;left:0;bottom:-2px;width:100%;height:2px;
+  background:var(--acento);transform:scaleX(0);transform-origin:left;transition:transform .8s var(--ease);}
+.subr.on::after{transform:scaleX(1);}
+
+/* ── 6 · body-masonry · el taller ───────────────── */
+.masonry{padding:0 0 clamp(46px,6.5vw,90px);}
+.masonry__g{columns:2;column-gap:12px;}
+@media(min-width:880px){.masonry__g{columns:3;column-gap:14px;}}
+.masonry figure{break-inside:avoid;margin-bottom:12px;position:relative;overflow:hidden;}
+.masonry img{width:100%;height:auto;transition:transform .6s var(--ease);}
+@media(hover:hover) and (pointer:fine){.masonry figure:hover img{transform:scale(1.04);}}
+.masonry figcaption{font-family:var(--detalle);font-size:10px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--tinta-sec);padding-top:8px;}
+
+/* ── 7 · body-feed · reseñas apiladas ───────────── */
+.feed{padding:clamp(46px,6.5vw,90px) 0;background:var(--fondo-alt);}
+.feed__l{border-top:1px solid var(--filete-fuerte);margin-top:24px;}
+.feed article{padding:24px 0;border-bottom:1px solid var(--filete);display:grid;gap:12px;}
+@media(min-width:820px){.feed article{grid-template-columns:.24fr .76fr;gap:30px;}}
+.feed cite{font-style:normal;font-family:var(--detalle);font-size:12.5px;font-weight:600;}
+.feed cite small{display:block;font-weight:400;color:var(--tinta-sec);font-size:11.5px;margin-top:3px;}
+.feed .estrellas{color:var(--alerta);font-size:12px;letter-spacing:2px;margin-top:6px;display:block;}
+.feed p{font-size:var(--t2);line-height:1.45;color:var(--tinta);}
+
+/* ── 8 · body-map-listings · loc-route-draw ─────── */
+.donde{padding:clamp(46px,6.5vw,90px) 0;}
+.donde__in{display:grid;gap:clamp(24px,3.5vw,44px);margin-top:clamp(22px,3vw,38px);}
+@media(min-width:900px){.donde__in{grid-template-columns:1.25fr .75fr;}}
+.mapa{position:relative;overflow:hidden;border:1px solid var(--filete);
+  min-height:340px;background:var(--fondo-alt);}
+.mapa iframe{width:100%;height:100%;min-height:340px;border:0;display:block;
+  filter:invert(.92) hue-rotate(180deg) saturate(.32) contrast(.95);}
+.ruta{position:absolute;inset:0;pointer-events:none;}
+.ruta path{fill:none;stroke:var(--acento);stroke-width:3;stroke-linecap:round;
+  stroke-dasharray:var(--largo,400);stroke-dashoffset:var(--largo,400);
+  transition:stroke-dashoffset 1.5s var(--ease);}
+.ruta.on path{stroke-dashoffset:0;}
+.ruta circle{fill:var(--acento);opacity:0;transition:opacity .4s .9s;}
+.ruta.on circle{opacity:1;}
+.horarios{width:100%;border-collapse:collapse;font-size:15.5px;}
+.horarios caption{text-align:left;font-family:var(--detalle);font-size:11px;font-weight:600;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--acento);padding-bottom:12px;}
+.horarios td{padding:12px 0;border-bottom:1px solid var(--filete);font-variant-numeric:tabular-nums;}
+.horarios td:last-child{text-align:right;font-family:var(--detalle);font-size:12.5px;}
+.horarios tr.hoy td{color:var(--acento);font-weight:600;}
+.horarios tr.hoy td:first-child::after{content:" · hoy";font-family:var(--detalle);
+  font-size:10px;letter-spacing:.11em;text-transform:uppercase;}
+.datos{list-style:none;margin-top:24px;}
+.datos li{padding:14px 0;border-bottom:1px solid var(--filete);}
+.datos dt{font-family:var(--detalle);font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--tinta-sec);margin-bottom:4px;}
+.datos dd{margin:0;font-size:15.5px;}
+/* padding/margen negativo: 44px de área táctil sin mover nada */
+.datos a{display:inline-block;padding:10px 0;margin:-10px 0;}
+.datos a:hover{color:var(--acento);text-decoration:underline;text-underline-offset:3px;}
+
+/* ── 9 · body-end-cta · adv-film-grain ──────────── */
+.cierre{position:relative;background:var(--acento-suave);overflow:hidden;
+  padding:clamp(48px,7vw,100px) 0;border-top:1px solid var(--filete);}
+/* grano de película: SVG inline, sin peticiones ni librerías */
+.cierre::before{content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23g)' opacity='.3'/%3E%3C/svg%3E");}
+.cierre__in{position:relative;z-index:1;display:grid;gap:clamp(28px,4vw,54px);}
+@media(min-width:920px){.cierre__in{grid-template-columns:.95fr 1.05fr;}}
+.cierre__lead{color:var(--tinta-sec);font-size:var(--t2);line-height:1.45;max-width:28ch;margin-top:18px;}
+.cierre__btns{display:flex;flex-wrap:wrap;gap:11px;margin-top:26px;}
+.form{display:grid;gap:0;}
+.form div{border-bottom:1px solid var(--filete-fuerte);}
+.form label{display:block;font-family:var(--detalle);font-size:10px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--tinta-sec);padding-top:14px;}
+.form input,.form textarea{width:100%;font:inherit;font-size:16px;padding:8px 0 14px;
+  min-height:44px;border:0;background:transparent;color:var(--tinta);}
+.form input:focus,.form textarea:focus{outline:none;}
+.form div:focus-within{border-color:var(--acento);}
+.form textarea{min-height:74px;resize:vertical;}
+.form button{margin-top:24px;justify-self:start;}
+.form .aviso{font-size:13.5px;color:var(--tinta-sec);margin-top:14px;}
+.form .aviso.err{color:var(--alerta);}
+.form .aviso.ok{color:var(--ok);}
+
+/* ── 10 · pie ───────────────────────────────────── */
+.pie{background:var(--osc);color:var(--tinta-sec);border-top:1px solid var(--filete);
+  padding:26px 0 calc(26px + env(safe-area-inset-bottom));font-size:13.5px;}
+.pie__in{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;}
+.pie a:hover{color:var(--tinta);}
+.pie .demo{width:100%;padding-top:16px;margin-top:4px;border-top:1px solid var(--osc-filete);
+  font-size:12.5px;color:var(--osc-tinta3);}
+@media(max-width:899px){.pie{padding-bottom:calc(92px + env(safe-area-inset-bottom));}}
+
+/* ── barra fija móvil ───────────────────────────── */
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;
+  grid-template-columns:repeat(3,1fr);background:var(--osc);
+  border-top:1px solid var(--filete);padding-bottom:env(safe-area-inset-bottom);}
+.barra a{display:flex;align-items:center;justify-content:center;min-height:56px;padding:9px 6px;
+  font-family:var(--detalle);font-size:10px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;}
+.barra a+a{border-left:1px solid var(--filete);}
+.barra a.pri{background:var(--acento);color:var(--acento-con);}
+@media(min-width:900px){.barra{display:none;}}
+
+/* ── scroll-reveal-soft ─────────────────────────── */
+.rev{opacity:1;transform:none;}
+.js .rev{opacity:0;transform:translateY(18px);
+  transition:opacity .75s var(--ease),transform .75s var(--ease);}
+.js .rev.on{opacity:1;transform:none;}
+.rev[data-d="1"]{transition-delay:.08s;}
+.rev[data-d="2"]{transition-delay:.16s;}
+.rev[data-d="3"]{transition-delay:.24s;}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important;}
+  .rev{opacity:1!important;transform:none!important;}
+  .subr::after{transform:scaleX(1)!important;}
+  .ruta path{stroke-dashoffset:0!important;} .ruta circle{opacity:1!important;}
+}
+</style>
+<script>document.documentElement.className+=" js";</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<!-- ═══ 1 · CABECERA ═══ -->
+<header class="top">
+  <div class="wrap top__in">
+    <a class="marca" href="#inicio">Zubieta <em>Taller</em></a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#tarifas">Tarifas</a>
+      <a href="#taller">El taller</a>
+      <a href="#donde">Dónde estamos</a>
+    </nav>
+    <p class="estado" id="estado" aria-live="polite"><i aria-hidden="true"></i><span>Consultando horario…</span></p>
+    <a class="btn btn--fill top__cta" href="#contacto">Pedir cita <span class="ar" aria-hidden="true">→</span></a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ═══ 2 · HERO · body-full-hero ═══ -->
+<section class="hero" id="inicio">
+  <div class="hero__foto">
+    <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=1800&q=80&auto=format&fit=crop"
+         alt="Mecánico trabajando en el foso del taller" width="1800" height="1100" fetchpriority="high"/>
+  </div>
+  <div class="hero__txt">
+    <div class="wrap">
+      <p class="rotulo scramble rev">Taller multimarca · Tolosa desde 1998</p>
+      <h1 class="rev" data-d="1">La factura es <em>la del presupuesto</em></h1>
+      <div class="hero__pie">
+        <p class="lead rev" data-d="2">Publicamos las tarifas para que puedas compararlas antes de llamar. Si al abrir aparece algo más, paramos y te llamamos.</p>
+        <div class="hero__btns rev" data-d="3">
+          <a class="btn btn--fill magnetico" href="#contacto">Pedir cita <span class="ar" aria-hidden="true">→</span></a>
+          <a class="btn btn--ghost" href="#tarifas">Ver tarifas</a>
+        </div>
+      </div>
+      <div class="hero__tags rev" data-d="3">
+        <span>Coche de sustitución gratis</span>
+        <span>Pre-ITV sin coste</span>
+        <span>Garantía 2 años</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 3 · CIFRAS · body-logos-strip ═══ -->
+<section class="cifras" aria-label="El taller en cifras">
+  <div class="wrap">
+    <ul>
+      <li class="rev"><b class="cnum" data-n="27">27</b><small>años<br/>abiertos</small></li>
+      <li class="rev" data-d="1"><b class="cnum" data-n="4">4</b><small>mecánicos<br/>en plantilla</small></li>
+      <li class="rev" data-d="2"><b>4,8</b><small>Google<br/>214 reseñas</small></li>
+      <li class="rev" data-d="3"><b class="cnum" data-n="2">2</b><small>años de<br/>garantía</small></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══ 4 · SERVICIOS · body-alternating ═══ -->
+<section class="serv" id="servicios">
+  <div class="wrap">
+    <p class="rotulo scramble rev" style="margin-bottom:14px">Servicios</p>
+    <h2 class="rev" data-d="1" style="max-width:16ch;margin-bottom:22px">Qué hacemos aquí dentro</h2>
+
+    <article class="serv__f rev">
+      <figure class="serv__m"><img loading="lazy" width="800" height="500" src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?w=800&q=80&auto=format&fit=crop" alt="Equipo de diagnosis conectado a un vehículo"/></figure>
+      <div>
+        <p class="serv__n">01 · Mecánica</p>
+        <h3>Mantenimiento y diagnosis</h3>
+        <p>Aceite, filtros, correa y revisión completa. Sellamos el libro de mantenimiento sin perder la garantía del fabricante. La diagnosis la hacemos con máquina propia, no subcontratada.</p>
+        <ul class="serv__l">
+          <li>Cambio de aceite <b>69 €</b></li>
+          <li>Revisión completa <b>89 €</b></li>
+          <li>Diagnosis <b>35 €</b></li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="serv__f rev">
+      <figure class="serv__m"><img loading="lazy" width="800" height="500" src="https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?w=800&q=80&auto=format&fit=crop" alt="Zona de neumáticos del taller"/></figure>
+      <div>
+        <p class="serv__n">02 · Neumáticos</p>
+        <h3>Montaje, equilibrado y alineación</h3>
+        <p>Trabajamos con todas las marcas y te decimos cuál compensa para lo que tú haces: no es lo mismo hacer autopista todos los días que ir al pueblo los domingos.</p>
+        <ul class="serv__l">
+          <li>Desde <b>52 €</b>/ud</li>
+          <li>Alineación <b>45 €</b></li>
+          <li>Montaje incluido</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="serv__f rev">
+      <figure class="serv__m"><img loading="lazy" width="800" height="500" src="https://images.unsplash.com/photo-1599256872237-5dcc0fbe9668?w=800&q=80&auto=format&fit=crop" alt="Mecánico revisando los frenos"/></figure>
+      <div>
+        <p class="serv__n">03 · Seguridad y ITV</p>
+        <h3>Frenos, suspensión y pre-ITV</h3>
+        <p>Antes de tocar nada te enseñamos cómo están las piezas, con el coche levantado. La pre-ITV no se cobra, y si quieres llevamos el coche a pasarla nosotros.</p>
+        <ul class="serv__l">
+          <li>Frenos desde <b>110 €</b></li>
+          <li>Pre-ITV <b>gratis</b></li>
+          <li>Gestión de ITV</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ═══ 4b · TARIFAS · body-comparison ═══ -->
+<section class="tarifas sector" id="tarifas">
+  <div class="wrap">
+    <div class="tarifas__cab">
+      <div class="rev">
+        <p class="rotulo scramble">Tarifas</p>
+        <h2>Los precios, publicados</h2>
+      </div>
+      <p class="lead rev" data-d="1">Casi ningún taller los pone. Nosotros sí, porque es lo primero que quieres saber y porque aguantan la comparación.</p>
+    </div>
+
+    <div class="tablas rev" data-d="1">
+      <div class="tabla-env">
+        <table class="tarifa">
+          <caption>Mantenimiento</caption>
+          <thead><tr><th scope="col">Trabajo</th><th scope="col">Precio</th></tr></thead>
+          <tbody id="t-mantenimiento"></tbody>
+        </table>
+      </div>
+      <div class="tabla-env">
+        <table class="tarifa">
+          <caption>Neumáticos · por unidad, montado y equilibrado</caption>
+          <thead><tr><th scope="col">Medida</th><th scope="col">Desde</th></tr></thead>
+          <tbody id="t-neumaticos"></tbody>
+        </table>
+      </div>
+    </div>
+    <p class="tarifas__pie rev">Mano de obra fuera de tarifa: <b id="hora-mo"></b>. Si el trabajo se va a pasar del presupuesto, paramos y te llamamos antes de seguir. <span id="tarifa-vigencia"></span>.</p>
+
+    <div class="susti rev" data-d="1">
+      <div>
+        <p class="si">Sí</p><h3>Coche de sustitución</h3>
+        <p>Sin coste y sin condiciones raras, mientras el tuyo esté aquí. Solo hay que avisar al pedir la cita.</p>
+      </div>
+      <div>
+        <p class="si">Sí</p><h3>Recogida a domicilio</h3>
+        <p>En Tolosa y alrededores. Vamos a por el coche, lo arreglamos y lo devolvemos a tu puerta.</p>
+      </div>
+      <div>
+        <p class="si">Sí</p><h3>Piezas a tu elección</h3>
+        <p>Te damos precio con pieza original y con equivalente homologada, y eliges tú. Las dos con garantía.</p>
+      </div>
+    </div>
+
+    <div class="marcas rev" data-d="2">
+      <p>Trabajamos con todas estas marcas</p>
+      <ul id="marcas"></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 5 · NOSOTROS · body-media-left ═══ -->
+<section class="nosotros" id="nosotros">
+  <div class="wrap nosotros__in">
+    <img class="rev" loading="lazy" width="900" height="700"
+      src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=900&q=80&auto=format&fit=crop"
+      alt="Nave del taller con vehículos en los puentes"/>
+    <div>
+      <p class="rotulo scramble rev">Quiénes somos</p>
+      <h2 class="rev" data-d="1">Veintisiete años<br/>en la misma nave</h2>
+      <p class="rev" data-d="2">Lo abrió Joxan Zubieta en 1998 con un puente y una caja de herramientas. Hoy somos cuatro mecánicos y Ane en oficina, y seguimos en el mismo polígono.</p>
+      <p class="rev" data-d="2">Aquí no hay comerciales ni objetivos de venta. <span class="subr">El que te atiende es el que toca el coche</span>, y si no hace falta cambiar algo, te lo dice.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 6 · EL TALLER · body-masonry ═══ -->
+<section class="masonry" id="taller">
+  <div class="wrap">
+    <p class="rotulo scramble rev" style="margin-bottom:18px">Dónde va a estar tu coche</p>
+    <div class="masonry__g rev" data-d="1">
+      <figure><img loading="lazy" width="600" height="800" src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=600&q=80&auto=format&fit=crop" alt="Herramienta ordenada en el panel"/><figcaption>El panel</figcaption></figure>
+      <figure><img loading="lazy" width="600" height="420" src="https://images.unsplash.com/photo-1493238792000-8113da705763?w=600&q=80&auto=format&fit=crop" alt="Recepción del taller"/><figcaption>Recepción</figcaption></figure>
+      <figure><img loading="lazy" width="600" height="700" src="https://images.unsplash.com/photo-1632823469850-1b7b1e8b7e2e?w=600&q=80&auto=format&fit=crop" alt="Mecánicos junto a un vehículo levantado"/><figcaption>Los puentes</figcaption></figure>
+      <figure><img loading="lazy" width="600" height="450" src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?w=600&q=80&auto=format&fit=crop" alt="Equipo de diagnosis"/><figcaption>Diagnosis</figcaption></figure>
+      <figure><img loading="lazy" width="600" height="760" src="https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?w=600&q=80&auto=format&fit=crop" alt="Zona de neumáticos"/><figcaption>Neumáticos</figcaption></figure>
+      <figure><img loading="lazy" width="600" height="480" src="https://images.unsplash.com/photo-1599256872237-5dcc0fbe9668?w=600&q=80&auto=format&fit=crop" alt="Revisión de frenos"/><figcaption>Frenos</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 7 · RESEÑAS · body-feed ═══ -->
+<section class="feed" id="resenas">
+  <div class="wrap">
+    <p class="rotulo scramble rev">4,8 sobre 5 · 214 reseñas en Google</p>
+    <div class="feed__l" id="testis"></div>
+  </div>
+</section>
+
+<!-- ═══ 8 · DÓNDE · body-map-listings ═══ -->
+<section class="donde" id="donde">
+  <div class="wrap">
+    <p class="rotulo scramble rev">Dónde estamos</p>
+    <h2 class="rev" data-d="1" style="max-width:18ch">Polígono Apattaerreka, nave 12</h2>
+    <div class="donde__in">
+      <div class="mapa rev">
+        <iframe title="Mapa de situación del taller" loading="lazy" allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-2.0900%2C43.1240%2C-2.0680%2C43.1360&layer=mapnik&marker=43.1298%2C-2.0790"></iframe>
+        <svg class="ruta" viewBox="0 0 400 300" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M40 250 C 110 230, 130 150, 200 140 S 300 90, 350 55"/>
+          <circle cx="350" cy="55" r="7"/>
+        </svg>
+      </div>
+      <div class="rev" data-d="1">
+        <table class="horarios">
+          <caption>Horario del taller</caption>
+          <tbody id="tabla-horario"></tbody>
+        </table>
+        <dl class="datos">
+          <li><dt>Dirección</dt><dd id="d-dir"></dd></li>
+          <li><dt>Teléfono</dt><dd><a id="d-tel" href="#"></a></dd></li>
+          <li><dt>Cómo llegar</dt><dd><a id="d-maps" href="#" target="_blank" rel="noopener">Abrir en Google Maps →</a></dd></li>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══ 9 · CIERRE · body-end-cta ═══ -->
+<section class="cierre" id="contacto">
+  <div class="wrap cierre__in">
+    <div>
+      <p class="rotulo rev">Pedir cita</p>
+      <h2 class="rev" data-d="1">Dinos qué le pasa</h2>
+      <p class="cierre__lead rev" data-d="2">Con la matrícula y dos líneas nos vale para darte una idea de precio por teléfono antes de que traigas el coche.</p>
+      <div class="cierre__btns rev" data-d="2">
+        <a class="btn btn--fill magnetico" id="c-tel" href="#">Llamar ahora <span class="ar" aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost" id="c-wa" href="#" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+    <form class="form rev" data-d="1" id="form" novalidate>
+      <div><label for="f-nom">Nombre</label><input id="f-nom" name="nombre" type="text" autocomplete="name" required/></div>
+      <div><label for="f-tel">Teléfono</label><input id="f-tel" name="tel" type="tel" autocomplete="tel" required/></div>
+      <div><label for="f-coche">Coche y matrícula</label><input id="f-coche" name="coche" type="text" placeholder="Golf 1.6 TDI · 1234 ABC"/></div>
+      <div><label for="f-msg">Qué le pasa</label><textarea id="f-msg" name="mensaje" rows="2" placeholder="Toca revisión, ruido al frenar, se ha encendido un testigo…"></textarea></div>
+      <button class="btn btn--fill" type="submit">Pedir cita <span class="ar" aria-hidden="true">→</span></button>
+      <p class="aviso" id="form-aviso" role="status">Te llamamos el mismo día laborable.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ═══ 10 · PIE ═══ -->
+<footer class="pie">
+  <div class="wrap pie__in">
+    <p>© <span id="year"></span> Talleres Zubieta · Tolosa, Gipuzkoa</p>
+    <p><a href="#">Aviso legal</a> · <a href="#">Privacidad</a> · <a href="#">Cookies</a></p>
+    <p class="demo">Demostración sin compromiso creada por OI Studio · los textos e imágenes son orientativos.</p>
+  </div>
+</footer>
+
+<!-- ═══ BARRA FIJA MÓVIL ═══ -->
+<nav class="barra" aria-label="Acciones rápidas">
+  <a class="pri" id="b-tel" href="#">Llamar</a>
+  <a id="b-wa" href="#" target="_blank" rel="noopener">WhatsApp</a>
+  <a id="b-maps" href="#" target="_blank" rel="noopener">Cómo llegar</a>
+</nav>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   DATOS DEL NEGOCIO — ÚNICO BLOQUE A EDITAR POR CLIENTE
+   horario: 0=domingo … 6=sábado · null = cerrado
+   tarifas: es el argumento de venta del sector, hay que mantenerlas al día
+   ═══════════════════════════════════════════════════════════════ */
+const DATOS = {
+  nombre:    "Talleres Zubieta",
+  reclamo:   "La factura es la del presupuesto.",
+  tel:       "+34943673388",
+  whatsapp:  "34943673388",
+  direccion: "Polígono Apattaerreka, nave 12 · 20400 Tolosa, Gipuzkoa",
+  maps:      "https://www.google.com/maps/search/?api=1&query=Poligono+Apattaerreka+Tolosa+Gipuzkoa",
+  geo:       { lat:43.1298, lon:-2.0790 },
+  precio:    "€€",
+  horaManoObra: "42 €/hora",
+  tarifaVigencia: "Vigentes en 2026",
+  marcas: ["Volkswagen","Seat","Renault","Peugeot","Citroën","Opel","Ford","Toyota",
+           "Nissan","Audi","BMW","Mercedes","Skoda","Dacia","Hyundai","Kia"],
+  tarifas: {
+    mantenimiento: [
+      { que:"Cambio de aceite y filtro", nota:"Sintético 5W30, hasta 5 litros", pvp:"69 €" },
+      { que:"Revisión completa", nota:"Niveles, frenos, correas e informe", pvp:"89 €" },
+      { que:"Filtros de aire y habitáculo", nota:"Piezas y mano de obra", pvp:"55 €" },
+      { que:"Correa de distribución", nota:"Con bomba de agua · según motor", pvp:"desde 390 €" },
+      { que:"Pastillas de freno (eje)", nota:"Equivalentes homologadas", pvp:"desde 110 €" },
+      { que:"Batería", nota:"Montaje y prueba de alternador", pvp:"desde 95 €" },
+    ],
+    neumaticos: [
+      { que:"175/65 R14", nota:"Gama media", pvp:"52 €" },
+      { que:"195/65 R15", nota:"Gama media", pvp:"61 €" },
+      { que:"205/55 R16", nota:"Gama media", pvp:"74 €" },
+      { que:"225/45 R17", nota:"Gama media", pvp:"92 €" },
+      { que:"235/40 R18", nota:"Gama media", pvp:"118 €" },
+      { que:"Alineación de dirección", nota:"Las cuatro ruedas, con informe", pvp:"45 €" },
+    ],
+  },
+  horario: {
+    1:[["08:30","13:00"],["15:00","19:00"]],
+    2:[["08:30","13:00"],["15:00","19:00"]],
+    3:[["08:30","13:00"],["15:00","19:00"]],
+    4:[["08:30","13:00"],["15:00","19:00"]],
+    5:[["08:30","14:00"]],
+    6:null,
+    0:null,
+  },
+  resenas: [
+    { nombre:"Aitor B.", cuando:"hace 2 semanas", estrellas:5,
+      texto:"Me dijeron por teléfono lo que costaría la distribución y fue exactamente eso. En el concesionario me habían pedido casi el doble por lo mismo." },
+    { nombre:"Rosa M.", cuando:"hace 1 mes", estrellas:5,
+      texto:"Llevé el coche por un ruido y resultó ser una piedra en el protector. Me lo quitaron y no me cobraron nada. Ahora les llevo también el de mi hijo." },
+    { nombre:"Unai G.", cuando:"hace 3 meses", estrellas:4,
+      texto:"Lo del coche de sustitución es real, sin letra pequeña. Tuve el mío cuatro días en el taller y no perdí ni un día de trabajo." },
+  ],
+};
+
+/* ── utilidades de horario ─────────────────────────────── */
+const DIAS = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+const hm = t => { const [h,m] = t.split(":").map(Number); return h*60+m; };
+const fmt = tramos => tramos ? tramos.map(([a,b]) => a+"–"+b).join(" · ") : "Cerrado";
+
+/* micro-live-clock · el estado sale de DATOS.horario, nunca se escribe a mano */
+function estadoAhora(){
+  const now = new Date(), d = now.getDay(), min = now.getHours()*60 + now.getMinutes();
+  const tramos = DATOS.horario[d];
+  if(tramos){
+    for(const [a,b] of tramos){
+      if(min >= hm(a) && min < hm(b)) return { abierto:true, texto:"Abierto · cierra a las "+b };
+    }
+    const prox = tramos.find(([a]) => min < hm(a));
+    if(prox) return { abierto:false, texto:"Abre hoy a las "+prox[0] };
+  }
+  for(let i=1;i<=7;i++){
+    const dd = (d+i)%7, t = DATOS.horario[dd];
+    if(t) return { abierto:false, texto:(i===1?"Abre mañana":"Abre el "+DIAS[dd].toLowerCase())+" a las "+t[0][0] };
+  }
+  return { abierto:false, texto:"Consultá el horario" };
+}
+
+function pintarEstado(){
+  const e = estadoAhora(), el = document.getElementById("estado");
+  el.classList.toggle("abierto", e.abierto);
+  el.querySelector("span").textContent = e.texto;
+}
+
+/* loc-hours-today */
+function pintarHorario(){
+  const hoy = new Date().getDay(), tb = document.getElementById("tabla-horario");
+  tb.innerHTML = [1,2,3,4,5,6,0].map(d =>
+    `<tr class="${d===hoy?"hoy":""}"><td>${DIAS[d]}</td><td>${fmt(DATOS.horario[d])}</td></tr>`
+  ).join("");
+}
+
+/* BLOQUE DE SECTOR · las tarifas salen de DATOS: cambiar un precio es tocar
+   una línea, no buscarlo por el HTML */
+function pintarTarifas(){
+  const fila = f => `<tr><td>${f.que}<small>${f.nota}</small></td><td>${f.pvp}</td></tr>`;
+  document.getElementById("t-mantenimiento").innerHTML = DATOS.tarifas.mantenimiento.map(fila).join("");
+  document.getElementById("t-neumaticos").innerHTML    = DATOS.tarifas.neumaticos.map(fila).join("");
+  document.getElementById("hora-mo").textContent       = DATOS.horaManoObra;
+  document.getElementById("tarifa-vigencia").textContent = DATOS.tarifaVigencia;
+  document.getElementById("marcas").innerHTML = DATOS.marcas.map(m=>`<li>${m}</li>`).join("");
+}
+
+/* ── enlaces y datos derivados ─────────────────────────── */
+function pintarDatos(){
+  const telHref = "tel:"+DATOS.tel.replace(/\s/g,"");
+  const waHref  = "https://wa.me/"+DATOS.whatsapp+"?text="+
+    encodeURIComponent("Hola, quería pedir cita en "+DATOS.nombre+".");
+  const telVis  = DATOS.tel.replace(/^\+34/,"").replace(/(\d{3})(?=\d)/g,"$1 ").trim();
+
+  [["d-tel",telHref],["c-tel",telHref],["b-tel",telHref]].forEach(([id,h])=>{
+    const el=document.getElementById(id); if(el) el.href=h; });
+  [["c-wa",waHref],["b-wa",waHref]].forEach(([id,h])=>{
+    const el=document.getElementById(id); if(el) el.href=h; });
+  [["d-maps",DATOS.maps],["b-maps",DATOS.maps]].forEach(([id,h])=>{
+    const el=document.getElementById(id); if(el) el.href=h; });
+
+  document.getElementById("d-tel").textContent = telVis;
+  document.getElementById("d-dir").textContent = DATOS.direccion;
+  document.getElementById("year").textContent  = new Date().getFullYear();
+}
+
+function pintarResenas(){
+  document.getElementById("testis").innerHTML = DATOS.resenas.map((r,i)=>`
+    <article class="rev" ${i?`data-d="${i}"`:""}>
+      <cite>${r.nombre}<small>${r.cuando} · Google</small>
+        <span class="estrellas" aria-label="${r.estrellas} de 5 estrellas">${"★".repeat(r.estrellas)}</span></cite>
+      <blockquote><p>“${r.texto}”</p></blockquote>
+    </article>`).join("");
+}
+
+/* SEO local · JSON-LD generado desde DATOS */
+function inyectarSchema(){
+  const dias = { 1:"Monday",2:"Tuesday",3:"Wednesday",4:"Thursday",5:"Friday",6:"Saturday",0:"Sunday" };
+  const horas = [];
+  Object.entries(DATOS.horario).forEach(([d,tramos])=>{
+    (tramos||[]).forEach(([a,b])=>horas.push({
+      "@type":"OpeningHoursSpecification", dayOfWeek:"https://schema.org/"+dias[d], opens:a, closes:b }));
+  });
+  const [calle, resto=""] = DATOS.direccion.split("·").map(s=>s.trim());
+  const s = document.createElement("script");
+  s.type = "application/ld+json";
+  s.textContent = JSON.stringify({
+    "@context":"https://schema.org","@type":"AutoRepair",
+    name:DATOS.nombre, description:DATOS.reclamo,
+    telephone:DATOS.tel, priceRange:DATOS.precio, url:location.href,
+    brand:DATOS.marcas.map(m=>({"@type":"Brand",name:m})),
+    address:{"@type":"PostalAddress",streetAddress:calle,
+      addressLocality:(resto.match(/\d{5}\s+([^,]+)/)||[])[1]||"Tolosa",
+      postalCode:(resto.match(/\d{5}/)||[])[0]||"", addressCountry:"ES"},
+    geo:{"@type":"GeoCoordinates",latitude:DATOS.geo.lat,longitude:DATOS.geo.lon},
+    openingHoursSpecification:horas,
+    aggregateRating:{"@type":"AggregateRating",ratingValue:"4.8",reviewCount:"214"},
+  });
+  document.head.appendChild(s);
+}
+
+/* ── movimiento ────────────────────────────────────────── */
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const fino   = matchMedia("(hover:hover) and (pointer:fine)").matches;
+
+function observarReveal(){
+  const nodos = document.querySelectorAll(".rev:not(.on)");
+  if(reduce){ nodos.forEach(n=>n.classList.add("on")); return; }
+  const io = new IntersectionObserver((es,obs)=>{
+    es.forEach(e=>{ if(!e.isIntersecting) return; e.target.classList.add("on"); obs.unobserve(e.target); });
+  },{ rootMargin:"0px 0px -8% 0px", threshold:.12 });
+  nodos.forEach(n=>io.observe(n));
+
+  /* red de seguridad: los prospectos abren el enlace desde el navegador de
+     WhatsApp. Una demo en blanco delante de un cliente no es una opción. */
+  setTimeout(()=>{
+    document.querySelectorAll(".rev:not(.on)").forEach(n=>{
+      if(n.getBoundingClientRect().top < innerHeight * 1.2) n.classList.add("on"); });
+    if(!innerHeight) document.querySelectorAll(".rev").forEach(n=>n.classList.add("on"));
+  }, 2500);
+}
+
+function observarSubrayado(){
+  const nodos = document.querySelectorAll(".subr");
+  if(reduce){ nodos.forEach(n=>n.classList.add("on")); return; }
+  const io = new IntersectionObserver((es,obs)=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("on"); obs.unobserve(e.target);} });
+  },{ threshold:.9 });
+  nodos.forEach(n=>io.observe(n));
+}
+
+/* micro-count-up · el HTML ya trae la cifra final; esto solo la anima */
+function observarNumeros(){
+  const nodos = document.querySelectorAll(".cnum");
+  if(reduce) return;
+  const io = new IntersectionObserver((es,obs)=>{
+    es.forEach(e=>{
+      if(!e.isIntersecting) return;
+      obs.unobserve(e.target);
+      const el=e.target, fin=+el.dataset.n, suf=el.dataset.suf||"", t0=performance.now();
+      (function paso(t){
+        const p=Math.min((t-t0)/1100,1);
+        el.textContent=Math.round(fin*(1-Math.pow(1-p,3))).toLocaleString("es-ES")+suf;
+        if(p<1) requestAnimationFrame(paso);
+        else el.textContent=fin.toLocaleString("es-ES")+suf;
+      })(t0);
+    });
+  },{ threshold:.5 });
+  nodos.forEach(n=>io.observe(n));
+}
+
+/* text-scramble-scroll · guarda el texto y lo restituye entero: nunca se
+   queda a medias aunque se interrumpa */
+function observarScramble(){
+  const nodos = document.querySelectorAll(".scramble");
+  if(reduce) return;
+  const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&/";
+  const io = new IntersectionObserver((es,obs)=>{
+    es.forEach(e=>{
+      if(!e.isIntersecting) return;
+      obs.unobserve(e.target);
+      const el = e.target, fin = el.textContent, t0 = performance.now(), DUR = 600;
+      (function paso(t){
+        const p = Math.min((t-t0)/DUR, 1);
+        const fijos = Math.floor(fin.length * p);
+        el.textContent = fin.slice(0,fijos) + fin.slice(fijos)
+          .replace(/\S/g, () => CHARS[(Math.random()*CHARS.length)|0]);
+        if(p < 1) requestAnimationFrame(paso);
+        else el.textContent = fin;      // siempre acaba en el texto real
+      })(t0);
+    });
+  },{ threshold:.9 });
+  nodos.forEach(n=>io.observe(n));
+}
+
+/* btn-magnetic · recorrido corto, y solo con ratón: en táctil dejaría
+   estados rotos */
+function activarMagnetico(){
+  if(reduce || !fino) return;
+  document.querySelectorAll(".magnetico").forEach(btn=>{
+    let pendiente = false;
+    btn.addEventListener("pointermove", ev=>{
+      if(pendiente) return;
+      pendiente = true;
+      requestAnimationFrame(()=>{
+        const r = btn.getBoundingClientRect();
+        const x = (ev.clientX - r.left - r.width/2) * .16;
+        const y = (ev.clientY - r.top - r.height/2) * .16;
+        btn.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`;
+        pendiente = false;
+      });
+    });
+    btn.addEventListener("pointerleave", ()=>{ btn.style.transform = ""; });
+  });
+}
+
+/* loc-route-draw · mide el trazado real para que el dibujado sea exacto */
+function activarRuta(){
+  const ruta = document.querySelector(".ruta");
+  if(!ruta) return;
+  const path = ruta.querySelector("path");
+  ruta.style.setProperty("--largo", Math.ceil(path.getTotalLength()));
+  if(reduce){ ruta.classList.add("on"); return; }
+  const io = new IntersectionObserver((es,obs)=>{
+    es.forEach(e=>{ if(e.isIntersecting){ ruta.classList.add("on"); obs.disconnect(); } });
+  },{ threshold:.35 });
+  io.observe(ruta);
+}
+
+function observarNav(){
+  const links=[...document.querySelectorAll(".nav a")];
+  const secs=links.map(a=>document.querySelector(a.getAttribute("href"))).filter(Boolean);
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(!e.isIntersecting) return;
+      links.forEach(a=>a.removeAttribute("aria-current"));
+      const a=links.find(a=>a.getAttribute("href")==="#"+e.target.id);
+      if(a) a.setAttribute("aria-current","true");
+    });
+  },{ rootMargin:"-45% 0px -50% 0px" });
+  secs.forEach(s=>io.observe(s));
+}
+
+/* formulario — demo: no envía a ningún sitio */
+document.getElementById("form").addEventListener("submit", ev=>{
+  ev.preventDefault();
+  const f=ev.target, aviso=document.getElementById("form-aviso");
+  if(!f.nombre.value.trim() || !f.tel.value.trim()){
+    aviso.textContent="Necesitamos al menos tu nombre y un teléfono.";
+    aviso.className="aviso err"; return;
+  }
+  aviso.textContent="Recibido. Esto es una demostración: el formulario todavía no envía nada.";
+  aviso.className="aviso ok";
+  f.reset();
+});
+
+/* ── arranque ──────────────────────────────────────────── */
+pintarDatos();
+pintarEstado();
+pintarHorario();
+pintarTarifas();
+pintarResenas();
+inyectarSchema();
+observarReveal();     // después de pintarResenas: incluye sus .rev
+observarSubrayado();
+observarNumeros();
+observarScramble();
+activarMagnetico();
+activarRuta();
+observarNav();
+setInterval(pintarEstado, 60000);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ═══ KIT DE MOVIMIENTO ═══ -->
+<style>
+/* ═══ RITMO Y CABECERA ═══
+   Tomado de atxalandabaso-prime-web.vercel.app, que es la referencia que
+   funciona: cabecera isla, alternancia dura claro/oscuro y aire de sobra.
+   El problema de las plantillas era que alternaban entre dos cremas casi
+   iguales (--fondo y --fondo-alt), así que la página se leía plana. */
+
+/* head-island · cabecera flotante en píldora, no barra de lado a lado */
+.top{position:fixed;top:12px;left:50%;transform:translateX(-50%);
+  width:min(100% - 24px, 1180px);border-radius:100px;border:1px solid var(--filete);
+  background:color-mix(in srgb, var(--fondo) 82%, transparent);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 6px 28px -18px rgba(0,0,0,.5);z-index:40;
+  transition:top .3s var(--ease),width .3s var(--ease);}
+.top__in{padding-left:clamp(16px,3vw,26px);padding-right:clamp(8px,2vw,14px);}
+/* lo que va dentro de una píldora tiene que ser redondo: con --radio:0 el CTA
+   salía con esquinas rectas dentro de la cabecera curva y cantaba */
+.top .btn{border-radius:100px;}
+.top .btn--fill{padding-left:22px;padding-right:20px;}
+@media(min-width:768px){.top{top:20px;}}
+/* la isla flota: el contenido necesita hueco arriba */
+body{padding-top:92px;}
+@media(min-width:768px){body{padding-top:108px;}}
+:target,section[id]{scroll-margin-top:104px;}
+
+/* el hero ocupa la pantalla entera, con svh para que el móvil no mienta */
+.hero,.portada,.banner{min-height:auto;}
+@media(min-width:768px){
+  .hero__foto,.portada__foto,.banner__foto{min-height:min(78svh,620px);}
+}
+
+/* aire: 128px en escritorio como la referencia, no 96 */
+section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128px);}
+
+/* ═══ ALTERNANCIA CLARO / OSCURO ═══
+   Una sección .oscura le da la vuelta a los tokens en vez de repintar cada
+   regla: los hijos siguen usando var(--tinta), var(--filete)… y salen bien
+   sin tocar una línea del CSS de la plantilla. */
+.oscura{
+  background:var(--osc);
+  --tinta:var(--fondo);
+  --tinta-sec:var(--osc-tinta);
+  --filete:var(--osc-filete);
+  --filete-fuerte:var(--osc-filete);
+  --fondo-alt:var(--osc);
+  --acento:var(--acento-claro);
+  --acento-con:var(--osc);
+  color:var(--tinta);
+}
+.oscura h1,.oscura h2,.oscura h3,.oscura h4{color:var(--tinta);}
+.oscura .btn{border-color:var(--tinta);color:var(--tinta);}
+.oscura .btn--fill{background:var(--acento);border-color:var(--acento);color:var(--acento-con);}
+.oscura .btn--ghost:hover,.oscura .btn--ghost:focus-visible{background:var(--tinta);color:var(--osc);}
+.oscura .mapa iframe{filter:invert(.92) hue-rotate(180deg) saturate(.35);}
+.oscura input,.oscura textarea{color:var(--tinta);}
+
+/* ═══ KIT DE MOVIMIENTO ═══
+   Piezas: head-shrink · head-progress · head-underline · scroll-parallax-layers
+   scroll-title-scale · scroll-image-zoom · scroll-alternate-sides
+   scroll-blur-in · scroll-text-highlight
+   Límites de ui-ux-pro-max/data/motion.csv — ver scripts/kit-movimiento.mjs  */
+
+/* head-progress · barra de lectura al pie de la cabecera.
+   Va dentro de .top, que ya es la isla flotante de arriba: no se le vuelve a
+   tocar la posición aquí o se pisaría el position:fixed. */
+.barra-lectura{position:absolute;left:0;bottom:-1px;height:2px;width:100%;
+  transform:scaleX(var(--leido,0));transform-origin:left;background:var(--acento);
+  pointer-events:none;}
+
+/* head-shrink · la cabecera se compacta al bajar.
+   Se anima el padding del contenedor interno, no la altura de .top: animar
+   height fuerza reflow en cada frame (anti-patrón de la skill, prioridad 7). */
+.top__in{transition:height .3s var(--ease);}
+.js.encogido .top__in{height:56px;}
+.js.encogido .marca small,.js.encogido .marca em{opacity:0;transition:opacity .2s;}
+
+/* head-underline · el subrayado del menú crece desde el centro */
+.nav a{position:relative;}
+.nav a::after{content:"";position:absolute;left:50%;right:50%;bottom:0;height:1px;
+  background:var(--acento);transition:left .3s var(--ease),right .3s var(--ease);}
+.nav a:hover::after{left:0;right:0;}
+
+/* scroll-parallax-layers · SOLO la foto del hero, que es decorativa.
+   Delta de 8% — dentro del 5-15% que marca la skill. Nunca sobre texto.
+   El contenedor recorta: la foto va al 1.08 para tener recorrido, y sin
+   overflow:hidden ese 8% de más se sale y provoca scroll horizontal. */
+.js .hero__foto,.js .portada__foto,.js .banner__foto,.js .hero__img{overflow:hidden;}
+.js .hero__foto img,.js .portada__foto img,.js .banner__foto img,.js .hero__img img{
+  will-change:transform;transform:translate3d(0,var(--par,0px),0) scale(1.08);}
+/* lo mismo para las fotos de sección, que llevan zoom */
+.js .serv__m,.js .zonas__m,.js .secc__m,.js .paso__m{overflow:hidden;}
+
+/* scroll-title-scale · el titular de portada cede un poco al bajar.
+   Solo opacity y transform, y solo con pantalla suficiente. */
+@media(min-width:900px) and (prefers-reduced-motion:no-preference){
+  .js .portada h1,.js .hero h1{will-change:transform,opacity;
+    transform:translate3d(0,calc(var(--tit,0) * -28px),0);
+    opacity:calc(1 - var(--tit,0) * .55);}
+}
+
+/* scroll-image-zoom · las fotos de sección respiran al cruzar la pantalla */
+.js .serv__m img,.js .zonas__m img,.js .secc__m img,.js .obra__media img,
+.js .paso__m img,.js .equipo img,.js .casa img,.js .obrador img,.js .nosotros img,
+.js .tienda img,.js .sobre img{
+  transform:scale(var(--zoom,1));transition:transform .9s var(--ease);}
+
+/* scroll-alternate-sides · las filas en zig-zag entran desde su lado.
+   En móvil el desplazamiento es VERTICAL: a 375px una fila corrida 26px a la
+   derecha asoma por el borde y provoca scroll horizontal en toda la página.
+   Y de paso, en una columna estrecha el zig-zag lateral no se entiende. */
+.js .serv__f,.js .zonas__f,.js .secc__f,.js .obra,.js .clinica .paso{
+  opacity:0;transform:translate3d(0,22px,0);
+  transition:opacity .55s var(--ease),transform .55s var(--ease);}
+@media(min-width:760px){
+  .js .serv__f,.js .zonas__f,.js .secc__f,.js .obra,.js .clinica .paso{
+    transform:translate3d(-26px,0,0);}
+  .js .serv__f:nth-of-type(even),.js .zonas__f:nth-of-type(even),
+  .js .secc__f:nth-of-type(even),.js .obra:nth-of-type(even),
+  .js .clinica .paso:nth-of-type(even){transform:translate3d(26px,0,0);}
+}
+.js .serv__f.dentro,.js .zonas__f.dentro,.js .secc__f.dentro,
+.js .obra.dentro,.js .clinica .paso.dentro{opacity:1;transform:none;}
+
+/* El subrayado de texto lleva white-space:nowrap para no partirse por la
+   mitad. En móvil una frase larga así no cabe y empuja el ancho de la página:
+   ahí se deja romper, que un subrayado en dos líneas es mejor que un scroll
+   horizontal en toda la web. */
+@media(max-width:759px){ .subr{white-space:normal;} }
+
+/* scroll-blur-in · el reveal base gana un desenfoque muy corto.
+   400-600 ms y power2.out, que es lo que pide la skill para el nivel Standard. */
+.js .rev{filter:blur(6px);
+  transition:opacity .52s cubic-bezier(.22,1,.36,1),
+             transform .52s cubic-bezier(.22,1,.36,1),
+             filter .52s cubic-bezier(.22,1,.36,1);}
+.js .rev.on{filter:blur(0);}
+
+/* scroll-text-highlight · el párrafo de entrada se enciende palabra a palabra */
+.js .lead .pal{opacity:.28;transition:opacity .4s var(--ease);}
+.js .lead.encendido .pal{opacity:1;}
+
+/* La cascada nunca pasa de 8 elementos ni de 0.04 s por elemento: más allá,
+   los últimos llegan tarde y se nota (motion.csv, Stagger List). */
+.js [data-esc]{transition-delay:calc(var(--i,0) * .035s);}
+
+@media (prefers-reduced-motion:reduce){
+  .js .rev{filter:none!important;}
+  .js .hero__foto img,.js .portada__foto img,.js .banner__foto img,.js .hero__img img{
+    transform:none!important;}
+  .js .serv__f,.js .zonas__f,.js .secc__f,.js .obra,.js .clinica .paso{
+    opacity:1!important;transform:none!important;}
+  .js .lead .pal{opacity:1!important;}
+  .js .top__in{transition:none;}
+}
+</style>
+<script>window.__RITMO__=[];
+/* ═══ KIT DE MOVIMIENTO ═══ (ver scripts/kit-movimiento.mjs) */
+(function(){
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var raiz = document.documentElement;
+
+  /* head-progress + head-shrink + scroll-title-scale + parallax.
+     Todo en UN solo listener de scroll con rAF: varios listeners sueltos
+     compiten por el hilo principal y el scroll se nota a tirones. */
+  var cab = document.querySelector(".top");
+  if(cab && !cab.querySelector(".barra-lectura")){
+    var b = document.createElement("span");
+    b.className = "barra-lectura"; b.setAttribute("aria-hidden","true");
+    cab.appendChild(b);
+  }
+  var heroFoto = document.querySelector(".hero__foto img,.portada__foto img,.banner__foto img,.hero__img img");
+  var titular  = document.querySelector(".portada h1,.hero h1");
+  var pendiente = false;
+
+  function alScroll(){
+    if(pendiente) return;
+    pendiente = true;
+    requestAnimationFrame(function(){
+      var y = scrollY;
+      var alto = Math.max(1, document.body.scrollHeight - innerHeight);
+      raiz.style.setProperty("--leido", Math.min(1, y / alto).toFixed(4));
+      raiz.classList.toggle("encogido", y > 90);
+
+      if(!reduce){
+        /* parallax: 8% del recorrido visible, solo mientras el hero está en pantalla */
+        if(heroFoto && y < innerHeight * 1.4){
+          heroFoto.style.setProperty("--par", (y * 0.08).toFixed(1) + "px");
+        }
+        /* el titular cede hasta la mitad de la primera pantalla */
+        if(titular && y < innerHeight){
+          titular.style.setProperty("--tit", Math.min(1, y / (innerHeight * 0.7)).toFixed(4));
+        }
+      }
+      pendiente = false;
+    });
+  }
+  addEventListener("scroll", alScroll, { passive:true });
+  alScroll();
+
+  if(reduce) return;
+
+  /* scroll-alternate-sides */
+  var filas = document.querySelectorAll(".serv__f,.zonas__f,.secc__f,.obra,.clinica .paso");
+  if(filas.length){
+    var ioF = new IntersectionObserver(function(es,o){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("dentro"); o.unobserve(e.target); } });
+    },{ rootMargin:"0px 0px -10% 0px", threshold:.15 });
+    filas.forEach(function(f){ ioF.observe(f); });
+    /* red de seguridad, igual que con .rev: si el observer no dispara, se ven */
+    setTimeout(function(){ filas.forEach(function(f){ f.classList.add("dentro"); }); }, 2600);
+  }
+
+  /* scroll-image-zoom · la foto entra al 1.06 y se asienta en 1 */
+  var fotos = document.querySelectorAll(".serv__m img,.zonas__m img,.secc__m img,.obra__media img,.paso__m img,.equipo img,.casa img,.obrador img,.nosotros img,.tienda img,.sobre img");
+  if(fotos.length){
+    fotos.forEach(function(f){ f.style.setProperty("--zoom","1.06"); });
+    var ioZ = new IntersectionObserver(function(es,o){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.style.setProperty("--zoom","1"); o.unobserve(e.target); } });
+    },{ threshold:.2 });
+    fotos.forEach(function(f){ ioZ.observe(f); });
+    setTimeout(function(){ fotos.forEach(function(f){ f.style.setProperty("--zoom","1"); }); }, 2600);
+  }
+
+  /* scroll-text-highlight · se parte en palabras, no en letras: partir por
+     letras deja el texto ilegible para los lectores de pantalla. */
+  var leads = document.querySelectorAll(".lead");
+  leads.forEach(function(p){
+    if(p.querySelector(".pal") || p.children.length) return;   // no tocar si ya tiene marcado
+    var txt = p.textContent;
+    if(txt.length > 240) return;                                // párrafos largos, fuera
+    p.innerHTML = txt.split(" ").map(function(w){
+      return '<span class="pal">' + w + "</span>";
+    }).join(" ");
+  });
+  var ioT = new IntersectionObserver(function(es,o){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("encendido"); o.unobserve(e.target); } });
+  },{ threshold:.35 });
+  leads.forEach(function(p){ ioT.observe(p); });
+  setTimeout(function(){ leads.forEach(function(p){ p.classList.add("encendido"); }); }, 2600);
+
+  /* Alternancia claro/oscuro — la lista sale de RITMO en
+     scripts/kit-movimiento.mjs. No se mide nada en tiempo de ejecución:
+     las secciones a oscurecer están decididas y revisadas una a una. */
+  (function(){
+    var indices = window.__RITMO__ || [];
+    if(!indices.length) return;
+    var secciones = [].slice.call(document.querySelectorAll("main > section, body > section"));
+    indices.forEach(function(i){
+      if(secciones[i]) secciones[i].classList.add("oscura");
+    });
+  })();
+
+  /* cascada: máximo 8, que es lo que aguanta antes de sentirse lento */
+  document.querySelectorAll(".cifras ul,.masonry__g,.tira__scroll,.banda__g,.feed__l,.preg,.susti,.cuotas,.pacto").forEach(function(cont){
+    [].slice.call(cont.children, 0, 8).forEach(function(hijo, i){
+      hijo.setAttribute("data-esc","");
+      hijo.style.setProperty("--i", i);
+    });
+  });
+})();
+</script>
+<!-- ═══ FIN KIT DE MOVIMIENTO ═══ -->
+</body>
+</html>
