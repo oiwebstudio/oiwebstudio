@@ -449,6 +449,90 @@ body.en-foco .dock { display: none; }
 
 @keyframes surgir { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 .anima { animation: surgir .45s var(--muelle) backwards; }
+
+/* ── Movimiento ──────────────────────────────────────────────────────────────
+   Todo se anima con transform y opacity, que son las dos cosas que el móvil
+   pinta sin despeinarse. Nada de animar anchos, altos ni sombras.           */
+
+/* Entrada de la vista al cambiar de pestaña, escalonada por bloques. */
+@keyframes entrar { from { opacity: 0; transform: translateY(16px) scale(.985); } to { opacity: 1; transform: none; } }
+.vista.entrando > *, [id^="dinero"].entrando > *, [id^="sub"].entrando > * {
+  animation: entrar .42s var(--muelle) backwards;
+}
+.entrando > *:nth-child(1) { animation-delay: .01s }
+.entrando > *:nth-child(2) { animation-delay: .045s }
+.entrando > *:nth-child(3) { animation-delay: .08s }
+.entrando > *:nth-child(4) { animation-delay: .115s }
+.entrando > *:nth-child(5) { animation-delay: .15s }
+.entrando > *:nth-child(6) { animation-delay: .185s }
+.entrando > *:nth-child(n+7) { animation-delay: .22s }
+
+/* Filas de las listas: aparecen una detrás de otra, muy seguidas. Solo dentro
+   de las hojas, que se abren una vez; en las vistas se repinta con cada toque
+   y animar ahí sería un baile constante. */
+@keyframes colar { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.hoja-cuerpo .fila, .hoja-cuerpo .progreso, .hoja-cuerpo .diario-entrada,
+.hoja-cuerpo .bloque, .hoja-cuerpo .ejercicio {
+  animation: colar .32s var(--muelle) backwards;
+}
+.hoja-cuerpo > :nth-child(1), .hoja-cuerpo > * > :nth-child(1) { animation-delay: 0s }
+.hoja-cuerpo > :nth-child(2), .hoja-cuerpo > * > :nth-child(2) { animation-delay: .03s }
+.hoja-cuerpo > :nth-child(3), .hoja-cuerpo > * > :nth-child(3) { animation-delay: .06s }
+.hoja-cuerpo > :nth-child(4), .hoja-cuerpo > * > :nth-child(4) { animation-delay: .09s }
+.hoja-cuerpo > :nth-child(n+5) { animation-delay: .11s }
+
+/* Al pulsar, todo se hunde un poco: da sensación de tacto. */
+.carta, .fila, .cat-fila, .sesion-carta, .tarea-cuerpo, .dia-chip, .celda,
+.btn-negro, .btn-suave, .aniadir-linea, .foco-boton, .foco-secundario {
+  will-change: auto;
+}
+.fila[data-ir-resultado]:active, .cat-fila:active, .sesion-carta:active,
+.tarea-cuerpo:active, .btn-suave:active, .aniadir-linea:active {
+  transform: scale(.975);
+  transition: transform .12s var(--muelle);
+}
+
+/* El dock: pastilla que se desliza de una pestaña a otra */
+.dock { position: fixed; }
+.dock .pastilla {
+  position: absolute; top: 8px; bottom: 8px; left: 0; width: 0;
+  border-radius: 28px; background: var(--tinta); z-index: 0;
+  transition: transform .42s var(--muelle), width .42s var(--muelle);
+  pointer-events: none;
+}
+.dock button { position: relative; z-index: 1; background: none !important; }
+.dock button[aria-selected='true'] { color: #fff; }
+.dock button svg { transition: transform .34s var(--muelle); }
+.dock button[aria-selected='true'] svg { transform: translateY(-1px) scale(1.08); }
+.dock button:active svg { transform: scale(.86); }
+
+/* Marcar algo hecho: el check da un saltito */
+@keyframes latido { 0% { transform: scale(1) } 40% { transform: scale(1.22) } 100% { transform: scale(1.05) } }
+.habito[aria-pressed='true'] .check, .check.hecho { animation: latido .34s var(--muelle); }
+
+/* Hojas: al cerrarlas se van hacia abajo en vez de desaparecer de golpe */
+@keyframes bajar { from { transform: none; } to { transform: translateY(100%); } }
+dialog.cerrando .hoja { animation: bajar .26s cubic-bezier(.4,0,1,1) forwards; }
+dialog.cerrando::backdrop { opacity: 0; transition: opacity .26s ease; }
+dialog::backdrop { animation: fundir .3s ease backwards; }
+@keyframes fundir { from { opacity: 0 } to { opacity: 1 } }
+
+/* Pantallas completas (respiro y cronómetro) */
+@keyframes entrarFoco { from { opacity: 0; transform: scale(1.04); } to { opacity: 1; transform: none; } }
+.foco { animation: entrarFoco .38s var(--muelle); }
+
+/* Las líneas de los gráficos se dibujan solas */
+@keyframes trazar { from { stroke-dashoffset: var(--largo); } to { stroke-dashoffset: 0; } }
+.lienzo .linea.dibujar { animation: trazar .9s var(--muelle) forwards; }
+.lienzo .area, .lienzo .punto, .lienzo .halo { animation: fundir .7s ease .35s backwards; }
+
+/* El aro del reparto crece al entrar */
+@keyframes girarAro { from { transform: rotate(-90deg) scale(.86); opacity: 0 } to { transform: rotate(-90deg) scale(1); opacity: 1 } }
+.aro { animation: girarAro .5s var(--muelle); }
+
+/* Brindis con un pelín de rebote */
+.brindis.visible { transition: opacity .18s ease, transform .38s var(--muelle); }
+
 @media (prefers-reduced-motion: reduce) { * { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
 </style>
 </head>
@@ -728,6 +812,7 @@ body.en-foco .dock { display: none; }
 
 <!-- ══ Dock ══════════════════════════════════════════════════════════════ -->
 <nav class="dock" role="tablist" aria-label="Secciones">
+  <span class="pastilla" aria-hidden="true"></span>
   <button role="tab" data-ir="home" aria-selected="true">
     <svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/></svg>Hoy
   </button>
@@ -1767,9 +1852,9 @@ const COLOR_TIPO = { Cripto:'#FF9F0A', Acciones:'#0A84FF', 'Fondos / ETF':'#BF5A
   Inmuebles:'#30D158', 'Liquidez remunerada':'#5AC8FA', 'Líquido':'#1B1D21' };
 
 function pintarPatrimonio(){
-  $('#patrimonio').textContent = euro(patrimonio());
-  $('#liquidoTotal').textContent = euro(liquido());
-  $('#valorInversiones').textContent = euro(valorCartera());
+  animarCifra($('#patrimonio'), patrimonio(), euro);
+  animarCifra($('#liquidoTotal'), liquido(), euro);
+  animarCifra($('#valorInversiones'), valorCartera(), euro);
   const t=tasaAhorroMes();
   $('#tasaAhorro').textContent = t===null?'—':pct(t);
 
@@ -1940,6 +2025,7 @@ function pintarEvolucion(){
         <circle class="punto" cx="${x(serie.length-1).toFixed(1)}" cy="${y(fin).toFixed(1)}" r="3.2"/>
       </svg>
       <div class="eje-x"><span>${fmtCorto(serie[0].k)}</span><span class="num">máx ${euro(max)}</span><span>hoy</span></div>`;
+    trazarLinea(caja1.querySelector('.lienzo'));
   }
 
   // Reparto por tipo de activo, con el líquido incluido
@@ -2425,6 +2511,7 @@ function pintarCuerpo(){
         <span>media de los últimos ${ultimos.length}: <b class="num">${numF.format(media)} kg</b></span>
         <span class="num">${numF.format(max)} kg</span></div>`
     :`<p class="pie-nota">Con dos pesajes ya sale la línea.</p>`}`;
+  trazarLinea($('#pesoResumen .lienzo'));
 
   $('#pesoHistorial').innerHTML=[...lista].reverse().slice(0,20).map(p=>`
     <div class="fila">
@@ -3194,13 +3281,82 @@ async function alternarNotificaciones(){
   avisar(E.recordatorio.activo?`Recordatorio a las ${E.recordatorio.hora}`:'Recordatorio desactivado');
 }
 
+/* ═══════════════════════════ MOVIMIENTO ══════════════════════════════════
+   Un puñado de detalles para que la app no dé saltos secos. Todo se apaga
+   solo si el móvil tiene activado «reducir movimiento».                    */
+const quieto = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/** Reinicia una animación CSS: quitar la clase, forzar reflujo y volver a poner. */
+function reanimar(el, clase){
+  if (!el || quieto()) return;
+  el.classList.remove(clase);
+  void el.offsetWidth;
+  el.classList.add(clase);
+}
+
+/** La pastilla negra del dock viaja hasta la pestaña elegida. */
+function moverPastilla(){
+  const pastilla=$('.dock .pastilla');
+  const activa=$('.dock button[aria-selected="true"]');
+  if (!pastilla||!activa) return;
+  pastilla.style.width=`${activa.offsetWidth}px`;
+  pastilla.style.transform=`translateX(${activa.offsetLeft}px)`;
+}
+
+/** Cuenta desde el número que había hasta el nuevo, en medio segundo. */
+function animarCifra(el, hasta, formato){
+  if (!el) return;
+  const desde=Number(el.dataset.valor??0);
+  el.dataset.valor=String(hasta);
+  if (quieto() || desde===hasta || Math.abs(hasta-desde)<0.01){ el.textContent=formato(hasta); return; }
+  const t0=performance.now(), dura=520;
+  const paso=ahora=>{
+    const t=Math.min(1,(ahora-t0)/dura);
+    const suave=1-Math.pow(1-t,3);           // frena al final
+    el.textContent=formato(desde+(hasta-desde)*suave);
+    if (t<1) requestAnimationFrame(paso);
+  };
+  requestAnimationFrame(paso);
+}
+
+/** Dibuja la línea de un gráfico como si la estuvieran trazando. */
+function trazarLinea(svg){
+  const linea=svg?.querySelector('.linea');
+  if (!linea || quieto()) return;
+  const largo=linea.getTotalLength?.();
+  if (!largo) return;
+  linea.style.setProperty('--largo', largo);
+  linea.style.strokeDasharray=largo;
+  reanimar(linea,'dibujar');
+}
+
+// Cerrar una hoja la baja en vez de borrarla de golpe. Se hace aquí, sobre el
+// método de siempre, para que valga en los veintitantos sitios que la cierran.
+const cerrarNativo=HTMLDialogElement.prototype.close;
+HTMLDialogElement.prototype.close=function(...args){
+  const hoja=this.querySelector('.hoja');
+  if (!this.open || !hoja || quieto() || this.classList.contains('cerrando'))
+    return cerrarNativo.apply(this,args);
+  this.classList.add('cerrando');
+  const rematar=()=>{
+    if (!this.classList.contains('cerrando')) return;
+    this.classList.remove('cerrando');
+    cerrarNativo.apply(this,args);
+  };
+  hoja.addEventListener('animationend', rematar, { once:true });
+  setTimeout(rematar, 320);   // por si la animación no llega a dispararse
+};
+
 /* ═══════════════════════════ ROUTER ══════════════════════════════════════ */
 function ir(vista){
+  const mismo = UI.vista===vista;
   UI.vista=vista;
   $$('.vista').forEach(v=>v.classList.toggle('oculto', v.dataset.vista!==vista));
   $$('.dock button').forEach(b=>b.setAttribute('aria-selected', String(b.dataset.ir===vista)));
+  moverPastilla();
   window.scrollTo({top:0});
   pintar();
+  if (!mismo) reanimar($(`.vista[data-vista="${vista}"]`), 'entrando');
 }
 
 function pintar(){
@@ -3353,6 +3509,7 @@ $('#segDinero').addEventListener('click', e=>{
   $$('#segDinero button').forEach(x=>x.setAttribute('aria-selected',String(x===b)));
   window.scrollTo({top:0,behavior:'smooth'});
   pintarPatrimonio();
+  reanimar($(`#dinero${UI.subDinero[0].toUpperCase()}${UI.subDinero.slice(1)}`), 'entrando');
 });
 
 $('#segRango').addEventListener('click', e=>{
@@ -4016,6 +4173,7 @@ $('#segEntreno').addEventListener('click', e=>{
   UI.entrenoSub=b.dataset.sub;
   $$('#segEntreno button').forEach(x=>x.setAttribute('aria-selected',String(x===b)));
   pintarEntreno();
+  reanimar($(`#sub${UI.entrenoSub[0].toUpperCase()}${UI.entrenoSub.slice(1)}`), 'entrando');
 });
 
 $('#semAtras').addEventListener('click',()=>{ UI.semLunes.setDate(UI.semLunes.getDate()-7); UI.entrenoDia=claveDe(UI.semLunes); pintarEntreno(); });
@@ -4416,6 +4574,10 @@ if ('serviceWorker' in navigator){
     .catch(()=>{});
   caches?.keys?.().then(ks=>ks.forEach(k=>caches.delete(k))).catch(()=>{});
 }
+
+moverPastilla();
+addEventListener('resize', moverPastilla);
+reanimar($('.vista[data-vista="home"]'), 'entrando');
 
 refrescarCategorias();
 refrescarCategoriasFijo();

@@ -20,21 +20,25 @@ const TRAZO = [255, 255, 255];
 
 /* ── Geometría del logo, en un lienzo imaginario de 100 × 100 ──────────────
    Cambiar estos números es cambiar el logo: todo lo demás se adapta.        */
-const GROSOR = 6.2;                // ancho del trazo
+// Medido sobre el logo original: barras anchas y juntas, trazo fino y la
+// flecha subiendo muy por encima de la tercera.
+const GROSOR = 4.6;                // ancho del trazo
 const LOGO = {
   // Barras: [x izquierda, x derecha, y arriba, y abajo]
   barras: [
-    [8, 26, 62, 92],
-    [33, 51, 48, 92],
-    [58, 76, 34, 92],
+    [5.8, 30.8, 55, 100],
+    [36.0, 59.7, 48, 100],
+    [63.7, 86.6, 33, 100],
   ],
-  tilde: [8, 26, 52],              // la rayita sobre la primera barra
+  tilde: [6.5, 29.5, 46],          // la rayita sobre la primera barra
   // Trazos sueltos: el gancho de la barra del medio y la flecha de la alta
+  // Ojo: el gancho y la flecha arrancan sobre el trazo vertical de su barra,
+  // por debajo de donde empieza la curva del capuchón, para que se fundan.
   lineas: [
-    [[33, 48], [37, 38], [49, 36]],           // gancho de la segunda barra
-    [[58, 34], [68, 20], [88, 6]],            // cuerpo de la flecha
-    [[88, 6], [72, 8]],                       // punta, lado izquierdo
-    [[88, 6], [85, 21]],                      // punta, lado derecho
+    [[36, 57], [36, 42], [40, 36], [52, 34]],           // gancho de la segunda barra
+    [[63.7, 46], [64.5, 30], [72, 17], [91, 3]],        // cuerpo de la flecha
+    [[91, 3], [75, 6]],                                 // punta, lado izquierdo
+    [[91, 3], [88, 19]],                                // punta, lado derecho
   ],
 };
 
