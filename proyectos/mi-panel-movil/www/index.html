@@ -215,6 +215,11 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
 .serie input { text-align: center; padding: 9px 4px; font-size: 15px; }
 .serie .check { width: 32px; height: 32px; margin: 0 auto; }
 .serie .quitar-serie { color: var(--txt-3); font-size: 15px; text-align: center; }
+.serie.correr { grid-template-columns: 18px 1fr 1fr 1fr 32px 22px; gap: 5px; }
+.serie.correr input { padding: 9px 2px; font-size: 14px; }
+.serie.correr .check { width: 30px; height: 30px; }
+.serie.correr.cab { margin-bottom: 2px; }
+.serie.correr.cab small { font-size: 9.5px; font-weight: 700; color: var(--txt-3); text-transform: uppercase; letter-spacing: .03em; }
 
 .aniadir-linea { width: 100%; text-align: center; font-size: 13px; font-weight: 700; color: var(--azul); padding: 9px; border-radius: 13px; background: rgba(10,132,255,.07); margin-top: 6px; }
 
@@ -238,6 +243,17 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
 /* Bloques de resistencia */
 .bloque { border-radius: var(--r-s); background: var(--fondo); padding: 12px 14px; margin-bottom: 10px; }
 .bloque > b { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--txt-2); margin-bottom: 8px; }
+
+/* ── Agenda ─────────────────────────────────────────────────────────────── */
+.tarea { display: flex; align-items: flex-start; gap: 11px; padding: 11px 2px; border-bottom: 1px solid rgba(0,0,0,.05); }
+.tarea:last-child { border-bottom: none; }
+.tarea .check { margin-top: 2px; }
+.tarea-cuerpo { flex: 1; min-width: 0; text-align: left; }
+.tarea-cuerpo b { display: block; font-size: 14.5px; font-weight: 600; }
+.tarea-cuerpo span { display: block; font-size: 11.5px; color: var(--txt-2); margin-top: 2px; }
+.tarea-cuerpo .hora { font-style: normal; font-weight: 700; color: var(--txt); }
+.tarea-cuerpo .notas { font-size: 12.5px; color: var(--txt-2); margin-top: 4px; }
+.tarea.lista .tarea-cuerpo b { text-decoration: line-through; color: var(--txt-3); }
 
 /* ── Metas del día ──────────────────────────────────────────────────────── */
 .rejilla-emoji { display: grid; grid-template-columns: repeat(8, 1fr); gap: 6px; }
@@ -334,7 +350,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
   transform: translateX(-50%);
   z-index: 50;
   width: min(500px, calc(100vw - 24px));
-  display: grid; grid-template-columns: repeat(5, 1fr);
+  display: grid; grid-template-columns: repeat(6, 1fr);
   background: rgba(255, 255, 255, 0.72);
   backdrop-filter: blur(25px) saturate(180%);
   -webkit-backdrop-filter: blur(25px) saturate(180%);
@@ -344,8 +360,8 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
   padding: 8px;
 }
 
-.dock button { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 9px 2px; border-radius: 30px; font-size: 10px; font-weight: 600; color: var(--txt-2); transition: background .2s ease, color .2s ease; }
-.dock button svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.dock button { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 9px 1px; border-radius: 28px; font-size: 9px; font-weight: 600; letter-spacing: -0.01em; color: var(--txt-2); transition: background .2s ease, color .2s ease; }
+.dock button svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
 .dock button[aria-selected='true'] { background: var(--tinta); color: #fff; }
 .dock button:active { opacity: .7; }
 
@@ -467,6 +483,11 @@ body.en-foco .dock { display: none; }
       <div style="font-size:13px; color:rgba(255,255,255,.6); margin-top:10px" id="prioridadPie"></div>
     </div>
 
+    <div class="titulo-seccion"><h2>Tareas de hoy</h2>
+      <button class="accion azul" data-ir-tab="agenda">Agenda</button>
+      <span class="accion" id="ratioTareas"></span></div>
+    <div class="carta" id="tareasHoy"></div>
+
     <div class="titulo-seccion"><h2>Metas del día</h2>
       <button class="accion azul" data-editar-metas-dia>Editar</button>
       <span class="accion" id="agendaRatio"></span></div>
@@ -475,7 +496,9 @@ body.en-foco .dock { display: none; }
     <div class="titulo-seccion"><h2>Entreno de hoy</h2><button class="accion azul" data-ir-tab="entreno">Planificar</button></div>
     <div class="carta" id="agendaEntreno"></div>
 
-    <div class="titulo-seccion"><h2>Trabajo profundo</h2><span class="accion" id="focoHoy"></span></div>
+    <div class="titulo-seccion"><h2>Trabajo profundo</h2>
+      <button class="accion azul" data-ver-semana>Mi semana</button>
+      <span class="accion" id="focoHoy"></span></div>
     <div class="carta">
       <div class="fila" style="border:none; padding-top:0">
         <div class="fila-icono" style="background:var(--tinta); color:#fff">🌱</div>
@@ -506,6 +529,7 @@ body.en-foco .dock { display: none; }
       <button data-sub-dinero="resumen" aria-selected="true">Resumen</button>
       <button data-sub-dinero="evolucion" aria-selected="false">Evolución</button>
       <button data-sub-dinero="gastos" aria-selected="false">Gastos</button>
+      <button data-sub-dinero="cobros" aria-selected="false">Cobros</button>
     </div>
 
     <!-- ── Sub 2.1 · Resumen ── -->
@@ -560,12 +584,50 @@ body.en-foco .dock { display: none; }
         <div id="resumenMes"></div>
       </div>
 
-      <div class="titulo-seccion"><h2>En qué se va</h2><span class="accion" id="gastoTotalMes"></span></div>
+      <div class="titulo-seccion"><h2>En qué se va</h2>
+        <button class="accion azul" id="btnTopes">Topes</button>
+        <span class="accion" id="gastoTotalMes"></span></div>
       <div class="carta" id="listaCategorias"></div>
 
       <div class="titulo-seccion"><h2>Tendencia por meses</h2></div>
       <div class="carta" id="tendenciaGasto"></div>
     </div>
+
+    <!-- ── Sub 2.4 · Cobros de clientes ── -->
+    <div id="dineroCobros" class="oculto">
+      <div class="carta" style="margin-top:6px">
+        <div class="resumen-tri">
+          <div><small>Por cobrar</small><b class="num" id="cobrosPendientes">0 €</b></div>
+          <div><small>Vencido</small><b class="num neg" id="cobrosVencidos">0 €</b></div>
+          <div><small>Cobrado este año</small><b class="num pos" id="cobrosAnio">0 €</b></div>
+        </div>
+      </div>
+
+      <div class="titulo-seccion"><h2>Pendientes</h2></div>
+      <div class="carta" id="listaCobros"></div>
+      <button class="btn-negro" id="btnNuevoCobro" style="margin-top:12px">+ Nuevo cobro</button>
+
+      <div class="titulo-seccion"><h2>Ya cobrado</h2></div>
+      <div class="carta" id="listaCobrados"></div>
+    </div>
+  </section>
+
+  <!-- ══ VISTA · AGENDA ══════════════════════════════════════════════════ -->
+  <section class="vista oculto" data-vista="agenda">
+    <div class="titulo-seccion" style="margin-top:6px"><h2>Agenda</h2><button class="accion azul" id="btnHoyAgenda">Hoy</button></div>
+
+    <div class="cal-nav" style="margin-bottom:10px">
+      <button class="circular" id="agAtras">‹</button>
+      <b class="num" id="agTitulo"></b>
+      <button class="circular" id="agAdelante">›</button>
+    </div>
+    <div class="tira-semana" id="agTira"></div>
+
+    <div class="carta" id="agDia"></div>
+    <button class="btn-negro" id="btnNuevaTarea" style="margin-top:12px">+ Nueva tarea</button>
+
+    <div class="titulo-seccion"><h2>Lo demás de ese día</h2></div>
+    <div class="carta" id="agResto"></div>
   </section>
 
   <!-- ══ VISTA 3 · METAS & CALENDARIO ════════════════════════════════════ -->
@@ -606,7 +668,8 @@ body.en-foco .dock { display: none; }
 
     <div class="segmentado" id="segEntreno">
       <button data-sub="semana" aria-selected="true">Semana</button>
-      <button data-sub="carga" aria-selected="false">Carga & Evolución</button>
+      <button data-sub="carga" aria-selected="false">Carga</button>
+      <button data-sub="cuerpo" aria-selected="false">Cuerpo</button>
     </div>
 
     <div id="subSemana">
@@ -624,6 +687,13 @@ body.en-foco .dock { display: none; }
       <div class="carta" id="cargaSemanal"></div>
       <div class="titulo-seccion"><h2 style="font-size:16px">Evolución de cargas</h2><span class="accion">mejor kg por semana</span></div>
       <div class="carta" id="evolucionCargas"></div>
+    </div>
+
+    <div id="subCuerpo" class="oculto">
+      <div class="carta" style="margin-top:4px" id="pesoResumen"></div>
+      <button class="btn-negro" id="btnNuevoPeso" style="margin-top:12px">+ Anotar peso de hoy</button>
+      <div class="titulo-seccion"><h2 style="font-size:16px">Historial</h2></div>
+      <div class="carta" id="pesoHistorial"></div>
     </div>
   </section>
 
@@ -653,6 +723,9 @@ body.en-foco .dock { display: none; }
 <nav class="dock" role="tablist" aria-label="Secciones">
   <button role="tab" data-ir="home" aria-selected="true">
     <svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/></svg>Hoy
+  </button>
+  <button role="tab" data-ir="agenda" aria-selected="false">
+    <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Agenda
   </button>
   <button role="tab" data-ir="patrimonio" aria-selected="false">
     <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="13" rx="2.5"/><path d="M2 10.5h20"/><path d="M6 15h3"/></svg>Dinero
@@ -828,6 +901,164 @@ body.en-foco .dock { display: none; }
   </form>
 </dialog>
 
+<!-- ══ Pantalla del cronómetro de series ═════════════════════════════════ -->
+<section class="foco oculto" id="pantallaGuia" aria-hidden="true">
+  <div class="foco-caja">
+    <span class="foco-etq" id="guiaFase">Serie 1 de 8</span>
+    <h2 class="foco-titulo" id="guiaQue">300 m</h2>
+    <div class="foco-reloj">
+      <svg viewBox="0 0 220 220">
+        <circle class="aro-fondo" cx="110" cy="110" r="100"/>
+        <circle class="aro-avance" cx="110" cy="110" r="100" id="guiaAro"/>
+      </svg>
+      <div class="foco-cuenta"><b class="num" id="guiaTiempo">0:00</b><small id="guiaPie"></small></div>
+    </div>
+    <div class="foco-acciones">
+      <button class="foco-secundario" id="btnGuiaPrincipal">✓ Serie hecha</button>
+      <button class="foco-secundario peligro" id="btnGuiaSalir">Terminar</button>
+    </div>
+    <p class="pie-nota" style="color:rgba(255,255,255,.4); margin-top:14px" id="guiaHechas"></p>
+  </div>
+</section>
+
+<!-- ══ Hoja: tarea de la agenda ══════════════════════════════════════════ -->
+<dialog id="hojaTarea">
+  <form method="dialog" class="hoja" id="formTarea">
+    <div class="hoja-asa"></div>
+    <div class="hoja-cab"><h3 id="tituloTarea">Nueva tarea</h3><button type="button" class="cerrar" data-cerrar="hojaTarea">Cerrar</button></div>
+    <div class="hoja-cuerpo">
+      <div class="segmentado">
+        <button type="button" data-radio="ambitoT" data-valor="personal" aria-selected="true">🏡 Personal</button>
+        <button type="button" data-radio="ambitoT" data-valor="empresa" aria-selected="false">💼 Empresa</button>
+      </div>
+      <label class="campo"><span>¿Qué hay que hacer?</span><input name="titulo" required placeholder="Llamar al cliente, comprar…" autocomplete="off"></label>
+      <div class="par">
+        <label class="campo"><span>Día</span><input type="date" name="fecha" required></label>
+        <label class="campo"><span>Hora (opcional)</span><input type="time" name="hora"></label>
+      </div>
+      <label class="campo"><span>Se repite</span>
+        <select name="repite">
+          <option value="no">Solo ese día</option>
+          <option value="diaria">Todos los días</option>
+          <option value="laborable">De lunes a viernes</option>
+          <option value="semanal">Cada semana, ese día</option>
+          <option value="mensual">Cada mes, ese número</option>
+        </select></label>
+      <label class="campo oculto" id="campoHasta"><span>Hasta (opcional)</span><input type="date" name="hasta"></label>
+      <label class="campo"><span>Notas</span><textarea name="notas" placeholder="Lo que no quieras olvidar"></textarea></label>
+      <label class="campo"><span>Aviso</span>
+        <select name="aviso">
+          <option value="">Sin aviso</option>
+          <option value="0">A la hora</option>
+          <option value="10">10 minutos antes</option>
+          <option value="30">30 minutos antes</option>
+          <option value="60">1 hora antes</option>
+        </select></label>
+      <p class="error" id="errTarea"></p>
+      <button type="button" class="btn-suave peligro oculto" id="btnBorrarTarea">Borrar esta tarea</button>
+    </div>
+    <div class="hoja-pie">
+      <button type="button" class="btn-suave" data-cerrar="hojaTarea">Cancelar</button>
+      <button type="submit" class="btn-negro" id="btnGuardarTarea">Crear</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- ══ Hoja: cobro de cliente ════════════════════════════════════════════ -->
+<dialog id="hojaCobro">
+  <form method="dialog" class="hoja" id="formCobro">
+    <div class="hoja-asa"></div>
+    <div class="hoja-cab"><h3 id="tituloCobro">Nuevo cobro</h3><button type="button" class="cerrar" data-cerrar="hojaCobro">Cerrar</button></div>
+    <div class="hoja-cuerpo">
+      <label class="campo"><span>Cliente</span><input name="cliente" required placeholder="Errotatxo" autocomplete="off"></label>
+      <label class="campo"><span>Concepto</span><input name="concepto" placeholder="Web corporativa" autocomplete="off"></label>
+      <div class="par">
+        <label class="campo"><span>Importe (€)</span><input name="importe" required inputmode="decimal" placeholder="1200"></label>
+        <label class="campo"><span>Emitida</span><input type="date" name="emitida"></label>
+      </div>
+      <label class="campo"><span>Vence</span><input type="date" name="vence"></label>
+      <p style="font-size:12.5px; color:var(--txt-2); margin:0 0 8px">Al marcarla cobrada se apunta sola como ingreso de la empresa.</p>
+      <p class="error" id="errCobro"></p>
+      <button type="button" class="btn-suave peligro oculto" id="btnBorrarCobro">Borrar este cobro</button>
+    </div>
+    <div class="hoja-pie">
+      <button type="button" class="btn-suave" data-cerrar="hojaCobro">Cancelar</button>
+      <button type="submit" class="btn-negro" id="btnGuardarCobro">Crear</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- ══ Hoja: peso y medidas ══════════════════════════════════════════════ -->
+<dialog id="hojaPeso">
+  <form method="dialog" class="hoja" id="formPeso">
+    <div class="hoja-asa"></div>
+    <div class="hoja-cab"><h3>Anotar peso</h3><button type="button" class="cerrar" data-cerrar="hojaPeso">Cerrar</button></div>
+    <div class="hoja-cuerpo">
+      <div class="par">
+        <label class="campo"><span>Peso (kg)</span><input name="kg" required inputmode="decimal" placeholder="74,5"></label>
+        <label class="campo"><span>Día</span><input type="date" name="fecha" required></label>
+      </div>
+      <div class="par">
+        <label class="campo"><span>Cintura (cm)</span><input name="cintura" inputmode="decimal" placeholder="82"></label>
+        <label class="campo"><span>Nota</span><input name="nota" placeholder="en ayunas" autocomplete="off"></label>
+      </div>
+      <p class="error" id="errPeso"></p>
+    </div>
+    <div class="hoja-pie"><button type="button" class="btn-suave" data-cerrar="hojaPeso">Cancelar</button><button type="submit" class="btn-negro">Guardar</button></div>
+  </form>
+</dialog>
+
+<!-- ══ Hoja: topes de gasto ══════════════════════════════════════════════ -->
+<dialog id="hojaTopes">
+  <div class="hoja">
+    <div class="hoja-asa"></div>
+    <div class="hoja-cab"><h3>Topes del mes</h3><button type="button" class="cerrar" data-cerrar="hojaTopes">Cerrar</button></div>
+    <div class="hoja-cuerpo">
+      <p style="font-size:13px; color:var(--txt-2); margin:0 0 12px">Cuánto quieres gastar como mucho en cada cosa. Déjalo vacío para no ponerte tope.</p>
+      <div id="listaTopes"></div>
+    </div>
+    <div class="hoja-pie"><button type="button" class="btn-negro" data-cerrar="hojaTopes" style="flex:1">Listo</button></div>
+  </div>
+</dialog>
+
+<!-- ══ Hoja: ajustes y copia de seguridad ════════════════════════════════ -->
+<dialog id="hojaAjustes">
+  <div class="hoja">
+    <div class="hoja-asa"></div>
+    <div class="hoja-cab"><h3>Ajustes</h3><button type="button" class="cerrar" data-cerrar="hojaAjustes">Cerrar</button></div>
+    <div class="hoja-cuerpo">
+      <label class="campo"><span>Tu nombre</span><input id="ajusteNombre" autocomplete="off"></label>
+
+      <div class="titulo-seccion" style="margin:16px 3px 10px"><h2 style="font-size:16px">Avisos</h2></div>
+      <p style="font-size:13px; color:var(--txt-2); margin:0 0 10px" id="estadoAvisos"></p>
+      <button class="btn-suave" id="btnPermisoAvisos">Activar avisos</button>
+
+      <div class="titulo-seccion" style="margin:20px 3px 10px"><h2 style="font-size:16px">Copia de seguridad</h2></div>
+      <p style="font-size:13px; color:var(--txt-2); margin:0 0 10px" id="resumenDatos"></p>
+      <div class="par">
+        <button class="btn-suave" id="btnExportar">Exportar</button>
+        <button class="btn-suave" id="btnImportar">Importar</button>
+      </div>
+      <input type="file" id="ficheroImportar" accept="application/json,.json" class="oculto">
+      <p class="pie-nota">Tus datos viven solo en este dispositivo. Si desinstalas la app se van con ella: exporta de vez en cuando y guarda el archivo donde quieras.</p>
+
+      <div class="titulo-seccion" style="margin:20px 3px 10px"><h2 style="font-size:16px">Empezar de cero</h2></div>
+      <button class="btn-suave peligro" id="btnBorrarTodo">Borrar todos mis datos</button>
+    </div>
+    <div class="hoja-pie"><button type="button" class="btn-negro" data-cerrar="hojaAjustes" style="flex:1">Listo</button></div>
+  </div>
+</dialog>
+
+<!-- ══ Hoja: resumen de la semana ════════════════════════════════════════ -->
+<dialog id="hojaSemana">
+  <div class="hoja">
+    <div class="hoja-asa"></div>
+    <div class="hoja-cab"><h3 id="tituloSemana">Tu semana</h3><button type="button" class="cerrar" data-cerrar="hojaSemana">Cerrar</button></div>
+    <div class="hoja-cuerpo" id="cuerpoSemana"></div>
+    <div class="hoja-pie"><button type="button" class="btn-negro" data-cerrar="hojaSemana" style="flex:1">Cerrar</button></div>
+  </div>
+</dialog>
+
 <!-- ══ Hoja: alta y edición de meta del día ══════════════════════════════ -->
 <dialog id="hojaHabito">
   <form method="dialog" class="hoja" id="formHabito">
@@ -968,6 +1199,10 @@ const PLANTILLA_ESTADO = () => ({
   plantillas: [],
   habitos: HABITOS_INICIALES.map(h=>({...h})),   // metas del día: {id, emoji, nombre, pista}
   foco: [],                // respiros: {id, fecha, tarea, minutos, hechos, completado, salidas}
+  tareas: [],              // agenda: {id, fecha, hora, titulo, ambito, notas, repite, hasta, hechas[]}
+  cobros: [],              // facturas: {id, cliente, concepto, importe, emitida, vence, cobrada}
+  pesos: [],               // cuerpo: {fecha, kg, cintura, nota}
+  topes: {},               // gasto máximo por categoría: {categoria: importe}
   entradas: [],            // diario: {id, fecha, ambito, animo, prioridad, gratitud, enfoque}
   inversiones: [],         // {id, nombre, tipo, ticker, unidades, precioCompra, precioActual?, actualizado?, compradoEl?, moneda?}
   historial: [],           // una foto al día: {f, liq, inv, total, tipos:{tipo:valor}}
@@ -1072,6 +1307,10 @@ const UI = {
   filtroDiario: '',
   metaEditando: null,      // id de la meta abierta en la hoja, o null si es alta
   habitoEditando: null,    // ídem para las metas del día
+  tareaEditando: null,
+  cobroEditando: null,
+  agendaDia: HOY,
+  entrenoSub2: 'semana',   // sub-pestaña de Entreno: semana | carga | cuerpo
   subDinero: 'resumen',
   rango: 180,              // días que abarca el gráfico de patrimonio; 0 = todo
   gastoCursor: new Date(), // mes que se está mirando en «Gastos»
@@ -1259,6 +1498,24 @@ function pintarHome(){
     ? `Del diario de hoy · energía ${conPrioridad.animo}/5`
     : 'Escribe el diario matutino y tu prioridad aparecerá aquí.';
 
+  // Tareas de hoy
+  const tareas = tareasDe(HOY);
+  const tareasHechas = tareas.filter(t=>tareaHecha(t,HOY)).length;
+  $('#ratioTareas').textContent = tareas.length?`${tareasHechas}/${tareas.length}`:'';
+  $('#tareasHoy').innerHTML = tareas.length
+    ? tareas.map(t=>{
+        const hecha=tareaHecha(t,HOY);
+        return `<div class="tarea ${hecha?'lista':''}">
+          <button class="check ${hecha?'hecho':''}" data-tarea-check="${t.id}" aria-label="Hecha">
+            <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></button>
+          <button class="tarea-cuerpo" data-tarea-editar="${t.id}">
+            <b>${esc(t.titulo)}</b>
+            <span>${t.hora?`<i class="hora num">${t.hora}</i> · `:''}${t.ambito==='empresa'?'💼 empresa':'🏡 personal'}</span>
+          </button>
+        </div>`;
+      }).join('')
+    : `<div class="vacio"><b>Nada apuntado para hoy</b>Añade tareas desde la Agenda.</div>`;
+
   // Hábitos de hoy
   const hechos = ticksDe(HOY);
   $('#agendaRatio').textContent = `${hechos.length}/${habitos().length}`;
@@ -1311,6 +1568,128 @@ function pintarHome(){
   $('#puntitoDiario').classList.toggle('oculto', !sinDiario);
 }
 
+/* ═══════════════════════════ AGENDA ══════════════════════════════════════
+   Las tareas que se repiten no se copian a cada día: se guarda una sola con
+   su regla y aquí se calcula si toca. Lo hecho se apunta por fecha.        */
+function tareasDe(k){
+  const d=desdeClave(k);
+  const finde=[0,6].includes(d.getDay());
+  return E.tareas.filter(t=>{
+    if (t.fecha>k) return false;
+    if (t.hasta && k>t.hasta) return false;
+    switch (t.repite){
+      case 'diaria':     return true;
+      case 'laborable':  return !finde;
+      case 'semanal':    return desdeClave(t.fecha).getDay()===d.getDay();
+      case 'mensual':    return desdeClave(t.fecha).getDate()===d.getDate();
+      default:           return t.fecha===k;
+    }
+  }).sort((a,b)=>(a.hora||'99:99').localeCompare(b.hora||'99:99'));
+}
+
+const tareaHecha = (t,k) => (t.hechas||[]).includes(k);
+const pendientesDe = k => tareasDe(k).filter(t=>!tareaHecha(t,k));
+
+function alternarTarea(id, k){
+  const t=E.tareas.find(x=>x.id===id); if (!t) return;
+  t.hechas ||= [];
+  const i=t.hechas.indexOf(k);
+  if (i>=0) t.hechas.splice(i,1); else t.hechas.push(k);
+  guardar(); vibrar(); pintar();
+}
+
+const ETIQUETA_REPITE = { diaria:'cada día', laborable:'de lunes a viernes', semanal:'cada semana', mensual:'cada mes' };
+
+function pintarAgenda(){
+  const k=UI.agendaDia;
+  const f=desdeClave(k);
+  const lunes=lunesDe(f);
+  const domingo=new Date(lunes); domingo.setDate(domingo.getDate()+6);
+  const fmt=d=>d.toLocaleDateString('es-ES',{day:'numeric',month:'short'});
+  $('#agTitulo').textContent=`${fmt(lunes)} – ${fmt(domingo)}`;
+
+  $('#agTira').innerHTML=DIAS_CORTO.map((nom,i)=>{
+    const d=new Date(lunes); d.setDate(d.getDate()+i);
+    const kk=claveDe(d);
+    const pend=pendientesDe(kk).length;
+    const marca=pend?'plan':(tareasDe(kk).length?'hecha':'');
+    return `<button class="dia-chip ${kk===HOY?'hoy':''} ${kk===k?'elegido':''}" data-agenda-dia="${kk}">
+      <small>${nom}</small><b class="num">${d.getDate()}</b><span class="marca ${marca}"></span>
+    </button>`;
+  }).join('');
+
+  const lista=tareasDe(k);
+  const hechas=lista.filter(t=>tareaHecha(t,k)).length;
+  $('#agDia').innerHTML=`
+    <div class="titulo-seccion" style="margin:2px 0 8px"><h2 style="font-size:16px">
+      ${k===HOY?'Hoy':f.toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'}).replace(/^./,c=>c.toUpperCase())}</h2>
+      <span class="accion">${lista.length?`${hechas}/${lista.length}`:''}</span></div>
+    ${lista.length
+      ? lista.map(t=>{
+          const hecha=tareaHecha(t,k);
+          return `<div class="tarea ${hecha?'lista':''}">
+            <button class="check ${hecha?'hecho':''}" data-tarea-check="${t.id}" aria-label="Hecha">
+              <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></button>
+            <button class="tarea-cuerpo" data-tarea-editar="${t.id}">
+              <b>${esc(t.titulo)}</b>
+              <span>${t.hora?`<i class="hora num">${t.hora}</i> · `:''}${t.ambito==='empresa'?'💼 empresa':'🏡 personal'}${t.repite&&t.repite!=='no'?` · ${ETIQUETA_REPITE[t.repite]}`:''}${t.aviso!==''&&t.aviso!=null&&t.hora?' · 🔔':''}</span>
+              ${t.notas?`<span class="notas">${esc(t.notas)}</span>`:''}
+            </button>
+          </div>`;
+        }).join('')
+      : `<div class="vacio"><b>Día libre</b>Nada apuntado. Añade una tarea o disfruta del hueco.</div>`}`;
+
+  // Lo demás del día: entreno, metas del día y diario
+  const sesiones=sesionesDe(k);
+  const ticks=ticksDe(k);
+  const entradas=entradasDe(k);
+  const respiros=E.foco.filter(x=>x.fecha===k);
+  $('#agResto').innerHTML=`
+    ${sesiones.length?sesiones.map(s=>`
+      <button class="sesion-carta" data-abrir-sesion="${k}|${s.id}">
+        <span class="icono">${s.clase==='fuerza'?'🏋️':s.deporte==='ciclismo'?'🚴':'🏃'}</span>
+        <span class="qué"><b>${esc(s.nombre)}</b><span>${s.clase==='fuerza'?'fuerza':esc(s.modo||'resistencia')}</span></span>
+        <span class="estado ${s.hecha?'hecha':''}">${s.hecha?'Hecha':'Planificada'}</span>
+      </button>`).join(''):''}
+    <div class="fila">
+      <div class="fila-icono">✅</div>
+      <div class="fila-txt"><b>Metas del día</b><span>${habitos().length?habitos().filter(h=>ticks.includes(h.id)).map(h=>h.nombre).join(', ')||'ninguna marcada':'sin metas del día'}</span></div>
+      <div class="fila-cifra num">${ticks.length}/${habitos().length}</div>
+    </div>
+    ${respiros.length?`
+      <div class="fila">
+        <div class="fila-icono">🌱</div>
+        <div class="fila-txt"><b>Trabajo profundo</b><span>${respiros.length} respiro(s)</span></div>
+        <div class="fila-cifra num">${respiros.reduce((a,x)=>a+x.hechos,0)} min</div>
+      </div>`:''}
+    ${entradas.length?entradas.map(e=>`
+      <div class="diario-entrada">
+        <div class="fecha">📓 <span class="ambito-chip ${e.ambito}">${e.ambito}</span> energía ${e.animo}/5</div>
+        ${e.prioridad?`<p><b>Prioridad:</b> ${esc(e.prioridad)}</p>`:''}
+      </div>`).join(''):`<div class="vacio" style="padding:14px 8px"><b>Sin diario ese día</b>${k===HOY?'Escríbelo desde la campana de arriba.':'&nbsp;'}</div>`}`;
+}
+
+/** Abre la hoja de tareas: sin id crea, con id edita. */
+function abrirTarea(id){
+  const f=$('#formTarea'); f.reset(); $('#errTarea').textContent='';
+  UI.tareaEditando=id||null;
+  const t=id?E.tareas.find(x=>x.id===id):null;
+
+  if (t){
+    f.titulo.value=t.titulo; f.fecha.value=t.fecha; f.hora.value=t.hora||'';
+    f.repite.value=t.repite||'no'; f.hasta.value=t.hasta||'';
+    f.notas.value=t.notas||''; f.aviso.value=t.aviso??'';
+  } else {
+    f.fecha.value=UI.agendaDia; f.repite.value='no';
+  }
+  $$('[data-radio="ambitoT"]',f).forEach(x=>x.setAttribute('aria-selected',String(x.dataset.valor===(t?.ambito||'personal'))));
+  $('#campoHasta').classList.toggle('oculto', (t?.repite||'no')==='no');
+  $('#tituloTarea').textContent=t?'Editar tarea':'Nueva tarea';
+  $('#btnGuardarTarea').textContent=t?'Guardar cambios':'Crear';
+  $('#btnBorrarTarea').classList.toggle('oculto', !t);
+  $('#hojaTarea').showModal();
+}
+
 /* ═══════════════════════════ VISTA 2 · PATRIMONIO ════════════════════════ */
 const ICONO_CAT = { Vivienda:'🏠','Alimentación':'🛒',Transporte:'🚌',Suscripciones:'📱',Ocio:'🎬',Deporte:'🏋️',
   Salud:'💊',Ropa:'👕','Formación':'📚','Software y hosting':'💻','Gestoría':'📋',Marketing:'📣',
@@ -1332,10 +1711,80 @@ function pintarPatrimonio(){
   $('#dineroResumen').classList.toggle('oculto', UI.subDinero!=='resumen');
   $('#dineroEvolucion').classList.toggle('oculto', UI.subDinero!=='evolucion');
   $('#dineroGastos').classList.toggle('oculto', UI.subDinero!=='gastos');
+  $('#dineroCobros').classList.toggle('oculto', UI.subDinero!=='cobros');
 
   if (UI.subDinero==='resumen') pintarResumenDinero();
   else if (UI.subDinero==='evolucion') pintarEvolucion();
-  else pintarGastos();
+  else if (UI.subDinero==='gastos') pintarGastos();
+  else pintarCobros();
+}
+
+/* ── Cobros de clientes ──────────────────────────────────────────────────── */
+const diasHasta = k => Math.round((desdeClave(k)-desdeClave(HOY))/86400000);
+
+function pintarCobros(){
+  const pendientes=E.cobros.filter(c=>!c.cobrada).sort((a,b)=>(a.vence||'9').localeCompare(b.vence||'9'));
+  const cobrados=E.cobros.filter(c=>c.cobrada).sort((a,b)=>(b.fechaCobro||'').localeCompare(a.fechaCobro||''));
+  const vencidos=pendientes.filter(c=>c.vence && diasHasta(c.vence)<0);
+  const anio=new Date().getFullYear();
+
+  $('#cobrosPendientes').textContent=euro(pendientes.reduce((a,c)=>a+aNum(c.importe),0));
+  $('#cobrosVencidos').textContent=euro(vencidos.reduce((a,c)=>a+aNum(c.importe),0));
+  $('#cobrosAnio').textContent=euro(cobrados.filter(c=>String(c.fechaCobro||'').startsWith(anio)).reduce((a,c)=>a+aNum(c.importe),0));
+
+  const fila=(c,cobrada)=>{
+    const dias=c.vence?diasHasta(c.vence):null;
+    const cuando=cobrada
+      ? (c.fechaCobro?`cobrada el ${desdeClave(c.fechaCobro).toLocaleDateString('es-ES',{day:'numeric',month:'short'})}`:'cobrada')
+      : dias===null?'sin fecha de vencimiento'
+      : dias<0?`vencida hace ${-dias} día(s)`
+      : dias===0?'vence hoy':`vence en ${dias} día(s)`;
+    return `<div class="fila">
+      <div class="fila-icono">${cobrada?'✅':dias!==null&&dias<0?'⚠️':'🧾'}</div>
+      <div class="fila-txt"><b>${esc(c.cliente)}</b>
+        <span>${c.concepto?esc(c.concepto)+' · ':''}<span class="${!cobrada&&dias!==null&&dias<0?'neg':''}">${cuando}</span></span></div>
+      <div class="fila-cifra num">${euroDec(aNum(c.importe))}</div>
+      ${cobrada?'':`<button class="editar" data-cobrar="${c.id}" aria-label="Marcar cobrada">✓</button>`}
+      <button class="editar" data-editar-cobro="${c.id}" aria-label="Editar">✎</button>
+    </div>`;
+  };
+
+  $('#listaCobros').innerHTML = pendientes.length
+    ? pendientes.map(c=>fila(c,false)).join('')
+    : `<div class="vacio"><b>Nadie te debe nada</b>Apunta aquí lo que facturas y sabrás quién se retrasa.</div>`;
+  $('#listaCobrados').innerHTML = cobrados.length
+    ? cobrados.slice(0,10).map(c=>fila(c,true)).join('')
+    : `<div class="vacio"><b>Todavía nada cobrado</b>&nbsp;</div>`;
+}
+
+function abrirCobro(id){
+  const f=$('#formCobro'); f.reset(); $('#errCobro').textContent='';
+  UI.cobroEditando=id||null;
+  const c=id?E.cobros.find(x=>x.id===id):null;
+  if (c){
+    f.cliente.value=c.cliente; f.concepto.value=c.concepto||'';
+    f.importe.value=String(aNum(c.importe)).replace('.',',');
+    f.emitida.value=c.emitida||''; f.vence.value=c.vence||'';
+  } else {
+    f.emitida.value=HOY;
+    const d=new Date(); d.setDate(d.getDate()+30);
+    f.vence.value=claveDe(d);
+  }
+  $('#tituloCobro').textContent=c?'Editar cobro':'Nuevo cobro';
+  $('#btnGuardarCobro').textContent=c?'Guardar cambios':'Crear';
+  $('#btnBorrarCobro').classList.toggle('oculto', !c);
+  $('#hojaCobro').showModal();
+}
+
+/** Marcar cobrada apunta el ingreso en la caja de la empresa. */
+function marcarCobrada(id){
+  const c=E.cobros.find(x=>x.id===id); if (!c) return;
+  if (!confirm(`¿Marcar como cobrada la factura de ${c.cliente} (${euroDec(aNum(c.importe))})?\n\nSe apuntará como ingreso de la empresa.`)) return;
+  c.cobrada=true; c.fechaCobro=HOY;
+  E.tx.push({ id:nuevoId(), tipo:'Ingreso', ambito:'empresa',
+    concepto:`${c.cliente}${c.concepto?' · '+c.concepto:''}`, categoria:'Cobro de cliente',
+    importe:Math.round(aNum(c.importe)*100)/100, fecha:HOY });
+  anotarHoy(); guardar(); pintar(); avisar('Cobro apuntado como ingreso 💶');
 }
 
 function pintarResumenDinero(){
@@ -1506,15 +1955,24 @@ function pintarGastos(){
     : '';
 
   $('#listaCategorias').innerHTML = cats.length
-    ? cats.map(c=>`
-      <button class="cat-fila" data-ver-categoria="${esc(c.categoria)}">
-        <span class="aro-mini">${ICONO_CAT[c.categoria]||'💳'}</span>
-        <span class="cuerpo">
-          <span class="linea1"><b>${esc(c.categoria)}</b><span class="imp num">${euroDec(c.total)}</span></span>
-          <span class="carril" style="height:8px"><span class="relleno" style="width:${(c.total/cats[0].total*100).toFixed(1)}%"></span></span>
-          <span class="pie"><span>${c.n} movimiento(s)</span><span class="num">${pct(gas?c.total/gas:0)} del gasto</span></span>
-        </span>
-      </button>`).join('')
+    ? cats.map(c=>{
+        const tope=aNum(E.topes[c.categoria]);
+        // Con tope la barra mide cuánto llevas gastado de él; sin tope, compara
+        // con la categoría en la que más gastas.
+        const frac=tope?c.total/tope:c.total/cats[0].total;
+        const color=tope?(c.total>tope?'background:var(--rojo)':c.total>=tope*.8?'background:var(--naranja)':'background:var(--verde)'):'';
+        const pie=tope
+          ? `<span class="${c.total>tope?'neg':''}">${euro(c.total)} de ${euro(tope)}${c.total>tope?` · te has pasado ${euro(c.total-tope)}`:` · te quedan ${euro(tope-c.total)}`}</span>`
+          : `<span>${c.n} movimiento(s)</span>`;
+        return `<button class="cat-fila" data-ver-categoria="${esc(c.categoria)}">
+          <span class="aro-mini">${ICONO_CAT[c.categoria]||'💳'}</span>
+          <span class="cuerpo">
+            <span class="linea1"><b>${esc(c.categoria)}</b><span class="imp num">${euroDec(c.total)}</span></span>
+            <span class="carril" style="height:8px"><span class="relleno" style="width:${(Math.min(1,frac)*100).toFixed(1)}%; ${color}"></span></span>
+            <span class="pie">${pie}<span class="num">${pct(gas?c.total/gas:0)} del gasto</span></span>
+          </span>
+        </button>`;
+      }).join('')
     : `<div class="vacio"><b>Sin gastos este mes</b>${UI.ambitoGasto?'Prueba con otro ámbito o cambia de mes.':'Cambia de mes o apunta movimientos con el + de arriba.'}</div>`;
 
   // Últimos 6 meses de gasto, para ver la tendencia
@@ -1842,10 +2300,62 @@ function pintarDetalleDia(){
 
 /* ═══════════════════════════ VISTA 4 · ENTRENO ═══════════════════════════ */
 function pintarEntreno(){
-  const esSemana=UI.entrenoSub==='semana';
-  $('#subSemana').classList.toggle('oculto', !esSemana);
-  $('#subCarga').classList.toggle('oculto', esSemana);
-  if (esSemana) pintarSemanaEntreno(); else pintarCarga();
+  $('#subSemana').classList.toggle('oculto', UI.entrenoSub!=='semana');
+  $('#subCarga').classList.toggle('oculto', UI.entrenoSub!=='carga');
+  $('#subCuerpo').classList.toggle('oculto', UI.entrenoSub!=='cuerpo');
+  if (UI.entrenoSub==='semana') pintarSemanaEntreno();
+  else if (UI.entrenoSub==='carga') pintarCarga();
+  else pintarCuerpo();
+}
+
+/* ── Peso y medidas ──────────────────────────────────────────────────────── */
+function pintarCuerpo(){
+  const lista=[...E.pesos].sort((a,b)=>a.fecha.localeCompare(b.fecha));
+  if (!lista.length){
+    $('#pesoResumen').innerHTML=`<div class="vacio"><b>Sin pesajes todavía</b>Apunta tu peso de vez en cuando y aquí verás la línea, no el número suelto de un día.</div>`;
+    $('#pesoHistorial').innerHTML=`<div class="vacio"><b>Nada que enseñar</b>&nbsp;</div>`;
+    return;
+  }
+
+  const ultimo=lista[lista.length-1];
+  const primero=lista[0];
+  const dif=aNum(ultimo.kg)-aNum(primero.kg);
+  // Media de los últimos 7 pesajes: el peso diario baila mucho y engaña.
+  const ultimos=lista.slice(-7);
+  const media=ultimos.reduce((a,x)=>a+aNum(x.kg),0)/ultimos.length;
+
+  const An=320, Al=104, pad=8;
+  const kgs=lista.map(x=>aNum(x.kg));
+  const max=Math.max(...kgs), min=Math.min(...kgs);
+  const rec=(max-min)||1;
+  const x=i=>pad+i*(An-pad*2)/Math.max(1,lista.length-1);
+  const y=v=>Al-pad-((v-min)/rec)*(Al-pad*2);
+  const linea=lista.map((p,i)=>`${i?'L':'M'}${x(i).toFixed(1)} ${y(aNum(p.kg)).toFixed(1)}`).join(' ');
+
+  $('#pesoResumen').innerHTML=`
+    <div class="grafico-cab">
+      <div><span class="valor num">${numF.format(aNum(ultimo.kg))} kg</span>
+        <span class="rango-txt">último, ${desdeClave(ultimo.fecha).toLocaleDateString('es-ES',{day:'numeric',month:'short'})}</span></div>
+      <div class="delta ${dif<=0?'pos':'neg'}">${dif===0?'=':dif>0?'▲':'▼'} ${numF.format(Math.abs(dif))} kg
+        <span class="rango-txt" style="text-align:right">desde el principio</span></div>
+    </div>
+    ${lista.length>1?`
+      <svg class="lienzo" viewBox="0 0 ${An} ${Al}" role="img" aria-label="Evolución del peso">
+        <path class="linea" d="${linea}"/>
+        <circle class="punto" cx="${x(lista.length-1).toFixed(1)}" cy="${y(aNum(ultimo.kg)).toFixed(1)}" r="3.2"/>
+      </svg>
+      <div class="eje-x"><span class="num">${numF.format(min)} kg</span>
+        <span>media de los últimos ${ultimos.length}: <b class="num">${numF.format(media)} kg</b></span>
+        <span class="num">${numF.format(max)} kg</span></div>`
+    :`<p class="pie-nota">Con dos pesajes ya sale la línea.</p>`}`;
+
+  $('#pesoHistorial').innerHTML=[...lista].reverse().slice(0,20).map(p=>`
+    <div class="fila">
+      <div class="fila-icono">⚖️</div>
+      <div class="fila-txt"><b>${numF.format(aNum(p.kg))} kg</b>
+        <span>${desdeClave(p.fecha).toLocaleDateString('es-ES',{weekday:'short',day:'numeric',month:'short'})}${p.cintura?` · cintura ${numF.format(aNum(p.cintura))} cm`:''}${p.nota?` · ${esc(p.nota)}`:''}</span></div>
+      <button class="borrar" data-borrar-peso="${p.fecha}">✕</button>
+    </div>`).join('');
 }
 
 function pintarSemanaEntreno(){
@@ -2002,6 +2512,29 @@ function pintarDetalleSesion(){
         <input placeholder="10 min trote + estiramientos" value="${esc(s.enfriamiento??'')}" data-campo-sesion="enfriamiento">
       </div>
 
+      <div class="bloque">
+        <b>🔁 Series</b>
+        ${(s.series||[]).length?`
+          <div class="serie correr cab"><small>#</small><small>metros</small><small>tiempo</small><small>desc.</small><small></small><small></small></div>
+          ${s.series.map((se,i)=>`
+            <div class="serie correr">
+              <small>${i+1}</small>
+              <input inputmode="numeric" placeholder="300" value="${esc(se.dist??'')}" data-serie-r="${i}|dist">
+              <input inputmode="text" placeholder="1:12" value="${esc(se.tiempo??'')}" data-serie-r="${i}|tiempo">
+              <input inputmode="numeric" placeholder="30" value="${esc(se.descanso??'')}" data-serie-r="${i}|descanso">
+              <button type="button" class="check ${se.hecha?'hecho':''}" data-check-serie-r="${i}" aria-label="Serie hecha">
+                <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></button>
+              <button type="button" class="quitar-serie" data-quitar-serie-r="${i}" aria-label="Eliminar serie">−</button>
+            </div>`).join('')}
+          <p class="pie-nota" id="resumenSeries"></p>
+          <button class="aniadir-linea" data-guiar-series style="background:rgba(48,209,88,.12); color:#1E7E3C">▶ Guiar las series</button>
+        `:`<p style="font-size:13px; color:var(--txt-2); margin:0 0 8px">Aún sin series. Créalas a mano o de golpe desde el plan de arriba.</p>`}
+        <div class="par" style="margin-top:8px">
+          <button class="aniadir-linea" data-mas-serie-r style="margin:0">+ Serie</button>
+          <button class="aniadir-linea" data-generar-series style="margin:0">Generar del plan</button>
+        </div>
+      </div>
+
       <div class="bloque" style="background:rgba(48,209,88,.08)">
         <b style="color:#1E7E3C">✅ Datos reales</b>
         <div class="trio">
@@ -2012,12 +2545,169 @@ function pintarDetalleSesion(){
         <p style="font-size:13px; color:var(--txt-2); margin:8px 0 0" id="ritmoCalc"></p>
       </div>`;
     calcularRitmo();
+    resumirSeries();
   }
 
   $('#dsPie').innerHTML=`
     <button type="button" class="btn-suave" data-guardar-plantilla>Plantilla</button>
     <button type="button" class="btn-suave peligro" data-borrar-sesion>Borrar</button>
     <button type="button" class="btn-negro" data-alternar-hecha style="flex:1.4">${s.hecha?'Marcar pendiente':'✓ Completada'}</button>`;
+}
+
+/* ── Series de resistencia ───────────────────────────────────────────────── */
+/** "1:12" → 72 segundos. También admite segundos sueltos: "72". */
+function aSeg(txt){
+  const s=String(txt??'').trim();
+  if (!s) return 0;
+  if (s.includes(':')){
+    const [m,seg]=s.split(':');
+    return (parseInt(m,10)||0)*60 + (parseFloat(String(seg).replace(',','.'))||0);
+  }
+  return aNum(s);
+}
+const deSeg = t => `${Math.floor(t/60)}:${dos(Math.round(t%60))}`;
+
+function resumirSeries(){
+  const s=sesionActual(); if (!s||!s.series?.length) return;
+  const el=$('#resumenSeries'); if (!el) return;
+  const hechas=s.series.filter(x=>x.hecha);
+  const metros=hechas.reduce((a,x)=>a+aNum(x.dist),0);
+  const conTiempo=hechas.filter(x=>aSeg(x.tiempo)>0&&aNum(x.dist)>0);
+  if (!hechas.length){ el.textContent=`${s.series.length} series planificadas. Ninguna marcada todavía.`; return; }
+  let ritmos='';
+  if (conTiempo.length){
+    const porKm=conTiempo.map(x=>aSeg(x.tiempo)/(aNum(x.dist)/1000));
+    const mejor=Math.min(...porKm), media=porKm.reduce((a,b)=>a+b,0)/porKm.length;
+    ritmos=` · mejor ${deSeg(mejor)} min/km · media ${deSeg(media)}`;
+  }
+  el.textContent=`${hechas.length}/${s.series.length} hechas · ${numF.format(metros)} m${ritmos}`;
+}
+
+/* ── Cronómetro guiado ───────────────────────────────────────────────────── */
+const GUIA = { i:0, fase:'trabajo', desde:0, hasta:0, reloj:null, sesion:null };
+
+function abrirGuia(){
+  const s=sesionActual();
+  if (!s?.series?.length){ avisar('Primero crea las series'); return; }
+  GUIA.sesion={ fecha:UI.sesionAbierta.fecha, id:s.id };
+  GUIA.i=s.series.findIndex(x=>!x.hecha);
+  if (GUIA.i<0) GUIA.i=0;
+  $('#hojaDetalleSesion').close();
+  $('#pantallaGuia').classList.remove('oculto');
+  $('#pantallaGuia').setAttribute('aria-hidden','false');
+  document.body.classList.add('en-foco');
+  retenerPantalla();
+  faseTrabajo();
+}
+
+function cerrarGuia(){
+  clearInterval(GUIA.reloj); GUIA.reloj=null;
+  soltarPantalla();
+  $('#pantallaGuia').classList.add('oculto');
+  $('#pantallaGuia').setAttribute('aria-hidden','true');
+  document.body.classList.remove('en-foco');
+  guardar();
+  if (UI.sesionAbierta){ pintarDetalleSesion(); $('#hojaDetalleSesion').showModal(); }
+  pintar();
+}
+
+const seriesGuia = () => sesionesDe(GUIA.sesion.fecha).find(x=>x.id===GUIA.sesion.id)?.series || [];
+
+function faseTrabajo(){
+  const series=seriesGuia();
+  if (GUIA.i>=series.length){ terminarGuia(); return; }
+  GUIA.fase='trabajo';
+  GUIA.desde=Date.now();
+  $('#guiaFase').textContent=`Serie ${GUIA.i+1} de ${series.length}`;
+  $('#guiaQue').textContent=series[GUIA.i].dist?`${numF.format(aNum(series[GUIA.i].dist))} m`:'En marcha';
+  $('#guiaPie').textContent='corriendo';
+  $('#btnGuiaPrincipal').textContent='✓ Serie hecha';
+  $('#guiaAro').style.stroke='#30D158';
+  latirGuia();
+}
+
+function faseDescanso(){
+  const series=seriesGuia();
+  const seg=aNum(series[GUIA.i]?.descanso)||0;
+  if (!seg){ GUIA.i++; faseTrabajo(); return; }
+  GUIA.fase='descanso';
+  GUIA.hasta=Date.now()+seg*1000;
+  $('#guiaFase').textContent=`Descanso · va la ${GUIA.i+2} de ${series.length}`;
+  $('#guiaQue').textContent='Respira';
+  $('#guiaPie').textContent='descanso';
+  $('#btnGuiaPrincipal').textContent='Saltar descanso';
+  $('#guiaAro').style.stroke='#FF9F0A';
+  latirGuia();
+}
+
+function latirGuia(){
+  clearInterval(GUIA.reloj);
+  const series=seriesGuia();
+  const vuelta=2*Math.PI*100;
+  const pintarG=()=>{
+    let t, frac;
+    if (GUIA.fase==='trabajo'){
+      t=(Date.now()-GUIA.desde)/1000;
+      const objetivo=aSeg(series[GUIA.i]?.tiempo)||120;
+      frac=Math.min(1,t/objetivo);
+    } else {
+      t=Math.max(0,(GUIA.hasta-Date.now())/1000);
+      const total=aNum(series[GUIA.i]?.descanso)||1;
+      frac=1-t/total;
+      if (t<=0){ sonar(); GUIA.i++; faseTrabajo(); return; }
+    }
+    $('#guiaTiempo').textContent=deSeg(t);
+    $('#guiaAro').setAttribute('stroke-dasharray', vuelta.toFixed(1));
+    $('#guiaAro').setAttribute('stroke-dashoffset', (vuelta*(1-frac)).toFixed(1));
+    $('#guiaHechas').textContent=`${series.filter(x=>x.hecha).length} de ${series.length} series hechas`;
+  };
+  GUIA.reloj=setInterval(pintarG, 200);
+  pintarG();
+}
+
+/** Un pitido corto sin ficheros de sonido, sintetizado al vuelo. */
+function sonar(){
+  vibrar([90,60,90]);
+  try {
+    const ctx=new (window.AudioContext||window.webkitAudioContext)();
+    const osc=ctx.createOscillator(), vol=ctx.createGain();
+    osc.frequency.value=880; osc.type='sine';
+    vol.gain.setValueAtTime(.001, ctx.currentTime);
+    vol.gain.exponentialRampToValueAtTime(.35, ctx.currentTime+.02);
+    vol.gain.exponentialRampToValueAtTime(.001, ctx.currentTime+.45);
+    osc.connect(vol).connect(ctx.destination);
+    osc.start(); osc.stop(ctx.currentTime+.5);
+    setTimeout(()=>ctx.close(), 800);
+  } catch {}
+}
+
+function pulsarGuia(){
+  const s=sesionesDe(GUIA.sesion.fecha).find(x=>x.id===GUIA.sesion.id);
+  if (!s) return cerrarGuia();
+  if (GUIA.fase==='trabajo'){
+    const t=(Date.now()-GUIA.desde)/1000;
+    const serie=s.series[GUIA.i];
+    serie.hecha=true;
+    if (!String(serie.tiempo??'').trim()) serie.tiempo=deSeg(t);   // se apunta lo que has tardado
+    guardar(); sonar();
+    faseDescanso();
+  } else {
+    GUIA.i++; faseTrabajo();
+  }
+}
+
+function terminarGuia(){
+  clearInterval(GUIA.reloj); GUIA.reloj=null;
+  const s=sesionesDe(GUIA.sesion.fecha).find(x=>x.id===GUIA.sesion.id);
+  if (s){
+    s.hecha=true;
+    // Los metros de las series hechas pasan a ser los km reales, si no había nada puesto.
+    const metros=(s.series||[]).filter(x=>x.hecha).reduce((a,x)=>a+aNum(x.dist),0);
+    if (metros && !aNum(s.kmReal)) s.kmReal=String(Math.round(metros/10)/100).replace('.',',');
+    guardar();
+  }
+  avisar('Series completadas 💪');
+  cerrarGuia();
 }
 
 function calcularRitmo(){
@@ -2206,6 +2896,9 @@ document.addEventListener('visibilitychange', ()=>{
   }
 });
 
+$('#btnGuiaPrincipal').addEventListener('click', pulsarGuia);
+$('#btnGuiaSalir').addEventListener('click',()=>{ if (confirm('¿Terminar las series aquí?')) cerrarGuia(); });
+
 $('#btnAbrirFoco').addEventListener('click', abrirFoco);
 $('#btnEmpezarFoco').addEventListener('click', empezarFoco);
 $('#btnPausarFoco').addEventListener('click', alternarPausa);
@@ -2222,32 +2915,107 @@ $('#focoMinutos').addEventListener('click', e=>{
   $$('#focoMinutos button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
 });
 
-/* ── Notificaciones ──────────────────────────────────────────────────────── */
-let relojNotif=null;
+/* ═══════════════════════════ AVISOS ══════════════════════════════════════
+   Dentro del APK hay un plugin nativo de Android que dispara la notificación
+   aunque la app esté cerrada. En el navegador eso no existe: allí solo se
+   puede avisar mientras la pestaña siga viva, y así se dice.               */
+const NATIVO = () => window.Capacitor?.Plugins?.LocalNotifications || null;
+const hayNativo = () => !!NATIVO();
+let relojesAviso=[];
 
-function programarRecordatorio(){
-  clearTimeout(relojNotif);
-  if (!E.recordatorio.activo || !('Notification' in window) || Notification.permission!=='granted') return;
-  const [h,m]=E.recordatorio.hora.split(':').map(Number);
-  const ahora=new Date();
-  const objetivo=new Date(ahora.getFullYear(),ahora.getMonth(),ahora.getDate(),h,m,0);
-  if (objetivo<=ahora) objetivo.setDate(objetivo.getDate()+1);
-  relojNotif=setTimeout(()=>{
-    if (!entradasDe(claveDe(new Date())).length)
-      new Notification('Diario matutino',{body:'¿Cómo empieza tu día hoy? Dos minutos y listo.'});
-    programarRecordatorio();
-  }, objetivo-ahora);
+/** Todo lo que hay que avisar en los próximos siete días. */
+function avisosPendientes(){
+  const lista=[];
+  const ahora=Date.now();
+
+  for (let i=0;i<7;i++){
+    const k=correrDias(HOY,i);
+    for (const t of tareasDe(k)){
+      if (t.aviso==null || !t.hora || tareaHecha(t,k)) continue;
+      const [h,m]=t.hora.split(':').map(Number);
+      const d=desdeClave(k); d.setHours(h, m-t.aviso, 0, 0);
+      if (d.getTime()>ahora) lista.push({
+        id: Math.abs(hashTexto(t.id+k))%2000000,
+        cuando: d,
+        titulo: t.titulo,
+        cuerpo: t.aviso?`En ${t.aviso} minutos · ${t.hora}`:`Es la hora · ${t.hora}`,
+      });
+    }
+    // Y el diario matutino, si lo tienes activado
+    if (E.recordatorio.activo && !entradasDe(k).length){
+      const [h,m]=E.recordatorio.hora.split(':').map(Number);
+      const d=desdeClave(k); d.setHours(h,m,0,0);
+      if (d.getTime()>ahora) lista.push({
+        id: 1000000+i, cuando:d, titulo:'Diario matutino',
+        cuerpo:'¿Cómo empieza tu día hoy? Dos minutos y listo.',
+      });
+    }
+  }
+  return lista.sort((a,b)=>a.cuando-b.cuando).slice(0,60);
+}
+
+function hashTexto(s){
+  let h=0;
+  for (let i=0;i<s.length;i++) h=(h*31+s.charCodeAt(i))|0;
+  return h;
+}
+
+async function programarAvisos(){
+  relojesAviso.forEach(clearTimeout);
+  relojesAviso=[];
+  const lista=avisosPendientes();
+
+  const nativo=NATIVO();
+  if (nativo){
+    try {
+      const puestas=await nativo.getPending();
+      if (puestas?.notifications?.length) await nativo.cancel({ notifications:puestas.notifications });
+      if (lista.length) await nativo.schedule({ notifications: lista.map(a=>({
+        id:a.id, title:a.titulo, body:a.cuerpo, schedule:{ at:a.cuando, allowWhileIdle:true },
+      })) });
+      return;
+    } catch { /* si el plugin falla, se sigue con lo del navegador */ }
+  }
+
+  // Navegador: solo mientras la app siga abierta, y solo los de las próximas horas.
+  if (!('Notification' in window) || Notification.permission!=='granted') return;
+  for (const a of lista.slice(0,12)){
+    const espera=a.cuando-Date.now();
+    if (espera>0 && espera<6*3600*1000)
+      relojesAviso.push(setTimeout(()=>{ new Notification(a.titulo,{body:a.cuerpo}); }, espera));
+  }
+}
+
+/** Pide permiso para avisar. En Android 13+ hace falta decir que sí a mano. */
+async function pedirPermisoAvisos(){
+  const nativo=NATIVO();
+  if (nativo){
+    try {
+      const r=await nativo.requestPermissions();
+      if (r?.display!=='granted'){ avisar('Sin permiso no puedo avisarte'); return false; }
+      return true;
+    } catch { return false; }
+  }
+  if (!('Notification' in window)){ avisar('Este navegador no admite avisos'); return false; }
+  if (Notification.permission==='granted') return true;
+  const r=await Notification.requestPermission();
+  if (r!=='granted'){ avisar('Permiso denegado'); return false; }
+  return true;
+}
+
+function textoEstadoAvisos(){
+  if (hayNativo()) return 'Los avisos saltan aunque la app esté cerrada.';
+  if (!('Notification' in window)) return 'Este navegador no admite avisos.';
+  if (Notification.permission==='granted')
+    return 'Concedidos. En el navegador solo suenan con la app abierta; en el APK saltan siempre.';
+  return 'Sin permiso todavía.';
 }
 
 async function alternarNotificaciones(){
-  if (!('Notification' in window)){ avisar('Este navegador no soporta notificaciones'); return; }
-  if (Notification.permission!=='granted'){
-    const r=await Notification.requestPermission();
-    if (r!=='granted'){ avisar('Permiso denegado'); return; }
-  }
+  if (!E.recordatorio.activo && !await pedirPermisoAvisos()) return;
   E.recordatorio.activo=!E.recordatorio.activo;
   E.recordatorio.hora=$('#horaRecordatorio').value||'07:30';
-  guardar(); programarRecordatorio();
+  guardar(); programarAvisos();
   $('#btnNotificaciones').textContent=E.recordatorio.activo?'Avisos activados ✓':'Activar avisos';
   avisar(E.recordatorio.activo?`Recordatorio a las ${E.recordatorio.hora}`:'Recordatorio desactivado');
 }
@@ -2263,6 +3031,7 @@ function ir(vista){
 
 function pintar(){
   if (UI.vista==='home') pintarHome();
+  else if (UI.vista==='agenda') pintarAgenda();
   else if (UI.vista==='patrimonio') pintarPatrimonio();
   else if (UI.vista==='metas'){ pintarMetas(); pintarCalendario(); }
   else if (UI.vista==='entreno') pintarEntreno();
@@ -2425,6 +3194,73 @@ $('#segAmbitoGasto').addEventListener('click', e=>{
   pintarGastos();
 });
 
+// Cobros
+$('#btnNuevoCobro').addEventListener('click',()=>abrirCobro(null));
+
+$('#formCobro').addEventListener('submit', e=>{
+  e.preventDefault();
+  const f=e.target;
+  const importe=aNum(f.importe.value);
+  if (!f.cliente.value.trim()){ $('#errCobro').textContent='Falta el cliente.'; return; }
+  if (!importe||importe<=0){ $('#errCobro').textContent='Pon un importe mayor que cero.'; return; }
+  const datos={ cliente:f.cliente.value.trim(), concepto:f.concepto.value.trim(),
+    importe:Math.round(importe*100)/100, emitida:f.emitida.value||null, vence:f.vence.value||null };
+  const previa=UI.cobroEditando?E.cobros.find(x=>x.id===UI.cobroEditando):null;
+  if (previa) Object.assign(previa, datos);
+  else E.cobros.push({ id:nuevoId(), cobrada:false, ...datos });
+  UI.cobroEditando=null;
+  guardar(); $('#hojaCobro').close(); pintar(); avisar(previa?'Cobro actualizado':'Cobro apuntado');
+});
+
+$('#btnBorrarCobro').addEventListener('click',()=>{
+  const c=E.cobros.find(x=>x.id===UI.cobroEditando); if (!c) return;
+  if (!confirm(`¿Borrar el cobro de ${c.cliente}?`)) return;
+  E.cobros=E.cobros.filter(x=>x.id!==c.id);
+  UI.cobroEditando=null;
+  guardar(); $('#hojaCobro').close(); pintar(); avisar('Cobro borrado');
+});
+
+// Topes de gasto
+$('#btnTopes').addEventListener('click',()=>{
+  const cats=[...new Set([...(CATEGORIAS['personal-Gasto']||[]), ...(CATEGORIAS['empresa-Gasto']||[])])];
+  $('#listaTopes').innerHTML=cats.map(c=>`
+    <label class="campo" style="display:flex; align-items:center; gap:10px; margin-bottom:9px">
+      <span style="flex:1; margin:0">${ICONO_CAT[c]||'💳'} ${esc(c)}</span>
+      <input inputmode="decimal" placeholder="sin tope" style="width:110px; text-align:right"
+        value="${E.topes[c]?String(aNum(E.topes[c])).replace('.',','):''}" data-tope="${esc(c)}">
+    </label>`).join('');
+  $('#hojaTopes').showModal();
+});
+
+$('#listaTopes').addEventListener('change', e=>{
+  const campo=e.target.closest('[data-tope]'); if (!campo) return;
+  const cat=campo.dataset.tope;
+  const v=aNum(campo.value);
+  if (v>0) E.topes[cat]=v; else delete E.topes[cat];
+  guardar();
+});
+
+// Peso
+$('#btnNuevoPeso').addEventListener('click',()=>{
+  const f=$('#formPeso'); f.reset(); $('#errPeso').textContent='';
+  f.fecha.value=HOY;
+  const ultimo=[...E.pesos].sort((a,b)=>a.fecha.localeCompare(b.fecha)).pop();
+  if (ultimo) f.kg.placeholder=String(aNum(ultimo.kg)).replace('.',',');
+  $('#hojaPeso').showModal();
+});
+
+$('#formPeso').addEventListener('submit', e=>{
+  e.preventDefault();
+  const f=e.target;
+  const kg=aNum(f.kg.value);
+  if (!kg||kg<=0){ $('#errPeso').textContent='Pon un peso mayor que cero.'; return; }
+  const fecha=f.fecha.value||HOY;
+  const previo=E.pesos.find(p=>p.fecha===fecha);
+  const datos={ fecha, kg:Math.round(kg*10)/10, cintura:aNum(f.cintura.value)||null, nota:f.nota.value.trim() };
+  if (previo) Object.assign(previo, datos); else E.pesos.push(datos);
+  guardar(); $('#hojaPeso').close(); pintarEntreno(); avisar('Peso anotado');
+});
+
 $('#gastoAtras').addEventListener('click',()=>{
   const c=UI.gastoCursor; UI.gastoCursor=new Date(c.getFullYear(),c.getMonth()-1,1); pintarGastos();
 });
@@ -2435,9 +3271,181 @@ $('#gastoAdelante').addEventListener('click',()=>{
   UI.gastoCursor=sig; pintarGastos();
 });
 
-$('#avatar').addEventListener('click',()=>{
-  const n=prompt('¿Cómo te llamas?', E.nombre);
-  if (n&&n.trim()){ E.nombre=n.trim(); guardar(); pintar(); }
+/* ── Ajustes y copia de seguridad ────────────────────────────────────────── */
+$('#avatar').addEventListener('click', abrirAjustes);
+
+function abrirAjustes(){
+  $('#ajusteNombre').value=E.nombre;
+  $('#estadoAvisos').textContent=textoEstadoAvisos();
+  $('#resumenDatos').textContent=[
+    `${E.tx.length} movimiento(s)`, `${E.tareas.length} tarea(s)`,
+    `${Object.keys(E.sesiones).length} día(s) de entreno`, `${E.entradas.length} entrada(s) de diario`,
+    `${E.inversiones.length} activo(s)`,
+  ].join(' · ');
+  $('#hojaAjustes').showModal();
+}
+
+$('#ajusteNombre').addEventListener('change', e=>{
+  const n=e.target.value.trim();
+  if (n){ E.nombre=n; guardar(); pintar(); }
+});
+
+$('#btnPermisoAvisos').addEventListener('click', async ()=>{
+  if (await pedirPermisoAvisos()){
+    programarAvisos();
+    $('#estadoAvisos').textContent=textoEstadoAvisos();
+    avisar('Avisos activados');
+  }
+});
+
+/** Saca todo a un archivo. En el móvil abre el menú de compartir de Android. */
+async function exportarDatos(){
+  const contenido=JSON.stringify({ app:'mi-panel', version:3, fecha:new Date().toISOString(), datos:E }, null, 2);
+  const nombre=`mi-panel-${HOY}.json`;
+  const fichero=new File([contenido], nombre, { type:'application/json' });
+
+  if (navigator.canShare?.({ files:[fichero] })){
+    try { await navigator.share({ files:[fichero], title:'Copia de Mi panel' }); avisar('Copia enviada'); return; }
+    catch (err) { if (err?.name==='AbortError') return; }
+  }
+  const url=URL.createObjectURL(new Blob([contenido],{type:'application/json'}));
+  const a=document.createElement('a');
+  a.href=url; a.download=nombre; a.click();
+  setTimeout(()=>URL.revokeObjectURL(url), 4000);
+  avisar('Copia descargada');
+}
+
+function importarDatos(fichero){
+  const lector=new FileReader();
+  lector.onload=()=>{
+    try {
+      const crudo=JSON.parse(String(lector.result));
+      const datos=crudo?.datos||crudo;
+      if (!datos || typeof datos!=='object' || !('tx' in datos)) throw new Error('formato');
+      const cuantos=(datos.tx?.length||0)+(datos.tareas?.length||0)+(datos.entradas?.length||0);
+      if (!confirm(`La copia trae ${cuantos} apunte(s), del ${String(crudo.fecha||'').slice(0,10)||'día que sea'}.\n\nEsto sustituye TODO lo que tienes ahora. ¿Seguir?`)) return;
+      E=Object.assign(PLANTILLA_ESTADO(), datos);
+      if (!Array.isArray(E.habitos)||!E.habitos.length) E.habitos=HABITOS_INICIALES.map(h=>({...h}));
+      guardar(); programarAvisos(); $('#hojaAjustes').close(); pintar();
+      avisar('Copia restaurada ✓');
+    } catch {
+      avisar('Ese archivo no es una copia de Mi panel');
+    }
+  };
+  lector.readAsText(fichero);
+}
+
+$('#btnExportar').addEventListener('click', exportarDatos);
+$('#btnImportar').addEventListener('click',()=>$('#ficheroImportar').click());
+$('#ficheroImportar').addEventListener('change', e=>{
+  const f=e.target.files?.[0];
+  if (f) importarDatos(f);
+  e.target.value='';
+});
+
+$('#btnBorrarTodo').addEventListener('click',()=>{
+  if (!confirm('Esto borra TODO: movimientos, tareas, entrenos, diario y cartera.\n\nNo hay vuelta atrás salvo que tengas una copia. ¿Seguro?')) return;
+  if (!confirm('De verdad, ¿seguro? Última oportunidad para exportar antes.')) return;
+  E=PLANTILLA_ESTADO();
+  guardar(); programarAvisos(); $('#hojaAjustes').close(); pintar();
+  avisar('Todo borrado');
+});
+
+/* ── Resumen de la semana ────────────────────────────────────────────────── */
+function verResumenSemana(){
+  const lunes=lunesDe(new Date());
+  const anterior=new Date(lunes); anterior.setDate(anterior.getDate()-7);
+  const dias=k=>{ const l=[]; const d=new Date(k); for (let i=0;i<7;i++){ l.push(claveDe(d)); d.setDate(d.getDate()+1); } return l; };
+  const estaSemana=dias(lunes), pasada=dias(anterior);
+
+  const gastoDe=ks=>suma(E.tx.filter(t=>t.tipo==='Gasto'&&ks.includes(t.fecha)));
+  const ingresoDe=ks=>suma(E.tx.filter(t=>t.tipo==='Ingreso'&&ks.includes(t.fecha)));
+  const habitosDe=ks=>ks.reduce((a,k)=>a+ticksDe(k).length,0);
+  const focoDe=ks=>E.foco.filter(f=>ks.includes(f.fecha)).reduce((a,f)=>a+f.hechos,0);
+  const tareasDeSemana=ks=>ks.reduce((a,k)=>a+tareasDe(k).filter(t=>tareaHecha(t,k)).length,0);
+
+  const ent=seriesSemana(lunes), entAnt=seriesSemana(anterior);
+  const filas=[
+    ['🏋️','Entrenos hechos', ent.hechas, entAnt.hechas, n=>`${n} sesión(es)`],
+    ['🏃','Kilómetros', ent.kmRun+ent.kmBici, entAnt.kmRun+entAnt.kmBici, n=>`${numF.format(n)} km`],
+    ['✅','Metas del día', habitosDe(estaSemana), habitosDe(pasada), n=>`${n} marcadas`],
+    ['📋','Tareas hechas', tareasDeSemana(estaSemana), tareasDeSemana(pasada), n=>`${n} tareas`],
+    ['🌱','Trabajo profundo', focoDe(estaSemana), focoDe(pasada), n=>`${n} min`],
+    ['💶','Ingresos', ingresoDe(estaSemana), ingresoDe(pasada), n=>euro(n)],
+    ['💳','Gastos', gastoDe(estaSemana), gastoDe(pasada), n=>euro(n), true],
+  ];
+
+  const fin=new Date(lunes); fin.setDate(fin.getDate()+6);
+  $('#tituloSemana').textContent=`Del ${lunes.getDate()} al ${fin.getDate()} de ${MESES[fin.getMonth()].toLowerCase()}`;
+
+  const entradas=E.entradas.filter(e=>estaSemana.includes(e.fecha));
+  const energia=entradas.length?entradas.reduce((a,e)=>a+Number(e.animo||0),0)/entradas.length:0;
+
+  $('#cuerpoSemana').innerHTML=`
+    ${filas.map(([emoji,nombre,ahora,antes,fmt,menosEsMejor])=>{
+      const dif=ahora-antes;
+      const bien=menosEsMejor?dif<=0:dif>=0;
+      const flecha=dif===0?'=':dif>0?'▲':'▼';
+      return `<div class="fila">
+        <div class="fila-icono">${emoji}</div>
+        <div class="fila-txt"><b>${nombre}</b><span>la semana pasada, ${fmt(antes)}</span></div>
+        <div class="fila-cifra num">${fmt(ahora)}
+          <small class="${dif===0?'':bien?'pos':'neg'}">${flecha} ${fmt(Math.abs(dif))}</small></div>
+      </div>`;
+    }).join('')}
+    <div class="fila">
+      <div class="fila-icono">🔋</div>
+      <div class="fila-txt"><b>Energía media</b><span>${entradas.length} entrada(s) de diario</span></div>
+      <div class="fila-cifra num">${entradas.length?numF.format(energia)+'/5':'—'}</div>
+    </div>
+    <p class="pie-nota" style="margin-top:14px">${
+      ent.hechas>entAnt.hechas ? 'Vas a más en entreno que la semana pasada.'
+      : gastoDe(estaSemana)<gastoDe(pasada) ? 'Has gastado menos que la semana pasada.'
+      : focoDe(estaSemana)>focoDe(pasada) ? 'Más minutos de concentración que la semana pasada.'
+      : 'Semana parecida a la anterior. La constancia también cuenta.'}</p>`;
+  $('#hojaSemana').showModal();
+}
+
+// Agenda
+$('#btnNuevaTarea').addEventListener('click',()=>abrirTarea(null));
+$('#btnHoyAgenda').addEventListener('click',()=>{ UI.agendaDia=HOY; pintarAgenda(); });
+$('#agAtras').addEventListener('click',()=>{ UI.agendaDia=correrDias(UI.agendaDia,-7); pintarAgenda(); });
+$('#agAdelante').addEventListener('click',()=>{ UI.agendaDia=correrDias(UI.agendaDia,7); pintarAgenda(); });
+
+function correrDias(k, n){ const d=desdeClave(k); d.setDate(d.getDate()+n); return claveDe(d); }
+
+$('#formTarea').repite.addEventListener('change', e=>{
+  $('#campoHasta').classList.toggle('oculto', e.target.value==='no');
+});
+
+$('#formTarea').addEventListener('submit', e=>{
+  e.preventDefault();
+  const f=e.target;
+  if (!f.titulo.value.trim()){ $('#errTarea').textContent='Falta decir qué hay que hacer.'; return; }
+  if (!f.fecha.value){ $('#errTarea').textContent='Falta el día.'; return; }
+  if (f.aviso.value!=='' && !f.hora.value){ $('#errTarea').textContent='Para avisarte necesito una hora.'; return; }
+
+  const datos={ titulo:f.titulo.value.trim(), fecha:f.fecha.value, hora:f.hora.value||'',
+    ambito:radio(f,'ambitoT')||'personal', repite:f.repite.value,
+    hasta:(f.repite.value!=='no'&&f.hasta.value)||null, notas:f.notas.value.trim(),
+    aviso:f.aviso.value===''?null:Number(f.aviso.value) };
+
+  const previa=UI.tareaEditando?E.tareas.find(x=>x.id===UI.tareaEditando):null;
+  if (previa) Object.assign(previa, datos);
+  else E.tareas.push({ id:nuevoId(), hechas:[], ...datos });
+  UI.tareaEditando=null;
+
+  guardar(); programarAvisos(); $('#hojaTarea').close();
+  UI.agendaDia=datos.fecha;
+  pintar(); avisar(previa?'Tarea actualizada':'Tarea creada');
+});
+
+$('#btnBorrarTarea').addEventListener('click',()=>{
+  const t=E.tareas.find(x=>x.id===UI.tareaEditando); if (!t) return;
+  if (!confirm(`¿Borrar "${t.titulo}"?`)) return;
+  E.tareas=E.tareas.filter(x=>x.id!==t.id);
+  UI.tareaEditando=null;
+  guardar(); programarAvisos(); $('#hojaTarea').close(); pintar(); avisar('Tarea borrada');
 });
 
 // Metas
@@ -2686,6 +3694,17 @@ document.addEventListener('click', e=>{
 
   if (e.target.closest('[data-cerrar-foco]')){ cerrarFoco(); return; }
 
+  const agDia=e.target.closest('[data-agenda-dia]');
+  if (agDia){ UI.agendaDia=agDia.dataset.agendaDia; pintarAgenda(); return; }
+
+  const tareaCheck=e.target.closest('[data-tarea-check]');
+  if (tareaCheck){ alternarTarea(tareaCheck.dataset.tareaCheck, UI.vista==='agenda'?UI.agendaDia:HOY); return; }
+
+  const tareaEd=e.target.closest('[data-tarea-editar]');
+  if (tareaEd){ abrirTarea(tareaEd.dataset.tareaEditar); return; }
+
+  if (e.target.closest('[data-ver-semana]')){ verResumenSemana(); return; }
+
   if (e.target.closest('[data-editar-metas-dia]')){
     UI.alcance='dia';
     $$('#segAlcance button').forEach(x=>x.setAttribute('aria-selected',String(x.dataset.alcance==='dia')));
@@ -2757,6 +3776,42 @@ document.addEventListener('click', e=>{
     ej.series.push({ reps:ultima?.reps??'', kg:ultima?.kg??'', hecha:false });
     guardar(); pintarDetalleSesion(); return;
   }
+
+  // Series de resistencia
+  const checkR=e.target.closest('[data-check-serie-r]');
+  if (checkR){
+    const s=sesionActual(); if (!s) return;
+    const i=Number(checkR.dataset.checkSerieR);
+    s.series[i].hecha=!s.series[i].hecha;
+    guardar(); vibrar(); pintarDetalleSesion(); return;
+  }
+
+  const quitarR=e.target.closest('[data-quitar-serie-r]');
+  if (quitarR){
+    const s=sesionActual(); if (!s) return;
+    s.series.splice(Number(quitarR.dataset.quitarSerieR),1);
+    guardar(); pintarDetalleSesion(); return;
+  }
+
+  if (e.target.closest('[data-mas-serie-r]')){
+    const s=sesionActual(); if (!s) return;
+    s.series ||= [];
+    const ultima=s.series[s.series.length-1];
+    s.series.push({ dist:ultima?.dist??s.distSerie??'', tiempo:'', descanso:ultima?.descanso??s.descanso??'', hecha:false });
+    guardar(); pintarDetalleSesion(); return;
+  }
+
+  // Crea de golpe las series que dice el plan de la parte principal
+  if (e.target.closest('[data-generar-series]')){
+    const s=sesionActual(); if (!s) return;
+    const n=Math.min(40, Math.round(aNum(s.nSeries))||0);
+    if (!n){ avisar('Pon primero cuántas series en la parte principal'); return; }
+    const dist=s.modo==='Intervalos activos'?(s.tramoInt||''):(s.distSerie||'');
+    s.series=Array.from({length:n},()=>({ dist, tiempo:'', descanso:s.descanso??'', hecha:false }));
+    guardar(); pintarDetalleSesion(); avisar(`${n} series creadas`); return;
+  }
+
+  if (e.target.closest('[data-guiar-series]')){ abrirGuia(); return; }
 
   const quitarSerie=e.target.closest('[data-quitar-serie]');
   if (quitarSerie){
@@ -2851,6 +3906,18 @@ document.addEventListener('click', e=>{
   const verCat=e.target.closest('[data-ver-categoria]');
   if (verCat){ verCategoria(verCat.dataset.verCategoria); return; }
 
+  const cobrar=e.target.closest('[data-cobrar]');
+  if (cobrar){ marcarCobrada(cobrar.dataset.cobrar); return; }
+
+  const edCobro=e.target.closest('[data-editar-cobro]');
+  if (edCobro){ abrirCobro(edCobro.dataset.editarCobro); return; }
+
+  const borrarPeso=e.target.closest('[data-borrar-peso]');
+  if (borrarPeso){
+    E.pesos=E.pesos.filter(p=>p.fecha!==borrarPeso.dataset.borrarPeso);
+    guardar(); pintarEntreno(); avisar('Pesaje borrado'); return;
+  }
+
   const sumarM=e.target.closest('[data-meta-sumar]');
   if (sumarM){
     const x=E.metas.find(y=>y.id===sumarM.dataset.metaSumar); if (!x) return;
@@ -2876,6 +3943,13 @@ document.addEventListener('click', e=>{
 
 // Ediciones en vivo (inputs de series y campos de sesión)
 document.addEventListener('input', e=>{
+  const serieR=e.target.closest('[data-serie-r]');
+  if (serieR){
+    const [i,campo]=serieR.dataset.serieR.split('|');
+    const s=sesionActual(); if (!s) return;
+    s.series[Number(i)][campo]=serieR.value;
+    guardar(); resumirSeries(); return;
+  }
   const serie=e.target.closest('[data-serie]');
   if (serie){
     const [ei,si,campo]=serie.dataset.serie.split('|');
@@ -2905,6 +3979,7 @@ document.addEventListener('change', e=>{
 conectarRadios($('#formMov'));
 conectarRadios($('#formSesion'));
 conectarRadios($('#formDiario'));
+conectarRadios($('#formTarea'));
 
 /* ═══════════════════════════ ARRANQUE ════════════════════════════════════ */
 // Si vienes de la versión anterior instalada como PWA, su service worker
@@ -2921,7 +3996,7 @@ ajustarCamposInversion();
 anotarHoy();          // deja la foto de hoy antes de pintar nada
 guardar();
 pintar();
-programarRecordatorio();
+programarAvisos();
 })();
 </script>
 </body>
