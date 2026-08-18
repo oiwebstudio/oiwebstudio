@@ -8,9 +8,10 @@
 // tilde encima— y la última se prolonga en una flecha hacia arriba.
 
 import { deflateSync } from 'node:zlib';
-import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { leerPng, redimensionar, recortarAlContenido } from './leer-png.mjs';
 
 const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const DESTINO = resolve(RAIZ, 'www', 'iconos');
@@ -172,7 +173,55 @@ function aPng(c) {
   ]);
 }
 
-const png = (lado, opciones) => aPng(dibujar(lado, opciones));
+/* ── ¿Hay un logo propio? ─────────────────────────────────────────────────
+   Si existe logo.png en la raíz del proyecto, mandan sus píxeles y el dibujo
+   vectorial de arriba se queda de reserva. Así puedes cambiar la marca sin
+   tocar una sola línea de código: guardas el archivo y ejecutas npm run iconos. */
+const ARCHIVO = ['logo.png', 'marca.png']
+  .map((n) => resolve(RAIZ, n))
+  .find((r) => existsSync(r));
+
+const ORIGEN = ARCHIVO ? (() => {
+  const img = leerPng(readFileSync(ARCHIVO));
+  return { img, recorte: recortarAlContenido(img) };
+})() : null;
+
+/** Compone el logo del archivo dentro de un lienzo cuadrado. */
+function desdeArchivo(lado, { margen = 0.14, fondo = FONDO, silueta = false } = {}) {
+  const c = lienzo(lado, fondo);
+  const dentro = Math.max(1, Math.round(lado * (1 - margen * 2)));
+  const chico = redimensionar(ORIGEN.img, dentro, { recorte: ORIGEN.recorte });
+  const desde = Math.round((lado - dentro) / 2);
+
+  for (let y = 0; y < dentro; y++) {
+    for (let x = 0; x < dentro; x++) {
+      const o = (y * dentro + x) * 4;
+      let [r, g, b, a] = [chico.pix[o], chico.pix[o + 1], chico.pix[o + 2], chico.pix[o + 3]];
+
+      // El original es trazo claro sobre fondo oscuro: para las capas que van
+      // transparentes se usa el brillo como opacidad y se pinta todo blanco.
+      if (silueta) {
+        const brillo = (r * 0.299 + g * 0.587 + b * 0.114) * (a / 255);
+        a = Math.round(Math.min(255, brillo * 1.15));
+        r = g = b = 255;
+      }
+      if (!a) continue;
+
+      const destino = ((y + desde) * lado + (x + desde)) * 4;
+      const alfa = a / 255;
+      const previo = c.pix[destino + 3] / 255;
+      c.pix[destino] = Math.round(r * alfa + c.pix[destino] * previo * (1 - alfa));
+      c.pix[destino + 1] = Math.round(g * alfa + c.pix[destino + 1] * previo * (1 - alfa));
+      c.pix[destino + 2] = Math.round(b * alfa + c.pix[destino + 2] * previo * (1 - alfa));
+      c.pix[destino + 3] = Math.round(Math.min(1, alfa + previo * (1 - alfa)) * 255);
+    }
+  }
+  return c;
+}
+
+const png = (lado, opciones = {}) => aPng(
+  ORIGEN ? desdeArchivo(lado, { ...opciones, silueta: opciones.fondo === null })
+         : dibujar(lado, opciones));
 
 /* ── .ico para el acceso directo de Windows ──────────────────────────────── */
 function aIco(pngs) {
