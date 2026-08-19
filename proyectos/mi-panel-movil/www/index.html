@@ -534,6 +534,28 @@ body.en-foco .dock { display: none; }
 .chip[aria-pressed='true'] { background: var(--tinta); color: var(--carta); }
 .chip:active { transform: scale(.93); }
 
+/* ── Preguntas de la app (nada de diálogos del sistema) ─────────────────── */
+.preguntar .hoja-cuerpo { text-align: center; padding: 6px 24px 10px; }
+.preguntar .preg-icono { font-size: 40px; line-height: 1; margin-bottom: 8px; }
+.preguntar h3 { margin: 0 0 6px; font-size: 20px; font-weight: 800; letter-spacing: -0.03em; }
+.preguntar p { margin: 0 0 6px; font-size: 14px; line-height: 1.55; color: var(--txt-2); white-space: pre-line; }
+.preguntar input { margin-top: 12px; text-align: center; font-size: 17px; }
+.preguntar .hoja-pie .btn-negro.peligro { background: var(--rojo); color: #fff; }
+
+/* ── Desplegables con la cara de la app ─────────────────────────────────── */
+select.nativo-fuera { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.selector { display: flex; align-items: center; gap: 8px; width: 100%; font-size: 16px; color: var(--txt); background: var(--fondo); border: 1px solid transparent; border-radius: 15px; padding: 12px 14px; text-align: left; transition: background .18s ease, transform .15s var(--muelle); }
+.selector span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.selector i { font-style: normal; font-size: 12px; color: var(--txt-3); }
+.selector:active { transform: scale(.985); background: rgba(0,0,0,.06); }
+:root[data-tema='oscuro'] .selector:active { background: rgba(255,255,255,.12); }
+
+.opcion { display: flex; align-items: center; gap: 12px; width: 100%; padding: 14px 4px; border-bottom: 1px solid rgba(0,0,0,.05); font-size: 15.5px; text-align: left; }
+.opcion:last-child { border-bottom: none; }
+.opcion .marca-op { width: 22px; flex: none; font-size: 15px; color: var(--verde); }
+.opcion[aria-selected='true'] { font-weight: 700; }
+:root[data-tema='oscuro'] .opcion { border-color: rgba(255,255,255,.07); }
+
 /* ── Brindis ────────────────────────────────────────────────────────────── */
 .brindis { position: fixed; left: 50%; bottom: calc(var(--dock-alto) + 14px); transform: translate(-50%, 12px); z-index: 70; background: var(--tinta); color: #fff; font-size: 13.5px; font-weight: 600; padding: 11px 20px; border-radius: 20px; box-shadow: var(--sombra-alta); opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .3s var(--muelle); max-width: calc(100vw - 36px); text-align: center; }
 .brindis.visible { opacity: 1; transform: translate(-50%, 0); }
@@ -954,6 +976,45 @@ dialog::backdrop { animation: fundir .3s ease backwards; }
 </nav>
 
 <div class="brindis" id="brindis" role="status" aria-live="polite"></div>
+<!-- ══ Hojas de preguntar, en vez de las del sistema ════════════════════ -->
+<dialog id="hojaConfirmar">
+  <div class="hoja preguntar">
+    <div class="hoja-asa"></div>
+    <div class="hoja-cuerpo">
+      <div class="preg-icono" id="confIcono">🤔</div>
+      <h3 id="confTitulo">¿Seguro?</h3>
+      <p id="confTexto"></p>
+    </div>
+    <div class="hoja-pie">
+      <button type="button" class="btn-suave" data-conf="no">Cancelar</button>
+      <button type="button" class="btn-negro" data-conf="si" id="confSi">Sí</button>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="hojaOpciones">
+  <div class="hoja">
+    <div class="hoja-asa"></div>
+    <div class="hoja-cab"><h3 id="opcionesTitulo">Elige</h3><button type="button" class="cerrar" data-cerrar="hojaOpciones">Cerrar</button></div>
+    <div class="hoja-cuerpo" id="listaOpciones"></div>
+  </div>
+</dialog>
+
+<dialog id="hojaPedir">
+  <form method="dialog" class="hoja preguntar" id="formPedir">
+    <div class="hoja-asa"></div>
+    <div class="hoja-cuerpo">
+      <h3 id="pedirTitulo">Dime</h3>
+      <p id="pedirTexto"></p>
+      <input id="pedirCampo" autocomplete="off">
+    </div>
+    <div class="hoja-pie">
+      <button type="button" class="btn-suave" data-pedir="no">Cancelar</button>
+      <button type="submit" class="btn-negro">Guardar</button>
+    </div>
+  </form>
+</dialog>
+
 <div class="tirador" id="tirador">Suelta para actualizar cotizaciones</div>
 
 <!-- Barra del temporizador, visible en toda la app -->
@@ -2044,6 +2105,8 @@ function abrirTarea(id){
   }
   $$('[data-radio="ambitoT"]',f).forEach(x=>x.setAttribute('aria-selected',String(x.dataset.valor===(t?.ambito||'personal'))));
   $('#campoHasta').classList.toggle('oculto', (t?.repite||'no')==='no');
+  f.repite.dispatchEvent(new Event('opciones:refrescar'));
+  f.aviso.dispatchEvent(new Event('opciones:refrescar'));
   $('#tituloTarea').textContent=t?'Editar tarea':'Nueva tarea';
   $('#btnGuardarTarea').textContent=t?'Guardar cambios':'Crear';
   $('#btnBorrarTarea').classList.toggle('oculto', !t);
@@ -2137,9 +2200,10 @@ function abrirCobro(id){
 }
 
 /** Marcar cobrada apunta el ingreso en la caja de la empresa. */
-function marcarCobrada(id){
+async function marcarCobrada(id){
   const c=E.cobros.find(x=>x.id===id); if (!c) return;
-  if (!confirm(`¿Marcar como cobrada la factura de ${c.cliente} (${euroDec(aNum(c.importe))})?\n\nSe apuntará como ingreso de la empresa.`)) return;
+  if (!await preguntar(`Se apuntará como ingreso de la empresa.`, {
+    titulo:`¿Cobrada la factura de ${c.cliente}?`, si:`Sí, ${euroDec(aNum(c.importe))}`, icono:'💶' })) return;
   c.cobrada=true; c.fechaCobro=HOY;
   E.tx.push({ id:nuevoId(), tipo:'Ingreso', ambito:'empresa',
     concepto:`${c.cliente}${c.concepto?' · '+c.concepto:''}`, categoria:'Cobro de cliente',
@@ -3485,15 +3549,19 @@ document.addEventListener('visibilitychange', ()=>{
 });
 
 $('#btnGuiaPrincipal').addEventListener('click', pulsarGuia);
-$('#btnGuiaSalir').addEventListener('click',()=>{ if (confirm('¿Terminar las series aquí?')) cerrarGuia(); });
+$('#btnGuiaSalir').addEventListener('click', async ()=>{
+  if (await preguntar('Se guarda lo que llevas hecho.', { titulo:'¿Terminar las series?', si:'Terminar', icono:'🏁' })) cerrarGuia();
+});
 
 $('#btnAbrirFoco').addEventListener('click', abrirFoco);
 $('#btnEmpezarFoco').addEventListener('click', empezarFoco);
 $('#btnPausarFoco').addEventListener('click', alternarPausa);
 $('#btnOtroFoco').addEventListener('click',()=>{ paso('focoPreparar'); $('#focoTarea').value=FOCO.tarea; });
 
-$('#btnDejarFoco').addEventListener('click',()=>{
-  if (FOCO.restante>30 && !confirm('Quedan minutos por delante. ¿Seguro que lo dejas?')) return;
+$('#btnDejarFoco').addEventListener('click', async ()=>{
+  if (FOCO.restante>30 && !await preguntar(
+        `Te quedan ${deSeg(FOCO.restante)} de respiro. Se guardará lo que llevas.`,
+        { titulo:'¿Lo dejas aquí?', si:'Dejarlo', no:'Sigo', icono:'🌱', peligro:true })) return;
   terminarFoco(false);
 });
 
@@ -3903,6 +3971,7 @@ function conectarRadios(form){
 function refrescarCategorias(){
   const f=$('#formMov');
   f.categoria.innerHTML=(CATEGORIAS[`${radio(f,'ambito')}-${radio(f,'tipo')}`]||[]).map(c=>`<option>${c}</option>`).join('');
+  f.categoria.dispatchEvent(new Event('opciones:refrescar'));
 }
 
 function ajustarEtiquetasDiario(){
@@ -3956,6 +4025,7 @@ function abrirInversion(id){
     f.compradoEl.value=HOY;
   }
 
+  f.tipo.dispatchEvent(new Event('opciones:refrescar'));
   $('#tituloInv').textContent=i?'Editar activo':'Añadir activo';
   $('#btnGuardarInv').textContent=i?'Guardar cambios':'Añadir';
   ajustarCamposInversion();
@@ -4056,9 +4126,10 @@ $('#formCobro').addEventListener('submit', e=>{
   guardar(); $('#hojaCobro').close(); pintar(); avisar(previa?'Cobro actualizado':'Cobro apuntado');
 });
 
-$('#btnBorrarCobro').addEventListener('click',()=>{
+$('#btnBorrarCobro').addEventListener('click', async ()=>{
   const c=E.cobros.find(x=>x.id===UI.cobroEditando); if (!c) return;
-  if (!confirm(`¿Borrar el cobro de ${c.cliente}?`)) return;
+  if (!await preguntar(`${c.concepto||'Sin concepto'} · ${euroDec(aNum(c.importe))}`,
+      { titulo:`¿Borrar el cobro de ${c.cliente}?`, si:'Borrar', icono:'🧾', peligro:true })) return;
   E.cobros=E.cobros.filter(x=>x.id!==c.id);
   UI.cobroEditando=null;
   guardar(); $('#hojaCobro').close(); pintar(); avisar('Cobro borrado');
@@ -4143,11 +4214,12 @@ function pintarExtrasEntreno(){
     : (vol ? `${numF.format(vol)} kg esta semana` : 'Sin racha todavía');
 }
 
-$('#btnCopiarSemana').addEventListener('click',()=>{
+$('#btnCopiarSemana').addEventListener('click', async ()=>{
   const anterior=new Date(UI.semLunes); anterior.setDate(anterior.getDate()-7);
   const cuantas=sesionesSemana(anterior);
   if (!cuantas){ avisar('La semana anterior está vacía'); return; }
-  if (!confirm(`Se copiarán ${cuantas} sesión(es) de la semana anterior a esta, sin marcar. ¿Vamos?`)) return;
+  if (!await preguntar(`Se copian ${cuantas} sesión(es) tal cual, sin las marcas de hecho.`,
+      { titulo:'¿Repetir la semana anterior?', si:'Copiar', icono:'🔁' })) return;
   const n=duplicarSemana(anterior, UI.semLunes);
   guardar(); pintarEntreno(); avisar(`${n} sesión(es) copiadas`);
 });
@@ -4175,10 +4247,13 @@ function pintarMetricasCuerpo(){
     })():'<p class="pie-nota">Pon altura y objetivo con el botón de arriba.</p>'}`;
 }
 
-$('#btnObjetivoPeso').addEventListener('click',()=>{
-  const alt=prompt('Tu altura en cm (para el IMC):', E.altura??'');
-  if (alt!==null) E.altura=aNum(alt)||null;
-  const obj=prompt('Peso al que quieres llegar (kg):', E.pesoObjetivo??'');
+$('#btnObjetivoPeso').addEventListener('click', async ()=>{
+  const alt=await pedir('Hace falta para calcular el índice de masa corporal.',
+    E.altura??'', { titulo:'Tu altura en cm', modo:'decimal' });
+  // Se guarda ya: si cancelas la siguiente pregunta, esto no se pierde.
+  if (alt!==null){ E.altura=aNum(alt)||null; guardar(); }
+  const obj=await pedir('Lo verás como barra en Cuerpo.',
+    E.pesoObjetivo??'', { titulo:'Peso al que quieres llegar', modo:'decimal' });
   if (obj!==null) E.pesoObjetivo=aNum(obj)||null;
   guardar(); pintarEntreno(); avisar('Objetivo guardado');
 });
@@ -4221,10 +4296,11 @@ function pintarDesvio(){
     </div>`).join('');
 }
 
-$('#btnRepartoObjetivo').addEventListener('click',()=>{
+$('#btnRepartoObjetivo').addEventListener('click', async ()=>{
   for (const t of Object.keys(ICONO_INV)){
     const actual=E.repartoObjetivo[t] ? String(E.repartoObjetivo[t]) : '';
-    const r=prompt(`¿Qué % de la cartera quieres en ${t}? (vacío = no me importa)`, actual);
+    const r=await pedir('Déjalo vacío si ese tipo te da igual.',
+      actual, { titulo:`% que quieres en ${t}`, modo:'decimal' });
     if (r===null) break;
     const v=aNum(r);
     if (v>0) E.repartoObjetivo[t]=v; else delete E.repartoObjetivo[t];
@@ -4366,6 +4442,116 @@ document.querySelector('.atajos').addEventListener('click', e=>{
 
 /* ── Que Android no borre los datos cuando ande justo de espacio ─────────── */
 navigator.storage?.persist?.().catch(()=>{});
+
+/* ── Desplegables propios ───────────────────────────────────────────────────
+   El <select> se queda escondido y manda igual: así el resto del código sigue
+   leyendo form.categoria.value sin enterarse de nada. Lo que se ve es un botón
+   que abre una hoja con las opciones.                                       */
+function mejorarSelects(raiz=document){
+  for (const sel of raiz.querySelectorAll?.('select:not([data-mejorado])') || []){
+    sel.dataset.mejorado='1';
+    sel.classList.add('nativo-fuera');
+    sel.tabIndex=-1;
+
+    const boton=document.createElement('button');
+    boton.type='button';
+    boton.className='selector';
+    boton.innerHTML='<span></span><i>▾</i>';
+    sel.insertAdjacentElement('afterend', boton);
+
+    const refrescar=()=>{ boton.firstChild.textContent = sel.selectedOptions[0]?.textContent || '—'; };
+    refrescar();
+    sel.addEventListener('change', refrescar);
+    sel.addEventListener('opciones:refrescar', refrescar);
+    boton.addEventListener('click', ()=>abrirOpciones(sel, refrescar));
+  }
+}
+
+function abrirOpciones(sel, refrescar){
+  const etiqueta=sel.closest('.campo')?.querySelector('span')?.textContent;
+  $('#opcionesTitulo').textContent=etiqueta||'Elige';
+  $('#listaOpciones').innerHTML=[...sel.options].map(o=>`
+    <button type="button" class="opcion" data-valor="${esc(o.value)}" aria-selected="${o.value===sel.value}">
+      <span class="marca-op">${o.value===sel.value?'✓':''}</span>${esc(o.textContent)}
+    </button>`).join('');
+
+  const hoja=$('#hojaOpciones');
+  const elegir=e=>{
+    const b=e.target.closest('[data-valor]'); if (!b) return;
+    sel.value=b.dataset.valor;
+    refrescar();
+    sel.dispatchEvent(new Event('change', { bubbles:true }));
+    limpiar(); hoja.close(); vibrar(8);
+  };
+  const limpiar=()=>{ hoja.removeEventListener('click', elegir); hoja.removeEventListener('close', limpiar); };
+  hoja.addEventListener('click', elegir);
+  hoja.addEventListener('close', limpiar);
+  hoja.showModal();
+}
+
+// Las hojas se repintan a cada rato: lo que aparezca nuevo se mejora solo.
+new MutationObserver(cambios=>{
+  for (const c of cambios)
+    for (const n of c.addedNodes)
+      if (n.nodeType===1){
+        if (n.tagName==='SELECT'){ mejorarSelects(n.parentElement||document); }
+        else mejorarSelects(n);
+      }
+}).observe(document.body, { childList:true, subtree:true });
+
+/* ── Preguntar sin salir del diseño ─────────────────────────────────────────
+   confirm() y prompt() los pinta Android a su manera, en su idioma y con su
+   tipografía. Estas dos hacen lo mismo con la cara de la app; devuelven una
+   promesa, así que quien las usa espera con await.                          */
+function preguntar(texto, { titulo='¿Seguro?', si='Sí', no='Cancelar', icono='🤔', peligro=false } = {}){
+  $('#confTitulo').textContent=titulo;
+  $('#confTexto').textContent=texto||'';
+  $('#confIcono').textContent=icono;
+  const boton=$('#confSi');
+  boton.textContent=si;
+  boton.classList.toggle('peligro', peligro);
+  $('[data-conf="no"]').textContent=no;
+  $('#hojaConfirmar').showModal();
+
+  return new Promise(resolver=>{
+    const hoja=$('#hojaConfirmar');
+    const alPulsar=e=>{
+      const b=e.target.closest('[data-conf]'); if (!b) return;
+      limpiar(); hoja.close(); resolver(b.dataset.conf==='si');
+    };
+    const alCerrar=()=>{ limpiar(); resolver(false); };   // por si se cierra con el botón atrás
+    const limpiar=()=>{ hoja.removeEventListener('click', alPulsar); hoja.removeEventListener('close', alCerrar); };
+    hoja.addEventListener('click', alPulsar);
+    hoja.addEventListener('close', alCerrar);
+  });
+}
+
+function pedir(texto, valor='', { titulo='Dime', tipo='text', modo='text', ok='Guardar' } = {}){
+  const campo=$('#pedirCampo');
+  $('#pedirTitulo').textContent=titulo;
+  $('#pedirTexto').textContent=texto||'';
+  campo.type=tipo;
+  campo.inputMode=modo;
+  campo.value=valor??'';
+  $('#formPedir').querySelector('.btn-negro').textContent=ok;
+  $('#hojaPedir').showModal();
+  setTimeout(()=>{ campo.focus(); campo.select?.(); }, 120);
+
+  return new Promise(resolver=>{
+    const hoja=$('#hojaPedir'), form=$('#formPedir');
+    const alEnviar=e=>{ e.preventDefault(); const v=campo.value; limpiar(); hoja.close(); resolver(v); };
+    const alCancelar=e=>{ if (!e.target.closest('[data-pedir="no"]')) return; limpiar(); hoja.close(); resolver(null); };
+    const alCerrar=()=>{ limpiar(); resolver(null); };
+    const limpiar=()=>{
+      form.removeEventListener('submit', alEnviar);
+      hoja.removeEventListener('click', alCancelar);
+      hoja.removeEventListener('close', alCerrar);
+    };
+    form.addEventListener('submit', alEnviar);
+    hoja.addEventListener('click', alCancelar);
+    hoja.addEventListener('close', alCerrar);
+  });
+}
 
 /* ── Temporizador: eventos ───────────────────────────────────────────────── */
 $('#btnTemporizador').addEventListener('click',()=>{
@@ -4550,6 +4736,14 @@ async function exportarDatos(){
   avisar('Copia descargada');
 }
 
+/** Sustituye el estado por el de la copia. Solo se llama tras confirmar. */
+function restaurar(datos, crudo){
+  E=Object.assign(PLANTILLA_ESTADO(), datos);
+  if (!Array.isArray(E.habitos)||!E.habitos.length) E.habitos=HABITOS_INICIALES.map(h=>({...h}));
+  guardar(); programarAvisos(); aplicarTema(); $('#hojaAjustes').close(); pintar();
+  avisar('Copia restaurada ✓');
+}
+
 function importarDatos(fichero){
   const lector=new FileReader();
   lector.onload=()=>{
@@ -4558,11 +4752,11 @@ function importarDatos(fichero){
       const datos=crudo?.datos||crudo;
       if (!datos || typeof datos!=='object' || !('tx' in datos)) throw new Error('formato');
       const cuantos=(datos.tx?.length||0)+(datos.tareas?.length||0)+(datos.entradas?.length||0);
-      if (!confirm(`La copia trae ${cuantos} apunte(s), del ${String(crudo.fecha||'').slice(0,10)||'día que sea'}.\n\nEsto sustituye TODO lo que tienes ahora. ¿Seguir?`)) return;
-      E=Object.assign(PLANTILLA_ESTADO(), datos);
-      if (!Array.isArray(E.habitos)||!E.habitos.length) E.habitos=HABITOS_INICIALES.map(h=>({...h}));
-      guardar(); programarAvisos(); $('#hojaAjustes').close(); pintar();
-      avisar('Copia restaurada ✓');
+      preguntar(`Sustituye TODO lo que tienes ahora mismo en la app.`, {
+        titulo:`Restaurar ${cuantos} apunte(s)`,
+        si:'Restaurar', icono:'📥', peligro:true }).then(vale=>{ if (vale) restaurar(datos, crudo); });
+      return;
+      // (la confirmación va arriba; aquí ya no llega nada)
     } catch {
       avisar('Ese archivo no es una copia de Mi panel');
     }
@@ -4578,9 +4772,11 @@ $('#ficheroImportar').addEventListener('change', e=>{
   e.target.value='';
 });
 
-$('#btnBorrarTodo').addEventListener('click',()=>{
-  if (!confirm('Esto borra TODO: movimientos, tareas, entrenos, diario y cartera.\n\nNo hay vuelta atrás salvo que tengas una copia. ¿Seguro?')) return;
-  if (!confirm('De verdad, ¿seguro? Última oportunidad para exportar antes.')) return;
+$('#btnBorrarTodo').addEventListener('click', async ()=>{
+  if (!await preguntar('Movimientos, tareas, entrenos, diario y cartera. No hay vuelta atrás salvo que tengas una copia.',
+      { titulo:'¿Borrar todos tus datos?', si:'Sí, borrar', icono:'🗑️', peligro:true })) return;
+  if (!await preguntar('Última oportunidad para exportar antes.',
+      { titulo:'De verdad, ¿seguro?', si:'Borrarlo todo', no:'Mejor no', icono:'⚠️', peligro:true })) return;
   E=PLANTILLA_ESTADO();
   guardar(); programarAvisos(); $('#hojaAjustes').close(); pintar();
   avisar('Todo borrado');
@@ -4705,6 +4901,7 @@ function pintarFijos(){
 function refrescarCategoriasFijo(){
   const f=$('#formFijo');
   f.categoria.innerHTML=(CATEGORIAS[`${radio(f,'ambitoF')}-${radio(f,'tipoF')}`]||[]).map(c=>`<option>${c}</option>`).join('');
+  f.categoria.dispatchEvent(new Event('opciones:refrescar'));
 }
 
 /* ── Resumen de la semana ────────────────────────────────────────────────── */
@@ -4829,6 +5026,7 @@ function abrirMeta(id){
     f.alcance.value=UI.alcance;
   }
 
+  f.alcance.dispatchEvent(new Event('opciones:refrescar'));
   $('#tituloMeta').textContent=x?'Editar meta':'Nueva meta';
   $('#btnGuardarMeta').textContent=x?'Guardar cambios':'Crear';
   $('#btnBorrarMeta').classList.toggle('oculto', !x);
@@ -4891,9 +5089,10 @@ $('#formHabito').addEventListener('submit', e=>{
   avisar(previa?'Meta del día actualizada':'Meta del día creada');
 });
 
-$('#btnBorrarHabito').addEventListener('click',()=>{
+$('#btnBorrarHabito').addEventListener('click', async ()=>{
   const h=E.habitos.find(x=>x.id===UI.habitoEditando); if (!h) return;
-  if (!confirm(`¿Borrar "${h.nombre}" de las metas del día?`)) return;
+  if (!await preguntar('Se irá también de los días que ya tenías marcados.',
+      { titulo:`¿Borrar "${h.nombre}"?`, si:'Borrar', icono:'✅', peligro:true })) return;
   E.habitos=E.habitos.filter(x=>x.id!==h.id);
   // Y fuera de los días marcados, para que las rachas no cuenten algo que ya no existe.
   for (const [k,lista] of Object.entries(E.ticks)){
@@ -4904,9 +5103,10 @@ $('#btnBorrarHabito').addEventListener('click',()=>{
   guardar(); $('#hojaHabito').close(); pintar(); avisar('Meta del día borrada');
 });
 
-$('#btnBorrarMeta').addEventListener('click',()=>{
+$('#btnBorrarMeta').addEventListener('click', async ()=>{
   const x=E.metas.find(y=>y.id===UI.metaEditando); if (!x) return;
-  if (!confirm(`¿Borrar la meta "${x.nombre}"?`)) return;
+  if (!await preguntar('Se pierde su progreso.',
+      { titulo:`¿Borrar "${x.nombre}"?`, si:'Borrar', icono:'🎯', peligro:true })) return;
   E.metas=E.metas.filter(y=>y.id!==x.id);
   UI.metaEditando=null;
   guardar(); $('#hojaMeta').close(); pintar(); avisar('Meta borrada');
@@ -5034,7 +5234,7 @@ function abrirDiario(){
 }
 
 /* ── Delegación global ───────────────────────────────────────────────────── */
-document.addEventListener('click', e=>{
+document.addEventListener('click', async e=>{
   const cerrar=e.target.closest('[data-cerrar]');
   if (cerrar){ $('#'+cerrar.dataset.cerrar).close(); return; }
 
@@ -5155,7 +5355,9 @@ document.addEventListener('click', e=>{
   if (descEj){
     const s=sesionActual(); if (!s) return;
     const ej=s.ejercicios[Number(descEj.dataset.descansoEj)];
-    const r=prompt(`Descanso entre series de ${ej.nombre}, en segundos:`, String(ej.descanso ?? DESCANSO_POR_DEFECTO));
+    const r=await pedir('Arranca solo al marcar cada serie.',
+      String(ej.descanso ?? DESCANSO_POR_DEFECTO),
+      { titulo:`Descanso de ${ej.nombre} (segundos)`, modo:'numeric' });
     if (r===null) return;
     ej.descanso=Math.max(0, Math.round(aNum(r)));
     guardar(); pintarDetalleSesion(); return;
@@ -5264,7 +5466,8 @@ document.addEventListener('click', e=>{
 
   if (e.target.closest('[data-guardar-plantilla]')){
     const s=sesionActual(); if (!s) return;
-    const nombre=prompt('Nombre de la plantilla:', s.nombre);
+    const nombre=await pedir('La tendrás en Plantillas para repetirla cuando quieras.',
+      s.nombre, { titulo:'Nombre de la plantilla' });
     if (!nombre||!nombre.trim()) return;
     const copia=JSON.parse(JSON.stringify(s));
     delete copia.id; copia.hecha=false;
@@ -5328,7 +5531,9 @@ document.addEventListener('click', e=>{
   const borrarFijo=e.target.closest('[data-borrar-fijo]');
   if (borrarFijo){
     const f=E.fijos.find(x=>x.id===borrarFijo.dataset.borrarFijo);
-    if (!f||!confirm(`¿Dejar de apuntar "${f.concepto}" cada mes?\n\nLo ya apuntado se queda.`)) return;
+    if (!f) return;
+    if (!await preguntar('Lo ya apuntado se queda donde está.',
+        { titulo:`¿Dejar de apuntar "${f.concepto}"?`, si:'Quitar', icono:'🔁', peligro:true })) return;
     E.fijos=E.fijos.filter(x=>x.id!==f.id);
     guardar(); pintarFijos(); avisar('Fijo eliminado'); return;
   }
@@ -5350,7 +5555,8 @@ document.addEventListener('click', e=>{
   const sumarM=e.target.closest('[data-meta-sumar]');
   if (sumarM){
     const x=E.metas.find(y=>y.id===sumarM.dataset.metaSumar); if (!x) return;
-    const r=prompt(`¿Cuánto sumas a "${x.nombre}"?\n\nVas por ${numF.format(x.progreso)} de ${numF.format(x.meta)} ${x.unidad}.`,'');
+    const r=await pedir(`Vas por ${numF.format(x.progreso)} de ${numF.format(x.meta)} ${x.unidad}.`,
+      '', { titulo:`Sumar a "${x.nombre}"`, modo:'decimal', ok:'Sumar' });
     if (r===null||!r.trim()) return;
     x.progreso=Math.max(0,Math.round((x.progreso+aNum(r))*100)/100);
     guardar(); pintar();
@@ -5364,7 +5570,9 @@ document.addEventListener('click', e=>{
   const borrarM=e.target.closest('[data-meta-borrar]');
   if (borrarM){
     const x=E.metas.find(y=>y.id===borrarM.dataset.metaBorrar);
-    if (!x||!confirm(`¿Borrar la meta "${x.nombre}"?`)) return;
+    if (!x) return;
+    if (!await preguntar('Se pierde su progreso.',
+        { titulo:`¿Borrar "${x.nombre}"?`, si:'Borrar', icono:'🎯', peligro:true })) return;
     E.metas=E.metas.filter(y=>y.id!==x.id);
     guardar(); pintar(); return;
   }
@@ -5431,6 +5639,7 @@ moverPastilla();
 addEventListener('resize', moverPastilla);
 reanimar($('.vista[data-vista="home"]'), 'entrando');
 
+mejorarSelects();
 aplicarTema();
 $$('#segTema button').forEach(x=>x.setAttribute('aria-selected', String(x.dataset.tema===E.tema)));
 refrescarCategorias();
