@@ -1716,6 +1716,7 @@ const UI = {
   sesionAbierta: null,
   animoElegido: 3,
   filtroDiario: '',
+  diaDiario: HOY,          // qué día se está escribiendo en el diario
   metaEditando: null,      // id de la meta abierta en la hoja, o null si es alta
   habitoEditando: null,    // ídem para las metas del día
   ejercicioEnCurso: '',    // lo que llevas escrito en "Nuevo ejercicio…"
@@ -1962,7 +1963,7 @@ function pintarHome(){
   $('#agendaVencimientos').innerHTML = proximos.length
     ? proximos.map(x=>{
         const dias = Math.round((desdeClave(x.limite)-desdeClave(HOY))/86400000);
-        const cuando = dias<0?`venció hace ${-dias} día(s)`:dias===0?'vence hoy':`quedan ${dias} día(s)`;
+        const cuando = dias<0?`venció ${cuandoFue(x.limite)}`:dias===0?'vence hoy':`vence ${cuandoFue(x.limite)}`;
         const avance = x.meta?x.progreso/x.meta:0;
         return `<div class="progreso">
           <div class="progreso-cab"><b>${esc(x.nombre)}</b><span class="progreso-pct num ${dias<=1?'neg':''}">${pct(avance)}</span></div>
@@ -2646,9 +2647,11 @@ function pintarMetas(){
     const avance=x.meta?x.progreso/x.meta:0;
     const esE=x.unidad==='€';
     const v=n=>esE?euroDec(n):`${numF.format(n)} ${esc(x.unidad)}`;
+    const ritmo=ritmoNecesario(x);
     const lim=x.limite?` · hasta ${desdeClave(x.limite).toLocaleDateString('es-ES',{day:'numeric',month:'short'})}`:'';
+    const consejo=ritmo?`<div class="pie-nota" style="margin:6px 0 0">Para llegar: <b>${esE?euroDec(ritmo.alMes):numF.format(ritmo.alMes)+' '+esc(x.unidad)}</b> al mes · quedan ${ritmo.dias} día(s)</div>`:'';
     return barraHTML(esc(x.nombre), avance, `${v(x.progreso)} de ${v(x.meta)}`, (avance>=1?'¡conseguida!':'meta propia')+lim, 'm',
-      `<div class="mini-acciones"><button data-meta-sumar="${x.id}">+ Progreso</button>
+      consejo + `<div class="mini-acciones"><button data-meta-sumar="${x.id}">+ Progreso</button>
         <button data-meta-editar="${x.id}">✎ Editar</button>
         <button class="quitar" data-meta-borrar="${x.id}">Borrar</button></div>`);
   }).join('');
@@ -2718,7 +2721,14 @@ function pintarDetalleDia(){
   panel.classList.remove('oculto');
   panel.innerHTML=`
     <h3>${k===HOY?'Hoy':f.toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'}).replace(/^./,c=>c.toUpperCase())}</h3>
-    <div class="sub">${hechos.length}/${habitos().length} hábitos · ${sesiones.length} sesión(es) · ${entradas.length?'con diario':'sin diario'}</div>
+    <div class="sub">${hechos.length}/${habitos().length} metas · ${tareasDe(k).length} tarea(s) · ${sesiones.length} sesión(es) · ${entradas.length?'con diario':'sin diario'}</div>
+    ${tareasDe(k).map(t=>`
+      <div class="tarea">
+        <button class="check ${tareaHecha(t,k)?'hecho':''}" data-tarea-check="${t.id}" data-dia="${k}" aria-label="Hecha">
+          <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></button>
+        <button class="tarea-cuerpo" data-tarea-editar="${t.id}">
+          <b>${esc(t.titulo)}</b><span>${t.hora?t.hora+' · ':''}${t.ambito}</span></button>
+      </div>`).join('')}
     ${habitos().map(h=>`
       <button class="habito" data-habito="${h.id}" data-fecha="${k}" aria-pressed="${hechos.includes(h.id)}">
         <span class="emoji">${esc(h.emoji)}</span><span class="nombre">${esc(h.nombre)}</span>
@@ -2734,7 +2744,8 @@ function pintarDetalleDia(){
       <div class="diario-entrada" style="border:none">
         <div class="fecha">📓 <span class="ambito-chip ${e.ambito}">${e.ambito}</span> energía ${e.animo}/5</div>
         ${e.prioridad?`<p><b>Prioridad:</b> ${esc(e.prioridad)}</p>`:''}
-      </div>`).join('')}`;
+      </div>`).join('')}
+    ${esFutura(k)?'':`<button class="aniadir-linea" data-diario-dia="${k}">${entradas.length?'✎ Corregir el diario':'+ Escribir el diario de ese día'}</button>`}`;
 }
 
 /* ═══════════════════════════ VISTA 4 · ENTRENO ═══════════════════════════ */
@@ -3048,6 +3059,7 @@ function pintarDetalleSesion(){
   $('#dsCuerpo').scrollTop=scrollPrevio;
   $('#dsPie').innerHTML=`
     <button type="button" class="btn-suave" data-descanso-manual title="Descanso">⏱</button>
+    <button type="button" class="btn-suave" data-mover-sesion title="Mover a otro día">📅</button>
     <button type="button" class="btn-suave" data-guardar-plantilla>Plantilla</button>
     <button type="button" class="btn-suave peligro" data-borrar-sesion>Borrar</button>
     <button type="button" class="btn-negro" data-alternar-hecha style="flex:1.4">${s.hecha?'Marcar pendiente':'✓ Completada'}</button>`;
@@ -3125,6 +3137,31 @@ function arrancarBarras(){
   clearInterval(DESC.reloj);
   DESC.reloj=setInterval(latirDescanso, 200);
   latirDescanso();
+  avisoDelTemporizador();
+}
+
+/* Con el móvil bloqueado, Android frena los temporizadores y no suena nada.
+   Se deja puesta una notificación para la hora exacta del final, y se quita
+   si el descanso termina con la app delante.                               */
+const AVISO_TEMPORIZADOR = 987001;
+
+async function avisoDelTemporizador(){
+  const nativo=NATIVO();
+  if (!nativo || DESC.arriba || !DESC.total) return;
+  try {
+    await nativo.cancel({ notifications:[{ id:AVISO_TEMPORIZADOR }] });
+    await nativo.schedule({ notifications:[{
+      id:AVISO_TEMPORIZADOR,
+      title:'Se acabó el descanso',
+      body:'A por la siguiente serie.',
+      channelId:'mi-panel',
+      schedule:{ at:new Date(DESC.hasta), allowWhileIdle:true },
+    }] });
+  } catch {}
+}
+
+function quitarAvisoTemporizador(){
+  NATIVO()?.cancel({ notifications:[{ id:AVISO_TEMPORIZADOR }] }).catch(()=>{});
 }
 
 function visibleEnHoja(){ return $('#hojaDetalleSesion').open; }
@@ -3155,6 +3192,7 @@ function latirDescanso(){
 
 function pararDescanso(){
   clearInterval(DESC.reloj); DESC.reloj=null;
+  quitarAvisoTemporizador();
   BARRAS.forEach(x=>{
     const caja=$(x.caja); if (!caja) return;
     caja.classList.add('oculto');
@@ -3168,6 +3206,7 @@ function moverDescanso(segundos){
   DESC.total=Math.max(DESC.total, (DESC.hasta-Date.now())/1000);
   DESC.avisado=false;
   latirDescanso();
+  avisoDelTemporizador();   // la notificación se mueve con él
 }
 
 /** Los ejercicios que ya has hecho alguna vez, para sugerirlos al escribir. */
@@ -3317,20 +3356,33 @@ function latirGuia(){
   pintarG();
 }
 
-/** Un pitido corto sin ficheros de sonido, sintetizado al vuelo. */
-function sonar(){
-  vibrar([90,60,90]);
+/* El navegador no deja sonar nada hasta que tocas la pantalla, y un contexto
+   creado en frío nace mudo. Se prepara uno con el primer toque y se reutiliza. */
+let audio=null;
+function despertarAudio(){
   try {
-    const ctx=new (window.AudioContext||window.webkitAudioContext)();
-    const osc=ctx.createOscillator(), vol=ctx.createGain();
-    osc.frequency.value=880; osc.type='sine';
-    vol.gain.setValueAtTime(.001, ctx.currentTime);
-    vol.gain.exponentialRampToValueAtTime(.35, ctx.currentTime+.02);
-    vol.gain.exponentialRampToValueAtTime(.001, ctx.currentTime+.45);
-    osc.connect(vol).connect(ctx.destination);
-    osc.start(); osc.stop(ctx.currentTime+.5);
-    setTimeout(()=>ctx.close(), 800);
+    audio ||= new (window.AudioContext||window.webkitAudioContext)();
+    if (audio.state==='suspended') audio.resume();
   } catch {}
+}
+document.addEventListener('pointerdown', despertarAudio, { once:false, passive:true });
+
+/** Dos pitidos cortos, sintetizados al vuelo: no hacen falta ficheros. */
+function sonar(veces=2){
+  vibrar([90,60,90]);
+  despertarAudio();
+  if (!audio || audio.state!=='running') return;
+  for (let i=0;i<veces;i++){
+    const t=audio.currentTime + i*0.28;
+    const osc=audio.createOscillator(), vol=audio.createGain();
+    osc.frequency.value = i ? 1046 : 880;   // sol y do: se distingue del ruido del gimnasio
+    osc.type='sine';
+    vol.gain.setValueAtTime(.0001, t);
+    vol.gain.exponentialRampToValueAtTime(.4, t+.02);
+    vol.gain.exponentialRampToValueAtTime(.0001, t+.24);
+    osc.connect(vol).connect(audio.destination);
+    osc.start(t); osc.stop(t+.26);
+  }
 }
 
 function pulsarGuia(){
@@ -4309,6 +4361,16 @@ $('#btnRepartoObjetivo').addEventListener('click', async ()=>{
 });
 
 
+/* ── Red de seguridad ────────────────────────────────────────────────────────
+   Si algo revienta, mejor un aviso que una pantalla en blanco sin explicación. */
+window.addEventListener('error', ev=>{
+  try { avisar('Algo ha fallado. Tus datos están a salvo.'); } catch {}
+  console.error('[mi panel]', ev.message, ev.filename, ev.lineno);
+});
+window.addEventListener('unhandledrejection', ev=>{
+  console.error('[mi panel] promesa sin capturar:', ev.reason);
+});
+
 /* ═══════════════════════ EXPERIENCIA ═════════════════════════════════════ */
 
 /* ── Deshacer ────────────────────────────────────────────────────────────────
@@ -4717,7 +4779,13 @@ $('#btnProbarAviso').addEventListener('click', async ()=>{
 
 // Al volver a la app se reprograma: las repetidas van saliendo del horizonte
 // de siete días y hay que reponerlas.
-document.addEventListener('visibilitychange', ()=>{ if (!document.hidden) programarAvisos(); });
+document.addEventListener('visibilitychange', ()=>{
+  if (document.hidden) return;
+  programarAvisos();
+  // El sistema suelta el bloqueo de pantalla al irse a segundo plano.
+  if (DESC.reloj || FOCO.reloj || GUIA.reloj) retenerPantalla();
+  if (DESC.reloj) latirDescanso();
+});
 
 /** Saca todo a un archivo. En el móvil abre el menú de compartir de Android. */
 async function exportarDatos(){
@@ -5197,12 +5265,13 @@ $('#formDiario').addEventListener('submit', e=>{
   e.preventDefault();
   const f=e.target;
   const ambito=radio(f,'ambitoD')||'personal';
+  const dia=UI.diaDiario||HOY;
   // Una entrada por día y ámbito: si ya existe, se actualiza.
-  const previa=E.entradas.find(x=>x.fecha===HOY&&x.ambito===ambito);
+  const previa=E.entradas.find(x=>x.fecha===dia&&x.ambito===ambito);
   const datos={ ambito, animo:UI.animoElegido, prioridad:f.prioridad.value.trim(),
     gratitud:f.gratitud.value.trim(), enfoque:f.enfoque.value.trim() };
   if (previa) Object.assign(previa, datos);
-  else E.entradas.push({ id:nuevoId(), fecha:HOY, ...datos });
+  else E.entradas.push({ id:nuevoId(), fecha:dia, ...datos });
   E.recordatorio.hora=f.hora.value||'07:30';
   guardar(); $('#hojaDiario').close(); vibrar(); pintar(); avisar('Entrada guardada 🌅');
 });
@@ -5216,11 +5285,12 @@ $('#segDiario').addEventListener('click', e=>{
 
 $('#btnNotificaciones').addEventListener('click', alternarNotificaciones);
 
-function abrirDiario(){
+function abrirDiario(dia=HOY){
+  UI.diaDiario=dia;
   const f=$('#formDiario');
   f.reset();
   const ambito=radio(f,'ambitoD')||'personal';
-  const previa=E.entradas.find(x=>x.fecha===HOY&&x.ambito===ambito);
+  const previa=E.entradas.find(x=>x.fecha===UI.diaDiario&&x.ambito===ambito);
   UI.animoElegido=previa?.animo||3;
   $$('#animoFila .animo').forEach(x=>x.setAttribute('aria-pressed',String(Number(x.dataset.animo)===UI.animoElegido)));
   f.prioridad.value=previa?.prioridad||'';
@@ -5228,7 +5298,9 @@ function abrirDiario(){
   f.enfoque.value=previa?.enfoque||'';
   f.hora.value=E.recordatorio.hora;
   $('#btnNotificaciones').textContent=E.recordatorio.activo?'Avisos activados ✓':'Activar avisos';
-  $('#tituloDiario').textContent=new Date().toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'}).replace(/^./,c=>c.toUpperCase());
+  $('#tituloDiario').textContent=(UI.diaDiario===HOY?'Hoy, ':'')+
+    desdeClave(UI.diaDiario).toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'})
+      .replace(/^./,c=>UI.diaDiario===HOY?c:c.toUpperCase());
   ajustarEtiquetasDiario();
   $('#hojaDiario').showModal();
 }
@@ -5246,7 +5318,10 @@ document.addEventListener('click', async e=>{
     return;
   }
 
-  if (e.target.closest('[data-ir-diario]')){ abrirDiario(); return; }
+  if (e.target.closest('[data-ir-diario]')){ abrirDiario(HOY); return; }
+
+  const diarioDia=e.target.closest('[data-diario-dia]');
+  if (diarioDia){ abrirDiario(diarioDia.dataset.diarioDia); return; }
 
   const irTab=e.target.closest('[data-ir-tab]');
   if (irTab){ ir(irTab.dataset.irTab); return; }
@@ -5464,6 +5539,19 @@ document.addEventListener('click', async e=>{
     return;
   }
 
+  if (e.target.closest('[data-mover-sesion]')){
+    const s=sesionActual(); if (!s) return;
+    const dia=await pedir('El entreno se lleva sus ejercicios y sus series.',
+      UI.sesionAbierta.fecha, { titulo:`Mover "${s.nombre}" a…`, tipo:'date', ok:'Mover' });
+    if (!dia || dia===UI.sesionAbierta.fecha) return;
+    moverSesion(UI.sesionAbierta.fecha, s.id, dia);
+    guardar(); $('#hojaDetalleSesion').close();
+    UI.entrenoDia=dia; UI.semLunes=lunesDe(desdeClave(dia));
+    if (UI.vista==='entreno') pintarEntreno(); else pintar();
+    avisar(`Movido al ${desdeClave(dia).toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'})}`);
+    return;
+  }
+
   if (e.target.closest('[data-guardar-plantilla]')){
     const s=sesionActual(); if (!s) return;
     const nombre=await pedir('La tendrás en Plantillas para repetirla cuando quieras.',
@@ -5626,13 +5714,11 @@ conectarRadios($('#formTarea'));
 conectarRadios($('#formFijo'));
 
 /* ═══════════════════════════ ARRANQUE ════════════════════════════════════ */
-// Si vienes de la versión anterior instalada como PWA, su service worker
-// seguiría sirviendo la app vieja desde la caché. Se le da de baja.
-if ('serviceWorker' in navigator){
-  navigator.serviceWorker.getRegistrations?.()
-    .then(rs=>rs.forEach(r=>r.unregister()))
-    .catch(()=>{});
-  caches?.keys?.().then(ks=>ks.forEach(k=>caches.delete(k))).catch(()=>{});
+// Sin conexión la app sigue abriendo: el service worker pide primero a la red
+// y tira de lo guardado solo si no hay. Dentro del APK no hace falta —la web va
+// empaquetada— pero si la instalas como PWA, sí.
+if ('serviceWorker' in navigator && location.protocol!=='file:'){
+  navigator.serviceWorker.register('sw.js').catch(()=>{});
 }
 
 moverPastilla();
