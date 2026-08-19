@@ -321,6 +321,13 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
 .barras-mes .cifra-mini { font-size: 9.5px; font-weight: 700; }
 
 
+/* ── Temporizador flotante y botones de tiempo ──────────────────────────── */
+.descanso.flotante { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(var(--dock-alto) + 10px); z-index: 60; width: min(460px, calc(100vw - 28px)); margin: 0; }
+.tiempos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.tiempos button { padding: 14px 4px; border-radius: 18px; background: var(--fondo); font-size: 15px; font-weight: 700; transition: transform .15s var(--muelle); }
+.tiempos button:active { transform: scale(.92); }
+.cronometrando .desc-carril { opacity: .35; }
+
 /* ── Descanso entre series ──────────────────────────────────────────────── */
 .descanso { display: flex; align-items: center; gap: 10px; margin: 0 16px 4px; padding: 10px 12px; border-radius: 20px; background: var(--tinta); color: #fff; box-shadow: var(--sombra-alta); animation: entrar .3s var(--muelle); }
 .descanso .desc-centro { flex: 1; min-width: 0; text-align: center; }
@@ -630,6 +637,9 @@ dialog::backdrop { animation: fundir .3s ease backwards; }
       <small id="saludoPeq">Bienvenido</small>
       <b id="nombre">Oier</b>
     </div>
+    <button class="campana" id="btnTemporizador" aria-label="Temporizador" style="margin-right:-4px">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg>
+    </button>
     <button class="campana" id="btnBuscar" aria-label="Buscar" style="margin-right:-4px">
       <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
     </button>
@@ -945,6 +955,46 @@ dialog::backdrop { animation: fundir .3s ease backwards; }
 
 <div class="brindis" id="brindis" role="status" aria-live="polite"></div>
 <div class="tirador" id="tirador">Suelta para actualizar cotizaciones</div>
+
+<!-- Barra del temporizador, visible en toda la app -->
+<div class="descanso flotante oculto" id="descansoFlotante">
+  <button class="desc-mas" data-descanso-menos>−15</button>
+  <div class="desc-centro">
+    <b class="num" id="descansoTiempoG">1:30</b>
+    <span id="descansoQueG">descanso</span>
+    <span class="desc-carril"><i id="descansoBarraG"></i></span>
+  </div>
+  <button class="desc-mas" data-descanso-mas>+15</button>
+  <button class="desc-saltar" data-descanso-saltar>✕</button>
+</div>
+
+<!-- ══ Hoja: temporizador ═══════════════════════════════════════════════ -->
+<dialog id="hojaTemporizador">
+  <div class="hoja">
+    <div class="hoja-asa"></div>
+    <div class="hoja-cab"><h3>Temporizador</h3><button type="button" class="cerrar" data-cerrar="hojaTemporizador">Cerrar</button></div>
+    <div class="hoja-cuerpo">
+      <p style="font-size:13px; color:var(--txt-2); margin:0 0 12px">Para el descanso entre series, para la plancha, para el café. Sigue corriendo aunque cambies de pestaña.</p>
+      <div class="tiempos" id="tiemposRapidos">
+        <button data-segundos="30">30s</button>
+        <button data-segundos="45">45s</button>
+        <button data-segundos="60">1:00</button>
+        <button data-segundos="90">1:30</button>
+        <button data-segundos="120">2:00</button>
+        <button data-segundos="180">3:00</button>
+        <button data-segundos="300">5:00</button>
+        <button data-segundos="600">10:00</button>
+      </div>
+      <div class="par" style="margin-top:14px">
+        <label class="campo"><span>O los que quieras (segundos)</span>
+          <input id="segundosLibres" inputmode="numeric" placeholder="150"></label>
+        <button class="btn-suave" id="btnLibre" style="align-self:end; margin-bottom:13px">Empezar</button>
+      </div>
+      <button class="btn-suave" id="btnCronometro">⏱ Cronómetro (hacia arriba)</button>
+    </div>
+    <div class="hoja-pie"><button type="button" class="btn-negro" data-cerrar="hojaTemporizador" style="flex:1">Cerrar</button></div>
+  </div>
+</dialog>
 
 <!-- ══ Hoja: bienvenida ══════════════════════════════════════════════════ -->
 <dialog id="hojaBienvenida">
@@ -1607,6 +1657,8 @@ const UI = {
   filtroDiario: '',
   metaEditando: null,      // id de la meta abierta en la hoja, o null si es alta
   habitoEditando: null,    // ídem para las metas del día
+  ejercicioEnCurso: '',    // lo que llevas escrito en "Nuevo ejercicio…"
+  grupoEnCurso: 'Pecho',
   tareaEditando: null,
   cobroEditando: null,
   agendaDia: HOY,
@@ -2813,6 +2865,9 @@ function sesionActual(){
 
 function pintarDetalleSesion(){
   const s=sesionActual(); if (!s) return;
+  // Se repinta entera en cada toque: sin esto, la hoja saltaría arriba.
+  const cuerpoPrevio=$('#dsCuerpo');
+  const scrollPrevio=cuerpoPrevio?cuerpoPrevio.scrollTop:0;
   $('#dsNombre').textContent=s.nombre;
   const cuerpo=$('#dsCuerpo');
 
@@ -2843,9 +2898,11 @@ function pintarDetalleSesion(){
       }).join('')}
       <div style="padding:10px 0 4px; display:grid; gap:9px">
         <div class="par">
-          <input id="nuevoEjNombre" placeholder="Nuevo ejercicio…" autocomplete="off">
-          <select id="nuevoEjGrupo">${GRUPOS.map(g=>`<option>${g}</option>`).join('')}</select>
+          <input id="nuevoEjNombre" placeholder="Nuevo ejercicio…" autocomplete="off" list="ejerciciosUsados"
+                 value="${esc(UI.ejercicioEnCurso||'')}">
+          <select id="nuevoEjGrupo">${GRUPOS.map(g=>`<option ${g===UI.grupoEnCurso?'selected':''}>${g}</option>`).join('')}</select>
         </div>
+        <datalist id="ejerciciosUsados">${ejerciciosConocidos().map(n=>`<option value="${esc(n)}">`).join('')}</datalist>
         <button class="aniadir-linea" id="btnMasEjercicio">+ Añadir ejercicio</button>
       </div>`;
   } else {
@@ -2924,7 +2981,9 @@ function pintarDetalleSesion(){
 
   const volTotal=volumenSesion(s);
   if (volTotal) $('#dsNombre').innerHTML=`${esc(s.nombre)} <small style="display:block;font-size:11.5px;font-weight:600;color:var(--txt-2)">${numF.format(volTotal)} kg movidos</small>`;
+  $('#dsCuerpo').scrollTop=scrollPrevio;
   $('#dsPie').innerHTML=`
+    <button type="button" class="btn-suave" data-descanso-manual title="Descanso">⏱</button>
     <button type="button" class="btn-suave" data-guardar-plantilla>Plantilla</button>
     <button type="button" class="btn-suave peligro" data-borrar-sesion>Borrar</button>
     <button type="button" class="btn-negro" data-alternar-hecha style="flex:1.4">${s.hecha?'Marcar pendiente':'✓ Completada'}</button>`;
@@ -2968,26 +3027,62 @@ function ultimaVez(nombre, fechaActual){
 }
 
 /* ── El temporizador de descanso ─────────────────────────────────────────── */
-const DESC = { reloj:null, hasta:0, total:0, avisado:false };
+const DESC = { reloj:null, hasta:0, total:0, avisado:false, arriba:false, etiqueta:'descanso' };
 
-function empezarDescanso(segundos){
+/* Hay dos barras: la de dentro de la hoja de la sesión, que se ve por encima
+   de la ventana modal, y la flotante, para el resto de la app. Se pintan las
+   dos y se enseña la que toque. */
+const BARRAS = [
+  { caja:'#barraDescanso',  t:'#descansoTiempo',  q:'#descansoQue',  b:'#descansoBarra' },
+  { caja:'#descansoFlotante', t:'#descansoTiempoG', q:'#descansoQueG', b:'#descansoBarraG' },
+];
+
+function empezarDescanso(segundos, etiqueta='descanso'){
   if (!segundos) return;
   DESC.total=segundos;
   DESC.hasta=Date.now()+segundos*1000;
   DESC.avisado=false;
-  $('#barraDescanso').classList.remove('oculto');
+  DESC.arriba=false;
+  DESC.etiqueta=etiqueta;
+  arrancarBarras();
+}
+
+/** Cronómetro hacia arriba: mismo aparato, contando al revés. */
+function empezarCronometro(){
+  DESC.total=0;
+  DESC.hasta=Date.now();
+  DESC.avisado=true;          // no hay pitido: no acaba nunca solo
+  DESC.arriba=true;
+  DESC.etiqueta='cronómetro';
+  arrancarBarras();
+}
+
+function arrancarBarras(){
   clearInterval(DESC.reloj);
   DESC.reloj=setInterval(latirDescanso, 200);
   latirDescanso();
 }
 
+function visibleEnHoja(){ return $('#hojaDetalleSesion').open; }
+
 function latirDescanso(){
-  const quedan=Math.max(0, (DESC.hasta-Date.now())/1000);
-  $('#descansoTiempo').textContent=deSeg(quedan);
-  $('#descansoBarra').style.width=`${(quedan/DESC.total*100).toFixed(1)}%`;
-  $('#barraDescanso').classList.toggle('acabando', quedan<=5);
-  $('#descansoQue').textContent=quedan?'descanso':'¡a por la siguiente!';
-  if (quedan<=0 && !DESC.avisado){
+  const quedan = DESC.arriba
+    ? (Date.now()-DESC.hasta)/1000
+    : Math.max(0, (DESC.hasta-Date.now())/1000);
+  const parte = DESC.arriba ? 1 : (DESC.total ? quedan/DESC.total : 0);
+  const enHoja = visibleEnHoja();
+
+  BARRAS.forEach((x,i)=>{
+    const caja=$(x.caja); if (!caja) return;
+    caja.classList.toggle('oculto', i===0 ? !enHoja : enHoja);
+    caja.classList.toggle('acabando', !DESC.arriba && quedan<=5);
+    caja.classList.toggle('cronometrando', !!DESC.arriba);
+    $(x.t).textContent=deSeg(quedan);
+    $(x.b).style.width=`${(Math.min(1,parte)*100).toFixed(1)}%`;
+    $(x.q).textContent = DESC.arriba ? DESC.etiqueta : (quedan?DESC.etiqueta:'¡a por la siguiente!');
+  });
+
+  if (!DESC.arriba && quedan<=0 && !DESC.avisado){
     DESC.avisado=true;
     sonar();
     setTimeout(pararDescanso, 2500);
@@ -2996,8 +3091,11 @@ function latirDescanso(){
 
 function pararDescanso(){
   clearInterval(DESC.reloj); DESC.reloj=null;
-  $('#barraDescanso').classList.add('oculto');
-  $('#barraDescanso').classList.remove('acabando');
+  BARRAS.forEach(x=>{
+    const caja=$(x.caja); if (!caja) return;
+    caja.classList.add('oculto');
+    caja.classList.remove('acabando','cronometrando');
+  });
 }
 
 function moverDescanso(segundos){
@@ -3006,6 +3104,42 @@ function moverDescanso(segundos){
   DESC.total=Math.max(DESC.total, (DESC.hasta-Date.now())/1000);
   DESC.avisado=false;
   latirDescanso();
+}
+
+/** Los ejercicios que ya has hecho alguna vez, para sugerirlos al escribir. */
+function ejerciciosConocidos(){
+  const vistos=new Set();
+  for (const lista of Object.values(E.sesiones))
+    for (const s of lista)
+      for (const ej of s.ejercicios||[]) vistos.add(ej.nombre);
+  return [...vistos].sort((a,b)=>a.localeCompare(b,'es'));
+}
+
+/** Añade el ejercicio escrito. Si ya lo has hecho antes, hereda sus series. */
+function anadirEjercicio(){
+  const s=sesionActual(); if (!s) return;
+  const nombre=$('#nuevoEjNombre').value.trim();
+  if (!nombre){ avisar('Escribe el nombre del ejercicio'); $('#nuevoEjNombre').focus(); return; }
+
+  const antes=ultimaVez(nombre, UI.sesionAbierta.fecha);
+  const cuantas=antes ? antes.texto.split(' · ').length : 3;
+  const previo=(()=>{
+    for (const lista of Object.values(E.sesiones))
+      for (const x of lista)
+        for (const ej of x.ejercicios||[]) if (ej.nombre===nombre) return ej;
+    return null;
+  })();
+
+  s.ejercicios.push({
+    nombre,
+    grupo: previo?.grupo || $('#nuevoEjGrupo').value,
+    descanso: previo?.descanso ?? DESCANSO_POR_DEFECTO,
+    // Se crean ya las series que sueles hacer, para no ir dándole al +
+    series: Array.from({length:Math.min(6,Math.max(1,cuantas))},()=>({reps:'',kg:'',hecha:false})),
+  });
+  UI.ejercicioEnCurso=''; UI.grupoEnCurso=$('#nuevoEjGrupo').value;
+  guardar(); pintarDetalleSesion();
+  avisar(`${nombre} añadido`);
 }
 
 /* ── Series de resistencia ───────────────────────────────────────────────── */
@@ -4233,6 +4367,32 @@ document.querySelector('.atajos').addEventListener('click', e=>{
 /* ── Que Android no borre los datos cuando ande justo de espacio ─────────── */
 navigator.storage?.persist?.().catch(()=>{});
 
+/* ── Temporizador: eventos ───────────────────────────────────────────────── */
+$('#btnTemporizador').addEventListener('click',()=>{
+  $('#segundosLibres').value='';
+  $('#hojaTemporizador').showModal();
+});
+
+$('#tiemposRapidos').addEventListener('click', e=>{
+  const b=e.target.closest('[data-segundos]'); if (!b) return;
+  empezarDescanso(Number(b.dataset.segundos), 'temporizador');
+  vibrar();
+  $('#hojaTemporizador').close();
+});
+
+$('#btnLibre').addEventListener('click',()=>{
+  const seg=Math.round(aNum($('#segundosLibres').value));
+  if (!seg || seg<=0){ avisar('Pon los segundos'); return; }
+  empezarDescanso(seg, 'temporizador');
+  $('#hojaTemporizador').close();
+});
+
+$('#btnCronometro').addEventListener('click',()=>{
+  empezarCronometro();
+  $('#hojaTemporizador').close();
+  avisar('Cronómetro en marcha');
+});
+
 /* ── Buscador y fijos: eventos ───────────────────────────────────────────── */
 $('#btnBuscar').addEventListener('click',()=>{
   $('#campoBuscar').value='';
@@ -4968,6 +5128,8 @@ document.addEventListener('click', e=>{
     $('#hojaSesion').showModal(); return;
   }
 
+  if (e.target.closest('[data-cerrar="hojaDetalleSesion"]') && DESC.reloj) setTimeout(latirDescanso, 60);
+
   const abrirS=e.target.closest('[data-abrir-sesion]');
   if (abrirS){
     const [fecha,id]=abrirS.dataset.abrirSesion.split('|');
@@ -4997,6 +5159,15 @@ document.addEventListener('click', e=>{
     if (r===null) return;
     ej.descanso=Math.max(0, Math.round(aNum(r)));
     guardar(); pintarDetalleSesion(); return;
+  }
+
+  if (e.target.closest('[data-descanso-manual]')){
+    const s=sesionActual();
+    const seg = s?.clase==='fuerza'
+      ? aNum(s.ejercicios?.[0]?.descanso ?? DESCANSO_POR_DEFECTO)
+      : 60;
+    empezarDescanso(seg || DESCANSO_POR_DEFECTO);
+    vibrar(); return;
   }
 
   if (e.target.closest('[data-descanso-mas]')){ moverDescanso(15); return; }
@@ -5063,13 +5234,7 @@ document.addEventListener('click', e=>{
     guardar(); pintarDetalleSesion(); return;
   }
 
-  if (e.target.closest('#btnMasEjercicio')){
-    const s=sesionActual(); if (!s) return;
-    const nombre=$('#nuevoEjNombre').value.trim();
-    if (!nombre){ avisar('Ponle nombre al ejercicio'); return; }
-    s.ejercicios.push({ nombre, grupo:$('#nuevoEjGrupo').value, series:[{reps:'',kg:'',hecha:false}] });
-    guardar(); pintarDetalleSesion(); return;
-  }
+  if (e.target.closest('#btnMasEjercicio')){ anadirEjercicio(); return; }
 
   if (e.target.closest('[data-alternar-hecha]')){
     const s=sesionActual(); if (!s) return;
@@ -5207,6 +5372,7 @@ document.addEventListener('click', e=>{
 
 // Ediciones en vivo (inputs de series y campos de sesión)
 document.addEventListener('input', e=>{
+  if (e.target.id==='nuevoEjNombre'){ UI.ejercicioEnCurso=e.target.value; return; }
   const serieR=e.target.closest('[data-serie-r]');
   if (serieR){
     const [i,campo]=serieR.dataset.serieR.split('|');
@@ -5229,7 +5395,12 @@ document.addEventListener('input', e=>{
   }
 });
 
+document.addEventListener('keydown', e=>{
+  if (e.key==='Enter' && e.target.id==='nuevoEjNombre'){ e.preventDefault(); anadirEjercicio(); }
+});
+
 document.addEventListener('change', e=>{
+  if (e.target.id==='nuevoEjGrupo'){ UI.grupoEnCurso=e.target.value; return; }
   const campo=e.target.closest('[data-campo-sesion]');
   if (campo){
     const s=sesionActual(); if (!s) return;
