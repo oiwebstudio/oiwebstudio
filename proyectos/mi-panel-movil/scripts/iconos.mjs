@@ -186,33 +186,51 @@ const ORIGEN = ARCHIVO ? (() => {
   return { img, recorte: recortarAlContenido(img) };
 })() : null;
 
-/** Compone el logo del archivo dentro de un lienzo cuadrado. */
-function desdeArchivo(lado, { margen = 0.14, fondo = FONDO, silueta = false } = {}) {
+/** ¿El logo viene claro sobre oscuro? Se mira el borde de la imagen. */
+const CLARO_SOBRE_OSCURO = ORIGEN ? (() => {
+  const { img } = ORIGEN;
+  let suma = 0, n = 0;
+  for (let x = 0; x < img.ancho; x += 4) {
+    for (const y of [0, img.alto - 1]) {
+      const o = (y * img.ancho + x) * 4;
+      suma += img.pix[o] * 0.299 + img.pix[o + 1] * 0.587 + img.pix[o + 2] * 0.114;
+      n++;
+    }
+  }
+  return suma / n < 128;
+})() : true;
+
+/**
+ * Compone el logo del archivo dentro de un lienzo cuadrado.
+ *
+ * El original es un trazo sobre un fondo liso, así que no se copia tal cual:
+ * se saca la silueta (el brillo hace de opacidad) y se vuelve a pintar sobre
+ * el fondo que toque. Así no queda el recuadro del original recortado ni el
+ * halo difuminado que traía, y la misma imagen sirve para el icono con fondo
+ * y para las capas que van transparentes.
+ */
+function desdeArchivo(lado, { margen = 0.14, fondo = FONDO, trazo = TRAZO } = {}) {
   const c = lienzo(lado, fondo);
   const dentro = Math.max(1, Math.round(lado * (1 - margen * 2)));
   const chico = redimensionar(ORIGEN.img, dentro, { recorte: ORIGEN.recorte });
-  const desde = Math.round((lado - dentro) / 2);
+  const desdePx = Math.round((lado - dentro) / 2);
 
   for (let y = 0; y < dentro; y++) {
     for (let x = 0; x < dentro; x++) {
       const o = (y * dentro + x) * 4;
-      let [r, g, b, a] = [chico.pix[o], chico.pix[o + 1], chico.pix[o + 2], chico.pix[o + 3]];
+      const [r, g, b, av] = [chico.pix[o], chico.pix[o + 1], chico.pix[o + 2], chico.pix[o + 3]];
 
-      // El original es trazo claro sobre fondo oscuro: para las capas que van
-      // transparentes se usa el brillo como opacidad y se pinta todo blanco.
-      if (silueta) {
-        const brillo = (r * 0.299 + g * 0.587 + b * 0.114) * (a / 255);
-        a = Math.round(Math.min(255, brillo * 1.15));
-        r = g = b = 255;
-      }
-      if (!a) continue;
+      let brillo = (r * 0.299 + g * 0.587 + b * 0.114) / 255 * (av / 255);
+      if (!CLARO_SOBRE_OSCURO) brillo = 1 - brillo;
+      // Curva de contraste: quita el halo del original y deja el borde limpio,
+      // pero sin llegar a escalonarlo (los extremos siguen siendo suaves).
+      const alfa = Math.min(1, Math.max(0, (brillo - 0.16) / 0.5));
+      if (alfa <= 0.004) continue;
 
-      const destino = ((y + desde) * lado + (x + desde)) * 4;
-      const alfa = a / 255;
+      const destino = ((y + desdePx) * lado + (x + desdePx)) * 4;
       const previo = c.pix[destino + 3] / 255;
-      c.pix[destino] = Math.round(r * alfa + c.pix[destino] * previo * (1 - alfa));
-      c.pix[destino + 1] = Math.round(g * alfa + c.pix[destino + 1] * previo * (1 - alfa));
-      c.pix[destino + 2] = Math.round(b * alfa + c.pix[destino + 2] * previo * (1 - alfa));
+      for (let k = 0; k < 3; k++)
+        c.pix[destino + k] = Math.round(trazo[k] * alfa + c.pix[destino + k] * previo * (1 - alfa));
       c.pix[destino + 3] = Math.round(Math.min(1, alfa + previo * (1 - alfa)) * 255);
     }
   }
@@ -220,8 +238,7 @@ function desdeArchivo(lado, { margen = 0.14, fondo = FONDO, silueta = false } = 
 }
 
 const png = (lado, opciones = {}) => aPng(
-  ORIGEN ? desdeArchivo(lado, { ...opciones, silueta: opciones.fondo === null })
-         : dibujar(lado, opciones));
+  ORIGEN ? desdeArchivo(lado, opciones) : dibujar(lado, opciones));
 
 /* ── .ico para el acceso directo de Windows ──────────────────────────────── */
 function aIco(pngs) {
