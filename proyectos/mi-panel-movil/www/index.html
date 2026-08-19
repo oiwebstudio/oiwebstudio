@@ -495,6 +495,38 @@ body.en-foco .dock { display: none; }
 :root[data-tema='oscuro'] .carril { background: rgba(255,255,255,.1); }
 :root[data-tema='oscuro'] .lienzo .rejilla { stroke: rgba(255,255,255,.12); }
 
+
+/* ── Accesos rápidos ────────────────────────────────────────────────────── */
+.atajos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: var(--hueco); }
+.atajo { display: flex; flex-direction: column; align-items: center; gap: 5px; padding: 12px 4px 10px; border-radius: 20px; background: var(--carta); border: var(--borde); box-shadow: var(--sombra); font-size: 10.5px; font-weight: 600; color: var(--txt-2); transition: transform .16s var(--muelle); }
+.atajo .icono { font-size: 19px; }
+.atajo:active { transform: scale(.92); }
+
+/* ── Progreso del día ───────────────────────────────────────────────────── */
+.dia-progreso { display: flex; align-items: center; gap: 12px; margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.12); }
+.dia-progreso .carril { flex: 1; height: 7px; background: rgba(255,255,255,.16); }
+.dia-progreso .carril .relleno { background: #fff; }
+.dia-progreso b { font-size: 13px; font-weight: 800; white-space: nowrap; }
+
+/* ── Tirar para actualizar ──────────────────────────────────────────────── */
+.tirador { position: fixed; top: 0; left: 50%; transform: translate(-50%, -100%); z-index: 40; background: var(--carta); border: var(--borde); box-shadow: var(--sombra); border-radius: 0 0 18px 18px; padding: 8px 18px; font-size: 12.5px; font-weight: 600; color: var(--txt-2); transition: transform .2s var(--muelle); pointer-events: none; }
+.tirador.visible { transform: translate(-50%, 0); }
+
+/* ── Deshacer, dentro del brindis ───────────────────────────────────────── */
+.brindis .deshacer { margin-left: 12px; font-weight: 800; color: var(--verde); pointer-events: auto; }
+.brindis.con-accion { pointer-events: auto; }
+
+/* ── Bienvenida ─────────────────────────────────────────────────────────── */
+.bienvenida .hoja-cuerpo { text-align: center; }
+.bienvenida .marca { width: 76px; height: 76px; margin: 6px auto 14px; border-radius: 22px; background: #0B0B0C; display: grid; place-items: center; }
+.bienvenida .marca img { width: 58px; height: 58px; }
+.bienvenida h2 { margin: 0 0 6px; font-size: 25px; font-weight: 800; letter-spacing: -0.035em; }
+.bienvenida p { font-size: 14px; color: var(--txt-2); line-height: 1.55; margin: 0 0 18px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 6px; }
+.chip { padding: 9px 14px; border-radius: 16px; background: var(--fondo); font-size: 13px; font-weight: 600; transition: transform .15s var(--muelle); }
+.chip[aria-pressed='true'] { background: var(--tinta); color: var(--carta); }
+.chip:active { transform: scale(.93); }
+
 /* ── Brindis ────────────────────────────────────────────────────────────── */
 .brindis { position: fixed; left: 50%; bottom: calc(var(--dock-alto) + 14px); transform: translate(-50%, 12px); z-index: 70; background: var(--tinta); color: #fff; font-size: 13.5px; font-weight: 600; padding: 11px 20px; border-radius: 20px; box-shadow: var(--sombra-alta); opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .3s var(--muelle); max-width: calc(100vw - 36px); text-align: center; }
 .brindis.visible { opacity: 1; transform: translate(-50%, 0); }
@@ -615,11 +647,21 @@ dialog::backdrop { animation: fundir .3s ease backwards; }
 
   <!-- ══ VISTA 1 · AGENDA DE HOY ═════════════════════════════════════════ -->
   <section class="vista" data-vista="home">
+    <div class="atajos">
+      <button class="atajo" data-atajo="movimiento"><span class="icono">💳</span>Gasto</button>
+      <button class="atajo" data-atajo="tarea"><span class="icono">📋</span>Tarea</button>
+      <button class="atajo" data-atajo="sesion"><span class="icono">🏋️</span>Entreno</button>
+      <button class="atajo" data-atajo="respiro"><span class="icono">🌱</span>Respiro</button>
+    </div>
     <div class="hero anima" style="margin-bottom:14px">
       <span class="etq">Prioridad #1 de hoy</span>
       <div style="font-size:21px; font-weight:800; letter-spacing:-0.03em; margin-top:6px; line-height:1.25" id="prioridadHoy">—</div>
       <button class="mas" data-ir-diario aria-label="Editar en el diario">✍</button>
       <div style="font-size:13px; color:rgba(255,255,255,.6); margin-top:10px" id="prioridadPie"></div>
+      <div class="dia-progreso">
+        <span class="carril"><span class="relleno" id="barraDia" style="width:0%"></span></span>
+        <b class="num" id="pctDia">0%</b>
+      </div>
     </div>
 
     <div class="titulo-seccion"><h2>Tareas de hoy</h2>
@@ -902,6 +944,24 @@ dialog::backdrop { animation: fundir .3s ease backwards; }
 </nav>
 
 <div class="brindis" id="brindis" role="status" aria-live="polite"></div>
+<div class="tirador" id="tirador">Suelta para actualizar cotizaciones</div>
+
+<!-- ══ Hoja: bienvenida ══════════════════════════════════════════════════ -->
+<dialog id="hojaBienvenida">
+  <div class="hoja bienvenida">
+    <div class="hoja-asa"></div>
+    <div class="hoja-cuerpo" style="padding-top:14px">
+      <div class="marca"><img src="iconos/icono-192.png" alt=""></div>
+      <h2>Tu panel</h2>
+      <p>Dinero, agenda, entreno y cabeza en el mismo sitio.<br>Todo se queda en este móvil: ni cuentas ni nube.</p>
+      <label class="campo" style="text-align:left"><span>¿Cómo te llamas?</span>
+        <input id="bienvenidaNombre" placeholder="Oier" autocomplete="off"></label>
+      <span style="display:block; font-size:12.5px; font-weight:600; color:var(--txt-2); margin:2px 0 8px; text-align:left">¿Qué quieres hacer cada día?</span>
+      <div class="chips" id="chipsHabitos"></div>
+    </div>
+    <div class="hoja-pie"><button type="button" class="btn-negro" id="btnEmpezar" style="flex:1">Empezar</button></div>
+  </div>
+</dialog>
 
 <!-- ══ Pantalla de trabajo profundo ══════════════════════════════════════ -->
 <section class="foco oculto" id="pantallaFoco" aria-hidden="true">
@@ -1445,6 +1505,7 @@ const PLANTILLA_ESTADO = () => ({
   entradas: [],            // diario: {id, fecha, ambito, animo, prioridad, gratitud, enfoque}
   inversiones: [],         // {id, nombre, tipo, ticker, unidades, precioCompra, precioActual?, actualizado?, compradoEl?, moneda?}
   historial: [],           // una foto al día: {f, liq, inv, total, tipos:{tipo:valor}}
+  iniciado: false,         // ¿ya pasó por la bienvenida?
   recordatorio: { hora: '07:30', activo: false },
 });
 
@@ -1799,6 +1860,11 @@ function pintarHome(){
         </div>`;
       }).join('')
     : `<div class="vacio"><b>Nada urgente</b>Las metas con fecha límite cercana aparecerán aquí.</div>`;
+
+  // El día de un vistazo, bajo la prioridad
+  const avance=progresoDia();
+  $('#barraDia').style.width = avance ? `${(avance.parte*100).toFixed(0)}%` : '0%';
+  $('#pctDia').textContent = avance ? `${avance.hechos}/${avance.total}` : '—';
 
   pintarFoco();
 
@@ -3660,6 +3726,7 @@ function ritmoNecesario(meta){
 
 /* ═══════════════════════════ ROUTER ══════════════════════════════════════ */
 function ir(vista){
+  try { sessionStorage.setItem('panel:pestania', vista); } catch {}
   const mismo = UI.vista===vista;
   UI.vista=vista;
   $$('.vista').forEach(v=>v.classList.toggle('oculto', v.dataset.vista!==vista));
@@ -4030,6 +4097,141 @@ $('#btnRepartoObjetivo').addEventListener('click',()=>{
   }
   guardar(); pintarEvolucion(); avisar('Reparto objetivo guardado');
 });
+
+
+/* ═══════════════════════ EXPERIENCIA ═════════════════════════════════════ */
+
+/* ── Deshacer ────────────────────────────────────────────────────────────────
+   Borrar algo por error es lo que más rabia da, así que en vez de preguntar
+   antes se hace y se deja un botón para volver atrás unos segundos.         */
+let ultimaAccion = null;
+
+function avisarConDeshacer(texto, volverAtras){
+  ultimaAccion = volverAtras;
+  const el = $('#brindis');
+  el.innerHTML = `${esc(texto)}<button class="deshacer" data-deshacer>Deshacer</button>`;
+  el.classList.add('visible', 'con-accion');
+  clearTimeout(relojBrindis);
+  relojBrindis = setTimeout(()=>{
+    el.classList.remove('visible', 'con-accion');
+    ultimaAccion = null;
+  }, 6000);
+}
+
+/* ── El día de un vistazo ────────────────────────────────────────────────── */
+function progresoDia(){
+  const tareas = tareasDe(HOY);
+  const sesiones = sesionesDe(HOY);
+  const total = habitos().length + tareas.length + sesiones.length;
+  if (!total) return null;
+  const hechos = ticksDe(HOY).length
+    + tareas.filter(t=>tareaHecha(t,HOY)).length
+    + sesiones.filter(s=>s.hecha).length;
+  return { hechos, total, parte: hechos/total };
+}
+
+/* ── Fechas en cristiano ─────────────────────────────────────────────────── */
+function cuandoFue(k){
+  const dias = Math.round((desdeClave(k)-desdeClave(HOY))/86400000);
+  if (dias===0) return 'hoy';
+  if (dias===1) return 'mañana';
+  if (dias===-1) return 'ayer';
+  if (dias>1 && dias<7) return `en ${dias} días`;
+  if (dias<-1 && dias>-7) return `hace ${-dias} días`;
+  return desdeClave(k).toLocaleDateString('es-ES',{day:'numeric',month:'short'});
+}
+
+/* ── Gestos: deslizar entre pestañas ─────────────────────────────────────── */
+const ORDEN_PESTANIAS = ['home','agenda','patrimonio','metas','entreno','diario'];
+let gesto = null;
+
+document.addEventListener('touchstart', e=>{
+  if (document.querySelector('dialog[open]') || document.body.classList.contains('en-foco')) return;
+  if (e.target?.closest?.('input, textarea, select, .tira-semana, .rejilla, .foco, .evo-barras, .barras-mes')) return;
+  const t=e.touches[0];
+  gesto = { x:t.clientX, y:t.clientY, arriba: window.scrollY<=0, t:Date.now() };
+}, { passive:true });
+
+document.addEventListener('touchmove', e=>{
+  if (!gesto || !gesto.arriba || UI.vista!=='patrimonio') return;
+  const t=e.touches[0];
+  const baja=t.clientY-gesto.y;
+  // Tirar hacia abajo desde arriba del todo = actualizar cotizaciones
+  $('#tirador').classList.toggle('visible', baja>70 && Math.abs(t.clientX-gesto.x)<50);
+}, { passive:true });
+
+document.addEventListener('touchend', e=>{
+  if (!gesto) return;
+  const t=e.changedTouches[0];
+  const dx=t.clientX-gesto.x, dy=t.clientY-gesto.y;
+  const rapido=Date.now()-gesto.t < 700;
+  $('#tirador').classList.remove('visible');
+
+  if (gesto.arriba && UI.vista==='patrimonio' && dy>70 && Math.abs(dx)<50){
+    gesto=null;
+    actualizarPrecios();
+    return;
+  }
+  // Deslizar de lado cambia de pestaña, si el movimiento es claramente horizontal
+  if (rapido && Math.abs(dx)>70 && Math.abs(dx)>Math.abs(dy)*1.8){
+    const i=ORDEN_PESTANIAS.indexOf(UI.vista);
+    const siguiente=ORDEN_PESTANIAS[i + (dx<0?1:-1)];
+    if (siguiente){ vibrar(8); ir(siguiente); }
+  }
+  gesto=null;
+}, { passive:true });
+
+/* ── Bienvenida la primera vez ───────────────────────────────────────────── */
+const HABITOS_SUGERIDOS = [
+  { id:'gym', emoji:'🏋️', nombre:'Gimnasio', pista:'Entrenar hoy' },
+  { id:'cardio', emoji:'🏃', nombre:'Correr', pista:'Salir a moverse' },
+  { id:'lectura', emoji:'📚', nombre:'Leer', pista:'Desarrollo personal' },
+  { id:'negocio', emoji:'💻', nombre:'Avanzar el negocio', pista:'Emprendimiento' },
+  { id:'agua', emoji:'💧', nombre:'Beber agua', pista:'Dos litros' },
+  { id:'estudio', emoji:'✍️', nombre:'Estudiar', pista:'Universidad' },
+  { id:'meditar', emoji:'🧘', nombre:'Meditar', pista:'Diez minutos' },
+  { id:'dormir', emoji:'😴', nombre:'Dormir 8 h', pista:'Descanso' },
+];
+
+function abrirBienvenida(){
+  $('#bienvenidaNombre').value = E.nombre==='Oier' ? '' : E.nombre;
+  $('#chipsHabitos').innerHTML = HABITOS_SUGERIDOS.map(h=>
+    `<button type="button" class="chip" data-chip="${h.id}" aria-pressed="${['gym','lectura','negocio','cardio'].includes(h.id)}">${h.emoji} ${h.nombre}</button>`).join('');
+  $('#hojaBienvenida').showModal();
+}
+
+$('#chipsHabitos').addEventListener('click', e=>{
+  const c=e.target.closest('[data-chip]'); if (!c) return;
+  c.setAttribute('aria-pressed', String(c.getAttribute('aria-pressed')!=='true'));
+  vibrar(8);
+});
+
+$('#btnEmpezar').addEventListener('click',()=>{
+  const nombre=$('#bienvenidaNombre').value.trim();
+  if (nombre) E.nombre=nombre;
+  const elegidos=$$('#chipsHabitos [aria-pressed="true"]').map(c=>c.dataset.chip);
+  E.habitos = HABITOS_SUGERIDOS.filter(h=>elegidos.includes(h.id)).map(h=>({...h}));
+  E.iniciado = true;
+  guardar(); $('#hojaBienvenida').close(); pintar();
+  avisar(`Todo tuyo${nombre?', '+nombre:''} 👋`);
+});
+
+/* ── Accesos rápidos ─────────────────────────────────────────────────────── */
+document.querySelector('.atajos').addEventListener('click', e=>{
+  const b=e.target.closest('[data-atajo]'); if (!b) return;
+  vibrar();
+  if (b.dataset.atajo==='movimiento'){ $('#btnNuevoMov').click(); return; }
+  if (b.dataset.atajo==='tarea'){ UI.agendaDia=HOY; abrirTarea(null); return; }
+  if (b.dataset.atajo==='respiro'){ abrirFoco(); return; }
+  if (b.dataset.atajo==='sesion'){
+    UI.entrenoDia=HOY; UI.semLunes=lunesDe(new Date()); UI.entrenoSub='semana';
+    ir('entreno');
+    setTimeout(()=>document.querySelector('[data-nueva-sesion]')?.click(), 120);
+  }
+});
+
+/* ── Que Android no borre los datos cuando ande justo de espacio ─────────── */
+navigator.storage?.persist?.().catch(()=>{});
 
 /* ── Buscador y fijos: eventos ───────────────────────────────────────────── */
 $('#btnBuscar').addEventListener('click',()=>{
@@ -4436,10 +4638,10 @@ $('#formTarea').addEventListener('submit', e=>{
 
 $('#btnBorrarTarea').addEventListener('click',()=>{
   const t=E.tareas.find(x=>x.id===UI.tareaEditando); if (!t) return;
-  if (!confirm(`¿Borrar "${t.titulo}"?`)) return;
   E.tareas=E.tareas.filter(x=>x.id!==t.id);
   UI.tareaEditando=null;
-  guardar(); programarAvisos(); $('#hojaTarea').close(); pintar(); avisar('Tarea borrada');
+  guardar(); programarAvisos(); $('#hojaTarea').close(); pintar();
+  avisarConDeshacer(`"${t.titulo}" borrada`, ()=>{ E.tareas.push(t); guardar(); programarAvisos(); pintar(); });
 });
 
 // Metas
@@ -4676,6 +4878,14 @@ document.addEventListener('click', e=>{
   const cerrar=e.target.closest('[data-cerrar]');
   if (cerrar){ $('#'+cerrar.dataset.cerrar).close(); return; }
 
+  if (e.target.closest('[data-deshacer]')){
+    const volver=ultimaAccion;
+    ultimaAccion=null;
+    $('#brindis').classList.remove('visible','con-accion');
+    if (volver){ volver(); vibrar(); avisar('Deshecho'); }
+    return;
+  }
+
   if (e.target.closest('[data-ir-diario]')){ abrirDiario(); return; }
 
   const irTab=e.target.closest('[data-ir-tab]');
@@ -4874,12 +5084,17 @@ document.addEventListener('click', e=>{
 
   if (e.target.closest('[data-borrar-sesion]')){
     const s=sesionActual(); if (!s) return;
-    if (!confirm(`¿Borrar la sesión "${s.nombre}"?`)) return;
-    E.sesiones[UI.sesionAbierta.fecha]=sesionesDe(UI.sesionAbierta.fecha).filter(x=>x.id!==s.id);
-    if (!E.sesiones[UI.sesionAbierta.fecha].length) delete E.sesiones[UI.sesionAbierta.fecha];
+    const fecha=UI.sesionAbierta.fecha;
+    E.sesiones[fecha]=sesionesDe(fecha).filter(x=>x.id!==s.id);
+    if (!E.sesiones[fecha].length) delete E.sesiones[fecha];
+    pararDescanso();
     guardar(); $('#hojaDetalleSesion').close();
     if (UI.vista==='entreno') pintarEntreno(); else pintar();
-    avisar('Sesión borrada'); return;
+    avisarConDeshacer(`"${s.nombre}" borrada`, ()=>{
+      (E.sesiones[fecha] ||= []).push(s);
+      guardar(); if (UI.vista==='entreno') pintarEntreno(); else pintar();
+    });
+    return;
   }
 
   if (e.target.closest('[data-guardar-plantilla]')){
@@ -4914,9 +5129,11 @@ document.addEventListener('click', e=>{
   const borrarTx=e.target.closest('[data-borrar-tx]');
   if (borrarTx){
     const t=E.tx.find(x=>x.id===borrarTx.dataset.borrarTx);
-    if (!t||!confirm(`¿Borrar "${t.concepto}" de ${euroDec(t.importe)}?`)) return;
+    if (!t) return;
     E.tx=E.tx.filter(x=>x.id!==t.id);
-    anotarHoy(); guardar(); pintar(); avisar('Movimiento borrado'); return;
+    anotarHoy(); guardar(); vibrar(); pintar();
+    avisarConDeshacer(`"${t.concepto}" borrado`, ()=>{ E.tx.push(t); anotarHoy(); guardar(); pintar(); });
+    return;
   }
 
   const editarInv=e.target.closest('[data-editar-inv]');
@@ -4925,9 +5142,13 @@ document.addEventListener('click', e=>{
   const borrarInv=e.target.closest('[data-borrar-inv]');
   if (borrarInv){
     const i=E.inversiones.find(x=>x.id===borrarInv.dataset.borrarInv);
-    if (!i||!confirm(`¿Quitar "${i.nombre}" de la cartera?`)) return;
+    if (!i) return;
     E.inversiones=E.inversiones.filter(x=>x.id!==i.id);
-    anotarHoy(); guardar(); pintar(); avisar('Activo eliminado'); return;
+    anotarHoy(); guardar(); pintar();
+    avisarConDeshacer(`"${i.nombre}" fuera de la cartera`, ()=>{
+      E.inversiones.push(i); anotarHoy(); guardar(); pintar();
+    });
+    return;
   }
 
   const verCat=e.target.closest('[data-ver-categoria]');
@@ -5049,6 +5270,14 @@ anotarHoy();          // deja la foto de hoy antes de pintar nada
 guardar();
 pintar();
 programarAvisos();
+
+// Si es la primera vez, se saluda; si no, se vuelve a la pestaña donde estabas.
+if (!E.iniciado && !E.tx.length && !E.tareas.length && !E.inversiones.length){
+  setTimeout(abrirBienvenida, 350);
+} else {
+  const previa = (() => { try { return sessionStorage.getItem('panel:pestania'); } catch { return null; } })();
+  if (previa && previa !== 'home' && document.querySelector(`[data-vista="${previa}"]`)) ir(previa);
+}
 })();
 </script>
 </body>
