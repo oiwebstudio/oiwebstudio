@@ -320,6 +320,24 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
 .barras-mes small { font-size: 9.5px; color: var(--txt-3); font-weight: 600; }
 .barras-mes .cifra-mini { font-size: 9.5px; font-weight: 700; }
 
+
+/* ── Descanso entre series ──────────────────────────────────────────────── */
+.descanso { display: flex; align-items: center; gap: 10px; margin: 0 16px 4px; padding: 10px 12px; border-radius: 20px; background: var(--tinta); color: #fff; box-shadow: var(--sombra-alta); animation: entrar .3s var(--muelle); }
+.descanso .desc-centro { flex: 1; min-width: 0; text-align: center; }
+.descanso b { display: block; font-size: 22px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
+.descanso span { display: block; font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: rgba(255,255,255,.5); }
+.descanso .desc-carril { display: block; height: 4px; border-radius: 3px; background: rgba(255,255,255,.16); margin-top: 6px; overflow: hidden; }
+.descanso .desc-carril i { display: block; height: 100%; background: var(--verde); border-radius: 3px; transition: width .3s linear; }
+.descanso .desc-mas { flex: none; font-size: 12.5px; font-weight: 700; padding: 9px 11px; border-radius: 14px; background: rgba(255,255,255,.12); }
+.descanso .desc-saltar { flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-size: 13px; color: rgba(255,255,255,.6); }
+.descanso.acabando b { color: var(--verde); }
+
+.ejercicio-cab .descanso-ej { flex: none; font-size: 11px; font-weight: 700; color: var(--txt-2); background: var(--fondo); border-radius: 12px; padding: 4px 9px; }
+.ultima-vez { font-size: 11.5px; color: var(--txt-2); margin: -2px 0 8px; }
+.ultima-vez b { font-weight: 700; color: var(--txt); }
+.resumen-ej { display: flex; gap: 10px; justify-content: space-between; font-size: 11.5px; color: var(--txt-2); margin-top: 6px; }
+.resumen-ej b { font-weight: 700; color: var(--txt); }
+
 /* ── Diario ─────────────────────────────────────────────────────────────── */
 .animo-fila { display: flex; gap: 8px; justify-content: space-between; margin: 6px 0 4px; }
 .animo { flex: 1; max-width: 62px; border-radius: 18px; display: grid; place-items: center; padding: 8px 0 6px; background: var(--fondo); transition: transform .18s var(--muelle), background .18s ease, box-shadow .18s ease; }
@@ -442,6 +460,40 @@ textarea { resize: vertical; min-height: 64px; }
 .foco-medalla { font-size: 62px; line-height: 1; margin-bottom: 10px; }
 body.en-foco { overflow: hidden; }
 body.en-foco .dock { display: none; }
+
+
+/* ── Tema oscuro ────────────────────────────────────────────────────────────
+   Se cambian solo las variables: todo lo demás ya tira de ellas.            */
+:root[data-tema='oscuro'] {
+  color-scheme: dark;
+  --fondo: #000000;
+  --carta: #131316;
+  --borde: 1px solid rgba(255,255,255,.07);
+  --sombra: 0 10px 30px rgba(0,0,0,.5);
+  --sombra-alta: 0 18px 50px rgba(0,0,0,.65);
+  --tinta: #F2F2F5;
+  --txt: #F2F2F5;
+  --txt-2: rgba(242,242,245,.58);
+  --txt-3: rgba(242,242,245,.34);
+}
+:root[data-tema='oscuro'] .hero,
+:root[data-tema='oscuro'] .banner,
+:root[data-tema='oscuro'] .btn-negro,
+:root[data-tema='oscuro'] .descanso { color: #0B0B0C; }
+:root[data-tema='oscuro'] .hero .etq,
+:root[data-tema='oscuro'] .hero .sub small { color: rgba(11,11,12,.55); }
+:root[data-tema='oscuro'] .dock { background: rgba(24,24,27,.78); border-color: rgba(255,255,255,.08); }
+:root[data-tema='oscuro'] .dock .pastilla { background: var(--tinta); }
+:root[data-tema='oscuro'] .dock button[aria-selected='true'] { color: #0B0B0C; }
+:root[data-tema='oscuro'] .segmentado { background: rgba(255,255,255,.07); }
+:root[data-tema='oscuro'] input, :root[data-tema='oscuro'] select, :root[data-tema='oscuro'] textarea { background: rgba(255,255,255,.07); }
+:root[data-tema='oscuro'] input:focus, :root[data-tema='oscuro'] select:focus, :root[data-tema='oscuro'] textarea:focus { background: rgba(255,255,255,.12); }
+:root[data-tema='oscuro'] .fila, :root[data-tema='oscuro'] .habito, :root[data-tema='oscuro'] .tarea,
+:root[data-tema='oscuro'] .progreso, :root[data-tema='oscuro'] .cat-fila, :root[data-tema='oscuro'] .ejercicio,
+:root[data-tema='oscuro'] .evo, :root[data-tema='oscuro'] .diario-entrada, :root[data-tema='oscuro'] .habito-fila,
+:root[data-tema='oscuro'] .sesion-carta { border-color: rgba(255,255,255,.07); }
+:root[data-tema='oscuro'] .carril { background: rgba(255,255,255,.1); }
+:root[data-tema='oscuro'] .lienzo .rejilla { stroke: rgba(255,255,255,.12); }
 
 /* ── Brindis ────────────────────────────────────────────────────────────── */
 .brindis { position: fixed; left: 50%; bottom: calc(var(--dock-alto) + 14px); transform: translate(-50%, 12px); z-index: 70; background: var(--tinta); color: #fff; font-size: 13.5px; font-weight: 600; padding: 11px 20px; border-radius: 20px; box-shadow: var(--sombra-alta); opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .3s var(--muelle); max-width: calc(100vw - 36px); text-align: center; }
@@ -652,6 +704,10 @@ dialog::backdrop { animation: fundir .3s ease backwards; }
 
       <div class="titulo-seccion"><h2>Rendimiento por activo</h2></div>
       <div class="carta" id="rendimientoActivos"></div>
+
+      <div class="titulo-seccion"><h2>Reparto que quieres</h2>
+        <button class="accion azul" id="btnRepartoObjetivo">Ajustar</button></div>
+      <div class="carta" id="desvioCartera"></div>
     </div>
 
     <!-- ── Sub 2.3 · En qué se va el dinero ── -->
@@ -716,6 +772,10 @@ dialog::backdrop { animation: fundir .3s ease backwards; }
 
     <div class="titulo-seccion"><h2>Lo demás de ese día</h2></div>
     <div class="carta" id="agResto"></div>
+
+    <div class="titulo-seccion oculto" id="tituloAtrasadas"><h2>Se quedaron atrás</h2>
+      <span class="accion" id="cuantasAtrasadas"></span></div>
+    <div class="carta oculto" id="listaAtrasadas"></div>
   </section>
 
   <!-- ══ VISTA 3 · METAS & CALENDARIO ════════════════════════════════════ -->
@@ -768,6 +828,10 @@ dialog::backdrop { animation: fundir .3s ease backwards; }
       </div>
       <div class="tira-semana" id="tiraSemana"></div>
       <div class="carta" id="sesionesDia"></div>
+      <div class="par" style="margin-top:12px">
+        <button class="btn-suave" id="btnCopiarSemana">Repetir semana anterior</button>
+        <button class="btn-suave" id="btnRachaEntreno" style="pointer-events:none"></button>
+      </div>
     </div>
 
     <div id="subCarga" class="oculto">
@@ -782,7 +846,11 @@ dialog::backdrop { animation: fundir .3s ease backwards; }
 
     <div id="subCuerpo" class="oculto">
       <div class="carta" style="margin-top:4px" id="pesoResumen"></div>
-      <button class="btn-negro" id="btnNuevoPeso" style="margin-top:12px">+ Anotar peso de hoy</button>
+      <div class="par" style="margin-top:12px">
+        <button class="btn-negro" id="btnNuevoPeso">+ Anotar peso</button>
+        <button class="btn-suave" id="btnObjetivoPeso">Objetivo y altura</button>
+      </div>
+      <div class="carta" id="cuerpoMetricas" style="margin-top:12px"></div>
       <div class="titulo-seccion"><h2 style="font-size:16px">Historial</h2></div>
       <div class="carta" id="pesoHistorial"></div>
     </div>
@@ -1164,6 +1232,13 @@ dialog::backdrop { animation: fundir .3s ease backwards; }
     <div class="hoja-cuerpo">
       <label class="campo"><span>Tu nombre</span><input id="ajusteNombre" autocomplete="off"></label>
 
+      <div class="titulo-seccion" style="margin:16px 3px 10px"><h2 style="font-size:16px">Aspecto</h2></div>
+      <div class="segmentado" id="segTema">
+        <button data-tema="claro" aria-selected="true">☀️ Claro</button>
+        <button data-tema="oscuro" aria-selected="false">🌙 Oscuro</button>
+        <button data-tema="auto" aria-selected="false">Auto</button>
+      </div>
+
       <div class="titulo-seccion" style="margin:16px 3px 10px"><h2 style="font-size:16px">Avisos</h2></div>
       <p style="font-size:13px; color:var(--txt-2); margin:0 0 10px" id="estadoAvisos"></p>
       <button class="btn-suave" id="btnPermisoAvisos">Activar avisos</button>
@@ -1184,6 +1259,7 @@ dialog::backdrop { animation: fundir .3s ease backwards; }
         <button class="btn-suave" id="btnImportar">Importar</button>
       </div>
       <input type="file" id="ficheroImportar" accept="application/json,.json" class="oculto">
+      <button class="btn-suave" id="btnCsv" style="margin-top:8px">Exportar movimientos a CSV</button>
       <p class="pie-nota">Tus datos viven solo en este dispositivo. Si desinstalas la app se van con ella: exporta de vez en cuando y guarda el archivo donde quieras.</p>
 
       <div class="titulo-seccion" style="margin:20px 3px 10px"><h2 style="font-size:16px">Empezar de cero</h2></div>
@@ -1253,6 +1329,16 @@ dialog::backdrop { animation: fundir .3s ease backwards; }
     <div class="hoja-asa"></div>
     <div class="hoja-cab"><h3 id="dsNombre">Sesión</h3><button type="button" class="cerrar" data-cerrar="hojaDetalleSesion">Cerrar</button></div>
     <div class="hoja-cuerpo" id="dsCuerpo"></div>
+    <div class="descanso oculto" id="barraDescanso">
+      <button class="desc-mas" data-descanso-menos aria-label="Quitar 15 segundos">−15</button>
+      <div class="desc-centro">
+        <b class="num" id="descansoTiempo">1:30</b>
+        <span id="descansoQue">descanso</span>
+        <span class="desc-carril"><i id="descansoBarra"></i></span>
+      </div>
+      <button class="desc-mas" data-descanso-mas aria-label="Añadir 15 segundos">+15</button>
+      <button class="desc-saltar" data-descanso-saltar aria-label="Saltar">✕</button>
+    </div>
     <div class="hoja-pie" id="dsPie"></div>
   </div>
 </dialog>
@@ -1347,6 +1433,10 @@ const PLANTILLA_ESTADO = () => ({
   cobros: [],              // facturas: {id, cliente, concepto, importe, emitida, vence, cobrada}
   pesos: [],               // cuerpo: {fecha, kg, cintura, nota}
   topes: {},               // gasto máximo por categoría: {categoria: importe}
+  tema: 'auto',            // claro | oscuro | auto
+  pesoObjetivo: null,      // kg a los que quieres llegar
+  altura: null,            // cm, para el IMC
+  repartoObjetivo: {},     // cartera ideal por tipo: {tipo: porcentaje}
   fijos: [],               // gastos que se repiten: {id, dia, tipo, ambito, concepto, categoria, importe, ultimo}
   avisos: {                // qué quieres que te avise el móvil
     tareas: true, diario: true, cierre: true, horaCierre: '21:30',
@@ -1789,6 +1879,8 @@ function pintarAgenda(){
         }).join('')
       : `<div class="vacio"><b>Día libre</b>Nada apuntado. Añade una tarea o disfruta del hueco.</div>`}`;
 
+  pintarAtrasadas();
+
   // Lo demás del día: entreno, metas del día y diario
   const sesiones=sesionesDe(k);
   const ticks=ticksDe(k);
@@ -2064,6 +2156,8 @@ function pintarEvolucion(){
           </div>`).join('')}</div>`;
       })()
     : `<div class="vacio"><b>Nada que repartir aún</b>Añade tu base inicial o un activo a la cartera.</div>`;
+
+  pintarDesvio();
 
   // Rendimiento por activo
   $('#rendimientoActivos').innerHTML = E.inversiones.length
@@ -2468,7 +2562,8 @@ function pintarEntreno(){
   $('#subCuerpo').classList.toggle('oculto', UI.entrenoSub!=='cuerpo');
   if (UI.entrenoSub==='semana') pintarSemanaEntreno();
   else if (UI.entrenoSub==='carga') pintarCarga();
-  else pintarCuerpo();
+  else { pintarCuerpo(); pintarMetricasCuerpo(); }
+  if (UI.entrenoSub==='semana') pintarExtrasEntreno();
 }
 
 /* ── Peso y medidas ──────────────────────────────────────────────────────── */
@@ -2657,10 +2752,15 @@ function pintarDetalleSesion(){
 
   if (s.clase==='fuerza'){
     cuerpo.innerHTML=`
-      ${(s.ejercicios||[]).map((ej,ei)=>`
+      ${(s.ejercicios||[]).map((ej,ei)=>{
+        const antes=ultimaVez(ej.nombre, UI.sesionAbierta.fecha);
+        const vol=volumenEjercicio(ej), rm=unaRepeticion(ej);
+        return `
         <div class="ejercicio">
           <div class="ejercicio-cab"><b>${esc(ej.nombre)}</b><span class="grupo-badge">${esc(ej.grupo)}</span>
+            <button class="descanso-ej" data-descanso-ej="${ei}">⏱ ${ej.descanso??DESCANSO_POR_DEFECTO}s</button>
             <button class="borrar" style="color:var(--txt-3)" data-quitar-ej="${ei}">✕</button></div>
+          ${antes?`<p class="ultima-vez">La última vez (${desdeClave(antes.fecha).toLocaleDateString('es-ES',{day:'numeric',month:'short'})}): <b>${esc(antes.texto)}</b></p>`:''}
           ${(ej.series||[]).map((se,si)=>`
             <div class="serie">
               <small>${si+1}</small>
@@ -2671,7 +2771,10 @@ function pintarDetalleSesion(){
               <button type="button" class="quitar-serie" data-quitar-serie="${ei}|${si}" aria-label="Eliminar serie">−</button>
             </div>`).join('')}
           <button class="aniadir-linea" data-mas-serie="${ei}">+ Serie</button>
-        </div>`).join('')}
+          ${vol?`<div class="resumen-ej"><span>Volumen: <b class="num">${numF.format(vol)} kg</b></span>
+            ${rm?`<span>1RM estimado: <b class="num">${numF.format(rm)} kg</b></span>`:''}</div>`:''}
+        </div>`;
+      }).join('')}
       <div style="padding:10px 0 4px; display:grid; gap:9px">
         <div class="par">
           <input id="nuevoEjNombre" placeholder="Nuevo ejercicio…" autocomplete="off">
@@ -2753,10 +2856,90 @@ function pintarDetalleSesion(){
     resumirSeries();
   }
 
+  const volTotal=volumenSesion(s);
+  if (volTotal) $('#dsNombre').innerHTML=`${esc(s.nombre)} <small style="display:block;font-size:11.5px;font-weight:600;color:var(--txt-2)">${numF.format(volTotal)} kg movidos</small>`;
   $('#dsPie').innerHTML=`
     <button type="button" class="btn-suave" data-guardar-plantilla>Plantilla</button>
     <button type="button" class="btn-suave peligro" data-borrar-sesion>Borrar</button>
     <button type="button" class="btn-negro" data-alternar-hecha style="flex:1.4">${s.hecha?'Marcar pendiente':'✓ Completada'}</button>`;
+}
+
+
+/* ═══════════════════════ ENTRENO · APOYOS DE FUERZA ══════════════════════ */
+const DESCANSO_POR_DEFECTO = 90;
+
+/** Kilos movidos de verdad: solo cuentan las series marcadas. */
+function volumenEjercicio(ej){
+  return (ej.series||[]).filter(x=>x.hecha).reduce((a,x)=>a+aNum(x.kg)*aNum(x.reps), 0);
+}
+const volumenSesion = s => (s.ejercicios||[]).reduce((a,ej)=>a+volumenEjercicio(ej), 0);
+
+/** Máximo a una repetición estimado con Epley: sirve para comparar series
+    de distinto peso y repeticiones sin tener que ir al fallo. */
+function unaRepeticion(ej){
+  let mejor=0;
+  for (const x of ej.series||[]){
+    const kg=aNum(x.kg), reps=aNum(x.reps);
+    if (x.hecha && kg>0 && reps>0) mejor=Math.max(mejor, kg*(1+reps/30));
+  }
+  return mejor;
+}
+
+/** Qué hiciste la última vez con este ejercicio, para saber por dónde ibas. */
+function ultimaVez(nombre, fechaActual){
+  let mejorFecha=null, mejorEj=null;
+  for (const [fecha, lista] of Object.entries(E.sesiones)){
+    if (fecha>=fechaActual) continue;
+    for (const s of lista)
+      for (const ej of s.ejercicios||[])
+        if (ej.nombre===nombre && (ej.series||[]).some(x=>x.hecha) && (!mejorFecha||fecha>mejorFecha)){
+          mejorFecha=fecha; mejorEj=ej;
+        }
+  }
+  if (!mejorEj) return null;
+  const hechas=mejorEj.series.filter(x=>x.hecha);
+  return { fecha:mejorFecha, texto:hechas.map(x=>`${x.reps||'?'}×${numF.format(aNum(x.kg))}`).join(' · ') };
+}
+
+/* ── El temporizador de descanso ─────────────────────────────────────────── */
+const DESC = { reloj:null, hasta:0, total:0, avisado:false };
+
+function empezarDescanso(segundos){
+  if (!segundos) return;
+  DESC.total=segundos;
+  DESC.hasta=Date.now()+segundos*1000;
+  DESC.avisado=false;
+  $('#barraDescanso').classList.remove('oculto');
+  clearInterval(DESC.reloj);
+  DESC.reloj=setInterval(latirDescanso, 200);
+  latirDescanso();
+}
+
+function latirDescanso(){
+  const quedan=Math.max(0, (DESC.hasta-Date.now())/1000);
+  $('#descansoTiempo').textContent=deSeg(quedan);
+  $('#descansoBarra').style.width=`${(quedan/DESC.total*100).toFixed(1)}%`;
+  $('#barraDescanso').classList.toggle('acabando', quedan<=5);
+  $('#descansoQue').textContent=quedan?'descanso':'¡a por la siguiente!';
+  if (quedan<=0 && !DESC.avisado){
+    DESC.avisado=true;
+    sonar();
+    setTimeout(pararDescanso, 2500);
+  }
+}
+
+function pararDescanso(){
+  clearInterval(DESC.reloj); DESC.reloj=null;
+  $('#barraDescanso').classList.add('oculto');
+  $('#barraDescanso').classList.remove('acabando');
+}
+
+function moverDescanso(segundos){
+  if (!DESC.reloj) return;
+  DESC.hasta+=segundos*1000;
+  DESC.total=Math.max(DESC.total, (DESC.hasta-Date.now())/1000);
+  DESC.avisado=false;
+  latirDescanso();
 }
 
 /* ── Series de resistencia ───────────────────────────────────────────────── */
@@ -3347,6 +3530,134 @@ HTMLDialogElement.prototype.close=function(...args){
   setTimeout(rematar, 320);   // por si la animación no llega a dispararse
 };
 
+
+/* ═══════════════════════ AÑADIDOS ════════════════════════════════════════ */
+
+/* ── Tema ────────────────────────────────────────────────────────────────── */
+function aplicarTema(){
+  const auto = matchMedia('(prefers-color-scheme: dark)').matches ? 'oscuro' : 'claro';
+  const cual = E.tema==='auto' ? auto : E.tema;
+  document.documentElement.dataset.tema = cual;
+  document.querySelector('meta[name=theme-color]')?.setAttribute('content', cual==='oscuro' ? '#000000' : '#F2F4F7');
+}
+matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', ()=>{ if (E.tema==='auto') aplicarTema(); });
+
+/* ── Movimientos a CSV, para abrirlos en Excel ───────────────────────────── */
+function exportarCsv(){
+  const filas=[['Fecha','Tipo','Ámbito','Concepto','Categoría','Importe']];
+  for (const t of [...E.tx].sort((a,b)=>a.fecha.localeCompare(b.fecha)))
+    filas.push([t.fecha, t.tipo, t.ambito, t.concepto, t.categoria, String(t.importe).replace('.',',')]);
+  // Punto y coma: es lo que espera Excel en español. BOM para que no rompa las tildes.
+  const csv = String.fromCharCode(0xFEFF) + filas.map(f => f.map(c => `"${String(c).replace(/"/g, '""')}"`).join(';')).join(String.fromCharCode(13, 10));
+  const nombre=`movimientos-${HOY}.csv`;
+  const fichero=new File([csv], nombre, { type:'text/csv' });
+  if (navigator.canShare?.({ files:[fichero] })){
+    navigator.share({ files:[fichero], title:'Movimientos' }).catch(()=>{});
+    return;
+  }
+  const url=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));
+  const a=document.createElement('a'); a.href=url; a.download=nombre; a.click();
+  setTimeout(()=>URL.revokeObjectURL(url), 4000);
+  avisar('CSV descargado');
+}
+
+/* ── Entreno: racha, volumen semanal y copiar semanas ────────────────────── */
+/** Días seguidos, hacia atrás, con alguna sesión hecha. */
+function rachaEntreno(){
+  let n=0; const d=new Date();
+  const hecho=k=>sesionesDe(k).some(x=>x.hecha);
+  if (!hecho(claveDe(d))) d.setDate(d.getDate()-1);
+  while (hecho(claveDe(d))){ n++; d.setDate(d.getDate()-1); }
+  return n;
+}
+
+function volumenSemana(lunes){
+  let total=0;
+  for (const [fecha,lista] of Object.entries(E.sesiones)){
+    if (!mismaSemana(fecha, lunes)) continue;
+    for (const s of lista) if (s.clase==='fuerza') total+=volumenSesion(s);
+  }
+  return total;
+}
+
+/** Copia todas las sesiones de una semana a otra, sin las marcas de hecho. */
+function duplicarSemana(desdeLunes, haciaLunes){
+  let copiadas=0;
+  for (let i=0;i<7;i++){
+    const origen=new Date(desdeLunes); origen.setDate(origen.getDate()+i);
+    const destino=new Date(haciaLunes); destino.setDate(destino.getDate()+i);
+    for (const s of sesionesDe(claveDe(origen))){
+      const copia=JSON.parse(JSON.stringify(s));
+      copia.id=nuevoId(); copia.hecha=false;
+      delete copia.kmReal; delete copia.tiempoMin; delete copia.desnivel;
+      (copia.ejercicios||[]).forEach(ej=>(ej.series||[]).forEach(x=>{ x.hecha=false; }));
+      (copia.series||[]).forEach(x=>{ x.hecha=false; x.tiempo=''; });
+      (E.sesiones[claveDe(destino)] ||= []).push(copia);
+      copiadas++;
+    }
+  }
+  return copiadas;
+}
+
+/** Mueve una sesión a otro día. */
+function moverSesion(fecha, id, nuevaFecha){
+  const s=sesionesDe(fecha).find(x=>x.id===id); if (!s) return false;
+  E.sesiones[fecha]=sesionesDe(fecha).filter(x=>x.id!==id);
+  if (!E.sesiones[fecha].length) delete E.sesiones[fecha];
+  (E.sesiones[nuevaFecha] ||= []).push(s);
+  return true;
+}
+
+/* ── Cuerpo: IMC y objetivo de peso ──────────────────────────────────────── */
+function datosCuerpo(){
+  const lista=[...E.pesos].sort((a,b)=>a.fecha.localeCompare(b.fecha));
+  const ultimo=lista[lista.length-1];
+  if (!ultimo) return null;
+  const kg=aNum(ultimo.kg);
+  const m=aNum(E.altura)/100;
+  return {
+    kg,
+    imc: m>0 ? kg/(m*m) : null,
+    objetivo: E.pesoObjetivo ? aNum(E.pesoObjetivo) : null,
+    faltan: E.pesoObjetivo ? kg-aNum(E.pesoObjetivo) : null,
+  };
+}
+const juicioImc = v => v<18.5?'por debajo':v<25?'en rango':v<30?'por encima':'bastante por encima';
+
+/* ── Agenda: lo que se quedó atrás ───────────────────────────────────────── */
+function tareasAtrasadas(){
+  const lista=[];
+  for (let i=1;i<=21;i++){
+    const k=correrDias(HOY,-i);
+    for (const t of tareasDe(k))
+      if (!tareaHecha(t,k) && (!t.repite||t.repite==='no')) lista.push({ t, k });
+  }
+  return lista;
+}
+
+/* ── Cartera: reparto objetivo ───────────────────────────────────────────── */
+function desvioCartera(){
+  const total=valorCartera();
+  if (!total) return [];
+  const actual=valorPorTipo();
+  return Object.entries(E.repartoObjetivo)
+    .filter(([,p])=>aNum(p)>0)
+    .map(([tipo,p])=>{
+      const objetivo=aNum(p)/100;
+      const real=(actual[tipo]||0)/total;
+      return { tipo, objetivo, real, dif:real-objetivo, euros:(real-objetivo)*total };
+    })
+    .sort((a,b)=>Math.abs(b.dif)-Math.abs(a.dif));
+}
+
+/* ── Metas: cuánto hay que apartar al mes ────────────────────────────────── */
+function ritmoNecesario(meta){
+  if (!meta.limite || meta.progreso>=meta.meta) return null;
+  const dias=Math.max(1, Math.round((desdeClave(meta.limite)-desdeClave(HOY))/86400000));
+  const falta=meta.meta-meta.progreso;
+  return { dias, alDia:falta/dias, alMes:falta/dias*30, falta };
+}
+
 /* ═══════════════════════════ ROUTER ══════════════════════════════════════ */
 function ir(vista){
   const mismo = UI.vista===vista;
@@ -3601,6 +3912,123 @@ $('#gastoAdelante').addEventListener('click',()=>{
   const sig=new Date(c.getFullYear(),c.getMonth()+1,1);
   if (sig>new Date()){ avisar('Ese mes aún no ha llegado'); return; }
   UI.gastoCursor=sig; pintarGastos();
+});
+
+
+/* ═══════════════ PINTADO Y EVENTOS DE LO NUEVO ══════════════════════════ */
+
+/* ── Tema ────────────────────────────────────────────────────────────────── */
+$('#segTema').addEventListener('click', e=>{
+  const b=e.target.closest('[data-tema]'); if (!b) return;
+  E.tema=b.dataset.tema;
+  $$('#segTema button').forEach(x=>x.setAttribute('aria-selected',String(x===b)));
+  guardar(); aplicarTema(); avisar(`Tema ${E.tema}`);
+});
+
+$('#btnCsv').addEventListener('click', exportarCsv);
+
+/* ── Entreno: racha, volumen y repetir la semana ─────────────────────────── */
+function sesionesSemana(lunes){
+  let n=0;
+  for (let i=0;i<7;i++){ const d=new Date(lunes); d.setDate(d.getDate()+i); n+=sesionesDe(claveDe(d)).length; }
+  return n;
+}
+
+function pintarExtrasEntreno(){
+  const r=rachaEntreno();
+  const vol=volumenSemana(UI.semLunes);
+  $('#btnRachaEntreno').textContent = r
+    ? `🔥 ${r} día(s) seguidos`
+    : (vol ? `${numF.format(vol)} kg esta semana` : 'Sin racha todavía');
+}
+
+$('#btnCopiarSemana').addEventListener('click',()=>{
+  const anterior=new Date(UI.semLunes); anterior.setDate(anterior.getDate()-7);
+  const cuantas=sesionesSemana(anterior);
+  if (!cuantas){ avisar('La semana anterior está vacía'); return; }
+  if (!confirm(`Se copiarán ${cuantas} sesión(es) de la semana anterior a esta, sin marcar. ¿Vamos?`)) return;
+  const n=duplicarSemana(anterior, UI.semLunes);
+  guardar(); pintarEntreno(); avisar(`${n} sesión(es) copiadas`);
+});
+
+/* ── Cuerpo: IMC y objetivo de peso ──────────────────────────────────────── */
+function pintarMetricasCuerpo(){
+  const d=datosCuerpo();
+  const caja=$('#cuerpoMetricas');
+  if (!caja) return;
+  if (!d){ caja.innerHTML=''; return; }
+  caja.innerHTML=`
+    ${d.imc?`<div class="fila">
+      <div class="fila-icono">📐</div>
+      <div class="fila-txt"><b>Índice de masa corporal</b><span>${juicioImc(d.imc)} · orientativo, no distingue músculo de grasa</span></div>
+      <div class="fila-cifra num">${numF.format(d.imc)}</div>
+    </div>`:''}
+    ${d.objetivo!==null?(()=>{
+      const falta=Math.abs(d.faltan);
+      return `<div class="progreso" style="border:none">
+        <div class="progreso-cab"><b>Objetivo: ${numF.format(d.objetivo)} kg</b>
+          <span class="progreso-pct num ${falta<=0.5?'pos':''}">${falta<=0.5?'¡ahí estás!':`${numF.format(falta)} kg`}</span></div>
+        <div class="carril"><span class="relleno v" style="width:${Math.max(4,Math.min(100,100-falta*10)).toFixed(0)}%"></span></div>
+        <div class="progreso-pie"><span>ahora ${numF.format(d.kg)} kg</span><span>${d.faltan>0?'a bajar':'a subir'}</span></div>
+      </div>`;
+    })():'<p class="pie-nota">Pon altura y objetivo con el botón de arriba.</p>'}`;
+}
+
+$('#btnObjetivoPeso').addEventListener('click',()=>{
+  const alt=prompt('Tu altura en cm (para el IMC):', E.altura??'');
+  if (alt!==null) E.altura=aNum(alt)||null;
+  const obj=prompt('Peso al que quieres llegar (kg):', E.pesoObjetivo??'');
+  if (obj!==null) E.pesoObjetivo=aNum(obj)||null;
+  guardar(); pintarEntreno(); avisar('Objetivo guardado');
+});
+
+/* ── Agenda: lo que se quedó atrás ───────────────────────────────────────── */
+function pintarAtrasadas(){
+  const lista=tareasAtrasadas();
+  $('#tituloAtrasadas').classList.toggle('oculto', !lista.length);
+  $('#listaAtrasadas').classList.toggle('oculto', !lista.length);
+  if (!lista.length) return;
+  $('#cuantasAtrasadas').textContent=String(lista.length);
+  $('#listaAtrasadas').innerHTML=lista.slice(0,10).map(({t,k})=>`
+    <div class="tarea">
+      <button class="check" data-tarea-check="${t.id}" data-dia="${k}" aria-label="Hecha">
+        <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></button>
+      <button class="tarea-cuerpo" data-tarea-editar="${t.id}">
+        <b>${esc(t.titulo)}</b>
+        <span class="neg">${desdeClave(k).toLocaleDateString('es-ES',{weekday:'short',day:'numeric',month:'short'})} · sin hacer</span>
+      </button>
+      <button class="editar-habito" data-traer-hoy="${t.id}" aria-label="Traer a hoy">↓</button>
+    </div>`).join('');
+}
+
+/* ── Cartera: desvío respecto al reparto que quieres ─────────────────────── */
+function pintarDesvio(){
+  const filas=desvioCartera();
+  const caja=$('#desvioCartera');
+  if (!caja) return;
+  if (!filas.length){
+    caja.innerHTML=`<div class="vacio"><b>Sin reparto marcado</b>Di qué porcentaje quieres en cada tipo y te aviso cuando la cartera se desvíe.</div>`;
+    return;
+  }
+  caja.innerHTML=filas.map(f=>`
+    <div class="progreso">
+      <div class="progreso-cab"><b>${ICONO_INV[f.tipo]||'📊'} ${esc(f.tipo)}</b>
+        <span class="progreso-pct num ${Math.abs(f.dif)>0.05?'neg':'pos'}">${pct(f.real)}</span></div>
+      <div class="carril"><span class="relleno ${Math.abs(f.dif)>0.05?'n':'v'}" style="width:${(Math.min(1,f.real)*100).toFixed(1)}%"></span></div>
+      <div class="progreso-pie"><span>quieres ${pct(f.objetivo)}</span>
+        <span class="${f.dif>0?'neg':'pos'}">${f.dif>0?'te sobran':'te faltan'} ${euro(Math.abs(f.euros))}</span></div>
+    </div>`).join('');
+}
+
+$('#btnRepartoObjetivo').addEventListener('click',()=>{
+  for (const t of Object.keys(ICONO_INV)){
+    const actual=E.repartoObjetivo[t] ? String(E.repartoObjetivo[t]) : '';
+    const r=prompt(`¿Qué % de la cartera quieres en ${t}? (vacío = no me importa)`, actual);
+    if (r===null) break;
+    const v=aNum(r);
+    if (v>0) E.repartoObjetivo[t]=v; else delete E.repartoObjetivo[t];
+  }
+  guardar(); pintarEvolucion(); avisar('Reparto objetivo guardado');
 });
 
 /* ── Buscador y fijos: eventos ───────────────────────────────────────────── */
@@ -4265,7 +4693,17 @@ document.addEventListener('click', e=>{
   if (agDia){ UI.agendaDia=agDia.dataset.agendaDia; pintarAgenda(); return; }
 
   const tareaCheck=e.target.closest('[data-tarea-check]');
-  if (tareaCheck){ alternarTarea(tareaCheck.dataset.tareaCheck, UI.vista==='agenda'?UI.agendaDia:HOY); return; }
+  if (tareaCheck){
+    alternarTarea(tareaCheck.dataset.tareaCheck, tareaCheck.dataset.dia || (UI.vista==='agenda'?UI.agendaDia:HOY));
+    return;
+  }
+
+  const traerHoy=e.target.closest('[data-traer-hoy]');
+  if (traerHoy){
+    const t=E.tareas.find(x=>x.id===traerHoy.dataset.traerHoy); if (!t) return;
+    t.fecha=HOY;
+    guardar(); programarAvisos(); pintar(); avisar('Traída a hoy'); return;
+  }
 
   const tareaEd=e.target.closest('[data-tarea-editar]');
   if (tareaEd){ abrirTarea(tareaEd.dataset.tareaEditar); return; }
@@ -4331,9 +4769,29 @@ document.addEventListener('click', e=>{
   if (checkSerie){
     const [ei,si]=checkSerie.dataset.checkSerie.split('|').map(Number);
     const s=sesionActual(); if (!s) return;
-    s.ejercicios[ei].series[si].hecha=!s.ejercicios[ei].series[si].hecha;
-    guardar(); vibrar(); pintarDetalleSesion(); return;
+    const ej=s.ejercicios[ei];
+    const marcada=!ej.series[si].hecha;
+    ej.series[si].hecha=marcada;
+    guardar(); vibrar(); pintarDetalleSesion();
+    // Marcar una serie arranca el descanso solo; desmarcarla lo corta.
+    if (marcada) empezarDescanso(aNum(ej.descanso ?? DESCANSO_POR_DEFECTO));
+    else pararDescanso();
+    return;
   }
+
+  const descEj=e.target.closest('[data-descanso-ej]');
+  if (descEj){
+    const s=sesionActual(); if (!s) return;
+    const ej=s.ejercicios[Number(descEj.dataset.descansoEj)];
+    const r=prompt(`Descanso entre series de ${ej.nombre}, en segundos:`, String(ej.descanso ?? DESCANSO_POR_DEFECTO));
+    if (r===null) return;
+    ej.descanso=Math.max(0, Math.round(aNum(r)));
+    guardar(); pintarDetalleSesion(); return;
+  }
+
+  if (e.target.closest('[data-descanso-mas]')){ moverDescanso(15); return; }
+  if (e.target.closest('[data-descanso-menos]')){ moverDescanso(-15); return; }
+  if (e.target.closest('[data-descanso-saltar]')){ pararDescanso(); return; }
 
   const masSerie=e.target.closest('[data-mas-serie]');
   if (masSerie){
@@ -4411,6 +4869,8 @@ document.addEventListener('click', e=>{
     if (s.hecha) avisar('Sesión completada 💪');
     return;
   }
+
+  if (e.target.closest('[data-cerrar="hojaDetalleSesion"]')){ pararDescanso(); }
 
   if (e.target.closest('[data-borrar-sesion]')){
     const s=sesionActual(); if (!s) return;
@@ -4579,6 +5039,8 @@ moverPastilla();
 addEventListener('resize', moverPastilla);
 reanimar($('.vista[data-vista="home"]'), 'entrando');
 
+aplicarTema();
+$$('#segTema button').forEach(x=>x.setAttribute('aria-selected', String(x.dataset.tema===E.tema)));
 refrescarCategorias();
 refrescarCategoriasFijo();
 ajustarCamposInversion();
