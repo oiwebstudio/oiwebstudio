@@ -22,8 +22,16 @@
   --fondo: #F2F4F7;
   --carta: #FFFFFF;
   --borde: 1px solid rgba(0, 0, 0, 0.04);
-  --sombra: 0 10px 30px rgba(0, 0, 0, 0.04);
-  --sombra-alta: 0 18px 50px rgba(0, 0, 0, 0.10);
+  /* Dos capas: una sombra de contacto muy corta y un halo largo y suave.
+     Una sola sombra deja las tarjetas flotando; dos las apoyan.          */
+  --sombra: 0 1px 2px rgba(16, 24, 40, .05), 0 12px 28px -10px rgba(16, 24, 40, .10);
+  --sombra-alta: 0 2px 6px rgba(16, 24, 40, .07), 0 26px 58px -18px rgba(16, 24, 40, .24);
+
+  /* La cabecera oscura no es un plano liso: tiene degradado y un brillo. */
+  --hero-1: #2B2B31;
+  --hero-2: #131316;
+  --hero-3: #050506;
+  --hero-brillo: rgba(255, 255, 255, .18);
 
   --tinta: #111111;
   --txt: #1B1D21;
@@ -50,6 +58,14 @@
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 html { min-height: 100%; }
 
+/* Cada pestaña tiene su color. Lo hereda todo lo que enlaza o resalta, así
+   que la app cambia de aire al cambiar de sitio sin repintar nada a mano.  */
+body { --acento: #0A84FF; }
+body[data-vista='patrimonio'] { --acento: #17B95A; }
+body[data-vista='agenda']     { --acento: #F08C00; }
+body[data-vista='metas']      { --acento: #A93EE0; }
+body[data-vista='entreno']    { --acento: #FF3B30; }
+
 body {
   margin: 0;
   min-height: 100dvh;
@@ -62,6 +78,11 @@ body {
   -webkit-font-smoothing: antialiased;
   padding-bottom: calc(var(--dock-alto) + 18px);
   overscroll-behavior-y: none;
+}
+
+/* Quien tenga activado "reducir movimiento" en el móvil no ve nada saltar */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
 
 .telefono { position: relative; max-width: 520px; margin: 0 auto; padding: 0 18px; }
@@ -92,16 +113,21 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
 
 /* ── Títulos ────────────────────────────────────────────────────────────── */
 .titulo-seccion { display: flex; align-items: center; gap: 10px; margin: 22px 3px 12px; }
-.titulo-seccion h2 { margin: 0 auto 0 0; font-size: 21px; font-weight: 800; letter-spacing: -0.03em; }
+.titulo-seccion h2 { margin: 0 auto 0 0; font-size: 21px; font-weight: 800; letter-spacing: -0.03em; text-wrap: balance; }
 .titulo-seccion .accion { font-size: 13.5px; font-weight: 600; color: var(--txt-2); }
-.titulo-seccion .accion.azul { color: var(--azul); font-weight: 700; }
+.titulo-seccion .accion.azul { color: var(--acento); font-weight: 700; transition: opacity .15s ease; }
+.titulo-seccion .accion.azul:active { opacity: .5; }
 
 /* ── Tarjetas ───────────────────────────────────────────────────────────── */
 .carta { background: var(--carta); border: var(--borde); border-radius: var(--r); box-shadow: var(--sombra); padding: 18px; }
 
-.hero { position: relative; background: var(--tinta); color: #fff; border-radius: var(--r); padding: 22px 20px 20px; box-shadow: var(--sombra-alta); overflow: hidden; }
+.hero { position: relative; background: linear-gradient(155deg, var(--hero-1), var(--hero-2) 52%, var(--hero-3)); color: #fff; border-radius: var(--r); padding: 22px 20px 20px; box-shadow: var(--sombra-alta); overflow: hidden; isolation: isolate; }
+/* Un foco de luz arriba a la derecha: le da volumen sin dibujar nada */
+.hero::before { content: ''; position: absolute; top: -90px; right: -60px; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, var(--hero-brillo), transparent 70%); pointer-events: none; z-index: -1; }
+/* Filo de luz en el borde superior, como el canto de una pieza de metal */
+.hero::after { content: ''; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 1px 0 rgba(255,255,255,.12); pointer-events: none; z-index: -1; }
 .hero .etq { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.55); }
-.hero .cifra { font-size: 40px; font-weight: 800; letter-spacing: -0.045em; line-height: 1.05; margin-top: 4px; }
+.hero .cifra { font-size: clamp(34px, 10.5vw, 42px); font-weight: 800; letter-spacing: -0.045em; line-height: 1.05; margin-top: 4px; }
 .hero .mas { position: absolute; top: 18px; right: 18px; width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: #fff; color: var(--tinta); font-size: 24px; font-weight: 600; line-height: 1; transition: transform .18s var(--muelle); }
 .hero .mas:active { transform: scale(.9); }
 .hero .submetricas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.12); }
@@ -120,7 +146,9 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
 .fila-cifra small { display: block; font-size: 11px; font-weight: 600; }
 .fila .borrar, .fila .editar { color: var(--txt-3); font-size: 13px; padding: 6px; flex: none; }
 
-.vacio { padding: 22px 8px; text-align: center; color: var(--txt-2); font-size: 13.5px; line-height: 1.55; }
+.vacio { padding: 24px 8px; text-align: center; color: var(--txt-2); font-size: 13.5px; line-height: 1.55; }
+/* Un hueco sin nada dentro se explica mejor con un icono que con dos líneas */
+.vacio .ilu { display: grid; place-items: center; width: 54px; height: 54px; margin: 0 auto 11px; border-radius: 19px; background: var(--fondo); font-size: 25px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.03); }
 .vacio b { display: block; font-weight: 700; color: var(--txt); margin-bottom: 3px; }
 
 /* ── Segmentado ─────────────────────────────────────────────────────────── */
@@ -155,6 +183,8 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
 .relleno.a { background: var(--azul); }
 .relleno.n { background: var(--naranja); }
 .relleno.m { background: var(--morado); }
+/* Un brillo de arriba abajo sobre cualquier color: la barra deja de ser un bloque plano */
+.carril .relleno { background-image: linear-gradient(180deg, rgba(255,255,255,.24), rgba(0,0,0,.07)); }
 
 .progreso .mini-acciones { display: flex; gap: 8px; margin-top: 8px; }
 .progreso .mini-acciones button { font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 13px; background: var(--fondo); }
@@ -397,7 +427,11 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
 }
 
 .dock button { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 9px 1px; border-radius: 28px; font-size: 9px; font-weight: 600; letter-spacing: -0.01em; color: var(--txt-2); transition: background .2s ease, color .2s ease; }
-.dock button svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.dock button svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; transition: transform .28s var(--muelle), stroke-width .2s ease; }
+.dock button[aria-selected='true'] svg { transform: translateY(-1px) scale(1.06); stroke-width: 2.1; }
+.dock button[aria-selected='true'] { font-weight: 700; }
+/* Filo de luz arriba: el cristal se apoya sobre el contenido, no lo tapa */
+.dock::before { content: ''; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 1px 0 rgba(255,255,255,.7); pointer-events: none; }
 .dock button[aria-selected='true'] { background: var(--tinta); color: #fff; }
 .dock button:active { opacity: .7; }
 
@@ -496,13 +530,22 @@ body.en-foco .dock { display: none; }
   --fondo: #000000;
   --carta: #131316;
   --borde: 1px solid rgba(255,255,255,.07);
-  --sombra: 0 10px 30px rgba(0,0,0,.5);
-  --sombra-alta: 0 18px 50px rgba(0,0,0,.65);
+  --sombra: 0 1px 2px rgba(0,0,0,.6), 0 14px 30px -12px rgba(0,0,0,.7);
+  --sombra-alta: 0 2px 8px rgba(0,0,0,.7), 0 28px 60px -20px rgba(0,0,0,.85);
   --tinta: #F2F2F5;
   --txt: #F2F2F5;
   --txt-2: rgba(242,242,245,.58);
   --txt-3: rgba(242,242,245,.34);
+  /* En oscuro el hero es la pieza clara: el degradado se invierte */
+  --hero-1: #FFFFFF;
+  --hero-2: #EDEDF1;
+  --hero-3: #D8D8DF;
+  --hero-brillo: rgba(0,0,0,.06);
 }
+:root[data-tema='oscuro'] .hero::after { box-shadow: inset 0 1px 0 rgba(0,0,0,.06); }
+:root[data-tema='oscuro'] .dock::before { box-shadow: inset 0 1px 0 rgba(255,255,255,.08); }
+:root[data-tema='oscuro'] .vacio .ilu { box-shadow: inset 0 0 0 1px rgba(255,255,255,.05); }
+:root[data-tema='oscuro'] .sugerencia button { background: rgba(255,255,255,.08); }
 :root[data-tema='oscuro'] .hero,
 :root[data-tema='oscuro'] .banner,
 :root[data-tema='oscuro'] .btn-negro,
@@ -522,6 +565,40 @@ body.en-foco .dock { display: none; }
 :root[data-tema='oscuro'] .carril { background: rgba(255,255,255,.1); }
 :root[data-tema='oscuro'] .lienzo .rejilla { stroke: rgba(255,255,255,.12); }
 
+
+/* ── Lo que veo: las tarjetas que leen tus datos ────────────────────────── */
+.ideas { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-left: 18px; padding: 3px 18px 4px; margin: 0 -18px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.ideas::-webkit-scrollbar { display: none; }
+
+.idea {
+  position: relative; flex: 0 0 84%; max-width: 330px; scroll-snap-align: start;
+  background: var(--carta); border: var(--borde); border-radius: var(--r);
+  box-shadow: var(--sombra); padding: 15px 16px 14px;
+  display: flex; flex-direction: column; gap: 9px; overflow: hidden;
+  text-align: left; transition: transform .18s var(--muelle);
+}
+/* Una franja de color a la izquierda dice de qué va sin leer nada */
+.idea::before { content: ''; position: absolute; top: 0; bottom: 0; left: 0; width: 3.5px; background: var(--tono); }
+/* Y un velo del mismo color, casi imperceptible, tiñe la tarjeta entera */
+.idea::after { content: ''; position: absolute; inset: 0; background: var(--tono-suave); pointer-events: none; }
+.idea > * { position: relative; z-index: 1; }
+
+.idea .cab { display: flex; align-items: flex-start; gap: 10px; }
+.idea .burbuja { width: 34px; height: 34px; flex: none; border-radius: 12px; display: grid; place-items: center; font-size: 17px; background: var(--tono-suave); }
+.idea .cab b { font-size: 14.5px; font-weight: 700; letter-spacing: -.02em; line-height: 1.3; }
+.idea p { margin: 0; font-size: 13px; line-height: 1.5; color: var(--txt-2); }
+.idea p em { font-style: normal; font-weight: 700; color: var(--txt); }
+.idea .hacer { align-self: flex-start; margin-top: 2px; font-size: 12.5px; font-weight: 700; color: var(--tono); background: var(--tono-suave); padding: 8px 14px; border-radius: 14px; transition: transform .15s var(--muelle); }
+.idea .hacer:active { transform: scale(.93); }
+
+.puntos { display: flex; justify-content: center; gap: 5px; margin-top: 9px; }
+.puntos i { width: 5px; height: 5px; border-radius: 3px; background: var(--txt-3); transition: width .28s var(--muelle), background .28s ease; }
+.puntos i.activo { width: 17px; background: var(--tinta); }
+
+/* ── Categoría que se propone sola ──────────────────────────────────────── */
+.sugerencia { display: flex; align-items: center; gap: 8px; margin: -6px 0 13px; font-size: 12.5px; color: var(--txt-2); }
+.sugerencia button { font-weight: 700; color: var(--acento); background: var(--fondo); padding: 7px 12px; border-radius: 13px; transition: transform .15s var(--muelle); }
+.sugerencia button:active { transform: scale(.93); }
 
 /* ── Accesos rápidos ────────────────────────────────────────────────────── */
 .atajos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: var(--hueco); }
@@ -758,6 +835,11 @@ dialog::backdrop { animation: fundir .3s ease backwards; }
         <b class="num" id="pctDia">0%</b>
       </div>
     </div>
+
+    <div class="titulo-seccion oculto" id="tituloIdeas"><h2>Lo que veo</h2>
+      <span class="accion" id="ideasCuenta"></span></div>
+    <div class="ideas oculto" id="ideas"></div>
+    <div class="puntos oculto" id="ideasPuntos"></div>
 
     <div class="titulo-seccion"><h2>Tareas de hoy</h2>
       <button class="accion azul" data-ir-tab="agenda">Agenda</button>
@@ -1241,6 +1323,7 @@ dialog::backdrop { animation: fundir .3s ease backwards; }
         <label class="campo"><span>Fecha</span><input type="date" name="fecha" required></label>
       </div>
       <label class="campo"><span>Categoría</span><select name="categoria"></select></label>
+      <div class="sugerencia oculto" id="sugCategoria"></div>
       <div id="movFrecuentes"></div>
       <p class="error" id="errMov"></p>
     </div>
@@ -2018,6 +2101,295 @@ function rachaDiario(){
   return n;
 }
 
+/* ═══════════════════════ LO QUE VEO · SEÑALES ══════════════════════════════
+   Un puñado de lecturas sobre lo que ya hay guardado: dinero, agenda, metas,
+   entreno y cuerpo. Cada una devuelve una tarjeta con un peso; se enseñan las
+   cuatro de más peso. Nada se inventa: si no hay datos, no hay tarjeta.     */
+const TONOS = {
+  rojo:    ['#FF3B30', 'rgba(255,59,48,.09)'],
+  naranja: ['#F08C00', 'rgba(240,140,0,.10)'],
+  verde:   ['#17B95A', 'rgba(23,185,90,.10)'],
+  azul:    ['#0A84FF', 'rgba(10,132,255,.09)'],
+  morado:  ['#A93EE0', 'rgba(169,62,224,.09)'],
+};
+
+/** La mediana aguanta mejor que la media cuando hay un gasto disparatado. */
+function mediana(lista){
+  if (!lista.length) return 0;
+  const l=[...lista].sort((a,b)=>a-b), m=l.length>>1;
+  return l.length%2 ? l[m] : (l[m-1]+l[m])/2;
+}
+
+/** Días seguidos, hasta ayer, con todas las metas del día cumplidas. */
+function rachaMetasDia(){
+  const total=habitos().length; if (!total) return 0;
+  let n=0; const d=new Date(); d.setDate(d.getDate()-1);
+  while (ticksDe(claveDe(d)).length>=total){ n++; d.setDate(d.getDate()-1); }
+  return n;
+}
+
+function ideas(){
+  const out=[];
+  const ahora=new Date(), a=ahora.getFullYear(), m=ahora.getMonth();
+  const dia=ahora.getDate(), hora=ahora.getHours();
+  const diasMes=diasEnMes(a,m), quedan=diasMes-dia;
+  const gastoMesDe=(anio,mes)=>suma(E.tx.filter(t=>t.tipo==='Gasto'&&t.ambito==='personal'&&mismoMes(t.fecha,anio,mes)));
+
+  /* ── Cómo va a acabar el mes ──────────────────────────────────────────── */
+  const gastadoMes=gastoMesDe(a,m);
+  if (dia>=4 && gastadoMes>0){
+    const fijosPend=E.fijos.filter(f=>f.tipo==='Gasto'&&Number(f.dia)>dia)
+      .reduce((x,f)=>x+aNum(f.importe),0);
+    const previsto=gastadoMes/dia*diasMes + fijosPend;
+    const previos=[1,2,3].map(i=>{ const d=new Date(a,m-i,1); return gastoMesDe(d.getFullYear(),d.getMonth()); }).filter(x=>x>0);
+    const media=previos.length ? previos.reduce((x,y)=>x+y,0)/previos.length : 0;
+    const dif=media ? previsto/media-1 : 0;
+    out.push({
+      peso: media && Math.abs(dif)>.12 ? 76 : 44,
+      tono: dif>.12 ? 'naranja' : dif<-.12 ? 'verde' : 'azul',
+      icono: '📈', titulo: 'Cómo va a acabar el mes',
+      texto: media
+        ? `Al ritmo de ahora cerrarás en <em>${euro(previsto)}</em>, un ${pct(Math.abs(dif))} ${dif>0?'por encima':'por debajo'} de tu media.`
+        : `Al ritmo de ahora cerrarás el mes en <em>${euro(previsto)}</em>${fijosPend?', contando los fijos que faltan':''}.`,
+      accion: { txt:'Ver el mes', ir:'patrimonio' },
+    });
+  }
+
+  /* ── Un gasto que se sale de lo tuyo ──────────────────────────────────── */
+  const desde90=correrDias(HOY,-90);
+  const historicos={};
+  for (const t of E.tx) if (t.tipo==='Gasto' && t.fecha>=desde90)
+    (historicos[t.categoria||'Otros'] ||= []).push(t.importe);
+  let raro=null;
+  for (const t of E.tx){
+    if (t.tipo!=='Gasto' || t.fecha<correrDias(HOY,-7)) continue;
+    const l=historicos[t.categoria||'Otros']||[];
+    if (l.length<5) continue;
+    const med=mediana(l);
+    if (med>0 && t.importe>med*2.5 && (!raro || t.importe>raro.t.importe)) raro={ t, med };
+  }
+  if (raro) out.push({
+    peso:80, tono:'naranja', icono:'🔍', titulo:'Un gasto fuera de lo normal',
+    texto: `<em>${esc(raro.t.concepto)}</em>, ${euro(raro.t.importe)}. En ${esc(raro.t.categoria||'esa categoría')} lo tuyo suele rondar los ${euro(raro.med)}.`,
+    accion:{ txt:'Revisar gastos', ir:'patrimonio' },
+  });
+
+  /* ── Topes de gasto ───────────────────────────────────────────────────── */
+  let peorTope=null;
+  for (const [cat, tope] of Object.entries(E.topes||{})){
+    const lim=aNum(tope); if (lim<=0) continue;
+    const g=suma(E.tx.filter(t=>t.tipo==='Gasto'&&t.categoria===cat&&mismoMes(t.fecha,a,m)));
+    const parte=g/lim;
+    if (parte>=.75 && (!peorTope || parte>peorTope.parte)) peorTope={ cat, g, lim, parte };
+  }
+  if (peorTope){
+    const pasado=peorTope.parte>=1;
+    out.push({
+      peso: pasado?94:70, tono: pasado?'rojo':'naranja', icono: pasado?'🚨':'⚠️',
+      titulo: pasado ? `Tope de ${esc(peorTope.cat)} superado` : `${esc(peorTope.cat)} casi en el tope`,
+      texto: pasado
+        ? `Llevas <em>${euro(peorTope.g)}</em> de ${euro(peorTope.lim)}: ${euro(peorTope.g-peorTope.lim)} de más y aún quedan ${quedan} días.`
+        : `Llevas <em>${euro(peorTope.g)}</em> de ${euro(peorTope.lim)} y quedan ${quedan} días de mes.`,
+      accion:{ txt:'Ver categorías', ir:'patrimonio' },
+    });
+  }
+
+  /* ── Facturas ─────────────────────────────────────────────────────────── */
+  const porCobrar=E.cobros.filter(c=>!c.cobrada&&c.vence).sort((x,y)=>x.vence.localeCompare(y.vence));
+  const apremia=porCobrar.find(c=>c.vence<=correrDias(HOY,3));
+  if (apremia){
+    const tarde=apremia.vence<HOY;
+    const dias=Math.abs(Math.round((desdeClave(apremia.vence)-desdeClave(HOY))/86400000));
+    out.push({
+      peso: tarde?90:66, tono: tarde?'rojo':'naranja', icono:'🧾',
+      titulo: tarde?'Una factura se te ha pasado':'Una factura vence ya',
+      texto: `<em>${esc(apremia.cliente||'Cliente')}</em>, ${euro(aNum(apremia.importe))}. ${tarde?`Venció hace ${dias} día${dias===1?'':'s'}`:dias===0?'Vence hoy':`Vence en ${dias} día${dias===1?'':'s'}`}.`,
+      accion:{ txt:'Ver cobros', ir:'patrimonio' },
+    });
+  }
+
+  /* ── Lo que se quedó atrás en la agenda ───────────────────────────────── */
+  const atrasadas=tareasAtrasadas();
+  if (atrasadas.length) out.push({
+    peso:72, tono:'azul', icono:'📋', titulo:'Tienes tareas colgando',
+    texto: `<em>${atrasadas.length}</em> tarea${atrasadas.length===1?'':'s'} de días pasados sin marcar. La más vieja: ${esc(atrasadas[atrasadas.length-1].t.titulo)}.`,
+    accion:{ txt:'Ir a la agenda', ir:'agenda' },
+  });
+
+  /* ── Racha de metas del día en peligro ────────────────────────────────── */
+  const racha=rachaMetasDia();
+  const faltanHoy=habitos().length-ticksDe(HOY).length;
+  if (racha>=3 && faltanHoy>0 && hora>=16) out.push({
+    peso: 86, tono:'morado', icono:'🔥', titulo:'Tu racha está en juego',
+    texto: `Llevas <em>${racha} días</em> seguidos completando el día y hoy te falta${faltanHoy===1?'':'n'} ${faltanHoy}.`,
+    accion:{ txt:'Ver el día', ir:'home' },
+  });
+  if (racha>=7 && faltanHoy===0) out.push({
+    peso: 42, tono:'verde', icono:'🏅', titulo:'Racha viva',
+    texto: `<em>${racha+1} días</em> seguidos cumpliendo todas las metas del día. Sigue.`,
+  });
+
+  /* ── Metas con fecha: ¿llegas al ritmo que llevas? ────────────────────── */
+  let apretada=null;
+  for (const meta of E.metas){
+    const r=ritmoNecesario(meta);
+    if (!r || r.dias>60) continue;
+    const avance=meta.meta ? meta.progreso/meta.meta : 0;
+    if (avance>=.9) continue;
+    if (!apretada || r.dias<apretada.r.dias) apretada={ meta, r, avance };
+  }
+  if (apretada) out.push({
+    peso: apretada.r.dias<=7 ? 84 : 58, tono: apretada.r.dias<=7 ? 'rojo' : 'morado', icono:'🎯',
+    titulo:'Una meta te pide ritmo',
+    texto: `<em>${esc(apretada.meta.nombre)}</em> va por el ${pct(apretada.avance)} y quedan ${apretada.r.dias} días: toca ${numF.format(apretada.r.alDia)} ${esc(apretada.meta.unidad||'')} al día.`,
+    accion:{ txt:'Ver metas', ir:'metas' },
+  });
+
+  /* ── Cartera: lo que se ha ido del reparto que quieres ────────────────── */
+  const desvio=desvioCartera()[0];
+  if (desvio && Math.abs(desvio.dif)>.08) out.push({
+    peso:62, tono:'azul', icono:'⚖️', titulo:'Tu cartera se ha torcido',
+    texto: `<em>${esc(desvio.tipo)}</em> pesa el ${pct(desvio.real)} y querías el ${pct(desvio.objetivo)}: ${desvio.dif>0?'sobran':'faltan'} ${euro(Math.abs(desvio.euros))}.`,
+    accion:{ txt:'Ver cartera', ir:'patrimonio' },
+  });
+
+  /* ── La inversión que más se ha movido ────────────────────────────────── */
+  let movida=null;
+  for (const i of E.inversiones){
+    const compra=aNum(i.precioCompra), ahoraP=precioDe(i);
+    if (compra<=0 || !i.precioActual) continue;
+    const v=ahoraP/compra-1;
+    if (Math.abs(v)>.15 && (!movida || Math.abs(v)>Math.abs(movida.v))) movida={ i, v, ganancia:(ahoraP-compra)*aNum(i.unidades) };
+  }
+  if (movida) out.push({
+    peso:54, tono: movida.v>0?'verde':'rojo', icono: movida.v>0?'🚀':'📉',
+    titulo: movida.v>0?'Algo tuyo ha subido fuerte':'Algo tuyo ha caído fuerte',
+    texto: `<em>${esc(movida.i.nombre)}</em> va un ${pct(Math.abs(movida.v))} ${movida.v>0?'arriba':'abajo'} desde que la compraste: ${movida.v>0?'+':''}${euro(movida.ganancia)}.`,
+    accion:{ txt:'Ver inversiones', ir:'patrimonio' },
+  });
+
+  /* ── Entreno: el grupo que llevas dos semanas sin tocar ───────────────── */
+  const desde14=correrDias(HOY,-14);
+  const seriesGrupo=Object.fromEntries(GRUPOS.map(g=>[g,0]));
+  let seriesTotal=0, diaSemana={};
+  for (const [f, lista] of Object.entries(E.sesiones)){
+    for (const ses of lista){
+      if (ses.hecha) diaSemana[desdeClave(f).getDay()]=(diaSemana[desdeClave(f).getDay()]||0)+1;
+      if (f<desde14 || ses.clase!=='fuerza') continue;
+      for (const ej of ses.ejercicios||[]){
+        const n=(ej.series||[]).filter(x=>x.hecha).length;
+        if (seriesGrupo[ej.grupo]!==undefined){ seriesGrupo[ej.grupo]+=n; seriesTotal+=n; }
+      }
+    }
+  }
+  if (seriesTotal>=15){
+    const olvidado=GRUPOS.filter(g=>seriesGrupo[g]===0);
+    if (olvidado.length) out.push({
+      peso:64, tono:'naranja', icono:'🏋️', titulo:'Un grupo se te está quedando',
+      texto: `En dos semanas no has hecho ni una serie de <em>${esc(olvidado[0])}</em>${olvidado.length>1?` (ni de ${esc(olvidado[1])})`:''}, y llevas ${seriesTotal} series.`,
+      accion:{ txt:'Planificar', ir:'entreno' },
+    });
+  }
+
+  /* ── Fuerza: el peso que no se mueve desde hace semanas ───────────────── */
+  let estancado=null;
+  for (const [nombre, semanas] of Object.entries(evolucionDatos())){
+    const claves=Object.keys(semanas).sort().slice(-3);
+    if (claves.length<3) continue;
+    const kgs=claves.map(k=>semanas[k]);
+    if (kgs[0]===kgs[1] && kgs[1]===kgs[2] && kgs[0]>0) estancado={ nombre, kg:kgs[0] };
+  }
+  if (estancado) out.push({
+    peso:56, tono:'morado', icono:'⚡', titulo:'Llevas tres semanas igual',
+    texto: `<em>${esc(estancado.nombre)}</em> lleva tres semanas clavado en ${numF.format(estancado.kg)} kg. Prueba ${numF.format(estancado.kg+2.5)} kg o una serie más.`,
+    accion:{ txt:'Ir a entreno', ir:'entreno' },
+  });
+
+  /* ── El día que sueles entrenar ───────────────────────────────────────── */
+  const totalDias=Object.values(diaSemana).reduce((x,y)=>x+y,0);
+  if (totalDias>=8 && hora<20 && !sesionesDe(HOY).length){
+    const hoyD=ahora.getDay();
+    const mejor=Object.entries(diaSemana).sort((x,y)=>y[1]-x[1])[0];
+    if (mejor && Number(mejor[0])===hoyD && mejor[1]/totalDias>=.2) out.push({
+      peso:60, tono:'rojo', icono:'📆', titulo:'Hoy es de tus días de entreno',
+      texto: `De cada 10 entrenos, ${Math.round(mejor[1]/totalDias*10)} los haces en ${DIAS_CORTO[(hoyD+6)%7].toLowerCase()}. Hoy no tienes nada puesto.`,
+      accion:{ txt:'Planificar', ir:'entreno' },
+    });
+  }
+
+  /* ── Cuerpo: hacia dónde va el peso ───────────────────────────────────── */
+  const pesos=[...E.pesos].filter(p=>aNum(p.kg)>0).sort((x,y)=>x.fecha.localeCompare(y.fecha));
+  if (pesos.length>=3 && E.pesoObjetivo){
+    const ultimo=pesos[pesos.length-1];
+    const hace=pesos.filter(p=>p.fecha<=correrDias(HOY,-28)).pop() || pesos[0];
+    const delta=aNum(ultimo.kg)-aNum(hace.kg);
+    const falta=aNum(ultimo.kg)-aNum(E.pesoObjetivo);
+    if (Math.abs(delta)>=.4 && Math.abs(falta)>=.5){
+      const acercando=(falta>0&&delta<0)||(falta<0&&delta>0);
+      out.push({
+        peso: acercando?46:52, tono: acercando?'verde':'naranja', icono:'⚖️',
+        titulo: acercando?'Vas hacia tu peso':'Te alejas de tu peso',
+        texto: `${delta>0?'+':''}${numF.format(delta)} kg en el último mes. Te quedan <em>${numF.format(Math.abs(falta))} kg</em> para los ${numF.format(aNum(E.pesoObjetivo))}.`,
+        accion:{ txt:'Ver cuerpo', ir:'entreno' },
+      });
+    }
+  }
+
+  /* ── Lo bueno también se cuenta ───────────────────────────────────────── */
+  const ahorro=tasaAhorroMes();
+  if (ahorro!==null && ahorro>=.2 && dia>=10) out.push({
+    peso:40, tono:'verde', icono:'🌱', titulo:'Buen mes de ahorro',
+    texto: `Estás apartando el <em>${pct(ahorro)}</em> de lo que entra. Todo lo que pase de aquí engorda el patrimonio.`,
+    accion:{ txt:'Ver patrimonio', ir:'patrimonio' },
+  });
+
+  /* ── Sin datos aún: qué hacer para que esto empiece a hablar ──────────── */
+  if (!out.length && E.tx.length<3) out.push({
+    peso:10, tono:'azul', icono:'✨', titulo:'Dame unos días',
+    texto:'Cuando lleves unos movimientos y unos entrenos apuntados, aquí te iré diciendo lo que veo raro o lo que vas a acabar gastando.',
+  });
+
+  return out.sort((x,y)=>y.peso-x.peso).slice(0,4);
+}
+
+function pintarIdeas(){
+  const lista=ideas();
+  const caja=$('#ideas'), titulo=$('#tituloIdeas'), puntos=$('#ideasPuntos');
+  const hay=lista.length>0;
+  titulo.classList.toggle('oculto', !hay);
+  caja.classList.toggle('oculto', !hay);
+  puntos.classList.toggle('oculto', lista.length<2);
+  if (!hay){ caja.innerHTML=''; return; }
+
+  $('#ideasCuenta').textContent = lista.length>1 ? `${lista.length} avisos` : '';
+  caja.innerHTML = lista.map(i=>{
+    const [tono, suave]=TONOS[i.tono]||TONOS.azul;
+    return `<article class="idea" style="--tono:${tono}; --tono-suave:${suave}">
+      <div class="cab"><span class="burbuja">${i.icono}</span><b>${i.titulo}</b></div>
+      <p>${i.texto}</p>
+      ${i.accion?`<button class="hacer" data-ir-tab="${i.accion.ir}">${i.accion.txt} →</button>`:''}
+    </article>`;
+  }).join('');
+  puntos.innerHTML = lista.map((_,n)=>`<i class="${n===0?'activo':''}"></i>`).join('');
+}
+
+// Los puntitos siguen al dedo mientras deslizas las tarjetas
+$('#ideas').addEventListener('scroll', ()=>{
+  const caja=$('#ideas'), tarjetas=[...caja.children];
+  if (!tarjetas.length) return;
+  const centro=caja.scrollLeft + caja.clientWidth/2;
+  let cerca=0, mejor=Infinity;
+  tarjetas.forEach((t,n)=>{
+    const d=Math.abs(t.offsetLeft + t.offsetWidth/2 - centro);
+    if (d<mejor){ mejor=d; cerca=n; }
+  });
+  $$('#ideasPuntos i').forEach((p,n)=>p.classList.toggle('activo', n===cerca));
+}, { passive:true });
+
+/* ── Un hueco vacío se explica mejor con un icono ────────────────────────── */
+const vacio = (icono, titulo, texto) =>
+  `<div class="vacio"><span class="ilu">${icono}</span><b>${titulo}</b>${texto}</div>`;
+
 /* ═══════════════════════════ VISTA 1 · AGENDA DE HOY ═════════════════════ */
 function pintarHome(){
   const hora=new Date().getHours();
@@ -2049,7 +2421,7 @@ function pintarHome(){
           </button>
         </div>`;
       }).join('')
-    : `<div class="vacio"><b>Nada apuntado para hoy</b>Añade tareas desde la Agenda.</div>`;
+    : vacio('📋','Nada apuntado para hoy','Añade tareas desde la Agenda.');
 
   // Hábitos de hoy
   const hechos = ticksDe(HOY);
@@ -2061,7 +2433,7 @@ function pintarHome(){
         <span class="nombre">${esc(h.nombre)}${h.pista?`<span class="pista">${esc(h.pista)}</span>`:''}</span>
         <span class="check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
       </button>`).join('')
-    : `<div class="vacio"><b>Sin metas del día</b>Pulsa «Editar» y añade lo que quieras hacer cada día.</div>`;
+    : vacio('🎯','Sin metas del día','Pulsa «Editar» y añade lo que quieras hacer cada día.');
 
   // Entreno de hoy
   const sesiones = sesionesDe(HOY);
@@ -2073,7 +2445,7 @@ function pintarHome(){
           <span>${s.clase==='fuerza' ? `${(s.ejercicios||[]).length} ejercicio(s)` : esc(s.modo||'resistencia')}</span></span>
         <span class="estado ${s.hecha?'hecha':''}">${s.hecha?'Hecha':'▶ Empezar'}</span>
       </button>`).join('')
-    : `<div class="vacio"><b>Nada programado para hoy</b>Descanso también es entrenar. O planifica algo en Entreno.</div>`;
+    : vacio('🏋️','Nada programado para hoy','Descanso también es entrenar. O planifica algo en Entreno.');
 
   // Próximos vencimientos: metas con fecha límite en los próximos 10 días
   const limite10 = new Date(); limite10.setDate(limite10.getDate()+10);
@@ -2094,7 +2466,7 @@ function pintarHome(){
             <button data-meta-editar="${x.id}">✎ Editar</button></div>
         </div>`;
       }).join('')
-    : `<div class="vacio"><b>Nada urgente</b>Las metas con fecha límite cercana aparecerán aquí.</div>`;
+    : vacio('🗓️','Nada urgente','Las metas con fecha límite cercana aparecerán aquí.');
 
   // El día de un vistazo, bajo la prioridad
   const avance=progresoDia();
@@ -2102,6 +2474,7 @@ function pintarHome(){
   $('#pctDia').textContent = avance ? `${avance.hechos}/${avance.total}` : '—';
 
   pintarFoco();
+  pintarIdeas();
 
   const sinDiario = !deHoy.length;
   $('#bannerDiario').classList.toggle('oculto', !sinDiario);
@@ -4257,6 +4630,7 @@ function ir(vista){
   try { sessionStorage.setItem('panel:pestania', vista); } catch {}
   const mismo = UI.vista===vista;
   UI.vista=vista;
+  document.body.dataset.vista=vista;   // de aquí sale el color de la pestaña
   $$('.vista').forEach(v=>v.classList.toggle('oculto', v.dataset.vista!==vista));
   $$('.dock button').forEach(b=>b.setAttribute('aria-selected', String(b.dataset.ir===vista)));
   moverPastilla();
@@ -4288,6 +4662,7 @@ function conectarRadios(form){
     e.preventDefault();
     $$(`[data-radio="${b.dataset.radio}"]`, form).forEach(x=>x.setAttribute('aria-selected', String(x===b)));
     if (form.id==='formMov') refrescarCategorias();
+    if (form.id==='formMov') revisarSugerencia();   // otra lista, otra propuesta
     if (form.id==='formFijo') refrescarCategoriasFijo();
     if (form.id==='formSesion') $('#camposResistencia').classList.toggle('oculto', radio(form,'clase')!=='resistencia');
     if (form.id==='formDiario') ajustarEtiquetasDiario();
@@ -4313,6 +4688,7 @@ $$('.dock button').forEach(b=>b.addEventListener('click',()=>ir(b.dataset.ir)));
 $('#btnNuevoMov').addEventListener('click',()=>{
   const f=$('#formMov'); f.reset(); f.fecha.value=HOY;
   refrescarCategorias(); pintarFrecuentes(); $('#errMov').textContent='';
+  $('#sugCategoria').classList.add('oculto');   // cada movimiento empieza limpio
   $('#hojaMov').showModal();
 });
 
@@ -5118,6 +5494,46 @@ $('#btnCronometro').addEventListener('click',()=>{
   $('#hojaTemporizador').close();
   avisar('Cronómetro en marcha');
 });
+
+/* ── La categoría se propone sola ───────────────────────────────────────────
+   No hay lista de palabras clave escrita a mano: se mira lo que tú mismo has
+   clasificado antes. Si escribes "Netflix" y tus tres Netflix anteriores eran
+   Suscripciones, te lo propone. Nunca lo cambia solo: lo propone y decides.  */
+const palabrasDe = t => String(t||'').toLowerCase()
+  .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+  .split(/[^a-z0-9]+/).filter(p=>p.length>2);
+
+function categoriaSugerida(concepto, ambito, tipo){
+  const p=palabrasDe(concepto);
+  if (!p.length) return null;
+  const puntos={};
+  for (const t of E.tx){
+    if (t.ambito!==ambito || t.tipo!==tipo || !t.categoria) continue;
+    const comunes=palabrasDe(t.concepto).filter(w=>p.includes(w)).length;
+    if (comunes) puntos[t.categoria]=(puntos[t.categoria]||0)+comunes;
+  }
+  const mejor=Object.entries(puntos).sort((x,y)=>y[1]-x[1])[0];
+  return mejor ? mejor[0] : null;
+}
+
+function revisarSugerencia(){
+  const f=$('#formMov'), caja=$('#sugCategoria');
+  const cat=categoriaSugerida(f.concepto.value, radio(f,'ambito'), radio(f,'tipo'));
+  const vale=cat && cat!==f.categoria.value && [...f.categoria.options].some(o=>o.value===cat);
+  caja.classList.toggle('oculto', !vale);
+  if (vale) caja.innerHTML=`<span>¿Es de</span><button type="button" data-usar-categoria="${esc(cat)}">${esc(cat)}</button><span>?</span>`;
+}
+
+$('#formMov').concepto.addEventListener('input', revisarSugerencia);
+$('#formMov').addEventListener('click', e=>{
+  const b=e.target.closest('[data-usar-categoria]'); if (!b) return;
+  const f=$('#formMov');
+  f.categoria.value=b.dataset.usarCategoria;
+  f.categoria.dispatchEvent(new Event('opciones:refrescar'));
+  $('#sugCategoria').classList.add('oculto');
+  vibrar(8);
+});
+
 
 /* ── Buscador y fijos: eventos ───────────────────────────────────────────── */
 $('#btnBuscar').addEventListener('click',()=>{
@@ -6275,6 +6691,7 @@ refrescarCategorias();
 refrescarCategoriasFijo();
 ajustarCamposInversion();
 aplicarFijos();
+document.body.dataset.vista=UI.vista;   // el color de la pestaña, ya desde el arranque
 anotarHoy();          // deja la foto de hoy antes de pintar nada
 guardar();
 pintar();
