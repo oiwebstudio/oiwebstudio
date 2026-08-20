@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Páginas de trabajo interno, no forman parte del sitio público
+Disallow: /_borradores/
+
+Sitemap: https://oiwebstudio.com/sitemap.xml
