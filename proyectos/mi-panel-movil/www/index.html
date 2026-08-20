@@ -582,6 +582,26 @@ select.nativo-fuera { position: absolute; width: 1px; height: 1px; opacity: 0; p
 .ej-sesion .vol { font-weight: 700; font-variant-numeric: tabular-nums; }
 :root[data-tema='oscuro'] .disco-fila, :root[data-tema='oscuro'] .ej-sesion { border-color: rgba(255,255,255,.07); }
 
+/* ── Agenda por horas ───────────────────────────────────────────────────── */
+.horario { position: relative; }
+.hora-fila { display: flex; align-items: flex-start; gap: 10px; height: 52px; }
+.hora-fila .hora-txt { flex: none; width: 40px; font-size: 11px; font-variant-numeric: tabular-nums; color: var(--txt-3); transform: translateY(-6px); }
+.hora-fila .hora-linea { flex: 1; border-top: 1px solid rgba(0,0,0,.06); height: 100%; }
+:root[data-tema='oscuro'] .hora-fila .hora-linea { border-color: rgba(255,255,255,.08); }
+
+.bloques { position: absolute; inset: 0 0 0 50px; pointer-events: none; }
+.bloque-ag { position: absolute; left: 0; right: 0; border-radius: 12px; padding: 6px 9px; font-size: 12px; line-height: 1.25; overflow: hidden; pointer-events: auto; text-align: left; background: rgba(10,132,255,.14); border-left: 3px solid var(--azul); }
+.bloque-ag b { display: block; font-weight: 700; font-size: 12.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bloque-ag small { color: var(--txt-2); font-variant-numeric: tabular-nums; }
+.bloque-ag.empresa { background: rgba(191,90,242,.14); border-left-color: var(--morado); }
+.bloque-ag.entreno { background: rgba(48,209,88,.14); border-left-color: var(--verde); }
+.bloque-ag.lista { opacity: .5; }
+.bloque-ag.lista b { text-decoration: line-through; }
+.bloque-ag:active { transform: scale(.98); }
+
+.ahora { position: absolute; left: 44px; right: 0; height: 2px; background: var(--rojo); z-index: 3; pointer-events: none; }
+.ahora::before { content: ''; position: absolute; left: -5px; top: -3px; width: 8px; height: 8px; border-radius: 50%; background: var(--rojo); }
+
 /* ── Brindis ────────────────────────────────────────────────────────────── */
 .brindis { position: fixed; left: 50%; bottom: calc(var(--dock-alto) + 14px); transform: translate(-50%, 12px); z-index: 70; background: var(--tinta); color: #fff; font-size: 13.5px; font-weight: 600; padding: 11px 20px; border-radius: 20px; box-shadow: var(--sombra-alta); opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .3s var(--muelle); max-width: calc(100vw - 36px); text-align: center; }
 .brindis.visible { opacity: 1; transform: translate(-50%, 0); }
@@ -867,6 +887,12 @@ dialog::backdrop { animation: fundir .3s ease backwards; }
     </div>
     <div class="tira-semana" id="agTira"></div>
 
+    <div class="segmentado" id="segAgenda">
+      <button data-sub-agenda="lista" aria-selected="true">Lista</button>
+      <button data-sub-agenda="horas" aria-selected="false">Por horas</button>
+    </div>
+
+    <div class="carta oculto" id="agHoras"></div>
     <div class="carta" id="agDia"></div>
     <button class="btn-negro" id="btnNuevaTarea" style="margin-top:12px">+ Nueva tarea</button>
 
@@ -1363,6 +1389,16 @@ dialog::backdrop { animation: fundir .3s ease backwards; }
         <label class="campo"><span>Día</span><input type="date" name="fecha" required></label>
         <label class="campo"><span>Hora (opcional)</span><input type="time" name="hora"></label>
       </div>
+      <label class="campo"><span>Cuánto dura</span>
+        <select name="duracion">
+          <option value="15">15 minutos</option>
+          <option value="30" selected>Media hora</option>
+          <option value="45">45 minutos</option>
+          <option value="60">1 hora</option>
+          <option value="90">Hora y media</option>
+          <option value="120">2 horas</option>
+          <option value="180">3 horas</option>
+        </select></label>
       <label class="campo"><span>Se repite</span>
         <select name="repite">
           <option value="no">Solo ese día</option>
@@ -1543,6 +1579,10 @@ dialog::backdrop { animation: fundir .3s ease backwards; }
         <button type="button" data-radio="clase" data-valor="resistencia" aria-selected="false">🏃 Resistencia</button>
       </div>
       <label class="campo"><span>Nombre de la sesión</span><input name="nombre" required placeholder="Pierna fuerza, Series 300m…" autocomplete="off"></label>
+      <div class="par">
+        <label class="campo"><span>Hora (opcional)</span><input type="time" name="hora"></label>
+        <label class="campo"><span>Dura (min)</span><input name="duracion" inputmode="numeric" placeholder="60"></label>
+      </div>
       <div id="camposResistencia" class="oculto">
         <label class="campo"><span>Deporte</span><select name="deporte"><option value="running">🏃 Running</option><option value="ciclismo">🚴 Ciclismo</option></select></label>
       </div>
@@ -1783,6 +1823,7 @@ const UI = {
   cobroEditando: null,
   agendaDia: HOY,
   entrenoSub2: 'semana',   // sub-pestaña de Entreno: semana | carga | cuerpo
+  subAgenda: 'lista',      // lista | horas
   subDinero: 'resumen',
   rango: 180,              // días que abarca el gráfico de patrimonio; 0 = todo
   gastoCursor: new Date(), // mes que se está mirando en «Gastos»
@@ -2079,6 +2120,10 @@ const ETIQUETA_REPITE = { diaria:'cada día', laborable:'de lunes a viernes', se
 
 function pintarAgenda(){
   const k=UI.agendaDia;
+  const porHoras=UI.subAgenda==='horas';
+  $('#agHoras').classList.toggle('oculto', !porHoras);
+  $('#agDia').classList.toggle('oculto', porHoras);
+  if (porHoras) pintarHorario();
   const f=desdeClave(k);
   const lunes=lunesDe(f);
   const domingo=new Date(lunes); domingo.setDate(domingo.getDate()+6);
@@ -2149,6 +2194,54 @@ function pintarAgenda(){
       </div>`).join(''):`<div class="vacio" style="padding:14px 8px"><b>Sin diario ese día</b>${k===HOY?'Escríbelo desde la campana de arriba.':'&nbsp;'}</div>`}`;
 }
 
+/* ── El día por horas, como un calendario ────────────────────────────────── */
+const HORA_DESDE = 6, HORA_HASTA = 24, ALTO_HORA = 52;
+const enMinutos = hhmm => { const [h,m]=String(hhmm).split(':').map(Number); return h*60+(m||0); };
+const hhmm = min => `${dos(Math.floor(min/60)%24)}:${dos(min%60)}`;
+
+function pintarHorario(){
+  const k=UI.agendaDia;
+  const caja=$('#agHoras');
+
+  // Lo que tiene hora: tareas y entrenos
+  const bloques=tareasDe(k).filter(t=>t.hora).map(t=>({
+    id:t.id, tipo:'tarea', titulo:t.titulo, desde:enMinutos(t.hora),
+    dura:t.duracion||30, clase:(t.ambito==='empresa'?'empresa':'')+(tareaHecha(t,k)?' lista':''),
+  }));
+  for (const ses of sesionesDe(k))
+    if (ses.hora) bloques.push({ id:ses.id, tipo:'sesion', titulo:ses.nombre,
+      desde:enMinutos(ses.hora), dura:ses.duracion||60, clase:'entreno'+(ses.hecha?' lista':'') });
+
+  const sinHora=tareasDe(k).filter(t=>!t.hora);
+  const ahora=new Date();
+  const esHoy=k===HOY;
+  const minAhora=ahora.getHours()*60+ahora.getMinutes();
+
+  caja.innerHTML=`
+    <div class="horario" style="height:${(HORA_HASTA-HORA_DESDE)*ALTO_HORA}px">
+      ${Array.from({length:HORA_HASTA-HORA_DESDE},(_,i)=>`
+        <button class="hora-fila" data-hora-vacia="${dos(HORA_DESDE+i)}:00">
+          <span class="hora-txt">${dos(HORA_DESDE+i)}:00</span>
+          <span class="hora-linea"></span>
+        </button>`).join('')}
+      <div class="bloques">
+        ${bloques.map(b=>{
+          const arriba=(b.desde-HORA_DESDE*60)/60*ALTO_HORA;
+          const alto=Math.max(24, b.dura/60*ALTO_HORA-3);
+          return `<button class="bloque-ag ${b.clase}" style="top:${arriba.toFixed(1)}px; height:${alto.toFixed(1)}px"
+            data-bloque="${b.tipo}|${b.id}|${k}">
+            <b>${esc(b.titulo)}</b>
+            <small>${hhmm(b.desde)} – ${hhmm(b.desde+b.dura)}</small>
+          </button>`;
+        }).join('')}
+      </div>
+      ${esHoy && minAhora>=HORA_DESDE*60 && minAhora<=HORA_HASTA*60
+        ? `<div class="ahora" style="top:${((minAhora-HORA_DESDE*60)/60*ALTO_HORA).toFixed(1)}px"></div>` : ''}
+    </div>
+    ${sinHora.length?`<div class="pie-nota" style="margin-top:10px">
+      ${sinHora.length} sin hora: ${sinHora.map(t=>esc(t.titulo)).join(', ')}</div>`:''}`;
+}
+
 /** Abre la hoja de tareas: sin id crea, con id edita. */
 function abrirTarea(id){
   const f=$('#formTarea'); f.reset(); $('#errTarea').textContent='';
@@ -2158,6 +2251,7 @@ function abrirTarea(id){
   if (t){
     f.titulo.value=t.titulo; f.fecha.value=t.fecha; f.hora.value=t.hora||'';
     f.repite.value=t.repite||'no'; f.hasta.value=t.hasta||'';
+    f.duracion.value=String(t.duracion||30);
     f.notas.value=t.notas||''; f.aviso.value=t.aviso??'';
   } else {
     f.fecha.value=UI.agendaDia; f.repite.value='no';
@@ -2166,6 +2260,7 @@ function abrirTarea(id){
   $('#campoHasta').classList.toggle('oculto', (t?.repite||'no')==='no');
   f.repite.dispatchEvent(new Event('opciones:refrescar'));
   f.aviso.dispatchEvent(new Event('opciones:refrescar'));
+  f.duracion.dispatchEvent(new Event('opciones:refrescar'));
   $('#tituloTarea').textContent=t?'Editar tarea':'Nueva tarea';
   $('#btnGuardarTarea').textContent=t?'Guardar cambios':'Crear';
   $('#btnBorrarTarea').classList.toggle('oculto', !t);
@@ -5235,6 +5330,13 @@ function verResumenSemana(){
 
 // Agenda
 $('#btnNuevaTarea').addEventListener('click',()=>abrirTarea(null));
+
+$('#segAgenda').addEventListener('click', e=>{
+  const b=e.target.closest('[data-sub-agenda]'); if (!b) return;
+  UI.subAgenda=b.dataset.subAgenda;
+  $$('#segAgenda button').forEach(x=>x.setAttribute('aria-selected',String(x===b)));
+  pintarAgenda();
+});
 $('#btnHoyAgenda').addEventListener('click',()=>{ UI.agendaDia=HOY; pintarAgenda(); });
 $('#agAtras').addEventListener('click',()=>{ UI.agendaDia=correrDias(UI.agendaDia,-7); pintarAgenda(); });
 $('#agAdelante').addEventListener('click',()=>{ UI.agendaDia=correrDias(UI.agendaDia,7); pintarAgenda(); });
@@ -5253,6 +5355,7 @@ $('#formTarea').addEventListener('submit', e=>{
   if (f.aviso.value!=='' && !f.hora.value){ $('#errTarea').textContent='Para avisarte necesito una hora.'; return; }
 
   const datos={ titulo:f.titulo.value.trim(), fecha:f.fecha.value, hora:f.hora.value||'',
+    duracion:Math.max(5, Math.round(aNum(f.duracion.value))||30),
     ambito:radio(f,'ambitoT')||'personal', repite:f.repite.value,
     hasta:(f.repite.value!=='no'&&f.hasta.value)||null, notas:f.notas.value.trim(),
     aviso:f.aviso.value===''?null:Number(f.aviso.value) };
@@ -5450,7 +5553,8 @@ $('#formSesion').addEventListener('submit', e=>{
   const f=e.target;
   if (!f.nombre.value.trim()){ $('#errSesion').textContent='Ponle nombre a la sesión.'; return; }
   const clase=radio(f,'clase');
-  const s={ id:nuevoId(), clase, nombre:f.nombre.value.trim(), hecha:false };
+  const s={ id:nuevoId(), clase, nombre:f.nombre.value.trim(), hecha:false,
+    hora:f.hora.value||'', duracion:Math.round(aNum(f.duracion.value))||60 };
   if (clase==='fuerza') s.ejercicios=[];
   else { s.deporte=f.deporte.value; s.modo='Continuo / Tirada'; }
   (E.sesiones[UI.entrenoDia] ||= []).push(s);
@@ -5556,6 +5660,27 @@ document.addEventListener('click', async e=>{
     const t=E.tareas.find(x=>x.id===traerHoy.dataset.traerHoy); if (!t) return;
     t.fecha=HOY;
     guardar(); programarAvisos(); pintar(); avisar('Traída a hoy'); return;
+  }
+
+  // Un hueco de la rejilla crea una tarea a esa hora
+  const huecoHora=e.target.closest('[data-hora-vacia]');
+  if (huecoHora){
+    abrirTarea(null);
+    const f=$('#formTarea');
+    f.hora.value=huecoHora.dataset.horaVacia;
+    f.fecha.value=UI.agendaDia;
+    return;
+  }
+
+  const bloque=e.target.closest('[data-bloque]');
+  if (bloque){
+    const [tipo,id,dia]=bloque.dataset.bloque.split('|');
+    if (tipo==='tarea') abrirTarea(id);
+    else {
+      UI.sesionAbierta={ fecha:dia, id };
+      pintarDetalleSesion(); $('#hojaDetalleSesion').showModal();
+    }
+    return;
   }
 
   const tareaEd=e.target.closest('[data-tarea-editar]');
