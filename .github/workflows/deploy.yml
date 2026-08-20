@@ -1,0 +1,64 @@
+# Publica la carpeta web/ como raíz de oiwebstudio.com
+#
+# Antes, GitHub Pages servía directamente la raíz del repositorio, así que la
+# raíz del repo tenía que ser la raíz del dominio y todo lo demás (proyectos,
+# biblioteca, notas) convivía revuelto con las páginas.
+#
+# Con este workflow se publica SOLO web/, y su contenido queda en la raíz del
+# dominio: web/index.html → oiwebstudio.com/ · web/zonas/ibarra.html →
+# oiwebstudio.com/zonas/ibarra.html. Ninguna URL cambia.
+#
+# REQUIERE un cambio manual, una sola vez:
+#   GitHub → Settings → Pages → Source: "GitHub Actions"
+# Mientras siga en "Deploy from a branch", este workflow no hace nada.
+
+name: Desplegar web
+
+on:
+  push:
+    branches: [main]
+    paths: ['web/**', '.github/workflows/deploy.yml']
+  workflow_dispatch:        # permite lanzarlo a mano desde la pestaña Actions
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Si se empujan dos cambios seguidos, que termine el último y no se pisen.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  desplegar:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.despliegue.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Comprobar que el sitio está completo
+        # Red de seguridad: si un fichero del sitemap no existe, se para aquí
+        # en vez de publicar una web con enlaces rotos.
+        run: |
+          cd web
+          test -f index.html || { echo "Falta web/index.html"; exit 1; }
+          test -f CNAME      || { echo "Falta web/CNAME: se perdería el dominio"; exit 1; }
+          falta=0
+          for u in $(grep -oE '<loc>[^<]+' sitemap.xml | sed 's|<loc>https://oiwebstudio.com/||'); do
+            [ -z "$u" ] && u=index.html
+            [ -f "$u" ] || { echo "Falta: $u"; falta=1; }
+          done
+          [ $falta -eq 0 ] || { echo "Hay URLs del sitemap sin fichero."; exit 1; }
+          echo "Sitio completo."
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web            # ← esto es lo que hace que web/ sea la raíz
+
+      - id: despliegue
+        uses: actions/deploy-pages@v4
