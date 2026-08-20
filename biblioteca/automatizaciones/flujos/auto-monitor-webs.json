@@ -1,0 +1,343 @@
+{
+  "name": "OI · Vigilancia de las webs de cliente",
+  "nodes": [
+    {
+      "name": "Cada 15 minutos",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 15
+            }
+          ]
+        }
+      },
+      "id": "oi-0059",
+      "position": [
+        260,
+        220
+      ]
+    },
+    {
+      "name": "Lista de webs",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "parameters": {
+        "operation": "read",
+        "documentId": {
+          "__rl": true,
+          "value": "ID_DE_TU_HOJA",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list"
+        },
+        "options": {}
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "",
+          "name": "Google Sheets (gratis)"
+        }
+      },
+      "id": "oi-0060",
+      "position": [
+        500,
+        220
+      ]
+    },
+    {
+      "name": "Web a web",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "oi-0061",
+      "position": [
+        740,
+        220
+      ]
+    },
+    {
+      "name": "Llamar a la web",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "parameters": {
+        "url": "={{ $json.url }}",
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true
+            }
+          },
+          "timeout": 10000
+        }
+      },
+      "id": "oi-0062",
+      "position": [
+        980,
+        220
+      ]
+    },
+    {
+      "name": "Evaluar respuesta",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "jsCode": "const w = $('Web a web').first().json;\nconst t0 = $execution.customData?.t0 ?? Date.now();\nconst code = $json.statusCode ?? 0;\nconst caida = code !== 200;\nreturn [{ json: { cliente: w.cliente, url: w.url, code, caida,\n  cuando: new Date().toISOString().slice(0, 16).replace('T', ' ') } }];"
+      },
+      "id": "oi-0063",
+      "position": [
+        1220,
+        220
+      ]
+    },
+    {
+      "name": "¿Se cayó?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "oi-0011",
+              "leftValue": "={{ $json.caida }}",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "oi-0064",
+      "position": [
+        260,
+        420
+      ]
+    },
+    {
+      "name": "Alerta al móvil",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "parameters": {
+        "chatId": "TU_CHAT_ID",
+        "text": "=🚨 <b>{{ $json.cliente }}</b> no responde\\n{{ $json.url }}\\nCódigo: {{ $json.code }}",
+        "additionalFields": {
+          "parse_mode": "HTML"
+        }
+      },
+      "credentials": {
+        "telegramApi": {
+          "id": "",
+          "name": "Telegram Bot (gratis)"
+        }
+      },
+      "id": "oi-0065",
+      "position": [
+        500,
+        420
+      ]
+    },
+    {
+      "name": "Registrar incidencia",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "ID_DE_TU_HOJA",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list"
+        },
+        "options": {},
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {}
+        }
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "",
+          "name": "Google Sheets (gratis)"
+        }
+      },
+      "id": "oi-0066",
+      "position": [
+        740,
+        420
+      ]
+    },
+    {
+      "name": "Todo correcto",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "parameters": {},
+      "id": "oi-0067",
+      "position": [
+        980,
+        420
+      ]
+    },
+    {
+      "id": "oi-0068",
+      "name": "Ficha",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -140,
+        180
+      ],
+      "parameters": {
+        "width": 360,
+        "height": 320,
+        "color": 4,
+        "content": "## 🚨 Vigilancia de las webs de cliente\n**auto-monitor-webs**\n\nComprueba que cada web de cliente responde, mide cuánto tarda y avisa si algo se cae o si el certificado está por caducar.\n\n**Disparador:** Programado · cada 15 minutos\n\n**Coste: 0 €** — n8n autoalojado · Google Sheets · Telegram Bot · Gmail SMTP\n\n- Lee la lista de webs desde una hoja\n- Hace una petición a cada una sin cortar el flujo si falla\n- Marca como incidencia el código distinto de 200 o más de 4 s de respuesta\n- Avisa por Telegram al instante y deja el registro en la hoja"
+      }
+    }
+  ],
+  "connections": {
+    "Cada 15 minutos": {
+      "main": [
+        [
+          {
+            "node": "Lista de webs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lista de webs": {
+      "main": [
+        [
+          {
+            "node": "Web a web",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Web a web": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Llamar a la web",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Llamar a la web": {
+      "main": [
+        [
+          {
+            "node": "Evaluar respuesta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Evaluar respuesta": {
+      "main": [
+        [
+          {
+            "node": "¿Se cayó?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "¿Se cayó?": {
+      "main": [
+        [
+          {
+            "node": "Alerta al móvil",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Todo correcto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Alerta al móvil": {
+      "main": [
+        [
+          {
+            "node": "Registrar incidencia",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Registrar incidencia": {
+      "main": [
+        [
+          {
+            "node": "Web a web",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Todo correcto": {
+      "main": [
+        [
+          {
+            "node": "Web a web",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true
+  },
+  "tags": [
+    {
+      "name": "OI Studio"
+    },
+    {
+      "name": "coste 0"
+    }
+  ],
+  "meta": {
+    "instanceId": "oi-studio-biblioteca"
+  }
+}

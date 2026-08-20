@@ -1,0 +1,344 @@
+{
+  "name": "OI · Formulario de contacto sin perder un lead",
+  "nodes": [
+    {
+      "name": "Formulario web",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "lead",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "webhookId": "oi-0001",
+      "id": "oi-0021",
+      "position": [
+        260,
+        220
+      ]
+    },
+    {
+      "name": "Antispam",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "jsCode": "// Honeypot + mínimos. Cero coste, cero captcha.\nconst b = $json.body ?? $json;\nconst esSpam = Boolean(b.website) ||\n  (b.mensaje ?? '').trim().length < 12 ||\n  /https?:\\/\\//i.test(b.nombre ?? '');\nreturn [{ json: { ...b, esSpam } }];"
+      },
+      "id": "oi-0022",
+      "position": [
+        500,
+        220
+      ]
+    },
+    {
+      "name": "¿Es spam?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "oi-0002",
+              "leftValue": "={{ $json.esSpam }}",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "oi-0023",
+      "position": [
+        740,
+        220
+      ]
+    },
+    {
+      "name": "Descartar en silencio",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "parameters": {},
+      "id": "oi-0024",
+      "position": [
+        980,
+        220
+      ]
+    },
+    {
+      "name": "Normalizar datos",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "parameters": {
+        "mode": "manual",
+        "assignments": {
+          "assignments": [
+            {
+              "id": "oi-0003",
+              "name": "nombre",
+              "value": "={{ $json.nombre.trim() }}",
+              "type": "string"
+            },
+            {
+              "id": "oi-0004",
+              "name": "email",
+              "value": "={{ $json.email.trim().toLowerCase() }}",
+              "type": "string"
+            },
+            {
+              "id": "oi-0005",
+              "name": "telefono",
+              "value": "={{ ($json.telefono ?? \"\").replace(/\\s/g,\"\") }}",
+              "type": "string"
+            },
+            {
+              "id": "oi-0006",
+              "name": "mensaje",
+              "value": "={{ $json.mensaje.trim() }}",
+              "type": "string"
+            },
+            {
+              "id": "oi-0007",
+              "name": "origen",
+              "value": "={{ $json.origen ?? \"web\" }}",
+              "type": "string"
+            },
+            {
+              "id": "oi-0008",
+              "name": "recibido",
+              "value": "={{ $now.format(\"yyyy-LL-dd HH:mm\") }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "oi-0025",
+      "position": [
+        1220,
+        220
+      ]
+    },
+    {
+      "name": "Guardar en la hoja",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "ID_DE_TU_HOJA",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list"
+        },
+        "options": {},
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {}
+        }
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "",
+          "name": "Google Sheets (gratis)"
+        }
+      },
+      "id": "oi-0026",
+      "position": [
+        260,
+        420
+      ]
+    },
+    {
+      "name": "Avisarme al móvil",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "parameters": {
+        "chatId": "TU_CHAT_ID",
+        "text": "=<b>Nuevo lead</b>\\n{{ $json.nombre }}\\n<a href=\"tel:{{ $json.telefono }}\">{{ $json.telefono }}</a>\\n{{ $json.email }}\\n\\n{{ $json.mensaje }}",
+        "additionalFields": {
+          "parse_mode": "HTML"
+        }
+      },
+      "credentials": {
+        "telegramApi": {
+          "id": "",
+          "name": "Telegram Bot (gratis)"
+        }
+      },
+      "id": "oi-0027",
+      "position": [
+        500,
+        420
+      ]
+    },
+    {
+      "name": "Responder al cliente",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "parameters": {
+        "fromEmail": "hola@oistudio.eus",
+        "toEmail": "={{ $json.email }}",
+        "subject": "=Hemos recibido tu mensaje, {{ $json.nombre }}",
+        "emailFormat": "html",
+        "html": "=<p>Hola {{ $json.nombre }}:</p><p>Recibimos tu mensaje y te contestamos hoy mismo en horario de oficina.</p><p>Un saludo,<br><strong>OI Studio</strong> · Tolosa</p>",
+        "options": {}
+      },
+      "credentials": {
+        "smtp": {
+          "id": "",
+          "name": "Gmail SMTP (gratis)"
+        }
+      },
+      "id": "oi-0028",
+      "position": [
+        740,
+        420
+      ]
+    },
+    {
+      "name": "Devolver OK",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ ok: true }) }}",
+        "options": {}
+      },
+      "id": "oi-0029",
+      "position": [
+        980,
+        420
+      ]
+    },
+    {
+      "id": "oi-0030",
+      "name": "Ficha",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -140,
+        180
+      ],
+      "parameters": {
+        "width": 360,
+        "height": 320,
+        "color": 4,
+        "content": "## 📥 Formulario de contacto sin perder un lead\n**auto-lead-form**\n\nRecibe el formulario, filtra el spam, lo guarda en una hoja, te avisa al móvil y le contesta al cliente en el acto.\n\n**Disparador:** Webhook (el formulario de la web)\n\n**Coste: 0 €** — n8n autoalojado · Gmail SMTP (500 correos/día) · Google Sheets · Telegram Bot\n\n- Validación antispam por honeypot y longitud mínima, sin captcha de pago\n- Fila nueva en la hoja de leads con fecha, origen y mensaje\n- Aviso instantáneo a tu Telegram con el teléfono ya pulsable\n- Respuesta automática al cliente firmada por el estudio"
+      }
+    }
+  ],
+  "connections": {
+    "Formulario web": {
+      "main": [
+        [
+          {
+            "node": "Antispam",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Antispam": {
+      "main": [
+        [
+          {
+            "node": "¿Es spam?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "¿Es spam?": {
+      "main": [
+        [
+          {
+            "node": "Descartar en silencio",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Normalizar datos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalizar datos": {
+      "main": [
+        [
+          {
+            "node": "Guardar en la hoja",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Guardar en la hoja": {
+      "main": [
+        [
+          {
+            "node": "Avisarme al móvil",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Avisarme al móvil": {
+      "main": [
+        [
+          {
+            "node": "Responder al cliente",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Responder al cliente": {
+      "main": [
+        [
+          {
+            "node": "Devolver OK",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true
+  },
+  "tags": [
+    {
+      "name": "OI Studio"
+    },
+    {
+      "name": "coste 0"
+    }
+  ],
+  "meta": {
+    "instanceId": "oi-studio-biblioteca"
+  }
+}

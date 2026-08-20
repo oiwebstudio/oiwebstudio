@@ -1,0 +1,1201 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Resumen">
+<title>Resumen</title>
+<style>
+/* ═══════════════════════════════════════════════════════════════════════════
+   Lenguaje visual iOS: negro puro, cristal esmerilado y acentos del sistema.
+   Todo el archivo es autosuficiente: sin fuentes, scripts ni CSS externos.
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root {
+  color-scheme: dark;
+
+  --fondo: #000000;
+  --cristal: rgba(28, 28, 30, 0.75);
+  --cristal-2: rgba(44, 44, 46, 0.7);
+  --separador: rgba(255, 255, 255, 0.09);
+  --separador-2: rgba(255, 255, 255, 0.16);
+
+  --txt: #ffffff;
+  --txt-2: rgba(235, 235, 245, 0.6);
+  --txt-3: rgba(235, 235, 245, 0.3);
+
+  --azul: #0a84ff;
+  --verde: #30d158;
+  --naranja: #ff9f0a;
+  --purpura: #bf5af2;
+  --rojo: #ff453a;
+  --gris: #8e8e93;
+
+  --r: 20px;
+  --r-s: 14px;
+  --hueco: 16px;
+
+  --sf: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display',
+        'Segoe UI Variable Text', 'Segoe UI', Inter, Roboto, system-ui, sans-serif;
+
+  --muelle: cubic-bezier(.32, .72, 0, 1);
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html { min-height: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--fondo);
+  color: var(--txt);
+  font-family: var(--sf);
+  font-size: 15px;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: max(48px, env(safe-area-inset-bottom));
+}
+
+/* Resplandores: dan profundidad al negro sin ensuciarlo. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(680px 420px at 10% -6%, rgba(10, 132, 255, 0.17), transparent 70%),
+    radial-gradient(560px 380px at 94% 0%, rgba(191, 90, 242, 0.14), transparent 70%),
+    radial-gradient(720px 460px at 50% 106%, rgba(48, 209, 88, 0.10), transparent 70%);
+}
+
+.envoltura { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+
+.num { font-variant-numeric: tabular-nums; font-feature-settings: 'tnum' 1; }
+.oculto { display: none !important; }
+
+/* ── Barra superior ─────────────────────────────────────────────────────── */
+.barra {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: saturate(180%) blur(22px);
+  -webkit-backdrop-filter: saturate(180%) blur(22px);
+  border-bottom: 0.5px solid var(--separador);
+  padding-top: env(safe-area-inset-top);
+}
+
+.barra-fila {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.barra h1 { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; margin: 0 auto 0 0; }
+
+.menu { display: flex; gap: 3px; }
+
+.menu a {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--txt-2);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background .18s ease, color .18s ease;
+}
+
+.menu a:hover { background: rgba(255, 255, 255, 0.08); color: var(--txt); }
+
+@media (max-width: 620px) { .barra h1 { display: none; } .menu { margin-right: auto; } }
+
+/* ── Botones ────────────────────────────────────────────────────────────── */
+button {
+  font: inherit;
+  font-size: 15px;
+  color: var(--azul);
+  background: none;
+  border: none;
+  padding: 6px 4px;
+  cursor: pointer;
+  border-radius: 10px;
+  letter-spacing: -0.01em;
+}
+
+button:active { opacity: .55; }
+button:focus-visible { outline: 2px solid var(--azul); outline-offset: 2px; }
+
+.btn-lleno {
+  background: var(--azul);
+  color: #fff;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 13px;
+}
+
+.btn-gris {
+  background: rgba(120, 120, 128, 0.24);
+  color: var(--txt);
+  font-weight: 500;
+  padding: 12px 20px;
+  border-radius: 13px;
+}
+
+.btn-icono {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--tono, var(--azul)) 20%, transparent);
+  color: var(--tono, var(--azul));
+  font-size: 18px;
+  line-height: 1;
+  flex: none;
+}
+
+.btn-borrar {
+  color: var(--txt-3);
+  font-size: 13px;
+  padding: 4px 8px;
+  opacity: 0;
+  transition: opacity .15s ease;
+}
+
+.fila:hover .btn-borrar, .btn-borrar:focus-visible { opacity: 1; }
+.btn-borrar:hover { color: var(--rojo); }
+
+@media (hover: none) { .btn-borrar { opacity: .55; } }
+
+/* ── Cabecera ───────────────────────────────────────────────────────────── */
+.cabecera { display: flex; align-items: center; gap: 14px; padding: 26px 0 20px; }
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(145deg, #0a84ff, #bf5af2);
+  box-shadow: 0 8px 24px rgba(10, 132, 255, 0.3);
+  flex: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.saludo { min-width: 0; flex: 1; }
+.saludo h2 { margin: 0; font-size: 28px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; }
+.saludo p { margin: 3px 0 0; font-size: 14px; color: var(--txt-2); }
+
+/* Selector de mes */
+.mes {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: var(--cristal);
+  border: 0.5px solid var(--separador);
+  border-radius: 12px;
+  padding: 3px;
+  flex: none;
+}
+
+.mes span { font-size: 13.5px; font-weight: 600; min-width: 112px; text-align: center; letter-spacing: -0.01em; }
+.mes button { width: 30px; height: 30px; padding: 0; display: grid; place-items: center; font-size: 17px; }
+
+/* ── KPIs ───────────────────────────────────────────────────────────────── */
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--hueco); margin-bottom: 28px; }
+
+.kpi {
+  position: relative;
+  background: var(--cristal);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 0.5px solid var(--separador);
+  border-radius: var(--r);
+  padding: 16px 17px 17px;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.kpi::after {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2.5px;
+  background: var(--tono);
+}
+
+.kpi-ico {
+  width: 28px; height: 28px;
+  border-radius: 9px;
+  display: grid; place-items: center;
+  margin-bottom: 12px;
+  background: color-mix(in srgb, var(--tono) 20%, transparent);
+  color: var(--tono);
+}
+
+.kpi-ico svg { width: 15px; height: 15px; }
+.kpi-etq { font-size: 12.5px; color: var(--txt-2); font-weight: 500; }
+.kpi-val { font-size: 30px; font-weight: 700; letter-spacing: -0.035em; line-height: 1.1; margin-top: 5px; white-space: nowrap; }
+.kpi-pie { margin-top: 7px; font-size: 12px; color: var(--txt-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* ── Secciones ──────────────────────────────────────────────────────────── */
+.seccion { margin-bottom: 30px; }
+
+.seccion-cab { display: flex; align-items: center; gap: 11px; margin-bottom: 13px; padding: 0 3px; }
+
+.seccion-ico {
+  width: 30px; height: 30px;
+  border-radius: 10px;
+  display: grid; place-items: center;
+  background: color-mix(in srgb, var(--tono) 20%, transparent);
+  color: var(--tono);
+  flex: none;
+}
+
+.seccion-ico svg { width: 16px; height: 16px; }
+.seccion-cab h3 { margin: 0 auto 0 0; font-size: 20px; font-weight: 700; letter-spacing: -0.025em; }
+
+.badge {
+  font-size: 12px; font-weight: 600;
+  padding: 4px 11px; border-radius: 20px;
+  background: color-mix(in srgb, var(--tono) 18%, transparent);
+  color: var(--tono);
+  white-space: nowrap;
+}
+
+.badge.apagado { background: rgba(142, 142, 147, 0.2); color: var(--txt-2); }
+
+.tarjeta {
+  background: var(--cristal);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 0.5px solid var(--separador);
+  border-radius: var(--r);
+  padding: 4px 18px;
+}
+
+.tarjeta-cab {
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 0 10px;
+  border-bottom: 0.5px solid var(--separador);
+}
+
+.tarjeta-cab h4 {
+  margin: 0 auto 0 0;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--txt-2);
+}
+
+/* min-width: 0 en los hijos: sin esto, un concepto largo sin espacios estira la
+   tarjeta por encima del ancho del móvil y aparece scroll horizontal. */
+.dos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--hueco); align-items: start; }
+.dos > * { min-width: 0; }
+.tarjeta { min-width: 0; overflow-wrap: anywhere; }
+
+/* ── Filas ──────────────────────────────────────────────────────────────── */
+.fila { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 0.5px solid var(--separador); }
+.fila:last-child { border-bottom: none; }
+
+.punto { width: 9px; height: 9px; border-radius: 50%; flex: none; background: var(--tono); }
+
+.fila-txt { flex: 1; min-width: 0; }
+.fila-txt b { display: block; font-size: 15px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fila-txt span { font-size: 12.5px; color: var(--txt-3); }
+
+.fila-cifra { font-size: 16px; font-weight: 600; letter-spacing: -0.02em; white-space: nowrap; }
+
+.pos { color: var(--verde); }
+.neg { color: var(--rojo); }
+.tenue { color: var(--txt-3); }
+
+.total {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 14px;
+  margin-top: 14px; padding: 15px 18px;
+  border-radius: var(--r-s);
+  background: color-mix(in srgb, var(--tono) 13%, transparent);
+  border: 0.5px solid color-mix(in srgb, var(--tono) 26%, transparent);
+}
+
+.total-etq { font-size: 13.5px; color: var(--txt-2); font-weight: 500; }
+.total-etq small { display: block; font-size: 11.5px; color: var(--txt-3); margin-top: 2px; }
+.total-val { font-size: 24px; font-weight: 700; letter-spacing: -0.03em; white-space: nowrap; }
+
+/* ── Barras de progreso ─────────────────────────────────────────────────── */
+.progreso { padding: 14px 0; border-bottom: 0.5px solid var(--separador); }
+.progreso:last-child { border-bottom: none; }
+
+.progreso-cab { display: flex; align-items: center; gap: 10px; margin-bottom: 9px; }
+.progreso-cab b { font-size: 15px; font-weight: 500; margin-right: auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.progreso-pct { font-size: 15px; font-weight: 700; letter-spacing: -0.02em; color: var(--tono); }
+
+.carril { height: 10px; border-radius: 6px; background: rgba(120, 120, 128, 0.24); overflow: hidden; }
+
+.relleno {
+  display: block; height: 100%; border-radius: 6px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--tono) 65%, #000), var(--tono));
+  box-shadow: 0 0 14px color-mix(in srgb, var(--tono) 45%, transparent);
+  transition: width .7s var(--muelle);
+}
+
+.progreso-pie { display: flex; justify-content: space-between; gap: 12px; margin-top: 8px; font-size: 12.5px; color: var(--txt-3); }
+
+/* ── Vacíos y avisos ────────────────────────────────────────────────────── */
+.vacio { padding: 24px 4px; text-align: center; color: var(--txt-3); font-size: 13.5px; line-height: 1.5; }
+.vacio b { display: block; color: var(--txt-2); font-weight: 600; margin-bottom: 4px; font-size: 14.5px; }
+
+.pie-nota { padding: 22px 4px 0; border-top: 0.5px solid var(--separador); font-size: 12px; color: var(--txt-3); line-height: 1.6; }
+.pie-acciones { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+.pie-acciones button { font-size: 13px; padding: 7px 14px; border-radius: 10px; background: rgba(120, 120, 128, 0.2); }
+.pie-acciones button.peligro { color: var(--rojo); }
+
+/* ── Hoja modal estilo iOS ──────────────────────────────────────────────── */
+dialog {
+  padding: 0;
+  border: none;
+  background: transparent;
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: auto;
+  overflow: visible;
+}
+
+dialog::backdrop { background: rgba(0, 0, 0, 0.55); backdrop-filter: blur(4px); }
+
+.hoja {
+  width: min(470px, calc(100vw - 24px));
+  background: rgba(28, 28, 30, 0.94);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border: 0.5px solid var(--separador-2);
+  border-radius: 24px;
+  overflow: hidden;
+  animation: subir .34s var(--muelle);
+}
+
+@keyframes subir { from { opacity: 0; transform: translateY(22px) scale(.97); } to { opacity: 1; transform: none; } }
+
+.hoja-cab {
+  display: flex; align-items: center; gap: 12px;
+  padding: 15px 18px;
+  border-bottom: 0.5px solid var(--separador);
+}
+
+.hoja-cab h3 { margin: 0 auto 0 0; font-size: 17px; font-weight: 600; letter-spacing: -0.02em; }
+.hoja-cuerpo { padding: 16px 18px 6px; max-height: 66vh; overflow-y: auto; }
+.hoja-pie { display: flex; gap: 10px; padding: 12px 18px 16px; }
+.hoja-pie button { flex: 1; }
+
+.campo { display: block; margin-bottom: 13px; }
+.campo > span { display: block; font-size: 12.5px; color: var(--txt-2); margin-bottom: 6px; font-weight: 500; }
+
+input, select {
+  width: 100%;
+  font: inherit; font-size: 16px;
+  color: var(--txt);
+  background: rgba(120, 120, 128, 0.2);
+  border: 0.5px solid transparent;
+  border-radius: 12px;
+  padding: 11px 13px;
+  appearance: none;
+}
+
+input:focus, select:focus { outline: none; border-color: var(--azul); background: rgba(120, 120, 128, 0.28); }
+input::placeholder { color: var(--txt-3); }
+select option { background: #1c1c1e; }
+
+.par { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+
+/* Segmentado iOS */
+.segmentado {
+  display: flex; gap: 3px; padding: 3px;
+  background: rgba(120, 120, 128, 0.24);
+  border-radius: 11px;
+  margin-bottom: 15px;
+}
+
+.segmentado label { flex: 1; cursor: pointer; }
+.segmentado input { position: absolute; opacity: 0; pointer-events: none; }
+
+.segmentado span {
+  display: block; text-align: center;
+  padding: 7px 10px; border-radius: 8px;
+  font-size: 13.5px; font-weight: 500; color: var(--txt-2);
+  transition: background .18s var(--muelle), color .18s ease;
+}
+
+.segmentado input:checked + span { background: rgba(99, 99, 102, 0.85); color: var(--txt); font-weight: 600; }
+.segmentado input:focus-visible + span { outline: 2px solid var(--azul); outline-offset: 2px; }
+
+.error { color: var(--rojo); font-size: 13px; min-height: 18px; margin: 2px 0 6px; }
+
+/* ── Aviso flotante ─────────────────────────────────────────────────────── */
+.brindis {
+  position: fixed;
+  left: 50%; bottom: max(24px, env(safe-area-inset-bottom));
+  transform: translate(-50%, 14px);
+  z-index: 60;
+  padding: 11px 20px;
+  border-radius: 22px;
+  background: rgba(44, 44, 46, 0.92);
+  backdrop-filter: blur(20px);
+  border: 0.5px solid var(--separador-2);
+  font-size: 14px; font-weight: 500;
+  opacity: 0; pointer-events: none;
+  transition: opacity .2s ease, transform .3s var(--muelle);
+}
+
+.brindis.visible { opacity: 1; transform: translate(-50%, 0); }
+
+/* ── Entrada ────────────────────────────────────────────────────────────── */
+@keyframes surgir { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.anima { animation: surgir .55s var(--muelle) backwards; }
+
+@media (prefers-reduced-motion: reduce) {
+  .anima, .hoja { animation: none; }
+  .relleno { transition: none; }
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dos { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px) {
+  .envoltura { padding: 0 16px; }
+  .barra-fila { padding: 10px 16px; }
+  .cabecera { flex-wrap: wrap; }
+  .mes { width: 100%; justify-content: space-between; }
+  .mes span { flex: 1; }
+  .saludo h2 { font-size: 24px; }
+  .avatar { width: 52px; height: 52px; font-size: 19px; }
+  .kpi-val { font-size: 25px; }
+  .tarjeta { padding: 2px 15px; }
+  .total-val { font-size: 21px; }
+  .hoja { width: 100vw; border-radius: 24px 24px 0 0; }
+  dialog { margin: auto auto 0; }
+  .par { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="barra">
+  <div class="barra-fila">
+    <!-- Solo aparece si la página se sirve desde el panel; abierta suelta no
+         tendría a dónde ir, así que se oculta. -->
+    <span id="menu" class="menu oculto">
+      <a href="inicio.html">Inicio</a>
+      <a href="index.html">Finanzas</a>
+      <a href="habitos.html">Hábitos</a>
+    </span>
+    <h1>Resumen</h1>
+    <button id="btnPersonal">+ Personal</button>
+    <button id="btnNegocio">+ Negocio</button>
+    <button id="btnMeta">+ Meta</button>
+  </div>
+</nav>
+
+<div class="envoltura">
+
+  <header class="cabecera anima">
+    <button class="avatar" id="avatar" title="Cambiar nombre">OI</button>
+    <div class="saludo">
+      <h2 id="saludo">Hola</h2>
+      <p id="fecha"></p>
+    </div>
+    <div class="mes">
+      <button id="mesAnterior" aria-label="Mes anterior">‹</button>
+      <span id="mesActual" class="num"></span>
+      <button id="mesSiguiente" aria-label="Mes siguiente">›</button>
+    </div>
+  </header>
+
+  <section class="kpis" id="kpis"></section>
+
+  <!-- ── Módulo 1: finanzas personales ───────────────────────────────────── -->
+  <section class="seccion anima" style="--tono: var(--azul); animation-delay: .05s">
+    <div class="seccion-cab">
+      <div class="seccion-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="13" rx="2.5"/><path d="M2 10.5h20"/><path d="M6 15h3"/></svg></div>
+      <h3>Finanzas personales</h3>
+      <span class="badge" id="badgePersonal"></span>
+    </div>
+
+    <div class="dos">
+      <div class="tarjeta">
+        <div class="tarjeta-cab"><h4>Ingresos reales</h4><button class="btn-icono" data-alta="personal-ingreso" aria-label="Añadir ingreso">+</button></div>
+        <div id="personalIngresos"></div>
+      </div>
+      <div class="tarjeta">
+        <div class="tarjeta-cab"><h4>Gastos reales</h4><button class="btn-icono" data-alta="personal-gasto" aria-label="Añadir gasto">+</button></div>
+        <div id="personalGastos"></div>
+      </div>
+    </div>
+
+    <div class="total" id="personalTotal"></div>
+  </section>
+
+  <!-- ── Módulo 2: caja del emprendimiento ───────────────────────────────── -->
+  <section class="seccion anima" style="--tono: var(--verde); animation-delay: .1s">
+    <div class="seccion-cab">
+      <div class="seccion-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V11"/><path d="M10 20V4"/><path d="M16 20v-8"/><path d="M22 20H2"/></svg></div>
+      <h3>Caja del emprendimiento</h3>
+      <span class="badge" id="badgeNegocio"></span>
+    </div>
+
+    <div class="dos">
+      <div class="tarjeta">
+        <div class="tarjeta-cab"><h4>Entradas de caja</h4><button class="btn-icono" data-alta="negocio-ingreso" aria-label="Añadir cobro">+</button></div>
+        <div id="negocioEntradas"></div>
+      </div>
+      <div class="tarjeta">
+        <div class="tarjeta-cab"><h4>Salidas de caja</h4><button class="btn-icono" data-alta="negocio-gasto" aria-label="Añadir salida">+</button></div>
+        <div id="negocioSalidas"></div>
+      </div>
+    </div>
+
+    <div class="total" id="negocioTotal"></div>
+  </section>
+
+  <!-- ── Módulo 3: hábitos ───────────────────────────────────────────────── -->
+  <section class="seccion anima" style="--tono: var(--naranja); animation-delay: .15s">
+    <div class="seccion-cab">
+      <div class="seccion-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6v12"/><path d="M17.5 6v12"/><path d="M3 9v6"/><path d="M21 9v6"/><path d="M6.5 12h11"/></svg></div>
+      <h3>Hábitos y desarrollo</h3>
+      <span class="badge" id="badgeHabitos"></span>
+      <button class="btn-icono" data-alta="habito" aria-label="Añadir hábito">+</button>
+    </div>
+    <div class="tarjeta" id="habitos"></div>
+  </section>
+
+  <!-- ── Módulo 4: metas y fondos ────────────────────────────────────────── -->
+  <section class="seccion anima" style="--tono: var(--purpura); animation-delay: .2s">
+    <div class="seccion-cab">
+      <div class="seccion-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg></div>
+      <h3>Metas y fondos</h3>
+      <span class="badge" id="badgeFondos"></span>
+      <button class="btn-icono" data-alta="fondo" aria-label="Añadir fondo">+</button>
+    </div>
+    <div class="tarjeta" id="fondos"></div>
+  </section>
+
+  <div class="pie-nota">
+    <span id="pieResumen"></span>
+    <div class="pie-acciones">
+      <button id="btnExportar">Exportar datos</button>
+      <button id="btnImportar">Importar</button>
+      <button id="btnVaciar" class="peligro">Empezar de cero</button>
+    </div>
+    <input type="file" id="ficheroImportar" accept="application/json" class="oculto">
+  </div>
+</div>
+
+<div class="brindis" id="brindis" role="status" aria-live="polite"></div>
+
+<!-- ── Hoja: movimiento ───────────────────────────────────────────────────── -->
+<dialog id="hojaMovimiento">
+  <form method="dialog" class="hoja" id="formMovimiento">
+    <div class="hoja-cab">
+      <h3 id="tituloMovimiento">Nuevo movimiento</h3>
+      <button type="button" data-cerrar="hojaMovimiento">Cerrar</button>
+    </div>
+
+    <div class="hoja-cuerpo">
+      <div class="segmentado">
+        <label><input type="radio" name="ambito" value="personal" checked><span>Personal</span></label>
+        <label><input type="radio" name="ambito" value="negocio"><span>Negocio</span></label>
+      </div>
+
+      <div class="segmentado">
+        <label><input type="radio" name="tipo" value="Gasto" checked><span>Sale</span></label>
+        <label><input type="radio" name="tipo" value="Ingreso"><span>Entra</span></label>
+      </div>
+
+      <label class="campo"><span>Concepto</span>
+        <input name="concepto" required placeholder="Suscripción, cobro de cliente…" autocomplete="off">
+      </label>
+
+      <div class="par">
+        <label class="campo"><span>Importe (€)</span>
+          <input name="importe" required inputmode="decimal" placeholder="22" autocomplete="off">
+        </label>
+        <label class="campo"><span>Fecha</span>
+          <input type="date" name="fecha" required>
+        </label>
+      </div>
+
+      <label class="campo"><span>Categoría</span>
+        <select name="categoria"></select>
+      </label>
+
+      <p class="error" id="errorMovimiento"></p>
+    </div>
+
+    <div class="hoja-pie">
+      <button type="button" class="btn-gris" data-cerrar="hojaMovimiento">Cancelar</button>
+      <button type="submit" class="btn-lleno">Guardar</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- ── Hoja: hábito o fondo ───────────────────────────────────────────────── -->
+<dialog id="hojaMeta">
+  <form method="dialog" class="hoja" id="formMeta">
+    <div class="hoja-cab">
+      <h3 id="tituloMeta">Nueva meta</h3>
+      <button type="button" data-cerrar="hojaMeta">Cerrar</button>
+    </div>
+
+    <div class="hoja-cuerpo">
+      <div class="segmentado" id="segmentoClase">
+        <label><input type="radio" name="clase" value="habito" checked><span>Hábito</span></label>
+        <label><input type="radio" name="clase" value="fondo"><span>Fondo</span></label>
+      </div>
+
+      <label class="campo"><span>Nombre</span>
+        <input name="nombre" required placeholder="Días de gimnasio, Fondo de seguridad…" autocomplete="off">
+      </label>
+
+      <div class="par">
+        <label class="campo"><span>Meta</span>
+          <input name="meta" required inputmode="decimal" placeholder="16" autocomplete="off">
+        </label>
+        <label class="campo"><span>Unidad</span>
+          <input name="unidad" placeholder="días, km, libros, €" autocomplete="off">
+        </label>
+      </div>
+
+      <div class="par">
+        <label class="campo"><span>Ya llevas</span>
+          <input name="progreso" inputmode="decimal" placeholder="0" autocomplete="off">
+        </label>
+        <label class="campo"><span>Periodo</span>
+          <select name="periodo">
+            <option>Este mes</option>
+            <option>Esta semana</option>
+            <option>Este año</option>
+            <option>Sin plazo</option>
+          </select>
+        </label>
+      </div>
+
+      <p class="error" id="errorMeta"></p>
+    </div>
+
+    <div class="hoja-pie">
+      <button type="button" class="btn-gris" data-cerrar="hojaMeta">Cancelar</button>
+      <button type="submit" class="btn-lleno">Guardar</button>
+    </div>
+  </form>
+</dialog>
+
+<script>
+(() => {
+  'use strict';
+
+  const $ = (s) => document.querySelector(s);
+  const $$ = (s) => [...document.querySelectorAll(s)];
+
+  const CLAVE = 'resumen:v1';
+
+  // ── Formato ──────────────────────────────────────────────────────────────
+  const eur0 = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0, useGrouping: 'always' });
+  const eur2 = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: 'always' });
+  const pctF = new Intl.NumberFormat('es-ES', { style: 'percent', maximumFractionDigits: 0 });
+  const numF = new Intl.NumberFormat('es-ES', { maximumFractionDigits: 1 });
+
+  const euro = (n) => eur0.format(n || 0);
+  const euroDec = (n) => eur2.format(n || 0);
+  const pct = (n) => pctF.format(Number.isFinite(n) ? n : 0);
+
+  const escapar = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+  // Acepta "1.450,00" y "1450.5": manda el último separador.
+  function aNumero(v) {
+    if (typeof v === 'number') return Number.isFinite(v) ? v : 0;
+    let s = String(v ?? '').replace(/[^\d,.-]/g, '');
+    if (!s) return 0;
+    const coma = s.lastIndexOf(','), punto = s.lastIndexOf('.');
+    if (coma > -1 && punto > -1) {
+      const dec = coma > punto ? ',' : '.';
+      s = s.split(dec === ',' ? '.' : ',').join('').replace(dec, '.');
+    } else if (coma > -1) {
+      s = s.replace(',', '.');
+    }
+    const n = parseFloat(s);
+    return Number.isFinite(n) ? n : 0;
+  }
+
+  const hoyISO = () => {
+    const d = new Date();
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  };
+
+  const partesISO = (iso) => iso.split('-').map(Number);
+
+  // ── Categorías ───────────────────────────────────────────────────────────
+  const CATEGORIAS = {
+    'personal-Gasto': ['Gimnasio y deporte', 'Transporte', 'Suscripciones y ocio', 'Alimentación', 'Formación', 'Ropa', 'Salud', 'Otros gastos'],
+    'personal-Ingreso': ['Retiro de la empresa', 'Nómina o trabajo', 'Otros ingresos'],
+    'negocio-Gasto': ['Software y hosting', 'Gestoría y licencias', 'Marketing', 'Retiro a cuenta personal', 'Equipamiento', 'Otras salidas'],
+    'negocio-Ingreso': ['Cobro de cliente', 'Servicios recurrentes', 'Otros cobros'],
+  };
+
+  // ── Datos ────────────────────────────────────────────────────────────────
+  // Semilla con movimientos reales ya conocidos. Todo lo demás empieza vacío:
+  // ninguna cifra de este panel está estimada.
+  const SEMILLA = {
+    nombre: 'Oier Iras',
+    movimientos: [
+      { id: 'sem-1', ambito: 'negocio', tipo: 'Gasto', concepto: 'Dominio web (renovación anual)', categoria: 'Software y hosting', importe: 10, fecha: '2026-08-09' },
+      { id: 'sem-2', ambito: 'negocio', tipo: 'Gasto', concepto: 'Suscripción Claude', categoria: 'Software y hosting', importe: 22, fecha: '2026-08-09' },
+      { id: 'sem-3', ambito: 'negocio', tipo: 'Gasto', concepto: 'Suscripción Claude', categoria: 'Software y hosting', importe: 22, fecha: '2026-08-09' },
+    ],
+    metas: [],
+  };
+
+  let datos = cargar();
+  let mesVista = new Date();
+
+  function cargar() {
+    try {
+      const crudo = localStorage.getItem(CLAVE);
+      if (!crudo) return structuredClone(SEMILLA);
+      const d = JSON.parse(crudo);
+      return {
+        nombre: d.nombre || SEMILLA.nombre,
+        movimientos: Array.isArray(d.movimientos) ? d.movimientos : [],
+        metas: Array.isArray(d.metas) ? d.metas : [],
+      };
+    } catch {
+      return structuredClone(SEMILLA);
+    }
+  }
+
+  function guardar() {
+    try {
+      localStorage.setItem(CLAVE, JSON.stringify(datos));
+    } catch {
+      brindis('No he podido guardar en este navegador');
+    }
+  }
+
+  const nuevoId = () => 'm' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+
+  // ── Aviso flotante ───────────────────────────────────────────────────────
+  let relojBrindis;
+  function brindis(texto) {
+    const el = $('#brindis');
+    el.textContent = texto;
+    el.classList.add('visible');
+    clearTimeout(relojBrindis);
+    relojBrindis = setTimeout(() => el.classList.remove('visible'), 2600);
+  }
+
+  // ── Selección del mes ────────────────────────────────────────────────────
+  const delMes = (lista) =>
+    lista.filter((m) => {
+      const [a, me] = partesISO(m.fecha);
+      return a === mesVista.getFullYear() && me - 1 === mesVista.getMonth();
+    });
+
+  const suma = (l) => l.reduce((a, m) => a + m.importe, 0);
+
+  // ── Plantillas ───────────────────────────────────────────────────────────
+  const filaHTML = (m, clase) =>
+    `<div class="fila">
+      <i class="punto"></i>
+      <div class="fila-txt">
+        <b>${escapar(m.concepto)}</b>
+        <span>${escapar(m.categoria)} · ${new Date(m.fecha + 'T00:00:00').toLocaleDateString('es-ES', { day: 'numeric', month: 'short' })}</span>
+      </div>
+      <div class="fila-cifra num ${clase}">${clase === 'neg' ? '−' : ''}${euroDec(m.importe)}</div>
+      <button class="btn-borrar" data-borrar="${m.id}" aria-label="Borrar ${escapar(m.concepto)}">✕</button>
+    </div>`;
+
+  const vacioHTML = (titulo, texto) => `<div class="vacio"><b>${escapar(titulo)}</b>${texto}</div>`;
+
+  function barraHTML(meta) {
+    const avance = meta.meta ? Math.min(1, meta.progreso / meta.meta) : 0;
+    const esEuro = meta.unidad === '€';
+    const cifra = esEuro
+      ? `${euroDec(meta.progreso)} de ${euroDec(meta.meta)}`
+      : `${numF.format(meta.progreso)} de ${numF.format(meta.meta)} ${escapar(meta.unidad)}`;
+
+    return `<div class="progreso">
+      <div class="progreso-cab">
+        <b>${escapar(meta.nombre)}</b>
+        <span class="progreso-pct num">${pct(avance)}</span>
+        <button class="btn-icono" data-sumar="${meta.id}" aria-label="Sumar progreso a ${escapar(meta.nombre)}">+</button>
+        <button class="btn-borrar" data-borrar-meta="${meta.id}" aria-label="Borrar ${escapar(meta.nombre)}">✕</button>
+      </div>
+      <div class="carril"><span class="relleno" style="width:${(avance * 100).toFixed(1)}%"></span></div>
+      <div class="progreso-pie"><span class="num">${cifra}</span><span>${escapar(meta.periodo)}</span></div>
+    </div>`;
+  }
+
+  // ── Pintado ──────────────────────────────────────────────────────────────
+  function pintar() {
+    const ahora = new Date();
+    const hora = ahora.getHours();
+
+    $('#saludo').textContent = `${hora < 6 ? 'Buenas noches' : hora < 14 ? 'Buenos días' : hora < 21 ? 'Buenas tardes' : 'Buenas noches'}, ${datos.nombre.split(' ')[0]}`;
+    $('#fecha').textContent = ahora.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' });
+    $('#avatar').textContent = datos.nombre.trim().split(/\s+/).slice(0, 2).map((p) => p[0]).join('').toUpperCase() || 'OI';
+
+    const nombreMes = mesVista.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' });
+    $('#mesActual').textContent = nombreMes;
+
+    const personal = datos.movimientos.filter((m) => m.ambito === 'personal');
+    const negocio = datos.movimientos.filter((m) => m.ambito === 'negocio');
+
+    // ── Módulo 1 ──
+    const perMes = delMes(personal);
+    const perIng = perMes.filter((m) => m.tipo === 'Ingreso');
+    const perGas = perMes.filter((m) => m.tipo === 'Gasto');
+    const totalPerIng = suma(perIng);
+    const totalPerGas = suma(perGas);
+    const balance = totalPerIng - totalPerGas;
+    const tasaAhorro = totalPerIng ? balance / totalPerIng : null;
+
+    $('#badgePersonal').textContent = nombreMes;
+
+    $('#personalIngresos').innerHTML = perIng.length
+      ? perIng.map((m) => filaHTML(m, 'pos')).join('')
+      : vacioHTML('Sin ingresos este mes', 'Tu nómina o el retiro que te haces de la empresa.');
+
+    $('#personalGastos').innerHTML = perGas.length
+      ? perGas.map((m) => filaHTML(m, 'neg')).join('')
+      : vacioHTML('Sin gastos este mes', 'Gimnasio, transporte y suscripciones aparecerán aquí.');
+
+    $('#personalTotal').innerHTML =
+      `<div class="total-etq">Balance neto del mes<small>Capacidad real de ahorro</small></div>
+       <div class="total-val num ${balance >= 0 ? 'pos' : 'neg'}">${perMes.length ? euroDec(balance) : '—'}</div>`;
+
+    // ── Módulo 2 ──
+    const negMes = delMes(negocio);
+    const cobros = negMes.filter((m) => m.tipo === 'Ingreso');
+    const salidas = negMes.filter((m) => m.tipo === 'Gasto');
+    const retenido = suma(cobros) - suma(salidas);
+
+    $('#badgeNegocio').textContent = nombreMes;
+
+    $('#negocioEntradas').innerHTML = cobros.length
+      ? cobros.map((m) => filaHTML(m, 'pos')).join('')
+      : vacioHTML('Sin cobros este mes', 'Lo que te pagan los clientes por tus servicios.');
+
+    $('#negocioSalidas').innerHTML = salidas.length
+      ? salidas.map((m) => filaHTML(m, 'neg')).join('')
+      : vacioHTML('Sin salidas este mes', 'Software, gestoría, marketing y el retiro a tu cuenta.');
+
+    $('#negocioTotal').innerHTML =
+      `<div class="total-etq">Beneficio retenido en la caja<small>Entradas − salidas, incluido el retiro personal</small></div>
+       <div class="total-val num ${retenido >= 0 ? 'pos' : 'neg'}">${negMes.length ? euroDec(retenido) : '—'}</div>`;
+
+    // ── Módulo 3 ──
+    const habitos = datos.metas.filter((m) => m.clase === 'habito');
+    const score = habitos.length ? habitos.reduce((a, m) => a + Math.min(1, m.progreso / m.meta), 0) / habitos.length : null;
+
+    $('#badgeHabitos').textContent = habitos.length ? `${habitos.length} en marcha` : 'sin datos';
+    $('#badgeHabitos').classList.toggle('apagado', !habitos.length);
+
+    $('#habitos').innerHTML = habitos.length
+      ? habitos.map(barraHTML).join('')
+      : vacioHTML('Todavía sin hábitos medidos', 'Pulsa <b style="display:inline">+</b> y añade días de gimnasio, libros leídos, kilómetros de trail u horas de estudio.');
+
+    // ── Módulo 4 ──
+    const fondos = datos.metas.filter((m) => m.clase === 'fondo');
+
+    $('#badgeFondos').textContent = fondos.length ? `${fondos.length} activo(s)` : 'sin datos';
+    $('#badgeFondos').classList.toggle('apagado', !fondos.length);
+
+    $('#fondos').innerHTML = fondos.length
+      ? fondos.map(barraHTML).join('')
+      : vacioHTML('Sin fondos definidos', 'Fondo de seguridad, caja de reinversión, cartera a largo plazo o fondo para equipamiento.');
+
+    // ── KPIs ──
+    // Patrimonio: todo lo acumulado desde el primer apunte, sin estimar nada.
+    const cajaNegocio = suma(negocio.filter((m) => m.tipo === 'Ingreso')) - suma(negocio.filter((m) => m.tipo === 'Gasto'));
+    const ahorroPersonal = suma(personal.filter((m) => m.tipo === 'Ingreso')) - suma(personal.filter((m) => m.tipo === 'Gasto'));
+    const patrimonio = cajaNegocio + ahorroPersonal;
+
+    const kpis = [
+      { tono: 'var(--purpura)', etq: 'Patrimonio neto', val: euro(patrimonio), clase: patrimonio >= 0 ? 'pos' : 'neg',
+        pie: 'caja del negocio + ahorro personal',
+        ico: '<path d="M12 3l9 5v8l-9 5-9-5V8z"/><path d="M12 12l9-5"/><path d="M12 12v9"/><path d="M12 12L3 7"/>' },
+      { tono: 'var(--verde)', etq: 'Caja disponible', val: euro(cajaNegocio), clase: cajaNegocio >= 0 ? 'pos' : 'neg',
+        pie: `${negocio.length} movimiento(s) del negocio`,
+        ico: '<path d="M4 20V11"/><path d="M10 20V4"/><path d="M16 20v-8"/><path d="M22 20H2"/>' },
+      { tono: 'var(--azul)', etq: 'Tasa de ahorro', val: tasaAhorro === null ? '—' : pct(tasaAhorro),
+        clase: tasaAhorro === null ? 'tenue' : tasaAhorro >= 0.2 ? 'pos' : tasaAhorro >= 0 ? '' : 'neg',
+        pie: tasaAhorro === null ? 'sin ingresos personales este mes' : 'de cada euro que entra en casa',
+        ico: '<path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/>' },
+      { tono: 'var(--naranja)', etq: 'Consistencia', val: score === null ? '—' : pct(score),
+        clase: score === null ? 'tenue' : score >= 0.7 ? 'pos' : '',
+        pie: score === null ? 'sin hábitos medidos' : `media de ${habitos.length} hábito(s)`,
+        ico: '<circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/>' },
+    ];
+
+    $('#kpis').innerHTML = kpis
+      .map((k, i) => `<article class="kpi anima" style="--tono: ${k.tono}; animation-delay: ${0.04 * i}s">
+        <div class="kpi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${k.ico}</svg></div>
+        <div class="kpi-etq">${k.etq}</div>
+        <div class="kpi-val num ${k.clase}">${k.val}</div>
+        <div class="kpi-pie">${k.pie}</div>
+      </article>`)
+      .join('');
+
+    $('#pieResumen').innerHTML =
+      `${datos.movimientos.length} movimiento(s) y ${datos.metas.length} meta(s) guardados en este navegador. ` +
+      'Nada sale de tu dispositivo y ninguna cifra está estimada: todo es lo que has apuntado.';
+  }
+
+  // ── Alta de movimientos ──────────────────────────────────────────────────
+  const hojaMov = $('#hojaMovimiento');
+  const formMov = $('#formMovimiento');
+
+  const valorRadio = (form, nombre) => form.querySelector(`input[name="${nombre}"]:checked`).value;
+
+  function refrescarCategorias() {
+    const clave = `${valorRadio(formMov, 'ambito')}-${valorRadio(formMov, 'tipo')}`;
+    formMov.categoria.innerHTML = CATEGORIAS[clave].map((c) => `<option>${escapar(c)}</option>`).join('');
+    $('#tituloMovimiento').textContent = valorRadio(formMov, 'ambito') === 'personal' ? 'Movimiento personal' : 'Movimiento del negocio';
+  }
+
+  function abrirMovimiento(ambito, tipo) {
+    formMov.reset();
+    formMov.querySelector(`input[name="ambito"][value="${ambito}"]`).checked = true;
+    formMov.querySelector(`input[name="tipo"][value="${tipo}"]`).checked = true;
+    formMov.fecha.value = hoyISO();
+    refrescarCategorias();
+    $('#errorMovimiento').textContent = '';
+    hojaMov.showModal();
+    setTimeout(() => formMov.concepto.focus(), 60);
+  }
+
+  formMov.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const importe = aNumero(formMov.importe.value);
+    if (!importe || importe <= 0) {
+      $('#errorMovimiento').textContent = 'Pon un importe mayor que cero.';
+      formMov.importe.focus();
+      return;
+    }
+    if (!formMov.concepto.value.trim()) {
+      $('#errorMovimiento').textContent = 'Falta el concepto.';
+      return;
+    }
+
+    datos.movimientos.push({
+      id: nuevoId(),
+      ambito: valorRadio(formMov, 'ambito'),
+      tipo: valorRadio(formMov, 'tipo'),
+      concepto: formMov.concepto.value.trim(),
+      categoria: formMov.categoria.value,
+      importe: Math.round(importe * 100) / 100,
+      fecha: formMov.fecha.value,
+    });
+
+    guardar();
+    hojaMov.close();
+
+    // Salta al mes del apunte para que se vea nada más guardarlo.
+    const [a, m] = partesISO(formMov.fecha.value);
+    mesVista = new Date(a, m - 1, 1);
+    pintar();
+    brindis('Movimiento guardado');
+  });
+
+  formMov.querySelectorAll('input[name="ambito"], input[name="tipo"]').forEach((r) => r.addEventListener('change', refrescarCategorias));
+
+  // ── Alta de hábitos y fondos ─────────────────────────────────────────────
+  const hojaMeta = $('#hojaMeta');
+  const formMeta = $('#formMeta');
+
+  function abrirMeta(clase) {
+    formMeta.reset();
+    formMeta.querySelector(`input[name="clase"][value="${clase}"]`).checked = true;
+    formMeta.unidad.value = clase === 'fondo' ? '€' : 'días';
+    $('#tituloMeta').textContent = clase === 'fondo' ? 'Nuevo fondo' : 'Nuevo hábito';
+    $('#errorMeta').textContent = '';
+    hojaMeta.showModal();
+    setTimeout(() => formMeta.nombre.focus(), 60);
+  }
+
+  formMeta.querySelectorAll('input[name="clase"]').forEach((r) =>
+    r.addEventListener('change', () => {
+      const clase = valorRadio(formMeta, 'clase');
+      formMeta.unidad.value = clase === 'fondo' ? '€' : 'días';
+      $('#tituloMeta').textContent = clase === 'fondo' ? 'Nuevo fondo' : 'Nuevo hábito';
+    })
+  );
+
+  formMeta.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const meta = aNumero(formMeta.meta.value);
+    if (!meta || meta <= 0) {
+      $('#errorMeta').textContent = 'La meta tiene que ser mayor que cero.';
+      formMeta.meta.focus();
+      return;
+    }
+    if (!formMeta.nombre.value.trim()) {
+      $('#errorMeta').textContent = 'Falta el nombre.';
+      return;
+    }
+
+    datos.metas.push({
+      id: nuevoId(),
+      clase: valorRadio(formMeta, 'clase'),
+      nombre: formMeta.nombre.value.trim(),
+      meta: Math.round(meta * 100) / 100,
+      progreso: Math.max(0, Math.round(aNumero(formMeta.progreso.value) * 100) / 100),
+      unidad: formMeta.unidad.value.trim() || 'ud.',
+      periodo: formMeta.periodo.value,
+    });
+
+    guardar();
+    hojaMeta.close();
+    pintar();
+    brindis(valorRadio(formMeta, 'clase') === 'fondo' ? 'Fondo creado' : 'Hábito creado');
+  });
+
+  // ── Acciones sobre lo ya creado ──────────────────────────────────────────
+  document.addEventListener('click', (e) => {
+    const cerrar = e.target.closest('[data-cerrar]');
+    if (cerrar) {
+      $('#' + cerrar.dataset.cerrar).close();
+      return;
+    }
+
+    const alta = e.target.closest('[data-alta]');
+    if (alta) {
+      const [que, tipo] = alta.dataset.alta.split('-');
+      if (que === 'habito' || que === 'fondo') abrirMeta(que);
+      else abrirMovimiento(que, tipo === 'ingreso' ? 'Ingreso' : 'Gasto');
+      return;
+    }
+
+    const borrar = e.target.closest('[data-borrar]');
+    if (borrar) {
+      const m = datos.movimientos.find((x) => x.id === borrar.dataset.borrar);
+      if (!m || !confirm(`¿Borrar "${m.concepto}" de ${euroDec(m.importe)}?`)) return;
+      datos.movimientos = datos.movimientos.filter((x) => x.id !== m.id);
+      guardar();
+      pintar();
+      brindis('Movimiento borrado');
+      return;
+    }
+
+    const borrarMeta = e.target.closest('[data-borrar-meta]');
+    if (borrarMeta) {
+      const m = datos.metas.find((x) => x.id === borrarMeta.dataset.borrarMeta);
+      if (!m || !confirm(`¿Borrar "${m.nombre}"?`)) return;
+      datos.metas = datos.metas.filter((x) => x.id !== m.id);
+      guardar();
+      pintar();
+      brindis('Borrado');
+      return;
+    }
+
+    const sumar = e.target.closest('[data-sumar]');
+    if (sumar) {
+      const m = datos.metas.find((x) => x.id === sumar.dataset.sumar);
+      if (!m) return;
+      const unidad = m.unidad === '€' ? '€' : m.unidad;
+      const respuesta = prompt(`¿Cuánto sumas a "${m.nombre}"?\n\nVas por ${numF.format(m.progreso)} de ${numF.format(m.meta)} ${unidad}.`, '1');
+      if (respuesta === null || !respuesta.trim()) return;
+      m.progreso = Math.max(0, Math.round((m.progreso + aNumero(respuesta)) * 100) / 100);
+      guardar();
+      pintar();
+      brindis(m.progreso >= m.meta ? '¡Meta completada!' : 'Progreso actualizado');
+    }
+  });
+
+  // ── Barra superior y cabecera ────────────────────────────────────────────
+  $('#btnPersonal').addEventListener('click', () => abrirMovimiento('personal', 'Gasto'));
+  $('#btnNegocio').addEventListener('click', () => abrirMovimiento('negocio', 'Ingreso'));
+  $('#btnMeta').addEventListener('click', () => abrirMeta('fondo'));
+
+  $('#avatar').addEventListener('click', () => {
+    const nombre = prompt('¿Cómo te llamas?', datos.nombre);
+    if (nombre === null || !nombre.trim()) return;
+    datos.nombre = nombre.trim();
+    guardar();
+    pintar();
+  });
+
+  $('#mesAnterior').addEventListener('click', () => {
+    mesVista = new Date(mesVista.getFullYear(), mesVista.getMonth() - 1, 1);
+    pintar();
+  });
+
+  $('#mesSiguiente').addEventListener('click', () => {
+    mesVista = new Date(mesVista.getFullYear(), mesVista.getMonth() + 1, 1);
+    pintar();
+  });
+
+  // ── Tus datos son tuyos: se pueden sacar y volver a meter ────────────────
+  $('#btnExportar').addEventListener('click', () => {
+    const blob = new Blob([JSON.stringify(datos, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `resumen-${hoyISO()}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    brindis('Datos exportados');
+  });
+
+  $('#btnImportar').addEventListener('click', () => $('#ficheroImportar').click());
+
+  $('#ficheroImportar').addEventListener('change', async (e) => {
+    const archivo = e.target.files[0];
+    if (!archivo) return;
+    try {
+      const d = JSON.parse(await archivo.text());
+      if (!Array.isArray(d.movimientos)) throw new Error('formato');
+      datos = { nombre: d.nombre || datos.nombre, movimientos: d.movimientos, metas: Array.isArray(d.metas) ? d.metas : [] };
+      guardar();
+      pintar();
+      brindis('Datos importados');
+    } catch {
+      brindis('Ese archivo no tiene el formato esperado');
+    }
+    e.target.value = '';
+  });
+
+  $('#btnVaciar').addEventListener('click', () => {
+    if (!confirm('Esto borra todos los movimientos y metas guardados en este navegador.\n\nExporta antes si quieres conservarlos. ¿Seguir?')) return;
+    datos = { nombre: datos.nombre, movimientos: [], metas: [] };
+    guardar();
+    pintar();
+    brindis('Todo vacío');
+  });
+
+  // Escape ya cierra los diálogos; solo hay que limpiar el foco al reabrir.
+  [hojaMov, hojaMeta].forEach((d) => d.addEventListener('close', () => document.body.focus?.()));
+
+  // Servida desde el panel: se muestra el menú. Abierta con doble clic: no.
+  if (location.protocol.startsWith('http')) $('#menu').classList.remove('oculto');
+
+  pintar();
+})();
+</script>
+</body>
+</html>

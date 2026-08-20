@@ -1,0 +1,298 @@
+{
+  "name": "OI · Pide la reseña en el momento justo",
+  "nodes": [
+    {
+      "name": "Cada tarde a las 18:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 18 * * *"
+            }
+          ]
+        }
+      },
+      "id": "oi-0050",
+      "position": [
+        260,
+        220
+      ]
+    },
+    {
+      "name": "Trabajos entregados",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "parameters": {
+        "operation": "read",
+        "documentId": {
+          "__rl": true,
+          "value": "ID_DE_TU_HOJA",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list"
+        },
+        "options": {
+          "returnAllMatches": true
+        }
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "",
+          "name": "Google Sheets (gratis)"
+        }
+      },
+      "id": "oi-0051",
+      "position": [
+        500,
+        220
+      ]
+    },
+    {
+      "name": "Los de hace 7 días",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "jsCode": "const hoy = new Date();\nreturn items.filter(i => {\n  const f = new Date(i.json.entregado);\n  const dias = Math.floor((hoy - f) / 86400000);\n  return dias === 7 && !i.json.resena_pedida;\n});"
+      },
+      "id": "oi-0052",
+      "position": [
+        740,
+        220
+      ]
+    },
+    {
+      "name": "Uno a uno",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "oi-0053",
+      "position": [
+        980,
+        220
+      ]
+    },
+    {
+      "name": "Pedir la reseña",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "parameters": {
+        "fromEmail": "hola@oistudio.eus",
+        "toEmail": "={{ $json.email }}",
+        "subject": "=¿Nos dejás una reseña, {{ $json.cliente }}?",
+        "emailFormat": "html",
+        "html": "=<p>Hola {{ $json.cliente }}:</p><p>Hace una semana que pusimos en marcha <strong>{{ $json.proyecto }}</strong>. Si estás contento con el resultado, una reseña nos ayuda muchísimo a que otros negocios de la zona nos encuentren.</p><p><a href=\"{{ $json.link_resena }}\">Dejar la reseña (dos minutos)</a></p><p>Y si algo no está como esperabas, contestá a este correo y lo arreglamos antes.</p>",
+        "options": {}
+      },
+      "credentials": {
+        "smtp": {
+          "id": "",
+          "name": "Gmail SMTP (gratis)"
+        }
+      },
+      "id": "oi-0054",
+      "position": [
+        1220,
+        220
+      ]
+    },
+    {
+      "name": "Marcar como pedida",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "ID_DE_TU_HOJA",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list"
+        },
+        "options": {},
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "fila": "={{ $json.fila }}",
+            "resena_pedida": "={{ $now.toFormat(\"yyyy-LL-dd\") }}"
+          }
+        }
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "",
+          "name": "Google Sheets (gratis)"
+        }
+      },
+      "id": "oi-0055",
+      "position": [
+        260,
+        420
+      ]
+    },
+    {
+      "name": "Contar los envíos",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "jsCode": "const n = $('Los de hace 7 días').all().length;\nreturn [{ json: { n } }];"
+      },
+      "id": "oi-0056",
+      "position": [
+        500,
+        420
+      ]
+    },
+    {
+      "name": "Resumen de reseñas",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "parameters": {
+        "chatId": "TU_CHAT_ID",
+        "text": "=Reseñas pedidas hoy: <b>{{ $json.n }}</b>",
+        "additionalFields": {
+          "parse_mode": "HTML"
+        }
+      },
+      "credentials": {
+        "telegramApi": {
+          "id": "",
+          "name": "Telegram Bot (gratis)"
+        }
+      },
+      "id": "oi-0057",
+      "position": [
+        740,
+        420
+      ]
+    },
+    {
+      "id": "oi-0058",
+      "name": "Ficha",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -140,
+        180
+      ],
+      "parameters": {
+        "width": 360,
+        "height": 320,
+        "color": 4,
+        "content": "## ⭐ Pide la reseña en el momento justo\n**auto-pide-resena**\n\nA los siete días de entregar un trabajo, le pide la reseña al cliente con el enlace directo a Google Maps y marca la hoja para no insistir.\n\n**Disparador:** Programado · todos los días a las 18:00\n\n**Coste: 0 €** — n8n autoalojado · Google Sheets · Gmail SMTP · Telegram Bot\n\n- Lee la hoja de trabajos entregados\n- Se queda con los de hace 7 días que aún no tienen reseña pedida\n- Envía un correo corto con el enlace directo a dejar reseña\n- Marca la fila como pedida y te resume cuántas salieron"
+      }
+    }
+  ],
+  "connections": {
+    "Cada tarde a las 18:00": {
+      "main": [
+        [
+          {
+            "node": "Trabajos entregados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trabajos entregados": {
+      "main": [
+        [
+          {
+            "node": "Los de hace 7 días",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Los de hace 7 días": {
+      "main": [
+        [
+          {
+            "node": "Uno a uno",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Uno a uno": {
+      "main": [
+        [
+          {
+            "node": "Contar los envíos",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Pedir la reseña",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pedir la reseña": {
+      "main": [
+        [
+          {
+            "node": "Marcar como pedida",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Marcar como pedida": {
+      "main": [
+        [
+          {
+            "node": "Uno a uno",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Contar los envíos": {
+      "main": [
+        [
+          {
+            "node": "Resumen de reseñas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true
+  },
+  "tags": [
+    {
+      "name": "OI Studio"
+    },
+    {
+      "name": "coste 0"
+    }
+  ],
+  "meta": {
+    "instanceId": "oi-studio-biblioteca"
+  }
+}

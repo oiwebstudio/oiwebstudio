@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="es" data-tema="oscuro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0b0d10">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mi panel">
+<title>Mi panel — OI STUDIO</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="iconos/icono-180.png">
+<link rel="stylesheet" href="assets/estilos.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%236e8bff'/><path d='M8 21l5-6 4 4 7-9' stroke='white' stroke-width='2.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+</head>
+<body>
+
+<!-- Menú común a todas las pantallas: siempre se puede volver a Inicio -->
+<nav class="app-nav" aria-label="Aplicación">
+  <div class="app-nav-fila">
+    <a href="inicio.html" class="app-marca" aria-label="Ir a Inicio">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="currentColor"/><g stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></g></svg>
+    </a>
+    <a href="inicio.html">Inicio</a>
+    <a href="index.html" aria-current="page">Finanzas</a>
+    <a href="habitos.html">Hábitos</a>
+    <a href="dashboard.html">Resumen</a>
+    <span class="app-nav-estado" id="origen">cargando…</span>
+  </div>
+</nav>
+
+<header class="barra">
+  <div class="barra-fila">
+    <nav class="nav" aria-label="Secciones">
+      <button class="nav-boton activo" data-seccion="inicio">Inicio</button>
+      <button class="nav-boton" data-seccion="negocio">Negocio</button>
+      <button class="nav-boton" data-seccion="personal">Personal</button>
+      <button class="nav-boton" data-seccion="calendario">Calendario</button>
+      <button class="nav-boton" data-seccion="objetivos">Objetivos</button>
+    </nav>
+
+    <div class="barra-acciones">
+      <button id="btnImportarExtracto" title="Importar extracto del banco">Importar</button>
+      <button id="btnInstalar" class="oculto" title="Instalar en este dispositivo">Instalar</button>
+      <button id="btnApuntar" class="principal" title="Apuntar (N)">+ Apuntar</button>
+      <button id="btnTema" title="Cambiar tema">Tema</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <p id="cargando" class="estado-carga">Leyendo el Excel…</p>
+
+  <section id="errorCarga" class="vacio oculto">
+    <div>
+      <h2>Sin datos todavía</h2>
+      <p id="errorTexto"></p>
+    </div>
+  </section>
+
+  <div id="app" class="oculto">
+
+    <!-- ── Inicio ───────────────────────────────────────────────────────── -->
+    <section class="seccion" data-seccion="inicio">
+      <header class="cabecera-seccion">
+        <div>
+          <h2 id="iSaludo"></h2>
+          <p id="iFecha" class="sub"></p>
+        </div>
+      </header>
+
+      <div class="rejilla-kpis cuatro" id="iKpis"></div>
+
+      <div class="rejilla c2">
+        <div class="panel">
+          <div class="panel-cab">
+            <h2>Negocio vs casa</h2>
+            <span class="nota" id="iNotaGrafico"></span>
+          </div>
+          <div class="lienzo alto"><canvas id="gInicio"></canvas></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-cab"><h2>Objetivos en marcha</h2></div>
+          <ul class="mini-lista" id="iObjetivos"></ul>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-cab">
+          <h2>Lo que se repite este mes</h2>
+          <span class="nota" id="iNotaFijos"></span>
+        </div>
+        <ul class="mini-lista columnas" id="iFijos"></ul>
+      </div>
+    </section>
+
+    <!-- ── Negocio ──────────────────────────────────────────────────────── -->
+    <section class="seccion oculto" data-seccion="negocio">
+      <header class="cabecera-seccion">
+        <div>
+          <h2>Negocio</h2>
+          <p class="sub">Importes en base imponible. El IVA se liquida aparte.</p>
+        </div>
+        <div class="filtros">
+          <div class="campo"><label for="nAnio">Año</label><select id="nAnio"></select></div>
+          <div class="campo"><label for="nTrim">Trimestre</label>
+            <select id="nTrim"><option value="">Todo el año</option><option>T1</option><option>T2</option><option>T3</option><option>T4</option></select>
+          </div>
+          <div class="campo"><label for="nTipo">Tipo</label>
+            <select id="nTipo"><option value="">Ingresos y gastos</option><option value="Ingreso">Solo ingresos</option><option value="Gasto">Solo gastos</option></select>
+          </div>
+          <div class="campo"><label for="nCat">Categoría</label><select id="nCat"></select></div>
+          <div class="campo"><label for="nEstado">Estado</label><select id="nEstado"></select></div>
+          <div class="campo"><label for="nBuscar">Buscar</label><input type="search" id="nBuscar" placeholder="concepto o cliente…"></div>
+        </div>
+      </header>
+
+      <div class="aviso-filtro" id="nAvisoFiltro">
+        <span id="nAvisoTexto"></span>
+        <button id="nLimpiar">Quitar filtro</button>
+      </div>
+
+      <div class="rejilla-kpis" id="nKpis"></div>
+
+      <div class="rejilla c2">
+        <div class="panel">
+          <div class="panel-cab"><h2>Ingresos vs gastos por mes</h2><span class="nota">base imponible</span></div>
+          <div class="lienzo alto"><canvas id="gNegMensual"></canvas></div>
+        </div>
+        <div class="panel">
+          <div class="panel-cab"><h2>Neto acumulado</h2><span class="nota" id="nNotaAcum"></span></div>
+          <div class="lienzo alto"><canvas id="gNegAcumulado"></canvas></div>
+        </div>
+      </div>
+
+      <div class="rejilla c3">
+        <div class="panel">
+          <div class="panel-cab"><h2>Gasto por categoría</h2><span class="nota">clic para filtrar</span></div>
+          <div class="lienzo"><canvas id="gNegCategorias"></canvas></div>
+        </div>
+        <div class="panel">
+          <div class="panel-cab"><h2>Top clientes</h2><span class="nota">facturado</span></div>
+          <div class="lienzo"><canvas id="gNegClientes"></canvas></div>
+        </div>
+        <div class="panel">
+          <div class="panel-cab"><h2>IVA por trimestre</h2><span class="nota">repercutido − soportado</span></div>
+          <div class="lienzo"><canvas id="gNegIva"></canvas></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-cab"><h2>Movimientos</h2><span class="nota" id="nNotaTabla"></span></div>
+        <div class="tabla-envoltura">
+          <table id="tablaNegocio">
+            <thead>
+              <tr>
+                <th data-col="fecha" tabindex="0">Fecha</th>
+                <th data-col="tipo" tabindex="0">Tipo</th>
+                <th data-col="concepto" tabindex="0">Concepto</th>
+                <th data-col="categoria" tabindex="0">Categoría</th>
+                <th data-col="quien" tabindex="0">Cliente / Proveedor</th>
+                <th data-col="base" tabindex="0" style="text-align:right">Base</th>
+                <th data-col="ivaEur" tabindex="0" style="text-align:right">IVA</th>
+                <th data-col="total" tabindex="0" style="text-align:right">Total</th>
+                <th data-col="metodo" tabindex="0">Método</th>
+                <th data-col="estado" tabindex="0">Estado</th>
+                <th class="sin-orden"><span class="visualmente-oculto">Acciones</span></th>
+              </tr>
+            </thead>
+            <tbody id="nTbody"></tbody>
+          </table>
+        </div>
+        <div class="paginacion">
+          <span id="nInfoPag"></span>
+          <button id="nPrev">Anterior</button>
+          <button id="nNext">Siguiente</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Personal ─────────────────────────────────────────────────────── -->
+    <section class="seccion oculto" data-seccion="personal">
+      <header class="cabecera-seccion">
+        <div>
+          <h2>Personal</h2>
+          <p class="sub">El dinero de casa. Aquí la cifra que importa es la tasa de ahorro.</p>
+        </div>
+        <div class="filtros">
+          <div class="campo"><label for="pAnio">Año</label><select id="pAnio"></select></div>
+          <div class="campo"><label for="pMes">Mes</label><select id="pMes"></select></div>
+          <div class="campo"><label for="pTipo">Tipo</label>
+            <select id="pTipo"><option value="">Ingresos y gastos</option><option value="Ingreso">Solo ingresos</option><option value="Gasto">Solo gastos</option></select>
+          </div>
+          <div class="campo"><label for="pCat">Categoría</label><select id="pCat"></select></div>
+          <div class="campo"><label for="pBuscar">Buscar</label><input type="search" id="pBuscar" placeholder="concepto…"></div>
+        </div>
+      </header>
+
+      <div id="pVacio" class="vacio oculto">
+        <div>
+          <h2>Todavía no hay gastos personales</h2>
+          <p>Pulsa <b>+ Apuntar</b> y elige <b>Casa</b> para apuntar el primero. Marca como recurrente lo que se repita cada mes (alquiler, suscripciones) y aparecerá solo en el resumen anual.</p>
+        </div>
+      </div>
+
+      <div id="pContenido">
+        <div class="aviso-filtro" id="pAvisoFiltro">
+          <span id="pAvisoTexto"></span>
+          <button id="pLimpiar">Quitar filtro</button>
+        </div>
+
+        <div class="rejilla-kpis" id="pKpis"></div>
+
+        <div class="panel">
+          <div class="panel-cab">
+            <h2>Presupuestos del mes</h2>
+            <span class="nota" id="pNotaPresu"></span>
+            <button id="pEditarTopes">Editar topes</button>
+          </div>
+          <div id="pPresupuestos"></div>
+        </div>
+
+        <div class="rejilla c2">
+          <div class="panel">
+            <div class="panel-cab"><h2>Mes a mes</h2><span class="nota">todo el año</span></div>
+            <div class="lienzo alto"><canvas id="gPerMensual"></canvas></div>
+          </div>
+          <div class="panel">
+            <div class="panel-cab"><h2>En qué se va</h2><span class="nota">clic para filtrar</span></div>
+            <div class="lienzo alto"><canvas id="gPerCategorias"></canvas></div>
+          </div>
+        </div>
+
+        <div class="rejilla c2">
+          <div class="panel">
+            <div class="panel-cab"><h2>La carrera del mes</h2><span class="nota">acumulado día a día</span></div>
+            <div class="lienzo"><canvas id="gPerCarrera"></canvas></div>
+          </div>
+          <div class="panel">
+            <div class="panel-cab"><h2>Suscripciones y fijos</h2><span class="nota" id="pNotaRec"></span></div>
+            <div class="lienzo"><canvas id="gPerRecurrentes"></canvas></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-cab"><h2>Movimientos</h2><span class="nota">personal</span></div>
+          <div class="tabla-envoltura">
+            <table id="tablaPersonal">
+              <thead>
+                <tr>
+                  <th data-col="fecha" tabindex="0">Fecha</th>
+                  <th data-col="tipo" tabindex="0">Tipo</th>
+                  <th data-col="concepto" tabindex="0">Concepto</th>
+                  <th data-col="categoria" tabindex="0">Categoría</th>
+                  <th data-col="base" tabindex="0" style="text-align:right">Importe</th>
+                  <th data-col="metodo" tabindex="0">Método</th>
+                  <th data-col="recurrente" tabindex="0">Fijo</th>
+                  <th class="sin-orden"><span class="visualmente-oculto">Acciones</span></th>
+                </tr>
+              </thead>
+              <tbody id="pTbody"></tbody>
+            </table>
+          </div>
+          <div class="paginacion">
+            <span id="pInfoPag"></span>
+            <button id="pPrev">Anterior</button>
+            <button id="pNext">Siguiente</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Calendario ───────────────────────────────────────────────────── -->
+    <section class="seccion oculto" data-seccion="calendario">
+      <header class="cabecera-seccion">
+        <div class="cal-nav">
+          <button id="cAnterior" class="icono" aria-label="Mes anterior">‹</button>
+          <h2 id="cTitulo"></h2>
+          <button id="cSiguiente" class="icono" aria-label="Mes siguiente">›</button>
+          <button id="cHoy">Hoy</button>
+        </div>
+        <div class="cal-controles">
+          <div class="capas" id="cCapas">
+            <label><input type="checkbox" value="negocio" checked> Negocio</label>
+            <label><input type="checkbox" value="personal" checked> Casa</label>
+            <label><input type="checkbox" value="objetivos" checked> Objetivos</label>
+          </div>
+          <div class="cal-totales" id="cTotales"></div>
+        </div>
+      </header>
+
+      <div class="cal-envoltura">
+        <div class="panel cal-panel">
+          <div class="cal-cabecera" id="cDias"></div>
+          <div class="cal-rejilla" id="cRejilla"></div>
+        </div>
+
+        <aside class="panel cal-detalle oculto" id="cDetalle">
+          <div class="panel-cab">
+            <h2 id="cDetalleTitulo"></h2>
+            <button id="cCerrarDetalle" class="icono" aria-label="Cerrar">✕</button>
+          </div>
+          <ul class="cal-lista" id="cDetalleLista"></ul>
+          <button id="cApuntarDia" class="principal ancho-total">+ Apuntar en este día</button>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ── Objetivos ────────────────────────────────────────────────────── -->
+    <section class="seccion oculto" data-seccion="objetivos">
+      <header class="cabecera-seccion">
+        <div>
+          <h2>Objetivos</h2>
+          <p class="sub" id="oResumen"></p>
+        </div>
+        <div class="filtros">
+          <div class="campo"><label for="oEstado">Estado</label>
+            <select id="oEstado">
+              <option value="Activo">Activos</option>
+              <option value="Conseguido">Conseguidos</option>
+              <option value="Pausado">Pausados</option>
+              <option value="Descartado">Descartados</option>
+              <option value="">Todos</option>
+            </select>
+          </div>
+          <div class="campo"><label for="oArea">Área</label><select id="oArea"><option value="">Todas las áreas</option></select></div>
+        </div>
+      </header>
+
+      <div class="pastillas" id="oPlazos"></div>
+
+      <div id="oVacio" class="vacio oculto">
+        <div>
+          <h2>Sin objetivos todavía</h2>
+          <p>Pulsa <b>+ Objetivo</b>. Puedes ponerte metas para <b>hoy</b>, para <b>esta semana</b>, para <b>el mes</b> o para <b>el año</b>: de dinero (ahorrar 5.000 €), de cantidad (10 clientes) o simples hitos que están hechos o no.</p>
+        </div>
+      </div>
+
+      <div id="oGrupos"></div>
+    </section>
+
+  </div>
+</main>
+
+<div class="soltar" id="soltar">Suelta el Excel para cargarlo</div>
+<div class="brindis" id="brindis" role="status" aria-live="polite"></div>
+
+<!-- ── Diálogo: movimiento ─────────────────────────────────────────────── -->
+<dialog id="dlgMovimiento">
+  <form method="dialog" id="formMovimiento">
+    <header class="dlg-cab">
+      <h2 id="dlgTitulo">Nuevo movimiento</h2>
+      <button type="button" id="btnCerrarDlg" aria-label="Cerrar">✕</button>
+    </header>
+
+    <div class="dlg-cuerpo">
+      <div class="segmentados">
+        <div class="segmentado" role="radiogroup" aria-label="Ámbito">
+          <label><input type="radio" name="ambito" value="negocio" checked><span>Negocio</span></label>
+          <label><input type="radio" name="ambito" value="personal"><span>Casa</span></label>
+        </div>
+        <div class="segmentado" role="radiogroup" aria-label="Tipo">
+          <label><input type="radio" name="tipo" value="Gasto" checked><span>Gasto</span></label>
+          <label><input type="radio" name="tipo" value="Ingreso"><span>Ingreso</span></label>
+        </div>
+      </div>
+
+      <div class="dlg-rejilla">
+        <div class="campo ancho2">
+          <label for="mConcepto">Concepto *</label>
+          <input id="mConcepto" name="concepto" required placeholder="Suscripción, alquiler, factura…" autocomplete="off">
+        </div>
+
+        <div class="campo">
+          <label for="mBase"><span class="solo-negocio">Importe sin IVA *</span><span class="solo-personal">Importe *</span></label>
+          <input id="mBase" name="base" required inputmode="decimal" placeholder="22" autocomplete="off">
+        </div>
+
+        <div class="campo solo-negocio">
+          <label for="mIva">IVA</label>
+          <select id="mIva" name="ivaPct"><option value="0">0 %</option><option value="4">4 %</option><option value="10">10 %</option><option value="21">21 %</option></select>
+        </div>
+
+        <div class="campo">
+          <label for="mFecha">Fecha</label>
+          <input type="date" id="mFecha" name="fecha" required>
+        </div>
+
+        <div class="campo">
+          <label for="mCategoria">Categoría</label>
+          <input id="mCategoria" name="categoria" list="listaCategorias" autocomplete="off" placeholder="escribe o elige">
+          <datalist id="listaCategorias"></datalist>
+        </div>
+
+        <div class="campo ancho2 solo-negocio">
+          <label for="mQuien">Cliente / Proveedor</label>
+          <input id="mQuien" name="quien" list="listaQuien" autocomplete="off" placeholder="opcional">
+          <datalist id="listaQuien"></datalist>
+        </div>
+
+        <div class="campo">
+          <label for="mMetodo">Método</label>
+          <select id="mMetodo" name="metodo"></select>
+        </div>
+
+        <div class="campo solo-negocio">
+          <label for="mEstado">Estado</label>
+          <select id="mEstado" name="estado"></select>
+        </div>
+
+        <div class="campo solo-negocio">
+          <label for="mDeducible">Deducible</label>
+          <select id="mDeducible" name="deducible"><option>Sí</option><option>No</option></select>
+        </div>
+
+        <div class="campo solo-personal">
+          <label for="mRecurrente">¿Se repite?</label>
+          <select id="mRecurrente" name="recurrente"><option>No</option><option>Sí</option></select>
+        </div>
+
+        <div class="campo">
+          <label for="mRepetir">Repetir</label>
+          <select id="mRepetir" name="repetir">
+            <option value="1">Solo este mes</option>
+            <option value="3">3 meses</option>
+            <option value="6">6 meses</option>
+            <option value="12">12 meses</option>
+          </select>
+        </div>
+
+        <div class="campo ancho2">
+          <label for="mNotas">Notas</label>
+          <input id="mNotas" name="notas" autocomplete="off" placeholder="opcional">
+        </div>
+      </div>
+
+      <p class="dlg-resumen" id="dlgResumen"></p>
+      <p class="dlg-error" id="dlgError"></p>
+    </div>
+
+    <footer class="dlg-pie">
+      <span class="nota">Se escribe en la <span id="dlgDestino">hoja Movimientos</span> del Excel</span>
+      <div>
+        <button type="button" id="btnCancelar">Cancelar</button>
+        <button type="submit" class="principal" id="btnGuardar">Guardar</button>
+      </div>
+    </footer>
+  </form>
+</dialog>
+
+<!-- ── Diálogo: objetivo ───────────────────────────────────────────────── -->
+<dialog id="dlgObjetivo">
+  <form method="dialog" id="formObjetivo">
+    <header class="dlg-cab">
+      <h2>Nuevo objetivo</h2>
+      <button type="button" id="btnCerrarObj" aria-label="Cerrar">✕</button>
+    </header>
+
+    <div class="dlg-cuerpo">
+      <div class="dlg-rejilla">
+        <div class="campo ancho4">
+          <label for="oNombre">Objetivo *</label>
+          <input id="oNombre" name="nombre" required placeholder="Ahorrar 5.000 € de colchón" autocomplete="off">
+        </div>
+
+        <div class="campo">
+          <label for="oPlazo">Plazo</label>
+          <select id="oPlazo" name="plazo"></select>
+        </div>
+
+        <div class="campo">
+          <label for="oTipo">Tipo</label>
+          <select id="oTipo" name="tipo"><option>Importe</option><option>Cantidad</option><option>Hito</option></select>
+        </div>
+
+        <div class="campo">
+          <label for="oAreaSel">Área</label>
+          <select id="oAreaSel" name="area"></select>
+        </div>
+
+        <div class="campo solo-medible">
+          <label for="oMeta">Meta *</label>
+          <input id="oMeta" name="meta" inputmode="decimal" placeholder="5000" autocomplete="off">
+        </div>
+
+        <div class="campo solo-medible">
+          <label for="oUnidad">Unidad</label>
+          <input id="oUnidad" name="unidad" value="€" autocomplete="off">
+        </div>
+
+        <div class="campo solo-medible">
+          <label for="oProgreso">Ya llevas</label>
+          <input id="oProgreso" name="progreso" inputmode="decimal" placeholder="0" autocomplete="off">
+        </div>
+
+        <div class="campo">
+          <label for="oInicio">Empieza</label>
+          <input type="date" id="oInicio" name="inicio">
+        </div>
+
+        <div class="campo" id="campoLimite">
+          <label for="oLimite">Fecha límite</label>
+          <input type="date" id="oLimite" name="limite">
+        </div>
+
+        <div class="campo ancho4">
+          <label for="oNotas">Notas</label>
+          <input id="oNotas" name="notas" autocomplete="off" placeholder="opcional">
+        </div>
+      </div>
+
+      <p class="dlg-resumen" id="notaPlazo"></p>
+      <p class="dlg-error" id="dlgObjError"></p>
+    </div>
+
+    <footer class="dlg-pie">
+      <span class="nota">Se escribe en la hoja Objetivos del Excel</span>
+      <div>
+        <button type="button" id="btnCancelarObj">Cancelar</button>
+        <button type="submit" class="principal" id="btnGuardarObj">Guardar</button>
+      </div>
+    </footer>
+  </form>
+</dialog>
+
+<!-- ── Diálogo: importar extracto ──────────────────────────────────────── -->
+<dialog id="dlgImportar" class="ancho">
+  <header class="dlg-cab">
+    <h2>Importar extracto</h2>
+    <button type="button" id="btnCerrarImp" aria-label="Cerrar">✕</button>
+  </header>
+
+  <div class="dlg-cuerpo">
+    <div id="impPaso1">
+      <button type="button" class="zona-soltar" id="impSoltar">
+        <b>Arrastra aquí el extracto</b>
+        <span>o pulsa para elegirlo · CSV o Excel, tal cual te lo da el banco</span>
+      </button>
+      <input type="file" id="impArchivo" accept=".csv,.xlsx,.xls,.tsv" class="oculto">
+      <p class="dlg-resumen">Nada se escribe hasta que revises lo que ha entendido. Los movimientos que ya estén apuntados se saltan solos.</p>
+    </div>
+
+    <div id="impPaso2" class="oculto">
+      <div class="segmentados">
+        <div class="segmentado" role="radiogroup" aria-label="Ámbito">
+          <label><input type="radio" name="impAmbito" value="personal" checked><span>Casa</span></label>
+          <label><input type="radio" name="impAmbito" value="negocio"><span>Negocio</span></label>
+        </div>
+        <span class="nota" id="impNombre"></span>
+      </div>
+
+      <div class="dlg-rejilla tres" id="impMapa"></div>
+
+      <p class="dlg-resumen" id="impResumen"></p>
+
+      <div class="tabla-envoltura vista-importar">
+        <div class="vista-acciones"><button type="button" id="impTodas">Marcar / desmarcar todas</button></div>
+        <div id="impVista"></div>
+      </div>
+    </div>
+
+    <p class="dlg-error" id="impError"></p>
+  </div>
+
+  <footer class="dlg-pie">
+    <span class="nota">Se escribe en el Excel, saltándose lo repetido</span>
+    <div>
+      <button type="button" id="btnCancelarImp">Cancelar</button>
+      <button type="button" class="principal" id="btnImportar" disabled>Importar</button>
+    </div>
+  </footer>
+</dialog>
+
+<!-- ── Diálogo: topes de presupuesto ───────────────────────────────────── -->
+<dialog id="dlgTopes">
+  <form method="dialog" id="formTopes">
+    <header class="dlg-cab">
+      <h2>Topes mensuales</h2>
+      <button type="button" id="btnCerrarTopes" aria-label="Cerrar">✕</button>
+    </header>
+
+    <div class="dlg-cuerpo">
+      <p class="dlg-resumen">Cuánto quieres gastar como máximo al mes en cada categoría. Deja en blanco lo que no quieras limitar.</p>
+      <div class="dlg-rejilla tres" id="topesRejilla"></div>
+      <p class="dlg-error" id="topesError"></p>
+    </div>
+
+    <footer class="dlg-pie">
+      <span class="nota">Se escribe en la hoja Presupuestos del Excel</span>
+      <div>
+        <button type="button" id="btnCancelarTopes">Cancelar</button>
+        <button type="submit" class="principal" id="btnGuardarTopes">Guardar</button>
+      </div>
+    </footer>
+  </form>
+</dialog>
+
+<script src="vendor/xlsx.full.min.js"></script>
+<script src="vendor/chart.umd.js"></script>
+<script type="module" src="assets/app.js"></script>
+</body>
+</html>
