@@ -1,0 +1,194 @@
+{
+  "name": "OI · Borrador de Instagram a partir del blog",
+  "nodes": [
+    {
+      "name": "Lunes a las 9:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 9 * * 1"
+            }
+          ]
+        }
+      },
+      "id": "oi-0079",
+      "position": [
+        260,
+        220
+      ]
+    },
+    {
+      "name": "RSS del blog",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "parameters": {
+        "url": "https://oistudio.eus/feed.xml",
+        "options": {}
+      },
+      "id": "oi-0080",
+      "position": [
+        500,
+        220
+      ]
+    },
+    {
+      "name": "El más reciente",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "jsCode": "const orden = items.sort((a, b) =>\n  new Date(b.json.isoDate ?? b.json.pubDate) - new Date(a.json.isoDate ?? a.json.pubDate));\nconst p = orden[0].json;\nreturn [{ json: { titulo: p.title, link: p.link,\n  resumen: (p.contentSnippet ?? p.content ?? '').slice(0, 900) } }];"
+      },
+      "id": "oi-0081",
+      "position": [
+        740,
+        220
+      ]
+    },
+    {
+      "name": "Escribir el carrusel",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "parameters": {
+        "url": "http://localhost:11434/api/generate",
+        "options": {},
+        "method": "POST",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"model\": \"llama3.1:8b\",\n  \"stream\": false,\n  \"prompt\": \"={{ `Sos el community manager de un estudio de diseño web de Tolosa. A partir de este artículo escribí: 1) una portada de carrusel de menos de 8 palabras, 2) cuatro diapositivas de una frase cada una, 3) un pie de foto de 3 frases tuteando, 4) ocho hashtags mezclando genéricos y locales de Gipuzkoa. Artículo: {{ $json.titulo }}. {{ $json.resumen }}` }}\"\n}"
+      },
+      "id": "oi-0082",
+      "position": [
+        980,
+        220
+      ]
+    },
+    {
+      "name": "Dar formato",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "jsCode": "const src = $('El más reciente').first().json;\nreturn [{ json: { titulo: src.titulo, link: src.link,\n  borrador: ($json.response ?? '').trim() } }];"
+      },
+      "id": "oi-0083",
+      "position": [
+        1220,
+        220
+      ]
+    },
+    {
+      "name": "Borrador a Telegram",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "parameters": {
+        "chatId": "TU_CHAT_ID",
+        "text": "=<b>Borrador de la semana</b>\\n{{ $json.titulo }}\\n{{ $json.link }}\\n\\n{{ $json.borrador }}",
+        "additionalFields": {
+          "parse_mode": "HTML"
+        }
+      },
+      "credentials": {
+        "telegramApi": {
+          "id": "",
+          "name": "Telegram Bot (gratis)"
+        }
+      },
+      "id": "oi-0084",
+      "position": [
+        260,
+        420
+      ]
+    },
+    {
+      "id": "oi-0085",
+      "name": "Ficha",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -140,
+        180
+      ],
+      "parameters": {
+        "width": 360,
+        "height": 320,
+        "color": 4,
+        "content": "## 📱 Borrador de Instagram a partir del blog\n**auto-borrador-instagram**\n\nCoge el último artículo del blog, y la IA local propone titular de carrusel, texto del pie y hashtags. Te llega a Telegram para aprobar o descartar.\n\n**Disparador:** Programado · lunes a las 9:00\n\n**Coste: 0 €** — n8n autoalojado · Ollama en local · Telegram Bot\n\n- Lee el RSS del blog\n- Se queda con el artículo más reciente\n- Ollama escribe portada de carrusel, cuatro diapositivas y pie con hashtags\n- Te lo manda a Telegram como borrador para revisar"
+      }
+    }
+  ],
+  "connections": {
+    "Lunes a las 9:00": {
+      "main": [
+        [
+          {
+            "node": "RSS del blog",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS del blog": {
+      "main": [
+        [
+          {
+            "node": "El más reciente",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "El más reciente": {
+      "main": [
+        [
+          {
+            "node": "Escribir el carrusel",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Escribir el carrusel": {
+      "main": [
+        [
+          {
+            "node": "Dar formato",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dar formato": {
+      "main": [
+        [
+          {
+            "node": "Borrador a Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true
+  },
+  "tags": [
+    {
+      "name": "OI Studio"
+    },
+    {
+      "name": "coste 0"
+    }
+  ],
+  "meta": {
+    "instanceId": "oi-studio-biblioteca"
+  }
+}

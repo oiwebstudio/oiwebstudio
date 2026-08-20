@@ -1,0 +1,409 @@
+{
+  "name": "OI · Recordatorio de facturas pendientes",
+  "nodes": [
+    {
+      "name": "Cada día a las 10:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 10 * * *"
+            }
+          ]
+        }
+      },
+      "id": "oi-0086",
+      "position": [
+        260,
+        220
+      ]
+    },
+    {
+      "name": "Facturas",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "parameters": {
+        "operation": "read",
+        "documentId": {
+          "__rl": true,
+          "value": "ID_DE_TU_HOJA",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list"
+        },
+        "options": {}
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "",
+          "name": "Google Sheets (gratis)"
+        }
+      },
+      "id": "oi-0087",
+      "position": [
+        500,
+        220
+      ]
+    },
+    {
+      "name": "Calcular vencidas",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "jsCode": "const hoy = new Date();\nreturn items.map(i => {\n  const dias = Math.floor((hoy - new Date(i.json.vence)) / 86400000);\n  let tramo = 0;\n  if (dias === 3) tramo = 1;\n  else if (dias === 10) tramo = 2;\n  else if (dias >= 20) tramo = 3;\n  return { json: { ...i.json, dias, tramo } };\n}).filter(i => i.json.tramo > 0 && !i.json.cobrada);"
+      },
+      "id": "oi-0088",
+      "position": [
+        740,
+        220
+      ]
+    },
+    {
+      "name": "Según el tramo",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "oi-0012",
+                    "leftValue": "={{ $json.tramo }}",
+                    "rightValue": 1,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "outputKey": "suave"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "oi-0013",
+                    "leftValue": "={{ $json.tramo }}",
+                    "rightValue": 2,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "outputKey": "firme"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "oi-0014",
+                    "leftValue": "={{ $json.tramo }}",
+                    "rightValue": 3,
+                    "operator": {
+                      "type": "number",
+                      "operation": "gte"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "outputKey": "final"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "oi-0089",
+      "position": [
+        980,
+        220
+      ]
+    },
+    {
+      "name": "Aviso suave",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "parameters": {
+        "fromEmail": "hola@oistudio.eus",
+        "toEmail": "={{ $json.email }}",
+        "subject": "=Factura {{ $json.numero }} · ¿la habrás pasado por alto?",
+        "emailFormat": "html",
+        "html": "=<p>Hola {{ $json.cliente }}:</p><p>Te escribimos por la factura <strong>{{ $json.numero }}</strong> de {{ $json.importe }} €, que venció hace unos días. Seguramente sea un despiste.</p><p>Si ya la pagaste, ignorá este correo.</p>",
+        "options": {}
+      },
+      "credentials": {
+        "smtp": {
+          "id": "",
+          "name": "Gmail SMTP (gratis)"
+        }
+      },
+      "id": "oi-0090",
+      "position": [
+        1220,
+        220
+      ]
+    },
+    {
+      "name": "Aviso firme",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "parameters": {
+        "fromEmail": "hola@oistudio.eus",
+        "toEmail": "={{ $json.email }}",
+        "subject": "=Factura {{ $json.numero }} pendiente ({{ $json.dias }} días)",
+        "emailFormat": "html",
+        "html": "=<p>Hola {{ $json.cliente }}:</p><p>La factura <strong>{{ $json.numero }}</strong> de {{ $json.importe }} € sigue pendiente, ya con {{ $json.dias }} días de retraso.</p><p>¿Nos confirmás una fecha de pago?</p>",
+        "options": {}
+      },
+      "credentials": {
+        "smtp": {
+          "id": "",
+          "name": "Gmail SMTP (gratis)"
+        }
+      },
+      "id": "oi-0091",
+      "position": [
+        260,
+        420
+      ]
+    },
+    {
+      "name": "Aviso final",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "parameters": {
+        "fromEmail": "hola@oistudio.eus",
+        "toEmail": "={{ $json.email }}",
+        "subject": "=Último aviso · factura {{ $json.numero }}",
+        "emailFormat": "html",
+        "html": "=<p>Hola {{ $json.cliente }}:</p><p>La factura <strong>{{ $json.numero }}</strong> de {{ $json.importe }} € lleva {{ $json.dias }} días vencida. Antes de dar otro paso preferimos hablarlo: contestá a este correo o llamanos.</p>",
+        "options": {}
+      },
+      "credentials": {
+        "smtp": {
+          "id": "",
+          "name": "Gmail SMTP (gratis)"
+        }
+      },
+      "id": "oi-0092",
+      "position": [
+        500,
+        420
+      ]
+    },
+    {
+      "name": "Avisarme para llamar",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "parameters": {
+        "chatId": "TU_CHAT_ID",
+        "text": "=💶 <b>{{ $json.cliente }}</b> lleva {{ $json.dias }} días\\nFactura {{ $json.numero }} · {{ $json.importe }} €\\nToca llamar.",
+        "additionalFields": {
+          "parse_mode": "HTML"
+        }
+      },
+      "credentials": {
+        "telegramApi": {
+          "id": "",
+          "name": "Telegram Bot (gratis)"
+        }
+      },
+      "id": "oi-0093",
+      "position": [
+        740,
+        420
+      ]
+    },
+    {
+      "name": "Anotar el aviso",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "ID_DE_TU_HOJA",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list"
+        },
+        "options": {},
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {}
+        }
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "",
+          "name": "Google Sheets (gratis)"
+        }
+      },
+      "id": "oi-0094",
+      "position": [
+        980,
+        420
+      ]
+    },
+    {
+      "id": "oi-0095",
+      "name": "Ficha",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -140,
+        180
+      ],
+      "parameters": {
+        "width": 360,
+        "height": 320,
+        "color": 4,
+        "content": "## 💶 Recordatorio de facturas pendientes\n**auto-cobro-pendiente**\n\nRevisa las facturas sin cobrar y manda tres avisos con tono distinto: a los 3, a los 10 y a los 20 días de vencer.\n\n**Disparador:** Programado · todos los días a las 10:00\n\n**Coste: 0 €** — n8n autoalojado · Google Sheets · Gmail SMTP · Telegram Bot\n\n- Lee la hoja de facturas y calcula los días vencidos\n- Separa en tres tramos: recordatorio suave, firme y aviso final\n- Envía el correo correspondiente con el número y el importe\n- Si pasa de 20 días te avisa a vos para llamar por teléfono"
+      }
+    }
+  ],
+  "connections": {
+    "Cada día a las 10:00": {
+      "main": [
+        [
+          {
+            "node": "Facturas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Facturas": {
+      "main": [
+        [
+          {
+            "node": "Calcular vencidas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calcular vencidas": {
+      "main": [
+        [
+          {
+            "node": "Según el tramo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Según el tramo": {
+      "main": [
+        [
+          {
+            "node": "Aviso suave",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Aviso firme",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Aviso final",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aviso suave": {
+      "main": [
+        [
+          {
+            "node": "Anotar el aviso",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aviso firme": {
+      "main": [
+        [
+          {
+            "node": "Anotar el aviso",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aviso final": {
+      "main": [
+        [
+          {
+            "node": "Avisarme para llamar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Avisarme para llamar": {
+      "main": [
+        [
+          {
+            "node": "Anotar el aviso",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true
+  },
+  "tags": [
+    {
+      "name": "OI Studio"
+    },
+    {
+      "name": "coste 0"
+    }
+  ],
+  "meta": {
+    "instanceId": "oi-studio-biblioteca"
+  }
+}

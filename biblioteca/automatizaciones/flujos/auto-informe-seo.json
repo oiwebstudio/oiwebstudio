@@ -1,0 +1,320 @@
+{
+  "name": "OI · Informe mensual de velocidad y SEO",
+  "nodes": [
+    {
+      "name": "Día 1 de cada mes",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 8 1 * *"
+            }
+          ]
+        }
+      },
+      "id": "oi-0069",
+      "position": [
+        260,
+        220
+      ]
+    },
+    {
+      "name": "Clientes con mantenimiento",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "parameters": {
+        "operation": "read",
+        "documentId": {
+          "__rl": true,
+          "value": "ID_DE_TU_HOJA",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list"
+        },
+        "options": {}
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "",
+          "name": "Google Sheets (gratis)"
+        }
+      },
+      "id": "oi-0070",
+      "position": [
+        500,
+        220
+      ]
+    },
+    {
+      "name": "Cliente a cliente",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "oi-0071",
+      "position": [
+        740,
+        220
+      ]
+    },
+    {
+      "name": "PageSpeed móvil",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "parameters": {
+        "url": "=https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url={{ encodeURIComponent($json.url) }}&strategy=mobile&category=performance&category=seo",
+        "options": {
+          "timeout": 60000
+        }
+      },
+      "id": "oi-0072",
+      "position": [
+        980,
+        220
+      ]
+    },
+    {
+      "name": "Extraer métricas",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "jsCode": "const c = $('Cliente a cliente').first().json;\nconst l = $json.lighthouseResult ?? {};\nconst a = l.audits ?? {};\nreturn [{ json: {\n  cliente: c.cliente, email: c.email, url: c.url,\n  rendimiento: Math.round((l.categories?.performance?.score ?? 0) * 100),\n  seo: Math.round((l.categories?.seo?.score ?? 0) * 100),\n  lcp: a['largest-contentful-paint']?.displayValue ?? '—',\n  cls: a['cumulative-layout-shift']?.displayValue ?? '—',\n  mes: new Date().toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })\n}}];"
+      },
+      "id": "oi-0073",
+      "position": [
+        1220,
+        220
+      ]
+    },
+    {
+      "name": "Redactar el informe",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "parameters": {
+        "url": "http://localhost:11434/api/generate",
+        "options": {},
+        "method": "POST",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"model\": \"llama3.1:8b\",\n  \"stream\": false,\n  \"prompt\": \"={{ `Escribe en español, tuteando y sin tecnicismos, un resumen de 4 frases para el dueño de un negocio local sobre el estado de su web este mes. Rendimiento {{ $json.rendimiento }}/100, SEO {{ $json.seo }}/100, LCP {{ $json.lcp }}, CLS {{ $json.cls }}. Termina con una recomendación concreta. No uses viñetas.` }}\"\n}"
+      },
+      "id": "oi-0074",
+      "position": [
+        260,
+        420
+      ]
+    },
+    {
+      "name": "Montar el correo",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "jsCode": "const m = $('Extraer métricas').first().json;\nreturn [{ json: { ...m, texto: ($json.response ?? '').trim() } }];"
+      },
+      "id": "oi-0075",
+      "position": [
+        500,
+        420
+      ]
+    },
+    {
+      "name": "Enviar al cliente",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "parameters": {
+        "fromEmail": "hola@oistudio.eus",
+        "toEmail": "={{ $json.email }}",
+        "subject": "=Tu web en {{ $json.mes }}: {{ $json.rendimiento }}/100 de velocidad",
+        "emailFormat": "html",
+        "html": "=<p>Hola {{ $json.cliente }}:</p><p>{{ $json.texto }}</p><table cellpadding=\"6\"><tr><td>Velocidad</td><td><strong>{{ $json.rendimiento }}/100</strong></td></tr><tr><td>SEO técnico</td><td><strong>{{ $json.seo }}/100</strong></td></tr><tr><td>Carga principal</td><td>{{ $json.lcp }}</td></tr></table><p>OI Studio · mantenimiento mensual</p>",
+        "options": {}
+      },
+      "credentials": {
+        "smtp": {
+          "id": "",
+          "name": "Gmail SMTP (gratis)"
+        }
+      },
+      "id": "oi-0076",
+      "position": [
+        740,
+        420
+      ]
+    },
+    {
+      "name": "Guardar histórico",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "ID_DE_TU_HOJA",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list"
+        },
+        "options": {},
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {}
+        }
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "",
+          "name": "Google Sheets (gratis)"
+        }
+      },
+      "id": "oi-0077",
+      "position": [
+        980,
+        420
+      ]
+    },
+    {
+      "id": "oi-0078",
+      "name": "Ficha",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -140,
+        180
+      ],
+      "parameters": {
+        "width": 360,
+        "height": 320,
+        "color": 4,
+        "content": "## 📊 Informe mensual de velocidad y SEO\n**auto-informe-seo**\n\nPasa PageSpeed a cada web de cliente, guarda el histórico y manda un informe redactado en cristiano por la IA local.\n\n**Disparador:** Programado · día 1 de cada mes a las 8:00\n\n**Coste: 0 €** — n8n autoalojado · PageSpeed Insights API · Ollama en local · Google Sheets · Gmail SMTP\n\n- Consulta PageSpeed móvil de cada web (API pública y gratuita)\n- Extrae LCP, CLS y la puntuación de rendimiento\n- Ollama redacta el resumen en lenguaje de cliente, sin tecnicismos\n- Envía el informe y guarda la fila en el histórico"
+      }
+    }
+  ],
+  "connections": {
+    "Día 1 de cada mes": {
+      "main": [
+        [
+          {
+            "node": "Clientes con mantenimiento",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clientes con mantenimiento": {
+      "main": [
+        [
+          {
+            "node": "Cliente a cliente",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cliente a cliente": {
+      "main": [
+        [],
+        [
+          {
+            "node": "PageSpeed móvil",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PageSpeed móvil": {
+      "main": [
+        [
+          {
+            "node": "Extraer métricas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extraer métricas": {
+      "main": [
+        [
+          {
+            "node": "Redactar el informe",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redactar el informe": {
+      "main": [
+        [
+          {
+            "node": "Montar el correo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Montar el correo": {
+      "main": [
+        [
+          {
+            "node": "Enviar al cliente",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enviar al cliente": {
+      "main": [
+        [
+          {
+            "node": "Guardar histórico",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Guardar histórico": {
+      "main": [
+        [
+          {
+            "node": "Cliente a cliente",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true
+  },
+  "tags": [
+    {
+      "name": "OI Studio"
+    },
+    {
+      "name": "coste 0"
+    }
+  ],
+  "meta": {
+    "instanceId": "oi-studio-biblioteca"
+  }
+}
