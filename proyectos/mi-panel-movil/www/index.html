@@ -588,7 +588,8 @@ body.en-foco .dock { display: none; }
 .idea .cab b { font-size: 14.5px; font-weight: 700; letter-spacing: -.02em; line-height: 1.3; }
 .idea p { margin: 0; font-size: 13px; line-height: 1.5; color: var(--txt-2); }
 .idea p em { font-style: normal; font-weight: 700; color: var(--txt); }
-.idea .hacer { align-self: flex-start; margin-top: 2px; font-size: 12.5px; font-weight: 700; color: var(--tono); background: var(--tono-suave); padding: 8px 14px; border-radius: 14px; transition: transform .15s var(--muelle); }
+/* 40 px de alto: por debajo de eso el dedo falla más de lo que acierta */
+.idea .hacer { align-self: flex-start; margin-top: 2px; font-size: 12.5px; font-weight: 700; color: var(--tono); background: var(--tono-suave); padding: 11px 15px; border-radius: 14px; transition: transform .15s var(--muelle); }
 .idea .hacer:active { transform: scale(.93); }
 
 .puntos { display: flex; justify-content: center; gap: 5px; margin-top: 9px; }
@@ -619,6 +620,24 @@ body.en-foco .dock { display: none; }
 /* ── Deshacer, dentro del brindis ───────────────────────────────────────── */
 .brindis .deshacer { margin-left: 12px; font-weight: 800; color: var(--verde); pointer-events: auto; }
 .brindis.con-accion { pointer-events: auto; }
+
+/* ── La alarma ──────────────────────────────────────────────────────────────
+   El brindis se va en dos segundos y para "no puedo guardar" eso es un
+   susurro. Esto se queda en pantalla hasta que se resuelve.                */
+.alarma { position: fixed; top: 0; left: 0; right: 0; z-index: 150; background: var(--rojo); color: #fff; padding: calc(10px + env(safe-area-inset-top)) 16px 12px; display: flex; align-items: center; gap: 10px; font-size: 13px; line-height: 1.4; box-shadow: 0 8px 24px rgba(255,59,48,.35); animation: bajar .35s var(--muelle); }
+.alarma b { display: block; font-weight: 800; font-size: 13.5px; }
+.alarma .dicho { flex: 1; min-width: 0; }
+.alarma button { flex: none; background: #fff; color: var(--rojo); font-weight: 800; font-size: 12.5px; padding: 9px 14px; border-radius: 14px; }
+@keyframes bajar { from { transform: translateY(-100%); } to { transform: none; } }
+
+/* ── La entrada: el logo animado antes de nada ──────────────────────────────
+   Sobre negro, el mismo negro que el vídeo, para que no se vea el borde.
+   Se puede saltar tocando la pantalla y se cae sola pase lo que pase.      */
+.entrada { position: fixed; inset: 0; z-index: 200; background: #000; display: grid; place-items: center; transition: opacity .5s ease; }
+.entrada.fuera { opacity: 0; pointer-events: none; }
+.entrada video { width: min(64vw, 300px); height: auto; display: block; }
+.entrada .saltar { position: absolute; bottom: calc(28px + env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); font-size: 12px; font-weight: 600; letter-spacing: .04em; color: rgba(255,255,255,.34); opacity: 0; animation: asomar .4s ease 1.1s forwards; }
+@keyframes asomar { to { opacity: 1; } }
 
 /* ── Bienvenida ─────────────────────────────────────────────────────────── */
 .bienvenida .hoja-cuerpo { text-align: center; }
@@ -790,6 +809,18 @@ dialog::backdrop { animation: fundir .3s ease backwards; }
 </style>
 </head>
 <body>
+
+<!-- ══ Alarma: lo que no se puede pasar por alto ════════════════════════ -->
+<div class="alarma oculto" id="alarma" role="alert">
+  <div class="dicho"><b id="alarmaTitulo"></b><span id="alarmaTexto"></span></div>
+  <button id="alarmaBoton" class="oculto"></button>
+</div>
+
+<!-- ══ La entrada: el logo de OI antes de la app ═════════════════════════ -->
+<div class="entrada" id="entrada" aria-hidden="true">
+  <video id="entradaVideo" src="entrada.mp4" muted playsinline preload="auto" disablepictureinpicture></video>
+  <span class="saltar">Toca para entrar</span>
+</div>
 
 <div class="telefono">
 
@@ -1822,13 +1853,30 @@ const PLANTILLA_ESTADO = () => ({
   recordatorio: { hora: '07:30', activo: false },
 });
 
+// Si el arranque encuentra los datos rotos, aquí queda dicho para avisar en
+// cuanto haya pantalla donde avisar.
+let arranqueRoto = null;
+
+/** Comprueba que cada cosa tenga la forma que le toca. Un estado a medias
+    revienta al pintar, y entonces ya no hay app desde la que arreglarlo.  */
+function tieneBuenaPinta(d){
+  if (!d || typeof d !== 'object' || Array.isArray(d)) return false;
+  for (const campo of ['tx','metas','tareas','cobros','pesos','entradas','inversiones','historial','fijos','habitos','foco','plantillas'])
+    if (campo in d && !Array.isArray(d[campo])) return false;
+  for (const campo of ['ticks','sesiones','topes','repartoObjetivo','avisos'])
+    if (campo in d && (typeof d[campo] !== 'object' || d[campo] === null || Array.isArray(d[campo]))) return false;
+  return true;
+}
+
 let E = cargar();
 
 function cargar(){
+  const crudo = localStorage.getItem(CLAVE);
   try {
-    const crudo = localStorage.getItem(CLAVE);
     if (!crudo) return PLANTILLA_ESTADO();
-    const d = Object.assign(PLANTILLA_ESTADO(), JSON.parse(crudo));
+    const leido = JSON.parse(crudo);
+    if (!tieneBuenaPinta(leido)) throw new Error('forma rara');
+    const d = Object.assign(PLANTILLA_ESTADO(), leido);
     // Migración desde la V2: el diario era {fecha:{...}}, ahora es lista con ámbito.
     if (d.diario && !Array.isArray(d.diario)){
       for (const [fecha, e] of Object.entries(d.diario))
@@ -1838,13 +1886,47 @@ function cargar(){
     // Los hábitos antes vivían en el código: quien venga de esa versión los recibe.
     if (!Array.isArray(d.habitos) || !d.habitos.length) d.habitos = HABITOS_INICIALES.map(h=>({...h}));
     return d;
-  } catch { return PLANTILLA_ESTADO(); }
+  } catch (fallo) {
+    // Lo que había NO se toca: se aparta a otra clave antes de arrancar en
+    // blanco, porque en cuanto se guarde algo lo de antes desaparecería.
+    try { if (crudo) localStorage.setItem(CLAVE + ':roto', crudo); } catch {}
+    arranqueRoto = { motivo: String(fallo && fallo.message || fallo), bytes: (crudo||'').length };
+    return PLANTILLA_ESTADO();
+  }
 }
 
+// Sube uno con cada guardado. Lo usan los cálculos caros para saber si lo que
+// tenían cacheado sigue valiendo.
+let selloDatos = 0;
+let guardadoRoto = false;
+
 function guardar(){
-  try { localStorage.setItem(CLAVE, JSON.stringify(E)); }
-  catch { avisar('No he podido guardar en este navegador'); }
+  selloDatos++;
+  try {
+    localStorage.setItem(CLAVE, JSON.stringify(E));
+    if (guardadoRoto){ guardadoRoto = false; cerrarAlarma(); }
+  } catch {
+    // Esto no puede ser un aviso que se va en dos segundos: a partir de aquí
+    // todo lo que haga el usuario se pierde, y tiene que enterarse.
+    guardadoRoto = true;
+    alarma('No se está guardando nada',
+      'La memoria del móvil no admite más. Exporta ahora para no perder lo de hoy.',
+      'Exportar', () => exportarDatos());
+  }
 }
+
+function alarma(titulo, texto, textoBoton, alPulsar){
+  const caja = $('#alarma'); if (!caja) return;
+  $('#alarmaTitulo').textContent = titulo;
+  $('#alarmaTexto').textContent = texto;
+  const boton = $('#alarmaBoton');
+  boton.textContent = textoBoton || '';
+  boton.classList.toggle('oculto', !textoBoton);
+  boton.onclick = alPulsar || null;
+  caja.classList.remove('oculto');
+}
+
+function cerrarAlarma(){ $('#alarma')?.classList.add('oculto'); }
 
 function nuevoId(){ return 'x' + Date.now().toString(36) + Math.random().toString(36).slice(2,6); }
 
@@ -1888,7 +1970,10 @@ const claveDe = d => `${d.getFullYear()}-${dos(d.getMonth()+1)}-${dos(d.getDate(
 const desdeClave = k => { const [a,m,d]=k.split('-').map(Number); return new Date(a,m-1,d); };
 const diasEnMes = (a,m) => new Date(a,m+1,0).getDate();
 const esFutura = k => desdeClave(k) > new Date(new Date().setHours(23,59,59,999));
-const HOY = claveDe(new Date());
+// OJO: esto NO es constante. La app se queda abierta en segundo plano y el
+// día cambia debajo; si no se recalcula, marcar el gimnasio por la mañana lo
+// apunta en el día de ayer. Quien lo mueve es revisarElDia().
+let HOY = claveDe(new Date());
 const MESES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 const DIAS_CORTO = ['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'];
 
@@ -1896,6 +1981,33 @@ function lunesDe(d){ const x=new Date(d.getFullYear(),d.getMonth(),d.getDate());
 function mismaSemana(k, lunes){ return claveDe(lunesDe(desdeClave(k)))===claveDe(lunes); }
 const mismoMes = (k,a,m) => { const [y,mm]=k.split('-').map(Number); return y===a && mm-1===m; };
 const mismoAnio = (k,a) => Number(k.slice(0,4))===a;
+
+/* ── El cambio de día ───────────────────────────────────────────────────────
+   Android no cierra la app: la suspende. Así que al volver hay que mirar el
+   reloj antes de tocar nada, porque puede haber pasado la medianoche.      */
+let relojMedianoche;
+
+function revisarElDia(){
+  const ahora = claveDe(new Date());
+  if (ahora === HOY) return false;
+  HOY = ahora;
+  aplicarFijos();       // los fijos del día nuevo
+  anotarHoy();          // foto del patrimonio con la fecha correcta
+  guardar();
+  pintar();
+  programarAvisos();
+  avisar('Buenos días · la app ya está en el día de hoy');
+  return true;
+}
+
+/** Un despertador para la medianoche. En segundo plano Android lo frena, por
+    eso el que manda de verdad es el repaso al volver a primer plano.       */
+function programarMedianoche(){
+  clearTimeout(relojMedianoche);
+  const ahora = new Date();
+  const cambio = new Date(ahora.getFullYear(), ahora.getMonth(), ahora.getDate()+1, 0, 0, 20);
+  relojMedianoche = setTimeout(()=>{ revisarElDia(); programarMedianoche(); }, Math.max(1000, cambio-ahora));
+}
 
 /* ── Aviso ───────────────────────────────────────────────────────────────── */
 let relojBrindis;
@@ -2128,7 +2240,19 @@ function rachaMetasDia(){
   return n;
 }
 
+let ideasGuardadas=null, ideasSello=null;
+
+/** Recorrer todo el historial en cada repintado sobra: mientras no cambien
+    los datos ni la hora, la lectura es la misma. */
 function ideas(){
+  const sello = selloDatos + ':' + new Date().getHours() + ':' + HOY;
+  if (ideasSello === sello && ideasGuardadas) return ideasGuardadas;
+  const salida = calcularIdeas();
+  ideasSello = sello; ideasGuardadas = salida;
+  return salida;
+}
+
+function calcularIdeas(){
   const out=[];
   const ahora=new Date(), a=ahora.getFullYear(), m=ahora.getMonth();
   const dia=ahora.getDate(), hora=ahora.getHours();
@@ -2494,7 +2618,13 @@ function tareasDe(k){
       case 'diaria':     return true;
       case 'laborable':  return !finde;
       case 'semanal':    return desdeClave(t.fecha).getDay()===d.getDay();
-      case 'mensual':    return desdeClave(t.fecha).getDate()===d.getDate();
+      // Una tarea del 31 no puede caer en abril: se corre al último día que
+      // tenga el mes, igual que ya hacen los gastos fijos.
+      case 'mensual': {
+        const quiere = desdeClave(t.fecha).getDate();
+        const ultimo = diasEnMes(d.getFullYear(), d.getMonth());
+        return d.getDate() === Math.min(quiere, ultimo);
+      }
       default:           return t.fecha===k;
     }
   }).sort((a,b)=>(a.hora||'99:99').localeCompare(b.hora||'99:99'));
@@ -2799,7 +2929,10 @@ function pintarResumenDinero(){
     : '';
 
   // Actividad
-  const recientes=[...E.tx].sort((a,b)=>b.fecha.localeCompare(a.fecha)).slice(0,12);
+  const todos=[...E.tx].sort((a,b)=>b.fecha.localeCompare(a.fecha));
+  const topeMov=UI.verMovimientos||12;
+  const recientes=todos.slice(0,topeMov);
+  const quedanMov=todos.length-recientes.length;
   $('#listaMovimientos').innerHTML = recientes.length
     ? recientes.map(t=>`
       <div class="fila">
@@ -2808,8 +2941,10 @@ function pintarResumenDinero(){
           <span>${esc(t.categoria)} · ${t.ambito} · ${desdeClave(t.fecha).toLocaleDateString('es-ES',{day:'numeric',month:'short'})}</span></div>
         <div class="fila-cifra num ${t.tipo==='Ingreso'?'pos':''}">${t.tipo==='Ingreso'?'+':'−'}${euroDec(t.importe)}</div>
         <button class="borrar" data-borrar-tx="${t.id}">✕</button>
-      </div>`).join('')
-    : `<div class="vacio"><b>Sin movimientos todavía</b>Pulsa el + de la tarjeta negra.</div>`;
+      </div>`).join('') + (quedanMov>0
+        ? `<button class="btn-suave" style="margin-top:10px" data-ver-mas="movimientos">Ver 20 más · quedan ${quedanMov}</button>`
+        : '')
+    : vacio('💳','Sin movimientos todavía','Pulsa el + de la tarjeta negra.');
 }
 
 /* ── Evolución: gráfico de área + reparto + rendimiento ──────────────────── */
@@ -4080,10 +4215,12 @@ function pintarDiario(){
   $('#rachaDiario').textContent = racha?`🔥 Racha de ${racha} día(s) escribiendo`:'Empieza hoy tu primera entrada';
   $('#preguntaDiario').textContent = entradasDe(HOY).length?'Hoy ya has escrito ✓':'¿Cómo empieza tu día hoy?';
 
-  const lista=[...E.entradas]
+  const todasEntradas=[...E.entradas]
     .filter(e=>!UI.filtroDiario||e.ambito===UI.filtroDiario)
-    .sort((a,b)=>b.fecha.localeCompare(a.fecha))
-    .slice(0,20);
+    .sort((a,b)=>b.fecha.localeCompare(a.fecha));
+  const topeDiario=UI.verDiario||20;
+  const lista=todasEntradas.slice(0,topeDiario);
+  const quedanDiario=todasEntradas.length-lista.length;
 
   const CARAS=['','😫','😕','😐','🙂','🚀'];
   $('#listaDiario').innerHTML = lista.length
@@ -4094,8 +4231,12 @@ function pintarDiario(){
         ${e.prioridad?`<p><b>Prioridad:</b> ${esc(e.prioridad)}</p>`:''}
         ${e.gratitud?`<p><b>${e.ambito==='empresa'?'Situación destacada':'Gratitud'}:</b> ${esc(e.gratitud)}</p>`:''}
         ${e.enfoque?`<p>${esc(e.enfoque)}</p>`:''}
-      </div>`).join('')
-    : `<div class="vacio"><b>${E.entradas.length?'Nada con este filtro':'El diario está vacío'}</b>${E.entradas.length?'Prueba con otro ámbito.':'Dos minutos por la mañana cambian el día.'}</div>`;
+      </div>`).join('') + (quedanDiario>0
+        ? `<button class="btn-suave" style="margin-top:10px" data-ver-mas="diario">Ver 20 más · quedan ${quedanDiario}</button>`
+        : '')
+    : vacio(E.entradas.length?'🔍':'📓',
+        E.entradas.length?'Nada con este filtro':'El diario está vacío',
+        E.entradas.length?'Prueba con otro ámbito.':'Dos minutos por la mañana cambian el día.');
 }
 
 /* ═══════════════════════ TRABAJO PROFUNDO · UN RESPIRO ═══════════════════
@@ -5201,6 +5342,15 @@ function abrirOpciones(sel, refrescar){
   hoja.showModal();
 }
 
+/* Cada hoja se presenta con su propio título, para quien navegue con lector
+   de pantalla. Se hace aquí y no en el marcado: son veinticinco hojas.    */
+for (const hoja of $$('dialog')){
+  const titulo=hoja.querySelector('h3, h2');
+  if (!titulo || hoja.getAttribute('aria-labelledby')) continue;
+  if (!titulo.id) titulo.id = 'tit-' + (hoja.id || nuevoId());
+  hoja.setAttribute('aria-labelledby', titulo.id);
+}
+
 // Las hojas se repintan a cada rato: lo que aparezca nuevo se mejora solo.
 new MutationObserver(cambios=>{
   for (const c of cambios)
@@ -5675,6 +5825,8 @@ $('#btnProbarAviso').addEventListener('click', async ()=>{
 // de siete días y hay que reponerlas.
 document.addEventListener('visibilitychange', ()=>{
   if (document.hidden) return;
+  // Lo primero al volver: ¿seguimos en el mismo día? Si no, se recoloca todo.
+  if (revisarElDia()) programarMedianoche();
   programarAvisos();
   // El sistema suelta el bloqueo de pantalla al irse a segundo plano.
   if (DESC.reloj || FOCO.reloj || GUIA.reloj) retenerPantalla();
@@ -5832,10 +5984,16 @@ function aplicarFijos(){
                         : new Date(hoyD.getFullYear(), hoyD.getMonth(), dia);
     while (cursor<=hoyD){
       const k=claveDe(cursor);
-      const yaEsta=E.tx.some(t=>t.fecha===k && t.concepto===f.concepto && aNum(t.importe)===aNum(f.importe));
+      // Cada apunte automático lleva de quién viene. Antes se comparaba por
+      // concepto e importe, así que dos cargos iguales el mismo día contaban
+      // como uno solo. Los apuntes viejos no tienen sello: para esos se sigue
+      // comparando a la antigua, que si no se duplicarían al actualizar.
+      const yaEsta=E.tx.some(t=>t.fecha===k && (
+        t.fijoId===f.id ||
+        (!t.fijoId && t.concepto===f.concepto && aNum(t.importe)===aNum(f.importe))));
       if (!yaEsta){
         E.tx.push({ id:nuevoId(), tipo:f.tipo, ambito:f.ambito, concepto:f.concepto,
-          categoria:f.categoria, importe:Math.round(aNum(f.importe)*100)/100, fecha:k, fijo:true });
+          categoria:f.categoria, importe:Math.round(aNum(f.importe)*100)/100, fecha:k, fijo:true, fijoId:f.id });
         puestos++;
       }
       f.ultimo=k;
@@ -6228,6 +6386,16 @@ document.addEventListener('click', async e=>{
 
   const diarioDia=e.target.closest('[data-diario-dia]');
   if (diarioDia){ abrirDiario(diarioDia.dataset.diarioDia); return; }
+
+  // Ver más: cada toque añade veinte. El tope vive en UI, así que al cambiar
+  // de pestaña y volver se queda como estaba, que es lo que uno espera.
+  const verMas=e.target.closest('[data-ver-mas]');
+  if (verMas){
+    const cual=verMas.dataset.verMas;
+    if (cual==='movimientos') UI.verMovimientos=(UI.verMovimientos||12)+20;
+    if (cual==='diario')      UI.verDiario=(UI.verDiario||20)+20;
+    pintar(); vibrar(8); return;
+  }
 
   const irTab=e.target.closest('[data-ir-tab]');
   if (irTab){ ir(irTab.dataset.irTab); return; }
@@ -6679,6 +6847,32 @@ if ('serviceWorker' in navigator && location.protocol!=='file:'){
   navigator.serviceWorker.register('sw.js').catch(()=>{});
 }
 
+/* La entrada: se va sola al terminar el vídeo, al tocar la pantalla, o a los
+   3,4 s pase lo que pase. Si el vídeo no carga o el sistema no deja
+   reproducir sin gesto, se cae igual: nunca puede dejarte fuera de la app. */
+(() => {
+  const capa=$('#entrada'); if (!capa) return;
+  const video=$('#entradaVideo');
+  let ido=false;
+  const salir=()=>{
+    if (ido) return; ido=true;
+    clearTimeout(seguro);
+    capa.classList.add('fuera');
+    setTimeout(()=>capa.remove(), 550);
+  };
+  const seguro=setTimeout(salir, 3400);   // red de seguridad
+  // Si a los 700 ms el vídeo no ha avanzado ni un fotograma, no va a arrancar
+  // (sin permiso de reproducción automática, o el sistema lo ha frenado):
+  // mejor entrar ya que dejar al usuario mirando una imagen quieta.
+  setTimeout(()=>{ if (video.currentTime < 0.05) salir(); }, 700);
+  capa.addEventListener('click', salir);
+  video.addEventListener('ended', salir);
+  video.addEventListener('error', salir);
+  // A quien le molesten las animaciones no se le enseña ninguna
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) salir();
+  else video.play?.().catch(()=>{});
+})();
+
 moverPastilla();
 addEventListener('resize', moverPastilla);
 reanimar($('.vista[data-vista="home"]'), 'entrando');
@@ -6696,6 +6890,27 @@ anotarHoy();          // deja la foto de hoy antes de pintar nada
 guardar();
 pintar();
 programarAvisos();
+programarMedianoche();   // que el día cambie solo, aunque la app siga abierta
+
+// Si al abrir los datos no se pudieron leer, se dice claramente y se ofrece
+// bajar lo que había: no se ha borrado, está apartado en otra clave.
+if (arranqueRoto){
+  alarma('No he podido leer tus datos',
+    'He arrancado en blanco, pero no he borrado nada: lo de antes está guardado aparte.',
+    'Descargar', async ()=>{
+      try {
+        const roto=localStorage.getItem(CLAVE+':roto') || '';
+        const fichero=new File([roto], `mi-panel-recuperado-${HOY}.json`, { type:'application/json' });
+        if (navigator.canShare?.({ files:[fichero] })) await navigator.share({ files:[fichero], title:'Datos recuperados' });
+        else {
+          const url=URL.createObjectURL(fichero);
+          const a=document.createElement('a'); a.href=url; a.download=fichero.name; a.click();
+          setTimeout(()=>URL.revokeObjectURL(url), 1000);
+        }
+      } catch { avisar('No he podido sacar el archivo'); }
+    });
+  console.error('[mi panel] arranque roto:', arranqueRoto);
+}
 
 // Si es la primera vez, se saluda; si no, se vuelve a la pestaña donde estabas.
 if (!E.iniciado && !E.tx.length && !E.tareas.length && !E.inversiones.length){
