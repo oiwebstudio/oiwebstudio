@@ -408,7 +408,16 @@ dialog::backdrop { background: rgba(17,17,17,.4); backdrop-filter: blur(3px); }
 .hoja { width: min(520px, 100vw); margin: 0 auto; background: var(--carta); border-radius: 30px 30px 0 0; box-shadow: 0 -20px 60px rgba(0,0,0,.18); padding-bottom: env(safe-area-inset-bottom); animation: subir .36s var(--muelle); max-height: 90dvh; display: flex; flex-direction: column; }
 @keyframes subir { from { transform: translateY(100%); } to { transform: none; } }
 
-.hoja-asa { width: 40px; height: 5px; border-radius: 3px; background: rgba(0,0,0,.14); margin: 10px auto 2px; flex: none; }
+.hoja-asa { width: 40px; height: 5px; border-radius: 3px; background: rgba(0,0,0,.14); margin: 10px auto 2px; flex: none; transition: background .2s ease, width .2s var(--muelle); }
+/* El asa engorda mientras arrastras: se nota que la hoja va contigo */
+.hoja.arrastrando .hoja-asa { background: rgba(0,0,0,.28); width: 52px; }
+:root[data-tema='oscuro'] .hoja-asa { background: rgba(255,255,255,.2); }
+:root[data-tema='oscuro'] .hoja.arrastrando .hoja-asa { background: rgba(255,255,255,.4); }
+/* Al soltar sin llegar al final, vuelve a su sitio con muelle */
+.hoja { transition: transform .3s var(--muelle); }
+.hoja.arrastrando { transition: none; }
+/* La cabecera y el pie no se desplazan por dentro mientras arrastras */
+.hoja.arrastrando .hoja-cuerpo { overflow: hidden; }
 .hoja-cab { display: flex; align-items: center; gap: 12px; padding: 8px 20px 12px; flex: none; }
 .hoja-cab h3 { margin: 0 auto 0 0; font-size: 18px; font-weight: 800; letter-spacing: -0.025em; }
 .hoja-cab .cerrar { font-size: 14px; font-weight: 600; color: var(--txt-2); }
@@ -4091,6 +4100,15 @@ function trazarLinea(svg){
 
 // Cerrar una hoja la baja en vez de borrarla de golpe. Se hace aquí, sobre el
 // método de siempre, para que valga en los veintitantos sitios que la cierran.
+// Cada vez que se abre una hoja se le quita el desplazamiento que hubiera
+// dejado un arrastre anterior, o aparecería ya medio bajada.
+const abrirNativo=HTMLDialogElement.prototype.showModal;
+HTMLDialogElement.prototype.showModal=function(...args){
+  const hoja=this.querySelector('.hoja');
+  if (hoja){ hoja.classList.remove('arrastrando'); hoja.style.transform=''; }
+  return abrirNativo.apply(this, args);
+};
+
 const cerrarNativo=HTMLDialogElement.prototype.close;
 HTMLDialogElement.prototype.close=function(...args){
   const hoja=this.querySelector('.hoja');
@@ -4940,6 +4958,70 @@ function pintarFrecuentes(){
          </button>`).join('')}</div>`
     : '';
 }
+
+/* ── Cerrar las hojas arrastrándolas hacia abajo ────────────────────────────
+   Como en cualquier app: se agarra la hoja y se tira. Solo cuenta si el
+   contenido ya está arriba del todo; si no, lo que quieres es leer, no cerrar.
+   Se cierra si bajas más de un tercio de su alto o si el gesto es rápido.   */
+(() => {
+  const MINIMO = 96;            // píxeles para que cuente como "cerrar"
+  let arrastre = null;
+
+  const sePuedeArrastrar = (destino) => {
+    const hoja = destino.closest?.('dialog .hoja');
+    if (!hoja) return null;
+    // Sobre campos y listas horizontales manda el propio elemento
+    if (destino.closest('input, textarea, select, .frecuentes, .tiempos, .rejilla-emoji, .evo-barras')) return null;
+    const cuerpo = destino.closest('.hoja-cuerpo');
+    if (cuerpo && cuerpo.scrollTop > 2) return null;
+    return hoja;
+  };
+
+  document.addEventListener('touchstart', (e) => {
+    const hoja = sePuedeArrastrar(e.target);
+    if (!hoja) return;
+    arrastre = { hoja, y0: e.touches[0].clientY, x0: e.touches[0].clientX, dy: 0, t0: Date.now(), activo: false };
+  }, { passive: true });
+
+  document.addEventListener('touchmove', (e) => {
+    if (!arrastre) return;
+    const dy = e.touches[0].clientY - arrastre.y0;
+    const dx = e.touches[0].clientX - arrastre.x0;
+
+    // Hasta que no está claro que el gesto es vertical, no se secuestra
+    if (!arrastre.activo){
+      if (dy < 6 || Math.abs(dx) > Math.abs(dy)) return;
+      arrastre.activo = true;
+      arrastre.hoja.classList.add('arrastrando');
+    }
+    if (e.cancelable) e.preventDefault();
+
+    arrastre.dy = Math.max(0, dy);
+    // Un poco de resistencia: no persigue al dedo al milímetro
+    arrastre.hoja.style.transform = `translateY(${arrastre.dy * 0.86}px)`;
+  }, { passive: false });
+
+  const soltar = () => {
+    if (!arrastre) return;
+    const { hoja, dy, t0, activo } = arrastre;
+    arrastre = null;
+    hoja.classList.remove('arrastrando');
+    if (!activo) return;
+
+    const rapido = dy > 40 && Date.now() - t0 < 320;
+    const bastante = dy > Math.max(MINIMO, hoja.offsetHeight * 0.28);
+    if (rapido || bastante){
+      hoja.style.transform = '';
+      hoja.closest('dialog')?.close();
+      vibrar(8);
+    } else {
+      hoja.style.transform = '';   // vuelve a su sitio con el muelle del CSS
+    }
+  };
+
+  document.addEventListener('touchend', soltar, { passive: true });
+  document.addEventListener('touchcancel', soltar, { passive: true });
+})();
 
 /* ── Preguntar sin salir del diseño ─────────────────────────────────────────
    confirm() y prompt() los pinta Android a su manera, en su idioma y con su
