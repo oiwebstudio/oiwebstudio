@@ -341,6 +341,14 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
 .descanso .desc-mas { flex: none; font-size: 12.5px; font-weight: 700; padding: 9px 11px; border-radius: 14px; background: rgba(255,255,255,.12); }
 .descanso .desc-saltar { flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-size: 13px; color: rgba(255,255,255,.6); }
 .descanso.acabando b { color: var(--verde); }
+.descanso .desc-icono { flex: none; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-size: 14px; background: rgba(255,255,255,.12); transition: transform .15s var(--muelle), background .18s ease; }
+.descanso .desc-icono:active { transform: scale(.88); }
+.descanso.pausada { opacity: .72; }
+.descanso.pausada .desc-carril i { background: var(--naranja); }
+
+/* Los últimos cinco segundos laten, para verlo de reojo desde la máquina */
+@keyframes pulsoFinal { 0%,100% { transform: scale(1); } 50% { transform: scale(1.09); } }
+.descanso.acabando b { animation: pulsoFinal .5s ease-in-out infinite; }
 
 .ejercicio-cab .descanso-ej { flex: none; font-size: 11px; font-weight: 700; color: var(--txt-2); background: var(--fondo); border-radius: 12px; padding: 4px 9px; }
 .ultima-vez { font-size: 11.5px; color: var(--txt-2); margin: -2px 0 8px; }
@@ -1097,14 +1105,16 @@ dialog::backdrop { animation: fundir .3s ease backwards; }
 
 <!-- Barra del temporizador, visible en toda la app -->
 <div class="descanso flotante oculto" id="descansoFlotante">
-  <button class="desc-mas" data-descanso-menos>−15</button>
+  <button class="desc-mas" data-descanso-menos aria-label="Quitar 15 segundos">−15</button>
   <div class="desc-centro">
     <b class="num" id="descansoTiempoG">1:30</b>
     <span id="descansoQueG">descanso</span>
     <span class="desc-carril"><i id="descansoBarraG"></i></span>
   </div>
-  <button class="desc-mas" data-descanso-mas>+15</button>
-  <button class="desc-saltar" data-descanso-saltar>✕</button>
+  <button class="desc-mas" data-descanso-mas aria-label="Añadir 15 segundos">+15</button>
+  <button class="desc-icono" data-descanso-pausa aria-label="Pausar" id="pausaG">⏸</button>
+  <button class="desc-icono" data-descanso-reiniciar aria-label="Reiniciar">↺</button>
+  <button class="desc-saltar" data-descanso-saltar aria-label="Cerrar">✕</button>
 </div>
 
 <!-- ══ Hoja: temporizador ═══════════════════════════════════════════════ -->
@@ -1606,6 +1616,8 @@ dialog::backdrop { animation: fundir .3s ease backwards; }
         <span class="desc-carril"><i id="descansoBarra"></i></span>
       </div>
       <button class="desc-mas" data-descanso-mas aria-label="Añadir 15 segundos">+15</button>
+      <button class="desc-icono" data-descanso-pausa aria-label="Pausar" id="pausaH">⏸</button>
+      <button class="desc-icono" data-descanso-reiniciar aria-label="Reiniciar">↺</button>
       <button class="desc-saltar" data-descanso-saltar aria-label="Saltar">✕</button>
     </div>
     <div class="hoja-pie" id="dsPie"></div>
@@ -1824,6 +1836,7 @@ const UI = {
   agendaDia: HOY,
   entrenoSub2: 'semana',   // sub-pestaña de Entreno: semana | carga | cuerpo
   subAgenda: 'lista',      // lista | horas
+  horarioColocado: false,
   subDinero: 'resumen',
   rango: 180,              // días que abarca el gráfico de patrimonio; 0 = todo
   gastoCursor: new Date(), // mes que se está mirando en «Gastos»
@@ -2240,6 +2253,13 @@ function pintarHorario(){
     </div>
     ${sinHora.length?`<div class="pie-nota" style="margin-top:10px">
       ${sinHora.length} sin hora: ${sinHora.map(t=>esc(t.titulo)).join(', ')}</div>`:''}`;
+
+  // Si es hoy, la pantalla se coloca sola donde está la vida: la hora actual.
+  if (esHoy && !UI.horarioColocado){
+    UI.horarioColocado=true;
+    const y=caja.offsetTop + (minAhora-HORA_DESDE*60)/60*ALTO_HORA - 160;
+    setTimeout(()=>window.scrollTo({ top:Math.max(0,y), behavior:'smooth' }), 120);
+  }
 }
 
 /** Abre la hoja de tareas: sin id crea, con id edita. */
@@ -3264,7 +3284,8 @@ function ultimaVez(nombre, fechaActual){
 }
 
 /* ── El temporizador de descanso ─────────────────────────────────────────── */
-const DESC = { reloj:null, hasta:0, total:0, avisado:false, arriba:false, etiqueta:'descanso' };
+const DESC = { reloj:null, hasta:0, total:0, avisado:false, arriba:false, etiqueta:'descanso', pausada:0 };
+const CLAVE_TEMPORIZADOR = 'panel:temporizador';
 
 /* Hay dos barras: la de dentro de la hoja de la sesión, que se ve por encima
    de la ventana modal, y la flotante, para el resto de la app. Se pintan las
@@ -3280,8 +3301,10 @@ function empezarDescanso(segundos, etiqueta='descanso'){
   DESC.hasta=Date.now()+segundos*1000;
   DESC.avisado=false;
   DESC.arriba=false;
+  DESC.pausada=0;
   DESC.etiqueta=etiqueta;
   arrancarBarras();
+  guardarTemporizador();
 }
 
 /** Cronómetro hacia arriba: mismo aparato, contando al revés. */
@@ -3290,8 +3313,10 @@ function empezarCronometro(){
   DESC.hasta=Date.now();
   DESC.avisado=true;          // no hay pitido: no acaba nunca solo
   DESC.arriba=true;
+  DESC.pausada=0;
   DESC.etiqueta='cronómetro';
   arrancarBarras();
+  guardarTemporizador();
 }
 
 function arrancarBarras(){
@@ -3328,8 +3353,8 @@ function quitarAvisoTemporizador(){
 function visibleEnHoja(){ return $('#hojaDetalleSesion').open; }
 
 function latirDescanso(){
-  const quedan = DESC.arriba
-    ? (Date.now()-DESC.hasta)/1000
+  const quedan = DESC.pausada ? DESC.pausada
+    : DESC.arriba ? (Date.now()-DESC.hasta)/1000
     : Math.max(0, (DESC.hasta-Date.now())/1000);
   const parte = DESC.arriba ? 1 : (DESC.total ? quedan/DESC.total : 0);
   const enHoja = visibleEnHoja();
@@ -3337,22 +3362,91 @@ function latirDescanso(){
   BARRAS.forEach((x,i)=>{
     const caja=$(x.caja); if (!caja) return;
     caja.classList.toggle('oculto', i===0 ? !enHoja : enHoja);
-    caja.classList.toggle('acabando', !DESC.arriba && quedan<=5);
+    caja.classList.toggle('acabando', !DESC.arriba && !DESC.pausada && quedan<=5 && quedan>0);
     caja.classList.toggle('cronometrando', !!DESC.arriba);
+    caja.classList.toggle('pausada', !!DESC.pausada);
     $(x.t).textContent=deSeg(quedan);
     $(x.b).style.width=`${(Math.min(1,parte)*100).toFixed(1)}%`;
-    $(x.q).textContent = DESC.arriba ? DESC.etiqueta : (quedan?DESC.etiqueta:'¡a por la siguiente!');
+    // Debajo del número: en pausa lo dice, y si no, cuánto era en total
+    $(x.q).textContent = DESC.pausada ? 'en pausa'
+      : DESC.arriba ? DESC.etiqueta
+      : quedan ? `${DESC.etiqueta} de ${deSeg(DESC.total)}`
+      : '¡a por la siguiente!';
   });
 
-  if (!DESC.arriba && quedan<=0 && !DESC.avisado){
+  $('#pausaG').textContent = DESC.pausada ? '▶' : '⏸';
+  $('#pausaH').textContent = DESC.pausada ? '▶' : '⏸';
+
+  if (!DESC.arriba && !DESC.pausada && quedan<=0 && !DESC.avisado){
     DESC.avisado=true;
     sonar();
     setTimeout(pararDescanso, 2500);
   }
 }
 
+/** Pausa y reanuda. Al pausar se guarda lo que quedaba; al seguir, se recoloca
+    el final a partir de ese resto, que es lo que hace que no pierda tiempo.  */
+function alternarPausaDescanso(){
+  if (!DESC.reloj && !DESC.pausada) return;
+  if (DESC.pausada){
+    if (DESC.arriba) DESC.hasta=Date.now()-DESC.pausada*1000;
+    else DESC.hasta=Date.now()+DESC.pausada*1000;
+    DESC.pausada=0;
+    arrancarBarras();
+  } else {
+    DESC.pausada = DESC.arriba
+      ? (Date.now()-DESC.hasta)/1000
+      : Math.max(0,(DESC.hasta-Date.now())/1000);
+    clearInterval(DESC.reloj); DESC.reloj=null;
+    quitarAvisoTemporizador();
+    latirDescanso();
+  }
+  guardarTemporizador();
+  vibrar();
+}
+
+function reiniciarDescanso(){
+  if (DESC.arriba){ DESC.hasta=Date.now(); DESC.pausada=0; }
+  else {
+    if (!DESC.total) return;
+    DESC.hasta=Date.now()+DESC.total*1000;
+    DESC.avisado=false;
+    DESC.pausada=0;
+  }
+  arrancarBarras();
+  guardarTemporizador();
+  vibrar();
+  avisar('Vuelta a empezar');
+}
+
+/* El temporizador sobrevive a cerrar la app: se guarda cuándo acaba y al
+   volver se recoloca. Si ya había pasado la hora, ni se enseña.            */
+function guardarTemporizador(){
+  try {
+    if (!DESC.reloj && !DESC.pausada) localStorage.removeItem(CLAVE_TEMPORIZADOR);
+    else localStorage.setItem(CLAVE_TEMPORIZADOR, JSON.stringify({
+      hasta:DESC.hasta, total:DESC.total, arriba:DESC.arriba,
+      etiqueta:DESC.etiqueta, pausada:DESC.pausada,
+    }));
+  } catch {}
+}
+
+function recuperarTemporizador(){
+  try {
+    const crudo=localStorage.getItem(CLAVE_TEMPORIZADOR);
+    if (!crudo) return;
+    const t=JSON.parse(crudo);
+    Object.assign(DESC, t);
+    const quedan = t.pausada || (t.arriba ? 1 : (t.hasta-Date.now())/1000);
+    if (quedan<=0){ localStorage.removeItem(CLAVE_TEMPORIZADOR); return; }
+    if (t.pausada) latirDescanso(); else arrancarBarras();
+  } catch {}
+}
+
 function pararDescanso(){
   clearInterval(DESC.reloj); DESC.reloj=null;
+  DESC.pausada=0;
+  guardarTemporizador();
   quitarAvisoTemporizador();
   BARRAS.forEach(x=>{
     const caja=$(x.caja); if (!caja) return;
@@ -3368,6 +3462,7 @@ function moverDescanso(segundos){
   DESC.avisado=false;
   latirDescanso();
   avisoDelTemporizador();   // la notificación se mueve con él
+  guardarTemporizador();
 }
 
 /** Los ejercicios que ya has hecho alguna vez, para sugerirlos al escribir. */
@@ -5334,6 +5429,7 @@ $('#btnNuevaTarea').addEventListener('click',()=>abrirTarea(null));
 $('#segAgenda').addEventListener('click', e=>{
   const b=e.target.closest('[data-sub-agenda]'); if (!b) return;
   UI.subAgenda=b.dataset.subAgenda;
+  UI.horarioColocado=false;
   $$('#segAgenda button').forEach(x=>x.setAttribute('aria-selected',String(x===b)));
   pintarAgenda();
 });
@@ -5753,6 +5849,7 @@ document.addEventListener('click', async e=>{
     const marcada=!ej.series[si].hecha;
     ej.series[si].hecha=marcada;
     guardar(); vibrar(); pintarDetalleSesion();
+    if (marcada) document.querySelector(`[data-check-serie="${ei}|${si}"]`)?.closest('.serie')?.classList.add('hecho-ahora');
     // Marcar una serie arranca el descanso solo; desmarcarla lo corta.
     if (marcada) empezarDescanso(aNum(ej.descanso ?? DESCANSO_POR_DEFECTO));
     else pararDescanso();
@@ -5780,6 +5877,8 @@ document.addEventListener('click', async e=>{
     vibrar(); return;
   }
 
+  if (e.target.closest('[data-descanso-pausa]')){ alternarPausaDescanso(); return; }
+  if (e.target.closest('[data-descanso-reiniciar]')){ reiniciarDescanso(); return; }
   if (e.target.closest('[data-descanso-mas]')){ moverDescanso(15); return; }
   if (e.target.closest('[data-descanso-menos]')){ moverDescanso(-15); return; }
   if (e.target.closest('[data-descanso-saltar]')){ pararDescanso(); return; }
@@ -6088,6 +6187,7 @@ reanimar($('.vista[data-vista="home"]'), 'entrando');
 
 mejorarSelects();
 aplicarTema();
+recuperarTemporizador();
 $$('#segTema button').forEach(x=>x.setAttribute('aria-selected', String(x.dataset.tema===E.tema)));
 refrescarCategorias();
 refrescarCategoriasFijo();
