@@ -1,0 +1,365 @@
+{
+  "name": "OI · Chat de la web que responde con tus FAQ",
+  "nodes": [
+    {
+      "name": "Chat de la web",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "chat",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "webhookId": "oi-0015",
+      "id": "oi-0096",
+      "position": [
+        260,
+        220
+      ]
+    },
+    {
+      "name": "FAQ del negocio",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "parameters": {
+        "operation": "read",
+        "documentId": {
+          "__rl": true,
+          "value": "ID_DE_TU_HOJA",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list"
+        },
+        "options": {}
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "",
+          "name": "Google Sheets (gratis)"
+        }
+      },
+      "id": "oi-0097",
+      "position": [
+        500,
+        220
+      ]
+    },
+    {
+      "name": "Montar contexto",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "jsCode": "const pregunta = ($('Chat de la web').first().json.body ?? {}).pregunta ?? '';\nconst faq = items.map(i => `P: ${i.json.pregunta}\\nR: ${i.json.respuesta}`).join('\\n\\n');\nreturn [{ json: { pregunta, faq } }];"
+      },
+      "id": "oi-0098",
+      "position": [
+        740,
+        220
+      ]
+    },
+    {
+      "name": "Responder con la IA local",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "parameters": {
+        "url": "http://localhost:11434/api/generate",
+        "options": {},
+        "method": "POST",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"model\": \"llama3.1:8b\",\n  \"stream\": false,\n  \"prompt\": \"={{ `Respondé en español, en dos frases como mucho, usando SOLO esta información. Si la respuesta no está, contestá exactamente NO_LO_SE.\\\\n\\\\n{{ $json.faq }}\\\\n\\\\nPregunta del visitante: {{ $json.pregunta }}` }}\"\n}"
+      },
+      "id": "oi-0099",
+      "position": [
+        980,
+        220
+      ]
+    },
+    {
+      "name": "¿Supo responder?",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "jsCode": "const texto = ($json.response ?? '').trim();\nconst sabe = !/NO_LO_SE/i.test(texto) && texto.length > 3;\nreturn [{ json: { sabe, texto, pregunta: $('Montar contexto').first().json.pregunta } }];"
+      },
+      "id": "oi-0100",
+      "position": [
+        1220,
+        220
+      ]
+    },
+    {
+      "name": "¿Tiene respuesta?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "oi-0016",
+              "leftValue": "={{ $json.sabe }}",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "oi-0101",
+      "position": [
+        260,
+        420
+      ]
+    },
+    {
+      "name": "Respuesta directa",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "parameters": {
+        "mode": "manual",
+        "assignments": {
+          "assignments": [
+            {
+              "id": "oi-0017",
+              "name": "respuesta",
+              "value": "={{ $json.texto }}",
+              "type": "string"
+            },
+            {
+              "id": "oi-0018",
+              "name": "derivado",
+              "value": "false",
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "oi-0102",
+      "position": [
+        500,
+        420
+      ]
+    },
+    {
+      "name": "Derivar al negocio",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "parameters": {
+        "fromEmail": "hola@oistudio.eus",
+        "toEmail": "info@negocio-cliente.eus",
+        "subject": "=Pregunta del chat sin responder",
+        "emailFormat": "html",
+        "html": "=<p>Un visitante preguntó en el chat y el asistente no supo contestar:</p><blockquote>{{ $json.pregunta }}</blockquote><p>Conviene añadirla a la hoja de FAQ.</p>",
+        "options": {}
+      },
+      "credentials": {
+        "smtp": {
+          "id": "",
+          "name": "Gmail SMTP (gratis)"
+        }
+      },
+      "id": "oi-0103",
+      "position": [
+        740,
+        420
+      ]
+    },
+    {
+      "name": "Respuesta de espera",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "parameters": {
+        "mode": "manual",
+        "assignments": {
+          "assignments": [
+            {
+              "id": "oi-0019",
+              "name": "respuesta",
+              "value": "Esa no la tengo a mano. Dejame tu email y te contesta una persona hoy mismo.",
+              "type": "string"
+            },
+            {
+              "id": "oi-0020",
+              "name": "derivado",
+              "value": "true",
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "oi-0104",
+      "position": [
+        980,
+        420
+      ]
+    },
+    {
+      "name": "Devolver al chat",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "id": "oi-0105",
+      "position": [
+        1220,
+        420
+      ]
+    },
+    {
+      "id": "oi-0106",
+      "name": "Ficha",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -140,
+        180
+      ],
+      "parameters": {
+        "width": 360,
+        "height": 320,
+        "color": 4,
+        "content": "## 💬 Chat de la web que responde con tus FAQ\n**auto-chat-faq**\n\nResponde las preguntas frecuentes con la IA local usando sólo la hoja de FAQ del cliente, y cuando no sabe, deriva a una persona.\n\n**Disparador:** Webhook (el chat de la web)\n\n**Coste: 0 €** — n8n autoalojado · Ollama en local · Google Sheets · Gmail SMTP\n\n- Recibe la pregunta desde el widget de chat\n- Carga las FAQ del negocio desde una hoja\n- Ollama responde usando sólo ese contexto, o admite que no sabe\n- Si no sabe, avisa por correo al negocio y le dice al visitante que le contestarán"
+      }
+    }
+  ],
+  "connections": {
+    "Chat de la web": {
+      "main": [
+        [
+          {
+            "node": "FAQ del negocio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FAQ del negocio": {
+      "main": [
+        [
+          {
+            "node": "Montar contexto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Montar contexto": {
+      "main": [
+        [
+          {
+            "node": "Responder con la IA local",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Responder con la IA local": {
+      "main": [
+        [
+          {
+            "node": "¿Supo responder?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "¿Supo responder?": {
+      "main": [
+        [
+          {
+            "node": "¿Tiene respuesta?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "¿Tiene respuesta?": {
+      "main": [
+        [
+          {
+            "node": "Respuesta directa",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Derivar al negocio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Derivar al negocio": {
+      "main": [
+        [
+          {
+            "node": "Respuesta de espera",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respuesta directa": {
+      "main": [
+        [
+          {
+            "node": "Devolver al chat",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respuesta de espera": {
+      "main": [
+        [
+          {
+            "node": "Devolver al chat",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true
+  },
+  "tags": [
+    {
+      "name": "OI Studio"
+    },
+    {
+      "name": "coste 0"
+    }
+  ],
+  "meta": {
+    "instanceId": "oi-studio-biblioteca"
+  }
+}

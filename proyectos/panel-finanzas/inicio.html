@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Inicio">
+<title>Inicio — Mi panel</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="iconos/icono-180.png">
+<link rel="icon" href="iconos/icono-192.png">
+<style>
+/* ═══════════════════════════════════════════════════════════════════════════
+   INICIO · mosaico bento. Cada baldosa resume algo y lleva a su sección.
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root {
+  color-scheme: dark;
+
+  --fondo: #000000;
+  --cristal: rgba(28, 28, 30, 0.75);
+  --borde: 1px solid rgba(255, 255, 255, 0.12);
+  --borde-tenue: 1px solid rgba(255, 255, 255, 0.07);
+
+  --txt: #ffffff;
+  --txt-2: rgba(235, 235, 245, 0.6);
+  --txt-3: rgba(235, 235, 245, 0.3);
+  --gris: #8e8e93;
+
+  --verde: #30d158;
+  --rosa: #ff375f;
+  --naranja: #ff9f0a;
+  --azul: #0a84ff;
+  --purpura: #bf5af2;
+
+  --pastel: linear-gradient(115deg, #e9e7a6 0%, #cfe4cb 42%, #ccd6ea 78%, #d9d2e6 100%);
+
+  --r: 22px;
+  --r-s: 16px;
+  --hueco: 14px;
+
+  --sf: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text',
+        'Segoe UI Variable Display', 'Segoe UI', Inter, Roboto, system-ui, sans-serif;
+
+  --muelle: cubic-bezier(.32, .72, 0, 1);
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html { min-height: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--fondo);
+  color: var(--txt);
+  font-family: var(--sf);
+  font-size: 15px;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: max(48px, env(safe-area-inset-bottom));
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(640px 420px at 6% -6%, rgba(255, 159, 10, 0.13), transparent 70%),
+    radial-gradient(560px 380px at 98% 2%, rgba(10, 132, 255, 0.15), transparent 70%),
+    radial-gradient(700px 460px at 50% 108%, rgba(48, 209, 88, 0.10), transparent 70%);
+}
+
+.envoltura { position: relative; z-index: 1; max-width: 1220px; margin: 0 auto; padding: 0 20px; }
+
+.num { font-variant-numeric: tabular-nums; font-feature-settings: 'tnum' 1; }
+.oculto { display: none !important; }
+
+/* ── Navegación común ───────────────────────────────────────────────────── */
+.app-nav {
+  position: sticky; top: 0; z-index: 40;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  border-bottom: var(--borde-tenue);
+  padding-top: env(safe-area-inset-top);
+}
+
+.app-nav-fila {
+  max-width: 1220px; margin: 0 auto;
+  padding: 9px 20px;
+  display: flex; align-items: center; gap: 5px;
+  overflow-x: auto; scrollbar-width: none;
+}
+
+.app-nav-fila::-webkit-scrollbar { display: none; }
+
+.app-marca { display: grid; place-items: center; width: 28px; height: 28px; color: var(--naranja); margin-right: 7px; flex: none; }
+.app-marca svg { width: 20px; height: 20px; fill: none; }
+
+.app-nav a {
+  padding: 6px 13px; border-radius: 20px;
+  font-size: 13.5px; font-weight: 500;
+  color: var(--txt-2); text-decoration: none; white-space: nowrap;
+  transition: background .18s ease, color .18s ease;
+}
+
+.app-nav a:hover { background: rgba(255, 255, 255, 0.07); color: var(--txt); }
+.app-nav a[aria-current='page'] { background: rgba(255, 255, 255, 0.12); color: var(--txt); font-weight: 600; }
+
+.app-nav-estado { margin-left: auto; font-size: 11.5px; color: var(--txt-3); white-space: nowrap; padding-left: 12px; }
+
+@media (max-width: 560px) { .app-nav-estado { display: none; } }
+
+/* ── Cabecera ───────────────────────────────────────────────────────────── */
+.cabecera { padding: 30px 0 20px; display: flex; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
+.cabecera div { min-width: 0; margin-right: auto; }
+.cabecera small { display: block; font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--naranja); }
+.cabecera h1 { margin: 2px 0 0; font-size: 34px; font-weight: 700; letter-spacing: -0.038em; line-height: 1.08; }
+.cabecera p { margin: 4px 0 0; font-size: 14px; color: var(--txt-2); }
+
+/* Filtros píldora, como en la referencia */
+.pastillas { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+
+.pastilla {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 16px 8px 9px;
+  border-radius: 22px;
+  border: var(--borde-tenue);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--txt-2);
+  font: inherit; font-size: 13.5px; font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease, transform .16s var(--muelle);
+}
+
+.pastilla:hover { background: rgba(255, 255, 255, 0.1); color: var(--txt); }
+.pastilla:active { transform: scale(.96); }
+.pastilla.viva { background: #fff; color: #111; font-weight: 600; }
+
+.cuenta {
+  width: 23px; height: 23px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 11.5px; font-weight: 700;
+  background: color-mix(in srgb, var(--purpura) 40%, transparent);
+  color: #fff;
+}
+
+.pastilla.viva .cuenta { background: #d9d2e6; color: #3a2b52; }
+
+/* ── Mosaico bento ──────────────────────────────────────────────────────── */
+.bento {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--hueco);
+  align-items: stretch;
+}
+
+.baldosa {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r);
+  border: var(--borde);
+  background: var(--cristal);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: inherit;
+  text-decoration: none;
+  min-width: 0;
+  transition: transform .22s var(--muelle), border-color .22s ease;
+}
+
+a.baldosa:hover { transform: translateY(-3px); border-color: rgba(255, 255, 255, 0.24); }
+a.baldosa:active { transform: scale(.985); }
+
+.baldosa:focus-visible { outline: 2px solid var(--azul); outline-offset: 3px; }
+
+/* Trama de puntos: el guiño a los mockups sin recargar la vista. */
+.baldosa.tramada::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px);
+  background-size: 9px 9px;
+  opacity: .5;
+  pointer-events: none;
+  mask-image: linear-gradient(200deg, #000 10%, transparent 65%);
+  -webkit-mask-image: linear-gradient(200deg, #000 10%, transparent 65%);
+}
+
+/* Tamaños del mosaico */
+.ancha { grid-column: span 2; }
+.alta { grid-row: span 2; }
+
+/* Baldosa protagonista con degradado pastel */
+.baldosa.pastel { background: var(--pastel); color: #17171a; border-color: rgba(255, 255, 255, 0.35); }
+.baldosa.pastel .etq, .baldosa.pastel .pie { color: rgba(23, 23, 26, 0.62); }
+
+/* Baldosas de color plano por módulo */
+.baldosa.verde { background: linear-gradient(160deg, rgba(48, 209, 88, 0.28), rgba(28, 28, 30, 0.85) 68%); }
+.baldosa.azul { background: linear-gradient(160deg, rgba(10, 132, 255, 0.3), rgba(28, 28, 30, 0.85) 68%); }
+.baldosa.naranja { background: linear-gradient(160deg, rgba(255, 159, 10, 0.28), rgba(28, 28, 30, 0.85) 68%); }
+.baldosa.purpura { background: linear-gradient(160deg, rgba(191, 90, 242, 0.28), rgba(28, 28, 30, 0.85) 68%); }
+.baldosa.rosa { background: linear-gradient(160deg, rgba(255, 55, 95, 0.26), rgba(28, 28, 30, 0.85) 68%); }
+
+.etq {
+  font-size: 11.5px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--txt-3);
+}
+
+.cifra { font-size: 34px; font-weight: 700; letter-spacing: -0.04em; line-height: 1.05; }
+.cifra.chica { font-size: 26px; }
+.pie { font-size: 12.5px; color: var(--txt-3); margin-top: auto; }
+
+.pos { color: var(--verde); }
+.neg { color: var(--rosa); }
+
+/* Título en rejilla de puntos, como los mockups */
+.matriz {
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.25;
+  background-image: radial-gradient(currentColor 42%, transparent 43%);
+  background-size: 3px 3px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Barra fina reutilizable */
+.carril { height: 8px; border-radius: 5px; background: rgba(120, 120, 128, 0.28); overflow: hidden; }
+.relleno { display: block; height: 100%; border-radius: 5px; background: var(--pastel); transition: width .7s var(--muelle); }
+.relleno.v { background: linear-gradient(90deg, #1f8f3e, var(--verde)); }
+.relleno.p { background: linear-gradient(90deg, #7b34a8, var(--purpura)); }
+.baldosa.pastel .carril { background: rgba(23, 23, 26, 0.18); }
+.baldosa.pastel .relleno { background: #17171a; }
+
+/* Lista compacta dentro de una baldosa */
+.mini-lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 11px; }
+.mini-fila { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; font-size: 13.5px; }
+.mini-fila span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mini-fila b { font-weight: 600; }
+
+/* Hábitos de hoy dentro del bento */
+.habitos-hoy { display: grid; gap: 8px; }
+
+.habito {
+  display: flex; align-items: center; gap: 11px;
+  padding: 9px 11px;
+  border-radius: 13px;
+  border: var(--borde-tenue);
+  background: rgba(255, 255, 255, 0.05);
+  font: inherit; font-size: 14px;
+  color: var(--txt);
+  text-align: left;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease, transform .16s var(--muelle);
+}
+
+.habito:hover { background: rgba(255, 255, 255, 0.09); }
+.habito:active { transform: scale(.98); }
+.habito[aria-pressed='true'] { background: rgba(48, 209, 88, 0.14); border-color: rgba(48, 209, 88, 0.35); }
+
+.habito .emoji { font-size: 16px; flex: none; }
+.habito .nombre { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.check {
+  width: 22px; height: 22px; flex: none;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.28);
+  display: grid; place-items: center;
+  transition: background .22s var(--muelle), border-color .22s ease;
+}
+
+.check svg { width: 12px; height: 12px; stroke: #fff; stroke-width: 3.4; fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 22; stroke-dashoffset: 22; transition: stroke-dashoffset .3s var(--muelle); }
+.habito[aria-pressed='true'] .check { background: var(--verde); border-color: var(--verde); }
+.habito[aria-pressed='true'] .check svg { stroke-dashoffset: 0; }
+
+/* Anillo de progreso */
+.anillo {
+  --pc: 0;
+  width: 84px; height: 84px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  background: conic-gradient(currentColor calc(var(--pc) * 1%), rgba(120, 120, 128, 0.26) 0);
+  margin: 2px auto 0;
+  position: relative;
+}
+
+.anillo::before { content: ''; position: absolute; width: 66px; height: 66px; border-radius: 50%; background: #131316; }
+.anillo b { position: relative; font-size: 19px; font-weight: 700; letter-spacing: -0.03em; color: var(--txt); }
+
+.vacio { font-size: 13px; color: var(--txt-3); line-height: 1.5; }
+
+.aviso {
+  margin: 0 0 18px;
+  padding: 13px 16px;
+  border-radius: var(--r-s);
+  background: rgba(255, 159, 10, 0.14);
+  border: 1px solid rgba(255, 159, 10, 0.3);
+  font-size: 13px;
+  color: rgba(255, 214, 160, 0.95);
+}
+
+.pie-nota { padding: 26px 4px 0; font-size: 12px; color: var(--txt-3); line-height: 1.6; }
+
+.brindis {
+  position: fixed; left: 50%; bottom: max(24px, env(safe-area-inset-bottom));
+  transform: translate(-50%, 14px); z-index: 60;
+  padding: 11px 20px; border-radius: 22px;
+  background: rgba(44, 44, 46, 0.94);
+  backdrop-filter: blur(20px);
+  border: var(--borde);
+  font-size: 14px; font-weight: 500;
+  opacity: 0; pointer-events: none;
+  transition: opacity .2s ease, transform .3s var(--muelle);
+}
+
+.brindis.visible { opacity: 1; transform: translate(-50%, 0); }
+
+@keyframes surgir { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+.anima { animation: surgir .5s var(--muelle) backwards; }
+
+@media (prefers-reduced-motion: reduce) { * { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 980px) {
+  .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .alta { grid-row: auto; }
+}
+
+@media (max-width: 560px) {
+  .envoltura { padding: 0 14px; }
+  .cabecera { padding: 22px 0 16px; }
+  .cabecera h1 { font-size: 28px; }
+  .bento { grid-template-columns: 1fr; }
+  .ancha { grid-column: auto; }
+  .cifra { font-size: 30px; }
+  .matriz { font-size: 18px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="app-nav" aria-label="Secciones">
+  <div class="app-nav-fila">
+    <span class="app-marca" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="currentColor"/><g stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></g></svg>
+    </span>
+    <a href="inicio.html" aria-current="page">Inicio</a>
+    <a href="index.html">Finanzas</a>
+    <a href="habitos.html">Hábitos</a>
+    <a href="index.html#objetivos">Objetivos</a>
+    <a href="index.html#calendario">Calendario</a>
+    <span class="app-nav-estado" id="estado">…</span>
+  </div>
+</nav>
+
+<main class="envoltura">
+
+  <header class="cabecera anima">
+    <div>
+      <small id="etqDia">Tu día</small>
+      <h1 id="saludo">Hola</h1>
+      <p id="fecha"></p>
+    </div>
+  </header>
+
+  <p class="aviso oculto" id="aviso"></p>
+
+  <div class="pastillas anima" style="animation-delay:.04s">
+    <a class="pastilla viva" href="index.html"><span class="cuenta num" id="cuentaMov">0</span>Movimientos</a>
+    <a class="pastilla" href="index.html#objetivos"><span class="cuenta num" id="cuentaObj">0</span>Objetivos</a>
+    <a class="pastilla" href="habitos.html"><span class="cuenta num" id="cuentaHab">0</span>Hábitos hoy</a>
+    <a class="pastilla" href="index.html#calendario">Calendario</a>
+    <a class="pastilla" href="dashboard.html">Resumen</a>
+  </div>
+
+  <section class="bento" id="bento"></section>
+
+  <p class="pie-nota" id="pieNota"></p>
+</main>
+
+<div class="brindis" id="brindis" role="status" aria-live="polite"></div>
+
+<script src="vendor/xlsx.full.min.js"></script>
+<script>
+(() => {
+  'use strict';
+
+  const $ = (s) => document.querySelector(s);
+  const RUTA = 'datos/Finanzas.xlsx';
+
+  const eur0 = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0, useGrouping: 'always' });
+  const eur2 = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: 'always' });
+  const pctF = new Intl.NumberFormat('es-ES', { style: 'percent', maximumFractionDigits: 0 });
+  const numF = new Intl.NumberFormat('es-ES', { maximumFractionDigits: 1 });
+
+  const euro = (n) => eur0.format(n || 0);
+  const euroDec = (n) => eur2.format(n || 0);
+  const pct = (n) => pctF.format(Number.isFinite(n) ? n : 0);
+  const escapar = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const normalizar = (s) => String(s ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim().toLowerCase();
+
+  const dosDig = (n) => String(n).padStart(2, '0');
+  const claveDe = (d) => `${d.getFullYear()}-${dosDig(d.getMonth() + 1)}-${dosDig(d.getDate())}`;
+
+  const HABITOS = [
+    { id: 'gym', emoji: '🏋️', nombre: 'Gimnasio' },
+    { id: 'lectura', emoji: '📚', nombre: 'Lectura' },
+    { id: 'negocio', emoji: '💻', nombre: 'Proyecto' },
+    { id: 'carrera', emoji: '🏃', nombre: 'Deporte' },
+  ];
+
+  const HOY = claveDe(new Date());
+
+  const datos = { negocio: [], personal: [], objetivos: [], habitos: {} };
+
+  // ── Lectura del Excel ────────────────────────────────────────────────────
+  function aNumero(v) {
+    if (typeof v === 'number') return Number.isFinite(v) ? v : 0;
+    let s = String(v ?? '').replace(/[^\d,.-]/g, '');
+    if (!s) return 0;
+    const coma = s.lastIndexOf(','), punto = s.lastIndexOf('.');
+    if (coma > -1 && punto > -1) {
+      const dec = coma > punto ? ',' : '.';
+      s = s.split(dec === ',' ? '.' : ',').join('').replace(dec, '.');
+    } else if (coma > -1) s = s.replace(',', '.');
+    const n = parseFloat(s);
+    return Number.isFinite(n) ? n : 0;
+  }
+
+  function aFecha(v) {
+    if (v instanceof Date && !isNaN(v)) return v;
+    if (typeof v === 'number') { const d = XLSX.SSF.parse_date_code(v); return d ? new Date(d.y, d.m - 1, d.d) : null; }
+    if (typeof v === 'string') {
+      const m = v.match(/^(\d{1,2})[/-](\d{1,2})[/-](\d{2,4})$/);
+      if (m) return new Date(+(m[3].length === 2 ? '20' + m[3] : m[3]), +m[2] - 1, +m[1]);
+      const d = new Date(v);
+      if (!isNaN(d)) return d;
+    }
+    return null;
+  }
+
+  const matriz = (libro, nombre) => {
+    const real = libro.SheetNames.find((n) => normalizar(n) === normalizar(nombre));
+    return real ? XLSX.utils.sheet_to_json(libro.Sheets[real], { header: 1, raw: true, cellDates: true, defval: null }) : [];
+  };
+
+  function leerLibro(libro) {
+    datos.negocio = matriz(libro, 'Movimientos').slice(1).map((c) => {
+      const fecha = aFecha(c[0]), base = aNumero(c[5]);
+      return fecha && base ? { fecha, anio: fecha.getFullYear(), mes: fecha.getMonth(), tipo: normalizar(c[1]).startsWith('ing') ? 'Ingreso' : 'Gasto', concepto: String(c[2] ?? '').trim(), base } : null;
+    }).filter(Boolean);
+
+    datos.personal = matriz(libro, 'Personal').slice(1).map((c) => {
+      const fecha = aFecha(c[0]), base = aNumero(c[4]);
+      return fecha && base ? { fecha, anio: fecha.getFullYear(), mes: fecha.getMonth(), tipo: normalizar(c[1]).startsWith('ing') ? 'Ingreso' : 'Gasto', concepto: String(c[2] ?? '').trim(), categoria: String(c[3] ?? '').trim(), base, recurrente: normalizar(c[6]).startsWith('s') } : null;
+    }).filter(Boolean);
+
+    datos.objetivos = matriz(libro, 'Objetivos').slice(1).map((c) => {
+      const nombre = String(c[0] ?? '').trim(), meta = aNumero(c[4]);
+      if (!nombre || meta <= 0) return null;
+      const progreso = aNumero(c[5]);
+      return { nombre, area: String(c[1] ?? '').trim(), plazo: String(c[2] ?? '').trim(), tipo: String(c[3] ?? '').trim(), meta, progreso, unidad: String(c[6] ?? '').trim() || '€', limite: aFecha(c[8]), estado: String(c[9] ?? '').trim() || 'Activo', avance: Math.min(1, progreso / meta) };
+    }).filter(Boolean);
+  }
+
+  // ── Aviso flotante ───────────────────────────────────────────────────────
+  let reloj;
+  function avisar(t) {
+    const el = $('#brindis');
+    el.textContent = t;
+    el.classList.add('visible');
+    clearTimeout(reloj);
+    reloj = setTimeout(() => el.classList.remove('visible'), 2400);
+  }
+
+  // ── Mosaico ──────────────────────────────────────────────────────────────
+  const suma = (l) => l.reduce((a, m) => a + m.base, 0);
+  const delMes = (l, a, m) => l.filter((x) => x.anio === a && x.mes === m);
+
+  function pintar() {
+    const ahora = new Date();
+    const anio = ahora.getFullYear(), mes = ahora.getMonth();
+    const hora = ahora.getHours();
+
+    $('#saludo').textContent = hora < 6 ? 'Buenas noches' : hora < 14 ? 'Buenos días' : hora < 21 ? 'Buenas tardes' : 'Buenas noches';
+    $('#fecha').textContent = ahora.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+
+    // Métricas
+    const cajaNegocio = suma(datos.negocio.filter((m) => m.tipo === 'Ingreso')) - suma(datos.negocio.filter((m) => m.tipo === 'Gasto'));
+    const negMes = delMes(datos.negocio, anio, mes);
+    const netoMes = suma(negMes.filter((m) => m.tipo === 'Ingreso')) - suma(negMes.filter((m) => m.tipo === 'Gasto'));
+
+    const perMes = delMes(datos.personal, anio, mes);
+    const ingPer = suma(perMes.filter((m) => m.tipo === 'Ingreso'));
+    const gasPer = suma(perMes.filter((m) => m.tipo === 'Gasto'));
+    const tasa = ingPer ? (ingPer - gasPer) / ingPer : null;
+
+    const fijos = datos.personal.filter((m) => m.tipo === 'Gasto' && m.recurrente && m.anio === anio && m.mes === mes);
+
+    const activos = datos.objetivos.filter((o) => o.estado === 'Activo');
+    const avanceMedio = activos.length ? activos.reduce((a, o) => a + o.avance, 0) / activos.length : 0;
+
+    const hechosHoy = datos.habitos[HOY] || [];
+
+    // Pastillas
+    $('#cuentaMov').textContent = datos.negocio.length + datos.personal.length;
+    $('#cuentaObj').textContent = activos.length;
+    $('#cuentaHab').textContent = `${hechosHoy.length}/${HABITOS.length}`;
+
+    // Objetivos más urgentes
+    const urgentes = [...activos].sort((a, b) => (!a.limite ? 1 : !b.limite ? -1 : a.limite - b.limite)).slice(0, 3);
+
+    const valorObj = (o) => (o.unidad === '€' ? euroDec(o.progreso) : `${numF.format(o.progreso)} ${o.unidad}`);
+
+    // ── Baldosas ──
+    $('#bento').innerHTML = `
+      <a class="baldosa pastel ancha alta tramada anima" href="dashboard.html" style="animation-delay:.06s">
+        <span class="etq">Caja del emprendimiento</span>
+        <span class="cifra num">${euro(cajaNegocio)}</span>
+        <div class="matriz">Tu<br>negocio</div>
+        <span class="pie">${netoMes >= 0 ? '+' : ''}${euroDec(netoMes)} este mes · ${datos.negocio.length} movimiento(s)</span>
+      </a>
+
+      <a class="baldosa azul anima" href="index.html#personal" style="animation-delay:.1s">
+        <span class="etq">Tasa de ahorro</span>
+        <span class="cifra num ${tasa === null ? '' : tasa >= 0 ? 'pos' : 'neg'}">${tasa === null ? '—' : pct(tasa)}</span>
+        <span class="pie">${tasa === null ? 'sin ingresos personales' : `${euroDec(gasPer)} gastados en casa`}</span>
+      </a>
+
+      <a class="baldosa rosa anima" href="index.html#personal" style="animation-delay:.14s">
+        <span class="etq">Gasto fijo del mes</span>
+        <span class="cifra chica num">${euro(suma(fijos))}</span>
+        <span class="pie">${fijos.length ? `${fijos.length} recurrente(s) · ${euro(suma(fijos) * 12)}/año` : 'nada marcado como fijo'}</span>
+      </a>
+
+      <div class="baldosa naranja alta anima" style="animation-delay:.18s">
+        <span class="etq">Hábitos de hoy</span>
+        <div class="habitos-hoy" id="habitosHoy"></div>
+        <span class="pie"><a href="habitos.html" style="color:var(--naranja);text-decoration:none">Ver el calendario ›</a></span>
+      </div>
+
+      <a class="baldosa purpura ancha anima" href="index.html#objetivos" style="animation-delay:.22s">
+        <span class="etq">Objetivos en marcha</span>
+        ${
+          urgentes.length
+            ? `<ul class="mini-lista">${urgentes
+                .map((o) => `<li>
+                    <div class="mini-fila"><span>${escapar(o.nombre)}</span><b class="num">${pct(o.avance)}</b></div>
+                    <div class="carril" style="margin-top:5px"><span class="relleno p" style="width:${(o.avance * 100).toFixed(1)}%"></span></div>
+                    <div class="mini-fila" style="margin-top:4px;font-size:11.5px;color:var(--txt-3)"><span>${escapar(o.plazo)}</span><span>${valorObj(o)} de ${o.unidad === '€' ? euroDec(o.meta) : numF.format(o.meta) + ' ' + o.unidad}</span></div>
+                  </li>`)
+                .join('')}</ul>`
+            : '<p class="vacio">Todavía no hay objetivos. Créalos en la sección Objetivos: para hoy, para el mes o para el año.</p>'
+        }
+        <span class="pie">${activos.length} activo(s) · avance medio ${pct(avanceMedio)}</span>
+      </a>
+
+      <a class="baldosa verde anima" href="index.html#calendario" style="animation-delay:.26s">
+        <span class="etq">Calendario</span>
+        <div class="anillo" style="color: var(--verde); --pc: ${(avanceMedio * 100).toFixed(0)}"><b class="num">${pct(avanceMedio)}</b></div>
+        <span class="pie">Mes a mes, con lo que entra, lo que sale y lo que vence</span>
+      </a>
+    `;
+
+    pintarHabitos();
+
+    const faltan = [];
+    if (!datos.personal.length) faltan.push('gastos personales');
+    if (!activos.length) faltan.push('objetivos');
+    if (!Object.keys(datos.habitos).length) faltan.push('hábitos');
+
+    if (faltan.length) {
+      $('#aviso').classList.remove('oculto');
+      $('#aviso').innerHTML = `Todo sale de tu Excel, sin estimaciones. Faltan datos de <b>${faltan.join('</b>, <b>')}</b>.`;
+    } else {
+      $('#aviso').classList.add('oculto');
+    }
+
+    $('#pieNota').innerHTML =
+      `${datos.negocio.length} movimientos de negocio · ${datos.personal.length} personales · ${datos.objetivos.length} objetivos · ` +
+      `${Object.keys(datos.habitos).length} día(s) de hábitos. Todo vive en <code>${RUTA}</code>.`;
+  }
+
+  function pintarHabitos() {
+    const hechos = datos.habitos[HOY] || [];
+    $('#habitosHoy').innerHTML = HABITOS.map((h) => `
+      <button class="habito" data-habito="${h.id}" aria-pressed="${hechos.includes(h.id)}">
+        <span class="emoji" aria-hidden="true">${h.emoji}</span>
+        <span class="nombre">${h.nombre}</span>
+        <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
+      </button>`).join('');
+  }
+
+  // Marcar hábitos desde el propio inicio, escribiendo en el Excel.
+  document.addEventListener('click', async (e) => {
+    const boton = e.target.closest('.habito');
+    if (!boton) return;
+
+    const id = boton.dataset.habito;
+    const hechos = new Set(datos.habitos[HOY] || []);
+    hechos.has(id) ? hechos.delete(id) : hechos.add(id);
+
+    const lista = [...hechos];
+    if (lista.length) datos.habitos[HOY] = lista;
+    else delete datos.habitos[HOY];
+
+    pintar();
+
+    try {
+      const r = await fetch('/api/habitos', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ fecha: HOY, hechos: lista }),
+      });
+      if (!r.ok) throw new Error((await r.json()).error);
+      if (lista.length === HABITOS.length) avisar('¡Día completo!');
+    } catch (err) {
+      avisar(err.message || 'No he podido guardar en el Excel');
+    }
+  });
+
+  // ── Arranque ─────────────────────────────────────────────────────────────
+  (async () => {
+    try {
+      const r = await fetch(RUTA, { cache: 'no-store' });
+      if (!r.ok) throw new Error('no encontrado');
+      leerLibro(XLSX.read(await r.arrayBuffer(), { type: 'array', cellDates: true }));
+      $('#estado').textContent = 'Conectado a tu Excel';
+    } catch {
+      $('#estado').textContent = 'Sin datos';
+      $('#aviso').classList.remove('oculto');
+      $('#aviso').innerHTML = `No he podido leer <b>${RUTA}</b>. Arranca el panel con <b>npm start</b>.`;
+    }
+
+    try {
+      const r = await fetch('/api/habitos');
+      if (r.ok) datos.habitos = await r.json();
+    } catch {
+      /* sin API los hábitos se ven vacíos, pero el resto del inicio funciona */
+    }
+
+    pintar();
+  })();
+})();
+</script>
+</body>
+</html>

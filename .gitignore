@@ -22,20 +22,23 @@ Thumbs.db
 
 # Local development
 .claude/
-LEEME.md
-server.js
 
-# Material local (no forma parte de la web desplegada)
-localai/
-mi web/
-_check5/
-instagram/
-promo-instagram.html
+# Todo el material que no forma parte de la web desplegada vive en _local/.
+# Si algo no debe publicarse, se mueve ahí y no hace falta tocar este fichero.
+_local/
+
+# Documentación de trabajo. docs/PUBLICAR.md sí se versiona (explica el
+# despliegue); el resto son notas, prompts y borradores que se quedan en local.
+docs/LEEME.md
+docs/INFORME-AUDITORIA.md
+docs/PROMPT-*.md
+docs/cm-semana-1.txt
+docs/estrategia-de-ventas.txt
+
 *.bat
-cm-semana-1.txt
-estrategia-de-ventas.txt
+localai/
 
-# Biblioteca de animaciones: sólo se publica biblioteca.html en la raíz.
+# Biblioteca de animaciones: sólo se publica web/biblioteca.html.
 # La carpeta de trabajo — fuente, catálogo, brief e investigación — se
 # queda en local: es el criterio, y eso no se regala.
-biblioteca-animaciones/
+biblioteca/animaciones/

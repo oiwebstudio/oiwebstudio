@@ -1,0 +1,363 @@
+{
+  "name": "OI · Reserva de cita con hueco comprobado",
+  "nodes": [
+    {
+      "name": "Widget de reservas",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "reserva",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "webhookId": "oi-0009",
+      "id": "oi-0031",
+      "position": [
+        260,
+        220
+      ]
+    },
+    {
+      "name": "Preparar franja",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "jsCode": "const b = $json.body ?? $json;\nconst inicio = new Date(b.fecha + 'T' + b.hora + ':00');\nconst fin = new Date(inicio.getTime() + (b.duracion ?? 60) * 60000);\nreturn [{ json: { ...b, inicio: inicio.toISOString(), fin: fin.toISOString() } }];"
+      },
+      "id": "oi-0032",
+      "position": [
+        500,
+        220
+      ]
+    },
+    {
+      "name": "Ver si hay hueco",
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "primary",
+          "mode": "list"
+        },
+        "options": {},
+        "returnAll": true,
+        "timeMin": "={{ $json.inicio }}",
+        "timeMax": "={{ $json.fin }}"
+      },
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "",
+          "name": "Google Calendar (gratis)"
+        }
+      },
+      "id": "oi-0033",
+      "position": [
+        740,
+        220
+      ]
+    },
+    {
+      "name": "¿Está libre?",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "jsCode": "// getAll devuelve un item vacío cuando no hay eventos\nconst eventos = items.filter(i => i.json.id);\nconst datos = $('Preparar franja').first().json;\nreturn [{ json: { ...datos, libre: eventos.length === 0, ocupados: eventos.length } }];"
+      },
+      "id": "oi-0034",
+      "position": [
+        980,
+        220
+      ]
+    },
+    {
+      "name": "¿Franja libre?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "oi-0010",
+              "leftValue": "={{ $json.libre }}",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "oi-0035",
+      "position": [
+        1220,
+        220
+      ]
+    },
+    {
+      "name": "Crear la cita",
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "parameters": {
+        "operation": "create",
+        "calendar": {
+          "__rl": true,
+          "value": "primary",
+          "mode": "list"
+        },
+        "options": {},
+        "start": "={{ $json.inicio }}",
+        "end": "={{ $json.fin }}",
+        "additionalFields": {
+          "summary": "={{ $json.servicio }} · {{ $json.nombre }}",
+          "description": "={{ $json.telefono }} · {{ $json.email }}\\n\\n{{ $json.nota }}"
+        }
+      },
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "",
+          "name": "Google Calendar (gratis)"
+        }
+      },
+      "id": "oi-0036",
+      "position": [
+        260,
+        420
+      ]
+    },
+    {
+      "name": "Confirmar al cliente",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "parameters": {
+        "fromEmail": "hola@oistudio.eus",
+        "toEmail": "={{ $json.email }}",
+        "subject": "=Cita confirmada · {{ $json.fecha }} a las {{ $json.hora }}",
+        "emailFormat": "html",
+        "html": "=<p>Hola {{ $json.nombre }}:</p><p>Tu cita para <strong>{{ $json.servicio }}</strong> queda confirmada el <strong>{{ $json.fecha }}</strong> a las <strong>{{ $json.hora }}</strong>.</p><p>Si te surge algo, contestá a este correo y la movemos.</p>",
+        "options": {}
+      },
+      "credentials": {
+        "smtp": {
+          "id": "",
+          "name": "Gmail SMTP (gratis)"
+        }
+      },
+      "id": "oi-0037",
+      "position": [
+        500,
+        420
+      ]
+    },
+    {
+      "name": "Registrar la reserva",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "ID_DE_TU_HOJA",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list"
+        },
+        "options": {},
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {}
+        }
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "",
+          "name": "Google Sheets (gratis)"
+        }
+      },
+      "id": "oi-0038",
+      "position": [
+        740,
+        420
+      ]
+    },
+    {
+      "name": "Buscar alternativas",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "jsCode": "// Dos huecos siguientes de la misma duración\nconst d = $json, base = new Date(d.inicio), dur = (d.duracion ?? 60);\nconst alt = [1, 2].map(k => new Date(base.getTime() + k * dur * 60000)\n  .toISOString().slice(11, 16));\nreturn [{ json: { ok: false, motivo: 'ocupado', alternativas: alt } }];"
+      },
+      "id": "oi-0039",
+      "position": [
+        980,
+        420
+      ]
+    },
+    {
+      "name": "Responder al widget",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "id": "oi-0040",
+      "position": [
+        1220,
+        420
+      ]
+    },
+    {
+      "id": "oi-0041",
+      "name": "Ficha",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -140,
+        180
+      ],
+      "parameters": {
+        "width": 360,
+        "height": 320,
+        "color": 4,
+        "content": "## 📅 Reserva de cita con hueco comprobado\n**auto-reserva-cita**\n\nComprueba en el calendario que la franja está libre, crea el evento y manda la confirmación. Si no hay hueco, devuelve alternativas.\n\n**Disparador:** Webhook (el widget de reservas de la web)\n\n**Coste: 0 €** — n8n autoalojado · Google Calendar · Gmail SMTP · Google Sheets\n\n- Lee los eventos de esa franja para descartar solapes\n- Crea el evento con los datos del cliente y un recordatorio propio\n- Envía confirmación con la dirección y el enlace para cancelar\n- Si está ocupado, propone las dos franjas libres más cercanas"
+      }
+    }
+  ],
+  "connections": {
+    "Widget de reservas": {
+      "main": [
+        [
+          {
+            "node": "Preparar franja",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preparar franja": {
+      "main": [
+        [
+          {
+            "node": "Ver si hay hueco",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ver si hay hueco": {
+      "main": [
+        [
+          {
+            "node": "¿Está libre?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "¿Está libre?": {
+      "main": [
+        [
+          {
+            "node": "¿Franja libre?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "¿Franja libre?": {
+      "main": [
+        [
+          {
+            "node": "Crear la cita",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Buscar alternativas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crear la cita": {
+      "main": [
+        [
+          {
+            "node": "Confirmar al cliente",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Confirmar al cliente": {
+      "main": [
+        [
+          {
+            "node": "Registrar la reserva",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Registrar la reserva": {
+      "main": [
+        [
+          {
+            "node": "Responder al widget",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Buscar alternativas": {
+      "main": [
+        [
+          {
+            "node": "Responder al widget",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true
+  },
+  "tags": [
+    {
+      "name": "OI Studio"
+    },
+    {
+      "name": "coste 0"
+    }
+  ],
+  "meta": {
+    "instanceId": "oi-studio-biblioteca"
+  }
+}

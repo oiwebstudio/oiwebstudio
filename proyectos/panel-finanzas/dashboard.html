@@ -1,0 +1,943 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>Resumen — Mi panel</title>
+<link rel="apple-touch-icon" href="iconos/icono-180.png">
+<link rel="icon" href="iconos/icono-192.png">
+<style>
+/* ═══════════════════════════════════════════════════════════════════════════
+   Lenguaje visual iOS: negro puro, cristal esmerilado, acentos del sistema.
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root {
+  color-scheme: dark;
+
+  --negro: #000000;
+  --cristal: rgba(28, 28, 30, 0.75);
+  --cristal-alto: rgba(44, 44, 46, 0.72);
+  --separador: rgba(255, 255, 255, 0.09);
+  --separador-fuerte: rgba(255, 255, 255, 0.16);
+
+  --etiqueta: #ffffff;
+  --etiqueta-2: rgba(235, 235, 245, 0.6);
+  --etiqueta-3: rgba(235, 235, 245, 0.3);
+
+  --azul: #0a84ff;
+  --verde: #30d158;
+  --naranja: #ff9f0a;
+  --purpura: #bf5af2;
+  --rojo: #ff453a;
+  --gris: #8e8e93;
+
+  --radio: 20px;
+  --radio-s: 14px;
+  --hueco: 16px;
+
+  --sf: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display',
+        'Segoe UI Variable Text', 'Segoe UI', Inter, system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html { min-height: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--negro);
+  color: var(--etiqueta);
+  font-family: var(--sf);
+  font-size: 15px;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  padding: 0 0 max(40px, env(safe-area-inset-bottom));
+}
+
+/* Resplandores de fondo: dan profundidad sin ensuciar el negro. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(680px 420px at 12% -8%, rgba(10, 132, 255, 0.16), transparent 70%),
+    radial-gradient(560px 380px at 92% 2%, rgba(191, 90, 242, 0.13), transparent 70%),
+    radial-gradient(700px 460px at 50% 108%, rgba(48, 209, 88, 0.09), transparent 70%);
+}
+
+.envoltura {
+  position: relative;
+  z-index: 1;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.num { font-variant-numeric: tabular-nums; font-feature-settings: 'tnum' 1; }
+
+/* ── Barra de navegación estilo iOS ─────────────────────────────────────── */
+.barra {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: saturate(180%) blur(22px);
+  -webkit-backdrop-filter: saturate(180%) blur(22px);
+  border-bottom: 0.5px solid var(--separador);
+  padding-top: env(safe-area-inset-top);
+}
+
+.barra-fila {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 11px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.barra-fila { overflow-x: auto; scrollbar-width: none; }
+.barra-fila::-webkit-scrollbar { display: none; }
+
+.app-marca { display: grid; place-items: center; width: 26px; height: 26px; color: var(--naranja); flex: none; margin-right: 4px; }
+.app-marca svg { width: 19px; height: 19px; }
+
+.enlace-nav {
+  padding: 6px 13px;
+  border-radius: 20px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--etiqueta-2);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background .18s ease, color .18s ease;
+}
+
+.enlace-nav:hover { background: rgba(255, 255, 255, 0.07); color: var(--etiqueta); }
+.enlace-nav.activo { background: rgba(255, 255, 255, 0.12); color: var(--etiqueta); font-weight: 600; }
+
+.enlace {
+  font-size: 15px;
+  color: var(--azul);
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.enlace:active { opacity: .6; }
+
+/* ── Cabecera con avatar ────────────────────────────────────────────────── */
+.cabecera {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 26px 0 22px;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #fff;
+  background: linear-gradient(145deg, #0a84ff, #bf5af2);
+  box-shadow: 0 8px 24px rgba(10, 132, 255, 0.32);
+  flex: none;
+}
+
+.saludo { min-width: 0; }
+
+.saludo h1 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.saludo p {
+  margin: 3px 0 0;
+  font-size: 14px;
+  color: var(--etiqueta-2);
+}
+
+/* ── Tarjetas KPI ───────────────────────────────────────────────────────── */
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--hueco);
+  margin-bottom: 28px;
+}
+
+.kpi {
+  position: relative;
+  background: var(--cristal);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 0.5px solid var(--separador);
+  border-radius: var(--radio);
+  padding: 16px 17px 17px;
+  overflow: hidden;
+  min-width: 0;
+}
+
+/* Filo superior de color: identifica el módulo de un vistazo. */
+.kpi::after {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2.5px;
+  background: var(--tono, var(--azul));
+  opacity: .9;
+}
+
+.kpi-icono {
+  width: 28px;
+  height: 28px;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 12px;
+  background: color-mix(in srgb, var(--tono, var(--azul)) 20%, transparent);
+  color: var(--tono, var(--azul));
+}
+
+.kpi-icono svg { width: 15px; height: 15px; }
+
+.kpi-etq {
+  font-size: 12.5px;
+  color: var(--etiqueta-2);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}
+
+.kpi-valor {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  margin-top: 5px;
+  white-space: nowrap;
+}
+
+.kpi-pie {
+  margin-top: 7px;
+  font-size: 12px;
+  color: var(--etiqueta-3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Secciones y tarjetas ───────────────────────────────────────────────── */
+.seccion { margin-bottom: 30px; }
+
+.seccion-cab {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 13px;
+  padding: 0 3px;
+}
+
+.seccion-icono {
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--tono) 20%, transparent);
+  color: var(--tono);
+  flex: none;
+}
+
+.seccion-icono svg { width: 16px; height: 16px; }
+
+.seccion-cab h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin-right: auto;
+}
+
+.badge {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 11px;
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--tono) 18%, transparent);
+  color: var(--tono);
+  white-space: nowrap;
+}
+
+.badge.neutro { background: rgba(142, 142, 147, 0.2); color: var(--etiqueta-2); }
+
+.tarjeta {
+  background: var(--cristal);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 0.5px solid var(--separador);
+  border-radius: var(--radio);
+  padding: 6px 18px;
+}
+
+.dos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--hueco);
+}
+
+/* ── Filas de datos, estilo lista de Ajustes ────────────────────────────── */
+.fila {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 13px 0;
+  border-bottom: 0.5px solid var(--separador);
+}
+
+.fila:last-child { border-bottom: none; }
+
+.punto {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex: none;
+  background: var(--tono, var(--gris));
+}
+
+.fila-txt { flex: 1; min-width: 0; }
+
+.fila-txt b {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fila-txt span {
+  font-size: 12.5px;
+  color: var(--etiqueta-3);
+}
+
+.fila-cifra {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.pos { color: var(--verde); }
+.neg { color: var(--rojo); }
+.tenue { color: var(--etiqueta-3); }
+
+/* Fila de total, destacada al pie de cada módulo. */
+.total {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 14px;
+  padding: 15px 18px;
+  border-radius: var(--radio-s);
+  background: color-mix(in srgb, var(--tono) 13%, transparent);
+  border: 0.5px solid color-mix(in srgb, var(--tono) 26%, transparent);
+}
+
+.total-etq { font-size: 13.5px; color: var(--etiqueta-2); font-weight: 500; }
+.total-etq small { display: block; font-size: 11.5px; color: var(--etiqueta-3); margin-top: 2px; }
+
+.total-valor {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+}
+
+/* ── Barras de progreso ─────────────────────────────────────────────────── */
+.progreso { padding: 15px 0; border-bottom: 0.5px solid var(--separador); }
+.progreso:last-child { border-bottom: none; }
+
+.progreso-cab {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 9px;
+}
+
+.progreso-cab b {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-right: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.progreso-pct {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--tono);
+}
+
+.carril {
+  height: 10px;
+  border-radius: 6px;
+  background: rgba(120, 120, 128, 0.24);
+  overflow: hidden;
+}
+
+.relleno {
+  display: block;
+  height: 100%;
+  border-radius: 6px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--tono) 70%, #000), var(--tono));
+  box-shadow: 0 0 14px color-mix(in srgb, var(--tono) 45%, transparent);
+  transition: width .7s cubic-bezier(.32, .72, 0, 1);
+}
+
+.progreso-pie {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+  font-size: 12.5px;
+  color: var(--etiqueta-3);
+}
+
+/* ── Estados vacíos ─────────────────────────────────────────────────────── */
+.vacio {
+  padding: 26px 4px;
+  text-align: center;
+  color: var(--etiqueta-3);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.vacio b { display: block; color: var(--etiqueta-2); font-weight: 600; margin-bottom: 4px; font-size: 14.5px; }
+.vacio a { color: var(--azul); text-decoration: none; }
+
+.aviso {
+  margin: 0 0 22px;
+  padding: 13px 16px;
+  border-radius: var(--radio-s);
+  background: rgba(255, 159, 10, 0.14);
+  border: 0.5px solid rgba(255, 159, 10, 0.3);
+  font-size: 13px;
+  color: rgba(255, 214, 160, 0.95);
+  line-height: 1.5;
+}
+
+.pie-nota {
+  padding: 22px 4px 0;
+  border-top: 0.5px solid var(--separador);
+  font-size: 12px;
+  color: var(--etiqueta-3);
+  line-height: 1.6;
+}
+
+/* ── Entrada suave ──────────────────────────────────────────────────────── */
+@keyframes surgir {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+.anima { animation: surgir .55s cubic-bezier(.32, .72, 0, 1) backwards; }
+
+@media (prefers-reduced-motion: reduce) {
+  .anima { animation: none; }
+  .relleno { transition: none; }
+}
+
+/* ── Adaptación a pantallas pequeñas ────────────────────────────────────── */
+@media (max-width: 900px) {
+  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dos { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px) {
+  .envoltura { padding: 0 16px; }
+  .barra-fila { padding: 10px 16px; }
+  .saludo h1 { font-size: 24px; }
+  .avatar { width: 52px; height: 52px; font-size: 19px; }
+  .kpi-valor { font-size: 25px; }
+  .tarjeta { padding: 4px 15px; }
+  .total-valor { font-size: 21px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="barra" aria-label="Secciones">
+  <div class="barra-fila">
+    <span class="app-marca" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="currentColor"/><g stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></g></svg>
+    </span>
+    <a class="enlace-nav" href="inicio.html">Inicio</a>
+    <a class="enlace-nav" href="index.html">Finanzas</a>
+    <a class="enlace-nav" href="habitos.html">Hábitos</a>
+    <a class="enlace-nav" href="index.html#objetivos">Objetivos</a>
+    <a class="enlace-nav activo" href="dashboard.html" aria-current="page">Resumen</a>
+  </div>
+</nav>
+
+<div class="envoltura">
+
+  <header class="cabecera anima">
+    <div class="avatar" id="avatar">OI</div>
+    <div class="saludo">
+      <h1 id="saludo">Hola</h1>
+      <p id="fecha"></p>
+    </div>
+  </header>
+
+  <p class="aviso" id="aviso" hidden></p>
+
+  <!-- ── KPIs ──────────────────────────────────────────────────────────── -->
+  <section class="kpis" id="kpis"></section>
+
+  <!-- ── Módulo 1 ──────────────────────────────────────────────────────── -->
+  <section class="seccion anima" style="--tono: var(--azul); animation-delay: .06s">
+    <div class="seccion-cab">
+      <div class="seccion-icono">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18v12H3z"/><path d="M3 11h18"/><path d="M7 15h3"/></svg>
+      </div>
+      <h2>Finanzas personales</h2>
+      <span class="badge" id="badgePersonal">—</span>
+    </div>
+
+    <div class="dos">
+      <div class="tarjeta" id="personalIngresos"></div>
+      <div class="tarjeta" id="personalGastos"></div>
+    </div>
+
+    <div class="total" id="personalTotal"></div>
+  </section>
+
+  <!-- ── Módulo 2 ──────────────────────────────────────────────────────── -->
+  <section class="seccion anima" style="--tono: var(--verde); animation-delay: .12s">
+    <div class="seccion-cab">
+      <div class="seccion-icono">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M22 20H2"/></svg>
+      </div>
+      <h2>Caja del emprendimiento</h2>
+      <span class="badge" id="badgeNegocio">—</span>
+    </div>
+
+    <div class="dos">
+      <div class="tarjeta" id="negocioEntradas"></div>
+      <div class="tarjeta" id="negocioSalidas"></div>
+    </div>
+
+    <div class="total" id="negocioTotal"></div>
+  </section>
+
+  <!-- ── Módulo 3 ──────────────────────────────────────────────────────── -->
+  <section class="seccion anima" style="--tono: var(--naranja); animation-delay: .18s">
+    <div class="seccion-cab">
+      <div class="seccion-icono">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5v11"/><path d="M17.5 6.5v11"/><path d="M3 9v6"/><path d="M21 9v6"/><path d="M6.5 12h11"/></svg>
+      </div>
+      <h2>Hábitos y desarrollo</h2>
+      <span class="badge" id="badgeHabitos">—</span>
+    </div>
+
+    <div class="tarjeta" id="habitos"></div>
+  </section>
+
+  <!-- ── Módulo 4 ──────────────────────────────────────────────────────── -->
+  <section class="seccion anima" style="--tono: var(--purpura); animation-delay: .24s">
+    <div class="seccion-cab">
+      <div class="seccion-icono">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      </div>
+      <h2>Metas y fondos</h2>
+      <span class="badge" id="badgeMetas">—</span>
+    </div>
+
+    <div class="tarjeta" id="metas"></div>
+  </section>
+
+  <p class="pie-nota" id="pieNota"></p>
+</div>
+
+<script src="vendor/xlsx.full.min.js"></script>
+<script>
+(() => {
+  'use strict';
+
+  const RUTA = 'datos/Finanzas.xlsx';
+  const $ = (s) => document.querySelector(s);
+
+  const eur0 = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0, useGrouping: 'always' });
+  const eur2 = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: 'always' });
+  const pctF = new Intl.NumberFormat('es-ES', { style: 'percent', maximumFractionDigits: 0 });
+  const numF = new Intl.NumberFormat('es-ES', { maximumFractionDigits: 1 });
+
+  const euro = (n) => eur0.format(n || 0);
+  const euroDec = (n) => eur2.format(n || 0);
+  const pct = (n) => pctF.format(Number.isFinite(n) ? n : 0);
+
+  const escapar = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+  const normalizar = (s) => String(s ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim().toLowerCase();
+
+  function aNumero(v) {
+    if (typeof v === 'number') return Number.isFinite(v) ? v : 0;
+    if (v == null || v === '') return 0;
+    let s = String(v).replace(/[^\d,.-]/g, '');
+    if (!s) return 0;
+    const coma = s.lastIndexOf(','), punto = s.lastIndexOf('.');
+    if (coma > -1 && punto > -1) {
+      const dec = coma > punto ? ',' : '.';
+      s = s.split(dec === ',' ? '.' : ',').join('').replace(dec, '.');
+    } else if (coma > -1) {
+      s = /,\d{3}(\D|$)/.test(s) ? s.split(',').join('') : s.replace(',', '.');
+    }
+    const n = parseFloat(s);
+    return Number.isFinite(n) ? n : 0;
+  }
+
+  function aFecha(v) {
+    if (v instanceof Date && !isNaN(v)) return v;
+    if (typeof v === 'number') {
+      const d = XLSX.SSF.parse_date_code(v);
+      return d ? new Date(d.y, d.m - 1, d.d) : null;
+    }
+    if (typeof v === 'string') {
+      const m = v.match(/^(\d{1,2})[/-](\d{1,2})[/-](\d{2,4})$/);
+      if (m) return new Date(+(m[3].length === 2 ? '20' + m[3] : m[3]), +m[2] - 1, +m[1]);
+      const d = new Date(v);
+      if (!isNaN(d)) return d;
+    }
+    return null;
+  }
+
+  // ── Lectura del Excel ────────────────────────────────────────────────────
+  function hojaMatriz(libro, nombre) {
+    const real = libro.SheetNames.find((n) => normalizar(n) === normalizar(nombre));
+    if (!real) return [];
+    return XLSX.utils.sheet_to_json(libro.Sheets[real], { header: 1, raw: true, cellDates: true, defval: null });
+  }
+
+  function leer(libro) {
+    const negocio = [];
+    hojaMatriz(libro, 'Movimientos').slice(1).forEach((c) => {
+      const fecha = aFecha(c[0]);
+      const base = aNumero(c[5]);
+      if (!fecha || !base) return;
+      negocio.push({
+        fecha, anio: fecha.getFullYear(), mes: fecha.getMonth(),
+        tipo: normalizar(c[1]).startsWith('ing') ? 'Ingreso' : 'Gasto',
+        concepto: String(c[2] ?? '').trim(),
+        categoria: String(c[3] ?? '').trim() || 'Sin categoría',
+        base,
+      });
+    });
+
+    const personal = [];
+    hojaMatriz(libro, 'Personal').slice(1).forEach((c) => {
+      const fecha = aFecha(c[0]);
+      const base = aNumero(c[4]);
+      if (!fecha || !base) return;
+      personal.push({
+        fecha, anio: fecha.getFullYear(), mes: fecha.getMonth(),
+        tipo: normalizar(c[1]).startsWith('ing') ? 'Ingreso' : 'Gasto',
+        concepto: String(c[2] ?? '').trim(),
+        categoria: String(c[3] ?? '').trim() || 'Sin categoría',
+        base,
+      });
+    });
+
+    const objetivos = [];
+    hojaMatriz(libro, 'Objetivos').slice(1).forEach((c) => {
+      const nombre = String(c[0] ?? '').trim();
+      const meta = aNumero(c[4]);
+      if (!nombre || meta <= 0) return;
+      const progreso = aNumero(c[5]);
+      objetivos.push({
+        nombre,
+        area: String(c[1] ?? '').trim() || 'Personal',
+        plazo: String(c[2] ?? '').trim() || 'Largo plazo',
+        tipo: String(c[3] ?? '').trim() || 'Importe',
+        meta, progreso,
+        unidad: String(c[6] ?? '').trim() || '€',
+        limite: aFecha(c[8]),
+        estado: String(c[9] ?? '').trim() || 'Activo',
+        avance: Math.min(1, progreso / meta),
+      });
+    });
+
+    return { negocio, personal, objetivos };
+  }
+
+  // ── Agrupaciones de cada módulo ──────────────────────────────────────────
+  const suma = (l) => l.reduce((a, m) => a + m.base, 0);
+  const delMes = (l, a, m) => l.filter((x) => x.anio === a && x.mes === m);
+
+  // Las categorías del Excel se agrupan en los conceptos que pide cada módulo.
+  const GRUPOS_PERSONAL = {
+    'Gimnasio y deporte': ['salud', 'gimnasio', 'deporte'],
+    'Transporte': ['transporte', 'viajes'],
+    'Suscripciones y ocio': ['suscripciones', 'ocio y salidas', 'ocio'],
+  };
+
+  const GRUPOS_NEGOCIO = {
+    'Software y hosting': ['software y licencias', 'hosting y dominios'],
+    'Gestoría y licencias': ['gestoria', 'cuota autonomos', 'comisiones bancarias'],
+    'Marketing': ['publicidad'],
+  };
+
+  function agrupar(movs, grupos) {
+    const salida = Object.keys(grupos).map((g) => ({ nombre: g, importe: 0 }));
+    let otros = 0;
+    movs.forEach((m) => {
+      const cat = normalizar(m.categoria);
+      const destino = salida.find((s) => grupos[s.nombre].some((p) => cat.includes(p)));
+      if (destino) destino.importe += m.base;
+      else otros += m.base;
+    });
+    if (otros) salida.push({ nombre: 'Otros', importe: otros });
+    return salida.filter((s) => s.importe > 0);
+  }
+
+  const filaHTML = (nombre, detalle, cifra, clase = '') =>
+    `<div class="fila">
+      <i class="punto"></i>
+      <div class="fila-txt"><b>${escapar(nombre)}</b>${detalle ? `<span>${escapar(detalle)}</span>` : ''}</div>
+      <div class="fila-cifra ${clase} num">${cifra}</div>
+    </div>`;
+
+  const vacioHTML = (titulo, texto) =>
+    `<div class="vacio"><b>${escapar(titulo)}</b>${texto}</div>`;
+
+  function barraHTML(titulo, avance, izquierda, derecha) {
+    return `<div class="progreso">
+      <div class="progreso-cab"><b>${escapar(titulo)}</b><span class="progreso-pct num">${pct(avance)}</span></div>
+      <div class="carril"><span class="relleno" style="width:${(avance * 100).toFixed(1)}%"></span></div>
+      <div class="progreso-pie"><span class="num">${izquierda}</span><span>${derecha}</span></div>
+    </div>`;
+  }
+
+  // ── Pintado ──────────────────────────────────────────────────────────────
+  function pintar(d) {
+    const ahora = new Date();
+    const anio = ahora.getFullYear();
+    const mes = ahora.getMonth();
+    const nombreMes = ahora.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' });
+
+    const hora = ahora.getHours();
+    $('#saludo').textContent = hora < 6 ? 'Buenas noches' : hora < 14 ? 'Buenos días' : hora < 21 ? 'Buenas tardes' : 'Buenas noches';
+    $('#fecha').textContent = ahora.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' });
+
+    // ── Módulo 1: personal ──
+    const perMes = delMes(d.personal, anio, mes);
+    const perIng = perMes.filter((m) => m.tipo === 'Ingreso');
+    const perGas = perMes.filter((m) => m.tipo === 'Gasto');
+    const totalPerIng = suma(perIng);
+    const totalPerGas = suma(perGas);
+    const balancePersonal = totalPerIng - totalPerGas;
+    const tasaAhorro = totalPerIng ? balancePersonal / totalPerIng : null;
+
+    $('#badgePersonal').textContent = nombreMes;
+
+    // Los ingresos personales se separan en trabajo propio y retiros del negocio.
+    const esRetiro = (m) => /retirada|retiro|nomina|nómina/.test(normalizar(m.categoria + ' ' + m.concepto));
+    const retiros = perIng.filter(esRetiro);
+    const otrosIng = perIng.filter((m) => !esRetiro(m));
+
+    $('#personalIngresos').innerHTML = totalPerIng
+      ? [
+          suma(retiros) ? filaHTML('Nómina y retiros de la empresa', `${retiros.length} apunte(s)`, euroDec(suma(retiros)), 'pos') : '',
+          suma(otrosIng) ? filaHTML('Otros ingresos', `${otrosIng.length} apunte(s)`, euroDec(suma(otrosIng)), 'pos') : '',
+        ].join('')
+      : vacioHTML('Sin ingresos personales', 'Apunta tu nómina o el retiro que te haces de la empresa desde el <a href="index.html#personal">panel</a>.');
+
+    const gruposGasto = agrupar(perGas, GRUPOS_PERSONAL);
+    $('#personalGastos').innerHTML = gruposGasto.length
+      ? gruposGasto.map((g) => filaHTML(g.nombre, `${pct(g.importe / totalPerGas)} del gasto`, '−' + euroDec(g.importe), 'neg')).join('')
+      : vacioHTML('Sin gastos personales', 'Gimnasio, transporte y suscripciones aparecerán aquí en cuanto los apuntes.');
+
+    $('#personalTotal').innerHTML =
+      `<div class="total-etq">Balance neto del mes<small>Capacidad real de ahorro</small></div>
+       <div class="total-valor num ${balancePersonal >= 0 ? 'pos' : 'neg'}">${totalPerIng || totalPerGas ? euroDec(balancePersonal) : '—'}</div>`;
+
+    // ── Módulo 2: negocio ──
+    const negMes = delMes(d.negocio, anio, mes);
+    const cobros = negMes.filter((m) => m.tipo === 'Ingreso');
+    const pagos = negMes.filter((m) => m.tipo === 'Gasto');
+    const totalCobros = suma(cobros);
+    const totalPagos = suma(pagos);
+
+    // El retiro sale de la caja del negocio y entra en la personal.
+    const retiroDelMes = suma(retiros);
+    const retenido = totalCobros - totalPagos - retiroDelMes;
+
+    $('#badgeNegocio').textContent = nombreMes;
+
+    $('#negocioEntradas').innerHTML = totalCobros
+      ? cobros
+          .slice()
+          .sort((a, b) => b.base - a.base)
+          .slice(0, 5)
+          .map((m) => filaHTML(m.concepto || 'Cobro', m.categoria, euroDec(m.base), 'pos'))
+          .join('')
+      : vacioHTML('Sin cobros este mes', 'Los cobros de clientes que apuntes en Negocio aparecerán aquí.');
+
+    const gruposPago = agrupar(pagos, GRUPOS_NEGOCIO);
+    $('#negocioSalidas').innerHTML = [
+      ...gruposPago.map((g) => filaHTML(g.nombre, `${pct(g.importe / totalPagos)} de las salidas`, '−' + euroDec(g.importe), 'neg')),
+      retiroDelMes ? filaHTML('Retiro a cuenta personal', 'sale de la caja del negocio', '−' + euroDec(retiroDelMes), 'neg') : '',
+    ].join('') || vacioHTML('Sin salidas este mes', 'Software, gestoría y marketing se agrupan solos por categoría.');
+
+    $('#negocioTotal').innerHTML =
+      `<div class="total-etq">Beneficio retenido en la caja<small>Cobros − salidas − retiro personal</small></div>
+       <div class="total-valor num ${retenido >= 0 ? 'pos' : 'neg'}">${totalCobros || totalPagos ? euroDec(retenido) : '—'}</div>`;
+
+    // ── Módulo 3: hábitos ──
+    // Un hábito es un objetivo de área no financiera: gimnasio, lectura, estudio, carrera.
+    const habitos = d.objetivos.filter((o) => ['Salud', 'Aprendizaje', 'Personal'].includes(o.area) && o.estado === 'Activo');
+    const scoreHabitos = habitos.length ? habitos.reduce((a, o) => a + o.avance, 0) / habitos.length : null;
+
+    $('#badgeHabitos').textContent = habitos.length ? `${habitos.length} en marcha` : 'sin datos';
+    $('#badgeHabitos').classList.toggle('neutro', !habitos.length);
+
+    $('#habitos').innerHTML = habitos.length
+      ? habitos
+          .map((o) =>
+            barraHTML(
+              o.nombre,
+              o.avance,
+              `${numF.format(o.progreso)} de ${numF.format(o.meta)} ${escapar(o.unidad)}`,
+              o.plazo
+            )
+          )
+          .join('')
+      : vacioHTML(
+          'Todavía sin hábitos medidos',
+          'Créalos como objetivos de área <b>Salud</b>, <b>Aprendizaje</b> o <b>Personal</b> y tipo <b>Cantidad</b>: días de gimnasio, libros leídos, kilómetros o horas de estudio.<br><a href="index.html#objetivos">Crear el primero</a>'
+        );
+
+    // ── Módulo 4: metas y fondos ──
+    const fondos = d.objetivos.filter((o) => ['Dinero', 'Negocio'].includes(o.area) && o.estado === 'Activo');
+
+    $('#badgeMetas').textContent = fondos.length ? `${fondos.length} activa(s)` : 'sin datos';
+    $('#badgeMetas').classList.toggle('neutro', !fondos.length);
+
+    $('#metas').innerHTML = fondos.length
+      ? fondos
+          .map((o) =>
+            barraHTML(
+              o.nombre,
+              o.avance,
+              `${o.unidad === '€' ? euroDec(o.progreso) + ' de ' + euroDec(o.meta) : numF.format(o.progreso) + ' de ' + numF.format(o.meta) + ' ' + escapar(o.unidad)}`,
+              o.limite ? o.limite.toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: '2-digit' }) : o.plazo
+            )
+          )
+          .join('')
+      : vacioHTML(
+          'Sin fondos definidos',
+          'Créalos como objetivos de área <b>Dinero</b> o <b>Negocio</b>: fondo de seguridad, caja de reinversión, cartera a largo plazo o fondo de equipamiento.<br><a href="index.html#objetivos">Crear el primero</a>'
+        );
+
+    // ── KPIs ──
+    // Patrimonio: caja acumulada del negocio + ahorro personal acumulado, desde el primer apunte.
+    const cajaNegocio = suma(d.negocio.filter((m) => m.tipo === 'Ingreso')) - suma(d.negocio.filter((m) => m.tipo === 'Gasto'));
+    const ahorroPersonal = suma(d.personal.filter((m) => m.tipo === 'Ingreso')) - suma(d.personal.filter((m) => m.tipo === 'Gasto'));
+    const patrimonio = cajaNegocio + ahorroPersonal;
+
+    const kpis = [
+      {
+        tono: 'var(--purpura)',
+        etq: 'Patrimonio neto',
+        valor: euro(patrimonio),
+        clase: patrimonio >= 0 ? 'pos' : 'neg',
+        pie: 'caja del negocio + ahorro personal',
+        icono: '<path d="M12 3l9 5v8l-9 5-9-5V8z"/><path d="M12 12l9-5"/><path d="M12 12v9"/><path d="M12 12L3 7"/>',
+      },
+      {
+        tono: 'var(--verde)',
+        etq: 'Caja del negocio',
+        valor: euro(cajaNegocio),
+        clase: cajaNegocio >= 0 ? 'pos' : 'neg',
+        pie: `${d.negocio.length} movimiento(s) apuntados`,
+        icono: '<path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M22 20H2"/>',
+      },
+      {
+        tono: 'var(--azul)',
+        etq: 'Tasa de ahorro',
+        valor: tasaAhorro === null ? '—' : pct(tasaAhorro),
+        clase: tasaAhorro === null ? 'tenue' : tasaAhorro >= 0.2 ? 'pos' : tasaAhorro >= 0 ? '' : 'neg',
+        pie: tasaAhorro === null ? 'sin ingresos personales aún' : 'de cada euro que entra en casa',
+        icono: '<path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/>',
+      },
+      {
+        tono: 'var(--naranja)',
+        etq: 'Consistencia',
+        valor: scoreHabitos === null ? '—' : pct(scoreHabitos),
+        clase: scoreHabitos === null ? 'tenue' : scoreHabitos >= 0.7 ? 'pos' : '',
+        pie: scoreHabitos === null ? 'sin hábitos medidos aún' : `media de ${habitos.length} hábito(s)`,
+        icono: '<circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/>',
+      },
+    ];
+
+    $('#kpis').innerHTML = kpis
+      .map(
+        (k, i) => `<article class="kpi anima" style="--tono: ${k.tono}; animation-delay: ${0.04 * i}s">
+          <div class="kpi-icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${k.icono}</svg></div>
+          <div class="kpi-etq">${k.etq}</div>
+          <div class="kpi-valor num ${k.clase}">${k.valor}</div>
+          <div class="kpi-pie">${k.pie}</div>
+        </article>`
+      )
+      .join('');
+
+    // ── Aviso honesto sobre lo que aún no hay ──
+    const faltan = [];
+    if (!d.personal.length) faltan.push('gastos e ingresos personales');
+    if (!habitos.length) faltan.push('hábitos');
+    if (!fondos.length) faltan.push('metas y fondos');
+
+    if (faltan.length) {
+      $('#aviso').hidden = false;
+      $('#aviso').innerHTML =
+        `Todas las cifras salen de tu Excel, sin estimaciones. Ahora mismo faltan datos de <b>${faltan.join('</b>, <b>')}</b>, así que esos bloques salen a cero o vacíos hasta que los apuntes.`;
+    }
+
+    $('#pieNota').innerHTML =
+      `Datos leídos de <code>${RUTA}</code> · ${d.negocio.length} movimientos de negocio, ${d.personal.length} personales, ${d.objetivos.length} objetivos.<br>` +
+      'Nada sale de este dispositivo. Para apuntar o editar, usa el <a class="enlace" href="index.html">panel completo</a>.';
+  }
+
+  // ── Arranque ─────────────────────────────────────────────────────────────
+  (async () => {
+    try {
+      const r = await fetch(RUTA, { cache: 'no-store' });
+      if (!r.ok) throw new Error('no encontrado');
+      pintar(leer(XLSX.read(await r.arrayBuffer(), { type: 'array', cellDates: true })));
+    } catch (e) {
+      $('#aviso').hidden = false;
+      $('#aviso').innerHTML = `No he podido leer <b>${RUTA}</b>. Arranca el panel con <b>npm start</b> y vuelve a entrar.`;
+      $('#pieNota').textContent = '';
+    }
+  })();
+})();
+</script>
+</body>
+</html>

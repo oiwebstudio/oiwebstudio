@@ -1,0 +1,273 @@
+{
+  "name": "OI · Copia de seguridad semanal de las webs",
+  "nodes": [
+    {
+      "name": "Domingos a las 3:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 3 * * 0"
+            }
+          ]
+        }
+      },
+      "id": "oi-0107",
+      "position": [
+        260,
+        220
+      ]
+    },
+    {
+      "name": "Webs a copiar",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "parameters": {
+        "operation": "read",
+        "documentId": {
+          "__rl": true,
+          "value": "ID_DE_TU_HOJA",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list"
+        },
+        "options": {}
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "",
+          "name": "Google Sheets (gratis)"
+        }
+      },
+      "id": "oi-0108",
+      "position": [
+        500,
+        220
+      ]
+    },
+    {
+      "name": "Web a web",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "oi-0109",
+      "position": [
+        740,
+        220
+      ]
+    },
+    {
+      "name": "Descargar la web",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "parameters": {
+        "url": "={{ $json.url }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file",
+              "neverError": true
+            }
+          },
+          "timeout": 60000
+        }
+      },
+      "id": "oi-0110",
+      "position": [
+        980,
+        220
+      ]
+    },
+    {
+      "name": "Guardar en disco",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "parameters": {
+        "operation": "write",
+        "fileName": "=D:/backups/{{ $('Web a web').first().json.cliente }}/{{ $now.toFormat(\"yyyy-LL-dd\") }}.html",
+        "dataPropertyName": "data",
+        "options": {}
+      },
+      "id": "oi-0111",
+      "position": [
+        1220,
+        220
+      ]
+    },
+    {
+      "name": "Anotar el resultado",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "jsCode": "const w = $('Web a web').first().json;\nreturn [{ json: { cliente: w.cliente, url: w.url,\n  guardado: new Date().toISOString().slice(0, 10) } }];"
+      },
+      "id": "oi-0112",
+      "position": [
+        260,
+        420
+      ]
+    },
+    {
+      "name": "Informe final",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "jsCode": "const todo = $('Anotar el resultado').all().map(i => i.json);\nreturn [{ json: { total: todo.length,\n  linea: todo.map(t => '• ' + t.cliente).join('\\n') } }];"
+      },
+      "id": "oi-0113",
+      "position": [
+        500,
+        420
+      ]
+    },
+    {
+      "name": "Informe de la copia",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "parameters": {
+        "chatId": "TU_CHAT_ID",
+        "text": "=💾 <b>Copia semanal terminada</b>\\n{{ $json.total }} webs guardadas\\n{{ $json.linea }}",
+        "additionalFields": {
+          "parse_mode": "HTML"
+        }
+      },
+      "credentials": {
+        "telegramApi": {
+          "id": "",
+          "name": "Telegram Bot (gratis)"
+        }
+      },
+      "id": "oi-0114",
+      "position": [
+        740,
+        420
+      ]
+    },
+    {
+      "id": "oi-0115",
+      "name": "Ficha",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -140,
+        180
+      ],
+      "parameters": {
+        "width": 360,
+        "height": 320,
+        "color": 4,
+        "content": "## 💾 Copia de seguridad semanal de las webs\n**auto-backup-webs**\n\nDescarga cada web de cliente y la guarda fechada en tu disco, con un informe de qué se copió y cuánto ocupa.\n\n**Disparador:** Programado · domingos a las 3:00\n\n**Coste: 0 €** — n8n autoalojado · Disco local · Gmail SMTP · Telegram Bot\n\n- Lee la lista de webs y su origen\n- Descarga el contenido de cada una\n- Lo guarda en carpeta con fecha en tu disco\n- Te manda el informe de la noche por Telegram"
+      }
+    }
+  ],
+  "connections": {
+    "Domingos a las 3:00": {
+      "main": [
+        [
+          {
+            "node": "Webs a copiar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webs a copiar": {
+      "main": [
+        [
+          {
+            "node": "Web a web",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Web a web": {
+      "main": [
+        [
+          {
+            "node": "Informe final",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Descargar la web",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Descargar la web": {
+      "main": [
+        [
+          {
+            "node": "Guardar en disco",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Guardar en disco": {
+      "main": [
+        [
+          {
+            "node": "Anotar el resultado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anotar el resultado": {
+      "main": [
+        [
+          {
+            "node": "Web a web",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Informe final": {
+      "main": [
+        [
+          {
+            "node": "Informe de la copia",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true
+  },
+  "tags": [
+    {
+      "name": "OI Studio"
+    },
+    {
+      "name": "coste 0"
+    }
+  ],
+  "meta": {
+    "instanceId": "oi-studio-biblioteca"
+  }
+}

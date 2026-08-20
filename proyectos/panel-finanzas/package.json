@@ -1,0 +1,21 @@
+{
+  "name": "panel-finanzas",
+  "version": "1.0.0",
+  "description": "Panel de finanzas en localhost que lee Finanzas.xlsx",
+  "scripts": {
+    "start": "node server.mjs",
+    "excel": "node scripts/generar-excel.mjs",
+    "actualizar": "node scripts/actualizar-excel.mjs",
+    "iconos": "node scripts/generar-iconos.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "chart.js": "^4.5.1",
+    "exceljs": "^4.4.0",
+    "xlsx": "^0.18.5"
+  },
+  "private": true
+}

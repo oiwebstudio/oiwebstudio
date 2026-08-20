@@ -1,0 +1,26 @@
+{
+  "name": "Mi panel — finanzas, casa y objetivos",
+  "short_name": "Mi panel",
+  "description": "Ingresos, gastos personales, calendario y objetivos. Los datos no salen de tu dispositivo.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
+  "orientation": "any",
+  "background_color": "#0b0d10",
+  "theme_color": "#0b0d10",
+  "lang": "es",
+  "dir": "ltr",
+  "categories": ["finance", "productivity"],
+  "icons": [
+    { "src": "iconos/icono-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "iconos/icono-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "iconos/icono-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Calendario", "url": "/#calendario" },
+    { "name": "Personal", "url": "/#personal" },
+    { "name": "Objetivos", "url": "/#objetivos" }
+  ]
+}
