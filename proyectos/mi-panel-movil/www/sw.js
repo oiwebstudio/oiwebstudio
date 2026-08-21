@@ -4,12 +4,12 @@
 //
 // Al cambiar VERSION se tira todo lo anterior.
 
-const VERSION = 'mi-panel-v5';
+const VERSION = 'mi-panel-v6';
 const BASICOS = [
   './',
   './index.html',
   './manifest.webmanifest',
-  './entrada.mp4',
+  './entrada.webp',
   './iconos/icono-192.png',
   './iconos/icono-512.png',
   './iconos/icono-180.png',
