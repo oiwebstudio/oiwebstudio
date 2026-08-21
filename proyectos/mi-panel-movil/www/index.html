@@ -213,6 +213,46 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
 .detalle-dia .sub { font-size: 12.5px; color: var(--txt-2); margin-bottom: 10px; }
 
 /* ── Entreno ────────────────────────────────────────────────────────────── */
+/* ── El entreno del día ─────────────────────────────────────────────────────
+   La pestaña abría con una rejilla de siete días y una lista. Correcto y
+   mudo. Ahora lo primero que ves es el entreno que te toca, con lo que hace
+   falta saber antes de empezar: cuánto dura, cuánto hay y por dónde se
+   entra. Lo demás baja un escalón. */
+
+/* Chips de datos sobre la tarjeta oscura: el dato en una pastilla se lee de
+   un vistazo, y tres seguidos cuentan la sesión sin una frase. */
+.chips-hero { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 15px; }
+.chip-dato { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 650; letter-spacing: -0.01em; color: rgba(255,255,255,.84); background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.13); padding: 7px 11px; border-radius: 12px; }
+.chip-dato .num { font-weight: 750; color: #fff; }
+
+/* El deslizador. En el gimnasio tienes las manos ocupadas y el móvil en el
+   suelo: un botón pequeño se pulsa sin querer. Un gesto largo y deliberado
+   no. Es el mismo lenguaje del arrastre que ya cierra las hojas. */
+.deslizador { position: relative; margin-top: 17px; height: 58px; border-radius: 19px; background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.14); overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.deslizador .estela { position: absolute; top: 0; bottom: 0; left: 0; width: 0; background: rgba(255,255,255,.14); transition: width .28s var(--muelle), background .2s ease; }
+.deslizador.moviendo .estela { transition: background .2s ease; }
+.deslizador.listo .estela { background: rgba(48,209,88,.32); }
+.deslizador .texto { position: absolute; inset: 0; display: grid; place-items: center; padding-left: 46px; font-size: 13.5px; font-weight: 700; letter-spacing: .005em; color: rgba(255,255,255,.7); pointer-events: none; transition: opacity .2s ease; }
+.deslizador.moviendo .texto { opacity: .35; }
+.deslizador .tirador { position: absolute; top: 5px; left: 5px; width: 48px; height: 48px; border-radius: 15px; background: #fff; color: var(--tinta); display: grid; place-items: center; font-size: 19px; font-weight: 700; line-height: 1; box-shadow: 0 5px 16px rgba(0,0,0,.3); transition: transform .3s var(--muelle); }
+.deslizador.moviendo .tirador { transition: none; }
+/* Un empujoncito cada pocos segundos: dice "tira de mí" sin un cartel */
+@keyframes empujar { 0%, 88%, 100% { transform: translateX(0) } 94% { transform: translateX(4px) } }
+.deslizador:not(.moviendo) .tirador { animation: empujar 3.4s ease-in-out infinite; }
+
+/* Carrusel de plantillas: se desliza con el pulgar y cada tarjeta se ancla */
+.carrusel { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 3px 20px 6px; margin: 0 -20px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.carrusel::-webkit-scrollbar { display: none; }
+.carrusel-tarjeta { scroll-snap-align: start; flex: none; width: 152px; min-height: 116px; border-radius: 21px; padding: 14px; text-align: left; background: var(--carta); border: var(--borde); box-shadow: var(--sombra); display: flex; flex-direction: column; gap: 5px; transition: transform .15s var(--muelle); }
+.carrusel-tarjeta:active { transform: scale(.955); }
+.carrusel-tarjeta .emo { font-size: 21px; line-height: 1; }
+.carrusel-tarjeta b { font-size: 13.5px; font-weight: 750; letter-spacing: -0.02em; line-height: 1.25; margin-top: auto; }
+.carrusel-tarjeta small { font-size: 11.5px; color: var(--txt-3); font-weight: 600; }
+
+@media (prefers-reduced-motion: reduce) {
+  .deslizador:not(.moviendo) .tirador { animation: none; }
+}
+
 .tira-semana { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-bottom: var(--hueco); }
 .dia-chip { border-radius: 16px; background: var(--carta); border: var(--borde); box-shadow: var(--sombra); padding: 9px 4px 8px; text-align: center; transition: transform .15s var(--muelle); }
 .dia-chip:active { transform: scale(.93); }
@@ -437,9 +477,15 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
 
 /* ── Hojas ──────────────────────────────────────────────────────────────── */
 dialog { padding: 0; border: none; background: transparent; max-width: 100vw; max-height: 100dvh; width: 100vw; margin: auto auto 0; }
-dialog::backdrop { background: rgba(17,17,17,.4); backdrop-filter: blur(3px); }
+/* Sin desenfoque: es precioso en un ordenador y un suplicio en un móvil,
+   porque obliga a recalcular la pantalla entera en cada fotograma justo
+   mientras la hoja se desliza. El fondo va un punto más oscuro y la hoja se
+   recorta igual de bien. */
+dialog::backdrop { background: rgba(17,17,17,.46); }
 
-.hoja { width: min(520px, 100vw); margin: 0 auto; background: var(--carta); border-radius: 30px 30px 0 0; box-shadow: 0 -20px 60px rgba(0,0,0,.18); padding-bottom: env(safe-area-inset-bottom); animation: subir .36s var(--muelle); max-height: 90dvh; display: flex; flex-direction: column; }
+/* will-change avisa de que esto se va a mover: el navegador prepara la capa
+   antes de empezar, en vez de montarla con la animación ya en marcha. */
+.hoja { width: min(520px, 100vw); margin: 0 auto; background: var(--carta); border-radius: 30px 30px 0 0; box-shadow: 0 -18px 44px rgba(0,0,0,.16); padding-bottom: env(safe-area-inset-bottom); animation: subir .34s var(--muelle); max-height: 90dvh; display: flex; flex-direction: column; will-change: transform; }
 @keyframes subir { from { transform: translateY(100%); } to { transform: none; } }
 
 .hoja-asa { width: 40px; height: 5px; border-radius: 3px; background: rgba(0,0,0,.14); margin: 10px auto 2px; flex: none; transition: background .2s ease, width .2s var(--muelle); }
@@ -635,7 +681,7 @@ body.en-foco .dock { display: none; }
    Se puede saltar tocando la pantalla y se cae sola pase lo que pase.      */
 .entrada { position: fixed; inset: 0; z-index: 200; background: #000; display: grid; place-items: center; transition: opacity .5s ease; }
 .entrada.fuera { opacity: 0; pointer-events: none; }
-.entrada video { width: min(64vw, 300px); height: auto; display: block; }
+.entrada img { width: min(66vw, 310px); height: auto; display: block; }
 .entrada .saltar { position: absolute; bottom: calc(28px + env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); font-size: 12px; font-weight: 600; letter-spacing: .04em; color: rgba(255,255,255,.34); opacity: 0; animation: asomar .4s ease 1.1s forwards; }
 @keyframes asomar { to { opacity: 1; } }
 
@@ -726,18 +772,23 @@ select.nativo-fuera { position: absolute; width: 1px; height: 1px; opacity: 0; p
    Todo se anima con transform y opacity, que son las dos cosas que el móvil
    pinta sin despeinarse. Nada de animar anchos, altos ni sombras.           */
 
-/* Entrada de la vista al cambiar de pestaña, escalonada por bloques. */
-@keyframes entrar { from { opacity: 0; transform: translateY(16px) scale(.985); } to { opacity: 1; transform: none; } }
-.vista.entrando > *, [id^="dinero"].entrando > *, [id^="sub"].entrando > * {
-  animation: entrar .42s var(--muelle) backwards;
+/* La vista entera entra de una pieza y por el lado del que vienes. Antes
+   cada tarjeta entraba por su cuenta con su retraso: ocho capas nuevas a la
+   vez y medio segundo largo hasta que aparecía la última. Una capa y una
+   animación no hay manera de que se atasquen. */
+@keyframes entrarVista { from { opacity: 0; transform: translate3d(calc(var(--desde, 1) * 26px), 0, 0); } to { opacity: 1; transform: none; } }
+.vista.entrando { animation: entrarVista .3s var(--muelle) both; will-change: transform, opacity; }
+
+/* Dentro de una vista, los subpaneles sí entran escalonados: son tres o
+   cuatro y el escalonado ayuda a leer el orden. */
+@keyframes entrar { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+[id^="dinero"].entrando > *, [id^="sub"].entrando > * {
+  animation: entrar .34s var(--muelle) backwards;
 }
-.entrando > *:nth-child(1) { animation-delay: .01s }
-.entrando > *:nth-child(2) { animation-delay: .045s }
-.entrando > *:nth-child(3) { animation-delay: .08s }
-.entrando > *:nth-child(4) { animation-delay: .115s }
-.entrando > *:nth-child(5) { animation-delay: .15s }
-.entrando > *:nth-child(6) { animation-delay: .185s }
-.entrando > *:nth-child(n+7) { animation-delay: .22s }
+[id^="dinero"].entrando > *:nth-child(1), [id^="sub"].entrando > *:nth-child(1) { animation-delay: .01s }
+[id^="dinero"].entrando > *:nth-child(2), [id^="sub"].entrando > *:nth-child(2) { animation-delay: .04s }
+[id^="dinero"].entrando > *:nth-child(3), [id^="sub"].entrando > *:nth-child(3) { animation-delay: .07s }
+[id^="dinero"].entrando > *:nth-child(n+4), [id^="sub"].entrando > *:nth-child(n+4) { animation-delay: .1s }
 
 /* Filas de las listas: aparecen una detrás de otra, muy seguidas. Solo dentro
    de las hojas, que se abren una vez; en las vistas se repinta con cada toque
@@ -818,7 +869,7 @@ dialog::backdrop { animation: fundir .3s ease backwards; }
 
 <!-- ══ La entrada: el logo de OI antes de la app ═════════════════════════ -->
 <div class="entrada" id="entrada" aria-hidden="true">
-  <video id="entradaVideo" src="entrada.mp4" muted playsinline preload="auto" disablepictureinpicture></video>
+  <img id="entradaImagen" src="entrada.webp" alt="" width="560" height="560" decoding="sync" fetchpriority="high">
   <span class="saltar">Toca para entrar</span>
 </div>
 
@@ -1083,7 +1134,9 @@ dialog::backdrop { animation: fundir .3s ease backwards; }
         <button class="circular" id="semAdelante">›</button>
       </div>
       <div class="tira-semana" id="tiraSemana"></div>
+      <div id="heroEntreno"></div>
       <div class="carta" id="sesionesDia"></div>
+      <div id="carruselPlantillas"></div>
       <div class="par" style="margin-top:12px">
         <button class="btn-suave" id="btnCopiarSemana">Repetir semana anterior</button>
         <button class="btn-suave" id="btnRachaEntreno" style="pointer-events:none"></button>
@@ -3523,6 +3576,9 @@ function pintarSemanaEntreno(){
     </button>`;
   }).join('');
 
+  pintarHeroEntreno();
+  pintarCarruselPlantillas();
+
   const k=UI.entrenoDia;
   const lista=sesionesDe(k);
   const f=desdeClave(k);
@@ -3540,6 +3596,106 @@ function pintarSemanaEntreno(){
           <span class="estado ${s.hecha?'hecha':''}">${s.hecha?'Hecha':'Planificada'}</span>
         </button>`).join('')
       : `<div class="vacio"><b>Día libre</b>Añade una sesión o importa una plantilla.</div>`}`;
+}
+
+/** Cuánto pesa una sesión: series, ejercicios y una estimación de minutos.
+    La estimación es deliberadamente tosca —dos minutos y medio por serie,
+    redondeado a cinco— porque una cifra exacta ahí sería mentira. */
+function pesoDeSesion(s){
+  if (s.clase==='fuerza'){
+    const ejercicios=(s.ejercicios||[]).length;
+    const series=(s.ejercicios||[]).reduce((n,e)=>n+(e.series||[]).length, 0);
+    const min=series ? Math.max(10, Math.round(series*2.6/5)*5) : 0;
+    return { ejercicios, series, min };
+  }
+  return { ejercicios:0, series:(s.series||[]).length, min:Math.round(aNum(s.tiempoMin))||0 };
+}
+
+/** La tarjeta de arriba: lo que toca hoy y por dónde se entra. Tres estados,
+    porque un día sin entreno y un día ya hecho piden cosas distintas. */
+function pintarHeroEntreno(){
+  const k=UI.entrenoDia;
+  const lista=sesionesDe(k);
+  const f=desdeClave(k);
+  const caja=$('#heroEntreno');
+  const cuando = k===HOY ? 'Hoy' : f.toLocaleDateString('es-ES',{weekday:'long',day:'numeric'});
+  const etq = txt => `<span class="etq">${esc(txt)}</span>`;
+
+  // Día libre: la pantalla vacía es una invitación, no un hueco.
+  if (!lista.length){
+    caja.innerHTML=`<div class="hero" style="margin-bottom:12px">
+      ${etq(`${cuando} · sin plan`)}
+      <div style="font-size:23px;font-weight:800;letter-spacing:-0.035em;margin-top:5px">Día libre</div>
+      <div style="font-size:13px;color:rgba(255,255,255,.6);margin-top:8px;line-height:1.45">Descansar también entrena. Y si te apetece mover algo, se apunta en dos toques.</div>
+      <div class="chips-hero"><button class="chip-dato" data-nueva-sesion="${k}" style="cursor:pointer">＋ Planear el día</button></div>
+    </div>`;
+    return;
+  }
+
+  const pendiente = lista.find(s=>!s.hecha);
+  const s = pendiente || lista[lista.length-1];
+  const p = pesoDeSesion(s);
+  const icono = s.clase==='fuerza' ? '🏋️' : s.deporte==='ciclismo' ? '🚴' : '🏃';
+  const tipo = s.clase==='fuerza' ? 'fuerza' : (s.modo||'resistencia');
+
+  // Dos pastillas y no tres: a 375 px la tercera se caía a otra línea y
+  // dejaba la tarjeta con el doble de alto. El volumen cabe al lado del
+  // recuento, que además es como se dice en voz alta: cuatro ejercicios,
+  // catorce series.
+  const chips = s.clase==='fuerza'
+    ? [ p.min?`⏱ ~<span class="num">${p.min}</span> min`:'',
+        p.ejercicios?`▦ <span class="num">${p.ejercicios}</span> ejercicio${p.ejercicios===1?'':'s'}${p.series?` · <span class="num">${p.series}</span> series`:''}`:'' ]
+    : [ p.min?`⏱ ~<span class="num">${p.min}</span> min`:'',
+        aNum(s.kmReal)?`📍 <span class="num">${numF.format(aNum(s.kmReal))}</span> km`:'',
+        p.series?`⚡ <span class="num">${p.series}</span> series`:'' ];
+
+  const cuerpoChips = chips.filter(Boolean).map(c=>`<span class="chip-dato">${c}</span>`).join('')
+    || `<span class="chip-dato">Sin detalles todavía</span>`;
+
+  // Todo hecho: se dice y se quita el deslizador, que ya no lleva a ningún
+  // sitio. Dejar un botón de "empezar" sobre algo terminado confunde.
+  if (!pendiente){
+    caja.innerHTML=`<div class="hero" style="margin-bottom:12px">
+      ${etq(`${cuando} · ${esc(tipo)}`)}
+      <div style="font-size:23px;font-weight:800;letter-spacing:-0.035em;margin-top:5px">${icono} ${esc(s.nombre)}</div>
+      <div style="font-size:13px;color:rgba(48,209,88,.9);font-weight:700;margin-top:7px">✓ Entreno hecho</div>
+      <div class="chips-hero">${cuerpoChips}</div>
+    </div>`;
+    return;
+  }
+
+  const otras = lista.filter(x=>!x.hecha).length - 1;
+  caja.innerHTML=`<div class="hero" style="margin-bottom:12px">
+    ${etq(`${cuando} · ${esc(tipo)}`)}
+    <div style="font-size:23px;font-weight:800;letter-spacing:-0.035em;margin-top:5px">${icono} ${esc(s.nombre)}</div>
+    ${otras>0?`<div style="font-size:12.5px;color:rgba(255,255,255,.55);margin-top:6px">y ${otras} sesión${otras===1?'':'es'} más este día</div>`:''}
+    <div class="chips-hero">${cuerpoChips}</div>
+    <div class="deslizador" data-deslizar="${k}|${s.id}" role="button" tabindex="0"
+         aria-label="Desliza para empezar ${esc(s.nombre)}">
+      <span class="estela"></span>
+      <span class="texto">Desliza para empezar</span>
+      <span class="tirador">→</span>
+    </div>
+  </div>`;
+}
+
+/** Las plantillas, a mano y en horizontal: planear un día es un toque. */
+function pintarCarruselPlantillas(){
+  const caja=$('#carruselPlantillas');
+  if (!E.plantillas.length){ caja.innerHTML=''; return; }
+  caja.innerHTML=`
+    <div class="titulo-seccion" style="margin:14px 0 8px"><h2 style="font-size:16px">Tus plantillas</h2>
+      <span class="accion">toca para añadirla al día</span></div>
+    <div class="carrusel">${E.plantillas.map(p=>{
+      const pe=pesoDeSesion(p.sesion);
+      const detalle = p.sesion.clase==='fuerza'
+        ? `${pe.ejercicios} ejercicio${pe.ejercicios===1?'':'s'}${pe.min?` · ~${pe.min} min`:''}`
+        : (p.sesion.modo||'resistencia');
+      return `<button class="carrusel-tarjeta" data-importar-plantilla="${p.id}">
+        <span class="emo">${p.sesion.clase==='fuerza'?'🏋️':'🏃'}</span>
+        <b>${esc(p.nombre)}</b><small>${esc(detalle)}</small>
+      </button>`;
+    }).join('')}</div>`;
 }
 
 function pintarCarga(){
@@ -4770,6 +4926,9 @@ function ritmoNecesario(meta){
 function ir(vista){
   try { sessionStorage.setItem('panel:pestania', vista); } catch {}
   const mismo = UI.vista===vista;
+  // De qué lado viene: si vas hacia la derecha del dock, la vista entra por
+  // la derecha. Es la pista que hace que el cambio se entienda sin pensarlo.
+  const desde = ORDEN_PESTANIAS.indexOf(vista) < ORDEN_PESTANIAS.indexOf(UI.vista) ? -1 : 1;
   UI.vista=vista;
   document.body.dataset.vista=vista;   // de aquí sale el color de la pestaña
   $$('.vista').forEach(v=>v.classList.toggle('oculto', v.dataset.vista!==vista));
@@ -4777,7 +4936,14 @@ function ir(vista){
   moverPastilla();
   window.scrollTo({top:0});
   pintar();
-  if (!mismo) reanimar($(`.vista[data-vista="${vista}"]`), 'entrando');
+  if (!mismo){
+    const nueva=$(`.vista[data-vista="${vista}"]`);
+    nueva.style.setProperty('--desde', desde);
+    // Un fotograma de margen: que el navegador acabe de colocar lo recién
+    // pintado antes de pedirle que lo mueva. Sin esto la animación arranca a
+    // la vez que el trabajo pesado y se come los primeros fotogramas.
+    requestAnimationFrame(()=>reanimar(nueva, 'entrando'));
+  }
 }
 
 function pintar(){
@@ -5484,6 +5650,72 @@ function pintarFrecuentes(){
          </button>`).join('')}</div>`
     : '';
 }
+
+/* ── Deslizar para empezar ──────────────────────────────────────────────────
+   El tirador sigue al dedo, la estela se llena por detrás y a partir de dos
+   tercios se pone en verde: ya sabes que al soltar arranca. Si te quedas
+   corto, vuelve a su sitio y no pasa nada.                                 */
+(() => {
+  const PARTE = 0.62;          // cuánto hay que recorrer para que cuente
+  let gesto = null;
+
+  const soltar = () => {
+    if (!gesto) return;
+    const { el, tirador, estela, ancho, dx } = gesto;
+    gesto = null;
+    el.classList.remove('moviendo');
+    const vale = dx > ancho * PARTE;
+    if (!vale){
+      tirador.style.transform=''; estela.style.width=''; el.classList.remove('listo');
+      return;
+    }
+    // Llega hasta el final por su cuenta antes de abrir: se ve que ha valido
+    tirador.style.transform = `translateX(${ancho}px)`;
+    estela.style.width = '100%';
+    vibrar(16);
+    const destino = el.dataset.deslizar;
+    setTimeout(()=>{
+      el.classList.remove('listo');
+      tirador.style.transform=''; estela.style.width='';
+      const [fecha,id]=String(destino).split('|');
+      if (!fecha || !id) return;
+      UI.sesionAbierta={fecha,id};
+      pintarDetalleSesion();
+      $('#hojaDetalleSesion').showModal();
+    }, 200);
+  };
+
+  document.addEventListener('pointerdown', e=>{
+    const el = e.target?.closest?.('.deslizador');
+    if (!el) return;
+    gesto = { el, x0:e.clientX, dx:0, ancho:Math.max(1, el.clientWidth-58),
+              tirador:el.querySelector('.tirador'), estela:el.querySelector('.estela') };
+    el.classList.add('moviendo');
+  });
+
+  document.addEventListener('pointermove', e=>{
+    if (!gesto) return;
+    gesto.dx = Math.max(0, Math.min(gesto.ancho, e.clientX - gesto.x0));
+    gesto.tirador.style.transform = `translateX(${gesto.dx}px)`;
+    gesto.estela.style.width = `${gesto.dx + 53}px`;
+    gesto.el.classList.toggle('listo', gesto.dx > gesto.ancho * PARTE);
+  });
+
+  document.addEventListener('pointerup', soltar);
+  document.addEventListener('pointercancel', soltar);
+
+  // Con teclado no hay gesto que valga: Enter o espacio abren y ya está.
+  document.addEventListener('keydown', e=>{
+    if (e.key!=='Enter' && e.key!==' ') return;
+    const el=e.target?.closest?.('.deslizador'); if (!el) return;
+    e.preventDefault();
+    const [fecha,id]=String(el.dataset.deslizar).split('|');
+    if (!fecha || !id) return;
+    UI.sesionAbierta={fecha,id};
+    pintarDetalleSesion();
+    $('#hojaDetalleSesion').showModal();
+  });
+})();
 
 /* ── Cerrar las hojas arrastrándolas hacia abajo ────────────────────────────
    Como en cualquier app: se agarra la hoja y se tira. Solo cuenta si el
@@ -6852,7 +7084,7 @@ if ('serviceWorker' in navigator && location.protocol!=='file:'){
    reproducir sin gesto, se cae igual: nunca puede dejarte fuera de la app. */
 (() => {
   const capa=$('#entrada'); if (!capa) return;
-  const video=$('#entradaVideo');
+  const imagen=$('#entradaImagen');
   let ido=false;
   const salir=()=>{
     if (ido) return; ido=true;
@@ -6860,17 +7092,17 @@ if ('serviceWorker' in navigator && location.protocol!=='file:'){
     capa.classList.add('fuera');
     setTimeout(()=>capa.remove(), 550);
   };
-  const seguro=setTimeout(salir, 3400);   // red de seguridad
-  // Si a los 700 ms el vídeo no ha avanzado ni un fotograma, no va a arrancar
-  // (sin permiso de reproducción automática, o el sistema lo ha frenado):
-  // mejor entrar ya que dejar al usuario mirando una imagen quieta.
-  setTimeout(()=>{ if (video.currentTime < 0.05) salir(); }, 700);
+  const seguro=setTimeout(salir, 3600);   // red de seguridad, pase lo que pase
   capa.addEventListener('click', salir);
-  video.addEventListener('ended', salir);
-  video.addEventListener('error', salir);
+  imagen.addEventListener('error', salir);
+
   // A quien le molesten las animaciones no se le enseña ninguna
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) salir();
-  else video.play?.().catch(()=>{});
+  if (matchMedia('(prefers-reduced-motion: reduce)')?.matches){ salir(); return; }
+
+  // La animación dura 2,33 s, y se cuentan desde que la imagen está lista
+  // para pintarse, que es cuando de verdad empieza a moverse.
+  const arrancar=()=>setTimeout(salir, 2450);
+  (imagen.decode ? imagen.decode() : Promise.reject()).then(arrancar, arrancar);
 })();
 
 moverPastilla();
