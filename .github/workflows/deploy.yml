@@ -39,6 +39,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Generar la versión en euskera
+        # web/eu/ no se guarda en el repositorio: se reconstruye aquí desde las
+        # páginas en castellano y el diccionario de assets/i18n.js. Así las dos
+        # versiones no pueden desincronizarse. Si falta alguna traducción el
+        # script sale con error y el despliegue se para.
+        run: node scripts/generar-euskera.mjs
+
       - name: Comprobar que el sitio está completo
         # Red de seguridad: si un fichero del sitemap no existe, se para aquí
         # en vez de publicar una web con enlaces rotos.

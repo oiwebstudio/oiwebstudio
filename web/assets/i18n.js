@@ -266,7 +266,21 @@ const EU = {
   sw_p3_h: "Begiratu",
   sw_p3_p: "Eta esan iezadazu baietz, ezetz, edo zer aldatuko zenukeen.",
   sw_sect: "Batez ere kaleko negozioekin lan egiten dut:",
-  sw_sect2: "tailerrak, klinikak, erreformak, merkataritza eta bulegoak."
+  sw_sect_host: "ostalaritza",
+  sw_sect_pelu: "ile-apaindegiak eta estetika",
+  sw_sect2: "tailerrak, klinikak, erreformak, merkataritza eta bulegoak.",
+
+  /* Enlaces a las guías, bajo los precios */
+  pre_guias: 'Aurrekontuak alderatzen? Irakurri gure <a href="precio-diseno-web-profesional.html" class="link-terra">web diseinuaren prezioei buruzko gida zintzoa</a>, <a href="seo-local-tolosa-google-maps.html" class="link-terra">nola agertu Google-n Tolosan</a> edo <a href="pagina-web-o-solo-instagram.html" class="link-terra">zergatik ez den nahikoa Instagram bakarrik</a>.',
+
+  /* Sección de zonas de la portada */
+  zon_ver: "Ikusi eremu guztiak →",
+  pre_guia_link: '¿Beste aurrekontuak zergatik aldatzen diren hainbeste jakin nahi duzu? Irakurri <a href="precio-diseno-web-profesional.html" class="link-terra">gida osoa: zenbat balio du webgune profesional batek 2026an</a>.',
+  tra_hero_cta: "Ikusi lanak",
+  tra_mb_title: "Portfolioko zortzi webguneak",
+  zon_eyebrow: "Non lan egiten dudan",
+  zon_h2: "Web diseinua Gipuzkoa osoan",
+  zon_p: "Estudioa Tolosan dago, baina Tolosaldea, Goierri, Buruntzaldea eta Donostialdeko negozioekin lan egiten dut."
 };
 
 (function () {

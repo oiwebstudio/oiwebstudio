@@ -42,3 +42,8 @@ localai/
 # La carpeta de trabajo — fuente, catálogo, brief e investigación — se
 # queda en local: es el criterio, y eso no se regala.
 biblioteca/animaciones/
+
+# Versión en euskera: se genera en cada despliegue con
+# scripts/generar-euskera.mjs desde las páginas en castellano.
+# No editar a mano ni commitear.
+web/eu/
