@@ -63,6 +63,9 @@
   --sf: 'Onest', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text',
         'Segoe UI Variable Display', 'Segoe UI', Roboto, system-ui, sans-serif;
   --muelle: cubic-bezier(.32, .72, 0, 1);
+  /* Como --muelle pero sin el frenazo: --muelle hace el 95 % del camino en
+     la mitad del tiempo, y eso en una hoja de 500 px se ve como un salto. */
+  --hoja-curva: cubic-bezier(.21, .68, .29, 1);
 
   --dock-alto: calc(78px + env(safe-area-inset-bottom));
 }
@@ -522,18 +525,20 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
   padding: 8px;
 }
 
-/* font-size:0 esconde el rótulo sin sacarlo del árbol: el lector de
-   pantalla lo sigue leyendo, y en pantalla queda el icono limpio. */
-.dock button { display: grid; place-items: center; justify-self: center;
-  width: 44px; height: 44px; border-radius: 50%; font-size: 0;
-  color: var(--txt-2); background: rgba(20,23,28,.05);
-  transition: background .26s ease, color .26s ease; }
-.dock button svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; transition: transform .28s var(--muelle), stroke-width .2s ease; }
-.dock button[aria-selected='true'] svg { transform: translateY(-1px) scale(1.06); stroke-width: 2.1; }
-.dock button[aria-selected='true'] { background: var(--tinta); color: var(--carta); }
+.dock button { display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding: 3px 0 1px; border-radius: 20px; font-size: 9.5px; font-weight: 500;
+  letter-spacing: -0.005em; color: var(--txt-2); background: none;
+  transition: color .26s ease; }
+/* El círculo va alrededor del icono, no del botón: content-box hace que el
+   relleno crezca por fuera de los 20 px del dibujo y salga un disco de 36. */
+.dock button svg { width: 20px; height: 20px; box-sizing: content-box; padding: 8px;
+  border-radius: 50%; background: rgba(20,23,28,.05);
+  fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round;
+  transition: background .26s ease, color .26s ease, transform .28s var(--muelle); }
+.dock button[aria-selected='true'] svg { background: var(--tinta); color: var(--carta); }
+.dock button[aria-selected='true'] { color: var(--txt); font-weight: 600; }
 /* Filo de luz arriba: el cristal se apoya sobre el contenido, no lo tapa */
 .dock::before { content: ''; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 1px 0 rgba(255,255,255,.7); pointer-events: none; }
-.dock button[aria-selected='true'] { background: var(--tinta); color: #fff; }
 .dock button:active { opacity: .7; }
 
 /* ── Hojas ──────────────────────────────────────────────────────────────── */
@@ -546,8 +551,12 @@ dialog::backdrop { background: rgba(17,17,17,.46); }
 
 /* will-change avisa de que esto se va a mover: el navegador prepara la capa
    antes de empezar, en vez de montarla con la animación ya en marcha. */
-.hoja { width: min(520px, 100vw); margin: 0 auto; background: var(--carta); border-radius: 30px 30px 0 0; box-shadow: 0 -18px 44px rgba(0,0,0,.16); padding-bottom: env(safe-area-inset-bottom); animation: subir .34s var(--muelle); max-height: 90dvh; display: flex; flex-direction: column; will-change: transform; }
-@keyframes subir { from { transform: translateY(100%); } to { transform: none; } }
+.hoja { width: min(520px, 100vw); margin: 0 auto; background: var(--carta); border-radius: 30px 30px 0 0; box-shadow: 0 -18px 44px rgba(0,0,0,.16); padding-bottom: env(safe-area-inset-bottom); animation: subir .44s var(--hoja-curva); max-height: 90dvh; display: flex; flex-direction: column; }
+@keyframes subir {
+  from { transform: translateY(100%); opacity: .35; }
+  55%  { opacity: 1; }
+  to   { transform: none; opacity: 1; }
+}
 
 .hoja-asa { width: 40px; height: 5px; border-radius: 3px; background: rgba(0,0,0,.14); margin: 10px auto 2px; flex: none; transition: background .2s ease, width .2s var(--muelle); }
 /* El asa engorda mientras arrastras: se nota que la hoja va contigo */
@@ -676,8 +685,9 @@ body.en-foco .dock { display: none; }
 :root[data-tema='oscuro'] .hero .sello,
 :root[data-tema='oscuro'] .hero-siguiente { background: rgba(11,11,12,.07); border-color: rgba(11,11,12,.12); color: rgba(11,11,12,.78); }
 :root[data-tema='oscuro'] .dock { background: rgba(24,24,27,.78); border-color: rgba(255,255,255,.08); }
-:root[data-tema='oscuro'] .dock button { background: rgba(255,255,255,.07); }
-:root[data-tema='oscuro'] .dock button[aria-selected='true'] { background: var(--tinta); color: #0B0B0C; }
+:root[data-tema='oscuro'] .dock button svg { background: rgba(255,255,255,.07); }
+:root[data-tema='oscuro'] .dock button[aria-selected='true'] svg { background: var(--tinta); color: #0B0B0C; }
+:root[data-tema='oscuro'] .dock button[aria-selected='true'] { color: var(--txt); }
 :root[data-tema='oscuro'] .segmentado { background: rgba(255,255,255,.07); }
 :root[data-tema='oscuro'] input, :root[data-tema='oscuro'] select, :root[data-tema='oscuro'] textarea { background: rgba(255,255,255,.07); }
 :root[data-tema='oscuro'] input:focus, :root[data-tema='oscuro'] select:focus, :root[data-tema='oscuro'] textarea:focus { background: rgba(255,255,255,.12); }
@@ -747,11 +757,11 @@ body.en-foco .dock { display: none; }
 /* ── La alarma ──────────────────────────────────────────────────────────────
    El brindis se va en dos segundos y para "no puedo guardar" eso es un
    susurro. Esto se queda en pantalla hasta que se resuelve.                */
-.alarma { position: fixed; top: 0; left: 0; right: 0; z-index: 150; background: var(--rojo); color: #fff; padding: calc(10px + env(safe-area-inset-top)) 16px 12px; display: flex; align-items: center; gap: 10px; font-size: 13px; line-height: 1.4; box-shadow: 0 8px 24px rgba(255,59,48,.35); animation: bajar .35s var(--muelle); }
+.alarma { position: fixed; top: 0; left: 0; right: 0; z-index: 150; background: var(--rojo); color: #fff; padding: calc(10px + env(safe-area-inset-top)) 16px 12px; display: flex; align-items: center; gap: 10px; font-size: 13px; line-height: 1.4; box-shadow: 0 8px 24px rgba(255,59,48,.35); animation: caer .35s var(--muelle); }
 .alarma b { display: block; font-weight: 600; font-size: 13.5px; }
 .alarma .dicho { flex: 1; min-width: 0; }
 .alarma button { flex: none; background: #fff; color: var(--rojo); font-weight: 600; font-size: 12.5px; padding: 9px 14px; border-radius: 14px; }
-@keyframes bajar { from { transform: translateY(-100%); } to { transform: none; } }
+@keyframes caer { from { transform: translateY(-100%); } to { transform: none; } }
 
 /* ── La entrada: el logo animado antes de nada ──────────────────────────────
    Sobre negro, el mismo negro que el vídeo, para que no se vea el borde.
@@ -899,18 +909,22 @@ select.nativo-fuera { position: absolute; width: 1px; height: 1px; opacity: 0; p
 .dock .pastilla { display: none; }
 .dock button { position: relative; z-index: 1; }
 .dock button svg { transition: transform .34s var(--muelle); }
-.dock button[aria-selected='true'] svg { transform: translateY(-1px) scale(1.08); }
-.dock button:active svg { transform: scale(.86); }
+/* Los discos no cambian de tamaño al elegirlos: siete tamaños distintos en
+   una fila de seis se nota más de lo que ayuda. */
+.dock button:active svg { transform: scale(.88); }
 
 /* Marcar algo hecho: el check da un saltito */
 @keyframes latido { 0% { transform: scale(1) } 40% { transform: scale(1.22) } 100% { transform: scale(1.05) } }
 .habito[aria-pressed='true'] .check, .check.hecho { animation: latido .34s var(--muelle); }
 
 /* Hojas: al cerrarlas se van hacia abajo en vez de desaparecer de golpe */
-@keyframes bajar { from { transform: none; } to { transform: translateY(100%); } }
-dialog.cerrando .hoja { animation: bajar .26s cubic-bezier(.4,0,1,1) forwards; }
-dialog.cerrando::backdrop { opacity: 0; transition: opacity .26s ease; }
-dialog::backdrop { animation: fundir .3s ease backwards; }
+@keyframes bajar {
+  from { transform: none; opacity: 1; }
+  to   { transform: translateY(100%); opacity: .4; }
+}
+dialog.cerrando .hoja { animation: bajar .3s cubic-bezier(.35,0,.75,.9) forwards; }
+dialog.cerrando::backdrop { opacity: 0; transition: opacity .3s ease; }
+dialog::backdrop { animation: fundir .44s ease backwards; }
 @keyframes fundir { from { opacity: 0 } to { opacity: 1 } }
 
 /* Pantallas completas (respiro y cronómetro) */
@@ -4876,7 +4890,7 @@ HTMLDialogElement.prototype.close=function(...args){
     cerrarNativo.apply(this,args);
   };
   hoja.addEventListener('animationend', rematar, { once:true });
-  setTimeout(rematar, 320);   // por si la animación no llega a dispararse
+  setTimeout(rematar, 380);   // por si la animación no llega a dispararse
 };
 
 
