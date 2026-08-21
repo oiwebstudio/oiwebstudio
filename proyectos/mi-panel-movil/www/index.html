@@ -111,13 +111,18 @@ button { font: inherit; color: inherit; background: none; border: none; padding:
 button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outline-offset: 2px; border-radius: 10px; }
 
 /* ── Cabecera ───────────────────────────────────────────────────────────── */
-.cabecera { display: flex; align-items: center; gap: 12px; padding: calc(18px + env(safe-area-inset-top)) 0 14px; }
-.avatar { width: 46px; height: 46px; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--tinta); color: #fff; font-size: 17px; font-weight: 700; }
-.cabecera .quien { flex: 1; min-width: 0; }
-.cabecera .quien small { display: block; font-size: 12.5px; color: var(--txt-2); }
-.cabecera .quien b { font-size: 17px; font-weight: 700; letter-spacing: -0.02em; }
+.cabecera { display: flex; align-items: center; gap: 8px; padding: calc(18px + env(safe-area-inset-top)) 0 14px; }
+.avatar { width: 40px; height: 40px; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--tinta); color: var(--carta); font-size: 14px; font-weight: 600; letter-spacing: .01em; }
+.cabecera .quien { flex: 1; min-width: 0; margin-right: 4px; }
+/* El nombre en negrita dentro de la frase, no en una línea aparte: se lee
+   como un saludo y no como una ficha. */
+.cabecera .quien b { display: block; font-size: 15.5px; font-weight: 500; letter-spacing: -0.012em;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cabecera .quien b span { font-weight: 700; }
+.cabecera .quien small { display: block; font-size: 12px; color: var(--txt-3); margin-top: 1px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-.campana { position: relative; width: 44px; height: 44px; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--carta); border: var(--borde); box-shadow: var(--sombra); }
+.campana { position: relative; width: 40px; height: 40px; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--carta); border: var(--borde); box-shadow: var(--sombra); }
 .campana svg { width: 20px; height: 20px; fill: none; stroke: var(--txt); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .campana .puntito { position: absolute; top: 10px; right: 11px; width: 8px; height: 8px; border-radius: 50%; background: var(--rojo); }
 
@@ -241,6 +246,22 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
 .hero .nota-corta { font-size: 12.5px; color: rgba(255,255,255,.55); margin-top: 6px; }
 .hero .hecho { font-size: 13px; font-weight: 600; color: #4ADE80; margin-top: 7px; }
 
+/* El rótulo del tipo de sesión, arriba a la derecha: dice de qué va esto
+   sin robarle sitio al nombre, que es lo que se lee primero. */
+.hero .sello { position: absolute; top: 20px; right: 18px;
+  font-size: 10px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase;
+  color: rgba(255,255,255,.82); background: rgba(255,255,255,.13);
+  border: 1px solid rgba(255,255,255,.15); padding: 6px 11px; border-radius: 999px; }
+
+/* La fila de abajo: deslizar ocupa lo que sobra y "siguiente" solo aparece
+   cuando hay más de una sesión que ofrecer. */
+.fila-empezar { display: flex; gap: 9px; margin-top: 17px; }
+.hero-siguiente { flex: none; display: grid; place-items: center;
+  width: 58px; padding: 0; border-radius: 50%; font-size: 21px; font-weight: 500; line-height: 1;
+  color: #fff; background: rgba(255,255,255,.13); border: 1px solid rgba(255,255,255,.15);
+  transition: transform .15s var(--muelle); }
+.hero-siguiente:active { transform: scale(.95); }
+
 .chips-hero { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 15px; }
 .chip-dato { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 650; letter-spacing: -0.01em; color: rgba(255,255,255,.84); background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.13); padding: 7px 11px; border-radius: 12px; }
 .chip-dato .num { font-weight: 600; color: #fff; }
@@ -248,13 +269,13 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
 /* El deslizador. En el gimnasio tienes las manos ocupadas y el móvil en el
    suelo: un botón pequeño se pulsa sin querer. Un gesto largo y deliberado
    no. Es el mismo lenguaje del arrastre que ya cierra las hojas. */
-.deslizador { position: relative; margin-top: 17px; height: 58px; border-radius: 19px; background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.14); overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
-.deslizador .estela { position: absolute; top: 0; bottom: 0; left: 0; width: 0; background: rgba(255,255,255,.14); transition: width .28s var(--muelle), background .2s ease; }
+.deslizador { position: relative; flex: 1; min-width: 0; height: 58px; border-radius: 19px; background: rgba(255,255,255,.93); border: 1px solid rgba(255,255,255,.5); overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.deslizador .estela { position: absolute; top: 0; bottom: 0; left: 0; width: 0; background: rgba(20,23,28,.07); transition: width .28s var(--muelle), background .2s ease; }
 .deslizador.moviendo .estela { transition: background .2s ease; }
 .deslizador.listo .estela { background: rgba(48,209,88,.32); }
-.deslizador .texto { position: absolute; inset: 0; display: grid; place-items: center; padding-left: 46px; font-size: 13.5px; font-weight: 700; letter-spacing: .005em; color: rgba(255,255,255,.7); pointer-events: none; transition: opacity .2s ease; }
+.deslizador .texto { position: absolute; inset: 0; display: grid; place-items: center; padding-left: 46px; font-size: 13.5px; font-weight: 700; letter-spacing: .005em; color: rgba(20,23,28,.6); pointer-events: none; transition: opacity .2s ease; }
 .deslizador.moviendo .texto { opacity: .35; }
-.deslizador .tirador { position: absolute; top: 5px; left: 5px; width: 48px; height: 48px; border-radius: 15px; background: #fff; color: var(--tinta); display: grid; place-items: center; font-size: 19px; font-weight: 700; line-height: 1; box-shadow: 0 5px 16px rgba(0,0,0,.3); transition: transform .3s var(--muelle); }
+.deslizador .tirador { position: absolute; top: 5px; left: 5px; width: 48px; height: 48px; border-radius: 50%; background: var(--tinta); color: var(--carta); display: grid; place-items: center; font-size: 19px; font-weight: 600; line-height: 1; box-shadow: 0 4px 12px rgba(0,0,0,.22); transition: transform .3s var(--muelle); }
 .deslizador.moviendo .tirador { transition: none; }
 /* Un empujoncito cada pocos segundos: dice "tira de mí" sin un cartel */
 @keyframes empujar { 0%, 88%, 100% { transform: translateX(0) } 94% { transform: translateX(4px) } }
@@ -273,22 +294,30 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
   .deslizador:not(.moviendo) .tirador { animation: none; }
 }
 
-.tira-semana { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px;
+.tira-semana { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px;
   background: var(--carta); border: var(--borde); box-shadow: var(--sombra);
-  border-radius: 24px; padding: 13px 7px 11px; margin-bottom: var(--hueco); }
-.dia-chip { background: none; border: none; box-shadow: none; padding: 0;
-  display: flex; flex-direction: column; align-items: center; gap: 7px;
-  transition: transform .15s var(--muelle); }
-.dia-chip:active { transform: scale(.9); }
-.dia-chip small { font-size: 10.5px; font-weight: 500; letter-spacing: 0; color: var(--txt-3); }
-.dia-chip b { width: 33px; height: 33px; border-radius: 50%; display: grid; place-items: center;
-  font-size: 14px; font-weight: 600; margin: 0; letter-spacing: -0.01em;
-  transition: background .22s ease, color .22s ease, box-shadow .22s ease; }
-/* Hoy se marca con un aro; el elegido, relleno. Así se ven los dos a la vez
-   cuando estás mirando otro día de la semana. */
+  border-radius: 26px; padding: 7px 6px; margin-bottom: var(--hueco); }
+/* Cada día es una columna con su propia pastilla; la del elegido se rellena
+   y envuelve nombre y número de una pieza. */
+.dia-chip { background: none; border: none; box-shadow: none;
+  padding: 8px 0 7px; border-radius: 21px;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  transition: background .24s ease, transform .15s var(--muelle); }
+.dia-chip:active { transform: scale(.94); }
+.dia-chip small { font-size: 10.5px; font-weight: 500; letter-spacing: 0; color: var(--txt-2); transition: color .24s ease; }
+.dia-chip b { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center;
+  font-size: 13.5px; font-weight: 600; margin: 0; letter-spacing: -0.01em;
+  background: var(--fondo); color: var(--txt);
+  transition: background .24s ease, color .24s ease, box-shadow .24s ease; }
+/* Hoy lleva un aro aunque estés mirando otro día: los dos se ven a la vez. */
 .dia-chip.hoy b { box-shadow: inset 0 0 0 1.5px var(--txt-3); }
-.dia-chip.elegido b { background: var(--tinta); color: var(--carta); box-shadow: none; }
-.dia-chip .marca { display: block; width: 5px; height: 5px; border-radius: 50%; margin: -2px auto 0; background: transparent; }
+.dia-chip.elegido { background: rgba(20,23,28,.11); }
+.dia-chip.elegido small { color: var(--txt); }
+.dia-chip.elegido b { background: var(--carta); color: var(--txt); box-shadow: none; }
+.dia-chip .marca { display: block; width: 5px; height: 5px; border-radius: 50%; margin: -1px auto -3px; background: transparent; }
+:root[data-tema='oscuro'] .dia-chip.elegido { background: rgba(255,255,255,.13); }
+:root[data-tema='oscuro'] .dia-chip b { background: rgba(255,255,255,.06); }
+:root[data-tema='oscuro'] .dia-chip.elegido b { background: rgba(255,255,255,.16); }
 .dia-chip .marca.plan { background: var(--naranja); }
 .dia-chip .marca.hecha { background: var(--verde); }
 
@@ -493,10 +522,15 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
   padding: 8px;
 }
 
-.dock button { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 9px 1px; border-radius: 28px; font-size: 9px; font-weight: 600; letter-spacing: -0.01em; color: var(--txt-2); transition: background .2s ease, color .2s ease; }
+/* font-size:0 esconde el rótulo sin sacarlo del árbol: el lector de
+   pantalla lo sigue leyendo, y en pantalla queda el icono limpio. */
+.dock button { display: grid; place-items: center; justify-self: center;
+  width: 44px; height: 44px; border-radius: 50%; font-size: 0;
+  color: var(--txt-2); background: rgba(20,23,28,.05);
+  transition: background .26s ease, color .26s ease; }
 .dock button svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; transition: transform .28s var(--muelle), stroke-width .2s ease; }
 .dock button[aria-selected='true'] svg { transform: translateY(-1px) scale(1.06); stroke-width: 2.1; }
-.dock button[aria-selected='true'] { font-weight: 700; }
+.dock button[aria-selected='true'] { background: var(--tinta); color: var(--carta); }
 /* Filo de luz arriba: el cristal se apoya sobre el contenido, no lo tapa */
 .dock::before { content: ''; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 1px 0 rgba(255,255,255,.7); pointer-events: none; }
 .dock button[aria-selected='true'] { background: var(--tinta); color: #fff; }
@@ -633,14 +667,17 @@ body.en-foco .dock { display: none; }
 :root[data-tema='oscuro'] .hero .hecho { color: #1B7F3B; }
 :root[data-tema='oscuro'] .chip-dato { background: rgba(11,11,12,.06); border-color: rgba(11,11,12,.1); color: rgba(11,11,12,.75); }
 :root[data-tema='oscuro'] .chip-dato .num { color: #0B0B0C; }
-:root[data-tema='oscuro'] .deslizador { background: rgba(11,11,12,.06); border-color: rgba(11,11,12,.11); }
-:root[data-tema='oscuro'] .deslizador .estela { background: rgba(11,11,12,.09); }
-:root[data-tema='oscuro'] .deslizador.listo .estela { background: rgba(27,127,59,.22); }
-:root[data-tema='oscuro'] .deslizador .texto { color: rgba(11,11,12,.55); }
-:root[data-tema='oscuro'] .deslizador .tirador { background: #0B0B0C; color: #fff; box-shadow: 0 5px 16px rgba(0,0,0,.22); }
+/* Sobre un hero claro el carril tiene que ser el oscuro, o no se ve. */
+:root[data-tema='oscuro'] .deslizador { background: rgba(11,11,12,.9); border-color: rgba(11,11,12,.25); }
+:root[data-tema='oscuro'] .deslizador .estela { background: rgba(255,255,255,.1); }
+:root[data-tema='oscuro'] .deslizador.listo .estela { background: rgba(48,209,88,.3); }
+:root[data-tema='oscuro'] .deslizador .texto { color: rgba(255,255,255,.62); }
+:root[data-tema='oscuro'] .deslizador .tirador { background: #fff; color: #0B0B0C; box-shadow: 0 4px 12px rgba(0,0,0,.3); }
+:root[data-tema='oscuro'] .hero .sello,
+:root[data-tema='oscuro'] .hero-siguiente { background: rgba(11,11,12,.07); border-color: rgba(11,11,12,.12); color: rgba(11,11,12,.78); }
 :root[data-tema='oscuro'] .dock { background: rgba(24,24,27,.78); border-color: rgba(255,255,255,.08); }
-:root[data-tema='oscuro'] .dock .pastilla { background: var(--tinta); }
-:root[data-tema='oscuro'] .dock button[aria-selected='true'] { color: #0B0B0C; }
+:root[data-tema='oscuro'] .dock button { background: rgba(255,255,255,.07); }
+:root[data-tema='oscuro'] .dock button[aria-selected='true'] { background: var(--tinta); color: #0B0B0C; }
 :root[data-tema='oscuro'] .segmentado { background: rgba(255,255,255,.07); }
 :root[data-tema='oscuro'] input, :root[data-tema='oscuro'] select, :root[data-tema='oscuro'] textarea { background: rgba(255,255,255,.07); }
 :root[data-tema='oscuro'] input:focus, :root[data-tema='oscuro'] select:focus, :root[data-tema='oscuro'] textarea:focus { background: rgba(255,255,255,.12); }
@@ -857,14 +894,10 @@ select.nativo-fuera { position: absolute; width: 1px; height: 1px; opacity: 0; p
 
 /* El dock: pastilla que se desliza de una pestaña a otra */
 .dock { position: fixed; }
-.dock .pastilla {
-  position: absolute; top: 8px; bottom: 8px; left: 0; width: 0;
-  border-radius: 28px; background: var(--tinta); z-index: 0;
-  transition: transform .34s var(--muelle), width .34s var(--muelle);
-  pointer-events: none;
-}
-.dock button { position: relative; z-index: 1; background: none !important; }
-.dock button[aria-selected='true'] { color: #fff; }
+/* La pastilla deslizante sobra desde que cada icono tiene su propio
+   círculo: dos marcas de "estás aquí" compiten entre ellas. */
+.dock .pastilla { display: none; }
+.dock button { position: relative; z-index: 1; }
 .dock button svg { transition: transform .34s var(--muelle); }
 .dock button[aria-selected='true'] svg { transform: translateY(-1px) scale(1.08); }
 .dock button:active svg { transform: scale(.86); }
@@ -916,10 +949,9 @@ dialog::backdrop { animation: fundir .3s ease backwards; }
 <div class="telefono">
 
   <header class="cabecera">
-    <button class="avatar" id="avatar">OI</button>
     <div class="quien">
-      <small id="saludoPeq">Bienvenido</small>
-      <b id="nombre">Oier</b>
+      <b id="saludoPeq">Hola, <span id="nombre">Oier</span></b>
+      <small id="saludoFecha"></small>
     </div>
     <button class="campana" id="btnTemporizador" aria-label="Temporizador" style="margin-right:-4px">
       <svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg>
@@ -931,6 +963,7 @@ dialog::backdrop { animation: fundir .3s ease backwards; }
       <svg viewBox="0 0 24 24"><path d="M18 9a6 6 0 1 0-12 0c0 6-2 7-2 7h16s-2-1-2-7"/><path d="M10.3 20a2 2 0 0 0 3.4 0"/></svg>
       <span class="puntito oculto" id="puntitoDiario"></span>
     </button>
+    <button class="avatar" id="avatar">OI</button>
   </header>
 
   <div class="banner oculto anima" id="bannerDiario">
@@ -2610,8 +2643,12 @@ const vacio = (icono, titulo, texto) =>
 /* ═══════════════════════════ VISTA 1 · AGENDA DE HOY ═════════════════════ */
 function pintarHome(){
   const hora=new Date().getHours();
-  $('#saludoPeq').textContent = hora<6?'Buenas noches':hora<14?'Buenos días':hora<21?'Buenas tardes':'Buenas noches';
-  $('#nombre').textContent = E.nombre;
+  const saludo = hora<6?'Buenas noches':hora<14?'Buenos días':hora<21?'Buenas tardes':'Buenas noches';
+  // El span lleva id porque este innerHTML lo rehace en cada repintado:
+  // sin id, quien buscara #nombre después se encontraba con nada.
+  $('#saludoPeq').innerHTML = `${saludo}, <span id="nombre">${esc(E.nombre||'')}</span>`;
+  const fecha = desdeClave(HOY).toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});
+  $('#saludoFecha').textContent = fecha.charAt(0).toUpperCase()+fecha.slice(1);
   $('#avatar').textContent = E.nombre.trim().split(/\s+/).slice(0,2).map(p=>p[0]).join('').toUpperCase()||'OI';
 
   // Prioridad #1 del diario de hoy (la personal manda; si no, la de empresa)
@@ -3672,7 +3709,12 @@ function pintarHeroEntreno(){
     return;
   }
 
-  const pendiente = lista.find(s=>!s.hecha);
+  // Si el día tiene varias sesiones pendientes, el hero enseña una y con
+  // "siguiente" se pasa a la de al lado. Antes solo se anunciaba que había
+  // más, sin manera de llegar a ellas desde aquí.
+  const pendientes = lista.filter(x=>!x.hecha);
+  const cual = pendientes.length ? (UI.heroSesion||0) % pendientes.length : 0;
+  const pendiente = pendientes[cual];
   const s = pendiente || lista[lista.length-1];
   const p = pesoDeSesion(s);
   const icono = s.clase==='fuerza' ? '🏋️' : s.deporte==='ciclismo' ? '🚴' : '🏃';
@@ -3696,7 +3738,7 @@ function pintarHeroEntreno(){
   // sitio. Dejar un botón de "empezar" sobre algo terminado confunde.
   if (!pendiente){
     caja.innerHTML=`<div class="hero" style="margin-bottom:12px">
-      ${etq(`${cuando} · ${esc(tipo)}`)}
+      ${etq(cuando)}<span class="sello">${esc(tipo)}</span>
       <div class="titulin">${icono} ${esc(s.nombre)}</div>
       <div class="hecho">✓ Entreno hecho</div>
       <div class="chips-hero">${cuerpoChips}</div>
@@ -3704,17 +3746,20 @@ function pintarHeroEntreno(){
     return;
   }
 
-  const otras = lista.filter(x=>!x.hecha).length - 1;
+  const otras = pendientes.length - 1;
   caja.innerHTML=`<div class="hero" style="margin-bottom:12px">
-    ${etq(`${cuando} · ${esc(tipo)}`)}
+    ${etq(cuando)}<span class="sello">${esc(tipo)}</span>
     <div class="titulin">${icono} ${esc(s.nombre)}</div>
-    ${otras>0?`<div class="nota-corta">y ${otras} sesión${otras===1?'':'es'} más este día</div>`:''}
+    ${otras>0?`<div class="nota-corta">${cual+1} de ${pendientes.length} pendientes hoy</div>`:''}
     <div class="chips-hero">${cuerpoChips}</div>
+    <div class="fila-empezar">
     <div class="deslizador" data-deslizar="${k}|${s.id}" role="button" tabindex="0"
          aria-label="Desliza para empezar ${esc(s.nombre)}">
       <span class="estela"></span>
       <span class="texto">Desliza para empezar</span>
       <span class="tirador">→</span>
+    </div>
+    ${otras>0?`<button class="hero-siguiente" data-hero-siguiente="${pendientes.length}" aria-label="Ver la siguiente sesión del día">›</button>`:''}
     </div>
   </div>`;
 }
@@ -6757,8 +6802,17 @@ document.addEventListener('click', async e=>{
     pintarCalendario(); return;
   }
 
+  const sig=e.target.closest('[data-hero-siguiente]');
+  if (sig){
+    const cuantas=Number(sig.dataset.heroSiguiente)||1;
+    UI.heroSesion=((UI.heroSesion||0)+1)%cuantas;
+    pintarEntreno(); vibrar(8); return;
+  }
+
   const chip=e.target.closest('[data-entreno-dia]');
-  if (chip){ UI.entrenoDia=chip.dataset.entrenoDia; pintarEntreno(); return; }
+  // Al cambiar de día se vuelve a la primera sesión: seguir por la tercera
+  // de ayer en un día nuevo no tendría ningún sentido.
+  if (chip){ UI.entrenoDia=chip.dataset.entrenoDia; UI.heroSesion=0; pintarEntreno(); return; }
 
   const nueva=e.target.closest('[data-nueva-sesion]');
   if (nueva){
