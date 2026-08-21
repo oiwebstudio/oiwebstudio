@@ -907,6 +907,19 @@ a.work:hover .work__link { gap: 11px; color: var(--accent-hover); }
 .lang-switch button:hover { color: var(--ink); }
 .lang-switch button.is-active { background: #fff; color: var(--ink); box-shadow: var(--shadow-xs); }
 
+/* Selector de idioma como enlace de verdad.
+   En las páginas que tienen versión en euskera el cambio ya no lo hace
+   JavaScript sino un <a> a la otra dirección, que es lo que permite a Google
+   descubrir e indexar la versión traducida. Se ve idéntico a los botones. */
+.lang-switch .lang-link {
+  display: inline-block; text-decoration: none;
+  font-family: var(--font-mono); font-size: 11.5px; font-weight: 500; letter-spacing: 0.03em;
+  color: var(--text-muted); padding: 5px 9px; border-radius: var(--r-pill);
+  transition: color 0.18s var(--ease), background 0.18s var(--ease), box-shadow 0.18s var(--ease);
+}
+.lang-switch .lang-link:hover { color: var(--ink); }
+.lang-switch .lang-link.is-active { background: #fff; color: var(--ink); box-shadow: var(--shadow-xs); cursor: default; }
+
 /* Nav-isla en móvil: sin :hover, se contrae/expande según la dirección del
    scroll (toggled por JS en .nav-wrap.is-contracted). El logo y el botón
    de menú (hamburguesa) quedan siempre visibles y accesibles. */

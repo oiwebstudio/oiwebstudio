@@ -18,6 +18,9 @@
 <meta property="og:locale:alternate" content="eu_ES"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <link rel="canonical" href="https://oiwebstudio.com/trabajos.html"/>
+<link rel="alternate" hreflang="es" href="https://oiwebstudio.com/trabajos.html"/>
+<link rel="alternate" hreflang="eu" href="https://oiwebstudio.com/eu/trabajos.html"/>
+<link rel="alternate" hreflang="x-default" href="https://oiwebstudio.com/trabajos.html"/>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -125,8 +128,8 @@
 <span>680 95 67 55</span>
 </a>
 <div class="lang-switch" role="group" aria-label="Idioma / Hizkuntza">
-<button type="button" data-lang="es">ES</button>
-<button type="button" data-lang="eu">EU</button>
+<span class="lang-link is-active" aria-current="true">ES</span>
+<a class="lang-link" href="/eu/trabajos.html" hreflang="eu" lang="eu" aria-label="Euskaraz ikusi">EU</a>
 </div>
 <a href="contacto.html" class="btn btn--accent nav__cta" data-t="btn_presupuesto">Solicitar presupuesto</a>
 <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false">
@@ -160,7 +163,7 @@
 <p class="hero__lede reveal" data-d="2" data-t="tra_lede">Ocho webs en vivo que puedes abrir y explorar, cada una de un sector distinto.</p>
 <div class="hero-cta-wrapper">
 <button class="hero-cta-btn" onclick="document.querySelector('.mb-wall').scrollIntoView({behavior:'smooth'})">
-<span class="hero-cta-text">Ver los trabajos</span>
+<span class="hero-cta-text" data-t="tra_hero_cta">Ver los trabajos</span>
 <span class="hero-cta-arrow">→</span>
 </button>
 </div>
@@ -170,7 +173,7 @@
 </header>
 
 <section class="mb-wall" aria-labelledby="mb-title">
-<h2 id="mb-title" class="sr-only">Las ocho webs del portfolio</h2>
+<h2 id="mb-title" class="sr-only" data-t="tra_mb_title">Las ocho webs del portfolio</h2>
 <span class="mb-corner tl"><span data-t="tra_eyebrow">Proyectos</span> — OI Studio</span>
 <span class="mb-corner tr">oistudio · Tolosa<br/>@oi.webstudio</span>
 <span class="mb-corner bl">2026 — <span data-t="gal_note">Colección abierta · Se admiten encargos</span></span>

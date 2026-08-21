@@ -22,6 +22,9 @@
 <meta name="robots" content="index, follow"/>
 <meta name="author" content="OI Studio"/>
 <link rel="canonical" href="https://oiwebstudio.com/"/>
+<link rel="alternate" hreflang="es" href="https://oiwebstudio.com/"/>
+<link rel="alternate" hreflang="eu" href="https://oiwebstudio.com/eu/index.html"/>
+<link rel="alternate" hreflang="x-default" href="https://oiwebstudio.com/"/>
 <link rel="icon" href="assets/logo-mark-bw.png" type="image/png"/>
 <script type="application/ld+json">
 {
@@ -92,8 +95,8 @@
 <span>680 95 67 55</span>
 </a>
 <div class="lang-switch" role="group" aria-label="Idioma / Hizkuntza">
-<button type="button" data-lang="es">ES</button>
-<button type="button" data-lang="eu">EU</button>
+<span class="lang-link is-active" aria-current="true">ES</span>
+<a class="lang-link" href="/eu/index.html" hreflang="eu" lang="eu" aria-label="Euskaraz ikusi">EU</a>
 </div>
 <a href="contacto.html" class="btn btn--accent nav__cta" data-t="btn_presupuesto">Solicitar presupuesto</a>
 <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false">
@@ -289,8 +292,8 @@
 
 <p class="sw-sectores reveal" data-d="3">
   <span data-t="sw_sect">Trabajo sobre todo con negocios de pie de calle:</span>
-  <a href="web-para-restaurante-hosteleria.html">hostelería</a>,
-  <a href="web-para-peluqueria-centro-estetica.html">peluquería y estética</a>,
+  <a href="web-para-restaurante-hosteleria.html" data-t="sw_sect_host">hostelería</a>,
+  <a href="web-para-peluqueria-centro-estetica.html" data-t="sw_sect_pelu">peluquería y estética</a>,
   <span data-t="sw_sect2">talleres, clínicas, reformas, comercio y despachos.</span>
 </p>
 </div>
@@ -310,7 +313,7 @@
 <a class="pm" href="precios.html"><span class="pm__name" data-t="p3_name">Mantenimiento</span><b>20€</b><span class="pm__note" data-t="pre_mes">/mes</span></a>
 </div>
 <div style="text-align:center; margin-top:36px;" class="reveal" data-d="2"><a href="precios.html" class="btn btn--accent btn--lg" data-t="pre_ver">Ver todo lo que incluyen →</a></div>
-<p class="reveal" data-d="3" style="text-align:center;margin-top:18px;font-size:14.5px;color:var(--text-muted);">¿Comparando presupuestos? Lee nuestra <a href="precio-diseno-web-profesional.html" class="link-terra">guía honesta de precios de diseño web en 2026</a>, <a href="seo-local-tolosa-google-maps.html" class="link-terra">cómo aparecer en Google en Tolosa</a> o <a href="pagina-web-o-solo-instagram.html" class="link-terra">por qué Instagram solo no basta</a>.</p>
+<p class="reveal" data-d="3" style="text-align:center;margin-top:18px;font-size:14.5px;color:var(--text-muted);" data-t="pre_guias">¿Comparando presupuestos? Lee nuestra <a href="precio-diseno-web-profesional.html" class="link-terra">guía honesta de precios de diseño web en 2026</a>, <a href="seo-local-tolosa-google-maps.html" class="link-terra">cómo aparecer en Google en Tolosa</a> o <a href="pagina-web-o-solo-instagram.html" class="link-terra">por qué Instagram solo no basta</a>.</p>
 </div>
 </section>
 
@@ -318,9 +321,9 @@
 <section class="section" style="padding-top:0;">
 <div class="container">
 <div class="section-head reveal">
-<span class="eyebrow">Dónde trabajo</span>
-<h2>Diseño web en toda Gipuzkoa</h2>
-<p>El estudio está en Tolosa, pero trabajo con negocios de Tolosaldea, Goierri, Buruntzaldea y Donostialdea.</p>
+<span class="eyebrow" data-t="zon_eyebrow">Dónde trabajo</span>
+<h2 data-t="zon_h2">Diseño web en toda Gipuzkoa</h2>
+<p data-t="zon_p">El estudio está en Tolosa, pero trabajo con negocios de Tolosaldea, Goierri, Buruntzaldea y Donostialdea.</p>
 </div>
 <div class="reveal" data-d="1" style="max-width:820px;margin:0 auto;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
 <a href="zonas/ibarra.html" class="btn btn--ghost">Ibarra</a>
@@ -344,7 +347,7 @@
 <a href="zonas/zumarraga.html" class="btn btn--ghost">Zumarraga</a>
 <a href="zonas/onati.html" class="btn btn--ghost">Oñati</a>
 </div>
-<div style="text-align:center;margin-top:26px;" class="reveal" data-d="2"><a href="zonas.html" class="btn btn--accent">Ver todas las zonas →</a></div>
+<div style="text-align:center;margin-top:26px;" class="reveal" data-d="2"><a href="zonas.html" class="btn btn--accent" data-t="zon_ver">Ver todas las zonas →</a></div>
 </div>
 </section>
 
