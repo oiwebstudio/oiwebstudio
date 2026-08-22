@@ -76,7 +76,7 @@ export default function Loader() {
               width={304}
               height={165}
               priority
-              className="h-28 w-auto object-contain mix-blend-multiply md:h-40"
+              className="h-28 w-auto object-contain md:h-40"
             />
           </motion.div>
 
