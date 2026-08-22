@@ -9,7 +9,7 @@ export default function Logo({ className }: { className?: string }) {
       width={304}
       height={165}
       priority
-      className={cn("h-10 w-auto object-contain mix-blend-multiply", className)}
+      className={cn("h-10 w-auto object-contain", className)}
     />
   );
 }
