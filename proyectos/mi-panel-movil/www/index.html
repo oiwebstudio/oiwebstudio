@@ -287,6 +287,10 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
 /* Carrusel de plantillas: se desliza con el pulgar y cada tarjeta se ancla */
 .carrusel { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 3px 20px 6px; margin: 0 -20px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
 .carrusel::-webkit-scrollbar { display: none; }
+/* La máscara desvanece los dos centímetros finales mientras quede sitio a la
+   derecha; al llegar al final se quita sola y la última tarjeta se ve entera. */
+.carrusel { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 34px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 34px), transparent); }
+.carrusel.al-final { -webkit-mask-image: none; mask-image: none; }
 .carrusel-tarjeta { scroll-snap-align: start; flex: none; width: 152px; min-height: 116px; border-radius: 21px; padding: 14px; text-align: left; background: var(--carta); border: var(--borde); box-shadow: var(--sombra); display: flex; flex-direction: column; gap: 5px; transition: transform .15s var(--muelle); }
 .carrusel-tarjeta:active { transform: scale(.955); }
 .carrusel-tarjeta .emo { font-size: 21px; line-height: 1; }
@@ -352,6 +356,15 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
 .serie.correr .check { width: 30px; height: 30px; }
 .serie.correr.cab { margin-bottom: 2px; }
 .serie.correr.cab small { font-size: 9.5px; font-weight: 700; color: var(--txt-3); text-transform: uppercase; letter-spacing: .03em; }
+/* Un verde que entra y se apaga solo. El margen negativo compensa el relleno
+   para que la fila no se mueva al encenderse. */
+@keyframes destelloSerie {
+  from { background: rgba(48,209,88,.24); }
+  60%  { background: rgba(48,209,88,.12); }
+  to   { background: transparent; }
+}
+.serie.hecho-ahora { animation: destelloSerie .75s ease-out;
+  border-radius: 13px; padding: 3px 6px; margin: -3px -6px 3px; }
 
 .aniadir-linea { width: 100%; text-align: center; font-size: 13px; font-weight: 700; color: var(--azul); padding: 9px; border-radius: 13px; background: rgba(10,132,255,.07); margin-top: 6px; }
 
@@ -3789,6 +3802,14 @@ function pintarHeroEntreno(){
   </div>`;
 }
 
+/** Enciende y apaga el difuminado del carrusel según quede sitio a la
+    derecha. Se llama al pintar y mientras se desliza. */
+function marcarFinDelCarrusel(c){
+  if (!c) return;
+  const alFinal = c.scrollLeft + c.clientWidth >= c.scrollWidth - 4;
+  c.classList.toggle('al-final', alFinal);
+}
+
 /** Las plantillas, a mano y en horizontal: planear un día es un toque. */
 function pintarCarruselPlantillas(){
   const caja=$('#carruselPlantillas');
@@ -3806,6 +3827,9 @@ function pintarCarruselPlantillas(){
         <b>${esc(p.nombre)}</b><small>${esc(detalle)}</small>
       </button>`;
     }).join('')}</div>`;
+  const carro=caja.querySelector('.carrusel');
+  marcarFinDelCarrusel(carro);
+  carro?.addEventListener('scroll', ()=>marcarFinDelCarrusel(carro), { passive:true });
 }
 
 function pintarCarga(){
