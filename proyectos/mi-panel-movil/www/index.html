@@ -1782,8 +1782,18 @@ dialog::backdrop { animation: fundir .44s ease backwards; }
         <span style="flex:1; margin:0">Hora del repaso de la noche</span>
         <input type="time" id="horaCierre" style="width:120px">
       </label>
+      <label class="campo" style="display:flex; align-items:center; gap:10px; margin-top:2px">
+        <span style="flex:1; margin:0">Sonido de los temporizadores</span>
+        <select id="ajusteVoz" style="width:150px"></select>
+      </label>
       <p class="pie-nota" id="proximoAviso"></p>
-      <button class="btn-suave" id="btnProbarAviso" style="margin-top:8px">Mandarme uno de prueba</button>
+      <div class="par" style="margin-top:8px">
+        <button class="btn-suave" id="btnProbarVoz">Escuchar</button>
+        <button class="btn-suave" id="btnProbarAviso">Aviso de prueba</button>
+      </div>
+      <p class="pie-nota">Los avisos que llegan con la app cerrada suenan con el tono del sistema:
+        Android los agrupa en tres canales -- agenda, entreno y cierre -- cada uno con el suyo, y
+        se cambian desde los ajustes del móvil.</p>
 
       <div class="titulo-seccion" style="margin:20px 3px 10px"><h2 style="font-size:16px">Copia de seguridad</h2></div>
       <p style="font-size:13px; color:var(--txt-2); margin:0 0 10px" id="resumenDatos"></p>
@@ -1978,6 +1988,7 @@ const PLANTILLA_ESTADO = () => ({
   pesos: [],               // cuerpo: {fecha, kg, cintura, nota}
   topes: {},               // gasto máximo por categoría: {categoria: importe}
   tema: 'auto',            // claro | oscuro | auto
+  voz: 'campana',          // el sonido de los temporizadores, ver VOCES
   pesoObjetivo: null,      // kg a los que quieres llegar
   altura: null,            // cm, para el IMC
   repartoObjetivo: {},     // cartera ideal por tipo: {tipo: porcentaje}
@@ -4101,6 +4112,18 @@ function arrancarBarras(){
 /* Con el móvil bloqueado, Android frena los temporizadores y no suena nada.
    Se deja puesta una notificación para la hora exacta del final, y se quita
    si el descanso termina con la app delante.                               */
+/* Tres canales, tres sonidos. Más sería ruido: lo que importa es distinguir
+   "tienes algo ahora" de "se te acaba el descanso" de "mira esto luego". */
+const CANALES = [
+  { id:'panel-agenda-1',  nombre:'Agenda y diario', sonido:'aviso_agenda.ogg',  importancia:4,
+    descripcion:'Tareas con hora y el recordatorio del diario' },
+  { id:'panel-entreno-1', nombre:'Entreno',         sonido:'aviso_entreno.ogg', importancia:5,
+    descripcion:'El final del descanso entre series' },
+  { id:'panel-avisos-1',  nombre:'Cierre y cobros', sonido:'aviso_general.ogg', importancia:4,
+    descripcion:'Repaso de la noche, resumen del domingo, facturas y metas' },
+];
+const CANAL = { agenda:'panel-agenda-1', entreno:'panel-entreno-1', avisos:'panel-avisos-1' };
+
 const AVISO_TEMPORIZADOR = 987001;
 
 async function avisoDelTemporizador(){
@@ -4112,7 +4135,7 @@ async function avisoDelTemporizador(){
       id:AVISO_TEMPORIZADOR,
       title:'Se acabó el descanso',
       body:'A por la siguiente serie.',
-      channelId:'mi-panel',
+      channelId:CANAL.entreno,
       schedule:{ at:new Date(DESC.hasta), allowWhileIdle:true },
     }] });
   } catch {}
@@ -4395,21 +4418,56 @@ function despertarAudio(){
 }
 document.addEventListener('pointerdown', despertarAudio, { once:false, passive:true });
 
-/** Dos pitidos cortos, sintetizados al vuelo: no hacen falta ficheros. */
-function sonar(veces=2){
-  vibrar([90,60,90]);
+/* Las voces. Cada una es una lista de notas -- frecuencia y en qué momento
+   entra -- más la forma de la onda y lo rápido que se apaga. Sintetizadas al
+   vuelo: ni un fichero, ni un kilobyte, y suenan igual en el móvil que en el
+   navegador. La caída alta es un golpe seco; la baja, una campana larga. */
+const VOCES = {
+  campana: { nombre:'Campana',  forma:'sine',     caida:6.5, brillo:.28,
+             notas:[[1046.5,0],[1568,.26]] },
+  pitido:  { nombre:'Pitido',   forma:'square',   caida:22,  brillo:0,
+             notas:[[880,0],[880,.22],[1318.5,.44]] },
+  gota:    { nombre:'Gota',     forma:'sine',     caida:10,  brillo:.14,
+             notas:[[1318.5,0],[880,.13]] },
+  gong:    { nombre:'Gong',     forma:'sine',     caida:3,   brillo:.36,
+             notas:[[392,0],[293.7,.34]] },
+  moneda:  { nombre:'Moneda',   forma:'triangle', caida:12,  brillo:.2,
+             notas:[[987.8,0],[1318.5,.085]] },
+  mudo:    { nombre:'Sin sonido', forma:'sine',   caida:1,   brillo:0, notas:[] },
+};
+const VOZ_POR_DEFECTO = 'campana';
+
+/** Toca una voz. Sin argumento usa la que tengas elegida en Ajustes. */
+function sonar(cual){
+  const voz = VOCES[cual] || VOCES[E.voz] || VOCES[VOZ_POR_DEFECTO];
+  if (voz.notas.length) vibrar([90,60,90]);
   despertarAudio();
   if (!audio || audio.state!=='running') return;
-  for (let i=0;i<veces;i++){
-    const t=audio.currentTime + i*0.28;
-    const osc=audio.createOscillator(), vol=audio.createGain();
-    osc.frequency.value = i ? 1046 : 880;   // sol y do: se distingue del ruido del gimnasio
-    osc.type='sine';
+
+  for (const [hz, retraso] of voz.notas){
+    const t = audio.currentTime + retraso;
+    const largo = Math.max(.12, 3/voz.caida);
+    const vol = audio.createGain();
     vol.gain.setValueAtTime(.0001, t);
-    vol.gain.exponentialRampToValueAtTime(.4, t+.02);
-    vol.gain.exponentialRampToValueAtTime(.0001, t+.24);
-    osc.connect(vol).connect(audio.destination);
-    osc.start(t); osc.stop(t+.26);
+    vol.gain.exponentialRampToValueAtTime(.36, t+.012);
+    vol.gain.exponentialRampToValueAtTime(.0001, t+largo);
+    vol.connect(audio.destination);
+
+    const osc = audio.createOscillator();
+    osc.type = voz.forma; osc.frequency.value = hz;
+    osc.connect(vol); osc.start(t); osc.stop(t+largo+.02);
+
+    // Un armónico por encima le da cuerpo: sin él suena a pitido de horno.
+    if (voz.brillo){
+      const alto = audio.createGain();
+      alto.gain.setValueAtTime(.0001, t);
+      alto.gain.exponentialRampToValueAtTime(.36*voz.brillo, t+.012);
+      alto.gain.exponentialRampToValueAtTime(.0001, t+largo*.7);
+      alto.connect(audio.destination);
+      const osc2 = audio.createOscillator();
+      osc2.type='sine'; osc2.frequency.value = hz*2;
+      osc2.connect(alto); osc2.start(t); osc2.stop(t+largo);
+    }
   }
 }
 
@@ -4674,7 +4732,9 @@ function avisosPendientes(){
     const [h,m]=String(hhmm).split(':').map(Number);
     const d=desdeClave(k); d.setHours(h, m-resta, 0, 0); return d;
   };
-  const meter=(id,cuando,titulo,cuerpo)=>{ if (cuando.getTime()>ahora) lista.push({id,cuando,titulo,cuerpo}); };
+  const meter=(id,cuando,titulo,cuerpo,canal=CANAL.avisos)=>{
+    if (cuando.getTime()>ahora) lista.push({id,cuando,titulo,cuerpo,canal});
+  };
 
   for (let i=0;i<7;i++){
     const k=correrDias(HOY,i);
@@ -4683,13 +4743,13 @@ function avisosPendientes(){
     if (A.tareas) for (const t of tareasDe(k)){
       if (t.aviso==null || !t.hora || tareaHecha(t,k)) continue;
       meter(Math.abs(hashTexto(t.id+k))%900000, aLas(k,t.hora,t.aviso), t.titulo,
-        t.aviso?`En ${t.aviso} minutos · ${t.hora}`:`Es la hora · ${t.hora}`);
+        t.aviso?`En ${t.aviso} minutos · ${t.hora}`:`Es la hora · ${t.hora}`, CANAL.agenda);
     }
 
     // Diario matutino
     if (A.diario && E.recordatorio.activo && !entradasDe(k).length)
       meter(1000000+i, aLas(k,E.recordatorio.hora), 'Diario matutino',
-        '¿Cómo empieza tu día hoy? Dos minutos y listo.');
+        '¿Cómo empieza tu día hoy? Dos minutos y listo.', CANAL.agenda);
 
     // Cierre del día: lo que quede suelto
     if (A.cierre){
@@ -4748,8 +4808,9 @@ async function programarAvisos(){
   if (nativo){
     try {
       if (!canalListo){
-        await nativo.createChannel?.({ id:'mi-panel', name:'Mi panel',
-          description:'Tareas, diario y cierre del día', importance:4, visibility:1, vibration:true });
+        for (const c of CANALES) await nativo.createChannel?.({
+          id:c.id, name:c.nombre, description:c.descripcion, sound:c.sonido,
+          importance:c.importancia, visibility:1, vibration:true });
         canalListo=true;
       }
       if (avisosExactos===null) await compruebaExactas(nativo);
@@ -4757,7 +4818,8 @@ async function programarAvisos(){
       const puestas=await nativo.getPending();
       if (puestas?.notifications?.length) await nativo.cancel({ notifications:puestas.notifications });
       if (lista.length) await nativo.schedule({ notifications: lista.map(a=>({
-        id:a.id, title:a.titulo, body:a.cuerpo, channelId:'mi-panel', smallIcon:'ic_stat_icon',
+        id:a.id, title:a.titulo, body:a.cuerpo, smallIcon:'ic_stat_icon',
+        channelId:a.canal||CANAL.avisos,
         schedule:{ at:a.cuando, allowWhileIdle:!!avisosExactos },
       })) });
       return;
@@ -5475,7 +5537,13 @@ let gesto = null;
 
 document.addEventListener('touchstart', e=>{
   if (document.querySelector('dialog[open]') || document.body.classList.contains('en-foco')) return;
-  if (e.target?.closest?.('input, textarea, select, .tira-semana, .rejilla, .foco, .evo-barras, .barras-mes')) return;
+  // Todo lo que ya se maneja en horizontal por su cuenta queda fuera: si no,
+  // arrastrar el carrusel de plantillas o el deslizador de empezar cambiaba
+  // de pestaña a la vez que hacía lo suyo.
+  const AJENOS='input, textarea, select, .tira-semana, .rejilla, .foco, .evo-barras, '+
+    '.barras-mes, .carrusel, .deslizador, .frecuentes, .tiempos, .rejilla-emoji, '+
+    '.segmentado, .chips-hero';
+  if (e.target?.closest?.(AJENOS)) return;
   const t=e.touches[0];
   gesto = { x:t.clientX, y:t.clientY, arriba: window.scrollY<=0, t:Date.now() };
 }, { passive:true });
@@ -6083,6 +6151,7 @@ function pintarInterruptores(){
 
 async function abrirAjustes(){
   $('#ajusteNombre').value=E.nombre;
+  $('#ajusteVoz').value = VOCES[E.voz] ? E.voz : VOZ_POR_DEFECTO;
   if (hayNativo() && avisosExactos===null) await compruebaExactas(NATIVO());
   $('#estadoAvisos').textContent=textoEstadoAvisos();
   pintarInterruptores();
@@ -6131,6 +6200,15 @@ $('#horaCierre').addEventListener('change', e=>{
 });
 
 /** Un aviso a los cinco segundos, para ver que llega de verdad. */
+/* El selector de sonido: al elegir se guarda y suena, que probarlo es la
+   única manera de decidir. */
+$('#ajusteVoz').innerHTML = Object.entries(VOCES)
+  .map(([id,v])=>`<option value="${id}">${v.nombre}</option>`).join('');
+$('#ajusteVoz').addEventListener('change', e=>{
+  E.voz = e.target.value; guardar(); sonar();
+});
+$('#btnProbarVoz').addEventListener('click', ()=>sonar());
+
 $('#btnProbarAviso').addEventListener('click', async ()=>{
   if (!await pedirPermisoAvisos()) return;
   const cuando=new Date(Date.now()+5000);
@@ -6138,11 +6216,13 @@ $('#btnProbarAviso').addEventListener('click', async ()=>{
   if (nativo){
     try {
       if (!canalListo){
-        await nativo.createChannel?.({ id:'mi-panel', name:'Mi panel', importance:4, vibration:true });
+        for (const c of CANALES) await nativo.createChannel?.({
+          id:c.id, name:c.nombre, description:c.descripcion, sound:c.sonido,
+          importance:c.importancia, visibility:1, vibration:true });
         canalListo=true;
       }
       await nativo.schedule({ notifications:[{ id:999999, title:'Prueba de Mi panel',
-        body:'Si ves esto, los avisos funcionan. Puedes cerrar la app.', channelId:'mi-panel',
+        body:'Si ves esto, los avisos funcionan. Puedes cerrar la app.', channelId:CANAL.agenda,
         schedule:{ at:cuando, allowWhileIdle:true } }] });
       avisar('En 5 segundos. Puedes cerrar la app.');
       return;
@@ -6649,7 +6729,9 @@ $('#formSesion').addEventListener('submit', e=>{
 $('#btnPlantillas').addEventListener('click',()=>{ pintarPlantillas(); $('#hojaPlantillas').showModal(); });
 
 // Diario
-$('#btnCampana').addEventListener('click', abrirDiario);
+// Ojo: abrirDiario recibe una fecha. Pasada tal cual como manejador, lo que
+// le llega es el evento del clic, y el diario reventaba al abrirse.
+$('#btnCampana').addEventListener('click', () => abrirDiario());
 $('#animoFila').addEventListener('click', e=>{
   const b=e.target.closest('[data-animo]'); if (!b) return;
   UI.animoElegido=Number(b.dataset.animo);
