@@ -2547,6 +2547,45 @@ function calcularIdeas(){
     });
   }
 
+  /* ── Cómo acabó el mes pasado ─────────────────────────────────────────────
+     Los primeros días, cuando todavía te acuerdas de lo que hiciste y aún
+     estás a tiempo de corregir el que empieza.                             */
+  if (dia<=4){
+    const ant=new Date(a, m-1, 1);
+    const cerroEn=suma(txDeMes(ant.getFullYear(), ant.getMonth(), 'personal').filter(t=>t.tipo==='Gasto'));
+    const ingreso=suma(txDeMes(ant.getFullYear(), ant.getMonth(), 'personal').filter(t=>t.tipo==='Ingreso'));
+    const normal=gastoTipico(ant.getFullYear(), ant.getMonth(), 6, 'personal');
+    if (cerroEn>0){
+      const ahorro=ingreso-cerroEn;
+      const dif=normal ? cerroEn/normal-1 : 0;
+      // Sin ingresos apuntados no se puede hablar de ahorro, y no hacerlo no
+      // es una mala noticia: es que no llevas esa parte.
+      const hayIngreso = ingreso>0;
+      const bien = (!normal || dif<=.05) && (!hayIngreso || ahorro>0);
+      const trozos=[];
+      if (normal){
+        trozos.push(Math.abs(dif)<.05
+          ? 'Como un mes normal en ti'
+          : Math.abs(dif)>=1
+            ? `${numF.format(cerroEn/normal)} veces tu mes normal`
+            : `un ${pct(Math.abs(dif))} ${dif>0?'por encima':'por debajo'} de lo normal en ti`);
+      }
+      if (hayIngreso){
+        // "Ahorraste −300 €" no lo dice nadie. Si sales en negativo, se dice
+        // en negativo.
+        trozos.push(ahorro>=0
+          ? `ahorraste <em>${euro(ahorro)}</em>`
+          : `te pasaste <em>${euro(-ahorro)}</em> de lo que entró`);
+      }
+      out.push({
+        peso: 78, tono: bien?'verde':'azul', icono: bien?'✅':'🗓️',
+        titulo: `${MESES[ant.getMonth()]} cerró en ${euro(cerroEn)}`,
+        texto: (trozos.join(' y ') || 'Ya está cerrado') + '.',
+        accion: { txt:'Ver el mes', ir:'patrimonio' },
+      });
+    }
+  }
+
   /* ── Lo que se repite ─────────────────────────────────────────────────────
      El dinero no se va en la compra grande, que se ve venir y se decide: se
      va en la pequeña que va veinte veces y que nadie suma nunca. Aquí se
