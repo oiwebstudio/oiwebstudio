@@ -388,6 +388,12 @@ body::before {
   }
 }
 
+/* custom-cursor: ocultar cursor nativo en dispositivos con puntero fino */
+@media (hover: hover) and (pointer: fine) {
+  html { cursor: none; }
+  a, button, [data-cursor] { cursor: none; }
+}
+
 /* flour-float: partículas de harina que flotan y derivan lateralmente */
 @keyframes flour-float {
   0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import BackToTop from "@/components/BackToTop";
+import CustomCursor from "@/components/CustomCursor";
 import Footer from "@/components/Footer";
 import Loader from "@/components/Loader";
 import Navbar from "@/components/Navbar";
@@ -76,6 +77,7 @@ export default function RootLayout({
           <Footer />
           <BackToTop />
           <NearestStore />
+          <CustomCursor />
         </Providers>
       </body>
     </html>
