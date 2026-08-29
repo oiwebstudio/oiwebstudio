@@ -427,6 +427,16 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
 .lienzo .punto { fill: var(--tinta); }
 .lienzo .halo { fill: rgba(17,17,17,.14); }
 .eje-x { display: flex; justify-content: space-between; margin-top: 7px; font-size: 11px; color: var(--txt-3); }
+/* La línea del mes pasado va detrás y a trazos: está para comparar, no para
+   leerla. El relleno bajo la de este mes le da el peso que le toca. */
+.lienzo .fantasma { fill: none; stroke: var(--txt-3); stroke-width: 1.8; stroke-dasharray: 4 4; stroke-linecap: round; }
+.lienzo .area-gasto { fill: rgba(17,17,17,.07); stroke: none; }
+:root[data-tema='oscuro'] .lienzo .area-gasto { fill: rgba(255,255,255,.07); }
+/* La leyenda de las dos líneas, en pequeño y sin marco */
+.leyenda-curva { display: flex; gap: 14px; margin-top: 8px; font-size: 11px; color: var(--txt-2); }
+.leyenda-curva span { display: inline-flex; align-items: center; gap: 5px; }
+.leyenda-curva i { width: 14px; height: 2px; border-radius: 2px; background: var(--tinta); }
+.leyenda-curva i.fantasma { background: var(--txt-3); height: 0; border-top: 2px dashed var(--txt-3); }
 
 /* Aro de reparto */
 .aro-fila { display: flex; align-items: center; gap: 18px; }
@@ -1128,11 +1138,23 @@ dialog::backdrop { animation: fundir .44s ease backwards; }
         <div id="resumenMes"></div>
       </div>
 
+      <div class="titulo-seccion"><h2>Cómo va el mes</h2>
+        <span class="accion" id="ritmoGasto"></span></div>
+      <div class="carta" id="curvaGasto"></div>
+
       <div class="titulo-seccion"><h2>En qué se va</h2>
         <button class="accion azul" id="btnFijos">Fijos</button>
         <button class="accion azul" id="btnTopes">Topes</button>
         <span class="accion" id="gastoTotalMes"></span></div>
       <div class="carta" id="listaCategorias"></div>
+
+      <div class="titulo-seccion"><h2>Lo más caro</h2>
+        <span class="accion">un gasto grande explica el mes</span></div>
+      <div class="carta" id="mayoresGastos"></div>
+
+      <div class="titulo-seccion"><h2>Lo que se repite</h2>
+        <span class="accion">tres veces o más</span></div>
+      <div class="carta" id="gastosRepetidos"></div>
 
       <div class="titulo-seccion"><h2>Tendencia por meses</h2></div>
       <div class="carta" id="tendenciaGasto"></div>
@@ -2309,6 +2331,50 @@ function gastoPorCategoria(a, m){
 
 const gastoTotal = (a,m) => suma(txMes(a,m).filter(t=>t.tipo==='Gasto'));
 
+/** Lo gastado día a día, sumando desde el 1. La posición 0 vale cero, así
+    que la curva arranca del suelo y no de la primera compra. */
+function curvaGasto(a, m){
+  const dias = diasEnMes(a, m);
+  const acumulado = new Array(dias+1).fill(0);
+  for (const t of txMes(a,m)){
+    if (t.tipo!=='Gasto') continue;
+    const d = Number(t.fecha.slice(8,10));
+    if (d>=1 && d<=dias) acumulado[d] += t.importe;
+  }
+  for (let d=1; d<=dias; d++) acumulado[d] += acumulado[d-1];
+  return acumulado;
+}
+
+/** La mediana de lo gastado en los N meses anteriores. Mediana y no media:
+    un mes con una compra grande te desplaza la media y te hace creer que
+    gastas más de lo normal. */
+function gastoTipico(a, m, meses=6){
+  const totales=[];
+  for (let i=1; i<=meses; i++){
+    const d=new Date(a, m-i, 1);
+    const t=gastoTotal(d.getFullYear(), d.getMonth());
+    if (t>0) totales.push(t);
+  }
+  if (!totales.length) return null;
+  totales.sort((x,y)=>x-y);
+  const mitad=Math.floor(totales.length/2);
+  return totales.length%2 ? totales[mitad] : (totales[mitad-1]+totales[mitad])/2;
+}
+
+/** Conceptos que se repiten dentro del mes. Se comparan en minúsculas y sin
+    espacios de sobra, que "Café" y "café " son lo mismo. */
+function gastosRepetidos(a, m, minimo=3){
+  const mapa={};
+  for (const t of txMes(a,m)){
+    if (t.tipo!=='Gasto') continue;
+    const clave=String(t.concepto||'').trim().toLowerCase();
+    if (!clave) continue;
+    (mapa[clave] ||= { concepto:t.concepto, categoria:t.categoria, total:0, n:0 }).total += t.importe;
+    mapa[clave].n++;
+  }
+  return Object.values(mapa).filter(x=>x.n>=minimo).sort((x,y)=>y.total-x.total);
+}
+
 function tasaAhorroMes(){
   const a=new Date().getFullYear(), m=new Date().getMonth();
   const mes = txDe('personal').filter(t=>mismoMes(t.fecha,a,m));
@@ -3115,6 +3181,113 @@ function pintarResumenDinero(){
     : vacio('💳','Sin movimientos todavía','Pulsa el + de la tarjeta negra.');
 }
 
+/** Cómo de lejos estás de tu mes normal, dicho de manera legible. */
+function comparaConLoNormal(gas, tipico){
+  const veces = gas/tipico;
+  if (veces >= 2) return `${numF.format(veces)} veces lo normal en ti`;
+  if (veces <= .5) return `la mitad de lo normal en ti`;
+  const dif = Math.abs(veces-1);
+  if (dif < .03) return 'como un mes normal en ti';
+  return `${gas>=tipico?'+':'−'}${pct(dif)} vs lo normal en ti`;
+}
+
+/** La curva del mes contra la del mes pasado. Es la lectura que de verdad
+    sirve: no "cuánto llevas", sino "cuánto llevas comparado con cuando ya
+    sabes cómo acabó". A día 14 se ve de un vistazo si vas por encima. */
+function pintarCurvaGasto(a, m, gas){
+  const caja=$('#curvaGasto');
+  const dias=diasEnMes(a,m);
+  const ahora=new Date();
+  const esActual = a===ahora.getFullYear() && m===ahora.getMonth();
+  const hasta = esActual ? Math.min(dias, ahora.getDate()) : dias;
+
+  const ahoraCurva=curvaGasto(a,m);
+  const ant=new Date(a,m-1,1);
+  const antesCurva=curvaGasto(ant.getFullYear(), ant.getMonth());
+  const diasAnt=diasEnMes(ant.getFullYear(), ant.getMonth());
+
+  if (!gas && !antesCurva[diasAnt]){
+    caja.innerHTML=vacio('📈','Nada que dibujar todavía',
+      'En cuanto haya gastos en este mes o en el anterior, aquí sale la curva.');
+    $('#ritmoGasto').textContent='';
+    return;
+  }
+
+  const An=320, Al=118, pad=10;
+  const tope=Math.max(1, ahoraCurva[hasta], antesCurva[diasAnt]);
+  // El eje X va por proporción del mes, no por número de día: así febrero y
+  // enero se pueden comparar aunque tengan distinta longitud.
+  const x=(d,total)=>pad + (d/total)*(An-pad*2);
+  const y=v=>Al-pad - (v/tope)*(Al-pad*2);
+
+  const trazo=(curva,total,hastaDia)=>curva.slice(0,hastaDia+1)
+    .map((v,d)=>`${d?'L':'M'}${x(d,total).toFixed(1)} ${y(v).toFixed(1)}`).join(' ');
+
+  const lineaAhora=trazo(ahoraCurva,dias,hasta);
+  const lineaAntes=trazo(antesCurva,diasAnt,diasAnt);
+  const area=`${lineaAhora} L${x(hasta,dias).toFixed(1)} ${(Al-pad).toFixed(1)} L${pad} ${(Al-pad).toFixed(1)} Z`;
+
+  // A la misma altura del mes: cuánto llevabas el mismo día el mes pasado
+  const mismaAltura = antesCurva[Math.min(diasAnt, Math.round(hasta/dias*diasAnt))] || 0;
+  const dif = ahoraCurva[hasta] - mismaAltura;
+
+  caja.innerHTML=`
+    <div class="grafico-cab">
+      <div><span class="valor num">${euro(ahoraCurva[hasta])}</span>
+        <span class="rango-txt">${esActual?`llevas ${hasta} de ${dias} días`:'el mes entero'}</span></div>
+      ${mismaAltura?`<div class="delta ${dif<=0?'pos':'neg'}">${dif<=0?'▼':'▲'} ${euro(Math.abs(dif))}
+        <span class="rango-txt" style="text-align:right">que a estas alturas del mes pasado</span></div>`:''}
+    </div>
+    <svg class="lienzo" viewBox="0 0 ${An} ${Al}" role="img"
+         aria-label="Gasto acumulado del mes comparado con el mes pasado">
+      <path class="area-gasto" d="${area}"/>
+      <path class="fantasma" d="${lineaAntes}"/>
+      <path class="linea" d="${lineaAhora}"/>
+      <circle class="punto" cx="${x(hasta,dias).toFixed(1)}" cy="${y(ahoraCurva[hasta]).toFixed(1)}" r="3.4"/>
+    </svg>
+    <div class="leyenda-curva">
+      <span><i></i>${MESES[m].toLowerCase()}</span>
+      <span><i class="fantasma"></i>${MESES[ant.getMonth()].toLowerCase()} · ${euro(antesCurva[diasAnt])} en total</span>
+    </div>`;
+  trazarLinea(caja.querySelector('.lienzo'));
+
+  // El rótulo de la cabecera: en qué punto del mes vas
+  $('#ritmoGasto').textContent = esActual ? `día ${hasta} de ${dias}` : '';
+}
+
+/** Los cuatro gastos más grandes del mes. Un mes se dispara casi siempre por
+    una o dos compras concretas, y verlas explica el resto de la pantalla. */
+function pintarMayoresGastos(a, m, gas){
+  const lista=txMes(a,m).filter(t=>t.tipo==='Gasto')
+    .sort((x,y)=>y.importe-x.importe).slice(0,4);
+  $('#mayoresGastos').innerHTML = lista.length
+    ? lista.map(t=>`
+      <div class="fila">
+        <div class="fila-icono">${ICONO_CAT[t.categoria]||'💳'}</div>
+        <div class="fila-txt"><b>${esc(t.concepto)}</b>
+          <span>${esc(t.categoria)} · ${desdeClave(t.fecha).toLocaleDateString('es-ES',{day:'numeric',month:'short'})}</span></div>
+        <div class="fila-cifra num">${euroDec(t.importe)}
+          <span class="rango-txt" style="text-align:right">${pct(gas?t.importe/gas:0)} del mes</span></div>
+      </div>`).join('')
+    : vacio('🧾','Sin gastos este mes','Cuando apuntes alguno, aquí saldrán los más grandes.');
+}
+
+/** Lo que se repite. Aquí es donde se va el dinero sin que te enteres: no en
+    la compra grande, que se ve venir, sino en la pequeña que va veinte veces. */
+function pintarRepetidos(a, m){
+  const lista=gastosRepetidos(a,m).slice(0,4);
+  $('#gastosRepetidos').innerHTML = lista.length
+    ? lista.map(x=>`
+      <div class="fila">
+        <div class="fila-icono">${ICONO_CAT[x.categoria]||'🔁'}</div>
+        <div class="fila-txt"><b>${esc(x.concepto)}</b>
+          <span>${x.n} veces · ${euroDec(x.total/x.n)} de media</span></div>
+        <div class="fila-cifra num">${euroDec(x.total)}</div>
+      </div>`).join('')
+    : vacio('🔁','Nada se repite este mes',
+        'Cuando un mismo concepto aparezca tres veces o más, saldrá aquí con lo que suma.');
+}
+
 /* ── Evolución: gráfico de área + reparto + rendimiento ──────────────────── */
 function pintarEvolucion(){
   const serie = seriePatrimonio(UI.rango);
@@ -3244,13 +3417,15 @@ function pintarGastos(){
         <b class="num">${euro(prevision)}</b> de gasto${topeTotal?` · tus topes suman <b class="num">${euro(topeTotal)}</b>${prevision>topeTotal?' <span class="neg">(te pasarías)</span>':' <span class="pos">(cabes)</span>'}`:''}.
         Van ${diaHoy} de ${totalDias} días.</p>`:''}`;
 
-  // Mes anterior, para comparar
-  const ant=new Date(a,m-1,1);
-  const gasAnt=gastoTotal(ant.getFullYear(),ant.getMonth());
+  // Contra tu mediana de los seis meses anteriores, no contra el mes pasado:
+  // si el anterior fue raro, todo lo que leas a partir de ahí es raro.
+  const tipico=gastoTipico(a,m);
   const cats=gastoPorCategoria(a,m);
-  $('#gastoTotalMes').textContent = gasAnt
-    ? `${gas>=gasAnt?'+':'−'}${pct(Math.abs((gas-gasAnt)/gasAnt))} vs ${MESES[ant.getMonth()].slice(0,3).toLowerCase()}.`
-    : '';
+  $('#gastoTotalMes').textContent = tipico ? comparaConLoNormal(gas, tipico) : '';
+
+  pintarCurvaGasto(a,m,gas);
+  pintarMayoresGastos(a,m,gas);
+  pintarRepetidos(a,m);
 
   $('#listaCategorias').innerHTML = cats.length
     ? cats.map(c=>{
