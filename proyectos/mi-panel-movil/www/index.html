@@ -173,6 +173,8 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
 /* Un hueco sin nada dentro se explica mejor con un icono que con dos líneas */
 .vacio .ilu { display: grid; place-items: center; width: 54px; height: 54px; margin: 0 auto 11px; border-radius: 19px; background: var(--fondo); font-size: 25px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.03); }
 .vacio b { display: block; font-weight: 700; color: var(--txt); margin-bottom: 3px; }
+/* Dentro de una tarjeta que ya tiene contenido, el vacío va sin ilustración */
+.vacio.compacto { padding: 14px 8px; font-size: 13px; }
 
 /* ── Segmentado ─────────────────────────────────────────────────────────── */
 .segmentado { display: flex; gap: 4px; background: rgba(0,0,0,.05); border-radius: 20px; padding: 4px; margin-bottom: var(--hueco); }
@@ -2314,9 +2316,11 @@ function seriePatrimonio(dias){
 }
 
 /* ── Gasto por categorías ────────────────────────────────────────────────── */
-function txMes(a, m){
-  return E.tx.filter(t=>mismoMes(t.fecha,a,m) && (!UI.ambitoGasto || t.ambito===UI.ambitoGasto));
+function txDeMes(a, m, ambito){
+  return E.tx.filter(t=>mismoMes(t.fecha,a,m) && (!ambito || t.ambito===ambito));
 }
+/** Lo mismo, pero con el ámbito que tengas elegido en la vista de gastos. */
+function txMes(a, m){ return txDeMes(a, m, UI.ambitoGasto); }
 
 function gastoPorCategoria(a, m){
   const mapa = {};
@@ -2333,10 +2337,10 @@ const gastoTotal = (a,m) => suma(txMes(a,m).filter(t=>t.tipo==='Gasto'));
 
 /** Lo gastado día a día, sumando desde el 1. La posición 0 vale cero, así
     que la curva arranca del suelo y no de la primera compra. */
-function curvaGasto(a, m){
+function curvaGasto(a, m, ambito=UI.ambitoGasto){
   const dias = diasEnMes(a, m);
   const acumulado = new Array(dias+1).fill(0);
-  for (const t of txMes(a,m)){
+  for (const t of txDeMes(a,m,ambito)){
     if (t.tipo!=='Gasto') continue;
     const d = Number(t.fecha.slice(8,10));
     if (d>=1 && d<=dias) acumulado[d] += t.importe;
@@ -2348,11 +2352,11 @@ function curvaGasto(a, m){
 /** La mediana de lo gastado en los N meses anteriores. Mediana y no media:
     un mes con una compra grande te desplaza la media y te hace creer que
     gastas más de lo normal. */
-function gastoTipico(a, m, meses=6){
+function gastoTipico(a, m, meses=6, ambito=UI.ambitoGasto){
   const totales=[];
   for (let i=1; i<=meses; i++){
     const d=new Date(a, m-i, 1);
-    const t=gastoTotal(d.getFullYear(), d.getMonth());
+    const t=suma(txDeMes(d.getFullYear(), d.getMonth(), ambito).filter(x=>x.tipo==='Gasto'));
     if (t>0) totales.push(t);
   }
   if (!totales.length) return null;
@@ -2363,9 +2367,9 @@ function gastoTipico(a, m, meses=6){
 
 /** Conceptos que se repiten dentro del mes. Se comparan en minúsculas y sin
     espacios de sobra, que "Café" y "café " son lo mismo. */
-function gastosRepetidos(a, m, minimo=3){
+function gastosRepetidos(a, m, minimo=3, ambito=UI.ambitoGasto){
   const mapa={};
-  for (const t of txMes(a,m)){
+  for (const t of txDeMes(a,m,ambito)){
     if (t.tipo!=='Gasto') continue;
     const clave=String(t.concepto||'').trim().toLowerCase();
     if (!clave) continue;
@@ -2495,18 +2499,73 @@ function calcularIdeas(){
     const fijosPend=E.fijos.filter(f=>f.tipo==='Gasto'&&Number(f.dia)>dia)
       .reduce((x,f)=>x+aNum(f.importe),0);
     const previsto=gastadoMes/dia*diasMes + fijosPend;
-    const previos=[1,2,3].map(i=>{ const d=new Date(a,m-i,1); return gastoMesDe(d.getFullYear(),d.getMonth()); }).filter(x=>x>0);
-    const media=previos.length ? previos.reduce((x,y)=>x+y,0)/previos.length : 0;
+    // Mediana de seis meses, no media de tres: la media se desplaza con una
+    // compra grande y luego todo lo demás parece barato en comparación.
+    const media=gastoTipico(a, m, 6, 'personal') || 0;
     const dif=media ? previsto/media-1 : 0;
     out.push({
       peso: media && Math.abs(dif)>.12 ? 76 : 44,
       tono: dif>.12 ? 'naranja' : dif<-.12 ? 'verde' : 'azul',
       icono: '📈', titulo: 'Cómo va a acabar el mes',
       texto: media
-        ? `Al ritmo de ahora cerrarás en <em>${euro(previsto)}</em>, un ${pct(Math.abs(dif))} ${dif>0?'por encima':'por debajo'} de tu media.`
+        ? `Al ritmo de ahora cerrarás en <em>${euro(previsto)}</em>, ${
+            // Por encima del doble el porcentaje deja de leerse: "+526 %" hay
+            // que traducirlo, "2,6 veces" no.
+            Math.abs(dif) >= 1
+              ? `${numF.format(previsto/media)} veces tu mes normal.`
+              : `un ${pct(Math.abs(dif))} ${dif>0?'por encima':'por debajo'} de lo normal en ti.`
+          }`
         : `Al ritmo de ahora cerrarás el mes en <em>${euro(previsto)}</em>${fijosPend?', contando los fijos que faltan':''}.`,
       accion: { txt:'Ver el mes', ir:'patrimonio' },
     });
+  }
+
+  /* ── Lo que se repite ─────────────────────────────────────────────────────
+     El dinero no se va en la compra grande, que se ve venir y se decide: se
+     va en la pequeña que va veinte veces y que nadie suma nunca. Aquí se
+     suma. Pide cuatro repeticiones y veinte euros para no dar la lata con
+     tonterías.                                                             */
+  const repes = gastosRepetidos(a, m, 4, 'personal')
+    .filter(x => x.total >= 20)
+    .sort((x,y) => y.total - x.total)[0];
+  if (repes){
+    const alMes = quedan>0 && dia>=7 ? repes.total/dia*diasMes : null;
+    out.push({
+      peso: repes.total >= gastadoMes*.15 ? 74 : 52,
+      tono: 'azul', icono: '🔁', titulo: 'Poco a poco, pero suma',
+      texto: `<em>${esc(repes.concepto)}</em>: ${repes.n} veces este mes, ${euro(repes.total)} en total` +
+             (alMes && alMes > repes.total*1.15 ? `. Al ritmo de ahora acabarás en ${euro(alMes)}.` : '.'),
+      accion: { txt:'Ver el mes', ir:'patrimonio' },
+    });
+  }
+
+  /* ── Cómo vas contra el mes pasado, al mismo día ─────────────────────────
+     Más útil que el total suelto: a día 14 lo que quieres saber no es cuánto
+     llevas, es si vas por encima de un mes del que ya sabes cómo acabó.    */
+  if (dia>=6){
+    const ahoraC = curvaGasto(a, m, 'personal');
+    const ant = new Date(a, m-1, 1);
+    const antesC = curvaGasto(ant.getFullYear(), ant.getMonth(), 'personal');
+    const diasAnt = diasEnMes(ant.getFullYear(), ant.getMonth());
+    const mismoPunto = antesC[Math.min(diasAnt, Math.round(dia/diasMes*diasAnt))] || 0;
+    const llevo = ahoraC[Math.min(dia, diasMes)] || 0;
+    const brecha = llevo - mismoPunto;
+    // Solo si la diferencia es de verdad: por debajo del 15 % es ruido
+    if (mismoPunto > 0 && Math.abs(brecha) > mismoPunto*.15){
+      const porEncima = brecha > 0;
+      const cuanto = Math.abs(brecha)/mismoPunto;
+      out.push({
+        // Ir un 20 % por encima es un apunte; ir al doble es lo primero que
+        // tienes que saber al abrir la app.
+        peso: !porEncima ? 40 : cuanto > .4 ? 84 : 66,
+        tono: porEncima ? 'naranja' : 'verde',
+        icono: porEncima ? '📊' : '👏',
+        titulo: porEncima ? 'Vas por encima del mes pasado' : 'Vas por debajo del mes pasado',
+        texto: `A estas alturas de ${MESES[ant.getMonth()].toLowerCase()} llevabas ${euro(mismoPunto)};
+                ahora llevas <em>${euro(llevo)}</em>, ${euro(Math.abs(brecha))} ${porEncima?'más':'menos'}.`,
+        accion: { txt:'Ver la curva', ir:'patrimonio' },
+      });
+    }
   }
 
   /* ── Un gasto que se sale de lo tuyo ──────────────────────────────────── */
@@ -2919,7 +2978,7 @@ function pintarAgenda(){
             ${hecha||(t.repite&&t.repite!=='no')?'':`<button class="editar-habito" data-posponer="${t.id}" aria-label="Pasar a mañana">→</button>`}
           </div>`;
         }).join('')
-      : `<div class="vacio"><b>Día libre</b>Nada apuntado. Añade una tarea o disfruta del hueco.</div>`}`;
+      : vacio('🗓️','Día libre','Nada apuntado. Añade una tarea o disfruta del hueco.')}`;
 
   pintarAtrasadas();
 
@@ -2950,7 +3009,7 @@ function pintarAgenda(){
       <div class="diario-entrada">
         <div class="fecha">📓 <span class="ambito-chip ${e.ambito}">${e.ambito}</span> energía ${e.animo}/5</div>
         ${e.prioridad?`<p><b>Prioridad:</b> ${esc(e.prioridad)}</p>`:''}
-      </div>`).join(''):`<div class="vacio" style="padding:14px 8px"><b>Sin diario ese día</b>${k===HOY?'Escríbelo desde la campana de arriba.':'&nbsp;'}</div>`}`;
+      </div>`).join(''):`<div class="vacio compacto"><b>Sin diario ese día</b>${k===HOY?'Escríbelo desde la campana de arriba.':'&nbsp;'}</div>`}`;
 }
 
 /* ── El día por horas, como un calendario ────────────────────────────────── */
@@ -3094,10 +3153,10 @@ function pintarCobros(){
 
   $('#listaCobros').innerHTML = pendientes.length
     ? pendientes.map(c=>fila(c,false)).join('')
-    : `<div class="vacio"><b>Nadie te debe nada</b>Apunta aquí lo que facturas y sabrás quién se retrasa.</div>`;
+    : vacio('🧾','Nadie te debe nada','Apunta aquí lo que facturas y sabrás quién se retrasa.');
   $('#listaCobrados').innerHTML = cobrados.length
     ? cobrados.slice(0,10).map(c=>fila(c,true)).join('')
-    : `<div class="vacio"><b>Todavía nada cobrado</b>&nbsp;</div>`;
+    : vacio('💶','Todavía nada cobrado','Lo que vayas cobrando se queda aquí.');
 }
 
 function abrirCobro(id){
@@ -3155,7 +3214,7 @@ function pintarResumenDinero(){
           <button class="borrar" data-borrar-inv="${i.id}" aria-label="Borrar">✕</button>
         </div>`;
       }).join('')
-    : `<div class="vacio"><b>Cartera vacía</b>Da de alta acciones, fondos, cripto o metales y súmalos al patrimonio.</div>`;
+    : vacio('📊','Cartera vacía','Da de alta acciones, fondos, cripto o metales y súmalos al patrimonio.');
 
   const auto = E.inversiones.filter(i=>i.ticker?.trim()).length;
   $('#pieCotizaciones').textContent = E.inversiones.length
@@ -3294,7 +3353,7 @@ function pintarEvolucion(){
   const caja1 = $('#graficoPatrimonio');
 
   if (serie.length<2 || serie.every(p=>!p.v)){
-    caja1.innerHTML = `<div class="vacio"><b>Todavía no hay recorrido</b>Apunta movimientos o da de alta un activo: el panel guarda una foto al día y aquí verás la curva.</div>`;
+    caja1.innerHTML = vacio('📈','Todavía no hay recorrido','Apunta movimientos o da de alta un activo: el panel guarda una foto al día y aquí verás la curva.');
   } else {
     const ini = serie[0].v, fin = serie[serie.length-1].v;
     const dif = fin-ini;
@@ -3369,7 +3428,7 @@ function pintarEvolucion(){
             <div class="fila-cifra num">${euroDec(x.valor)}</div>
           </div>`).join('')}</div>`;
       })()
-    : `<div class="vacio"><b>Nada que repartir aún</b>Añade tu base inicial o un activo a la cartera.</div>`;
+    : vacio('🥧','Nada que repartir aún','Añade tu base inicial o un activo a la cartera.');
 
   pintarDesvio();
 
@@ -3387,7 +3446,7 @@ function pintarEvolucion(){
           <div class="progreso-pie"><span class="num">${euroDec(coste)} → ${euroDec(valor)}</span>
             <span class="${dif>=0?'pos':'neg'}">${dif>=0?'+':'−'}${euroDec(Math.abs(dif))}</span></div>
         </div>`).join('')
-    : `<div class="vacio"><b>Sin activos</b>Cuando tengas cartera, aquí verás cuál tira del carro y cuál lastra.</div>`;
+    : vacio('⚖️','Sin activos','Cuando tengas cartera, aquí verás cuál tira del carro y cuál lastra.');
 }
 
 /* ── Gastos: en qué se va el dinero ──────────────────────────────────────── */
@@ -3446,7 +3505,7 @@ function pintarGastos(){
           </span>
         </button>`;
       }).join('')
-    : `<div class="vacio"><b>Sin gastos este mes</b>${UI.ambitoGasto?'Prueba con otro ámbito o cambia de mes.':'Cambia de mes o apunta movimientos con el + de arriba.'}</div>`;
+    : vacio('🧾','Sin gastos este mes', UI.ambitoGasto?'Prueba con otro ámbito o cambia de mes.':'Cambia de mes o apunta movimientos con el + de arriba.');
 
   // Últimos 6 meses de gasto, para ver la tendencia
   const meses=[];
@@ -3460,7 +3519,7 @@ function pintarGastos(){
           <small>${MESES[x.d.getMonth()].slice(0,3)}</small>
         </div>`).join('')}</div>
        <p class="pie-nota" style="margin-top:10px">Media de los 6 meses: <b class="num">${euroDec(meses.reduce((s,x)=>s+x.total,0)/6)}</b> al mes.</p>`
-    : `<div class="vacio"><b>Aún sin historial</b>Con dos o tres meses apuntados esta gráfica empieza a decir cosas.</div>`;
+    : vacio('📅','Aún sin historial','Con dos o tres meses apuntados esta gráfica empieza a decir cosas.');
 }
 
 function verCategoria(cat){
@@ -3655,7 +3714,7 @@ function pintarMetas(){
             <span class="carril"><span class="relleno ${van>=h.porSemana?'v':''}" style="width:${Math.min(100,van/h.porSemana*100)}%"></span></span>
             <b>${van}/${h.porSemana}</b></div>`;
         })():''}`).join('')
-      : `<div class="vacio"><b>Sin metas del día</b>Añade las cosas que quieras hacer cada día: entrenar, leer, avanzar el negocio…</div>`)
+      : vacio('🎯','Sin metas del día','Añade las cosas que quieras hacer cada día: entrenar, leer, avanzar el negocio…'))
       + `<button class="aniadir-linea" data-nuevo-habito style="margin-top:10px">+ Nueva meta del día</button>`
       + (habitos().length?`<div style="padding:10px 4px 0; font-size:12.5px; color:var(--txt-2); text-align:center">${hechos.length}/${habitos().length} completados hoy</div>`:'');
     return;
@@ -3697,7 +3756,7 @@ function pintarMetas(){
   }).join('');
 
   panel.innerHTML = autos.join('') + propiasHTML +
-    (propias.length?'':`<div class="vacio" style="padding-top:14px"><b>Añade tus propias metas</b>Con «+ Nueva»: ahorro, libros, retos…</div>`);
+    (propias.length?'':`<div class="vacio compacto"><b>Añade tus propias metas</b>Con «+ Nueva»: ahorro, libros, retos…</div>`);
 }
 
 function pintarCalendario(){
@@ -3803,8 +3862,8 @@ function pintarEntreno(){
 function pintarCuerpo(){
   const lista=[...E.pesos].sort((a,b)=>a.fecha.localeCompare(b.fecha));
   if (!lista.length){
-    $('#pesoResumen').innerHTML=`<div class="vacio"><b>Sin pesajes todavía</b>Apunta tu peso de vez en cuando y aquí verás la línea, no el número suelto de un día.</div>`;
-    $('#pesoHistorial').innerHTML=`<div class="vacio"><b>Nada que enseñar</b>&nbsp;</div>`;
+    $('#pesoResumen').innerHTML=vacio('⚖️','Sin pesajes todavía','Apunta tu peso de vez en cuando y aquí verás la línea, no el número suelto de un día.');
+    $('#pesoHistorial').innerHTML=vacio('📉','Nada que enseñar','Cada pesaje que apuntes se queda aquí.');
     return;
   }
 
@@ -3885,7 +3944,7 @@ function pintarSemanaEntreno(){
               : `${esc(s.modo||'')} ${s.kmReal?'· '+numF.format(aNum(s.kmReal))+' km reales':''}`}</span></span>
           <span class="estado ${s.hecha?'hecha':''}">${s.hecha?'Hecha':'Planificada'}</span>
         </button>`).join('')
-      : `<div class="vacio"><b>Día libre</b>Añade una sesión o importa una plantilla.</div>`}`;
+      : vacio('🛌','Día libre','Añade una sesión o importa una plantilla.')}`;
 }
 
 /** Cuánto pesa una sesión: series, ejercicios y una estimación de minutos.
@@ -4050,7 +4109,7 @@ function pintarCarga(){
           }).join('')}</div>
         </div>`;
       }).join('')
-    : `<div class="vacio"><b>Aún sin historial</b>Marca series con peso y aquí verás tu progresión semana a semana.</div>`;
+    : vacio('🏋️','Aún sin historial','Marca series con peso y aquí verás tu progresión semana a semana.');
 
   pintarRecords();
 }
@@ -4091,7 +4150,7 @@ function pintarRecords(){
         <div class="fila-txt"><b>${esc(f.titulo)}</b><span>${esc(f.pista)}</span></div>
         <div class="fila-cifra num">${f.cifra}</div>
       </div>`).join('')
-    : `<div class="vacio"><b>Sin récords todavía</b>Marca series con peso o con tiempo y aquí quedará lo mejor de cada una.</div>`;
+    : vacio('🏅','Sin récords todavía','Marca series con peso o con tiempo y aquí quedará lo mejor de cada una.');
 }
 
 /* ── Detalle de sesión ───────────────────────────────────────────────────── */
@@ -4718,7 +4777,7 @@ function pintarPlantillas(){
         <button class="accion" style="color:var(--azul);font-weight:700;font-size:13px" data-importar-plantilla="${p.id}">Importar</button>
         <button class="borrar" data-borrar-plantilla="${p.id}">✕</button>
       </div>`).join('')
-    : `<div class="vacio"><b>Sin plantillas</b>Abre una sesión y pulsa «Plantilla» para reutilizarla.</div>`;
+    : vacio('📋','Sin plantillas','Abre una sesión y pulsa «Plantilla» para reutilizarla.');
 }
 
 /* ═══════════════════════════ VISTA 5 · DIARIO ════════════════════════════ */
@@ -5652,7 +5711,7 @@ function pintarDesvio(){
   const caja=$('#desvioCartera');
   if (!caja) return;
   if (!filas.length){
-    caja.innerHTML=`<div class="vacio"><b>Sin reparto marcado</b>Di qué porcentaje quieres en cada tipo y te aviso cuando la cartera se desvíe.</div>`;
+    caja.innerHTML=vacio('🥧','Sin reparto marcado','Di qué porcentaje quieres en cada tipo y te aviso cuando la cartera se desvíe.');
     return;
   }
   caja.innerHTML=filas.map(f=>`
@@ -5913,7 +5972,7 @@ function verEjercicio(nombre){
 
   $('#ejTitulo').textContent=nombre;
   if (!veces.length){
-    $('#ejCuerpo').innerHTML=`<div class="vacio"><b>Todavía sin historial</b>Marca alguna serie y aquí quedará todo lo que has hecho con este ejercicio.</div>`;
+    $('#ejCuerpo').innerHTML=vacio('🏋️','Todavía sin historial','Marca alguna serie y aquí quedará todo lo que has hecho con este ejercicio.');
     $('#hojaEjercicio').showModal();
     return;
   }
@@ -6562,11 +6621,11 @@ function pintarBusqueda(){
   const caja=$('#resultados');
 
   if (q.trim().length<2){
-    caja.innerHTML=`<div class="vacio"><b>Escribe al menos dos letras</b>Busca a la vez en movimientos, tareas, cobros, metas, cartera, entrenos y diario.</div>`;
+    caja.innerHTML=vacio('🔍','Escribe al menos dos letras','Busca a la vez en movimientos, tareas, cobros, metas, cartera, entrenos y diario.');
     return;
   }
   if (!res.length){
-    caja.innerHTML=`<div class="vacio"><b>Nada con «${esc(q)}»</b>Prueba con otra palabra.</div>`;
+    caja.innerHTML=vacio('🤷','Nada con «'+esc(q)+'»','Prueba con otra palabra, o con menos letras.');
     return;
   }
   const grupos={};
@@ -6624,7 +6683,7 @@ function pintarFijos(){
         <div class="fila-cifra num ${f.tipo==='Ingreso'?'pos':''}">${f.tipo==='Ingreso'?'+':'−'}${euroDec(aNum(f.importe))}</div>
         <button class="borrar" data-borrar-fijo="${f.id}">✕</button>
       </div>`).join('')
-    : `<div class="vacio" style="padding:14px 8px"><b>Sin fijos todavía</b>&nbsp;</div>`;
+    : vacio('🔁','Sin fijos todavía','Lo que se repite cada mes se apunta solo cuando llega el día.');
   refrescarCategoriasFijo();
 }
 
