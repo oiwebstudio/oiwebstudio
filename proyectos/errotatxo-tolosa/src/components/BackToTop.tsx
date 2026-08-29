@@ -9,11 +9,17 @@ import { useLocale } from "@/lib/i18n";
 
 export default function BackToTop() {
   const [visible, setVisible] = useState(false);
+  const [progress, setProgress] = useState(0);
   const lenis = useLenis();
   const { t } = useLocale();
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 800);
+    const onScroll = () => {
+      setVisible(window.scrollY > 800);
+      const total =
+        document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(total > 0 ? Math.min(1, window.scrollY / total) : 0);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -23,6 +29,10 @@ export default function BackToTop() {
     if (lenis) lenis.scrollTo(0);
     else window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  const r = 20;
+  const circumference = 2 * Math.PI * r;
+  const offset = circumference * (1 - progress);
 
   return (
     <AnimatePresence>
@@ -37,9 +47,33 @@ export default function BackToTop() {
             onClick={scrollTop}
             aria-label={t.common.backToTop}
             data-cursor="hover"
-            className="flex h-12 w-12 items-center justify-center rounded-full bg-[#2B2019] text-[#F5EFE4] shadow-lg"
+            className="relative flex h-12 w-12 items-center justify-center rounded-full bg-[#2B2019] text-[#F5EFE4] shadow-lg"
           >
-            <ArrowUp size={20} />
+            <svg
+              className="absolute inset-0 -rotate-90"
+              viewBox="0 0 48 48"
+              fill="none"
+            >
+              <circle
+                cx="24"
+                cy="24"
+                r={r}
+                stroke="rgb(214 166 74 / 0.2)"
+                strokeWidth="2"
+              />
+              <circle
+                cx="24"
+                cy="24"
+                r={r}
+                stroke="rgb(214 166 74)"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeDasharray={circumference}
+                strokeDashoffset={offset}
+                className="transition-[stroke-dashoffset] duration-150 ease-out"
+              />
+            </svg>
+            <ArrowUp size={18} />
           </motion.button>
         </Magnetic>
       )}
