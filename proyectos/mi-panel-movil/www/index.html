@@ -202,7 +202,16 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
 .progreso-pct { font-size: 14.5px; font-weight: 600; letter-spacing: -0.02em; }
 .progreso-pie { display: flex; justify-content: space-between; gap: 10px; margin-top: 6px; font-size: 12px; color: var(--txt-2); }
 
-.carril { height: 10px; border-radius: 6px; background: rgba(0,0,0,.06); overflow: hidden; }
+.carril { position: relative; height: 10px; border-radius: 6px; background: rgba(0,0,0,.06); overflow: hidden; }
+/* Dónde deberías ir a estas alturas del plazo. Sin esta marca, un 40 % no
+   dice nada: en abril vas sobrado y en octubre vas tarde. */
+.carril .marca-ritmo { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px;
+  background: var(--txt); opacity: .38; border-radius: 2px; }
+.al-dia { font-size: 12px; font-weight: 600; margin-top: 6px; }
+.al-dia.bien { color: var(--verde); }
+.al-dia.justo { color: var(--txt-2); }
+.al-dia.mal { color: var(--naranja); }
+:root[data-tema='oscuro'] .carril .marca-ritmo { opacity: .5; }
 .relleno { display: block; height: 100%; border-radius: 6px; background: var(--tinta); transition: width .6s var(--muelle); }
 .relleno.v { background: var(--verde); }
 .relleno.a { background: var(--azul); }
@@ -3681,10 +3690,12 @@ async function actualizarPrecios(){
 }
 
 /* ═══════════════════════════ VISTA 3 · METAS + CALENDARIO ════════════════ */
-function barraHTML(nombre, avance, izq, der, tono='', acciones=''){
+function barraHTML(nombre, avance, izq, der, tono='', acciones='', ritmo=null){
   return `<div class="progreso">
     <div class="progreso-cab"><b>${nombre}</b><span class="progreso-pct num">${pct(avance)}</span></div>
-    <div class="carril"><span class="relleno ${tono}" style="width:${(Math.min(1,avance)*100).toFixed(1)}%"></span></div>
+    <div class="carril"><span class="relleno ${tono}" style="width:${(Math.min(1,avance)*100).toFixed(1)}%"></span>${
+      ritmo!==null ? `<i class="marca-ritmo" style="left:${(Math.min(1,Math.max(0,ritmo))*100).toFixed(1)}%"></i>` : ''
+    }</div>
     <div class="progreso-pie"><span class="num">${izq}</span><span>${der}</span></div>
     ${acciones}
   </div>`;
@@ -3749,10 +3760,22 @@ function pintarMetas(){
     const ritmo=ritmoNecesario(x);
     const lim=x.limite?` · hasta ${desdeClave(x.limite).toLocaleDateString('es-ES',{day:'numeric',month:'short'})}`:'';
     const consejo=ritmo?`<div class="pie-nota" style="margin:6px 0 0">Para llegar: <b>${esE?euroDec(ritmo.alMes):numF.format(ritmo.alMes)+' '+esc(x.unidad)}</b> al mes · quedan ${ritmo.dias} día(s)</div>`:'';
+
+    // Vas a tiempo o no: el porcentaje solo no lo dice. Un 40 % en abril va
+    // sobrado y el mismo 40 % en octubre va tarde.
+    const marcha = avance>=1 ? null : comoVaLaMeta(x);
+    const aTiempo = !marcha ? '' : (()=>{
+      const d=marcha.desvio;
+      if (d > .07)  return `<div class="al-dia bien">Vas por delante · ${pct(Math.abs(d))} de margen</div>`;
+      if (d < -.07) return `<div class="al-dia mal">Vas por detrás · te falta ${pct(Math.abs(d))} para ir al día${marcha.quedan?`, y quedan ${marcha.quedan} día(s)`:''}</div>`;
+      return `<div class="al-dia justo">Justo al día${marcha.quedan?` · quedan ${marcha.quedan} día(s)`:''}</div>`;
+    })();
+
     return barraHTML(esc(x.nombre), avance, `${v(x.progreso)} de ${v(x.meta)}`, (avance>=1?'¡conseguida!':'meta propia')+lim, 'm',
-      consejo + `<div class="mini-acciones"><button data-meta-sumar="${x.id}">+ Progreso</button>
+      aTiempo + consejo + `<div class="mini-acciones"><button data-meta-sumar="${x.id}">+ Progreso</button>
         <button data-meta-editar="${x.id}">✎ Editar</button>
-        <button class="quitar" data-meta-borrar="${x.id}">Borrar</button></div>`);
+        <button class="quitar" data-meta-borrar="${x.id}">Borrar</button></div>`,
+      marcha ? marcha.esperado : null);
   }).join('');
 
   panel.innerHTML = autos.join('') + propiasHTML +
@@ -5334,6 +5357,32 @@ function desvioCartera(){
 }
 
 /* ── Metas: cuánto hay que apartar al mes ────────────────────────────────── */
+/** Si vas a tiempo o no. No hay fecha de inicio guardada, así que el plazo
+    es el natural del alcance -- el año, el mes o la semana en curso -- y se
+    recorta si la meta tiene fecha límite antes. Compara la parte del plazo
+    que ha pasado con la parte de la meta que llevas. */
+function comoVaLaMeta(meta){
+  const hoy=desdeClave(HOY);
+  let inicio, fin;
+  if (meta.alcance==='anio'){
+    inicio=new Date(hoy.getFullYear(),0,1); fin=new Date(hoy.getFullYear(),11,31);
+  } else if (meta.alcance==='mes'){
+    inicio=new Date(hoy.getFullYear(),hoy.getMonth(),1);
+    fin=new Date(hoy.getFullYear(),hoy.getMonth()+1,0);
+  } else {
+    inicio=lunesDe(hoy); fin=new Date(inicio); fin.setDate(fin.getDate()+6);
+  }
+  if (meta.limite){ const lim=desdeClave(meta.limite); if (lim<fin) fin=lim; }
+  if (fin<=inicio) return null;
+
+  const total=(fin-inicio)/86400000 + 1;
+  const ido=Math.min(total, Math.max(0,(hoy-inicio)/86400000 + 1));
+  const esperado=ido/total;
+  const avance=aNum(meta.meta) ? aNum(meta.progreso)/aNum(meta.meta) : 0;
+  return { esperado, avance, desvio:avance-esperado,
+           quedan:Math.max(0, Math.round(total-ido)) };
+}
+
 function ritmoNecesario(meta){
   if (!meta.limite || meta.progreso>=meta.meta) return null;
   const dias=Math.max(1, Math.round((desdeClave(meta.limite)-desdeClave(HOY))/86400000));
