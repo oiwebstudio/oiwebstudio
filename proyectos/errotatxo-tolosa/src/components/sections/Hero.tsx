@@ -5,7 +5,10 @@ import { ArrowDown } from "lucide-react";
 import Link from "next/link";
 import { useLenis } from "@/components/motion/LenisProvider";
 import Magnetic from "@/components/motion/Magnetic";
+import Parallax from "@/components/motion/Parallax";
 import RevealText from "@/components/motion/RevealText";
+import Particles from "@/components/Particles";
+import SmartGreeting from "@/components/SmartGreeting";
 import imageLoader from "@/lib/imageLoader";
 import { useLocale } from "@/lib/i18n";
 
@@ -13,7 +16,7 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 export default function Hero() {
   const lenis = useLenis();
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const hero = t.hero;
 
   const scrollTo = (selector: string) => {
@@ -28,14 +31,17 @@ export default function Hero() {
       id="inicio"
       className="relative isolate flex min-h-[100svh] items-end overflow-hidden pb-24 pt-32 md:pb-28 md:pt-36"
     >
-      {/* fondo: interior del obrador */}
-      <div
-        className="absolute inset-0 z-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${imageLoader({ src: "/images/hero-interior.jpeg" })})` }}
-        role="img"
-        aria-label="Interior del obrador de Errotatxo"
-      />
+      {/* fondo: interior del obrador con parallax */}
+      <Parallax speed={0.15} className="absolute inset-0 z-0">
+        <div
+          className="h-[120%] w-full bg-cover bg-center"
+          style={{ backgroundImage: `url(${imageLoader({ src: "/images/hero-interior.jpeg" })})` }}
+          role="img"
+          aria-label="Interior del obrador de Errotatxo"
+        />
+      </Parallax>
       <div className="absolute inset-0 z-0 bg-gradient-to-t from-[#150D07] via-[#150D07]/60 to-[#150D07]/25" />
+      <Particles className="z-[1] opacity-60" />
 
       <div className="container-edge relative z-10 w-full">
         <div className="max-w-xl">
@@ -79,6 +85,15 @@ export default function Hero() {
                 {hero.cta}
               </Link>
             </Magnetic>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5, duration: 1 }}
+            className="mt-6"
+          >
+            <SmartGreeting locale={locale} />
           </motion.div>
         </div>
       </div>

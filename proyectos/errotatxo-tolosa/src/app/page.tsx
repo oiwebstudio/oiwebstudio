@@ -1,3 +1,4 @@
+import BreadCounter from "@/components/BreadCounter";
 import PageTransition from "@/components/PageTransition";
 import SectionDivider from "@/components/SectionDivider";
 import Explora from "@/components/sections/Explora";
@@ -24,6 +25,9 @@ export default function Home() {
       <Tiendas />
       <Mapa />
       <Horarios />
+      <div className="container-edge flex justify-center py-16 md:py-20">
+        <BreadCounter />
+      </div>
       <SectionDivider />
       <Opiniones />
       <Explora />

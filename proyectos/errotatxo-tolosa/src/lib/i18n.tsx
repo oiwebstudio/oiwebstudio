@@ -117,6 +117,10 @@ export type Dictionary = {
     cards: { href: string; label: string; title: string; text: string }[];
     cta: string;
   };
+  smart?: {
+    nearestLabel: string;
+    breadCounterLabel: string;
+  };
 };
 
 type PageMeta = {
@@ -432,6 +436,10 @@ const es: Dictionary = {
     ],
     cta: "Ver más",
   },
+  smart: {
+    nearestLabel: "Tu tienda más cercana",
+    breadCounterLabel: "panes horneados hoy",
+  },
 };
 
 const eu: Dictionary = {
@@ -738,6 +746,10 @@ const eu: Dictionary = {
       },
     ],
     cta: "Ikusi gehiago",
+  },
+  smart: {
+    nearestLabel: "Zure denda hurbilena",
+    breadCounterLabel: "gaur labetik ateratako ogiak",
   },
 };
 
