@@ -1,11 +1,13 @@
 import { cn } from "@/lib/utils";
 
-const PARTICLES = Array.from({ length: 20 }).map((_, i) => ({
-  left: (i * 37) % 100,
-  top: (i * 53) % 100,
-  size: 2 + (i % 4),
-  duration: 6 + (i % 5),
-  delay: (i % 7) * 0.4,
+const PARTICLES = Array.from({ length: 35 }).map((_, i) => ({
+  left: (i * 31 + 7) % 100,
+  top: (i * 47 + 13) % 100,
+  size: 1.5 + (i % 5) * 0.8,
+  duration: 8 + (i % 7) * 2,
+  delay: (i % 9) * 0.6,
+  opacity: 0.15 + (i % 4) * 0.12,
+  drift: (i % 2 === 0 ? 1 : -1) * (8 + (i % 6) * 3),
 }));
 
 export default function Particles({ className }: { className?: string }) {
@@ -17,14 +19,15 @@ export default function Particles({ className }: { className?: string }) {
       {PARTICLES.map((p, i) => (
         <span
           key={i}
-          className="absolute animate-float rounded-full bg-lino/70"
+          className="absolute rounded-full bg-[#F5EFE4]"
           style={{
             left: `${p.left}%`,
             top: `${p.top}%`,
             width: p.size,
             height: p.size,
-            animationDuration: `${p.duration}s`,
-            animationDelay: `${p.delay}s`,
+            opacity: p.opacity,
+            animation: `flour-float ${p.duration}s ease-in-out ${p.delay}s infinite`,
+            ["--drift" as string]: `${p.drift}px`,
           }}
         />
       ))}
