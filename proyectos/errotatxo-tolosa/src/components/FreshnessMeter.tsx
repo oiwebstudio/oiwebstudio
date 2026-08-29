@@ -25,9 +25,9 @@ function getMadridHour(): number {
   return Number(parts.find((p) => p.type === "hour")?.value ?? "0");
 }
 
-function getFreshness(): { level: number; key: keyof typeof LABELS_ES } {
+function getFreshness(): { level: number; key: keyof typeof LABELS_ES } | null {
   const h = getMadridHour();
-  if (h < 5 || h >= 20) return { level: 0, key: "fresh" };
+  if (h < 5 || h >= 20) return null;
   if (h < 9) return { level: 1, key: "fresh" };
   if (h < 13) return { level: 0.7, key: "morning" };
   return { level: 0.4, key: "afternoon" };

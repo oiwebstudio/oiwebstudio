@@ -6,7 +6,7 @@ import { isStoreOpenNow, nextOpening, type LiveStatus, type Store } from "@/lib/
 
 export default function LiveStatusBadge({ store }: { store: Store }) {
   const { t } = useLocale();
-  const [status, setStatus] = useState<LiveStatus>(() => isStoreOpenNow(store));
+  const [status, setStatus] = useState<LiveStatus>("unknown");
   // loc-live-status (biblioteca-animaciones): cuando está cerrada, se anuncia
   // la próxima apertura en vez de dejar solo el "cerrado".
   const [opensAt, setOpensAt] = useState<string | null>(null);
