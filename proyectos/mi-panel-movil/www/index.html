@@ -2325,8 +2325,26 @@ function seriePatrimonio(dias){
 }
 
 /* ── Gasto por categorías ────────────────────────────────────────────────── */
+let mesesSello=-1, mesesLargo=-1, mesesIndice=null;
+
+/** Los movimientos agrupados por mes, en un mapa 'aaaa-mm' → lista. Se
+    rehace cuando sube el sello de guardado o cambia el número de apuntes:
+    lo segundo cubre las mutaciones que aún no se han guardado. */
+function txPorMes(){
+  if (mesesIndice && mesesSello===selloDatos && mesesLargo===E.tx.length) return mesesIndice;
+  const mapa=new Map();
+  for (const t of E.tx){
+    const k=String(t.fecha||'').slice(0,7);
+    let l=mapa.get(k); if (!l) mapa.set(k, l=[]);
+    l.push(t);
+  }
+  mesesIndice=mapa; mesesSello=selloDatos; mesesLargo=E.tx.length;
+  return mapa;
+}
+
 function txDeMes(a, m, ambito){
-  return E.tx.filter(t=>mismoMes(t.fecha,a,m) && (!ambito || t.ambito===ambito));
+  const lista = txPorMes().get(`${a}-${dos(m+1)}`) || [];
+  return ambito ? lista.filter(t=>t.ambito===ambito) : lista;
 }
 /** Lo mismo, pero con el ámbito que tengas elegido en la vista de gastos. */
 function txMes(a, m){ return txDeMes(a, m, UI.ambitoGasto); }
