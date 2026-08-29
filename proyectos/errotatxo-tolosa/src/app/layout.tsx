@@ -4,6 +4,7 @@ import BackToTop from "@/components/BackToTop";
 import Footer from "@/components/Footer";
 import Loader from "@/components/Loader";
 import Navbar from "@/components/Navbar";
+import NearestStore from "@/components/NearestStore";
 import Noise from "@/components/Noise";
 import PageDots from "@/components/PageDots";
 import Providers from "@/components/Providers";
@@ -74,6 +75,7 @@ export default function RootLayout({
           <main>{children}</main>
           <Footer />
           <BackToTop />
+          <NearestStore />
         </Providers>
       </body>
     </html>

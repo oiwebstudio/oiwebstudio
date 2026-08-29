@@ -388,6 +388,14 @@ body::before {
   }
 }
 
+/* flour-float: partículas de harina que flotan y derivan lateralmente */
+@keyframes flour-float {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 1; }
+  50% { transform: translateY(-40px) translateX(var(--drift, 10px)); }
+  90% { opacity: 1; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
