@@ -4,6 +4,7 @@ import FadeIn from "@/components/motion/FadeIn";
 import RevealImage from "@/components/motion/RevealImage";
 import RevealText from "@/components/motion/RevealText";
 import Scramble from "@/components/motion/Scramble";
+import Tilt3D from "@/components/motion/Tilt3D";
 import { productImages } from "@/lib/data";
 import { useLocale } from "@/lib/i18n";
 
@@ -28,12 +29,10 @@ export default function Productos() {
 
       <div className="container-edge grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
         {productos.items.map((item, i) => (
-          <div key={productImages[i]} className="group relative">
-            {/* card-big-number (biblioteca-animaciones) */}
+          <Tilt3D key={productImages[i]} className="group relative">
             <span aria-hidden className="fx-big-number">
               0{i + 1}
             </span>
-            {/* card-glass-sheen (biblioteca-animaciones) */}
             <div className="fx-sheen relative mb-5 overflow-hidden rounded-md">
               <RevealImage
                 src={productImages[i]}
@@ -47,7 +46,7 @@ export default function Productos() {
               {item.name}
             </h3>
             <p className="body-editorial text-sm md:text-base">{item.description}</p>
-          </div>
+          </Tilt3D>
         ))}
       </div>
     </section>

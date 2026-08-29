@@ -8,6 +8,7 @@ import Magnetic from "@/components/motion/Magnetic";
 import RevealImage from "@/components/motion/RevealImage";
 import RevealText from "@/components/motion/RevealText";
 import Scramble from "@/components/motion/Scramble";
+import TimeToClose from "@/components/TimeToClose";
 import { useLocale } from "@/lib/i18n";
 import { directionsUrl, stores } from "@/lib/stores";
 
@@ -56,6 +57,7 @@ export default function Tiendas() {
                   </h3>
                   <LiveStatusBadge store={store} />
                 </div>
+                <TimeToClose store={store} />
 
                 {store_copy && (
                   <p className="body-editorial mb-5 text-sm md:text-base">{store_copy.tagline}</p>
