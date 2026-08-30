@@ -19,7 +19,12 @@ export default function Particles({ className }: { className?: string }) {
       {PARTICLES.map((p, i) => (
         <span
           key={i}
-          className="absolute rounded-full bg-[#F5EFE4]"
+          // En móvil solo se pintan las 14 primeras: 35 capas animadas ahogan
+          // el scroll en gama media.
+          className={cn(
+            "absolute rounded-full bg-[#F5EFE4]",
+            i >= 14 && "hidden md:block"
+          )}
           style={{
             left: `${p.left}%`,
             top: `${p.top}%`,

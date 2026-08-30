@@ -121,7 +121,7 @@ export default function Opiniones() {
             {track.map((q, i) => (
               <figure
                 key={`${q.name}-${i}`}
-                className="relative flex w-80 shrink-0 flex-col justify-between overflow-hidden rounded-3xl bg-surface p-7 shadow-[0_16px_40px_-32px_rgba(43,30,20,0.5)] ring-1 ring-ink/[0.07] transition-all duration-500 ease-organic hover:-translate-y-1.5 hover:shadow-[0_24px_48px_-28px_rgba(43,30,20,0.55)] hover:ring-sol/40"
+                className="relative flex w-[16.5rem] shrink-0 flex-col justify-between overflow-hidden rounded-3xl bg-surface p-6 shadow-[0_16px_40px_-32px_rgba(43,30,20,0.5)] ring-1 ring-ink/[0.07] transition-all duration-500 ease-organic hover:-translate-y-1.5 hover:shadow-[0_24px_48px_-28px_rgba(43,30,20,0.55)] hover:ring-sol/40 sm:w-80 sm:p-7"
               >
                 <Quote
                   aria-hidden
@@ -130,7 +130,7 @@ export default function Opiniones() {
                   className="pointer-events-none absolute -right-2 -top-2 fill-sol/[0.13]"
                 />
 
-                <blockquote className="relative font-serif text-lg italic leading-relaxed text-ink/85">
+                <blockquote className="relative font-serif text-base italic leading-relaxed text-ink/85 sm:text-lg">
                   “{q.text}”
                 </blockquote>
 

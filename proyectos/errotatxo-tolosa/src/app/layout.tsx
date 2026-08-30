@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import BackToTop from "@/components/BackToTop";
 import CustomCursor from "@/components/CustomCursor";
@@ -53,6 +53,11 @@ export const metadata: Metadata = {
     type: "website",
   },
   robots: { index: true, follow: true },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#FDFBF7",
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
