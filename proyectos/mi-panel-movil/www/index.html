@@ -628,9 +628,19 @@ dialog::backdrop { background: rgba(17,17,17,.46); }
 .hoja-cab h3 { margin: 0 auto 0 0; font-size: 18px; font-weight: 600; letter-spacing: -0.025em; }
 .hoja-cab .cerrar { font-size: 14px; font-weight: 600; color: var(--txt-2); }
 .hoja-cuerpo { padding: 2px 20px 8px; overflow-y: auto; }
-.hoja-pie { display: flex; gap: 10px; padding: 12px 20px 18px; flex: none; }
+.hoja-pie { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 20px 18px; flex: none; }
+.hoja-pie > * { min-width: 0; }
 .hoja-pie .btn-negro { flex: 1.6; }
 .hoja-pie .btn-suave { flex: 1; }
+/* Los de solo icono no crecen ni se encogen: ocupan lo que ocupa el icono */
+.hoja-pie .solo-icono { flex: 0 0 46px; padding: 0; font-size: 16px; }
+/* En el pie de la sesión, que es el que va cargado, la acción principal se
+   pone abajo del todo y a lo ancho. Es además la que más se pulsa. */
+#dsPie .btn-negro { flex: 1 0 100%; order: 2; }
+
+/* Cinturón: pase lo que pase con el contenido, una hoja no se desliza de
+   lado. Si algo no cabe, se recorta -- pero la hoja no se mueve. */
+dialog { overflow-x: hidden; }
 
 .campo { display: block; margin-bottom: 13px; }
 .campo > span { display: block; font-size: 12.5px; font-weight: 600; color: var(--txt-2); margin-bottom: 6px; }
@@ -853,6 +863,29 @@ select.nativo-fuera { position: absolute; width: 1px; height: 1px; opacity: 0; p
 .selector span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .selector i { font-style: normal; font-size: 12px; color: var(--txt-3); }
 .selector:active { transform: scale(.985); background: rgba(0,0,0,.06); }
+
+/* ── El reloj de la casa ────────────────────────────────────────────────────
+   Dos columnas que se recorren y se toca la que quieres, en vez de la rueda
+   del sistema: con la rueda hay que rodar y atinar, y aquí es un toque. */
+.reloj-hoja { text-align: center; }
+.reloj-grande { font-size: 46px; font-weight: 700; letter-spacing: -0.03em; line-height: 1;
+  margin: 4px 0 4px; font-variant-numeric: tabular-nums; }
+.reloj-frecuentes { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; margin: 12px 0 4px; }
+.reloj-frecuentes button { font-size: 12.5px; font-weight: 600; padding: 8px 13px; border-radius: 13px;
+  background: var(--fondo); color: var(--txt-2); }
+.reloj-frecuentes button[aria-selected='true'] { background: var(--tinta); color: var(--carta); }
+
+.reloj-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+.reloj-col { position: relative; }
+.reloj-col > small { display: block; font-size: 11px; font-weight: 600; letter-spacing: .05em;
+  text-transform: uppercase; color: var(--txt-3); margin-bottom: 6px; }
+.reloj-lista { height: 210px; overflow-y: auto; border-radius: 18px; background: var(--fondo);
+  padding: 6px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.reloj-lista::-webkit-scrollbar { display: none; }
+.reloj-lista button { display: block; width: 100%; font-size: 19px; font-weight: 600;
+  padding: 9px 0; border-radius: 13px; color: var(--txt-2); font-variant-numeric: tabular-nums;
+  transition: background .16s ease, color .16s ease; }
+.reloj-lista button[aria-selected='true'] { background: var(--tinta); color: var(--carta); }
 :root[data-tema='oscuro'] .selector:active { background: rgba(255,255,255,.12); }
 
 .opcion { display: flex; align-items: center; gap: 12px; width: 100%; padding: 14px 4px; border-bottom: 1px solid rgba(0,0,0,.05); font-size: 15.5px; text-align: left; }
@@ -1370,6 +1403,27 @@ dialog::backdrop { animation: fundir .44s ease backwards; }
 </nav>
 
 <div class="brindis" id="brindis" role="status" aria-live="polite"></div>
+<!-- ══ Hoja: el reloj, en vez del de Android ════════════════════════════ -->
+<dialog id="hojaHora">
+  <div class="hoja">
+    <div class="hoja-asa"></div>
+    <div class="hoja-cab"><h3 id="horaTitulo">¿A qué hora?</h3>
+      <button type="button" class="cerrar" data-cerrar="hojaHora">Cerrar</button></div>
+    <div class="hoja-cuerpo reloj-hoja">
+      <div class="reloj-grande num" id="horaMuestra">09:00</div>
+      <div class="reloj-frecuentes" id="horaFrecuentes"></div>
+      <div class="reloj-cols">
+        <div class="reloj-col"><small>Hora</small><div class="reloj-lista" id="horaHoras"></div></div>
+        <div class="reloj-col"><small>Minuto</small><div class="reloj-lista" id="horaMinutos"></div></div>
+      </div>
+    </div>
+    <div class="hoja-pie">
+      <button type="button" class="btn-suave" id="horaCancelar">Cancelar</button>
+      <button type="button" class="btn-negro" id="horaGuardar">Guardar</button>
+    </div>
+  </div>
+</dialog>
+
 <!-- ══ Hoja: tiempo de pantalla ═════════════════════════════════════════ -->
 <dialog id="hojaUso">
   <div class="hoja">
@@ -4413,12 +4467,12 @@ function pintarDetalleSesion(){
   if (volTotal) $('#dsNombre').innerHTML=`${esc(s.nombre)} <small style="display:block;font-size:11.5px;font-weight:600;color:var(--txt-2)">${numF.format(volTotal)} kg movidos</small>`;
   $('#dsCuerpo').scrollTop=scrollPrevio;
   $('#dsPie').innerHTML=`
-    <button type="button" class="btn-suave" data-descanso-manual title="Descanso">⏱</button>
-    <button type="button" class="btn-suave" data-discos title="Qué discos poner">⚖</button>
-    <button type="button" class="btn-suave" data-mover-sesion title="Mover a otro día">📅</button>
+    <button type="button" class="btn-suave solo-icono" data-descanso-manual title="Descanso" aria-label="Descanso">⏱</button>
+    <button type="button" class="btn-suave solo-icono" data-discos title="Qué discos poner" aria-label="Qué discos poner">⚖</button>
+    <button type="button" class="btn-suave solo-icono" data-mover-sesion title="Mover a otro día" aria-label="Mover a otro día">📅</button>
     <button type="button" class="btn-suave" data-guardar-plantilla>Plantilla</button>
     <button type="button" class="btn-suave peligro" data-borrar-sesion>Borrar</button>
-    <button type="button" class="btn-negro" data-alternar-hecha style="flex:1.4">${s.hecha?'Marcar pendiente':'✓ Completada'}</button>`;
+    <button type="button" class="btn-negro" data-alternar-hecha>${s.hecha?'Marcar pendiente':'✓ Completada'}</button>`;
 }
 
 
@@ -5329,6 +5383,9 @@ const abrirNativo=HTMLDialogElement.prototype.showModal;
 HTMLDialogElement.prototype.showModal=function(...args){
   const hoja=this.querySelector('.hoja');
   if (hoja){ hoja.classList.remove('arrastrando'); hoja.style.transform=''; }
+  // Rellenar un formulario por código no dispara change, así que los botones
+  // de hora se quedaban con el guion. Se refrescan al abrir.
+  for (const i of this.querySelectorAll('input[type="time"]')) i._refrescarHora?.();
   return abrirNativo.apply(this, args);
 };
 
@@ -6245,8 +6302,9 @@ new MutationObserver(cambios=>{
   for (const c of cambios)
     for (const n of c.addedNodes)
       if (n.nodeType===1){
-        if (n.tagName==='SELECT'){ mejorarSelects(n.parentElement||document); }
-        else mejorarSelects(n);
+        const donde = (n.tagName==='SELECT' || n.tagName==='INPUT') ? (n.parentElement||document) : n;
+        mejorarSelects(donde);
+        mejorarHoras(donde);
       }
 }).observe(document.body, { childList:true, subtree:true });
 
@@ -6503,6 +6561,97 @@ function pintarFrecuentes(){
   document.addEventListener('touchend', soltar, { passive: true });
   document.addEventListener('touchcancel', soltar, { passive: true });
 })();
+
+/* ── El reloj de la casa ────────────────────────────────────────────────────
+   Android abre su propio reloj con <input type="time">, y desentona con todo
+   lo demás. Mismo truco que con los desplegables: el input sigue ahí, oculto,
+   llevando el valor -- así los formularios lo siguen leyendo igual -- y
+   delante va un botón que abre esta hoja.                                  */
+const HORAS_FRECUENTES = ['07:30','09:00','13:00','18:00','21:30'];
+
+/** Abre el reloj y devuelve "HH:MM", o null si te echas atrás. */
+function pedirHora(valor='09:00', { titulo='¿A qué hora?' }={}){
+  return new Promise(resolver=>{
+    const hoja=$('#hojaHora');
+    let [h,m] = String(valor||'09:00').split(':').map(n=>parseInt(n,10));
+    if (!Number.isFinite(h)) h=9;
+    if (!Number.isFinite(m)) m=0;
+    m = Math.round(m/5)*5; if (m>55){ m=0; h=(h+1)%24; }
+
+    $('#horaTitulo').textContent=titulo;
+
+    const pintar=()=>{
+      const txt=`${dos(h)}:${dos(m)}`;
+      $('#horaMuestra').textContent=txt;
+      $('#horaFrecuentes').innerHTML=HORAS_FRECUENTES.map(f=>
+        `<button type="button" data-hora-rapida="${f}" aria-selected="${f===txt}">${f}</button>`).join('');
+      $('#horaHoras').innerHTML=Array.from({length:24},(_,i)=>
+        `<button type="button" data-hora-h="${i}" aria-selected="${i===h}">${dos(i)}</button>`).join('');
+      $('#horaMinutos').innerHTML=Array.from({length:12},(_,i)=>i*5).map(v=>
+        `<button type="button" data-hora-m="${v}" aria-selected="${v===m}">${dos(v)}</button>`).join('');
+      // Dejar lo elegido a la vista sin dar el salto de scrollIntoView, que
+      // arrastra también la hoja entera.
+      for (const [caja,sel] of [['#horaHoras','[data-hora-h]'],['#horaMinutos','[data-hora-m]']]){
+        const lista=$(caja), activo=lista.querySelector('[aria-selected="true"]');
+        if (activo) lista.scrollTop = activo.offsetTop - lista.clientHeight/2 + activo.offsetHeight/2;
+      }
+    };
+    pintar();
+
+    const alTocar=e=>{
+      const rapida=e.target.closest('[data-hora-rapida]');
+      if (rapida){ [h,m]=rapida.dataset.horaRapida.split(':').map(Number); pintar(); vibrar(8); return; }
+      const bh=e.target.closest('[data-hora-h]');
+      if (bh){ h=Number(bh.dataset.horaH); pintar(); vibrar(6); return; }
+      const bm=e.target.closest('[data-hora-m]');
+      if (bm){ m=Number(bm.dataset.horaM); pintar(); vibrar(6); return; }
+    };
+    const limpiar=()=>{
+      hoja.removeEventListener('click', alTocar);
+      $('#horaGuardar').removeEventListener('click', guardarla);
+      $('#horaCancelar').removeEventListener('click', cancelar);
+      hoja.removeEventListener('close', cancelar);
+    };
+    const guardarla=()=>{ limpiar(); hoja.close(); resolver(`${dos(h)}:${dos(m)}`); };
+    const cancelar=()=>{ limpiar(); if (hoja.open) hoja.close(); resolver(null); };
+
+    hoja.addEventListener('click', alTocar);
+    $('#horaGuardar').addEventListener('click', guardarla);
+    $('#horaCancelar').addEventListener('click', cancelar);
+    hoja.addEventListener('close', cancelar);
+    hoja.showModal();
+  });
+}
+
+/** Esconde los <input type="time"> y les pone delante un botón nuestro. */
+function mejorarHoras(raiz=document){
+  for (const inp of raiz.querySelectorAll?.('input[type="time"]:not([data-mejorado])') || []){
+    inp.dataset.mejorado='1';
+    inp.classList.add('nativo-fuera');
+    inp.tabIndex=-1;
+
+    const boton=document.createElement('button');
+    boton.type='button';
+    boton.className='selector';
+    boton.innerHTML='<span></span><i>🕘</i>';
+    inp.insertAdjacentElement('afterend', boton);
+    // El input llevaba el ancho puesto a mano en algún sitio; que lo herede
+    if (inp.style.width) boton.style.width=inp.style.width;
+
+    const refrescar=()=>{ boton.firstChild.textContent = inp.value || '—'; };
+    inp._refrescarHora = refrescar;   // para poder llamarlo desde fuera
+    refrescar();
+    inp.addEventListener('change', refrescar);
+
+    boton.addEventListener('click', async ()=>{
+      const etiqueta=inp.closest('.campo')?.querySelector('span')?.textContent;
+      const r=await pedirHora(inp.value||'09:00', { titulo: etiqueta || '¿A qué hora?' });
+      if (r===null) return;
+      inp.value=r; refrescar();
+      inp.dispatchEvent(new Event('change', { bubbles:true }));
+    });
+  }
+}
 
 /* ── Preguntar sin salir del diseño ─────────────────────────────────────────
    confirm() y prompt() los pinta Android a su manera, en su idioma y con su
@@ -7915,6 +8064,7 @@ addEventListener('resize', moverPastilla);
 reanimar($('.vista[data-vista="home"]'), 'entrando');
 
 mejorarSelects();
+mejorarHoras();
 aplicarTema();
 recuperarTemporizador();
 $$('#segTema button').forEach(x=>x.setAttribute('aria-selected', String(x.dataset.tema===E.tema)));
