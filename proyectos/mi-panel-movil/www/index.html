@@ -276,6 +276,28 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
   transition: transform .15s var(--muelle); }
 .hero-siguiente:active { transform: scale(.95); }
 
+/* ── Tiempo de pantalla ────────────────────────────────────────────────────
+   La tarjeta va en Hoy porque es un número del día, y se toca para ver el
+   detalle. El carril se pone naranja al acercarse al tope y rojo al pasarlo:
+   el color hace el trabajo antes de que leas la cifra. */
+.uso-tarjeta { display: flex; align-items: center; gap: 13px; width: 100%; text-align: left; }
+.uso-tarjeta .reloj { width: 46px; height: 46px; flex: none; border-radius: 16px; display: grid;
+  place-items: center; font-size: 21px; background: var(--fondo); }
+.uso-tarjeta .cuerpo { flex: 1; min-width: 0; }
+.uso-tarjeta .linea1 { display: flex; align-items: baseline; gap: 8px; }
+.uso-tarjeta .cifra-uso { font-size: 19px; font-weight: 700; letter-spacing: -0.02em; }
+.uso-tarjeta .contra { font-size: 12px; color: var(--txt-2); margin-left: auto; }
+.uso-tarjeta .carril { margin-top: 7px; }
+.uso-barras { display: flex; align-items: flex-end; gap: 7px; height: 96px; margin-top: 4px; }
+.uso-barras .col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 5px; }
+.uso-barras .barra-v { width: 100%; max-width: 26px; border-radius: 7px 7px 3px 3px;
+  background: rgba(17,17,17,.16); min-height: 3px; }
+.uso-barras .col.hoy .barra-v { background: var(--tinta); }
+.uso-barras .col.pasado .barra-v { background: var(--naranja); }
+.uso-barras small { font-size: 9.5px; color: var(--txt-3); font-weight: 600; }
+.uso-barras .cifra-mini { font-size: 9.5px; font-weight: 700; }
+:root[data-tema='oscuro'] .uso-barras .barra-v { background: rgba(255,255,255,.2); }
+
 .chips-hero { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 15px; }
 .chip-dato { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 650; letter-spacing: -0.01em; color: rgba(255,255,255,.84); background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.13); padding: 7px 11px; border-radius: 12px; }
 .chip-dato .num { font-weight: 600; color: #fff; }
@@ -1039,6 +1061,10 @@ dialog::backdrop { animation: fundir .44s ease backwards; }
       </div>
     </div>
 
+    <div class="titulo-seccion oculto" id="tituloUso"><h2>Tiempo de pantalla</h2>
+      <span class="accion" id="usoPie"></span></div>
+    <div class="carta oculto" id="cartaUso"></div>
+
     <div class="titulo-seccion oculto" id="tituloIdeas"><h2>Lo que veo</h2>
       <span class="accion" id="ideasCuenta"></span></div>
     <div class="ideas oculto" id="ideas"></div>
@@ -1344,6 +1370,20 @@ dialog::backdrop { animation: fundir .44s ease backwards; }
 </nav>
 
 <div class="brindis" id="brindis" role="status" aria-live="polite"></div>
+<!-- ══ Hoja: tiempo de pantalla ═════════════════════════════════════════ -->
+<dialog id="hojaUso">
+  <div class="hoja">
+    <div class="hoja-asa"></div>
+    <div class="hoja-cab"><h3>Tiempo de pantalla</h3>
+      <button type="button" class="cerrar" data-cerrar="hojaUso">Cerrar</button></div>
+    <div class="hoja-cuerpo" id="cuerpoUso"></div>
+    <div class="hoja-pie">
+      <button type="button" class="btn-suave" id="btnTopeUso" style="flex:1">Cambiar el tope</button>
+      <button type="button" class="btn-negro" data-cerrar="hojaUso" style="flex:1">Listo</button>
+    </div>
+  </div>
+</dialog>
+
 <!-- ══ Hojas de preguntar, en vez de las del sistema ════════════════════ -->
 <dialog id="hojaConfirmar">
   <div class="hoja preguntar">
@@ -1841,6 +1881,15 @@ dialog::backdrop { animation: fundir .44s ease backwards; }
         Android los agrupa en tres canales -- agenda, entreno y cierre -- cada uno con el suyo, y
         se cambian desde los ajustes del móvil.</p>
 
+      <div class="titulo-seccion" style="margin:20px 3px 10px"><h2 style="font-size:16px">Tiempo de pantalla</h2></div>
+      <p style="font-size:13px; color:var(--txt-2); margin:0 0 10px" id="estadoUso"></p>
+      <button class="btn-suave" id="btnActivarUso">Medir mi tiempo de pantalla</button>
+      <button class="btn-suave oculto" id="btnPermisoUso" style="margin-top:8px">Dar acceso de uso</button>
+      <label class="campo oculto" id="campoTopeUso" style="display:flex; align-items:center; gap:10px; margin-top:12px">
+        <span style="flex:1; margin:0">Avísame al pasar de</span>
+        <input type="number" id="topeUso" min="15" max="1440" step="15" style="width:110px">
+      </label>
+
       <div class="titulo-seccion" style="margin:20px 3px 10px"><h2 style="font-size:16px">Copia de seguridad</h2></div>
       <p style="font-size:13px; color:var(--txt-2); margin:0 0 10px" id="resumenDatos"></p>
       <div class="par">
@@ -2035,6 +2084,11 @@ const PLANTILLA_ESTADO = () => ({
   topes: {},               // gasto máximo por categoría: {categoria: importe}
   tema: 'auto',            // claro | oscuro | auto
   voz: 'campana',          // el sonido de los temporizadores, ver VOCES
+  uso: {                   // tiempo de pantalla del móvil
+    activo: false,         // si lo miras o no
+    limite: 180,           // minutos al día a partir de los cuales avisa
+    avisadoEl: '',         // último día en que ya te avisó, para no repetir
+  },
   pesoObjetivo: null,      // kg a los que quieres llegar
   altura: null,            // cm, para el IMC
   repartoObjetivo: {},     // cartera ideal por tipo: {tipo: porcentaje}
@@ -5843,6 +5897,144 @@ $('#btnRepartoObjetivo').addEventListener('click', async ()=>{
 });
 
 
+/* ═══════════════════════ TIEMPO DE PANTALLA ══════════════════════════════
+   Lo mide Android; nosotros solo lo leemos por el plugin de la casa. En el
+   navegador no hay plugin, así que todo esto se queda quieto y la tarjeta ni
+   aparece -- salvo que se le meta un plugin de mentira para probar.       */
+const USO = { datos:null, cargando:false, pedidoEl:0 };
+
+const usoPlugin = () => window.Capacitor?.Plugins?.UsoMovil || null;
+const hayUso = () => !!usoPlugin();
+
+const hhmm2 = min => {
+  const m=Math.max(0,Math.round(min));
+  return m>=60 ? `${Math.floor(m/60)} h ${dos(m%60)}` : `${m} min`;
+};
+
+async function usoPermiso(){
+  try { return !!(await usoPlugin()?.tienePermiso())?.concedido; } catch { return false; }
+}
+
+/** Trae los últimos días. Se guarda en memoria porque preguntarlo obliga a
+    Android a recorrer todos sus eventos y no es gratis. */
+async function cargarUso(dias=7, forzar=false){
+  if (!hayUso() || !E.uso?.activo) return null;
+  if (!forzar && USO.datos && Date.now()-USO.pedidoEl < 60000) return USO.datos;
+  if (USO.cargando) return USO.datos;
+  USO.cargando=true;
+  try {
+    const r=await usoPlugin().resumen({ dias });
+    USO.datos=r?.dias||[];
+    USO.pedidoEl=Date.now();
+  } catch (e) {
+    // "sin-permiso" es lo normal antes de que lo concedas: no es un error
+    USO.datos = String(e?.message||e)==='sin-permiso' ? 'sin-permiso' : null;
+  } finally { USO.cargando=false; }
+  // Repintar aquí y no en cada sitio que llama: si te quitan el permiso, la
+  // tarjeta tiene que desaparecer, no quedarse con los números de antes.
+  try { pintarUso(); } catch {}
+  return USO.datos;
+}
+
+const usoDeHoy = () => Array.isArray(USO.datos)
+  ? (USO.datos.find(d=>d.fecha===HOY)?.minutos ?? 0) : 0;
+
+/** La media de los días anteriores, sin contar hoy, que va a medias. */
+function usoTipico(){
+  if (!Array.isArray(USO.datos)) return 0;
+  const previos=USO.datos.filter(d=>d.fecha!==HOY && d.minutos>0);
+  if (!previos.length) return 0;
+  return previos.reduce((a,d)=>a+d.minutos,0)/previos.length;
+}
+
+function pintarUso(){
+  const titulo=$('#tituloUso'), carta=$('#cartaUso');
+  const enseñar = hayUso() && E.uso?.activo && Array.isArray(USO.datos) && USO.datos.length;
+  titulo.classList.toggle('oculto', !enseñar);
+  carta.classList.toggle('oculto', !enseñar);
+  if (!enseñar) return;
+
+  const hoy=usoDeHoy(), tope=aNum(E.uso.limite)||0, media=usoTipico();
+  const parte = tope ? hoy/tope : 0;
+  const color = !tope ? '' : parte>=1 ? 'background:var(--rojo)' : parte>=.8 ? 'background:var(--naranja)' : '';
+  $('#usoPie').textContent = tope ? `tope ${hhmm2(tope)}` : '';
+
+  carta.innerHTML=`
+    <button class="uso-tarjeta" id="btnVerUso">
+      <span class="reloj">${parte>=1?'🔴':parte>=.8?'🟠':'📱'}</span>
+      <span class="cuerpo">
+        <span class="linea1"><b class="cifra-uso num">${hhmm2(hoy)}</b>
+          <span class="contra">${media?`tu media: ${hhmm2(media)}`:'hoy'}</span></span>
+        ${tope?`<span class="carril" style="height:8px"><span class="relleno" style="width:${(Math.min(1,parte)*100).toFixed(1)}%; ${color}"></span></span>`:''}
+        <span class="pie-nota" style="margin:6px 0 0">${
+          !tope ? 'Toca para ver el detalle'
+          : parte>=1 ? `Te has pasado ${hhmm2(hoy-tope)} del tope`
+          : `Te quedan ${hhmm2(tope-hoy)} antes del tope`
+        }</span>
+      </span>
+    </button>`;
+}
+
+/** El detalle: la semana en barras y en qué se te ha ido hoy. */
+function pintarHojaUso(){
+  const cuerpo=$('#cuerpoUso');
+  if (!Array.isArray(USO.datos) || !USO.datos.length){
+    cuerpo.innerHTML=vacio('📱','Todavía sin datos','Android necesita un rato de uso antes de tener algo que contar.');
+    return;
+  }
+  const tope=aNum(E.uso.limite)||0;
+  const max=Math.max(1,...USO.datos.map(d=>d.minutos), tope);
+  const hoyD=USO.datos.find(d=>d.fecha===HOY);
+
+  cuerpo.innerHTML=`
+    <div class="uso-barras">${USO.datos.map(d=>{
+      const esHoy=d.fecha===HOY;
+      const pasado=tope && d.minutos>tope;
+      return `<div class="col ${esHoy?'hoy':''} ${pasado?'pasado':''}">
+        <span class="cifra-mini num">${d.minutos?hhmm2(d.minutos):''}</span>
+        <span class="barra-v" style="height:${Math.max(3,d.minutos/max*66)}px"></span>
+        <small>${desdeClave(d.fecha).toLocaleDateString('es-ES',{weekday:'short'}).slice(0,2)}</small>
+      </div>`;
+    }).join('')}</div>
+    <p class="pie-nota">${tope?`La línea de tu tope está en ${hhmm2(tope)}. `:''}Naranja es un día en que te pasaste.</p>
+
+    <div class="titulo-seccion" style="margin:16px 3px 8px"><h2 style="font-size:16px">En qué se te va hoy</h2></div>
+    ${hoyD && hoyD.apps?.length
+      ? hoyD.apps.filter(a=>a.minutos>=1).slice(0,8).map(a=>`
+        <div class="fila">
+          <div class="fila-icono">${a.propia?'🗂️':'📲'}</div>
+          <div class="fila-txt"><b>${esc(a.nombre)}</b>
+            <span>${pct(hoyD.minutos?a.minutos/hoyD.minutos:0)} de tu día</span></div>
+          <div class="fila-cifra num">${hhmm2(a.minutos)}</div>
+        </div>`).join('')
+      : vacio('🤷','Nada todavía hoy','En cuanto uses el móvil un rato aparecerá aquí.')}`;
+}
+
+/** Si te has pasado del tope, te lo dice. Una vez al día, no cada vez que
+    abres la app: un aviso que se repite se convierte en ruido y se ignora. */
+async function revisarTopeUso(){
+  if (!hayUso() || !E.uso?.activo) return;
+  const tope=aNum(E.uso.limite);
+  if (!tope) return;
+  await cargarUso(7, true);
+  if (!Array.isArray(USO.datos)) return;
+  pintarUso();
+  const hoy=usoDeHoy();
+  if (hoy < tope || E.uso.avisadoEl===HOY) return;
+
+  E.uso.avisadoEl=HOY; guardar();
+  const cuerpo=`Llevas ${hhmm2(hoy)} de pantalla. Tu tope son ${hhmm2(tope)}.`;
+  try {
+    const nativo=NATIVO();
+    if (nativo) await nativo.schedule({ notifications:[{
+      id: 987500, title:'Te has pasado del tiempo de pantalla', body:cuerpo,
+      channelId: CANAL.avisos, smallIcon:'ic_stat_icon',
+      schedule:{ at:new Date(Date.now()+1500) },
+    }] });
+    else avisar('Te has pasado del tiempo de pantalla');
+  } catch { avisar('Te has pasado del tiempo de pantalla'); }
+}
+
 /* ── Red de seguridad ────────────────────────────────────────────────────────
    Si algo revienta, mejor un aviso que una pantalla en blanco sin explicación. */
 window.addEventListener('error', ev=>{
@@ -6519,6 +6711,7 @@ async function abrirAjustes(){
   if (hayNativo() && avisosExactos===null) await compruebaExactas(NATIVO());
   $('#estadoAvisos').textContent=textoEstadoAvisos();
   pintarInterruptores();
+  pintarAjustesUso();
   $('#resumenDatos').textContent=[
     `${E.tx.length} movimiento(s)`, `${E.tareas.length} tarea(s)`,
     `${Object.keys(E.sesiones).length} día(s) de entreno`, `${E.entradas.length} entrada(s) de diario`,
@@ -6573,6 +6766,63 @@ $('#ajusteVoz').addEventListener('change', e=>{
 });
 $('#btnProbarVoz').addEventListener('click', ()=>sonar());
 
+/* ── Tiempo de pantalla ─────────────────────────────────────────────────── */
+function pintarAjustesUso(){
+  const puede=hayUso();
+  const activo=!!E.uso?.activo;
+  $('#estadoUso').textContent = !puede
+    ? 'Solo en el móvil: en el navegador no hay a quién preguntarle.'
+    : !activo
+      ? 'Android ya lo mide. Si lo enciendes, lo leo y te aviso cuando te pases del tope que pongas.'
+      : USO.datos==='sin-permiso'
+        ? 'Falta el acceso de uso. Se concede a mano en Ajustes de Android.'
+        : 'Encendido. Lo verás en la pestaña Hoy.';
+  $('#btnActivarUso').textContent = activo ? 'Dejar de medirlo' : 'Medir mi tiempo de pantalla';
+  $('#btnActivarUso').classList.toggle('oculto', !puede);
+  $('#btnPermisoUso').classList.toggle('oculto', !puede || !activo || USO.datos!=='sin-permiso');
+  $('#campoTopeUso').classList.toggle('oculto', !puede || !activo);
+  $('#topeUso').value = aNum(E.uso?.limite)||180;
+}
+
+$('#btnActivarUso').addEventListener('click', async ()=>{
+  E.uso.activo = !E.uso.activo;
+  guardar();
+  if (E.uso.activo){
+    // Si aún no hay acceso de uso, se lleva directo a la pantalla que lo da
+    if (!(await usoPermiso())){
+      USO.datos='sin-permiso'; pintarAjustesUso();
+      if (await preguntar('Android guarda el tiempo de pantalla pero no lo suelta sin permiso. Se concede a mano, una vez.',
+            { titulo:'Hace falta el acceso de uso', si:'Ir a Ajustes', icono:'📱' }))
+        usoPlugin()?.abrirAjustes();
+      return;
+    }
+    await cargarUso(7, true);
+  } else { USO.datos=null; }
+  pintarAjustesUso(); pintarUso();
+});
+
+$('#btnPermisoUso').addEventListener('click', ()=>usoPlugin()?.abrirAjustes());
+
+$('#topeUso').addEventListener('change', e=>{
+  const v=Math.max(15, Math.min(1440, Math.round(aNum(e.target.value)/15)*15));
+  E.uso.limite=v; e.target.value=v;
+  E.uso.avisadoEl='';        // cambiar el tope da derecho a un aviso nuevo
+  guardar(); pintarUso();
+});
+
+document.addEventListener('click', e=>{
+  if (e.target.closest('#btnVerUso')){ pintarHojaUso(); $('#hojaUso').showModal(); }
+});
+
+$('#btnTopeUso').addEventListener('click', async ()=>{
+  const r=await pedir('En minutos. 180 son tres horas.', String(aNum(E.uso.limite)||180),
+    { titulo:'Avísame al pasar de', modo:'numeric', ok:'Guardar' });
+  if (r===null) return;
+  const v=Math.max(15, Math.min(1440, Math.round(aNum(r))));
+  E.uso.limite=v; E.uso.avisadoEl=''; guardar();
+  pintarUso(); pintarHojaUso(); avisar(`Tope puesto en ${hhmm2(v)}`);
+});
+
 $('#btnProbarAviso').addEventListener('click', async ()=>{
   if (!await pedirPermisoAvisos()) return;
   const cuando=new Date(Date.now()+5000);
@@ -6603,6 +6853,7 @@ document.addEventListener('visibilitychange', ()=>{
   // Lo primero al volver: ¿seguimos en el mismo día? Si no, se recoloca todo.
   if (revisarElDia()) programarMedianoche();
   programarAvisos();
+  revisarTopeUso();
   // El sistema suelta el bloqueo de pantalla al irse a segundo plano.
   if (DESC.reloj || FOCO.reloj || GUIA.reloj) retenerPantalla();
   if (DESC.reloj) latirDescanso();
@@ -7677,6 +7928,10 @@ guardar();
 pintar();
 programarAvisos();
 programarMedianoche();   // que el día cambie solo, aunque la app siga abierta
+
+// El tiempo de pantalla se pide después de pintar: tarda lo suyo y no debe
+// retrasar la primera pantalla.
+if (E.uso?.activo) cargarUso(7, true).then(()=>{ pintarUso(); revisarTopeUso(); });
 
 // Si al abrir los datos no se pudieron leer, se dice claramente y se ofrece
 // bajar lo que había: no se ha borrado, está apartado en otra clave.
