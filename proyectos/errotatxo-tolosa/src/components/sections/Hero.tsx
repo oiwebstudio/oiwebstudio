@@ -106,7 +106,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4, duration: 1 }}
-        className="absolute bottom-6 left-1/2 flex -translate-x-1/2 items-center gap-2 text-[10px] uppercase tracking-widest2 text-[#F5EFE4]/60 transition-colors hover:text-[#F5EFE4]"
+        className="absolute bottom-[calc(0.5rem+env(safe-area-inset-bottom))] left-1/2 flex min-h-[44px] -translate-x-1/2 items-center gap-2 px-4 text-[10px] uppercase tracking-widest2 text-[#F5EFE4]/60 transition-colors hover:text-[#F5EFE4]"
       >
         <ArrowDown size={12} className="animate-bounce" />
         {hero.location}

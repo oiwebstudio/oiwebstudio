@@ -72,7 +72,7 @@ export default function Navbar() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <div className="hidden items-center gap-3 md:flex">
+            <div className="flex items-center gap-3">
               <LanguageToggle light />
             </div>
             <Magnetic>
@@ -161,10 +161,9 @@ export default function Navbar() {
               <div className="flex items-center gap-5 text-sm text-[#F5EFE4]/60">
                 <div className="flex flex-col gap-1">
                   <p>{businessInfo.address}</p>
-                  <p>{businessInfo.phone}</p>
-                </div>
-                <div className="flex items-center gap-3 md:hidden">
-                  <LanguageToggle light={false} />
+                  <a href={`tel:${businessInfo.phone.replace(/\s/g, "")}`}>
+                    {businessInfo.phone}
+                  </a>
                 </div>
               </div>
               <div className="flex gap-6">

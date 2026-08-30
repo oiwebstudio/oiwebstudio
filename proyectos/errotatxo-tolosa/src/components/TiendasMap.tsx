@@ -105,12 +105,18 @@ export default function TiendasMap({ focusId }: { focusId?: string }) {
     () => L.latLngBounds(stores.map((s) => [s.lat, s.lng] as [number, number])),
     []
   );
+  // En táctil el arrastre del mapa se come el scroll vertical de la página:
+  // el mapa ocupa media pantalla y el dedo queda atrapado. Los botones de
+  // tienda ya permiten moverse entre las tres.
+  const touch = typeof window !== "undefined" && L.Browser.mobile;
 
   return (
     <MapContainer
       bounds={bounds}
       boundsOptions={{ padding: [36, 36] }}
       scrollWheelZoom={false}
+      dragging={!touch}
+      touchZoom={!touch}
       className="h-full w-full"
     >
       <TileLayer
