@@ -60,7 +60,7 @@ export default function NearestStore() {
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 60, opacity: 0 }}
         transition={{ delay: 2, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed bottom-20 left-4 right-4 z-[45] mx-auto max-w-sm md:bottom-6 md:left-auto md:right-6"
+        className="fixed bottom-[calc(5.5rem+env(safe-area-inset-bottom))] left-4 right-4 z-[45] mx-auto max-w-sm md:bottom-6 md:left-auto md:right-6"
       >
         <div className="flex items-center gap-3 rounded-2xl bg-surface/95 px-4 py-3 shadow-[0_12px_40px_-12px_rgba(43,30,20,0.5)] ring-1 ring-ink/[0.08] backdrop-blur-xl">
           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sol/20">
@@ -87,7 +87,7 @@ export default function NearestStore() {
           <button
             type="button"
             onClick={dismiss}
-            className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-muted transition-colors hover:text-ink"
+            className="-mr-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-muted transition-colors hover:text-ink"
             aria-label={t.nav.close}
           >
             <X size={14} />

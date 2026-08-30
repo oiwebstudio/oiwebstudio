@@ -16,7 +16,7 @@ export default function LanguageToggle({ light = true }: { light?: boolean }) {
         data-cursor="hover"
         onClick={() => setLocale("es")}
         aria-current={locale === "es"}
-        className={`transition-opacity duration-300 ${locale === "es" ? "opacity-100" : "opacity-40 hover:opacity-70"}`}
+        className={`px-1 py-2 transition-opacity duration-300 ${locale === "es" ? "opacity-100" : "opacity-40 hover:opacity-70"}`}
       >
         ES
       </button>
@@ -26,7 +26,7 @@ export default function LanguageToggle({ light = true }: { light?: boolean }) {
         data-cursor="hover"
         onClick={() => setLocale("eu")}
         aria-current={locale === "eu"}
-        className={`transition-opacity duration-300 ${locale === "eu" ? "opacity-100" : "opacity-40 hover:opacity-70"}`}
+        className={`px-1 py-2 transition-opacity duration-300 ${locale === "eu" ? "opacity-100" : "opacity-40 hover:opacity-70"}`}
       >
         EU
       </button>

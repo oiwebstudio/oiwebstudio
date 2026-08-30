@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 type Props = {
@@ -11,6 +11,12 @@ type Props = {
 
 export default function Tilt3D({ children, className, maxTilt = 8 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
+  // En táctil el efecto nunca se dispara pero preserve-3d sigue creando una
+  // capa de composición por tarjeta.
+  const [enabled, setEnabled] = useState(false);
+  useEffect(() => {
+    setEnabled(window.matchMedia("(hover: hover) and (pointer: fine)").matches);
+  }, []);
   const x = useMotionValue(0.5);
   const y = useMotionValue(0.5);
 
@@ -35,6 +41,8 @@ export default function Tilt3D({ children, className, maxTilt = 8 }: Props) {
     x.set(0.5);
     y.set(0.5);
   };
+
+  if (!enabled) return <div className={className}>{children}</div>;
 
   return (
     <motion.div
