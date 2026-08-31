@@ -36,7 +36,9 @@ export function buildBakeryStructuredData() {
     .filter((s) => s.status !== "temp-closed")
     .map((store) => ({
       "@context": "https://schema.org",
-      "@type": "Bakery",
+      // San Frantzisko además sirve cafetería: declarar solo Bakery dejaría fuera
+      // las búsquedas de cafetería en la zona.
+      "@type": store.cafe ? ["Bakery", "CafeOrCoffeeShop"] : "Bakery",
       name: `Errotatxo — ${store.name}`,
       image: `https://errotatxotolosa.com${store.image}`,
       address: {

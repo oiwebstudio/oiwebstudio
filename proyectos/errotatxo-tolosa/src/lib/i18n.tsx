@@ -19,6 +19,7 @@ export type Dictionary = {
     title: string[];
     intro: string;
     stores: Record<string, { tagline: string; imageAlt: string }>;
+    cafeTag: string;
     routeCta: string;
     callCta: string;
     unverifiedHours: string;
@@ -174,14 +175,16 @@ const es: Dictionary = {
       },
       "tolosa-san-frantzisko": {
         tagline:
-          "Junto al paseo, camino del río. La panadería de los que pasan cada día a la misma hora.",
-        imageAlt: "Pan de molde recién hecho en la tienda de San Frantzisko",
+          "Junto al paseo, camino del río. Aquí además puedes sentarte: café en la barra o en las mesas del fondo, con el pan recién hecho al lado.",
+        imageAlt:
+          "Interior de la cafetería de Errotatxo en San Frantzisko: barra, taburetes y mesas al fondo",
       },
       anoeta: {
         tagline: "En Anoeta no somos una panadería más: somos la del pueblo.",
         imageAlt: "Hogazas de pan tradicional en la tienda de Anoeta",
       },
     },
+    cafeTag: "Cafetería",
     routeCta: "Cómo llegar",
     callCta: "Llamar",
     unverifiedHours: "Horario orientativo — confírmalo antes de venir",
@@ -486,14 +489,16 @@ const eu: Dictionary = {
       },
       "tolosa-san-frantzisko": {
         tagline:
-          "Pasealekuaren ondoan, ibaira bidean. Egunero ordu berean pasatzen direnen okindegia.",
-        imageAlt: "Moldeko ogi egin berria San Frantzisko dendan",
+          "Pasealekuaren ondoan, ibaira bidean. Hemen eseri ere egin dezakezu: kafea barran edo atzeko mahaietan, ogi egin berria ondoan duzula.",
+        imageAlt:
+          "Errotatxoren kafetegia San Frantziskon: barra, aulki altuak eta mahaiak atzealdean",
       },
       anoeta: {
         tagline: "Anoetan ez gara okindegi bat gehiago: herrikoa gara.",
         imageAlt: "Ogi tradizionala Anoetako dendan",
       },
     },
+    cafeTag: "Kafetegia",
     routeCta: "Nola iritsi",
     callCta: "Deitu",
     unverifiedHours: "Ordutegi orientagarria — baieztatu etorri aurretik",

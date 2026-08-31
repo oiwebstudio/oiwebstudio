@@ -15,6 +15,8 @@ export type Store = {
   hoursSummary?: string;
   rating?: number;
   reviews?: number;
+  /** Además de despacho de pan, sirve cafetería con barra y mesas. */
+  cafe?: boolean;
   /**
    * Qué datos están respaldados por una fuente pública (ficha de Google, registro
    * mercantil, directorios). Lo no verificado no se pinta como si lo estuviera.
@@ -150,12 +152,15 @@ export const stores: Store[] = [
     phone: "943 65 47 33",
     lat: 43.1343593,
     lng: -2.0788086,
-    image: "/images/pan-molde.jpg",
+    // Es la única de las tres con cafetería: barra, taburetes y mesas. La foto
+    // del interior es la misma que abre la home.
+    image: "/images/hero-interior.jpeg",
     mapsQuery: "Errotatxo San Frantzisko Pasealekua Tolosa",
     status: "open",
     // Horario confirmado por el cliente (ficha de Google), 09/08/2026.
     hours: { weekday: "7:30–14:00 / 16:00–20:30", weekend: "7:30–14:00" },
     hoursSummary: "L–V 7:30–14:00 y 16:00–20:30 · S–D 7:30–14:00",
+    cafe: true,
     verified: { phone: true, hours: true, rating: false },
   },
   {
