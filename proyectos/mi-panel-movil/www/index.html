@@ -858,7 +858,8 @@ body.en-foco .dock { display: none; }
 .preguntar .hoja-pie .btn-negro.peligro { background: var(--rojo); color: #fff; }
 
 /* ── Desplegables con la cara de la app ─────────────────────────────────── */
-select.nativo-fuera { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.nativo-fuera { position: absolute; width: 1px; height: 1px; padding: 0; margin: 0;
+  opacity: 0; pointer-events: none; border: 0; clip-path: inset(50%); }
 .selector { display: flex; align-items: center; gap: 8px; width: 100%; font-size: 16px; color: var(--txt); background: var(--fondo); border: 1px solid transparent; border-radius: 15px; padding: 12px 14px; text-align: left; transition: background .18s ease, transform .15s var(--muelle); }
 .selector span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .selector i { font-style: normal; font-size: 12px; color: var(--txt-3); }
@@ -979,8 +980,12 @@ select.nativo-fuera { position: absolute; width: 1px; height: 1px; opacity: 0; p
    cada tarjeta entraba por su cuenta con su retraso: ocho capas nuevas a la
    vez y medio segundo largo hasta que aparecía la última. Una capa y una
    animación no hay manera de que se atasquen. */
-@keyframes entrarVista { from { opacity: 0; transform: translate3d(calc(var(--desde, 1) * 26px), 0, 0); } to { opacity: 1; transform: none; } }
-.vista.entrando { animation: entrarVista .3s var(--muelle) both; will-change: transform, opacity; }
+@keyframes entrarVista {
+  from { opacity: 0; transform: translate3d(0, 34px, 0); }
+  55%  { opacity: 1; }
+  to   { opacity: 1; transform: none; }
+}
+.vista.entrando { animation: entrarVista .42s var(--hoja-curva) both; }
 
 /* Dentro de una vista, los subpaneles sí entran escalonados: son tres o
    cuatro y el escalonado ayuda a leer el orden. */
@@ -5614,9 +5619,6 @@ function ritmoNecesario(meta){
 function ir(vista){
   try { sessionStorage.setItem('panel:pestania', vista); } catch {}
   const mismo = UI.vista===vista;
-  // De qué lado viene: si vas hacia la derecha del dock, la vista entra por
-  // la derecha. Es la pista que hace que el cambio se entienda sin pensarlo.
-  const desde = ORDEN_PESTANIAS.indexOf(vista) < ORDEN_PESTANIAS.indexOf(UI.vista) ? -1 : 1;
   UI.vista=vista;
   document.body.dataset.vista=vista;   // de aquí sale el color de la pestaña
   $$('.vista').forEach(v=>v.classList.toggle('oculto', v.dataset.vista!==vista));
@@ -5626,7 +5628,6 @@ function ir(vista){
   pintar();
   if (!mismo){
     const nueva=$(`.vista[data-vista="${vista}"]`);
-    nueva.style.setProperty('--desde', desde);
     // Un fotograma de margen: que el navegador acabe de colocar lo recién
     // pintado antes de pedirle que lo mueva. Sin esto la animación arranca a
     // la vez que el trabajo pesado y se come los primeros fotogramas.
