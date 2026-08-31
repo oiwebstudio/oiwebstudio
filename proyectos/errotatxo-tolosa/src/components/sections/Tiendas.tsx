@@ -52,8 +52,15 @@ export default function Tiendas() {
                 <span className="mb-2 block text-xs text-madera">0{i + 1}</span>
 
                 <div className="mb-3 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-                  <h3 className="display text-xl transition-colors duration-500 group-hover:text-madera md:text-2xl">
+                  <h3 className="display flex items-baseline gap-2.5 text-xl transition-colors duration-500 group-hover:text-madera md:text-2xl">
                     {store.name}
+                    {/* Solo San Frantzisko tiene cafetería: se dice en la tarjeta
+                        porque cambia a qué vas al local. */}
+                    {store.cafe && (
+                      <span className="rounded-full bg-sol/20 px-2.5 py-1 font-sans text-[10px] font-medium uppercase not-italic tracking-widest2 text-madera">
+                        {copy.cafeTag}
+                      </span>
+                    )}
                   </h3>
                   <LiveStatusBadge store={store} />
                 </div>
