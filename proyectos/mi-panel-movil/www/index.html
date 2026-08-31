@@ -886,6 +886,33 @@ select.nativo-fuera { position: absolute; width: 1px; height: 1px; opacity: 0; p
   padding: 9px 0; border-radius: 13px; color: var(--txt-2); font-variant-numeric: tabular-nums;
   transition: background .16s ease, color .16s ease; }
 .reloj-lista button[aria-selected='true'] { background: var(--tinta); color: var(--carta); }
+
+/* Sugerencias de ejercicio: se ven sin desplegar nada y se filtran al
+   escribir, que es más de lo que hacía el desplegable del sistema. */
+.sugerencias { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.sugerencias:empty { display: none; }
+.sugerencias button { font-size: 12.5px; font-weight: 600; padding: 7px 12px; border-radius: 12px;
+  background: var(--fondo); color: var(--txt-2); transition: transform .15s var(--muelle); }
+.sugerencias button:active { transform: scale(.94); }
+
+/* ── El calendario de la casa ───────────────────────────────────────────────
+   Reaprovecha la rejilla que ya usa la pestaña de Metas, para que un mes se
+   vea igual en toda la app. Lo suyo es la fila de atajos: en esta app casi
+   siempre eliges hoy, mañana o el lunes que viene. */
+.fecha-cab { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.fecha-cab b { flex: 1; text-align: center; font-size: 16px; font-weight: 600; letter-spacing: -0.015em; }
+.fecha-elegida { text-align: center; font-size: 15px; font-weight: 600; color: var(--txt-2); margin: 2px 0 12px; }
+.fecha-elegida b { color: var(--txt); font-weight: 700; }
+.fecha-atajos { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; margin-bottom: 4px; }
+.fecha-atajos button { font-size: 12.5px; font-weight: 600; padding: 8px 13px; border-radius: 13px;
+  background: var(--fondo); color: var(--txt-2); }
+.fecha-atajos button[aria-selected='true'] { background: var(--tinta); color: var(--carta); }
+/* En la hoja no hay marcas de hábitos, así que la celda es más baja */
+#hojaFecha .celda { aspect-ratio: auto; min-height: 42px; justify-content: center; }
+#hojaFecha .celda.elegida { background: var(--tinta); box-shadow: none; }
+#hojaFecha .celda.elegida .dia { color: var(--carta); }
+#hojaFecha .celda.hoy:not(.elegida) .dia { background: none; color: var(--txt);
+  box-shadow: inset 0 0 0 1.5px var(--txt-3); }
 :root[data-tema='oscuro'] .selector:active { background: rgba(255,255,255,.12); }
 
 .opcion { display: flex; align-items: center; gap: 12px; width: 100%; padding: 14px 4px; border-bottom: 1px solid rgba(0,0,0,.05); font-size: 15.5px; text-align: left; }
@@ -1403,6 +1430,29 @@ dialog::backdrop { animation: fundir .44s ease backwards; }
 </nav>
 
 <div class="brindis" id="brindis" role="status" aria-live="polite"></div>
+<!-- ══ Hoja: el calendario, en vez del de Android ═══════════════════════ -->
+<dialog id="hojaFecha">
+  <div class="hoja">
+    <div class="hoja-asa"></div>
+    <div class="hoja-cab"><h3 id="fechaTitulo">¿Qué día?</h3>
+      <button type="button" class="cerrar" data-cerrar="hojaFecha">Cerrar</button></div>
+    <div class="hoja-cuerpo">
+      <div class="fecha-elegida" id="fechaElegida"></div>
+      <div class="fecha-atajos" id="fechaAtajos"></div>
+      <div class="fecha-cab">
+        <button type="button" class="circular" data-fecha-mes="-1" aria-label="Mes anterior">‹</button>
+        <b id="fechaMes"></b>
+        <button type="button" class="circular" data-fecha-mes="1" aria-label="Mes siguiente">›</button>
+      </div>
+      <div id="fechaRejilla"></div>
+    </div>
+    <div class="hoja-pie">
+      <button type="button" class="btn-suave" id="fechaCancelar">Cancelar</button>
+      <button type="button" class="btn-negro" id="fechaGuardar">Guardar</button>
+    </div>
+  </div>
+</dialog>
+
 <!-- ══ Hoja: el reloj, en vez del de Android ════════════════════════════ -->
 <dialog id="hojaHora">
   <div class="hoja">
@@ -4382,11 +4432,11 @@ function pintarDetalleSesion(){
       }).join('')}
       <div style="padding:10px 0 4px; display:grid; gap:9px">
         <div class="par">
-          <input id="nuevoEjNombre" placeholder="Nuevo ejercicio…" autocomplete="off" list="ejerciciosUsados"
+          <input id="nuevoEjNombre" placeholder="Nuevo ejercicio…" autocomplete="off"
                  value="${esc(UI.ejercicioEnCurso||'')}">
           <select id="nuevoEjGrupo">${GRUPOS.map(g=>`<option ${g===UI.grupoEnCurso?'selected':''}>${g}</option>`).join('')}</select>
         </div>
-        <datalist id="ejerciciosUsados">${ejerciciosConocidos().map(n=>`<option value="${esc(n)}">`).join('')}</datalist>
+        <div class="sugerencias" id="sugerenciasEj"></div>
         <button class="aniadir-linea" id="btnMasEjercicio">+ Añadir ejercicio</button>
       </div>`;
   } else {
@@ -4466,6 +4516,7 @@ function pintarDetalleSesion(){
   const volTotal=volumenSesion(s);
   if (volTotal) $('#dsNombre').innerHTML=`${esc(s.nombre)} <small style="display:block;font-size:11.5px;font-weight:600;color:var(--txt-2)">${numF.format(volTotal)} kg movidos</small>`;
   $('#dsCuerpo').scrollTop=scrollPrevio;
+  pintarSugerenciasEj();   // el cuerpo se acaba de rehacer, así que van detrás
   $('#dsPie').innerHTML=`
     <button type="button" class="btn-suave solo-icono" data-descanso-manual title="Descanso" aria-label="Descanso">⏱</button>
     <button type="button" class="btn-suave solo-icono" data-discos title="Qué discos poner" aria-label="Qué discos poner">⚖</button>
@@ -5386,6 +5437,7 @@ HTMLDialogElement.prototype.showModal=function(...args){
   // Rellenar un formulario por código no dispara change, así que los botones
   // de hora se quedaban con el guion. Se refrescan al abrir.
   for (const i of this.querySelectorAll('input[type="time"]')) i._refrescarHora?.();
+  for (const i of this.querySelectorAll('input[type="date"]')) i._refrescarFecha?.();
   return abrirNativo.apply(this, args);
 };
 
@@ -6305,6 +6357,7 @@ new MutationObserver(cambios=>{
         const donde = (n.tagName==='SELECT' || n.tagName==='INPUT') ? (n.parentElement||document) : n;
         mejorarSelects(donde);
         mejorarHoras(donde);
+        mejorarFechas(donde);
       }
 }).observe(document.body, { childList:true, subtree:true });
 
@@ -6621,6 +6674,122 @@ function pedirHora(valor='09:00', { titulo='¿A qué hora?' }={}){
     hoja.addEventListener('close', cancelar);
     hoja.showModal();
   });
+}
+
+/** Las seis que más pegan con lo que llevas escrito. Si el campo está vacío,
+    las últimas que has usado. */
+function pintarSugerenciasEj(){
+  const caja=$('#sugerenciasEj'); if (!caja) return;
+  const inp=$('#nuevoEjNombre');
+  const escrito=(inp?.value||'').trim().toLowerCase();
+  const todas=ejerciciosConocidos();
+  const caben = escrito
+    ? todas.filter(n=>n.toLowerCase().includes(escrito) && n.toLowerCase()!==escrito)
+    : todas;
+  caja.innerHTML = caben.slice(0,6).map(n=>
+    `<button type="button" data-sugerencia-ej="${esc(n)}">${esc(n)}</button>`).join('');
+}
+
+/** Abre el calendario y devuelve "aaaa-mm-dd", o null si te echas atrás. */
+function pedirFecha(valor, { titulo='¿Qué día?' }={}){
+  return new Promise(resolver=>{
+    const hoja=$('#hojaFecha');
+    let elegido = /^\d{4}-\d{2}-\d{2}$/.test(valor||'') ? valor : HOY;
+    let cursor = desdeClave(elegido);
+    cursor.setDate(1);
+
+    $('#fechaTitulo').textContent=titulo;
+
+    const atajos=()=>{
+      const lunes=lunesDe(desdeClave(HOY)); lunes.setDate(lunes.getDate()+7);
+      return [
+        ['Hoy', HOY],
+        ['Mañana', correrDias(HOY, 1)],
+        ['En una semana', correrDias(HOY, 7)],
+        ['Lunes que viene', claveDe(lunes)],
+      ];
+    };
+
+    const pintar=()=>{
+      const f=desdeClave(elegido);
+      $('#fechaElegida').innerHTML=`<b>${f.toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'})
+        .replace(/^./,c=>c.toUpperCase())}</b>${elegido===HOY?' · hoy':''}`;
+      $('#fechaAtajos').innerHTML=atajos().map(([txt,k])=>
+        `<button type="button" data-fecha-atajo="${k}" aria-selected="${k===elegido}">${txt}</button>`).join('');
+
+      const a=cursor.getFullYear(), m=cursor.getMonth();
+      $('#fechaMes').textContent=`${MESES[m]} ${a}`;
+      const desplaz=(new Date(a,m,1).getDay()+6)%7;
+      const total=diasEnMes(a,m);
+      const celdas=Math.ceil((desplaz+total)/7)*7;
+      let html=`<div class="semana-cab">${DIAS_CORTO.map(d=>`<span>${d[0]}</span>`).join('')}</div><div class="rejilla">`;
+      for (let i=0;i<celdas;i++){
+        const d=new Date(a,m,1-desplaz+i);
+        const k=claveDe(d);
+        html+=`<button type="button" class="celda ${d.getMonth()!==m?'fuera':''} ${k===HOY?'hoy':''} ${k===elegido?'elegida':''}" data-fecha-dia="${k}">
+          <span class="dia num">${d.getDate()}</span></button>`;
+      }
+      $('#fechaRejilla').innerHTML=html+'</div>';
+    };
+    pintar();
+
+    const alTocar=e=>{
+      const mes=e.target.closest('[data-fecha-mes]');
+      if (mes){ cursor.setMonth(cursor.getMonth()+Number(mes.dataset.fechaMes)); pintar(); return; }
+      const atajo=e.target.closest('[data-fecha-atajo]');
+      if (atajo){ elegido=atajo.dataset.fechaAtajo; cursor=desdeClave(elegido); cursor.setDate(1); pintar(); vibrar(8); return; }
+      const dia=e.target.closest('[data-fecha-dia]');
+      if (dia){ elegido=dia.dataset.fechaDia; cursor=desdeClave(elegido); cursor.setDate(1); pintar(); vibrar(6); return; }
+    };
+    const limpiar=()=>{
+      hoja.removeEventListener('click', alTocar);
+      $('#fechaGuardar').removeEventListener('click', guardarla);
+      $('#fechaCancelar').removeEventListener('click', cancelar);
+      hoja.removeEventListener('close', cancelar);
+    };
+    const guardarla=()=>{ limpiar(); hoja.close(); resolver(elegido); };
+    const cancelar=()=>{ limpiar(); if (hoja.open) hoja.close(); resolver(null); };
+
+    hoja.addEventListener('click', alTocar);
+    $('#fechaGuardar').addEventListener('click', guardarla);
+    $('#fechaCancelar').addEventListener('click', cancelar);
+    hoja.addEventListener('close', cancelar);
+    hoja.showModal();
+  });
+}
+
+/** Esconde los <input type="date"> y les pone delante un botón nuestro. */
+function mejorarFechas(raiz=document){
+  for (const inp of raiz.querySelectorAll?.('input[type="date"]:not([data-mejorado])') || []){
+    inp.dataset.mejorado='1';
+    inp.classList.add('nativo-fuera');
+    inp.tabIndex=-1;
+
+    const boton=document.createElement('button');
+    boton.type='button';
+    boton.className='selector';
+    boton.innerHTML='<span></span><i>📅</i>';
+    inp.insertAdjacentElement('afterend', boton);
+    if (inp.style.width) boton.style.width=inp.style.width;
+
+    const refrescar=()=>{
+      const v=inp.value;
+      boton.firstChild.textContent = /^\d{4}-\d{2}-\d{2}$/.test(v)
+        ? (v===HOY ? 'Hoy' : desdeClave(v).toLocaleDateString('es-ES',{weekday:'short',day:'numeric',month:'short'}))
+        : '—';
+    };
+    inp._refrescarFecha = refrescar;
+    refrescar();
+    inp.addEventListener('change', refrescar);
+
+    boton.addEventListener('click', async ()=>{
+      const etiqueta=inp.closest('.campo')?.querySelector('span')?.textContent;
+      const r=await pedirFecha(inp.value, { titulo: etiqueta || '¿Qué día?' });
+      if (r===null) return;
+      inp.value=r; refrescar();
+      inp.dispatchEvent(new Event('change', { bubbles:true }));
+    });
+  }
 }
 
 /** Esconde los <input type="time"> y les pone delante un botón nuestro. */
@@ -7778,6 +7947,13 @@ document.addEventListener('click', async e=>{
     guardar(); pintarDetalleSesion(); avisar(`${n} series creadas`); return;
   }
 
+  const sugEj=e.target.closest('[data-sugerencia-ej]');
+  if (sugEj){
+    const inp=$('#nuevoEjNombre');
+    if (inp){ inp.value=sugEj.dataset.sugerenciaEj; UI.ejercicioEnCurso=inp.value; pintarSugerenciasEj(); inp.focus(); }
+    vibrar(8); return;
+  }
+
   if (e.target.closest('[data-guiar-series]')){ abrirGuia(); return; }
 
   const quitarSerie=e.target.closest('[data-quitar-serie]');
@@ -7980,7 +8156,7 @@ document.addEventListener('click', async e=>{
 
 // Ediciones en vivo (inputs de series y campos de sesión)
 document.addEventListener('input', e=>{
-  if (e.target.id==='nuevoEjNombre'){ UI.ejercicioEnCurso=e.target.value; return; }
+  if (e.target.id==='nuevoEjNombre'){ UI.ejercicioEnCurso=e.target.value; pintarSugerenciasEj(); return; }
   const serieR=e.target.closest('[data-serie-r]');
   if (serieR){
     const [i,campo]=serieR.dataset.serieR.split('|');
@@ -8065,6 +8241,7 @@ reanimar($('.vista[data-vista="home"]'), 'entrando');
 
 mejorarSelects();
 mejorarHoras();
+mejorarFechas();
 aplicarTema();
 recuperarTemporizador();
 $$('#segTema button').forEach(x=>x.setAttribute('aria-selected', String(x.dataset.tema===E.tema)));
