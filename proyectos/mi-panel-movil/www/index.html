@@ -47,14 +47,25 @@
 
   --tinta: #111111;
   --txt: #14171C;
-  --txt-2: rgba(20, 23, 28, 0.56);
-  --txt-3: rgba(20, 23, 28, 0.36);
+  --txt-2: rgba(20, 23, 28, 0.66);
+  /* El terciario estaba en .36, que sobre blanco da 2,25: se veía como un
+     susurro. A .52 se lee y sigue quedando claramente por detrás. */
+  --txt-3: rgba(20, 23, 28, 0.62);
 
+  /* Para rellenar: barras, puntos, marcas. Aquí el contraste no manda. */
   --verde: #30D158;
   --rojo: #FF3B30;
   --azul: #0A84FF;
   --naranja: #FF9F0A;
   --morado: #BF5AF2;
+
+  /* Para escribir. Los mismos colores, bajados hasta pasar de 4,5 sobre
+     blanco. Se ven como el mismo color, pero se leen. */
+  --verde-txt: #0E6E33;
+  --rojo-txt: #C62A20;
+  --azul-txt: #0A66C2;
+  --naranja-txt: #8A5200;
+  --morado-txt: #8A34C4;
 
   --r: 28px;
   --r-s: 18px;
@@ -75,11 +86,18 @@ html { min-height: 100%; }
 
 /* Cada pestaña tiene su color. Lo hereda todo lo que enlaza o resalta, así
    que la app cambia de aire al cambiar de sitio sin repintar nada a mano.  */
-body { --acento: #0A84FF; }
-body[data-vista='patrimonio'] { --acento: #17B95A; }
-body[data-vista='agenda']     { --acento: #F08C00; }
-body[data-vista='metas']      { --acento: #A93EE0; }
-body[data-vista='entreno']    { --acento: #FF3B30; }
+body { --acento: #0A66C2; }
+body[data-vista='patrimonio'] { --acento: #0E6E33; }
+body[data-vista='agenda']     { --acento: #8A5200; }
+body[data-vista='metas']      { --acento: #8A34C4; }
+body[data-vista='entreno']    { --acento: #C62A20; }
+/* En oscuro hay que subirlos en vez de bajarlos */
+:root[data-tema='oscuro'] body,
+:root[data-tema='oscuro'] body[data-vista] { --acento: #6BB6FF; }
+:root[data-tema='oscuro'] body[data-vista='patrimonio'] { --acento: #4ADE80; }
+:root[data-tema='oscuro'] body[data-vista='agenda']     { --acento: #FFC061; }
+:root[data-tema='oscuro'] body[data-vista='metas']      { --acento: #D89BFF; }
+:root[data-tema='oscuro'] body[data-vista='entreno']    { --acento: #FF7A70; }
 
 body::before { content: ''; position: fixed; inset: 0; z-index: -1;
   background: linear-gradient(178deg, var(--fondo) 0%, var(--fondo-hondo) 72%); }
@@ -107,8 +125,8 @@ body {
 
 .num { font-variant-numeric: tabular-nums; font-feature-settings: 'tnum' 1; }
 .oculto { display: none !important; }
-.pos { color: var(--verde); }
-.neg { color: var(--rojo); }
+.pos { color: var(--verde-txt); }
+.neg { color: var(--rojo-txt); }
 
 button { font: inherit; color: inherit; background: none; border: none; padding: 0; cursor: pointer; letter-spacing: inherit; text-align: inherit; }
 button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outline-offset: 2px; border-radius: 10px; }
@@ -132,7 +150,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
 /* ── Banner ─────────────────────────────────────────────────────────────── */
 .banner { display: flex; align-items: center; gap: 10px; background: var(--tinta); color: #fff; border-radius: 20px; padding: 12px 16px; margin-bottom: var(--hueco); font-size: 13.5px; box-shadow: var(--sombra-alta); }
 .banner b { font-weight: 600; }
-.banner .ir { margin-left: auto; flex: none; background: #fff; color: var(--tinta); font-weight: 700; font-size: 12.5px; padding: 7px 14px; border-radius: 16px; }
+.banner .ir { margin-left: auto; flex: none; background: #fff; color: #14171C; font-weight: 700; font-size: 12.5px; padding: 7px 14px; border-radius: 16px; }
 
 /* ── Títulos ────────────────────────────────────────────────────────────── */
 .titulo-seccion { display: flex; align-items: center; gap: 10px; margin: 22px 3px 12px; }
@@ -208,9 +226,9 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
 .carril .marca-ritmo { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px;
   background: var(--txt); opacity: .38; border-radius: 2px; }
 .al-dia { font-size: 12px; font-weight: 600; margin-top: 6px; }
-.al-dia.bien { color: var(--verde); }
+.al-dia.bien { color: var(--verde-txt); }
 .al-dia.justo { color: var(--txt-2); }
-.al-dia.mal { color: var(--naranja); }
+.al-dia.mal { color: var(--naranja-txt); }
 :root[data-tema='oscuro'] .carril .marca-ritmo { opacity: .5; }
 .relleno { display: block; height: 100%; border-radius: 6px; background: var(--tinta); transition: width .6s var(--muelle); }
 .relleno.v { background: var(--verde); }
@@ -222,7 +240,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
 
 .progreso .mini-acciones { display: flex; gap: 8px; margin-top: 8px; }
 .progreso .mini-acciones button { font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 13px; background: var(--fondo); }
-.progreso .mini-acciones .quitar { margin-left: auto; color: var(--txt-3); }
+.progreso .mini-acciones .quitar { margin-left: auto; color: var(--rojo-txt); }
 
 /* ── Calendario ─────────────────────────────────────────────────────────── */
 .cal-nav { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
@@ -237,7 +255,10 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
 .celda:active { transform: scale(.9); }
 .celda.fuera { opacity: .32; }
 .celda .dia { width: 24px; height: 24px; display: grid; place-items: center; border-radius: 50%; font-size: 13px; font-weight: 700; }
-.celda.hoy .dia { background: var(--tinta); color: #fff; }
+/* --tinta se da la vuelta con el tema, así que el texto de encima tiene
+   que darse la vuelta también: con #fff fijo, en oscuro era blanco sobre
+   blanco y el día de hoy desaparecía. */
+.celda.hoy .dia { background: var(--tinta); color: var(--carta); }
 .celda.elegida { background: #fff; box-shadow: 0 0 0 2px var(--azul), var(--sombra); }
 .ticks { display: flex; gap: 3px; flex-wrap: wrap; justify-content: center; min-height: 6px; }
 .tick { width: 5.5px; height: 5.5px; border-radius: 50%; background: var(--verde); }
@@ -367,7 +388,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
 .sesion-carta .qué { flex: 1; min-width: 0; }
 .sesion-carta .qué b { display: block; font-size: 15px; font-weight: 700; }
 .sesion-carta .qué span { font-size: 12px; color: var(--txt-2); }
-.sesion-carta .estado { font-size: 11.5px; font-weight: 700; padding: 5px 11px; border-radius: 14px; background: rgba(255,159,10,.14); color: #B26A00; white-space: nowrap; }
+.sesion-carta .estado { font-size: 11.5px; font-weight: 700; padding: 5px 11px; border-radius: 14px; background: rgba(255,159,10,.14); color: var(--naranja-txt); white-space: nowrap; }
 .sesion-carta .estado.hecha { background: rgba(48,209,88,.15); color: #1E7E3C; }
 
 .ejercicio { padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,.05); }
@@ -399,7 +420,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
 .serie.hecho-ahora { animation: destelloSerie .75s ease-out;
   border-radius: 13px; padding: 3px 6px; margin: -3px -6px 3px; }
 
-.aniadir-linea { width: 100%; text-align: center; font-size: 13px; font-weight: 700; color: var(--azul); padding: 9px; border-radius: 13px; background: rgba(10,132,255,.07); margin-top: 6px; }
+.aniadir-linea { width: 100%; text-align: center; font-size: 13px; font-weight: 700; color: var(--azul-txt); padding: 9px; border-radius: 13px; background: rgba(10,132,255,.07); margin-top: 6px; }
 
 .carga-fila { padding: 9px 0; }
 .carga-cab { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
@@ -525,7 +546,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
 .descanso .desc-carril i { display: block; height: 100%; background: var(--verde); border-radius: 3px; transition: width .3s linear; }
 .descanso .desc-mas { flex: none; font-size: 12.5px; font-weight: 700; padding: 9px 11px; border-radius: 14px; background: rgba(255,255,255,.12); }
 .descanso .desc-saltar { flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-size: 13px; color: rgba(255,255,255,.6); }
-.descanso.acabando b { color: var(--verde); }
+.descanso.acabando b { color: var(--verde-txt); }
 .descanso .desc-icono { flex: none; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-size: 14px; background: rgba(255,255,255,.12); transition: transform .15s var(--muelle), background .18s ease; }
 .descanso .desc-icono:active { transform: scale(.88); }
 .descanso.pausada { opacity: .72; }
@@ -554,7 +575,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
 .diario-entrada:last-child { border-bottom: none; }
 .diario-entrada .fecha { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--txt-2); margin-bottom: 5px; }
 .diario-entrada .ambito-chip { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; padding: 3px 9px; border-radius: 10px; }
-.diario-entrada .ambito-chip.personal { background: rgba(10,132,255,.1); color: var(--azul); }
+.diario-entrada .ambito-chip.personal { background: rgba(10,132,255,.1); color: var(--azul-txt); }
 .diario-entrada .ambito-chip.empresa { background: rgba(191,90,242,.12); color: #8E44AD; }
 .diario-entrada p { margin: 3px 0; font-size: 14px; }
 .diario-entrada p b { font-weight: 700; }
@@ -563,7 +584,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
 .btn-negro { display: block; width: 100%; background: var(--tinta); color: #fff; font-size: 15.5px; font-weight: 700; text-align: center; padding: 15px; border-radius: 20px; box-shadow: var(--sombra-alta); transition: transform .16s var(--muelle); }
 .btn-negro:active { transform: scale(.97); }
 .btn-suave { display: block; width: 100%; background: var(--fondo); font-size: 14.5px; font-weight: 700; text-align: center; padding: 13px; border-radius: 18px; }
-.btn-suave.peligro { color: var(--rojo); }
+.btn-suave.peligro { color: var(--rojo-txt); }
 
 /* ── Dock ───────────────────────────────────────────────────────────────── */
 .dock {
@@ -649,7 +670,7 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--t
 textarea { resize: vertical; min-height: 64px; }
 .par { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .trio { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
-.error { color: var(--rojo); font-size: 13px; min-height: 17px; margin: 2px 0 4px; }
+.error { color: var(--rojo-txt); font-size: 13px; min-height: 17px; margin: 2px 0 4px; }
 
 /* ── Trabajo profundo ───────────────────────────────────────────────────── */
 .foco {
@@ -694,7 +715,7 @@ textarea { resize: vertical; min-height: 64px; }
 .foco-cuenta b { font-size: 46px; font-weight: 600; letter-spacing: -0.05em; line-height: 1; }
 .foco-cuenta small { font-size: 12.5px; color: rgba(255,255,255,.5); max-width: 168px; margin: 0 auto; line-height: 1.35; }
 
-.foco-salidas { font-size: 13px; color: var(--naranja); min-height: 19px; margin: 0 0 16px; }
+.foco-salidas { font-size: 13px; color: var(--naranja-txt); min-height: 19px; margin: 0 0 16px; }
 .foco-acciones { display: flex; gap: 10px; }
 .foco-secundario { flex: 1; padding: 14px; border-radius: 20px; background: rgba(255,255,255,.09); font-size: 14.5px; font-weight: 700; }
 .foco-secundario.peligro { color: #FF6B60; }
@@ -717,8 +738,16 @@ body.en-foco .dock { display: none; }
   --sombra-alta: 0 2px 8px rgba(0,0,0,.7), 0 28px 60px -20px rgba(0,0,0,.85);
   --tinta: #F2F2F5;
   --txt: #F2F2F5;
-  --txt-2: rgba(242,242,245,.58);
-  --txt-3: rgba(242,242,245,.34);
+  --txt-2: rgba(242,242,245,.66);
+  /* En oscuro pasaba lo mismo al revés: .34 sobre la tarjeta daba 2,91. */
+  --txt-3: rgba(242,242,245,.52);
+
+  /* Sobre fondo oscuro hay que subirlos, no bajarlos */
+  --verde-txt: #4ADE80;
+  --rojo-txt: #FF7A70;
+  --azul-txt: #6BB6FF;
+  --naranja-txt: #FFC061;
+  --morado-txt: #D89BFF;
   /* En oscuro el hero es la pieza clara: el degradado se invierte */
   --hero-1: #FFFFFF;
   --hero-2: #EDEDF1;
@@ -734,7 +763,7 @@ body.en-foco .dock { display: none; }
 :root[data-tema='oscuro'] .btn-negro,
 :root[data-tema='oscuro'] .descanso { color: #0B0B0C; }
 :root[data-tema='oscuro'] .hero .etq,
-:root[data-tema='oscuro'] .hero .sub small { color: rgba(11,11,12,.55); }
+:root[data-tema='oscuro'] .hero .sub small { color: rgba(11,11,12,.64); }
 /* En oscuro el hero se da la vuelta: lo que era blanco translúcido pasa a
    ser negro translúcido, o no se vería nada encima de la pieza clara. */
 :root[data-tema='oscuro'] .hero .nota,
@@ -817,7 +846,7 @@ body.en-foco .dock { display: none; }
 .tirador.visible { transform: translate(-50%, 0); }
 
 /* ── Deshacer, dentro del brindis ───────────────────────────────────────── */
-.brindis .deshacer { margin-left: 12px; font-weight: 600; color: var(--verde); pointer-events: auto; }
+.brindis .deshacer { margin-left: 12px; font-weight: 600; color: var(--verde-txt); pointer-events: auto; }
 .brindis.con-accion { pointer-events: auto; }
 
 /* ── La alarma ──────────────────────────────────────────────────────────────
@@ -1397,7 +1426,7 @@ dialog::backdrop { animation: fundir .44s ease backwards; }
       <span class="etq">Diario matutino</span>
       <div style="font-size:22px; font-weight:600; letter-spacing:-0.018em; margin-top:4px" id="preguntaDiario">¿Cómo empieza tu día hoy?</div>
       <button class="mas" data-ir-diario aria-label="Escribir en el diario">✍</button>
-      <div style="font-size:13px; color:rgba(255,255,255,.6); margin-top:10px" id="rachaDiario"></div>
+      <div class="nota" id="rachaDiario"></div>
     </div>
 
     <div class="titulo-seccion"><h2>Historial</h2></div>
@@ -5018,7 +5047,7 @@ function pintarPlantillas(){
         <div class="fila-icono">${p.sesion.clase==='fuerza'?'🏋️':'🏃'}</div>
         <div class="fila-txt"><b>${esc(p.nombre)}</b>
           <span>${p.sesion.clase==='fuerza'?`${(p.sesion.ejercicios||[]).length} ejercicio(s)`:esc(p.sesion.modo||'resistencia')}</span></div>
-        <button class="accion" style="color:var(--azul);font-weight:700;font-size:13px" data-importar-plantilla="${p.id}">Importar</button>
+        <button class="accion" style="color:var(--azul-txt);font-weight:700;font-size:13px" data-importar-plantilla="${p.id}">Importar</button>
         <button class="borrar" data-borrar-plantilla="${p.id}">✕</button>
       </div>`).join('')
     : vacio('📋','Sin plantillas','Abre una sesión y pulsa «Plantilla» para reutilizarla.');
