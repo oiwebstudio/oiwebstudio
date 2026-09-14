@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
-<meta name="theme-color" content="#F2F4F7">
+<meta name="theme-color" content="#EDF1F6">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Mi panel">
@@ -82,6 +82,14 @@
 }
 
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+/* Ni selección ni menú del sistema al mantener pulsado: los rótulos de una
+   app no son un documento. En los campos de escribir se devuelven las dos. */
+body { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+input, textarea, [contenteditable] {
+  -webkit-user-select: text; user-select: text; -webkit-touch-callout: default; }
+/* El diario sí se puede copiar: eso es tuyo, no interfaz. */
+.diario-entrada p, .diario-entrada .fecha {
+  -webkit-user-select: text; user-select: text; }
 html { min-height: 100%; }
 
 /* Cada pestaña tiene su color. Lo hereda todo lo que enlaza o resalta, así
@@ -341,6 +349,8 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--azul); outl
 /* Carrusel de plantillas: se desliza con el pulgar y cada tarjeta se ancla */
 .carrusel { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 3px 20px 6px; margin: 0 -20px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
 .carrusel::-webkit-scrollbar { display: none; }
+.carrusel { overscroll-behavior-x: contain; }
+.reloj-lista { overscroll-behavior: contain; }
 /* La máscara desvanece los dos centímetros finales mientras quede sitio a la
    derecha; al llegar al final se quita sola y la última tarjeta se ve entera. */
 .carrusel { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 34px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 34px), transparent); }
@@ -648,7 +658,9 @@ dialog::backdrop { background: rgba(17,17,17,.46); }
 .hoja-cab { display: flex; align-items: center; gap: 12px; padding: 8px 20px 12px; flex: none; }
 .hoja-cab h3 { margin: 0 auto 0 0; font-size: 18px; font-weight: 600; letter-spacing: -0.025em; }
 .hoja-cab .cerrar { font-size: 14px; font-weight: 600; color: var(--txt-2); }
-.hoja-cuerpo { padding: 2px 20px 8px; overflow-y: auto; }
+/* overscroll-behavior corta el estirón y el brillo que pinta Android al
+   llegar al final, y de paso evita que el gesto se cuele a la página. */
+.hoja-cuerpo { padding: 2px 20px 8px; overflow-y: auto; overscroll-behavior: contain; }
 .hoja-pie { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 20px 18px; flex: none; }
 .hoja-pie > * { min-width: 0; }
 .hoja-pie .btn-negro { flex: 1.6; }
@@ -5498,7 +5510,7 @@ function aplicarTema(){
   const auto = matchMedia('(prefers-color-scheme: dark)').matches ? 'oscuro' : 'claro';
   const cual = E.tema==='auto' ? auto : E.tema;
   document.documentElement.dataset.tema = cual;
-  document.querySelector('meta[name=theme-color]')?.setAttribute('content', cual==='oscuro' ? '#000000' : '#F2F4F7');
+  document.querySelector('meta[name=theme-color]')?.setAttribute('content', cual==='oscuro' ? '#000000' : '#EDF1F6');
 }
 matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', ()=>{ if (E.tema==='auto') aplicarTema(); });
 
@@ -6388,6 +6400,7 @@ new MutationObserver(cambios=>{
         mejorarSelects(donde);
         mejorarHoras(donde);
         mejorarFechas(donde);
+        calmarTeclado(donde);
       }
 }).observe(document.body, { childList:true, subtree:true });
 
@@ -6786,6 +6799,19 @@ function pedirFecha(valor, { titulo='¿Qué día?' }={}){
     hoja.addEventListener('close', cancelar);
     hoja.showModal();
   });
+}
+
+/** Apaga el corrector de Android donde solo estorba. En el diario no se
+    toca: ahí escribes frases y el corrector es de agradecer. */
+function calmarTeclado(raiz=document){
+  const enElDiario = el => !!el.closest('#formDiario, #hojaDiario');
+  for (const el of raiz.querySelectorAll?.('input[type="text"], input:not([type]), textarea') || []){
+    if (el.dataset.tecladoCalmado || enElDiario(el)) continue;
+    el.dataset.tecladoCalmado='1';
+    el.setAttribute('spellcheck','false');
+    el.setAttribute('autocorrect','off');
+    el.setAttribute('autocapitalize','sentences');
+  }
 }
 
 /** Esconde los <input type="date"> y les pone delante un botón nuestro. */
@@ -8272,6 +8298,7 @@ reanimar($('.vista[data-vista="home"]'), 'entrando');
 mejorarSelects();
 mejorarHoras();
 mejorarFechas();
+calmarTeclado();
 aplicarTema();
 recuperarTemporizador();
 $$('#segTema button').forEach(x=>x.setAttribute('aria-selected', String(x.dataset.tema===E.tema)));
