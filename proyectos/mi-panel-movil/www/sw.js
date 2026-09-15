@@ -4,7 +4,7 @@
 //
 // Al cambiar VERSION se tira todo lo anterior.
 
-const VERSION = 'mi-panel-v15';
+const VERSION = 'mi-panel-v16';
 const BASICOS = [
   './',
   './index.html',
