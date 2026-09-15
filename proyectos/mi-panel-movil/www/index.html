@@ -682,6 +682,8 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--t
 textarea { resize: vertical; min-height: 64px; }
 .par { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .trio { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+@keyframes temblar { 0%,100% { transform: none } 20% { transform: translateX(-5px) } 40% { transform: translateX(5px) } 60% { transform: translateX(-3px) } 80% { transform: translateX(3px) } }
+.error.aviso-ahora { animation: temblar .38s ease; }
 .error { color: var(--rojo-txt); font-size: 13px; min-height: 17px; margin: 2px 0 4px; }
 
 /* ── Trabajo profundo ───────────────────────────────────────────────────── */
@@ -3074,7 +3076,10 @@ const vacio = (icono, titulo, texto) =>
   `<div class="vacio"><span class="ilu">${icono}</span><b>${titulo}</b>${texto}</div>`;
 
 /* ═══════════════════════════ VISTA 1 · AGENDA DE HOY ═════════════════════ */
-function pintarHome(){
+/** La cabecera: saludo, fecha y avatar. Va aparte porque se ve en todas las
+    pestañas; si solo la pintara Hoy, un cambio de nombre hecho desde otra
+    pestaña no se vería hasta volver allí. */
+function pintarCabecera(){
   const hora=new Date().getHours();
   const saludo = hora<6?'Buenas noches':hora<14?'Buenos días':hora<21?'Buenas tardes':'Buenas noches';
   // El span lleva id porque este innerHTML lo rehace en cada repintado:
@@ -3082,7 +3087,12 @@ function pintarHome(){
   $('#saludoPeq').innerHTML = `${saludo}, <span id="nombre">${esc(E.nombre||'')}</span>`;
   const fecha = desdeClave(HOY).toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});
   $('#saludoFecha').textContent = fecha.charAt(0).toUpperCase()+fecha.slice(1);
-  $('#avatar').textContent = E.nombre.trim().split(/\s+/).slice(0,2).map(p=>p[0]).join('').toUpperCase()||'OI';
+  $('#avatar').textContent = String(E.nombre||'').trim().split(/\s+/).filter(Boolean)
+    .slice(0,2).map(p=>p[0]).join('').toUpperCase()||'OI';
+}
+
+function pintarHome(){
+  const hora=new Date().getHours();
 
   // Prioridad #1 del diario de hoy (la personal manda; si no, la de empresa)
   const deHoy = entradasDe(HOY);
@@ -3453,6 +3463,9 @@ async function marcarCobrada(id){
   const c=E.cobros.find(x=>x.id===id); if (!c) return;
   if (!await preguntar(`Se apuntará como ingreso de la empresa.`, {
     titulo:`¿Cobrada la factura de ${c.cliente}?`, si:`Sí, ${euroDec(aNum(c.importe))}`, icono:'💶' })) return;
+  // Volver a mirar después de esperar: si ya está cobrada, no se apunta otra
+  // vez. Duplicar un ingreso es meter dinero que no ha entrado.
+  if (c.cobrada) return;
   c.cobrada=true; c.fechaCobro=HOY;
   E.tx.push({ id:nuevoId(), tipo:'Ingreso', ambito:'empresa',
     concepto:`${c.cliente}${c.concepto?' · '+c.concepto:''}`, categoria:'Cobro de cliente',
@@ -4794,9 +4807,20 @@ function pararDescanso(){
 }
 
 function moverDescanso(segundos){
-  if (!DESC.reloj) return;
-  DESC.hasta+=segundos*1000;
-  DESC.total=Math.max(DESC.total, (DESC.hasta-Date.now())/1000);
+  // Estando en pausa también se puede ajustar: lo que se mueve entonces es
+  // lo que queda guardado, no el reloj, que está parado.
+  if (!DESC.reloj && !DESC.pausada) return;
+  if (DESC.arriba){                       // cronómetro: solo cuenta hacia arriba
+    DESC.hasta-=segundos*1000;
+  } else if (DESC.pausada){
+    DESC.pausada=Math.max(5, Math.round(DESC.pausada+segundos));
+  } else {
+    const quedan=(DESC.hasta-Date.now())/1000;
+    DESC.hasta=Date.now()+Math.max(5, quedan+segundos)*1000;
+  }
+  // El total manda en la barra y en "reiniciar", así que tiene que moverse
+  // en los dos sentidos, no solo hacia arriba, y en segundos enteros.
+  if (!DESC.arriba) DESC.total=Math.max(5, Math.round(DESC.total+segundos));
   DESC.avisado=false;
   latirDescanso();
   avisoDelTemporizador();   // la notificación se mueve con él
@@ -5677,6 +5701,7 @@ function ir(vista){
 }
 
 function pintar(){
+  pintarCabecera();   // se ve en todas las pestañas, así que se repasa siempre
   if (UI.vista==='home') pintarHome();
   else if (UI.vista==='agenda') pintarAgenda();
   else if (UI.vista==='patrimonio') pintarPatrimonio();
@@ -5729,12 +5754,15 @@ $('#btnNuevoMov').addEventListener('click',()=>{
   $('#hojaMov').showModal();
 });
 
-$('#formMov').addEventListener('submit', e=>{
+$('#formMov').addEventListener('submit', async e=>{
   e.preventDefault();
   const f=e.target;
   const importe=aNum(f.importe.value);
+  $('#errMov').textContent='';
   if (!importe||importe<=0){ $('#errMov').textContent='Pon un importe mayor que cero.'; return; }
   if (!f.concepto.value.trim()){ $('#errMov').textContent='Falta el concepto.'; return; }
+  if (importe>=100000 && !await preguntar(`Has escrito ${euroDec(importe)}. Si sobra algún cero, cancela y corrígelo.`,
+      { titulo:'¿Seguro que es tanto?', si:'Sí, es correcto', icono:'🧐' })) return;
   E.tx.push({ id:nuevoId(), tipo:radio(f,'tipo'), ambito:radio(f,'ambito'),
     concepto:f.concepto.value.trim(), categoria:f.categoria.value,
     importe:Math.round(importe*100)/100, fecha:f.fecha.value });
@@ -5850,12 +5878,15 @@ $('#segAmbitoGasto').addEventListener('click', e=>{
 // Cobros
 $('#btnNuevoCobro').addEventListener('click',()=>abrirCobro(null));
 
-$('#formCobro').addEventListener('submit', e=>{
+$('#formCobro').addEventListener('submit', async e=>{
   e.preventDefault();
   const f=e.target;
   const importe=aNum(f.importe.value);
+  $('#errCobro').textContent='';
   if (!f.cliente.value.trim()){ $('#errCobro').textContent='Falta el cliente.'; return; }
   if (!importe||importe<=0){ $('#errCobro').textContent='Pon un importe mayor que cero.'; return; }
+  if (importe>=100000 && !await preguntar(`Has escrito ${euroDec(importe)}. Si sobra algún cero, cancela y corrígelo.`,
+      { titulo:'¿Seguro que es tanto?', si:'Sí, es correcto', icono:'🧐' })) return;
   const datos={ cliente:f.cliente.value.trim(), concepto:f.concepto.value.trim(),
     importe:Math.round(importe*100)/100, emitida:f.emitida.value||null, vence:f.vence.value||null };
   const previa=UI.cobroEditando?E.cobros.find(x=>x.id===UI.cobroEditando):null;
@@ -6799,6 +6830,29 @@ function pedirFecha(valor, { titulo='¿Qué día?' }={}){
     hoja.addEventListener('close', cancelar);
     hoja.showModal();
   });
+}
+
+/** Cuando un formulario escribe un error, que se vea: se desplaza hasta él
+    dentro de la hoja, tiembla y vibra. Vale para todos los formularios sin
+    tocar ninguno. */
+function vigilarErrores(){
+  const alCambiar = cambios => {
+    for (const c of cambios){
+      const el = c.target.nodeType===1 ? c.target : c.target.parentElement;
+      const err = el?.closest?.('.error');
+      if (!err || !err.textContent.trim()) continue;
+      const cuerpo = err.closest('.hoja-cuerpo');
+      if (cuerpo){
+        const arriba = err.offsetTop - cuerpo.clientHeight + err.offsetHeight + 24;
+        if (arriba > cuerpo.scrollTop) cuerpo.scrollTo({ top: arriba, behavior: quieto() ? 'auto' : 'smooth' });
+      }
+      err.classList.remove('aviso-ahora'); void err.offsetWidth; err.classList.add('aviso-ahora');
+      vibrar([40,40,40]);
+    }
+  };
+  const obs = new MutationObserver(alCambiar);
+  for (const err of document.querySelectorAll('.error'))
+    obs.observe(err, { childList:true, characterData:true, subtree:true });
 }
 
 /** Apaga el corrector de Android donde solo estorba. En el diario no se
@@ -8299,6 +8353,7 @@ mejorarSelects();
 mejorarHoras();
 mejorarFechas();
 calmarTeclado();
+vigilarErrores();
 aplicarTema();
 recuperarTemporizador();
 $$('#segTema button').forEach(x=>x.setAttribute('aria-selected', String(x.dataset.tema===E.tema)));
