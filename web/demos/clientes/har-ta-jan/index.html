@@ -616,6 +616,142 @@ p{text-wrap:pretty;}
   .cartel li,.cartel__precio{animation:none!important;opacity:1!important;transform:none!important;}
   .cartel__precio{transform:rotate(-7deg)!important;}
 }
+
+/* ═══ HERO ═══ */
+/* sin JavaScript no hay quien encienda el hero: que se vea tal cual */
+html:not(.js) .heroe *{opacity:1!important;transform:none!important;}
+.heroe{padding:clamp(26px,4vw,56px) 0 clamp(40px,6vw,80px);overflow:hidden;}
+.heroe__in{display:grid;gap:clamp(28px,4vw,56px);align-items:center;}
+@media(min-width:900px){
+  .heroe__in{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);min-height:min(78svh,720px);}
+}
+.heroe__kicker{display:flex;flex-wrap:wrap;gap:6px 10px;margin:0 0 18px;}
+.heroe__kicker span{font-family:var(--detalle);font-size:11.5px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--acento);padding:7px 13px;border-radius:100px;
+  background:color-mix(in srgb, var(--acento) 9%, var(--fondo));}
+.heroe__kicker span+span{color:var(--tomate);background:var(--tomate-fondo);}
+.heroe__h{font-size:clamp(48px,7.4vw,112px);line-height:.95;letter-spacing:-.02em;margin:0 0 22px;}
+.heroe__h em{font-style:italic;font-weight:400;color:var(--tomate);}
+/* cada línea sube desde detrás de su propia máscara */
+.heroe__h .l{display:block;overflow:hidden;padding-bottom:.08em;}
+.heroe__h .l>span{display:inline-block;transform:translateY(105%);
+  transition:transform 1s cubic-bezier(.22,1,.36,1);}
+.heroe.vivo .heroe__h .l>span{transform:none;}
+.heroe.vivo .heroe__h .l+.l>span{transition-delay:.12s;}
+.heroe__txt .hoy{margin:0 0 20px;}
+.heroe__txt>*:not(.heroe__h){opacity:0;transform:translateY(14px);
+  transition:opacity .7s var(--ease),transform .8s var(--ease);}
+.heroe.vivo .heroe__txt>*{opacity:1;transform:none;}
+.heroe.vivo .heroe__kicker{transition-delay:0s;}
+.heroe.vivo .hoy{transition-delay:.3s;}
+.heroe.vivo .heroe__btns{transition-delay:.42s;}
+.heroe.vivo .heroe__nota{transition-delay:.54s;}
+.heroe__btns{display:flex;flex-wrap:wrap;gap:12px;}
+.heroe__nota{margin:18px 0 0;font-size:14.5px;color:var(--tinta-sec);}
+.heroe__nota b{color:var(--tinta);}
+
+/* los platos: uno grande y dos que asoman, cada uno flotando a su ritmo */
+.heroe__platos{position:relative;height:clamp(420px,52vw,640px);}
+.pl{position:absolute;margin:0;}
+.pl__m{width:100%;height:100%;overflow:hidden;border-radius:30px;
+  box-shadow:0 34px 60px -34px rgba(40,30,20,.55),0 0 0 6px var(--fondo);}
+.pl img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s var(--ease);}
+.pl:hover img{transform:scale(1.05);}
+.pl--1{left:8%;top:6%;width:62%;height:78%;--r:-3deg;}
+.pl--2{right:0;top:0;width:36%;height:40%;--r:5deg;}
+.pl--3{right:4%;bottom:2%;width:40%;height:36%;--r:-5deg;}
+.pl figcaption{position:absolute;left:14px;bottom:14px;padding:8px 14px;border-radius:100px;
+  background:rgba(255,255,255,.95);color:var(--tinta);font-family:var(--detalle);font-size:12px;
+  font-weight:600;letter-spacing:.03em;box-shadow:0 8px 20px -12px rgba(0,0,0,.45);white-space:nowrap;}
+/* entrada: caen desde abajo girando hasta su ángulo, con un rebote corto */
+.pl{opacity:0;transform:translate3d(0,60px,0) rotate(0deg) scale(.9);
+  transition:opacity .8s var(--ease),transform 1.1s cubic-bezier(.34,1.4,.64,1);}
+.heroe.vivo .pl{opacity:1;transform:translate3d(var(--px,0),var(--py,0),0) rotate(var(--r));}
+.heroe.vivo .pl--1{transition-delay:.15s;}
+.heroe.vivo .pl--2{transition-delay:.32s;}
+.heroe.vivo .pl--3{transition-delay:.46s;}
+/* tras la entrada, el seguimiento del puntero va suave, sin el rebote */
+.heroe.listo .pl{transition:opacity .8s var(--ease),transform .7s cubic-bezier(.22,1,.36,1);}
+/* flotar: se anima el contenedor interno para no pisar el transform de arriba */
+.heroe.vivo .pl__m{animation:flota 6s ease-in-out 1.4s infinite;}
+.heroe.vivo .pl--2 .pl__m{animation-duration:7.2s;animation-delay:1.7s;}
+.heroe.vivo .pl--3 .pl__m{animation-duration:6.6s;animation-delay:2s;}
+@keyframes flota{0%,100%{transform:translateY(0);}50%{transform:translateY(-9px);}}
+.heroe__sello{position:absolute;left:0;bottom:12%;width:96px;height:96px;border-radius:50%;
+  background:var(--tomate);color:#fff;display:grid;place-content:center;text-align:center;
+  font-family:var(--display);font-size:30px;line-height:1;z-index:3;
+  box-shadow:0 18px 34px -16px rgba(184,68,30,.8);
+  opacity:0;transform:scale(.4) rotate(-30deg);
+  transition:opacity .5s var(--ease) .75s,transform .8s cubic-bezier(.34,1.56,.64,1) .75s;}
+.heroe__sello small{font-family:var(--detalle);font-size:10px;letter-spacing:.12em;
+  text-transform:uppercase;margin-top:4px;}
+.heroe.vivo .heroe__sello{opacity:1;transform:rotate(-10deg);}
+@media(max-width:899px){
+  .heroe{padding-top:14px;}
+  .heroe__kicker span{font-size:10px;letter-spacing:.12em;padding:6px 10px;}
+  .heroe__h{font-size:clamp(42px,12vw,60px);}
+  .heroe__platos{height:clamp(210px,58vw,380px);}
+  .pl--1{left:0;top:4%;width:64%;height:88%;}
+  .pl--2{right:0;top:0;width:40%;height:46%;}
+  .pl--3{right:3%;bottom:0;width:40%;height:44%;}
+  .pl figcaption{font-size:10.5px;padding:5px 10px;left:8px;bottom:8px;}
+  .pl__m{border-radius:22px;box-shadow:0 22px 40px -26px rgba(40,30,20,.55),0 0 0 4px var(--fondo);}
+  .heroe__sello{width:70px;height:70px;font-size:22px;left:-6px;top:-12px;right:auto;bottom:auto;}
+  .heroe__sello small{font-size:8.5px;}
+  /* en móvil los platos van entre el titular y los botones */
+  .heroe__in{display:flex;flex-direction:column;align-items:stretch;}
+  .heroe__txt{display:contents;}
+  .heroe__kicker{order:1;margin-bottom:12px;}
+  .heroe__h{order:2;margin-bottom:18px;}
+  .heroe__platos{order:3;margin-bottom:22px;}
+  /* botones antes que la pastilla: tienen que caber en la primera pantalla */
+  .heroe__btns{order:4;flex-direction:column;margin-bottom:16px;}
+  .heroe__txt .hoy{order:5;margin-bottom:6px;}
+  .heroe__nota{order:6;}
+}
+
+/* ═══ BOTONES ═══
+   Píldora de 54 px, texto en versalitas espaciadas y la flecha dentro de un
+   círculo que se desplaza al pasar por encima. El relleno oscuro entra desde
+   abajo en vez de cambiar de color de golpe. */
+.btn{position:relative;isolation:isolate;overflow:hidden;min-height:54px;padding:0 26px;
+  border-radius:100px;gap:12px;font-family:var(--detalle);font-size:13px;font-weight:700;
+  letter-spacing:.09em;text-transform:uppercase;
+  transition:transform .15s var(--ease),box-shadow .35s var(--ease),border-color .3s,color .3s,background-color .3s;}
+.btn:active{transform:scale(.97);}
+.btn--fill{background:var(--acento);border:0;color:#fff;
+  box-shadow:0 14px 28px -14px rgba(46,94,62,.75);}
+.btn--fill::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--acento-osc);
+  transform:translateY(101%);transition:transform .45s cubic-bezier(.22,1,.36,1);}
+.btn--fill:hover::before{transform:none;}
+.btn--fill:hover{box-shadow:0 18px 32px -14px rgba(31,69,48,.85);}
+.btn--ico{padding-right:8px;}
+.btn__c{width:40px;height:40px;border-radius:50%;display:grid;place-content:center;
+  background:#467D58;font-style:normal;transition:transform .45s cubic-bezier(.22,1,.36,1),background .3s;}
+.btn--ico:hover .btn__c{transform:translateX(3px) rotate(-8deg);background:#548C66;}
+.btn .ar{display:inline-grid;place-content:center;width:30px;height:30px;border-radius:50%;
+  background:transparent;margin-right:-12px;transition:transform .45s cubic-bezier(.22,1,.36,1);}
+.btn:hover .ar{transform:translateX(3px);}
+/* círculo sólido, no translúcido: con un blanco al 18% el texto de dentro
+   dependía de lo que hubiera detrás, y el medidor de contraste no lo puede leer */
+.btn--fill .ar{background:#467D58;}
+.btn--wa{background:var(--fondo);color:var(--tinta);border:1.5px solid var(--filete-fuerte);}
+.btn--wa svg{color:#1E9E4E;flex:0 0 auto;transition:transform .45s cubic-bezier(.34,1.56,.64,1);}
+.btn--wa:hover{border-color:#1E9E4E;background:#F1FAF4;}
+.btn--wa:hover svg{transform:rotate(-12deg) scale(1.1);}
+.btn--ghost{border:1.5px solid currentColor;}
+.top .btn{min-height:44px;padding:0 20px;font-size:12px;}
+.top .btn .ar{width:24px;height:24px;margin-right:-10px;}
+@media(max-width:719px){ .heroe__btns .btn{width:100%;justify-content:space-between;} }
+@media(max-width:719px){ .btn--wa{justify-content:center!important;} }
+
+@media (prefers-reduced-motion: reduce){
+  .heroe__h .l>span,.heroe__txt>*,.pl,.heroe__sello{transform:none!important;opacity:1!important;transition:none!important;}
+  .pl{transform:rotate(var(--r))!important;}
+  .heroe__sello{transform:rotate(-10deg)!important;}
+  .pl__m{animation:none!important;}
+  .btn--fill::before{transition:none;}
+}
 </style>
 <script>document.documentElement.className+=" js";</script>
 </head>
@@ -665,47 +801,34 @@ p{text-wrap:pretty;}
 <main id="main">
 
 <!-- ═══ 2 · PORTADA · body-cover-title ═══ -->
-<section class="portada" id="inicio">
- <div class="wrap">
- <div class="portada__t">
- <h1 class="rev">Comida de casa,<br/>hecha <em>cada día</em></h1>
- </div>
- <div class="portada__meta rev" data-d="1">
- <span>Comida para llevar · Eramateko janaria</span>
- <span>Menú del día 12 € · incluye pan</span>
- </div>
- </div>
- <div class="portada__foto platos rev" data-d="2">
- <figure class="plato-f plato-f--1">
- <img src="https://images.unsplash.com/photo-1650964807311-970cb88d347c?w=1200&q=78&auto=format&fit=crop"
- srcset="https://images.unsplash.com/photo-1650964807311-970cb88d347c?w=700&q=72&auto=format&fit=crop 700w,
- https://images.unsplash.com/photo-1650964807311-970cb88d347c?w=1200&q=78&auto=format&fit=crop 1200w"
- sizes="(max-width: 719px) 100vw, 60vw"
- alt="Paella de marisco en la paellera" width="1200" height="1500" fetchpriority="high"/>
- <figcaption>Sábado · Paella de marisco</figcaption>
- </figure>
- <figure class="plato-f plato-f--2">
- <img decoding="async" src="https://images.unsplash.com/photo-1682988771291-da784f151ef7?w=800&q=75&auto=format&fit=crop"
- alt="Paella de carne recién hecha" width="800" height="1000"/>
- <figcaption>Viernes · Paella de carne</figcaption>
- </figure>
- <figure class="plato-f plato-f--3">
- <img decoding="async" src="https://images.unsplash.com/photo-1702728109878-c61a98d80491?w=800&q=75&auto=format&fit=crop"
- alt="Flan de huevo con caramelo" width="800" height="600"/>
- <figcaption>Todos los días · Flan de huevo</figcaption>
- </figure>
- </div>
- <div class="wrap portada__pie">
- <p class="lead rev">Primeros, segundos y postres caseros, cambiando cada día. Lo preparamos por la mañana y te lo llevas al mediodía.</p>
- <div class="rev" data-d="1">
- <div class="portada__btns">
- <a class="btn btn--fill" href="#menu">Ver el menú de hoy <span class="ar" aria-hidden="true">→</span></a>
- <a class="btn btn--ghost" id="p-wa" href="#" target="_blank" rel="noopener">Encargar por WhatsApp</a>
- </div>
- <p class="hoy" id="hoy-chip" hidden></p>
- <p class="portada__nota">Solo a mediodía · Mandoegi kalea 2, Galtzaraborda</p>
- </div>
- </div>
+<section class="portada heroe" id="inicio">
+  <div class="wrap heroe__in">
+    <div class="heroe__txt">
+      <p class="heroe__kicker"><span>Comida para llevar</span><span>Eramateko janaria</span></p>
+      <h1 class="heroe__h"><span class="l"><span>Comida de casa,</span></span><span class="l"><span>hecha <em>cada día</em></span></span></h1>
+      <p class="hoy" id="hoy-chip" hidden></p>
+      <div class="heroe__btns">
+        <a class="btn btn--fill btn--ico" href="#menu"><span>Ver el menú de hoy</span><i class="btn__c"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a>
+        <a class="btn btn--wa" id="p-wa" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 0 0-7.4 12.7L3.5 20.5l4.4-1.1A8.5 8.5 0 1 0 12 3.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.8 9.2c.3 2.4 2.3 4.6 5.3 5.6l1.3-1.3-1.9-1-1 .7c-.9-.5-1.7-1.3-2.1-2.2l.7-1-1-1.9z" fill="currentColor"/></svg><span>Encargar por WhatsApp</span></a>
+      </div>
+      <p class="heroe__nota"><b>12 €</b> el menú con pan · Solo a mediodía · Mandoegi kalea 2</p>
+    </div>
+    <div class="heroe__platos" id="platos">
+      <figure class="pl pl--1" data-prof="14">
+        <div class="pl__m"><img src="https://images.unsplash.com/photo-1650964807311-970cb88d347c?w=1100&q=76&auto=format&fit=crop" srcset="https://images.unsplash.com/photo-1650964807311-970cb88d347c?w=700&q=72&auto=format&fit=crop 700w, https://images.unsplash.com/photo-1650964807311-970cb88d347c?w=1100&q=76&auto=format&fit=crop 1100w" sizes="(max-width: 899px) 70vw, 36vw" fetchpriority="high" decoding="async" alt="Paella de marisco en la paellera" width="1200" height="1500"/></div>
+        <figcaption>Sábado · Paella de marisco</figcaption>
+      </figure>
+      <figure class="pl pl--2" data-prof="26">
+        <div class="pl__m"><img src="https://images.unsplash.com/photo-1682988771291-da784f151ef7?w=700&q=76&auto=format&fit=crop" decoding="async" alt="Paella de carne recién hecha" width="800" height="1000"/></div>
+        <figcaption>Viernes · Paella de carne</figcaption>
+      </figure>
+      <figure class="pl pl--3" data-prof="20">
+        <div class="pl__m"><img src="https://images.unsplash.com/photo-1702728109878-c61a98d80491?w=700&q=76&auto=format&fit=crop" decoding="async" alt="Flan de huevo con caramelo" width="800" height="600"/></div>
+        <figcaption>Cada día · Flan de huevo</figcaption>
+      </figure>
+      <span class="heroe__sello" aria-hidden="true">12€<small>con pan</small></span>
+    </div>
+  </div>
 </section>
 
 <!-- ═══ 4b · PIZARRA · body-product-detail ═══ -->
@@ -1608,6 +1731,32 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
       });
     }, { passive:true });
   }
+})();
+</script>
+<script>
+/* El hero se enciende al cargar (o al irse la pantalla de carga, si la hay),
+   y en escritorio los platos siguen un poco al puntero, cada uno a su
+   profundidad (data-prof). */
+(function(){
+  var h = document.querySelector(".heroe"); if(!h) return;
+  function encender(){ h.classList.add("vivo"); setTimeout(function(){ h.classList.add("listo"); }, 1700); }
+  var carga = document.getElementById("carga");
+  // setTimeout y no requestAnimationFrame: rAF se congela con la pestaña en
+  // segundo plano y el hero se quedaba en blanco hasta volver a ella.
+  setTimeout(encender, carga ? 2350 : 80);
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches || !matchMedia("(hover: hover) and (min-width: 900px)").matches) return;
+  var pls = [].slice.call(h.querySelectorAll(".pl")), caja = document.getElementById("platos"), pend = false, ex = 0, ey = 0;
+  h.addEventListener("pointermove", function(e){
+    var r = caja.getBoundingClientRect();
+    ex = (e.clientX - (r.left + r.width/2)) / r.width; ey = (e.clientY - (r.top + r.height/2)) / r.height;
+    if(pend) return; pend = true;
+    requestAnimationFrame(function(){
+      pls.forEach(function(p){ var k = +p.dataset.prof || 16;
+        p.style.setProperty("--px", (ex * -k).toFixed(1) + "px"); p.style.setProperty("--py", (ey * -k).toFixed(1) + "px"); });
+      pend = false;
+    });
+  });
+  h.addEventListener("pointerleave", function(){ pls.forEach(function(p){ p.style.setProperty("--px","0px"); p.style.setProperty("--py","0px"); }); });
 })();
 </script>
 </body>
