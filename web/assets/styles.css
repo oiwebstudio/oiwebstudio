@@ -887,8 +887,20 @@ a.work:hover .work__link { gap: 11px; color: var(--accent-hover); }
 .js .reveal[data-d="3"] { transition-delay: 0.18s; }
 .js .reveal[data-d="4"] { transition-delay: 0.24s; }
 
+/* Los héroes (portada, precios, chatbot, contacto) no esperan a main.js. Con la transición de arriba el h1 seguía
+   invisible hasta que el script, que va al final de la página, le ponía
+   .is-visible: unos 2 s en móvil que Google cuenta como LCP. Con una
+   animación CSS la entrada es la misma pero arranca en el primer pintado. */
+.js .hero .reveal, .js .pre-hero .reveal, .js .bot-hero .reveal, .js .contact-grid >.reveal { opacity: 1; transform: none; transition: none; animation: hero-in 0.7s var(--ease) both; }
+.js .hero .reveal[data-d="1"], .js .pre-hero .reveal[data-d="1"], .js .bot-hero .reveal[data-d="1"], .js .contact-grid >.reveal[data-d="1"] { animation-delay: 0.06s; }
+.js .hero .reveal[data-d="2"], .js .pre-hero .reveal[data-d="2"], .js .bot-hero .reveal[data-d="2"], .js .contact-grid >.reveal[data-d="2"] { animation-delay: 0.12s; }
+.js .hero .reveal[data-d="3"], .js .pre-hero .reveal[data-d="3"], .js .bot-hero .reveal[data-d="3"], .js .contact-grid >.reveal[data-d="3"] { animation-delay: 0.18s; }
+.js .hero .reveal[data-d="4"], .js .pre-hero .reveal[data-d="4"], .js .bot-hero .reveal[data-d="4"], .js .contact-grid >.reveal[data-d="4"] { animation-delay: 0.24s; }
+@keyframes hero-in { from { opacity: 0; transform: translateY(22px); } }
+
 @media (prefers-reduced-motion: reduce) {
   .js .reveal, .reveal { opacity: 1; transform: none; transition: none; }
+  .js .hero .reveal, .js .pre-hero .reveal, .js .bot-hero .reveal, .js .contact-grid >.reveal { animation: none; }
   .hero__mockup .browser { animation: none; }
   html { scroll-behavior: auto; }
 }
