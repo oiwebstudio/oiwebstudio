@@ -56,28 +56,28 @@
 /* ═══════════════ CONTRATO DE TOKENS ═══════════════ */
 :root{
   --fondo:#FFFFFF;
-  --fondo-alt:#F1F5EE;
-  --filete:#D6DFD1;
+  --fondo-alt:#FFF5EE;
+  --filete:#EFE0D5;
 
-  --tinta:#15201A;
-  --tinta-sec:#53614F;
+  --tinta:#1D2420;
+  --tinta-sec:#58605A;
 
-  --acento:#2F6B3F;
+  --acento:#2E5E3E;
   --acento-con:#FFFFFF;
 
   --ok:#3D7A4B;
   --alerta:#A8720A;
 
   /* derivados */
-  --acento-osc:#20502D;
-  --acento-claro:#8DBF97;
-  --filete-fuerte:#B3C2AC;
-  --osc:#16251B;
-  --osc-filete:#2C3E31;
-  --osc-tinta:#DCE6D9;
-  --osc-tinta2:#B2C2AE;
-  --osc-tinta3:#8B9C87;
-  --ok-claro:#95CBA1;
+  --acento-osc:#1F4530;
+  --acento-claro:#9FCDA9;
+  --filete-fuerte:#DCC6B6;
+  --osc:#1B2A21;
+  --osc-filete:#2F4036;
+  --osc-tinta:#E3EBE0;
+  --osc-tinta2:#B9C6B5;
+  --osc-tinta3:#8FA08C;
+  --ok-claro:#9FCDA9;
   --alerta-clara:#E0B36A;
 
   --display:"Instrument Serif",Georgia,serif;
@@ -442,6 +442,67 @@ p{text-wrap:pretty;}
 .hoy b{color:var(--tinta);font-weight:600;}
 .hoy i{width:7px;height:7px;border-radius:50%;background:var(--acento);font-style:normal;}
 
+/* ═══ PALETA · el tomate de su mantel ═══ */
+:root{--tomate:#B8441E;--tomate-claro:#F6A988;--tomate-fondo:#FFE9DE;}
+.portada h1 em{color:var(--tomate);}
+.hoy{background:var(--tomate-fondo);border-color:#F2CDBB;}
+.hoy i{background:var(--tomate);}
+.cartel__precio,.pizarra .cartel__precio{background:var(--tomate);color:#fff;}
+.dicho__e{color:var(--tomate);}
+.pasos__l b{background:var(--tomate-fondo);color:var(--tomate);}
+.subr::after{background:var(--tomate)!important;}
+.barra-lectura{background:var(--tomate)!important;}
+
+/* ═══ LOS PLATOS EN LA PORTADA ═══
+   Tres fotos en vez de una: un plato grande y dos pequeños, cada uno con el
+   día de su cartel en que sale. Las fotos son de banco (el pie lo dice); los
+   platos y los días, no: son de sus carteles de Instagram. */
+.platos{height:auto!important;display:grid;gap:14px;
+  grid-template-columns:1.35fr 1fr;grid-template-rows:1fr 1fr;
+  aspect-ratio:16/9;max-height:620px;padding:0 var(--gutter);overflow:visible!important;}
+.plato-f{position:relative;margin:0;overflow:hidden;border-radius:26px;min-height:0;}
+.plato-f--1{grid-row:1 / span 2;}
+.plato-f img{width:100%;height:100%;object-fit:cover;border-radius:0!important;
+  transition:transform 1.2s var(--ease);}
+.plato-f:hover img{transform:scale(1.04);}
+.plato-f figcaption{position:absolute;left:12px;bottom:12px;padding:8px 14px;border-radius:100px;
+  background:rgba(255,255,255,.94);color:var(--tinta);font-family:var(--detalle);
+  font-size:12px;font-weight:600;letter-spacing:.04em;backdrop-filter:blur(6px);}
+/* entrada escalonada de las tres fotos (preset 8, standard) */
+.platos .plato-f{opacity:0;transform:translateY(22px) scale(.97);
+  transition:opacity .7s var(--ease),transform .9s var(--ease);}
+.platos.on .plato-f{opacity:1;transform:none;}
+.platos.on .plato-f--2{transition-delay:.12s;}
+.platos.on .plato-f--3{transition-delay:.24s;}
+
+/* ═══ PANTALLA DE CARGA ═══ · la de Errotatxo, en vanilla
+   Halo que late detrás del nombre, el nombre sube, una línea fina se llena y
+   la cortina se recoge hacia arriba. Solo la primera vez en la sesión. */
+.carga{position:fixed;inset:0;z-index:200;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;background:var(--fondo-alt);overflow:hidden;
+  clip-path:inset(0 0 0 0);transition:clip-path 1.05s cubic-bezier(.87,0,.13,1);}
+.carga.fuera{clip-path:inset(0 0 100% 0);}
+.carga__halo{position:absolute;width:min(78vw,420px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle, var(--tomate-claro) 0%, rgba(246,169,136,0) 68%);
+  opacity:0;animation:halo-in .9s ease-out forwards, halo 2.4s ease-in-out infinite;}
+@keyframes halo-in{to{opacity:.75;}}
+@keyframes halo{0%,100%{transform:scale(.9);}50%{transform:scale(1.08);}}
+.carga__marca{position:relative;font-family:var(--display);color:var(--acento-osc);
+  font-size:clamp(52px,12vw,104px);line-height:1;margin:0;
+  opacity:0;transform:translateY(26px) scale(.86);
+  animation:marca 1s cubic-bezier(.22,1,.36,1) forwards;}
+.carga__marca em{color:var(--tomate);}
+@keyframes marca{to{opacity:1;transform:none;}}
+.carga__linea{position:relative;width:160px;height:1px;margin-top:34px;overflow:hidden;
+  background:rgba(31,69,48,.16);opacity:0;animation:aparece .9s .5s forwards;}
+.carga__linea i{position:absolute;inset:0;background:var(--acento-osc);transform-origin:left;
+  transform:scaleX(0);animation:llena 1.7s .1s cubic-bezier(.4,0,.2,1) forwards;}
+@keyframes llena{to{transform:scaleX(1);}}
+.carga__pie{position:relative;margin:16px 0 0;font-family:var(--detalle);font-size:11px;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--tinta-sec);
+  opacity:0;animation:aparece .9s .7s forwards;}
+@keyframes aparece{to{opacity:1;}}
+
 /* botones en píldora, como la cabecera y la barra: con la esquina viva de la
    plantilla editorial convivían dos formas de botón en la misma pantalla */
 .btn{border-radius:100px;}
@@ -517,7 +578,11 @@ p{text-wrap:pretty;}
     font-size:15px;line-height:1.4;margin-bottom:12px;}
   .portada__btns{flex-direction:column;}
   .portada__btns .btn,.cierre__btns .btn,.cartel__pie .btn{width:100%;}
-  .portada__foto{order:2;height:230px;margin:24px var(--gutter) 0;}
+  .portada__foto{order:2;margin:24px 0 0;}
+  .platos{aspect-ratio:auto;grid-template-columns:1fr 1fr;grid-template-rows:230px 150px;gap:10px;}
+  .plato-f--1{grid-row:auto;grid-column:1 / span 2;}
+  .plato-f{border-radius:20px;}
+  .plato-f figcaption{font-size:11px;padding:6px 11px;left:9px;bottom:9px;}
 
   /* el cartel, más apretado: en móvil las tres columnas van una debajo de otra */
   .cartel{padding:24px 20px 22px;border-radius:22px;}
@@ -546,6 +611,8 @@ p{text-wrap:pretty;}
 }
 
 @media (prefers-reduced-motion: reduce){
+  .carga{display:none!important;}
+  .platos .plato-f{opacity:1!important;transform:none!important;transition:none!important;}
   .cartel li,.cartel__precio{animation:none!important;opacity:1!important;transform:none!important;}
   .cartel__precio{transform:rotate(-7deg)!important;}
 }
@@ -553,6 +620,30 @@ p{text-wrap:pretty;}
 <script>document.documentElement.className+=" js";</script>
 </head>
 <body>
+<div class="carga" id="carga" aria-hidden="true">
+  <div class="carga__halo"></div>
+  <p class="carga__marca">Har' ta <em>jan</em></p>
+  <div class="carga__linea"><i></i></div>
+  <p class="carga__pie">Errenteria · Eramateko janaria</p>
+</div>
+<script>
+(function(){
+  var c = document.getElementById("carga");
+  var visto = false;
+  try { visto = sessionStorage.getItem("hartajan-visto") === "1"; } catch(e){}
+  if(visto || matchMedia("(prefers-reduced-motion: reduce)").matches){ c.remove(); return; }
+  document.documentElement.style.overflow = "hidden";
+  function fuera(){
+    if(!c.isConnected) return;
+    try { sessionStorage.setItem("hartajan-visto","1"); } catch(e){}
+    c.classList.add("fuera");
+    document.documentElement.style.overflow = "";
+    setTimeout(function(){ c.remove(); }, 1100);
+  }
+  setTimeout(fuera, 2200);
+  setTimeout(fuera, 4000); // seguro
+})();
+</script>
 
 <a class="skip" href="#main">Saltar al contenido</a>
 
@@ -584,13 +675,26 @@ p{text-wrap:pretty;}
  <span>Menú del día 12 € · incluye pan</span>
  </div>
  </div>
- <figure class="portada__foto rev" data-d="2">
- <img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=1800&q=80&auto=format&fit=crop"
- srcset="https://images.unsplash.com/photo-1547592180-85f173990554?w=800&q=75&auto=format&fit=crop 800w,
- https://images.unsplash.com/photo-1547592180-85f173990554?w=1800&q=80&auto=format&fit=crop 1800w"
- sizes="(max-width: 719px) 100vw, 1200px"
- alt="Cazuela de comida casera recién hecha" width="1800" height="1000" fetchpriority="high"/>
+ <div class="portada__foto platos rev" data-d="2">
+ <figure class="plato-f plato-f--1">
+ <img src="https://images.unsplash.com/photo-1650964807311-970cb88d347c?w=1200&q=78&auto=format&fit=crop"
+ srcset="https://images.unsplash.com/photo-1650964807311-970cb88d347c?w=700&q=72&auto=format&fit=crop 700w,
+ https://images.unsplash.com/photo-1650964807311-970cb88d347c?w=1200&q=78&auto=format&fit=crop 1200w"
+ sizes="(max-width: 719px) 100vw, 60vw"
+ alt="Paella de marisco en la paellera" width="1200" height="1500" fetchpriority="high"/>
+ <figcaption>Sábado · Paella de marisco</figcaption>
  </figure>
+ <figure class="plato-f plato-f--2">
+ <img loading="lazy" src="https://images.unsplash.com/photo-1682988771291-da784f151ef7?w=800&q=75&auto=format&fit=crop"
+ alt="Paella de carne recién hecha" width="800" height="1000"/>
+ <figcaption>Viernes · Paella de carne</figcaption>
+ </figure>
+ <figure class="plato-f plato-f--3">
+ <img loading="lazy" src="https://images.unsplash.com/photo-1702728109878-c61a98d80491?w=800&q=75&auto=format&fit=crop"
+ alt="Flan de huevo con caramelo" width="800" height="600"/>
+ <figcaption>Todos los días · Flan de huevo</figcaption>
+ </figure>
+ </div>
  <div class="wrap portada__pie">
  <p class="lead rev">Primeros, segundos y postres caseros, cambiando cada día. Lo preparamos por la mañana y te lo llevas al mediodía.</p>
  <div class="rev" data-d="1">
