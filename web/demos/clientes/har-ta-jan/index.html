@@ -396,7 +396,9 @@ p{text-wrap:pretty;}
   background:var(--fondo);padding:clamp(24px,4vw,46px);
   box-shadow:0 30px 70px -52px rgba(20,40,25,.55);}
 .cartel__dia{font-family:var(--display);font-size:var(--t4);line-height:1.05;
-  margin:0 0 4px;text-transform:capitalize;}
+  margin:0 0 4px;}
+/* solo la primera letra: capitalize ponía "Jueves 17 De Septiembre" */
+.cartel__dia::first-letter{text-transform:uppercase;}
 .cartel__incl{font-family:var(--detalle);font-size:12.5px;letter-spacing:.08em;
   text-transform:uppercase;color:var(--tinta-sec);margin:0 0 clamp(20px,3vw,30px);}
 .cartel__cols{display:grid;gap:clamp(20px,3vw,38px);
@@ -630,7 +632,9 @@ html:not(.js) .heroe *{opacity:1!important;transform:none!important;}
   text-transform:uppercase;color:var(--acento);padding:7px 13px;border-radius:100px;
   background:color-mix(in srgb, var(--acento) 9%, var(--fondo));}
 .heroe__kicker span+span{color:var(--tomate);background:var(--tomate-fondo);}
-.heroe__h{font-size:clamp(48px,7.4vw,112px);line-height:.95;letter-spacing:-.02em;margin:0 0 22px;}
+/* .heroe .heroe__h y no .heroe__h a secas: la plantilla trae .portada h1 a
+   196 px, que gana por especificidad y partía el titular en cinco líneas */
+.heroe .heroe__h{font-size:clamp(48px,6vw,100px);line-height:.95;letter-spacing:-.02em;margin:0 0 22px;}
 .heroe__h em{font-style:italic;font-weight:400;color:var(--tomate);}
 /* cada línea sube desde detrás de su propia máscara */
 .heroe__h .l{display:block;overflow:hidden;padding-bottom:.08em;}
@@ -649,6 +653,11 @@ html:not(.js) .heroe *{opacity:1!important;transform:none!important;}
 .heroe__btns{display:flex;flex-wrap:wrap;gap:12px;}
 .heroe__nota{margin:18px 0 0;font-size:14.5px;color:var(--tinta-sec);}
 .heroe__nota b{color:var(--tinta);}
+
+/* la pastilla del último menú: fecha y precio arriba, platos debajo */
+.heroe .hoy{display:flex;flex-direction:column;align-items:flex-start;gap:4px;border-radius:18px;padding:12px 18px;max-width:34rem;}
+.hoy__t{display:flex;align-items:center;gap:8px;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;font-family:var(--detalle);color:var(--tinta-sec);}
+.heroe .hoy b{font-size:15.5px;line-height:1.4;}
 
 /* los platos: uno grande y dos que asoman, cada uno flotando a su ritmo */
 .heroe__platos{position:relative;height:clamp(420px,52vw,640px);}
@@ -677,7 +686,7 @@ html:not(.js) .heroe *{opacity:1!important;transform:none!important;}
 .heroe.vivo .pl--2 .pl__m{animation-duration:7.2s;animation-delay:1.7s;}
 .heroe.vivo .pl--3 .pl__m{animation-duration:6.6s;animation-delay:2s;}
 @keyframes flota{0%,100%{transform:translateY(0);}50%{transform:translateY(-9px);}}
-.heroe__sello{position:absolute;left:0;bottom:12%;width:96px;height:96px;border-radius:50%;
+.heroe__sello{position:absolute;left:1%;top:0;width:96px;height:96px;border-radius:50%;
   background:var(--tomate);color:#fff;display:grid;place-content:center;text-align:center;
   font-family:var(--display);font-size:30px;line-height:1;z-index:3;
   box-shadow:0 18px 34px -16px rgba(184,68,30,.8);
@@ -689,7 +698,7 @@ html:not(.js) .heroe *{opacity:1!important;transform:none!important;}
 @media(max-width:899px){
   .heroe{padding-top:14px;}
   .heroe__kicker span{font-size:10px;letter-spacing:.12em;padding:6px 10px;}
-  .heroe__h{font-size:clamp(42px,12vw,60px);}
+  .heroe .heroe__h{font-size:clamp(42px,12vw,60px);}
   .heroe__platos{height:clamp(210px,58vw,380px);}
   .pl--1{left:0;top:4%;width:64%;height:88%;}
   .pl--2{right:0;top:0;width:40%;height:46%;}
@@ -708,6 +717,21 @@ html:not(.js) .heroe *{opacity:1!important;transform:none!important;}
   .heroe__btns{order:4;flex-direction:column;margin-bottom:16px;}
   .heroe__txt .hoy{order:5;margin-bottom:6px;}
   .heroe__nota{order:6;}
+}
+
+/* ═══ ESCRITORIO ═══
+   Medido a 1440 px: el carrusel de carteles obligaba a deslizar para ver el
+   tercero aunque sobraba ancho, y las rejillas de auto-fit dejaban una cuarta
+   columna vacía que descentraba el contenido. */
+@media(min-width:1100px){
+  .carteles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible;
+    margin:0;padding:6px 0 18px;}
+  .carteles .cartel{flex:none;}
+  .carta .tira__ayuda{display:none;}
+}
+@media(min-width:900px){
+  .cartel__cols,.pasos__l{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .dicho:hover{transform:translateY(-6px);}
 }
 
 /* ═══ BOTONES ═══
@@ -788,7 +812,7 @@ html:not(.js) .heroe *{opacity:1!important;transform:none!important;}
   <div class="wrap top__in">
     <a class="marca" href="#inicio">Har' ta jan <em>Para llevar</em></a>
     <nav class="nav" aria-label="Principal">
-      <a href="#menu">Menú de hoy</a>
+      <a href="#menu">Menú del día</a>
       <a href="#carta">Los menús</a>
       <a href="#casa">La casa</a>
       <a href="#donde">Dónde estamos</a>
@@ -808,7 +832,7 @@ html:not(.js) .heroe *{opacity:1!important;transform:none!important;}
       <h1 class="heroe__h"><span class="l"><span>Comida de casa,</span></span><span class="l"><span>hecha <em>cada día</em></span></span></h1>
       <p class="hoy" id="hoy-chip" hidden></p>
       <div class="heroe__btns">
-        <a class="btn btn--fill btn--ico" href="#menu"><span>Ver el menú de hoy</span><i class="btn__c"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a>
+        <a class="btn btn--fill btn--ico" href="#menu"><span>Ver el menú del día</span><i class="btn__c"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a>
         <a class="btn btn--wa" id="p-wa" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 0 0-7.4 12.7L3.5 20.5l4.4-1.1A8.5 8.5 0 1 0 12 3.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.8 9.2c.3 2.4 2.3 4.6 5.3 5.6l1.3-1.3-1.9-1-1 .7c-.9-.5-1.7-1.3-2.1-2.2l.7-1-1-1.9z" fill="currentColor"/></svg><span>Encargar por WhatsApp</span></a>
       </div>
       <p class="heroe__nota"><b>12 €</b> el menú con pan · Solo a mediodía · Mandoegi kalea 2</p>
@@ -816,15 +840,15 @@ html:not(.js) .heroe *{opacity:1!important;transform:none!important;}
     <div class="heroe__platos" id="platos">
       <figure class="pl pl--1" data-prof="14">
         <div class="pl__m"><img src="https://images.unsplash.com/photo-1650964807311-970cb88d347c?w=1100&q=76&auto=format&fit=crop" srcset="https://images.unsplash.com/photo-1650964807311-970cb88d347c?w=700&q=72&auto=format&fit=crop 700w, https://images.unsplash.com/photo-1650964807311-970cb88d347c?w=1100&q=76&auto=format&fit=crop 1100w" sizes="(max-width: 899px) 70vw, 36vw" fetchpriority="high" decoding="async" alt="Paella de marisco en la paellera" width="1200" height="1500"/></div>
-        <figcaption>Sábado · Paella de marisco</figcaption>
+        <figcaption>En su menú · Paella de marisco</figcaption>
       </figure>
       <figure class="pl pl--2" data-prof="26">
         <div class="pl__m"><img src="https://images.unsplash.com/photo-1682988771291-da784f151ef7?w=700&q=76&auto=format&fit=crop" decoding="async" alt="Paella de carne recién hecha" width="800" height="1000"/></div>
-        <figcaption>Viernes · Paella de carne</figcaption>
+        <figcaption>En su menú · Paella de carne</figcaption>
       </figure>
       <figure class="pl pl--3" data-prof="20">
         <div class="pl__m"><img src="https://images.unsplash.com/photo-1702728109878-c61a98d80491?w=700&q=76&auto=format&fit=crop" decoding="async" alt="Flan de huevo con caramelo" width="800" height="600"/></div>
-        <figcaption>Cada día · Flan de huevo</figcaption>
+        <figcaption>De postre · Flan de huevo</figcaption>
       </figure>
       <span class="heroe__sello" aria-hidden="true">12€<small>con pan</small></span>
     </div>
@@ -836,8 +860,8 @@ html:not(.js) .heroe *{opacity:1!important;transform:none!important;}
   <div class="wrap">
     <div class="cartel__cab">
       <div class="rev">
-        <p class="rotulo">El menú de hoy · Gaurko menua</p>
-        <h2>Lo que hay hecho<br/>esta mañana</h2>
+        <p class="rotulo">El menú del día · Eguneko menua</p>
+        <h2>Cambia cada día.<br/>Estos son los últimos</h2>
       </div>
       <div class="dias rev" data-d="1" id="dias" role="tablist" aria-label="Menús por día"></div>
     </div>
@@ -853,7 +877,7 @@ html:not(.js) .heroe *{opacity:1!important;transform:none!important;}
     <div class="carta__cab">
       <div class="rev">
         <p class="rotulo">La semana</p>
-        <h2>Cambia cada día,<br/>y siempre 12 €</h2>
+        <h2>Tres carteles,<br/>tres menús de 12 €</h2>
       </div>
       <p class="lead rev" data-d="1">Estos son vuestros últimos carteles. En la web se cambiarían desde el móvil en lo que se tarda en hacer la foto.</p>
     </div>
@@ -872,7 +896,7 @@ html:not(.js) .heroe *{opacity:1!important;transform:none!important;}
  <p class="rotulo rev">La casa</p>
  <h2 class="casa__t rev" data-d="1">Comida casera para llevar, en Galtzaraborda</h2>
  <div class="casa__cols rev" data-d="2">
- <p>Abrimos en mayo de 2022 en Mandoegi kalea, y desde entonces cocinamos cada mañana el menú del día: primeros, segundos y postres de casa, para llevar o comer aquí.</p>
+ <p>Abrimos en mayo de 2022 en Mandoegi kalea, y desde entonces cocinamos cada día el menú: primeros, segundos y postres de casa, para llevar o comer aquí.</p>
  <p>El menú son <span class="subr">12 € con pan</span> y cambia todos los días. Los encargos, por teléfono o por WhatsApp.</p>
  <p>Estamos solo al mediodía, de lunes a sábado. Los domingos cerramos.</p>
  </div>
@@ -934,8 +958,8 @@ html:not(.js) .heroe *{opacity:1!important;transform:none!important;}
     <p class="rotulo rev">Encargar es esto</p>
     <ol class="pasos__l">
       <li class="rev"><b>1</b><p>Nos llamas o nos mandas un WhatsApp.</p></li>
-      <li class="rev" data-d="1"><b>2</b><p>Nos dices qué quieres y a qué hora lo recoges.</p></li>
-      <li class="rev" data-d="2"><b>3</b><p>Lo tienes hecho y listo para llevar.</p></li>
+      <li class="rev" data-d="1"><b>2</b><p>Nos dices qué quieres.</p></li>
+      <li class="rev" data-d="2"><b>3</b><p>Lo recoges en Mandoegi kalea 2.</p></li>
     </ol>
   </div>
 </section>
@@ -972,7 +996,7 @@ html:not(.js) .heroe *{opacity:1!important;transform:none!important;}
     <div>
       <p class="rotulo rev">Encargar</p>
  <h2 class="rev" data-d="1">Llámanos<br/>o mándanos un WhatsApp</h2>
- <p class="cierre__lead rev" data-d="2">Dinos qué quieres y a qué hora lo recoges. Si es para varios, mejor con un rato de antelación.</p>
+ <p class="cierre__lead rev" data-d="2">Dinos qué quieres por teléfono o por WhatsApp.</p>
       <div class="cierre__btns rev" data-d="2">
         <a class="btn btn--fill" id="c-tel" href="#">Llamar al 943 384 080 <span class="ar" aria-hidden="true">→</span></a>
         <a class="btn btn--ghost" id="c-wa" href="#" target="_blank" rel="noopener">WhatsApp</a>
@@ -995,7 +1019,7 @@ html:not(.js) .heroe *{opacity:1!important;transform:none!important;}
 <footer class="pie">
   <div class="wrap pie__in">
     <p>© <span id="year"></span> Har' ta jan · Errenteria, Gipuzkoa</p>
-    <p><a href="https://www.instagram.com/har_ta_jan/" target="_blank" rel="noopener">Instagram</a> · <a href="#">Aviso legal</a> · <a href="#">Privacidad</a> · <a href="#">Alérgenos</a></p>
+    <p><a href="https://www.instagram.com/har_ta_jan/" target="_blank" rel="noopener">Instagram</a> · <a href="#">Aviso legal</a> · <a href="#">Privacidad</a></p>
     <p class="demo">Demostración para Har' ta jan, creada sin compromiso por OI Studio · las fotos, los textos y los precios son de ejemplo y se sustituyen por los vuestros.</p>
   </div>
 </footer>
@@ -1021,7 +1045,7 @@ const DATOS = {
   direccion: "Mandoegi kalea 2 · Errenteria, Gipuzkoa",
   maps:      "https://www.google.com/maps/search/?api=1&query=Har'%20ta%20jan%20Mandoegi%20kalea%202%20Errenteria",
   geo:       { lat:43.3138154, lon:-1.9102026 },
-  precio: "€",
+  precio: "10-20 €",
   cocina: "Casera · Para llevar",
   horario: {
     1:[["10:00","15:00"]],
@@ -1038,13 +1062,13 @@ const DATOS = {
     1:null,
     2:null,
     3:null,
-    4:{ primeros:["Vainas con refrito","Espaguetis a la boloñesa","Marmitako","Ensaladilla rusa"],
+    4:{ fecha:"2026-09-17", primeros:["Vainas con refrito","Espaguetis a la boloñesa","Marmitako","Ensaladilla rusa"],
         segundos:["Pechuga rellena de espinacas","Chuleta tipo sajonia con pimiento rojo","Salmón a la plancha","Merluza rebozada"],
         postres:["Arroz con leche","Panna cotta","Tarta de queso","Flan de huevo"] },
-    5:{ primeros:["Alcachofas fritas con jamón","Paella de carne","Ensaladilla rusa","Macarrones con tomate y chorizo"],
+    5:{ fecha:"2026-07-17", primeros:["Alcachofas fritas con jamón","Paella de carne","Ensaladilla rusa","Macarrones con tomate y chorizo"],
         segundos:["Pechuga rellena de bechamel","Cachopo de jamón y queso","Albóndigas en tomate","Chipirones en su tinta"],
         postres:["Arroz con leche","Natillas","Flan de huevo","Tarta de queso"] },
-    6:{ primeros:["Paella de marisco","Ensalada de patata con tomate","Ensaladilla rusa","Porrusalda"],
+    6:{ fecha:"2026-06-06", primeros:["Paella de marisco","Ensalada de patata con tomate","Ensaladilla rusa","Porrusalda"],
         segundos:["Cachopo de boletus con patatas fritas","Costilla de cerdo al horno","Albóndigas en salsa de verduras","Chipirones en su tinta"],
         postres:["Arroz con leche","Natillas","Flan de huevo","Tarta de queso"] },
     0:null,
@@ -1644,8 +1668,19 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
   var chip = document.getElementById("hoy-chip");
   if(!cartel) return;
 
+  /* Cada menú lleva la fecha del cartel en que salió. Sin ella, la web decía
+     "hoy, sábado: paella de marisco" CUALQUIER sábado, y ese menú fue el del
+     6 de junio: el resto de sábados era mentira. Ahora se dice de qué día es,
+     y solo si la fecha es la de hoy se dice "hoy". */
+  var MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+  function fechaDe(d){ return new Date(DATOS.menuDia[d].fecha + "T12:00:00"); }
+  function esHoy(d){ var f = fechaDe(d), n = new Date();
+    return f.getFullYear()===n.getFullYear() && f.getMonth()===n.getMonth() && f.getDate()===n.getDate(); }
+  function largo(d){ var f = fechaDe(d); return DIAS[d] + " " + f.getDate() + " de " + MESES[f.getMonth()]; }
+  function corto(d){ var f = fechaDe(d); return DIAS[d].slice(0,3) + " " + f.getDate() + "/" + (f.getMonth()+1); }
+  // del cartel más reciente al más antiguo
   var conMenu = Object.keys(DATOS.menuDia).map(Number).filter(function(d){ return DATOS.menuDia[d]; })
-    .sort(function(a,b){ return (a===0?7:a)-(b===0?7:b); });
+    .sort(function(a,b){ return fechaDe(b) - fechaDe(a); });
   var hoy = new Date().getDay();
 
   function lista(titulo, platos){
@@ -1659,15 +1694,15 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
     if(!m){
       destino.className = "cartel";
       destino.innerHTML = '<p class="cartel__dia">El menú de hoy, al teléfono</p>' +
-        '<p class="cartel__nota">El cartel se cuelga cada mañana. Llamadnos al ' +
-        DATOS.tel.replace(/^\+34/,"") + ' y os decimos lo que hay hecho hoy.</p>';
+        '<p class="cartel__nota">El menú cambia cada día. Llámanos al ' +
+        DATOS.tel.replace(/^\+34/,"") + ' y te decimos lo que hay hoy.</p>';
       return;
     }
     destino.className = "cartel";
     destino.innerHTML =
       '<div class="cartel__precio">' + DATOS.menuPrecio + "<small>" + DATOS.menuIncluye + "</small></div>" +
-      '<p class="cartel__dia">' + DIAS[d] + "</p>" +
-      '<p class="cartel__incl">Primeros, segundos y postre · para llevar</p>' +
+      '<p class="cartel__dia">' + (esHoy(d) ? "Hoy · " : "") + largo(d) + "</p>" +
+      '<p class="cartel__incl">' + (esHoy(d) ? "Primeros, segundos y postre · para llevar" : "Menú de ese día · primeros, segundos y postre") + "</p>" +
       '<div class="cartel__cols">' + lista("Primeros", m.primeros) + lista("Segundos", m.segundos) +
       lista("Postres", m.postres) + "</div>" +
       (conBoton ? '<div class="cartel__pie"><a class="btn btn--fill" id="cartel-wa" href="#" target="_blank" rel="noopener">Encargar por WhatsApp <span class="ar" aria-hidden="true">→</span></a><span class="cartel__nota">o al ' + DATOS.tel.replace(/^\+34/,"") + "</span></div>" : "");
@@ -1678,14 +1713,14 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
     }
   }
 
-  // Pestañas: el día de hoy primero; si hoy no hay cartel, el siguiente que haya.
-  var elegido = DATOS.menuDia[hoy] ? hoy : (conMenu[0] !== undefined ? conMenu[0] : hoy);
+  // Pestañas: primero el cartel más reciente.
+  var elegido = conMenu.length ? conMenu[0] : hoy;
   if(pestanas && conMenu.length > 1){
     conMenu.forEach(function(d){
       var b = document.createElement("button");
       b.type = "button"; b.setAttribute("role","tab");
-      b.textContent = d === hoy ? "Hoy" : DIAS[d].slice(0,3);
-      b.setAttribute("aria-label", DIAS[d]);
+      b.textContent = esHoy(d) ? "Hoy" : corto(d);
+      b.setAttribute("aria-label", largo(d));
       b.onclick = function(){ elegido = d; pintar(); };
       b.dataset.dia = d;
       pestanas.appendChild(b);
@@ -1708,14 +1743,13 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
     });
   }
 
-  // Pastilla de la portada: lo que hay hoy, en una línea.
-  if(chip){
-    var m = DATOS.menuDia[hoy];
-    if(m){
-      chip.innerHTML = '<i aria-hidden="true"></i>Hoy, ' + DIAS[hoy] + ": <b>" +
-        m.segundos.slice(0,2).join(" · ") + "</b> · " + DATOS.menuPrecio;
-      chip.hidden = false;
-    }
+  // Pastilla de la portada: el último menú publicado, con su fecha.
+  if(chip && conMenu.length){
+    var u = conMenu[0], m = DATOS.menuDia[u];
+    chip.innerHTML = '<span class="hoy__t"><i aria-hidden="true"></i>' +
+      (esHoy(u) ? "Hoy" : "Último menú · " + corto(u)) + " · " + DATOS.menuPrecio + "</span>" +
+      "<b>" + m.segundos.slice(0,2).join(" · ") + "</b>";
+    chip.hidden = false;
   }
 
   /* preset 13 · parallax subtle: solo la foto de portada, y solo 8%. */
