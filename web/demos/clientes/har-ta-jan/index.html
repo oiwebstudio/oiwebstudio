@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Ccircle cx=%2232%22 cy=%2232%22 r=%2232%22 fill=%22%23B8441E%22/%3E%3Ctext x=%2232%22 y=%2243%22 text-anchor=%22middle%22 font-family=%22Georgia,serif%22 font-size=%2232%22 fill=%22white%22%3EH%3C/text%3E%3C/svg%3E"/>
 <meta name="theme-color" content="#2F6B3F"/>
 <meta name="robots" content="noindex, follow"/>
 <title>Har' ta jan — Comida casera para llevar en Errenteria</title>
@@ -11,7 +12,7 @@
 <meta property="og:title" content="Har' ta jan — Comida casera para llevar en Errenteria"/>
 <meta property="og:description" content="Menú del día 12 €, incluye pan. Cambia cada día."/>
 <meta property="og:type" content="restaurant"/>
-<meta property="og:image" content="https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&h=630&q=80&auto=format&fit=crop"/>
+<meta property="og:image" content="https://images.unsplash.com/photo-1650964807311-970cb88d347c?w=1200&h=630&q=80&auto=format&fit=crop"/>
 <!--
   ═══ PLANTILLA DE SECTOR · HOSTELERÍA / ASADOR ═══
   Spec: docs/PROMPT-PLANTILLAS-SECTOR.md · Dirección: docs/PROMPT-DIRECCION-VISUAL.md
@@ -407,7 +408,7 @@ p{text-wrap:pretty;}
 @media(max-width:719px){
   .cartel__cols>div+div{border-left:0;padding-left:0;border-top:1px solid var(--filete);padding-top:20px;}
 }
-.cartel h4{font-family:var(--detalle);font-size:11.5px;letter-spacing:.14em;
+.cartel h3{font-family:var(--detalle);font-size:11.5px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--acento);margin:0 0 12px;}
 .cartel ul{list-style:none;margin:0;padding:0;display:grid;gap:9px;}
 .cartel li{font-size:var(--t1);line-height:1.35;}
@@ -548,7 +549,7 @@ p{text-wrap:pretty;}
 .pizarra .cartel{background:var(--fondo);color:var(--tinta);border-color:transparent;}
 .pizarra .cartel .cartel__dia,.pizarra .cartel li{color:var(--tinta);}
 .pizarra .cartel .cartel__incl,.pizarra .cartel .cartel__nota{color:var(--tinta-sec);}
-.pizarra .cartel h4{color:var(--acento-osc);}
+.pizarra .cartel h3{color:var(--acento-osc);}
 .pizarra .cartel__precio{background:var(--acento-osc);color:#fff;}
 .pizarra .cartel .btn--fill{background:var(--acento-osc);border-color:var(--acento-osc);color:#fff;}
 .pizarra .dias button{border-color:var(--osc-filete);color:var(--osc-tinta);}
@@ -776,6 +777,9 @@ html:not(.js) .heroe *{opacity:1!important;transform:none!important;}
   .pl__m{animation:none!important;}
   .btn--fill::before{transition:none;}
 }
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,.btn:focus-visible{
+  outline:3px solid var(--tomate);outline-offset:3px;}
+.pizarra a:focus-visible,.pizarra button:focus-visible,.cifras a:focus-visible{outline-color:var(--tomate-claro);}
 </style>
 <script>document.documentElement.className+=" js";</script>
 </head>
@@ -971,7 +975,7 @@ html:not(.js) .heroe *{opacity:1!important;transform:none!important;}
     <h2 class="rev" data-d="1" style="max-width:16ch">En Mandoegi kalea,<br/>en Galtzaraborda</h2>
     <div class="donde__in">
       <div class="mapa rev">
-        <iframe title="Mapa de situación del asador" loading="lazy" allowfullscreen
+        <iframe title="Mapa: Har' ta jan, Mandoegi kalea 2, Errenteria" loading="lazy" allowfullscreen
           referrerpolicy="no-referrer-when-downgrade"
           src="https://www.openstreetmap.org/export/embed.html?bbox=-1.9182%2C43.3093%2C-1.9022%2C43.3183&layer=mapnik&marker=43.31382%2C-1.91020"></iframe>
       </div>
@@ -1019,7 +1023,7 @@ html:not(.js) .heroe *{opacity:1!important;transform:none!important;}
 <footer class="pie">
   <div class="wrap pie__in">
     <p>© <span id="year"></span> Har' ta jan · Errenteria, Gipuzkoa</p>
-    <p><a href="https://www.instagram.com/har_ta_jan/" target="_blank" rel="noopener">Instagram</a> · <a href="#">Aviso legal</a> · <a href="#">Privacidad</a></p>
+    <p><a href="https://www.instagram.com/har_ta_jan/" target="_blank" rel="noopener">Instagram</a></p>
     <p class="demo">Demostración para Har' ta jan, creada sin compromiso por OI Studio · las fotos, los textos y los precios son de ejemplo y se sustituyen por los vuestros.</p>
   </div>
 </footer>
@@ -1042,11 +1046,11 @@ const DATOS = {
   reclamo: "Comida casera hecha cada día para llevar.",
   tel:       "+34943384080",
   whatsapp: "34603112955",
-  direccion: "Mandoegi kalea 2 · Errenteria, Gipuzkoa",
-  maps:      "https://www.google.com/maps/search/?api=1&query=Har'%20ta%20jan%20Mandoegi%20kalea%202%20Errenteria",
+  direccion: "Mandoegi Kalea, 2, 20100 Errenteria, Gipuzkoa",
+  maps:      "https://www.google.com/maps/search/?api=1&query=Har'%20ta%20jan%20Mandoegi%20Kalea%2C%202%2C%2020100%20Errenteria%20Errenteria",
   geo:       { lat:43.3138154, lon:-1.9102026 },
   precio: "10-20 €",
-  cocina: "Casera · Para llevar",
+  cocina: "Casera",
   horario: {
     1:[["10:00","15:00"]],
     2:[["10:00","15:00"]],
@@ -1186,11 +1190,11 @@ function inyectarSchema(){
   s.textContent = JSON.stringify({
     "@context":"https://schema.org","@type":"Restaurant",
     name:DATOS.nombre, description:DATOS.reclamo, servesCuisine:DATOS.cocina,
-    telephone:DATOS.tel, priceRange:DATOS.precio, url:location.href,
-    acceptsReservations:"True",
+    telephone:DATOS.tel, priceRange:DATOS.precio, url:location.origin+location.pathname,
+    acceptsReservations:"False",
     address:{"@type":"PostalAddress",streetAddress:calle,
-      addressLocality:(resto.match(/\d{5}\s+([^,]+)/)||[])[1]||"Tolosa",
-      postalCode:(resto.match(/\d{5}/)||[])[0]||"", addressCountry:"ES"},
+      addressLocality:((resto||DATOS.direccion).match(/\d{5}\s+([^,]+)/)||[])[1]||"Errenteria",
+      postalCode:((resto||DATOS.direccion).match(/\d{5}/)||[])[0]||"", addressCountry:"ES"},
     geo:{"@type":"GeoCoordinates",latitude:DATOS.geo.lat,longitude:DATOS.geo.lon},
     openingHoursSpecification:horas,
     aggregateRating:{"@type":"AggregateRating",ratingValue:"4.9",reviewCount:"57"},
@@ -1676,7 +1680,7 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
 
   function lista(titulo, platos){
     if(!platos || !platos.length) return "";
-    return "<div><h4>"+titulo+"</h4><ul>"+platos.map(function(p,i){
+    return "<div><h3>"+titulo+"</h3><ul>"+platos.map(function(p,i){
       return '<li style="--i:'+i+'">'+p+"</li>"; }).join("")+"</ul></div>";
   }
 
