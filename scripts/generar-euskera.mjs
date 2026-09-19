@@ -15,15 +15,22 @@
  */
 import fs from "node:fs";
 import path from "node:path";
+import { COMUNES, ZONAS_EU, NEUTRAS } from "./euskera-zonas.mjs";
 
 const RAIZ = path.resolve("web");
 const SALIDA = path.join(RAIZ, "eu");
 const SOLO_COMPROBAR = process.argv.includes("--check");
 
-/* Las páginas con cobertura de traducción alta. Las de zona y los artículos
-   quedan fuera a propósito: apenas tienen texto marcado como traducible y
-   saldrían medio en castellano, que es peor que no tenerlas. */
+/* Las páginas con cobertura de traducción alta. Los artículos quedan fuera a
+   propósito: apenas tienen texto marcado como traducible y saldrían medio en
+   castellano, que es peor que no tenerlas. Las de zona no usan data-t: las que
+   tienen versión en euskera se traducen con los pares de euskera-zonas.mjs. */
 const PAGINAS = ["index.html", "precios.html", "contacto.html", "trabajos.html", "sobre-mi.html"];
+const ZONAS = Object.keys(ZONAS_EU);
+
+/* Todo lo que existe en /eu/: los enlaces internos que apunten aquí se
+   quedan en euskera; el resto va a la versión en castellano. */
+const TRADUCIDAS = new Set([...PAGINAS, ...ZONAS]);
 
 /* Los <title> y las descripciones no pueden llevar data-t, así que van aquí.
    No son traducción literal: "diseño web" y "webgune diseinua" no se buscan
@@ -134,26 +141,120 @@ function traducirPlaceholders(html, dic, faltan) {
  * la raíz y los enlaces internos van a /eu/ si esa página está traducida, o a la
  * versión en castellano si no lo está.
  */
-function absolutizarRutas(html) {
+function absolutizarRutas(html, pagina) {
+  // Se resuelve contra la URL de la página de origen: así "../assets/x.png"
+  // desde zonas/ y "assets/x.png" desde la raíz acaban en el mismo sitio.
+  const base = `${BASE}/${pagina}`;
+  const resolver = (u) => {
+    const url = new URL(u, base);
+    const ruta = decodeURI(url.pathname).replace(/^\//, "");
+    const destino = TRADUCIDAS.has(ruta) ? `/eu/${ruta}` : `/${ruta}`;
+    return destino + url.search + url.hash;
+  };
   return html.replace(/\b(href|src|srcset)="([^"]+)"/gi, (todo, attr, valor) => {
     if (/^(https?:|mailto:|tel:|data:|#|\/)/i.test(valor)) return todo;
     if (attr === "srcset") {
       const partes = valor.split(",").map((p) => {
         const [u, ...resto] = p.trim().split(/\s+/);
-        return ["/" + u.replace(/^\.\//, ""), ...resto].join(" ");
+        return [resolver(u), ...resto].join(" ");
       });
       return `${attr}="${partes.join(", ")}"`;
     }
-    const limpio = valor.replace(/^\.\//, "");
-    const [ruta, cola = ""] = limpio.split(/(?=[?#])/);
-    const destino = PAGINAS.includes(ruta) ? `/eu/${ruta}` : `/${ruta}`;
-    return `${attr}="${destino}${cola}"`;
+    return `${attr}="${resolver(valor)}"`;
   });
+}
+
+/* ------------------------------------------------------------ zonas (pares) */
+
+const escaparRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+/**
+ * Sustituye cada fragmento en castellano por su traducción. Solo cuenta si
+ * el fragmento ocupa un texto o un atributo entero (va entre > y <, o entre
+ * comillas): así "Servicios" no se come el principio de "Servicios
+ * profesionales" ni una palabra suelta dentro de otra frase.
+ */
+function traducirZona(html, pagina, errores) {
+  const propios = ZONAS_EU[pagina].pares;
+  // De más largo a más corto, para que las frases completas vayan antes que
+  // las palabras sueltas que contienen.
+  const pares = [...propios, ...COMUNES].sort((a, b) => b[0].length - a[0].length);
+  const cab = html.indexOf("</head>");
+  let head = html.slice(0, cab), body = html.slice(cab);
+
+  const aplicar = (trozo, es, eu, enJson) => {
+    const re = new RegExp(`(?<=[>"])${escaparRe(es)}(?=[<"])`, "g");
+    let n = 0;
+    // Dentro del JSON-LD unas comillas sin escapar romperían el bloque.
+    const out = trozo.replace(re, () => { n++; return enJson ? eu.replace(/"/g, '\\"') : eu; });
+    return [out, n];
+  };
+
+  for (const [es, eu] of pares) {
+    // En la cabecera solo se toca el JSON-LD (el título y las meta van aparte).
+    let n1 = 0;
+    head = head.replace(/(<script type="application\/ld\+json">)([\s\S]*?)(<\/script>)/g, (t, a, json, c) => {
+      const [out, n] = aplicar(json, es, eu, true); n1 += n; return a + out + c;
+    });
+    const [nuevoBody, n2] = aplicar(body, es, eu, false);
+    body = nuevoBody;
+    // Los comunes pueden no salir en todas las zonas; los propios, sí.
+    if (!(n1 + n2) && propios.some((p) => p[0] === es)) {
+      errores.push(`${pagina}: ya no aparece «${es.slice(0, 70)}…» — ¿se editó en castellano? Actualiza euskera-zonas.mjs.`);
+    }
+  }
+
+  // El JSON-LD apunta a la URL en castellano; aquí tiene que ser la propia.
+  head = head.replace(/(<script type="application\/ld\+json">)([\s\S]*?)(<\/script>)/g, (t, a, json, c) =>
+    a + json.split(`${BASE}/${pagina}`).join(`${BASE}/eu/${pagina}`)
+            .split(`"item":"${BASE}/"`).join(`"item":"${BASE}/eu/index.html"`) + c);
+
+  return head + body;
+}
+
+/**
+ * Red de seguridad: busca texto que haya quedado en castellano. Cada texto
+ * visible, alt, aria-label y cadena del JSON-LD tiene que estar dentro de
+ * alguna traducción conocida o ser solo nombres propios y cifras.
+ */
+function restosDeCastellano(html, dic, pagina) {
+  const conocidos = [
+    ...COMUNES.map((p) => p[1]),
+    ...ZONAS_EU[pagina].pares.map((p) => p[1]),
+    ...Object.values(dic).filter((v) => typeof v === "string"),
+  ].map((t) => t.replace(/<[^>]+>/g, " ").replace(/\s+/g, " "));
+  const neutras = [...NEUTRAS].sort((a, b) => b.length - a.length);
+  const esNeutro = (t) => {
+    let r = t.replace(/\S+@\S+\.\w+/g, " ");
+    for (const n of neutras) r = r.split(n).join(" ");
+    return !/\p{L}{2,}/u.test(r);
+  };
+  const ok = (t) => {
+    t = t.replace(/&rarr;/g, "→").replace(/&amp;/g, "&").replace(/\s+/g, " ").trim();
+    if (!t || esNeutro(t)) return true;
+    return conocidos.some((c) => c.includes(t));
+  };
+
+  const restos = new Set();
+  const cab = html.indexOf("</head>");
+  const body = html.slice(cab).replace(/<(script|style|svg)\b[\s\S]*?<\/\1>/gi, "");
+  for (const m of body.matchAll(/>([^<]+)</g)) if (!ok(m[1])) restos.add(m[1].trim());
+  for (const m of body.matchAll(/\b(?:alt|aria-label|title)="([^"]*)"/g)) if (!ok(m[1])) restos.add(m[1]);
+  for (const m of html.slice(0, cab).matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+    const recorrer = (o) => {
+      if (typeof o === "string") { if (!/^(https?:|\+|\S+@\S+$)/.test(o) && !ok(o)) restos.add(o); }
+      else if (o && typeof o === "object") for (const [k, v] of Object.entries(o)) if (!k.startsWith("@")) recorrer(v);
+    };
+    recorrer(JSON.parse(m[1]));
+  }
+  return [...restos];
 }
 
 /** Cabecera: idioma, título, descripción, canónica y hreflang. */
 function ajustarCabecera(html, pagina) {
-  const meta = META[pagina];
+  const meta = META[pagina] || ZONAS_EU[pagina];
+  // Las palabras clave en castellano no pintan nada en la versión en euskera.
+  html = html.replace(/[ \t]*<meta\s+name="keywords"[^>]*>\s*\n?/i, "");
   const urlEu = `${BASE}/eu/${pagina}`;
   const urlEs = `${BASE}/${pagina === "index.html" ? "" : pagina}`;
 
@@ -220,27 +321,35 @@ function enlazarSelectorIdioma(html, pagina) {
 
 const dic = leerDiccionario();
 const faltan = new Set();
+const errores = [];
 let escritas = 0;
 
-if (!SOLO_COMPROBAR) fs.mkdirSync(SALIDA, { recursive: true });
+if (!SOLO_COMPROBAR) fs.mkdirSync(path.join(SALIDA, "zonas"), { recursive: true });
 
-for (const pagina of PAGINAS) {
+for (const pagina of [...PAGINAS, ...ZONAS]) {
   const origen = path.join(RAIZ, pagina);
+  const esZona = ZONAS.includes(pagina);
   if (!fs.existsSync(origen)) throw new Error(`No existe ${pagina}`);
-  if (!META[pagina]) throw new Error(`Falta el título en euskera de ${pagina}`);
+  if (!META[pagina] && !esZona) throw new Error(`Falta el título en euskera de ${pagina}`);
 
   let html = fs.readFileSync(origen, "utf8");
   html = traducirElementos(html, dic, faltan);
   html = traducirPlaceholders(html, dic, faltan);
+  if (esZona) html = traducirZona(html, pagina, errores);
 
   /* Fuera i18n.js: aquí sobra y además estorba. La página ya viene traducida en
      el HTML, y ese script reescribía document.documentElement.lang a "es" al
      cargar, deshaciendo justo la señal que le dice a Google en qué idioma está
      esta página. El idioma lo decide la URL, no el navegador. */
   html = html.replace(/[ \t]*<script[^>]*src="[^"]*i18n\.js[^"]*"[^>]*><\/script>\s*\n?/gi, "");
-  html = absolutizarRutas(html);
+  html = absolutizarRutas(html, pagina);
   html = ajustarCabecera(html, pagina);
   html = enlazarSelectorIdioma(html, pagina);
+
+  // Sobre la página ya terminada: lo que se vaya a publicar es lo que se mira.
+  if (esZona) {
+    for (const r of restosDeCastellano(html, dic, pagina)) errores.push(`${pagina}: queda sin traducir «${r.slice(0, 80)}»`);
+  }
 
   // Aviso para quien abra el fichero generado.
   html = html.replace(
@@ -250,6 +359,13 @@ for (const pagina of PAGINAS) {
 
   if (!SOLO_COMPROBAR) fs.writeFileSync(path.join(SALIDA, pagina), html);
   escritas++;
+}
+
+if (errores.length) {
+  console.error(`\n  ¡OJO! Las páginas de zona en euskera no están completas:`);
+  for (const e of errores) console.error("    " + e);
+  console.error("  Revisa scripts/euskera-zonas.mjs.\n");
+  process.exit(1);
 }
 
 if (faltan.size) {
