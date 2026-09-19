@@ -654,7 +654,7 @@ html:not(.js) .heroe *{opacity:1!important;transform:none!important;}
 .heroe__nota{margin:18px 0 0;font-size:14.5px;color:var(--tinta-sec);}
 .heroe__nota b{color:var(--tinta);}
 
-/* la pastilla del último menú: fecha y precio arriba, platos debajo */
+/* la pastilla del menú: día y precio arriba, platos debajo */
 .heroe .hoy{display:flex;flex-direction:column;align-items:flex-start;gap:4px;border-radius:18px;padding:12px 18px;max-width:34rem;}
 .hoy__t{display:flex;align-items:center;gap:8px;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;font-family:var(--detalle);color:var(--tinta-sec);}
 .heroe .hoy b{font-size:15.5px;line-height:1.4;}
@@ -840,11 +840,11 @@ html:not(.js) .heroe *{opacity:1!important;transform:none!important;}
     <div class="heroe__platos" id="platos">
       <figure class="pl pl--1" data-prof="14">
         <div class="pl__m"><img src="https://images.unsplash.com/photo-1650964807311-970cb88d347c?w=1100&q=76&auto=format&fit=crop" srcset="https://images.unsplash.com/photo-1650964807311-970cb88d347c?w=700&q=72&auto=format&fit=crop 700w, https://images.unsplash.com/photo-1650964807311-970cb88d347c?w=1100&q=76&auto=format&fit=crop 1100w" sizes="(max-width: 899px) 70vw, 36vw" fetchpriority="high" decoding="async" alt="Paella de marisco en la paellera" width="1200" height="1500"/></div>
-        <figcaption>En su menú · Paella de marisco</figcaption>
+        <figcaption>Sábado · Paella de marisco</figcaption>
       </figure>
       <figure class="pl pl--2" data-prof="26">
         <div class="pl__m"><img src="https://images.unsplash.com/photo-1682988771291-da784f151ef7?w=700&q=76&auto=format&fit=crop" decoding="async" alt="Paella de carne recién hecha" width="800" height="1000"/></div>
-        <figcaption>En su menú · Paella de carne</figcaption>
+        <figcaption>Viernes · Paella de carne</figcaption>
       </figure>
       <figure class="pl pl--3" data-prof="20">
         <div class="pl__m"><img src="https://images.unsplash.com/photo-1702728109878-c61a98d80491?w=700&q=76&auto=format&fit=crop" decoding="async" alt="Flan de huevo con caramelo" width="800" height="600"/></div>
@@ -861,7 +861,7 @@ html:not(.js) .heroe *{opacity:1!important;transform:none!important;}
     <div class="cartel__cab">
       <div class="rev">
         <p class="rotulo">El menú del día · Eguneko menua</p>
-        <h2>Cambia cada día.<br/>Estos son los últimos</h2>
+        <h2>Cada día,<br/>su menú</h2>
       </div>
       <div class="dias rev" data-d="1" id="dias" role="tablist" aria-label="Menús por día"></div>
     </div>
@@ -877,7 +877,7 @@ html:not(.js) .heroe *{opacity:1!important;transform:none!important;}
     <div class="carta__cab">
       <div class="rev">
         <p class="rotulo">La semana</p>
-        <h2>Tres carteles,<br/>tres menús de 12 €</h2>
+        <h2>Jueves, viernes y sábado,<br/>12 € el menú</h2>
       </div>
       <p class="lead rev" data-d="1">Estos son vuestros últimos carteles. En la web se cambiarían desde el móvil en lo que se tarda en hacer la foto.</p>
     </div>
@@ -1062,13 +1062,13 @@ const DATOS = {
     1:null,
     2:null,
     3:null,
-    4:{ fecha:"2026-09-17", primeros:["Vainas con refrito","Espaguetis a la boloñesa","Marmitako","Ensaladilla rusa"],
+    4:{ primeros:["Vainas con refrito","Espaguetis a la boloñesa","Marmitako","Ensaladilla rusa"],
         segundos:["Pechuga rellena de espinacas","Chuleta tipo sajonia con pimiento rojo","Salmón a la plancha","Merluza rebozada"],
         postres:["Arroz con leche","Panna cotta","Tarta de queso","Flan de huevo"] },
-    5:{ fecha:"2026-07-17", primeros:["Alcachofas fritas con jamón","Paella de carne","Ensaladilla rusa","Macarrones con tomate y chorizo"],
+    5:{ primeros:["Alcachofas fritas con jamón","Paella de carne","Ensaladilla rusa","Macarrones con tomate y chorizo"],
         segundos:["Pechuga rellena de bechamel","Cachopo de jamón y queso","Albóndigas en tomate","Chipirones en su tinta"],
         postres:["Arroz con leche","Natillas","Flan de huevo","Tarta de queso"] },
-    6:{ fecha:"2026-06-06", primeros:["Paella de marisco","Ensalada de patata con tomate","Ensaladilla rusa","Porrusalda"],
+    6:{ primeros:["Paella de marisco","Ensalada de patata con tomate","Ensaladilla rusa","Porrusalda"],
         segundos:["Cachopo de boletus con patatas fritas","Costilla de cerdo al horno","Albóndigas en salsa de verduras","Chipirones en su tinta"],
         postres:["Arroz con leche","Natillas","Flan de huevo","Tarta de queso"] },
     0:null,
@@ -1668,19 +1668,10 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
   var chip = document.getElementById("hoy-chip");
   if(!cartel) return;
 
-  /* Cada menú lleva la fecha del cartel en que salió. Sin ella, la web decía
-     "hoy, sábado: paella de marisco" CUALQUIER sábado, y ese menú fue el del
-     6 de junio: el resto de sábados era mentira. Ahora se dice de qué día es,
-     y solo si la fecha es la de hoy se dice "hoy". */
-  var MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
-  function fechaDe(d){ return new Date(DATOS.menuDia[d].fecha + "T12:00:00"); }
-  function esHoy(d){ var f = fechaDe(d), n = new Date();
-    return f.getFullYear()===n.getFullYear() && f.getMonth()===n.getMonth() && f.getDate()===n.getDate(); }
-  function largo(d){ var f = fechaDe(d); return DIAS[d] + " " + f.getDate() + " de " + MESES[f.getMonth()]; }
-  function corto(d){ var f = fechaDe(d); return DIAS[d].slice(0,3) + " " + f.getDate() + "/" + (f.getMonth()+1); }
-  // del cartel más reciente al más antiguo
+  /* Los menús van por día de la semana: según Oier, el del jueves es siempre
+     el del jueves, y así con cada día. Por eso no se pone fecha. */
   var conMenu = Object.keys(DATOS.menuDia).map(Number).filter(function(d){ return DATOS.menuDia[d]; })
-    .sort(function(a,b){ return fechaDe(b) - fechaDe(a); });
+    .sort(function(a,b){ return (a===0?7:a)-(b===0?7:b); });
   var hoy = new Date().getDay();
 
   function lista(titulo, platos){
@@ -1701,8 +1692,8 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
     destino.className = "cartel";
     destino.innerHTML =
       '<div class="cartel__precio">' + DATOS.menuPrecio + "<small>" + DATOS.menuIncluye + "</small></div>" +
-      '<p class="cartel__dia">' + (esHoy(d) ? "Hoy · " : "") + largo(d) + "</p>" +
-      '<p class="cartel__incl">' + (esHoy(d) ? "Primeros, segundos y postre · para llevar" : "Menú de ese día · primeros, segundos y postre") + "</p>" +
+      '<p class="cartel__dia">' + (d === hoy ? "Hoy · " : "") + DIAS[d] + "</p>" +
+      '<p class="cartel__incl">Primeros, segundos y postre · para llevar</p>' +
       '<div class="cartel__cols">' + lista("Primeros", m.primeros) + lista("Segundos", m.segundos) +
       lista("Postres", m.postres) + "</div>" +
       (conBoton ? '<div class="cartel__pie"><a class="btn btn--fill" id="cartel-wa" href="#" target="_blank" rel="noopener">Encargar por WhatsApp <span class="ar" aria-hidden="true">→</span></a><span class="cartel__nota">o al ' + DATOS.tel.replace(/^\+34/,"") + "</span></div>" : "");
@@ -1714,13 +1705,14 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
   }
 
   // Pestañas: primero el cartel más reciente.
-  var elegido = conMenu.length ? conMenu[0] : hoy;
+  var elegido = hoy;
+  if(!DATOS.menuDia[hoy]){ for(var i=1;i<=7;i++){ var dd=(hoy+i)%7; if(DATOS.menuDia[dd]){ elegido=dd; break; } } }
   if(pestanas && conMenu.length > 1){
     conMenu.forEach(function(d){
       var b = document.createElement("button");
       b.type = "button"; b.setAttribute("role","tab");
-      b.textContent = esHoy(d) ? "Hoy" : corto(d);
-      b.setAttribute("aria-label", largo(d));
+      b.textContent = d === hoy ? "Hoy" : DIAS[d].slice(0,3);
+      b.setAttribute("aria-label", DIAS[d]);
       b.onclick = function(){ elegido = d; pintar(); };
       b.dataset.dia = d;
       pestanas.appendChild(b);
@@ -1743,11 +1735,11 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
     });
   }
 
-  // Pastilla de la portada: el último menú publicado, con su fecha.
-  if(chip && conMenu.length){
-    var u = conMenu[0], m = DATOS.menuDia[u];
+  // Pastilla de la portada: el menú de hoy o, si hoy no hay, el del próximo día.
+  if(chip && DATOS.menuDia[elegido]){
+    var m = DATOS.menuDia[elegido];
     chip.innerHTML = '<span class="hoy__t"><i aria-hidden="true"></i>' +
-      (esHoy(u) ? "Hoy" : "Último menú · " + corto(u)) + " · " + DATOS.menuPrecio + "</span>" +
+      (elegido === hoy ? "Hoy" : "Menú del " + DIAS[elegido]) + " · " + DATOS.menuPrecio + "</span>" +
       "<b>" + m.segundos.slice(0,2).join(" · ") + "</b>";
     chip.hidden = false;
   }
