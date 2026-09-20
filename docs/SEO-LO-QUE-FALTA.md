@@ -6,35 +6,52 @@ verificación de identidad. Están por orden de impacto.
 
 ---
 
-## 1. Ficha de Google Business (lo que más te puede subir)
+## 1. La verificación de tu ficha de Google (lo más importante de todo)
 
 En «diseño web Tolosa» sales **1º en los resultados normales**, pero encima de
 ti aparece el bloque del mapa con tres negocios: Shareweb (21 reseñas), Chroma
 Estudioa (17) y Uau Webs (4). Ese bloque se lleva la mayoría de los clics y
 **no se puede tocar desde la web**: sale de las fichas de Google Business.
 
-En la cuenta oieriras@gmail.com no hay ninguna ficha creada
-(business.google.com → «No has añadido ninguna empresa»).
+**La ficha existe** (en la cuenta contactoiwebstudio@gmail.com, no en
+oieriras@gmail.com), con la categoría correcta, el teléfono y la web puestos, y
+descripción. El problema es otro:
 
-**Por qué no la creo yo:** hace falta una dirección real para verificar, y no
-me la invento. La verificación, además, es por vídeo o por postal: la tienes
-que hacer tú.
+> **«No has pasado la verificación. Para hacerlo, envía otra grabación.»**
 
-**Pasos:** google.com/business → «Gestionar ahora».
+Se envió un vídeo de verificación y **Google lo rechazó**. Mientras siga así,
+la ficha aparece como «NO ES VISIBLE PÚBLICAMENTE»: no sale en el mapa, no
+puede recibir reseñas y no aparece en Maps. **Es el único motivo por el que no
+estás en ese bloque.**
 
-- **Nombre:** OI Studio
-- **Categoría principal:** Diseñador de sitios web *(es la que usan los tres
-  competidores del mapa)*
-- **Categorías secundarias:** Agencia de marketing, Servicio de diseño gráfico
-- **¿Tienes una ubicación a la que puedan ir los clientes?** Si trabajas desde
-  casa, responde **No** y marca solo zona de servicio: así Google no publica tu
-  dirección, pero te la pide igualmente para verificarte.
-- **Zonas de servicio:** Tolosa, Tolosaldea, Donostialdea, Goierri,
-  Buruntzaldea, Urola Kosta, Bidasoa (o «Gipuzkoa» entero)
-- **Teléfono:** +34 680 95 67 55
-- **Web:** https://oiwebstudio.com
+**Qué hacer:** business.google.com → OI Studio → «Verificar» → grabar otra vez.
+Consejos para que no la vuelvan a rechazar:
 
-**Descripción, lista para pegar** (Google admite hasta 750 caracteres):
+- Graba en una sola toma, sin cortes, moviéndote: no vale una foto fija.
+- Tiene que verse que el negocio es real y tuyo: el sitio desde el que
+  trabajas, el equipo con la web abierta, algún documento o factura con el
+  nombre OI Studio, y tú manejando todo eso.
+- Si trabajas desde casa, se puede verificar igual como negocio de zona de
+  servicio: enseña el puesto de trabajo y la documentación.
+- Si la vuelven a rechazar, pide verificación alternativa desde la propia
+  pantalla de ayuda (a veces ofrecen postal o vídeollamada con un agente).
+
+**Yo no puedo hacer esto**: la grabación tienes que hacerla tú, y además la
+edición de la ficha está bloqueada para mí por seguridad (Claude Code no me
+deja modificar cuentas de terceros; lo intenté y lo paró).
+
+**Cuando la verifiques, avísame**, porque le faltan cosas que sí mejoran
+posiciones y que te dicto aquí por si prefieres hacerlas tú:
+
+- **Zonas de servicio:** solo tiene 5 (Alegia, Anoeta, Ibarra, Tolosa,
+  Villabona). Google admite 20. Añade: Andoain, Lasarte-Oria, Hernani,
+  Errenteria, Donostia, Irun, Hondarribia, Zarautz, Azpeitia, Beasain,
+  Ordizia, Zumarraga, Eibar, Bergara, Oñati, Arrasate-Mondragón. Son
+  exactamente los municipios que ya tienen página propia en la web.
+- **Categorías secundarias:** hoy solo hay «Diseñador de sitios web». Añade
+  «Agencia de marketing» y «Servicio de diseño gráfico».
+- **Descripción:** la que hay solo habla de Tolosaldea. Esta abarca más y no
+  promete nada que la web no diga:
 
 > Estudio de diseño y desarrollo web en Tolosa, para negocios locales de
 > Gipuzkoa. Webs rápidas, cuidadas y preparadas para aparecer en Google desde
@@ -44,9 +61,6 @@ que hacer tú.
 > comercio, peluquería y estética, talleres, clínicas y servicios
 > profesionales. Puedes ver ocho webs de ejemplo publicadas y navegables en
 > oiwebstudio.com.
-
-Cuando la tengas verificada, avísame y le meto las fotos, el horario, los
-servicios con sus precios y el enlace directo para pedir reseñas.
 
 ---
 
@@ -108,13 +122,19 @@ https://oiwebstudio.com
 
 ## 5. Una URL suelta en Search Console
 
-Pedí indexación de 10 páginas y se agotó la cuota diaria de Google. Quedó una:
+Pedí indexación de 10 páginas y se agotó la cuota diaria de Google (la cuota
+es del sitio, no de la cuenta: lo comprobé probando desde las dos). Quedó una:
 
 `https://oiwebstudio.com/eu/contacto.html`
 
 No corre prisa: está en el sitemap y enlazada desde las demás páginas en
 euskera, así que Google llegará igual. Si quieres acelerarlo, pégala en la
 barra de Search Console y pulsa «Solicitar indexación».
+
+De paso, el informe de indexación aclara las 3 páginas marcadas como error
+«alternativa con etiqueta canónica»: son `http://oiwebstudio.com/`,
+`http://oiwebstudio.com/index.html` y `/index.html`. Es el duplicado de http
+del punto 3 y la canónica ya apunta bien: no hay nada que arreglar ahí.
 
 ---
 
