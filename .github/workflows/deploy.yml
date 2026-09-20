@@ -17,7 +17,9 @@ name: Desplegar web
 on:
   push:
     branches: [main]
-    paths: ['web/**', '.github/workflows/deploy.yml']
+    # scripts/ también: las páginas en euskera (y sus traducciones) se
+    # generan aquí en cada despliegue, así que un cambio ahí cambia el sitio.
+    paths: ['web/**', 'scripts/generar-euskera.mjs', 'scripts/euskera-zonas.mjs', '.github/workflows/deploy.yml']
   workflow_dispatch:        # permite lanzarlo a mano desde la pestaña Actions
 
 permissions:
