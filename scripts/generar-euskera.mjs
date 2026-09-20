@@ -33,16 +33,23 @@ const ZONAS = Object.keys(ZONAS_EU);
 const TRADUCIDAS = new Set([...PAGINAS, ...ZONAS]);
 
 /* Los <title> y las descripciones no pueden llevar data-t, así que van aquí.
-   No son traducción literal: "diseño web" y "webgune diseinua" no se buscan
-   igual. REVISAR con un hablante antes de dar por buenos. */
+   No son traducción literal: "diseño web" y "web diseinua" no se buscan igual.
+
+   Están escritos con la terminología que ya usa el propio sitio en euskera,
+   no inventada: "webgune" (no "web"), "Prezio itxia idatziz", "ordainketa
+   bakarra", "Iraunkortasunik gabe", "Niri buruz". Si aquí se dijera de otra
+   forma, el título prometería una cosa y la página diría otra.
+
+   Aun así, conviene que lo lea un euskaldun antes de darlo por definitivo: son
+   la línea que decide si alguien hace clic. */
 const META = {
   "index.html": {
-    title: "Web diseinua Tolosan, tokiko negozioentzat | OI Studio",
+    title: "Web diseinua Tolosan: webguneak negozioentzat | OI Studio",
     desc: "Neurrira egindako webguneak Gipuzkoako negozioentzat. Prezio itxia 199€-tik, proposamena 48 ordutan. Tolosako estudioa.",
   },
   "precios.html": {
-    title: "Webgune baten prezioa: itxia eta idatziz | OI Studio",
-    desc: "Landing 199€ eta Negozio Weba 299€, ordainketa bakarrean eta prezio itxiarekin. Ezkutuko kuotarik gabe eta iraunkortasunik gabe.",
+    title: "Webgune baten prezioa: itxia eta idatzita | OI Studio",
+    desc: "Landing 199€ eta Negozio Weba 299€, ordainketa bakarrean eta prezio itxiarekin. Ezkutuko kuotarik eta iraunkortasunik gabe.",
   },
   "contacto.html": {
     title: "Kontaktua: hitz egin dezagun zure webaz | OI Studio",
@@ -53,7 +60,7 @@ const META = {
     desc: "Zortzi webgune oso eta nabigagarri, sektore bakoitzeko bat: okindegia, albaitaria, kafetegia, ile-apaindegia, gimnasioa eta gehiago.",
   },
   "sobre-mi.html": {
-    title: "Estudioari buruz: nola lan egiten dudan | OI Studio",
+    title: "Niri buruz: nola lan egiten dudan | OI Studio",
     desc: "Pertsona bakarreko estudioa Tolosan. Ingeniari-logika eta diseinatzaile-begia, tokiko negozioentzako webguneak egiteko.",
   },
 };
