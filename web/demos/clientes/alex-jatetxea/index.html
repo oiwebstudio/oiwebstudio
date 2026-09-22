@@ -586,6 +586,75 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   letter-spacing:.22em;text-transform:uppercase;color:var(--osc-tinta3);
   opacity:0;animation:aparece .9s .7s forwards;}
 @keyframes aparece{to{opacity:1;}}
+
+/* ═══ UN DÍA EN ALEX ═══ */
+.dia{padding:clamp(56px,9vw,120px) 0;}
+.dia__cab{margin-bottom:clamp(26px,4vw,44px);}
+.dia__l{list-style:none;margin:0;padding:0;display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  counter-reset:x;position:relative;}
+.dia__l li{position:relative;background:var(--fondo);border:1px solid var(--filete);border-radius:22px;
+  padding:24px 22px 22px;transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .3s;}
+.dia__l li:hover{transform:translateY(-5px);border-color:var(--acento-claro);box-shadow:0 26px 50px -36px rgba(110,32,16,.55);}
+.dia__ico{display:grid;place-content:center;width:52px;height:52px;border-radius:16px;margin-bottom:18px;
+  color:var(--acento);background:color-mix(in srgb, var(--acento) 9%, var(--fondo));}
+.dia__h{display:block;font-family:var(--display);font-size:clamp(30px,3.2vw,40px);line-height:1;color:var(--acento);}
+.dia__l h3{margin:6px 0 8px;font-size:19px;}
+.dia__l p{margin:0;color:var(--tinta-sec);font-size:15.5px;line-height:1.5;}
+@media(min-width:1000px){
+  .dia__l::before{content:"";position:absolute;left:4%;right:4%;top:50px;height:1px;
+    background:linear-gradient(90deg,transparent,var(--filete-fuerte) 12%,var(--filete-fuerte) 88%,transparent);z-index:-1;}
+}
+
+/* ═══ LA CARTA A DOS COLUMNAS ═══ */
+/* Columnas de texto, no rejilla: con rejilla quedaban Raciones (11 platos) a
+   un lado y Ensaladas (3) al otro, con un hueco enorme debajo. Las columnas
+   reparten los grupos por altura, y ningún grupo se parte entre las dos. */
+@media(min-width:900px){
+  .carta .wrap{column-count:2;column-gap:clamp(36px,5vw,72px);}
+  .carta .carta__cab{column-span:all;}
+  .carta .grupo{break-inside:avoid;}
+}
+.carta .grupo{margin-bottom:clamp(26px,3vw,38px);}
+.carta .plato{transition:background .25s var(--ease),padding .25s var(--ease);border-radius:12px;}
+.carta .plato:hover{background:color-mix(in srgb, var(--acento) 5%, transparent);padding-left:10px;padding-right:10px;}
+.sello-casa{display:inline-block;vertical-align:middle;margin-left:8px;padding:4px 10px;border-radius:100px;
+  background:var(--acento);color:#fff;font-family:var(--detalle);font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+.plato--foto .plato__n::after{content:"";display:inline-block;width:8px;height:8px;margin-left:8px;border-radius:50%;
+  background:var(--acento-claro);vertical-align:middle;}
+/* foto que sigue al puntero (solo escritorio) */
+.foto-plato{position:fixed;z-index:60;width:230px;aspect-ratio:4/3;border-radius:18px;overflow:hidden;pointer-events:none;
+  box-shadow:0 30px 60px -24px rgba(20,10,5,.55),0 0 0 5px var(--fondo);
+  opacity:0;transform:translate(-50%,-110%) scale(.85) rotate(-4deg);transition:opacity .25s var(--ease),transform .35s cubic-bezier(.34,1.4,.64,1);}
+.foto-plato.on{opacity:1;transform:translate(-50%,-110%) scale(1) rotate(-3deg);}
+.foto-plato img{width:100%;height:100%;object-fit:cover;}
+/* en móvil, la foto va dentro del plato */
+.plato__mini{display:none;}
+@media(hover:none),(max-width:899px){
+  .plato--foto{display:grid;grid-template-columns:1fr auto;column-gap:14px;}
+  .plato__mini{display:block;grid-row:1 / span 3;grid-column:2;width:64px;height:64px;border-radius:14px;overflow:hidden;align-self:center;}
+  .plato__mini img{width:100%;height:100%;object-fit:cover;}
+  .plato--foto .plato__n::after{display:none;}
+}
+
+/* ═══ CUADRILLAS Y EMPRESAS ═══ */
+.grupos{padding:clamp(56px,9vw,120px) 0;}
+.grupos__in{display:grid;gap:clamp(22px,4vw,64px);align-items:center;}
+@media(min-width:900px){.grupos__in{grid-template-columns:.9fr 1.1fr;}}
+.grupos__l{list-style:none;margin:20px 0 26px;padding:0;display:flex;flex-wrap:wrap;gap:8px;}
+.grupos__l li{padding:9px 16px;border-radius:100px;border:1px solid var(--filete-fuerte);font-size:15px;}
+
+/* En el móvil, las cuatro franjas del día en carrusel: apiladas añadían casi
+   1.000 px a una página que ya es larga por la carta. */
+@media(max-width:719px){
+  .dia{padding:48px 0;}
+  .dia__l{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;
+    margin:0 calc(var(--gutter) * -1);padding:4px var(--gutter) 14px;scrollbar-width:none;}
+  .dia__l::-webkit-scrollbar{display:none;}
+  .dia__l li{flex:0 0 78%;scroll-snap-align:start;}
+  .grupos{padding:48px 0;}
+}
+
+@media (prefers-reduced-motion: reduce){ .foto-plato{transition:none;} .dia__l li:hover{transform:none;} }
 </style>
 <script>document.documentElement.className+=" js";</script>
 </head>
@@ -622,6 +691,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   <div class="wrap top__in">
     <a class="marca" href="#inicio">Alex <em>Jatetxea</em></a>
     <nav class="nav" aria-label="Principal">
+      <a href="#dia">El día</a>
       <a href="#carta">La carta</a>
       <a href="#menu">El mediodía</a>
       <a href="#casa">La casa</a>
@@ -668,6 +738,41 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 </section>
 
 <!-- ═══ 4b · PIZARRA · body-product-detail ═══ -->
+<section class="dia" id="dia" aria-label="Horario del día">
+  <div class="wrap">
+    <div class="dia__cab rev">
+      <p class="rotulo">De 8 de la mañana a la noche</p>
+      <h2>Un día<br/>en Alex</h2>
+    </div>
+    <ol class="dia__l">
+      <li class="rev" data-d="0">
+        <span class="dia__ico"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9zm13 1h1.5a2.5 2.5 0 0 1 0 5H17M7 3.5s-.8 1 0 2 0 2 0 2M11 3.5s-.8 1 0 2 0 2 0 2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <b class="dia__h">8:00</b>
+        <h3>Desayunos</h3>
+        <p>Desayunos completos desde primera hora. Los fines de semana, desde las 9:00.</p>
+      </li>
+      <li class="rev" data-d="1">
+        <span class="dia__ico"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><circle cx="12" cy="12" r="7.5" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="3.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M2.5 4v5M4 4v16M2.5 9h3M21.5 4c-1.5 0-2.5 2-2.5 5s1 3 2.5 3V20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+        <b class="dia__h">13:00</b>
+        <h3>Comidas</h3>
+        <p>Combinado con bebida y postre por 14 € de lunes a viernes, o la carta entera.</p>
+      </li>
+      <li class="rev" data-d="2">
+        <span class="dia__ico"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M19 14.5A7.5 7.5 0 0 1 9.5 5 7.5 7.5 0 1 0 19 14.5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
+        <b class="dia__h">19:00</b>
+        <h3>Cenas</h3>
+        <p>Raciones para compartir, chuletón y pescado. Cocina hasta las 22:00 o las 23:00, según el día.</p>
+      </li>
+      <li class="rev" data-d="3">
+        <span class="dia__ico"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M7 3h10l-1 7a4 4 0 0 1-8 0L7 3zm5 11v6m-4 0h8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <b class="dia__h">Vie y sáb</b>
+        <h3>Hasta tarde</h3>
+        <p>El bar abre hasta las 24:00 los viernes y hasta la 1:00 los sábados.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
 <section class="pizarra sector" id="menu">
   <div class="wrap">
     <div class="cartel__cab">
@@ -732,7 +837,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
           <p class="plato__n">Croquetas de la casa</p>
           <p class="plato__p">13 €</p>
         </article>
-        <article class="plato">
+        <article class="plato plato--foto" data-foto="https://images.unsplash.com/photo-1559742811-822873691df8?w=520&q=72&auto=format&fit=crop">
           <p class="plato__n">Langostinos a la parrilla</p>
           <p class="plato__p">15 €</p>
         </article>
@@ -782,12 +887,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 
       <div class="grupo rev">
         <h3>Especiales de la casa</h3>
-        <article class="plato">
-          <p class="plato__n">Chuletón</p>
+        <article class="plato plato--foto" data-foto="https://images.unsplash.com/photo-1619719015339-133a130520f6?w=520&q=72&auto=format&fit=crop">
+          <p class="plato__n">Chuletón <span class="sello-casa">La especialidad</span></p>
           <p class="plato__p">59 €</p>
           <p class="plato__d"><i>1 kg · para compartir</i></p>
         </article>
-        <article class="plato">
+        <article class="plato plato--foto" data-foto="https://images.unsplash.com/photo-1690983325970-185c8a6c0ba6?w=520&q=72&auto=format&fit=crop">
           <p class="plato__n">Entrecot</p>
           <p class="plato__p">27 €</p>
         </article>
@@ -819,7 +924,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
           <p class="plato__n">Tiramisú</p>
           <p class="plato__p">4,50 €</p>
         </article>
-        <article class="plato">
+        <article class="plato plato--foto" data-foto="https://images.unsplash.com/photo-1635327173758-85badf17f995?w=520&q=72&auto=format&fit=crop">
           <p class="plato__n">Tarta de queso</p>
           <p class="plato__p">4,50 €</p>
         </article>
@@ -850,6 +955,24 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 
 
 <!-- ═══ 7 · CITA · body-quote-full ═══ -->
+
+<section class="grupos" id="grupos">
+  <div class="wrap grupos__in">
+    <div class="rev">
+      <p class="rotulo">Cuadrillas y empresas</p>
+      <h2>¿Sois muchos?<br/>Lo preparamos</h2>
+    </div>
+    <div class="rev" data-d="1">
+      <p class="lead">Comidas de cuadrilla, cenas tranquilas, celebraciones y eventos de empresa. Nos contáis cuántos sois y qué queréis, y os hacemos presupuesto sin compromiso.</p>
+      <ul class="grupos__l">
+        <li>Comidas y cenas de cuadrilla</li>
+        <li>Celebraciones</li>
+        <li>Eventos de empresa</li>
+      </ul>
+      <a class="btn btn--fill" id="g-tel" href="#">Llamar y pedir presupuesto <span class="ar" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
 
 <!-- ═══ RESEÑAS · de su ficha de Google ═══ -->
 <section class="dicen" id="dicen">
@@ -886,7 +1009,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
       <li class="rev"><b>4,4</b><small>Google · 86 reseñas</small></li>
       <li class="rev" data-d="1"><b class="cnum" data-n="14" data-suf=" €">14 €</b><small>combinado de diario</small></li>
       <li class="rev" data-d="2"><b>10-20 €</b><small>por persona</small></li>
-      <li class="rev" data-d="3"><b>8:00</b><small>abrimos el bar</small></li>
+      <li class="rev" data-d="3"><b>3</b><small>para llevar, a domicilio<br/>o en el local</small></li>
     </ul>
   </div>
 </section>
@@ -1607,6 +1730,44 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
   });
   h.addEventListener("pointerleave", function(){
     pls.forEach(function(p){ p.style.setProperty("--px","0px"); p.style.setProperty("--py","0px"); });
+  });
+})();
+</script>
+<script>
+(function(){
+  /* El horario de la tabla: DATOS lleva 23:59 porque el cálculo de "abierto
+     ahora" no admite pasar de medianoche, pero lo que se enseña es la hora
+     de verdad. */
+  var filas = document.querySelectorAll("#tabla-horario tr");
+  filas.forEach(function(tr){
+    var dia = tr.cells[0] && tr.cells[0].textContent.trim().toLowerCase();
+    if(dia === "viernes") tr.cells[1].textContent = "08:00–00:00";
+    if(dia === "sábado") tr.cells[1].textContent = "09:00–01:00";
+  });
+
+  var ref = document.querySelector('a[href^="tel:"]');
+  var g = document.getElementById("g-tel"); if(g && ref) g.href = ref.getAttribute("href");
+
+  /* Fotos de la carta: en escritorio, una tarjeta que sigue al puntero; en
+     táctil, una miniatura dentro del propio plato. */
+  var platos = [].slice.call(document.querySelectorAll(".plato--foto"));
+  var tactil = matchMedia("(hover: none), (max-width: 899px)").matches;
+  if(tactil){
+    platos.forEach(function(p){
+      var m = document.createElement("span"); m.className = "plato__mini";
+      m.innerHTML = '<img loading="lazy" alt="" src="' + p.dataset.foto + '">';
+      p.appendChild(m);
+    });
+    return;
+  }
+  var caja = document.createElement("div"); caja.className = "foto-plato"; caja.setAttribute("aria-hidden","true");
+  caja.innerHTML = "<img alt=''>"; document.body.appendChild(caja);
+  var img = caja.querySelector("img");
+  platos.forEach(function(p){
+    var pre = new Image(); pre.src = p.dataset.foto;
+    p.addEventListener("pointerenter", function(){ img.src = p.dataset.foto; caja.classList.add("on"); });
+    p.addEventListener("pointerleave", function(){ caja.classList.remove("on"); });
+    p.addEventListener("pointermove", function(e){ caja.style.left = e.clientX + "px"; caja.style.top = e.clientY + "px"; });
   });
 })();
 </script>
