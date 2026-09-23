@@ -1,4 +1,3 @@
-import BreadCounter from "@/components/BreadCounter";
 import FreshnessMeter from "@/components/FreshnessMeter";
 import Marquee from "@/components/Marquee";
 import PageTransition from "@/components/PageTransition";
@@ -28,9 +27,7 @@ export default function Home() {
       <Tiendas />
       <Mapa />
       <Horarios />
-      <div className="container-edge flex flex-col items-center justify-center gap-6 py-16 sm:flex-row sm:gap-10 md:py-20">
-        <BreadCounter />
-        <div className="hidden h-8 w-px bg-ink/10 sm:block" />
+      <div className="container-edge flex justify-center py-16 md:py-20">
         <FreshnessMeter />
       </div>
       <SectionDivider />
