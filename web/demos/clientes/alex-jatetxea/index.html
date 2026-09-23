@@ -655,6 +655,57 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 }
 
 @media (prefers-reduced-motion: reduce){ .foto-plato{transition:none;} .dia__l li:hover{transform:none;} }
+
+/* ═══ CINTA DE PLATOS ═══ */
+.cinta{overflow:hidden;background:var(--osc);color:var(--osc-tinta);padding:18px 0;border-block:1px solid var(--osc-filete);}
+.cinta__pista{display:flex;width:max-content;animation:cinta 42s linear infinite;}
+.cinta:hover .cinta__pista{animation-play-state:paused;}
+.cinta__g{display:flex;align-items:center;gap:28px;padding-right:28px;}
+.cinta span{font-family:var(--display);font-size:clamp(22px,2.6vw,34px);white-space:nowrap;line-height:1;}
+.cinta i{font-style:normal;color:var(--acento-claro);font-size:14px;}
+@keyframes cinta{to{transform:translateX(-50%);}}
+
+/* ═══ ÍNDICE DE LA CARTA ═══ */
+.indice{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 clamp(22px,3vw,34px);column-span:all;}
+.indice a{min-height:44px;display:inline-flex;align-items:center;padding:0 18px;border-radius:100px;
+  border:1px solid var(--filete-fuerte);font-family:var(--detalle);font-size:12.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--tinta);transition:background .25s,color .25s,border-color .25s;}
+.indice a:hover,.indice a.activo{background:var(--acento);border-color:var(--acento);color:#fff;}
+.carta .grupo{scroll-margin-top:110px;}
+/* los platos entran de uno en uno al aparecer su grupo */
+.carta .grupo .plato{opacity:0;transform:translateY(10px);transition:opacity .5s var(--ease),transform .6s var(--ease);}
+.carta .grupo.on .plato{opacity:1;transform:none;}
+.carta .grupo.on .plato:nth-of-type(1){transition-delay:0.000s;}
+.carta .grupo.on .plato:nth-of-type(2){transition-delay:0.035s;}
+.carta .grupo.on .plato:nth-of-type(3){transition-delay:0.070s;}
+.carta .grupo.on .plato:nth-of-type(4){transition-delay:0.105s;}
+.carta .grupo.on .plato:nth-of-type(5){transition-delay:0.140s;}
+.carta .grupo.on .plato:nth-of-type(6){transition-delay:0.175s;}
+.carta .grupo.on .plato:nth-of-type(7){transition-delay:0.210s;}
+.carta .grupo.on .plato:nth-of-type(8){transition-delay:0.245s;}
+.carta .grupo.on .plato:nth-of-type(9){transition-delay:0.280s;}
+.carta .grupo.on .plato:nth-of-type(10){transition-delay:0.315s;}
+.carta .grupo.on .plato:nth-of-type(11){transition-delay:0.350s;}
+html:not(.js) .carta .grupo .plato{opacity:1;transform:none;}
+
+/* ═══ TELÉFONO EN GRANDE ═══ */
+.gran-tel{display:inline-flex;gap:.25em;margin:10px 0 18px;font-family:var(--display);line-height:1;
+  font-size:clamp(46px,7vw,96px);color:inherit;text-decoration:none;letter-spacing:-.01em;}
+.gran-tel span:first-child{color:var(--acento-claro);}
+.gran-tel:hover span:last-child{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:.12em;}
+
+/* ═══ BOTONES MAGNÉTICOS (escritorio) ═══ */
+.btn--mag{transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s var(--ease);}
+
+/* ═══ HERO: grano sutil sobre el fondo ═══ */
+.heroe{position:relative;isolation:isolate;}
+.heroe::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.35;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.2 0 0 0 0 0.1 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+@media (prefers-reduced-motion: reduce){
+  .cinta__pista{animation:none;}
+  .carta .grupo .plato{opacity:1!important;transform:none!important;transition:none!important;}
+}
 </style>
 <script>document.documentElement.className+=" js";</script>
 </head>
@@ -738,6 +789,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 </section>
 
 <!-- ═══ 4b · PIZARRA · body-product-detail ═══ -->
+<div class="cinta" aria-label="Algunos platos de la carta">
+  <div class="cinta__pista"><div class="cinta__g"><span>Chuletón de 1 kg</span><i aria-hidden="true">✦</i><span>Croquetas de la casa</span><i aria-hidden="true">✦</i><span>Langostinos a la parrilla</span><i aria-hidden="true">✦</i><span>Huevos rotos con jamón</span><i aria-hidden="true">✦</i><span>Rape al horno</span><i aria-hidden="true">✦</i><span>Tabla de jamón ibérico</span><i aria-hidden="true">✦</i><span>Entrecot</span><i aria-hidden="true">✦</i><span>Tarta de queso</span><i aria-hidden="true">✦</i><span>Papa Alex</span><i aria-hidden="true">✦</i><span>Dorada al limón</span><i aria-hidden="true">✦</i></div><div class="cinta__g" aria-hidden="true"><span>Chuletón de 1 kg</span><i aria-hidden="true">✦</i><span>Croquetas de la casa</span><i aria-hidden="true">✦</i><span>Langostinos a la parrilla</span><i aria-hidden="true">✦</i><span>Huevos rotos con jamón</span><i aria-hidden="true">✦</i><span>Rape al horno</span><i aria-hidden="true">✦</i><span>Tabla de jamón ibérico</span><i aria-hidden="true">✦</i><span>Entrecot</span><i aria-hidden="true">✦</i><span>Tarta de queso</span><i aria-hidden="true">✦</i><span>Papa Alex</span><i aria-hidden="true">✦</i><span>Dorada al limón</span><i aria-hidden="true">✦</i></div></div>
+</div>
+
 <section class="dia" id="dia" aria-label="Horario del día">
   <div class="wrap">
     <div class="dia__cab rev">
@@ -818,8 +873,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
       </div>
       <p class="lead rev" data-d="1">Los precios son los de vuestra carta. Si cambian, se cambian aquí en un minuto.</p>
     </div>
+    <nav class="indice rev" aria-label="Secciones de la carta">
+      <a href="#c-raciones">Raciones</a><a href="#c-ensaladas">Ensaladas</a><a href="#c-especiales">Especiales</a><a href="#c-postres">Postres</a>
+    </nav>
 
-      <div class="grupo rev">
+      <div class="grupo rev" id="c-raciones">
         <h3>Raciones</h3>
         <article class="plato">
           <p class="plato__n">Alitas</p>
@@ -869,7 +927,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
         </article>
       </div>
 
-      <div class="grupo rev">
+      <div class="grupo rev" id="c-ensaladas">
         <h3>Ensaladas</h3>
         <article class="plato">
           <p class="plato__n">Ensalada mixta</p>
@@ -885,7 +943,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
         </article>
       </div>
 
-      <div class="grupo rev">
+      <div class="grupo rev" id="c-especiales">
         <h3>Especiales de la casa</h3>
         <article class="plato plato--foto" data-foto="https://images.unsplash.com/photo-1619719015339-133a130520f6?w=520&q=72&auto=format&fit=crop">
           <p class="plato__n">Chuletón <span class="sello-casa">La especialidad</span></p>
@@ -906,7 +964,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
         </article>
       </div>
 
-      <div class="grupo rev">
+      <div class="grupo rev" id="c-postres">
         <h3>Postres</h3>
         <article class="plato">
           <p class="plato__n">Arroz con leche</p>
@@ -1058,10 +1116,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     <div>
       <p class="rotulo rev">Reservar</p>
  <h2 class="rev" data-d="1">Una llamada<br/>y mesa puesta</h2>
+ <a class="gran-tel rev" data-d="2" id="gran-tel" href="#"><span>608</span> <span>85 91 88</span></a>
  <p class="cierre__lead rev" data-d="2">Para cuadrillas, cenas o comidas de empresa, mejor con un día de margen.</p>
       <div class="cierre__btns rev" data-d="2">
         <a class="btn btn--fill" id="c-tel" href="#">Llamar al 608 85 91 88 <span class="ar" aria-hidden="true">→</span></a>
-        <a class="btn btn--ghost" id="c-wa" href="#" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn btn--ghost" href="mailto:baralexrestaurante@gmail.com">Escribir un correo</a>
       </div>
     </div>
     <form class="form rev" data-d="1" id="form" novalidate>
@@ -1768,6 +1827,46 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
     p.addEventListener("pointerenter", function(){ img.src = p.dataset.foto; caja.classList.add("on"); });
     p.addEventListener("pointerleave", function(){ caja.classList.remove("on"); });
     p.addEventListener("pointermove", function(e){ caja.style.left = e.clientX + "px"; caja.style.top = e.clientY + "px"; });
+  });
+})();
+</script>
+<script>
+(function(){
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* teléfono grande del cierre */
+  var ref = document.querySelector('a[href^="tel:"]'), gt = document.getElementById("gran-tel");
+  if(ref && gt) gt.href = ref.getAttribute("href");
+
+  /* carta: los grupos se encienden al entrar en pantalla, y el índice marca
+     el grupo que se está viendo */
+  var grupos = [].slice.call(document.querySelectorAll(".carta .grupo[id]"));
+  var enlaces = [].slice.call(document.querySelectorAll(".indice a"));
+  if("IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.classList.add("on");
+          enlaces.forEach(function(a){ a.classList.toggle("activo", a.getAttribute("href") === "#" + e.target.id); });
+        }
+      });
+    }, { rootMargin: "-20% 0px -55% 0px" });
+    grupos.forEach(function(g){ io.observe(g); });
+    // y el reparto: que ningún grupo se quede apagado si se entra de golpe
+    var io2 = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting) e.target.classList.add("on"); }); }, { threshold: .05 });
+    grupos.forEach(function(g){ io2.observe(g); });
+  } else { grupos.forEach(function(g){ g.classList.add("on"); }); }
+
+  /* botones magnéticos: solo con ratón y en pantallas grandes */
+  if(reduce || !matchMedia("(hover: hover) and (min-width: 900px)").matches) return;
+  document.querySelectorAll(".heroe .btn, .cierre .btn, .grupos .btn").forEach(function(b){
+    b.classList.add("btn--mag");
+    b.addEventListener("pointermove", function(e){
+      var r = b.getBoundingClientRect();
+      var x = (e.clientX - r.left - r.width/2) * .18, y = (e.clientY - r.top - r.height/2) * .28;
+      b.style.transform = "translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px)";
+    });
+    b.addEventListener("pointerleave", function(){ b.style.transform = ""; });
   });
 })();
 </script>
