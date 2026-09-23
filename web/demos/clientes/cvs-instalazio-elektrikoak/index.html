@@ -446,10 +446,97 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 }
 .obras .btn.btn--sol,.obras .btn.btn--sol .ar{color:#111!important;}
 .obras .btn.btn--sol{background:var(--acento-claro)!important;border-color:var(--acento-claro)!important;}
+
+/* ═══ SERVICIOS CON ICONO ═══ */
+.srv__n{display:flex;align-items:center;gap:12px;}
+.srv__ico{display:grid;place-content:center;width:46px;height:46px;border-radius:14px;color:var(--acento);
+  background:color-mix(in srgb, var(--acento) 9%, var(--fondo));transition:background .3s,color .3s,transform .4s cubic-bezier(.34,1.5,.64,1);}
+.srv__i:hover .srv__ico{background:var(--acento);color:#fff;transform:rotate(-6deg) scale(1.06);}
+
+/* ═══ CINTA ═══ */
+.cinta{overflow:hidden;background:var(--osc);color:var(--osc-tinta);padding:18px 0;margin-top:clamp(40px,6vw,72px);}
+.cinta__pista{display:flex;width:max-content;animation:cinta 38s linear infinite;}
+.cinta:hover .cinta__pista{animation-play-state:paused;}
+.cinta__g{display:flex;align-items:center;gap:26px;padding-right:26px;}
+.cinta span{font-family:var(--display);font-size:clamp(20px,2.4vw,30px);white-space:nowrap;line-height:1;}
+.cinta i{font-style:normal;font-size:15px;}
+@keyframes cinta{to{transform:translateX(-50%);}}
+
+/* ═══ HERO ═══ */
+.hero__h{font-size:clamp(40px,7.4vw,92px);margin:18px 0 0;line-height:1;}
+.hero__h em{font-style:normal;color:var(--acento);}
+.hero__h .l{display:block;overflow:hidden;padding-bottom:.06em;}
+.hero__h .l>span{display:inline-block;transform:translateY(105%);transition:transform 1s cubic-bezier(.22,1,.36,1);}
+.hero.vivo .hero__h .l>span{transform:none;}
+.hero.vivo .hero__h .l+.l>span{transition-delay:.12s;}
+html:not(.js) .hero__h .l>span{transform:none;}
+.hero__foto{clip-path:inset(12% 6% 12% 6% round 24px);transition:clip-path 1.4s cubic-bezier(.22,1,.36,1) .25s;}
+.hero.vivo .hero__foto{clip-path:inset(0 0 0 0 round 24px);}
+html:not(.js) .hero__foto{clip-path:none;}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.3;
+  background-image:radial-gradient(circle at 85% 10%, rgba(250,204,21,.18), transparent 40%),radial-gradient(circle at 10% 90%, rgba(29,78,216,.10), transparent 45%);}
+.hero{position:relative;isolation:isolate;}
+
+/* ═══ TELÉFONO GRANDE ═══ */
+.gran-tel{display:inline-flex;gap:.25em;margin:12px 0 18px;font-family:var(--display);line-height:1;
+  font-size:clamp(46px,7vw,92px);color:inherit;text-decoration:none;}
+.gran-tel span:first-child{color:var(--acento-claro);}
+.gran-tel:hover span:last-child{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:.12em;}
+
+/* ═══ BOTONES MAGNÉTICOS ═══ */
+.btn--mag{transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s;}
+
+/* ═══ PANTALLA DE CARGA ═══ */
+.carga{position:fixed;inset:0;z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:var(--osc);overflow:hidden;clip-path:inset(0 0 0 0);transition:clip-path 1.05s cubic-bezier(.87,0,.13,1);}
+.carga.fuera{clip-path:inset(0 0 100% 0);}
+.carga__halo{position:absolute;width:min(78vw,420px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle, rgba(250,204,21,.35) 0%, rgba(250,204,21,0) 66%);opacity:0;
+  animation:halo-in .9s ease-out forwards, halo 2.4s ease-in-out infinite;}
+@keyframes halo-in{to{opacity:.9;}}
+@keyframes halo{0%,100%{transform:scale(.9);}50%{transform:scale(1.08);}}
+.carga__rayo{position:relative;opacity:0;transform:scale(.4) rotate(-20deg);animation:rayo .7s cubic-bezier(.34,1.56,.64,1) .1s forwards;}
+@keyframes rayo{to{opacity:1;transform:none;}}
+.carga__marca{position:relative;font-family:var(--display);color:var(--osc-tinta);font-size:clamp(46px,10vw,88px);line-height:1;
+  margin:14px 0 0;opacity:0;transform:translateY(22px);animation:marca 1s cubic-bezier(.22,1,.36,1) .2s forwards;}
+.carga__marca em{font-style:normal;color:var(--acento-claro);}
+@keyframes marca{to{opacity:1;transform:none;}}
+.carga__linea{position:relative;width:160px;height:1px;margin-top:30px;overflow:hidden;background:rgba(255,255,255,.2);opacity:0;animation:aparece .8s .5s forwards;}
+.carga__linea i{position:absolute;inset:0;background:var(--acento-claro);transform-origin:left;transform:scaleX(0);animation:llena 1.5s .1s cubic-bezier(.4,0,.2,1) forwards;}
+@keyframes llena{to{transform:scaleX(1);}}
+.carga__pie{position:relative;margin:16px 0 0;font-family:var(--detalle);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--osc-tinta3);opacity:0;animation:aparece .8s .7s forwards;}
+@keyframes aparece{to{opacity:1;}}
+
+@media (prefers-reduced-motion: reduce){
+  .carga{display:none!important;} .cinta__pista{animation:none;}
+  .hero__h .l>span{transform:none!important;transition:none!important;} .hero__foto{clip-path:none!important;transition:none!important;}
+}
 </style>
 <script>document.documentElement.className+=" js";</script>
 </head>
 <body>
+<div class="carga" id="carga" aria-hidden="true">
+  <div class="carga__halo"></div>
+  <svg class="carga__rayo" viewBox="0 0 24 24" width="54" height="54"><path d="M13.5 2 4 14h7l-1.5 8L20 10h-7z" fill="#FACC15"/></svg>
+  <p class="carga__marca">CVS <em>Elektrikoak</em></p>
+  <div class="carga__linea"><i></i></div>
+  <p class="carga__pie">Beasain · Electricista autorizado</p>
+</div>
+<script>
+(function(){
+  var c = document.getElementById("carga"), visto = false;
+  try { visto = sessionStorage.getItem("cvs-visto") === "1"; } catch(e){}
+  if(visto || matchMedia("(prefers-reduced-motion: reduce)").matches){ c.remove(); return; }
+  document.documentElement.style.overflow = "hidden";
+  function fuera(){
+    if(!c.isConnected) return;
+    try { sessionStorage.setItem("cvs-visto","1"); } catch(e){}
+    c.classList.add("fuera"); document.documentElement.style.overflow = "";
+    setTimeout(function(){ c.remove(); }, 1100);
+  }
+  setTimeout(fuera, 2000); setTimeout(fuera, 3800);
+})();
+</script>
 
 <a class="skip" href="#main">Saltar al contenido</a>
 
@@ -475,7 +562,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   <div class="wrap hero__in">
     <div class="hero__col">
       <p class="rotulo rev">Electricista autorizado · Beasain</p>
-      <h1 class="rev" data-d="1">La luz de tu casa,<br/><em>en regla</em> y a tiempo</h1>
+      <h1 class="hero__h"><span class="l"><span>La luz de tu casa,</span></span><span class="l"><span><em>en regla</em> y a tiempo</span></span></h1>
       <div class="hero__btns rev" data-d="2">
         <a class="btn btn--fill" id="h-tel" href="#">Llamar al 613 26 82 12 <span class="ar" aria-hidden="true">→</span></a>
         <a class="btn btn--ghost" href="#servicios">Ver servicios</a>
@@ -501,6 +588,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 
 
 <!-- ═══ 4 · SERVICIOS · body-comparison ═══ -->
+<div class="cinta" aria-label="Servicios">
+  <div class="cinta__pista"><div class="cinta__g"><span>Boletines (CIE)</span><i aria-hidden="true">⚡</i><span>Revisiones periódicas</span><i aria-hidden="true">⚡</i><span>Tomas de tierra</span><i aria-hidden="true">⚡</i><span>Urgencias 24 h</span><i aria-hidden="true">⚡</i><span>Reformas de instalación</span><i aria-hidden="true">⚡</i><span>Averías</span><i aria-hidden="true">⚡</i><span>Domótica</span><i aria-hidden="true">⚡</i><span>Rótulos y alumbrado</span><i aria-hidden="true">⚡</i><span>Grupos electrógenos</span><i aria-hidden="true">⚡</i></div><div class="cinta__g" aria-hidden="true"><span>Boletines (CIE)</span><i aria-hidden="true">⚡</i><span>Revisiones periódicas</span><i aria-hidden="true">⚡</i><span>Tomas de tierra</span><i aria-hidden="true">⚡</i><span>Urgencias 24 h</span><i aria-hidden="true">⚡</i><span>Reformas de instalación</span><i aria-hidden="true">⚡</i><span>Averías</span><i aria-hidden="true">⚡</i><span>Domótica</span><i aria-hidden="true">⚡</i><span>Rótulos y alumbrado</span><i aria-hidden="true">⚡</i><span>Grupos electrógenos</span><i aria-hidden="true">⚡</i></div></div>
+</div>
+
 <section class="serv" id="servicios">
   <div class="wrap">
     <div class="serv__cab">
@@ -512,47 +603,47 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
     </div>
     <div class="srv">
       <article class="srv__i rev" data-d="0">
-        <p class="srv__n">01</p>
+        <p class="srv__n"><span class="srv__ico"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/></svg></span>01</p>
         <h3>Boletines (CIE)</h3>
         <p>El certificado de la instalación para dar de alta la luz en una vivienda o un local nuevo, o después de una reforma.</p>
       </article>
       <article class="srv__i rev" data-d="1">
-        <p class="srv__n">02</p>
+        <p class="srv__n"><span class="srv__ico"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2M8.5 11l1.8 1.8 3.2-3.3"/></svg></span>02</p>
         <h3>Revisiones periódicas</h3>
         <p>Las inspecciones de la instalación que pide la normativa, con su informe.</p>
       </article>
       <article class="srv__i rev" data-d="2">
-        <p class="srv__n">03</p>
+        <p class="srv__n"><span class="srv__ico"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v10M6 13h12M8 17h8M10 21h4"/></svg></span>03</p>
         <h3>Tomas de tierra</h3>
         <p>Comprobación, medición y arreglo de la toma de tierra de la instalación.</p>
       </article>
       <article class="srv__i rev" data-d="0">
-        <p class="srv__n">04</p>
+        <p class="srv__n"><span class="srv__ico"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V9l8-5 8 5v11z"/><path d="M13 10l-3 4h4l-3 4"/></svg></span>04</p>
         <h3>Reformas de instalación</h3>
         <p>Cuadro, cableado, enchufes y puntos de luz nuevos cuando se reforma una casa o un local.</p>
       </article>
       <article class="srv__i rev" data-d="1">
-        <p class="srv__n">05</p>
+        <p class="srv__n"><span class="srv__ico"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5a4 4 0 0 0-5 5L4 16l4 4 5.5-5.5a4 4 0 0 0 5-5l-2.5 2.5-2.5-.5-.5-2.5z"/></svg></span>05</p>
         <h3>Reparaciones y mantenimiento</h3>
         <p>Averías, saltos de diferencial, enchufes que no van y el mantenimiento de la instalación.</p>
       </article>
       <article class="srv__i rev" data-d="2">
-        <p class="srv__n">06</p>
+        <p class="srv__n"><span class="srv__ico"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="2.5"/><path d="M10 7h4M12 17h.01"/><path d="M9.5 12a3.5 3.5 0 0 1 5 0"/></svg></span>06</p>
         <h3>Domótica y automatización</h3>
         <p>Control de la energía, de la iluminación y de la seguridad en viviendas y edificios.</p>
       </article>
       <article class="srv__i rev" data-d="0">
-        <p class="srv__n">07</p>
+        <p class="srv__n"><span class="srv__ico"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9V16h7v-2.1A6 6 0 0 0 12 3z"/></svg></span>07</p>
         <h3>Rótulos y alumbrado</h3>
         <p>Lámparas de descarga y rótulos luminosos para comercios y locales.</p>
       </article>
       <article class="srv__i rev" data-d="1">
-        <p class="srv__n">08</p>
+        <p class="srv__n"><span class="srv__ico"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="11" rx="2"/><path d="M7 7V5h10v2M12 10l-2 3h3l-2 3"/></svg></span>08</p>
         <h3>Grupos electrógenos</h3>
         <p>Instalación de generadores de baja tensión.</p>
       </article>
       <article class="srv__i rev" data-d="2">
-        <p class="srv__n">09</p>
+        <p class="srv__n"><span class="srv__ico"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21 9 3m9 18-3-18M4 8h16M5 13h14"/></svg></span>09</p>
         <h3>Líneas de distribución</h3>
         <p>Líneas aéreas y subterráneas, e instalaciones en locales con riesgo de incendio o explosión.</p>
       </article>
@@ -671,6 +762,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   <div class="cierre__a">
     <p class="rotulo rev">Presupuesto</p>
     <h2 class="rev" data-d="1">Cuéntanos qué<br/>necesitas</h2>
+    <a class="gran-tel rev" data-d="2" id="gran-tel" href="#"><span>613</span> <span>26 82 12</span></a>
     <p class="rev" data-d="2">Por teléfono o por correo. Si es una urgencia, llama directamente: atendemos las 24 horas.</p>
     <div class="cierre__btns rev" data-d="2">
       <a class="btn" id="c-tel" href="#">Llamar al 613 26 82 12 <span class="ar" aria-hidden="true">→</span></a>
@@ -1320,6 +1412,23 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
   var ref = document.querySelector('a[href^="tel:"]');
   var tel = ref ? ref.getAttribute("href") : "tel:+34613268212";
   ["h-tel","u-tel"].forEach(function(id){ var e = document.getElementById(id); if(e) e.href = tel; });
+})();
+</script>
+<script>
+(function(){
+  var ref = document.querySelector('a[href^="tel:"]'), gt = document.getElementById("gran-tel");
+  if(ref && gt) gt.href = ref.getAttribute("href");
+  var h = document.querySelector(".hero");
+  if(h) setTimeout(function(){ h.classList.add("vivo"); }, document.getElementById("carga") ? 2150 : 80);
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches || !matchMedia("(hover: hover) and (min-width: 900px)").matches) return;
+  document.querySelectorAll(".hero .btn, .cierre .btn, .obras .btn").forEach(function(b){
+    b.classList.add("btn--mag");
+    b.addEventListener("pointermove", function(e){
+      var r = b.getBoundingClientRect();
+      b.style.transform = "translate(" + ((e.clientX - r.left - r.width/2) * .18).toFixed(1) + "px," + ((e.clientY - r.top - r.height/2) * .28).toFixed(1) + "px)";
+    });
+    b.addEventListener("pointerleave", function(){ b.style.transform = ""; });
+  });
 })();
 </script>
 </body>
