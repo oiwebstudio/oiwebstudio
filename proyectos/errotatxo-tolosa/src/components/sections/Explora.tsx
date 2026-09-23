@@ -8,9 +8,9 @@ import imageLoader from "@/lib/imageLoader";
 import { useLocale } from "@/lib/i18n";
 
 const CARD_IMAGES = [
-  "/images/pan-tradicional.jpg",
-  "/images/donuts.jpg",
-  "/images/fachada.jpg",
+  "/images/pan-tradicional.webp",
+  "/images/donuts.webp",
+  "/images/fachada.webp",
 ];
 
 export default function Explora() {

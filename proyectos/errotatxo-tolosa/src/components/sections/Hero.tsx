@@ -35,7 +35,7 @@ export default function Hero() {
       <Parallax speed={0.15} className="absolute inset-0 z-0">
         <div
           className="h-[120%] w-full bg-cover bg-center"
-          style={{ backgroundImage: `url(${imageLoader({ src: "/images/hero-interior.jpeg" })})` }}
+          style={{ backgroundImage: `url(${imageLoader({ src: "/images/hero-interior.webp" })})` }}
           role="img"
           aria-label="Interior del obrador de Errotatxo"
         />

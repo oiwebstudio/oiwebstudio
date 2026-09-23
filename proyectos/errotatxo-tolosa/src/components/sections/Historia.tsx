@@ -15,13 +15,13 @@ export default function Historia() {
       <div className="container-edge grid grid-cols-1 gap-y-20 md:grid-cols-12 md:gap-x-6">
         <div className="relative md:col-span-7 md:col-start-1">
           <RevealImage
-            src="/images/fachada.jpg"
+            src="/images/fachada.webp"
             alt={historia.imageAlt}
             className="aspect-[4/5] w-full md:aspect-[3/4]"
           />
           <div className="absolute -bottom-10 -right-4 w-32 rotate-3 sm:w-40 md:-right-8 md:-bottom-14 md:w-56 lg:w-64">
             <RevealImage
-              src="/images/pan-tradicional.jpg"
+              src="/images/pan-tradicional.webp"
               alt={historia.accentAlt}
               className="aspect-[4/5] w-full border-[6px] border-bg shadow-2xl"
               delay={0.35}

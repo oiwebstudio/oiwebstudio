@@ -17,7 +17,7 @@ export default function Horno() {
     >
       <Parallax speed={0.18} className="absolute inset-0">
         <Image
-          src="/images/pan-molde.jpg"
+          src="/images/pan-molde.webp"
           alt={horno.imageAlt}
           fill
           sizes="100vw"

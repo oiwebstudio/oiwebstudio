@@ -136,7 +136,7 @@ export const stores: Store[] = [
     phone: "943 65 54 92",
     lat: 43.1384065,
     lng: -2.0741355,
-    image: "/images/fachada.jpg",
+    image: "/images/fachada.webp",
     mapsQuery: "Errotatxo Andia Kalea 3 Tolosa",
     status: "open",
     hours: { weekday: "7:00–19:00", weekend: "7:00–14:00" },
@@ -154,7 +154,7 @@ export const stores: Store[] = [
     lng: -2.0788086,
     // Es la única de las tres con cafetería: barra, taburetes y mesas. La foto
     // del interior es la misma que abre la home.
-    image: "/images/hero-interior.jpeg",
+    image: "/images/hero-interior.webp",
     mapsQuery: "Errotatxo San Frantzisko Pasealekua Tolosa",
     status: "open",
     // Horario confirmado por el cliente (ficha de Google), 09/08/2026.
@@ -173,7 +173,7 @@ export const stores: Store[] = [
     // caían 500 m y 150 m al oeste del local.
     lat: 43.1620700,
     lng: -2.0697600,
-    image: "/images/pan-tradicional.jpg",
+    image: "/images/pan-tradicional.webp",
     mapsQuery: "Errotatxo San Juan Kalea Anoeta",
     status: "open",
     // Horario confirmado por el cliente (ficha de Google), 09/08/2026.
