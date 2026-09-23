@@ -8,10 +8,10 @@ import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { useLocale } from "@/lib/i18n";
 
 const STEP_IMAGES = [
-  "/images/pan-tradicional.jpg",
-  "/images/pan-molde.jpg",
-  "/images/donuts.jpg",
-  "/images/galletas.jpg",
+  "/images/pan-tradicional.webp",
+  "/images/pan-molde.webp",
+  "/images/donuts.webp",
+  "/images/galletas.webp",
 ];
 
 export default function Proceso() {

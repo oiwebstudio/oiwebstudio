@@ -1,7 +1,6 @@
 "use client";
 
-import { CheckCircle2, Facebook, Instagram, Phone, Send } from "lucide-react";
-import { useState, type FormEvent } from "react";
+import { ArrowUpRight, Facebook, Instagram, Phone } from "lucide-react";
 import FadeIn from "@/components/motion/FadeIn";
 import Magnetic from "@/components/motion/Magnetic";
 import { socialLinks } from "@/lib/data";
@@ -11,16 +10,11 @@ import { useLocale } from "@/lib/i18n";
 const socialIcons: Record<string, typeof Instagram> = { Instagram, Facebook };
 
 export default function Contacto() {
-  const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
   const { t } = useLocale();
   const contacto = t.contacto;
   const phoneStores = stores.filter((s) => s.phone);
+  const facebook = socialLinks.find((s) => s.label === "Facebook");
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setStatus("sending");
-    setTimeout(() => setStatus("sent"), 900);
-  };
 
   return (
     <section id="contacto" className="relative overflow-hidden bg-lino/40 py-20 md:py-28">
@@ -74,66 +68,30 @@ export default function Contacto() {
           </FadeIn>
         </div>
 
-        <div className="relative md:col-span-6 md:col-start-7">
-          <FadeIn
-            delay={0.25}
-            className="absolute -top-5 right-6 z-10 hidden rotate-6 bg-sol px-4 py-3 text-center shadow-lg md:block md:right-10"
-          >
-            <p className="text-[11px] font-bold uppercase leading-tight tracking-widest2 text-[#4E2E1B]">
-              {contacto.quickReply}
-            </p>
+        {/* Antes había aquí un formulario que simulaba el envío: el mensaje no
+            llegaba a nadie. Hasta que haya correo, el canal escrito es Facebook. */}
+        <div className="md:col-span-6 md:col-start-7">
+          <FadeIn delay={0.1}>
+            <p className="display text-3xl md:text-4xl">{contacto.write.title}</p>
+            <p className="body-editorial mt-4 max-w-md">{contacto.write.text}</p>
           </FadeIn>
-          {status === "sent" ? (
-            <FadeIn className="flex flex-col items-start gap-3 py-8">
-              <CheckCircle2 className="text-madera" size={36} strokeWidth={1.5} />
-              <p className="display text-2xl">{contacto.form.sentTitle}</p>
-              <p className="body-editorial">{contacto.form.sentText}</p>
+          {facebook && (
+            <FadeIn delay={0.2} className="mt-8">
+              <Magnetic className="inline-block">
+                <a
+                  href={facebook.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cursor="hover"
+                  className="group flex min-h-[44px] items-center gap-3 text-sm uppercase tracking-widest2 text-ink"
+                >
+                  {contacto.write.cta}
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/20 transition-colors duration-500 group-hover:border-sol group-hover:bg-sol group-hover:text-[#4E2E1B]">
+                    <ArrowUpRight size={14} />
+                  </span>
+                </a>
+              </Magnetic>
             </FadeIn>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-8">
-              <FadeIn delay={0.05}>
-                <input
-                  name="name"
-                  type="text"
-                  required
-                  placeholder={contacto.form.name}
-                  className="w-full border-b border-ink/20 bg-transparent py-3 font-serif text-2xl placeholder:text-ink/30 focus:border-madera focus:outline-none md:text-3xl"
-                />
-              </FadeIn>
-              <FadeIn delay={0.1}>
-                <input
-                  name="email"
-                  type="email"
-                  required
-                  placeholder={contacto.form.email}
-                  className="w-full border-b border-ink/20 bg-transparent py-3 font-serif text-2xl placeholder:text-ink/30 focus:border-madera focus:outline-none md:text-3xl"
-                />
-              </FadeIn>
-              <FadeIn delay={0.15}>
-                <textarea
-                  name="message"
-                  required
-                  rows={3}
-                  placeholder={contacto.form.message}
-                  className="w-full resize-none border-b border-ink/20 bg-transparent py-3 font-serif text-2xl placeholder:text-ink/30 focus:border-madera focus:outline-none md:text-3xl"
-                />
-              </FadeIn>
-              <FadeIn delay={0.2}>
-                <Magnetic className="inline-block">
-                  <button
-                    type="submit"
-                    data-cursor="hover"
-                    disabled={status === "sending"}
-                    className="group flex items-center gap-3 text-sm uppercase tracking-widest2 text-ink disabled:opacity-50"
-                  >
-                    {status === "sending" ? contacto.form.sending : contacto.form.submit}
-                    <span className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/20 transition-colors duration-500 group-hover:border-sol group-hover:bg-sol group-hover:text-[#4E2E1B]">
-                      <Send size={14} />
-                    </span>
-                  </button>
-                </Magnetic>
-              </FadeIn>
-            </form>
           )}
         </div>
       </div>

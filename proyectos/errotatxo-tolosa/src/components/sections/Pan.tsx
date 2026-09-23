@@ -33,7 +33,7 @@ export default function Pan() {
 
         <div className="order-1 md:order-2 md:col-span-7 md:col-start-6">
           <RevealImage
-            src="/images/pan-tradicional.jpg"
+            src="/images/pan-tradicional.webp"
             alt={pan.imageAlt}
             className="aspect-[4/5] w-full md:aspect-[3/4]"
             imgClassName="object-[50%_25%]"

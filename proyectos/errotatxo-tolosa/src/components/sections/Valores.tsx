@@ -6,10 +6,10 @@ import imageLoader from "@/lib/imageLoader";
 import { useLocale } from "@/lib/i18n";
 
 const IMAGES = [
-  "/images/pan-tradicional.jpg",
-  "/images/fachada.jpg",
-  "/images/donuts.jpg",
-  "/images/pastel.jpg",
+  "/images/pan-tradicional.webp",
+  "/images/fachada.webp",
+  "/images/donuts.webp",
+  "/images/pastel.webp",
 ];
 
 export default function Valores() {

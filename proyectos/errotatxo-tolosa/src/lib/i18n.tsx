@@ -93,16 +93,7 @@ export type Dictionary = {
     text: string;
     follow: string;
     call: string;
-    quickReply: string;
-    form: {
-      name: string;
-      email: string;
-      message: string;
-      submit: string;
-      sending: string;
-      sentTitle: string;
-      sentText: string;
-    };
+    write: { title: string; text: string; cta: string };
   };
   footer: { tagline: string; horario: string; navegacion: string; contacto: string; rights: string };
   common: { theme: string; whatsapp: string; backToTop: string; close: string; prev: string; next: string; view: string };
@@ -120,7 +111,6 @@ export type Dictionary = {
   };
   smart?: {
     nearestLabel: string;
-    breadCounterLabel: string;
   };
 };
 
@@ -170,7 +160,7 @@ const es: Dictionary = {
       "Tres tiendas en el valle del Oria. El mismo pan, la misma masa y la misma gente detrás del mostrador desde 1996.",
     stores: {
       "tolosa-andia": {
-        tagline: "En pleno casco viejo, a un paso de la plaza. La tienda donde empezó todo.",
+        tagline: "En pleno casco viejo, a un paso de la plaza. La casa de Errotatxo desde 1996.",
         imageAlt: "Fachada de la tienda de Errotatxo en Andia Kalea, Tolosa",
       },
       "tolosa-san-frantzisko": {
@@ -211,7 +201,7 @@ const es: Dictionary = {
       {
         year: "1996",
         title: "Empieza Errotatxo",
-        text: "Se constituye Okindegia Errotatxo en Andia Kalea, en el casco viejo de Tolosa. Un obrador, un horno y una tienda.",
+        text: "Se constituye Okindegia Errotatxo, con casa en Andia Kalea, en el casco viejo de Tolosa.",
       },
       {
         year: "El nombre",
@@ -221,7 +211,7 @@ const es: Dictionary = {
       {
         year: "Tolosa",
         title: "Una segunda tienda",
-        text: "San Frantzisko Pasealekua, junto al río. La misma masa, otro barrio y otra clientela: la de los que pasan cada día a la misma hora.",
+        text: "San Frantzisko Pasealekua, junto al río, y con cafetería: aquí el pan se acompaña de un café.",
       },
       {
         year: "Anoeta",
@@ -231,7 +221,7 @@ const es: Dictionary = {
       {
         year: "Hoy",
         title: "Tres tiendas, un solo obrador",
-        text: "Treinta años después seguimos amasando en casa y abriendo a las siete. Nada de eso ha cambiado, y no está previsto que cambie.",
+        text: "Treinta años después, tres tiendas y el mismo oficio detrás del mostrador.",
       },
     ],
   },
@@ -240,8 +230,8 @@ const es: Dictionary = {
     title: ["Lo que nos define,", "pieza a pieza"],
     items: [
       { title: "Elaboración artesanal", text: "Elaboración propia en nuestro obrador, sin prisas ni atajos, como se ha hecho siempre en Errotatxo." },
-      { title: "Ingredientes de calidad", text: "Harinas seleccionadas y materias primas cuidadas, sin aditivos innecesarios." },
-      { title: "Tradición", text: "Recetas y técnicas transmitidas de generación en generación en el corazón de Gipuzkoa." },
+      { title: "Ingredientes de calidad", text: "Harinas seleccionadas y materias primas cuidadas." },
+      { title: "Tradición", text: "Treinta años en el oficio, en el corazón de Gipuzkoa." },
       { title: "Producto local", text: "Tres tiendas que forman parte del día a día de Tolosa y Anoeta." },
     ],
   },
@@ -249,9 +239,9 @@ const es: Dictionary = {
     eyebrow: "El origen",
     title: ["Desde 1996,", "en Andia Kalea"],
     paragraphs: [
-      "Errotatxo abrió en 1996 en Andia Kalea, en el casco viejo de Tolosa. Aquella primera tienda sigue en el mismo sitio, con el mismo horno encendido antes de que amanezca y el mismo oficio detrás del mostrador.",
+      "Okindegia Errotatxo se constituyó en 1996, con casa en Andia Kalea, en el casco viejo de Tolosa. La tienda sigue ahí, con el mismo oficio detrás del mostrador.",
       "El nombre viene del euskera: errota es molino, y el diminutivo lo convierte en el molinito. No es una marca pensada en una reunión, es de donde venimos — de moler, amasar y hornear.",
-      "Hoy somos tres tiendas: dos en Tolosa y una en Anoeta. Tres barrios distintos, un solo obrador y una manera de trabajar que no ha cambiado en treinta años.",
+      "Hoy somos tres tiendas: dos en Tolosa y una en Anoeta. Tres barrios distintos, un solo obrador y treinta años de oficio.",
     ],
     imageAlt: "Fachada del obrador Errotatxo en Tolosa",
     accentAlt: "Pan artesanal recién horneado",
@@ -268,7 +258,7 @@ const es: Dictionary = {
     eyebrow: "El pan",
     title: ["Corteza crujiente,", "miga honesta"],
     paragraphs: [
-      "Largas fermentaciones, harinas de proximidad y ningún atajo. Así conseguimos un pan que se sostiene por sí solo: sin aditivos, sin prisa, sin artificios.",
+      "Pan del obrador, horneado cada día para las tres tiendas. Corteza que cruje y miga que se nota.",
     ],
     imageAlt: "Detalle de la corteza del pan artesanal de Errotatxo",
   },
@@ -286,11 +276,11 @@ const es: Dictionary = {
     eyebrow: "Productos",
     title: ["Lo que horneamos", "cada día"],
     items: [
-      { name: "Pan tradicional", description: "Hogazas de corteza crujiente y miga alveolada, de fermentación lenta." },
+      { name: "Pan tradicional", description: "Hogazas y barras de corteza crujiente, del obrador." },
       { name: "Bollería", description: "Piezas horneadas a diario y glaseadas de forma artesanal." },
-      { name: "Pan de molde", description: "Masa madre propia, tierno por dentro, corteza dorada suave." },
-      { name: "Pastelería", description: "Galletas y dulces preparados con mantequilla y chocolate seleccionados." },
-      { name: "Especialidades de temporada", description: "Recetas vascas que cambian con el calendario y la proximidad." },
+      { name: "Pan de molde", description: "Tierno por dentro, de corteza dorada y suave." },
+      { name: "Pastelería", description: "Galletas, pastas y dulces del mostrador, también para regalar." },
+      { name: "Especialidades de temporada", description: "Lo que pide cada fecha del calendario." },
     ],
   },
   galeria: {
@@ -339,18 +329,13 @@ const es: Dictionary = {
   contacto: {
     eyebrow: "Hablemos",
     title: ["Hablemos"],
-    text: "¿Quieres preguntarnos algo o consultar sobre nuestros productos? Escríbenos o llámanos y te atendemos encantados.",
+    text: "¿Quieres preguntarnos algo? Llama a la tienda que te quede más cerca o escríbenos por Facebook.",
     follow: "Síguenos",
     call: "Llámanos",
-    quickReply: "Respuesta rápida",
-    form: {
-      name: "Nombre",
-      email: "Email",
-      message: "Mensaje",
-      submit: "Enviar mensaje",
-      sending: "Enviando...",
-      sentTitle: "¡Mensaje enviado!",
-      sentText: "Gracias por escribirnos, te responderemos muy pronto.",
+    write: {
+      title: "Escríbenos",
+      text: "Para dudas que no corren prisa, mándanos un mensaje por Facebook. Si es para hoy, mejor llama a la tienda.",
+      cta: "Escribir por Facebook",
     },
   },
   footer: {
@@ -376,7 +361,7 @@ const es: Dictionary = {
       intro:
         "Errotatxo empezó en 1996 en Andia Kalea. Hoy son tres tiendas en Tolosa y Anoeta, y el mismo obrador detrás de todas.",
       stats: [
-        { value: "1996", label: "Abrimos en Andia Kalea" },
+        { value: "1996", label: "Año de constitución" },
         { value: "3", label: "Tiendas en el valle del Oria" },
         { value: "2", label: "Municipios: Tolosa y Anoeta" },
         { value: "1", label: "Obrador para las tres" },
@@ -389,9 +374,9 @@ const es: Dictionary = {
         "Pan, bollería y pastelería elaborados cada día en nuestro obrador de Tolosa.",
       stats: [
         { value: "5", label: "Familias de producto" },
-        { value: "100", suffix: " %", label: "Elaboración propia" },
-        { value: "7", suffix: ":00", label: "Recién hecho cada mañana" },
-        { value: "0", label: "Conservantes añadidos" },
+        { value: "3", label: "Tiendas donde encontrarlo" },
+        { value: "1", label: "Obrador propio en Tolosa" },
+        { value: "7", suffix: ":00", label: "Abre la primera tienda" },
       ],
     },
     tiendas: {
@@ -402,7 +387,7 @@ const es: Dictionary = {
       stats: [
         { value: "3", label: "Tiendas en Gipuzkoa" },
         { value: "2", label: "Municipios" },
-        { value: "7", suffix: ":00", label: "Abrimos cada mañana" },
+        { value: "7", suffix: ":00", label: "Abre la primera tienda" },
         { value: "1996", label: "Desde" },
       ],
     },
@@ -410,7 +395,7 @@ const es: Dictionary = {
       eyebrow: "Contacto",
       title: ["Hablemos"],
       intro:
-        "¿Quieres preguntarnos algo o consultar sobre nuestros productos? Escríbenos o llámanos y te atendemos encantados.",
+        "¿Quieres preguntarnos algo? Llama a la tienda que te quede más cerca o escríbenos por Facebook.",
       stats: [],
     },
   },
@@ -441,7 +426,6 @@ const es: Dictionary = {
   },
   smart: {
     nearestLabel: "Tu tienda más cercana",
-    breadCounterLabel: "panes horneados hoy",
   },
 };
 
@@ -484,7 +468,7 @@ const eu: Dictionary = {
       "Hiru denda Oria bailaran. Ogi bera, ore bera eta jende bera mostradorearen atzean 1996tik.",
     stores: {
       "tolosa-andia": {
-        tagline: "Alde Zaharraren erdian, plazatik pauso batera. Dena hasi zen denda.",
+        tagline: "Alde Zaharraren erdian, plazatik pauso batera. Errotatxoren etxea 1996tik.",
         imageAlt: "Errotatxoren fatxada Tolosako Andia Kalean",
       },
       "tolosa-san-frantzisko": {
@@ -525,7 +509,7 @@ const eu: Dictionary = {
       {
         year: "1996",
         title: "Errotatxo hasten da",
-        text: "Okindegia Errotatxo Andia Kalean sortzen da, Tolosako Alde Zaharrean. Lantegi bat, labe bat eta denda bat.",
+        text: "Okindegia Errotatxo sortzen da, Andia Kalean, Tolosako Alde Zaharrean.",
       },
       {
         year: "Izena",
@@ -535,7 +519,7 @@ const eu: Dictionary = {
       {
         year: "Tolosa",
         title: "Bigarren denda",
-        text: "San Frantzisko Pasealekua, ibaiaren ondoan. Ore bera, beste auzo bat eta beste bezeria: egunero ordu berean pasatzen direnena.",
+        text: "San Frantzisko Pasealekua, ibaiaren ondoan, eta kafetegiarekin: hemen ogiari kafe bat laguntzen dio.",
       },
       {
         year: "Anoeta",
@@ -545,7 +529,7 @@ const eu: Dictionary = {
       {
         year: "Gaur",
         title: "Hiru denda, lantegi bakarra",
-        text: "Hogeita hamar urte geroago, etxean oratzen jarraitzen dugu eta zazpietan irekitzen. Ez da ezer aldatu, eta ez dugu aldatzeko asmorik.",
+        text: "Hogeita hamar urte geroago, hiru denda eta ofizio bera mostradorearen atzean.",
       },
     ],
   },
@@ -554,8 +538,8 @@ const eu: Dictionary = {
     title: ["Definitzen gaituena,", "piezaz pieza"],
     items: [
       { title: "Artisau-elaborazioa", text: "Gure lantegiko elaborazio propioa, presarik eta lasterbiderik gabe, Errotatxon beti egin izan den bezala." },
-      { title: "Kalitatezko osagaiak", text: "Irin hautatuak eta lehengai zainduak, beharrezkoak ez diren gehigarririk gabe." },
-      { title: "Tradizioa", text: "Belaunaldiz belaunaldi Gipuzkoako bihotzean transmititutako errezetak eta teknikak." },
+      { title: "Kalitatezko osagaiak", text: "Irin hautatuak eta lehengai zainduak." },
+      { title: "Tradizioa", text: "Hogeita hamar urte ofizioan, Gipuzkoaren bihotzean." },
       { title: "Bertako produktua", text: "Tolosan eta Anoetan, euren herrietako egunerokotasuna osatzen duten hiru denda." },
     ],
   },
@@ -563,9 +547,9 @@ const eu: Dictionary = {
     eyebrow: "Jatorria",
     title: ["1996tik,", "Andia Kalean"],
     paragraphs: [
-      "Errotatxo 1996an ireki zen Andia Kalean, Tolosako Alde Zaharrean. Lehen denda hura leku berean dago oraindik, labea eguna argitu aurretik piztuta eta ofizio bera mostradorearen atzean.",
+      "Okindegia Errotatxo 1996an sortu zen, Andia Kalean, Tolosako Alde Zaharrean. Denda bertan dago oraindik, ofizio bera mostradorearen atzean.",
       "Izena euskaratik dator: errota, eta txikigarriak errota txiki bihurtzen du. Ez da bilera batean asmatutako marka; ehotzetik, oratzetik eta laberatzetik gatoz.",
-      "Gaur hiru denda gara: bi Tolosan eta bat Anoetan. Hiru auzo desberdin, lantegi bakarra eta hogeita hamar urtean aldatu ez den lan egiteko modu bat.",
+      "Gaur hiru denda gara: bi Tolosan eta bat Anoetan. Hiru auzo desberdin, lantegi bakarra eta hogeita hamar urteko ofizioa.",
     ],
     imageAlt: "Errotatxo lantegiaren fatxada Tolosan",
     accentAlt: "Artisau-ogi laberatu berria",
@@ -582,7 +566,7 @@ const eu: Dictionary = {
     eyebrow: "Ogia",
     title: ["Azal karraskaria,", "mami zintzoa"],
     paragraphs: [
-      "Hartzidura luzeak, hurbileko irinak eta lasterbiderik ez. Horrela, berez eusten zaion ogia lortzen dugu: gehigarririk gabe, presarik gabe, artifiziorik gabe.",
+      "Lantegiko ogia, egunero laberatua hiru dendentzat. Kurruskatzen duen azala eta nabaritzen den mamia.",
     ],
     imageAlt: "Errotatxoko artisau-ogiaren azalaren xehetasuna",
   },
@@ -600,11 +584,11 @@ const eu: Dictionary = {
     eyebrow: "Produktuak",
     title: ["Egunero labean", "egiten duguna"],
     items: [
-      { name: "Ogi tradizionala", description: "Azal karraskariko eta mami albeolatuko ogiak, hartzidura motelekoak." },
+      { name: "Ogi tradizionala", description: "Azal karraskariko ogiak eta barrak, lantegitik." },
       { name: "Opilgintza", description: "Egunero laberatutako piezak, artisau erara glasatuak." },
-      { name: "Moldeko ogia", description: "Ama-masa propioa, barrutik samurra, urre koloreko azal leuna." },
-      { name: "Pastelgintza", description: "Aukeratutako gurin eta txokolatez prestatutako galletak eta gozokiak." },
-      { name: "Sasoiko espezialitateak", description: "Egutegiarekin eta hurbiltasunarekin aldatzen diren euskal errezetak." },
+      { name: "Moldeko ogia", description: "Barrutik samurra, urre koloreko azal leunarekin." },
+      { name: "Pastelgintza", description: "Mostradoreko galletak, pastak eta gozokiak, oparitzeko ere bai." },
+      { name: "Sasoiko espezialitateak", description: "Egutegiko data bakoitzak eskatzen duena." },
     ],
   },
   galeria: {
@@ -652,18 +636,13 @@ const eu: Dictionary = {
   contacto: {
     eyebrow: "Hitz egin dezagun",
     title: ["Hitz egin", "dezagun"],
-    text: "Zerbait galdetu edo gure produktuei buruz kontsultatu nahi diguzu? Idatzi edo deitu, eta gustura lagunduko dizugu.",
+    text: "Zerbait galdetu nahi diguzu? Deitu hurbilen duzun dendara edo idatzi Facebooken.",
     follow: "Jarraitu gaitzazu",
     call: "Deitu iezaguzu",
-    quickReply: "Erantzun azkarra",
-    form: {
-      name: "Izena",
-      email: "Emaila",
-      message: "Mezua",
-      submit: "Mezua bidali",
-      sending: "Bidaltzen...",
-      sentTitle: "Bidalitako mezua!",
-      sentText: "Eskerrik asko idazteagatik. Laster erantzungo dizugu.",
+    write: {
+      title: "Idatzi iezaguzu",
+      text: "Presarik ez duten zalantzetarako, bidali mezu bat Facebooken. Gaurko bada, hobe dendara deitzea.",
+      cta: "Idatzi Facebooken",
     },
   },
   footer: {
@@ -689,7 +668,7 @@ const eu: Dictionary = {
       intro:
         "Errotatxo 1996an hasi zen Andia Kalean. Gaur hiru denda dira, Tolosan eta Anoetan, eta lantegi bera guztien atzean.",
       stats: [
-        { value: "1996", label: "Andia Kalean ireki genuen" },
+        { value: "1996", label: "Sortze-urtea" },
         { value: "3", label: "Denda Oria bailaran" },
         { value: "2", label: "Udalerri: Tolosa eta Anoeta" },
         { value: "1", label: "Lantegi hiruentzat" },
@@ -702,9 +681,9 @@ const eu: Dictionary = {
         "Ogia, opilgintza eta pastelgintza, egunero eginak Tolosako gure lantegian.",
       stats: [
         { value: "5", label: "Produktu familia" },
-        { value: "100", suffix: " %", label: "Elaborazio propioa" },
-        { value: "7", suffix: ":00", label: "Goizero egin berria" },
-        { value: "0", label: "Kontserbatzaile gehiturik" },
+        { value: "3", label: "Denda non aurkitu" },
+        { value: "1", label: "Lantegi propioa Tolosan" },
+        { value: "7", suffix: ":00", label: "Lehen denda irekitzen da" },
       ],
     },
     tiendas: {
@@ -715,7 +694,7 @@ const eu: Dictionary = {
       stats: [
         { value: "3", label: "Denda Gipuzkoan" },
         { value: "2", label: "Udalerri" },
-        { value: "7", suffix: ":00", label: "Goizero irekitzen dugu" },
+        { value: "7", suffix: ":00", label: "Lehen denda irekitzen da" },
         { value: "1996", label: "Urtetik" },
       ],
     },
@@ -723,7 +702,7 @@ const eu: Dictionary = {
       eyebrow: "Kontaktua",
       title: ["Hitz egin", "dezagun"],
       intro:
-        "Zerbait galdetu edo gure produktuei buruz kontsultatu nahi diguzu? Idatzi edo deitu, eta gustura lagunduko dizugu.",
+        "Zerbait galdetu nahi diguzu? Deitu hurbilen duzun dendara edo idatzi Facebooken.",
       stats: [],
     },
   },
@@ -754,7 +733,6 @@ const eu: Dictionary = {
   },
   smart: {
     nearestLabel: "Zure denda hurbilena",
-    breadCounterLabel: "gaur labetik ateratako ogiak",
   },
 };
 
