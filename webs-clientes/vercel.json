@@ -1,0 +1,8 @@
+{
+  "buildCommand": "echo 'Solo redirecciones'",
+  "outputDirectory": ".",
+  "redirects": [
+    { "source": "/", "destination": "https://oiwebstudio.com/webs-clientes/", "permanent": true },
+    { "source": "/:ruta*", "destination": "https://oiwebstudio.com/webs-clientes/:ruta*", "permanent": true }
+  ]
+}
