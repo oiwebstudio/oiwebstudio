@@ -75,6 +75,9 @@ Partir de la demo publicada en `web/demos/clientes/<slug>/` y copiarla a `client
 
 ## 6. Mantenimiento (20 €/mes)
 
+- **Panel del cliente** (incluido): aviso, precio y menú del día desde el móvil, con PIN.
+  Se monta con `scripts/kit-panel/` (ver su LEEME.md) antes de publicar.
+
 - Cambios pequeños: editar `clientes/<slug>/`, commit y el mismo `wrangler pages deploy`
 - Una vez al mes: que la web abra, que el https esté bien y que el dominio no esté por caducar
 - Si deja el mantenimiento: se le transfiere el dominio a su propia cuenta de DonDominio
