@@ -3,6 +3,8 @@
    clase, así que si este script no llega a cargarse la web se lee entera. */
 document.documentElement.classList.add('js');
 
+if (window.self !== window.top) { document.documentElement.style.display = 'none'; window.top.location = window.self.location; }
+
 document.addEventListener('DOMContentLoaded', () => {
 
   // Navbar scroll state
@@ -209,6 +211,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Ensamblar enlaces de email (anti-harvesting)
+  document.querySelectorAll('.js-mail').forEach(a => {
+    const addr = a.dataset.u + '@' + a.dataset.d;
+    a.href = 'mailto:' + addr;
+    a.textContent = addr;
+  });
+
   // FAQ accordion
   document.querySelectorAll('.faq-trigger').forEach(btn => {
     btn.setAttribute('aria-expanded', 'false');
@@ -232,6 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const data = new FormData(form);
+      if (data.get('website')) return;
       const lineas = [
         'Hola, quiero pedir presupuesto para una web:',
         `• Nombre: ${(data.get('nombre') || '').toString().trim()}`,
@@ -254,8 +264,14 @@ document.addEventListener('DOMContentLoaded', () => {
         form.appendChild(salida);
       }
       const asunto = encodeURIComponent('Presupuesto web — ' + ((data.get('nombre') || '').toString().trim() || 'nuevo contacto'));
-      salida.innerHTML = '¿No se ha abierto WhatsApp? <a class="link-terra" href="mailto:contactoiwebstudio@gmail.com?subject=' +
-        asunto + '&body=' + encodeURIComponent(texto) + '">Envíamelo por email</a> con el mismo mensaje.';
+      salida.textContent = '';
+      const t1 = document.createTextNode('¿No se ha abierto WhatsApp? ');
+      const a = document.createElement('a');
+      a.className = 'link-terra';
+      a.href = 'mailto:contactoiwebstudio@gmail.com?subject=' + asunto + '&body=' + encodeURIComponent(texto);
+      a.textContent = 'Envíamelo por email';
+      const t2 = document.createTextNode(' con el mismo mensaje.');
+      salida.append(t1, a, t2);
     });
   }
 });
