@@ -10,6 +10,7 @@ import Noise from "@/components/Noise";
 import PageDots from "@/components/PageDots";
 import Providers from "@/components/Providers";
 import ScrollProgress from "@/components/ScrollProgress";
+import { OG_IMAGE, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -27,30 +28,22 @@ const inter = Inter({
   display: "swap",
 });
 
+// Valores por defecto; cada página define su título, descripción y canonical
+// con pageMetadata() (lib/site.ts).
 export const metadata: Metadata = {
-  metadataBase: new URL("https://errotatxotolosa.com"),
+  metadataBase: new URL(SITE_URL + "/"),
   title: {
-    default: "Errotatxo | Panadería artesanal en Tolosa y Anoeta",
+    default: "Panadería y cafetería en Tolosa y Anoeta | Errotatxo Okindegia",
     template: "%s | Errotatxo",
   },
   description:
-    "Pan artesanal elaborado cada día en nuestros obradores de Tolosa (Andia y San Frantzisko) y Anoeta. Tradición vasca, ingredientes de calidad y producto local desde siempre.",
-  keywords: [
-    "panadería Tolosa",
-    "pan artesanal Gipuzkoa",
-    "Errotatxo",
-    "okindegia",
-    "gozotegia",
-    "pastelería Tolosa",
-    "pan vasco",
-    "panadería Anoeta",
-  ],
+    "Errotatxo: panadería y pastelería en Tolosa y Anoeta, con cafetería en San Frantzisko.",
+  applicationName: "Errotatxo",
   openGraph: {
-    title: "Errotatxo | Panadería artesanal en Gipuzkoa",
-    description:
-      "Tradición, calidad y producto local en Tolosa y Anoeta. Pan artesanal elaborado cada día.",
+    siteName: "Errotatxo Okindegia",
     locale: "es_ES",
     type: "website",
+    images: [OG_IMAGE],
   },
   robots: { index: true, follow: true },
 };

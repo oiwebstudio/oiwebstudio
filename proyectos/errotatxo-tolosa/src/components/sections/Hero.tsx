@@ -29,7 +29,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative isolate flex min-h-[100svh] items-end overflow-hidden pb-24 pt-32 md:pb-28 md:pt-36"
+      className="relative isolate flex min-h-[92svh] items-end overflow-hidden rounded-b-[2rem] pb-24 pt-32 md:min-h-[100svh] md:rounded-none md:pb-28 md:pt-36"
     >
       {/* fondo: interior del obrador con parallax */}
       <Parallax speed={0.15} className="absolute inset-0 z-0">
@@ -44,7 +44,7 @@ export default function Hero() {
       <Particles className="z-[1] opacity-60" />
 
       <div className="container-edge relative z-10 w-full">
-        <div className="max-w-xl">
+        <div className="max-w-4xl">
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
