@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="robots" content="noindex, nofollow"/>
+<title>Panel · Har' ta jan</title>
+<style>
+:root{
+  --fondo:#F6F4EE; --papel:#FFFFFF; --tinta:#1D2A22; --tinta2:#55625A; --filete:#DCE3DC;
+  --acento:#2E5E3E; --acento-texto:#FFFFFF; --ok:#1F7A45; --err:#B3261E;
+  --radio:14px;
+}
+*{box-sizing:border-box;margin:0;}
+html{-webkit-text-size-adjust:100%;}
+body{background:var(--fondo);color:var(--tinta);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  padding:0 16px 120px;}
+.envoltura{max-width:560px;margin:0 auto;}
+header{padding:28px 0 18px;}
+header small{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta2);font-weight:600;}
+h1{font-size:26px;line-height:1.15;margin-top:4px;}
+header p{color:var(--tinta2);margin-top:8px;font-size:15px;}
+.prueba{background:#FFF4D6;border:1px solid #EAD08A;border-radius:var(--radio);padding:12px 14px;font-size:14px;margin-bottom:16px;}
+.tarjeta{background:var(--papel);border:1px solid var(--filete);border-radius:var(--radio);padding:18px 16px;margin-bottom:14px;}
+.tarjeta h2{font-size:17px;margin-bottom:4px;}
+.tarjeta .ayuda{font-size:14px;color:var(--tinta2);margin-bottom:12px;}
+label{display:block;font-size:14px;font-weight:600;margin:14px 0 6px;}
+label:first-of-type{margin-top:0;}
+input,textarea{width:100%;font:inherit;font-size:16px;color:var(--tinta);background:#fff;border:1.5px solid var(--filete);
+  border-radius:10px;padding:11px 12px;}
+textarea{min-height:112px;resize:vertical;line-height:1.5;}
+input:focus,textarea:focus{outline:none;border-color:var(--acento);box-shadow:0 0 0 3px color-mix(in srgb,var(--acento) 20%,transparent);}
+.dias{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:14px;scrollbar-width:none;}
+.dias button{flex:1 0 44px;font:inherit;font-size:15px;font-weight:600;padding:10px 6px;border-radius:999px;
+  border:1.5px solid var(--filete);background:#fff;color:var(--tinta);cursor:pointer;}
+.dias button[aria-selected="true"]{background:var(--acento);border-color:var(--acento);color:var(--acento-texto);}
+.dias button.vacio:not([aria-selected="true"]){color:var(--tinta2);border-style:dashed;}
+.interruptor{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border-radius:10px;
+  background:var(--fondo);margin-bottom:6px;font-weight:600;font-size:15px;}
+.interruptor input{width:22px;height:22px;accent-color:var(--acento);flex:0 0 auto;}
+.fila{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;}
+.boton{font:inherit;font-weight:600;font-size:16px;border-radius:12px;padding:13px 18px;cursor:pointer;border:1.5px solid var(--filete);
+  background:#fff;color:var(--tinta);text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;}
+.boton--principal{background:var(--acento);border-color:var(--acento);color:var(--acento-texto);}
+.boton:focus-visible{outline:3px solid color-mix(in srgb,var(--acento) 45%,transparent);outline-offset:2px;}
+.pie{position:fixed;left:0;right:0;bottom:0;background:color-mix(in srgb,var(--fondo) 92%,transparent);backdrop-filter:blur(8px);
+  border-top:1px solid var(--filete);padding:12px 16px calc(12px + env(safe-area-inset-bottom));}
+.pie .envoltura{display:flex;gap:10px;align-items:center;}
+.pie .boton--principal{flex:1;}
+.estado{font-size:14px;margin-top:10px;min-height:1.4em;}
+.estado.ok{color:var(--ok);} .estado.err{color:var(--err);}
+#acceso{max-width:360px;margin:12vh auto 0;}
+#acceso input{font-size:24px;letter-spacing:.3em;text-align:center;}
+[hidden]{display:none!important;}
+</style>
+</head>
+<body>
+<div class="envoltura">
+  <header>
+    <small>Panel de tu web</small>
+    <h1>Har' ta jan</h1>
+    <p>Lo que cambies aquí sale en tu web en cuanto pulses «Guardar».</p>
+  </header>
+
+  <p class="prueba" id="aviso-prueba" hidden>
+    <strong>Modo prueba.</strong> Los cambios se guardan solo en este móvil o este ordenador, para que veas cómo funciona.
+    En tu web de verdad se entra con un PIN y los cambios los ve todo el mundo.
+  </p>
+
+  <!-- Entrada con PIN (solo en la versión real) -->
+  <form id="acceso" class="tarjeta" hidden>
+    <h2>Entrar</h2>
+    <p class="ayuda">Escribe el PIN que te dio Oier.</p>
+    <input id="pin" type="password" inputmode="numeric" autocomplete="current-password" aria-label="PIN" required/>
+    <div class="interruptor" style="margin-top:12px"><span>Recordar en este móvil</span><input id="recordar" type="checkbox" checked/></div>
+    <div class="fila"><button class="boton boton--principal" style="flex:1">Entrar</button></div>
+    <p class="estado" id="estado-acceso" role="status"></p>
+  </form>
+
+  <form id="panel" hidden>
+    <section class="tarjeta">
+      <h2>Aviso</h2>
+      <p class="ayuda">Sale arriba en la web. Por ejemplo: «Cerrado por vacaciones del 15 al 30 de agosto». Déjalo vacío para quitarlo.</p>
+      <textarea id="aviso" rows="2" style="min-height:70px" maxlength="300" aria-label="Aviso"></textarea>
+    </section>
+
+    <section class="tarjeta">
+      <h2>Menú del día</h2>
+      <p class="ayuda">Un plato por línea. Cada día de la semana tiene su menú.</p>
+      <label for="precio">Precio</label>
+      <input id="precio" maxlength="40"/>
+      <label for="incluye">Qué incluye</label>
+      <input id="incluye" maxlength="80"/>
+
+      <label style="margin-top:18px">Día</label>
+      <div class="dias" id="dias" role="tablist" aria-label="Día de la semana"></div>
+      <div class="interruptor"><span id="hay-txt">Hay menú este día</span><input id="hay" type="checkbox" aria-labelledby="hay-txt"/></div>
+      <div id="platos">
+        <label for="primeros">Primeros</label><textarea id="primeros"></textarea>
+        <label for="segundos">Segundos</label><textarea id="segundos"></textarea>
+        <label for="postres">Postres</label><textarea id="postres"></textarea>
+      </div>
+    </section>
+  </form>
+</div>
+
+<div class="pie" id="pie" hidden>
+  <div class="envoltura">
+    <a class="boton" id="ver" href="../" target="_blank" rel="noopener">Ver la web</a>
+    <button class="boton boton--principal" id="guardar" type="button">Guardar</button>
+  </div>
+  <div class="envoltura"><p class="estado" id="estado" role="status" aria-live="polite"></p></div>
+</div>
+
+<script>
+/* La configuración la escribe scripts/kit-panel/aplicar-panel.mjs:
+   modo "prueba" (guarda en el navegador) o "real" (guarda en /api/datos con PIN). */
+const CONFIG = {
+  "slug": "har-ta-jan",
+  "modo": "prueba",
+  "web": "../",
+  "dias": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "inicial": {
+    "aviso": "",
+    "menuPrecio": "12 €",
+    "menuIncluye": "Incluye pan",
+    "menuDia": {
+      "0": null,
+      "1": null,
+      "2": null,
+      "3": null,
+      "4": {
+        "primeros": [
+          "Vainas con refrito",
+          "Espaguetis a la boloñesa",
+          "Marmitako",
+          "Ensaladilla rusa"
+        ],
+        "segundos": [
+          "Pechuga rellena de espinacas",
+          "Chuleta tipo sajonia con pimiento rojo",
+          "Salmón a la plancha",
+          "Merluza rebozada"
+        ],
+        "postres": [
+          "Arroz con leche",
+          "Panna cotta",
+          "Tarta de queso",
+          "Flan de huevo"
+        ]
+      },
+      "5": {
+        "primeros": [
+          "Alcachofas fritas con jamón",
+          "Paella de carne",
+          "Ensaladilla rusa",
+          "Macarrones con tomate y chorizo"
+        ],
+        "segundos": [
+          "Pechuga rellena de bechamel",
+          "Cachopo de jamón y queso",
+          "Albóndigas en tomate",
+          "Chipirones en su tinta"
+        ],
+        "postres": [
+          "Arroz con leche",
+          "Natillas",
+          "Flan de huevo",
+          "Tarta de queso"
+        ]
+      },
+      "6": {
+        "primeros": [
+          "Paella de marisco",
+          "Ensalada de patata con tomate",
+          "Ensaladilla rusa",
+          "Porrusalda"
+        ],
+        "segundos": [
+          "Cachopo de boletus con patatas fritas",
+          "Costilla de cerdo al horno",
+          "Albóndigas en salsa de verduras",
+          "Chipirones en su tinta"
+        ],
+        "postres": [
+          "Arroz con leche",
+          "Natillas",
+          "Flan de huevo",
+          "Tarta de queso"
+        ]
+      }
+    }
+  }
+};
+const DIAS = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+const CLAVE_LOCAL = "panel:" + CONFIG.slug;
+const $ = (id) => document.getElementById(id);
+
+let datos = structuredClone(CONFIG.inicial);
+let dia = CONFIG.dias.includes(new Date().getDay()) ? new Date().getDay() : CONFIG.dias[0];
+let pin = "";
+
+const aLineas = (lista) => (lista || []).join("\n");
+const deLineas = (texto) => texto.split("\n").map((l) => l.trim()).filter(Boolean);
+
+function pintarDias() {
+  $("dias").innerHTML = "";
+  for (const d of CONFIG.dias) {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.setAttribute("role", "tab");
+    b.setAttribute("aria-selected", String(d === dia));
+    b.textContent = DIAS[d].slice(0, 3);
+    b.title = DIAS[d];
+    if (!datos.menuDia[d]) b.classList.add("vacio");
+    b.onclick = () => { guardarDiaEnMemoria(); dia = d; pintarDias(); pintarDia(); };
+    $("dias").append(b);
+  }
+}
+
+function pintarDia() {
+  const m = datos.menuDia[dia];
+  $("hay").checked = Boolean(m);
+  $("hay-txt").textContent = "Hay menú el " + DIAS[dia].toLowerCase();
+  $("platos").hidden = !m;
+  $("primeros").value = aLineas(m && m.primeros);
+  $("segundos").value = aLineas(m && m.segundos);
+  $("postres").value = aLineas(m && m.postres);
+}
+
+function guardarDiaEnMemoria() {
+  datos.menuDia[dia] = $("hay").checked
+    ? { primeros: deLineas($("primeros").value), segundos: deLineas($("segundos").value), postres: deLineas($("postres").value) }
+    : null;
+}
+
+function pintarTodo() {
+  $("aviso").value = datos.aviso || "";
+  $("precio").value = datos.menuPrecio || "";
+  $("incluye").value = datos.menuIncluye || "";
+  pintarDias();
+  pintarDia();
+  $("panel").hidden = false;
+  $("pie").hidden = false;
+}
+
+$("hay").onchange = () => {
+  $("platos").hidden = !$("hay").checked;
+  if ($("hay").checked && !datos.menuDia[dia]) datos.menuDia[dia] = { primeros: [], segundos: [], postres: [] };
+  guardarDiaEnMemoria();
+  pintarDias();
+};
+
+function estado(texto, tipo) {
+  $("estado").textContent = texto;
+  $("estado").className = "estado" + (tipo ? " " + tipo : "");
+}
+
+$("guardar").onclick = async () => {
+  guardarDiaEnMemoria();
+  datos.aviso = $("aviso").value.trim();
+  datos.menuPrecio = $("precio").value.trim();
+  datos.menuIncluye = $("incluye").value.trim();
+  $("guardar").disabled = true;
+  estado("Guardando…");
+  try {
+    if (CONFIG.modo === "real") {
+      const r = await fetch("/api/datos", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ pin, datos }) });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(j.error || "No se ha podido guardar.");
+      estado("Guardado. Ya está en tu web (puede tardar medio minuto en verse).", "ok");
+    } else {
+      localStorage.setItem(CLAVE_LOCAL, JSON.stringify(datos));
+      estado("Guardado. Pulsa «Ver la web» para ver cómo queda.", "ok");
+    }
+  } catch (e) {
+    estado(e.message || "No se ha podido guardar. Prueba otra vez.", "err");
+  } finally {
+    $("guardar").disabled = false;
+  }
+};
+
+async function cargarGuardado() {
+  let guardado = null;
+  if (CONFIG.modo === "real") {
+    const r = await fetch("/api/datos?json", { cache: "no-store" });
+    if (r.ok) guardado = await r.json();
+  } else {
+    try { guardado = JSON.parse(localStorage.getItem(CLAVE_LOCAL) || "null"); } catch {}
+  }
+  if (guardado) datos = { ...datos, ...guardado, menuDia: { ...datos.menuDia, ...(guardado.menuDia || {}) } };
+}
+
+async function entrar(p, silencioso) {
+  const r = await fetch("/api/datos", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ pin: p }) });
+  if (!r.ok) {
+    const j = await r.json().catch(() => ({}));
+    if (!silencioso) $("estado-acceso").textContent = j.error || "No se ha podido entrar.";
+    $("estado-acceso").className = "estado err";
+    return false;
+  }
+  pin = p;
+  $("acceso").hidden = true;
+  await cargarGuardado();
+  pintarTodo();
+  return true;
+}
+
+$("acceso").onsubmit = async (e) => {
+  e.preventDefault();
+  const p = $("pin").value.trim();
+  if (await entrar(p) && $("recordar").checked) { try { localStorage.setItem(CLAVE_LOCAL + ":pin", p); } catch {} }
+};
+
+(async function arrancar() {
+  $("ver").href = CONFIG.web || "../";
+  if (CONFIG.modo === "real") {
+    let recordado = "";
+    try { recordado = localStorage.getItem(CLAVE_LOCAL + ":pin") || ""; } catch {}
+    if (recordado && (await entrar(recordado, true))) return;
+    $("acceso").hidden = false;
+    $("pin").focus();
+  } else {
+    $("aviso-prueba").hidden = false;
+    await cargarGuardado();
+    pintarTodo();
+  }
+})();
+</script>
+</body>
+</html>
