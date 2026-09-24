@@ -4,6 +4,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="theme-color" content="#f6f3ea"/>
+<meta http-equiv="Content-Security-Policy" content="base-uri 'self'; form-action 'self' mailto: https://wa.me"/>
 <title>Pide presupuesto para tu página web en Tolosa | OI Studio</title>
 <meta name="description" content="Pide presupuesto de tu página web en Tolosa o Gipuzkoa: cuéntame tu negocio y recibe una propuesta honesta en menos de 48 horas. WhatsApp, email o formulario."/>
 <meta property="og:type" content="website"/>
@@ -109,6 +110,7 @@
      de correo) en vez de no hacer nada. Con JS, main.js lo intercepta y usa
      WhatsApp, que es más cómodo, dejando el correo como salida alternativa. -->
 <form id="contact-form" class="form-card reveal" data-d="1" action="mailto:contactoiwebstudio@gmail.com" method="post" enctype="text/plain">
+<div class="field" aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;"><label for="website">Website</label><input type="text" id="website" name="website" tabindex="-1" autocomplete="off"/></div>
 <div class="field-row">
 <div class="field"><label for="nombre" data-t="con_l_nombre">Tu nombre</label><input required id="nombre" name="nombre" type="text" placeholder="María García" data-tp="con_ph_nombre"/></div>
 <div class="field"><label for="email" data-t="con_l_email">Tu email</label><input required id="email" name="email" type="email" placeholder="maria@empresa.com" data-tp="con_ph_email"/></div>
@@ -136,7 +138,7 @@
 </div>
 <div class="faq-item reveal">
 <button class="faq-trigger"><span data-t="faq2_q">¿Tengo que comprar el dominio por mi cuenta?</span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
-<div class="faq-panel"><p data-t="faq2_a">No es obligatorio. Puedo registrarlo y gestionarlo por ti, o si ya tienes uno, lo conectamos directamente.</p></div>
+<div class="faq-panel"><p data-t="faq2_a">No hace falta. Lo registro yo a tu nombre y el primer año va incluido; si ya tienes uno, lo conectamos directamente.</p></div>
 </div>
 <div class="faq-item reveal">
 <button class="faq-trigger"><span data-t="faq3_q">¿Y si más adelante quiero cambiar algo?</span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
@@ -176,7 +178,7 @@
 <div>
 <p class="foot-h" data-t="nav_contacto">Contacto</p>
 <ul>
-<li><a href="mailto:contactoiwebstudio@gmail.com">contactoiwebstudio@gmail.com</a></li>
+<li><a class="js-mail" data-u="contactoiwebstudio" data-d="gmail.com"></a></li>
 <li><a href="https://wa.me/34680956755">+34 680 95 67 55</a></li>
 <li><a href="https://instagram.com/oi.webstudio" target="_blank" rel="noopener">Instagram · @oi.webstudio</a></li>
 <li>Tolosa, País Vasco</li>
