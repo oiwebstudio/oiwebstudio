@@ -1,6 +1,7 @@
 "use client";
 
 import { Clock, ExternalLink, MapPin, Phone, Star } from "lucide-react";
+import Link from "next/link";
 import CursorGlow from "@/components/motion/CursorGlow";
 import FadeIn from "@/components/motion/FadeIn";
 import LiveStatusBadge from "@/components/LiveStatusBadge";
@@ -10,7 +11,7 @@ import RevealText from "@/components/motion/RevealText";
 import Scramble from "@/components/motion/Scramble";
 import TimeToClose from "@/components/TimeToClose";
 import { useLocale } from "@/lib/i18n";
-import { directionsUrl, stores } from "@/lib/stores";
+import { directionsUrl, storePath, stores } from "@/lib/stores";
 
 export default function Tiendas() {
   const { t } = useLocale();
@@ -31,20 +32,22 @@ export default function Tiendas() {
       </div>
 
       {/* card-siblings-blur (biblioteca-animaciones) */}
-      <div className="fx-siblings container-edge grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-3">
+      {/* En el móvil, carrusel que se desliza con el dedo (con la siguiente
+          tarjeta asomando); en escritorio, las tres en fila. */}
+      <div className="fx-siblings flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-4 px-4 pb-4 [scrollbar-width:none] md:grid md:snap-none md:grid-cols-3 md:gap-x-8 md:overflow-visible md:px-12 lg:px-[6vw] [&::-webkit-scrollbar]:hidden">
         {stores.map((store, i) => {
           const store_copy = copy.stores[store.id];
           const mapsUrl = directionsUrl(store);
 
           return (
-            <FadeIn key={store.id} delay={0.08 * i}>
+            <FadeIn key={store.id} delay={0.08 * i} className="w-[80vw] max-w-sm shrink-0 snap-start md:w-auto md:max-w-none">
               <CursorGlow as="article" className="group flex h-full flex-col rounded-md">
                 {/* card-glass-sheen (biblioteca-animaciones) */}
-                <div className="fx-sheen relative mb-6 overflow-hidden rounded-md">
+                <div className="fx-sheen relative mb-6 overflow-hidden rounded-[1.25rem] shadow-[0_10px_30px_-18px_rgba(43,30,20,0.45)] md:rounded-md md:shadow-none">
                   <RevealImage
                     src={store.image}
                     alt={store_copy?.imageAlt ?? store.name}
-                    className="aspect-[3/4] w-full"
+                    className="aspect-[4/5] w-full md:aspect-[3/4]"
                     imgClassName="transition-transform duration-700 ease-organic group-hover:scale-110"
                   />
                 </div>
@@ -53,7 +56,11 @@ export default function Tiendas() {
 
                 <div className="mb-3 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
                   <h3 className="display flex items-baseline gap-2.5 text-xl transition-colors duration-500 group-hover:text-madera md:text-2xl">
-                    {store.name}
+                    {/* Enlace a la página propia de la tienda: el texto del enlace
+                        es su nombre, que es lo que Google asocia a esa página. */}
+                    <Link href={storePath(store)} data-cursor="hover" className="relative z-[2]">
+                      {store.name}
+                    </Link>
                     {/* Solo San Frantzisko tiene cafetería: se dice en la tarjeta
                         porque cambia a qué vas al local. */}
                     {store.cafe && (
