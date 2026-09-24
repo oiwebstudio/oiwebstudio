@@ -1,15 +1,17 @@
+// Fotos reales del cliente salvo pan-molde, que sigue siendo de stock hasta
+// tener una del suyo.
 export const productImages = [
-  "/images/pan-tradicional.webp",
-  "/images/donuts.webp",
+  "/images/pins/pan-semillas.webp",
+  "/images/pins/palmeras.webp",
   "/images/pan-molde.webp",
-  "/images/galletas.webp",
-  "/images/fachada.webp",
+  "/images/pins/galletas-mermelada.webp",
+  "/images/pins/cajas-regalo.webp",
 ];
 
 export const galleryImages = [
   "/images/fachada.webp",
   "/images/pan-tradicional.webp",
-  "/images/donuts.webp",
+  "/images/pins/escaparate.webp",
   "/images/pastel.webp",
   "/images/galletas.webp",
 ];

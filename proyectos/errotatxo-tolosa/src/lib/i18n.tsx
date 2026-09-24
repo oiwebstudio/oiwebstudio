@@ -18,7 +18,7 @@ export type Dictionary = {
     eyebrow: string;
     title: string[];
     intro: string;
-    stores: Record<string, { tagline: string; imageAlt: string }>;
+    stores: Record<string, { tagline: string; imageAlt: string; about: string; h1: string[] }>;
     cafeTag: string;
     routeCta: string;
     callCta: string;
@@ -26,6 +26,15 @@ export type Dictionary = {
     ratingLabel: string;
     opensAt: string;
   };
+  muro: {
+    eyebrow: string;
+    title: [string, string];
+    filterLabel: string;
+    chips: { all: string; pan: string; dulce: string; cafe: string; tiendas: string };
+  };
+  comarca: { eyebrow: string; title: string[]; text: string; storesLabel: string };
+  faq: { eyebrow: string; title: string[] };
+  storePage: { back: string; hours: string; address: string; phone: string; others: string };
   mapa: {
     eyebrow: string;
     title: string[];
@@ -134,9 +143,9 @@ const es: Dictionary = {
     ],
   },
   hero: {
-    eyebrow: "Okindegia · Gozotegia · Tolosa",
-    lines: ["Pan artesanal", "elaborado cada día"],
-    subtitle: "Tradición, calidad y sabor desde el corazón de Tolosa.",
+    eyebrow: "Okindegia · Gozotegia · Kafetegia",
+    lines: ["Panadería en Tolosa,", "desde 1996"],
+    subtitle: "Pan, pastelería y café en Tolosaldea: dos tiendas en Tolosa —una con cafetería— y otra en Anoeta.",
     cta: "Ver productos",
     cta2: "Dónde estamos",
     badge: "Desde Tolosa · Obrador propio",
@@ -161,17 +170,26 @@ const es: Dictionary = {
     stores: {
       "tolosa-andia": {
         tagline: "En pleno casco viejo, a un paso de la plaza. La casa de Errotatxo desde 1996.",
-        imageAlt: "Fachada de la tienda de Errotatxo en Andia Kalea, Tolosa",
+        imageAlt: "Fachada de la panadería Errotatxo en Andia Kalea, Tolosa",
+        h1: ["Panadería en Tolosa,", "Andia Kalea"],
+        about:
+          "La tienda de Errotatxo en el casco viejo de Tolosa, en Andia Kalea, a un paso de la plaza. Pan del obrador desde primera hora, bollería, pastelería y galletas. Abre también los sábados y domingos por la mañana.",
       },
       "tolosa-san-frantzisko": {
         tagline:
           "Junto al paseo, camino del río. Aquí además puedes sentarte: café en la barra o en las mesas del fondo, con el pan recién hecho al lado.",
         imageAlt:
           "Interior de la cafetería de Errotatxo en San Frantzisko: barra, taburetes y mesas al fondo",
+        h1: ["Panadería y cafetería", "en Tolosa"],
+        about:
+          "Panadería y cafetería en San Frantzisko Pasealekua, junto al río Oria. El café se toma en la barra o en las mesas del fondo, con el pan y la bollería del día. De las tres tiendas de Errotatxo, es la única con cafetería.",
       },
       anoeta: {
         tagline: "En Anoeta no somos una panadería más: somos la del pueblo.",
-        imageAlt: "Hogazas de pan tradicional en la tienda de Anoeta",
+        imageAlt: "Pan de la panadería Errotatxo de Anoeta",
+        h1: ["Panadería", "en Anoeta"],
+        about:
+          "La panadería de Anoeta, en San Juan Kalea, 2. El mismo pan del obrador que en Tolosa, a cuatro kilómetros, con horario de mañana y tarde entre semana.",
       },
     },
     cafeTag: "Cafetería",
@@ -180,6 +198,29 @@ const es: Dictionary = {
     unverifiedHours: "Horario orientativo — confírmalo antes de venir",
     ratingLabel: "en Google",
     opensAt: "Abre a las {time}",
+  },
+  muro: {
+    eyebrow: "Pan, pastelería y café",
+    title: ["Lo que vas a encontrar", "en Errotatxo"],
+    filterLabel: "Filtrar fotos",
+    chips: { all: "Todo", pan: "Pan", dulce: "Dulce", cafe: "Café", tiendas: "Tiendas" },
+  },
+  comarca: {
+    eyebrow: "Tolosaldea",
+    title: ["Panadería, pastelería", "y cafetería en Tolosaldea"],
+    text: "Errotatxo es una panadería y pastelería —okindegia y gozotegia— de Tolosa, con tres tiendas en la comarca: dos en Tolosa y una en Anoeta. En la de San Frantzisko, además, puedes sentarte a tomar un café. Desde Ibarra, Irura, Alegia o Villabona, la más cercana te queda a pocos minutos.",
+    storesLabel: "Nuestras tiendas",
+  },
+  faq: {
+    eyebrow: "Preguntas frecuentes",
+    title: ["Lo que más", "nos preguntáis"],
+  },
+  storePage: {
+    back: "Todas las tiendas",
+    hours: "Horario",
+    address: "Dirección",
+    phone: "Teléfono",
+    others: "Otras tiendas de Errotatxo",
   },
   mapa: {
     eyebrow: "En el mapa",
@@ -289,7 +330,7 @@ const es: Dictionary = {
     alts: [
       "Fachada de Errotatxo en Tolosa",
       "Hogazas de pan artesanal recién horneadas",
-      "Bandeja de donuts artesanales",
+      "Mostrador de la tienda de Errotatxo en Andia, Tolosa",
       "Pastelería artesanal rellena de chocolate",
       "Galletas artesanales recién horneadas",
     ],
@@ -369,7 +410,7 @@ const es: Dictionary = {
     },
     productos: {
       eyebrow: "Productos",
-      title: ["Lo que sale", "del horno"],
+      title: ["Pan, bollería y", "pastelería en Tolosa"],
       intro:
         "Pan, bollería y pastelería elaborados cada día en nuestro obrador de Tolosa.",
       stats: [
@@ -381,7 +422,7 @@ const es: Dictionary = {
     },
     tiendas: {
       eyebrow: "Tiendas",
-      title: ["Cerca", "de ti"],
+      title: ["Panaderías en", "Tolosa y Anoeta"],
       intro:
         "Tres tiendas en Tolosa y Anoeta. Pasa a vernos: el pan sale del horno cada mañana.",
       stats: [
@@ -442,9 +483,9 @@ const eu: Dictionary = {
     ],
   },
   hero: {
-    eyebrow: "Okindegia · Gozotegia · Tolosa",
-    lines: ["Artisau-ogia,", "egunero egina"],
-    subtitle: "Tradizioa, kalitatea eta zaporea Tolosako bihotzetik.",
+    eyebrow: "Okindegia · Gozotegia · Kafetegia",
+    lines: ["Okindegia Tolosan,", "1996tik"],
+    subtitle: "Ogia, pastelgintza eta kafea Tolosaldean: bi denda Tolosan —bat kafetegiarekin— eta beste bat Anoetan.",
     cta: "Ikusi produktuak",
     cta2: "Non gauden",
     badge: "Tolosatik · Gure lantegia",
@@ -469,17 +510,26 @@ const eu: Dictionary = {
     stores: {
       "tolosa-andia": {
         tagline: "Alde Zaharraren erdian, plazatik pauso batera. Errotatxoren etxea 1996tik.",
-        imageAlt: "Errotatxoren fatxada Tolosako Andia Kalean",
+        imageAlt: "Errotatxo okindegiaren fatxada Tolosako Andia Kalean",
+        h1: ["Okindegia Tolosan,", "Andia Kalea"],
+        about:
+          "Errotatxoren denda Tolosako Alde Zaharrean, Andia Kalean, plazatik pauso batera. Lantegiko ogia goiz-goizetik, opilgintza, pastelgintza eta galletak. Larunbat eta igande goizetan ere irekita.",
       },
       "tolosa-san-frantzisko": {
         tagline:
           "Pasealekuaren ondoan, ibaira bidean. Hemen eseri ere egin dezakezu: kafea barran edo atzeko mahaietan, ogi egin berria ondoan duzula.",
         imageAlt:
           "Errotatxoren kafetegia San Frantziskon: barra, aulki altuak eta mahaiak atzealdean",
+        h1: ["Okindegia eta kafetegia", "Tolosan"],
+        about:
+          "Okindegia eta kafetegia San Frantzisko Pasealekuan, Oria ibaiaren ondoan. Kafea barran edo atzeko mahaietan hartzen da, eguneko ogi eta opilekin. Errotatxoren hiru dendetatik, kafetegia duen bakarra da.",
       },
       anoeta: {
         tagline: "Anoetan ez gara okindegi bat gehiago: herrikoa gara.",
-        imageAlt: "Ogi tradizionala Anoetako dendan",
+        imageAlt: "Errotatxo okindegiaren ogia Anoetan",
+        h1: ["Okindegia", "Anoetan"],
+        about:
+          "Anoetako okindegia, San Juan Kalea 2an. Tolosako lantegiko ogi bera, lau kilometrora, astegunetan goizez eta arratsaldez irekita.",
       },
     },
     cafeTag: "Kafetegia",
@@ -488,6 +538,29 @@ const eu: Dictionary = {
     unverifiedHours: "Ordutegi orientagarria — baieztatu etorri aurretik",
     ratingLabel: "Googlen",
     opensAt: "{time}etan irekitzen du",
+  },
+  muro: {
+    eyebrow: "Ogia, pastelgintza eta kafea",
+    title: ["Errotatxon", "aurkituko duzuna"],
+    filterLabel: "Argazkiak iragazi",
+    chips: { all: "Guztiak", pan: "Ogia", dulce: "Gozoa", cafe: "Kafea", tiendas: "Dendak" },
+  },
+  comarca: {
+    eyebrow: "Tolosaldea",
+    title: ["Okindegia, gozotegia", "eta kafetegia Tolosaldean"],
+    text: "Errotatxo Tolosako okindegia eta gozotegia da, eta hiru denda ditu eskualdean: bi Tolosan eta bat Anoetan. San Frantziskokoan, gainera, eseri eta kafe bat har dezakezu. Ibarratik, Irauratik, Alegiatik edo Villabonatik, hurbilena minutu gutxira duzu.",
+    storesLabel: "Gure dendak",
+  },
+  faq: {
+    eyebrow: "Ohiko galderak",
+    title: ["Gehien", "galdetzen diguzuna"],
+  },
+  storePage: {
+    back: "Denda guztiak",
+    hours: "Ordutegia",
+    address: "Helbidea",
+    phone: "Telefonoa",
+    others: "Errotatxoren beste dendak",
   },
   mapa: {
     eyebrow: "Mapan",
@@ -597,7 +670,7 @@ const eu: Dictionary = {
     alts: [
       "Errotatxoko fatxada Tolosan",
       "Labetik atera berri diren ogi artisauak",
-      "Artisau-donuten erretilua",
+      "Errotatxoren Andiako dendaren mostradorea, Tolosa",
       "Txokolatez betetako artisau-pastelgintza",
       "Labetik atera berri diren artisau-galletak",
     ],
@@ -676,7 +749,7 @@ const eu: Dictionary = {
     },
     productos: {
       eyebrow: "Produktuak",
-      title: ["Labetik", "ateratzen dena"],
+      title: ["Ogia, opilak eta", "pastelgintza Tolosan"],
       intro:
         "Ogia, opilgintza eta pastelgintza, egunero eginak Tolosako gure lantegian.",
       stats: [
@@ -688,7 +761,7 @@ const eu: Dictionary = {
     },
     tiendas: {
       eyebrow: "Dendak",
-      title: ["Zure", "ondoan"],
+      title: ["Okindegiak", "Tolosan eta Anoetan"],
       intro:
         "Hiru denda Tolosan eta Anoetan. Zatoz gurera: ogia goizero ateratzen da labetik.",
       stats: [

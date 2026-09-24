@@ -2,8 +2,14 @@ export type StoreStatus = "open" | "temp-closed" | "unpublished";
 
 export type Store = {
   id: string;
+  /** Ruta de su página propia: /tiendas/<slug>/ */
+  slug: string;
   name: string;
   address: string;
+  /** Dirección desglosada para los datos estructurados. */
+  street: string;
+  postalCode: string;
+  locality: string;
   phone?: string;
   lat: number;
   lng: number;
@@ -124,6 +130,10 @@ export function nextOpening(store: Store, now = new Date()): string | null {
   return tomorrow.split("/")[0].trim().split(/[–-]/)[0].trim();
 }
 
+export function storePath(store: Store): string {
+  return `/tiendas/${store.slug}/`;
+}
+
 export function directionsUrl(store: Store): string {
   return `https://www.google.com/maps/dir/?api=1&destination=${store.lat},${store.lng}`;
 }
@@ -131,8 +141,12 @@ export function directionsUrl(store: Store): string {
 export const stores: Store[] = [
   {
     id: "tolosa-andia",
+    slug: "andia-tolosa",
     name: "Tolosa — Andia",
     address: "Andia Kalea, 3, 20400 Tolosa, Gipuzkoa",
+    street: "Andia Kalea, 3",
+    postalCode: "20400",
+    locality: "Tolosa",
     phone: "943 65 54 92",
     lat: 43.1384065,
     lng: -2.0741355,
@@ -147,8 +161,12 @@ export const stores: Store[] = [
   },
   {
     id: "tolosa-san-frantzisko",
+    slug: "san-frantzisko-cafeteria-tolosa",
     name: "Tolosa — San Frantzisko",
     address: "San Frantzisko Pasealekua, 24, 20400 Tolosa, Gipuzkoa",
+    street: "San Frantzisko Pasealekua, 24",
+    postalCode: "20400",
+    locality: "Tolosa",
     phone: "943 65 47 33",
     lat: 43.1343593,
     lng: -2.0788086,
@@ -165,8 +183,12 @@ export const stores: Store[] = [
   },
   {
     id: "anoeta",
+    slug: "anoeta",
     name: "Anoeta",
     address: "San Juan Kalea, 2, 20270 Anoeta, Gipuzkoa",
+    street: "San Juan Kalea, 2",
+    postalCode: "20270",
+    locality: "Anoeta",
     phone: "943 65 25 99",
     // Posición señalada por el cliente sobre el mapa: junto a Errotaldea lekua,
     // al este de la plaza. Los dos puntos anteriores (-2.07739 y -2.07160)

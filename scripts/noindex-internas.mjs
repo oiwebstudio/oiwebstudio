@@ -21,6 +21,11 @@ import path from "node:path";
 
 const DIRS = ["web/webs-clientes", "web/demos", "web/catalogo-servicios"];
 const IGNORAR = new Set([".vercel", "node_modules", "scripts", ".git", "src"]);
+
+// Excepciones: webs de clientes reales publicadas bajo demos/ que SÍ deben
+// posicionar. Errotatxo es un negocio de verdad y quiere aparecer en las
+// búsquedas de panadería y cafetería de Tolosaldea (23/09/2026).
+const PUBLICAS = new Set([path.resolve("web/demos/errotatxo")]);
 const META = '<meta name="robots" content="noindex, follow"/>';
 
 function htmlsDe(dir) {
@@ -29,6 +34,7 @@ function htmlsDe(dir) {
     for (const e of fs.readdirSync(d, { withFileTypes: true })) {
       if (IGNORAR.has(e.name)) continue;
       const p = path.join(d, e.name);
+      if (PUBLICAS.has(p)) continue;
       if (e.isDirectory()) walk(p);
       else if (e.name.endsWith(".html")) out.push(p);
     }
