@@ -10,7 +10,10 @@ export default function Loader() {
   const [skip, setSkip] = useState(false);
 
   useEffect(() => {
-    if (sessionStorage.getItem("errotatxo-visited")) {
+    if (
+      sessionStorage.getItem("errotatxo-visited") ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
       setSkip(true);
       setShow(false);
       return;
@@ -19,7 +22,9 @@ export default function Loader() {
     document.body.style.overflow = "hidden";
     let raf = 0;
     const start = performance.now();
-    const duration = 2200;
+    // Corta a propósito: es la primera visita, la que llega desde Google, y con
+    // el scroll bloqueado cada segundo de espera cuesta visitas.
+    const duration = 700;
 
     const tick = (t: number) => {
       const p = Math.min(1, (t - start) / duration);
@@ -30,7 +35,7 @@ export default function Loader() {
         window.setTimeout(() => {
           sessionStorage.setItem("errotatxo-visited", "1");
           setShow(false);
-        }, 500);
+        }, 150);
       }
     };
     raf = requestAnimationFrame(tick);
@@ -50,7 +55,7 @@ export default function Loader() {
         <motion.div
           key="loader"
           exit={{ clipPath: "inset(0 0 100% 0)" }}
-          transition={{ duration: 1.05, ease: [0.87, 0, 0.13, 1] }}
+          transition={{ duration: 0.6, ease: [0.87, 0, 0.13, 1] }}
           className="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden bg-[#F7F2EA]"
         >
           {/* halo de sol que late detrás del logo */}

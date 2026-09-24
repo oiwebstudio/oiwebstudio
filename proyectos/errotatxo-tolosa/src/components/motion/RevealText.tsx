@@ -25,7 +25,10 @@ export default function RevealText({
   return (
     <Tag className={className}>
       {lines.map((line, i) => (
-        <span key={`${line}-${i}`} className="block overflow-hidden">
+        // La máscara se alarga por abajo (pb) y se devuelve el espacio (-mb):
+        // con el interlineado apretado de los titulares, las letras con
+        // descendente (p, g, q) quedaban cortadas por la máscara.
+        <span key={`${line}-${i}`} className="-mb-[0.18em] block overflow-hidden pb-[0.18em]">
           <motion.span
             className={lineClassName ?? "block"}
             initial={{ y: "112%" }}

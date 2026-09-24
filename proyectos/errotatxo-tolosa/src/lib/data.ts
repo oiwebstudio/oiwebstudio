@@ -1,7 +1,7 @@
 // Fotos reales del cliente salvo pan-molde, que sigue siendo de stock hasta
 // tener una del suyo.
 export const productImages = [
-  "/images/pins/pan-semillas.webp",
+  "/images/pins/pan-sesamo.webp",
   "/images/pins/palmeras.webp",
   "/images/pan-molde.webp",
   "/images/pins/galletas-mermelada.webp",
