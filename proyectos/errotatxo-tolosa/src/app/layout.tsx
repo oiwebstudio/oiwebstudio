@@ -5,6 +5,7 @@ import CustomCursor from "@/components/CustomCursor";
 import Footer from "@/components/Footer";
 import Loader from "@/components/Loader";
 import Navbar from "@/components/Navbar";
+import MobileBar from "@/components/MobileBar";
 import NearestStore from "@/components/NearestStore";
 import Noise from "@/components/Noise";
 import PageDots from "@/components/PageDots";
@@ -74,6 +75,7 @@ export default function RootLayout({
           <main>{children}</main>
           <Footer />
           <BackToTop />
+          <MobileBar />
           <NearestStore />
           <CustomCursor />
         </Providers>

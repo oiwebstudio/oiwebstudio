@@ -5,6 +5,7 @@ import { MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import PinViewer from "@/components/PinViewer";
 import { useLocale } from "@/lib/i18n";
 import { pins, type PinTag } from "@/lib/pins";
 import { storePath, stores } from "@/lib/stores";
@@ -23,6 +24,7 @@ export default function Muro() {
   const copy = t.muro;
   const [filter, setFilter] = useState<(typeof FILTERS)[number]>("all");
   const visible = filter === "all" ? pins : pins.filter((p) => p.tag === filter);
+  const [open, setOpen] = useState<number | null>(null);
 
   return (
     <section id="muro" className="relative bg-bg pb-16 pt-14 md:pb-24 md:pt-20">
@@ -45,7 +47,10 @@ export default function Muro() {
             type="button"
             data-cursor="hover"
             aria-pressed={filter === f}
-            onClick={() => setFilter(f)}
+            onClick={() => {
+              setFilter(f);
+              setOpen(null);
+            }}
             className={cn(
               "min-h-[40px] shrink-0 rounded-full px-5 text-[13px] font-medium transition-colors duration-300",
               filter === f
@@ -59,7 +64,7 @@ export default function Muro() {
       </div>
 
       <div className="mt-6 columns-2 gap-3 px-3 sm:gap-4 md:columns-3 md:px-12 lg:columns-4">
-          {visible.map((pin) => {
+          {visible.map((pin, i) => {
             const store = pin.store ? stores.find((s) => s.id === pin.store) : undefined;
             const caption = locale === "eu" ? pin.eu : pin.es;
             return (
@@ -73,7 +78,13 @@ export default function Muro() {
                 transition={{ duration: 0.45, ease: EASE }}
                 className="group mb-3 break-inside-avoid sm:mb-4"
               >
-                <div className="overflow-hidden rounded-[1.25rem] bg-lino shadow-[0_10px_30px_-18px_rgba(43,30,20,0.45)]">
+                <button
+                  type="button"
+                  data-cursor="hover"
+                  aria-label={`${copy.open}: ${caption}`}
+                  onClick={() => setOpen(i)}
+                  className="block w-full overflow-hidden rounded-[1.25rem] bg-lino shadow-[0_10px_30px_-18px_rgba(43,30,20,0.45)] transition-transform duration-300 active:scale-[0.98]"
+                >
                   <Image
                     src={pin.src}
                     alt={caption}
@@ -82,7 +93,7 @@ export default function Muro() {
                     sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
                     className="h-auto w-full transition-transform duration-700 ease-organic group-hover:scale-[1.04]"
                   />
-                </div>
+                </button>
                 <figcaption className="px-1.5 pt-2">
                   <span className="block text-[13px] font-medium leading-snug text-ink">{caption}</span>
                   {store && (
@@ -100,6 +111,8 @@ export default function Muro() {
             );
           })}
       </div>
+
+      <PinViewer items={visible} index={open} onChange={setOpen} onClose={() => setOpen(null)} />
     </section>
   );
 }
