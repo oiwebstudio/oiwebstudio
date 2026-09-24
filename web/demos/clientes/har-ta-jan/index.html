@@ -1035,6 +1035,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   <a id="b-maps" href="#" target="_blank" rel="noopener">Cómo llegar</a>
 </nav>
 
+<!-- panel-cliente:carga -->
+<script>
+/* Demo: lo que se guarde en /panel/ se ve en este navegador. */
+try { var v = localStorage.getItem("panel:har-ta-jan"); if (v) window.DATOS_VIVOS = JSON.parse(v); } catch (e) {}
+</script>
+<!-- /panel-cliente -->
 <script>
 /* ═══════════════════════════════════════════════════════════════
    DATOS DEL NEGOCIO — ÚNICO BLOQUE A EDITAR POR CLIENTE
@@ -1079,6 +1085,12 @@ const DATOS = {
   },
   resenas: [],
 };
+/* panel-cliente:mezcla */ /* lo que el negocio cambia desde su panel manda sobre lo de arriba */
+if (window.DATOS_VIVOS) Object.assign(DATOS, window.DATOS_VIVOS);
+
+
+
+
 
 /* ── utilidades de horario ─────────────────────────────── */
 const DIAS = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
@@ -1789,5 +1801,43 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
   h.addEventListener("pointerleave", function(){ pls.forEach(function(p){ p.style.setProperty("--px","0px"); p.style.setProperty("--py","0px"); }); });
 })();
 </script>
+<!-- panel-cliente:aviso -->
+<style>
+.aviso-panel{display:flex;gap:10px;align-items:flex-start;margin:14px 0 0;padding:12px 14px;border-radius:12px;
+  background:var(--tomate-fondo,#FFF1E6);color:#3B1A0C;border:1px solid var(--tomate-claro,#F2CDBB);
+  font-size:15px;line-height:1.4;max-width:34rem;margin:0 0 18px;}
+.aviso-panel::before{content:"!";flex:0 0 22px;height:22px;border-radius:50%;display:grid;place-items:center;
+  background:var(--tomate,#B8441E);color:#fff;font-weight:700;font-size:13px;}
+</style>
+<script>
+(function(){
+  if(typeof DATOS === "undefined") return;
+
+  /* El precio del menú también está escrito tal cual en la portada ("12 €",
+     "12€"): si el negocio lo cambia en el panel, se cambia ahí también. */
+  var antes = "12 €", ahora = (DATOS.menuPrecio || "").trim();
+  var main = document.querySelector("main");
+  if(antes && ahora && ahora !== antes && main){
+    var pegado = antes.replace(/\s+/g, ""), nuevoPegado = ahora.replace(/\s+/g, "");
+    var w = document.createTreeWalker(main, NodeFilter.SHOW_TEXT), n;
+    while((n = w.nextNode())){
+      var v = n.nodeValue;
+      if(v.indexOf(antes) > -1) n.nodeValue = v.split(antes).join(ahora);
+      else if(v.indexOf(pegado) > -1) n.nodeValue = v.split(pegado).join(nuevoPegado);
+    }
+  }
+
+  /* El aviso va arriba del todo de la portada, antes del titular. */
+  var t = (DATOS.aviso || "").trim();
+  if(!t) return;
+  var p = document.createElement("p");
+  p.className = "aviso-panel"; p.setAttribute("role","status");
+  p.textContent = t; // texto, nunca HTML
+  var h1 = document.querySelector("main h1");
+  if(h1 && h1.parentElement) h1.parentElement.insertBefore(p, h1.parentElement.firstElementChild);
+  else if(main) main.prepend(p);
+})();
+</script>
+<!-- /panel-cliente -->
 </body>
 </html>
