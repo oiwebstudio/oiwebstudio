@@ -30,6 +30,7 @@ export type Dictionary = {
     eyebrow: string;
     title: [string, string];
     filterLabel: string;
+    open: string;
     chips: { all: string; pan: string; dulce: string; cafe: string; tiendas: string };
   };
   comarca: { eyebrow: string; title: string[]; text: string; storesLabel: string };
@@ -203,6 +204,7 @@ const es: Dictionary = {
     eyebrow: "Pan, pastelería y café",
     title: ["Lo que vas a encontrar", "en Errotatxo"],
     filterLabel: "Filtrar fotos",
+    open: "Ver en grande",
     chips: { all: "Todo", pan: "Pan", dulce: "Dulce", cafe: "Café", tiendas: "Tiendas" },
   },
   comarca: {
@@ -543,6 +545,7 @@ const eu: Dictionary = {
     eyebrow: "Ogia, pastelgintza eta kafea",
     title: ["Errotatxon", "aurkituko duzuna"],
     filterLabel: "Argazkiak iragazi",
+    open: "Handian ikusi",
     chips: { all: "Guztiak", pan: "Ogia", dulce: "Gozoa", cafe: "Kafea", tiendas: "Dendak" },
   },
   comarca: {

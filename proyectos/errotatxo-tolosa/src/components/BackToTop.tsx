@@ -39,7 +39,7 @@ export default function BackToTop() {
       {visible && (
         <Magnetic
           strength={0.4}
-          className="fixed bottom-[calc(1.5rem+env(safe-area-inset-bottom))] right-5 z-40 md:right-6"
+          className="fixed bottom-[calc(1.5rem+env(safe-area-inset-bottom))] right-5 z-40 max-md:hidden md:right-6"
         >
           <motion.button
             initial={{ opacity: 0, scale: 0.6 }}
