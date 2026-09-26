@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex, follow"/>
 <title>Biciprecision Igartua — Tienda de bicicletas en Bergara</title>
 <meta name="description" content="Bicis de carretera, montaña, eléctricas, gravel y ciudad en Bergara. Montajes a la carta, pago sin intereses y Bizum. Zubieta kalea 5 y 7."/>
-<meta name="theme-color" content="#F6F5F2"/>
+<meta name="theme-color" content="#0E0F11"/>
 <meta property="og:title" content="Biciprecision Igartua — Bicicletas en Bergara"/>
 <meta property="og:description" content="Carretera, montaña, eléctrica, gravel y ciudad. Montajes a la carta y pago sin intereses."/>
 <meta property="og:type" content="website"/>
@@ -53,29 +53,29 @@
 <style>
 /* ═══════════════ CONTRATO DE TOKENS ═══════════════ */
 :root{
-  --fondo:#F6F5F2;
-  --fondo-alt:#ECEAE5;
-  --filete:#D8D4CC;
+  --fondo:#F7F6F4;
+  --fondo-alt:#EBE9E4;
+  --filete:#D6D2CA;
 
-  --tinta:#16181B;
-  --tinta-sec:#53575E;
+  --tinta:#17171A;
+  --tinta-sec:#57575E;
 
-  --acento:#C2410C;
+  --acento:#1F4B8F;
   --acento-con:#FFFFFF;
 
   --ok:#2E7D52;
   --alerta:#A8720A;
 
   /* derivados */
-  --acento-osc:#9A3412;
-  --acento-claro:#FDBA74;
-  --acento-suave:#FDEBDD;
-  --filete-fuerte:#B5B0A6;
-  --osc:#15171A;
-  --osc-filete:#2A2D33;
-  --osc-tinta:#B9BCC3;
-  --osc-tinta2:#9A9DA5;
-  --osc-tinta3:#7A7D85;
+  --acento-osc:#153868;
+  --acento-claro:#8FB2E0;
+  --acento-suave:#E4EAF4;
+  --filete-fuerte:#B6B2A9;
+  --osc:#141519;
+  --osc-filete:#282A31;
+  --osc-tinta:#A4A7B0;
+  --osc-tinta2:#8B8E97;
+  --osc-tinta3:#6A6D75;
   --ok-claro:#84C7A2;
   --alerta-clara:#DFB068;
 
@@ -337,18 +337,6 @@ p{text-wrap:pretty;}
 }
 </style>
 <script>document.documentElement.className+=" js";</script>
-<style>
-/* ajustes de la demo de Biciprecision */
-.marca em{color:var(--acento);font-size:10.5px;}
-.nav a{white-space:nowrap;}
-.cierre__btns .btn svg{margin-right:2px;}
-/* "Montajes" sale oscura (ritmo de la plantilla): ahí, el naranja claro.
-   En el cierre, sobre el melocotón, el naranja se quedaba en 4,46: uno más oscuro. */
-.escap.oscura .rotulo,.escap.oscura .escap__sem{color:var(--acento-claro);}
-.cierre .rotulo{color:var(--acento-osc);}
-/* enlaces del pie: zona táctil de 44 px */
-.pie a{display:inline-flex;align-items:center;min-height:44px;}
-</style>
 </head>
 <body>
 
@@ -371,160 +359,161 @@ p{text-wrap:pretty;}
 
 <main id="main">
 
-<!-- ═══ 2 · HERO · body-banner ═══ -->
-<section class="banner" id="inicio">
-  <figure class="banner__foto rev">
-    <img src="https://images.unsplash.com/photo-1761634731562-c7a152d89849?w=1800&q=78&auto=format&fit=crop"
-         alt="Bicicletas colgadas en las estanterías de la tienda" width="1800" height="1000" fetchpriority="high"/>
-  </figure>
-  <div class="banner__txt">
-    <div class="wrap">
-      <p class="rotulo rev">Tienda de bicicletas · Bergara</p>
-      <h1 class="rev" data-d="1">Tu bici, bien elegida <em>y bien montada</em></h1>
-      <div class="banner__pie">
-        <p class="lead rev" data-d="2">Carretera, montaña, eléctrica, gravel y ciudad. Te ayudamos a elegir la tuya, te la montamos a la carta y la puedes pagar sin intereses.</p>
-        <div class="banner__btns rev" data-d="3">
-          <a class="btn btn--fill" id="h-wa" href="#" target="_blank" rel="noopener">Preguntar por WhatsApp <span class="ar" aria-hidden="true">→</span></a>
-          <a class="btn btn--ghost" href="#bicis">Ver las bicis</a>
-        </div>
+<!-- ═══ 2 · HERO ═══ -->
+<section class="bk-hero" id="inicio">
+  <div class="bk-hero__card">
+    <img class="bk-hero__img" src="https://images.unsplash.com/photo-1761634731562-c7a152d89849?w=2000&q=78&auto=format&fit=crop"
+         alt="Bicicletas colgadas en las estanterías de la tienda" width="2000" height="1333" fetchpriority="high"/>
+    <div class="bk-hero__velo" aria-hidden="true"></div>
+    <div class="bk-hero__rayas" aria-hidden="true"></div>
+    <div class="bk-hero__in">
+      <p class="bk-chip bk-chip--glass rev"><i aria-hidden="true"></i>Tienda y taller · Bergara</p>
+      <h1 class="bk-h1 rev" data-d="1">Elige bien.<br/><em>Rueda más.</em></h1>
+      <p class="bk-hero__lead rev" data-d="2">Carretera, montaña, eléctrica, gravel y ciudad. Te ayudamos a elegir tu bici, te la montamos a la carta y la pagas sin intereses.</p>
+      <div class="bk-btns rev" data-d="3">
+        <a class="btn btn--fill" id="h-wa" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M12 3.5a8.5 8.5 0 0 0-7.4 12.7L3.5 20.5l4.4-1.1A8.5 8.5 0 1 0 12 3.5zm0 15.4a6.9 6.9 0 0 1-3.5-1l-.3-.2-2.6.7.7-2.5-.2-.3A6.9 6.9 0 1 1 12 18.9zm3.8-5.2c-.2-.1-1.2-.6-1.4-.7s-.3-.1-.5.1-.5.7-.6.8-.2.2-.4.1a5.6 5.6 0 0 1-2.8-2.4c-.2-.4.2-.3.6-1.1.1-.1 0-.3 0-.4l-.6-1.5c-.2-.4-.3-.3-.5-.3h-.4a.8.8 0 0 0-.6.3 2.4 2.4 0 0 0-.7 1.8 4.2 4.2 0 0 0 .9 2.2 9.6 9.6 0 0 0 3.7 3.2c1.4.6 1.9.6 2.6.5a2.2 2.2 0 0 0 1.4-1 1.8 1.8 0 0 0 .1-1c0-.1-.2-.2-.4-.3z"/></svg> Preguntar por WhatsApp</a>
+        <a class="btn btn--glass" href="#bicis">Ver las bicis</a>
       </div>
     </div>
+    <ul class="bk-stats rev" data-d="3" aria-label="En cifras">
+      <li><b>4,7<span>★</span></b><small>64 opiniones en Google</small></li>
+      <li><b>14</b><small>marcas de bicis y componentes</small></li>
+      <li><b>0 %</b><small>intereses, en 1 o 2 años</small></li>
+      <li><b>Bizum</b><small>y envíos a casa</small></li>
+    </ul>
   </div>
 </section>
 
-<!-- ═══ 3 · MARCAS · body-logos-strip ═══ -->
-<section class="marcas" aria-label="Marcas que trabajamos">
-  <div class="wrap">
-    <p class="rev">Marcas que trabajamos</p>
-    <ul class="rev" data-d="1" id="marcas"></ul>
-  </div>
+<!-- ═══ 3 · MARCAS · cinta ═══ -->
+<section class="bk-marcas" aria-label="Marcas que trabajamos">
+  <div class="bk-marcas__pista"><ul id="marcas"></ul></div>
 </section>
 
-<!-- ═══ 4 · LAS BICIS · body-alternating ═══ -->
-<section class="secc" id="bicis">
+<!-- ═══ 4 · LAS BICIS · tarjetas por terreno ═══ -->
+<section class="bk-secc" id="bicis">
   <div class="wrap">
-    <p class="rotulo rev" style="margin-bottom:12px">Las bicis</p>
-    <h2 class="rev" data-d="1" style="max-width:15ch;margin-bottom:20px">Para la carretera, el monte o el día a día</h2>
-
-    <article class="secc__f rev">
-      <figure class="secc__m"><img loading="lazy" width="800" height="500" src="https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?w=800&q=78&auto=format&fit=crop" alt="Bicicleta de carretera negra"/></figure>
-      <div>
-        <p class="secc__n">Asfalto y pista</p>
-        <h3>Carretera y gravel</h3>
-        <p>Bicis de carretera, gravel y ciclocross. Y si ya sabes lo que quieres, cuadro, ruedas y cambio por separado para montarla a tu medida.</p>
-        <ul class="secc__l"><li>Carretera</li><li>Gravel</li><li>Ciclocross</li><li>Cuadros y ruedas</li></ul>
+    <div class="bk-cab">
+      <p class="bk-eyebrow rev">Las bicis</p>
+      <h2 class="bk-h2 rev" data-d="1">Elige tu <em>terreno</em></h2>
+    </div>
+  </div>
+  <div class="bk-carril rev" data-d="1">
+    <article class="bk-card">
+      <img loading="lazy" width="800" height="1000" src="https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?w=800&q=78&auto=format&fit=crop" alt="Bicicleta de carretera negra"/>
+      <div class="bk-card__txt">
+        <p class="bk-chip bk-chip--glass">Asfalto y pista</p>
+        <h3>Carretera<br/>y gravel</h3>
+        <p>Carretera, gravel y ciclocross. Y si ya sabes lo que quieres: cuadro, ruedas y cambio por separado.</p>
       </div>
     </article>
-
-    <article class="secc__f rev">
-      <figure class="secc__m"><img loading="lazy" width="800" height="500" src="https://images.unsplash.com/photo-1633707167682-9068729bc84c?w=800&q=78&auto=format&fit=crop" alt="Ciclista de montaña en un bosque"/></figure>
-      <div>
-        <p class="secc__n">Monte</p>
+    <article class="bk-card">
+      <img loading="lazy" width="800" height="1000" src="https://images.unsplash.com/photo-1633707167682-9068729bc84c?w=800&q=78&auto=format&fit=crop" alt="Ciclista de montaña en un bosque"/>
+      <div class="bk-card__txt">
+        <p class="bk-chip bk-chip--glass">Monte</p>
         <h3>Montaña</h3>
         <p>Para los montes de alrededor de Bergara. Te ayudamos a elegir la que encaja con lo que vas a hacer.</p>
-        <ul class="secc__l"><li>Montaña</li><li>Segunda mano</li><li>Accesorios</li></ul>
       </div>
     </article>
-
-    <article class="secc__f rev">
-      <figure class="secc__m"><img loading="lazy" width="800" height="500" src="https://images.unsplash.com/photo-1620802090791-fd9420668913?w=800&q=78&auto=format&fit=crop" alt="Ciclista con una bicicleta urbana"/></figure>
-      <div>
-        <p class="secc__n">Día a día</p>
-        <h3>Eléctricas y ciudad</h3>
-        <p>Para ir al trabajo, subir las cuestas sin llegar sudando o volver a coger la bici. También patinetes y bicis de spinning para casa.</p>
-        <ul class="secc__l"><li>Eléctricas</li><li>Ciudad</li><li>Patinetes</li><li>Spinning</li></ul>
+    <article class="bk-card">
+      <img loading="lazy" width="800" height="1000" src="https://images.unsplash.com/photo-1620802090791-fd9420668913?w=800&q=78&auto=format&fit=crop" alt="Ciclista con una bicicleta urbana"/>
+      <div class="bk-card__txt">
+        <p class="bk-chip bk-chip--glass">Día a día</p>
+        <h3>Eléctricas<br/>y ciudad</h3>
+        <p>Para ir al trabajo, subir las cuestas sin llegar sudando o volver a coger la bici.</p>
+      </div>
+    </article>
+    <article class="bk-card bk-card--naranja">
+      <div class="bk-card__txt">
+        <p class="bk-chip">Y además</p>
+        <h3>Todo lo<br/>demás</h3>
+        <ul class="bk-pills">
+          <li>Segunda mano</li><li>Cuadros</li><li>Ruedas</li><li>Cambios</li>
+          <li>Accesorios</li><li>Cascos</li><li>Patinetes</li><li>Spinning</li>
+        </ul>
       </div>
     </article>
   </div>
 </section>
 
-<!-- ═══ 5 · MONTAJES Y LAS TRES PREGUNTAS · body-product-detail ═══ -->
-<section class="escap sector" id="montajes">
+<!-- ═══ 5 · MONTAJE A LA CARTA · oscuro ═══ -->
+<section class="bk-montaje" id="montajes">
   <div class="wrap">
-    <p class="rotulo rev">Montajes a la carta</p>
-    <h2 class="rev" data-d="1" style="max-width:17ch">Eliges cada pieza. La montamos aquí.</h2>
-    <div class="escap__in">
-      <figure class="escap__foto rev">
-        <img loading="lazy" width="700" height="900" src="https://images.unsplash.com/photo-1673870861521-626b40f9657e?w=700&q=78&auto=format&fit=crop" alt="Mecánico montando una bicicleta en el taller"/>
+    <div class="bk-montaje__in">
+      <div>
+        <p class="bk-eyebrow bk-eyebrow--claro rev">Montaje a la carta</p>
+        <h2 class="bk-h2 rev" data-d="1">Pieza <em>a pieza.</em></h2>
+        <p class="bk-montaje__lead rev" data-d="2">Partes del cuadro que te gusta y eliges el resto. Te la entregamos montada, ajustada y lista para rodar.</p>
+        <ol class="bk-pasos rev" data-d="2">
+          <li><b>01</b><div><h3>Cuadro</h3><p>Carretera, gravel, montaña o ciclocross.</p></div></li>
+          <li><b>02</b><div><h3>Ruedas</h3><p>Fulcrum y más, con las cubiertas que pidas.</p></div></li>
+          <li><b>03</b><div><h3>Grupo</h3><p>Shimano, SRAM o Campagnolo.</p></div></li>
+          <li><b>04</b><div><h3>Montaje y ajuste</h3><p>Y si quieres afinar la postura, pregúntanos por la biomecánica.</p></div></li>
+        </ol>
+        <a class="btn btn--fill rev" data-d="3" id="m-wa" href="#" target="_blank" rel="noopener">Pedir presupuesto por WhatsApp <span class="ar" aria-hidden="true">→</span></a>
+      </div>
+      <figure class="bk-montaje__foto rev" data-d="1">
+        <img loading="lazy" width="800" height="1000" src="https://images.unsplash.com/photo-1673870861521-626b40f9657e?w=800&q=78&auto=format&fit=crop" alt="Mecánico montando una bicicleta en el taller"/>
       </figure>
-      <div class="rev" data-d="1">
-        <p class="escap__sem">Cuadro · ruedas · grupo</p>
-        <h3>Tu bici, pieza a pieza</h3>
-        <p class="escap__d">Partes del cuadro que te gusta y eliges ruedas, transmisión y componentes: Shimano, SRAM, Campagnolo, Fulcrum… Te la entregamos montada, ajustada y lista para rodar. Y si quieres afinar la postura, pregúntanos por la biomecánica.</p>
-        <a class="btn btn--fill" id="m-wa" href="#" target="_blank" rel="noopener" style="margin-top:22px">Pedir presupuesto por WhatsApp <span class="ar" aria-hidden="true">→</span></a>
-      </div>
-    </div>
-
-    <div class="preg rev" data-d="1">
-      <div>
-        <p class="si">Sí</p>
-        <h4>¿Se puede pagar a plazos?</h4>
-        <p>Sí, sin intereses, en uno o dos años. Te explicamos las condiciones en la tienda.</p>
-      </div>
-      <div>
-        <p class="si">Sí</p>
-        <h4>¿Aceptáis Bizum?</h4>
-        <p>Sí. Y también con tarjeta.</p>
-      </div>
-      <div>
-        <p class="si">Sí</p>
-        <h4>¿Hacéis envíos?</h4>
-        <p>Sí. Si no puedes acercarte a Bergara, te la enviamos, y según el pedido el envío sale gratis.</p>
-      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ 6 · LA TIENDA · body-media-right ═══ -->
-<section class="tienda" id="tienda">
-  <div class="wrap tienda__in">
-    <div>
-      <p class="rotulo rev">La tienda</p>
-      <h2 class="rev" data-d="1">Trato cercano<br/>y buen taller</h2>
-      <p class="rev" data-d="2">Es lo que más repiten quienes compran aquí: que se les atiende con paciencia, que se resuelven todas las dudas antes de comprar y que, después, la bici se revisa y se ajusta.</p>
-      <p class="rev" data-d="2">Estamos en Zubieta kalea 5 y 7, en Bergara. <span class="subr">Pásate con tu bici o con la idea de la que quieres</span>, y lo miramos juntos.</p>
-    </div>
-    <img class="rev" data-d="1" loading="lazy" width="900" height="700"
-      src="https://images.unsplash.com/photo-1676531356064-0a527118baf4?w=900&q=78&auto=format&fit=crop"
-      alt="Mecánico trabajando en una bicicleta"/>
+<!-- ═══ 6 · LAS TRES PREGUNTAS · widgets ═══ -->
+<section class="bk-widgets" aria-label="Pago y envíos">
+  <div class="wrap bk-widgets__g">
+    <article class="bk-w rev"><span class="bk-w__ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="15" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><h3>Sin intereses</h3><p>Paga tu bici en uno o dos años. Te explicamos las condiciones en la tienda.</p></article>
+    <article class="bk-w rev" data-d="1"><span class="bk-w__ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M11 18.5h2"/></svg></span><h3>Bizum</h3><p>Y también con tarjeta.</p></article>
+    <article class="bk-w rev" data-d="2"><span class="bk-w__ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg></span><h3>Envíos</h3><p>Si no puedes acercarte a Bergara, te la enviamos. Según el pedido, el envío sale gratis.</p></article>
   </div>
 </section>
 
-<!-- ═══ 7 · GALERÍA · body-masonry ═══ -->
-<section class="masonry" id="galeria">
+<!-- ═══ 7 · LA TIENDA ═══ -->
+<section class="bk-tienda" id="tienda">
+  <div class="wrap bk-tienda__in">
+    <figure class="bk-foto rev"><img loading="lazy" width="900" height="700" src="https://images.unsplash.com/photo-1676531356064-0a527118baf4?w=900&q=78&auto=format&fit=crop" alt="Mecánico trabajando en una bicicleta"/></figure>
+    <div class="rev" data-d="1">
+      <p class="bk-eyebrow">La tienda</p>
+      <h2 class="bk-h2">Trato cercano.<br/><em>Buen taller.</em></h2>
+      <p>Es lo que más repiten quienes compran aquí: que se les atiende con paciencia, que se resuelven todas las dudas antes de comprar y que, después, la bici se revisa y se ajusta.</p>
+      <p>Estamos en Zubieta kalea 5 y 7, en Bergara. Pásate con tu bici o con la idea de la que quieres, y lo miramos juntos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 8 · GALERÍA · bento ═══ -->
+<section class="bk-bento" id="galeria" aria-label="Bicis y taller">
+  <div class="wrap bk-bento__g rev">
+    <figure class="b1"><img loading="lazy" width="900" height="900" src="https://images.unsplash.com/photo-1576435728678-68d0fbf94e91?w=900&q=78&auto=format&fit=crop" alt="Bicicleta de carretera apoyada en una pared de madera"/><figcaption>Carretera</figcaption></figure>
+    <figure class="b2"><img loading="lazy" width="600" height="400" src="https://images.unsplash.com/photo-1562615193-cbeef074a501?w=600&q=78&auto=format&fit=crop" alt="Detalle de la transmisión de una bicicleta"/><figcaption>Transmisión</figcaption></figure>
+    <figure class="b3"><img loading="lazy" width="600" height="400" src="https://images.unsplash.com/photo-1629056528325-f328b5f27ae7?w=600&q=78&auto=format&fit=crop" alt="Ciclista en un camino de tierra"/><figcaption>Gravel</figcaption></figure>
+    <figure class="b4"><img loading="lazy" width="600" height="400" src="https://images.unsplash.com/photo-1535369643553-a33e0d1ac81d?w=600&q=78&auto=format&fit=crop" alt="Ciclista de montaña entre árboles"/><figcaption>Montaña</figcaption></figure>
+    <figure class="b5"><img loading="lazy" width="600" height="400" src="https://images.unsplash.com/photo-1765376260898-38e465a2cf6f?w=600&q=78&auto=format&fit=crop" alt="Bicicleta de montaña colgada en el taller"/><figcaption>El taller</figcaption></figure>
+  </div>
+</section>
+
+<!-- ═══ 9 · OPINIONES ═══ -->
+<section class="bk-opin" id="opiniones">
   <div class="wrap">
-    <p class="rotulo rev" style="margin-bottom:18px">Bicis y taller</p>
-    <div class="masonry__g rev" data-d="1">
-      <figure><img loading="lazy" width="600" height="800" src="https://images.unsplash.com/photo-1576435728678-68d0fbf94e91?w=600&q=78&auto=format&fit=crop" alt="Bicicleta de carretera apoyada en una pared de madera"/><figcaption>Carretera</figcaption></figure>
-      <figure><img loading="lazy" width="600" height="420" src="https://images.unsplash.com/photo-1562615193-cbeef074a501?w=600&q=78&auto=format&fit=crop" alt="Detalle de la transmisión de una bicicleta"/><figcaption>Transmisión</figcaption></figure>
-      <figure><img loading="lazy" width="600" height="700" src="https://images.unsplash.com/photo-1765376260898-38e465a2cf6f?w=600&q=78&auto=format&fit=crop" alt="Bicicleta de montaña colgada en el taller"/><figcaption>El taller</figcaption></figure>
-      <figure><img loading="lazy" width="600" height="450" src="https://images.unsplash.com/photo-1629056528325-f328b5f27ae7?w=600&q=78&auto=format&fit=crop" alt="Ciclista en un camino de tierra"/><figcaption>Gravel</figcaption></figure>
-      <figure><img loading="lazy" width="600" height="760" src="https://images.unsplash.com/photo-1535369643553-a33e0d1ac81d?w=600&q=78&auto=format&fit=crop" alt="Ciclista de montaña entre árboles"/><figcaption>Montaña</figcaption></figure>
-      <figure><img loading="lazy" width="600" height="480" src="https://images.unsplash.com/photo-1561453518-fc7b32ab8e8e?w=600&q=78&auto=format&fit=crop" alt="Bicicleta de paseo"/><figcaption>Ciudad</figcaption></figure>
+    <div class="bk-opin__cab rev">
+      <p class="bk-nota"><b>4,7</b><span><span class="bk-estrellas" aria-hidden="true">★★★★★</span>64 opiniones en Google</span></p>
+      <h2 class="bk-h2">Lo que dicen<br/><em>al salir rodando</em></h2>
     </div>
+    <div class="bk-opin__g" id="testis"></div>
   </div>
 </section>
 
-<!-- ═══ 8 · OPINIONES · body-testimonial-band ═══ -->
-<section class="banda" id="opiniones">
+<!-- ═══ 10 · DÓNDE ═══ -->
+<section class="bk-donde" id="donde">
   <div class="wrap">
-    <p class="rotulo rev">Opiniones en Google · 4,7 de 5 · 64 opiniones</p>
-    <div class="banda__g" id="testis"></div>
-  </div>
-</section>
-
-<!-- ═══ 9 · DÓNDE · body-map-listings ═══ -->
-<section class="donde" id="donde">
-  <div class="wrap">
-    <p class="rotulo rev">Dónde estamos</p>
-    <h2 class="rev" data-d="1" style="max-width:16ch">Zubieta kalea 5 y 7, en Bergara</h2>
-    <div class="donde__in">
-      <div class="mapa rev">
+    <p class="bk-eyebrow rev">Dónde estamos</p>
+    <h2 class="bk-h2 rev" data-d="1">Zubieta kalea 5 y 7, <em>Bergara</em></h2>
+    <div class="bk-donde__in">
+      <div class="bk-mapa rev">
         <iframe title="Mapa de situación de la tienda" loading="lazy" allowfullscreen
           referrerpolicy="no-referrer-when-downgrade"
           src="https://www.openstreetmap.org/export/embed.html?bbox=-2.4224%2C43.1162%2C-2.4064%2C43.1252&layer=mapnik&marker=43.12066%2C-2.41435"></iframe>
       </div>
-      <div class="rev" data-d="1">
+      <div class="bk-panel rev" data-d="1">
         <table class="horarios">
           <caption>Horario</caption>
           <tbody id="tabla-horario"></tbody>
@@ -543,29 +532,32 @@ p{text-wrap:pretty;}
 
 </main>
 
-<!-- ═══ 10 · CIERRE · body-end-cta ═══ -->
-<section class="cierre" id="contacto">
-  <div class="wrap cierre__in">
-    <div>
-      <p class="rotulo rev">Preguntar</p>
-      <h2 class="rev" data-d="1">Cuéntanos qué bici<br/>tienes en la cabeza</h2>
-      <p class="cierre__lead rev" data-d="2">O qué le pasa a la tuya. Por WhatsApp es lo más rápido: te contestamos con precio y disponibilidad.</p>
-      <div class="cierre__btns rev" data-d="2">
-        <a class="btn btn--fill" id="c-wa" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M12 3.5a8.5 8.5 0 0 0-7.4 12.7L3.5 20.5l4.4-1.1A8.5 8.5 0 1 0 12 3.5zm0 15.4a6.9 6.9 0 0 1-3.5-1l-.3-.2-2.6.7.7-2.5-.2-.3A6.9 6.9 0 1 1 12 18.9zm3.8-5.2c-.2-.1-1.2-.6-1.4-.7s-.3-.1-.5.1-.5.7-.6.8-.2.2-.4.1a5.6 5.6 0 0 1-2.8-2.4c-.2-.4.2-.3.6-1.1.1-.1 0-.3 0-.4l-.6-1.5c-.2-.4-.3-.3-.5-.3h-.4a.8.8 0 0 0-.6.3 2.4 2.4 0 0 0-.7 1.8 4.2 4.2 0 0 0 .9 2.2 9.6 9.6 0 0 0 3.7 3.2c1.4.6 1.9.6 2.6.5a2.2 2.2 0 0 0 1.4-1 1.8 1.8 0 0 0 .1-1c0-.1-.2-.2-.4-.3z"/></svg> WhatsApp <span class="ar" aria-hidden="true">→</span></a>
-        <a class="btn btn--ghost" id="c-tel" href="#">Llamar</a>
+<!-- ═══ 11 · CIERRE ═══ -->
+<section class="bk-cierre" id="contacto">
+  <div class="wrap">
+    <div class="bk-cierre__card">
+      <div class="bk-hero__rayas" aria-hidden="true"></div>
+      <div class="bk-cierre__txt">
+        <p class="bk-eyebrow bk-eyebrow--negro rev">Preguntar</p>
+        <h2 class="bk-h2 rev" data-d="1">¿Qué bici tienes<br/><em>en la cabeza?</em></h2>
+        <p class="rev" data-d="2">O qué le pasa a la tuya. Por WhatsApp es lo más rápido: te contestamos con precio y disponibilidad.</p>
+        <div class="bk-btns rev" data-d="2">
+          <a class="btn btn--negro" id="c-wa" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M12 3.5a8.5 8.5 0 0 0-7.4 12.7L3.5 20.5l4.4-1.1A8.5 8.5 0 1 0 12 3.5zm0 15.4a6.9 6.9 0 0 1-3.5-1l-.3-.2-2.6.7.7-2.5-.2-.3A6.9 6.9 0 1 1 12 18.9zm3.8-5.2c-.2-.1-1.2-.6-1.4-.7s-.3-.1-.5.1-.5.7-.6.8-.2.2-.4.1a5.6 5.6 0 0 1-2.8-2.4c-.2-.4.2-.3.6-1.1.1-.1 0-.3 0-.4l-.6-1.5c-.2-.4-.3-.3-.5-.3h-.4a.8.8 0 0 0-.6.3 2.4 2.4 0 0 0-.7 1.8 4.2 4.2 0 0 0 .9 2.2 9.6 9.6 0 0 0 3.7 3.2c1.4.6 1.9.6 2.6.5a2.2 2.2 0 0 0 1.4-1 1.8 1.8 0 0 0 .1-1c0-.1-.2-.2-.4-.3z"/></svg> WhatsApp</a>
+          <a class="btn btn--linea" id="c-tel" href="#">Llamar</a>
+        </div>
       </div>
+      <form class="form bk-form rev" data-d="1" id="form" novalidate>
+        <div><label for="f-nom">Nombre</label><input id="f-nom" name="nombre" type="text" autocomplete="name" required/></div>
+        <div><label for="f-tel">Teléfono</label><input id="f-tel" name="tel" type="tel" autocomplete="tel" required/></div>
+        <div><label for="f-que">Qué buscas o qué necesitas</label><textarea id="f-que" name="busca" rows="3" placeholder="Una gravel para empezar, una eléctrica para ir a trabajar, una revisión…"></textarea></div>
+        <button class="btn btn--fill" type="submit">Enviar <span class="ar" aria-hidden="true">→</span></button>
+        <p class="aviso" id="form-aviso" role="status">Te contestamos en horario de tienda.</p>
+      </form>
     </div>
-    <form class="form rev" data-d="1" id="form" novalidate>
-      <div><label for="f-nom">Nombre</label><input id="f-nom" name="nombre" type="text" autocomplete="name" required/></div>
-      <div><label for="f-tel">Teléfono</label><input id="f-tel" name="tel" type="tel" autocomplete="tel" required/></div>
-      <div><label for="f-que">Qué buscas o qué necesitas</label><textarea id="f-que" name="busca" rows="3" placeholder="Una gravel para empezar, una eléctrica para ir a trabajar, una revisión…"></textarea></div>
-      <button class="btn btn--fill" type="submit">Enviar <span class="ar" aria-hidden="true">→</span></button>
-      <p class="aviso" id="form-aviso" role="status">Te contestamos en horario de tienda.</p>
-    </form>
   </div>
 </section>
 
-<!-- ═══ 11 · PIE ═══ -->
+<!-- ═══ 12 · PIE ═══ -->
 <footer class="pie">
   <div class="wrap pie__in">
     <p>© <span id="year"></span> Biciprecision Igartua · Zubieta kalea 5 y 7 · Bergara, Gipuzkoa</p>
@@ -656,7 +648,9 @@ function pintarHorario(){
 /* BLOQUE DE SECTOR · el escaparate sale de DATOS: cambiarlo cada lunes es
    editar cinco líneas, y es lo que hace que la web no parezca abandonada */
 function pintarEscaparate(){
-  document.getElementById("marcas").innerHTML = DATOS.marcas.map(m=>`<li>${m}</li>`).join("");
+  const li = (m, oculta) => `<li${oculta?' aria-hidden="true"':''}>${m}</li>`;
+  document.getElementById("marcas").innerHTML =
+    DATOS.marcas.map(m=>li(m)).join("") + DATOS.marcas.map(m=>li(m,true)).join("");
 }
 
 /* ── enlaces y datos derivados ─────────────────────────── */
@@ -1044,7 +1038,7 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
   .js .top__in{transition:none;}
 }
 </style>
-<script>window.__RITMO__=["escap","marcas"];
+<script>window.__RITMO__=[];
 /* ═══ KIT DE MOVIMIENTO ═══ (ver scripts/kit-movimiento.mjs) */
 (function(){
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -1150,5 +1144,210 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
 })();
 </script>
 <!-- ═══ FIN KIT DE MOVIMIENTO ═══ -->
+<style>
+/* ═══ BICIPRECISION · dirección deportiva ═══════════════════════════════
+   Negro, blanco y naranja de maillot. Titulares condensados en cursiva,
+   radios grandes como las tarjetas de iOS, cristal en lo que flota encima
+   de una foto y píldoras en todo lo que se toca. */
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:600;font-display:swap;src:url('fuentes/barlow-condensed-600-normal.woff2') format('woff2');}
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:700;font-display:swap;src:url('fuentes/barlow-condensed-700-normal.woff2') format('woff2');}
+@font-face{font-family:'Barlow Condensed';font-style:italic;font-weight:700;font-display:swap;src:url('fuentes/barlow-condensed-700-italic.woff2') format('woff2');}
+@font-face{font-family:'Barlow Condensed';font-style:italic;font-weight:800;font-display:swap;src:url('fuentes/barlow-condensed-800-italic.woff2') format('woff2');}
+:root{
+  --fondo:#F4F4F2; --fondo-alt:#EAEAE6; --filete:#DADAD4; --filete-fuerte:#B9B9B1;
+  --tinta:#0E0F11; --tinta-sec:#4F535A;
+  --acento:#C2410C; --acento-con:#FFFFFF; --acento-osc:#9A3412; --acento-claro:#FF7A45; --acento-suave:#FFE7DC;
+  --osc:#0E0F11; --osc-filete:#26282D; --osc-tinta:#C9CBD0; --osc-tinta2:#A4A7AE; --osc-tinta3:#80838B;
+  --naranja:#FF5A1F; --negro:#0E0F11;
+  --display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --r-xl:32px; --r-l:26px; --r-m:20px; --r-s:14px;
+  --cristal:color-mix(in srgb, #fff 16%, transparent);
+}
+body{background:var(--fondo);}
+::selection{background:var(--naranja);color:var(--negro);}
+
+/* titulares */
+.bk-h1,.bk-h2,.bk-card h3,.bk-pasos h3,.bk-w h3,.bk-stats b,.bk-nota b,.marca{
+  font-family:var(--display);text-transform:uppercase;font-style:italic;font-weight:800;letter-spacing:-.01em;}
+.bk-h1{font-size:clamp(58px,11vw,150px);line-height:.86;color:#fff;margin:14px 0 18px;}
+/* el naranja fluorescente solo sobre negro: sobre claro se queda en 2,8 y el titular pide 3 */
+.bk-h1 em,.bk-h2 em{font-style:italic;color:#DD4A0E;}
+.bk-hero .bk-h1 em,.bk-montaje .bk-h2 em,.bk-opin .bk-h2 em{color:var(--naranja);}
+.bk-h2{font-size:clamp(42px,6.4vw,88px);line-height:.9;}
+.bk-eyebrow{font-family:var(--detalle);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--acento);margin-bottom:12px;}
+.bk-eyebrow--claro{color:var(--naranja);}
+.bk-eyebrow--negro{color:var(--negro);}
+
+/* cabecera: píldora de cristal */
+.top{border-radius:999px!important;backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);}
+.marca{font-size:24px;gap:6px;}
+.marca em{font-family:var(--detalle);font-style:normal;font-size:10.5px;font-weight:700;letter-spacing:.2em;color:var(--acento);}
+.nav a{white-space:nowrap;}
+
+/* botones: píldoras */
+.btn{border-radius:999px!important;min-height:52px;padding:0 24px;gap:10px;font-weight:700;letter-spacing:.04em;
+  transition:transform .25s var(--ease),background .25s,color .25s,box-shadow .25s;}
+.btn:active{transform:scale(.97);}
+.btn--fill,.oscura .btn--fill{background:var(--naranja)!important;border-color:var(--naranja)!important;color:var(--negro)!important;
+  box-shadow:0 10px 30px -10px color-mix(in srgb,var(--naranja) 70%,transparent);}
+.btn--fill:hover{background:#FF6E3A!important;}
+.btn--glass{background:var(--cristal);border:1px solid color-mix(in srgb,#fff 35%,transparent);color:#fff;
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);}
+.btn--negro{background:var(--negro);border:1px solid var(--negro);color:#fff;}
+.btn--linea{background:transparent;border:1.5px solid var(--negro);color:var(--negro);}
+.bk-btns{display:flex;flex-wrap:wrap;gap:10px;}
+
+/* chips */
+.bk-chip{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:8px 14px;font-family:var(--detalle);
+  font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:var(--negro);color:#fff;width:max-content;}
+.bk-chip--glass{background:var(--cristal);color:#fff;border:1px solid color-mix(in srgb,#fff 28%,transparent);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);}
+.bk-chip i{width:8px;height:8px;border-radius:50%;background:var(--naranja);box-shadow:0 0 0 4px color-mix(in srgb,var(--naranja) 30%,transparent);}
+
+/* ── hero ── */
+.bk-hero{padding:10px 10px 0;}
+.bk-hero__card{position:relative;overflow:hidden;border-radius:var(--r-xl);min-height:min(100svh,920px);
+  display:flex;flex-direction:column;justify-content:flex-end;background:var(--negro);isolation:isolate;}
+.bk-hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transform:scale(1.04);}
+.bk-hero__velo{position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,rgba(14,15,17,.35) 0%,rgba(14,15,17,.15) 35%,rgba(14,15,17,.88) 78%,rgba(14,15,17,.96) 100%);}
+.bk-hero__rayas{position:absolute;right:-60px;top:18%;width:340px;height:220px;z-index:-1;opacity:.9;
+  background:repeating-linear-gradient(-58deg,var(--naranja) 0 10px,transparent 10px 26px);
+  -webkit-mask:linear-gradient(90deg,transparent,#000 60%);mask:linear-gradient(90deg,transparent,#000 60%);}
+.bk-hero__in{padding:120px clamp(20px,5vw,64px) 24px;max-width:1100px;}
+/* móvil: las rayas arriba y pequeñas (encima del titular se comían «RUEDA MÁS») y la foto más oscura, que hay muchas bicis detrás del texto */
+@media(max-width:700px){
+  .bk-hero__rayas{top:84px;right:-70px;width:200px;height:110px;opacity:.6;}
+  .bk-hero__velo{background:linear-gradient(180deg,rgba(14,15,17,.4) 0%,rgba(14,15,17,.62) 32%,rgba(14,15,17,.9) 58%,rgba(14,15,17,.97) 100%);}
+}
+.bk-hero__lead{color:#E7E8EA;font-size:clamp(17px,1.6vw,20px);max-width:44ch;margin-bottom:24px;}
+.bk-stats{list-style:none;margin:8px clamp(10px,2vw,20px) clamp(10px,2vw,20px);padding:0;display:grid;grid-template-columns:repeat(2,1fr);
+  gap:1px;border-radius:var(--r-l);overflow:hidden;background:color-mix(in srgb,#fff 14%,transparent);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid color-mix(in srgb,#fff 18%,transparent);}
+@media(min-width:900px){.bk-stats{grid-template-columns:repeat(4,1fr);}}
+.bk-stats li{padding:16px 18px;background:color-mix(in srgb,var(--negro) 38%,transparent);color:#fff;}
+.bk-stats b{display:block;font-size:clamp(30px,3.4vw,44px);line-height:1;}
+.bk-stats b span{color:var(--naranja);font-size:.7em;margin-left:2px;}
+.bk-stats small{display:block;margin-top:6px;font-size:13px;color:#C9CBD0;line-height:1.3;}
+
+/* ── cinta de marcas ── */
+.bk-marcas{padding:26px 0!important;overflow:hidden;}
+.bk-marcas__pista{-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
+.bk-marcas ul{list-style:none;display:flex;gap:12px;width:max-content;padding:0;animation:bk-cinta 38s linear infinite;}
+.bk-marcas li{border:1.5px solid var(--filete-fuerte);border-radius:999px;padding:10px 22px;white-space:nowrap;
+  font-family:var(--display);font-style:italic;font-weight:700;font-size:22px;text-transform:uppercase;letter-spacing:.02em;}
+@keyframes bk-cinta{to{transform:translateX(-50%);}}
+@media(hover:hover){.bk-marcas:hover ul{animation-play-state:paused;}}
+@media(prefers-reduced-motion:reduce){.bk-marcas ul{animation:none;flex-wrap:wrap;width:auto;padding:0 20px;}.bk-marcas li[aria-hidden]{display:none;}}
+
+/* ── bicis: carril de tarjetas ── */
+.bk-secc{padding-bottom:clamp(40px,6vw,90px)!important;}
+.bk-cab{display:flex;flex-direction:column;margin-bottom:28px;}
+.bk-carril{display:grid;grid-auto-flow:column;grid-auto-columns:min(82%,340px);gap:14px;overflow-x:auto;
+  scroll-snap-type:x mandatory;padding:4px max(20px,calc((100vw - 1180px)/2 + 20px)) 18px;scrollbar-width:none;}
+.bk-carril::-webkit-scrollbar{display:none;}
+@media(min-width:1100px){.bk-carril{grid-auto-flow:row;grid-template-columns:repeat(4,1fr);max-width:1180px;margin:0 auto;padding:4px 20px;overflow:visible;}}
+.bk-card{position:relative;scroll-snap-align:start;min-height:470px;border-radius:var(--r-l);overflow:hidden;background:var(--negro);
+  color:#fff;display:flex;align-items:flex-end;isolation:isolate;transition:transform .45s var(--ease);}
+.bk-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .9s var(--ease);}
+.bk-card::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,transparent 30%,rgba(14,15,17,.92));}
+@media(hover:hover){.bk-card:hover{transform:translateY(-6px);}.bk-card:hover img{transform:scale(1.06);}}
+.bk-card__txt{padding:22px;display:grid;gap:10px;}
+.bk-card h3{font-size:44px;line-height:.9;}
+.bk-card p{font-size:15.5px;color:#DADBDE;}
+.bk-card--naranja{background:var(--naranja);color:var(--negro);}
+.bk-card--naranja::after{display:none;}
+.bk-card--naranja .bk-chip{background:var(--negro);color:#fff;}
+.bk-card--naranja .bk-card__txt{align-self:stretch;align-content:start;}
+.bk-pills{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
+.bk-pills li{background:color-mix(in srgb,var(--negro) 10%,transparent);border:1.5px solid var(--negro);border-radius:999px;padding:7px 14px;font-weight:700;font-size:14px;}
+
+/* ── montaje ── */
+.bk-montaje{background:var(--negro);color:#fff;border-radius:var(--r-xl);margin:0 10px;}
+.bk-montaje__in{display:grid;gap:clamp(28px,4vw,60px);align-items:center;}
+@media(min-width:960px){.bk-montaje__in{grid-template-columns:1.1fr .9fr;}}
+.bk-montaje__lead{color:#C9CBD0;font-size:18px;max-width:46ch;margin:16px 0 22px;}
+.bk-pasos{list-style:none;padding:0;display:grid;gap:10px;margin-bottom:26px;}
+@media(min-width:600px){.bk-pasos{grid-template-columns:1fr 1fr;}}
+.bk-pasos li{display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:var(--r-m);
+  background:color-mix(in srgb,#fff 6%,transparent);border:1px solid color-mix(in srgb,#fff 12%,transparent);}
+.bk-pasos b{flex:0 0 auto;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--naranja);color:var(--negro);
+  font-family:var(--display);font-style:italic;font-weight:800;font-size:18px;}
+.bk-pasos h3{font-size:26px;line-height:1;margin-bottom:4px;}
+.bk-pasos p{font-size:14.5px;color:#B9BCC3;}
+.bk-montaje__foto img{border-radius:var(--r-l);aspect-ratio:4/5;object-fit:cover;width:100%;}
+
+/* ── widgets ── */
+.bk-widgets{padding-bottom:0!important;}
+.bk-widgets__g{display:grid;gap:12px;}
+@media(min-width:760px){.bk-widgets__g{grid-template-columns:repeat(3,1fr);}}
+.bk-w{background:#fff;border-radius:var(--r-l);padding:24px;border:1px solid var(--filete);
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 18px 40px -28px rgba(0,0,0,.25);}
+.bk-w__ico{width:54px;height:54px;border-radius:18px;display:grid;place-items:center;background:var(--negro);color:var(--naranja);margin-bottom:16px;}
+.bk-w h3{font-size:34px;line-height:1;margin-bottom:6px;}
+.bk-w p{color:var(--tinta-sec);font-size:15.5px;}
+
+/* ── tienda ── */
+.bk-tienda__in{display:grid;gap:clamp(24px,4vw,56px);align-items:center;}
+@media(min-width:900px){.bk-tienda__in{grid-template-columns:1fr 1fr;}}
+.bk-tienda p:not(.bk-eyebrow){color:var(--tinta-sec);margin-top:14px;max-width:52ch;}
+.bk-foto img{border-radius:var(--r-l);width:100%;aspect-ratio:9/7;object-fit:cover;}
+
+/* ── bento ── */
+.bk-bento{padding-top:0!important;}
+.bk-bento__g{display:grid;gap:10px;grid-template-columns:1fr 1fr;}
+.bk-bento__g figure{position:relative;border-radius:var(--r-m);overflow:hidden;margin:0;min-height:160px;}
+.bk-bento__g img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease);}
+.bk-bento__g .b1{grid-column:1/-1;min-height:260px;}
+@media(min-width:900px){
+  .bk-bento__g{grid-template-columns:2fr 1fr 1fr;grid-template-rows:230px 230px;}
+  .bk-bento__g .b1{grid-column:1;grid-row:1/3;}
+}
+@media(hover:hover){.bk-bento__g figure:hover img{transform:scale(1.05);}}
+.bk-bento__g figcaption{position:absolute;left:10px;bottom:10px;border-radius:999px;padding:6px 12px;font-size:12px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:#fff;background:color-mix(in srgb,var(--negro) 70%,transparent);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}
+
+/* ── opiniones ── */
+.bk-opin{background:var(--negro);color:#fff;border-radius:var(--r-xl);margin:0 10px;}
+.bk-opin__cab{display:grid;gap:18px;margin-bottom:30px;}
+@media(min-width:900px){.bk-opin__cab{grid-template-columns:auto 1fr;align-items:end;gap:48px;}}
+.bk-nota{display:flex;align-items:center;gap:14px;}
+.bk-nota b{font-size:96px;line-height:.8;color:var(--naranja);}
+.bk-nota > span{display:grid;font-size:14px;color:#C9CBD0;}
+.bk-estrellas{color:var(--naranja);letter-spacing:.12em;font-size:20px;}
+.bk-opin__g{display:grid;gap:12px;}
+@media(min-width:900px){.bk-opin__g{grid-template-columns:repeat(3,1fr);}}
+.bk-opin__g blockquote{margin:0;padding:24px;border-radius:var(--r-l);background:color-mix(in srgb,#fff 6%,transparent);
+  border:1px solid color-mix(in srgb,#fff 12%,transparent);display:flex;flex-direction:column;justify-content:space-between;gap:18px;}
+.bk-opin__g blockquote::before{content:"★★★★★";color:var(--naranja);letter-spacing:.12em;}
+.bk-opin__g blockquote p{font-size:18px;line-height:1.45;color:#EDEEF0;}
+.bk-opin__g cite{font-style:normal;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#A4A7AE;}
+
+/* ── dónde ── */
+.bk-donde__in{display:grid;gap:12px;margin-top:26px;}
+@media(min-width:900px){.bk-donde__in{grid-template-columns:1.3fr .7fr;}}
+.bk-mapa{border-radius:var(--r-l);overflow:hidden;min-height:340px;border:1px solid var(--filete);}
+.bk-mapa iframe{width:100%;height:100%;min-height:340px;border:0;display:block;}
+.bk-panel{background:#fff;border-radius:var(--r-l);padding:22px;border:1px solid var(--filete);}
+.bk-panel .horarios tr.hoy td{color:var(--acento);}
+
+/* ── cierre ── */
+.bk-cierre__card{position:relative;overflow:hidden;isolation:isolate;border-radius:var(--r-xl);background:var(--naranja);color:var(--negro);
+  padding:clamp(26px,5vw,60px);display:grid;gap:28px;}
+@media(min-width:960px){.bk-cierre__card{grid-template-columns:1fr 1fr;align-items:center;}}
+.bk-cierre__card .bk-hero__rayas{top:auto;bottom:-40px;right:-40px;opacity:.25;
+  background:repeating-linear-gradient(-58deg,var(--negro) 0 10px,transparent 10px 26px);}
+.bk-cierre__card .bk-h2 em{color:#fff;}
+.bk-cierre__txt p:not(.bk-eyebrow){font-size:18px;max-width:40ch;margin:14px 0 22px;}
+.bk-form{background:#fff;border-radius:var(--r-l);padding:22px;box-shadow:0 30px 60px -30px rgba(0,0,0,.45);}
+.bk-form input,.bk-form textarea{border-radius:var(--r-s)!important;}
+.bk-form .btn--fill{background:var(--negro)!important;border-color:var(--negro)!important;color:#fff!important;box-shadow:none;}
+
+/* ── barra móvil y pie ── */
+.barra{border-radius:999px!important;}
+.barra .pri{background:var(--naranja)!important;color:var(--negro)!important;}
+.pie a{display:inline-flex;align-items:center;min-height:44px;}
+</style>
 </body>
 </html>
