@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="robots" content="noindex, follow"/>
+<title>Biciprecision Igartua — Tienda de bicicletas en Bergara</title>
+<meta name="description" content="Bicis de carretera, montaña, eléctricas, gravel y ciudad en Bergara. Montajes a la carta, pago sin intereses y Bizum. Zubieta kalea 5 y 7."/>
+<meta name="theme-color" content="#F6F5F2"/>
+<meta property="og:title" content="Biciprecision Igartua — Bicicletas en Bergara"/>
+<meta property="og:description" content="Carretera, montaña, eléctrica, gravel y ciudad. Montajes a la carta y pago sin intereses."/>
+<meta property="og:type" content="website"/>
+<meta property="og:image" content="https://images.unsplash.com/photo-1761634731562-c7a152d89849?w=1200&q=78&auto=format&fit=crop&h=630"/>
+<!--
+  ═══ PLANTILLA DE SECTOR · COMERCIO DE CALLE ═══
+  Cubre: ropa · zapatería · joyería · óptica · librería · ferretería · papelería
+  Spec: docs/PROMPT-PLANTILLAS-SECTOR.md · Dirección: docs/PROMPT-DIRECCION-VISUAL.md
+  Tipografía (Google Fonts, autoalojadas en fuentes/):
+    Syne · Chivo
+
+  Estructura por bloque — ninguna se repite, cero rejillas de tarjetas:
+    2 hero        body-banner           banda a sangre + titular debajo
+    3 confianza   body-logos-strip      las marcas que trabaja
+    4 secciones   body-alternating      tres secciones de tienda en zig-zag
+    4b escaparate body-product-detail   LO DE ESTA SEMANA + las tres respuestas
+    5 la tienda   body-media-right
+    6 galería     body-masonry
+    7 reseñas     body-testimonial-band
+    8 dónde       body-map-listings
+    9 contacto    body-end-cta
+
+  BLOQUE DE SECTOR: el escaparate de la semana y las tres preguntas que la
+  gente hace por teléfono antes de acercarse — ¿tenéis mi talla?, ¿me lo
+  guardáis?, ¿hacéis arreglos? Contestarlas por escrito ahorra la llamada
+  y trae a la gente a la tienda, que es lo único que importa aquí.
+
+  PARA PERSONALIZAR: editar SOLO el bloque DATOS (abajo), :root si hay color
+  de marca, y las URLs de las imágenes.
+-->
+
+<style>
+/* ═══ FUENTES AUTOALOJADAS ═══
+   Se sirven desde esta misma carpeta: la demo no depende de ningún CDN.
+   Google Fonts, licencias OFL / Apache 2.0 — permiten el autoalojamiento.
+   Regenerar con: node scripts/autoalojar-fuentes.mjs comercio-tienda  */
+@font-face{font-family:'Syne';font-style:normal;font-weight:500;font-display:swap;src:url('fuentes/syne-500-normal-1.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Syne';font-style:normal;font-weight:600;font-display:swap;src:url('fuentes/syne-600-normal-3.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Syne';font-style:normal;font-weight:700;font-display:swap;src:url('fuentes/syne-700-normal-5.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Chivo';font-style:normal;font-weight:400;font-display:swap;src:url('fuentes/chivo-400-normal-7.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Chivo';font-style:normal;font-weight:500;font-display:swap;src:url('fuentes/chivo-500-normal-9.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Chivo';font-style:normal;font-weight:700;font-display:swap;src:url('fuentes/chivo-700-normal-11.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+</style>
+<style>
+/* ═══════════════ CONTRATO DE TOKENS ═══════════════ */
+:root{
+  --fondo:#F6F5F2;
+  --fondo-alt:#ECEAE5;
+  --filete:#D8D4CC;
+
+  --tinta:#16181B;
+  --tinta-sec:#53575E;
+
+  --acento:#C2410C;
+  --acento-con:#FFFFFF;
+
+  --ok:#2E7D52;
+  --alerta:#A8720A;
+
+  /* derivados */
+  --acento-osc:#9A3412;
+  --acento-claro:#FDBA74;
+  --acento-suave:#FDEBDD;
+  --filete-fuerte:#B5B0A6;
+  --osc:#15171A;
+  --osc-filete:#2A2D33;
+  --osc-tinta:#B9BCC3;
+  --osc-tinta2:#9A9DA5;
+  --osc-tinta3:#7A7D85;
+  --ok-claro:#84C7A2;
+  --alerta-clara:#DFB068;
+
+  --display:"Syne",Georgia,serif;
+  --texto:"Chivo",system-ui,sans-serif;
+  --detalle:"Chivo",system-ui,sans-serif;
+
+  --ease:cubic-bezier(.16,1,.3,1);
+  --gutter:clamp(20px,5vw,60px);
+  --radio:0px;
+
+  /* escala razón 1.25 desde 17px */
+  --t1:17px; --t2:21.3px; --t3:26.6px; --t4:33.2px; --t5:41.5px; --t6:51.9px;
+}
+
+*{box-sizing:border-box;margin:0;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+:target,section[id]{scroll-margin-top:80px;}
+body{background:var(--fondo);color:var(--tinta);font-family:var(--texto);
+  font-size:var(--t1);line-height:1.66;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+img{display:block;max-width:100%;height:auto;}
+a{color:inherit;text-decoration:none;}
+button{font:inherit;color:inherit;}
+h1,h2,h3{font-family:var(--display);font-weight:500;text-wrap:balance;}
+h1{letter-spacing:-.03em;line-height:1;}
+h2{letter-spacing:-.025em;line-height:1.06;font-size:clamp(var(--t4),5.2vw,var(--t6));}
+h3{letter-spacing:-.015em;line-height:1.2;font-size:var(--t2);font-weight:500;}
+p{text-wrap:pretty;}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 var(--gutter);}
+.rotulo{font-family:var(--detalle);font-size:11.5px;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--acento);}
+.lead{color:var(--tinta-sec);font-size:var(--t2);line-height:1.48;max-width:36ch;}
+
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+/* z-index: 10 contenido · 20 cabecera · 30 barra móvil · 50 skip */
+.skip{position:absolute;left:-9999px;top:0;background:var(--tinta);color:var(--fondo);
+  padding:12px 18px;z-index:50;}
+.skip:focus{left:0;top:0;}
+:focus-visible{outline:2px solid var(--acento);outline-offset:3px;}
+
+/* ── btn-arrow-slide ────────────────────────────── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:48px;padding:14px 26px;border-radius:var(--radio);
+  font-family:var(--detalle);font-size:11.5px;font-weight:700;letter-spacing:.15em;
+  text-transform:uppercase;border:1px solid var(--tinta);background:transparent;cursor:pointer;
+  transition:background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease);}
+.btn .ar{transition:transform .35s var(--ease);}
+.btn:hover .ar,.btn:focus-visible .ar{transform:translateX(6px);}
+.btn--fill{background:var(--acento);border-color:var(--acento);color:var(--acento-con);}
+.btn--fill:hover,.btn--fill:focus-visible{background:var(--acento-osc);border-color:var(--acento-osc);}
+.btn--ghost:hover,.btn--ghost:focus-visible{background:var(--tinta);color:var(--fondo);}
+
+/* ── 1 · cabecera ───────────────────────────────── */
+.top{position:sticky;top:0;z-index:20;background:rgba(247,246,244,.95);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--filete);}
+.top__in{display:flex;align-items:center;justify-content:space-between;gap:18px;height:68px;}
+.marca{display:flex;align-items:baseline;gap:10px;min-height:44px;align-self:center;
+  font-family:var(--display);font-size:var(--t3);font-weight:600;letter-spacing:-.035em;}
+.marca em{font-family:var(--detalle);font-style:normal;font-size:9.5px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--tinta-sec);}
+.nav{display:none;gap:28px;}
+.nav a{font-family:var(--detalle);font-size:11.5px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;padding:8px 0;border-bottom:1px solid transparent;
+  transition:border-color .3s,color .3s;}
+.nav a:hover{color:var(--acento);}
+.nav a[aria-current]{color:var(--acento);border-color:var(--acento);}
+.top__cta{display:none;}
+@media(min-width:1000px){.nav{display:flex;}.top__cta{display:inline-flex;}}
+
+/* micro-live-clock */
+.estado{display:flex;align-items:center;gap:8px;font-family:var(--detalle);
+  font-size:11.5px;color:var(--tinta-sec);}
+.estado i{width:6px;height:6px;border-radius:50%;background:var(--tinta-sec);flex:none;}
+.estado.abierto i{background:var(--ok);box-shadow:0 0 0 0 rgba(46,125,82,.5);
+  animation:latir 2.6s ease-out infinite;}
+@keyframes latir{70%{box-shadow:0 0 0 8px rgba(46,125,82,0);}100%{box-shadow:0 0 0 0 rgba(46,125,82,0);}}
+@media(max-width:740px){.estado span{display:none;}}
+
+/* ── 2 · body-banner · banda a sangre ───────────── */
+.banner__foto{height:clamp(280px,52vh,540px);overflow:hidden;}
+.banner__foto img{width:100%;height:100%;object-fit:cover;}
+.banner__txt{padding:clamp(30px,4.5vw,54px) 0 clamp(34px,5vw,64px);
+  border-bottom:1px solid var(--filete);}
+.banner h1{font-size:clamp(38px,6.4vw,78px);max-width:14ch;margin-top:16px;}
+.banner h1 em{font-style:normal;color:var(--acento);}
+.banner__pie{display:grid;gap:22px;margin-top:26px;}
+@media(min-width:900px){.banner__pie{grid-template-columns:1.05fr .95fr;align-items:end;}}
+.banner__btns{display:flex;flex-wrap:wrap;gap:11px;}
+
+/* ── 3 · body-logos-strip · las marcas ──────────── */
+.marcas{padding:clamp(28px,4vw,48px) 0;border-bottom:1px solid var(--filete);}
+.marcas p{font-family:var(--detalle);font-size:11px;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--tinta-sec);margin-bottom:16px;}
+.marcas ul{list-style:none;display:flex;flex-wrap:wrap;gap:0;}
+.marcas li{flex:0 1 auto;padding:8px 26px 8px 0;font-family:var(--display);font-size:var(--t2);
+  font-weight:500;letter-spacing:-.02em;color:var(--tinta);}
+@media(min-width:760px){
+  .marcas li{padding:8px 26px;border-left:1px solid var(--filete);}
+  .marcas li:first-child{padding-left:0;border-left:0;}
+}
+
+/* ── 4 · body-alternating · secciones ───────────── */
+.secc{padding:clamp(48px,7vw,96px) 0;}
+.secc__f{display:grid;gap:clamp(20px,3vw,46px);align-items:center;
+  padding:clamp(26px,3.5vw,46px) 0;border-top:1px solid var(--filete);}
+@media(min-width:880px){
+  .secc__f{grid-template-columns:1.05fr .95fr;}
+  .secc__f:nth-of-type(even) .secc__m{order:2;}
+}
+.secc__m img{width:100%;height:clamp(240px,38vh,380px);object-fit:cover;}
+.secc__n{font-family:var(--detalle);font-size:11px;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--acento);}
+.secc__f h3{font-size:var(--t3);margin:10px 0 9px;}
+.secc__f > div > p{color:var(--tinta-sec);font-size:16px;max-width:46ch;}
+.secc__l{list-style:none;display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:16px;
+  padding-top:14px;border-top:1px solid var(--filete);}
+.secc__l li{font-family:var(--detalle);font-size:12.5px;color:var(--tinta-sec);}
+.secc__l li::before{content:"— ";color:var(--acento);}
+
+/* ── 4b · body-product-detail · el escaparate ───── */
+.escap{padding:clamp(48px,7vw,96px) 0;background:var(--fondo-alt);}
+.escap__in{display:grid;gap:clamp(26px,4vw,54px);align-items:center;
+  margin-top:clamp(24px,3.5vw,42px);}
+@media(min-width:900px){.escap__in{grid-template-columns:.86fr 1.14fr;}}
+.escap__foto img{width:100%;height:clamp(300px,52vh,520px);object-fit:cover;}
+.escap__sem{font-family:var(--detalle);font-size:11px;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--acento);}
+.escap h3{font-size:var(--t4);margin:10px 0 10px;letter-spacing:-.025em;}
+.escap__d{color:var(--tinta-sec);font-size:16.5px;max-width:48ch;}
+.escap__pvp{font-family:var(--display);font-size:clamp(34px,5vw,52px);font-weight:600;
+  letter-spacing:-.035em;margin-top:20px;font-variant-numeric:tabular-nums;}
+.escap__pvp em{font-style:normal;font-family:var(--detalle);font-size:12px;font-weight:400;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--tinta-sec);margin-left:8px;}
+
+/* las tres preguntas que se hacen por teléfono */
+.preg{margin-top:clamp(28px,4vw,46px);border-top:1px solid var(--filete-fuerte);}
+.preg div{padding:20px 0;border-bottom:1px solid var(--filete);display:grid;gap:5px;}
+@media(min-width:820px){.preg div{grid-template-columns:78px .34fr .66fr;gap:24px;align-items:baseline;}}
+.preg .si{font-family:var(--display);font-size:var(--t3);font-weight:600;line-height:1;
+  color:var(--acento);letter-spacing:-.03em;}
+.preg h4{font-family:var(--display);font-size:var(--t2);font-weight:500;letter-spacing:-.02em;}
+.preg p{color:var(--tinta-sec);font-size:15.5px;max-width:58ch;}
+
+/* ── 5 · body-media-right · la tienda ───────────── */
+.tienda{padding:clamp(48px,7vw,96px) 0;}
+.tienda__in{display:grid;gap:clamp(24px,4vw,50px);align-items:center;}
+@media(min-width:900px){.tienda__in{grid-template-columns:1.05fr .95fr;}}
+.tienda img{width:100%;height:clamp(250px,42vh,440px);object-fit:cover;}
+.tienda p{color:var(--tinta-sec);margin-top:15px;}
+.subr{position:relative;color:var(--tinta);font-weight:500;white-space:nowrap;}
+.subr::after{content:"";position:absolute;left:0;bottom:-2px;width:100%;height:2px;
+  background:var(--acento);transform:scaleX(0);transform-origin:left;transition:transform .8s var(--ease);}
+.subr.on::after{transform:scaleX(1);}
+
+/* ── 6 · body-masonry ───────────────────────────── */
+.masonry{padding:0 0 clamp(48px,7vw,96px);}
+.masonry__g{columns:2;column-gap:12px;}
+@media(min-width:880px){.masonry__g{columns:3;column-gap:14px;}}
+.masonry figure{break-inside:avoid;margin-bottom:12px;overflow:hidden;}
+.masonry img{width:100%;height:auto;transition:transform .6s var(--ease);}
+@media(hover:hover) and (pointer:fine){.masonry figure:hover img{transform:scale(1.04);}}
+.masonry figcaption{font-family:var(--detalle);font-size:10.5px;font-weight:700;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--tinta-sec);padding-top:8px;}
+
+/* ── 7 · body-testimonial-band ──────────────────── */
+.banda{background:var(--osc);color:var(--fondo);padding:clamp(48px,7vw,96px) 0;}
+.banda .rotulo{color:var(--acento-claro);}
+.banda__g{display:grid;gap:0;margin-top:26px;border-top:1px solid var(--osc-filete);}
+@media(min-width:900px){.banda__g{grid-template-columns:repeat(3,1fr);border-top:0;}}
+.banda blockquote{padding:26px 0;border-bottom:1px solid var(--osc-filete);}
+@media(min-width:900px){
+  .banda blockquote{padding:0 28px;border-bottom:0;border-left:1px solid var(--osc-filete);}
+  .banda blockquote:first-child{padding-left:0;border-left:0;}
+}
+.banda blockquote p{font-family:var(--display);font-weight:400;font-size:var(--t2);
+  letter-spacing:-.02em;line-height:1.34;}
+.banda cite{display:block;margin-top:16px;font-style:normal;font-family:var(--detalle);
+  font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--osc-tinta);}
+
+/* ── 8 · body-map-listings ──────────────────────── */
+.donde{padding:clamp(48px,7vw,96px) 0;}
+.donde__in{display:grid;gap:clamp(26px,3.5vw,44px);margin-top:clamp(24px,3vw,40px);}
+@media(min-width:900px){.donde__in{grid-template-columns:1.25fr .75fr;}}
+.mapa{overflow:hidden;border:1px solid var(--filete);min-height:350px;background:var(--fondo-alt);}
+.mapa iframe{width:100%;height:100%;min-height:350px;border:0;display:block;}
+.horarios{width:100%;border-collapse:collapse;font-size:15.5px;}
+.horarios caption{text-align:left;font-family:var(--detalle);font-size:11px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--acento);padding-bottom:12px;}
+.horarios td{padding:12px 0;border-bottom:1px solid var(--filete);font-variant-numeric:tabular-nums;}
+.horarios td:last-child{text-align:right;font-family:var(--detalle);font-size:13.5px;}
+.horarios tr.hoy td{color:var(--acento);font-weight:600;}
+.horarios tr.hoy td:first-child::after{content:" · hoy";font-family:var(--detalle);
+  font-size:10.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;}
+.datos{list-style:none;margin-top:26px;}
+.datos li{padding:14px 0;border-bottom:1px solid var(--filete);}
+.datos dt{font-family:var(--detalle);font-size:10.5px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--tinta-sec);margin-bottom:4px;}
+.datos dd{margin:0;font-size:15.5px;}
+/* padding/margen negativo: 44px de área táctil sin mover nada */
+.datos a{display:inline-block;padding:10px 0;margin:-10px 0;}
+.datos a:hover{color:var(--acento);text-decoration:underline;text-underline-offset:3px;}
+
+/* ── 9 · body-end-cta ───────────────────────────── */
+.cierre{background:var(--acento-suave);padding:clamp(48px,7vw,100px) 0;
+  border-top:1px solid var(--filete);}
+.cierre__in{display:grid;gap:clamp(28px,4vw,56px);}
+@media(min-width:920px){.cierre__in{grid-template-columns:.95fr 1.05fr;}}
+.cierre__lead{color:var(--tinta-sec);font-size:var(--t2);line-height:1.45;max-width:30ch;margin-top:18px;}
+.cierre__btns{display:flex;flex-wrap:wrap;gap:11px;margin-top:26px;}
+.form{display:grid;gap:0;}
+.form div{border-bottom:1px solid var(--filete-fuerte);}
+.form label{display:block;font-family:var(--detalle);font-size:10.5px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-sec);padding-top:14px;}
+.form input,.form textarea{width:100%;font:inherit;font-size:16px;padding:8px 0 14px;
+  min-height:44px;border:0;background:transparent;color:var(--tinta);}
+.form input:focus,.form textarea:focus{outline:none;}
+.form div:focus-within{border-color:var(--acento);}
+.form textarea{min-height:76px;resize:vertical;}
+.form button{margin-top:24px;justify-self:start;}
+.form .aviso{font-size:13.5px;color:var(--tinta-sec);margin-top:14px;}
+.form .aviso.err{color:var(--alerta);}
+.form .aviso.ok{color:var(--ok);}
+
+/* ── 10 · pie ───────────────────────────────────── */
+.pie{background:var(--osc);color:var(--osc-tinta2);
+  padding:28px 0 calc(28px + env(safe-area-inset-bottom));font-size:13.5px;}
+.pie__in{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;}
+.pie a:hover{color:var(--fondo);}
+.pie .demo{width:100%;padding-top:16px;margin-top:4px;border-top:1px solid var(--osc-filete);
+  font-size:12.5px;color:var(--osc-tinta3);}
+@media(max-width:899px){.pie{padding-bottom:calc(92px + env(safe-area-inset-bottom));}}
+
+/* ── barra fija móvil ───────────────────────────── */
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;
+  grid-template-columns:repeat(3,1fr);background:var(--fondo);
+  border-top:1px solid var(--filete-fuerte);padding-bottom:env(safe-area-inset-bottom);}
+.barra a{display:flex;align-items:center;justify-content:center;min-height:56px;padding:9px 6px;
+  font-family:var(--detalle);font-size:10.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;}
+.barra a+a{border-left:1px solid var(--filete-fuerte);}
+.barra a.pri{background:var(--acento);color:var(--acento-con);}
+@media(min-width:900px){.barra{display:none;}}
+
+/* ── scroll-reveal-soft ─────────────────────────── */
+.rev{opacity:1;transform:none;}
+.js .rev{opacity:0;transform:translateY(18px);
+  transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.js .rev.on{opacity:1;transform:none;}
+.rev[data-d="1"]{transition-delay:.08s;}
+.rev[data-d="2"]{transition-delay:.16s;}
+.rev[data-d="3"]{transition-delay:.24s;}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important;}
+  .rev{opacity:1!important;transform:none!important;}
+  .subr::after{transform:scaleX(1)!important;}
+}
+</style>
+<script>document.documentElement.className+=" js";</script>
+<style>
+/* ajustes de la demo de Biciprecision */
+.marca em{color:var(--acento);font-size:10.5px;}
+.nav a{white-space:nowrap;}
+.cierre__btns .btn svg{margin-right:2px;}
+/* "Montajes" sale oscura (ritmo de la plantilla): ahí, el naranja claro.
+   En el cierre, sobre el melocotón, el naranja se quedaba en 4,46: uno más oscuro. */
+.escap.oscura .rotulo,.escap.oscura .escap__sem{color:var(--acento-claro);}
+.cierre .rotulo{color:var(--acento-osc);}
+/* enlaces del pie: zona táctil de 44 px */
+.pie a{display:inline-flex;align-items:center;min-height:44px;}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<!-- ═══ 1 · CABECERA ═══ -->
+<header class="top">
+  <div class="wrap top__in">
+    <a class="marca" href="#inicio">Biciprecisión <em>Igartua</em></a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#bicis">Bicis</a>
+      <a href="#montajes">Montajes</a>
+      <a href="#opiniones">Opiniones</a>
+      <a href="#donde">Dónde estamos</a>
+    </nav>
+    <p class="estado" id="estado" aria-live="polite"><i aria-hidden="true"></i><span>Consultando horario…</span></p>
+    <a class="btn btn--fill top__cta" id="t-wa" href="#" target="_blank" rel="noopener">WhatsApp <span class="ar" aria-hidden="true">→</span></a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ═══ 2 · HERO · body-banner ═══ -->
+<section class="banner" id="inicio">
+  <figure class="banner__foto rev">
+    <img src="https://images.unsplash.com/photo-1761634731562-c7a152d89849?w=1800&q=78&auto=format&fit=crop"
+         alt="Bicicletas colgadas en las estanterías de la tienda" width="1800" height="1000" fetchpriority="high"/>
+  </figure>
+  <div class="banner__txt">
+    <div class="wrap">
+      <p class="rotulo rev">Tienda de bicicletas · Bergara</p>
+      <h1 class="rev" data-d="1">Tu bici, bien elegida <em>y bien montada</em></h1>
+      <div class="banner__pie">
+        <p class="lead rev" data-d="2">Carretera, montaña, eléctrica, gravel y ciudad. Te ayudamos a elegir la tuya, te la montamos a la carta y la puedes pagar sin intereses.</p>
+        <div class="banner__btns rev" data-d="3">
+          <a class="btn btn--fill" id="h-wa" href="#" target="_blank" rel="noopener">Preguntar por WhatsApp <span class="ar" aria-hidden="true">→</span></a>
+          <a class="btn btn--ghost" href="#bicis">Ver las bicis</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 3 · MARCAS · body-logos-strip ═══ -->
+<section class="marcas" aria-label="Marcas que trabajamos">
+  <div class="wrap">
+    <p class="rev">Marcas que trabajamos</p>
+    <ul class="rev" data-d="1" id="marcas"></ul>
+  </div>
+</section>
+
+<!-- ═══ 4 · LAS BICIS · body-alternating ═══ -->
+<section class="secc" id="bicis">
+  <div class="wrap">
+    <p class="rotulo rev" style="margin-bottom:12px">Las bicis</p>
+    <h2 class="rev" data-d="1" style="max-width:15ch;margin-bottom:20px">Para la carretera, el monte o el día a día</h2>
+
+    <article class="secc__f rev">
+      <figure class="secc__m"><img loading="lazy" width="800" height="500" src="https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?w=800&q=78&auto=format&fit=crop" alt="Bicicleta de carretera negra"/></figure>
+      <div>
+        <p class="secc__n">Asfalto y pista</p>
+        <h3>Carretera y gravel</h3>
+        <p>Bicis de carretera, gravel y ciclocross. Y si ya sabes lo que quieres, cuadro, ruedas y cambio por separado para montarla a tu medida.</p>
+        <ul class="secc__l"><li>Carretera</li><li>Gravel</li><li>Ciclocross</li><li>Cuadros y ruedas</li></ul>
+      </div>
+    </article>
+
+    <article class="secc__f rev">
+      <figure class="secc__m"><img loading="lazy" width="800" height="500" src="https://images.unsplash.com/photo-1633707167682-9068729bc84c?w=800&q=78&auto=format&fit=crop" alt="Ciclista de montaña en un bosque"/></figure>
+      <div>
+        <p class="secc__n">Monte</p>
+        <h3>Montaña</h3>
+        <p>Para los montes de alrededor de Bergara. Te ayudamos a elegir la que encaja con lo que vas a hacer.</p>
+        <ul class="secc__l"><li>Montaña</li><li>Segunda mano</li><li>Accesorios</li></ul>
+      </div>
+    </article>
+
+    <article class="secc__f rev">
+      <figure class="secc__m"><img loading="lazy" width="800" height="500" src="https://images.unsplash.com/photo-1620802090791-fd9420668913?w=800&q=78&auto=format&fit=crop" alt="Ciclista con una bicicleta urbana"/></figure>
+      <div>
+        <p class="secc__n">Día a día</p>
+        <h3>Eléctricas y ciudad</h3>
+        <p>Para ir al trabajo, subir las cuestas sin llegar sudando o volver a coger la bici. También patinetes y bicis de spinning para casa.</p>
+        <ul class="secc__l"><li>Eléctricas</li><li>Ciudad</li><li>Patinetes</li><li>Spinning</li></ul>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ═══ 5 · MONTAJES Y LAS TRES PREGUNTAS · body-product-detail ═══ -->
+<section class="escap sector" id="montajes">
+  <div class="wrap">
+    <p class="rotulo rev">Montajes a la carta</p>
+    <h2 class="rev" data-d="1" style="max-width:17ch">Eliges cada pieza. La montamos aquí.</h2>
+    <div class="escap__in">
+      <figure class="escap__foto rev">
+        <img loading="lazy" width="700" height="900" src="https://images.unsplash.com/photo-1673870861521-626b40f9657e?w=700&q=78&auto=format&fit=crop" alt="Mecánico montando una bicicleta en el taller"/>
+      </figure>
+      <div class="rev" data-d="1">
+        <p class="escap__sem">Cuadro · ruedas · grupo</p>
+        <h3>Tu bici, pieza a pieza</h3>
+        <p class="escap__d">Partes del cuadro que te gusta y eliges ruedas, transmisión y componentes: Shimano, SRAM, Campagnolo, Fulcrum… Te la entregamos montada, ajustada y lista para rodar. Y si quieres afinar la postura, pregúntanos por la biomecánica.</p>
+        <a class="btn btn--fill" id="m-wa" href="#" target="_blank" rel="noopener" style="margin-top:22px">Pedir presupuesto por WhatsApp <span class="ar" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    <div class="preg rev" data-d="1">
+      <div>
+        <p class="si">Sí</p>
+        <h4>¿Se puede pagar a plazos?</h4>
+        <p>Sí, sin intereses, en uno o dos años. Te explicamos las condiciones en la tienda.</p>
+      </div>
+      <div>
+        <p class="si">Sí</p>
+        <h4>¿Aceptáis Bizum?</h4>
+        <p>Sí. Y también con tarjeta.</p>
+      </div>
+      <div>
+        <p class="si">Sí</p>
+        <h4>¿Hacéis envíos?</h4>
+        <p>Sí. Si no puedes acercarte a Bergara, te la enviamos, y según el pedido el envío sale gratis.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 6 · LA TIENDA · body-media-right ═══ -->
+<section class="tienda" id="tienda">
+  <div class="wrap tienda__in">
+    <div>
+      <p class="rotulo rev">La tienda</p>
+      <h2 class="rev" data-d="1">Trato cercano<br/>y buen taller</h2>
+      <p class="rev" data-d="2">Es lo que más repiten quienes compran aquí: que se les atiende con paciencia, que se resuelven todas las dudas antes de comprar y que, después, la bici se revisa y se ajusta.</p>
+      <p class="rev" data-d="2">Estamos en Zubieta kalea 5 y 7, en Bergara. <span class="subr">Pásate con tu bici o con la idea de la que quieres</span>, y lo miramos juntos.</p>
+    </div>
+    <img class="rev" data-d="1" loading="lazy" width="900" height="700"
+      src="https://images.unsplash.com/photo-1676531356064-0a527118baf4?w=900&q=78&auto=format&fit=crop"
+      alt="Mecánico trabajando en una bicicleta"/>
+  </div>
+</section>
+
+<!-- ═══ 7 · GALERÍA · body-masonry ═══ -->
+<section class="masonry" id="galeria">
+  <div class="wrap">
+    <p class="rotulo rev" style="margin-bottom:18px">Bicis y taller</p>
+    <div class="masonry__g rev" data-d="1">
+      <figure><img loading="lazy" width="600" height="800" src="https://images.unsplash.com/photo-1576435728678-68d0fbf94e91?w=600&q=78&auto=format&fit=crop" alt="Bicicleta de carretera apoyada en una pared de madera"/><figcaption>Carretera</figcaption></figure>
+      <figure><img loading="lazy" width="600" height="420" src="https://images.unsplash.com/photo-1562615193-cbeef074a501?w=600&q=78&auto=format&fit=crop" alt="Detalle de la transmisión de una bicicleta"/><figcaption>Transmisión</figcaption></figure>
+      <figure><img loading="lazy" width="600" height="700" src="https://images.unsplash.com/photo-1765376260898-38e465a2cf6f?w=600&q=78&auto=format&fit=crop" alt="Bicicleta de montaña colgada en el taller"/><figcaption>El taller</figcaption></figure>
+      <figure><img loading="lazy" width="600" height="450" src="https://images.unsplash.com/photo-1629056528325-f328b5f27ae7?w=600&q=78&auto=format&fit=crop" alt="Ciclista en un camino de tierra"/><figcaption>Gravel</figcaption></figure>
+      <figure><img loading="lazy" width="600" height="760" src="https://images.unsplash.com/photo-1535369643553-a33e0d1ac81d?w=600&q=78&auto=format&fit=crop" alt="Ciclista de montaña entre árboles"/><figcaption>Montaña</figcaption></figure>
+      <figure><img loading="lazy" width="600" height="480" src="https://images.unsplash.com/photo-1561453518-fc7b32ab8e8e?w=600&q=78&auto=format&fit=crop" alt="Bicicleta de paseo"/><figcaption>Ciudad</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 8 · OPINIONES · body-testimonial-band ═══ -->
+<section class="banda" id="opiniones">
+  <div class="wrap">
+    <p class="rotulo rev">Opiniones en Google · 4,7 de 5 · 64 opiniones</p>
+    <div class="banda__g" id="testis"></div>
+  </div>
+</section>
+
+<!-- ═══ 9 · DÓNDE · body-map-listings ═══ -->
+<section class="donde" id="donde">
+  <div class="wrap">
+    <p class="rotulo rev">Dónde estamos</p>
+    <h2 class="rev" data-d="1" style="max-width:16ch">Zubieta kalea 5 y 7, en Bergara</h2>
+    <div class="donde__in">
+      <div class="mapa rev">
+        <iframe title="Mapa de situación de la tienda" loading="lazy" allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-2.4224%2C43.1162%2C-2.4064%2C43.1252&layer=mapnik&marker=43.12066%2C-2.41435"></iframe>
+      </div>
+      <div class="rev" data-d="1">
+        <table class="horarios">
+          <caption>Horario</caption>
+          <tbody id="tabla-horario"></tbody>
+        </table>
+        <dl class="datos">
+          <li><dt>Dirección</dt><dd id="d-dir"></dd></li>
+          <li><dt>Teléfono</dt><dd><a id="d-tel" href="#"></a></dd></li>
+          <li><dt>WhatsApp</dt><dd><a id="d-wa" href="#" target="_blank" rel="noopener"></a></dd></li>
+          <li><dt>Email</dt><dd><a id="d-mail" href="#"></a></dd></li>
+          <li><dt>Cómo llegar</dt><dd><a id="d-maps" href="#" target="_blank" rel="noopener">Abrir en Google Maps →</a></dd></li>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══ 10 · CIERRE · body-end-cta ═══ -->
+<section class="cierre" id="contacto">
+  <div class="wrap cierre__in">
+    <div>
+      <p class="rotulo rev">Preguntar</p>
+      <h2 class="rev" data-d="1">Cuéntanos qué bici<br/>tienes en la cabeza</h2>
+      <p class="cierre__lead rev" data-d="2">O qué le pasa a la tuya. Por WhatsApp es lo más rápido: te contestamos con precio y disponibilidad.</p>
+      <div class="cierre__btns rev" data-d="2">
+        <a class="btn btn--fill" id="c-wa" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M12 3.5a8.5 8.5 0 0 0-7.4 12.7L3.5 20.5l4.4-1.1A8.5 8.5 0 1 0 12 3.5zm0 15.4a6.9 6.9 0 0 1-3.5-1l-.3-.2-2.6.7.7-2.5-.2-.3A6.9 6.9 0 1 1 12 18.9zm3.8-5.2c-.2-.1-1.2-.6-1.4-.7s-.3-.1-.5.1-.5.7-.6.8-.2.2-.4.1a5.6 5.6 0 0 1-2.8-2.4c-.2-.4.2-.3.6-1.1.1-.1 0-.3 0-.4l-.6-1.5c-.2-.4-.3-.3-.5-.3h-.4a.8.8 0 0 0-.6.3 2.4 2.4 0 0 0-.7 1.8 4.2 4.2 0 0 0 .9 2.2 9.6 9.6 0 0 0 3.7 3.2c1.4.6 1.9.6 2.6.5a2.2 2.2 0 0 0 1.4-1 1.8 1.8 0 0 0 .1-1c0-.1-.2-.2-.4-.3z"/></svg> WhatsApp <span class="ar" aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost" id="c-tel" href="#">Llamar</a>
+      </div>
+    </div>
+    <form class="form rev" data-d="1" id="form" novalidate>
+      <div><label for="f-nom">Nombre</label><input id="f-nom" name="nombre" type="text" autocomplete="name" required/></div>
+      <div><label for="f-tel">Teléfono</label><input id="f-tel" name="tel" type="tel" autocomplete="tel" required/></div>
+      <div><label for="f-que">Qué buscas o qué necesitas</label><textarea id="f-que" name="busca" rows="3" placeholder="Una gravel para empezar, una eléctrica para ir a trabajar, una revisión…"></textarea></div>
+      <button class="btn btn--fill" type="submit">Enviar <span class="ar" aria-hidden="true">→</span></button>
+      <p class="aviso" id="form-aviso" role="status">Te contestamos en horario de tienda.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ═══ 11 · PIE ═══ -->
+<footer class="pie">
+  <div class="wrap pie__in">
+    <p>© <span id="year"></span> Biciprecision Igartua · Zubieta kalea 5 y 7 · Bergara, Gipuzkoa</p>
+    <p><a href="#contacto">Aviso legal</a> · <a href="#contacto">Privacidad</a> · <a href="#contacto">Envíos y devoluciones</a></p>
+    <p class="demo">Demostración para Biciprecision Igartua, creada sin compromiso por OI Studio · las fotos, los textos y los precios son de ejemplo y se sustituyen por los vuestros.</p>
+  </div>
+</footer>
+
+<!-- ═══ BARRA FIJA MÓVIL ═══ -->
+<nav class="barra" aria-label="Acciones rápidas">
+  <a class="pri" id="b-wa" href="#" target="_blank" rel="noopener">WhatsApp</a>
+  <a id="b-tel" href="#">Llamar</a>
+  <a id="b-maps" href="#" target="_blank" rel="noopener">Cómo llegar</a>
+</nav>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   DATOS DEL NEGOCIO — ÚNICO BLOQUE A EDITAR POR CLIENTE
+   horario: 0=domingo … 6=sábado · null = cerrado
+   escaparate: lo que hay puesto esta semana. Es lo único que hay
+               que cambiar cada lunes para que la web parezca viva.
+   ═══════════════════════════════════════════════════════════════ */
+const DATOS = {
+  nombre:    "Biciprecision Igartua",
+  reclamo:   "Bicis de carretera, montaña, eléctricas, gravel y ciudad en Bergara. Montajes a la carta.",
+  tel:       "+34943761121",
+  whatsapp:  "34688673171",
+  email:     "biciprecisionigartua@gmail.com",
+  direccion: "Zubieta kalea 5 y 7, 20570 Bergara, Gipuzkoa",
+  maps:      "https://www.google.com/maps/search/?api=1&query=Biciprecision%20Igartua%20Zubieta%20Kalea%205%20Bergara",
+  geo:       { lat:43.1206612, lon:-2.4143534 },
+  precio:    "€€",
+  marcas: ["Focus","Cube","Lapierre","Moustache","Massi","Coluer","Flanders","Shimano","SRAM","Campagnolo","Fulcrum","Schwalbe","Continental","Lazer"],
+  horario: {
+    1:[["09:00","13:00"],["16:00","20:00"]],
+    2:[["09:00","13:00"],["16:00","20:00"]],
+    3:[["09:00","13:00"],["16:00","20:00"]],
+    4:[["09:00","13:00"],["16:00","20:00"]],
+    5:[["09:00","13:00"],["16:00","20:00"]],
+    6:[["09:00","13:00"]],
+    0:null,
+  },
+  /* De su ficha de Google, tal cual. Solo nombre e inicial. */
+  resenas: [
+    { texto:"Muy buena experiencia de compra, Iñigo me atendió fenomenal y con enorme paciencia resolvió todas mis dudas.", nombre:"Javier M.", cuando:"Google" },
+    { texto:"Compré una Cube Stereo 144 SLX. Desde la compra, la entrega y revisión, todo de 10…", nombre:"Asoka C.", cuando:"Google" },
+    { texto:"Todo perfecto, muy simpáticos Iñigo y su hermana, trato cercano. Buen mecánico y precios muy competitivos. Muy contento con la compra.", nombre:"Sebas G.", cuando:"Google" },
+  ],
+};
+
+/* ── utilidades de horario ─────────────────────────────── */
+const DIAS = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+const hm = t => { const [h,m] = t.split(":").map(Number); return h*60+m; };
+const fmt = tramos => tramos ? tramos.map(([a,b]) => a+"–"+b).join(" · ") : "Cerrado";
+
+/* micro-live-clock · el estado sale de DATOS.horario, nunca se escribe a mano */
+function estadoAhora(){
+  const now = new Date(), d = now.getDay(), min = now.getHours()*60 + now.getMinutes();
+  const tramos = DATOS.horario[d];
+  if(tramos){
+    for(const [a,b] of tramos){
+      if(min >= hm(a) && min < hm(b)) return { abierto:true, texto:"Abierto · cierra a las "+b };
+    }
+    const prox = tramos.find(([a]) => min < hm(a));
+    if(prox) return { abierto:false, texto:"Abre hoy a las "+prox[0] };
+  }
+  for(let i=1;i<=7;i++){
+    const dd = (d+i)%7, t = DATOS.horario[dd];
+    if(t) return { abierto:false, texto:(i===1?"Abre mañana":"Abre el "+DIAS[dd].toLowerCase())+" a las "+t[0][0] };
+  }
+  return { abierto:false, texto:"Consultá el horario" };
+}
+
+function pintarEstado(){
+  const e = estadoAhora(), el = document.getElementById("estado");
+  el.classList.toggle("abierto", e.abierto);
+  el.querySelector("span").textContent = e.texto;
+}
+
+/* loc-hours-today */
+function pintarHorario(){
+  const hoy = new Date().getDay(), tb = document.getElementById("tabla-horario");
+  tb.innerHTML = [1,2,3,4,5,6,0].map(d =>
+    `<tr class="${d===hoy?"hoy":""}"><td>${DIAS[d]}</td><td>${fmt(DATOS.horario[d])}</td></tr>`
+  ).join("");
+}
+
+/* BLOQUE DE SECTOR · el escaparate sale de DATOS: cambiarlo cada lunes es
+   editar cinco líneas, y es lo que hace que la web no parezca abandonada */
+function pintarEscaparate(){
+  document.getElementById("marcas").innerHTML = DATOS.marcas.map(m=>`<li>${m}</li>`).join("");
+}
+
+/* ── enlaces y datos derivados ─────────────────────────── */
+function pintarDatos(){
+  const telHref = "tel:"+DATOS.tel.replace(/\s/g,"");
+  /* el canal principal es WhatsApp: aquí se pregunta mandando una foto de
+     lo que se ha visto en el escaparate, y casi siempre con la tienda cerrada */
+  const waHref  = "https://wa.me/"+DATOS.whatsapp+"?text="+
+    encodeURIComponent("Hola, quería preguntar por una bici.");
+  const telVis  = DATOS.tel.replace(/^\+34/,"").replace(/(\d{3})(?=\d)/g,"$1 ").trim();
+
+  [["d-tel",telHref],["c-tel",telHref],["b-tel",telHref]].forEach(([id,h])=>{
+    const el=document.getElementById(id); if(el) el.href=h; });
+  [["c-wa",waHref],["b-wa",waHref],["h-wa",waHref],["t-wa",waHref],["d-wa",waHref],["m-wa",waHref]].forEach(([id,h])=>{
+    const el=document.getElementById(id); if(el) el.href=h; });
+  [["d-maps",DATOS.maps],["b-maps",DATOS.maps]].forEach(([id,h])=>{
+    const el=document.getElementById(id); if(el) el.href=h; });
+
+  document.getElementById("d-tel").textContent = telVis;
+  document.getElementById("d-dir").textContent = DATOS.direccion;
+  document.getElementById("d-wa").textContent = DATOS.whatsapp.replace(/^34/,"").replace(/(\d{3})(?=\d)/g,"$1 ").trim();
+  const m = document.getElementById("d-mail"); m.textContent = DATOS.email; m.href = "mailto:" + DATOS.email;
+  document.getElementById("year").textContent  = new Date().getFullYear();
+}
+
+function pintarResenas(){
+  (document.getElementById("testis")||{}).innerHTML = DATOS.resenas.map((r,i)=>`
+    <blockquote class="rev" ${i?`data-d="${i}"`:""}>
+      <p>“${r.texto}”</p>
+      <cite>${r.nombre} · ${r.cuando}</cite>
+    </blockquote>`).join("");
+}
+
+/* SEO local · JSON-LD generado desde DATOS */
+function inyectarSchema(){
+  const dias = { 1:"Monday",2:"Tuesday",3:"Wednesday",4:"Thursday",5:"Friday",6:"Saturday",0:"Sunday" };
+  const horas = [];
+  Object.entries(DATOS.horario).forEach(([d,tramos])=>{
+    (tramos||[]).forEach(([a,b])=>horas.push({
+      "@type":"OpeningHoursSpecification", dayOfWeek:"https://schema.org/"+dias[d], opens:a, closes:b }));
+  });
+  const [calle, resto=""] = DATOS.direccion.split(",").map(s=>s.trim());
+  const s = document.createElement("script");
+  s.type = "application/ld+json";
+  s.textContent = JSON.stringify({
+    "@context":"https://schema.org","@type":"BikeStore",
+    name:DATOS.nombre, description:DATOS.reclamo,
+    telephone:DATOS.tel, priceRange:DATOS.precio, url:location.origin+location.pathname,
+    brand:DATOS.marcas.map(m=>({"@type":"Brand",name:m})),
+    address:{"@type":"PostalAddress",streetAddress:calle,
+      addressLocality:((resto||DATOS.direccion).match(/\d{5}\s+([^,]+)/)||[])[1]||"Bergara",
+      postalCode:((resto||DATOS.direccion).match(/\d{5}/)||[])[0]||"", addressCountry:"ES"},
+    geo:{"@type":"GeoCoordinates",latitude:DATOS.geo.lat,longitude:DATOS.geo.lon},
+    openingHoursSpecification:horas,
+    aggregateRating:{"@type":"AggregateRating",ratingValue:"4.7",reviewCount:"64"},
+  });
+  document.head.appendChild(s);
+}
+
+/* ── movimiento ────────────────────────────────────────── */
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function observarReveal(){
+  const nodos = document.querySelectorAll(".rev:not(.on)");
+  if(reduce){ nodos.forEach(n=>n.classList.add("on")); return; }
+  const io = new IntersectionObserver((es,obs)=>{
+    es.forEach(e=>{ if(!e.isIntersecting) return; e.target.classList.add("on"); obs.unobserve(e.target); });
+  },{ rootMargin:"0px 0px -8% 0px", threshold:.12 });
+  nodos.forEach(n=>io.observe(n));
+
+  /* red de seguridad: los prospectos abren el enlace desde el navegador de
+     WhatsApp. Una demo en blanco delante de un cliente no es una opción. */
+  setTimeout(()=>{
+    document.querySelectorAll(".rev:not(.on)").forEach(n=>{
+      if(n.getBoundingClientRect().top < innerHeight * 1.2) n.classList.add("on"); });
+    if(!innerHeight) document.querySelectorAll(".rev").forEach(n=>n.classList.add("on"));
+  }, 2500);
+}
+
+function observarSubrayado(){
+  const nodos = document.querySelectorAll(".subr");
+  if(reduce){ nodos.forEach(n=>n.classList.add("on")); return; }
+  const io = new IntersectionObserver((es,obs)=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("on"); obs.unobserve(e.target);} });
+  },{ threshold:.9 });
+  nodos.forEach(n=>io.observe(n));
+}
+
+function observarNav(){
+  const links=[...document.querySelectorAll(".nav a")];
+  const secs=links.map(a=>document.querySelector(a.getAttribute("href"))).filter(Boolean);
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(!e.isIntersecting) return;
+      links.forEach(a=>a.removeAttribute("aria-current"));
+      const a=links.find(a=>a.getAttribute("href")==="#"+e.target.id);
+      if(a) a.setAttribute("aria-current","true");
+    });
+  },{ rootMargin:"-45% 0px -50% 0px" });
+  secs.forEach(s=>io.observe(s));
+}
+
+/* formulario — demo: no envía a ningún sitio */
+document.getElementById("form").addEventListener("submit", ev=>{
+  ev.preventDefault();
+  const f=ev.target, aviso=document.getElementById("form-aviso");
+  if(!f.nombre.value.trim() || !f.tel.value.trim()){
+    aviso.textContent="Necesitamos al menos tu nombre y un teléfono.";
+    aviso.className="aviso err"; return;
+  }
+  aviso.textContent="Recibido. Esto es una demostración: el formulario todavía no envía nada.";
+  aviso.className="aviso ok";
+  f.reset();
+});
+
+/* ── arranque ──────────────────────────────────────────── */
+pintarDatos();
+pintarEstado();
+pintarHorario();
+pintarEscaparate();
+pintarResenas();
+inyectarSchema();
+observarReveal();
+observarSubrayado();
+observarNav();
+setInterval(pintarEstado, 60000);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ═══ KIT DE MOVIMIENTO ═══ -->
+<style>
+/* ═══ RITMO Y CABECERA ═══
+   Tomado de atxalandabaso-prime-web.vercel.app, que es la referencia que
+   funciona: cabecera isla, alternancia dura claro/oscuro y aire de sobra.
+   El problema de las plantillas era que alternaban entre dos cremas casi
+   iguales (--fondo y --fondo-alt), así que la página se leía plana. */
+
+/* head-island · cabecera flotante en píldora, no barra de lado a lado */
+.top{position:fixed;top:12px;left:50%;transform:translateX(-50%);
+  width:min(100% - 24px, 1180px);border-radius:100px;border:1px solid var(--filete);
+  background:color-mix(in srgb, var(--fondo) 82%, transparent);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 6px 28px -18px rgba(0,0,0,.5);z-index:40;
+  transition:top .3s var(--ease),width .3s var(--ease);}
+.top__in{padding-left:clamp(16px,3vw,26px);padding-right:clamp(8px,2vw,14px);}
+/* lo que va dentro de una píldora tiene que ser redondo: con --radio:0 el CTA
+   salía con esquinas rectas dentro de la cabecera curva y cantaba */
+.top .btn{border-radius:100px;}
+.top .btn--fill{padding-left:22px;padding-right:20px;}
+@media(min-width:768px){.top{top:20px;}}
+/* la isla flota: el contenido necesita hueco arriba */
+body{padding-top:92px;}
+@media(min-width:768px){body{padding-top:108px;}}
+:target,section[id]{scroll-margin-top:104px;}
+
+/* el hero ocupa la pantalla entera, con svh para que el móvil no mienta */
+.hero,.portada,.banner{min-height:auto;}
+@media(min-width:768px){
+  .hero__foto,.portada__foto,.banner__foto{min-height:min(78svh,620px);}
+}
+
+/* aire: 128px en escritorio como la referencia, no 96 */
+section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128px);}
+
+/* ═══ ALTERNANCIA CLARO / OSCURO ═══
+   Una sección .oscura le da la vuelta a los tokens en vez de repintar cada
+   regla: los hijos siguen usando var(--tinta), var(--filete)… y salen bien
+   sin tocar una línea del CSS de la plantilla. */
+.oscura{
+  background:var(--osc);
+  --tinta:var(--fondo);
+  --tinta-sec:var(--osc-tinta);
+  --filete:var(--osc-filete);
+  /* Los colores de estado también se voltean. Se olvidaron en la primera
+     versión: al oscurecer una sección con estrellas de reseña, el dorado de
+     --alerta se quedaba a 4,05 sobre el fondo oscuro, por debajo del 4,5.
+     Los tokens claros ya existían en :root, sólo faltaba usarlos aquí. */
+  --alerta:var(--alerta-clara);
+  --ok:var(--ok-claro);
+  --filete-fuerte:var(--osc-filete);
+  --fondo-alt:var(--osc);
+  --acento:var(--acento-claro);
+  --acento-con:var(--osc);
+  color:var(--tinta);
+}
+.oscura h1,.oscura h2,.oscura h3,.oscura h4{color:var(--tinta);}
+.oscura .btn{border-color:var(--tinta);color:var(--tinta);}
+.oscura .btn--fill{background:var(--acento);border-color:var(--acento);color:var(--acento-con);}
+.oscura .btn--ghost:hover,.oscura .btn--ghost:focus-visible{background:var(--tinta);color:var(--osc);}
+.oscura .mapa iframe{filter:invert(.92) hue-rotate(180deg) saturate(.35);}
+.oscura input,.oscura textarea{color:var(--tinta);}
+
+/* ═══ KIT DE MOVIMIENTO ═══
+   Piezas: head-shrink · head-progress · head-underline · scroll-parallax-layers
+   scroll-title-scale · scroll-image-zoom · scroll-alternate-sides
+   scroll-blur-in · scroll-text-highlight
+   Límites de ui-ux-pro-max/data/motion.csv — ver scripts/kit-movimiento.mjs  */
+
+/* ═══ BARRA DE ACCIONES EN PÍLDORA ═══
+   La barra inferior iba de lado a lado y pegada al borde, con las esquinas en
+   ángulo recto. Al lado de la cabecera —que ya es una píldora flotante— parecía
+   de otra web. Ahora las dos son islas y comparten radio, filete y sombra.
+
+   Va aquí y no en cada plantilla porque el bloque era idéntico en las once.
+
+   El overflow:hidden es lo que hace que los botones de los extremos se
+   recorten con la curva; sin él, el verde del primario sobresale por la esquina
+   y se ve el pico. */
+.barra{
+  left:50%;right:auto;
+  transform:translateX(-50%);
+  width:min(100% - 24px, 460px);
+  bottom:calc(12px + env(safe-area-inset-bottom));
+  padding-bottom:0;
+  border:1px solid var(--filete-fuerte);
+  border-radius:100px;
+  overflow:hidden;
+  box-shadow:0 6px 26px -10px rgba(0,0,0,.42);
+  background:color-mix(in srgb, var(--fondo) 92%, transparent);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+/* En los extremos, la curva se come parte del ancho útil: un poco más de
+   holgura para que el rótulo no se acerque al filete redondeado. */
+.barra a:first-child{padding-left:12px;}
+.barra a:last-child{padding-right:12px;}
+/* Con la barra estrecha cada botón se queda en 122 px, y "Probar gratis"
+   partía en dos líneas: en una píldora de 58 px de alto eso se ve apretado.
+   El interletrado baja de .13em a .09em —sigue leyéndose como versal— y el
+   rótulo se prohíbe partir. El rótulo más largo de las once, "Cómo llegar",
+   cabe con holgura. */
+.barra a{white-space:nowrap;letter-spacing:.09em;}
+
+/* La barra ya no está pegada abajo, así que el pie necesita 12 px más de
+   holgura para que el último renglón no quede debajo de ella. */
+@media(max-width:899px){
+  .pie{padding-bottom:calc(104px + env(safe-area-inset-bottom));}
+}
+
+/* head-progress · barra de lectura al pie de la cabecera.
+   Va dentro de .top, que ya es la isla flotante de arriba: no se le vuelve a
+   tocar la posición aquí o se pisaría el position:fixed.
+
+   Va metida por los lados a propósito: la cabecera es una píldora con 100px de
+   radio, y una barra que llegaba al borde se metía en la curva y salía cortada
+   en diagonal. Empieza donde empieza el texto, y con las puntas redondeadas. */
+.barra-lectura{position:absolute;left:clamp(20px,4%,38px);right:clamp(20px,4%,38px);
+  bottom:5px;height:2px;width:auto;border-radius:2px;
+  transform:scaleX(var(--leido,0));transform-origin:left;background:var(--acento);
+  pointer-events:none;}
+
+/* head-shrink · la cabecera se compacta al bajar.
+   Se anima el padding del contenedor interno, no la altura de .top: animar
+   height fuerza reflow en cada frame (anti-patrón de la skill, prioridad 7). */
+.top__in{transition:height .3s var(--ease);}
+.js.encogido .top__in{height:56px;}
+.js.encogido .marca small,.js.encogido .marca em{opacity:0;transition:opacity .2s;}
+
+/* head-underline · el subrayado del menú crece desde el centro */
+/* Los enlaces del menú medían entre 35 y 42 px de alto según la plantilla, por
+   debajo de los 44 px de zona táctil que exige el contrato. Se iguala aquí, en
+   el kit, porque el fallo era el mismo en las once. El alto no cambia la
+   maqueta: la cabecera ya es más alta que eso. */
+/* Los enlaces legales del pie van dentro de un párrafo, así que la excepción
+   de texto en línea del criterio 2.5.8 los cubre; aun así medían 14 px de alto,
+   que con el dedo es una lotería. Un poco de relleno vertical los deja en 24 sin
+   descolocar el renglón. Los 44 px completos sí romperían la línea. */
+.pie a{display:inline-block;padding:5px 0;}
+.nav a{position:relative;min-height:44px;display:inline-flex;align-items:center;}
+.nav a::after{content:"";position:absolute;left:50%;right:50%;bottom:0;height:1px;
+  background:var(--acento);transition:left .3s var(--ease),right .3s var(--ease);}
+.nav a:hover::after{left:0;right:0;}
+
+/* scroll-parallax-layers · SOLO la foto del hero, que es decorativa.
+   Delta de 8% — dentro del 5-15% que marca la skill. Nunca sobre texto.
+   El contenedor recorta: la foto va al 1.08 para tener recorrido, y sin
+   overflow:hidden ese 8% de más se sale y provoca scroll horizontal. */
+.js .hero__foto,.js .portada__foto,.js .banner__foto,.js .hero__img{overflow:hidden;}
+.js .hero__foto img,.js .portada__foto img,.js .banner__foto img,.js .hero__img img{
+  will-change:transform;transform:translate3d(0,var(--par,0px),0) scale(1.08);}
+/* lo mismo para las fotos de sección, que llevan zoom */
+.js .serv__m,.js .zonas__m,.js .secc__m,.js .paso__m{overflow:hidden;}
+
+/* scroll-title-scale · el titular de portada cede un poco al bajar.
+   Solo opacity y transform, y solo con pantalla suficiente. */
+@media(min-width:900px) and (prefers-reduced-motion:no-preference){
+  .js .portada h1,.js .hero h1{will-change:transform,opacity;
+    transform:translate3d(0,calc(var(--tit,0) * -28px),0);
+    opacity:calc(1 - var(--tit,0) * .55);}
+}
+
+/* scroll-image-zoom · las fotos de sección respiran al cruzar la pantalla */
+.js .serv__m img,.js .zonas__m img,.js .secc__m img,.js .obra__media img,
+.js .paso__m img,.js .equipo img,.js .casa img,.js .obrador img,.js .nosotros img,
+.js .tienda img,.js .sobre img{
+  transform:scale(var(--zoom,1));transition:transform .9s var(--ease);}
+
+/* scroll-alternate-sides · las filas en zig-zag entran desde su lado.
+   En móvil el desplazamiento es VERTICAL: a 375px una fila corrida 26px a la
+   derecha asoma por el borde y provoca scroll horizontal en toda la página.
+   Y de paso, en una columna estrecha el zig-zag lateral no se entiende. */
+.js .serv__f,.js .zonas__f,.js .secc__f,.js .obra,.js .clinica .paso{
+  opacity:0;transform:translate3d(0,22px,0);
+  transition:opacity .55s var(--ease),transform .55s var(--ease);}
+@media(min-width:760px){
+  .js .serv__f,.js .zonas__f,.js .secc__f,.js .obra,.js .clinica .paso{
+    transform:translate3d(-26px,0,0);}
+  .js .serv__f:nth-of-type(even),.js .zonas__f:nth-of-type(even),
+  .js .secc__f:nth-of-type(even),.js .obra:nth-of-type(even),
+  .js .clinica .paso:nth-of-type(even){transform:translate3d(26px,0,0);}
+}
+.js .serv__f.dentro,.js .zonas__f.dentro,.js .secc__f.dentro,
+.js .obra.dentro,.js .clinica .paso.dentro{opacity:1;transform:none;}
+
+/* El subrayado de texto lleva white-space:nowrap para no partirse por la
+   mitad. En móvil una frase larga así no cabe y empuja el ancho de la página:
+   ahí se deja romper, que un subrayado en dos líneas es mejor que un scroll
+   horizontal en toda la web. */
+@media(max-width:759px){ .subr{white-space:normal;} }
+
+/* scroll-blur-in · el reveal base gana un desenfoque muy corto.
+   400-600 ms y power2.out, que es lo que pide la skill para el nivel Standard. */
+.js .rev{filter:blur(6px);
+  transition:opacity .52s cubic-bezier(.22,1,.36,1),
+             transform .52s cubic-bezier(.22,1,.36,1),
+             filter .52s cubic-bezier(.22,1,.36,1);}
+.js .rev.on{filter:blur(0);}
+
+/* scroll-text-highlight · el párrafo de entrada se enciende palabra a palabra */
+.js .lead .pal{opacity:.28;transition:opacity .4s var(--ease);}
+.js .lead.encendido .pal{opacity:1;}
+
+/* La cascada nunca pasa de 8 elementos ni de 0.04 s por elemento: más allá,
+   los últimos llegan tarde y se nota (motion.csv, Stagger List). */
+.js [data-esc]{transition-delay:calc(var(--i,0) * .035s);}
+
+@media (prefers-reduced-motion:reduce){
+  .js .rev{filter:none!important;}
+  .js .hero__foto img,.js .portada__foto img,.js .banner__foto img,.js .hero__img img{
+    transform:none!important;}
+  .js .serv__f,.js .zonas__f,.js .secc__f,.js .obra,.js .clinica .paso{
+    opacity:1!important;transform:none!important;}
+  .js .lead .pal{opacity:1!important;}
+  .js .top__in{transition:none;}
+}
+</style>
+<script>window.__RITMO__=["escap","marcas"];
+/* ═══ KIT DE MOVIMIENTO ═══ (ver scripts/kit-movimiento.mjs) */
+(function(){
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var raiz = document.documentElement;
+
+  /* head-progress + head-shrink + scroll-title-scale + parallax.
+     Todo en UN solo listener de scroll con rAF: varios listeners sueltos
+     compiten por el hilo principal y el scroll se nota a tirones. */
+  var cab = document.querySelector(".top");
+  if(cab && !cab.querySelector(".barra-lectura")){
+    var b = document.createElement("span");
+    b.className = "barra-lectura"; b.setAttribute("aria-hidden","true");
+    cab.appendChild(b);
+  }
+  var heroFoto = document.querySelector(".hero__foto img,.portada__foto img,.banner__foto img,.hero__img img");
+  var titular  = document.querySelector(".portada h1,.hero h1");
+  var pendiente = false;
+
+  function alScroll(){
+    if(pendiente) return;
+    pendiente = true;
+    requestAnimationFrame(function(){
+      var y = scrollY;
+      var alto = Math.max(1, document.body.scrollHeight - innerHeight);
+      raiz.style.setProperty("--leido", Math.min(1, y / alto).toFixed(4));
+      raiz.classList.toggle("encogido", y > 90);
+
+      if(!reduce){
+        /* parallax: 8% del recorrido visible, solo mientras el hero está en pantalla */
+        if(heroFoto && y < innerHeight * 1.4){
+          heroFoto.style.setProperty("--par", (y * 0.08).toFixed(1) + "px");
+        }
+        /* el titular cede hasta la mitad de la primera pantalla */
+        if(titular && y < innerHeight){
+          titular.style.setProperty("--tit", Math.min(1, y / (innerHeight * 0.7)).toFixed(4));
+        }
+      }
+      pendiente = false;
+    });
+  }
+  addEventListener("scroll", alScroll, { passive:true });
+  alScroll();
+
+  if(reduce) return;
+
+  /* scroll-alternate-sides */
+  var filas = document.querySelectorAll(".serv__f,.zonas__f,.secc__f,.obra,.clinica .paso");
+  if(filas.length){
+    var ioF = new IntersectionObserver(function(es,o){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("dentro"); o.unobserve(e.target); } });
+    },{ rootMargin:"0px 0px -10% 0px", threshold:.15 });
+    filas.forEach(function(f){ ioF.observe(f); });
+    /* red de seguridad, igual que con .rev: si el observer no dispara, se ven */
+    setTimeout(function(){ filas.forEach(function(f){ f.classList.add("dentro"); }); }, 2600);
+  }
+
+  /* scroll-image-zoom · la foto entra al 1.06 y se asienta en 1 */
+  var fotos = document.querySelectorAll(".serv__m img,.zonas__m img,.secc__m img,.obra__media img,.paso__m img,.equipo img,.casa img,.obrador img,.nosotros img,.tienda img,.sobre img");
+  if(fotos.length){
+    fotos.forEach(function(f){ f.style.setProperty("--zoom","1.06"); });
+    var ioZ = new IntersectionObserver(function(es,o){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.style.setProperty("--zoom","1"); o.unobserve(e.target); } });
+    },{ threshold:.2 });
+    fotos.forEach(function(f){ ioZ.observe(f); });
+    setTimeout(function(){ fotos.forEach(function(f){ f.style.setProperty("--zoom","1"); }); }, 2600);
+  }
+
+  /* scroll-text-highlight · se parte en palabras, no en letras: partir por
+     letras deja el texto ilegible para los lectores de pantalla. */
+  var leads = document.querySelectorAll(".lead");
+  leads.forEach(function(p){
+    if(p.querySelector(".pal") || p.children.length) return;   // no tocar si ya tiene marcado
+    var txt = p.textContent;
+    if(txt.length > 240) return;                                // párrafos largos, fuera
+    p.innerHTML = txt.split(" ").map(function(w){
+      return '<span class="pal">' + w + "</span>";
+    }).join(" ");
+  });
+  var ioT = new IntersectionObserver(function(es,o){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("encendido"); o.unobserve(e.target); } });
+  },{ threshold:.35 });
+  leads.forEach(function(p){ ioT.observe(p); });
+  setTimeout(function(){ leads.forEach(function(p){ p.classList.add("encendido"); }); }, 2600);
+
+  /* Alternancia claro/oscuro — la lista sale de RITMO en
+     scripts/kit-movimiento.mjs. No se mide nada en tiempo de ejecución:
+     las secciones a oscurecer están decididas y revisadas una a una. */
+  (function(){
+    var clases = window.__RITMO__ || [];
+    clases.forEach(function(c){
+      var sec = document.querySelector("main > section." + c + ", body > section." + c);
+      if(sec) sec.classList.add("oscura");
+    });
+  })();
+
+  /* cascada: máximo 8, que es lo que aguanta antes de sentirse lento */
+  document.querySelectorAll(".cifras ul,.masonry__g,.tira__scroll,.banda__g,.feed__l,.preg,.susti,.cuotas,.pacto").forEach(function(cont){
+    [].slice.call(cont.children, 0, 8).forEach(function(hijo, i){
+      hijo.setAttribute("data-esc","");
+      hijo.style.setProperty("--i", i);
+    });
+  });
+})();
+</script>
+<!-- ═══ FIN KIT DE MOVIMIENTO ═══ -->
+</body>
+</html>
