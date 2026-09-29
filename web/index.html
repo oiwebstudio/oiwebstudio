@@ -102,7 +102,7 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap"/>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
 <noscript><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap" rel="stylesheet"/></noscript>
-<link rel="stylesheet" href="assets/styles.css?v=17"/>
+<link rel="stylesheet" href="assets/styles.css?v=18"/>
 <link rel="stylesheet" href="assets/proceso.css?v=1"/>
 <script>if(location.protocol==='http:'&&/(^|\.)oiwebstudio\.com$/.test(location.hostname))location.replace('https://'+location.host+location.pathname+location.search+location.hash);document.documentElement.classList.add('js');</script>
 <link rel="preload" as="image" href="assets/cafe-desk.webp" fetchpriority="high"/>
@@ -595,11 +595,12 @@
 .fmenu__toggle:hover{transform:translateY(-2px) scale(1.05)}
 .fmenu__toggle:active{transform:scale(.95)}
 .fmenu__toggle:focus-visible{outline:3px solid var(--terra);outline-offset:3px}
-.fmenu__ico{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transition:opacity .3s,transform .3s cubic-bezier(.4,0,.2,1)}
+.fmenu__ico{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transition:opacity .2s ease,transform .25s var(--ease),filter .2s ease}
 .fmenu__ico svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round}
-.fmenu__ico--close{opacity:0;transform:rotate(-180deg) scale(0)}
-.fmenu.is-open .fmenu__ico--open{opacity:0;transform:rotate(180deg) scale(0)}
-.fmenu.is-open .fmenu__ico--close{opacity:1;transform:none}
+/* Cruce de iconos: nunca desde scale(0), que hace brotar el icono de la nada */
+.fmenu__ico--close{opacity:0;transform:rotate(-90deg) scale(.5);filter:blur(4px)}
+.fmenu.is-open .fmenu__ico--open{opacity:0;transform:rotate(90deg) scale(.5);filter:blur(4px)}
+.fmenu.is-open .fmenu__ico--close{opacity:1;transform:none;filter:none}
 .fmenu__item{position:absolute;left:0;top:0;background:var(--ink);color:var(--bg);opacity:0;transform:translateY(0);clip-path:circle(50% at 50% 52%);box-shadow:0 4px 12px rgba(9,10,15,.18);transition:transform .3s cubic-bezier(.4,0,.2,1),opacity .3s,background .2s;pointer-events:none;text-decoration:none}
 .fmenu__item svg{width:24px;height:24px}
 .fmenu__item--wa{background:#25d366;color:#0b3b2e}
