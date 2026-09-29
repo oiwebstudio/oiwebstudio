@@ -4,371 +4,449 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta name="robots" content="noindex, follow"/>
-<title>Fisioterapia en Irun — KIRO Fisioterapia Avanzada</title>
-<meta name="description" content="Fisioterapia avanzada en Irun: espalda y hernias discales, tendinopatías, cefaleas y vértigos, lesiones deportivas y postoperatorios. Terapia manual, punción seca, EPTE ecoguiada, INDIBA y pilates terapéutico. San Pedro 20."/>
-<meta name="theme-color" content="#F2F3F7"/>
-<meta property="og:title" content="KIRO Fisioterapia Avanzada — ¿Dónde te duele?"/>
-<meta property="og:description" content="Fisioterapia en Irun desde 1997: espalda, tendones, cefaleas, lesiones deportivas y postoperatorios."/>
+<title>KIRO Fisioterapia Avanzada — Fisioterapia en Irun desde 1997</title>
+<meta name="description" content="Fisioterapia en Irun desde 1997: espalda y hernias discales, cefaleas y vértigos cervicales, tendones, lesiones deportivas y postoperatorios. Punción seca, EPTE ecoguiada, INDIBA y pilates terapéutico. San Pedro 20, Irun · 943 63 32 01."/>
+<meta name="theme-color" content="#17332A"/>
+<meta property="og:title" content="KIRO Fisioterapia Avanzada — Irun"/>
+<meta property="og:description" content="Fisioterapia en Irun desde 1997. Espalda, tendones, cabeza, deporte y postoperatorio."/>
 <meta property="og:type" content="website"/>
+<meta property="og:image" content="fotos/portada.jpg"/>
 <!--
-  Demo de OI Studio para KIRO Fisioterapia Avanzada (Irun) · versión 2.
-  Concepto: la portada es la pregunta del paciente, «¿Dónde te duele?», con una
-  lámina anatómica (vista posterior) en la que se toca la zona. Colores del
-  vendaje neuromuscular (una de sus técnicas): azul cinta y rosa, sobre papel.
-  Sin fotos de archivo.
-  Todo el contenido sale de su web (fisioterapia-irun.es) y de su ficha de
-  Google (4,5 · 42 opiniones; dos reseñas tal cual). Horario: su web dice
-  7:00–14:00 y 15:00–19:00; Google, 8:00–20:00 de lunes a viernes → confirmar.
+  Demo de OI Studio para KIRO Fisioterapia Avanzada (Irun) · versión 3.
+  Estilo: calma de clínica buena. Verde bosque profundo, salvia y hueso; titulares
+  grandes y finos (Manrope 300) con una palabra en cursiva (Instrument Serif);
+  foto a sangre, menú flotante de cristal y texto que entra enfocándose.
+  Firma: «¿Dónde te duele?» — eliges la zona y cambian la foto y el tratamiento.
+  Textos, técnicas, equipo, horario y teléfono: de su web (fisioterapia-irun.es).
+  Google: 4,5 · 42 opiniones. Fotos: kiro-*.jpg son suyas (de su web); el resto,
+  de Unsplash, de ejemplo → se sustituyen por fotos de la clínica.
 -->
 <style>
-@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:200 800;font-display:swap;src:url('fuentes/bricolage.woff2') format('woff2');}
-@font-face{font-family:'Public Sans';font-style:normal;font-weight:100 900;font-display:swap;src:url('fuentes/publicsans.woff2') format('woff2');}
-@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url('fuentes/plexmono.woff2') format('woff2');}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:200 800;font-display:swap;src:url('fuentes/manrope.woff2') format('woff2');}
+@font-face{font-family:'Instrument Serif';font-style:italic;font-weight:400;font-display:swap;src:url('fuentes/instrument-italic.woff2') format('woff2');}
 
-/* Papel de lámina, tinta y los dos colores del kinesiotape */
 :root{
-  --papel:#F2F3F7; --blanco:#FFFFFF; --tinta:#151A2E; --tinta2:#4A5068; --regla:#D6D9E3;
-  --cinta:#2D5BFF; --cinta-osc:#1E44D6; --dolor:#EF4F7A; --dolor-osc:#C4214F;
-  --display:"Bricolage Grotesque",system-ui,sans-serif; --texto:"Public Sans",system-ui,sans-serif; --ficha:"IBM Plex Mono",ui-monospace,monospace;
-  --ease-out:cubic-bezier(.23,1,.32,1);
-  --r:18px;
+  --bosque:#17332A; --bosque2:#21473A; --musgo:#3F6653; --salvia:#9DB5A6; --salvia-claro:#E3EBE5;
+  --hueso:#F6F5F0; --blanco:#FFFFFF; --tinta:#132019; --texto2:#56655C; --regla:#E1E4DE; --oro:#C9A45C;
+  --f:"Manrope",system-ui,sans-serif; --cursiva:"Instrument Serif",Georgia,serif;
+  --ease-out:cubic-bezier(.23,1,.32,1); --ease-in-out:cubic-bezier(.77,0,.175,1);
+  --r:28px; --r-s:18px;
 }
 *{box-sizing:border-box;margin:0;}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
-section[id]{scroll-margin-top:76px;}
-body{background:var(--papel);color:var(--tinta);font:400 17px/1.6 var(--texto);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+section[id]{scroll-margin-top:90px;}
+body{background:var(--hueso);color:var(--tinta);font:400 17px/1.65 var(--f);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+img{display:block;max-width:100%;height:auto;}
 a{color:inherit;}
-h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:-.035em;line-height:.95;}
-.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(18px,4.5vw,48px);}
-.ficha{font-family:var(--ficha);font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--tinta2);}
-.h2{font-size:clamp(40px,6.4vw,84px);}
-.lead{font-size:clamp(17px,1.4vw,19px);color:var(--tinta2);max-width:48ch;}
-section{padding:clamp(64px,9vw,120px) 0;}
+h1,h2,h3{font-family:var(--f);font-weight:300;letter-spacing:-.035em;line-height:1.02;}
+h1 em,h2 em,h3 em{font-family:var(--cursiva);font-style:italic;font-weight:400;letter-spacing:-.01em;}
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(18px,4.5vw,48px);}
+.eti{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--musgo);}
+.eti::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;}
+.h2{font-size:clamp(40px,5.6vw,76px);margin-top:18px;}
+.lead{font-size:clamp(17px,1.35vw,19px);color:var(--texto2);max-width:48ch;}
+section{padding:clamp(80px,10vw,140px) 0;}
 
-/* botones: responden al pulsar (scale .97), nada de transition:all */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;border-radius:12px;
-  font:600 16px var(--texto);text-decoration:none;border:1.5px solid transparent;cursor:pointer;
-  transition:transform 160ms var(--ease-out),background-color 200ms ease,color 200ms ease;}
+/* botones: píldora con círculo y flecha */
+.btn{display:inline-flex;align-items:center;gap:14px;min-height:54px;padding:6px 6px 6px 24px;border-radius:999px;border:1px solid transparent;
+  font:600 15px var(--f);letter-spacing:.01em;text-decoration:none;cursor:pointer;
+  transition:transform 160ms var(--ease-out),background-color 250ms ease,color 250ms ease,border-color 250ms ease;}
+.btn i{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;flex:none;transition:transform 300ms var(--ease-out);}
+.btn i svg{width:16px;height:16px;}
 .btn:active{transform:scale(.97);}
-.btn:focus-visible,.zona:focus-visible,.punto:focus-visible{outline:3px solid var(--cinta);outline-offset:3px;}
-.btn--cinta{background:var(--cinta);color:#fff;}
-@media(hover:hover) and (pointer:fine){.btn--cinta:hover{background:var(--cinta-osc);}}
-.btn--linea{border-color:var(--tinta);color:var(--tinta);}
+.btn:focus-visible,.zona:focus-visible,.car__nav button:focus-visible{outline:2px solid var(--oro);outline-offset:3px;}
+.btn--oscuro{background:var(--bosque);color:#fff;} .btn--oscuro i{background:#fff;color:var(--bosque);}
+.btn--claro{background:#fff;color:var(--bosque);} .btn--claro i{background:var(--bosque);color:#fff;}
+.btn--cristal{background:rgba(255,255,255,.14);color:#fff;border-color:rgba(255,255,255,.3);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);} .btn--cristal i{background:#fff;color:var(--bosque);}
+@media(hover:hover) and (pointer:fine){
+  .btn:hover i{transform:translateX(3px) rotate(-45deg);}
+  .btn--oscuro:hover{background:var(--bosque2);}
+  .btn--cristal:hover{background:rgba(255,255,255,.22);}
+}
 
-/* cabecera */
-.top{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--papel) 88%,transparent);
-  backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);border-bottom:1px solid var(--regla);}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:64px;}
-.marca{display:inline-flex;gap:10px;min-height:44px;align-items:center;text-decoration:none;}
-.marca b{font:800 26px/1 var(--display);letter-spacing:-.04em;}
-.marca span{font-family:var(--ficha);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta2);}
-@media(max-width:420px){.marca span{display:none;}}
-.nav{display:none;gap:22px;font-size:15px;font-weight:600;}
-.nav a{text-decoration:none;color:var(--tinta2);display:inline-flex;align-items:center;min-height:44px;}
-@media(hover:hover) and (pointer:fine){.nav a:hover{color:var(--cinta-osc);}}
-@media(min-width:980px){.nav{display:flex;}}
-.top .btn{min-height:44px;padding:0 16px;font-size:15px;}
+/* ═══ MENÚ FLOTANTE DE CRISTAL ═══ */
+.menu{position:fixed;top:14px;left:0;right:0;z-index:50;pointer-events:none;}
+.menu__barra{pointer-events:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:62px;padding:8px 8px 8px 20px;border-radius:999px;
+  background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.6);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);
+  box-shadow:0 10px 40px -18px rgba(19,32,25,.35);transition:background-color 300ms ease,box-shadow 300ms ease;}
+.menu.solido .menu__barra{background:rgba(255,255,255,.92);}
+.marca{display:inline-flex;align-items:center;gap:10px;min-height:44px;text-decoration:none;font-weight:700;font-size:14px;letter-spacing:.2em;}
+.marca i{width:26px;height:26px;border-radius:50%;background:var(--bosque);display:grid;place-items:center;}
+.marca i::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--salvia);}
+.nav{display:none;gap:30px;font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;}
+.nav a{text-decoration:none;color:var(--texto2);display:inline-flex;align-items:center;min-height:44px;transition:color 200ms ease;}
+@media(hover:hover) and (pointer:fine){.nav a:hover{color:var(--tinta);}}
+@media(min-width:1000px){.nav{display:flex;}}
+.menu .btn{min-height:46px;padding:0 20px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;}
 
-/* ═══ PORTADA: ¿dónde te duele? ═══ */
-.portada{padding:clamp(28px,5vw,64px) 0 clamp(56px,7vw,96px);}
-.portada__in{display:grid;gap:clamp(20px,4vw,56px);align-items:start;}
-@media(min-width:980px){.portada__in{grid-template-columns:1.05fr .95fr;align-items:center;}}
-.portada h1{font-size:clamp(60px,11vw,160px);margin:14px 0 20px;}
-.portada h1 i{font-style:normal;color:var(--dolor-osc);}
-.portada .lead{margin-bottom:24px;}
-.datos-cortos{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:26px;padding-top:18px;border-top:1px solid var(--regla);}
-.datos-cortos p{font-family:var(--ficha);font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--tinta2);}
-.datos-cortos b{font-family:var(--display);font-size:28px;letter-spacing:-.03em;color:var(--tinta);text-transform:none;display:block;line-height:1;margin-bottom:4px;}
+/* ═══ PORTADA ═══ */
+.portada{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:#fff;overflow:hidden;padding:120px 0 clamp(28px,5vw,56px);background:var(--bosque);}
+.portada__foto{position:absolute;inset:0;}
+.portada__foto img{width:100%;height:115%;object-fit:cover;object-position:60% 40%;transform:scale(1.08);transition:transform 1800ms var(--ease-out);will-change:transform;}
+.cargado .portada__foto img{transform:scale(1);}
+.portada__foto::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,51,42,.25) 0%,rgba(23,51,42,.15) 40%,rgba(14,32,25,.88) 100%);}
+.portada__in{position:relative;display:grid;gap:26px;width:100%;}
+@media(min-width:1000px){.portada__in{grid-template-columns:1fr 380px;align-items:end;}}
+.portada__eti{color:#DDE8E0;}
+.marca-grande{font-weight:200;font-size:clamp(96px,21vw,300px);line-height:.8;letter-spacing:-.06em;margin-top:18px;}
+.marca-grande span{display:inline-block;opacity:0;transform:translateY(30%);filter:blur(12px);transition:opacity 900ms var(--ease-out),transform 900ms var(--ease-out),filter 900ms var(--ease-out);}
+.cargado .marca-grande span{opacity:1;transform:none;filter:none;}
+.portada h1{font-size:clamp(24px,2.6vw,36px);font-weight:300;max-width:22ch;margin-top:14px;}
+.portada__lado{display:grid;gap:16px;justify-items:start;}
+.portada__lado p{color:#E4ECE6;font-size:16px;max-width:40ch;}
+.cristal{display:flex;align-items:center;gap:16px;padding:14px 18px;border-radius:20px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);}
+.cristal b{font-weight:300;font-size:40px;line-height:1;letter-spacing:-.04em;}
+.cristal small{display:block;font-size:13px;color:#E4ECE6;line-height:1.4;}
+.estrellas{color:var(--oro);letter-spacing:.12em;font-size:13px;}
 
-.lamina{position:relative;display:grid;grid-template-columns:minmax(140px,210px) 1fr;gap:clamp(12px,3vw,28px);align-items:center;
-  background:var(--blanco);border:1px solid var(--regla);border-radius:var(--r);padding:clamp(14px,2.5vw,26px);}
-@media(max-width:560px){.lamina{grid-template-columns:118px 1fr;}}
-.lamina__cab{position:absolute;left:16px;top:12px;}
-.cuerpo{position:relative;width:100%;margin-top:18px;}
-.cuerpo svg{display:block;width:100%;height:auto;}
-.punto{position:absolute;width:44px;height:44px;margin:-22px 0 0 -22px;border:0;background:none;padding:0;cursor:pointer;display:grid;place-items:center;}
-.punto::before{content:"";width:16px;height:16px;border-radius:50%;background:var(--dolor);box-shadow:0 0 0 4px color-mix(in srgb,var(--dolor) 22%,transparent);
-  transition:transform 160ms var(--ease-out),background-color 200ms ease;}
-.punto::after{content:"";position:absolute;width:16px;height:16px;border-radius:50%;border:2px solid var(--dolor);opacity:0;animation:onda 2.4s var(--ease-out) infinite;}
-.punto[aria-pressed="true"]::before{background:var(--tinta);box-shadow:0 0 0 4px color-mix(in srgb,var(--tinta) 18%,transparent);transform:scale(1.15);}
-.punto[aria-pressed="true"]::after{animation:none;}
-.punto:active::before{transform:scale(.9);}
-@keyframes onda{0%{opacity:.8;transform:scale(1);}100%{opacity:0;transform:scale(2.6);}}
+/* ═══ CINTA DE TÉCNICAS (bucle) ═══ */
+.cinta{background:var(--bosque);color:#DCE7DF;overflow:hidden;padding:22px 0;border-top:1px solid rgba(255,255,255,.08);}
+.cinta__pista{display:flex;width:max-content;animation:cinta 42s linear infinite;}
+.cinta__pista span{display:inline-flex;align-items:center;gap:28px;padding-right:28px;font-size:clamp(20px,2.2vw,28px);font-weight:300;letter-spacing:-.02em;white-space:nowrap;}
+.cinta__pista span::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--salvia);}
+.cinta__pista em{font-family:var(--cursiva);font-style:italic;}
+@keyframes cinta{to{transform:translateX(-50%);}}
 
-.panel{min-height:280px;display:grid;align-content:center;}
-.panel__cont{display:grid;gap:10px;transition:opacity 200ms var(--ease-out),transform 200ms var(--ease-out),filter 200ms ease;}
-.panel__cont.cambiando{opacity:0;transform:translateY(6px);filter:blur(2px);}
-.panel__zona{font-family:var(--ficha);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--dolor-osc);}
-.panel h2{font-size:clamp(28px,3.4vw,44px);}
-.panel p{color:var(--tinta2);font-size:16px;}
-.panel .btn{margin-top:8px;justify-self:start;}
-.zonas{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px;padding-top:14px;border-top:1px solid var(--regla);}
-.zona{font:500 12.5px var(--ficha);letter-spacing:.04em;text-transform:uppercase;min-height:44px;padding:0 12px;border-radius:999px;border:1px solid var(--regla);
-  background:var(--papel);color:var(--tinta2);cursor:pointer;transition:transform 160ms var(--ease-out),background-color 200ms ease,color 200ms ease;}
-.zona:active{transform:scale(.97);}
-.zona[aria-pressed="true"]{background:var(--tinta);border-color:var(--tinta);color:#fff;}
+/* ═══ ¿DÓNDE TE DUELE? ═══ */
+.duele__in{display:grid;gap:clamp(28px,4vw,64px);margin-top:44px;}
+@media(min-width:960px){.duele__in{grid-template-columns:1.05fr .95fr;align-items:stretch;}}
+.duele__foto{position:relative;border-radius:var(--r);overflow:hidden;min-height:clamp(360px,48vw,620px);background:var(--salvia-claro);}
+.duele__foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity 700ms var(--ease-out),transform 1200ms var(--ease-out);}
+.duele__foto img.on{opacity:1;transform:scale(1);}
+.duele__foto .etiq{position:absolute;left:16px;bottom:16px;z-index:2;padding:9px 16px;border-radius:999px;background:rgba(255,255,255,.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--bosque);}
+.zonas{display:grid;border-top:1px solid var(--regla);}
+.zona{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;min-height:64px;padding:12px 4px;border:0;border-bottom:1px solid var(--regla);background:none;cursor:pointer;text-align:left;
+  font:300 clamp(24px,2.4vw,32px)/1.1 var(--f);letter-spacing:-.03em;color:var(--texto2);transition:color 250ms ease,padding-left 350ms var(--ease-out);}
+.zona small{font:600 11.5px var(--f);letter-spacing:.16em;text-transform:uppercase;color:var(--texto2);transition:color 250ms ease;}
+.zona[aria-pressed="true"]{color:var(--tinta);padding-left:14px;}
+.zona[aria-pressed="true"] small{color:var(--bosque);}
+@media(hover:hover) and (pointer:fine){.zona:hover{color:var(--tinta);}}
+.panel{margin-top:26px;padding:28px;border-radius:var(--r-s);background:var(--bosque);color:#fff;display:grid;gap:12px;}
+.panel__cont{transition:opacity 220ms var(--ease-out),transform 220ms var(--ease-out),filter 220ms ease;}
+.panel__cont.cambiando{opacity:0;transform:translateY(8px);filter:blur(4px);}
+.panel h3{font-size:clamp(26px,2.6vw,34px);}
+.panel p{color:#D5E1D9;margin-top:10px;}
+.panel .btn{justify-self:start;margin-top:8px;}
 
-/* ═══ CÓMO TRABAJAMOS: sí es una secuencia, así que va numerada ═══ */
-.proceso__in{display:grid;gap:clamp(24px,4vw,56px);}
-@media(min-width:980px){.proceso__in{grid-template-columns:.8fr 1.2fr;}}
-.pasos{list-style:none;padding:0;border-top:1px solid var(--tinta);}
-.pasos li{display:grid;grid-template-columns:56px 1fr;gap:16px;padding:22px 0;border-bottom:1px solid var(--regla);}
-.pasos .n{font:800 44px/1 var(--display);color:var(--cinta);letter-spacing:-.04em;}
-.pasos h3{font-size:26px;margin-bottom:6px;}
-.pasos p{color:var(--tinta2);}
+/* ═══ CÓMO TRABAJAMOS: 3 pasos (orden real) ═══ */
+.pasos{background:var(--blanco);}
+.pasos__g{display:grid;gap:0;margin-top:56px;position:relative;}
+@media(min-width:900px){.pasos__g{grid-template-columns:repeat(3,1fr);gap:40px;}}
+.pasos__linea{display:none;}
+@media(min-width:900px){.pasos__linea{display:block;position:absolute;top:28px;left:0;right:0;height:1px;background:var(--regla);}
+  .pasos__linea::after{content:"";position:absolute;inset:0;background:var(--musgo);transform:scaleX(0);transform-origin:left;transition:transform 1600ms var(--ease-in-out);}
+  .pasos__g.on .pasos__linea::after{transform:scaleX(1);}}
+.paso{position:relative;padding:28px 0;border-top:1px solid var(--regla);}
+@media(min-width:900px){.paso{border-top:0;padding:0;}}
+.paso__n{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--hueso);border:1px solid var(--regla);font-weight:300;font-size:20px;position:relative;z-index:1;}
+.paso h3{font-size:clamp(26px,2.4vw,32px);margin-top:24px;}
+.paso p{color:var(--texto2);margin-top:12px;max-width:34ch;}
 
-/* ═══ TÉCNICAS: hoja de tratamiento con el tipo de cada una ═══ */
-.tecnicas{background:var(--blanco);border-block:1px solid var(--regla);}
-.hoja{margin-top:34px;display:grid;grid-template-columns:minmax(0,1fr);border-top:1px solid var(--tinta);}
-@media(min-width:860px){.hoja{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:48px;}}
-.tec{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;padding:20px 0;border-bottom:1px solid var(--regla);align-items:baseline;}
-.tec h3{font-size:24px;letter-spacing:-.025em;}
-.tec .ficha{justify-self:end;white-space:nowrap;}
-.tec .ficha.inv{color:var(--dolor-osc);}
-.tec .ficha.tecno{color:var(--cinta-osc);}
-.tec p{grid-column:1/-1;color:var(--tinta2);font-size:16px;}
-@media(max-width:560px){.tec{grid-template-columns:minmax(0,1fr);}.tec .ficha{justify-self:start;grid-row:1;}}
+/* ═══ TÉCNICAS: carrusel con fotos ═══ */
+.tec__cab{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:24px;}
+.car__nav{display:flex;gap:8px;}
+.car__nav button{width:52px;height:52px;border-radius:50%;border:1px solid var(--regla);background:#fff;color:var(--bosque);cursor:pointer;display:grid;place-items:center;transition:transform 160ms var(--ease-out),background-color 200ms ease;}
+.car__nav button:active{transform:scale(.94);}
+@media(hover:hover) and (pointer:fine){.car__nav button:hover{background:var(--salvia-claro);}}
+.car__nav svg{width:18px;height:18px;}
+.car{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:clamp(18px,4.5vw,48px);margin-top:44px;padding:0 clamp(18px,4.5vw,48px) 8px;scrollbar-width:none;
+  max-width:1240px;margin-left:auto;margin-right:auto;}
+.car::-webkit-scrollbar{display:none;}
+.tarj{flex:0 0 clamp(270px,30vw,380px);scroll-snap-align:start;position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:3/4;background:var(--bosque);color:#fff;}
+.tarj img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 900ms var(--ease-out);}
+.tarj::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,32,25,0) 40%,rgba(14,32,25,.85) 100%);}
+@media(hover:hover) and (pointer:fine){.tarj:hover img{transform:scale(1.05);}}
+.tarj__txt{position:absolute;left:14px;right:14px;bottom:14px;z-index:1;padding:18px;border-radius:20px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);}
+.tarj__txt small{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#D5E1D9;}
+.tarj__txt h3{font-size:26px;margin-top:6px;}
+.tarj__txt p{font-size:14.5px;color:#E4ECE6;margin-top:6px;line-height:1.5;}
+.tarj--lisa{background:var(--musgo);}
+.tarj--lisa::after{display:none;}
+.tarj--lisa .tarj__txt{background:none;border:0;backdrop-filter:none;-webkit-backdrop-filter:none;padding:10px;}
+.tarj--lisa .grande{position:absolute;top:26px;left:24px;right:24px;font-family:var(--cursiva);font-style:italic;font-size:clamp(40px,4vw,56px);line-height:1;color:#E3EBE5;}
+.lista-tec{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px;padding:0;list-style:none;}
+.lista-tec li{padding:9px 16px;border-radius:999px;border:1px solid var(--regla);background:#fff;font-size:14px;color:var(--texto2);}
 
-/* ═══ PILATES Y GRUPOS ═══ */
-.grupos__g{display:grid;gap:14px;margin-top:34px;}
-@media(min-width:900px){.grupos__g{grid-template-columns:1.2fr 1fr 1fr;}}
-.grupo{border-radius:var(--r);padding:26px;background:var(--blanco);border:1px solid var(--regla);display:grid;gap:10px;align-content:start;}
-.grupo--cinta{background:var(--cinta);border-color:var(--cinta);color:#fff;}
-.grupo.grupo--cinta .ficha{color:#fff;}
-.grupo.grupo--cinta p{color:#fff;}
-.grupo h3{font-size:30px;}
-.grupo p{color:var(--tinta2);font-size:16px;}
-.medidas{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;}
-.medidas span{font:500 12px var(--ficha);letter-spacing:.04em;text-transform:uppercase;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);color:#fff;}
+/* ═══ PILATES ═══ */
+.pilates{background:var(--salvia-claro);}
+.pilates__in{display:grid;gap:clamp(28px,4vw,64px);align-items:center;}
+@media(min-width:960px){.pilates__in{grid-template-columns:.95fr 1.05fr;}}
+.revela{border-radius:var(--r);overflow:hidden;clip-path:inset(12% 0 0 0 round var(--r));transition:clip-path 1200ms var(--ease-out);}
+.revela img{transform:scale(1.12);transition:transform 1600ms var(--ease-out);width:100%;height:100%;object-fit:cover;}
+.revela.on{clip-path:inset(0 0 0 0 round var(--r));}
+.revela.on img{transform:scale(1);}
+.pilates .revela{aspect-ratio:4/5;}
+.grupos{display:grid;gap:10px;margin-top:30px;}
+.grupo{background:#fff;border-radius:var(--r-s);padding:22px 24px;}
+.grupo small{font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--musgo);}
+.grupo h3{font-size:26px;margin-top:6px;}
+.grupo p{color:var(--texto2);margin-top:6px;}
+.datos-p{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;padding:0;list-style:none;}
+.datos-p li{padding:5px 12px;border-radius:999px;background:var(--salvia-claro);color:var(--bosque);font-size:13px;font-weight:600;}
 
 /* ═══ EQUIPO ═══ */
-.equipo__in{display:grid;gap:clamp(24px,4vw,56px);align-items:end;}
-@media(min-width:980px){.equipo__in{grid-template-columns:1fr 1fr;}}
-.anio{font:800 clamp(110px,20vw,250px)/.8 var(--display);letter-spacing:-.06em;color:var(--cinta);}
-.personas{border-top:1px solid var(--tinta);}
-.persona{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:20px 0;border-bottom:1px solid var(--regla);align-items:baseline;}
-.persona h3{font-size:28px;}
-.persona p{grid-column:1/-1;color:var(--tinta2);}
+.equipo__in{display:grid;gap:clamp(28px,4vw,64px);}
+@media(min-width:960px){.equipo__in{grid-template-columns:1fr 1fr;align-items:end;}}
+.anio{font-weight:200;font-size:clamp(120px,19vw,260px);line-height:.8;letter-spacing:-.07em;color:var(--bosque);}
+.anio small{display:block;font:600 12px var(--f);letter-spacing:.18em;text-transform:uppercase;color:var(--musgo);margin-bottom:14px;}
+.personas{display:grid;gap:0;border-top:1px solid var(--regla);margin-top:26px;}
+.persona{display:flex;justify-content:space-between;gap:16px;align-items:baseline;padding:20px 0;border-bottom:1px solid var(--regla);}
+.persona b{font-weight:400;font-size:clamp(22px,2vw,26px);letter-spacing:-.02em;}
+.persona span{color:var(--texto2);font-size:14.5px;text-align:right;}
+.fotos-kiro{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:clamp(40px,5vw,64px);}
+@media(min-width:960px){.fotos-kiro{grid-template-columns:1.3fr 1fr 1fr;}}
+.fotos-kiro figure{margin:0;position:relative;aspect-ratio:16/10;}
+.fotos-kiro figure:first-child{grid-column:1/-1;}
+@media(min-width:960px){.fotos-kiro figure:first-child{grid-column:auto;}}
+.fotos-kiro figcaption{position:absolute;left:12px;bottom:12px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.85);font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--bosque);}
 
 /* ═══ OPINIONES ═══ */
-.opin__g{display:grid;gap:14px;margin-top:26px;}
+.opin{background:var(--blanco);}
+.opin__cab{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:24px;}
+.nota{display:flex;align-items:center;gap:18px;padding-left:24px;border-left:1px solid var(--regla);}
+.nota .estrellas{color:#9C7A33;}
+.nota b{font-weight:200;font-size:72px;line-height:.9;letter-spacing:-.05em;}
+.nota small{display:block;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--texto2);}
+.opin__g{display:grid;gap:14px;margin-top:48px;}
 @media(min-width:900px){.opin__g{grid-template-columns:1fr 1fr;}}
-.opin blockquote{margin:0;padding:28px;border-radius:var(--r);background:var(--blanco);border:1px solid var(--regla);display:grid;gap:14px;}
-.opin blockquote p{font:600 clamp(20px,2vw,24px)/1.3 var(--display);letter-spacing:-.02em;}
-.opin cite{font-style:normal;}
-.nota-g{display:flex;align-items:baseline;gap:14px;}
-.nota-g b{font:800 72px/1 var(--display);letter-spacing:-.05em;}
+.opin blockquote{margin:0;padding:clamp(24px,3vw,38px);border-radius:var(--r);background:var(--hueso);display:grid;gap:22px;}
+.opin blockquote p{font-size:clamp(20px,1.8vw,24px);font-weight:300;line-height:1.45;letter-spacing:-.01em;}
+.opin cite{font-style:normal;display:flex;align-items:center;gap:12px;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--texto2);}
+.opin cite i{width:38px;height:38px;border-radius:50%;background:var(--salvia-claro);color:var(--bosque);display:grid;place-items:center;font-style:normal;letter-spacing:0;}
 
-/* ═══ CITA ═══ */
-.cita{background:var(--tinta);color:#EDEFF7;}
-.cita .ficha{color:#B7BDD6;}
-.cita__in{display:grid;gap:clamp(24px,4vw,56px);}
-@media(min-width:980px){.cita__in{grid-template-columns:1.1fr .9fr;align-items:end;}}
-.telefono{display:inline-block;font:800 clamp(50px,9vw,118px)/.9 var(--display);letter-spacing:-.05em;text-decoration:none;color:#fff;margin:14px 0 18px;}
-@media(hover:hover) and (pointer:fine){.telefono:hover{color:#AFC2FF;}}
-.cita .lead{color:#C9CDE0;}
-.cita .btn--linea{border-color:#fff;color:#fff;}
-.cita dl{border-top:1px solid rgba(255,255,255,.25);}
-.cita dl div{display:grid;grid-template-columns:120px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.14);align-items:center;}
-.cita dt{font:500 12px var(--ficha);letter-spacing:.06em;text-transform:uppercase;color:#B7BDD6;}
-.cita dd{margin:0;}
-.cita dd a{display:inline-flex;min-height:44px;align-items:center;}
-.mapa{margin-top:28px;border-radius:var(--r);overflow:hidden;min-height:300px;}
-.mapa iframe{width:100%;min-height:300px;border:0;display:block;}
-
-.pie{padding:28px 0 104px;font-size:14px;color:var(--tinta2);}
+/* ═══ CONTACTO ═══ */
+.contacto{background:var(--bosque);color:#fff;border-radius:clamp(28px,4vw,48px) clamp(28px,4vw,48px) 0 0;}
+.contacto .eti{color:var(--salvia);}
+.contacto h2 em{color:#CFE0D4;}
+.contacto__in{display:grid;gap:clamp(28px,4vw,56px);margin-top:10px;}
+@media(min-width:960px){.contacto__in{grid-template-columns:1fr 1fr;}}
+.tel{display:inline-block;font-weight:200;font-size:clamp(46px,6.6vw,92px);letter-spacing:-.05em;line-height:1;text-decoration:none;margin-top:26px;font-variant-numeric:tabular-nums;}
+.contacto .lead{color:#D5E1D9;margin-top:18px;}
+.contacto__btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;}
+.fichas{display:grid;gap:0;border-top:1px solid rgba(255,255,255,.14);}
+.fichas div{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.14);}
+.fichas dt{font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--salvia);padding-top:4px;}
+.fichas dd{margin:0;color:#EEF3EF;}
+.fichas a{display:inline-flex;align-items:center;min-height:44px;margin:-10px 0;text-underline-offset:4px;}
+.mapa{margin-top:18px;border-radius:var(--r-s);overflow:hidden;height:260px;filter:grayscale(.4) contrast(.95);}
+.mapa iframe{width:100%;height:100%;border:0;display:block;}
+.pie{background:var(--bosque);color:#B9CCBF;font-size:14px;padding:26px 0 110px;border-top:1px solid rgba(255,255,255,.1);}
 .pie .wrap{display:grid;gap:6px;}
 .pie a{display:inline-flex;align-items:center;min-height:44px;}
-.barra{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:40;display:grid;grid-template-columns:1.4fr 1fr;gap:8px;}
-.barra .btn{min-height:54px;box-shadow:0 14px 30px -16px rgba(21,26,46,.6);}
-.barra .btn--linea{background:var(--blanco);}
-@media(min-width:980px){.barra{display:none;}.pie{padding-bottom:36px;}}
+.barra{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:45;display:grid;grid-template-columns:1.3fr 1fr;gap:8px;
+  transform:translateY(140%);transition:transform 450ms var(--ease-out);}
+.barra.on{transform:none;}
+.barra a{display:flex;align-items:center;justify-content:center;min-height:56px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 14px 34px -14px rgba(14,32,25,.6);transition:transform 160ms var(--ease-out);}
+.barra a:active{transform:scale(.97);}
+.barra .b1{background:var(--bosque);color:#fff;} .barra .b2{background:rgba(255,255,255,.9);color:var(--bosque);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--regla);}
+@media(min-width:1000px){.barra{display:none;}.pie{padding-bottom:30px;}}
 
-/* entrada: una sola vez, corta, desde translateY(8px) con opacidad */
-.rev{opacity:0;transform:translateY(8px);transition:opacity 500ms var(--ease-out),transform 500ms var(--ease-out);}
-.rev.on{opacity:1;transform:none;}
+/* ═══ ENTRADAS ═══ */
+.rev{opacity:0;transform:translateY(18px);filter:blur(6px);transition:opacity 900ms var(--ease-out),transform 900ms var(--ease-out),filter 900ms var(--ease-out);}
+.rev.on{opacity:1;transform:none;filter:none;}
+.palabras .w{display:inline-block;opacity:0;transform:translateY(40%);filter:blur(8px);transition:opacity 800ms var(--ease-out),transform 800ms var(--ease-out),filter 800ms var(--ease-out);}
+.palabras.on .w{opacity:1;transform:none;filter:none;}
 @media(prefers-reduced-motion:reduce){
-  .rev{opacity:1;transform:none;transition:none;} html{scroll-behavior:auto;}
-  .punto::after{animation:none;} .panel__cont{transition:opacity 150ms ease;} .panel__cont.cambiando{transform:none;filter:none;}
+  html{scroll-behavior:auto;}
+  .rev,.palabras .w,.marca-grande span{opacity:1!important;transform:none!important;filter:none!important;transition:none!important;}
+  .portada__foto img{transform:none;transition:none;}
+  .cinta__pista{animation:none;}
+  .revela{clip-path:none;} .revela img{transform:none;}
+  .duele__foto img{transition:opacity 200ms ease;transform:none;}
+  .panel__cont{transition:opacity 150ms ease;} .panel__cont.cambiando{transform:none;filter:none;}
 }
 </style>
 </head>
 <body>
 
-<header class="top">
+<header class="menu" id="menu">
   <div class="wrap">
-    <a class="marca" href="#inicio"><b>KIRO</b><span>Fisioterapia avanzada · Irun</span></a>
-    <nav class="nav" aria-label="Principal">
-      <a href="#como">Cómo trabajamos</a>
-      <a href="#tecnicas">Técnicas</a>
-      <a href="#grupos">Pilates</a>
-      <a href="#equipo">Equipo</a>
-      <a href="#cita">Contacto</a>
-    </nav>
-    <a class="btn btn--cinta" href="tel:+34943633201">Pedir cita</a>
+    <div class="menu__barra">
+      <a class="marca" href="#inicio"><i aria-hidden="true"></i>KIRO</a>
+      <nav class="nav" aria-label="Principal">
+        <a href="#duele">Tratamientos</a>
+        <a href="#tecnicas">Técnicas</a>
+        <a href="#pilates">Pilates</a>
+        <a href="#equipo">Equipo</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <a class="btn btn--oscuro" href="tel:+34943633201">Pedir cita</a>
+    </div>
   </div>
 </header>
 
 <main id="main">
 
 <section class="portada" id="inicio">
+  <div class="portada__foto"><img src="fotos/portada.jpg" alt="Fisioterapeuta tratando la espalda de un paciente" width="2200" height="1469" fetchpriority="high" id="foto-portada"/></div>
   <div class="wrap portada__in">
     <div>
-      <p class="ficha rev">KIRO Fisioterapia Avanzada · San Pedro 20, Irun</p>
-      <h1 class="rev">¿Dónde te <i>duele?</i></h1>
-      <p class="lead rev">Toca la zona y te contamos cómo la tratamos. Espalda, tendones, cabeza, lesiones deportivas y recuperación después de una operación.</p>
-      <a class="btn btn--cinta rev" href="tel:+34943633201">Llamar al 943 63 32 01</a>
-      <div class="datos-cortos rev">
-        <p><b>1997</b>tratando lesiones</p>
-        <p><b>3</b>fisioterapeutas</p>
-        <p><b>4,5 ★</b>42 opiniones en Google</p>
-      </div>
+      <p class="eti portada__eti rev">Fisioterapia avanzada · Irun</p>
+      <p class="marca-grande" aria-hidden="true"><span>K</span><span>I</span><span>R</span><span>O</span></p>
+      <h1 class="rev">Fisioterapia en Irun desde 1997, <em>para que vuelvas a moverte sin dolor</em></h1>
     </div>
-
-    <div class="lamina rev" id="lamina">
-      <p class="ficha lamina__cab">Lámina · vista posterior</p>
-      <div class="cuerpo">
-        <svg viewBox="0 0 200 440" role="img" aria-label="Figura humana de espaldas, con las zonas que se pueden tocar">
-          <g fill="none" stroke-linecap="round">
-            <g stroke="#151A2E">
-              <line x1="62" y1="92" x2="46" y2="170" stroke-width="22"/><line x1="46" y1="172" x2="40" y2="246" stroke-width="18"/>
-              <line x1="138" y1="92" x2="154" y2="170" stroke-width="22"/><line x1="154" y1="172" x2="160" y2="246" stroke-width="18"/>
-              <line x1="84" y1="236" x2="80" y2="330" stroke-width="28"/><line x1="80" y1="332" x2="82" y2="420" stroke-width="21"/>
-              <line x1="116" y1="236" x2="120" y2="330" stroke-width="28"/><line x1="120" y1="332" x2="118" y2="420" stroke-width="21"/>
-            </g>
-            <g stroke="#FFFFFF">
-              <line x1="62" y1="92" x2="46" y2="170" stroke-width="19"/><line x1="46" y1="172" x2="40" y2="246" stroke-width="15"/>
-              <line x1="138" y1="92" x2="154" y2="170" stroke-width="19"/><line x1="154" y1="172" x2="160" y2="246" stroke-width="15"/>
-              <line x1="84" y1="236" x2="80" y2="330" stroke-width="25"/><line x1="80" y1="332" x2="82" y2="420" stroke-width="18"/>
-              <line x1="116" y1="236" x2="120" y2="330" stroke-width="25"/><line x1="120" y1="332" x2="118" y2="420" stroke-width="18"/>
-            </g>
-          </g>
-          <path d="M58 86 Q100 72 142 86 L137 202 Q100 214 63 202 Z" fill="#fff" stroke="#151A2E" stroke-width="1.6"/>
-          <path d="M65 200 Q100 214 135 200 L133 238 Q100 250 67 238 Z" fill="#fff" stroke="#151A2E" stroke-width="1.6"/>
-          <rect x="91" y="58" width="18" height="20" rx="7" fill="#fff" stroke="#151A2E" stroke-width="1.6"/>
-          <circle cx="100" cy="38" r="22" fill="#fff" stroke="#151A2E" stroke-width="1.6"/>
-          <path d="M72 104 Q80 126 90 118 M128 104 Q120 126 110 118" fill="none" stroke="#9AA1B8" stroke-width="1.2"/>
-          <g fill="#9AA1B8"><circle cx="100" cy="86" r="1.6"/><circle cx="100" cy="96" r="1.6"/><circle cx="100" cy="106" r="1.6"/><circle cx="100" cy="116" r="1.6"/><circle cx="100" cy="126" r="1.6"/><circle cx="100" cy="136" r="1.6"/><circle cx="100" cy="146" r="1.6"/><circle cx="100" cy="156" r="1.6"/><circle cx="100" cy="166" r="1.6"/><circle cx="100" cy="176" r="1.6"/><circle cx="100" cy="186" r="1.6"/><circle cx="100" cy="196" r="1.6"/></g>
-          <rect x="87" y="150" width="8" height="58" rx="3" fill="#2D5BFF" opacity=".85"/>
-          <rect x="105" y="150" width="8" height="58" rx="3" fill="#2D5BFF" opacity=".85"/>
-          <rect x="116" y="86" width="8" height="40" rx="3" fill="#EF4F7A" opacity=".8" transform="rotate(-28 120 106)"/>
-        </svg>
-        <button class="punto" type="button" data-zona="cuello" style="left:50%;top:15%" aria-label="Cuello y cabeza" aria-pressed="false"></button>
-        <button class="punto" type="button" data-zona="hombro" style="left:70%;top:21%" aria-label="Hombro y tendones" aria-pressed="false"></button>
-        <button class="punto" type="button" data-zona="espalda" style="left:50%;top:41%" aria-label="Espalda y zona lumbar" aria-pressed="true"></button>
-        <button class="punto" type="button" data-zona="pelvis" style="left:50%;top:51%" aria-label="Pelvis y abdomen" aria-pressed="false"></button>
-        <button class="punto" type="button" data-zona="muslo" style="left:40%;top:65%" aria-label="Muslo, lesiones deportivas" aria-pressed="false"></button>
-        <button class="punto" type="button" data-zona="rodilla" style="left:60%;top:75.5%" aria-label="Rodilla, después de una operación" aria-pressed="false"></button>
-      </div>
-      <div class="panel" aria-live="polite">
-        <div class="panel__cont" id="panel">
-          <p class="panel__zona" id="p-zona">Lumbar · L1–L5</p>
-          <h2 id="p-tit">Problemas de espalda</h2>
-          <p id="p-txt">Somos especialistas en espalda, con un tratamiento específico para la recuperación de hernias de disco lumbares.</p>
-          <a class="btn btn--cinta" href="tel:+34943633201">Pedir valoración</a>
-        </div>
-      </div>
-      <div class="zonas" role="group" aria-label="Zonas">
-        <button class="zona" type="button" data-zona="cuello" aria-pressed="false">Cuello</button>
-        <button class="zona" type="button" data-zona="hombro" aria-pressed="false">Hombro</button>
-        <button class="zona" type="button" data-zona="espalda" aria-pressed="true">Espalda</button>
-        <button class="zona" type="button" data-zona="pelvis" aria-pressed="false">Pelvis</button>
-        <button class="zona" type="button" data-zona="muslo" aria-pressed="false">Muslo</button>
-        <button class="zona" type="button" data-zona="rodilla" aria-pressed="false">Rodilla</button>
-      </div>
+    <div class="portada__lado rev">
+      <p>Espalda, tendones, cabeza, lesiones deportivas y recuperación después de una operación. Tres fisioterapeutas en San Pedro 20.</p>
+      <div class="cristal"><b>4,5</b><div><span class="estrellas">★★★★★</span><small>42 opiniones en Google</small></div></div>
+      <a class="btn btn--cristal" href="tel:+34943633201">Llamar al 943 63 32 01<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
     </div>
   </div>
 </section>
 
-<section id="como" style="padding-top:0">
-  <div class="wrap proceso__in">
-    <div class="rev">
-      <p class="ficha">Cómo trabajamos</p>
-      <h2 class="h2" style="margin-top:12px">Primero entender. Después tratar.</h2>
-    </div>
-    <ol class="pasos rev">
-      <li><span class="n">1</span><div><h3>Historia clínica</h3><p>Empezamos por entender tu situación en su conjunto, no solo la zona que duele.</p></div></li>
-      <li><span class="n">2</span><div><h3>Exploración y valoración</h3><p>Diagnosticamos la lesión teniendo en cuenta la postura, la biomecánica y también factores viscerales y nutricionales.</p></div></li>
-      <li><span class="n">3</span><div><h3>Plan de tratamiento</h3><p>Terapia manual, técnicas invasivas como la punción seca o la EPTE, y la tecnología que mejor encaje contigo.</p></div></li>
-    </ol>
+<div class="cinta" aria-label="Técnicas que usamos">
+  <div class="cinta__pista" aria-hidden="true">
+    <span>Terapia manual</span><span>Punción seca</span><span><em>EPTE ecoguiada</em></span><span>Neuromodulación percutánea</span><span>INDIBA Activ</span><span><em>Emfield Pro</em></span><span>Readaptación funcional</span><span>Pilates terapéutico</span><span><em>Hipopresivos</em></span>
+    <span>Terapia manual</span><span>Punción seca</span><span><em>EPTE ecoguiada</em></span><span>Neuromodulación percutánea</span><span>INDIBA Activ</span><span><em>Emfield Pro</em></span><span>Readaptación funcional</span><span>Pilates terapéutico</span><span><em>Hipopresivos</em></span>
   </div>
-</section>
+</div>
 
-<section class="tecnicas" id="tecnicas">
+<section id="duele">
   <div class="wrap">
-    <p class="ficha rev">Técnicas</p>
-    <h2 class="h2 rev" style="margin-top:12px;max-width:14ch">Manos expertas y tecnología</h2>
-    <div class="hoja rev">
-      <article class="tec"><h3>Terapia manual</h3><span class="ficha">Manual</span><p>Técnicas osteopáticas, movilización neurodinámica y reeducación postural (L. Busquet).</p></article>
-      <article class="tec"><h3>Punción seca</h3><span class="ficha inv">Invasiva</span><p>Para los puntos gatillo y las contracturas que no ceden.</p></article>
-      <article class="tec"><h3>EPTE</h3><span class="ficha inv">Invasiva · ecoguiada</span><p>Electrólisis percutánea terapéutica, guiada por ecografía.</p></article>
-      <article class="tec"><h3>Neuromodulación percutánea</h3><span class="ficha inv">Invasiva · ecoguiada</span><p>Para el dolor de origen nervioso.</p></article>
-      <article class="tec"><h3>INDIBA Activ</h3><span class="ficha tecno">Tecnología</span><p>Radiofrecuencia para acelerar la recuperación de los tejidos.</p></article>
-      <article class="tec"><h3>Emfield Pro de Zimmer</h3><span class="ficha tecno">Tecnología</span><p>Terapia inductiva de alta energía.</p></article>
-      <article class="tec"><h3>Vendaje neuromuscular</h3><span class="ficha">Vendaje</span><p>Para seguir moviéndote mientras la lesión se recupera.</p></article>
-      <article class="tec"><h3>Readaptación funcional</h3><span class="ficha">Ejercicio</span><p>En nuestro gimnasio, para volver a tu nivel.</p></article>
-    </div>
-  </div>
-</section>
-
-<section id="grupos">
-  <div class="wrap">
-    <p class="ficha rev">Pilates y grupos</p>
-    <h2 class="h2 rev" style="margin-top:12px;max-width:16ch">Cuidarte también entre sesiones</h2>
-    <div class="grupos__g">
-      <article class="grupo grupo--cinta rev"><p class="ficha">Dirigido por un fisioterapeuta</p><h3>Pilates terapéutico</h3><p>Para fortalecer el abdomen y la espalda, mejorar la postura y evitar lesiones de espalda.</p><div class="medidas"><span>50 min</span><span>3–4 personas</span><span>1 o 2 por semana</span></div></article>
-      <article class="grupo rev"><p class="ficha">Programa personalizado</p><h3>Ejercicio terapéutico</h3><p>¿Lumbalgias que vuelven? ¿Te han operado y no te llaman para la rehabilitación? Valoramos tus limitaciones y te hacemos un programa progresivo.</p></article>
-      <article class="grupo rev"><p class="ficha">No solo postparto</p><h3>Gimnasia abdominal hipopresiva</h3><p>Te explicamos en consulta si es para ti.</p></article>
-    </div>
-  </div>
-</section>
-
-<section id="equipo" style="padding-top:0">
-  <div class="wrap equipo__in">
-    <div class="rev">
-      <p class="ficha">Desde</p>
-      <p class="anio">1997</p>
-      <p class="lead" style="margin-top:18px">Aitor fundó KIRO y trabaja como fisioterapeuta desde entonces. Hoy son tres fisioterapeutas en formación continua.</p>
-    </div>
-    <div class="personas rev">
-      <article class="persona"><h3>Aitor Amostegi</h3><span class="ficha">Fundador</span><p>Gerente y fisioterapeuta, desde 1997.</p></article>
-      <article class="persona"><h3>Amaia López de Sosoaga</h3><span class="ficha">Fisioterapeuta</span><p>Más de 10 años aportando sus conocimientos en KIRO.</p></article>
-    </div>
-  </div>
-</section>
-
-<section class="opin" id="opiniones" style="padding-top:0">
-  <div class="wrap">
-    <div class="nota-g rev"><b>4,5</b><p class="ficha">★★★★★ · 42 opiniones en Google</p></div>
-    <div class="opin__g">
-      <blockquote class="rev"><p>«Un sitio espacioso, aireado, limpio y profesional. El tratamiento Indiba y masajes una maravilla. He salido encantada y con menos dolor.»</p><cite class="ficha">Lucía H.</cite></blockquote>
-      <blockquote class="rev"><p>«Aitor ha valorado de dónde podía venir el problema y ha empleado técnicas tanto manuales como indiba, ventosas y neuromodulación.»</p><cite class="ficha">Ana B. · lesión deportiva</cite></blockquote>
-    </div>
-  </div>
-</section>
-
-<section class="cita" id="cita">
-  <div class="wrap">
-    <div class="cita__in">
+    <p class="eti rev">Tratamientos</p>
+    <h2 class="h2 palabras">¿Dónde te <em>duele?</em></h2>
+    <div class="duele__in">
+      <div class="duele__foto rev" id="duele-foto">
+        <img class="on" data-foto="espalda" src="fotos/cadera.jpg" alt="" loading="lazy"/>
+        <img data-foto="cuello" src="fotos/espalda.jpg" alt="" loading="lazy"/>
+        <img data-foto="hombro" src="fotos/hombro.jpg" alt="" loading="lazy"/>
+        <img data-foto="pelvis" src="fotos/ejercicio.jpg" alt="" loading="lazy"/>
+        <img data-foto="muslo" src="fotos/kiro-readaptacion.jpg" alt="" loading="lazy"/>
+        <img data-foto="rodilla" src="fotos/rodilla.jpg" alt="" loading="lazy"/>
+        <span class="etiq" id="etiq">Lumbar · L1–L5</span>
+      </div>
       <div class="rev">
-        <p class="ficha">Pedir cita</p>
-        <a class="telefono" href="tel:+34943633201">943 63 32 01</a>
-        <p class="lead">Llámanos y te decimos cuándo podemos verte. Si lo prefieres, escríbenos.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:22px">
-          <a class="btn btn--cinta" href="tel:+34943633201">Llamar</a>
-          <a class="btn btn--linea" href="mailto:kirofisio@gmail.com?subject=Cita%20en%20KIRO">Escribir un email</a>
+        <div class="zonas" role="group" aria-label="Elige la zona">
+          <button class="zona" type="button" data-zona="cuello" aria-pressed="false">Cuello y cabeza <small>Cefaleas</small></button>
+          <button class="zona" type="button" data-zona="hombro" aria-pressed="false">Hombro <small>Tendones</small></button>
+          <button class="zona" type="button" data-zona="espalda" aria-pressed="true">Espalda <small>Hernias</small></button>
+          <button class="zona" type="button" data-zona="pelvis" aria-pressed="false">Pelvis y abdomen <small>Mujer</small></button>
+          <button class="zona" type="button" data-zona="muslo" aria-pressed="false">Muslo <small>Deporte</small></button>
+          <button class="zona" type="button" data-zona="rodilla" aria-pressed="false">Rodilla <small>Postoperatorio</small></button>
+        </div>
+        <div class="panel" aria-live="polite">
+          <div class="panel__cont" id="panel">
+            <h3 id="p-tit">Problemas de espalda</h3>
+            <p id="p-txt">Somos especialistas en espalda, con un tratamiento específico para la recuperación de hernias de disco lumbares.</p>
+          </div>
+          <a class="btn btn--claro" href="tel:+34943633201">Pedir valoración<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
         </div>
       </div>
-      <dl class="rev">
-        <div><dt>Dirección</dt><dd>San Pedro 20, bajo · 20304 Irun</dd></div>
-        <div><dt>Horario</dt><dd>De 7:00 a 14:00 y de 15:00 a 19:00</dd></div>
-        <div><dt>Teléfono</dt><dd><a href="tel:+34943633201">943 63 32 01</a></dd></div>
-        <div><dt>Email</dt><dd><a href="mailto:kirofisio@gmail.com">kirofisio@gmail.com</a></dd></div>
-      </dl>
     </div>
-    <div class="mapa rev">
-      <iframe title="Mapa de KIRO Fisioterapia en Irun" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-        src="https://www.openstreetmap.org/export/embed.html?bbox=-1.7901%2C43.3361%2C-1.7741%2C43.3441&layer=mapnik&marker=43.34013%2C-1.78212"></iframe>
+  </div>
+</section>
+
+<section class="pasos" id="como">
+  <div class="wrap">
+    <p class="eti rev">Cómo trabajamos</p>
+    <h2 class="h2 palabras">Primero entender. <em>Después tratar.</em></h2>
+    <div class="pasos__g" id="pasos">
+      <span class="pasos__linea" aria-hidden="true"></span>
+      <div class="paso rev"><span class="paso__n">1</span><h3>Historia clínica</h3><p>Empezamos por entender tu situación en su conjunto, no solo la zona que duele.</p></div>
+      <div class="paso rev"><span class="paso__n">2</span><h3>Exploración y valoración</h3><p>Diagnosticamos la lesión teniendo en cuenta la postura, la biomecánica y también factores viscerales y nutricionales.</p></div>
+      <div class="paso rev"><span class="paso__n">3</span><h3>Plan de tratamiento</h3><p>Terapia manual, técnicas invasivas como la punción seca o la EPTE, y la tecnología que mejor encaje contigo.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="tecnicas">
+  <div class="wrap tec__cab">
+    <div>
+      <p class="eti rev">Técnicas</p>
+      <h2 class="h2 palabras">Manos expertas <em>y tecnología</em></h2>
+    </div>
+    <div class="car__nav rev">
+      <button type="button" id="car-ant" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+      <button type="button" id="car-sig" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    </div>
+  </div>
+  <div class="car" id="car">
+    <article class="tarj rev"><img loading="lazy" src="fotos/kiro-epte.jpg" alt="Tratamiento con EPTE guiado por ecografía en KIRO"/><div class="tarj__txt"><small>Invasiva · ecoguiada</small><h3>EPTE</h3><p>Electrólisis percutánea terapéutica, guiada por ecografía.</p></div></article>
+    <article class="tarj rev"><img loading="lazy" src="fotos/espalda.jpg" alt="Manos de fisioterapeuta en la espalda"/><div class="tarj__txt"><small>Manual</small><h3>Terapia manual</h3><p>Técnicas osteopáticas, movilización neurodinámica y reeducación postural (L. Busquet).</p></div></article>
+    <article class="tarj rev"><img loading="lazy" src="fotos/kiro-indiba.jpg" alt="Tratamiento con tecnología en KIRO"/><div class="tarj__txt"><small>Tecnología</small><h3>INDIBA Activ</h3><p>Radiofrecuencia para acelerar la recuperación de los tejidos.</p></div></article>
+    <article class="tarj tarj--lisa rev"><p class="grande">Punción seca y neuromodulación</p><div class="tarj__txt"><small>Invasiva</small><h3>Para lo que no cede</h3><p>Punción seca para puntos gatillo y contracturas; neuromodulación percutánea ecoguiada para el dolor de origen nervioso.</p></div></article>
+    <article class="tarj rev"><img loading="lazy" src="fotos/kiro-readaptacion.jpg" alt="Ejercicio de readaptación en el gimnasio de KIRO"/><div class="tarj__txt"><small>Ejercicio</small><h3>Readaptación funcional</h3><p>En nuestro gimnasio, para volver a tu nivel.</p></div></article>
+    <article class="tarj rev"><img loading="lazy" src="fotos/hombro.jpg" alt="Fisioterapeuta valorando un hombro"/><div class="tarj__txt"><small>Tecnología</small><h3>Emfield Pro de Zimmer</h3><p>Terapia inductiva de alta energía.</p></div></article>
+  </div>
+  <div class="wrap">
+    <ul class="lista-tec rev" aria-label="Todas las técnicas">
+      <li>Terapia manual</li><li>Punción seca</li><li>EPTE ecoguiada</li><li>Neuromodulación percutánea</li><li>INDIBA Activ</li><li>Emfield Pro de Zimmer</li><li>Vendaje neuromuscular</li><li>Readaptación funcional</li>
+    </ul>
+  </div>
+</section>
+
+<section class="pilates" id="pilates">
+  <div class="wrap pilates__in">
+    <div class="revela" id="rev-pilates"><img loading="lazy" src="fotos/ejercicio.jpg" alt="Ejercicio terapéutico guiado por una fisioterapeuta"/></div>
+    <div>
+      <p class="eti rev">Pilates y grupos</p>
+      <h2 class="h2 palabras">Cuidarte también <em>entre sesiones</em></h2>
+      <div class="grupos">
+        <div class="grupo rev"><small>Dirigido por un fisioterapeuta</small><h3>Pilates terapéutico</h3><p>Para fortalecer el abdomen y la espalda, mejorar la postura y evitar lesiones de espalda.</p>
+          <ul class="datos-p"><li>50 min</li><li>3–4 personas</li><li>1 o 2 por semana</li></ul></div>
+        <div class="grupo rev"><small>Programa personalizado</small><h3>Ejercicio terapéutico</h3><p>¿Lumbalgias que vuelven? ¿Te han operado y no te llaman para la rehabilitación? Valoramos tus limitaciones y te hacemos un programa progresivo.</p></div>
+        <div class="grupo rev"><small>No solo postparto</small><h3>Gimnasia abdominal hipopresiva</h3><p>Te explicamos en consulta si es para ti.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="equipo">
+  <div class="wrap">
+    <div class="equipo__in">
+      <p class="anio rev"><small>Desde</small>1997</p>
+      <div>
+        <p class="eti rev">Equipo</p>
+        <h2 class="h2 palabras">Tres fisioterapeutas <em>en formación continua</em></h2>
+        <div class="personas rev">
+          <div class="persona"><b>Aitor Amostegi</b><span>Fundador, gerente y fisioterapeuta, desde 1997</span></div>
+          <div class="persona"><b>Amaia López de Sosoaga</b><span>Fisioterapeuta, más de 10 años en KIRO</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="fotos-kiro">
+      <figure class="revela"><img loading="lazy" src="fotos/kiro-gimnasio.jpg" alt="Sala de ejercicio de KIRO con fitballs y espalderas"/><figcaption>Nuestro gimnasio</figcaption></figure>
+      <figure class="revela"><img loading="lazy" src="fotos/kiro-epte.jpg" alt="Ecografía durante un tratamiento en KIRO"/><figcaption>Ecografía</figcaption></figure>
+      <figure class="revela"><img loading="lazy" src="fotos/kiro-indiba.jpg" alt="Aparato de tratamiento en KIRO"/><figcaption>Tecnología</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="opin" id="opiniones">
+  <div class="wrap">
+    <div class="opin__cab">
+      <div><p class="eti rev">Opiniones</p><h2 class="h2 palabras">Lo que dicen <em>al salir</em></h2></div>
+      <div class="nota rev"><b>4,5</b><div><span class="estrellas">★★★★★</span><small>42 opiniones en Google</small></div></div>
+    </div>
+    <div class="opin__g">
+      <blockquote class="rev"><p>«Un sitio espacioso, aireado, limpio y profesional. El tratamiento Indiba y masajes una maravilla. He salido encantada y con menos dolor.»</p><cite><i>L</i>Lucía H.</cite></blockquote>
+      <blockquote class="rev"><p>«Aitor ha valorado de dónde podía venir el problema y ha empleado técnicas tanto manuales como indiba, ventosas y neuromodulación.»</p><cite><i>A</i>Ana B. · lesión deportiva</cite></blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <p class="eti rev">Pedir cita</p>
+    <div class="contacto__in">
+      <div>
+        <h2 class="h2 palabras">Te decimos <em>cuándo podemos verte</em></h2>
+        <a class="tel rev" href="tel:+34943633201">943 63 32 01</a>
+        <p class="lead rev">Llámanos y buscamos hueco. Si lo prefieres, escríbenos.</p>
+        <div class="contacto__btns rev">
+          <a class="btn btn--claro" href="tel:+34943633201">Llamar<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+          <a class="btn btn--cristal" href="mailto:kirofisio@gmail.com">Escribir un email<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+        </div>
+      </div>
+      <div class="rev">
+        <dl class="fichas">
+          <div><dt>Dirección</dt><dd><a href="https://www.google.com/maps/dir/?api=1&destination=43.3401311,-1.7821159" target="_blank" rel="noopener">San Pedro 20, bajo · 20304 Irun</a></dd></div>
+          <div><dt>Horario</dt><dd>De 7:00 a 14:00 y de 15:00 a 19:00</dd></div>
+          <div><dt>Teléfono</dt><dd><a href="tel:+34943633201">943 63 32 01</a></dd></div>
+          <div><dt>Email</dt><dd><a href="mailto:kirofisio@gmail.com">kirofisio@gmail.com</a></dd></div>
+        </dl>
+        <div class="mapa"><iframe title="Mapa de KIRO Fisioterapia en Irun" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-1.7901%2C43.3361%2C-1.7741%2C43.3441&layer=mapnik&marker=43.34013%2C-1.78212"></iframe></div>
+      </div>
     </div>
   </div>
 </section>
@@ -378,14 +456,14 @@ section{padding:clamp(64px,9vw,120px) 0;}
 <footer class="pie">
   <div class="wrap">
     <p>© <span id="anio">2026</span> KIRO Fisioterapia SL · San Pedro 20, bajo · 20304 Irun</p>
-    <p><a href="#cita">Aviso legal</a> · <a href="#cita">Privacidad</a></p>
-    <p style="font-size:13px">Demostración para KIRO Fisioterapia, creada sin compromiso por OI Studio. Los textos salen de vuestra web.</p>
+    <p><a href="#contacto">Aviso legal</a> · <a href="#contacto">Privacidad</a></p>
+    <p style="font-size:13px">Demostración para KIRO Fisioterapia, creada sin compromiso por OI Studio. Los textos y las fotos de la clínica salen de vuestra web; las demás fotos son de ejemplo y se cambian por las vuestras.</p>
   </div>
 </footer>
 
-<nav class="barra" aria-label="Acciones rápidas">
-  <a class="btn btn--cinta" href="tel:+34943633201">Llamar</a>
-  <a class="btn btn--linea" href="#cita">Dónde estamos</a>
+<nav class="barra" id="barra" aria-label="Acciones rápidas">
+  <a class="b1" href="tel:+34943633201">Llamar</a>
+  <a class="b2" href="#contacto">Dónde estamos</a>
 </nav>
 
 <script type="application/ld+json">
@@ -397,40 +475,81 @@ section{padding:clamp(64px,9vw,120px) 0;}
 </script>
 <script>
 document.getElementById("anio").textContent = new Date().getFullYear();
+var quieto = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-/* Lámina: cada zona, con lo que dice su web */
-var ZONAS = {
-  cuello:  { z:"Cervical · C1–C7", t:"Cefaleas y vértigos", p:"Tenemos un tratamiento específico, de gran eficacia, para los dolores de cabeza y los mareos de origen cervical." },
-  hombro:  { z:"Hombro · tendones", t:"Tendinopatías", p:"Te ofrecemos el tratamiento más eficaz que existe hoy para los tendones." },
-  espalda: { z:"Lumbar · L1–L5", t:"Problemas de espalda", p:"Somos especialistas en espalda, con un tratamiento específico para la recuperación de hernias de disco lumbares." },
-  pelvis:  { z:"Pelvis · abdomen", t:"Atención a la mujer", p:"Tratamientos específicos y gimnasia abdominal hipopresiva, también después del parto." },
-  muslo:   { z:"Muslo · isquiotibiales", t:"Lesiones deportivas", p:"Valoramos de dónde viene la lesión y combinamos terapia manual, tecnología y readaptación para que vuelvas a entrenar." },
-  rodilla: { z:"Rodilla · postoperatorio", t:"Después de una operación", p:"Si te han operado y no te llaman para la rehabilitación, te hacemos un programa progresivo y personalizado para recuperarte." }
-};
+/* Portada: la foto se asienta y las letras de KIRO entran de una en una */
 (function(){
-  var panel = document.getElementById("panel"), zona = document.getElementById("p-zona"), tit = document.getElementById("p-tit"), txt = document.getElementById("p-txt");
-  var botones = document.querySelectorAll("[data-zona]"), actual = "espalda", t;
-  function elegir(id){
-    if (id === actual) return; actual = id;
-    botones.forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.zona === id ? "true" : "false"); });
-    panel.classList.add("cambiando");
-    clearTimeout(t);
-    t = setTimeout(function(){ var d = ZONAS[id]; zona.textContent = d.z; tit.textContent = d.t; txt.textContent = d.p; panel.classList.remove("cambiando"); }, 140);
-  }
-  botones.forEach(function(b){ b.addEventListener("click", function(){ elegir(b.dataset.zona); }); });
+  document.querySelectorAll(".marca-grande span").forEach(function(s, i){ s.style.transitionDelay = (200 + i * 90) + "ms"; });
+  requestAnimationFrame(function(){ requestAnimationFrame(function(){ document.body.classList.add("cargado"); }); });
 })();
 
-/* Entrada: una sola vez, escalonada 60 ms, y nada se queda oculto si el observador no llega */
+/* Titulares: cada palabra entra enfocándose */
+document.querySelectorAll(".palabras").forEach(function(h){
+  var i = 0;
+  Array.prototype.slice.call(h.childNodes).forEach(function(n){
+    if (n.nodeType === 3) {
+      var frag = document.createDocumentFragment();
+      n.textContent.split(/(\s+)/).forEach(function(p){
+        if (!p) return;
+        if (/^\s+$/.test(p)) { frag.appendChild(document.createTextNode(p)); return; }
+        var s = document.createElement("span"); s.className = "w"; s.textContent = p; s.style.transitionDelay = (i++ * 70) + "ms"; frag.appendChild(s);
+      });
+      h.replaceChild(frag, n);
+    } else if (n.nodeType === 1) { n.classList.add("w"); n.style.transitionDelay = (i++ * 70) + "ms"; }
+  });
+});
+
+/* ¿Dónde te duele? — lo que dice su web de cada zona */
+var ZONAS = {
+  cuello:  { e:"Cervical · C1–C7",        t:"Cefaleas y vértigos",       p:"Tenemos un tratamiento específico, de gran eficacia, para los dolores de cabeza y los mareos de origen cervical." },
+  hombro:  { e:"Hombro · tendones",        t:"Tendinopatías",             p:"Te ofrecemos el tratamiento más eficaz que existe hoy para los tendones." },
+  espalda: { e:"Lumbar · L1–L5",           t:"Problemas de espalda",      p:"Somos especialistas en espalda, con un tratamiento específico para la recuperación de hernias de disco lumbares." },
+  pelvis:  { e:"Pelvis · abdomen",         t:"Atención a la mujer",       p:"Tratamientos específicos y gimnasia abdominal hipopresiva, también después del parto." },
+  muslo:   { e:"Muslo · isquiotibiales",   t:"Lesiones deportivas",       p:"Valoramos de dónde viene la lesión y combinamos terapia manual, tecnología y readaptación para que vuelvas a entrenar." },
+  rodilla: { e:"Rodilla · postoperatorio", t:"Después de una operación",  p:"Si te han operado y no te llaman para la rehabilitación, te hacemos un programa progresivo y personalizado para recuperarte." }
+};
 (function(){
-  var nodos = document.querySelectorAll(".rev");
-  if (!("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) { nodos.forEach(function(n){ n.classList.add("on"); }); return; }
+  var panel = document.getElementById("panel"), tit = document.getElementById("p-tit"), txt = document.getElementById("p-txt"), etiq = document.getElementById("etiq");
+  var fotos = document.querySelectorAll("[data-foto]"), botones = document.querySelectorAll(".zona"), actual = "espalda", t;
+  botones.forEach(function(b){ b.addEventListener("click", function(){
+    var id = b.dataset.zona; if (id === actual) return; actual = id;
+    botones.forEach(function(x){ x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+    fotos.forEach(function(f){ f.classList.toggle("on", f.dataset.foto === id); });
+    panel.classList.add("cambiando"); clearTimeout(t);
+    t = setTimeout(function(){ var d = ZONAS[id]; tit.textContent = d.t; txt.textContent = d.p; etiq.textContent = d.e; panel.classList.remove("cambiando"); }, 180);
+  }); });
+})();
+
+/* Carrusel de técnicas: flechas que avanzan una tarjeta */
+(function(){
+  var car = document.getElementById("car");
+  function paso(){ var c = car.querySelector(".tarj"); return c ? c.getBoundingClientRect().width + 16 : 300; }
+  document.getElementById("car-sig").addEventListener("click", function(){ car.scrollBy({ left: paso(), behavior: quieto ? "auto" : "smooth" }); });
+  document.getElementById("car-ant").addEventListener("click", function(){ car.scrollBy({ left: -paso(), behavior: quieto ? "auto" : "smooth" }); });
+})();
+
+/* Menú: se vuelve opaco al bajar; barra de móvil aparece tras la portada */
+(function(){
+  var menu = document.getElementById("menu"), barra = document.getElementById("barra"), foto = document.getElementById("foto-portada"), pend = false;
+  function mira(){ pend = false; var y = scrollY;
+    menu.classList.toggle("solido", y > 40); barra.classList.toggle("on", y > innerHeight * .6);
+    if (!quieto && y < innerHeight) foto.style.translate = "0 " + (y * 0.18) + "px";
+  }
+  addEventListener("scroll", function(){ if (!pend) { pend = true; requestAnimationFrame(mira); } }, { passive:true }); mira();
+})();
+
+/* Entradas al hacer scroll: una vez, escalonadas; nada se queda oculto si el observador no llega */
+(function(){
+  var nodos = document.querySelectorAll(".rev,.palabras,.revela,#pasos");
+  if (!("IntersectionObserver" in window) || quieto) { nodos.forEach(function(n){ n.classList.add("on"); }); return; }
   var io = new IntersectionObserver(function(es){
     es.filter(function(e){ return e.isIntersecting; }).forEach(function(e, i){
-      e.target.style.transitionDelay = (i * 60) + "ms"; e.target.classList.add("on"); io.unobserve(e.target);
+      if (e.target.classList.contains("rev")) e.target.style.transitionDelay = (i * 80) + "ms";
+      e.target.classList.add("on"); io.unobserve(e.target);
     });
-  }, { rootMargin:"0px 0px -8% 0px", threshold:.08 });
+  }, { rootMargin:"0px 0px -10% 0px", threshold:.12 });
   nodos.forEach(function(n){ io.observe(n); });
-  setTimeout(function(){ nodos.forEach(function(n){ if(n.getBoundingClientRect().top < innerHeight*1.2) n.classList.add("on"); }); }, 1600);
+  setTimeout(function(){ nodos.forEach(function(n){ if (n.getBoundingClientRect().top < innerHeight * 1.1) n.classList.add("on"); }); }, 2000);
 })();
 </script>
 </body>
