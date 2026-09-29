@@ -10,7 +10,7 @@
    Es reversible: si subes, la web se "desconstruye".
    ========================================================================== */
 
-.pro { --pro-out: cubic-bezier(.23, 1, .32, 1); }
+.pro { --pro-out: var(--ease); }
 
 .pro-grid {
   display: grid; grid-template-columns: 5fr 7fr; column-gap: 56px; align-items: start;
