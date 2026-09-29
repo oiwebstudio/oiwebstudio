@@ -103,6 +103,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
 <noscript><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap" rel="stylesheet"/></noscript>
 <link rel="stylesheet" href="assets/styles.css?v=17"/>
+<link rel="stylesheet" href="assets/showcase.css?v=1"/>
 <script>if(location.protocol==='http:'&&/(^|\.)oiwebstudio\.com$/.test(location.hostname))location.replace('https://'+location.host+location.pathname+location.search+location.hash);document.documentElement.classList.add('js');</script>
 <link rel="preload" as="image" href="assets/cafe-desk.webp" fetchpriority="high"/>
 </head>
@@ -230,6 +231,97 @@
 <h3 data-t="ben6_h">Más contactos por WhatsApp</h3>
 <p data-t="ben6_p">Botón directo al chat para que reservar o preguntar sea cuestión de un toque, sin fricción.</p>
 </article>
+</div>
+</div>
+</section>
+
+<!-- ASÍ FUNCIONA — una reserva de verdad contada en tres pantallas (assets/showcase.*) -->
+<section class="section sc" id="asi-funciona" data-sc aria-labelledby="sc-title">
+<div class="container">
+<div class="section-head reveal">
+<span class="eyebrow" data-t="sc_eyebrow">Así funciona, de verdad</span>
+<h2 id="sc-title" data-t="sc_h2">Son las 21:47. Tú estás cenando. Tu web está cerrando una cita.</h2>
+<p data-t="sc_p">Esta es la web de demostración de peluquería con el sistema de reservas que instalo, el mismo que funciona hoy. Mira lo que pasa sin que nadie coja el teléfono.</p>
+</div>
+
+<p class="sr-only" data-t="sc_sr">Ejemplo animado: una clienta elige corte, viernes a las 17:30, escribe su nombre y confirma; la cita aparece en la agenda del negocio y en su Google Calendar.</p>
+
+<div class="sc-stage reveal" data-d="1" aria-hidden="true">
+
+<article class="sc-card">
+<header class="sc-h"><span class="sc-n">1</span><span data-t="sc_c1">En tu web</span><time>21:47</time></header>
+<div class="sc-screen">
+<div class="sc-top"><b>Studio Noir</b><span data-t="sc_reservar">Reservar cita</span></div>
+<div class="sc-steps">
+<div class="sc-step" data-s="a">
+<p class="sc-q" data-t="sc_q1">¿Qué te hacemos?</p>
+<div class="sc-opt" data-sc-t="servicio"><span data-t="sc_corte">Corte</span><em data-t="sc_desde25">desde 25€</em></div>
+<div class="sc-opt"><span data-t="sc_color">Color</span><em data-t="sc_desde55">desde 55€</em></div>
+<div class="sc-opt"><span data-t="sc_barba">Corte + barba</span><em data-t="sc_desde35">desde 35€</em></div>
+</div>
+<div class="sc-step" data-s="b">
+<p class="sc-q" data-t="sc_q2">¿Qué día?</p>
+<div class="sc-days">
+<span class="sc-chip" data-t="sc_jue">Jue</span>
+<span class="sc-chip" data-sc-t="dia" data-t="sc_vie">Vie</span>
+<span class="sc-chip" data-t="sc_sab">Sáb</span>
+</div>
+<p class="sc-q" data-t="sc_q3">¿A qué hora?</p>
+<div class="sc-slots">
+<span class="sc-chip">11:00</span>
+<span class="sc-chip is-off">12:30</span>
+<span class="sc-chip" data-sc-t="hora">17:30</span>
+</div>
+</div>
+<div class="sc-step" data-s="c">
+<span class="sc-label" data-t="sc_nombre">Tu nombre</span>
+<div class="sc-inp"><span data-sc-nombre="Maite"></span><i class="sc-caret"></i></div>
+<p class="sc-resumen" data-t="sc_resumen">Corte · viernes · 17:30</p>
+<div class="sc-btn" data-sc-t="confirmar" data-t="sc_confirmar">Confirmar cita</div>
+</div>
+<div class="sc-step" data-s="d">
+<svg class="sc-check" viewBox="0 0 56 56"><circle cx="28" cy="28" r="28"/><path d="M18 29l7 7 13-15"/></svg>
+<p class="sc-ok" data-t="sc_ok">Cita confirmada</p>
+<p class="sc-resumen" data-t="sc_resumen">Corte · viernes · 17:30</p>
+</div>
+</div>
+<span class="sc-tap"></span>
+</div>
+</article>
+
+<article class="sc-card">
+<header class="sc-h"><span class="sc-n">2</span><span data-t="sc_c2">En tu agenda</span><time>21:47</time></header>
+<div class="sc-screen sc-agenda">
+<div class="sc-dia"><span data-t="sc_viernes">Viernes</span><span>Studio Noir</span></div>
+<div class="sc-fila"><time>10:00</time><span>Ane · <span data-t="sc_color">Color</span></span></div>
+<div class="sc-fila"><time>12:30</time><span>Jon · <span data-t="sc_barba">Corte + barba</span></span></div>
+<div class="sc-fila is-nueva"><time>17:30</time><span>Maite · <span data-t="sc_corte">Corte</span></span><small data-t="sc_nueva">Nueva · web</small></div>
+<div class="sc-fila is-libre"><time>19:00</time><span data-t="sc_libre">Libre</span></div>
+</div>
+</article>
+
+<article class="sc-card">
+<header class="sc-h"><span class="sc-n">3</span><span data-t="sc_c3">En tu Google Calendar</span><time>21:47</time></header>
+<div class="sc-screen">
+<div class="sc-top"><b data-t="sc_viernes">Viernes</b><span>Google Calendar</span></div>
+<div class="sc-cal">
+<div class="sc-hora">16:00</div>
+<div class="sc-hora">17:00</div>
+<div class="sc-hora">18:00</div>
+<div class="sc-hora">19:00</div>
+<div class="sc-hora">20:00</div>
+<div class="sc-evento is-otro"><b data-t="sc_otro">Pedido de tintes</b><span>16:00 – 17:00</span></div>
+<div class="sc-evento"><b><span data-t="sc_corte">Corte</span> - Maite</b><span>17:30 – 18:15</span></div>
+</div>
+</div>
+</article>
+
+</div>
+
+<div class="sc-pie reveal">
+<p><span data-t="sc_pie">Nadie ha cogido el teléfono ni ha contestado un WhatsApp. La cita ya está donde tiene que estar.</span>
+<small data-t="sc_pie_nota">Es la web de demostración de peluquería. El sistema de reservas es real y se añade a cualquier web, a presupuesto.</small></p>
+<a href="chatbot-reservas.html#pruebalo" class="btn btn--accent" data-t="sc_probar">Pruébalo tú mismo →</a>
 </div>
 </div>
 </section>
@@ -435,6 +527,7 @@
 
 <script src="assets/i18n.js?v=4"></script>
 <script src="assets/main.js?v=9"></script>
+<script src="assets/showcase.js?v=1" defer></script>
 <script>
 (function(){
   /* Sectores con letras escalonadas: hover anima el texto y cambia los dispositivos */

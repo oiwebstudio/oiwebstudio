@@ -1,0 +1,187 @@
+/* ==========================================================================
+   "Así funciona": la reserva contada en tres pantallas que se animan en cadena.
+   Solo enseña lo que el sistema hace de verdad (booking-api): la clienta
+   reserva en la web, la cita entra en la agenda y queda en Google Calendar
+   con el formato real del evento ("Servicio - Nombre").
+
+   Todo se mueve con transform y opacity. Las pantallas tienen alto fijo, así
+   que nada empuja el resto de la página mientras se anima.
+   ========================================================================== */
+
+.sc { --sc-out: cubic-bezier(.23, 1, .32, 1); --sc-move: cubic-bezier(.65, 0, .35, 1); }
+
+.sc-stage {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  margin-top: 8px; align-items: stretch;
+}
+@media (max-width: 980px) { .sc-stage { grid-template-columns: 1fr; max-width: 420px; margin-inline: auto; } }
+
+/* ---- Tarjeta de cada paso ---- */
+.sc-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
+  padding: 16px; display: flex; flex-direction: column; gap: 14px;
+  opacity: .5; transform: translateY(6px);
+  transition: opacity .45s var(--sc-out), transform .45s var(--sc-out), border-color .45s, box-shadow .45s;
+}
+.sc-card.is-act, .sc-card.is-done { opacity: 1; transform: none; }
+.sc-card.is-act { border-color: var(--border-strong); box-shadow: 0 22px 44px -26px rgba(25, 23, 18, .35); }
+
+.sc-h {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--text-muted);
+}
+.sc-h .sc-n {
+  width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--surface-2); border: 1px solid var(--border); color: var(--ink); font-size: 10px; letter-spacing: 0;
+  transition: background .3s, color .3s, border-color .3s;
+}
+.sc-card.is-act .sc-n, .sc-card.is-done .sc-n { background: var(--ink); color: #f6f1e7; border-color: var(--ink); }
+.sc-h time { margin-left: auto; font-variant-numeric: tabular-nums; }
+
+/* ---- Pantalla ---- */
+.sc-screen {
+  position: relative; height: 372px; border-radius: 16px; overflow: hidden;
+  background: var(--bg); border: 1px solid var(--border);
+}
+.sc-top {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 14px; border-bottom: 1px solid var(--border); background: var(--surface);
+  font-size: 13px; color: var(--ink);
+}
+.sc-top span { font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); }
+
+/* Pasos del móvil: se superponen y se cruzan con un fundido corto */
+.sc-steps { position: absolute; inset: 47px 0 0 0; }
+.sc-step {
+  position: absolute; inset: 0; padding: 16px 14px; display: flex; flex-direction: column; gap: 10px;
+  opacity: 0; transform: translateY(8px); pointer-events: none;
+  transition: opacity .28s ease, transform .38s var(--sc-out);
+}
+.sc[data-step="a"] .sc-step[data-s="a"],
+.sc[data-step="b"] .sc-step[data-s="b"],
+.sc[data-step="c"] .sc-step[data-s="c"],
+.sc[data-step="d"] .sc-step[data-s="d"] { opacity: 1; transform: none; }
+
+.sc-q { margin: 0; font-size: 14px; font-weight: 600; color: var(--ink); }
+.sc-q + .sc-q, .sc-days + .sc-q { margin-top: 6px; }
+
+.sc-opt {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 11px 13px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface);
+  font-size: 13.5px; color: var(--ink);
+  transition: background .18s ease, color .18s ease, border-color .18s ease, transform .16s var(--sc-out);
+}
+.sc-opt em { font-style: normal; font-family: var(--font-mono); font-size: 11.5px; color: var(--text-muted); transition: color .18s; }
+
+.sc-days, .sc-slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; }
+.sc-chip {
+  text-align: center; padding: 9px 4px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface);
+  font-family: var(--font-mono); font-size: 12px; color: var(--ink); font-variant-numeric: tabular-nums;
+  transition: background .18s ease, color .18s ease, border-color .18s ease, transform .16s var(--sc-out);
+}
+.sc-chip.is-off { color: var(--text-faint); text-decoration: line-through; background: transparent; }
+
+.sc-opt.is-sel, .sc-chip.is-sel { background: var(--ink); color: #f6f1e7; border-color: var(--ink); }
+.sc-opt.is-sel em { color: #cfc6b4; }
+.sc-opt.is-press, .sc-chip.is-press, .sc-btn.is-press { transform: scale(.97); }
+
+.sc-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); }
+.sc-inp {
+  padding: 11px 13px; border: 1px solid var(--border-strong); border-radius: 12px; background: var(--surface);
+  font-size: 14px; color: var(--ink); min-height: 44px; display: flex; align-items: center;
+}
+.sc-caret { display: inline-block; width: 1.5px; height: 17px; background: var(--ink); margin-left: 2px; animation: sc-blink 1s steps(1) infinite; }
+@keyframes sc-blink { 50% { opacity: 0; } }
+.sc-resumen { font-size: 12.5px; color: var(--text-muted); line-height: 1.5; }
+.sc-btn {
+  margin-top: auto; padding: 12px; border-radius: 12px; background: var(--ink); color: #f6f1e7;
+  text-align: center; font-size: 14px; font-weight: 600;
+  transition: transform .16s var(--sc-out);
+}
+
+.sc-step[data-s="d"] { align-items: center; justify-content: center; text-align: center; gap: 8px; }
+.sc-check { width: 56px; height: 56px; }
+.sc-check circle { fill: var(--ok); opacity: .14; }
+.sc-check path {
+  fill: none; stroke: var(--ok-text); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round;
+  stroke-dasharray: 30; stroke-dashoffset: 30; transition: stroke-dashoffset .45s var(--sc-out) .12s;
+}
+.sc[data-step="d"] .sc-check path { stroke-dashoffset: 0; }
+.sc-ok { font-size: 16px; font-weight: 600; color: var(--ink); }
+
+/* Dedo: se mueve hasta cada objetivo y "pulsa" */
+.sc-tap {
+  position: absolute; top: 0; left: 0; width: 28px; height: 28px; border-radius: 50%;
+  background: rgba(25, 23, 18, .16); border: 1.5px solid rgba(25, 23, 18, .45);
+  opacity: 0; pointer-events: none; z-index: 5;
+  transition: transform .42s var(--sc-move), opacity .2s ease;
+}
+.sc-tap.is-on { opacity: 1; }
+.sc-tap::after {
+  content: ""; position: absolute; inset: -1.5px; border-radius: 50%; border: 1.5px solid rgba(25, 23, 18, .4);
+  opacity: 0; transform: scale(1);
+}
+.sc-tap.is-press::after { animation: sc-ripple .5s var(--sc-out); }
+@keyframes sc-ripple { from { opacity: .9; transform: scale(1); } to { opacity: 0; transform: scale(2.1); } }
+
+/* ---- Agenda ---- */
+.sc-agenda .sc-dia {
+  padding: 12px 14px; font-size: 13px; font-weight: 600; color: var(--ink);
+  border-bottom: 1px solid var(--border); background: var(--surface);
+  display: flex; justify-content: space-between;
+}
+.sc-agenda .sc-dia span + span { font-family: var(--font-mono); font-weight: 400; font-size: 11px; color: var(--text-muted); }
+.sc-fila {
+  display: grid; grid-template-columns: 52px 1fr auto; gap: 10px; align-items: center;
+  padding: 13px 14px; border-bottom: 1px solid var(--border); font-size: 13px; color: var(--ink);
+}
+.sc-fila time { font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.sc-fila small { font-family: var(--font-mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--text-faint); }
+.sc-fila.is-libre { color: var(--text-faint); }
+.sc-fila.is-nueva {
+  opacity: 0; transform: translateY(8px);
+  transition: opacity .35s ease, transform .45s var(--sc-out), background 1.4s ease .9s;
+}
+.sc-fila.is-nueva small { color: var(--terra-link); }
+.sc.has-agenda .sc-fila.is-nueva { opacity: 1; transform: none; background: var(--terra-soft); }
+.sc.has-agenda.is-calm .sc-fila.is-nueva { background: transparent; }
+
+/* ---- Google Calendar ---- */
+.sc-cal { position: absolute; inset: 47px 0 0 0; }
+.sc-hora {
+  position: absolute; left: 0; right: 0; height: 64px; border-top: 1px solid var(--border);
+  font-family: var(--font-mono); font-size: 10.5px; color: var(--text-faint); padding: 4px 0 0 12px;
+  font-variant-numeric: tabular-nums;
+}
+.sc-hora:nth-child(1) { top: 10px; } .sc-hora:nth-child(2) { top: 74px; }
+.sc-hora:nth-child(3) { top: 138px; } .sc-hora:nth-child(4) { top: 202px; } .sc-hora:nth-child(5) { top: 266px; }
+.sc-evento {
+  position: absolute; left: 58px; right: 12px; top: 107px; height: 46px;
+  border-radius: 8px; padding: 8px 10px; background: #dbe7fb; color: #1a4c9c;
+  font-size: 12.5px; line-height: 1.35; overflow: hidden;
+  opacity: 0; transform: scale(.96); transform-origin: top center;
+  transition: opacity .3s ease, transform .4s var(--sc-out);
+}
+.sc-evento.is-otro { top: 10px; height: 62px; background: var(--surface-2); color: var(--text-muted); opacity: 1; transform: none; }
+.sc-evento b { display: block; font-weight: 600; }
+.sc-evento > span { font-family: var(--font-mono); font-size: 10.5px; opacity: .8; }
+.sc.has-cal .sc-evento:not(.is-otro) { opacity: 1; transform: none; }
+
+/* ---- Pie ---- */
+.sc-pie {
+  display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; justify-content: space-between;
+  margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--border);
+}
+.sc-pie p { margin: 0; font-size: 16px; color: var(--ink); max-width: 52ch; }
+.sc-pie small { display: block; margin-top: 6px; font-size: 13px; color: var(--text-muted); }
+
+/* Fundido entre vueltas del bucle */
+.sc-stage { transition: opacity .3s ease; }
+.sc.is-reset .sc-stage { opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sc-card, .sc-step, .sc-fila.is-nueva, .sc-evento, .sc-check path, .sc-stage { transition: none; }
+  .sc-caret { animation: none; }
+  .sc-tap { display: none; }
+}
