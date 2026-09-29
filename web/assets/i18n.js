@@ -285,7 +285,40 @@ const EU = {
   tra_mb_title: "Portfolioko zortzi webguneak",
   zon_eyebrow: "Non lan egiten dudan",
   zon_h2: "Web diseinua Gipuzkoa osoan",
-  zon_p: "Estudioa Tolosan dago, baina Tolosaldea, Goierri, Buruntzaldea eta Donostialdeko negozioekin lan egiten dut."
+  zon_p: "Estudioa Tolosan dago, baina Tolosaldea, Goierri, Buruntzaldea eta Donostialdeko negozioekin lan egiten dut.",
+
+  /* "Así funciona": la reserva animada de la portada */
+  sc_eyebrow: "Horrela funtzionatzen du, benetan",
+  sc_h2: "21:47 dira. Afaltzen ari zara. Zure webgunea hitzordu bat ixten ari da.",
+  sc_p: "Hau ile-apaindegiko erakusketa-webgunea da, nik instalatzen dudan erreserba-sistemarekin: gaur funtzionatzen ari den bera. Begiratu zer gertatzen den inork telefonoa hartu gabe.",
+  sc_sr: "Adibide animatua: bezero batek mozketa aukeratzen du, ostiralean 17:30ean, bere izena idatzi eta baieztatu egiten du; hitzordua negozioaren agendan eta Google Calendarren agertzen da.",
+  sc_c1: "Zure webgunean",
+  sc_c2: "Zure agendan",
+  sc_c3: "Zure Google Calendarren",
+  sc_reservar: "Hitzordua hartu",
+  sc_q1: "Zer egingo dizugu?",
+  sc_corte: "Mozketa",
+  sc_color: "Kolorea",
+  sc_barba: "Mozketa + bizarra",
+  sc_desde25: "25€-tik",
+  sc_desde55: "55€-tik",
+  sc_desde35: "35€-tik",
+  sc_q2: "Zein egunetan?",
+  sc_jue: "Og",
+  sc_vie: "Or",
+  sc_sab: "La",
+  sc_q3: "Zer ordutan?",
+  sc_nombre: "Zure izena",
+  sc_resumen: "Mozketa · ostirala · 17:30",
+  sc_confirmar: "Hitzordua baieztatu",
+  sc_ok: "Hitzordua baieztatuta",
+  sc_viernes: "Ostirala",
+  sc_nueva: "Berria · web",
+  sc_libre: "Hutsik",
+  sc_otro: "Tindagaien eskaera",
+  sc_pie: "Inork ez du telefonoa hartu, ezta WhatsApp bati erantzun ere. Hitzordua behar den tokian dago jada.",
+  sc_pie_nota: "Ile-apaindegiko erakusketa-webgunea da. Erreserba-sistema benetakoa da eta edozein webguneri gehitzen zaio, aurrekontu bidez.",
+  sc_probar: "Probatu zeuk →"
 };
 
 (function () {
