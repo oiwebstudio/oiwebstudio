@@ -1,0 +1,11 @@
+// Publicación de errotatxo.com (Cloudflare Workers con archivos estáticos).
+//   npx wrangler deploy -c clientes/errotatxo.wrangler.jsonc
+{
+  "name": "errotatxo",
+  "compatibility_date": "2026-09-30",
+  "assets": {
+    "directory": "./errotatxo",
+    "html_handling": "force-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}
