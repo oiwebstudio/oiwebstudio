@@ -2,6 +2,10 @@
 //   npx wrangler deploy -c clientes/errotatxo.wrangler.jsonc
 {
   "name": "errotatxo",
+  "routes": [
+    { "pattern": "errotatxo.com", "custom_domain": true },
+    { "pattern": "www.errotatxo.com", "custom_domain": true }
+  ],
   "compatibility_date": "2026-09-30",
   "assets": {
     "directory": "./errotatxo",
