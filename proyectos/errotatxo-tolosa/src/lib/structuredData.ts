@@ -1,4 +1,4 @@
-import { socialLinks } from "@/lib/data";
+import { businessInfo, socialLinks } from "@/lib/data";
 import type { FaqItem } from "@/lib/faq";
 import { abs } from "@/lib/site";
 import { directionsUrl, storePath, stores, type Store } from "@/lib/stores";
@@ -47,7 +47,9 @@ export function organizationNode(): Node {
     "@type": "Organization",
     "@id": ORG_ID,
     name: "Errotatxo",
-    legalName: "Okindegia Errotatxo, S.L.",
+    legalName: businessInfo.legalName,
+    taxID: businessInfo.cif,
+    email: businessInfo.email,
     // Rótulo de las tiendas y cómo se busca en euskera y castellano.
     alternateName: ["Errotatxo Okindegia", "Errotatxo Gozotegia Okindegia", "Panadería Errotatxo"],
     // Fecha de constitución del registro mercantil.

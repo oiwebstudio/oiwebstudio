@@ -105,7 +105,7 @@ export type Dictionary = {
     call: string;
     write: { title: string; text: string; cta: string };
   };
-  footer: { tagline: string; horario: string; navegacion: string; contacto: string; rights: string };
+  footer: { tagline: string; horario: string; navegacion: string; contacto: string; rights: string; legal: string };
   common: { theme: string; whatsapp: string; backToTop: string; close: string; prev: string; next: string; view: string };
   pages: {
     historia: PageMeta;
@@ -387,6 +387,7 @@ const es: Dictionary = {
     navegacion: "Navegación",
     contacto: "Contacto",
     rights: "Todos los derechos reservados.",
+    legal: "Aviso legal y privacidad",
   },
   common: {
     theme: "Cambiar modo de color",
@@ -727,6 +728,7 @@ const eu: Dictionary = {
     navegacion: "Nabigazioa",
     contacto: "Kontaktua",
     rights: "Eskubide guztiak erreserbatuta.",
+    legal: "Lege-oharra eta pribatutasuna",
   },
   common: {
     theme: "Kolore-modua aldatzea",

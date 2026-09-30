@@ -1,6 +1,6 @@
 "use client";
 
-import { Facebook, Instagram, MapPin, Phone } from "lucide-react";
+import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 import Logo from "@/components/Logo";
 import { businessInfo, socialLinks } from "@/lib/data";
@@ -70,6 +70,12 @@ export default function Footer() {
               <Phone size={16} className="shrink-0" />
               {businessInfo.phone}
             </li>
+            <li className="flex items-center gap-2">
+              <Mail size={16} className="shrink-0" />
+              <a href={`mailto:${businessInfo.email}`} className="break-all transition-colors hover:text-[#F5EFE4]">
+                {businessInfo.email}
+              </a>
+            </li>
           </ul>
           <div className="mt-6 flex gap-4">
             {socialLinks.map((s) => {
@@ -94,7 +100,10 @@ export default function Footer() {
 
       <div className="border-t border-[#F5EFE4]/10 px-6 py-6 md:px-12">
         <p className="text-center text-xs text-[#F5EFE4]/35">
-          © {new Date().getFullYear()} Errotatxo Tolosa. {t.footer.rights}
+          © {new Date().getFullYear()} Errotatxo Tolosa. {t.footer.rights}{" "}
+          <Link href="/legal/" className="underline underline-offset-4 transition-colors hover:text-[#F5EFE4]">
+            {t.footer.legal}
+          </Link>
         </p>
       </div>
     </footer>
