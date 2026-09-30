@@ -52,8 +52,6 @@ export default function Tiendas() {
                   />
                 </div>
 
-                <span className="mb-2 block text-xs text-madera">0{i + 1}</span>
-
                 <div className="mb-3 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
                   <h3 className="display flex items-baseline gap-2.5 text-xl transition-colors duration-500 group-hover:text-madera md:text-2xl">
                     {/* Enlace a la página propia de la tienda: el texto del enlace

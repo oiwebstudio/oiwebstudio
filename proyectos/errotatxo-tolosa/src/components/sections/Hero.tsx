@@ -1,43 +1,37 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown } from "lucide-react";
 import Link from "next/link";
-import { useLenis } from "@/components/motion/LenisProvider";
 import Magnetic from "@/components/motion/Magnetic";
 import Parallax from "@/components/motion/Parallax";
 import RevealText from "@/components/motion/RevealText";
 import Particles from "@/components/Particles";
-import SmartGreeting from "@/components/SmartGreeting";
 import imageLoader from "@/lib/imageLoader";
 import { useLocale } from "@/lib/i18n";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 export default function Hero() {
-  const lenis = useLenis();
-  const { t, locale } = useLocale();
+  const { t } = useLocale();
   const hero = t.hero;
-
-  const scrollTo = (selector: string) => {
-    const el = document.querySelector<HTMLElement>(selector);
-    if (!el) return;
-    if (lenis) lenis.scrollTo(el);
-    else el.scrollIntoView({ behavior: "smooth" });
-  };
 
   return (
     <section
       id="inicio"
-      className="relative isolate flex min-h-[92svh] items-end overflow-hidden rounded-b-[2rem] pb-24 pt-32 md:min-h-[100svh] md:rounded-none md:pb-28 md:pt-36"
+      className="relative isolate flex min-h-[92svh] items-end overflow-hidden rounded-b-[2rem] pb-28 pt-32 md:min-h-[100svh] md:rounded-none md:pb-40 md:pt-36"
     >
-      {/* fondo: interior del obrador con parallax */}
+      {/* Fondo: la cafetería de San Frantzisko, con parallax y un acercamiento
+          lento al entrar. Es una <img> de verdad (no un fondo CSS) para que el
+          navegador la pida la primera: es lo más grande de la página. */}
       <Parallax speed={0.15} className="absolute inset-0 z-0">
-        <div
-          className="h-[120%] w-full bg-cover bg-center"
-          style={{ backgroundImage: `url(${imageLoader({ src: "/images/hero-interior.webp" })})` }}
-          role="img"
-          aria-label="Interior del obrador de Errotatxo"
+        <motion.img
+          src={imageLoader({ src: "/images/hero-interior.webp" })}
+          alt="Cafetería y mostrador de Errotatxo en San Frantzisko, Tolosa"
+          fetchPriority="high"
+          initial={{ scale: 1.14 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 2.6, ease: EASE }}
+          className="h-[120%] w-full object-cover object-center motion-reduce:!transform-none"
         />
       </Parallax>
       <div className="absolute inset-0 z-0 bg-gradient-to-t from-[#150D07] via-[#150D07]/60 to-[#150D07]/25" />
@@ -74,7 +68,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.05, duration: 0.9, ease: EASE }}
-            className="mt-9"
+            className="mt-9 flex flex-wrap items-center gap-3"
           >
             <Magnetic>
               <Link
@@ -85,32 +79,16 @@ export default function Hero() {
                 {hero.cta}
               </Link>
             </Magnetic>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.5, duration: 1 }}
-            className="mt-6"
-          >
-            <SmartGreeting locale={locale} />
+            <Link
+              href="/tiendas/"
+              data-cursor="hover"
+              className="inline-block rounded-full border border-[#F5EFE4]/35 px-7 py-3.5 text-xs font-medium uppercase tracking-widest2 text-[#F5EFE4] backdrop-blur-sm transition-colors duration-300 hover:border-[#F5EFE4] hover:bg-[#F5EFE4]/10"
+            >
+              {hero.cta2}
+            </Link>
           </motion.div>
         </div>
       </div>
-
-      <motion.button
-        type="button"
-        aria-label={hero.location}
-        onClick={() => scrollTo("#explora")}
-        data-cursor="hover"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.4, duration: 1 }}
-        className="absolute bottom-[calc(0.5rem+env(safe-area-inset-bottom))] left-1/2 flex min-h-[44px] -translate-x-1/2 items-center gap-2 px-4 text-[10px] uppercase tracking-widest2 text-[#F5EFE4]/60 transition-colors hover:text-[#F5EFE4]"
-      >
-        <ArrowDown size={12} className="animate-bounce" />
-        {hero.location}
-      </motion.button>
     </section>
   );
 }

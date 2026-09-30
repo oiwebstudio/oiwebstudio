@@ -33,7 +33,8 @@ export type Dictionary = {
     open: string;
     chips: { all: string; pan: string; dulce: string; cafe: string; tiendas: string };
   };
-  comarca: { eyebrow: string; title: string[]; text: string; storesLabel: string };
+  comarca: { eyebrow: string; title: string[]; text: string; storesLabel: string; stats: { value: string; label: string }[] };
+  hoy: { title: string; today: string; call: string; more: string; closedToday: string };
   faq: { eyebrow: string; title: string[] };
   storePage: { back: string; hours: string; address: string; phone: string; others: string };
   mapa: {
@@ -156,11 +157,13 @@ const es: Dictionary = {
   },
   marquee: {
     items: [
-      "Pan artesanal",
-      "Tradición vasca",
-      "Producto local",
-      "Tolosa y Anoeta",
-      "Elaboración diaria",
+      "Barra de avena",
+      "Barras de sésamo",
+      "Palmeras",
+      "Trufas",
+      "Bombones",
+      "Pastas de chocolate",
+      "Café en San Frantzisko",
     ],
   },
   tiendas: {
@@ -212,6 +215,18 @@ const es: Dictionary = {
     title: ["Panadería, pastelería", "y cafetería en Tolosaldea"],
     text: "Errotatxo es una panadería y pastelería —okindegia y gozotegia— de Tolosa, con tres tiendas en la comarca: dos en Tolosa y una en Anoeta. En la de San Frantzisko, además, puedes sentarte a tomar un café. Desde Ibarra, Irura, Alegia o Villabona, la más cercana te queda a pocos minutos.",
     storesLabel: "Nuestras tiendas",
+    stats: [
+      { value: "3", label: "tiendas en Tolosaldea" },
+      { value: "1996", label: "el año en que empezamos" },
+      { value: "7", label: "días a la semana abiertos" },
+    ],
+  },
+  hoy: {
+    title: "Hoy en nuestras tiendas",
+    today: "Hoy",
+    call: "Llamar",
+    more: "Ver tienda",
+    closedToday: "Hoy cerrada",
   },
   faq: {
     eyebrow: "Preguntas frecuentes",
@@ -449,19 +464,19 @@ const es: Dictionary = {
     cards: [
       {
         href: "/historia",
-        label: "01",
+        label: "Desde 1996",
         title: "Nuestra historia",
         text: "Desde 1996 en Andia Kalea: de dónde viene el nombre y de dónde el oficio.",
       },
       {
         href: "/productos",
-        label: "02",
+        label: "Pan y dulce",
         title: "Productos",
         text: "Pan tradicional, bollería, pan de molde y pastelería del día.",
       },
       {
         href: "/tiendas",
-        label: "03",
+        label: "Tolosa y Anoeta",
         title: "Tiendas",
         text: "Tolosa y Anoeta: horarios, teléfonos y cómo llegar.",
       },
@@ -498,11 +513,13 @@ const eu: Dictionary = {
   },
   marquee: {
     items: [
-      "Artisau-ogia",
-      "Euskal tradizioa",
-      "Bertako produktua",
-      "Tolosa eta Anoeta",
-      "Eguneroko elaborazioa",
+      "Olo-barra",
+      "Sesamo-barrak",
+      "Palmerak",
+      "Trufak",
+      "Bonboiak",
+      "Txokolatezko pastak",
+      "Kafea San Frantziskon",
     ],
   },
   tiendas: {
@@ -554,6 +571,18 @@ const eu: Dictionary = {
     title: ["Okindegia, gozotegia", "eta kafetegia Tolosaldean"],
     text: "Errotatxo Tolosako okindegia eta gozotegia da, eta hiru denda ditu eskualdean: bi Tolosan eta bat Anoetan. San Frantziskokoan, gainera, eseri eta kafe bat har dezakezu. Ibarratik, Irauratik, Alegiatik edo Villabonatik, hurbilena minutu gutxira duzu.",
     storesLabel: "Gure dendak",
+    stats: [
+      { value: "3", label: "denda Tolosaldean" },
+      { value: "1996", label: "hasi ginen urtea" },
+      { value: "7", label: "egun astean irekita" },
+    ],
+  },
+  hoy: {
+    title: "Gaur gure dendetan",
+    today: "Gaur",
+    call: "Deitu",
+    more: "Ikusi denda",
+    closedToday: "Gaur itxita",
   },
   faq: {
     eyebrow: "Ohiko galderak",
@@ -790,19 +819,19 @@ const eu: Dictionary = {
     cards: [
       {
         href: "/historia",
-        label: "01",
+        label: "1996tik",
         title: "Gure historia",
         text: "1996tik Andia Kalean: nondik datorren izena eta nondik ofizioa.",
       },
       {
         href: "/productos",
-        label: "02",
+        label: "Ogia eta gozoa",
         title: "Produktuak",
         text: "Ogi tradizionala, opilgintza, moldeko ogia eta eguneko pastelgintza.",
       },
       {
         href: "/tiendas",
-        label: "03",
+        label: "Tolosa eta Anoeta",
         title: "Dendak",
         text: "Tolosa eta Anoeta: ordutegiak, telefonoak eta nola iritsi.",
       },
