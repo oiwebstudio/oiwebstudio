@@ -103,8 +103,8 @@
 .pro-bloque {
   position: absolute; border: 1.5px dashed #b9ae97; border-radius: 4px; background: rgba(255, 253, 249, .55);
   display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-mono); font-size: clamp(8px, .9vw, 10.5px); letter-spacing: .08em; text-transform: uppercase;
-  color: #8a7f68; overflow: hidden;
+  font-family: var(--font-mono); font-size: clamp(7px, .62vw, 9px); letter-spacing: .06em; text-transform: uppercase;
+  color: #8a7f68; overflow: hidden; line-height: 1; white-space: nowrap; padding: 0 4px;
   opacity: 0; transform: scale(.96);
   transition: opacity .3s ease, transform .45s var(--pro-out);
 }
@@ -168,10 +168,20 @@
 /* ---- Móvil y tablet: la pantalla arriba, fija, y los pasos pasan por debajo ---- */
 @media (max-width: 980px) {
   .pro-grid { grid-template-columns: 1fr; grid-template-areas: "cabeza" "vista" "pasos"; }
-  .pro-vista { top: 12px; z-index: 2; margin: 22px 0 8px; padding-bottom: 18px;
+  .pro-vista { top: 0; z-index: 2; margin: 22px 0 8px; padding: 12px 0 18px;
     background: linear-gradient(var(--bg) 85%, transparent); }
   .pro-head { max-width: none; }
   .pro-paso { min-height: 70vh; justify-content: flex-end; padding-bottom: 12vh; }
+  /* En móvil el texto va abajo del todo del paso: el punto se ancla a su
+     número en vez de al centro del bloque, o quedaba lejos del texto. */
+  .pro-paso::before { display: none; }
+  .pro-num { position: relative; display: block; }
+  .pro-num::before {
+    content: ""; position: absolute; left: -26px; top: 50%; width: 12px; height: 12px; margin-top: -6px;
+    border-radius: 50%; background: var(--bg); border: 2px solid var(--border-strong); z-index: 1;
+    transition: background .3s, border-color .3s;
+  }
+  .pro-paso.is-act .pro-num::before, .pro-paso.is-hecho .pro-num::before { background: var(--terra); border-color: var(--terra); }
   .pro-movil { width: 26%; right: 2%; bottom: 4%; }
   .pro-cambio { left: 3%; top: 8%; }
   .pro-bloque em { display: none; }
