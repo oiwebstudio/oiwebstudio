@@ -710,30 +710,6 @@ html:not(.js) .carta .grupo .plato{opacity:1;transform:none;}
 <script>document.documentElement.className+=" js";</script>
 </head>
 <body>
-<div class="carga" id="carga" aria-hidden="true">
-  <div class="carga__halo"></div>
-  <p class="carga__marca">Alex <em>Jatetxea</em></p>
-  <div class="carga__linea"><i></i></div>
-  <p class="carga__pie">Eibar · Ego-Gain 10</p>
-</div>
-<script>
-(function(){
-  var c = document.getElementById("carga");
-  var visto = false;
-  try { visto = sessionStorage.getItem("alex-visto") === "1"; } catch(e){}
-  if(visto || matchMedia("(prefers-reduced-motion: reduce)").matches){ c.remove(); return; }
-  document.documentElement.style.overflow = "hidden";
-  function fuera(){
-    if(!c.isConnected) return;
-    try { sessionStorage.setItem("alex-visto","1"); } catch(e){}
-    c.classList.add("fuera");
-    document.documentElement.style.overflow = "";
-    setTimeout(function(){ c.remove(); }, 1100);
-  }
-  setTimeout(fuera, 2200);
-  setTimeout(fuera, 4000);
-})();
-</script>
 
 <a class="skip" href="#main">Saltar al contenido</a>
 

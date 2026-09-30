@@ -515,28 +515,6 @@ html:not(.js) .hero__foto{clip-path:none;}
 <script>document.documentElement.className+=" js";</script>
 </head>
 <body>
-<div class="carga" id="carga" aria-hidden="true">
-  <div class="carga__halo"></div>
-  <svg class="carga__rayo" viewBox="0 0 24 24" width="54" height="54"><path d="M13.5 2 4 14h7l-1.5 8L20 10h-7z" fill="#FACC15"/></svg>
-  <p class="carga__marca">CVS <em>Elektrikoak</em></p>
-  <div class="carga__linea"><i></i></div>
-  <p class="carga__pie">Beasain · Electricista autorizado</p>
-</div>
-<script>
-(function(){
-  var c = document.getElementById("carga"), visto = false;
-  try { visto = sessionStorage.getItem("cvs-visto") === "1"; } catch(e){}
-  if(visto || matchMedia("(prefers-reduced-motion: reduce)").matches){ c.remove(); return; }
-  document.documentElement.style.overflow = "hidden";
-  function fuera(){
-    if(!c.isConnected) return;
-    try { sessionStorage.setItem("cvs-visto","1"); } catch(e){}
-    c.classList.add("fuera"); document.documentElement.style.overflow = "";
-    setTimeout(function(){ c.remove(); }, 1100);
-  }
-  setTimeout(fuera, 2000); setTimeout(fuera, 3800);
-})();
-</script>
 
 <a class="skip" href="#main">Saltar al contenido</a>
 
