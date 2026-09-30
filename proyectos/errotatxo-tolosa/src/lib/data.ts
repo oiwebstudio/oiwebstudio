@@ -18,8 +18,11 @@ export const galleryImages = [
 
 export const businessInfo = {
   name: "Errotatxo Tolosa",
+  legalName: "Okindegia Errotatxo, S.L.",
+  cif: "B20543005",
   address: "Andia Kalea, 3, 20400 Tolosa, Gipuzkoa",
   phone: "943 65 54 92",
+  email: "errotatxoberria@gmail.com",
 };
 
 // Solo perfiles localizados. Instagram no se enlaza hasta tener la dirección
