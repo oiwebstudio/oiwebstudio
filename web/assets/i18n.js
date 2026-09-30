@@ -156,6 +156,17 @@ const EU = {
   p3_l4: "Testu/argazki aldaketa txikiak",
   p3_l5: "Erorketen monitorizazioa",
   p3_l6: "Domeinua eta ostatatzea barne",
+  p4_name: "Online Denda",
+  p4_desc: "Internet bidez saltzeko: zure weba katalogoarekin, saskiarekin eta txartel bidezko ordainketarekin.",
+  p4_btn: "Online denda eskatu",
+  p4_l1: "Negozio Weba planaren guztia",
+  p4_l2: "50 produktu arte kargatuta",
+  p4_l3: "Txartel eta Bizum bidezko ordainketa",
+  p4_l4: "Eskaera bakoitzaren abisua posta bidez",
+  p4_l5: "Zuk zeuk gehitzen dituzu produktuak eta stocka",
+  p4_l6: "Aukerako mantentzea: 35 €/hilean",
+  pf7_q: "Eta internet bidez saldu nahi badut?",
+  pf7_a: "Horretarako dago Online Denda: 790 €, 50 produktu arte kargatuta, txartel eta Bizum bidezko ordainketa eta eskaera bakoitzaren abisua. Produktu gehiago badituzu, zuk igotzen dituzu zure paneletik edo nik kargatzen ditut, 1 € bakoitza. Kobrantza-komisioak (salmenta bakoitzeko % 1,5 inguru) ordainketa-pasabideak kobratzen ditu zuzenean. Denda baten mantentzea aukerakoa da eta 35 €/hilean balio du, web arrunt batek baino lan gehiago ematen duelako.",
 
   /* CTA index */
   cta_index_h: "Prest zure mailako webgune bat izateko?",

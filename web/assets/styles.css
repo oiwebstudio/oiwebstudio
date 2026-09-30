@@ -577,10 +577,19 @@ a.work:hover .work__link { gap: 11px; color: var(--accent-hover); }
   grid-template-columns: 1fr;
   perspective: 1200px;
 }
-@media (min-width: 900px) {
+@media (min-width: 700px) {
   .pricing {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: stretch;
+  }
+}
+@media (min-width: 1180px) {
+  .pricing {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: stretch;
+  }
+  .pricing .price {
+    padding: 34px 26px;
   }
 }
 
@@ -1082,7 +1091,8 @@ body::after {
 
 /* Teaser de precios del home */
 .pre-mini{display:grid;gap:16px;grid-template-columns:1fr;max-width:900px;margin:0 auto;}
-@media(min-width:760px){ .pre-mini{grid-template-columns:repeat(3,1fr);} }
+@media(min-width:560px){ .pre-mini{grid-template-columns:repeat(2,1fr);} }
+@media(min-width:960px){ .pre-mini{grid-template-columns:repeat(4,1fr);max-width:1080px;} }
 .pm{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:30px 24px 26px;text-align:center;transition:transform .25s var(--ease),box-shadow .25s,border-color .25s;}
 @media (hover: hover) and (pointer: fine) { .pm:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--border-strong);} }
 .pm__name{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);}
