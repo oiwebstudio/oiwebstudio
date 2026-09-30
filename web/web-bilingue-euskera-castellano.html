@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="theme-color" content="#f6f3ea"/>
+<meta http-equiv="Content-Security-Policy" content="base-uri 'self'; form-action 'self' mailto: https://wa.me"/>
+<title>Web en Euskera y Castellano: Cómo Hacerla Bien | OI Studio</title>
+<meta name="description" content="Cómo montar una web bilingüe en euskera y castellano para un negocio de Gipuzkoa: botón de idioma o páginas propias, hreflang, qué traducir primero y errores típicos."/>
+<meta name="keywords" content="web en euskera, web bilingüe euskera castellano, página web euskera, traducir web al euskera, hreflang euskera, diseño web Gipuzkoa"/>
+<meta name="robots" content="index, follow"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="OI Studio"/>
+<meta property="og:url" content="https://oiwebstudio.com/web-bilingue-euskera-castellano.html"/>
+<meta property="og:title" content="Web en Euskera y Castellano: Cómo Hacerla Bien | OI Studio"/>
+<meta property="og:description" content="Un botón que traduce no basta: Google tiene que ver las dos versiones. Así se hace una web bilingüe que funciona."/>
+<meta property="og:image" content="https://oiwebstudio.com/assets/flor-desk.jpg"/>
+<meta property="og:locale" content="es_ES"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://oiwebstudio.com/web-bilingue-euskera-castellano.html"/>
+<link rel="icon" href="/favicon.ico" sizes="48x48"/>
+<link rel="icon" href="/favicon-96.png" type="image/png" sizes="96x96"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link rel="manifest" href="/site.webmanifest"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap" rel="stylesheet"/></noscript>
+<link rel="stylesheet" href="assets/styles.css?v=18"/>
+<script>if(location.protocol==='http:'&&/(^|\.)oiwebstudio\.com$/.test(location.hostname))location.replace('https://'+location.host+location.pathname+location.search+location.hash);document.documentElement.classList.add('js');</script>
+<style>
+  .art-hero{padding:150px 0 30px;max-width:760px;margin:0 auto;}
+  .art-hero .crumbs{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-faint);}
+  .art-hero .crumbs a{color:inherit;text-decoration:none;}
+  .art-hero .crumbs a:hover{color:var(--terra-link);}
+  .art-hero h1{font-size:clamp(34px,5.4vw,54px);line-height:1.08;margin-top:18px;letter-spacing:-.02em;}
+  .art-hero h1 em{font-family:"Fraunces",serif;font-style:italic;font-weight:500;color:var(--terra-link);}
+  .art-hero .lede{font-size:18.5px;color:var(--text-muted);margin-top:18px;max-width:58ch;line-height:1.65;}
+  .art-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;font-family:var(--font-mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-faint);}
+  .art-meta span{display:inline-flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-pill);padding:8px 14px;}
+  .art{max-width:760px;margin:0 auto;padding:26px 0 40px;}
+  .art h2{font-size:clamp(25px,3.4vw,33px);letter-spacing:-.015em;margin:54px 0 16px;line-height:1.15;}
+  .art h3{font-size:19px;margin:32px 0 10px;color:var(--ink);}
+  .art p{color:var(--text-muted);line-height:1.75;margin:0 0 16px;font-size:16.5px;}
+  .art p strong{color:var(--ink);}
+  .art ul,.art ol{margin:0 0 18px;padding-left:22px;color:var(--text-muted);line-height:1.75;font-size:16.5px;}
+  .art li{margin-bottom:8px;}
+  .art li strong{color:var(--ink);}
+  .art a:not(.btn){color:var(--terra-link);text-decoration:underline;text-underline-offset:3px;}
+  .art figure{margin:28px 0;}
+  .art figure img{width:100%;display:block;}
+  .art figcaption{font-size:13px;color:var(--text-faint);margin-top:12px;text-align:center;}
+  .browser{border:1px solid var(--border-strong);border-radius:var(--r-md);overflow:hidden;background:var(--surface);box-shadow:0 18px 44px -22px rgba(25,23,18,.28);}
+  .browser__bar{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--surface-2);border-bottom:1px solid var(--border);}
+  .browser__dots{display:flex;gap:6px;}
+  .browser__dots i{width:10px;height:10px;border-radius:50%;background:var(--border-strong);}
+  .browser__url{flex:1;text-align:center;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;color:var(--text-faint);background:var(--bg,#f6f3ea);border:1px solid var(--border);border-radius:var(--r-pill);padding:5px 14px;max-width:280px;margin:0 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .tbl-wrap{overflow-x:auto;margin:26px 0;}
+  .tbl{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);overflow:hidden;font-size:15px;min-width:520px;}
+  .tbl th{font-family:var(--font-mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;text-align:left;color:var(--text-faint);padding:14px 16px;border-bottom:1px solid var(--border-strong);background:var(--surface-2);}
+  .tbl td{padding:13px 16px;border-bottom:1px solid var(--border);color:var(--text-muted);vertical-align:top;}
+  .tbl tr:last-child td{border-bottom:none;}
+  .tbl td:first-child{color:var(--ink);font-weight:600;}
+  .tbl .si{color:var(--ok);font-weight:700;}
+  .tbl .no{color:#c25b4a;font-weight:700;}
+  .dev-tip{background:var(--surface);border:1px solid var(--border-strong);border-left:4px solid var(--terra);border-radius:var(--r-md);padding:22px 24px;margin:30px 0;}
+  .dev-tip .who{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+  .dev-tip .who img{width:38px;height:38px;border-radius:50%;}
+  .dev-tip .who b{font-size:14px;color:var(--ink);display:block;}
+  .dev-tip .who small{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-faint);}
+  .dev-tip p{margin:0;font-size:15.5px;font-style:italic;}
+  .cta-band{background:var(--ink);color:#fff;border-radius:var(--r-md);padding:34px 32px;margin:40px 0;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;}
+  .cta-band h3{margin:0 0 6px;font-size:21px;color:#fff;}
+  .cta-band p{margin:0;color:#c9c2b2;font-size:15px;max-width:44ch;}
+  .cta-band .btn{white-space:nowrap;}
+  .check{list-style:none;padding:0;margin:22px 0;display:grid;gap:10px;}
+  .check li{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:14px 18px 14px 44px;position:relative;margin:0;color:var(--text-muted);font-size:15.5px;}
+  .check li::before{content:"✓";position:absolute;left:18px;top:13px;color:var(--ok);font-weight:700;}
+  .faq-pre{display:grid;gap:12px;margin-top:22px;}
+  .faq-pre details{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:4px 22px;}
+  .faq-pre details[open]{border-color:var(--border-strong);}
+  .faq-pre summary{cursor:pointer;padding:16px 0;font-weight:600;color:var(--ink);list-style:none;position:relative;padding-right:28px;}
+  .faq-pre summary::-webkit-details-marker{display:none;}
+  .faq-pre summary::after{content:"+";position:absolute;right:0;top:12px;font-size:22px;font-weight:400;color:var(--terra-link);transition:transform .25s;}
+  .faq-pre details[open] summary::after{transform:rotate(45deg);}
+  .faq-pre p{padding:0 0 18px;font-size:15px;margin:0;}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Web en euskera y castellano: cómo hacerla bien para clientes y para Google",
+      "description": "Cómo montar una web bilingüe en euskera y castellano para un negocio de Gipuzkoa: botón de idioma o páginas propias, hreflang, qué traducir primero y errores típicos.",
+      "image": "https://oiwebstudio.com/assets/flor-desk.jpg",
+      "author": {
+        "@type": "Organization",
+        "name": "OI Studio",
+        "url": "https://oiwebstudio.com/sobre-mi.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "OI Studio",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://oiwebstudio.com/icon-512.png"
+        }
+      },
+      "datePublished": "2026-09-30",
+      "dateModified": "2026-09-30",
+      "mainEntityOfPage": "https://oiwebstudio.com/web-bilingue-euskera-castellano.html",
+      "inLanguage": "es"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://oiwebstudio.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Artículos",
+          "item": "https://oiwebstudio.com/articulos.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Web en euskera",
+          "item": "https://oiwebstudio.com/web-bilingue-euskera-castellano.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Google indexa las webs en euskera?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Google reconoce el euskera y muestra resultados en euskera a quien busca en euskera. Lo que no indexa es una traducción que se hace con un botón sobre la misma dirección: para eso cada idioma necesita su propia página."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Es mejor un botón de idioma o páginas separadas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Páginas separadas, cada una con su dirección (por ejemplo /eu/), conectadas con la etiqueta hreflang. El botón puede seguir existiendo, pero debe llevar de una página a la otra."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Puedo usar el traductor automático para el euskera?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Como borrador, sí; publicarlo sin revisar, no. Los traductores automáticos cometen errores que un euskaldun detecta a la primera, y el título de Google hay que escribirlo pensando en cómo se busca en euskera, no traducirlo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué pasa si solo traduzco algunas páginas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Es perfectamente válido. Traduce primero la portada, el horario y el contacto, y deja el resto en castellano. Lo que no conviene es tener páginas en euskera con la mitad del texto en castellano."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<div class="nav-wrap">
+<nav class="nav">
+<a href="index.html" class="nav__logo"><img src="assets/logo-nav-black.png" alt="OI Studio" class="nav__logo-img" width="320" height="86"/></a>
+<ul class="nav__links">
+<li><a href="index.html" data-t="nav_inicio">Inicio</a></li>
+<li><a href="sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
+<li><a href="trabajos.html" data-t="nav_trabajos">Trabajos</a></li>
+<li><a href="precios.html" data-t="nav_precios">Precios</a></li>
+<li><a href="zonas.html" data-t="nav_zonas">Zonas</a></li>
+<li><a href="chatbot-reservas.html" data-t="nav_chatbot">Chatbot</a></li>
+<li><a href="articulos.html" data-t="nav_articulos">Artículos</a></li>
+</ul>
+<div class="nav__right">
+<a href="tel:+34680956755" class="nav__phone" aria-label="Llamar al 680 95 67 55">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+<span>680 95 67 55</span>
+</a>
+<div class="lang-switch" role="group" aria-label="Idioma / Hizkuntza">
+<button type="button" data-lang="es">ES</button>
+<button type="button" data-lang="eu">EU</button>
+</div>
+<a href="contacto.html" class="btn btn--accent nav__cta" data-t="btn_presupuesto">Solicitar presupuesto</a>
+<button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+</button>
+</div>
+</nav>
+</div>
+<div class="mobile-menu">
+<ul>
+<li><a href="index.html" data-t="nav_inicio">Inicio</a></li>
+<li><a href="sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
+<li><a href="trabajos.html" data-t="nav_trabajos">Trabajos</a></li>
+<li><a href="precios.html" data-t="nav_precios">Precios</a></li>
+<li><a href="zonas.html" data-t="nav_zonas">Zonas</a></li>
+<li><a href="chatbot-reservas.html" data-t="nav_chatbot">Chatbot</a></li>
+<li><a href="articulos.html" data-t="nav_articulos">Artículos</a></li>
+<li><a href="contacto.html" data-t="nav_contacto">Contacto</a></li>
+</ul>
+</div>
+
+<div class="container">
+<header class="art-hero">
+<p class="crumbs"><a href="index.html">Inicio</a> / <a href="articulos.html">Artículos</a> / Web en euskera</p>
+<h1>Web en euskera y castellano: <em>cómo hacerla bien</em></h1>
+<p class="lede">En Tolosaldea, y en buena parte de Gipuzkoa, mucha gente vive en euskera. Tener la web en los dos idiomas no es un detalle: es hablarle a tu cliente en su idioma. Pero hay una forma de hacerlo que Google ve y otra que Google ignora por completo.</p>
+<div class="art-meta">
+<span>Actualizado · Septiembre 2026</span>
+<span>Lectura · 7 min</span>
+<span>Por OI Studio, Tolosa</span>
+</div>
+</header>
+
+<article class="art">
+<h2 id="por-que">Por qué merece la pena</h2>
+<p>La razón obvia es el cliente: quien busca en euskera y encuentra una web en euskera se siente en casa desde la primera línea. La menos obvia es Google: <strong>las búsquedas en euskera tienen mucha menos competencia</strong>. Para "web diseinua Donostia" o "okindegia Tolosa" compiten muchas menos páginas que para sus equivalentes en castellano, así que una web bien hecha en euskera puede aparecer arriba con mucho menos esfuerzo.</p>
+<p>Y hay un tercer motivo, más práctico: si trabajas con ayuntamientos, colegios, asociaciones o clientes que funcionan en euskera, una web solo en castellano da una imagen de negocio de fuera aunque lleves treinta años en el pueblo.</p>
+
+<h2 id="dos-formas">Las dos formas de tener una web en dos idiomas</h2>
+<div class="tbl-wrap">
+<table class="tbl">
+<thead>
+<tr><th>Método</th><th>Cómo funciona</th><th>¿Lo ve Google?</th></tr>
+</thead>
+<tbody>
+<tr><td>Botón que traduce</td><td>Una sola dirección; al pulsar EU, un script cambia los textos</td><td><span class="no">No</span> — Google solo indexa el idioma que carga primero</td></tr>
+<tr><td>Páginas propias</td><td>Cada idioma tiene su dirección: /eu/, /es/ o similar</td><td><span class="si">Sí</span> — cada versión puede salir en su búsqueda</td></tr>
+<tr><td>Traductor automático</td><td>Un widget traduce la página al vuelo</td><td><span class="no">No</span> — y además traduce mal</td></tr>
+</tbody>
+</table>
+</div>
+<p>El botón que traduce es cómodo para el visitante, y por eso casi todas las webs baratas lo hacen así. El problema es que <strong>para Google tu web solo existe en un idioma</strong>. Toda la versión en euskera es invisible: nadie que busque en euskera te va a encontrar.</p>
+<p>Lo correcto es que cada idioma tenga su propia dirección. En esta misma web, por ejemplo, la portada en castellano está en <code>oiwebstudio.com</code> y la de euskera en <code>oiwebstudio.com/eu/</code>. El botón ES/EU sigue existiendo, pero lleva de una página a otra en lugar de cambiar textos por debajo.</p>
+
+<h2 id="hreflang">La etiqueta que conecta las dos versiones: hreflang</h2>
+<p>Si tienes dos páginas con el mismo contenido en dos idiomas, hay que decirle a Google que son la misma página traducida, no contenido duplicado. Para eso existe la etiqueta <code>hreflang</code>, que va en la cabecera de cada página:</p>
+<ul class="check">
+<li><strong>hreflang="es"</strong> apunta a la versión en castellano.</li>
+<li><strong>hreflang="eu"</strong> apunta a la versión en euskera.</li>
+<li><strong>hreflang="x-default"</strong> dice cuál mostrar si el idioma del buscador no es ninguno de los dos.</li>
+</ul>
+<p>Las dos páginas tienen que apuntarse mutuamente; si solo una enlaza a la otra, Google ignora la señal. Es un detalle técnico que el cliente no ve, pero es lo que decide si la versión en euskera aparece en Google o no.</p>
+
+<figure>
+<div class="browser">
+<div class="browser__bar"><span class="browser__dots"><i></i><i></i><i></i></span><span class="browser__url">floristería · web de ejemplo</span><span style="width:34px;"></span></div>
+<picture><source srcset="assets/flor-desk.webp" type="image/webp"/><img src="assets/flor-desk.jpg" alt="Web de ejemplo de un negocio local" width="900" height="562" loading="lazy"/></picture>
+</div>
+<figcaption>Sea cual sea el negocio, el botón ES/EU tiene que llevar a una página real en cada idioma, no cambiar los textos por debajo.</figcaption>
+</figure>
+
+<h2 id="traducir">Qué traducir primero (si no puedes con todo)</h2>
+<p>Traducir una web entera tiene un coste, y no todo pesa lo mismo. Si hay que priorizar, este es el orden:</p>
+<ol>
+<li><strong>La portada y el título de Google.</strong> El título y la descripción son lo que se ve en los resultados de búsqueda: son lo primero.</li>
+<li><strong>Horario, dirección y cómo contactar.</strong> Lo que busca el que ya ha decidido venir.</li>
+<li><strong>Servicios y precios.</strong> Lo que busca el que está comparando.</li>
+<li><strong>Página de contacto y formulario.</strong> Un formulario en castellano en mitad de una web en euskera corta el ritmo justo en el momento de convertir.</li>
+<li><strong>Artículos o noticias.</strong> Lo último: mejor pocos bien traducidos que muchos a medias.</li>
+</ol>
+<p>Una regla que aplico en mi propia web: <strong>mejor no tener una página en euskera que tenerla a medias</strong>. Una página con la mitad de los textos en castellano da peor imagen que no tenerla.</p>
+
+<h2 id="errores">Errores típicos en webs bilingües</h2>
+<ul class="check">
+<li><strong>Traducción automática sin revisar.</strong> Se nota enseguida y el euskaldun lo lee como falta de respeto. Si usas un traductor, que lo revise alguien que hable euskera.</li>
+<li><strong>Traducir literalmente los títulos de Google.</strong> "Diseño web" no se busca igual que "web diseinua": hay que escribir el título pensando en cómo busca la gente en cada idioma.</li>
+<li><strong>Que el botón de idioma lleve a la portada.</strong> Si estás leyendo los precios y cambias a euskera, tienes que seguir en los precios.</li>
+<li><strong>Olvidarse de la ficha de Google.</strong> La ficha de Google Business también admite descripción; que esté en los dos idiomas, o al menos que mencione que atiendes en euskera.</li>
+</ul>
+
+<div class="dev-tip">
+<div class="who">
+<img src="favicon-96.png" alt="OI Studio" width="96" height="96"/>
+<div><b>Consejo del desarrollador</b><small>OI Studio · Tolosa</small></div>
+</div>
+<p>"Si tus clientes te hablan en euskera en el mostrador, tu web también debería. Y si no puedes traducirla toda, empieza por la portada y el contacto con páginas de verdad, no con un botón que Google no ve."</p>
+</div>
+
+<div class="cta-band">
+<div>
+<h3>¿Quieres tu web en euskera y castellano?</h3>
+<p>Te digo qué páginas merece la pena traducir en tu caso y cuánto supone, en el presupuesto cerrado.</p>
+</div>
+<a class="btn btn--light" href="contacto.html">Pedir propuesta</a>
+</div>
+
+<h2 id="faq">Preguntas frecuentes</h2>
+<div class="faq-pre">
+<details>
+<summary>¿Google indexa las webs en euskera?</summary>
+<p>Sí. Google reconoce el euskera y muestra resultados en euskera a quien busca en euskera. Lo que no indexa es una traducción que se hace con un botón sobre la misma dirección: para eso cada idioma necesita su propia página.</p>
+</details>
+<details>
+<summary>¿Es mejor un botón de idioma o páginas separadas?</summary>
+<p>Páginas separadas, cada una con su dirección (por ejemplo /eu/), conectadas con la etiqueta hreflang. El botón puede seguir existiendo, pero debe llevar de una página a la otra.</p>
+</details>
+<details>
+<summary>¿Puedo usar el traductor automático para el euskera?</summary>
+<p>Como borrador, sí; publicarlo sin revisar, no. Los traductores automáticos cometen errores que un euskaldun detecta a la primera, y el título de Google hay que escribirlo pensando en cómo se busca en euskera, no traducirlo.</p>
+</details>
+<details>
+<summary>¿Qué pasa si solo traduzco algunas páginas?</summary>
+<p>Es perfectamente válido. Traduce primero la portada, el horario y el contacto, y deja el resto en castellano. Lo que no conviene es tener páginas en euskera con la mitad del texto en castellano.</p>
+</details>
+</div>
+
+<p style="margin-top:40px;">Sigue leyendo: <a href="dominio-eus-es-com.html">qué dominio elegir, .eus, .es o .com</a> y <a href="seo-local-tolosa-google-maps.html">cómo aparecer en Google cuando buscan tu negocio en Tolosa</a>. O mira <a href="eu/index.html">esta misma web en euskera</a>.</p>
+
+</article>
+</div>
+
+<footer class="footer">
+<div class="container">
+<div class="footer__grid">
+<div>
+<a href="index.html" class="footer__logo"><img src="assets/logo-nav-black.png" alt="OI Studio" class="footer__logo-img" width="320" height="86"/></a>
+<p class="footer__desc" data-t="foot_desc" style="margin-top:20px;">Webs rápidas, modernas y efectivas para negocios locales que quieren destacar en internet.</p>
+</div>
+<div>
+<p class="foot-h" data-t="foot_secciones">Secciones</p>
+<ul>
+<li><a href="sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
+<li><a href="trabajos.html" data-t="foot_portfolio">Portfolio</a></li>
+<li><a href="precios.html" data-t="nav_precios">Precios</a></li>
+<li><a href="zonas.html" data-t="nav_zonas">Zonas</a></li>
+<li><a href="articulos.html" data-t="nav_articulos">Artículos</a></li>
+<li><a href="contacto.html" data-t="nav_contacto">Contacto</a></li>
+</ul>
+</div>
+<div>
+<p class="foot-h" data-t="nav_contacto">Contacto</p>
+<ul>
+<li><a class="js-mail" data-u="contactoiwebstudio" data-d="gmail.com"></a></li>
+<li><a href="https://wa.me/34680956755">+34 680 95 67 55</a></li>
+<li><a href="https://instagram.com/oi.webstudio" target="_blank" rel="noopener">Instagram · @oi.webstudio</a></li>
+<li>Tolosa, País Vasco</li>
+</ul>
+</div>
+</div>
+<div class="footer__bottom">
+<p>© 2026 OI Studio · <a href="legal.html" data-t="foot_legal">Aviso legal y privacidad</a></p>
+<p data-t="foot_made">Diseñado y desarrollado en Tolosa</p>
+</div>
+</div>
+<div class="footer__mark" aria-hidden="true">OI STUDIO</div>
+</footer>
+
+<script src="assets/i18n.js?v=4"></script>
+<script src="assets/main.js?v=10"></script>
+<a class="wa-float" href="https://wa.me/34680956755?text=Hola%2C%20he%20leido%20un%20articulo%20de%20vuestra%20web%20y%20quiero%20mas%20informaci%C3%B3n." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2.05 22l5.27-1.38c1.45.79 3.08 1.21 4.72 1.21 5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.05-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29z"/></svg>
+</a>
+</body>
+</html>
