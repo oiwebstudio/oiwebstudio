@@ -1,0 +1,56 @@
+/* ==========================================================================
+   Portada — ajustes de calidad. Solo la carga index.html, así que nada de
+   esto afecta al resto de páginas (el chatbot también usa .cards).
+   ========================================================================== */
+
+/* ---- 1 · El trabajo entra en la primera pantalla ------------------------
+   En un portátil (1440×900) la primera pantalla era solo texto: las webs de
+   ejemplo empezaban justo bajo el pliegue. Para un estudio de diseño lo primero
+   que tiene que verse es trabajo. Titular algo más contenido y menos aire
+   arriba, y el escaparate de dispositivos asoma sin hacer scroll. */
+@media (min-width: 1024px) {
+  .hero { padding-top: 112px; }
+  .hero h1 { font-size: clamp(44px, 5.4vw, 74px); }
+  .hero__lede { margin-top: 20px; }
+  .hero__actions { margin-top: 30px; }
+  .hero__showcase { margin-top: 40px; }
+}
+@media (min-width: 1024px) and (max-height: 820px) {
+  .hero { padding-top: 100px; }
+  .hero h1 { font-size: clamp(44px, 4.8vw, 64px); }
+}
+
+/* ---- 2 · "Lo que consigues", en formato editorial -----------------------
+   Seis tarjetas con icono en un cuadradito es el bloque que tiene cualquier
+   agencia. Ahora: el titular fijo a la izquierda y los seis beneficios como
+   una lista con filetes a la derecha, que se lee de un tirón. */
+#beneficios .cards { grid-template-columns: 1fr; gap: 0; }
+#beneficios .card {
+  background: none; border: 0; border-top: 1px solid var(--border-strong);
+  border-radius: 0; box-shadow: none; padding: 24px 0 26px;
+  display: grid; grid-template-columns: 42px 1fr; column-gap: 20px; align-items: start;
+}
+#beneficios .card:last-child { border-bottom: 1px solid var(--border-strong); }
+#beneficios .card::before { display: none; }
+#beneficios .card__icon {
+  grid-row: 1 / span 2; width: 42px; height: 42px; margin: 0;
+  background: transparent; border: 1px solid var(--border-strong); border-radius: 50%;
+  color: var(--ink); transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+#beneficios .card__icon svg { width: 19px; height: 19px; }
+#beneficios .card h3 { margin: 0 0 6px; font-size: 20px; letter-spacing: -0.015em; line-height: 1.25; }
+#beneficios .card p { margin: 0; max-width: 48ch; }
+@media (hover: hover) and (pointer: fine) {
+  #beneficios .card:hover { transform: none; box-shadow: none; border-color: var(--border-strong); }
+  #beneficios .card:hover .card__icon { background: var(--ink); border-color: var(--ink); color: #f6f1e7; }
+}
+@media (min-width: 900px) {
+  #beneficios .container { display: grid; grid-template-columns: 5fr 7fr; column-gap: 72px; align-items: start; }
+  #beneficios .section-head { margin: 0; text-align: left; position: sticky; top: 120px; }
+  #beneficios .section-head h2 { font-size: clamp(34px, 3.6vw, 50px); text-wrap: balance; }
+}
+
+/* El titular reparte sus líneas: en móvil dejaba "verse" solo en una. */
+.hero h1 { text-wrap: balance; }
+/* En móvil la frase en cursiva puede ocupar dos líneas (solo entre palabras). */
+@media (max-width: 600px) { .hero h1 .grad { white-space: normal; } }

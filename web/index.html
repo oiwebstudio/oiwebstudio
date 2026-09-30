@@ -103,7 +103,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
 <noscript><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap" rel="stylesheet"/></noscript>
 <link rel="stylesheet" href="assets/styles.css?v=18"/>
-<link rel="stylesheet" href="assets/proceso.css?v=1"/>
+<link rel="stylesheet" href="assets/proceso.css?v=3"/>
+<link rel="stylesheet" href="assets/portada.css?v=4"/>
 <script>if(location.protocol==='http:'&&/(^|\.)oiwebstudio\.com$/.test(location.hostname))location.replace('https://'+location.host+location.pathname+location.search+location.hash);document.documentElement.classList.add('js');</script>
 <link rel="preload" as="image" href="assets/cafe-desk.webp" fetchpriority="high"/>
 </head>
@@ -156,7 +157,7 @@
 <div class="container">
 <div class="hero__inner">
 <span class="hero__badge reveal"><span class="dot"></span><span data-t="hero_badge">Disponible para nuevos proyectos</span></span>
-<h1 class="reveal" data-d="1" data-t="hero_h1">Diseño web por <span class="grad">OI Studio</span> para negocios que quieren verse tan bien como son.</h1>
+<h1 class="reveal" data-d="1" data-t="hero_h1">Diseño web para negocios que quieren verse <span class="grad">tan bien como son</span>.</h1>
 <p class="hero__lede reveal" data-d="2" data-t="hero_lede">Estudio de diseño y desarrollo web en Tolosa, a medida para negocios de Tolosaldea. Rápidas, cuidadas hasta el último píxel y pensadas para convertir visitas en clientes.</p>
 <div class="hero__actions reveal" data-d="3">
 <a href="contacto.html" class="btn btn--accent btn--lg" data-t="btn_presupuesto">Solicitar presupuesto</a>
@@ -327,7 +328,7 @@
 <span class="eyebrow" data-t="stats_eyebrow">El estudio, en números</span>
 </div>
 <div class="stats reveal" data-d="1">
-<div class="stat"><b><span class="cnum" data-count="8">0</span></b><span data-t="stat1">proyectos publicados y en vivo</span></div>
+<div class="stat"><b><span class="cnum" data-count="8">0</span></b><span data-t="stat1">webs publicadas y en vivo</span></div>
 <div class="stat"><b><span class="cnum" data-count="48">0</span><em>h</em></b><span data-t="stat2">para recibir tu propuesta</span></div>
 <div class="stat"><b><span class="cnum" data-count="30">0</span></b><span data-t="stat3">días de ajustes gratis</span></div>
 <div class="stat"><b><span class="cnum" data-count="100">0</span><em>%</em></b><span data-t="stat4">a medida, cero plantillas</span></div>
@@ -613,6 +614,7 @@
 .fmenu.is-open .fmenu__item[data-i="4"]{transform:translateY(-264px)}
 @media(prefers-reduced-motion:reduce){.fmenu__toggle,.fmenu__ico,.fmenu__item{transition:none}}
 .orb-char{display:inline-block;will-change:transform}
+.orb-word{white-space:nowrap}
 </style>
 <div class="fmenu" id="fmenu">
 <a class="fmenu__item fmenu__item--wa" data-i="1" href="https://wa.me/34680956755?text=Hola%2C%20vengo%20de%20tu%20web%20y%20quiero%20informaci%C3%B3n%20para%20la%20web%20de%20mi%20negocio." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
@@ -666,9 +668,13 @@
     var el = document.querySelector('.hero h1 .grad');
     if (!el || el.querySelector('.orb-char')) return;
     var text = el.textContent;
-    el.innerHTML = text.split('').map(function(c){
-      return '<span class="orb-char">' + (c === ' ' ? '&nbsp;' : c) + '</span>';
-    }).join('');
+    // Letras agrupadas por palabra: el titular solo puede partirse entre
+    // palabras, nunca a mitad de una (en móvil la frase ocupa dos líneas).
+    el.innerHTML = text.trim().split(/\s+/).map(function(w){
+      return '<span class="orb-word">' + w.split('').map(function(c){
+        return '<span class="orb-char">' + c + '</span>';
+      }).join('') + '</span>';
+    }).join(' ');
     var spans = el.querySelectorAll('.orb-char');
     var t0 = performance.now();
     function frame(now){

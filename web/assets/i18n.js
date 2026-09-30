@@ -97,7 +97,7 @@ const EU = {
   tra_cta_p: "Kontatu zertan datzan eta proposamen zintzo bat prestatuko dizut 48 ordu baino gutxiagotan.",
 
   /* Quote */
-  stat1: "proiektu argitaratuta eta zuzenean",
+  stat1: "webgune argitaratuta eta zuzenean",
   stat2: "zure proposamena jasotzeko",
   stat3: "doako doikuntza-egun",
   stat4: "neurrira egina, txantiloirik ez",
