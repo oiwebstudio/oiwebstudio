@@ -5,8 +5,8 @@ import { storePath, stores } from "@/lib/stores";
 export const dynamic = "force-static";
 
 /**
- * Se publica en /demos/errotatxo/sitemap.xml. Google no lo descubre solo en
- * una subcarpeta: hay que darlo de alta en Search Console.
+ * errotatxo.com/sitemap.xml, enlazado desde robots.txt. Darlo de alta
+ * también en Search Console para que Google lo lea antes.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages: [string, number][] = [
