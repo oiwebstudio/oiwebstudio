@@ -215,7 +215,10 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.js-mail').forEach(a => {
     const addr = a.dataset.u + '@' + a.dataset.d;
     a.href = 'mailto:' + addr;
-    a.textContent = addr;
+    // Solo se escribe la dirección en los enlaces de texto. Si el enlace lleva
+    // icono o etiqueta dentro (el botón de email del menú flotante), se respeta:
+    // antes se sustituía todo por la dirección y el botón redondo quedaba roto.
+    if (!a.children.length) a.textContent = addr;
   });
 
   // FAQ accordion
