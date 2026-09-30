@@ -1,19 +1,17 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
-import Link from "next/link";
+import AnimatedNumber from "@/components/motion/AnimatedNumber";
 import FadeIn from "@/components/motion/FadeIn";
 import RevealText from "@/components/motion/RevealText";
 import { useLocale } from "@/lib/i18n";
-import { storePath, stores } from "@/lib/stores";
 
 /**
  * Dice en texto llano qué es Errotatxo y dónde está: panadería, pastelería y
  * cafetería en Tolosaldea. Es lo que Google necesita leer para asociar la web
- * con esas búsquedas, y enlaza a la página propia de cada tienda.
+ * con esas búsquedas. Las cifras son datos comprobables, no adornos.
  */
 export default function Comarca() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const copy = t.comarca;
 
   return (
@@ -30,36 +28,32 @@ export default function Comarca() {
         <div className="md:col-span-6 md:col-start-7">
           <FadeIn delay={0.1}>
             <p className="body-editorial">{copy.text}</p>
+            {/* Mucha gente de la comarca busca en euskera: la frase va siempre,
+                también en la versión en castellano que lee Google. */}
+            {locale === "es" && (
+              <p lang="eu" className="mt-4 font-serif text-lg italic text-madera">
+                Okindegia, gozotegia eta kafetegia Tolosaldean.
+              </p>
+            )}
           </FadeIn>
 
-          <FadeIn delay={0.2} className="mt-10">
-            <p className="mb-3 text-[11px] uppercase tracking-widest2 text-muted">{copy.storesLabel}</p>
-            <ul className="divide-y divide-ink/10 border-y border-ink/10">
-              {stores.map((store) => (
-                <li key={store.id}>
-                  <Link
-                    href={storePath(store)}
-                    data-cursor="hover"
-                    className="group flex min-h-[44px] items-center justify-between gap-4 py-4"
-                  >
-                    <span>
-                      <span className="font-serif text-lg italic text-ink transition-colors group-hover:text-madera">
-                        {store.name}
-                      </span>
-                      <span className="block text-xs text-muted">
-                        {store.street}, {store.locality}
-                        {store.cafe && ` · ${t.tiendas.cafeTag}`}
-                      </span>
-                    </span>
-                    <ArrowUpRight
-                      size={16}
-                      className="shrink-0 text-madera transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                    />
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </FadeIn>
+          <dl className="mt-10 grid grid-cols-3 gap-4 border-t border-ink/10 pt-8">
+            {copy.stats.map((stat, i) => (
+              <FadeIn key={stat.label} delay={0.15 + i * 0.1}>
+                <dt className="sr-only">{stat.label}</dt>
+                <dd>
+                  <AnimatedNumber
+                    value={stat.value}
+                    duration={stat.value.length > 2 ? 2 : 1.2}
+                    className="display text-4xl tabular-nums text-ink md:text-5xl"
+                  />
+                  <span aria-hidden className="mt-2 block text-xs leading-snug text-muted">
+                    {stat.label}
+                  </span>
+                </dd>
+              </FadeIn>
+            ))}
+          </dl>
         </div>
       </div>
     </section>

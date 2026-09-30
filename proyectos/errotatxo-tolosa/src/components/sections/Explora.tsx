@@ -7,10 +7,11 @@ import RevealText from "@/components/motion/RevealText";
 import imageLoader from "@/lib/imageLoader";
 import { useLocale } from "@/lib/i18n";
 
+// Fotos reales de Errotatxo: el rótulo, el mostrador y la tienda de Andia.
 const CARD_IMAGES = [
-  "/images/pan-tradicional.webp",
-  "/images/donuts.webp",
-  "/images/fachada.webp",
+  "/images/pins/fachada-rotulo.webp",
+  "/images/pins/bandejas-pastas.webp",
+  "/images/pins/fachada-andia.webp",
 ];
 
 export default function Explora() {

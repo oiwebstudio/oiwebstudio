@@ -34,9 +34,6 @@ export default function Opiniones() {
   const totalReviews = rated.reduce((sum, s) => sum + (s.reviews ?? 0), 0);
 
   const quotes = t.opiniones.quotes;
-  // El marquee necesita ancho suficiente para no dejar hueco; se repite el
-  // bloque real en vez de rellenar con testimonios inventados.
-  const track = [...quotes, ...quotes, ...quotes, ...quotes];
 
   return (
     <section id="opiniones" className="relative overflow-hidden bg-bg py-24 md:py-36">
@@ -115,13 +112,13 @@ export default function Opiniones() {
           </div>
         </FadeIn>
 
-        {/* testi-marquee + card-quote-rise (biblioteca-animaciones) */}
-        <div className="group relative mt-12 [mask-image:linear-gradient(to_right,transparent,black_7%,black_93%,transparent)] md:mt-16">
-          <div className="flex w-max animate-marquee gap-6 py-2 group-hover:[animation-play-state:paused] motion-reduce:animate-none">
-            {track.map((q, i) => (
+        {/* Solo hay dos reseñas con texto: se enseñan una vez, fijas. Repetirlas
+            en una cinta hacía que parecieran más de las que son. */}
+        <div className="mt-12 grid gap-5 md:mt-16 md:grid-cols-2">
+          {quotes.map((q, i) => (
+            <FadeIn key={q.text} delay={0.1 * i}>
               <figure
-                key={`${q.name}-${i}`}
-                className="relative flex w-[16.5rem] shrink-0 flex-col justify-between overflow-hidden rounded-3xl bg-surface p-6 shadow-[0_16px_40px_-32px_rgba(43,30,20,0.5)] ring-1 ring-ink/[0.07] transition-all duration-500 ease-organic hover:-translate-y-1.5 hover:shadow-[0_24px_48px_-28px_rgba(43,30,20,0.55)] hover:ring-sol/40 sm:w-80 sm:p-7"
+                className="relative flex h-full flex-col justify-between overflow-hidden rounded-3xl bg-surface p-6 shadow-[0_16px_40px_-32px_rgba(43,30,20,0.5)] ring-1 ring-ink/[0.07] transition-all duration-500 ease-organic hover:-translate-y-1.5 hover:shadow-[0_24px_48px_-28px_rgba(43,30,20,0.55)] hover:ring-sol/40 sm:p-7"
               >
                 <Quote
                   aria-hidden
@@ -148,8 +145,8 @@ export default function Opiniones() {
                   <StarsRow size={11} />
                 </figcaption>
               </figure>
-            ))}
-          </div>
+            </FadeIn>
+          ))}
         </div>
 
         <FadeIn delay={0.2}>
