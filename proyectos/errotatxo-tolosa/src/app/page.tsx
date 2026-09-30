@@ -1,12 +1,10 @@
-import FreshnessMeter from "@/components/FreshnessMeter";
 import JsonLd from "@/components/JsonLd";
 import Marquee from "@/components/Marquee";
 import PageTransition from "@/components/PageTransition";
-import SectionDivider from "@/components/SectionDivider";
 import Comarca from "@/components/sections/Comarca";
 import Explora from "@/components/sections/Explora";
 import Hero from "@/components/sections/Hero";
-import Horarios from "@/components/sections/Horarios";
+import Hoy from "@/components/sections/Hoy";
 import Mapa from "@/components/sections/Mapa";
 import Muro from "@/components/sections/Muro";
 import Opiniones from "@/components/sections/Opiniones";
@@ -25,7 +23,7 @@ import {
 export const metadata = pageMetadata({
   title: "Panadería y cafetería en Tolosa y Anoeta | Errotatxo Okindegia",
   description:
-    "Errotatxo: panadería y pastelería en Tolosa (Andia Kalea y San Frantzisko, con cafetería) y Anoeta. Pan del obrador cada día, abierto también el fin de semana.",
+    "Errotatxo okindegia: panadería, pastelería y cafetería en Tolosa (Andia Kalea y San Frantzisko) y Anoeta. Pan del obrador cada día, abierto los 7 días de la semana.",
   path: "/",
   absoluteTitle: true,
 });
@@ -37,16 +35,12 @@ export default function Home() {
         json={graph(websiteNode(), organizationNode(), ...allStoreNodes(), faqNode(buildFaq("es")))}
       />
       <Hero />
+      <Hoy />
       <Marquee />
       <Muro />
-      <Comarca />
       <Tiendas />
       <Mapa />
-      <Horarios />
-      <div className="container-edge flex justify-center py-16 md:py-20">
-        <FreshnessMeter />
-      </div>
-      <SectionDivider />
+      <Comarca />
       <Opiniones />
       <Preguntas />
       <Explora />

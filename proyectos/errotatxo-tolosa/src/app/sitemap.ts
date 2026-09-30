@@ -17,8 +17,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ["/historia/", 0.5],
     ["/contacto/", 0.6],
   ];
+  const lastModified = new Date();
   return pages.map(([path, priority]) => ({
     url: abs(path),
+    lastModified,
     changeFrequency: "monthly",
     priority,
   }));
