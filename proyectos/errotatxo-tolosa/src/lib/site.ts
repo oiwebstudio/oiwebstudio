@@ -4,11 +4,10 @@ import type { Metadata } from "next";
  * Dirección pública de la web. Todo lo que Google lee como URL absoluta —
  * canonical, Open Graph, sitemap, datos estructurados— sale de aquí.
  *
- * Antes apuntaba a errotatxotolosa.com, que no existe: las imágenes del schema
- * y de las vistas previas daban error. El día que tenga dominio propio, se
- * cambia esta línea y basePath/assetPrefix en next.config.mjs.
+ * Dominio propio desde el 30/09/2026 (registrado en IONOS). La demo antigua
+ * de oiwebstudio.com/demos/errotatxo/ redirige aquí.
  */
-export const SITE_URL = "https://oiwebstudio.com/demos/errotatxo";
+export const SITE_URL = "https://errotatxo.com";
 
 /** URL absoluta a partir de una ruta interna ("/tiendas/anoeta/"). */
 export function abs(path = "/"): string {
