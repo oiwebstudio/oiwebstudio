@@ -164,8 +164,39 @@ section{padding:clamp(80px,10vw,140px) 0;}
 .tarj--lisa::after{display:none;}
 .tarj--lisa .tarj__txt{background:none;border:0;backdrop-filter:none;-webkit-backdrop-filter:none;padding:10px;}
 .tarj--lisa .grande{position:absolute;top:26px;left:24px;right:24px;font-family:var(--cursiva);font-style:italic;font-size:clamp(40px,4vw,56px);line-height:1;color:#E3EBE5;}
-.lista-tec{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px;padding:0;list-style:none;}
-.lista-tec li{padding:9px 16px;border-radius:999px;border:1px solid var(--regla);background:#fff;font-size:14px;color:var(--texto2);}
+/* todas las técnicas: rejilla de iconos de línea */
+.todas{margin-top:clamp(56px,7vw,96px);display:grid;gap:clamp(24px,3vw,44px);}
+@media(min-width:900px){.todas{grid-template-columns:.8fr 2.2fr;align-items:start;}}
+.todas h3{font-size:clamp(32px,3.6vw,48px);}
+.todas h3 em{color:var(--musgo);}
+.todas__g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--tinta);}
+@media(min-width:700px){.todas__g{grid-template-columns:repeat(4,minmax(0,1fr));}}
+.tec-i{display:grid;gap:14px;align-content:start;padding:22px 16px 24px 0;border-bottom:1px solid var(--regla);}
+.tec-i svg{width:28px;height:28px;color:var(--musgo);transition:transform 500ms var(--ease-out);}
+.tec-i span{font-weight:300;font-size:19px;line-height:1.2;letter-spacing:-.01em;}
+@media(hover:hover) and (pointer:fine){.tec-i:hover svg{transform:translateY(-3px) rotate(-6deg);}}
+
+/* ═══ AL PASAR EL CURSOR ═══ */
+.nav a{position:relative;}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:10px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform 400ms var(--ease-out);}
+.grupo,.opin blockquote{transition:transform 500ms var(--ease-out),box-shadow 500ms var(--ease-out);}
+.fotos-kiro figure{transition:opacity 500ms var(--ease-out);}
+.fotos-kiro img{transition:transform 1100ms var(--ease-out);}
+.cursor{position:fixed;left:0;top:0;z-index:60;width:84px;height:84px;margin:-42px 0 0 -42px;border-radius:50%;display:grid;place-items:center;pointer-events:none;
+  background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;font:600 12px var(--f);letter-spacing:.14em;text-transform:uppercase;
+  opacity:0;scale:.4;transition:opacity 250ms ease,scale 350ms var(--ease-out);}
+.cursor.on{opacity:1;scale:1;}
+@media(hover:hover) and (pointer:fine){
+  .nav a:hover::after{transform:scaleX(1);transform-origin:left;}
+  .grupo:hover,.opin blockquote:hover{transform:translateY(-6px);box-shadow:0 30px 60px -40px rgba(19,32,25,.45);}
+  .fotos-kiro:hover figure:not(:hover){opacity:.55;}
+  .fotos-kiro figure:hover img{transform:scale(1.06);}
+  .tarj__txt p{max-height:0;opacity:0;overflow:hidden;transition:max-height 500ms var(--ease-out),opacity 400ms var(--ease-out),margin 500ms var(--ease-out);margin-top:0;}
+  .tarj:hover .tarj__txt p{max-height:120px;opacity:1;margin-top:6px;}
+  .tarj--lisa .tarj__txt p{max-height:none;opacity:1;margin-top:6px;}
+  .con-cursor,.con-cursor *{cursor:none;}
+}
+@media(prefers-reduced-motion:reduce){.cursor{display:none;}}
 
 /* ═══ PILATES ═══ */
 .pilates{background:var(--salvia-claro);}
@@ -193,11 +224,9 @@ section{padding:clamp(80px,10vw,140px) 0;}
 .persona{display:flex;justify-content:space-between;gap:16px;align-items:baseline;padding:20px 0;border-bottom:1px solid var(--regla);}
 .persona b{font-weight:400;font-size:clamp(22px,2vw,26px);letter-spacing:-.02em;}
 .persona span{color:var(--texto2);font-size:14.5px;text-align:right;}
-.fotos-kiro{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:clamp(40px,5vw,64px);}
-@media(min-width:960px){.fotos-kiro{grid-template-columns:1.3fr 1fr 1fr;}}
-.fotos-kiro figure{margin:0;position:relative;aspect-ratio:16/10;}
-.fotos-kiro figure:first-child{grid-column:1/-1;}
-@media(min-width:960px){.fotos-kiro figure:first-child{grid-column:auto;}}
+.fotos-kiro{display:grid;grid-template-columns:1fr;gap:12px;margin-top:clamp(40px,5vw,64px);}
+@media(min-width:700px){.fotos-kiro{grid-template-columns:repeat(3,minmax(0,1fr));}}
+.fotos-kiro figure{margin:0;position:relative;aspect-ratio:4/3;}
 .fotos-kiro figcaption{position:absolute;left:12px;bottom:12px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.85);font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--bosque);}
 
 /* ═══ OPINIONES ═══ */
@@ -293,13 +322,6 @@ section{padding:clamp(80px,10vw,140px) 0;}
   </div>
 </section>
 
-<div class="cinta" aria-label="Técnicas que usamos">
-  <div class="cinta__pista" aria-hidden="true">
-    <span>Terapia manual</span><span>Punción seca</span><span><em>EPTE ecoguiada</em></span><span>Neuromodulación percutánea</span><span>INDIBA Activ</span><span><em>Emfield Pro</em></span><span>Readaptación funcional</span><span>Pilates terapéutico</span><span><em>Hipopresivos</em></span>
-    <span>Terapia manual</span><span>Punción seca</span><span><em>EPTE ecoguiada</em></span><span>Neuromodulación percutánea</span><span>INDIBA Activ</span><span><em>Emfield Pro</em></span><span>Readaptación funcional</span><span>Pilates terapéutico</span><span><em>Hipopresivos</em></span>
-  </div>
-</div>
-
 <section id="duele">
   <div class="wrap">
     <p class="eti rev">Tratamientos</p>
@@ -368,9 +390,19 @@ section{padding:clamp(80px,10vw,140px) 0;}
     <article class="tarj rev"><img loading="lazy" src="fotos/hombro.jpg" alt="Fisioterapeuta valorando un hombro"/><div class="tarj__txt"><small>Tecnología</small><h3>Emfield Pro de Zimmer</h3><p>Terapia inductiva de alta energía.</p></div></article>
   </div>
   <div class="wrap">
-    <ul class="lista-tec rev" aria-label="Todas las técnicas">
-      <li>Terapia manual</li><li>Punción seca</li><li>EPTE ecoguiada</li><li>Neuromodulación percutánea</li><li>INDIBA Activ</li><li>Emfield Pro de Zimmer</li><li>Vendaje neuromuscular</li><li>Readaptación funcional</li>
-    </ul>
+    <div class="todas">
+      <h3 class="rev">Todas las <em>técnicas</em></h3>
+      <div class="todas__g rev">
+        <div class="tec-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 11V6a1.5 1.5 0 0 1 3 0v4"/><path d="M10 10V4.5a1.5 1.5 0 0 1 3 0V10"/><path d="M13 10V5.5a1.5 1.5 0 0 1 3 0V12"/><path d="M16 9.5a1.5 1.5 0 0 1 3 0V14a7 7 0 0 1-7 7h-1a6 6 0 0 1-5-2.7L3.5 14a1.6 1.6 0 0 1 2.6-1.8L7 13.5"/></svg><span>Terapia manual</span></div>
+        <div class="tec-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l6-6"/><path d="M10 14l7.5-7.5"/><path d="M15 4l5 5"/><path d="M17.5 6.5l2-2"/></svg><span>Punción seca</span></div>
+        <div class="tec-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h8v7a4 4 0 0 1-8 0z"/><path d="M12 14v3"/><path d="M6 20c2-1.5 4-1.5 6 0s4 1.5 6 0"/></svg><span>EPTE ecoguiada</span></div>
+        <div class="tec-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L5 13h6l-1 9 8-11h-6z"/></svg><span>Neuromodulación percutánea</span></div>
+        <div class="tec-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><path d="M8.5 8.5a5 5 0 0 0 0 7M15.5 8.5a5 5 0 0 1 0 7"/><path d="M5.6 5.6a9 9 0 0 0 0 12.8M18.4 5.6a9 9 0 0 1 0 12.8"/></svg><span>INDIBA Activ</span></div>
+        <div class="tec-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 4v8a6 6 0 0 0 12 0V4"/><path d="M6 4h4v8a2 2 0 0 0 4 0V4h4"/><path d="M6 8h4M14 8h4"/></svg><span>Emfield Pro de Zimmer</span></div>
+        <div class="tec-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="9" width="18" height="6" rx="3" transform="rotate(-30 12 12)"/><path d="M10 10.5l1 1.7M13 8.8l1 1.7"/></svg><span>Vendaje neuromuscular</span></div>
+        <div class="tec-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8v8M18 8v8"/><path d="M3 10v4M21 10v4"/><path d="M6 12h12"/></svg><span>Readaptación funcional</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -461,6 +493,8 @@ section{padding:clamp(80px,10vw,140px) 0;}
   </div>
 </footer>
 
+<div class="cursor" id="cursor" aria-hidden="true">Ver</div>
+
 <nav class="barra" id="barra" aria-label="Acciones rápidas">
   <a class="b1" href="tel:+34943633201">Llamar</a>
   <a class="b2" href="#contacto">Dónde estamos</a>
@@ -511,13 +545,34 @@ var ZONAS = {
 (function(){
   var panel = document.getElementById("panel"), tit = document.getElementById("p-tit"), txt = document.getElementById("p-txt"), etiq = document.getElementById("etiq");
   var fotos = document.querySelectorAll("[data-foto]"), botones = document.querySelectorAll(".zona"), actual = "espalda", t;
-  botones.forEach(function(b){ b.addEventListener("click", function(){
+  /* Con ratón basta con pasar por encima; en el móvil, al tocar */
+  var raton = matchMedia("(hover:hover) and (pointer:fine)").matches, espera;
+  botones.forEach(function(b){
+    b.addEventListener("click", function(){ elegir(b); });
+    if (raton) { b.addEventListener("mouseenter", function(){ clearTimeout(espera); espera = setTimeout(function(){ elegir(b); }, 90); });
+                 b.addEventListener("mouseleave", function(){ clearTimeout(espera); }); }
+  });
+  function elegir(b){
     var id = b.dataset.zona; if (id === actual) return; actual = id;
     botones.forEach(function(x){ x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
     fotos.forEach(function(f){ f.classList.toggle("on", f.dataset.foto === id); });
     panel.classList.add("cambiando"); clearTimeout(t);
     t = setTimeout(function(){ var d = ZONAS[id]; tit.textContent = d.t; txt.textContent = d.p; etiq.textContent = d.e; panel.classList.remove("cambiando"); }, 180);
-  }); });
+  }
+})();
+
+/* Cursor «Ver» sobre las fotos (solo con ratón) */
+(function(){
+  if (quieto || !matchMedia("(hover:hover) and (pointer:fine)").matches) return;
+  var c = document.getElementById("cursor"), x = 0, y = 0, cx = 0, cy = 0, vivo = false;
+  document.querySelectorAll(".tarj:not(.tarj--lisa),.fotos-kiro figure,.duele__foto,#rev-pilates").forEach(function(z){
+    z.classList.add("con-cursor");
+    z.addEventListener("mouseenter", function(e){ cx = x = e.clientX; cy = y = e.clientY; c.classList.add("on"); if (!vivo) { vivo = true; requestAnimationFrame(bucle); } });
+    z.addEventListener("mouseleave", function(){ c.classList.remove("on"); });
+  });
+  addEventListener("mousemove", function(e){ x = e.clientX; y = e.clientY; }, { passive:true });
+  function bucle(){ cx += (x - cx) * .18; cy += (y - cy) * .18; c.style.transform = "translate(" + cx + "px," + cy + "px)";
+    if (c.classList.contains("on") || Math.abs(x - cx) > .5) requestAnimationFrame(bucle); else vivo = false; }
 })();
 
 /* Carrusel de técnicas: flechas que avanzan una tarjeta */
