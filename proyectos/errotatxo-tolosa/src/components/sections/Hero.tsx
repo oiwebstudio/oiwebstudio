@@ -72,7 +72,7 @@ export default function Hero() {
           >
             <Magnetic>
               <Link
-                href="/productos"
+                href="#panes"
                 data-cursor="hover"
                 className="inline-block rounded-full bg-sol px-7 py-3.5 text-xs font-medium uppercase tracking-widest2 text-[#4E2E1B] transition-colors duration-300 hover:bg-[#F5EFE4]"
               >
@@ -80,7 +80,7 @@ export default function Hero() {
               </Link>
             </Magnetic>
             <Link
-              href="/tiendas/"
+              href="#cafeteria"
               data-cursor="hover"
               className="inline-block rounded-full border border-[#F5EFE4]/35 px-7 py-3.5 text-xs font-medium uppercase tracking-widest2 text-[#F5EFE4] backdrop-blur-sm transition-colors duration-300 hover:border-[#F5EFE4] hover:bg-[#F5EFE4]/10"
             >

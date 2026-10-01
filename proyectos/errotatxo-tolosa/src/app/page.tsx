@@ -1,15 +1,15 @@
 import JsonLd from "@/components/JsonLd";
 import Marquee from "@/components/Marquee";
 import PageTransition from "@/components/PageTransition";
-import Comarca from "@/components/sections/Comarca";
+import Cafeteria from "@/components/sections/Cafeteria";
 import Explora from "@/components/sections/Explora";
 import Hero from "@/components/sections/Hero";
 import Hoy from "@/components/sections/Hoy";
 import Mapa from "@/components/sections/Mapa";
 import Muro from "@/components/sections/Muro";
+import Panes from "@/components/sections/Panes";
 import Opiniones from "@/components/sections/Opiniones";
 import Preguntas from "@/components/sections/Preguntas";
-import Tiendas from "@/components/sections/Tiendas";
 import { buildFaq } from "@/lib/faq";
 import { pageMetadata } from "@/lib/site";
 import {
@@ -23,7 +23,7 @@ import {
 export const metadata = pageMetadata({
   title: "Panadería y cafetería en Tolosa y Anoeta | Errotatxo Okindegia",
   description:
-    "Errotatxo okindegia: panadería, pastelería y cafetería en Tolosa (Andia Kalea y San Frantzisko) y Anoeta. Pan del obrador cada día, abierto los 7 días de la semana.",
+    "Pan del obrador cada día y cafetería en San Frantzisko, Tolosa. Errotatxo okindegia: panadería y pastelería en Tolosa y Anoeta, abierta los 7 días de la semana.",
   path: "/",
   absoluteTitle: true,
 });
@@ -36,11 +36,11 @@ export default function Home() {
       />
       <Hero />
       <Hoy />
+      <Cafeteria />
+      <Panes />
       <Marquee />
       <Muro />
-      <Tiendas />
       <Mapa />
-      <Comarca />
       <Opiniones />
       <Preguntas />
       <Explora />
