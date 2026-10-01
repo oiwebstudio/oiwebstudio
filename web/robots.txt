@@ -4,4 +4,20 @@ Allow: /
 # Páginas de trabajo interno, no forman parte del sitio público
 Disallow: /_borradores/
 
+# Buscadores y asistentes de IA: bienvenidos. Queremos que puedan leer el
+# sitio y recomendar el estudio cuando alguien busque diseño web en Gipuzkoa.
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: Bingbot
+Allow: /
+Disallow: /_borradores/
+
 Sitemap: https://oiwebstudio.com/sitemap.xml
