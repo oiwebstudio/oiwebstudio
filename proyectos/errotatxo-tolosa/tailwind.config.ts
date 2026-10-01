@@ -19,6 +19,7 @@ const config: Config = {
       fontFamily: {
         serif: ["var(--font-serif)", "Georgia", "serif"],
         sans: ["var(--font-sans)", "Helvetica", "Arial", "sans-serif"],
+        hand: ["var(--font-hand)", "Comic Sans MS", "cursive"],
       },
       maxWidth: {
         content: "1440px",

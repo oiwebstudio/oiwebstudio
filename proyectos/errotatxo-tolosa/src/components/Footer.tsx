@@ -105,6 +105,18 @@ export default function Footer() {
             {t.footer.legal}
           </Link>
         </p>
+        <p className="mt-3 text-center text-xs text-[#F5EFE4]/35">
+          {t.footer.credit}{" "}
+          <a
+            href="https://oiwebstudio.com/"
+            target="_blank"
+            rel="noopener"
+            data-cursor="hover"
+            className="font-medium text-[#F5EFE4]/70 underline decoration-sol/60 underline-offset-4 transition-colors hover:text-sol"
+          >
+            OI Studio
+          </a>
+        </p>
       </div>
     </footer>
   );
