@@ -33,6 +33,8 @@ export type Dictionary = {
     open: string;
     chips: { all: string; pan: string; dulce: string; cafe: string; tiendas: string };
   };
+  cafeteria: { eyebrow: string; title: string[]; text: string; points: string[]; hoursLabel: string; ctaStore: string; ctaRoute: string; photoAlt: string };
+  panes: { eyebrow: string; title: string[]; intro: string; items: { name: string; note: string }[]; more: string };
   comarca: { eyebrow: string; title: string[]; text: string; storesLabel: string; stats: { value: string; label: string }[] };
   hoy: { title: string; today: string; call: string; more: string; closedToday: string };
   faq: { eyebrow: string; title: string[] };
@@ -147,10 +149,10 @@ const es: Dictionary = {
   },
   hero: {
     eyebrow: "Okindegia · Gozotegia · Kafetegia",
-    lines: ["Panadería en Tolosa,", "desde 1996"],
-    subtitle: "Pan, pastelería y café en Tolosaldea: dos tiendas en Tolosa —una con cafetería— y otra en Anoeta.",
-    cta: "Ver productos",
-    cta2: "Dónde estamos",
+    lines: ["Pan del obrador", "y café en Tolosa"],
+    subtitle: "Panes hechos cada día en nuestro obrador y una cafetería en San Frantzisko para tomarlos con calma. Desde 1996, en Tolosa y Anoeta.",
+    cta: "Nuestros panes",
+    cta2: "La cafetería",
     badge: "Desde Tolosa · Obrador propio",
     location: "Tolosa, Gipuzkoa",
     ratingLabel: "Valoración media en Google · Tolosa y Anoeta",
@@ -210,6 +212,27 @@ const es: Dictionary = {
     filterLabel: "Filtrar fotos",
     open: "Ver en grande",
     chips: { all: "Todo", pan: "Pan", dulce: "Dulce", cafe: "Café", tiendas: "Tiendas" },
+  },
+  cafeteria: {
+    eyebrow: "Cafetería · San Frantzisko",
+    title: ["Un café,", "con el pan al lado"],
+    text: "Junto al paseo, camino del río. Siéntate en la barra o en las mesas del fondo y acompaña el café con el pan y los dulces del mostrador.",
+    points: ["Barra y mesas", "Pan y dulces del obrador", "Abierta los 7 días"],
+    hoursLabel: "Horario",
+    ctaStore: "Ver la cafetería",
+    ctaRoute: "Cómo llegar",
+    photoAlt: "Mesas al fondo de la cafetería de Errotatxo en San Frantzisko",
+  },
+  panes: {
+    eyebrow: "Nuestros panes",
+    title: ["Del obrador,", "cada día"],
+    intro: "Barras y piezas que salen de nuestro obrador de Tolosa para las tres tiendas.",
+    items: [
+      { name: "Barras de sésamo", note: "Corteza cubierta de sésamo tostado." },
+      { name: "Barras de avena", note: "Con copos de avena por encima." },
+      { name: "Pan de pasas", note: "Piezas tiernas, con pasas." },
+    ],
+    more: "Ver todos los productos",
   },
   comarca: {
     eyebrow: "Tolosaldea",
@@ -505,10 +528,10 @@ const eu: Dictionary = {
   },
   hero: {
     eyebrow: "Okindegia · Gozotegia · Kafetegia",
-    lines: ["Okindegia Tolosan,", "1996tik"],
-    subtitle: "Ogia, pastelgintza eta kafea Tolosaldean: bi denda Tolosan —bat kafetegiarekin— eta beste bat Anoetan.",
-    cta: "Ikusi produktuak",
-    cta2: "Non gauden",
+    lines: ["Lantegiko ogia", "eta kafea Tolosan"],
+    subtitle: "Gure lantegian egunero egindako ogiak, eta San Frantziskon kafetegi bat lasai hartzeko. 1996tik, Tolosan eta Anoetan.",
+    cta: "Gure ogiak",
+    cta2: "Kafetegia",
     badge: "Tolosatik · Gure lantegia",
     location: "Tolosa, Gipuzkoa",
     ratingLabel: "Googleko batez besteko balorazioa · Tolosa eta Anoeta",
@@ -568,6 +591,27 @@ const eu: Dictionary = {
     filterLabel: "Argazkiak iragazi",
     open: "Handian ikusi",
     chips: { all: "Guztiak", pan: "Ogia", dulce: "Gozoa", cafe: "Kafea", tiendas: "Dendak" },
+  },
+  cafeteria: {
+    eyebrow: "Kafetegia · San Frantzisko",
+    title: ["Kafe bat,", "ogia ondoan"],
+    text: "Pasealekuaren ondoan, ibaira bidean. Eseri barran edo atzeko mahaietan, eta lagundu kafea mostradoreko ogiarekin eta gozoekin.",
+    points: ["Barra eta mahaiak", "Lantegiko ogia eta gozoak", "Asteko 7 egunetan zabalik"],
+    hoursLabel: "Ordutegia",
+    ctaStore: "Ikusi kafetegia",
+    ctaRoute: "Nola iritsi",
+    photoAlt: "Errotatxoren kafetegiko mahaiak San Frantziskon",
+  },
+  panes: {
+    eyebrow: "Gure ogiak",
+    title: ["Lantegitik,", "egunero"],
+    intro: "Tolosako gure lantegitik hiru dendetara ateratzen diren barrak eta piezak.",
+    items: [
+      { name: "Sesamo-barrak", note: "Sesamo txigortuz estalitako azala." },
+      { name: "Olo-barrak", note: "Olo-malutak gainean." },
+      { name: "Mahaspasa-ogia", note: "Pieza samurrak, mahaspasekin." },
+    ],
+    more: "Ikusi produktu guztiak",
   },
   comarca: {
     eyebrow: "Tolosaldea",
