@@ -291,7 +291,7 @@ const EU = {
 
   /* Sección de zonas de la portada */
   zon_ver: "Ikusi eremu guztiak →",
-  pre_guia_link: '¿Beste aurrekontuak zergatik aldatzen diren hainbeste jakin nahi duzu? Irakurri <a href="precio-diseno-web-profesional.html" class="link-terra">gida osoa: zenbat balio du webgune profesional batek 2026an</a>.',
+  pre_guia_link: '¿Beste aurrekontuak zergatik aldatzen diren hainbeste jakin nahi duzu? Irakurri <a href="precio-diseno-web-profesional.html" class="link-terra">gida osoa: zenbat balio du webgune profesional batek 2026an</a> edo, internet bidez saldu nahi baduzu, <a href="cuanto-cuesta-tienda-online-pequeno-comercio.html" class="link-terra">zenbat balio du online denda batek</a>.',
   tra_hero_cta: "Ikusi lanak",
   tra_mb_title: "Portfolioko zortzi webguneak",
   zon_eyebrow: "Non lan egiten dudan",
