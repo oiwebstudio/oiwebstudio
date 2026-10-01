@@ -34,7 +34,7 @@ export default function Preguntas() {
                   data-cursor="hover"
                   className="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-6 py-5 [&::-webkit-details-marker]:hidden"
                 >
-                  <h3 className="font-serif text-lg italic text-ink transition-colors group-open:text-madera md:text-xl">
+                  <h3 className="font-serif text-lg text-ink transition-colors group-open:text-madera md:text-xl">
                     {item.q}
                   </h3>
                   <Plus

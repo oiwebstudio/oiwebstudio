@@ -104,7 +104,7 @@ export default function MobileBar() {
           >
             <div className="mx-auto mb-3 h-1.5 w-10 rounded-full bg-ink/15" />
             <div className="mb-2 flex items-center justify-between px-1">
-              <p className="font-serif text-2xl italic text-ink">{t.ubicacion.storesTitle}</p>
+              <p className="font-serif text-2xl text-ink">{t.ubicacion.storesTitle}</p>
               <button
                 type="button"
                 aria-label={t.common.close}
@@ -124,7 +124,7 @@ export default function MobileBar() {
                       onClick={() => setSheet(false)}
                       className="group min-w-0"
                     >
-                      <span className="flex items-center gap-1 font-serif text-lg italic text-ink">
+                      <span className="flex items-center gap-1 font-serif text-lg text-ink">
                         {store.name}
                         <ArrowUpRight size={14} className="text-madera" />
                       </span>
