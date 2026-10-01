@@ -1,11 +1,18 @@
 // Fotos reales del cliente salvo pan-molde, que sigue siendo de stock hasta
 // tener una del suyo.
-export const productImages = [
-  "/images/pins/pan-sesamo.webp",
-  "/images/pins/palmeras.webp",
-  "/images/pan-molde.webp",
-  "/images/pins/galletas-mermelada.webp",
-  "/images/pins/cajas-regalo.webp",
+// Varias fotos reales por familia: la ficha las va alternando.
+export const productGallery: string[][] = [
+  ["/images/pins/pan-sesamo.webp", "/images/pins/pan-avena.webp", "/images/pins/pan-pasas.webp"],
+  ["/images/pins/palmeras.webp", "/images/pins/escaparate.webp"],
+  ["/images/pan-molde.webp"],
+  [
+    "/images/pins/galletas-mermelada.webp",
+    "/images/pins/trufas.webp",
+    "/images/pins/galletas-chocolate.webp",
+    "/images/pins/bombones-sueltos.webp",
+    "/images/pins/galletas-estrellas.webp",
+  ],
+  ["/images/pins/cajas-regalo.webp", "/images/pins/bolsas-regalo.webp", "/images/pins/bandejas-pastas.webp"],
 ];
 
 export const galleryImages = [
