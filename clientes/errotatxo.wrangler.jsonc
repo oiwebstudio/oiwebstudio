@@ -1,3 +1,5 @@
+// EN OBRAS: errotatxo.com sirve ./errotatxo-obras (una sola página para cualquier ruta).
+// Para volver a la web completa: directory "./errotatxo" y not_found_handling "404-page".
 // Publicación de errotatxo.com (Cloudflare Workers con archivos estáticos).
 //   npx wrangler deploy -c clientes/errotatxo.wrangler.jsonc
 {
@@ -9,11 +11,11 @@
   ],
   "compatibility_date": "2026-09-30",
   "assets": {
-    "directory": "./errotatxo",
+    "directory": "./errotatxo-obras",
     "binding": "ASSETS",
     // Pasa antes por el worker para poder redirigir www.
     "run_worker_first": true,
     "html_handling": "force-trailing-slash",
-    "not_found_handling": "404-page"
+    "not_found_handling": "single-page-application"
   }
 }
