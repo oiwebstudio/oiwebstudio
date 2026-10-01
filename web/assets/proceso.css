@@ -37,7 +37,7 @@
 }
 
 .pro-paso {
-  min-height: 62vh; display: flex; flex-direction: column; justify-content: center;
+  min-height: 50vh; display: flex; flex-direction: column; justify-content: center;
   position: relative; opacity: .32; transition: opacity .4s ease;
 }
 .pro-paso.is-act { opacity: 1; }
