@@ -41,6 +41,7 @@ export type Dictionary = {
     eyebrow: string;
     title: string[];
     intro: string;
+    croquisAlt: string;
   };
   horarios: {
     eyebrow: string;
@@ -106,7 +107,7 @@ export type Dictionary = {
     call: string;
     write: { title: string; text: string; cta: string };
   };
-  footer: { tagline: string; horario: string; navegacion: string; contacto: string; rights: string; legal: string };
+  footer: { tagline: string; horario: string; navegacion: string; contacto: string; rights: string; legal: string; credit: string };
   common: { theme: string; whatsapp: string; backToTop: string; close: string; prev: string; next: string; view: string };
   pages: {
     historia: PageMeta;
@@ -243,6 +244,7 @@ const es: Dictionary = {
     eyebrow: "En el mapa",
     title: ["Dónde", "encontrarnos"],
     intro: "Tolosa y Anoeta, a menos de cinco kilómetros la una de la otra.",
+    croquisAlt: "Croquis de Tolosa a Anoeta junto al río Oria y la N-I, con las tiendas de Errotatxo en Andia, San Frantzisko y San Juan kalea.",
   },
   horarios: {
     eyebrow: "Horarios",
@@ -403,6 +405,7 @@ const es: Dictionary = {
     contacto: "Contacto",
     rights: "Todos los derechos reservados.",
     legal: "Aviso legal y privacidad",
+    credit: "Diseño y desarrollo web:",
   },
   common: {
     theme: "Cambiar modo de color",
@@ -599,6 +602,7 @@ const eu: Dictionary = {
     eyebrow: "Mapan",
     title: ["Non", "gauden"],
     intro: "Tolosa eta Anoeta, bata bestetik bost kilometro baino gutxiagora.",
+    croquisAlt: "Tolosatik Anoetarako krokisa, Oria ibaiaren eta N-Iaren ondoan, Errotatxoren dendekin: Andia, San Frantzisko eta San Juan kalea.",
   },
   horarios: {
     eyebrow: "Ordutegiak",
@@ -758,6 +762,7 @@ const eu: Dictionary = {
     contacto: "Kontaktua",
     rights: "Eskubide guztiak erreserbatuta.",
     legal: "Lege-oharra eta pribatutasuna",
+    credit: "Webaren diseinua eta garapena:",
   },
   common: {
     theme: "Kolore-modua aldatzea",

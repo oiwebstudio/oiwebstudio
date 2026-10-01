@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Caveat, Inter, Playfair_Display } from "next/font/google";
 import BackToTop from "@/components/BackToTop";
 import CustomCursor from "@/components/CustomCursor";
 import Footer from "@/components/Footer";
@@ -26,6 +26,14 @@ const inter = Inter({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
   variable: "--font-sans",
+  display: "swap",
+});
+
+// Letra a mano solo para las anotaciones del croquis.
+const caveat = Caveat({
+  subsets: ["latin"],
+  weight: ["500"],
+  variable: "--font-hand",
   display: "swap",
 });
 
@@ -63,7 +71,7 @@ export default function RootLayout({
     <html
       lang="es"
       suppressHydrationWarning
-      className={`${playfair.variable} ${inter.variable}`}
+      className={`${playfair.variable} ${inter.variable} ${caveat.variable}`}
     >
       <body className="bg-bg font-sans text-ink antialiased">
         <Providers>
