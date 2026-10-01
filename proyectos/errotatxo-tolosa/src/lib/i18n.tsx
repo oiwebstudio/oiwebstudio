@@ -412,13 +412,13 @@ const es: Dictionary = {
   contacto: {
     eyebrow: "Hablemos",
     title: ["Hablemos"],
-    text: "¿Quieres preguntarnos algo? Llama a la tienda que te quede más cerca o escríbenos por Facebook.",
+    text: "¿Quieres preguntarnos algo? Llama a la tienda que te quede más cerca o escríbenos un correo.",
     follow: "Síguenos",
     call: "Llámanos",
     write: {
       title: "Escríbenos",
-      text: "Para dudas que no corren prisa, mándanos un mensaje por Facebook. Si es para hoy, mejor llama a la tienda.",
-      cta: "Escribir por Facebook",
+      text: "Para dudas que no corren prisa, escríbenos un correo. Si es para hoy, mejor llama a la tienda.",
+      cta: "Escribir un correo",
     },
   },
   footer: {
@@ -480,7 +480,7 @@ const es: Dictionary = {
       eyebrow: "Contacto",
       title: ["Hablemos"],
       intro:
-        "¿Quieres preguntarnos algo? Llama a la tienda que te quede más cerca o escríbenos por Facebook.",
+        "¿Quieres preguntarnos algo? Llama a la tienda que te quede más cerca o escríbenos un correo.",
       stats: [],
     },
   },
@@ -790,13 +790,13 @@ const eu: Dictionary = {
   contacto: {
     eyebrow: "Hitz egin dezagun",
     title: ["Hitz egin", "dezagun"],
-    text: "Zerbait galdetu nahi diguzu? Deitu hurbilen duzun dendara edo idatzi Facebooken.",
+    text: "Zerbait galdetu nahi diguzu? Deitu hurbilen duzun dendara edo idatzi posta elektroniko bat.",
     follow: "Jarraitu gaitzazu",
     call: "Deitu iezaguzu",
     write: {
       title: "Idatzi iezaguzu",
-      text: "Presarik ez duten zalantzetarako, bidali mezu bat Facebooken. Gaurko bada, hobe dendara deitzea.",
-      cta: "Idatzi Facebooken",
+      text: "Presarik ez duten zalantzetarako, idatzi posta elektroniko bat. Gaurko bada, hobe dendara deitzea.",
+      cta: "Idatzi posta bat",
     },
   },
   footer: {
@@ -858,7 +858,7 @@ const eu: Dictionary = {
       eyebrow: "Kontaktua",
       title: ["Hitz egin", "dezagun"],
       intro:
-        "Zerbait galdetu nahi diguzu? Deitu hurbilen duzun dendara edo idatzi Facebooken.",
+        "Zerbait galdetu nahi diguzu? Deitu hurbilen duzun dendara edo idatzi posta elektroniko bat.",
       stats: [],
     },
   },
