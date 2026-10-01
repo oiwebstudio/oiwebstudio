@@ -3,7 +3,7 @@
 import { ArrowUpRight, Facebook, Instagram, Phone } from "lucide-react";
 import FadeIn from "@/components/motion/FadeIn";
 import Magnetic from "@/components/motion/Magnetic";
-import { socialLinks } from "@/lib/data";
+import { businessInfo, socialLinks } from "@/lib/data";
 import { stores } from "@/lib/stores";
 import { useLocale } from "@/lib/i18n";
 
@@ -13,7 +13,6 @@ export default function Contacto() {
   const { t } = useLocale();
   const contacto = t.contacto;
   const phoneStores = stores.filter((s) => s.phone);
-  const facebook = socialLinks.find((s) => s.label === "Facebook");
 
 
   return (
@@ -42,6 +41,7 @@ export default function Contacto() {
             </div>
           </FadeIn>
 
+          {socialLinks.length > 0 && (
           <FadeIn delay={0.2} className="mt-8">
             <p className="mb-2 text-[11px] uppercase tracking-widest2 text-muted">
               {contacto.follow}
@@ -66,22 +66,20 @@ export default function Contacto() {
               })}
             </div>
           </FadeIn>
+          )}
         </div>
 
         {/* Antes había aquí un formulario que simulaba el envío: el mensaje no
-            llegaba a nadie. Hasta que haya correo, el canal escrito es Facebook. */}
+            llegaba a nadie. El canal escrito es el correo de la empresa. */}
         <div className="md:col-span-6 md:col-start-7">
           <FadeIn delay={0.1}>
             <p className="display text-3xl md:text-4xl">{contacto.write.title}</p>
             <p className="body-editorial mt-4 max-w-md">{contacto.write.text}</p>
           </FadeIn>
-          {facebook && (
-            <FadeIn delay={0.2} className="mt-8">
+                      <FadeIn delay={0.2} className="mt-8">
               <Magnetic className="inline-block">
                 <a
-                  href={facebook.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={`mailto:${businessInfo.email}`}
                   data-cursor="hover"
                   className="group flex min-h-[44px] items-center gap-3 text-sm uppercase tracking-widest2 text-ink"
                 >
@@ -92,7 +90,6 @@ export default function Contacto() {
                 </a>
               </Magnetic>
             </FadeIn>
-          )}
         </div>
       </div>
     </section>

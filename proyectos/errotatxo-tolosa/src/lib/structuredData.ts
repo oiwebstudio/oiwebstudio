@@ -56,7 +56,7 @@ export function organizationNode(): Node {
     foundingDate: "1996-01-30",
     url: abs("/"),
     logo: abs("/images/logo-errotatxo.png"),
-    sameAs: socialLinks.map((s) => s.href),
+    ...(socialLinks.length > 0 && { sameAs: socialLinks.map((s) => s.href) }),
     areaServed: AREA.map((name) => ({ "@type": "Place", name })),
   };
 }

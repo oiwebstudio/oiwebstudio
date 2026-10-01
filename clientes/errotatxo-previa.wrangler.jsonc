@@ -1,7 +1,0 @@
-// Copia de revisión de errotatxo.com: solo en workers.dev, sin dominio.
-{
-  "name": "errotatxo-previa",
-  "compatibility_date": "2026-09-30",
-  "workers_dev": true,
-  "assets": { "directory": "./errotatxo-previa", "html_handling": "force-trailing-slash", "not_found_handling": "404-page" }
-}

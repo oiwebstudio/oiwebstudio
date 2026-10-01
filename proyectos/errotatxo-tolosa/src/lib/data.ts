@@ -34,6 +34,5 @@ export const businessInfo = {
 
 // Solo perfiles localizados. Instagram no se enlaza hasta tener la dirección
 // exacta: un enlace a instagram.com a secas parece roto.
-export const socialLinks = [
-  { label: "Facebook", href: "https://www.facebook.com/829242457203531" },
-];
+// Sin redes por ahora: la página de Facebook que había no era de Errotatxo.
+export const socialLinks: { label: string; href: string }[] = [];

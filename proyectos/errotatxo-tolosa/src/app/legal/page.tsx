@@ -55,7 +55,7 @@ export default function Page() {
         <h2 className={H2}>Privacidad</h2>
         <p>
           La web no tiene formularios ni registro: no recogemos datos personales a través de ella. Si
-          nos escribes por email, llamas o nos mandas un mensaje por Facebook, usaremos tus datos solo
+          nos escribes por email o nos llamas, usaremos tus datos solo
           para contestarte y no los cederemos a nadie. Responsable: {businessInfo.legalName}.
         </p>
         <p>
