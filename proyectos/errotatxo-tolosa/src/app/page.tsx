@@ -23,7 +23,7 @@ import {
 export const metadata = pageMetadata({
   title: "Panadería y cafetería en Tolosa y Anoeta | Errotatxo Okindegia",
   description:
-    "Pan del obrador cada día y cafetería en San Frantzisko, Tolosa. Errotatxo okindegia: panadería y pastelería en Tolosa y Anoeta, abierta los 7 días de la semana.",
+    "Pan artesanal cada día y cafetería en San Frantzisko, Tolosa. Errotatxo okindegia: panadería y pastelería en Tolosa y Anoeta, abierta los 7 días de la semana.",
   path: "/",
   absoluteTitle: true,
 });

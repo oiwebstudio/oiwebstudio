@@ -24,7 +24,7 @@ function pointNearY(d: string, y: number): [number, number] {
 const PIN_LABELS: Record<string, { text: string; dx: number; dy: number; anchor: "start" | "end" }> = {
   "tolosa-andia": { text: "Andia", dx: 18, dy: 6, anchor: "start" },
   "tolosa-san-frantzisko": { text: "San Frantzisko", dx: -18, dy: 6, anchor: "end" },
-  anoeta: { text: "San Juan kalea", dx: -18, dy: 6, anchor: "end" },
+  anoeta: { text: "Calle San Juan", dx: -18, dy: 6, anchor: "end" },
 };
 
 /**
