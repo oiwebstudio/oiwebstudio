@@ -153,7 +153,7 @@ export default function StoreContent({ id }: { id: string }) {
                     className="group flex min-h-[44px] items-center justify-between gap-4 py-5 md:px-6 md:first:pl-0"
                   >
                     <span>
-                      <span className="font-serif text-xl italic text-ink transition-colors group-hover:text-madera">
+                      <span className="font-serif text-xl text-ink transition-colors group-hover:text-madera">
                         {s.name}
                       </span>
                       <span className="block text-xs text-muted">

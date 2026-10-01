@@ -127,13 +127,13 @@ export default function Opiniones() {
                   className="pointer-events-none absolute -right-2 -top-2 fill-sol/[0.13]"
                 />
 
-                <blockquote className="relative font-serif text-base italic leading-relaxed text-ink/85 sm:text-lg">
+                <blockquote className="relative font-serif text-base leading-relaxed text-ink/85 sm:text-lg">
                   “{q.text}”
                 </blockquote>
 
                 <figcaption className="relative mt-6 flex items-center gap-3">
                   {/* card-avatar-row (biblioteca-animaciones): inicial en círculo */}
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-madera/10 font-serif text-sm italic text-madera">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-madera/10 font-serif text-sm text-madera">
                     {q.name.charAt(0)}
                   </span>
                   <span className="flex flex-col">

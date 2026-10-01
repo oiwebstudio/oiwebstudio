@@ -15,7 +15,7 @@ export default function Marquee() {
             key={`${item}-${i}`}
             className="flex items-center gap-8 text-xs uppercase tracking-widest2 text-muted md:gap-12 md:text-sm"
           >
-            <span className="whitespace-nowrap font-serif italic text-ink/70">
+            <span className="whitespace-nowrap font-serif text-ink/70">
               {item}
             </span>
             <span

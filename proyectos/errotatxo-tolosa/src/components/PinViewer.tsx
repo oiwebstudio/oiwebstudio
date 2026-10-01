@@ -164,7 +164,7 @@ export default function PinViewer({
             className="px-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-4 text-center"
             onClick={(e) => e.stopPropagation()}
           >
-            <p className="font-serif text-xl italic text-[#F5EFE4]">{caption}</p>
+            <p className="font-serif text-xl text-[#F5EFE4]">{caption}</p>
             {store && (
               <Link
                 href={storePath(store)}

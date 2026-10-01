@@ -34,7 +34,7 @@ export default function Horno() {
         <RevealText
           as="h2"
           lines={horno.title}
-          className="max-w-3xl font-serif text-4xl italic font-medium leading-[0.95] tracking-tight text-[#F5EFE4] md:text-7xl"
+          className="max-w-3xl font-serif text-4xl font-medium leading-[0.95] tracking-tight text-[#F5EFE4] md:text-7xl"
         />
         <div className="mt-8 max-w-md">
           {horno.paragraphs.map((p, i) => (

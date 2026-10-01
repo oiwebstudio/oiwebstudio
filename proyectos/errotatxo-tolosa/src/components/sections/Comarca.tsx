@@ -31,7 +31,7 @@ export default function Comarca() {
             {/* Mucha gente de la comarca busca en euskera: la frase va siempre,
                 también en la versión en castellano que lee Google. */}
             {locale === "es" && (
-              <p lang="eu" className="mt-4 font-serif text-lg italic text-madera">
+              <p lang="eu" className="mt-4 font-serif text-lg text-madera">
                 Okindegia, gozotegia eta kafetegia Tolosaldean.
               </p>
             )}

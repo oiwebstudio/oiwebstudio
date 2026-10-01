@@ -71,7 +71,7 @@ body::before {
   }
 
   .display {
-    @apply font-serif italic font-medium leading-[1.08] tracking-tight text-ink;
+    @apply font-serif font-normal leading-[1.08] tracking-[-0.02em] text-ink;
   }
 
   .line-mark {
@@ -193,7 +193,7 @@ body::before {
   top: -0.42em;
   z-index: 0;
   font-family: var(--font-serif), Georgia, serif;
-  font-style: italic;
+  font-style: normal;
   font-size: clamp(5rem, 9vw, 8rem);
   line-height: 1;
   pointer-events: none;

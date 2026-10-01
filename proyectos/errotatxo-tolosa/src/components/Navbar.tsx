@@ -140,7 +140,7 @@ export default function Navbar() {
                     </span>
                     <span
                       className={cn(
-                        "font-serif text-3xl italic transition-transform duration-500 group-hover:translate-x-3 md:text-4xl",
+                        "font-serif text-3xl transition-transform duration-500 group-hover:translate-x-3 md:text-4xl",
                         // text-gold-sweep: la página activa va en oro vivo
                         pathname === s.href && "fx-gold"
                       )}
