@@ -6,7 +6,7 @@ import ProductosContent from "./ProductosContent";
 export const metadata = pageMetadata({
   title: "Pan, bollería y pastelería en Tolosa",
   description:
-    "Lo que sale cada día del obrador de Errotatxo: pan, bollería, pan de molde, galletas y pastelería. En sus tiendas de Tolosa y Anoeta.",
+    "Pan artesanal, bollería, pan de molde, galletas y pastelería de Errotatxo, hechos cada día. En sus tiendas de Tolosa y Anoeta.",
   path: "/productos/",
 });
 

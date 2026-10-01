@@ -15,7 +15,7 @@ const shifts = (s?: string) => (s ?? "").split("/").map((x) => x.trim()).join(" 
  */
 const SEO: Record<string, (s: Store) => { title: string; description: string }> = {
   "tolosa-andia": (s) => ({
-    title: "Panadería en Tolosa, casco viejo (Andia Kalea)",
+    title: "Panadería en Tolosa, casco viejo (calle Andia)",
     description: `Errotatxo en ${s.street}, casco viejo de Tolosa. Pan, bollería y pastelería. L–V ${shifts(s.hours?.weekday)}, sábados y domingos ${s.hours?.weekend}. Tel. ${s.phone}.`,
   }),
   "tolosa-san-frantzisko": (s) => ({
@@ -23,8 +23,8 @@ const SEO: Record<string, (s: Store) => { title: string; description: string }> 
     description: `Panadería con cafetería en ${s.street}, Tolosa: café en barra o en mesa con el pan y la bollería del día. L–V ${shifts(s.hours?.weekday)}, fines de semana ${s.hours?.weekend}. Tel. ${s.phone}.`,
   }),
   anoeta: (s) => ({
-    title: "Panadería en Anoeta (San Juan Kalea)",
-    description: `Errotatxo en ${s.street}, Anoeta. Pan del obrador, bollería y pastelería. L–V ${shifts(s.hours?.weekday)}, fines de semana ${s.hours?.weekend}. Tel. ${s.phone}.`,
+    title: "Panadería en Anoeta (calle San Juan)",
+    description: `Errotatxo en ${s.street}, Anoeta. Pan artesanal, bollería y pastelería. L–V ${shifts(s.hours?.weekday)}, fines de semana ${s.hours?.weekend}. Tel. ${s.phone}.`,
   }),
 };
 
