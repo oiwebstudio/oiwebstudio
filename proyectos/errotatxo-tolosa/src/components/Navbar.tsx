@@ -29,6 +29,15 @@ export default function Navbar() {
     setOpen(false);
   }, [pathname]);
 
+  // Aviso temporal de obras: se ve arriba y se recoge al bajar.
+  const [atTop, setAtTop] = useState(true);
+  useEffect(() => {
+    const onScroll = () => setAtTop(window.scrollY < 80);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const links = t.nav.sections;
 
   return (
@@ -95,6 +104,20 @@ export default function Navbar() {
             </button>
           </div>
         </div>
+        <AnimatePresence>
+          {atTop && !open && (
+            <motion.p
+              role="status"
+              initial={{ opacity: 0, y: -6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="mx-auto mt-2 w-fit max-w-full rounded-full bg-sol/95 px-4 py-1.5 text-center text-[11px] font-medium leading-tight text-[#4E2E1B] shadow-[0_8px_20px_-12px_rgba(43,30,20,0.6)]"
+            >
+              {t.aviso}
+            </motion.p>
+          )}
+        </AnimatePresence>
       </header>
 
       <AnimatePresence>

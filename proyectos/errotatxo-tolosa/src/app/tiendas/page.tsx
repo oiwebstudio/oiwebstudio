@@ -6,7 +6,7 @@ import TiendasContent from "./TiendasContent";
 export const metadata = pageMetadata({
   title: "Panaderías en Tolosa y Anoeta: horarios y cómo llegar",
   description:
-    "Las tres tiendas de Errotatxo: Andia Kalea y San Frantzisko (con cafetería) en Tolosa, y San Juan Kalea en Anoeta. Horarios, teléfonos y mapa.",
+    "Las tres tiendas de Errotatxo: la calle Andia y San Frantzisko (con cafetería) en Tolosa, y la calle San Juan en Anoeta. Horarios, teléfonos y mapa.",
   path: "/tiendas/",
 });
 

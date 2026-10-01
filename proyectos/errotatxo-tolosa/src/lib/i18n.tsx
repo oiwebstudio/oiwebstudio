@@ -36,6 +36,7 @@ export type Dictionary = {
   cafeteria: { eyebrow: string; title: string[]; text: string; points: string[]; hoursLabel: string; ctaStore: string; ctaRoute: string; photoAlt: string };
   panes: { eyebrow: string; title: string[]; intro: string; items: { name: string; note: string }[]; more: string };
   comarca: { eyebrow: string; title: string[]; text: string; storesLabel: string; stats: { value: string; label: string }[] };
+  aviso: string;
   hoy: { title: string; today: string; call: string; more: string; closedToday: string };
   faq: { eyebrow: string; title: string[] };
   storePage: { back: string; hours: string; address: string; phone: string; others: string };
@@ -149,8 +150,8 @@ const es: Dictionary = {
   },
   hero: {
     eyebrow: "Okindegia · Gozotegia · Kafetegia",
-    lines: ["Pan del obrador", "y café en Tolosa"],
-    subtitle: "Panes hechos cada día en nuestro obrador y una cafetería en San Frantzisko para tomarlos con calma. Desde 1996, en Tolosa y Anoeta.",
+    lines: ["Pan artesanal", "y café en Tolosa"],
+    subtitle: "Pan artesanal hecho cada día y una cafetería en San Frantzisko para tomarlo con calma. Desde 1996, en Tolosa y Anoeta.",
     cta: "Nuestros panes",
     cta2: "La cafetería",
     badge: "Desde Tolosa · Obrador propio",
@@ -177,10 +178,10 @@ const es: Dictionary = {
     stores: {
       "tolosa-andia": {
         tagline: "En pleno casco viejo, a un paso de la plaza. La casa de Errotatxo desde 1996.",
-        imageAlt: "Fachada de la panadería Errotatxo en Andia Kalea, Tolosa",
-        h1: ["Panadería en Tolosa,", "Andia Kalea"],
+        imageAlt: "Fachada de la panadería Errotatxo en la calle Andia, Tolosa",
+        h1: ["Panadería en Tolosa,", "calle Andia"],
         about:
-          "La tienda de Errotatxo en el casco viejo de Tolosa, en Andia Kalea, a un paso de la plaza. Pan del obrador desde primera hora, bollería, pastelería y galletas. Abre también los sábados y domingos por la mañana.",
+          "La tienda de Errotatxo en el casco viejo de Tolosa, en la calle Andia, a un paso de la plaza. Pan artesanal desde primera hora, bollería, pastelería y galletas. Abre también los sábados y domingos por la mañana.",
       },
       "tolosa-san-frantzisko": {
         tagline:
@@ -189,14 +190,14 @@ const es: Dictionary = {
           "Interior de la cafetería de Errotatxo en San Frantzisko: barra, taburetes y mesas al fondo",
         h1: ["Panadería y cafetería", "en Tolosa"],
         about:
-          "Panadería y cafetería en San Frantzisko Pasealekua, junto al río Oria. El café se toma en la barra o en las mesas del fondo, con el pan y la bollería del día. De las tres tiendas de Errotatxo, es la única con cafetería.",
+          "Panadería y cafetería en el paseo de San Francisco, junto al río Oria. El café se toma en la barra o en las mesas del fondo, con el pan y la bollería del día. De las tres tiendas de Errotatxo, es la única con cafetería.",
       },
       anoeta: {
         tagline: "En Anoeta no somos una panadería más: somos la del pueblo.",
         imageAlt: "Pan de la panadería Errotatxo de Anoeta",
         h1: ["Panadería", "en Anoeta"],
         about:
-          "La panadería de Anoeta, en San Juan Kalea, 2. El mismo pan del obrador que en Tolosa, a cuatro kilómetros, con horario de mañana y tarde entre semana.",
+          "La panadería de Anoeta, en la calle San Juan, 2. El mismo pan artesanal que en Tolosa, a cuatro kilómetros, con horario de mañana y tarde entre semana.",
       },
     },
     cafeTag: "Cafetería",
@@ -215,9 +216,9 @@ const es: Dictionary = {
   },
   cafeteria: {
     eyebrow: "Cafetería · San Frantzisko",
-    title: ["Un café,", "con el pan al lado"],
-    text: "Junto al paseo, camino del río. Siéntate en la barra o en las mesas del fondo y acompaña el café con el pan y los dulces del mostrador.",
-    points: ["Barra y mesas", "Pan y dulces del obrador", "Abierta los 7 días"],
+    title: ["Café, pan", "y algo dulce"],
+    text: "Junto al paseo, camino del río. Siéntate en la barra o en las mesas del fondo y pide tu café con algo del mostrador: una palmera, unas pastas o el pan recién hecho.",
+    points: ["Barra y mesas", "Pan y dulces artesanales", "Abierta los 7 días"],
     hoursLabel: "Horario",
     ctaStore: "Ver la cafetería",
     ctaRoute: "Cómo llegar",
@@ -225,12 +226,13 @@ const es: Dictionary = {
   },
   panes: {
     eyebrow: "Nuestros panes",
-    title: ["Del obrador,", "cada día"],
-    intro: "Barras y piezas que salen de nuestro obrador de Tolosa para las tres tiendas.",
+    title: ["Pan artesanal,", "cada día"],
+    intro: "Barras, flores y piezas artesanales, hechas cada día para nuestras tres tiendas.",
     items: [
       { name: "Barras de sésamo", note: "Corteza cubierta de sésamo tostado." },
       { name: "Barras de avena", note: "Con copos de avena por encima." },
       { name: "Pan de pasas", note: "Piezas tiernas, con pasas." },
+      { name: "Loreak", note: "Pan en forma de flor, también con chocolate y pasas." },
     ],
     more: "Ver todos los productos",
   },
@@ -245,6 +247,7 @@ const es: Dictionary = {
       { value: "7", label: "días a la semana abiertos" },
     ],
   },
+  aviso: "Web en construcción: estamos retocando algunos detalles.",
   hoy: {
     title: "Hoy en nuestras tiendas",
     today: "Hoy",
@@ -267,7 +270,7 @@ const es: Dictionary = {
     eyebrow: "En el mapa",
     title: ["Dónde", "encontrarnos"],
     intro: "Tolosa y Anoeta, a menos de cinco kilómetros la una de la otra.",
-    croquisAlt: "Croquis de Tolosa a Anoeta junto al río Oria y la N-I, con las tiendas de Errotatxo en Andia, San Frantzisko y San Juan kalea.",
+    croquisAlt: "Croquis de Tolosa a Anoeta junto al río Oria y la N-I, con las tiendas de Errotatxo en Andia, San Frantzisko y la calle San Juan.",
   },
   horarios: {
     eyebrow: "Horarios",
@@ -284,7 +287,7 @@ const es: Dictionary = {
       {
         year: "1996",
         title: "Empieza Errotatxo",
-        text: "Se constituye Okindegia Errotatxo, con casa en Andia Kalea, en el casco viejo de Tolosa.",
+        text: "Se constituye Okindegia Errotatxo, con casa en la calle Andia, en el casco viejo de Tolosa.",
       },
       {
         year: "El nombre",
@@ -294,7 +297,7 @@ const es: Dictionary = {
       {
         year: "Tolosa",
         title: "Una segunda tienda",
-        text: "San Frantzisko Pasealekua, junto al río, y con cafetería: aquí el pan se acompaña de un café.",
+        text: "En el paseo de San Francisco, junto al río, y con cafetería: aquí el pan se acompaña de un café.",
       },
       {
         year: "Anoeta",
@@ -320,9 +323,9 @@ const es: Dictionary = {
   },
   historia: {
     eyebrow: "El origen",
-    title: ["Desde 1996,", "en Andia Kalea"],
+    title: ["Desde 1996,", "en la calle Andia"],
     paragraphs: [
-      "Okindegia Errotatxo se constituyó en 1996, con casa en Andia Kalea, en el casco viejo de Tolosa. La tienda sigue ahí, con el mismo oficio detrás del mostrador.",
+      "Okindegia Errotatxo se constituyó en 1996, con casa en la calle Andia, en el casco viejo de Tolosa. La tienda sigue ahí, con el mismo oficio detrás del mostrador.",
       "El nombre viene del euskera: errota es molino, y el diminutivo lo convierte en el molinito. No es una marca pensada en una reunión, es de donde venimos — de moler, amasar y hornear.",
       "Hoy somos tres tiendas: dos en Tolosa y una en Anoeta. Tres barrios distintos, un solo obrador y treinta años de oficio.",
     ],
@@ -341,7 +344,7 @@ const es: Dictionary = {
     eyebrow: "El pan",
     title: ["Corteza crujiente,", "miga honesta"],
     paragraphs: [
-      "Pan del obrador, horneado cada día para las tres tiendas. Corteza que cruje y miga que se nota.",
+      "Pan artesanal, horneado cada día para las tres tiendas. Corteza que cruje y miga que se nota.",
     ],
     imageAlt: "Detalle de la corteza del pan artesanal de Errotatxo",
   },
@@ -359,7 +362,7 @@ const es: Dictionary = {
     eyebrow: "Productos",
     title: ["Lo que horneamos", "cada día"],
     items: [
-      { name: "Pan tradicional", description: "Hogazas y barras de corteza crujiente, del obrador." },
+      { name: "Pan tradicional", description: "Hogazas y barras artesanales de corteza crujiente." },
       { name: "Bollería", description: "Piezas horneadas a diario y glaseadas de forma artesanal." },
       { name: "Pan de molde", description: "Tierno por dentro, de corteza dorada y suave." },
       { name: "Pastelería", description: "Galletas, pastas y dulces del mostrador, también para regalar." },
@@ -444,7 +447,7 @@ const es: Dictionary = {
       eyebrow: "Nuestra historia",
       title: ["Treinta años", "amasando en Tolosa"],
       intro:
-        "Errotatxo empezó en 1996 en Andia Kalea. Hoy son tres tiendas en Tolosa y Anoeta, y el mismo obrador detrás de todas.",
+        "Errotatxo empezó en 1996 en la calle Andia. Hoy son tres tiendas en Tolosa y Anoeta, y el mismo obrador detrás de todas.",
       stats: [
         { value: "1996", label: "Año de constitución" },
         { value: "3", label: "Tiendas en el valle del Oria" },
@@ -492,7 +495,7 @@ const es: Dictionary = {
         href: "/historia",
         label: "Desde 1996",
         title: "Nuestra historia",
-        text: "Desde 1996 en Andia Kalea: de dónde viene el nombre y de dónde el oficio.",
+        text: "Desde 1996 en la calle Andia: de dónde viene el nombre y de dónde el oficio.",
       },
       {
         href: "/productos",
@@ -528,8 +531,8 @@ const eu: Dictionary = {
   },
   hero: {
     eyebrow: "Okindegia · Gozotegia · Kafetegia",
-    lines: ["Lantegiko ogia", "eta kafea Tolosan"],
-    subtitle: "Gure lantegian egunero egindako ogiak, eta San Frantziskon kafetegi bat lasai hartzeko. 1996tik, Tolosan eta Anoetan.",
+    lines: ["Artisau-ogia", "eta kafea Tolosan"],
+    subtitle: "Egunero egindako artisau-ogia, eta San Frantziskon kafetegi bat lasai hartzeko. 1996tik, Tolosan eta Anoetan.",
     cta: "Gure ogiak",
     cta2: "Kafetegia",
     badge: "Tolosatik · Gure lantegia",
@@ -575,7 +578,7 @@ const eu: Dictionary = {
         imageAlt: "Errotatxo okindegiaren ogia Anoetan",
         h1: ["Okindegia", "Anoetan"],
         about:
-          "Anoetako okindegia, San Juan Kalea 2an. Tolosako lantegiko ogi bera, lau kilometrora, astegunetan goizez eta arratsaldez irekita.",
+          "Anoetako okindegia, San Juan Kalea 2an. Tolosako artisau-ogi bera, lau kilometrora, astegunetan goizez eta arratsaldez irekita.",
       },
     },
     cafeTag: "Kafetegia",
@@ -594,9 +597,9 @@ const eu: Dictionary = {
   },
   cafeteria: {
     eyebrow: "Kafetegia · San Frantzisko",
-    title: ["Kafe bat,", "ogia ondoan"],
-    text: "Pasealekuaren ondoan, ibaira bidean. Eseri barran edo atzeko mahaietan, eta lagundu kafea mostradoreko ogiarekin eta gozoekin.",
-    points: ["Barra eta mahaiak", "Lantegiko ogia eta gozoak", "Asteko 7 egunetan zabalik"],
+    title: ["Kafea, ogia", "eta zerbait gozoa"],
+    text: "Pasealekuaren ondoan, ibaira bidean. Eseri barran edo atzeko mahaietan eta eskatu kafea mostradoreko zerbaitekin: palmera bat, pastak edo ogi egin berria.",
+    points: ["Barra eta mahaiak", "Artisau-ogia eta gozoak", "Asteko 7 egunetan zabalik"],
     hoursLabel: "Ordutegia",
     ctaStore: "Ikusi kafetegia",
     ctaRoute: "Nola iritsi",
@@ -604,12 +607,13 @@ const eu: Dictionary = {
   },
   panes: {
     eyebrow: "Gure ogiak",
-    title: ["Lantegitik,", "egunero"],
-    intro: "Tolosako gure lantegitik hiru dendetara ateratzen diren barrak eta piezak.",
+    title: ["Artisau-ogia,", "egunero"],
+    intro: "Artisau-barrak, loreak eta piezak, egunero eginak gure hiru dendetarako.",
     items: [
       { name: "Sesamo-barrak", note: "Sesamo txigortuz estalitako azala." },
       { name: "Olo-barrak", note: "Olo-malutak gainean." },
       { name: "Mahaspasa-ogia", note: "Pieza samurrak, mahaspasekin." },
+      { name: "Loreak", note: "Lore-itxurako ogia, txokolate eta mahaspasekin ere bai." },
     ],
     more: "Ikusi produktu guztiak",
   },
@@ -624,6 +628,7 @@ const eu: Dictionary = {
       { value: "7", label: "egun astean irekita" },
     ],
   },
+  aviso: "Webgunea moldatzen ari gara: xehetasun batzuk alda daitezke.",
   hoy: {
     title: "Gaur gure dendetan",
     today: "Gaur",
@@ -738,7 +743,7 @@ const eu: Dictionary = {
     eyebrow: "Produktuak",
     title: ["Egunero labean", "egiten duguna"],
     items: [
-      { name: "Ogi tradizionala", description: "Azal karraskariko ogiak eta barrak, lantegitik." },
+      { name: "Ogi tradizionala", description: "Azal karraskariko artisau-ogiak eta barrak." },
       { name: "Opilgintza", description: "Egunero laberatutako piezak, artisau erara glasatuak." },
       { name: "Moldeko ogia", description: "Barrutik samurra, urre koloreko azal leunarekin." },
       { name: "Pastelgintza", description: "Mostradoreko galletak, pastak eta gozokiak, oparitzeko ere bai." },
@@ -822,7 +827,7 @@ const eu: Dictionary = {
       eyebrow: "Gure historia",
       title: ["Hogeita hamar urte", "Tolosan oratzen"],
       intro:
-        "Errotatxo 1996an hasi zen Andia Kalean. Gaur hiru denda dira, Tolosan eta Anoetan, eta lantegi bera guztien atzean.",
+        "Errotatxo 1996an hasi zen la calle Andian. Gaur hiru denda dira, Tolosan eta Anoetan, eta lantegi bera guztien atzean.",
       stats: [
         { value: "1996", label: "Sortze-urtea" },
         { value: "3", label: "Denda Oria bailaran" },

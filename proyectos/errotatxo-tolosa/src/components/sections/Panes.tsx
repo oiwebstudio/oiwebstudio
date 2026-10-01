@@ -11,9 +11,14 @@ import { useLocale } from "@/lib/i18n";
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 // Fotos reales del mostrador, en el mismo orden que t.panes.items.
-const PHOTOS = ["/images/pins/pan-sesamo.webp", "/images/pins/pan-avena.webp", "/images/pins/pan-pasas.webp"];
+const PHOTOS = [
+  "/images/pins/pan-sesamo.webp",
+  "/images/pins/pan-avena.webp",
+  "/images/pins/pan-pasas.webp",
+  "/images/pins/loreak.webp",
+];
 // Cada pieza cae con un giro distinto, como panes dejados en la bandeja.
-const TILT = [-2.5, 1.5, -1];
+const TILT = [-2.5, 1.5, -1, 2];
 
 export default function Panes() {
   const { t } = useLocale();
@@ -35,7 +40,7 @@ export default function Panes() {
         </FadeIn>
       </div>
 
-      <ul className="container-edge grid gap-5 sm:grid-cols-3 md:gap-8">
+      <ul className="container-edge grid grid-cols-2 gap-4 md:gap-8 lg:grid-cols-4">
         {copy.items.map((item, i) => (
           <motion.li
             key={item.name}
@@ -54,7 +59,7 @@ export default function Panes() {
                 className="aspect-[4/5] w-full object-cover transition-transform duration-700 ease-organic group-hover:scale-105"
               />
             </div>
-            <h3 className="display mt-5 text-2xl md:text-3xl">{item.name}</h3>
+            <h3 className="display mt-4 text-xl md:mt-5 md:text-3xl">{item.name}</h3>
             <p className="mt-1 text-sm text-muted md:text-base">{item.note}</p>
           </motion.li>
         ))}
