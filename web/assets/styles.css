@@ -102,6 +102,16 @@ h1, h2, h3, h4 {
   line-height: 1.07;
   text-wrap: balance;
 }
+/* Titulares en Fraunces: serif editorial, cálida, de la misma familia que la
+   cursiva de acento, así que todo se lee como una sola voz. Los h3 de tarjetas
+   y listas siguen en Geist: a tamaño pequeño se leen mejor en sans. */
+h1, h2 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-optical-sizing: auto;
+  letter-spacing: -0.022em;
+  line-height: 1.04;
+}
 
 p { margin: 0; }
 
@@ -278,8 +288,10 @@ p { margin: 0; }
     white-space: nowrap;
     transition: max-width 0.5s var(--ease), opacity 0.35s ease, margin-left 0.5s var(--ease);
   }
-  /* Nav-isla: se contrae cuando el cursor no está encima */
-  .nav:not(:hover):not(:focus-within) .nav__links {
+  /* Nav-isla: arriba del todo el menú se ve entero (antes solo se veía el
+     logo y nadie adivinaba que había que pasar el ratón). Al bajar se
+     contrae y vuelve a abrirse al subir o al pasar el cursor. */
+  .nav-wrap.is-contracted .nav:not(:hover):not(:focus-within) .nav__links {
     max-width: 0;
     opacity: 0;
     margin-left: 0;
@@ -299,9 +311,9 @@ p { margin: 0; }
     max-width: 260px;
   }
   .nav__right { transition: gap 0.5s var(--ease); }
-  .nav:not(:hover):not(:focus-within) .nav__phone,
-  .nav:not(:hover):not(:focus-within) .lang-switch,
-  .nav:not(:hover):not(:focus-within) .nav__cta {
+  .nav-wrap.is-contracted .nav:not(:hover):not(:focus-within) .nav__phone,
+  .nav-wrap.is-contracted .nav:not(:hover):not(:focus-within) .lang-switch,
+  .nav-wrap.is-contracted .nav:not(:hover):not(:focus-within) .nav__cta {
     max-width: 0;
     opacity: 0;
     margin: 0;
@@ -309,7 +321,7 @@ p { margin: 0; }
     border-width: 0;
     pointer-events: none;
   }
-  .nav:not(:hover):not(:focus-within) .nav__right { gap: 0; }
+  .nav-wrap.is-contracted .nav:not(:hover):not(:focus-within) .nav__right { gap: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   .nav__phone, .lang-switch, .nav__cta, .nav__right { transition: none; }

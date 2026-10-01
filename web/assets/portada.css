@@ -54,3 +54,15 @@
 .hero h1 { text-wrap: balance; }
 /* En móvil la frase en cursiva puede ocupar dos líneas (solo entre palabras). */
 @media (max-width: 600px) { .hero h1 .grad { white-space: normal; } }
+
+/* ---- 3 · Collage de proyectos ------------------------------------------
+   Las tres capturas estaban pensadas superpuestas, pero sin fila asignada la
+   segunda caía debajo de la primera y dejaba media pantalla vacía. */
+@media (min-width: 880px) {
+  .mbp-1, .mbp-2 { grid-row: 1; }
+  .mbp-3 { grid-row: 2; margin-top: -38px; }
+}
+
+/* ---- 4 · "¿Hablamos?" en móvil ------------------------------------------
+   En pantalla estrecha el aviso tapaba texto del hero; el botón ya se ve. */
+@media (max-width: 600px) { .fmenu__hint { display: none; } }
