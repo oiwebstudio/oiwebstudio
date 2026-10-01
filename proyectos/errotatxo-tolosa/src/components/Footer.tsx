@@ -77,6 +77,7 @@ export default function Footer() {
               </a>
             </li>
           </ul>
+          {socialLinks.length > 0 && (
           <div className="mt-6 flex gap-4">
             {socialLinks.map((s) => {
               const Icon = socialIcons[s.label];
@@ -95,6 +96,7 @@ export default function Footer() {
               );
             })}
           </div>
+          )}
         </div>
       </div>
 
