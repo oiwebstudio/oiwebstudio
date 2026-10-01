@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Caveat, Inter, Playfair_Display } from "next/font/google";
+import { Caveat, Work_Sans, Young_Serif } from "next/font/google";
 import BackToTop from "@/components/BackToTop";
 import CustomCursor from "@/components/CustomCursor";
 import Footer from "@/components/Footer";
@@ -14,15 +14,14 @@ import ScrollProgress from "@/components/ScrollProgress";
 import { OG_IMAGE, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
-const playfair = Playfair_Display({
+const youngSerif = Young_Serif({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
+  weight: "400",
   variable: "--font-serif",
   display: "swap",
 });
 
-const inter = Inter({
+const workSans = Work_Sans({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
   variable: "--font-sans",
@@ -71,7 +70,7 @@ export default function RootLayout({
     <html
       lang="es"
       suppressHydrationWarning
-      className={`${playfair.variable} ${inter.variable} ${caveat.variable}`}
+      className={`${youngSerif.variable} ${workSans.variable} ${caveat.variable}`}
     >
       <body className="bg-bg font-sans text-ink antialiased">
         <Providers>
