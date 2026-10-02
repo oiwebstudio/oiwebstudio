@@ -7,166 +7,153 @@
 <title>Desatascos Nago · Irun — muestra</title>
 <meta name="description" content="Desatascos, arquetas y red de saneamiento en Irun y Euskadi. Servicio 24 horas, 365 días al año, para particulares, comunidades y empresas."/>
 <!--
-  MUESTRA v2 · reconstruida sobre la referencia «Plumbing / Copper Piping» (tablero fontanería n.º 18), elegida por Oier:
-  maqueta en caja centrada sobre fondo oscuro con textura, cabecera turquesa con logo serif y ola, teléfono en píldora,
-  menú con separadores, portada turquesa con grifo cromado y gota, botón naranja con degradado, panel «Lo que hacemos»
-  con 3 fotos enmarcadas y botones, columna «Servicios» con flechas + dos bloques con foto. Pie oscuro.
-  Datos y fotos (400×250) de su web; Google 4,9 · 58 opiniones. El grifo está dibujado (SVG), no es foto.
+  MUESTRA v2 (2.ª dirección, F elegida por Oier el 2/10/2026) · reconstruida sobre la referencia «Kenneth's Plumbing»
+  (tablero fontanería-extra n.º 14): foto de oficio en blanco y negro a sangre; arriba a la izquierda «Llámanos al…» y
+  menú pequeño a la derecha; lema entre comillas subrayado en serif, nombre en sans cursiva negrita enorme, teléfono grande
+  y líneas cortas centradas en cursiva; segunda banda B/N con «SERVICIOS» a la izquierda y botón rojo de contorno a la
+  derecha; zona blanca a dos columnas: frases grandes en serif entre comillas a la izquierda y «Nuestro compromiso» /
+  «Lo que hacemos» / «Contacto» a la derecha. Textos y fotos (400×250, ampliadas en B/N) de su web; Google 4,9 · 58.
+  La versión anterior (grifo turquesa) está en _local/borradores/v2-anterior/nago-grifo.html.
 -->
+<script>document.documentElement.classList.add("ef");setTimeout(function(){document.documentElement.classList.remove("ef")},2000);document.fonts&&document.fonts.ready.then(function(){document.documentElement.classList.remove("ef")});</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Rufina:wght@400;700&family=Arimo:wght@400;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Jost:ital,wght@0,400;0,500;0,600;1,600;1,700&display=swap" rel="stylesheet"/>
 <style>
-:root{--turq:#4aa3ab;--turq-osc:#2b7880;--crema:#f2efe9;--papel:#faf8f4;--tinta:#3a3a38;--gris:#6e6c67;--naranja:#e0753a;--e:cubic-bezier(.23,1,.32,1)}
+.ef .heroe{visibility:hidden}
+:root{--negro:#0d0d0d;--blanco:#fff;--tinta:#1c1c1c;--gris:#5e5e5e;--linea:#d9d9d9;--rojo:#e0473b;--e:cubic-bezier(.23,1,.32,1)}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{background:#262626 repeating-linear-gradient(45deg,rgba(255,255,255,.018) 0 2px,transparent 2px 6px);color:var(--tinta);font:400 15px/1.65 Arimo,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+body{background:var(--blanco);color:var(--tinta);font:400 16px/1.6 "Libre Caslon Text",Georgia,serif;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit}
-:focus-visible{outline:2px solid var(--naranja);outline-offset:3px}
-.serif{font-family:Rufina,Georgia,serif;font-weight:400}
-.caja{max-width:1040px;margin:0 auto;background:var(--crema);box-shadow:0 0 40px rgba(0,0,0,.55)}
-.aviso{max-width:1040px;margin:0 auto;background:#1b1b1b;color:#cfcfcf;font-size:12.5px;text-align:center;padding:7px 14px}
-.dentro{padding:0 clamp(16px,3.5vw,36px)}
+:focus-visible{outline:2px solid var(--rojo);outline-offset:3px}
+.sans{font-family:Jost,system-ui,sans-serif}
+.aviso{background:#000;color:#ccc;font:400 12.5px Jost,sans-serif;text-align:center;padding:7px 16px}
 
-.cab{background:linear-gradient(180deg,#58b0b7,#4aa3ab);color:#fff;position:relative;border-top:3px solid var(--turq-osc)}
-.cab .fila{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding-top:18px}
-.logo{text-decoration:none;display:block;padding:4px 0 6px}
-.logo svg{width:34px;height:12px;display:block;margin:0 0 2px auto;color:#e8f6f7}
-.logo b{display:block;font:400 clamp(30px,4vw,42px)/1 Rufina,serif;text-shadow:0 1px 0 rgba(0,0,0,.18)}
-.logo small{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-top:4px}
-.arriba{display:flex;align-items:center;gap:14px;font:400 12px Rufina,serif;text-transform:uppercase;letter-spacing:.06em}
-.arriba a{text-decoration:none;padding:10px 0}
-.pildora{white-space:nowrap;display:inline-flex;align-items:center;gap:10px;padding:9px 16px!important;background:var(--turq-osc);border-radius:3px;box-shadow:inset 0 1px 2px rgba(0,0,0,.25)}
-.pildora svg{width:14px;height:14px}
-.nav{display:flex;justify-content:flex-end;flex-wrap:wrap;margin-top:12px}
-.nav a{font:400 12.5px Rufina,serif;text-transform:uppercase;letter-spacing:.08em;text-decoration:none;padding:14px 20px;border-left:1px solid rgba(255,255,255,.22)}
-.nav a:first-child{border-left:0;background:rgba(0,0,0,.1);box-shadow:inset 0 2px 6px rgba(0,0,0,.12)}
-@media(hover:hover) and (pointer:fine){.nav a:hover{background:rgba(0,0,0,.08)}}
-@media(max-width:760px){.nav{display:none}.arriba .fb{display:none}.cab .fila{padding-bottom:10px}}
-@media(max-width:480px){.pildora .larga{display:none}}
+.heroe{position:relative;min-height:max(600px,88svh);color:#fff;display:flex;flex-direction:column;overflow:hidden;isolation:isolate}
+.heroe .foto{position:absolute;inset:0;z-index:-1}
+.heroe .foto img{width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.heroe .foto::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.6),rgba(0,0,0,.4) 40%,rgba(0,0,0,.6))}
+.arriba{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:14px clamp(16px,4.5vw,56px)}
+.arriba a{text-decoration:none;padding:8px 0}
+.arriba .tel{font:600 italic 15px Jost,sans-serif}
+.arriba nav{display:flex;gap:16px;font:500 11.5px Jost,sans-serif;text-transform:uppercase;letter-spacing:.06em}
+.arriba nav a:first-child{border-bottom:1px solid #fff}
+.centro{flex:1;display:grid;place-content:center;text-align:center;padding:30px 16px 60px}
+.lema{font:400 clamp(22px,3.2vw,40px)/1.15 "Libre Caslon Text",serif;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px}
+.heroe h1{font:700 italic clamp(44px,7.4vw,96px)/1 Jost,sans-serif;letter-spacing:-.01em;margin-top:6px}
+.heroe .telg{display:inline-block;font:600 italic clamp(24px,2.8vw,34px) Jost,sans-serif;margin-top:22px;text-decoration:none;padding:4px 0}
+.lineas{list-style:none;padding:0;margin-top:14px;display:grid;gap:12px;font:400 italic clamp(12.5px,1.15vw,14.5px) "Libre Caslon Text",serif}
+.lineas a{text-decoration:none;padding:4px 0;display:inline-block}
 
-.heroe{background:radial-gradient(ellipse at 68% 40%,#8dcdd1 0%,#5fb3b9 35%,#4aa3ab 70%);color:#fff;position:relative;overflow:hidden;border-bottom:4px solid #e7e3dc}
-.heroe::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 3px);pointer-events:none}
-.heroe .dentro{position:relative;display:grid;align-items:center;gap:10px;min-height:340px;padding-top:28px;padding-bottom:28px}
-@media(min-width:760px){.heroe .dentro{grid-template-columns:1fr 1fr}}
-.heroe h1{font-size:clamp(40px,5vw,56px);line-height:1.05;text-shadow:0 2px 0 rgba(0,0,0,.14)}
-.heroe .sub{font:400 clamp(16px,1.6vw,19px)/1.35 Rufina,serif;margin-top:10px;max-width:26ch;text-shadow:0 1px 0 rgba(0,0,0,.12)}
-.boton{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 22px;border-radius:4px;background:linear-gradient(180deg,#d9772f,#b5521c);color:#fff;font:400 13px Rufina,serif;text-transform:uppercase;letter-spacing:.05em;text-decoration:none;box-shadow:0 3px 0 #8c3e14,0 6px 12px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.3);text-shadow:0 1px 0 rgba(0,0,0,.25);transition:transform 120ms var(--e),box-shadow 120ms ease}
-.boton:active{transform:translateY(2px);box-shadow:0 1px 0 #8c3e14,0 2px 6px rgba(0,0,0,.2)}
-.heroe .boton{margin-top:24px}
-.nota{display:flex;align-items:center;gap:10px;margin-top:20px;font-size:13.5px;text-shadow:0 1px 0 rgba(0,0,0,.18)}
-.nota b{font:700 24px Rufina,serif}
-.grifo{width:min(100%,380px);justify-self:center;filter:drop-shadow(10px 18px 14px rgba(0,40,45,.35))}
-.gota{transform-box:fill-box;transform-origin:center top;animation:cae 2.8s cubic-bezier(.55,0,1,.45) infinite}
-@keyframes cae{0%{transform:translateY(0) scale(.3);opacity:0}20%{transform:translateY(0) scale(1);opacity:1}75%{opacity:1}100%{transform:translateY(90px);opacity:0}}
-@media (prefers-reduced-motion:reduce){.gota{animation:none}}
+.banda{position:relative;color:#fff;overflow:hidden;isolation:isolate}
+.banda .foto{position:absolute;inset:0;z-index:-1}
+.banda .foto img{width:100%;height:100%;object-fit:cover}
+.banda .foto::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.5)}
+.banda .in{max-width:1240px;margin:0 auto;padding:clamp(70px,10vw,140px) clamp(16px,4.5vw,56px);display:grid;gap:30px;align-items:center}
+@media(min-width:800px){.banda .in{grid-template-columns:1fr auto}}
+.eti{font:600 11px Jost,sans-serif;text-transform:uppercase;letter-spacing:.1em}
+.banda h2{font:500 clamp(28px,3.4vw,42px)/1.1 Jost,sans-serif;margin-top:14px}
+.banda ul{list-style:none;padding:0;margin-top:20px;display:grid;gap:10px;font-size:14px}
+.cita p{font:600 12px Jost,sans-serif}
+.boton{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 26px;margin-top:14px;border:1.5px solid var(--rojo);color:#fff;background:rgba(224,71,59,.25);font:500 12.5px Jost,sans-serif;text-transform:uppercase;letter-spacing:.08em;text-decoration:none;transition:background-color 200ms ease,transform 160ms var(--e)}
+.boton:active{transform:scale(.97)}
+@media(hover:hover) and (pointer:fine){.boton:hover{background:var(--rojo)}}
 
-.panel{margin:34px clamp(16px,3.5vw,36px) 40px;background:var(--papel);border:1px solid #e1ddd5;box-shadow:0 2px 6px rgba(0,0,0,.08)}
-.panel .tit{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:20px 26px;border-bottom:1px solid #e6e2da}
-.panel h2{font-size:clamp(24px,2.6vw,30px);text-align:center;flex:1}
-.flecha{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;border:1px solid #d5d0c6;color:var(--gris);font-size:15px;background:#fff}
-.flecha.on{background:var(--turq);border-color:var(--turq);color:#fff}
-.tres{display:grid}
-@media(min-width:760px){.tres{grid-template-columns:repeat(3,1fr)}}
-.tres article{padding:26px 26px 30px}
-@media(min-width:760px){.tres article+article{border-left:1px solid #ece8e0}}
-@media(max-width:759px){.tres article+article{border-top:1px solid #ece8e0}}
-.marco{background:#fff;padding:4px;border:1px solid #d9d4cb;box-shadow:0 2px 4px rgba(0,0,0,.12)}
-.marco img{width:100%;aspect-ratio:16/10;object-fit:cover}
-.tres h3{font:400 18px Rufina,serif;color:var(--tinta);margin-top:18px}
-.tres p{color:var(--gris);font-size:13.5px;margin-top:10px}
-.mas{display:inline-flex;align-items:center;justify-content:center;min-height:32px;min-width:44px;padding:0 14px;margin-top:16px;border-radius:3px;background:linear-gradient(180deg,#358a91,#2b7880);color:#fff;font:700 11.5px Arimo,sans-serif;text-transform:uppercase;letter-spacing:.04em;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 1px 2px rgba(0,0,0,.18)}
+.blanca{max-width:1080px;margin:0 auto;padding:clamp(90px,12vw,170px) clamp(16px,4.5vw,40px) clamp(70px,9vw,120px);display:grid;gap:50px}
+@media(min-width:900px){.blanca{grid-template-columns:1.7fr 1fr;gap:70px}}
+.blanca h2{font:500 22px Jost,sans-serif}
+.frases{margin-top:26px;display:grid;gap:36px}
+.frases blockquote{font:400 clamp(20px,2.1vw,25px)/1.45 "Libre Caslon Text",serif;color:#333}
+.frases cite{display:block;text-align:right;margin-top:10px;font:500 10.5px Jost,sans-serif;text-transform:uppercase;letter-spacing:.1em;color:var(--gris);font-style:normal}
+.lado section{border-bottom:1px solid var(--linea);padding-bottom:30px;margin-bottom:30px}
+.lado h3{font:500 26px Jost,sans-serif;margin-top:10px}
+.lado p{font-size:14px;color:#444;margin-top:12px}
+.lado img{margin-top:16px;width:100%;aspect-ratio:16/10;object-fit:cover}
+.servs{list-style:none;padding:0;margin-top:12px;columns:2;column-gap:18px;font-size:13.5px;color:#444}
+.servs li{break-inside:avoid;padding:4px 0;border-bottom:1px solid #eee}
+.datos{list-style:none;padding:0;margin-top:12px;font-size:14px;display:grid;gap:6px}
+.datos a{text-decoration:none;display:inline-block;padding:3px 0}
+@media(hover:hover) and (pointer:fine){.datos a:hover{color:var(--rojo)}}
 
-.inferior{border-top:1px solid #dcd8cf;box-shadow:inset 0 1px 0 #fff;background:#efebe4;padding:30px clamp(16px,3.5vw,36px) 40px;display:grid;gap:30px}
-@media(min-width:760px){.inferior{grid-template-columns:230px 1fr;gap:36px}}
-.inferior h2{font-size:25px;color:var(--tinta)}
-.lista{list-style:none;padding:0;margin-top:14px}
-.lista li{border-bottom:1px solid #dcd7cd;box-shadow:0 1px 0 #fff}
-.lista a{display:block;padding:10px 0 10px 14px;position:relative;color:#1f5f66;font-size:13.5px;text-decoration:none}
-.lista a::before{content:"›";position:absolute;left:0;top:8px;font-weight:700;color:#5c5c5a}
-@media(hover:hover) and (pointer:fine){.lista a:hover{color:#b5521c}}
-.bloque{display:grid;gap:18px;padding-bottom:26px}
-.bloque+.bloque{border-top:1px solid #dcd7cd;box-shadow:inset 0 1px 0 #fff;padding-top:26px}
-@media(min-width:620px){.bloque{grid-template-columns:1fr 160px}}
-.bloque p{color:var(--gris);font-size:13.5px;margin-top:10px}
-.bloque .marco img{aspect-ratio:1/0.8}
+.pie{background:var(--negro);color:#bbb;font:400 12px Jost,sans-serif;text-transform:uppercase;letter-spacing:.08em;padding:22px clamp(16px,4.5vw,56px);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 
-.pie{border-top:4px solid var(--turq);background:#1d1d1d;color:#c9c9c9;text-align:center;padding:16px;font:400 11.5px Rufina,serif;text-transform:uppercase;letter-spacing:.08em}
-.pie a{text-decoration:none;padding:6px 0;display:inline-block}
-
-.movil{position:fixed;left:0;right:0;bottom:0;z-index:30;display:none;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:#1d1d1d;transform:translateY(100%);visibility:hidden;transition:transform 400ms var(--e),visibility 0s linear 400ms}
+.movil{position:fixed;left:0;right:0;bottom:0;z-index:30;display:none;padding-bottom:env(safe-area-inset-bottom);background:var(--negro);transform:translateY(100%);visibility:hidden;transition:transform 400ms var(--e),visibility 0s linear 400ms}
 .movil.on{transform:none;visibility:visible;transition:transform 400ms var(--e)}
-.movil .boton{width:100%;min-height:52px;font-size:15px}
-@media(max-width:700px){.movil{display:block}body{padding-bottom:76px}}
+.movil a{display:grid;place-items:center;min-height:56px;color:#fff;font:600 italic 17px Jost,sans-serif;text-decoration:none;border-top:2px solid var(--rojo)}
+@media(max-width:700px){.movil{display:block}body{padding-bottom:56px}.arriba nav{display:none}}
 @media (prefers-reduced-motion:reduce){.movil{transition:none}}
 </style>
 </head>
 <body>
 <div role="region" aria-label="Aviso"><p class="aviso">Muestra preparada por OI Studio para Desatascos Nago, con los datos y fotos de su web. Sin compromiso.</p></div>
-<div class="caja">
-<header class="cab"><div class="dentro">
-  <div class="fila">
-    <a class="logo" href="#"><svg viewBox="0 0 34 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M1 3q4-3 8 0t8 0 8 0 8 0M1 9q4-3 8 0t8 0 8 0 8 0"/></svg><b>Desatascos Nago</b><small>Irun · 24 horas</small></a>
-    <div class="arriba"><a class="fb" href="https://www.facebook.com/Desatascos-Nago-SL-115081803691776/" target="_blank" rel="noopener">Síguenos en Facebook</a><a class="pildora" href="tel:+34649905987"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg><span class="larga">Llámanos</span> 649 90 59 87</a></div>
-  </div>
-  <nav class="nav" aria-label="Secciones"><a href="#">Inicio</a><a href="#servicios">Servicios</a><a href="#trabajos">Trabajos</a><a href="#camara">Cámara</a><a href="#contacto">Contacto</a></nav>
-</div></header>
 
 <main>
-<section class="heroe" data-portada><div class="dentro">
-  <div>
-    <h1 class="serif" data-letras>Desatascos 24 horas</h1>
-    <p class="sub">Arquetas, red de saneamiento y mantenimiento, los 365 días del año.</p>
-    <a class="boton" href="tel:+34649905987">Llama para pedir el servicio</a>
-    <p class="nota"><b>4,9</b><span>★★★★★ · 58 opiniones en Google</span></p>
-  </div>
-  <svg class="grifo" viewBox="0 0 380 330" aria-hidden="true">
-    <defs>
-      <linearGradient id="cr" x1="0" x2="1"><stop offset="0" stop-color="#7d8a8f"/><stop offset=".18" stop-color="#f4f8f9"/><stop offset=".32" stop-color="#b9c3c7"/><stop offset=".55" stop-color="#ffffff"/><stop offset=".75" stop-color="#8e9a9f"/><stop offset="1" stop-color="#d6dde0"/></linearGradient>
-      <linearGradient id="crv" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".35" stop-color="#c4cdd1"/><stop offset=".6" stop-color="#7f8b90"/><stop offset=".8" stop-color="#e9eef0"/><stop offset="1" stop-color="#97a3a8"/></linearGradient>
-      <radialGradient id="bola" cx=".35" cy=".3" r=".7"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#c9d2d6"/><stop offset="1" stop-color="#6f7c81"/></radialGradient>
-      <linearGradient id="agua" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity=".95"/><stop offset="1" stop-color="#bfe6ea" stop-opacity=".8"/></linearGradient>
-    </defs>
-    <rect x="116" y="58" width="58" height="150" rx="10" fill="url(#cr)"/>
-    <rect x="106" y="196" width="78" height="26" rx="8" fill="url(#cr)"/>
-    <rect x="124" y="40" width="42" height="26" rx="6" fill="url(#cr)"/>
-    <rect x="70" y="30" width="150" height="16" rx="8" fill="url(#crv)"/>
-    <rect x="137" y="0" width="16" height="70" rx="8" fill="url(#cr)"/>
-    <circle cx="70" cy="38" r="17" fill="url(#bola)"/><circle cx="220" cy="38" r="17" fill="url(#bola)"/><circle cx="145" cy="8" r="15" fill="url(#bola)"/><circle cx="145" cy="38" r="12" fill="url(#bola)"/>
-    <path d="M160 214 C 230 214 300 214 312 250 L 316 266" fill="none" stroke="url(#crv)" stroke-width="40" stroke-linecap="round"/>
-    <ellipse cx="316" cy="272" rx="22" ry="8" fill="#6f7c81"/>
-    <ellipse cx="316" cy="270" rx="16" ry="5" fill="#3f4a4e"/>
-    <path class="gota" d="M316 282c-6 9-9 14-9 19a9 9 0 0 0 18 0c0-5-3-10-9-19z" fill="url(#agua)" stroke="#e8f8fa" stroke-width=".8"/>
-  </svg>
-</div></section>
-
-<section class="panel" id="servicios">
-  <div class="tit"><span class="flecha" aria-hidden="true">‹</span><h2 class="serif" data-lineas>Lo que hacemos</h2><span class="flecha on" aria-hidden="true">›</span></div>
-  <div class="tres" data-escalonado>
-    <article><div class="marco"><picture><source type="image/avif" srcset="nueva/fotos/tuberia-400.avif"/><img src="nueva/fotos/tuberia-400.webp" width="400" height="250" alt="Tubería desatascándose con la manguera de presión" loading="lazy"/></picture></div><h3>Desatascos</h3><p>Tuberías, bajantes y alcantarillado para particulares, comunidades y empresas, con maquinaria moderna para causar el mínimo daño.</p><a class="mas" href="tel:+34649905987">Llamar</a></article>
-    <article><div class="marco"><picture><source type="image/avif" srcset="nueva/fotos/arqueta-nueva-400.avif"/><img src="nueva/fotos/arqueta-nueva-400.webp" width="400" height="250" alt="Arqueta nueva instalada" loading="lazy"/></picture></div><h3>Arquetas</h3><p>Limpieza y reparación de arquetas, y detección de arquetas ocultas.</p><a class="mas" href="tel:+34649905987">Llamar</a></article>
-    <article><div class="marco"><picture><source type="image/avif" srcset="nueva/fotos/rejilla-400.avif"/><img src="nueva/fotos/rejilla-400.webp" width="400" height="250" alt="Rejilla de la red de saneamiento" loading="lazy"/></picture></div><h3>Red de saneamiento</h3><p>Mantenimiento general, fosas sépticas, vaciados y obra civil.</p><a class="mas" href="tel:+34649905987">Llamar</a></article>
-  </div>
-</section>
-
-<section class="inferior" id="trabajos">
-  <div>
-    <h2 class="serif" data-lineas>Servicios</h2>
-    <ul class="lista">
-      <li><a href="tel:+34649905987">Desatascos</a></li><li><a href="tel:+34649905987">Arquetas</a></li><li><a href="tel:+34649905987">Red de saneamiento</a></li><li><a href="tel:+34649905987">Particulares y comunidades</a></li><li><a href="tel:+34649905987">Empresas</a></li><li><a href="tel:+34649905987">Tuberías y limpiezas</a></li><li><a href="tel:+34649905987">Fosas sépticas</a></li><li><a href="tel:+34649905987">Alcantarillado</a></li><li><a href="tel:+34649905987">Obra civil y vaciados</a></li><li><a href="tel:+34649905987">Video inspección</a></li><li><a href="tel:+34649905987">Tubería sin zanja</a></li>
+<section class="heroe" data-portada>
+  <div class="foto"><img src="nueva/fotos/f-heroe.webp" width="1600" height="900" alt="Operario de Desatascos Nago limpiando una tubería" fetchpriority="high"/></div>
+  <div class="arriba"><a class="tel" href="tel:+34649905987">Llámanos al 649 90 59 87</a><nav class="sans" aria-label="Secciones"><a href="#">Inicio</a><a href="#servicios">Servicios</a><a href="#contacto">Contacto</a></nav></div>
+  <div class="centro">
+    <p class="lema">«24 horas, 365 días al año»</p>
+    <h1 data-letras>Desatascos Nago</h1>
+    <a class="telg" href="tel:+34649905987">649 90 59 87</a>
+    <ul class="lineas">
+      <li>Llama para cualquier desatasco: estamos a tu disposición.</li>
+      <li>Particulares · comunidades · empresas</li>
+      <li>«Moderna maquinaria para causar el mínimo daño»</li>
+      <li>Irun y toda Euskadi</li>
+      <li><a href="https://www.google.com/maps/search/?api=1&query=Desatascos+Nago+Irun" target="_blank" rel="noopener">4,9 ★ · mira nuestras 58 opiniones en Google</a></li>
     </ul>
   </div>
-  <div>
-    <article class="bloque" id="camara"><div><h2 class="serif" data-lineas>Inspección con cámara</h2><p data-enciende>Vemos la tubería por dentro para encontrar el problema sin romper, y la rehabilitamos sin abrir zanja.</p><a class="mas" href="tel:+34649905987">Pedir presupuesto</a></div><div class="marco"><picture><source type="image/avif" srcset="nueva/fotos/camara-400.avif"/><img src="nueva/fotos/camara-400.webp" width="400" height="250" alt="Interior de una tubería visto con la cámara" loading="lazy"/></picture></div></article>
-    <article class="bloque" id="contacto"><div><h2 class="serif" data-lineas>Aquí estamos</h2><p>Cuéntanos qué necesitas: usamos todos nuestros recursos para detectar el problema y solucionarlo lo antes posible. Belasko kalea 18, Irun · desatascosnago@gmail.com</p><a class="mas" href="tel:+34649905987">649 90 59 87</a></div><div class="marco"><picture><source type="image/avif" srcset="nueva/fotos/furgoneta-400.avif"/><img src="nueva/fotos/furgoneta-400.webp" width="400" height="250" alt="Furgoneta de Desatascos Nago" loading="lazy"/></picture></div></article>
+</section>
+
+<section class="banda" id="servicios">
+  <div class="foto"><img src="nueva/fotos/f-banda.webp" width="1600" height="700" alt="" loading="lazy"/></div>
+  <div class="in">
+    <div>
+      <p class="eti">Servicios</p>
+      <h2 data-lineas>Desatascos, arquetas y saneamiento</h2>
+      <ul><li>Del fregadero al alcantarillado.</li><li>Inspección con cámara y tubería sin zanja.</li><li>649 90 59 87</li></ul>
+    </div>
+    <div class="cita"><p>Presupuesto sin compromiso</p><a class="boton" href="tel:+34649905987">Llamar ahora</a></div>
   </div>
 </section>
-</main>
-<footer class="pie">Desatascos Nago © 2026 · <a href="https://www.google.com/maps/dir/?api=1&destination=Belasko+Kalea+18+Irun" target="_blank" rel="noopener">Belasko kalea 18, Irun</a> · Euskadi · 24 h</footer>
-</div>
 
-<nav class="movil" data-barra-movil aria-label="Llamar"><a class="boton" href="tel:+34649905987">Llamar · 649 90 59 87</a></nav>
+<section class="blanca">
+  <div>
+    <h2 data-lineas>Así trabajamos</h2>
+    <div class="frases" data-escalonado>
+      <blockquote>«Aquí estamos, a su disposición. Cuéntanos qué es lo que necesitas.»<cite>— 1 · Llamas</cite></blockquote>
+      <blockquote>«Nosotros nos encargamos: utilizaremos todos nuestros recursos para detectar y solucionar el problema.»<cite>— 2 · A trabajar</cite></blockquote>
+      <blockquote>«Fase final. Solucionaremos su problema lo antes posible.»<cite>— 3 · Acabamos</cite></blockquote>
+      <blockquote>«Un equipo humano de trato cercano, con mucha experiencia y moderna maquinaria para causar el mínimo daño al cliente.»<cite>— Desatascos Nago</cite></blockquote>
+    </div>
+  </div>
+  <aside class="lado">
+    <section>
+      <p class="eti">Nuestro compromiso</p>
+      <p>Servicio 24 horas, 365 días al año, para particulares, comunidades y empresas. Presupuesto sin compromiso.</p>
+    </section>
+    <section>
+      <h3>Lo que hacemos</h3>
+      <ul class="servs"><li>Desatascos</li><li>Arquetas</li><li>Red de saneamiento</li><li>Tuberías</li><li>Limpiezas</li><li>Fosas sépticas</li><li>Alcantarillado</li><li>Obra civil</li><li>Vaciados</li><li>Video inspección</li><li>Arquetas ocultas</li><li>Tubería sin zanja</li></ul>
+      <img src="nueva/fotos/f-camara.webp" width="800" height="500" alt="Interior de una tubería visto con la cámara" loading="lazy"/>
+    </section>
+    <section id="contacto" style="border:0">
+      <h3>Contacto</h3>
+      <ul class="datos">
+        <li><a href="tel:+34649905987">649 90 59 87</a></li>
+        <li><a href="mailto:desatascosnago@gmail.com">desatascosnago@gmail.com</a></li>
+        <li><a href="https://www.google.com/maps/dir/?api=1&destination=Belasko+Kalea+18+Irun" target="_blank" rel="noopener">Belasko kalea 18, Irun</a></li>
+      </ul>
+      <img src="nueva/fotos/f-furgo.webp" width="1200" height="700" alt="Furgoneta de Desatascos Nago" loading="lazy"/>
+    </section>
+  </aside>
+</section>
+</main>
+<footer class="pie"><span>© Desatascos Nago · Irun</span><span>24 h · 365 días · Euskadi</span></footer>
+
+<nav class="movil" data-barra-movil aria-label="Llamar"><a href="tel:+34649905987">Llamar · 649 90 59 87</a></nav>
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
