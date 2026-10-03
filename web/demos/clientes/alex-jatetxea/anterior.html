@@ -45,13 +45,13 @@
    Se sirven desde esta misma carpeta: la demo no depende de ningún CDN.
    Google Fonts, licencias OFL / Apache 2.0 — permiten el autoalojamiento.
    Regenerar con: node scripts/autoalojar-fuentes.mjs hosteleria-asador  */
-@font-face{font-family:'Instrument Serif';font-style:italic;font-weight:400;font-display:swap;src:url('fuentes/instrument-serif-400-italic-1.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
-@font-face{font-family:'Instrument Serif';font-style:normal;font-weight:400;font-display:swap;src:url('fuentes/instrument-serif-400-normal-3.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
 @font-face{font-family:'Instrument Sans';font-style:normal;font-weight:400;font-display:swap;src:url('fuentes/instrument-sans-400-normal-5.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
 @font-face{font-family:'Instrument Sans';font-style:normal;font-weight:500;font-display:swap;src:url('fuentes/instrument-sans-500-normal-7.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
 @font-face{font-family:'Instrument Sans';font-style:normal;font-weight:600;font-display:swap;src:url('fuentes/instrument-sans-600-normal-9.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
 @font-face{font-family:'Instrument Sans';font-style:normal;font-weight:600;font-display:swap;src:url('fuentes/instrument-sans-600-normal-11.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
 @font-face{font-family:'Instrument Sans';font-style:normal;font-weight:700;font-display:swap;src:url('fuentes/instrument-sans-700-normal-13.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+/* 3/10/2026: fuera la serif cursiva de acento (Oier: «genérica, parece IA») */
+h1,h2,h3{font-weight:600;letter-spacing:-.025em} h1 em,h2 em,h3 em{font-weight:400}
 </style>
 <style>
 /* ═══════════════ CONTRATO DE TOKENS ═══════════════ */
@@ -81,7 +81,7 @@
   --ok-claro:#8FC79C;
   --alerta-clara:#E0B36A;
 
-  --display:"Instrument Serif",Georgia,serif;
+  --display:"Instrument Sans",system-ui,sans-serif;
   --texto:"Instrument Sans",system-ui,sans-serif;
   --detalle:"Instrument Sans",system-ui,sans-serif;
 
@@ -167,7 +167,7 @@ p{text-wrap:pretty;}
 .portada__t{position:relative;z-index:1;}
 .portada h1{font-size:clamp(58px,14.5vw,196px);margin:0;}
 /* la cursiva de Zodiak es la única de la página, y carga el nombre del sitio */
-.portada h1 em{font-style:italic;font-weight:400;color:var(--acento);}
+.portada h1 em{font-style:normal;font-weight:400;color:var(--acento);}
 .portada__meta{display:flex;flex-wrap:wrap;gap:10px 28px;align-items:baseline;
   padding:16px 0 18px;border-bottom:1px solid var(--filete);}
 .portada__meta span{font-family:var(--detalle);font-size:12px;font-weight:700;
@@ -390,7 +390,7 @@ html:not(.js) .heroe *{opacity:1!important;transform:none!important;}
   background:color-mix(in srgb, var(--acento) 9%, var(--fondo));}
 .heroe__kicker span+span{color:var(--tinta-sec);background:var(--fondo-alt);}
 .heroe .heroe__h{font-size:clamp(48px,6vw,104px);line-height:.95;letter-spacing:-.02em;margin:0 0 22px;}
-.heroe__h em{font-style:italic;font-weight:400;color:var(--acento);}
+.heroe__h em{font-style:normal;font-weight:400;color:var(--acento);}
 .heroe__h .l{display:block;overflow:hidden;padding-bottom:.08em;}
 .heroe__h .l>span{display:inline-block;transform:translateY(105%);
   transition:transform 1s cubic-bezier(.22,1,.36,1);}
@@ -575,7 +575,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .carga__marca{position:relative;font-family:var(--display);color:var(--osc-tinta);
   font-size:clamp(52px,12vw,104px);line-height:1;margin:0;opacity:0;
   transform:translateY(26px) scale(.86);animation:marca 1s cubic-bezier(.22,1,.36,1) forwards;}
-.carga__marca em{color:var(--acento-claro);font-style:italic;}
+.carga__marca em{color:var(--acento-claro);font-style:normal;}
 @keyframes marca{to{opacity:1;transform:none;}}
 .carga__linea{position:relative;width:160px;height:1px;margin-top:34px;overflow:hidden;
   background:rgba(255,255,255,.2);opacity:0;animation:aparece .9s .5s forwards;}
