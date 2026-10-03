@@ -148,4 +148,4 @@ nativo:
 - https://oiwebstudio.com/eu/zonas/irun.html
 - https://oiwebstudio.com/eu/zonas/zarautz.html
 
-Los textos están en `scripts/euskera-zonas.mjs`, con el castellano al lado.
+Los textos están en `herramientas/sitio/euskera-zonas.mjs`, con el castellano al lado.

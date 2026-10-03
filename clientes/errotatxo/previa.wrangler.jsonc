@@ -1,0 +1,7 @@
+// Web completa mientras errotatxo.com está en obras: solo en workers.dev.
+{
+  "name": "errotatxo-previa",
+  "compatibility_date": "2026-09-30",
+  "workers_dev": true,
+  "assets": { "directory": "./publicado", "html_handling": "force-trailing-slash", "not_found_handling": "404-page" }
+}

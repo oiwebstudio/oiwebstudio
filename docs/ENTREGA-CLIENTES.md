@@ -1,7 +1,7 @@
 # Cómo se entrega una web a un cliente
 
 De "me interesa" a web publicada en su dominio. Pensado para hacerlo en unas
-2–3 horas por cliente, con las demos que ya salen de `scripts/generar-demo.mjs`.
+2–3 horas por cliente, con las demos que ya salen de `herramientas/demos/generar-demo.mjs`.
 
 **Decisiones tomadas (24/09/2026):**
 
@@ -49,7 +49,7 @@ Partir de la demo publicada en `web/demos/clientes/<slug>/` y copiarla a `client
 - [ ] Quitar `noindex` si lo tiene; `canonical`, `og:url` y `og:image` con el dominio nuevo
 - [ ] Aviso legal, privacidad y cookies con **sus** datos (si no hay analítica con cookies, no hace falta banner)
 - [ ] Favicon, `robots.txt` y `sitemap.xml` con el dominio nuevo
-- [ ] Revisar en móvil y ordenador (`scripts/auditoria-visual.js`) y que todos los datos sean verdaderos
+- [ ] Revisar en móvil y ordenador (`herramientas/auditoria/auditoria-visual.js`) y que todos los datos sean verdaderos
 
 ## 4. Dominio y publicación
 
@@ -76,7 +76,7 @@ Partir de la demo publicada en `web/demos/clientes/<slug>/` y copiarla a `client
 ## 6. Mantenimiento (20 €/mes)
 
 - **Panel del cliente** (incluido): aviso, precio y menú del día desde el móvil, con PIN.
-  Se monta con `scripts/kit-panel/` (ver su LEEME.md) antes de publicar.
+  Se monta con `herramientas/kit-panel/` (ver su LEEME.md) antes de publicar.
 
 - Cambios pequeños: editar `clientes/<slug>/`, commit y el mismo `wrangler pages deploy`
 - Una vez al mes: que la web abra, que el https esté bien y que el dominio no esté por caducar

@@ -1,49 +1,41 @@
-# Dependencies
+# Dependencias y compilados
 node_modules/
+dist/
+build/
 npm-debug.log
 yarn-error.log
 
-# Build & deployment
-dist/
-build/
+# Claves
 .env
 .env.local
+.dev.vars*
+!.dev.vars.example
+!.env.example
 
-# IDE
+# Editor y sistema
+.claude/
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
-
-# OS
 .DS_Store
 Thumbs.db
 
-# Local development
-.claude/
-
-# Todo el material que no forma parte de la web desplegada vive en _local/.
-# Si algo no debe publicarse, se mueve ahí y no hace falta tocar este fichero.
+# Todo lo que no se publica vive en _local/: demos en curso, material de
+# diseño, negocio y archivo. Si algo no debe publicarse, se mueve ahí y no
+# hace falta tocar este fichero.
 _local/
 
-# Documentación de trabajo. docs/PUBLICAR.md sí se versiona (explica el
-# despliegue); el resto son notas, prompts y borradores que se quedan en local.
-docs/LEEME.md
-docs/INFORME-AUDITORIA.md
-docs/PROMPT-*.md
-docs/cm-semana-1.txt
-docs/estrategia-de-ventas.txt
+# captacion/ es un repositorio aparte, con su propio historial.
+captacion/
 
-*.bat
-localai/
-
-# Biblioteca de animaciones: sólo se publica web/biblioteca.html.
-# La carpeta de trabajo — fuente, catálogo, brief e investigación — se
-# queda en local: es el criterio, y eso no se regala.
-biblioteca/animaciones/
-
-# Versión en euskera: se genera en cada despliegue con
-# scripts/generar-euskera.mjs desde las páginas en castellano.
+# La versión en euskera se genera en cada despliegue con
+# herramientas/sitio/generar-euskera.mjs desde las páginas en castellano.
 # No editar a mano ni commitear.
 web/eu/
+
+# Caché de wrangler
+.wrangler
+
+*.bat

@@ -17,9 +17,9 @@ name: Desplegar web
 on:
   push:
     branches: [main]
-    # scripts/ también: las páginas en euskera (y sus traducciones) se
-    # generan aquí en cada despliegue, así que un cambio ahí cambia el sitio.
-    paths: ['web/**', 'scripts/generar-euskera.mjs', 'scripts/euskera-zonas.mjs', '.github/workflows/deploy.yml']
+    # herramientas/sitio también: las páginas en euskera se generan ahí en
+    # cada despliegue, así que un cambio ahí cambia el sitio publicado.
+    paths: ['web/**', 'herramientas/sitio/**', '.github/workflows/deploy.yml']
   workflow_dispatch:        # permite lanzarlo a mano desde la pestaña Actions
 
 permissions:
@@ -46,7 +46,7 @@ jobs:
         # páginas en castellano y el diccionario de assets/i18n.js. Así las dos
         # versiones no pueden desincronizarse. Si falta alguna traducción el
         # script sale con error y el despliegue se para.
-        run: node scripts/generar-euskera.mjs
+        run: node herramientas/sitio/generar-euskera.mjs
 
       - name: Comprobar que el sitio está completo
         # Red de seguridad: si un fichero del sitemap no existe, se para aquí
@@ -62,6 +62,24 @@ jobs:
           done
           [ $falta -eq 0 ] || { echo "Hay URLs del sitemap sin fichero."; exit 1; }
           echo "Sitio completo."
+
+      - name: Limpiar archivos de desarrollo del deploy
+        run: |
+          cd web
+          # Código fuente, configs y dependencias que no deben publicarse
+          find demos -maxdepth 3 \( \
+            -name 'package.json' -o -name 'package-lock.json' \
+            -o -name 'tsconfig*.json' -o -name 'vite.config.*' \
+            -o -name 'tailwind.config.*' -o -name 'postcss.config.*' \
+            -o -name '.gitignore' -o -name '.env*' \
+          \) -delete 2>/dev/null || true
+          find demos -type d -name src -exec rm -rf {} + 2>/dev/null || true
+          find demos -type d -name node_modules -exec rm -rf {} + 2>/dev/null || true
+          # Archivos de Vercel y entornos en webs-clientes
+          find webs-clientes -type d -name .vercel -exec rm -rf {} + 2>/dev/null || true
+          find webs-clientes -name '.env*' -delete 2>/dev/null || true
+          find webs-clientes -name '.gitignore' -delete 2>/dev/null || true
+          echo "Archivos de desarrollo eliminados del deploy."
 
       - uses: actions/configure-pages@v5
 

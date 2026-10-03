@@ -1,0 +1,9 @@
+{
+  "name": "oi-herramientas-diseno",
+  "private": true,
+  "type": "module",
+  "description": "Herramientas locales de diseno: capturas, paletas, escalas, imagenes y auditoria",
+  "dependencies": {
+    "axe-core": "^4.13.0"
+  }
+}
