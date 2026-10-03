@@ -23,12 +23,11 @@
 -->
 <style>
 @font-face{font-family:'Manrope';font-style:normal;font-weight:200 800;font-display:swap;src:url('fuentes/manrope.woff2') format('woff2');}
-@font-face{font-family:'Instrument Serif';font-style:italic;font-weight:400;font-display:swap;src:url('fuentes/instrument-italic.woff2') format('woff2');}
 
 :root{
   --bosque:#17332A; --bosque2:#21473A; --musgo:#3F6653; --salvia:#9DB5A6; --salvia-claro:#E3EBE5;
   --hueso:#F6F5F0; --blanco:#FFFFFF; --tinta:#132019; --texto2:#56655C; --regla:#E1E4DE; --oro:#C9A45C;
-  --f:"Manrope",system-ui,sans-serif; --cursiva:"Instrument Serif",Georgia,serif;
+  --f:"Manrope",system-ui,sans-serif; --cursiva:var(--f);
   --ease-out:cubic-bezier(.23,1,.32,1); --ease-in-out:cubic-bezier(.77,0,.175,1);
   --r:28px; --r-s:18px;
 }
@@ -39,7 +38,7 @@ body{background:var(--hueso);color:var(--tinta);font:400 17px/1.65 var(--f);-web
 img{display:block;max-width:100%;height:auto;}
 a{color:inherit;}
 h1,h2,h3{font-family:var(--f);font-weight:300;letter-spacing:-.035em;line-height:1.02;}
-h1 em,h2 em,h3 em{font-family:var(--cursiva);font-style:italic;font-weight:400;letter-spacing:-.01em;}
+h1 em,h2 em,h3 em{font-family:var(--cursiva);font-style:normal;font-weight:400;letter-spacing:-.01em;}
 .wrap{max-width:1240px;margin:0 auto;padding:0 clamp(18px,4.5vw,48px);}
 .eti{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--musgo);}
 .eti::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;}
@@ -104,7 +103,7 @@ section{padding:clamp(80px,10vw,140px) 0;}
 .cinta__pista{display:flex;width:max-content;animation:cinta 42s linear infinite;}
 .cinta__pista span{display:inline-flex;align-items:center;gap:28px;padding-right:28px;font-size:clamp(20px,2.2vw,28px);font-weight:300;letter-spacing:-.02em;white-space:nowrap;}
 .cinta__pista span::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--salvia);}
-.cinta__pista em{font-family:var(--cursiva);font-style:italic;}
+.cinta__pista em{font-family:var(--cursiva);font-style:normal;}
 @keyframes cinta{to{transform:translateX(-50%);}}
 
 /* ═══ ¿DÓNDE TE DUELE? ═══ */
@@ -163,7 +162,7 @@ section{padding:clamp(80px,10vw,140px) 0;}
 .tarj--lisa{background:var(--musgo);}
 .tarj--lisa::after{display:none;}
 .tarj--lisa .tarj__txt{background:none;border:0;backdrop-filter:none;-webkit-backdrop-filter:none;padding:10px;}
-.tarj--lisa .grande{position:absolute;top:26px;left:24px;right:24px;font-family:var(--cursiva);font-style:italic;font-size:clamp(40px,4vw,56px);line-height:1;color:#E3EBE5;}
+.tarj--lisa .grande{position:absolute;top:26px;left:24px;right:24px;font-family:var(--cursiva);font-style:normal;font-size:clamp(40px,4vw,56px);line-height:1;color:#E3EBE5;}
 /* todas las técnicas: rejilla de iconos de línea */
 .todas{margin-top:clamp(56px,7vw,96px);display:grid;gap:clamp(24px,3vw,44px);}
 @media(min-width:900px){.todas{grid-template-columns:.8fr 2.2fr;align-items:start;}}
@@ -284,6 +283,8 @@ section{padding:clamp(80px,10vw,140px) 0;}
   .duele__foto img{transition:opacity 200ms ease;transform:none;}
   .panel__cont{transition:opacity 150ms ease;} .panel__cont.cambiando{transform:none;filter:none;}
 }
+/* 3/10/2026: fuera la serif cursiva de acento (Oier: «genérica, parece IA») */
+h1 em,h2 em,h3 em,.cinta__pista em{font-weight:300;letter-spacing:-.02em}
 </style>
 </head>
 <body>

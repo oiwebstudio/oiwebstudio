@@ -19,12 +19,11 @@
 -->
 <style>
 @font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:200 800;font-display:swap;src:url('fuentes/hanken.woff2') format('woff2');}
-@font-face{font-family:'Instrument Serif';font-style:italic;font-weight:400;font-display:swap;src:url('fuentes/instrument-italic.woff2') format('woff2');}
 
 :root{
   --grafito:#1C2126; --grafito2:#2A3139; --cobre:#C0703A; --cobre-osc:#94491C; --cobre-claro:#F3DDCB;
   --papel:#F4F5F3; --blanco:#FFFFFF; --tinta:#16191C; --texto2:#555C63; --regla:#DFE1DE; --tierra:#B7B334;
-  --f:"Hanken Grotesk",system-ui,sans-serif; --cursiva:"Instrument Serif",Georgia,serif;
+  --f:"Hanken Grotesk",system-ui,sans-serif; --cursiva:var(--f);
   --ease-out:cubic-bezier(.23,1,.32,1); --ease-in-out:cubic-bezier(.77,0,.175,1);
   --r:26px; --r-s:18px;
 }
@@ -36,7 +35,7 @@ img{display:block;max-width:100%;height:auto;}
 a{color:inherit;}
 button{font:inherit;color:inherit;}
 h1,h2,h3{font-family:var(--f);font-weight:300;letter-spacing:-.035em;line-height:1.02;}
-h1 em,h2 em,h3 em{font-family:var(--cursiva);font-style:italic;font-weight:400;letter-spacing:-.01em;}
+h1 em,h2 em,h3 em{font-family:var(--cursiva);font-style:normal;font-weight:400;letter-spacing:-.01em;}
 .wrap{max-width:1240px;margin:0 auto;padding:0 clamp(18px,4.5vw,48px);}
 .eti{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--cobre-osc);}
 .eti::before{content:"";width:18px;height:6px;border-radius:3px;background:repeating-linear-gradient(90deg,var(--tierra) 0 4px,#3C8A4E 4px 8px);}
@@ -241,6 +240,8 @@ section{padding:clamp(80px,10vw,140px) 0;}
   .cable .vivo{stroke-dashoffset:0;}
   .tarj.on::before,.visor img.on,.auto[aria-pressed="true"] .auto__led{animation:none;}
 }
+/* 3/10/2026: fuera la serif cursiva de acento (Oier: «genérica, parece IA») */
+h1 em,h2 em,h3 em,.cinta__pista em{font-weight:300;letter-spacing:-.02em}
 </style>
 </head>
 <body>
