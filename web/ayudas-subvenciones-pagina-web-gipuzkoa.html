@@ -6,13 +6,13 @@
 <meta name="theme-color" content="#f6f3ea"/>
 <meta http-equiv="Content-Security-Policy" content="base-uri 'self'; form-action 'self' mailto: https://wa.me"/>
 <title>Ayudas y Subvenciones para tu Página Web en Gipuzkoa (2026)</title>
-<meta name="description" content="Subvenciones para la web de tu negocio en Gipuzkoa: Andoain (80–100 %), euskera en la web en Tolosa, Irun, Hernani, Beasain, Bergara y más pueblos. Cuáles están abiertas y cuánto cubren."/>
+<meta name="description" content="Mapa, calculadora y plazos de las subvenciones para la web de tu negocio en Gipuzkoa: Andoain (80–100 %), euskera en la web en Irun, Tolosa, Hernani, Beasain, Bergara y más pueblos."/>
 <meta name="robots" content="index, follow"/>
 <meta property="og:type" content="article"/>
 <meta property="og:site_name" content="OI Studio"/>
 <meta property="og:url" content="https://oiwebstudio.com/ayudas-subvenciones-pagina-web-gipuzkoa.html"/>
 <meta property="og:title" content="Ayudas para tu página web en Gipuzkoa (2026)"/>
-<meta property="og:description" content="Qué ayudas hay abiertas hoy para la web de tu negocio, cuánto cubren y dónde se piden."/>
+<meta property="og:description" content="Qué ayudas hay abiertas hoy para la web de tu negocio, cuánto te pagan y cuándo cierran."/>
 <meta property="og:image" content="https://oiwebstudio.com/assets/og-precios.jpg"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
@@ -88,35 +88,167 @@
   .faq-pre p{padding:0 0 18px;font-size:15px;margin:0;}
 
   .art-hero h1 .ac{color:var(--terra-link);}
-  .ay-resumen{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:26px 0 6px;}
-  .ay-resumen div{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px 16px;text-align:center;}
-  .ay-resumen b{display:block;font-family:var(--font-serif);font-weight:500;font-size:38px;line-height:1;color:var(--ink);}
-  .ay-resumen span{display:block;margin-top:6px;font-size:13.5px;color:var(--text-muted);line-height:1.35;}
-  .ay-lista{display:grid;gap:16px;margin:24px 0 10px;}
+  .ay-w{max-width:1080px;margin:0 auto;}
+  .ay-sec{padding:34px 0;}
+  .ay-k{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--terra-link);display:block;margin-bottom:10px;}
+  .ay-h2{font-size:clamp(26px,3.6vw,38px);line-height:1.08;letter-spacing:-.025em;margin:0 0 10px;}
+  .ay-intro{font-size:16.5px;line-height:1.6;color:var(--text-muted);max-width:62ch;margin:0 0 22px;}
+  /* cifras */
+  .ay-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:8px 0 0;}
+  .ay-stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:22px 18px;}
+  .ay-stat b{display:block;font-family:var(--font-serif);font-weight:500;font-size:clamp(34px,5vw,52px);line-height:1;letter-spacing:-.03em;color:var(--ink);}
+  .ay-stat span{display:block;margin-top:8px;font-size:14px;line-height:1.4;color:var(--text-muted);}
+  .ay-stat--ok b{color:#1f6b40;}
+  @media(max-width:760px){.ay-stats{grid-template-columns:1fr 1fr;}}
+  /* mapa */
+  .ay-mapa{display:grid;grid-template-columns:1.35fr 1fr;gap:28px;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);padding:26px;}
+  @media(max-width:880px){.ay-mapa{grid-template-columns:1fr;padding:18px;}}
+  .mapa{width:100%;height:auto;display:block;overflow:visible;}
+  .mapa__tierra{fill:var(--surface-2);stroke:var(--border-strong);stroke-width:1.4;stroke-linejoin:round;}
+  .mapa__mar{font-family:var(--font-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;fill:var(--text-faint);}
+  .mp text{font-size:13px;font-weight:600;fill:var(--ink);paint-order:stroke;stroke:var(--surface-2);stroke-width:4px;stroke-linejoin:round;}
+  .mp__p{fill:var(--text-faint);stroke:var(--surface);stroke-width:2;transition:transform .2s cubic-bezier(.23,1,.32,1);transform-box:fill-box;transform-origin:center;}
+  .mp--ok .mp__p{fill:#2f8a52;}
+  .mp__halo{fill:#2f8a52;opacity:.25;transform-box:fill-box;transform-origin:center;animation:ay-halo 2.4s ease-out infinite;}
+  @keyframes ay-halo{0%{transform:scale(1);opacity:.35}100%{transform:scale(3);opacity:0}}
+  .mp:hover .mp__p,.mp:focus-visible .mp__p{transform:scale(1.35);}
+  .mp:focus-visible{outline:none;} .mp:focus-visible text{text-decoration:underline;}
+  .mp--casa text{font-size:14.5px;}
+  @media(max-width:600px){.ay-mapa{padding:12px 8px 18px;}.mp text{font-size:21px;stroke-width:6px;}.mp--casa text{font-size:23px;}.mapa__mar{font-size:16px;}.ay-mapa > div{padding:0 8px;}}
+  .ay-ley{display:flex;gap:16px;flex-wrap:wrap;font-size:13.5px;color:var(--text-muted);margin:0 0 14px;}
+  .ay-ley i{display:inline-block;width:10px;height:10px;border-radius:50%;background:#2f8a52;margin-right:6px;vertical-align:-1px;}
+  .ay-ley i.gris{background:var(--text-faint);}
+  .ay-pueblos{display:flex;flex-wrap:wrap;gap:8px;}
+  .ay-pueblos a{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;border:1px solid var(--border);background:var(--bg);font-size:14px;text-decoration:none;color:var(--ink);transition:border-color .15s ease;}
+  .ay-pueblos a:hover{border-color:var(--terra);}
+  .ay-pueblos a i{width:7px;height:7px;border-radius:50%;background:#2f8a52;}
+  .ay-pueblos a.anual i{background:var(--text-faint);}
+  /* calculadora */
+  .calc{display:grid;grid-template-columns:1.25fr 1fr;border-radius:var(--r-xl);overflow:hidden;border:1px solid var(--border);background:var(--surface);}
+  @media(max-width:880px){.calc{grid-template-columns:1fr;}}
+  .calc__in{padding:28px;display:grid;gap:22px;}
+  .calc__lab{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:8px;padding:0;}
+  .calc select,.calc input[type=number]{width:100%;font:inherit;font-size:16px;padding:12px 14px;border-radius:var(--r-sm);border:1px solid var(--border-strong);background:var(--bg);color:var(--ink);}
+  .calc fieldset{border:0;padding:0;margin:0;min-width:0;}
+  .fmt{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  @media(max-width:520px){.fmt{grid-template-columns:1fr;gap:8px;}.fmt label{display:grid;grid-template-columns:86px 1fr;column-gap:12px;align-items:center;padding:10px;}.fmt .mk{grid-row:span 2;}.fmt b{margin-top:0;align-self:end;}.fmt small{align-self:start;}}
+  .fmt label{position:relative;cursor:pointer;display:block;border:1.5px solid var(--border);border-radius:var(--r-md);padding:12px;background:var(--bg);transition:border-color .15s ease,box-shadow .15s ease;}
+  .fmt input{position:absolute;opacity:0;pointer-events:none;}
+  .fmt label:has(input:checked){border-color:var(--ink);box-shadow:0 0 0 3px var(--terra-soft);}
+  .fmt label:has(input:focus-visible){outline:3px solid var(--terra);outline-offset:2px;}
+  .fmt b{display:block;font-size:14px;margin-top:10px;color:var(--ink);}
+  .fmt small{display:block;font-size:12.5px;line-height:1.35;color:var(--text-muted);margin-top:2px;}
+  .mk{display:block;border:1px solid var(--border-strong);border-radius:8px;background:var(--surface);overflow:hidden;}
+  .mk__bar{display:flex;align-items:center;gap:3px;padding:5px 6px;border-bottom:1px solid var(--border);}
+  .mk__bar i{width:5px;height:5px;border-radius:50%;background:var(--border-strong);}
+  .mk__langs{margin-left:auto;display:flex;gap:3px;}
+  .mk__l{font-family:var(--font-mono);font-size:8.5px;padding:1px 4px;border-radius:4px;border:1px solid var(--border-strong);color:var(--text-muted);}
+  .mk__l.is-on{background:var(--ink);border-color:var(--ink);color:#fff;}
+  .mk__body{padding:7px 6px 8px;display:grid;gap:4px;}
+  .mk__body span{display:block;height:5px;border-radius:3px;background:var(--border);}
+  .mk__body span:first-child{width:70%;height:7px;background:var(--border-strong);}
+  .mk__body span:nth-child(3){width:55%;}
+  .precios{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+  .precios button{font:inherit;font-size:14px;font-weight:600;padding:10px 14px;border-radius:999px;border:1.5px solid var(--border);background:var(--bg);color:var(--ink);cursor:pointer;transition:border-color .15s ease,transform .12s cubic-bezier(.23,1,.32,1);}
+  .precios button:active{transform:scale(.97);}
+  .precios button[aria-pressed=true]{border-color:var(--ink);background:var(--ink);color:#fff;}
+  .calc .precios input{width:120px;}
+  .calc__out{background:var(--ink);color:#fff;padding:30px 28px;display:flex;flex-direction:column;justify-content:center;}
+  .calc__out .ay-k{color:#e6b98a;}
+  .calc__ayuda{font-family:var(--font-serif);font-weight:500;font-size:clamp(46px,7vw,72px);line-height:1;letter-spacing:-.03em;}
+  .calc__barra{height:12px;border-radius:999px;background:rgba(255,255,255,.14);overflow:hidden;margin:20px 0 10px;}
+  .calc__barra span{display:block;height:100%;width:0;background:linear-gradient(90deg,#3fae6a,#7fd39d);border-radius:999px;transition:width .5s cubic-bezier(.23,1,.32,1);}
+  .calc__leyenda{display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.7);}
+  .calc__tu{font-size:17px;margin:18px 0 0;color:rgba(255,255,255,.9);}
+  .calc__tu b{color:#fff;}
+  .calc__nota{font-size:13.5px;line-height:1.5;color:rgba(255,255,255,.7);margin:14px 0 0;}
+  .calc__out a{margin-top:16px;color:#e6b98a;font-weight:600;font-size:14.5px;}
+  @media(prefers-reduced-motion:reduce){.calc__barra span{transition:none;}}
+  /* barras */
+  .bars{display:grid;gap:10px;}
+  .bar{display:grid;grid-template-columns:118px 1fr;gap:14px;align-items:center;text-decoration:none;color:var(--ink);}
+  .bar__n{font-size:14.5px;font-weight:600;text-align:right;}
+  .bar__t{position:relative;height:38px;border-radius:10px;background:var(--surface-2);overflow:hidden;}
+  .bar__f{position:absolute;inset:0 auto 0 0;border-radius:10px;background:#e9c9a6;transform-origin:left center;}
+  .bar--top .bar__f{background:linear-gradient(90deg,#cfe8d8,#a6d8b8);}
+  .bar__v{position:relative;display:flex;align-items:center;gap:10px;height:100%;padding:0 12px;font-size:14px;white-space:nowrap;}
+  .bar__v b{font-family:var(--font-serif);font-weight:500;font-size:18px;}
+  .bar__v small{color:var(--text-muted);font-size:12.5px;overflow:hidden;text-overflow:ellipsis;}
+  .bar:hover .bar__n{color:var(--terra-link);}
+  @media(max-width:560px){.bar{grid-template-columns:86px 1fr;gap:10px;}.bar__n{font-size:13px;}.bar__v small{display:none;}}
+  /* calendario */
+  .cal{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);padding:22px 24px 18px;overflow-x:auto;}
+  .cal__in{--lab:170px;min-width:640px;position:relative;padding-bottom:18px;}
+  .cal__meses,.cal__fila{display:grid;grid-template-columns:var(--lab) 1fr;align-items:center;}
+  @media(max-width:640px){.cal{padding:18px 16px 14px;}.cal__in{--lab:0px;min-width:0;padding-bottom:24px;}.cal__meses,.cal__fila{grid-template-columns:1fr;}.cal__meses > span{display:none;}.cal__meses div{font-size:8.5px;letter-spacing:0;}.cal__meses div span{padding-left:2px;}.cal__fila{gap:4px;padding:8px 0;}.cal__fila a{font-size:13px;}}
+  .cal__meses{padding-bottom:6px;}
+  .cal__meses div{display:grid;grid-template-columns:repeat(12,1fr);font-family:var(--font-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-faint);}
+  .cal__meses div span{padding-left:4px;border-left:1px solid var(--border);}
+  .cal__fila{padding:6px 0;border-top:1px solid var(--border);}
+  .cal__fila a{font-size:14px;font-weight:600;color:var(--ink);text-decoration:none;}
+  .cal__fila a:hover{color:var(--terra-link);}
+  .cal__pista{position:relative;height:22px;}
+  .cal__b{position:absolute;top:3px;bottom:3px;border-radius:999px;background:var(--terra);transform-origin:left center;}
+  .cal__b--ref{background:transparent;border:1.5px dashed var(--terra);}
+  .cal__hoy{position:absolute;top:0;bottom:0;width:2px;background:#2f8a52;z-index:2;pointer-events:none;}
+  .cal__hoy span{position:absolute;bottom:0;left:-14px;font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#1f6b40;background:var(--surface);padding:0 4px;white-space:nowrap;}
+  .cal__nota{font-size:13px;color:var(--text-faint);margin:12px 0 0;}
+  /* cierres */
+  .cierres{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;}
+  .cierre{display:flex;gap:12px;align-items:center;padding:14px;border-radius:var(--r-md);border:1px solid var(--border);background:var(--surface);text-decoration:none;color:var(--ink);transition:border-color .15s ease;}
+  .cierre:hover{border-color:var(--terra);}
+  .cierre__d{flex:none;width:58px;height:58px;border-radius:14px;background:#e3f1e7;color:#1f5f3a;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;}
+  .cierre__d b{font-family:var(--font-serif);font-weight:500;font-size:24px;}
+  .cierre__d small{font-size:10.5px;margin-top:3px;}
+  .cierre--urge .cierre__d{background:#f6e3df;color:#8a3324;}
+  .cierre__t{font-size:14px;font-weight:600;line-height:1.35;}
+  .cierre__t span{display:block;font-weight:400;font-size:12.5px;color:var(--text-muted);margin-top:2px;}
+  /* tarjetas */
+  .ay-filtros{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px;}
+  .ay-filtros button{font:inherit;font-size:14px;font-weight:600;padding:9px 14px;border-radius:999px;border:1.5px solid var(--border);background:var(--surface);color:var(--ink);cursor:pointer;transition:border-color .15s ease,background-color .15s ease,transform .12s cubic-bezier(.23,1,.32,1);}
+  .ay-filtros button:active{transform:scale(.97);}
+  .ay-filtros button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff;}
+  .ay-lista{display:grid;gap:16px;margin:0 0 10px;}
   @media(min-width:860px){.ay-lista{grid-template-columns:1fr 1fr;}}
-  .ay-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:22px 22px 20px;display:flex;flex-direction:column;}
+  .ay-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:20px 22px;display:flex;flex-direction:column;scroll-margin-top:96px;}
+  .ay-card[hidden]{display:none;}
+  .ay-card:target{border-color:var(--terra);box-shadow:0 0 0 3px color-mix(in srgb,var(--terra) 22%,transparent);}
   .ay-card header{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;}
   .ay-chip{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;border-radius:999px;padding:5px 10px;background:var(--bg-subtle);color:var(--text-muted);}
   .ay-chip--ok{background:#e3f1e7;color:#1f5f3a;}
-  .ay-chip--no{background:#f6e3df;color:#8a3324;}
+  .ay-chip--urge,.ay-chip--no{background:#f6e3df;color:#8a3324;}
+  .ay-tag{font-size:12px;font-weight:600;padding:4px 9px;border-radius:7px;background:var(--surface-2);color:var(--text-muted);}
+  .ay-tag--euskera{background:#e8eef8;color:#2c4a7a;} .ay-tag--digital{background:#efe8f6;color:#5a3a7e;}
+  .ay-tag--negocio{background:var(--terra-soft);color:#7a4a1c;} .ay-tag--gratis{background:#e3f1e7;color:#1f5f3a;}
+  .ay-top{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;margin:14px 0 8px;}
   .ay-org{font-size:12.5px;color:var(--text-faint);}
-  .art .ay-card h3{font-family:var(--font-serif);font-weight:500;font-size:22px;line-height:1.15;margin:14px 0 4px;}
-  .art .ay-card p{font-size:15px;line-height:1.6;margin:0 0 10px;}
-  .art .ay-card .ay-plazo{font-weight:600;color:var(--ink);font-size:14px;}
-  .art .ay-card .ay-yo{background:var(--surface-2);border-radius:12px;padding:10px 12px;font-size:14.5px;}
-  .art .ay-card .ay-link{margin-top:auto;font-size:14px;font-weight:600;}
+  .ay-card h3{font-family:var(--font-serif);font-weight:500;font-size:21px;line-height:1.15;margin:4px 0 0;}
+  .ay-cifra{flex:none;text-align:right;max-width:130px;}
+  .ay-cifra b{display:block;font-family:var(--font-serif);font-weight:500;font-size:28px;line-height:1;letter-spacing:-.02em;color:var(--ink);white-space:nowrap;}
+  .ay-cifra span{display:block;font-size:12px;line-height:1.3;color:var(--text-muted);margin-top:4px;}
+  .ay-cifra--suave b{font-size:20px;color:var(--text-muted);}
+  .ay-card p{font-size:15px;line-height:1.6;margin:0 0 10px;}
+  .ay-card .ay-plazo{display:flex;gap:8px;align-items:flex-start;font-weight:600;color:var(--ink);font-size:14px;}
+  .ay-plazo svg{flex:none;width:16px;height:16px;margin-top:2px;fill:none;stroke:var(--terra-link);stroke-width:2;stroke-linecap:round;}
+  .ay-card .ay-yo{background:var(--surface-2);border-radius:12px;padding:10px 12px;font-size:14.5px;}
+  .ay-card .ay-link{margin-top:auto;font-size:14px;font-weight:600;color:var(--terra-link);}
+  .ay-vacio{display:none;padding:18px;border:1px dashed var(--border-strong);border-radius:var(--r-md);color:var(--text-muted);font-size:15px;}
+  /* requisitos y pasos */
+  .req{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  @media(max-width:860px){.req{grid-template-columns:1fr 1fr;}} @media(max-width:520px){.req{grid-template-columns:1fr;}}
+  .req div{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:20px;}
+  .req svg{width:30px;height:30px;fill:none;stroke:var(--terra-link);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;}
+  .req b{display:block;font-size:16px;margin:12px 0 4px;color:var(--ink);}
+  .req p{font-size:14.5px;line-height:1.55;color:var(--text-muted);margin:0;}
+  .pasos{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;counter-reset:p;padding:0;margin:0;}
+  @media(max-width:860px){.pasos{grid-template-columns:1fr 1fr;}} @media(max-width:520px){.pasos{grid-template-columns:1fr;}}
+  .pasos li{list-style:none;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:20px;counter-increment:p;}
+  .pasos li::before{content:counter(p,decimal-leading-zero);display:block;font-family:var(--font-serif);font-size:40px;line-height:1;color:var(--terra);margin-bottom:12px;}
+  .pasos b{display:block;font-size:16px;color:var(--ink);margin-bottom:4px;}
+  .pasos span{font-size:14.5px;line-height:1.55;color:var(--text-muted);}
   .ay-aviso{border-left:4px solid var(--terra);background:var(--surface);border-radius:12px;padding:16px 18px;font-size:15px;color:var(--text-muted);margin:26px 0;}
-  .ay-banda{overflow:hidden;white-space:nowrap;margin:46px -24px;font-family:var(--font-serif);font-weight:500;font-size:clamp(40px,8vw,96px);line-height:1;color:var(--ink);opacity:.08;user-select:none;}
-  @media(max-width:600px){.ay-resumen b{font-size:30px;}}
-  .ay-pueblos{margin:18px 0 4px;padding:16px 18px;background:var(--surface);border:1px solid var(--border);border-radius:16px;}
-  .ay-pueblos p{margin:0 0 10px;font-size:14px;font-weight:600;color:var(--ink);}
-  .ay-pueblos div{display:flex;flex-wrap:wrap;gap:8px;}
-  .art .ay-pueblos a{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;border:1px solid var(--border);background:var(--bg);font-size:14px;text-decoration:none;color:var(--ink);transition:background-color .15s ease,border-color .15s ease;}
-  .art .ay-pueblos a:hover{border-color:var(--terra);}
-  .ay-pueblos a i{width:7px;height:7px;border-radius:50%;background:#2f8a52;font-style:normal;}
-  .ay-pueblos a.anual i{background:var(--text-faint);}
-  .ay-card{scroll-margin-top:96px;}
-  .ay-card:target{border-color:var(--terra);box-shadow:0 0 0 3px color-mix(in srgb,var(--terra) 22%,transparent);}
+  .ay-banda{overflow:hidden;white-space:nowrap;margin:30px 0 0;font-family:var(--font-serif);font-weight:500;font-size:clamp(40px,8vw,96px);line-height:1;color:var(--ink);opacity:.08;user-select:none;}
+  @media(prefers-reduced-motion:reduce){.mp__halo{animation:none;opacity:0}.mp__p,.ay-filtros button,.precios button{transition:none;}}
 </style>
 <script type="application/ld+json">
 {
@@ -125,7 +257,7 @@
     {
       "@type": "Article",
       "headline": "Ayudas y subvenciones para tu página web en Gipuzkoa (2026)",
-      "description": "Subvenciones abiertas y anuales para hacer o traducir la web de un negocio en Gipuzkoa y Euskadi.",
+      "description": "Subvenciones abiertas y anuales para hacer o traducir la web de un negocio en Gipuzkoa y Euskadi, con mapa, calculadora y plazos.",
       "image": "https://oiwebstudio.com/assets/og-precios.jpg",
       "author": {
         "@type": "Organization",
@@ -183,6 +315,30 @@
         },
         {
           "@type": "Question",
+          "name": "¿Tengo que hacer la web solo en euskera?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Casi todos los ayuntamientos ayudan también a las webs bilingües, aunque pagan menos. El truco está en la portada: Hernani, Villabona, Oñati y Ordizia pagan más si la web se abre en euskera y deja pasar al castellano. Zarautz es la excepción: solo subvenciona webs íntegramente en euskera."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Puedo pedir dos ayudas a la vez?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depende de cada convocatoria. Las bases suelen permitir juntar ayudas siempre que, sumadas, no superen lo que te ha costado (así lo dicen, por ejemplo, las de Hernani). Antes de pedir dos, léete las bases de las dos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué pasa si se acaba el dinero?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Algunas tienen una bolsa cerrada para todo el pueblo: 4.000 € en Tolosa, 500 € para webs en Villabona o 3.000 € en Bergara. Si se pide más de lo que hay, se reparte o se cierra antes de tiempo, así que conviene pedirlas pronto."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "¿Sigue existiendo el Kit Digital?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -202,7 +358,7 @@
           "name": "¿Puedo hacer la web primero y pedir la ayuda después?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Depende de cada convocatoria: algunas admiten gastos del año en curso y otras exigen pedirla antes de gastar. Léete las bases o pregúntame antes de empezar."
+            "text": "En muchas sí: Ordizia, Villabona y Bergara la piden con la web ya hecha, y Andoain admite gastos desde el 1 de noviembre de 2025. Otras exigen pedirla antes de gastar. Léete las bases o pregúntame antes de empezar."
           }
         }
       ]
@@ -260,243 +416,470 @@
 <header class="art-hero">
 <p class="crumbs"><a href="index.html">Inicio</a> / Ayudas para tu web</p>
 <h1 class="ay-titulo">Ayudas para tu página web en <span class="ac">Gipuzkoa</span></h1>
-<p class="lede ay-enciende">Hay dinero público para hacer la web de tu negocio o ponerla en euskera, pero está repartido entre el Gobierno Vasco, la Diputación y cada ayuntamiento, y cada ayuda tiene sus plazos. Aquí está lo que hay, comprobado en las fuentes oficiales.</p>
+<p class="lede ay-enciende">Hay dinero público para hacer la web de tu negocio o ponerla en euskera, pero está repartido entre el Gobierno Vasco, la Diputación y cada ayuntamiento, y cada ayuda tiene sus plazos. Aquí está todo en un sitio: en el mapa, en la calculadora y con la cuenta atrás de cada una.</p>
 <div class="art-meta"><span>Revisado · 4 de octubre de 2026</span><span>Fuentes oficiales</span><span>OI Studio, Tolosa</span></div>
 </header>
 
-<article class="art">
-<div class="ay-resumen">
-<div><b>13</b><span>abiertas ahora</span></div>
-<div><b>11</b><span>se convocan cada año</span></div>
-<div><b>1</b><span>sin convocatoria (Kit Digital)</span></div>
+<div class="ay-w">
+<div class="ay-stats" aria-label="Resumen">
+<div class="ay-stat ay-stat--ok"><b data-n-abiertas data-cuenta="13">13</b><span>ayudas abiertas hoy</span></div>
+<div class="ay-stat"><b data-cuenta="19">19</b><span>pueblos con ayuda propia</span></div>
+<div class="ay-stat"><b data-cuenta="100" data-suf=" %">100 %</b><span>lo máximo que cubre una (Andoain)</span></div>
+<div class="ay-stat"><b data-cuenta="3125" data-suf=" €">3.125 €</b><span>la ayuda más alta para una web</span></div>
 </div>
 
-<nav class="ay-pueblos" aria-label="Ayudas por pueblo">
-<p>Ve directo a tu pueblo <span style="font-weight:400;color:var(--text-muted)">· verde = abierta ahora</span></p>
-<div><a href="#andoain"><i></i>Andoain</a><a href="#arrasate" class="anual"><i></i>Arrasate</a><a href="#beasain"><i></i>Beasain</a><a href="#bergara"><i></i>Bergara</a><a href="#donostia" class="anual"><i></i>Donostia</a><a href="#eibar"><i></i>Eibar</a><a href="#hernani"><i></i>Hernani</a><a href="#hondarribia" class="anual"><i></i>Hondarribia</a><a href="#irun"><i></i>Irun</a><a href="#lasarte-oria" class="anual"><i></i>Lasarte-Oria</a><a href="#legazpi"><i></i>Legazpi</a><a href="#onati" class="anual"><i></i>Oñati</a><a href="#ordizia"><i></i>Ordizia</a><a href="#pasaia" class="anual"><i></i>Pasaia</a><a href="#tolosa"><i></i>Tolosa</a><a href="#urretxu"><i></i>Urretxu</a><a href="#villabona"><i></i>Villabona</a><a href="#zarautz" class="anual"><i></i>Zarautz</a><a href="#zumarraga" class="anual"><i></i>Zumarraga</a><a href="#mec" class="anual"><i></i>Gobierno Vasco</a><a href="#turismo" class="anual"><i></i>Diputación</a></div>
-</nav>
+<section class="ay-sec" id="mapa">
+<span class="ay-k">Mapa</span>
+<h2 class="ay-h2">¿Qué hay en tu pueblo?</h2>
+<p class="ay-intro">Toca tu pueblo en el mapa y te llevo a su ayuda. Los puntos verdes tienen una ayuda abierta hoy; los grises la convocan cada año.</p>
+<div class="ay-mapa">
+<svg class="mapa" viewBox="0 0 640 510" role="img" aria-labelledby="mapa-t">
+<title id="mapa-t">Mapa de Gipuzkoa con los pueblos que tienen ayudas para la página web</title>
+<path class="mapa__tierra" d="M572.7,36.8L578.2,47.4L583.8,51.9L578.5,58.8L580.8,61.4L589.9,68.5L598.0,67.4L603.0,70.3L605.1,78.6L613.6,80.9L611.7,93.1L620.0,112.6L618.6,114.4L609.9,114.2L595.7,121.2L589.8,119.5L582.7,121.4L580.5,127.4L575.6,132.1L574.6,158.9L568.9,161.7L566.1,166.0L557.6,167.4L553.6,175.9L547.8,176.9L543.8,180.1L536.1,178.6L534.3,186.6L529.1,190.8L526.0,186.1L524.7,176.3L520.9,177.7L519.0,173.9L516.9,176.5L516.6,186.4L519.4,190.3L516.7,192.2L510.7,190.0L509.4,195.0L501.5,192.7L497.8,187.3L499.2,185.1L495.7,181.4L495.0,177.5L492.2,181.3L494.6,199.3L492.1,208.7L487.7,215.9L488.1,228.9L490.9,232.1L491.5,237.1L489.9,241.1L488.9,249.9L498.1,255.0L500.5,258.9L500.3,263.8L491.2,271.3L486.5,282.0L476.4,289.1L475.3,292.5L469.8,296.8L469.9,299.5L457.6,301.8L452.1,305.1L453.5,309.2L452.3,311.7L441.8,317.5L440.9,316.5L425.4,322.5L423.0,329.0L418.2,330.0L421.2,339.8L420.0,346.2L411.7,361.1L405.4,363.4L406.0,371.1L411.9,385.0L411.6,391.3L414.4,392.4L411.6,402.2L407.0,409.0L399.3,411.1L397.7,413.6L377.0,414.1L368.4,417.1L362.0,438.7L353.1,445.7L342.3,447.0L326.2,446.0L320.0,451.0L314.5,452.3L310.2,452.0L308.3,447.1L300.9,439.3L297.3,437.7L289.5,438.5L289.0,442.7L285.4,445.9L285.9,450.7L282.5,454.2L281.3,453.8L274.4,455.5L272.1,460.4L270.5,465.2L271.3,469.8L270.6,489.2L269.1,489.9L263.3,487.9L261.6,489.4L257.5,486.7L235.2,482.9L226.3,461.4L218.8,460.3L212.1,455.7L201.0,451.2L192.9,445.3L192.2,441.0L190.2,438.3L184.5,441.1L162.4,435.7L153.7,429.7L143.8,432.6L128.4,430.7L122.7,431.9L105.1,423.4L88.3,429.0L66.3,416.3L63.0,424.0L63.9,431.0L62.0,436.4L60.0,437.8L57.4,435.4L55.4,430.3L35.7,424.8L24.0,413.9L20.0,408.0L26.6,403.5L21.7,390.4L23.9,383.8L34.8,383.1L46.4,374.3L57.8,371.5L62.0,367.8L62.7,360.8L69.3,350.2L73.5,348.7L69.4,339.5L62.5,331.9L61.5,325.0L57.5,320.7L58.7,319.3L62.4,319.1L58.1,311.6L59.6,309.4L58.7,308.4L59.8,304.9L63.8,304.8L72.7,301.5L81.0,306.5L89.7,300.5L87.0,300.0L89.6,279.6L93.1,275.2L88.4,260.6L89.6,248.7L84.3,240.3L85.2,235.9L100.9,229.8L95.7,221.0L98.1,215.0L99.0,202.5L93.0,195.9L91.2,191.7L91.6,185.8L94.7,179.6L109.1,182.2L115.8,181.0L125.9,171.3L128.8,167.5L129.7,164.5L133.9,162.2L132.4,154.3L142.1,147.1L146.8,139.4L140.1,126.8L134.1,122.1L132.1,119.1L133.7,110.2L150.4,89.1L154.8,87.8L163.6,91.2L171.8,97.1L173.2,101.1L178.7,100.7L186.6,104.6L189.6,109.3L194.9,109.4L197.7,106.3L209.9,111.5L221.7,111.1L238.1,113.9L253.4,109.1L256.4,105.8L265.2,106.7L270.7,101.3L277.9,98.9L292.5,104.5L295.6,98.9L296.8,100.7L295.0,107.5L301.3,110.6L303.7,116.3L308.2,114.7L312.1,120.0L315.4,120.5L326.2,117.9L330.9,114.7L336.8,115.5L344.7,120.4L358.0,108.5L376.9,101.5L425.2,87.6L433.3,88.6L433.8,92.1L439.1,92.7L441.5,90.1L440.2,85.7L450.5,83.8L454.3,77.5L459.2,74.7L468.7,77.6L477.5,76.1L481.1,77.9L485.3,78.7L484.9,75.5L501.3,69.4L512.9,61.8L522.3,44.9L531.4,38.3L537.1,36.1L540.5,37.2L550.6,30.2L567.8,26.3L577.5,20.0L579.1,23.7L572.9,32.5L572.7,36.8Z"/>
+<text class="mapa__mar" x="250" y="40">Mar Cantábrico</text>
+<a href="#eibar" class="mp mp--ok" aria-label="Eibar: ayuda abierta"><circle class="mp__halo" cx="110.4" cy="218.1" r="7"/><circle class="mp__p" cx="110.4" cy="218.1" r="6.5"/><text x="120.4" y="223.1" text-anchor="start">Eibar</text></a>
+<a href="#irun-market" class="mp mp--ok" aria-label="Irun: ayuda abierta"><circle class="mp__halo" cx="578.7" cy="73.2" r="7"/><circle class="mp__p" cx="578.7" cy="73.2" r="6.5"/><text x="568.7" y="78.2" text-anchor="end">Irun</text></a>
+<a href="#andoain" class="mp mp--ok" aria-label="Andoain: ayuda abierta"><circle class="mp__halo" cx="419.4" cy="186.1" r="7"/><circle class="mp__p" cx="419.4" cy="186.1" r="6.5"/><text x="429.4" y="191.1" text-anchor="start">Andoain</text></a>
+<a href="#tolosa" class="mp mp--ok mp--casa" aria-label="Tolosa: ayuda abierta"><circle class="mp__halo" cx="380.3" cy="264.2" r="7"/><circle class="mp__p" cx="380.3" cy="264.2" r="6.5"/><text x="391.3" y="269.2" text-anchor="start">Tolosa</text></a>
+<a href="#villabona" class="mp mp--ok" aria-label="Villabona: ayuda abierta"><circle class="mp__halo" cx="398.1" cy="216.2" r="7"/><circle class="mp__p" cx="398.1" cy="216.2" r="6.5"/><text x="388.1" y="221.2" text-anchor="end">Villabona</text></a>
+<a href="#urretxu" class="mp mp--ok" aria-label="Urretxu: ayuda abierta"><circle class="mp__halo" cx="221.9" cy="298.7" r="7"/><circle class="mp__p" cx="221.9" cy="298.7" r="6.5"/><text x="231.9" y="296.7" text-anchor="start">Urretxu</text></a>
+<a href="#legazpi" class="mp mp--ok" aria-label="Legazpi: ayuda abierta"><circle class="mp__halo" cx="203.8" cy="340.5" r="7"/><circle class="mp__p" cx="203.8" cy="340.5" r="6.5"/><text x="203.8" y="360.5" text-anchor="middle">Legazpi</text></a>
+<a href="#beasain" class="mp mp--ok" aria-label="Beasain: ayuda abierta"><circle class="mp__halo" cx="295.8" cy="347" r="7"/><circle class="mp__p" cx="295.8" cy="347" r="6.5"/><text x="295.8" y="368" text-anchor="middle">Beasain</text></a>
+<a href="#hernani" class="mp mp--ok" aria-label="Hernani: ayuda abierta"><circle class="mp__halo" cx="450.3" cy="140.9" r="7"/><circle class="mp__p" cx="450.3" cy="140.9" r="6.5"/><text x="460.3" y="145.9" text-anchor="start">Hernani</text></a>
+<a href="#bergara" class="mp mp--ok" aria-label="Bergara: ayuda abierta"><circle class="mp__halo" cx="149.6" cy="280.2" r="7"/><circle class="mp__p" cx="149.6" cy="280.2" r="6.5"/><text x="149.6" y="269.2" text-anchor="middle">Bergara</text></a>
+<a href="#ordizia" class="mp mp--ok" aria-label="Ordizia: ayuda abierta"><circle class="mp__halo" cx="313" cy="341.4" r="7"/><circle class="mp__p" cx="313" cy="341.4" r="6.5"/><text x="323" y="343.4" text-anchor="start">Ordizia</text></a>
+<a href="#pasaia" class="mp" aria-label="Pasaia: se convoca cada año"><circle class="mp__p" cx="487.4" cy="84.5" r="5"/><text x="487.4" y="73.5" text-anchor="middle">Pasaia</text></a>
+<a href="#lasarte-oria" class="mp" aria-label="Lasarte-Oria: se convoca cada año"><circle class="mp__p" cx="420.1" cy="140" r="5"/><text x="410.1" y="145" text-anchor="end">Lasarte-Oria</text></a>
+<a href="#hondarribia" class="mp" aria-label="Hondarribia: se convoca cada año"><circle class="mp__p" cx="577.4" cy="50.6" r="5"/><text x="567.4" y="54.6" text-anchor="end">Hondarribia</text></a>
+<a href="#zumarraga" class="mp" aria-label="Zumarraga: se convoca cada año"><circle class="mp__p" cx="210.5" cy="314.4" r="5"/><text x="200.5" y="322.4" text-anchor="end">Zumarraga</text></a>
+<a href="#zarautz" class="mp" aria-label="Zarautz: se convoca cada año"><circle class="mp__p" cx="317.1" cy="124" r="5"/><text x="317.1" y="113" text-anchor="middle">Zarautz</text></a>
+<a href="#onati" class="mp" aria-label="Oñati: se convoca cada año"><circle class="mp__p" cx="151.6" cy="360.2" r="5"/><text x="151.6" y="380.2" text-anchor="middle">Oñati</text></a>
+<a href="#arrasate" class="mp" aria-label="Arrasate: se convoca cada año"><circle class="mp__p" cx="97.4" cy="331" r="5"/><text x="87.4" y="336" text-anchor="end">Arrasate</text></a>
+<a href="#donostia" class="mp" aria-label="Donostia: se convoca cada año"><circle class="mp__p" cx="446.9" cy="92" r="5"/><text x="436.9" y="88" text-anchor="end">Donostia</text></a>
+</svg>
+<div>
+<p class="ay-ley"><span><i></i>Abierta hoy</span><span><i class="gris"></i>Se convoca cada año</span></p>
+<nav class="ay-pueblos" aria-label="Ayudas por pueblo"><a href="#andoain"><i></i>Andoain</a><a href="#arrasate" class="anual"><i></i>Arrasate</a><a href="#beasain"><i></i>Beasain</a><a href="#bergara"><i></i>Bergara</a><a href="#donostia" class="anual"><i></i>Donostia</a><a href="#eibar"><i></i>Eibar</a><a href="#hernani"><i></i>Hernani</a><a href="#hondarribia" class="anual"><i></i>Hondarribia</a><a href="#irun"><i></i>Irun</a><a href="#lasarte-oria" class="anual"><i></i>Lasarte-Oria</a><a href="#legazpi"><i></i>Legazpi</a><a href="#onati" class="anual"><i></i>Oñati</a><a href="#ordizia"><i></i>Ordizia</a><a href="#pasaia" class="anual"><i></i>Pasaia</a><a href="#tolosa"><i></i>Tolosa</a><a href="#urretxu"><i></i>Urretxu</a><a href="#villabona"><i></i>Villabona</a><a href="#zarautz" class="anual"><i></i>Zarautz</a><a href="#zumarraga" class="anual"><i></i>Zumarraga</a><a href="#mec" class="anual"><i></i>Gobierno Vasco</a><a href="#turismo" class="anual"><i></i>Diputación</a></nav>
+</div>
+</div>
+</section>
 
-<h2 id="abiertas">Abiertas ahora</h2>
-<p>Las que se pueden pedir hoy, de la que cierra antes a la que cierra después. La que más cubre es la de <a href="#andoain">Andoain</a>: del 80 al 100 % de la imagen digital del negocio. El resto son casi todas para <strong>poner la web en euskera</strong>: los ayuntamientos pagan parte de la versión en euskera o bilingüe. Cada pueblo tiene la suya, y suelen pagar más si la web está solo en euskera o si la portada está en euskera.</p>
+<section class="ay-sec" id="calculadora">
+<span class="ay-k">Calculadora</span>
+<h2 class="ay-h2">¿Cuánto te paga tu ayuntamiento?</h2>
+<p class="ay-intro">Elige tu pueblo, cómo quieres la web y lo que cuesta. El cálculo sale de las bases de cada ayuda; si la bolsa del pueblo se acaba, puede ser menos.</p>
+<div class="calc">
+<div class="calc__in">
+<div><label class="calc__lab" for="c-pueblo">Tu pueblo</label>
+<select id="c-pueblo"><option value="irun">Irun</option><option value="andoain">Andoain</option><option value="villabona">Villabona</option><option value="hernani">Hernani</option><option value="bergara">Bergara</option><option value="ordizia">Ordizia</option><option value="beasain">Beasain</option><option value="onati">Oñati</option><option value="lasarte-oria">Lasarte-Oria</option><option value="zarautz">Zarautz</option></select></div>
+<fieldset><legend class="calc__lab">¿Cómo será tu web?</legend>
+<div class="fmt"><label><input type="radio" name="fmt" value="eu" checked/><span class="mk" aria-hidden="true"><span class="mk__bar"><i></i><i></i><i></i><span class="mk__langs"><span class="mk__l is-on">EU</span></span></span><span class="mk__body"><span></span><span></span><span></span></span></span><b>Solo en euskera</b><small>Toda la web en euskera</small></label><label><input type="radio" name="fmt" value="portada"/><span class="mk" aria-hidden="true"><span class="mk__bar"><i></i><i></i><i></i><span class="mk__langs"><span class="mk__l is-on">EU</span><span class="mk__l">ES</span></span></span><span class="mk__body"><span></span><span></span><span></span></span></span><b>Portada en euskera</b><small>Se abre en euskera y deja pasar a castellano</small></label><label><input type="radio" name="fmt" value="bi"/><span class="mk" aria-hidden="true"><span class="mk__bar"><i></i><i></i><i></i><span class="mk__langs"><span class="mk__l">ES</span><span class="mk__l">EU</span></span></span><span class="mk__body"><span></span><span></span><span></span></span></span><b>Bilingüe</b><small>Elige idioma al entrar, mismo trato</small></label></div>
+</fieldset>
+<div><label class="calc__lab" for="c-precio">Precio de la web (sin IVA)</label>
+<div class="precios"><button type="button" data-p="199" aria-pressed="false">Landing 199 €</button><button type="button" data-p="299" aria-pressed="true">Web 299 €</button><button type="button" data-p="790" aria-pressed="false">Tienda 790 €</button><input id="c-precio" type="number" min="0" step="10" value="299" inputmode="numeric"/></div></div>
+</div>
+<div class="calc__out" aria-live="polite">
+<span class="ay-k">Te paga el ayuntamiento</span>
+<b class="calc__ayuda" id="c-ayuda">224 €</b>
+<div class="calc__barra"><span id="c-barra" style="width:75%"></span></div>
+<div class="calc__leyenda"><span id="c-pct">75 % pagado</span><span>precio total</span></div>
+<p class="calc__tu">Tú pagas <b id="c-tu">75 €</b> + IVA</p>
+<p class="calc__nota" id="c-nota">75 % si la web queda solo en euskera (hasta 1.000 €) y 50 % si es bilingüe (hasta 600 €). Abierta hasta el 30 de octubre.</p>
+<a id="c-link" href="#irun">Ver la ayuda de Irun →</a>
+</div>
+</div>
+</section>
+
+<section class="ay-sec" id="importes">
+<span class="ay-k">Comparativa</span>
+<h2 class="ay-h2">Lo máximo que paga cada pueblo por tu web</h2>
+<p class="ay-intro">El tope de cada ayuda con la web en el formato que más paga. Andoain va aparte porque no es de euskera: cubre la imagen digital del negocio en cualquier idioma.</p>
+<div class="bars">
+<a class="bar bar--top" href="#andoain"><span class="bar__n">Andoain</span><span class="bar__t"><span class="bar__f" style="width:100.0%"></span><span class="bar__v"><b>3.125 €</b><small>imagen digital, cualquier idioma</small></span></span></a>
+<a class="bar" href="#irun"><span class="bar__n">Irun</span><span class="bar__t"><span class="bar__f" style="width:32.0%"></span><span class="bar__v"><b>1.000 €</b><small>solo en euskera</small></span></span></a>
+<a class="bar" href="#bergara"><span class="bar__n">Bergara</span><span class="bar__t"><span class="bar__f" style="width:16.0%"></span><span class="bar__v"><b>500 €</b><small>solo en euskera</small></span></span></a>
+<a class="bar" href="#ordizia"><span class="bar__n">Ordizia</span><span class="bar__t"><span class="bar__f" style="width:16.0%"></span><span class="bar__v"><b>500 €</b><small>solo en euskera</small></span></span></a>
+<a class="bar" href="#beasain"><span class="bar__n">Beasain</span><span class="bar__t"><span class="bar__f" style="width:15.0%"></span><span class="bar__v"><b>470 €</b><small>solo en euskera</small></span></span></a>
+<a class="bar" href="#hernani"><span class="bar__n">Hernani</span><span class="bar__t"><span class="bar__f" style="width:14.4%"></span><span class="bar__v"><b>450 €</b><small>portada en euskera</small></span></span></a>
+<a class="bar" href="#villabona"><span class="bar__n">Villabona</span><span class="bar__t"><span class="bar__f" style="width:14.4%"></span><span class="bar__v"><b>450 €</b><small>solo en euskera</small></span></span></a>
+<a class="bar" href="#lasarte-oria"><span class="bar__n">Lasarte-Oria</span><span class="bar__t"><span class="bar__f" style="width:14.4%"></span><span class="bar__v"><b>450 €</b><small>euskera por delante</small></span></span></a>
+<a class="bar" href="#onati"><span class="bar__n">Oñati</span><span class="bar__t"><span class="bar__f" style="width:14.4%"></span><span class="bar__v"><b>450 €</b><small>solo en euskera</small></span></span></a>
+<a class="bar" href="#zarautz"><span class="bar__n">Zarautz</span><span class="bar__t"><span class="bar__f" style="width:11.2%"></span><span class="bar__v"><b>350 €</b><small>solo en euskera</small></span></span></a>
+</div>
+</section>
+
+<section class="ay-sec" id="cierres">
+<span class="ay-k">Cuenta atrás</span>
+<h2 class="ay-h2">Las próximas en cerrar</h2>
+<p class="ay-intro">Días que quedan para pedir cada ayuda abierta. Se actualiza solo cada vez que entras.</p>
+<div class="cierres">
+<a class="cierre" href="#eibar" data-fin="2026-10-08"><span class="cierre__d"><b>4</b><small>días</small></span><span class="cierre__t">Eibar<span>hasta el 8 oct</span></span></a>
+<a class="cierre" href="#irun" data-fin="2026-10-30"><span class="cierre__d"><b>26</b><small>días</small></span><span class="cierre__t">Irun · euskera<span>hasta el 30 oct</span></span></a>
+<a class="cierre" href="#andoain" data-fin="2026-10-31"><span class="cierre__d"><b>27</b><small>días</small></span><span class="cierre__t">Andoain<span>hasta el 31 oct</span></span></a>
+<a class="cierre" href="#tolosa" data-fin="2026-10-31"><span class="cierre__d"><b>27</b><small>días</small></span><span class="cierre__t">Tolosa<span>hasta el 31 oct</span></span></a>
+<a class="cierre" href="#villabona" data-fin="2026-10-31"><span class="cierre__d"><b>27</b><small>días</small></span><span class="cierre__t">Villabona<span>hasta el 31 oct</span></span></a>
+<a class="cierre" href="#urretxu" data-fin="2026-10-31"><span class="cierre__d"><b>27</b><small>días</small></span><span class="cierre__t">Urretxu<span>hasta el 31 oct</span></span></a>
+<a class="cierre" href="#legazpi" data-fin="2026-10-31"><span class="cierre__d"><b>27</b><small>días</small></span><span class="cierre__t">Legazpi<span>hasta el 31 oct</span></span></a>
+<a class="cierre" href="#camara" data-fin="2026-11-16"><span class="cierre__d"><b>43</b><small>días</small></span><span class="cierre__t">Cámara de Gipuzkoa<span>hasta el 16 nov</span></span></a>
+<a class="cierre" href="#beasain" data-fin="2026-11-30"><span class="cierre__d"><b>57</b><small>días</small></span><span class="cierre__t">Beasain<span>hasta el 30 nov</span></span></a>
+<a class="cierre" href="#hernani" data-fin="2026-12-31"><span class="cierre__d"><b>88</b><small>días</small></span><span class="cierre__t">Hernani<span>hasta el 31 dic</span></span></a>
+<a class="cierre" href="#bergara" data-fin="2026-12-31"><span class="cierre__d"><b>88</b><small>días</small></span><span class="cierre__t">Bergara<span>hasta el 31 dic</span></span></a>
+<a class="cierre" href="#irun-market" data-fin="2027-01-29"><span class="cierre__d"><b>117</b><small>días</small></span><span class="cierre__t">Irun · irun.market<span>hasta el 29 ene 2027</span></span></a>
+</div>
+</section>
+
+<section class="ay-sec" id="calendario">
+<span class="ay-k">Calendario 2026</span>
+<h2 class="ay-h2">Cuándo abre cada ayuda</h2>
+<p class="ay-intro">Las que tienen las dos fechas publicadas. Casi todas vuelven el año siguiente por las mismas fechas: si piensas hacer la web en 2027, apúntatelas.</p>
+<div class="cal"><div class="cal__in">
+<div class="cal__meses"><span></span><div><span>ene</span><span>feb</span><span>mar</span><span>abr</span><span>may</span><span>jun</span><span>jul</span><span>ago</span><span>sep</span><span>oct</span><span>nov</span><span>dic</span></div></div>
+<div class="cal__fila"><a href="#hernani">Hernani</a><div class="cal__pista"><span class="cal__b" style="left:9.59%;width:90.14%" title="5 feb – 31 dic"></span></div></div>
+<div class="cal__fila"><a href="#bergara">Bergara</a><div class="cal__pista"><span class="cal__b" style="left:18.9%;width:80.83%" title="11 mar – 31 dic"></span></div></div>
+<div class="cal__fila"><a href="#beasain">Beasain</a><div class="cal__pista"><span class="cal__b" style="left:23.29%;width:67.94%" title="27 mar – 30 nov"></span></div></div>
+<div class="cal__fila"><a href="#zarautz">Zarautz</a><div class="cal__pista"><span class="cal__b" style="left:28.49%;width:11.51%" title="15 abr – 27 may"></span></div></div>
+<div class="cal__fila"><a href="#villabona">Villabona</a><div class="cal__pista"><span class="cal__b" style="left:36.16%;width:46.85%" title="13 may – 31 oct"></span></div></div>
+<div class="cal__fila"><a href="#hondarribia">Hondarribia</a><div class="cal__pista"><span class="cal__b" style="left:38.36%;width:32.05%" title="21 may – 15 sep"></span></div></div>
+<div class="cal__fila"><a href="#mec">MEC (Gobierno Vasco)</a><div class="cal__pista"><span class="cal__b" style="left:41.92%;width:28.49%" title="3 jun – 15 sep"></span></div></div>
+<div class="cal__fila"><a href="#merkaekin">MerkaEkin</a><div class="cal__pista"><span class="cal__b" style="left:43.84%;width:26.57%" title="10 jun – 15 sep"></span></div></div>
+<div class="cal__fila"><a href="#camara">Cámara de Gipuzkoa</a><div class="cal__pista"><span class="cal__b" style="left:46.03%;width:41.37%" title="18 jun – 16 nov"></span></div></div>
+<div class="cal__fila"><a href="#pasaia">Pasaia (fechas de 2025)</a><div class="cal__pista"><span class="cal__b cal__b--ref" style="left:66.58%;width:24.65%" title="1 sep – 30 nov"></span></div></div>
+<span class="cal__hoy" style="left:calc(var(--lab) + (100% - var(--lab)) * 0.7562)"><span>Hoy</span></span>
+</div>
+<p class="cal__nota">Pasaia aún no ha publicado la de 2026: la línea discontinua son las fechas de 2025.</p>
+</div>
+</section>
+
+<section class="ay-sec" id="abiertas">
+<span class="ay-k">Abiertas ahora</span>
+<h2 class="ay-h2">Las que puedes pedir hoy</h2>
+<p class="ay-intro">De la que cierra antes a la que cierra después. Filtra por tipo si solo te interesa una cosa.</p>
+<div class="ay-filtros" role="group" aria-label="Filtrar por tipo">
+<button type="button" data-f="todas" aria-pressed="true">Todas</button>
+<button type="button" data-f="euskera" aria-pressed="false">Euskera en la web</button>
+<button type="button" data-f="digital" aria-pressed="false">Digitalización</button>
+<button type="button" data-f="negocio" aria-pressed="false">Abrir o modernizar</button>
+<button type="button" data-f="gratis" aria-pressed="false">Gratis</button>
+</div>
 <div class="ay-lista">
-<article class="ay-card" id="eibar" data-pueblo="Eibar">
-<header><span class="ay-chip ay-chip--ok">Abierta</span><span class="ay-org">Ayuntamiento de Eibar</span></header>
-<h3>Eibar: abrir o modernizar tu negocio</h3>
-<p class="ay-plazo">Hasta el 8 de octubre de 2026</p>
+<article class="ay-card" id="eibar" data-pueblo="Eibar" data-tipo="negocio" data-estado="abierta">
+<header><span class="ay-chip ay-chip--ok" data-fin="2026-10-08">Quedan 4 días</span><span class="ay-tag ay-tag--negocio">Abrir o modernizar</span></header>
+<div class="ay-top">
+<div><span class="ay-org">Ayuntamiento de Eibar</span><h3>Eibar: abrir o modernizar tu negocio</h3></div>
+<div class="ay-cifra"><b>10.000 €</b><span>máximo, negocio nuevo</span></div>
+</div>
+<p class="ay-plazo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Hasta el 8 de octubre de 2026</p>
 <p>Dos líneas: negocios nuevos (alta entre octubre de 2025 y septiembre de 2026, hasta 6.000–10.000 €) y comercios, hostelería y servicios que se modernizan o se trasladan (hasta 4.000–4.500 €). Las bases citan local, obras y asesoría; la web no aparece de forma expresa. (La ayuda de euskera de Eibar es solo para rótulos e imagen, no para webs.)</p>
 <p class="ay-yo"><b>Cómo te ayudo:</b> Si abres o renuevas el negocio, te paso el presupuesto de la web para que lo valores con tu gestoría.</p>
 <a class="ay-link" href="https://www.eibar.eus/es/noticias/en-marcha-la-subvencion-para-apoyar-la-puesta-en-marcha-de-nuevos-proyectos-empresariales-y-la-consolidacion-de-las-empresas-existentes" target="_blank" rel="noopener">Ver las bases oficiales ↗</a>
 </article>
-<article class="ay-card" id="irun" data-pueblo="Irun">
-<header><span class="ay-chip ay-chip--ok">Abierta</span><span class="ay-org">Ayuntamiento de Irun</span></header>
-<h3>Irun: euskera en rótulos y web</h3>
-<p class="ay-plazo">Hasta el 30 de octubre de 2026</p>
+<article class="ay-card" id="irun" data-pueblo="Irun" data-tipo="euskera" data-estado="abierta">
+<header><span class="ay-chip ay-chip--ok" data-fin="2026-10-30">Quedan 26 días</span><span class="ay-tag ay-tag--euskera">Euskera en la web</span></header>
+<div class="ay-top">
+<div><span class="ay-org">Ayuntamiento de Irun</span><h3>Irun: euskera en rótulos y web</h3></div>
+<div class="ay-cifra"><b>75 %</b><span>hasta 1.000 €</span></div>
+</div>
+<p class="ay-plazo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Hasta el 30 de octubre de 2026</p>
 <p>Para comercios, hostelería y empresas de Irun. 75 % del presupuesto si queda solo en euskera (hasta 1.000 € por ámbito) y 50 % si es bilingüe (hasta 600 €). Máximo 1.500 € por solicitante. Se aporta el enlace de la web.</p>
 <p class="ay-yo"><b>Cómo te ayudo:</b> Web bilingüe con páginas propias en euskera, o solo en euskera si buscas el 75 %.</p>
 <a class="ay-link" href="https://www.irun.org/eu/laguntzak-diru-laguntzak/400-2026-hizkuntza-paisaia-euskaratzeko-dirulaguntza?ids=1542" target="_blank" rel="noopener">Ver las bases oficiales ↗</a>
 </article>
-<article class="ay-card" id="andoain" data-pueblo="Andoain">
-<header><span class="ay-chip ay-chip--ok">Abierta</span><span class="ay-org">Ayuntamiento de Andoain</span></header>
-<h3>Andoain: poner al día tu negocio en lo digital</h3>
-<p class="ay-plazo">Hasta el 31 de octubre de 2026</p>
+<article class="ay-card" id="andoain" data-pueblo="Andoain" data-tipo="digital" data-estado="abierta">
+<header><span class="ay-chip ay-chip--ok" data-fin="2026-10-31">Quedan 27 días</span><span class="ay-tag ay-tag--digital">Digitalización</span></header>
+<div class="ay-top">
+<div><span class="ay-org">Ayuntamiento de Andoain</span><h3>Andoain: poner al día tu negocio en lo digital</h3></div>
+<div class="ay-cifra"><b>80–100 %</b><span>hasta 3.125 €</span></div>
+</div>
+<p class="ay-plazo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Hasta el 31 de octubre de 2026</p>
 <p>Para profesionales, negocios, asociaciones y empresas con actividad en Andoain. Cubre «la creación, desarrollo, innovación y mejora de la imagen digital del negocio», además de software de gestión, ciberseguridad, consultoría y formación. Del 80 al 100 % del gasto, con un máximo de 2.500–3.125 € por solicitud. Entran gastos desde el 1 de noviembre de 2025 y se puede pedir después de pagar. Bolsa total de 20.000 €.</p>
 <p class="ay-yo"><b>Cómo te ayudo:</b> Web nueva o renovada con presupuesto desglosado, que es la «imagen digital» que cubre la línea 3.</p>
 <a class="ay-link" href="https://udal.egoitza.gipuzkoa.eus/WAS/AYTO/USCServicioCiudadanoVer15WEB/home.do?De=CA009128102" target="_blank" rel="noopener">Ver las bases oficiales ↗</a>
 </article>
-<article class="ay-card" id="tolosa" data-pueblo="Tolosa">
-<header><span class="ay-chip ay-chip--ok">Abierta</span><span class="ay-org">Ayuntamiento de Tolosa</span></header>
-<h3>Tolosa: tu web en euskera</h3>
-<p class="ay-plazo">Hasta el 31 de octubre de 2026</p>
+<article class="ay-card" id="tolosa" data-pueblo="Tolosa" data-tipo="euskera" data-estado="abierta">
+<header><span class="ay-chip ay-chip--ok" data-fin="2026-10-31">Quedan 27 días</span><span class="ay-tag ay-tag--euskera">Euskera en la web</span></header>
+<div class="ay-top">
+<div><span class="ay-org">Ayuntamiento de Tolosa</span><h3>Tolosa: tu web en euskera</h3></div>
+<div class="ay-cifra"><b>4.000 €</b><span>bolsa para todo el pueblo</span></div>
+</div>
+<p class="ay-plazo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Hasta el 31 de octubre de 2026</p>
 <p>Para comercios y profesionales con actividad en Tolosa. Cubre pasar al euskera la página web, los rótulos, el toldo, la imagen corporativa o las aplicaciones. Bolsa total de 4.000 €.</p>
 <p class="ay-yo"><b>Cómo te ayudo:</b> Si tu web solo está en castellano, te la hago bilingüe con páginas propias en euskera y te paso el enlace que pide la solicitud.</p>
 <a class="ay-link" href="https://uzt.gipuzkoa.eus/home.do?De=EU07112878" target="_blank" rel="noopener">Ver las bases oficiales ↗</a>
 </article>
-<article class="ay-card" id="villabona" data-pueblo="Villabona">
-<header><span class="ay-chip ay-chip--ok">Abierta</span><span class="ay-org">Ayuntamiento de Villabona</span></header>
-<h3>Villabona: web en euskera</h3>
-<p class="ay-plazo">Hasta el 31 de octubre de 2026, a las 14:00</p>
+<article class="ay-card" id="villabona" data-pueblo="Villabona" data-tipo="euskera" data-estado="abierta">
+<header><span class="ay-chip ay-chip--ok" data-fin="2026-10-31">Quedan 27 días</span><span class="ay-tag ay-tag--euskera">Euskera en la web</span></header>
+<div class="ay-top">
+<div><span class="ay-org">Ayuntamiento de Villabona</span><h3>Villabona: web en euskera</h3></div>
+<div class="ay-cifra"><b>50 %</b><span>hasta 450 €</span></div>
+</div>
+<p class="ay-plazo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Hasta el 31 de octubre de 2026, a las 14:00</p>
 <p>50 % de la web si está solo en euskera (hasta 450 €); 40 % si la portada está solo en euskera y el resto en dos idiomas (hasta 360 €); 20 % si es bilingüe (hasta 180 €). La web tiene que estar ya publicada al pedirla. Bolsa total de 500 € para webs (y 1.000 € aparte para rótulos).</p>
 <p class="ay-yo"><b>Cómo te ayudo:</b> Portada en euskera y el resto bilingüe, o todo en euskera: te digo qué tramo te sale mejor.</p>
 <a class="ay-link" href="https://www.villabona.eus/eu/-/froga-2" target="_blank" rel="noopener">Ver las bases oficiales ↗</a>
 </article>
-<article class="ay-card" id="urretxu" data-pueblo="Urretxu">
-<header><span class="ay-chip ay-chip--ok">Abierta</span><span class="ay-org">Ayuntamiento de Urretxu</span></header>
-<h3>Urretxu: web e imagen en euskera</h3>
-<p class="ay-plazo">Hasta el 31 de octubre de 2026</p>
+<article class="ay-card" id="urretxu" data-pueblo="Urretxu" data-tipo="euskera" data-estado="abierta">
+<header><span class="ay-chip ay-chip--ok" data-fin="2026-10-31">Quedan 27 días</span><span class="ay-tag ay-tag--euskera">Euskera en la web</span></header>
+<div class="ay-top">
+<div><span class="ay-org">Ayuntamiento de Urretxu</span><h3>Urretxu: web e imagen en euskera</h3></div>
+<div class="ay-cifra"><b>31 oct</b><span>último día para pedirla</span></div>
+</div>
+<p class="ay-plazo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Hasta el 31 de octubre de 2026</p>
 <p>Para establecimientos de Urretxu que pongan en euskera la rotulación, la página web o la imagen corporativa. Se pide por la sede electrónica del ayuntamiento.</p>
 <p class="ay-yo"><b>Cómo te ayudo:</b> Te preparo la versión en euskera de la web y el presupuesto detallado para la solicitud.</p>
 <a class="ay-link" href="https://udal.egoitza.gipuzkoa.eus/WAS/AYTO/USCServicioCiudadanoVer15WEB/home.do?De=CA077121460" target="_blank" rel="noopener">Ver las bases oficiales ↗</a>
 </article>
-<article class="ay-card" id="legazpi" data-pueblo="Legazpi">
-<header><span class="ay-chip ay-chip--ok">Abierta</span><span class="ay-org">Ayuntamiento de Legazpi</span></header>
-<h3>Legazpi: euskera en la imagen, los rótulos o la web</h3>
-<p class="ay-plazo">Hasta el 31 de octubre de 2026</p>
+<article class="ay-card" id="legazpi" data-pueblo="Legazpi" data-tipo="euskera" data-estado="abierta">
+<header><span class="ay-chip ay-chip--ok" data-fin="2026-10-31">Quedan 27 días</span><span class="ay-tag ay-tag--euskera">Euskera en la web</span></header>
+<div class="ay-top">
+<div><span class="ay-org">Ayuntamiento de Legazpi</span><h3>Legazpi: euskera en la imagen, los rótulos o la web</h3></div>
+<div class="ay-cifra"><b>31 oct</b><span>último día para pedirla</span></div>
+</div>
+<p class="ay-plazo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Hasta el 31 de octubre de 2026</p>
 <p>Para negocios y establecimientos de servicios que usen el euskera en su imagen corporativa, sus rótulos o su página web. Los importes están en las bases municipales (www.legazpi.eus) y en el Servicio de Atención Ciudadana.</p>
 <p class="ay-yo"><b>Cómo te ayudo:</b> Web en euskera o bilingüe y el presupuesto detallado para adjuntarlo.</p>
 <a class="ay-link" href="https://goierri.hitza.eus/2026/07/14/legazpiko-udalak-merkataritza-euskara-eta-gazteria-alorretako-diru-laguntzak-kaleratu-ditu/" target="_blank" rel="noopener">Ver las bases oficiales ↗</a>
 </article>
-<article class="ay-card" id="camara" data-pueblo="Gipuzkoa">
-<header><span class="ay-chip ay-chip--ok">Abierta</span><span class="ay-org">Cámara de Gipuzkoa</span></header>
-<h3>Diagnóstico de innovación comercial gratis</h3>
-<p class="ay-plazo">Inscripción hasta el 16 de noviembre de 2026</p>
+<article class="ay-card" id="camara" data-pueblo="Gipuzkoa" data-tipo="gratis" data-estado="abierta">
+<header><span class="ay-chip ay-chip--ok" data-fin="2026-11-16">Quedan 43 días</span><span class="ay-tag ay-tag--gratis">Gratis</span></header>
+<div class="ay-top">
+<div><span class="ay-org">Cámara de Gipuzkoa</span><h3>Diagnóstico de innovación comercial gratis</h3></div>
+<div class="ay-cifra"><b>Gratis</b><span>diagnóstico en tu tienda</span></div>
+</div>
+<p class="ay-plazo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Inscripción hasta el 16 de noviembre de 2026</p>
 <p>Para pymes y autónomos del comercio minorista de Gipuzkoa. No da dinero: un técnico visita la tienda y te deja un informe con mejoras de estrategia, tecnología, gestión y clientes. Está pagado al 100 % con fondos FEDER y del Estado.</p>
 <p class="ay-yo"><b>Cómo te ayudo:</b> Si el informe te recomienda web o tienda online, te paso presupuesto para hacerlo.</p>
 <a class="ay-link" href="https://www.camaragipuzkoa.com/comercio-y-turismo/transformacion-digital-e-innovacion/diagnosticos-de-innovacion-comercial" target="_blank" rel="noopener">Ver las bases oficiales ↗</a>
 </article>
-<article class="ay-card" id="beasain" data-pueblo="Beasain">
-<header><span class="ay-chip ay-chip--ok">Abierta</span><span class="ay-org">Ayuntamiento de Beasain</span></header>
-<h3>Beasain: imagen y web en euskera</h3>
-<p class="ay-plazo">Del 27 de marzo al 30 de noviembre de 2026</p>
+<article class="ay-card" id="beasain" data-pueblo="Beasain" data-tipo="euskera" data-estado="abierta">
+<header><span class="ay-chip ay-chip--ok" data-fin="2026-11-30">Quedan 57 días</span><span class="ay-tag ay-tag--euskera">Euskera en la web</span></header>
+<div class="ay-top">
+<div><span class="ay-org">Ayuntamiento de Beasain</span><h3>Beasain: imagen y web en euskera</h3></div>
+<div class="ay-cifra"><b>60 %</b><span>hasta 470 €</span></div>
+</div>
+<p class="ay-plazo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Del 27 de marzo al 30 de noviembre de 2026</p>
 <p>Para comercios y actividades de Beasain. Según los últimos importes publicados por el ayuntamiento: 60 % de la web si está solo en euskera (hasta 470 €) y 50 % si es bilingüe (hasta 380 €). Las bases de 2026 son del 26 de marzo; confirma en ellas las cifras de este año. Hay que presentar el formulario de solicitud.</p>
 <p class="ay-yo"><b>Cómo te ayudo:</b> Web en euskera o bilingüe según el tramo que te convenga.</p>
 <a class="ay-link" href="https://www.beasain.eus/dirulaguntzak-emateko-oinarriak/7508-beasaingo-udalerriko-saltokietako-eta-jardueretarako-errotuluetan-irudi-korporatiboetan-eta-web-orrietan-euskararen-erabilera-sustatzeko-oinarriak-2026-urtea" target="_blank" rel="noopener">Ver las bases oficiales ↗</a>
 </article>
-<article class="ay-card" id="hernani" data-pueblo="Hernani">
-<header><span class="ay-chip ay-chip--ok">Abierta</span><span class="ay-org">Ayuntamiento de Hernani</span></header>
-<h3>Hernani: web en euskera</h3>
-<p class="ay-plazo">Todo 2026: sin plazo fijo, dentro del año</p>
+<article class="ay-card" id="hernani" data-pueblo="Hernani" data-tipo="euskera" data-estado="abierta">
+<header><span class="ay-chip ay-chip--ok" data-fin="2026-12-31">Quedan 88 días</span><span class="ay-tag ay-tag--euskera">Euskera en la web</span></header>
+<div class="ay-top">
+<div><span class="ay-org">Ayuntamiento de Hernani</span><h3>Hernani: web en euskera</h3></div>
+<div class="ay-cifra"><b>50 %</b><span>hasta 450 €</span></div>
+</div>
+<p class="ay-plazo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Todo 2026: sin plazo fijo, dentro del año</p>
 <p>Bases de 2026: 50 % de la web (hasta 450 €) si el euskera tiene al menos el mismo trato que los otros idiomas y la portada está en euskera; 30 % (hasta 300 €) si la portada no está en euskera. También software en euskera (50 %, hasta 300 €) y rótulos solo en euskera (75 %, hasta 400 €).</p>
 <p class="ay-yo"><b>Cómo te ayudo:</b> Portada en euskera y mismo trato a los dos idiomas: lo que pide el tramo del 50 %.</p>
 <a class="ay-link" href="https://www.hernani.eus/eu/-/498424-175" target="_blank" rel="noopener">Ver las bases oficiales ↗</a>
 </article>
-<article class="ay-card" id="bergara" data-pueblo="Bergara">
-<header><span class="ay-chip ay-chip--ok">Abierta</span><span class="ay-org">Ayuntamiento de Bergara</span></header>
-<h3>Bergara: rótulos, imagen y web en euskera</h3>
-<p class="ay-plazo">Hasta el 31 de diciembre de 2026 o hasta agotar la bolsa</p>
+<article class="ay-card" id="bergara" data-pueblo="Bergara" data-tipo="euskera" data-estado="abierta">
+<header><span class="ay-chip ay-chip--ok" data-fin="2026-12-31">Quedan 88 días</span><span class="ay-tag ay-tag--euskera">Euskera en la web</span></header>
+<div class="ay-top">
+<div><span class="ay-org">Ayuntamiento de Bergara</span><h3>Bergara: rótulos, imagen y web en euskera</h3></div>
+<div class="ay-cifra"><b>50 %</b><span>hasta 500 €</span></div>
+</div>
+<p class="ay-plazo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Hasta el 31 de diciembre de 2026 o hasta agotar la bolsa</p>
 <p>50 % de la web si todo el contenido está en euskera (hasta 500 €) y 30 % si es bilingüe o multilingüe (hasta 300 €). La web tiene que estar terminada al pedirla y la factura ha de ser de 2026. Bolsa total de 3.000 €.</p>
 <p class="ay-yo"><b>Cómo te ayudo:</b> Web con todo el contenido en euskera (puede tener también castellano), lista para presentar.</p>
 <a class="ay-link" href="https://www.bergara.eus/eu/dirulaguntzak" target="_blank" rel="noopener">Ver las bases oficiales ↗</a>
 </article>
-<article class="ay-card" id="ordizia" data-pueblo="Ordizia">
-<header><span class="ay-chip ay-chip--ok">Abierta</span><span class="ay-org">Ayuntamiento de Ordizia</span></header>
-<h3>Ordizia: web en euskera</h3>
-<p class="ay-plazo">Sin plazo fijo publicado: se pide después de hacer la web, con la factura</p>
+<article class="ay-card" id="ordizia" data-pueblo="Ordizia" data-tipo="euskera" data-estado="abierta">
+<header><span class="ay-chip ay-chip--ok">Abierta · sin plazo fijo</span><span class="ay-tag ay-tag--euskera">Euskera en la web</span></header>
+<div class="ay-top">
+<div><span class="ay-org">Ayuntamiento de Ordizia</span><h3>Ordizia: web en euskera</h3></div>
+<div class="ay-cifra"><b>50 %</b><span>hasta 500 €</span></div>
+</div>
+<p class="ay-plazo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Sin plazo fijo publicado: se pide después de hacer la web, con la factura</p>
 <p>Web solo en euskera: 50 % hasta 500 €. Web que se abre siempre en euskera y deja cambiar de idioma: 50 % hasta 350 €. Web con selector de idioma al entrar: 50 % hasta 150 €. Una sola vez por web. Además, rótulos (50 %, hasta 300 €) e imagen corporativa.</p>
 <p class="ay-yo"><b>Cómo te ayudo:</b> Web que se abre en euskera con cambio de idioma: el tramo de 350 € sin renunciar al castellano.</p>
 <a class="ay-link" href="https://www.ordizia.eus/dirulaguntzak" target="_blank" rel="noopener">Ver las bases oficiales ↗</a>
 </article>
-<article class="ay-card" id="irun-market" data-pueblo="Irun">
-<header><span class="ay-chip ay-chip--ok">Abierta</span><span class="ay-org">Ayuntamiento de Irun</span></header>
-<h3>Irun: inversión digital de los comercios de irun.market</h3>
-<p class="ay-plazo">Hasta el 29 de enero de 2027</p>
+<article class="ay-card" id="irun-market" data-pueblo="Irun" data-tipo="digital" data-estado="abierta">
+<header><span class="ay-chip ay-chip--ok" data-fin="2027-01-29">Quedan 117 días</span><span class="ay-tag ay-tag--digital">Digitalización</span></header>
+<div class="ay-top">
+<div><span class="ay-org">Ayuntamiento de Irun</span><h3>Irun: inversión digital de los comercios de irun.market</h3></div>
+<div class="ay-cifra"><b>Digital</b><span>web o tienda online</span></div>
+</div>
+<p class="ay-plazo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Hasta el 29 de enero de 2027</p>
 <p>Para autónomos y pymes de Irun dados de alta en la plataforma irun.market. Subvenciona inversiones digitales; se presenta una memoria con el detalle de cada gasto.</p>
 <p class="ay-yo"><b>Cómo te ayudo:</b> Te hago la web o la tienda online y te preparo el presupuesto desglosado como pide la memoria.</p>
 <a class="ay-link" href="https://www.irun.org/es/ayudas-subvenciones/400-2026-subvenciones-para-la-inversion-digital-de-los-comercios-participantes-en-la-plataforma-ott-y-o-de-venta-online-irun-market?ids=1557" target="_blank" rel="noopener">Ver las bases oficiales ↗</a>
 </article>
 </div>
+<p class="ay-vacio">No hay ayudas abiertas de este tipo ahora mismo.</p>
 
 <div class="ay-banda" aria-hidden="true">Tolosa · Andoain · Irun · Villabona · Hernani · Beasain · Bergara · Ordizia · Legazpi · Urretxu · Lasarte · Hondarribia · Pasaia · Eibar · Zarautz · Oñati</div>
+</section>
 
-<h2 id="anuales">Se convocan cada año</h2>
-<p>Cerradas ahora o sin la convocatoria de este año publicada, pero vuelven casi siempre en las mismas fechas. Si piensas hacer la web el año que viene, apúntate cuándo abren.</p>
+<section class="ay-sec" id="anuales">
+<span class="ay-k">Cada año</span>
+<h2 class="ay-h2">Las que vuelven cada año</h2>
+<p class="ay-intro">Cerradas ahora o sin la convocatoria de este año publicada, pero vuelven casi siempre por las mismas fechas.</p>
 <div class="ay-lista">
-<article class="ay-card" id="pasaia" data-pueblo="Pasaia">
-<header><span class="ay-chip">Se convoca cada año</span><span class="ay-org">Ayuntamiento de Pasaia (Oarsoaldea)</span></header>
-<h3>Pasaia: euskera en empresas y comercios</h3>
-<p class="ay-plazo">En 2025: del 1 de septiembre al 30 de noviembre (la de 2026 aún no está publicada)</p>
+<article class="ay-card" id="pasaia" data-pueblo="Pasaia" data-tipo="euskera" data-estado="cerrada">
+<header><span class="ay-chip">Se convoca cada año</span><span class="ay-tag ay-tag--euskera">Euskera en la web</span></header>
+<div class="ay-top">
+<div><span class="ay-org">Ayuntamiento de Pasaia (Oarsoaldea)</span><h3>Pasaia: euskera en empresas y comercios</h3></div>
+<div class="ay-cifra ay-cifra--suave"><b>Cada año</b><span>consulta el importe</span></div>
+</div>
+<p class="ay-plazo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>En 2025: del 1 de septiembre al 30 de noviembre (la de 2026 aún no está publicada)</p>
 <p>Incluye páginas web en euskera, el dominio .eus, rótulos, imagen corporativa y programas informáticos en euskera. Cubre gastos del 1 de enero al 31 de diciembre del año de la convocatoria.</p>
 <p class="ay-yo"><b>Cómo te ayudo:</b> Web bilingüe y, si te encaja, dominio .eus a tu nombre.</p>
 <a class="ay-link" href="https://dirulaguntzak.oarsoaldea.eus/es/node/818" target="_blank" rel="noopener">Ver las bases oficiales ↗</a>
 </article>
-<article class="ay-card" id="lasarte-oria" data-pueblo="Lasarte-Oria">
-<header><span class="ay-chip">Se convoca cada año</span><span class="ay-org">Ayuntamiento de Lasarte-Oria</span></header>
-<h3>Lasarte-Oria: euskera en la empresa</h3>
-<p class="ay-plazo">Convocatoria anual; en años anteriores, hasta el 31 de octubre (confírmalo en el 943 376 184)</p>
+<article class="ay-card" id="lasarte-oria" data-pueblo="Lasarte-Oria" data-tipo="euskera" data-estado="cerrada">
+<header><span class="ay-chip">Se convoca cada año</span><span class="ay-tag ay-tag--euskera">Euskera en la web</span></header>
+<div class="ay-top">
+<div><span class="ay-org">Ayuntamiento de Lasarte-Oria</span><h3>Lasarte-Oria: euskera en la empresa</h3></div>
+<div class="ay-cifra"><b>50 %</b><span>hasta 450 €</span></div>
+</div>
+<p class="ay-plazo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Convocatoria anual; en años anteriores, hasta el 31 de octubre (confírmalo en el 943 376 184)</p>
 <p>50 % de la web (hasta 450 €) si está en euskera o es bilingüe con prioridad al euskera; también rótulos, imagen, software y documentos. Máximo 500 € por empresa. Está en el plan de subvenciones 2024–2026 del ayuntamiento.</p>
 <p class="ay-yo"><b>Cómo te ayudo:</b> Web bilingüe con el euskera por delante, como piden las bases.</p>
 <a class="ay-link" href="https://www.lasarte-oria.eus/es/oficinas-centros-municipales/euskera" target="_blank" rel="noopener">Ver las bases oficiales ↗</a>
 </article>
-<article class="ay-card" id="hondarribia" data-pueblo="Hondarribia">
-<header><span class="ay-chip">Se convoca cada año</span><span class="ay-org">Ayuntamiento de Hondarribia</span></header>
-<h3>Hondarribia: web en euskera</h3>
-<p class="ay-plazo">2026: del 21 de mayo al 15 de septiembre</p>
+<article class="ay-card" id="hondarribia" data-pueblo="Hondarribia" data-tipo="euskera" data-estado="cerrada">
+<header><span class="ay-chip">Se convoca cada año</span><span class="ay-tag ay-tag--euskera">Euskera en la web</span></header>
+<div class="ay-top">
+<div><span class="ay-org">Ayuntamiento de Hondarribia</span><h3>Hondarribia: web en euskera</h3></div>
+<div class="ay-cifra"><b>2.000 €</b><span>bolsa para todo el pueblo</span></div>
+</div>
+<p class="ay-plazo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>2026: del 21 de mayo al 15 de septiembre</p>
 <p>Línea para empresas y asociaciones que pongan su web en euskera (bolsa total de 2.000 €) y otra para rótulos (3.000 €).</p>
 <p class="ay-yo"><b>Cómo te ayudo:</b> Web en euskera lista para la convocatoria del año que viene.</p>
 <a class="ay-link" href="https://www.hondarribia.eus/eu/euskara-departamentuko-diru-laguntzak-emateko-deialdia" target="_blank" rel="noopener">Ver las bases oficiales ↗</a>
 </article>
-<article class="ay-card" id="zumarraga" data-pueblo="Zumarraga">
-<header><span class="ay-chip">Se convoca cada año</span><span class="ay-org">Ayuntamiento de Zumarraga</span></header>
-<h3>Zumarraga: rótulos, imagen, vídeos y web en euskera</h3>
-<p class="ay-plazo">Convocatoria anual (las últimas bases publicadas son de mayo de 2025)</p>
+<article class="ay-card" id="zumarraga" data-pueblo="Zumarraga" data-tipo="euskera" data-estado="cerrada">
+<header><span class="ay-chip">Se convoca cada año</span><span class="ay-tag ay-tag--euskera">Euskera en la web</span></header>
+<div class="ay-top">
+<div><span class="ay-org">Ayuntamiento de Zumarraga</span><h3>Zumarraga: rótulos, imagen, vídeos y web en euskera</h3></div>
+<div class="ay-cifra ay-cifra--suave"><b>Cada año</b><span>consulta el importe</span></div>
+</div>
+<p class="ay-plazo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Convocatoria anual (las últimas bases publicadas son de mayo de 2025)</p>
 <p>Subvenciona el euskera en rótulos, imagen corporativa, vídeos promocionales y páginas web de los comercios. Servicio de Euskera: 943 72 91 53.</p>
 <p class="ay-yo"><b>Cómo te ayudo:</b> Web y vídeo corto en euskera para tu negocio.</p>
 <a class="ay-link" href="https://www.zumarraga.eus/eu/-/euskara-eta-hezkuntzako-dirulaguntzak-2025" target="_blank" rel="noopener">Ver las bases oficiales ↗</a>
 </article>
-<article class="ay-card" id="zarautz" data-pueblo="Zarautz">
-<header><span class="ay-chip">Se convoca cada año</span><span class="ay-org">Ayuntamiento de Zarautz</span></header>
-<h3>Zarautz: rótulos y web en euskera</h3>
-<p class="ay-plazo">2026: del 15 de abril al 27 de mayo</p>
+<article class="ay-card" id="zarautz" data-pueblo="Zarautz" data-tipo="euskera" data-estado="cerrada">
+<header><span class="ay-chip">Se convoca cada año</span><span class="ay-tag ay-tag--euskera">Euskera en la web</span></header>
+<div class="ay-top">
+<div><span class="ay-org">Ayuntamiento de Zarautz</span><h3>Zarautz: rótulos y web en euskera</h3></div>
+<div class="ay-cifra"><b>50 %</b><span>hasta 350 €</span></div>
+</div>
+<p class="ay-plazo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>2026: del 15 de abril al 27 de mayo</p>
 <p>50 % del coste de cada elemento, con un máximo de 350 € por solicitante, para webs íntegramente en euskera, rótulos e imagen corporativa.</p>
 <p class="ay-yo"><b>Cómo te ayudo:</b> Web en euskera correcta, que es requisito de las bases.</p>
 <a class="ay-link" href="https://www.zarautz.eus/es/-/subvenciones-para-la-instalaci%C3%B3n-en-euskera-de-los-r%C3%B3tulos-la-imagen-corporativa-o-las-p%C3%A1ginas-web" target="_blank" rel="noopener">Ver las bases oficiales ↗</a>
 </article>
-<article class="ay-card" id="onati" data-pueblo="Oñati">
-<header><span class="ay-chip">Se convoca cada año</span><span class="ay-org">Ayuntamiento de Oñati</span></header>
-<h3>Oñati: rótulos, imagen y web en euskera</h3>
-<p class="ay-plazo">Convocatoria anual (en las últimas bases publicadas, hasta el 30 de diciembre)</p>
+<article class="ay-card" id="onati" data-pueblo="Oñati" data-tipo="euskera" data-estado="cerrada">
+<header><span class="ay-chip">Se convoca cada año</span><span class="ay-tag ay-tag--euskera">Euskera en la web</span></header>
+<div class="ay-top">
+<div><span class="ay-org">Ayuntamiento de Oñati</span><h3>Oñati: rótulos, imagen y web en euskera</h3></div>
+<div class="ay-cifra"><b>50 %</b><span>hasta 450 €</span></div>
+</div>
+<p class="ay-plazo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Convocatoria anual (en las últimas bases publicadas, hasta el 30 de diciembre)</p>
 <p>En las últimas bases publicadas: 50 % de la web si está solo en euskera (hasta 450 €), 40 % si es bilingüe con la portada en euskera (hasta 360 €) y 20 % si la portada no está en euskera (hasta 180 €). Confirma las cifras del año con el Servicio de Euskera.</p>
 <p class="ay-yo"><b>Cómo te ayudo:</b> Portada en euskera para entrar en el tramo del 40 % sin perder el castellano.</p>
 <a class="ay-link" href="https://www.xn--oati-gqa.eus/eu/tramiteak/diru-laguntzak/euskara-zerbitzua/euskara-zerbitzuko-diru-laguntzak_-oinarriak" target="_blank" rel="noopener">Ver las bases oficiales ↗</a>
 </article>
-<article class="ay-card" id="arrasate" data-pueblo="Arrasate">
-<header><span class="ay-chip">Se convoca cada año</span><span class="ay-org">Ayuntamiento de Arrasate</span></header>
-<h3>Arrasate: rótulos, imagen y web en euskera</h3>
-<p class="ay-plazo">Consulta la convocatoria del año</p>
+<article class="ay-card" id="arrasate" data-pueblo="Arrasate" data-tipo="euskera" data-estado="cerrada">
+<header><span class="ay-chip">Se convoca cada año</span><span class="ay-tag ay-tag--euskera">Euskera en la web</span></header>
+<div class="ay-top">
+<div><span class="ay-org">Ayuntamiento de Arrasate</span><h3>Arrasate: rótulos, imagen y web en euskera</h3></div>
+<div class="ay-cifra ay-cifra--suave"><b>Cada año</b><span>consulta el importe</span></div>
+</div>
+<p class="ay-plazo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Consulta la convocatoria del año</p>
 <p>Subvenciona a las entidades que ponen en euskera sus rótulos, su imagen corporativa o su web. Informa la Oficina de Dinamización Comercial de Debagoiena: 943 79 30 90.</p>
 <p class="ay-yo"><b>Cómo te ayudo:</b> Te preparo la web en euskera y el presupuesto para la solicitud.</p>
 <a class="ay-link" href="https://www.debagoiena.eus/eu/garapen-agentzia/merkatariak/diru-laguntzak/arrasateko-udala" target="_blank" rel="noopener">Ver las bases oficiales ↗</a>
 </article>
-<article class="ay-card" id="mec" data-pueblo="Euskadi">
-<header><span class="ay-chip">Se convoca cada año</span><span class="ay-org">Gobierno Vasco</span></header>
-<h3>MEC: modernización de comercios</h3>
-<p class="ay-plazo">2026: del 3 de junio al 15 de septiembre</p>
+<article class="ay-card" id="mec" data-pueblo="Euskadi" data-tipo="negocio" data-estado="cerrada">
+<header><span class="ay-chip">Se convoca cada año</span><span class="ay-tag ay-tag--negocio">Abrir o modernizar</span></header>
+<div class="ay-top">
+<div><span class="ay-org">Gobierno Vasco</span><h3>MEC: modernización de comercios</h3></div>
+<div class="ay-cifra"><b>40 %</b><span>hasta 10.000 €</span></div>
+</div>
+<p class="ay-plazo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>2026: del 3 de junio al 15 de septiembre</p>
 <p>Para comercios con local a pie de calle en Euskadi (también peluquerías, fotografía, farmacias…). 40 % de la inversión, hasta 52 % según criterios, con un máximo de 10.000 €. Ojo: cubre equipos y software de gestión; la página web no aparece como gasto expreso en las bases.</p>
 <p class="ay-yo"><b>Cómo te ayudo:</b> Si vas a pedirla para el local o el TPV, te digo qué parte digital podría entrar y qué no.</p>
 <a class="ay-link" href="https://www.euskadi.eus/gobierno-vasco/-/noticia/2026/el-gobierno-vasco-destina-4-6-millones-euros-ayudas-modernizacion-establecimientos-comerciales-y-proyecto-educacion-valores-consumir-local-consejo-gobierno-29-04-2026/" target="_blank" rel="noopener">Ver las bases oficiales ↗</a>
 </article>
-<article class="ay-card" id="merkaekin" data-pueblo="Euskadi">
-<header><span class="ay-chip">Se convoca cada año</span><span class="ay-org">Gobierno Vasco</span></header>
-<h3>MerkaEkin: abrir un comercio</h3>
-<p class="ay-plazo">2026: del 10 de junio al 15 de septiembre</p>
+<article class="ay-card" id="merkaekin" data-pueblo="Euskadi" data-tipo="negocio" data-estado="cerrada">
+<header><span class="ay-chip">Se convoca cada año</span><span class="ay-tag ay-tag--negocio">Abrir o modernizar</span></header>
+<div class="ay-top">
+<div><span class="ay-org">Gobierno Vasco</span><h3>MerkaEkin: abrir un comercio</h3></div>
+<div class="ay-cifra"><b>80 %</b><span>de los gastos admitidos</span></div>
+</div>
+<p class="ay-plazo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>2026: del 10 de junio al 15 de septiembre</p>
 <p>Para comercios nuevos o nuevas líneas de negocio. 80 % de los gastos admitidos; incluye una línea de asesoramiento de hasta 5.000 €. Las bases no citan la web de forma expresa.</p>
 <p class="ay-yo"><b>Cómo te ayudo:</b> Si abres negocio, la web entra en el plan de arranque: te paso presupuesto cerrado para incluirlo.</p>
 <a class="ay-link" href="https://www.euskadi.eus/ayuda_subvencion/2026/merkaekin/web01-tramite/es/" target="_blank" rel="noopener">Ver las bases oficiales ↗</a>
 </article>
-<article class="ay-card" id="turismo" data-pueblo="Gipuzkoa">
-<header><span class="ay-chip">Se convoca cada año</span><span class="ay-org">Diputación Foral de Gipuzkoa</span></header>
-<h3>Digitalización de empresas turísticas</h3>
-<p class="ay-plazo">2026: cerrada en junio</p>
+<article class="ay-card" id="turismo" data-pueblo="Gipuzkoa" data-tipo="digital" data-estado="cerrada">
+<header><span class="ay-chip">Se convoca cada año</span><span class="ay-tag ay-tag--digital">Digitalización</span></header>
+<div class="ay-top">
+<div><span class="ay-org">Diputación Foral de Gipuzkoa</span><h3>Digitalización de empresas turísticas</h3></div>
+<div class="ay-cifra"><b>50 %</b><span>hasta 7.500 €</span></div>
+</div>
+<p class="ay-plazo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>2026: cerrada en junio</p>
 <p>Para autónomos y microempresas turísticas de Gipuzkoa (alojamientos, casas rurales, guías, turismo activo…). Hasta el 50 % de las herramientas digitales de promoción y venta, con un máximo de 7.500 € (10.000 € si la empresa es nueva).</p>
 <p class="ay-yo"><b>Cómo te ayudo:</b> Web con reservas para alojamientos y casas rurales, que es justo lo que cubre.</p>
 <a class="ay-link" href="https://egoitza.gipuzkoa.eus/es/subvenciones/-/laguntza/2026/7/TURI08" target="_blank" rel="noopener">Ver las bases oficiales ↗</a>
 </article>
-<article class="ay-card" id="donostia" data-pueblo="Donostia">
-<header><span class="ay-chip">Se convoca cada año</span><span class="ay-org">Fomento de San Sebastián</span></header>
-<h3>Donostia: comercio, hostelería y turismo</h3>
-<p class="ay-plazo">Consulta cada convocatoria</p>
+<article class="ay-card" id="donostia" data-pueblo="Donostia" data-tipo="digital" data-estado="cerrada">
+<header><span class="ay-chip">Se convoca cada año</span><span class="ay-tag ay-tag--digital">Digitalización</span></header>
+<div class="ay-top">
+<div><span class="ay-org">Fomento de San Sebastián</span><h3>Donostia: comercio, hostelería y turismo</h3></div>
+<div class="ay-cifra ay-cifra--suave"><b>Cada año</b><span>consulta el importe</span></div>
+</div>
+<p class="ay-plazo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Consulta cada convocatoria</p>
 <p>Fomento lanza cada año ayudas a la innovación y la digitalización del comercio, la hostelería y las empresas turísticas de la ciudad. (Las ayudas de euskera del Ayuntamiento de Donostia son solo para rótulos.)</p>
 <p class="ay-yo"><b>Cómo te ayudo:</b> Te digo si tu proyecto de web encaja en la convocatoria del año.</p>
 <a class="ay-link" href="https://www.fomentosansebastian.eus/es/apoyo-a-empresas/ayudas-economicas" target="_blank" rel="noopener">Ver las bases oficiales ↗</a>
 </article>
-<article class="ay-card" id="kit-digital" data-pueblo="España">
-<header><span class="ay-chip ay-chip--no">Sin convocatoria</span><span class="ay-org">Red.es (Gobierno de España)</span></header>
-<h3>Kit Digital</h3>
-<p class="ay-plazo">Sin convocatoria abierta</p>
+<article class="ay-card" id="kit-digital" data-pueblo="España" data-tipo="digital" data-estado="sin">
+<header><span class="ay-chip ay-chip--no">Sin convocatoria</span><span class="ay-tag ay-tag--digital">Digitalización</span></header>
+<div class="ay-top">
+<div><span class="ay-org">Red.es (Gobierno de España)</span><h3>Kit Digital</h3></div>
+<div class="ay-cifra ay-cifra--suave"><b>—</b><span>sin fecha</span></div>
+</div>
+<p class="ay-plazo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Sin convocatoria abierta</p>
 <p>Las convocatorias para pedir el bono están cerradas y Red.es no ha anunciado ninguna nueva. Si alguien te ofrece hoy una web «gratis con el Kit Digital», pregunta qué convocatoria es.</p>
 <p class="ay-yo"><b>Cómo te ayudo:</b> Si se reabre, lo publico aquí.</p>
 <a class="ay-link" href="https://www.acelerapyme.gob.es/kit-digital" target="_blank" rel="noopener">Ver las bases oficiales ↗</a>
 </article>
 </div>
+<p class="ay-vacio">No hay ayudas anuales de este tipo.</p>
+</section>
 
-<div class="ay-aviso"><strong>Importante:</strong> esta página resume las convocatorias; lo que vale son las bases oficiales de cada una, que cambian de un año a otro. Antes de gastar, léelas o consúltalas con tu gestoría. Yo no tramito subvenciones: te digo si tu web encaja y te preparo el presupuesto como lo pide cada ayuda.</div>
+<section class="ay-sec" id="requisitos">
+<span class="ay-k">Antes de pedirla</span>
+<h2 class="ay-h2">Lo que te van a pedir</h2>
+<p class="ay-intro">Cada ayuntamiento tiene sus bases, pero estas condiciones se repiten en casi todas.</p>
+<div class="req">
+<div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><b>Negocio en el pueblo</b><p>Actividad o local en el municipio y, en varios ayuntamientos, licencia de actividad municipal.</p></div>
+<div><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><b>Al día con Hacienda</b><p>Estar al corriente con Hacienda y con la Seguridad Social. El ayuntamiento lo comprueba.</p></div>
+<div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg><b>Factura detallada</b><p>A nombre del negocio, con el trabajo desglosado y del año de la convocatoria (Bergara pide factura de 2026).</p></div>
+<div><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg><b>Web ya publicada</b><p>Villabona y Bergara piden que la web esté terminada al pedir la ayuda: se adjunta el enlace.</p></div>
+<div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h10M9 4v2M6 6c0 4 3 7 6 8M12 6c0 3-3 7-7 9M13 20l4-9 4 9M14.5 17h5"/></svg><b>Euskera bien escrito</b><p>Ordizia y Hernani exigen el texto correcto. Una traducción automática sin revisar puede quedarse fuera.</p></div>
+<div><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10.5 9l2-1.5V16"/></svg><b>Una vez por web</b><p>Normalmente la ayuda se da una sola vez por cada web (Ordizia lo dice expresamente).</p></div>
+</div>
+</section>
 
-<h2 id="como-funciona">Cómo lo hacemos</h2>
-<ol>
-<li><strong>Me dices tu negocio y tu pueblo.</strong> Te digo qué ayudas pueden encajar y cuáles no.</li>
-<li><strong>Te paso un presupuesto cerrado</strong> con el detalle que pide la convocatoria: qué se hace, cuánto cuesta cada parte y el IVA aparte.</li>
-<li><strong>Hago la web como piden las bases.</strong> Por ejemplo, con el euskera revisado si la ayuda exige que sea correcto.</li>
-<li><strong>Tú o tu gestoría presentáis la solicitud</strong> con el presupuesto, la factura y el enlace a la web.</li>
+<section class="ay-sec" id="como-funciona">
+<span class="ay-k">Cómo lo hacemos</span>
+<h2 class="ay-h2">De la duda a la ayuda pedida</h2>
+<ol class="pasos">
+<li><b>Me dices tu negocio y tu pueblo</b><span>Te digo qué ayudas pueden encajar y cuáles no.</span></li>
+<li><b>Presupuesto cerrado</b><span>Con el detalle que pide la convocatoria: qué se hace, cuánto cuesta cada parte y el IVA aparte.</span></li>
+<li><b>La web como piden las bases</b><span>Por ejemplo, con el euskera revisado si la ayuda exige que sea correcto.</span></li>
+<li><b>Tú o tu gestoría la pedís</b><span>Con el presupuesto, la factura y el enlace a la web publicada.</span></li>
 </ol>
+</section>
+</div>
+
+<article class="art">
+<div class="ay-aviso"><strong>Importante:</strong> esta página resume las convocatorias; lo que vale son las bases oficiales de cada una, que cambian de un año a otro. Antes de gastar, léelas o consúltalas con tu gestoría. Yo no tramito subvenciones: te digo si tu web encaja y te preparo el presupuesto como lo pide cada ayuda.</div>
 
 <div class="cta-band">
 <div>
@@ -517,6 +900,18 @@
 <p>Para la web en sí, la de Andoain: entre el 80 y el 100 % del gasto, hasta 2.500–3.125 €, hasta el 31 de octubre de 2026. Entre las de euskera, Irun paga el 75 % si la web queda solo en euskera (hasta 1.000 €) y Bergara y Ordizia el 50 % hasta 500 €.</p>
 </details>
 <details>
+<summary>¿Tengo que hacer la web solo en euskera?</summary>
+<p>No. Casi todos los ayuntamientos ayudan también a las webs bilingües, aunque pagan menos. El truco está en la portada: Hernani, Villabona, Oñati y Ordizia pagan más si la web se abre en euskera y deja pasar al castellano. Zarautz es la excepción: solo subvenciona webs íntegramente en euskera.</p>
+</details>
+<details>
+<summary>¿Puedo pedir dos ayudas a la vez?</summary>
+<p>Depende de cada convocatoria. Las bases suelen permitir juntar ayudas siempre que, sumadas, no superen lo que te ha costado (así lo dicen, por ejemplo, las de Hernani). Antes de pedir dos, léete las bases de las dos.</p>
+</details>
+<details>
+<summary>¿Qué pasa si se acaba el dinero?</summary>
+<p>Algunas tienen una bolsa cerrada para todo el pueblo: 4.000 € en Tolosa, 500 € para webs en Villabona o 3.000 € en Bergara. Si se pide más de lo que hay, se reparte o se cierra antes de tiempo, así que conviene pedirlas pronto.</p>
+</details>
+<details>
 <summary>¿Sigue existiendo el Kit Digital?</summary>
 <p>Las convocatorias del Kit Digital están cerradas y Red.es no ha anunciado una nueva a fecha de octubre de 2026.</p>
 </details>
@@ -526,7 +921,7 @@
 </details>
 <details>
 <summary>¿Puedo hacer la web primero y pedir la ayuda después?</summary>
-<p>Depende de cada convocatoria: algunas admiten gastos del año en curso y otras exigen pedirla antes de gastar. Léete las bases o pregúntame antes de empezar.</p>
+<p>En muchas sí: Ordizia, Villabona y Bergara la piden con la web ya hecha, y Andoain admite gastos desde el 1 de noviembre de 2025. Otras exigen pedirla antes de gastar. Léete las bases o pregúntame antes de empezar.</p>
 </details>
 </div>
 
@@ -538,9 +933,95 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" defer></script>
 <script>
-/* Texto en movimiento: titular letra a letra, h2 línea a línea, la entradilla
-   que se enciende al leer y la banda de pueblos que corre con el scroll.
-   Sin GSAP o con movimiento reducido, todo queda quieto y visible. */
+(function () {
+  var DATOS = [{"id":"irun","n":"Irun","eu":[75,1000],"portada":[50,600],"bi":[50,600],"nota":"75 % si la web queda solo en euskera (hasta 1.000 €) y 50 % si es bilingüe (hasta 600 €). Abierta hasta el 30 de octubre."},{"id":"andoain","n":"Andoain","rango":[[80,2500],[100,3125]],"nota":"Del 80 al 100 % de la imagen digital del negocio, hasta 2.500–3.125 €, sea cual sea el idioma. Abierta hasta el 31 de octubre."},{"id":"villabona","n":"Villabona","eu":[50,450],"portada":[40,360],"bi":[20,180],"nota":"50 % solo en euskera, 40 % con la portada en euskera y 20 % bilingüe. Bolsa de 500 € para todo el pueblo. Abierta hasta el 31 de octubre."},{"id":"hernani","n":"Hernani","eu":[50,450],"portada":[50,450],"bi":[30,300],"nota":"50 % (hasta 450 €) si la portada está en euskera; 30 % (hasta 300 €) si no. Abierta todo 2026."},{"id":"bergara","n":"Bergara","eu":[50,500],"portada":[30,300],"bi":[30,300],"nota":"50 % si la web está solo en euskera (hasta 500 €) y 30 % si es bilingüe (hasta 300 €). Abierta hasta el 31 de diciembre o hasta agotar la bolsa."},{"id":"ordizia","n":"Ordizia","eu":[50,500],"portada":[50,350],"bi":[50,150],"nota":"Siempre el 50 %: hasta 500 € solo en euskera, 350 € si se abre en euskera y 150 € con selector de idioma. Sin plazo fijo."},{"id":"beasain","n":"Beasain","eu":[60,470],"portada":[50,380],"bi":[50,380],"nota":"Últimos importes publicados: 60 % solo en euskera (hasta 470 €) y 50 % bilingüe (hasta 380 €). Confirma los de 2026. Abierta hasta el 30 de noviembre."},{"id":"onati","n":"Oñati","eu":[50,450],"portada":[40,360],"bi":[20,180],"nota":"Últimas bases publicadas. Se convoca cada año: confirma las cifras con el Servicio de Euskera."},{"id":"lasarte-oria","n":"Lasarte-Oria","eu":[50,450],"portada":[50,450],"bi":null,"nota":"50 % (hasta 450 €) si la web está en euskera o es bilingüe con prioridad al euskera. Se convoca cada año."},{"id":"zarautz","n":"Zarautz","eu":[50,350],"portada":null,"bi":null,"nota":"Solo webs íntegramente en euskera: 50 %, hasta 350 €. En 2026 fue del 15 de abril al 27 de mayo."}];
+  var DIA = 864e5, hoy = new Date();
+  // Cuenta atrás: se recalcula al abrir la página, así el texto no caduca.
+  function dias(iso) { return Math.ceil((new Date(iso + 'T23:59:59') - hoy) / DIA); }
+  document.querySelectorAll('[data-fin]').forEach(function (el) {
+    var d = dias(el.getAttribute('data-fin'));
+    if (el.classList.contains('ay-chip')) {
+      if (d < 0) { el.textContent = 'Plazo terminado'; el.className = 'ay-chip ay-chip--no'; var c = el.closest('.ay-card'); if (c) c.setAttribute('data-estado', 'terminada'); }
+      else if (d === 0) { el.textContent = 'Último día'; el.className = 'ay-chip ay-chip--urge'; }
+      else { el.textContent = (d <= 7 ? '¡Quedan ' : 'Quedan ') + d + (d === 1 ? ' día' : ' días') + (d <= 7 ? '!' : ''); if (d <= 7) el.className = 'ay-chip ay-chip--urge'; }
+    }
+    if (el.classList.contains('cierre')) {
+      if (d < 0) { el.remove(); return; }
+      el.querySelector('.cierre__d b').textContent = d;
+      el.querySelector('.cierre__d small').textContent = d === 1 ? 'día' : 'días';
+      if (d <= 7) el.classList.add('cierre--urge');
+    }
+  });
+  var ab = document.querySelector('[data-n-abiertas]');
+  if (ab) { var n = document.querySelectorAll('.ay-card[data-estado=abierta]').length; ab.textContent = n; ab.setAttribute('data-cuenta', n); }
+  // Línea de hoy en el calendario
+  var hoyEl = document.querySelector('.cal__hoy');
+  if (hoyEl) {
+    var p = (hoy - new Date('2026-01-01T00:00:00')) / (new Date('2027-01-01T00:00:00') - new Date('2026-01-01T00:00:00'));
+    if (p < 0 || p > 1) hoyEl.remove(); else hoyEl.style.left = 'calc(var(--lab) + (100% - var(--lab)) * ' + p.toFixed(4) + ')';
+  }
+  // Filtros de las tarjetas
+  var botones = document.querySelectorAll('.ay-filtros button');
+  botones.forEach(function (b) {
+    b.addEventListener('click', function () {
+      botones.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      var f = b.getAttribute('data-f');
+      document.querySelectorAll('.ay-lista').forEach(function (lista) {
+        var vis = 0;
+        lista.querySelectorAll('.ay-card').forEach(function (c) {
+          var ok = f === 'todas' || c.getAttribute('data-tipo') === f;
+          c.hidden = !ok; if (ok) vis++;
+        });
+        var v = lista.nextElementSibling; if (v && v.classList.contains('ay-vacio')) v.style.display = vis ? 'none' : 'block';
+      });
+    });
+  });
+  // Calculadora
+  var sel = document.getElementById('c-pueblo'), num = document.getElementById('c-precio');
+  if (!sel) return;
+  var mil = function (n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); };
+  function calcular() {
+    var d = DATOS[sel.selectedIndex], precio = Math.max(0, parseFloat(num.value) || 0);
+    var f = (document.querySelector('input[name=fmt]:checked') || {}).value || 'eu';
+    var txtA, txtT, pct;
+    if (d.rango) {
+      var a1 = Math.min(precio * d.rango[0][0] / 100, d.rango[0][1]), a2 = Math.min(precio * d.rango[1][0] / 100, d.rango[1][1]);
+      txtA = Math.round(a1) === Math.round(a2) ? mil(a1) + ' €' : mil(a1) + '–' + mil(a2) + ' €';
+      txtT = Math.round(a1) === Math.round(a2) ? mil(precio - a1) + ' €' : mil(precio - a2) + '–' + mil(precio - a1) + ' €';
+      pct = precio ? a2 / precio : 0;
+    } else if (!d[f]) {
+      txtA = '0 €'; txtT = mil(precio) + ' €'; pct = 0;
+    } else {
+      var a = Math.min(precio * d[f][0] / 100, d[f][1]);
+      txtA = mil(a) + ' €'; txtT = mil(precio - a) + ' €'; pct = precio ? a / precio : 0;
+    }
+    document.getElementById('c-ayuda').textContent = txtA;
+    document.getElementById('c-tu').textContent = txtT;
+    document.getElementById('c-barra').style.width = (pct * 100).toFixed(1) + '%';
+    document.getElementById('c-pct').textContent = (d.rango ? 'hasta el ' : '') + Math.round(pct * 100) + ' % pagado';
+    document.getElementById('c-nota').textContent = (!d.rango && !d[f] ? 'Este formato no entra en la ayuda de ' + d.n + '. ' : '') + d.nota;
+    var l = document.getElementById('c-link'); l.href = '#' + d.id; l.textContent = 'Ver la ayuda de ' + d.n + ' →';
+  }
+  document.querySelectorAll('.precios button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      num.value = b.getAttribute('data-p');
+      document.querySelectorAll('.precios button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      calcular();
+    });
+  });
+  num.addEventListener('input', function () {
+    document.querySelectorAll('.precios button').forEach(function (x) { x.setAttribute('aria-pressed', x.getAttribute('data-p') === num.value ? 'true' : 'false'); });
+    calcular();
+  });
+  sel.addEventListener('change', calcular);
+  document.querySelectorAll('input[name=fmt]').forEach(function (r) { r.addEventListener('change', calcular); });
+  calcular();
+})();
+
+/* Texto en movimiento: titular letra a letra, h2 línea a línea, entradilla que
+   se enciende, cifras que cuentan, barras que crecen, puntos del mapa que
+   aparecen y banda de pueblos con el scroll. Sin GSAP o con movimiento
+   reducido, todo queda quieto y visible. */
 window.addEventListener('load', function () {
   if (!window.gsap || !window.SplitText || !window.ScrollTrigger) return;
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -551,7 +1032,7 @@ window.addEventListener('load', function () {
       var s = SplitText.create(h1, { type: 'words,chars', mask: 'chars', aria: 'auto' });
       gsap.from(s.chars, { yPercent: 110, duration: 0.8, ease: 'expo.out', stagger: 0.018 });
     }
-    gsap.utils.toArray('.art h2').forEach(function (h) {
+    gsap.utils.toArray('.ay-h2, .art h2').forEach(function (h) {
       var l = SplitText.create(h, { type: 'lines', mask: 'lines', aria: 'auto' });
       gsap.from(l.lines, { yPercent: 105, duration: 0.8, ease: 'expo.out', stagger: 0.08,
         scrollTrigger: { trigger: h, start: 'top 88%', once: true } });
@@ -562,9 +1043,22 @@ window.addEventListener('load', function () {
       gsap.fromTo(w.words, { opacity: 0.18 }, { opacity: 1, stagger: 0.04, ease: 'none',
         scrollTrigger: { trigger: p, start: 'top 85%', end: 'bottom 45%', scrub: true } });
     }
-    gsap.utils.toArray('.ay-lista').forEach(function (lista) {
-      gsap.from(lista.children, { y: 26, opacity: 0, duration: 0.7, ease: 'expo.out', stagger: 0.08,
-        scrollTrigger: { trigger: lista, start: 'top 85%', once: true } });
+    document.querySelectorAll('[data-cuenta]').forEach(function (el) {
+      var fin = parseFloat(el.getAttribute('data-cuenta')), suf = el.getAttribute('data-suf') || '', o = { v: 0 };
+      // La tarea se crea al entrar: hasta entonces el número final sigue escrito.
+      ScrollTrigger.create({ trigger: el, start: 'top 92%', once: true, onEnter: function () {
+        gsap.to(o, { v: fin, duration: 1.4, ease: 'expo.out', onUpdate: function () { el.textContent = String(Math.round(o.v)).replace(/\B(?=(\d{3})+(?!\d))/g, '.') + suf; } });
+      } });
+    });
+    gsap.from('.mp', { scale: 0, transformOrigin: 'center', duration: 0.6, ease: 'back.out(2)', stagger: 0.04,
+      scrollTrigger: { trigger: '.mapa', start: 'top 80%', once: true } });
+    gsap.from('.bar__f', { scaleX: 0, duration: 1, ease: 'expo.out', stagger: 0.06,
+      scrollTrigger: { trigger: '.bars', start: 'top 85%', once: true } });
+    gsap.from('.cal__b', { scaleX: 0, duration: 0.9, ease: 'expo.out', stagger: 0.05,
+      scrollTrigger: { trigger: '.cal', start: 'top 85%', once: true } });
+    gsap.utils.toArray('.ay-lista, .req, .pasos, .cierres, .ay-stats').forEach(function (lista) {
+      gsap.from(lista.children, { y: 26, opacity: 0, duration: 0.7, ease: 'expo.out', stagger: 0.06,
+        scrollTrigger: { trigger: lista, start: 'top 88%', once: true } });
     });
     var banda = document.querySelector('.ay-banda');
     if (banda) gsap.fromTo(banda, { xPercent: 0 }, { xPercent: -30, ease: 'none',
