@@ -1700,3 +1700,23 @@ summary:focus-visible,
 .caso-dest:focus-visible{outline:3px solid var(--terra);outline-offset:4px;}
 .pro-caso{display:inline-block;margin-top:16px;font-weight:600;color:var(--terra-link);text-decoration:underline;text-underline-offset:4px;}
 @media(prefers-reduced-motion:reduce){.caso-dest__foto img,.caso-dest__go{transition:none;}}
+
+/* Con 8 entradas (Ayudas) el menú no cabe entre 1200 y 1400px: menos aire
+   entre enlaces y el teléfono solo con el icono. */
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .nav__links a { padding: 8px 10px; }
+  .nav__phone span { display: none; }
+}
+/* Aviso de ayudas para la web (portada, precios y zonas) */
+.ayuda-cta{display:flex;align-items:center;gap:16px;margin:32px auto 0;max-width:860px;padding:18px 20px;background:var(--surface);border:1px solid var(--border);border-radius:18px;color:var(--ink);text-decoration:none;text-align:left;transition:border-color .2s ease,transform .16s cubic-bezier(.23,1,.32,1);}
+.ayuda-cta:hover{border-color:var(--terra);}
+.ayuda-cta:active{transform:scale(.99);}
+.ayuda-cta:focus-visible{outline:3px solid var(--terra);outline-offset:4px;}
+.ayuda-cta__dot{flex:none;width:10px;height:10px;border-radius:50%;background:#2f8a52;box-shadow:0 0 0 5px #e3f1e7;}
+.ayuda-cta--anual .ayuda-cta__dot{background:var(--text-faint);box-shadow:0 0 0 5px var(--bg-subtle);}
+.ayuda-cta__txt{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px;}
+.ayuda-cta__txt b{font-family:var(--font-serif);font-weight:500;font-size:19px;line-height:1.2;letter-spacing:-.01em;}
+.ayuda-cta__txt > span{font-size:14.5px;line-height:1.5;color:var(--text-muted);}
+.ayuda-cta__go{flex:none;font-size:14px;font-weight:600;color:var(--terra-link);white-space:nowrap;}
+@media(max-width:600px){.ayuda-cta{flex-wrap:wrap;align-items:flex-start;gap:12px 14px;}.ayuda-cta__dot{margin-top:7px;}.ayuda-cta__go{width:100%;padding-left:24px;}}
+@media(prefers-reduced-motion:reduce){.ayuda-cta{transition:none;}}
