@@ -18,6 +18,7 @@ const EU = {
   ayc_go: "Laguntzak ikusi →",
   hfaq_zona_q: "Tolosan eta Gipuzkoako gainerako herrietan egiten dituzu webguneak?",
   hfaq_zona_a: "Bai. Estudioa Tolosan dago eta Gipuzkoa osoko negozioekin lan egiten dut: Tolosaldea, Goierri, Buruntzaldea eta Donostialdea.",
+  zon_fuera: 'Gipuzkoatik kanpo? Urrutitik ere lan egiten dut <a href="diseno-web-negocios-espana.html" class="link-terra">Espainia osoan</a>.',
   chip_abierto: "Orain zabalik",
   chip_wa: "WhatsApp bidez idazten dizute",
   chip_maps: "Google Maps-en agertzen zara",

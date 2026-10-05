@@ -1,0 +1,882 @@
+[
+ {
+  "eu": "Abaltzisketa",
+  "es": "Abalcisqueta",
+  "slug": "abaltzisketa",
+  "pob": 321,
+  "lat": 43.0478,
+  "lon": -2.1052,
+  "comarca": "Tolosaldea",
+  "existente": false
+ },
+ {
+  "eu": "Aduna",
+  "es": "Aduna",
+  "slug": "aduna",
+  "pob": 500,
+  "lat": 43.2038,
+  "lon": -2.0501,
+  "comarca": "Tolosaldea",
+  "existente": false
+ },
+ {
+  "eu": "Aia",
+  "es": "Aya",
+  "slug": "aia",
+  "pob": 2148,
+  "lat": 43.2365,
+  "lon": -2.1487,
+  "comarca": "Urola Kosta",
+  "existente": false
+ },
+ {
+  "eu": "Aizarnazabal",
+  "es": "Aizarnazábal",
+  "slug": "aizarnazabal",
+  "pob": 822,
+  "lat": 43.2558,
+  "lon": -2.2363,
+  "comarca": "Urola Kosta",
+  "existente": false
+ },
+ {
+  "eu": "Albiztur",
+  "es": "Albíztur",
+  "slug": "albiztur",
+  "pob": 328,
+  "lat": 43.1294,
+  "lon": -2.1373,
+  "comarca": "Tolosaldea",
+  "existente": false
+ },
+ {
+  "eu": "Alegia",
+  "es": "Alegia",
+  "slug": "alegia",
+  "pob": 1813,
+  "lat": 43.1004,
+  "lon": -2.0984,
+  "comarca": "Tolosaldea",
+  "existente": true
+ },
+ {
+  "eu": "Alkiza",
+  "es": "Alquiza",
+  "slug": "alkiza",
+  "pob": 352,
+  "lat": 43.1726,
+  "lon": -2.109,
+  "comarca": "Tolosaldea",
+  "existente": false
+ },
+ {
+  "eu": "Altzaga",
+  "es": "Alzaga",
+  "slug": "altzaga",
+  "pob": 165,
+  "lat": 43.0642,
+  "lon": -2.1547,
+  "comarca": "Goierri",
+  "existente": false
+ },
+ {
+  "eu": "Altzo",
+  "es": "Alzo",
+  "slug": "altzo",
+  "pob": 447,
+  "lat": 43.1004,
+  "lon": -2.0842,
+  "comarca": "Tolosaldea",
+  "existente": false
+ },
+ {
+  "eu": "Amezketa",
+  "es": "Amézqueta",
+  "slug": "amezketa",
+  "pob": 956,
+  "lat": 43.0493,
+  "lon": -2.0881,
+  "comarca": "Tolosaldea",
+  "existente": false
+ },
+ {
+  "eu": "Andoain",
+  "es": "Andoáin",
+  "slug": "andoain",
+  "pob": 14517,
+  "lat": 43.2183,
+  "lon": -2.0199,
+  "comarca": "Buruntzaldea",
+  "existente": true
+ },
+ {
+  "eu": "Anoeta",
+  "es": "Anoeta",
+  "slug": "anoeta",
+  "pob": 2112,
+  "lat": 43.1622,
+  "lon": -2.07,
+  "comarca": "Tolosaldea",
+  "existente": true
+ },
+ {
+  "eu": "Antzuola",
+  "es": "Antzuola",
+  "slug": "antzuola",
+  "pob": 2045,
+  "lat": 43.0991,
+  "lon": -2.3806,
+  "comarca": "Debagoiena",
+  "existente": false
+ },
+ {
+  "eu": "Arama",
+  "es": "Arama",
+  "slug": "arama",
+  "pob": 173,
+  "lat": 43.0635,
+  "lon": -2.1656,
+  "comarca": "Goierri",
+  "existente": false
+ },
+ {
+  "eu": "Aretxabaleta",
+  "es": "Arechavaleta",
+  "slug": "aretxabaleta",
+  "pob": 7178,
+  "lat": 43.0361,
+  "lon": -2.5044,
+  "comarca": "Debagoiena",
+  "existente": false
+ },
+ {
+  "eu": "Arrasate",
+  "es": "Mondragón",
+  "slug": "arrasate-mondragon",
+  "pob": 22450,
+  "lat": 43.0656,
+  "lon": -2.49,
+  "comarca": "Debagoiena",
+  "existente": true
+ },
+ {
+  "eu": "Asteasu",
+  "es": "Asteasu",
+  "slug": "asteasu",
+  "pob": 1566,
+  "lat": 43.1928,
+  "lon": -2.0954,
+  "comarca": "Tolosaldea",
+  "existente": false
+ },
+ {
+  "eu": "Astigarraga",
+  "es": "Astigarraga",
+  "slug": "astigarraga",
+  "pob": 7812,
+  "lat": 43.2816,
+  "lon": -1.9475,
+  "comarca": "Donostialdea",
+  "existente": false
+ },
+ {
+  "eu": "Ataun",
+  "es": "Atáun",
+  "slug": "ataun",
+  "pob": 1714,
+  "lat": 42.9781,
+  "lon": -2.1813,
+  "comarca": "Goierri",
+  "existente": false
+ },
+ {
+  "eu": "Azkoitia",
+  "es": "Azcoitia",
+  "slug": "azkoitia",
+  "pob": 11774,
+  "lat": 43.1792,
+  "lon": -2.3106,
+  "comarca": "Urola Erdia",
+  "existente": false
+ },
+ {
+  "eu": "Azpeitia",
+  "es": "Azpeitia",
+  "slug": "azpeitia",
+  "pob": 15301,
+  "lat": 43.1819,
+  "lon": -2.2653,
+  "comarca": "Urola Erdia",
+  "existente": true
+ },
+ {
+  "eu": "Baliarrain",
+  "es": "Baliarrain",
+  "slug": "baliarrain",
+  "pob": 152,
+  "lat": 43.0694,
+  "lon": -2.1284,
+  "comarca": "Tolosaldea",
+  "existente": false
+ },
+ {
+  "eu": "Beasain",
+  "es": "Beasáin",
+  "slug": "beasain",
+  "pob": 14048,
+  "lat": 43.0473,
+  "lon": -2.2033,
+  "comarca": "Goierri",
+  "existente": true
+ },
+ {
+  "eu": "Beizama",
+  "es": "Beizama",
+  "slug": "beizama",
+  "pob": 128,
+  "lat": 43.1342,
+  "lon": -2.2003,
+  "comarca": "Urola Erdia",
+  "existente": false
+ },
+ {
+  "eu": "Belauntza",
+  "es": "Belaunza",
+  "slug": "belauntza",
+  "pob": 291,
+  "lat": 43.135,
+  "lon": -2.0503,
+  "comarca": "Tolosaldea",
+  "existente": false
+ },
+ {
+  "eu": "Berastegi",
+  "es": "Berástegui",
+  "slug": "berastegi",
+  "pob": 1114,
+  "lat": 43.1241,
+  "lon": -1.9792,
+  "comarca": "Tolosaldea",
+  "existente": false
+ },
+ {
+  "eu": "Bergara",
+  "es": "Vergara",
+  "slug": "bergara",
+  "pob": 14404,
+  "lat": 43.1175,
+  "lon": -2.4133,
+  "comarca": "Debagoiena",
+  "existente": true
+ },
+ {
+  "eu": "Berrobi",
+  "es": "Berrobi",
+  "slug": "berrobi",
+  "pob": 551,
+  "lat": 43.1456,
+  "lon": -2.0266,
+  "comarca": "Tolosaldea",
+  "existente": false
+ },
+ {
+  "eu": "Bidania-Goiatz",
+  "es": "Bidegoyan",
+  "slug": "bidania-goiatz",
+  "pob": 530,
+  "lat": 43.1408,
+  "lon": -2.1583,
+  "comarca": "Tolosaldea",
+  "existente": false
+ },
+ {
+  "eu": "Deba",
+  "es": "Deva",
+  "slug": "deba",
+  "pob": 5362,
+  "lat": 43.2953,
+  "lon": -2.35,
+  "comarca": "Debabarrena",
+  "existente": false
+ },
+ {
+  "eu": "Donostia",
+  "es": "San Sebastián",
+  "slug": "donostia-san-sebastian",
+  "pob": 189866,
+  "lat": 43.32,
+  "lon": -1.98,
+  "comarca": "Donostialdea",
+  "existente": true
+ },
+ {
+  "eu": "Eibar",
+  "es": "Éibar",
+  "slug": "eibar",
+  "pob": 27484,
+  "lat": 43.1843,
+  "lon": -2.4733,
+  "comarca": "Debabarrena",
+  "existente": true
+ },
+ {
+  "eu": "Elduain",
+  "es": "Elduayen",
+  "slug": "elduain",
+  "pob": 248,
+  "lat": 43.1407,
+  "lon": -2.0007,
+  "comarca": "Tolosaldea",
+  "existente": false
+ },
+ {
+  "eu": "Elgeta",
+  "es": "Elgueta",
+  "slug": "elgeta",
+  "pob": 1133,
+  "lat": 43.1366,
+  "lon": -2.4877,
+  "comarca": "Debagoiena",
+  "existente": false
+ },
+ {
+  "eu": "Elgoibar",
+  "es": "Elgóibar",
+  "slug": "elgoibar",
+  "pob": 11705,
+  "lat": 43.2142,
+  "lon": -2.4169,
+  "comarca": "Debabarrena",
+  "existente": false
+ },
+ {
+  "eu": "Errenteria",
+  "es": "Rentería",
+  "slug": "errenteria",
+  "pob": 39363,
+  "lat": 43.3125,
+  "lon": -1.8986,
+  "comarca": "Oarsoaldea",
+  "existente": true
+ },
+ {
+  "eu": "Errezil",
+  "es": "Régil",
+  "slug": "errezil",
+  "pob": 588,
+  "lat": 43.165,
+  "lon": -2.1742,
+  "comarca": "Urola Erdia",
+  "existente": false
+ },
+ {
+  "eu": "Eskoriatza",
+  "es": "Escoriaza",
+  "slug": "eskoriatza",
+  "pob": 4215,
+  "lat": 43.0168,
+  "lon": -2.5283,
+  "comarca": "Debagoiena",
+  "existente": false
+ },
+ {
+  "eu": "Ezkio-Itsaso",
+  "es": "Ezquioga-Ichaso",
+  "slug": "ezkio-itsaso",
+  "pob": 588,
+  "lat": 43.0819,
+  "lon": -2.2742,
+  "comarca": "Urola Garaia",
+  "existente": false
+ },
+ {
+  "eu": "Gabiria",
+  "es": "Gaviria",
+  "slug": "gabiria",
+  "pob": 519,
+  "lat": 43.0503,
+  "lon": -2.2791,
+  "comarca": "Goierri",
+  "existente": false
+ },
+ {
+  "eu": "Gaintza",
+  "es": "Gaínza",
+  "slug": "gaintza",
+  "pob": 122,
+  "lat": 43.0531,
+  "lon": -2.1325,
+  "comarca": "Goierri",
+  "existente": false
+ },
+ {
+  "eu": "Gaztelu",
+  "es": "Gaztelu",
+  "slug": "gaztelu",
+  "pob": 171,
+  "lat": 43.1164,
+  "lon": -2.0228,
+  "comarca": "Tolosaldea",
+  "existente": false
+ },
+ {
+  "eu": "Getaria",
+  "es": "Guetaria",
+  "slug": "getaria",
+  "pob": 2887,
+  "lat": 43.3045,
+  "lon": -2.2037,
+  "comarca": "Urola Kosta",
+  "existente": false
+ },
+ {
+  "eu": "Hernani",
+  "es": "Hernani",
+  "slug": "hernani",
+  "pob": 20375,
+  "lat": 43.2662,
+  "lon": -1.9749,
+  "comarca": "Donostialdea",
+  "existente": true
+ },
+ {
+  "eu": "Hernialde",
+  "es": "Hernialde",
+  "slug": "hernialde",
+  "pob": 326,
+  "lat": 43.1545,
+  "lon": -2.0852,
+  "comarca": "Tolosaldea",
+  "existente": false
+ },
+ {
+  "eu": "Hondarribia",
+  "es": "Fuenterrabía",
+  "slug": "hondarribia",
+  "pob": 16788,
+  "lat": 43.3624,
+  "lon": -1.7915,
+  "comarca": "Bidasoa",
+  "existente": true
+ },
+ {
+  "eu": "Ibarra",
+  "es": "Ibarra",
+  "slug": "ibarra",
+  "pob": 4114,
+  "lat": 43.1308,
+  "lon": -2.0617,
+  "comarca": "Tolosaldea",
+  "existente": true
+ },
+ {
+  "eu": "Idiazabal",
+  "es": "Idiazábal",
+  "slug": "idiazabal",
+  "pob": 2217,
+  "lat": 43.0107,
+  "lon": -2.2336,
+  "comarca": "Goierri",
+  "existente": false
+ },
+ {
+  "eu": "Ikaztegieta",
+  "es": "Icazteguieta",
+  "slug": "ikaztegieta",
+  "pob": 498,
+  "lat": 43.0947,
+  "lon": -2.1253,
+  "comarca": "Tolosaldea",
+  "existente": false
+ },
+ {
+  "eu": "Irun",
+  "es": "Irún",
+  "slug": "irun",
+  "pob": 63835,
+  "lat": 43.3378,
+  "lon": -1.7888,
+  "comarca": "Bidasoa",
+  "existente": true
+ },
+ {
+  "eu": "Irura",
+  "es": "Irura",
+  "slug": "irura",
+  "pob": 1885,
+  "lat": 43.1675,
+  "lon": -2.0672,
+  "comarca": "Tolosaldea",
+  "existente": false
+ },
+ {
+  "eu": "Itsasondo",
+  "es": "Isasondo",
+  "slug": "itsasondo",
+  "pob": 687,
+  "lat": 43.0678,
+  "lon": -2.1672,
+  "comarca": "Goierri",
+  "existente": false
+ },
+ {
+  "eu": "Larraul",
+  "es": "Larraul",
+  "slug": "larraul",
+  "pob": 263,
+  "lat": 43.1879,
+  "lon": -2.1024,
+  "comarca": "Tolosaldea",
+  "existente": false
+ },
+ {
+  "eu": "Lasarte-Oria",
+  "es": "Lasarte-Oria",
+  "slug": "lasarte-oria",
+  "pob": 19435,
+  "lat": 43.2678,
+  "lon": -2.02,
+  "comarca": "Buruntzaldea",
+  "existente": true
+ },
+ {
+  "eu": "Lazkao",
+  "es": "Lazcano",
+  "slug": "lazkao",
+  "pob": 6087,
+  "lat": 43.0347,
+  "lon": -2.1875,
+  "comarca": "Goierri",
+  "existente": false
+ },
+ {
+  "eu": "Leaburu",
+  "es": "Leaburu",
+  "slug": "leaburu",
+  "pob": 390,
+  "lat": 43.1236,
+  "lon": -2.05,
+  "comarca": "Tolosaldea",
+  "existente": false
+ },
+ {
+  "eu": "Legazpi",
+  "es": "Legazpia",
+  "slug": "legazpi",
+  "pob": 8384,
+  "lat": 43.055,
+  "lon": -2.335,
+  "comarca": "Urola Garaia",
+  "existente": false
+ },
+ {
+  "eu": "Legorreta",
+  "es": "Legorreta",
+  "slug": "legorreta",
+  "pob": 1457,
+  "lat": 43.0849,
+  "lon": -2.1486,
+  "comarca": "Goierri",
+  "existente": false
+ },
+ {
+  "eu": "Leintz Gatzaga",
+  "es": "Salinas de Léniz",
+  "slug": "leintz-gatzaga",
+  "pob": 205,
+  "lat": 42.9869,
+  "lon": -2.5687,
+  "comarca": "Debagoiena",
+  "existente": false
+ },
+ {
+  "eu": "Lezo",
+  "es": "Lezo",
+  "slug": "lezo",
+  "pob": 6184,
+  "lat": 43.3211,
+  "lon": -1.8989,
+  "comarca": "Oarsoaldea",
+  "existente": false
+ },
+ {
+  "eu": "Lizartza",
+  "es": "Lizarza",
+  "slug": "lizartza",
+  "pob": 672,
+  "lat": 43.1036,
+  "lon": -2.0342,
+  "comarca": "Tolosaldea",
+  "existente": false
+ },
+ {
+  "eu": "Mendaro",
+  "es": "Mendaro",
+  "slug": "mendaro",
+  "pob": 2028,
+  "lat": 43.2526,
+  "lon": -2.3864,
+  "comarca": "Debabarrena",
+  "existente": false
+ },
+ {
+  "eu": "Mutiloa",
+  "es": "Motiloa",
+  "slug": "mutiloa",
+  "pob": 261,
+  "lat": 43.022,
+  "lon": -2.2728,
+  "comarca": "Goierri",
+  "existente": false
+ },
+ {
+  "eu": "Mutriku",
+  "es": "Motrico",
+  "slug": "mutriku",
+  "pob": 5238,
+  "lat": 43.3072,
+  "lon": -2.385,
+  "comarca": "Debabarrena",
+  "existente": false
+ },
+ {
+  "eu": "Oiartzun",
+  "es": "Oyarzun",
+  "slug": "oiartzun",
+  "pob": 10480,
+  "lat": 43.2992,
+  "lon": -1.8578,
+  "comarca": "Oarsoaldea",
+  "existente": false
+ },
+ {
+  "eu": "Olaberria",
+  "es": "Olaberría",
+  "slug": "olaberria",
+  "pob": 938,
+  "lat": 43.0269,
+  "lon": -2.2037,
+  "comarca": "Goierri",
+  "existente": false
+ },
+ {
+  "eu": "Oñati",
+  "es": "Oñate",
+  "slug": "onati",
+  "pob": 11480,
+  "lat": 43.0328,
+  "lon": -2.4117,
+  "comarca": "Debagoiena",
+  "existente": true
+ },
+ {
+  "eu": "Ordizia",
+  "es": "Villafranca de Ordizia",
+  "slug": "ordizia",
+  "pob": 10815,
+  "lat": 43.0547,
+  "lon": -2.1783,
+  "comarca": "Goierri",
+  "existente": true
+ },
+ {
+  "eu": "Orendain",
+  "es": "Orendáin",
+  "slug": "orendain",
+  "pob": 245,
+  "lat": 43.0795,
+  "lon": -2.1141,
+  "comarca": "Tolosaldea",
+  "existente": false
+ },
+ {
+  "eu": "Orexa",
+  "es": "Oreja",
+  "slug": "orexa",
+  "pob": 103,
+  "lat": 43.0942,
+  "lon": -2.0113,
+  "comarca": "Tolosaldea",
+  "existente": false
+ },
+ {
+  "eu": "Orio",
+  "es": "Orio",
+  "slug": "orio",
+  "pob": 6184,
+  "lat": 43.276,
+  "lon": -2.1273,
+  "comarca": "Urola Kosta",
+  "existente": false
+ },
+ {
+  "eu": "Ormaiztegi",
+  "es": "Ormáiztegui",
+  "slug": "ormaiztegi",
+  "pob": 1293,
+  "lat": 43.0431,
+  "lon": -2.2548,
+  "comarca": "Goierri",
+  "existente": false
+ },
+ {
+  "eu": "Pasaia",
+  "es": "Pasajes",
+  "slug": "pasaia",
+  "pob": 15820,
+  "lat": 43.3264,
+  "lon": -1.9192,
+  "comarca": "Oarsoaldea",
+  "existente": false
+ },
+ {
+  "eu": "Segura",
+  "es": "Segura",
+  "slug": "segura",
+  "pob": 1496,
+  "lat": 43.0091,
+  "lon": -2.2528,
+  "comarca": "Goierri",
+  "existente": false
+ },
+ {
+  "eu": "Soraluze",
+  "es": "Placencia de las Armas",
+  "slug": "soraluze",
+  "pob": 3857,
+  "lat": 43.1748,
+  "lon": -2.4117,
+  "comarca": "Debabarrena",
+  "existente": false
+ },
+ {
+  "eu": "Tolosa",
+  "es": "Tolosa",
+  "slug": "tolosa",
+  "pob": 20070,
+  "lat": 43.1386,
+  "lon": -2.0724,
+  "comarca": "Tolosaldea",
+  "existente": false
+ },
+ {
+  "eu": "Urnieta",
+  "es": "Urnieta",
+  "slug": "urnieta",
+  "pob": 6327,
+  "lat": 43.2469,
+  "lon": -1.9917,
+  "comarca": "Buruntzaldea",
+  "existente": false
+ },
+ {
+  "eu": "Urretxu",
+  "es": "Villarreal de Urrechua",
+  "slug": "urretxu",
+  "pob": 6730,
+  "lat": 43.0917,
+  "lon": -2.3139,
+  "comarca": "Urola Garaia",
+  "existente": false
+ },
+ {
+  "eu": "Usurbil",
+  "es": "Usúrbil",
+  "slug": "usurbil",
+  "pob": 6488,
+  "lat": 43.2667,
+  "lon": -2.05,
+  "comarca": "Donostialdea",
+  "existente": false
+ },
+ {
+  "eu": "Villabona-Amasa",
+  "es": "Villabona",
+  "slug": "villabona",
+  "pob": 5900,
+  "lat": 43.1881,
+  "lon": -2.0525,
+  "comarca": "Tolosaldea",
+  "existente": true
+ },
+ {
+  "eu": "Zaldibia",
+  "es": "Zaldivia",
+  "slug": "zaldibia",
+  "pob": 1761,
+  "lat": 43.0364,
+  "lon": -2.1497,
+  "comarca": "Goierri",
+  "existente": false
+ },
+ {
+  "eu": "Zarautz",
+  "es": "Zarauz",
+  "slug": "zarautz",
+  "pob": 23496,
+  "lat": 43.2863,
+  "lon": -2.1748,
+  "comarca": "Urola Kosta",
+  "existente": true
+ },
+ {
+  "eu": "Zegama",
+  "es": "Cegama",
+  "slug": "zegama",
+  "pob": 1543,
+  "lat": 42.9758,
+  "lon": -2.2904,
+  "comarca": "Goierri",
+  "existente": false
+ },
+ {
+  "eu": "Zerain",
+  "es": "Ceráin",
+  "slug": "zerain",
+  "pob": 284,
+  "lat": 43.0125,
+  "lon": -2.2734,
+  "comarca": "Goierri",
+  "existente": false
+ },
+ {
+  "eu": "Zestoa",
+  "es": "Cestona",
+  "slug": "zestoa",
+  "pob": 3933,
+  "lat": 43.2401,
+  "lon": -2.2586,
+  "comarca": "Urola Kosta",
+  "existente": false
+ },
+ {
+  "eu": "Zizurkil",
+  "es": "Cizúrquil",
+  "slug": "zizurkil",
+  "pob": 2976,
+  "lat": 43.2,
+  "lon": -2.0772,
+  "comarca": "Tolosaldea",
+  "existente": false
+ },
+ {
+  "eu": "Zumaia",
+  "es": "Zumaya",
+  "slug": "zumaia",
+  "pob": 10160,
+  "lat": 43.2833,
+  "lon": -2.25,
+  "comarca": "Urola Kosta",
+  "existente": false
+ },
+ {
+  "eu": "Zumarraga",
+  "es": "Zumárraga",
+  "slug": "zumarraga",
+  "pob": 9678,
+  "lat": 43.0831,
+  "lon": -2.3167,
+  "comarca": "Urola Garaia",
+  "existente": true
+ }
+]
