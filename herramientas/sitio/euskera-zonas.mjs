@@ -90,6 +90,7 @@ export const ZONAS_EU = {
     title: "Web diseinua Donostian: webguneak negozioentzat | OI Studio",
     desc: "Web diseinua eta webguneak Donostiako negozioentzat. Prezio itxia 199€-tik eta proposamena 48 ordutan. Estudioa Tolosan, 26 km-ra.",
     pares: [
+      [`toda Donostialdea`, `Donostialde osoa`],
       [`Ayudas para digitalizar tu negocio en Donostia`, `Zure negozioa digitalizatzeko laguntzak Donostian`],
       [`Fomento de San Sebastián convoca cada año ayudas de innovación y digitalización para el comercio, la hostelería y el turismo de la ciudad.`, `Fomento de San Sebastianek urtero deitzen ditu hiriko merkataritza, ostalaritza eta turismorako berrikuntza eta digitalizazio laguntzak.`],
       [`Páginas web para negocios de Donostia-San Sebastián. Precio cerrado desde 199€ y propuesta en 48h. Estudio en Tolosa, a 26 km.`,
@@ -138,6 +139,7 @@ export const ZONAS_EU = {
     title: "Web diseinua Irunen: webguneak negozioentzat | OI Studio",
     desc: "Web diseinua eta webguneak Irungo negozioentzat (Bidasoa). Prezio itxia 199€-tik eta proposamena 48 ordutan. Estudioa Tolosan, 45 km-ra.",
     pares: [
+      [`toda Bidasoa`, `Bidasoa osoa`],
       [`Irun paga parte de poner tu web en euskera`, `Irunek zure webgunea euskaratzearen zati bat ordaintzen du`],
       [`Abierta hasta el 30 de octubre de 2026: hasta el 75 % si la web queda solo en euskera (máximo 1.000 €) y el 50 % si es bilingüe (máximo 600 €).`, `2026ko urriaren 30era arte zabalik: % 75 arte webgunea euskara hutsean geratzen bada (gehienez 1.000 €) eta % 50 elebiduna bada (gehienez 600 €).`],
       [`Diseño y desarrollo de páginas web para negocios de Irun (Bidasoa). Precio cerrado desde 199€, propuesta en 48h. Estudio en Tolosa, a 45 km.`,
@@ -187,6 +189,7 @@ export const ZONAS_EU = {
     title: "Web diseinua Zarautzen: webguneak negozioentzat | OI Studio",
     desc: "Web diseinua eta webguneak Zarautzko negozioentzat (Urola Kosta). Prezio itxia 199€-tik eta proposamena 48 ordutan. Estudioa Tolosan, 35 km-ra.",
     pares: [
+      [`toda Urola Kosta`, `Urola Kosta osoa`],
       [`Zarautz paga parte de tu web en euskera`, `Zarautzek zure webgunea euskaraz jartzearen zati bat ordaintzen du`],
       [`Se convoca cada año (en 2026, del 15 de abril al 27 de mayo): el 50 % de la web íntegramente en euskera, hasta 350 €.`, `Urtero deitzen da (2026an, apirilaren 15etik maiatzaren 27ra): euskara hutsean dagoen webgunearen % 50, gehienez 350 €.`],
       [`Diseño y desarrollo de páginas web para negocios de Zarautz (Urola Kosta). Precio cerrado desde 199€, propuesta en 48h. Estudio en Tolosa, a 35 km.`,
