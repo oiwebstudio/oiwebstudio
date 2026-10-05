@@ -8,6 +8,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { NUEVAS } from "./zonas-nuevas-datos.mjs";
 import { ESPANA } from "./espana-datos.mjs";
+import { ARTICULOS } from "./gen-articulos-nacionales.mjs";
 
 const RAIZ = path.resolve("web");
 const BASE = "https://oiwebstudio.com";
@@ -18,6 +19,7 @@ const COMARCAS = ["tolosaldea", "buruntzaldea", "donostialdea", "oarsoaldea", "b
 const entradas = [
   ...COMARCAS.map((c) => [`${BASE}/zonas/${c}.html`, "monthly", "0.8"]),
   ...ESPANA.map((d) => [`${BASE}/${d.slug}.html`, "monthly", d.ambito === "España" ? "0.8" : "0.7"]),
+  ...ARTICULOS.map((a) => [`${BASE}/${a.slug}.html`, "monthly", "0.8"]),
   ...NUEVAS.map((n) => [`${BASE}/zonas/${n.slug}.html`, "monthly", n.slug === "tolosa" ? "0.9" : "0.6"]),
 ];
 let sm = fs.readFileSync(path.join(RAIZ, "sitemap.xml"), "utf8");
@@ -40,6 +42,11 @@ Gipuzkoa entera, por comarcas, con página propia para cada municipio de más de
 Fuera de Gipuzkoa trabaja a distancia, con el mismo precio: [toda España](${BASE}/diseno-web-negocios-espana.html), [Bizkaia](${BASE}/diseno-web-bizkaia.html), [Álava](${BASE}/diseno-web-alava-araba.html) y [Navarra](${BASE}/diseno-web-navarra.html).
 `;
 llms = llms.replace(/## Zonas donde trabaja\n[\s\S]*?(?=\n## )/, BLOQUE);
+for (const a of ARTICULOS) {
+  if (llms.includes(`/${a.slug}.html`)) continue;
+  const linea = `- [${a.headline[0].toUpperCase() + a.headline.slice(1)}](${BASE}/${a.slug}.html): ${a.desc}`;
+  llms = llms.replace("## Guías\n\n", `## Guías\n\n${linea}\n`);
+}
 llms = llms.replace("Trabaja en persona en Tolosaldea y en remoto en toda Gipuzkoa.", "Trabaja en persona en Tolosaldea y en remoto en toda Gipuzkoa y el resto de España.");
 fs.writeFileSync(path.join(RAIZ, "llms.txt"), llms);
 
