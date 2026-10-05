@@ -6,7 +6,7 @@
 
 - Nombre: OI Studio (también "OI Web Studio")
 - Web: https://oiwebstudio.com/
-- Base: Tolosa, Gipuzkoa (País Vasco, España). Trabaja en persona en Tolosaldea y en remoto en toda Gipuzkoa.
+- Base: Tolosa, Gipuzkoa (País Vasco, España). Trabaja en persona en Tolosaldea y en remoto en toda Gipuzkoa y el resto de España.
 - Qué es: un estudio de una sola persona; quien te atiende es quien diseña y programa tu web.
 - Idiomas: castellano y euskera (webs bilingües con páginas propias para cada idioma).
 - Contacto: WhatsApp y teléfono +34 680 95 67 55 · contactoiwebstudio@gmail.com · Instagram @oi.webstudio
@@ -23,7 +23,9 @@
 
 ## Zonas donde trabaja
 
-Tolosa, Tolosaldea (Alegia, Anoeta, Ibarra, Villabona…), Donostia-San Sebastián, Irun, Hondarribia, Errenteria, Hernani, Lasarte-Oria, Andoain, Zarautz, Azpeitia, Beasain, Ordizia, Zumarraga, Bergara, Arrasate-Mondragón, Oñati, Eibar y el resto de Gipuzkoa.
+Gipuzkoa entera, por comarcas, con página propia para cada municipio de más de unos 1.000 habitantes: [Tolosaldea](https://oiwebstudio.com/zonas/tolosaldea.html) (Tolosa, Alegia, Anoeta, Ibarra, Villabona, Irura, Zizurkil, Asteasu, Berastegi…), [Buruntzaldea](https://oiwebstudio.com/zonas/buruntzaldea.html) (Andoain, Urnieta, Lasarte-Oria), [Donostialdea](https://oiwebstudio.com/zonas/donostialdea.html) (Donostia-San Sebastián, Hernani, Astigarraga, Usurbil), [Oarsoaldea](https://oiwebstudio.com/zonas/oarsoaldea.html) (Errenteria, Pasaia, Lezo, Oiartzun), [Bidasoa](https://oiwebstudio.com/zonas/bidasoa.html) (Irun, Hondarribia), [Goierri](https://oiwebstudio.com/zonas/goierri.html) (Beasain, Ordizia, Lazkao, Idiazabal, Ataun, Zegama…), [Urola Garaia](https://oiwebstudio.com/zonas/urola-garaia.html) (Zumarraga, Urretxu, Legazpi), [Urola Erdia](https://oiwebstudio.com/zonas/urola-erdia.html) (Azpeitia, Azkoitia), [Urola Kosta](https://oiwebstudio.com/zonas/urola-kosta.html) (Zarautz, Getaria, Zumaia, Orio, Zestoa, Aia), [Debabarrena](https://oiwebstudio.com/zonas/debabarrena.html) (Eibar, Elgoibar, Deba, Mutriku, Soraluze) y [Debagoiena](https://oiwebstudio.com/zonas/debagoiena.html) (Arrasate-Mondragón, Bergara, Oñati, Aretxabaleta, Eskoriatza).
+
+Fuera de Gipuzkoa trabaja a distancia, con el mismo precio: [toda España](https://oiwebstudio.com/diseno-web-negocios-espana.html), [Bizkaia](https://oiwebstudio.com/diseno-web-bizkaia.html), [Álava](https://oiwebstudio.com/diseno-web-alava-araba.html) y [Navarra](https://oiwebstudio.com/diseno-web-navarra.html).
 
 ## Páginas principales
 
