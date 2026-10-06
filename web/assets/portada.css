@@ -244,3 +244,28 @@
 .hfaq details p { margin: 0; padding: 0 0 22px; font-size: 15.5px; line-height: 1.7; color: var(--text-muted); max-width: 62ch; }
 
 .zmap__fuera { margin: 18px 0 0; font-size: 14.5px; color: var(--text-muted); }
+
+/* ---- Escaparate: enlace claro y móvil más fácil (octubre 2026) ------------ */
+.hero__ver {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px; margin: 6px auto 0;
+  padding: 11px 22px; border-radius: 999px; background: var(--ink); color: #fff;
+  font-size: 14px; font-weight: 600; letter-spacing: -0.01em; transition: transform .2s var(--ease), background .2s;
+}
+.hero__mockup { display: flex; flex-direction: column; align-items: stretch; }
+.hero__ver { align-self: center; position: relative; z-index: 6; }
+@media (hover: hover) and (pointer: fine) { .hero__ver:hover { transform: translateY(-2px); background: #000; } }
+@media (max-width: 760px) {
+  .hero__showcase { gap: 18px; margin-top: 32px; }
+  .hero__sectors .marquee-label { margin-bottom: 10px; }
+  .hsx-row { flex-wrap: wrap; overflow: visible; gap: 8px; margin-top: 12px; padding-bottom: 0; }
+  .hsx { width: auto; flex: 1 1 auto; justify-content: center; padding: 10px 14px; }
+  .dv-laptop { width: 100%; }
+  .dv-phone { width: 30%; right: 3%; bottom: -10px; }
+  .hero__ver { width: 100%; margin-top: 14px; padding: 15px 22px; font-size: 15px; }
+  .hchip--1 { top: -6%; }
+}
+/* Destacados: una columna limpia en el móvil */
+@media (max-width: 879px) {
+  .mini-board { gap: 30px; }
+  .mbp { margin: 0 !important; }
+}

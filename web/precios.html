@@ -178,6 +178,48 @@
 </div>
 </header>
 
+<section class="section" style="padding-bottom:0;">
+<div class="container">
+<style>
+.eleg{max-width:980px;margin:0 auto 44px;text-align:center;}
+.eleg h2{font-size:clamp(24px,3vw,32px);letter-spacing:-.02em;margin:0 0 8px;}
+.eleg>p{color:var(--text-muted);margin:0 0 22px;}
+.eleg__ops{display:grid;gap:12px;grid-template-columns:1fr;}
+@media(min-width:760px){.eleg__ops{grid-template-columns:repeat(3,1fr);}}
+.eleg__op{font:inherit;text-align:left;padding:18px 20px;border-radius:var(--r-md);border:1px solid var(--border-strong);background:var(--surface);color:var(--ink);font-size:15.5px;font-weight:550;line-height:1.35;cursor:pointer;transition:border-color .2s,box-shadow .2s,background .2s;}
+.eleg__op:hover{border-color:var(--ink);}
+.eleg__op[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:#fff;box-shadow:var(--shadow-md);}
+.eleg__op:focus-visible{outline:2px solid var(--terra-link);outline-offset:3px;}
+.eleg__res{margin-top:16px;min-height:26px;font-size:15.5px;color:var(--text-muted);}
+.eleg__res b{color:var(--ink);}
+.eleg__res a{color:var(--terra-link);font-weight:600;margin-left:8px;text-decoration:underline;text-underline-offset:3px;}
+.price.is-pick{outline:3px solid var(--terra);outline-offset:4px;transition:outline-color .3s;}
+.pre-mu{padding:24px 0 8px;}
+.pre-mu__h{text-align:center;max-width:640px;margin:0 auto 28px;}
+.pre-mu__h h2{font-size:clamp(24px,3vw,34px);letter-spacing:-.02em;margin:0 0 8px;}
+.pre-mu__h p{color:var(--text-muted);margin:0;}
+.pre-mu__g{display:grid;gap:18px;grid-template-columns:1fr;}
+@media(min-width:760px){.pre-mu__g{grid-template-columns:repeat(3,1fr);}}
+.pre-mu__c{display:block;border-radius:var(--r-md);overflow:hidden;border:1px solid var(--border);background:var(--surface);transition:transform .3s var(--ease),box-shadow .3s var(--ease);}
+@media(hover:hover) and (pointer:fine){.pre-mu__c:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}}
+.pre-mu__c img{width:100%;height:auto;display:block;}
+.pre-mu__c span{display:block;padding:14px 18px;font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);}
+@media(prefers-reduced-motion:reduce){.pre-mu__c,.eleg__op{transition:none;}}
+</style>
+<div class="eleg reveal">
+<h2 data-t="pre_elige_h">¿Cuál te conviene?</h2>
+<p data-t="pre_elige_p">Elige lo que más se parece a tu caso y te señalo el plan.</p>
+<div class="eleg__ops" role="group" aria-label="¿Cuál te conviene?">
+<button type="button" class="eleg__op" data-plan="0" data-nombre="Landing" aria-pressed="false" data-t="pre_op1">Quiero que me encuentren y me llamen</button>
+<button type="button" class="eleg__op" data-plan="1" data-nombre="Web Negocio" data-key="p2_name" aria-pressed="false" data-t="pre_op2">Tengo varios servicios que explicar</button>
+<button type="button" class="eleg__op" data-plan="2" data-nombre="Tienda Online" data-key="p4_name" aria-pressed="false" data-t="pre_op3">Quiero vender por internet</button>
+</div>
+<p class="eleg__res" id="elegRes" aria-live="polite"></p>
+<span hidden id="elegT1" data-t="pre_res">Te conviene</span><span hidden id="elegT2" data-t="pre_ir">Ver el plan ↓</span>
+</div>
+</div>
+</section>
+
 <section class="section" id="planes">
 <div class="container">
 <div class="pricing">
@@ -240,6 +282,20 @@
 </article>
 </div>
 <a class="ayuda-cta" href="ayudas-subvenciones-pagina-web-gipuzkoa.html"><span class="ayuda-cta__dot" aria-hidden="true"></span><span class="ayuda-cta__txt"><b data-t="ayc_t">Tu ayuntamiento puede pagarte parte de la web</b><span data-t="ayc_p">Hay ayudas abiertas en Andoain (hasta el 100 %), Irun, Tolosa, Hernani, Beasain, Bergara y más pueblos de Gipuzkoa. Te digo si tu negocio entra.</span></span><span class="ayuda-cta__go" data-t="ayc_go">Ver ayudas →</span></a>
+</div>
+</section>
+
+<section class="section pre-mu">
+<div class="container">
+<div class="pre-mu__h reveal">
+<h2 data-t="pre_mu_h">Así queda una web hecha a medida</h2>
+<p data-t="pre_mu_p">Tres muestras para abrir en el móvil o en el ordenador.</p>
+</div>
+<div class="pre-mu__g">
+<a class="pre-mu__c reveal" href="/demos/muestras/mara-jatetxea/" target="_blank" rel="noopener"><picture><source srcset="assets/mara-desk.webp" type="image/webp"/><img src="assets/mara-desk.jpg" alt="Muestra de web para un bar restaurante" width="900" height="562" loading="lazy"/></picture><span><b data-t="tag_bar">Bar restaurante</b> · <i data-t="badge_live">Muestra</i></span></a>
+<a class="pre-mu__c reveal" data-d="1" href="/demos/muestras/lux-elektrikoak/" target="_blank" rel="noopener"><picture><source srcset="assets/lux-desk.webp" type="image/webp"/><img src="assets/lux-desk.jpg" alt="Muestra de web para un electricista" width="900" height="562" loading="lazy"/></picture><span><b data-t="tag_ele">Electricista</b> · <i data-t="badge_live">Muestra</i></span></a>
+<a class="pre-mu__c reveal" data-d="2" href="/demos/muestras/arin-fisioterapia/" target="_blank" rel="noopener"><picture><source srcset="assets/arin-desk.webp" type="image/webp"/><img src="assets/arin-desk.jpg" alt="Muestra de web para fisioterapia" width="900" height="562" loading="lazy"/></picture><span><b data-t="tag_fis">Fisioterapia</b> · <i data-t="badge_live">Muestra</i></span></a>
+</div>
 </div>
 </section>
 
@@ -391,5 +447,24 @@
 <a class="wa-float" href="https://wa.me/34680956755?text=Hola%2C%20vengo%20de%20tu%20web%20y%20quiero%20informaci%C3%B3n%20para%20la%20web%20de%20mi%20negocio." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2.05 22l5.27-1.38c1.45.79 3.08 1.21 4.72 1.21 5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.05-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29z"/></svg>
 </a>
+<script>
+(function(){
+  var ops = document.querySelectorAll('.eleg__op'), res = document.getElementById('elegRes');
+  if (!ops.length || !res) return;
+  function elegir(b){
+    var planes = document.querySelectorAll('#planes .price');
+    ops.forEach(function(o){ o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+    planes.forEach(function(p, i){ p.classList.toggle('is-pick', i === +b.dataset.plan); });
+    var cual = planes[+b.dataset.plan];
+    var nombre = (cual && cual.querySelector('.price__name')) ? cual.querySelector('.price__name').textContent : b.dataset.nombre;
+    res.innerHTML = '<span></span>: <b></b><a href="#planes"></a>';
+    res.querySelector('span').textContent = document.getElementById('elegT1').textContent;
+    res.querySelector('b').textContent = nombre;
+    res.querySelector('a').textContent = document.getElementById('elegT2').textContent;
+    if (cual) cual.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
+  }
+  ops.forEach(function(b){ b.addEventListener('click', function(){ elegir(b); }); });
+})();
+</script>
 </body>
 </html>
