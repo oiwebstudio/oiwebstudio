@@ -56,7 +56,9 @@ const heroImg = (key, seed, nombre) => {
   const f = `sec-${key}-${(seed % STOCK[key]) + 1}`;
   return `<picture><source srcset="../assets/stock/${f}.webp" type="image/webp"/><img src="../assets/stock/${f}.jpg" alt="${esc(ROTULO[key])} en ${esc(nombre)}" width="1000" height="700" fetchpriority="high"/></picture>`;
 };
-const shot = (key) => `<a class="zshot" href="../trabajos.html"><picture><source srcset="../assets/${key}-desk.webp" type="image/webp"/><img src="../assets/${key}-desk.jpg" alt="${ROTULO[key]}, ejemplo de web para negocio local" width="900" height="562" loading="lazy"/></picture><span class="zshot__lbl">${ROTULO[key]}</span></a>`;
+/* Las muestras del portfolio (octubre 2026): cada clave antigua enseña una demo nueva. */
+const MUESTRA = { pan: ["beko", "Restaurante"], gym: ["kiro", "Fisioterapia"], cafe: ["leire", "Psicología"], pelu: ["aberri", "Casa rural"], flor: ["aitamari", "Marisquería"], rest: ["alex", "Bar restaurante"], taller: ["cvs", "Electricista"], vet: ["bici", "Tienda de bicicletas"] };
+const shot = (key) => { const [img, rot] = MUESTRA[key]; return `<a class="zshot" href="../trabajos.html"><picture><source srcset="../assets/${img}-desk.webp" type="image/webp"/><img src="../assets/${img}-desk.jpg" alt="${rot}, muestra de web para negocio local" width="900" height="562" loading="lazy"/></picture><span class="zshot__lbl">${rot}</span></a>`; };
 
 /* ------------------------------------------------------- índice completo */
 const porSlug = Object.fromEntries(MUN.map((m) => [m.slug, m]));
