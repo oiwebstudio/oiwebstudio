@@ -1,0 +1,154 @@
+{
+  "name": "OI · Recordatorio 24h por WhatsApp",
+  "nodes": [
+    {
+      "name": "Cada mañana a las 9:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "parameters": {
+        "rule": {
+          "interval": [{ "field": "cronExpression", "expression": "0 9 * * *" }]
+        }
+      },
+      "id": "oi-wr-001",
+      "position": [260, 220]
+    },
+    {
+      "name": "Citas de mañana",
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "parameters": {
+        "operation": "getAll",
+        "calendar": { "__rl": true, "value": "primary", "mode": "list" },
+        "options": {},
+        "returnAll": true,
+        "timeMin": "={{ $now.plus({days:1}).startOf(\"day\").toISO() }}",
+        "timeMax": "={{ $now.plus({days:1}).endOf(\"day\").toISO() }}"
+      },
+      "credentials": {
+        "googleCalendarOAuth2Api": { "id": "", "name": "Google Calendar (gratis)" }
+      },
+      "id": "oi-wr-002",
+      "position": [500, 220]
+    },
+    {
+      "name": "Sacar contacto",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "jsCode": "return items.filter(i => i.json.id).map(i => {\n  const d = i.json.description ?? '';\n  let tel = (d.match(/\\+?\\d[\\d ]{7,}/) ?? [''])[0].replace(/\\s/g, '');\n  if (tel.startsWith('6') || tel.startsWith('7')) tel = '+34' + tel;\n  if (tel && !tel.startsWith('+')) tel = '+34' + tel;\n  return { json: {\n    titulo: i.json.summary,\n    hora: (i.json.start?.dateTime ?? '').slice(11, 16),\n    fecha: (i.json.start?.dateTime ?? '').slice(0, 10),\n    email: (d.match(/[\\w.+-]+@[\\w-]+\\.[\\w.]+/) ?? [''])[0],\n    telefono: tel,\n    nombre: (i.json.summary ?? '').split('·').pop()?.trim() ?? ''\n  }};\n});"
+      },
+      "id": "oi-wr-003",
+      "position": [740, 220]
+    },
+    {
+      "name": "Solo con teléfono",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": true, "version": 2 },
+          "conditions": [
+            {
+              "id": "oi-wr-f1",
+              "leftValue": "={{ $json.telefono }}",
+              "operator": { "type": "string", "operation": "isNotEmpty" }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "oi-wr-004",
+      "position": [980, 220]
+    },
+    {
+      "name": "Uno a uno",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "parameters": { "batchSize": 1, "options": {} },
+      "id": "oi-wr-005",
+      "position": [1220, 220]
+    },
+    {
+      "name": "Recordar por WhatsApp",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.facebook.com/v21.0/{{ $env.WA_PHONE_ID }}/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"{{ $json.telefono.replace('+','') }}\",\n  \"type\": \"template\",\n  \"template\": {\n    \"name\": \"recordatorio_cita\",\n    \"language\": { \"code\": \"es\" },\n    \"components\": [\n      {\n        \"type\": \"body\",\n        \"parameters\": [\n          { \"type\": \"text\", \"text\": \"{{ $json.nombre }}\" },\n          { \"type\": \"text\", \"text\": \"{{ $json.titulo.split('·')[0]?.trim() }}\" },\n          { \"type\": \"text\", \"text\": \"{{ $json.hora }}\" }\n        ]\n      }\n    ]\n  }\n}",
+        "options": {}
+      },
+      "credentials": {
+        "httpHeaderAuth": { "id": "", "name": "WhatsApp Cloud API" }
+      },
+      "id": "oi-wr-006",
+      "position": [260, 460]
+    },
+    {
+      "name": "Armar el resumen",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "jsCode": "const citas = $('Sacar contacto').all().map(i => i.json);\nconst linea = citas.map(c => `• ${c.hora} — ${c.titulo}`).join('\\n');\nconst con_wa = citas.filter(c => c.telefono).length;\nreturn [{ json: { total: citas.length, con_wa, linea } }];"
+      },
+      "id": "oi-wr-007",
+      "position": [500, 460]
+    },
+    {
+      "name": "Resumen al negocio",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.facebook.com/v21.0/{{ $env.WA_PHONE_ID }}/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"{{ $env.WA_NEGOCIO_TEL }}\",\n  \"type\": \"text\",\n  \"text\": {\n    \"body\": \"📋 Mañana tienes {{ $json.total }} citas ({{ $json.con_wa }} avisados por WhatsApp):\\n\\n{{ $json.linea }}\"\n  }\n}",
+        "options": {}
+      },
+      "credentials": {
+        "httpHeaderAuth": { "id": "", "name": "WhatsApp Cloud API" }
+      },
+      "id": "oi-wr-008",
+      "position": [740, 460]
+    },
+    {
+      "id": "oi-wr-009",
+      "name": "Ficha",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-140, 180],
+      "parameters": {
+        "width": 380,
+        "height": 340,
+        "color": 2,
+        "content": "## 📱 Recordatorio 24h por WhatsApp\n**auto-recordatorio-whatsapp**\n\nMira las citas de mañana y manda recordatorio por WhatsApp a cada cliente + resumen al negocio.\n\n**Disparador:** Programado · todos los días a las 9:00\n\n**Coste:** ~0,03 € por recordatorio (plantilla)\nResumen al negocio: gratis (dentro de las 1.000 conversaciones)\n\n**Requisitos:**\n- Plantilla \"recordatorio_cita\" aprobada por Meta\n- Variables de entorno: WA_PHONE_ID, WA_NEGOCIO_TEL"
+      }
+    }
+  ],
+  "connections": {
+    "Cada mañana a las 9:00": { "main": [[{ "node": "Citas de mañana", "type": "main", "index": 0 }]] },
+    "Citas de mañana": { "main": [[{ "node": "Sacar contacto", "type": "main", "index": 0 }]] },
+    "Sacar contacto": { "main": [[{ "node": "Solo con teléfono", "type": "main", "index": 0 }]] },
+    "Solo con teléfono": { "main": [[{ "node": "Uno a uno", "type": "main", "index": 0 }]] },
+    "Uno a uno": {
+      "main": [
+        [{ "node": "Armar el resumen", "type": "main", "index": 0 }],
+        [{ "node": "Recordar por WhatsApp", "type": "main", "index": 0 }]
+      ]
+    },
+    "Recordar por WhatsApp": { "main": [[{ "node": "Uno a uno", "type": "main", "index": 0 }]] },
+    "Armar el resumen": { "main": [[{ "node": "Resumen al negocio", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1", "saveManualExecutions": true },
+  "tags": [{ "name": "OI Studio" }, { "name": "whatsapp" }],
+  "meta": { "instanceId": "oi-studio-biblioteca" }
+}
