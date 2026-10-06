@@ -1,0 +1,19 @@
+name = "oi-reservas"
+main = "src/index.js"
+compatibility_date = "2026-10-04"
+
+[triggers]
+crons = ["0 7 * * *"]  # 9:00 hora España (UTC+2)
+
+[[d1_databases]]
+binding = "DB"
+database_name = "oi-reservas"
+database_id = ""  # rellenar tras: npx wrangler d1 create oi-reservas
+
+[vars]
+WA_API_VERSION = "v21.0"
+
+# Secretos (añadir con: npx wrangler secret put NOMBRE)
+# WA_TOKEN        = token permanente de Meta
+# WA_PHONE_ID     = ID del número de WhatsApp
+# ADMIN_KEY       = clave para endpoints de admin

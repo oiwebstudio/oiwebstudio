@@ -16,6 +16,9 @@ Decile a Claude el **nombre clave** y sabe qué flujo montar y qué nodos lleva.
 | `auto-chat-faq` | Responde las preguntas frecuentes con la IA local usando sólo la hoja de FAQ del cliente, y cuando no sabe, deriva a una persona. | Webhook (el chat de la web) | n8n autoalojado, Ollama en local, Google Sheets, Gmail SMTP |
 | `auto-backup-webs` | Descarga cada web de cliente y la guarda fechada en tu disco, con un informe de qué se copió y cuánto ocupa. | Programado · domingos a las 3:00 | n8n autoalojado, Disco local, Gmail SMTP, Telegram Bot |
 
+| `auto-reserva-whatsapp` | Igual que reserva-cita pero confirma y avisa por WhatsApp al cliente y al negocio. | Webhook (el widget de reservas de la web) | n8n autoalojado, WhatsApp Cloud API, Google Calendar, Google Sheets |
+| `auto-recordatorio-whatsapp` | Recordatorio 24 h antes por WhatsApp + resumen del día al negocio por WhatsApp. | Programado · todos los días a las 9:00 | n8n autoalojado, WhatsApp Cloud API, Google Calendar |
+
 ## Detalle
 
 ### 📥 auto-lead-form
