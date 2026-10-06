@@ -50,7 +50,7 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500&display=swap"/>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
 <noscript><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500&display=swap" rel="stylesheet"/></noscript>
-<link rel="stylesheet" href="assets/styles.css?v=22"/>
+<link rel="stylesheet" href="assets/styles.css?v=23"/>
 <script>if(location.protocol==='http:'&&/(^|\.)oiwebstudio\.com$/.test(location.hostname))location.replace('https://'+location.host+location.pathname+location.search+location.hash);document.documentElement.classList.add('js');</script>
 <style>
   .art-hero{padding:150px 0 20px;max-width:760px;margin:0 auto;text-align:center;}
@@ -73,6 +73,14 @@
   .post-card p{font-size:14.5px;color:var(--text-muted);line-height:1.6;margin:0;flex:1;}
   .post-card .meta{display:flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-faint);margin-top:4px;}
   .post-card .meta .rd{margin-left:auto;color:var(--terra-link);font-weight:600;}
+
+  .filtros{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px;}
+  .filtros button{font:inherit;font-size:14px;font-weight:550;padding:9px 16px;border-radius:999px;border:1px solid var(--border-strong);background:var(--surface);color:var(--text);cursor:pointer;transition:background .2s,color .2s,border-color .2s;}
+  .filtros button:hover{border-color:var(--ink);}
+  .filtros button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink);}
+  .filtros button:focus-visible{outline:2px solid var(--terra-link);outline-offset:3px;}
+  .post-card[hidden]{display:none;}
+  @media(prefers-reduced-motion:reduce){.filtros button{transition:none;}}
 </style>
 </head>
 <body>
@@ -125,12 +133,20 @@
 <p class="crumbs"><a href="index.html">Inicio</a> / Artículos</p>
 <h1>Guías sobre <em>diseño web y SEO local</em></h1>
 <p class="lede">Todo lo que necesitas saber antes de encargar una web para tu negocio en Tolosa: precios reales, cómo aparecer en Google y qué canal usar para captar clientes.</p>
+<div class="filtros" role="group" aria-label="Filtrar por tema">
+<button type="button" data-cat="todos" aria-pressed="true">Todos</button>
+<button type="button" data-cat="Precios y plazos" aria-pressed="false">Precios y plazos</button>
+<button type="button" data-cat="Empezar" aria-pressed="false">Empezar</button>
+<button type="button" data-cat="Google y SEO local" aria-pressed="false">Google y SEO local</button>
+<button type="button" data-cat="Euskera y ayudas" aria-pressed="false">Euskera y ayudas</button>
+<button type="button" data-cat="Por sector" aria-pressed="false">Por sector</button>
+</div>
 </header>
 </div>
 
 <div class="post-grid">
 
-<a class="post-card" href="pagina-web-para-autonomos.html">
+<a class="post-card" data-cat="Empezar" href="pagina-web-para-autonomos.html">
 <div class="thumb"><picture><source srcset="assets/taller-desk.webp" type="image/webp"/><img src="assets/taller-desk.jpg" alt="Web de ejemplo para un autónomo de oficios" loading="lazy" width="900" height="562" style="object-fit:cover"/></picture></div>
 <div class="body">
 <span class="tag">Guías</span>
@@ -140,7 +156,7 @@
 </div>
 </a>
 
-<a class="post-card" href="landing-page-o-web-completa.html">
+<a class="post-card" data-cat="Empezar" href="landing-page-o-web-completa.html">
 <div class="thumb"><picture><source srcset="assets/cafe-desk.webp" type="image/webp"/><img src="assets/cafe-desk.jpg" alt="Web de ejemplo de una cafetería" loading="lazy" width="900" height="562" style="object-fit:cover"/></picture></div>
 <div class="body">
 <span class="tag">Guías</span>
@@ -150,7 +166,7 @@
 </div>
 </a>
 
-<a class="post-card" href="como-crear-pagina-web-negocio-paso-a-paso.html">
+<a class="post-card" data-cat="Empezar" href="como-crear-pagina-web-negocio-paso-a-paso.html">
 <div class="thumb"><picture><source srcset="assets/pan-desk.webp" type="image/webp"/><img src="assets/pan-desk.jpg" alt="Web de ejemplo de una panadería" loading="lazy" width="900" height="562" style="object-fit:cover"/></picture></div>
 <div class="body">
 <span class="tag">Guías</span>
@@ -160,7 +176,7 @@
 </div>
 </a>
 
-<a class="post-card" href="ayudas-subvenciones-pagina-web-gipuzkoa.html">
+<a class="post-card" data-cat="Euskera y ayudas" href="ayudas-subvenciones-pagina-web-gipuzkoa.html">
 <div class="thumb"><picture><source srcset="assets/errotatxo/foto-fachada.webp" type="image/webp"/><img src="assets/errotatxo/foto-fachada.jpg" alt="Ayudas y subvenciones para la página web de un negocio en Gipuzkoa" loading="lazy" width="900" height="562" style="object-fit:cover"/></picture></div>
 <div class="body">
 <span class="tag">Ayudas</span>
@@ -170,7 +186,7 @@
 </div>
 </a>
 
-<a class="post-card" href="como-elegir-disenador-web-gipuzkoa.html">
+<a class="post-card" data-cat="Empezar" href="como-elegir-disenador-web-gipuzkoa.html">
 <div class="thumb"><picture><source srcset="assets/errotatxo-desk.webp" type="image/webp"/><img src="assets/errotatxo-desk.jpg" alt="Cómo elegir diseñador web en Gipuzkoa" loading="lazy" width="900" height="562"/></picture></div>
 <div class="body">
 <span class="tag">Guía</span>
@@ -180,7 +196,7 @@
 </div>
 </a>
 
-<a class="post-card" href="cuanto-cuesta-tienda-online-pequeno-comercio.html">
+<a class="post-card" data-cat="Precios y plazos" href="cuanto-cuesta-tienda-online-pequeno-comercio.html">
 <div class="thumb"><picture><source srcset="assets/flor-desk.webp" type="image/webp"/><img src="assets/flor-desk.jpg" alt="Cuánto cuesta una tienda online para un pequeño comercio" loading="lazy" width="900" height="562"/></picture></div>
 <div class="body">
 <span class="tag">Tienda online</span>
@@ -190,7 +206,7 @@
 </div>
 </a>
 
-<a class="post-card" href="que-debe-tener-web-negocio-local.html">
+<a class="post-card" data-cat="Empezar" href="que-debe-tener-web-negocio-local.html">
 <div class="thumb"><picture><source srcset="assets/gym-desk.webp" type="image/webp"/><img src="assets/gym-desk.jpg" alt="Qué debe tener la web de un negocio local" loading="lazy" width="900" height="562"/></picture></div>
 <div class="body">
 <span class="tag">Checklist</span>
@@ -200,7 +216,7 @@
 </div>
 </a>
 
-<a class="post-card" href="web-bilingue-euskera-castellano.html">
+<a class="post-card" data-cat="Euskera y ayudas" href="web-bilingue-euskera-castellano.html">
 <div class="thumb"><picture><source srcset="assets/flor-desk.webp" type="image/webp"/><img src="assets/flor-desk.jpg" alt="Web en euskera y castellano, bien hecha" loading="lazy" width="900" height="562"/></picture></div>
 <div class="body">
 <span class="tag">Euskera</span>
@@ -210,7 +226,7 @@
 </div>
 </a>
 
-<a class="post-card" href="dominio-eus-es-com.html">
+<a class="post-card" data-cat="Euskera y ayudas" href="dominio-eus-es-com.html">
 <div class="thumb"><picture><source srcset="assets/pan-desk.webp" type="image/webp"/><img src="assets/pan-desk.jpg" alt="¿Dominio .eus, .es o .com? Cuál elegir" loading="lazy" width="900" height="562"/></picture></div>
 <div class="body">
 <span class="tag">Dominio</span>
@@ -220,7 +236,7 @@
 </div>
 </a>
 
-<a class="post-card" href="web-para-taller-mecanico.html">
+<a class="post-card" data-cat="Por sector" href="web-para-taller-mecanico.html">
 <div class="thumb"><picture><source srcset="assets/taller-desk.webp" type="image/webp"/><img src="assets/taller-desk.jpg" alt="La web de un taller mecánico: lo que trae clientes" loading="lazy" width="900" height="562"/></picture></div>
 <div class="body">
 <span class="tag">Talleres</span>
@@ -230,7 +246,7 @@
 </div>
 </a>
 
-<a class="post-card" href="web-para-clinica-veterinaria.html">
+<a class="post-card" data-cat="Por sector" href="web-para-clinica-veterinaria.html">
 <div class="thumb"><picture><source srcset="assets/vet-desk.webp" type="image/webp"/><img src="assets/vet-desk.jpg" alt="La web de una clínica veterinaria" loading="lazy" width="900" height="562"/></picture></div>
 <div class="body">
 <span class="tag">Veterinaria</span>
@@ -240,7 +256,7 @@
 </div>
 </a>
 
-<a class="post-card" href="web-para-peluqueria-centro-estetica.html">
+<a class="post-card" data-cat="Por sector" href="web-para-peluqueria-centro-estetica.html">
 <div class="thumb"><picture><source srcset="assets/pelu-desk.webp" type="image/webp"/><img src="assets/pelu-desk.jpg" alt="Guía de página web para peluquerías y centros de estética" loading="lazy" width="900" height="562"/></picture></div>
 <div class="body">
 <span class="tag">Peluquería</span>
@@ -250,7 +266,7 @@
 </div>
 </a>
 
-<a class="post-card" href="conseguir-resenas-google-negocio-local.html">
+<a class="post-card" data-cat="Google y SEO local" href="conseguir-resenas-google-negocio-local.html">
 <div class="thumb"><picture><source srcset="assets/flor-desk.webp" type="image/webp"/><img src="assets/flor-desk.jpg" alt="Cómo conseguir reseñas en Google para un negocio local" loading="lazy" width="900" height="562"/></picture></div>
 <div class="body">
 <span class="tag">Reseñas</span>
@@ -260,7 +276,7 @@
 </div>
 </a>
 
-<a class="post-card" href="cuanto-cuesta-mantener-una-web-al-ano.html">
+<a class="post-card" data-cat="Precios y plazos" href="cuanto-cuesta-mantener-una-web-al-ano.html">
 <div class="thumb"><picture><source srcset="assets/taller-desk.webp" type="image/webp"/><img src="assets/taller-desk.jpg" alt="Costes reales de mantener una página web al año" loading="lazy" width="900" height="562"/></picture></div>
 <div class="body">
 <span class="tag">Costes</span>
@@ -270,7 +286,7 @@
 </div>
 </a>
 
-<a class="post-card" href="precio-diseno-web-profesional.html">
+<a class="post-card" data-cat="Precios y plazos" href="precio-diseno-web-profesional.html">
 <div class="thumb"><picture><source srcset="assets/stock/art-precio-web.webp" type="image/webp"/><img src="assets/stock/art-precio-web.jpg" alt="Escritorio de trabajo con portátil, representando el proceso de diseño web" loading="lazy" width="900" height="562"/></picture></div>
 <div class="body">
 <span class="tag">Precios</span>
@@ -280,7 +296,7 @@
 </div>
 </a>
 
-<a class="post-card" href="seo-local-tolosa-google-maps.html">
+<a class="post-card" data-cat="Google y SEO local" href="seo-local-tolosa-google-maps.html">
 <div class="thumb"><picture><source srcset="assets/stock/art-seo-local.webp" type="image/webp"/><img src="assets/stock/art-seo-local.jpg" alt="Comercio local de calle, representando el SEO local y Google Maps" loading="lazy" width="900" height="562"/></picture></div>
 <div class="body">
 <span class="tag">SEO local</span>
@@ -290,7 +306,7 @@
 </div>
 </a>
 
-<a class="post-card" href="pagina-web-o-solo-instagram.html">
+<a class="post-card" data-cat="Empezar" href="pagina-web-o-solo-instagram.html">
 <div class="thumb"><picture><source srcset="assets/stock/art-redes-sociales.webp" type="image/webp"/><img src="assets/stock/art-redes-sociales.jpg" alt="Persona usando el móvil en redes sociales" loading="lazy" width="900" height="562"/></picture></div>
 <div class="body">
 <span class="tag">Estrategia</span>
@@ -300,7 +316,7 @@
 </div>
 </a>
 
-<a class="post-card" href="cuanto-tarda-hacer-pagina-web.html">
+<a class="post-card" data-cat="Precios y plazos" href="cuanto-tarda-hacer-pagina-web.html">
 <div class="thumb"><picture><source srcset="assets/cafe-desk.webp" type="image/webp"/><img src="assets/cafe-desk.jpg" alt="Plazos reales para hacer una página web de negocio" loading="lazy" width="900" height="562"/></picture></div>
 <div class="body">
 <span class="tag">Plazos</span>
@@ -310,7 +326,7 @@
 </div>
 </a>
 
-<a class="post-card" href="web-para-restaurante-hosteleria.html">
+<a class="post-card" data-cat="Por sector" href="web-para-restaurante-hosteleria.html">
 <div class="thumb"><picture><source srcset="assets/rest-desk.webp" type="image/webp"/><img src="assets/rest-desk.jpg" alt="Guía de página web para restaurantes y bares" loading="lazy" width="900" height="562"/></picture></div>
 <div class="body">
 <span class="tag">Hostelería</span>
@@ -320,7 +336,7 @@
 </div>
 </a>
 
-<a class="post-card" href="google-business-profile-guia.html">
+<a class="post-card" data-cat="Google y SEO local" href="google-business-profile-guia.html">
 <div class="thumb"><picture><source srcset="assets/vet-desk.webp" type="image/webp"/><img src="assets/vet-desk.jpg" alt="Guía paso a paso de Google Business Profile" loading="lazy" width="900" height="562"/></picture></div>
 <div class="body">
 <span class="tag">Google</span>
@@ -335,27 +351,62 @@
 <footer class="footer">
 <div class="container">
 <div class="footer__grid">
-<div>
+<div class="footer__col footer__col--brand">
 <a href="index.html" class="footer__logo"><img src="assets/logo-nav-black.png" alt="OI Studio" class="footer__logo-img" width="320" height="86"/></a>
 <p class="footer__desc" data-t="foot_desc" style="margin-top:20px;">Webs rápidas, modernas y efectivas para negocios locales que quieren destacar en internet.</p>
 </div>
-<div>
+<div class="footer__col">
 <p class="foot-h" data-t="foot_secciones">Secciones</p>
 <ul>
 <li><a href="sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
 <li><a href="trabajos.html" data-t="foot_portfolio">Portfolio</a></li>
 <li><a href="precios.html" data-t="nav_precios">Precios</a></li>
 <li><a href="ayudas-subvenciones-pagina-web-gipuzkoa.html" data-t="nav_ayudas">Ayudas</a></li>
-<li><a href="zonas.html" data-t="nav_zonas">Zonas</a></li>
-<li><a href="chatbot-reservas.html" data-t="nav_chatbot">Chatbot</a></li>
 <li><a href="articulos.html" data-t="nav_articulos">Artículos</a></li>
 <li><a href="contacto.html" data-t="nav_contacto">Contacto</a></li>
 </ul>
+<p class="foot-h" data-t="foot_servicios">Servicios</p>
+<ul>
+<li><a href="precios.html" data-t="ft_s1">Landing · 199 €</a></li>
+<li><a href="precios.html" data-t="ft_s2">Web de negocio · 299 €</a></li>
+<li><a href="precios.html" data-t="ft_s3">Tienda online · 790 €</a></li>
+<li><a href="chatbot-reservas.html" data-t="ft_s4">Chatbot de reservas</a></li>
+</ul>
 </div>
-<div>
+<div class="footer__col">
+<p class="foot-h" data-t="foot_guias">Guías</p>
+<ul>
+<li><a href="precio-diseno-web-profesional.html">Cuánto cuesta una web profesional</a></li>
+<li><a href="pagina-web-para-autonomos.html">Página web para autónomos</a></li>
+<li><a href="landing-page-o-web-completa.html">Landing o web completa</a></li>
+<li><a href="como-crear-pagina-web-negocio-paso-a-paso.html">Crear la web de tu negocio</a></li>
+<li><a href="seo-local-tolosa-google-maps.html">SEO local y Google Maps</a></li>
+<li><a href="google-business-profile-guia.html">Guía de Google Business Profile</a></li>
+<li><a href="ayudas-subvenciones-pagina-web-gipuzkoa.html">Ayudas para tu web en Gipuzkoa</a></li>
+</ul>
+</div>
+<div class="footer__col">
+<p class="foot-h" data-t="foot_zonas">Dónde trabajo</p>
+<ul class="footer__zonas">
+<li><a href="zonas/tolosaldea.html">Tolosaldea</a></li>
+<li><a href="zonas/buruntzaldea.html">Buruntzaldea</a></li>
+<li><a href="zonas/donostialdea.html">Donostialdea</a></li>
+<li><a href="zonas/oarsoaldea.html">Oarsoaldea</a></li>
+<li><a href="zonas/bidasoa.html">Bidasoa</a></li>
+<li><a href="zonas/goierri.html">Goierri</a></li>
+<li><a href="zonas/urola-garaia.html">Urola Garaia</a></li>
+<li><a href="zonas/urola-erdia.html">Urola Erdia</a></li>
+<li><a href="zonas/urola-kosta.html">Urola Kosta</a></li>
+<li><a href="zonas/debabarrena.html">Debabarrena</a></li>
+<li><a href="zonas/debagoiena.html">Debagoiena</a></li>
+<li><a href="diseno-web-negocios-espana.html" data-t="ft_esp">Toda España</a></li>
+<li><a href="zonas.html" data-t="ft_todas">Los 88 municipios →</a></li>
+</ul>
+</div>
+<div class="footer__col">
 <p class="foot-h" data-t="nav_contacto">Contacto</p>
 <ul>
-<li><a href="mailto:contactoiwebstudio@gmail.com">contactoiwebstudio@gmail.com</a></li>
+<li><a class="js-mail" data-u="contactoiwebstudio" data-d="gmail.com"></a></li>
 <li><a href="https://wa.me/34680956755">+34 680 95 67 55</a></li>
 <li><a href="https://instagram.com/oi.webstudio" target="_blank" rel="noopener">Instagram · @oi.webstudio</a></li>
 <li>Tolosa, País Vasco</li>
@@ -375,5 +426,17 @@
 <a class="wa-float" href="https://wa.me/34680956755?text=Hola%2C%20vengo%20de%20la%20secci%C3%B3n%20de%20art%C3%ADculos%20y%20quiero%20informaci%C3%B3n%20para%20mi%20web." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2.05 22l5.27-1.38c1.45.79 3.08 1.21 4.72 1.21 5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.05-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29z"/></svg>
 </a>
+<script>
+(function(){
+  var barra = document.querySelector('.filtros'); if (!barra) return;
+  var tarjetas = document.querySelectorAll('.post-card');
+  barra.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if (!b) return;
+    var c = b.getAttribute('data-cat');
+    barra.querySelectorAll('button').forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+    tarjetas.forEach(function(t){ t.hidden = !(c === 'todos' || t.getAttribute('data-cat') === c); });
+  });
+})();
+</script>
 </body>
 </html>

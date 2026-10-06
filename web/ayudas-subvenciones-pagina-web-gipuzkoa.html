@@ -28,7 +28,7 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500&display=swap"/>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
 <noscript><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500&display=swap" rel="stylesheet"/></noscript>
-<link rel="stylesheet" href="assets/styles.css?v=22"/>
+<link rel="stylesheet" href="assets/styles.css?v=23"/>
 <script>if(location.protocol==='http:'&&/(^|\.)oiwebstudio\.com$/.test(location.hostname))location.replace('https://'+location.host+location.pathname+location.search+location.hash);document.documentElement.classList.add('js');</script>
 <style>
   .art-hero{padding:150px 0 30px;max-width:760px;margin:0 auto;}
@@ -1066,26 +1066,86 @@ window.addEventListener('load', function () {
   });
 });
 </script>
+<!-- RELACIONADOS:inicio -->
+<section class="rel" aria-labelledby="rel-t">
+<div class="container">
+<style>
+.rel{padding:8px 0 84px;}
+.rel__h{font-size:clamp(24px,3vw,32px);letter-spacing:-.02em;margin:0 0 22px;}
+.rel__grid{list-style:none;margin:0;padding:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));}
+.rel__grid a{display:flex;flex-direction:column;gap:8px;height:100%;padding:20px 22px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);transition:transform .25s var(--ease),border-color .25s,box-shadow .25s;}
+.rel__grid a:hover{transform:translateY(-3px);border-color:var(--border-strong);box-shadow:var(--shadow-md);}
+.rel__k{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--terra-link);}
+.rel__grid b{font-size:17px;line-height:1.3;letter-spacing:-.01em;color:var(--ink);font-weight:600;}
+.rel__grid span:last-child{font-size:14px;line-height:1.55;color:var(--text-muted);}
+@media(prefers-reduced-motion:reduce){.rel__grid a{transition:none;}}
+</style>
+<h2 id="rel-t" class="rel__h">Sigue leyendo</h2>
+<ul class="rel__grid">
+<li><a href="web-bilingue-euskera-castellano.html"><span class="rel__k">Euskera y ayudas</span><b>Web en Euskera y Castellano: Cómo Hacerla Bien</b><span>Cómo hacer una web en euskera y castellano para un negocio de Gipuzkoa: páginas propias, hreflang, qué traducir…</span></a></li>
+<li><a href="dominio-eus-es-com.html"><span class="rel__k">Euskera y ayudas</span><b>¿Dominio .eus, .es o .com? Cuál Elegir para tu Negocio</b><span>Qué dominio conviene a un negocio de Gipuzkoa: diferencias entre .eus, .es y .com, si afecta al SEO, cuánto…</span></a></li>
+<li><a href="google-business-profile-guia.html"><span class="rel__k">Google y SEO local</span><b>Google Business Profile: Guía Paso a Paso para Negocios Locales</b><span>Cómo crear y optimizar tu ficha de Google Business paso a paso: categorías, fotos, horarios, reseñas y los errores…</span></a></li>
+</ul>
+</div>
+</section>
+<!-- RELACIONADOS:fin -->
+
 <footer class="footer">
 <div class="container">
 <div class="footer__grid">
-<div>
+<div class="footer__col footer__col--brand">
 <a href="index.html" class="footer__logo"><img src="assets/logo-nav-black.png" alt="OI Studio" class="footer__logo-img" width="320" height="86"/></a>
 <p class="footer__desc" data-t="foot_desc" style="margin-top:20px;">Webs rápidas, modernas y efectivas para negocios locales que quieren destacar en internet.</p>
 </div>
-<div>
+<div class="footer__col">
 <p class="foot-h" data-t="foot_secciones">Secciones</p>
 <ul>
 <li><a href="sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
 <li><a href="trabajos.html" data-t="foot_portfolio">Portfolio</a></li>
 <li><a href="precios.html" data-t="nav_precios">Precios</a></li>
 <li><a href="ayudas-subvenciones-pagina-web-gipuzkoa.html" data-t="nav_ayudas">Ayudas</a></li>
-<li><a href="zonas.html" data-t="nav_zonas">Zonas</a></li>
 <li><a href="articulos.html" data-t="nav_articulos">Artículos</a></li>
 <li><a href="contacto.html" data-t="nav_contacto">Contacto</a></li>
 </ul>
+<p class="foot-h" data-t="foot_servicios">Servicios</p>
+<ul>
+<li><a href="precios.html" data-t="ft_s1">Landing · 199 €</a></li>
+<li><a href="precios.html" data-t="ft_s2">Web de negocio · 299 €</a></li>
+<li><a href="precios.html" data-t="ft_s3">Tienda online · 790 €</a></li>
+<li><a href="chatbot-reservas.html" data-t="ft_s4">Chatbot de reservas</a></li>
+</ul>
 </div>
-<div>
+<div class="footer__col">
+<p class="foot-h" data-t="foot_guias">Guías</p>
+<ul>
+<li><a href="precio-diseno-web-profesional.html">Cuánto cuesta una web profesional</a></li>
+<li><a href="pagina-web-para-autonomos.html">Página web para autónomos</a></li>
+<li><a href="landing-page-o-web-completa.html">Landing o web completa</a></li>
+<li><a href="como-crear-pagina-web-negocio-paso-a-paso.html">Crear la web de tu negocio</a></li>
+<li><a href="seo-local-tolosa-google-maps.html">SEO local y Google Maps</a></li>
+<li><a href="google-business-profile-guia.html">Guía de Google Business Profile</a></li>
+<li><a href="ayudas-subvenciones-pagina-web-gipuzkoa.html">Ayudas para tu web en Gipuzkoa</a></li>
+</ul>
+</div>
+<div class="footer__col">
+<p class="foot-h" data-t="foot_zonas">Dónde trabajo</p>
+<ul class="footer__zonas">
+<li><a href="zonas/tolosaldea.html">Tolosaldea</a></li>
+<li><a href="zonas/buruntzaldea.html">Buruntzaldea</a></li>
+<li><a href="zonas/donostialdea.html">Donostialdea</a></li>
+<li><a href="zonas/oarsoaldea.html">Oarsoaldea</a></li>
+<li><a href="zonas/bidasoa.html">Bidasoa</a></li>
+<li><a href="zonas/goierri.html">Goierri</a></li>
+<li><a href="zonas/urola-garaia.html">Urola Garaia</a></li>
+<li><a href="zonas/urola-erdia.html">Urola Erdia</a></li>
+<li><a href="zonas/urola-kosta.html">Urola Kosta</a></li>
+<li><a href="zonas/debabarrena.html">Debabarrena</a></li>
+<li><a href="zonas/debagoiena.html">Debagoiena</a></li>
+<li><a href="diseno-web-negocios-espana.html" data-t="ft_esp">Toda España</a></li>
+<li><a href="zonas.html" data-t="ft_todas">Los 88 municipios →</a></li>
+</ul>
+</div>
+<div class="footer__col">
 <p class="foot-h" data-t="nav_contacto">Contacto</p>
 <ul>
 <li><a class="js-mail" data-u="contactoiwebstudio" data-d="gmail.com"></a></li>
