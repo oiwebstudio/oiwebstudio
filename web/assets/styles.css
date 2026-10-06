@@ -1724,3 +1724,28 @@ summary:focus-visible,
 .ayuda-cta__go{flex:none;font-size:14px;font-weight:600;color:var(--terra-link);white-space:nowrap;}
 @media(max-width:600px){.ayuda-cta{flex-wrap:wrap;align-items:flex-start;gap:12px 14px;}.ayuda-cta__dot{margin-top:7px;}.ayuda-cta__go{width:100%;padding-left:24px;}}
 @media(prefers-reduced-motion:reduce){.ayuda-cta{transition:none;}}
+
+/* ==========================================================================
+   Pie claro con mapa de enlaces (octubre 2026)
+   ========================================================================== */
+.footer { background: var(--bg-subtle); color: var(--text-muted); border-top: 1px solid var(--border); }
+.footer::before { display: none; }
+.footer__logo-img { filter: none; }
+.footer__logo { color: var(--ink); }
+.footer h4, .footer .foot-h { color: var(--ink); }
+.footer a:hover { color: var(--terra-link); }
+.footer a:focus-visible { outline-color: var(--terra-link); }
+.footer__bottom { border-top-color: var(--border); }
+.footer__mark { color: rgba(25, 23, 18, 0.045); }
+.footer .link-terra { color: var(--terra-link); }
+.footer__grid { gap: 34px 28px; padding: 64px 0 40px; grid-template-columns: 1fr 1fr; }
+.footer__col--brand { grid-column: 1 / -1; }
+@media (min-width: 1000px) {
+  .footer__grid { grid-template-columns: 1.5fr 1fr 1.25fr 1fr 1.1fr; gap: 32px; }
+  .footer__col--brand { grid-column: auto; }
+}
+.footer .foot-h { margin-bottom: 14px; }
+.footer .footer__col ul + .foot-h { margin-top: 28px; }
+.footer ul { gap: 9px; }
+.footer__zonas { gap: 7px; }
+.footer__zonas li:nth-last-child(2) { margin-top: 6px; }
