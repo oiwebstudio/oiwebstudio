@@ -56,9 +56,9 @@ const heroImg = (key, seed, nombre) => {
   const f = `sec-${key}-${(seed % STOCK[key]) + 1}`;
   return `<picture><source srcset="../assets/stock/${f}.webp" type="image/webp"/><img src="../assets/stock/${f}.jpg" alt="${esc(ROTULO[key])} en ${esc(nombre)}" width="1000" height="700" fetchpriority="high"/></picture>`;
 };
-/* Las muestras del portfolio (octubre 2026): cada clave antigua enseña una demo nueva. */
-const MUESTRA = { pan: ["beko", "Restaurante"], gym: ["kiro", "Fisioterapia"], cafe: ["leire", "Psicología"], pelu: ["aberri", "Casa rural"], flor: ["aitamari", "Marisquería"], rest: ["alex", "Bar restaurante"], taller: ["cvs", "Electricista"], vet: ["bici", "Tienda de bicicletas"] };
-const shot = (key) => { const [img, rot] = MUESTRA[key]; return `<a class="zshot" href="../trabajos.html"><picture><source srcset="../assets/${img}-desk.webp" type="image/webp"/><img src="../assets/${img}-desk.jpg" alt="${rot}, muestra de web para negocio local" width="900" height="562" loading="lazy"/></picture><span class="zshot__lbl">${rot}</span></a>`; };
+/* Las tres muestras del portfolio (octubre 2026), en orden rotado según la página. */
+const TRIO = [["mara", "Bar restaurante"], ["lux", "Electricista"], ["arin", "Fisioterapia"]];
+const trioMosaico = (n) => [0, 1, 2].map((j) => TRIO[(j + n) % 3]).map(([img, rot]) => `<a class="zshot" href="../trabajos.html"><picture><source srcset="../assets/${img}-desk.webp" type="image/webp"/><img src="../assets/${img}-desk.jpg" alt="${rot}, muestra de web para negocio local" width="900" height="562" loading="lazy"/></picture><span class="zshot__lbl">${rot}</span></a>`).join("\n");
 
 /* ------------------------------------------------------- índice completo */
 const porSlug = Object.fromEntries(MUN.map((m) => [m.slug, m]));
@@ -249,7 +249,7 @@ ${avisoAyuda(d.slug)}
 <div class="container">
 <div class="zhead"><span class="k">Portfolio</span><h2>Webs reales, publicadas y navegables</h2></div>
 <div class="zmosaic" data-anim="assemble">
-${d.mosaico.map(shot).join("\n")}
+${trioMosaico(idx)}
 </div>
 <p style="text-align:center;margin-top:16px;font-size:14px;color:var(--text-muted);">No enseño maquetas: las webs del <a href="../trabajos.html" class="link-terra">portfolio</a> están online y puedes abrirlas.</p>
 </div>
