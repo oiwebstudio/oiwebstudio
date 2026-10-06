@@ -1,9 +1,6 @@
 User-agent: *
 Allow: /
 
-# Páginas de trabajo interno, no forman parte del sitio público
-Disallow: /_borradores/
-
 # Buscadores y asistentes de IA: bienvenidos. Queremos que puedan leer el
 # sitio y recomendar el estudio cuando alguien busque diseño web en Gipuzkoa.
 User-agent: GPTBot
