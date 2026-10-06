@@ -37,7 +37,7 @@ const TRADUCIDAS = new Set([...PAGINAS, ...ZONAS]);
 
    Están escritos con la terminología que ya usa el propio sitio en euskera,
    no inventada: "webgune" (no "web"), "Prezio itxia idatziz", "ordainketa
-   bakarra", "Iraunkortasunik gabe", "Niri buruz". Si aquí se dijera de otra
+   bakarra", "Epe-konpromisorik gabe", "Niri buruz". Si aquí se dijera de otra
    forma, el título prometería una cosa y la página diría otra.
 
    Aun así, conviene que lo lea un euskaldun antes de darlo por definitivo: son
@@ -49,7 +49,7 @@ const META = {
   },
   "precios.html": {
     title: "Webgune baten prezioa: itxia eta idatzita | OI Studio",
-    desc: "Landing 199€ eta Negozio Weba 299€, ordainketa bakarrean eta prezio itxiarekin. Ezkutuko kuotarik eta iraunkortasunik gabe.",
+    desc: "Landing 199€ eta Negozio Weba 299€, ordainketa bakarrean eta prezio itxiarekin. Ezkutuko kuotarik eta epe-konpromisorik gabe.",
   },
   "contacto.html": {
     title: "Kontaktua: hitz egin dezagun zure webaz | OI Studio",
