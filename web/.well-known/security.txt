@@ -1,0 +1,3 @@
+Contact: mailto:contactoiwebstudio@gmail.com
+Preferred-Languages: es, eu, en
+Canonical: https://oiwebstudio.com/.well-known/security.txt
