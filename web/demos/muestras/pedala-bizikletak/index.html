@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="robots" content="noindex, nofollow"/>
+<title>Pedala · Tienda de bicis en Gipuzkoa — muestra</title>
+<meta name="description" content="Tienda de bicis en Gipuzkoa: carretera, gravel y eléctricas, montajes a la carta, ciclocross, biomecánica y segunda mano. Muestra de diseño de OI Studio."/>
+<script>document.documentElement.classList.add("ef");setTimeout(function(){document.documentElement.classList.remove("ef")},2000);document.fonts&&document.fonts.ready.then(function(){document.documentElement.classList.remove("ef")});</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+.ef .cartel{visibility:hidden}
+:root{--negro:#0c0c0c;--blanco:#f1f1ee;--gris:#9a9a95;--e:cubic-bezier(.23,1,.32,1);--grano:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E")}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--negro);color:var(--blanco);font:400 16px/1.55 Archivo,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--blanco);outline-offset:3px}
+.tec{font:500 12.5px/1.25 Archivo,sans-serif;text-transform:uppercase;letter-spacing:.04em}
+.ancha{font-family:Unbounded,sans-serif;font-weight:600;letter-spacing:-.04em;line-height:.8}
+.aviso{background:#000;color:#bdbdb8;font-size:12.5px;text-align:center;padding:7px 16px}
+.wrap{max-width:1280px;margin:0 auto;padding:0 clamp(16px,3.5vw,40px)}
+
+/* visor: marcas en los bordes, reutilizable */
+.visor{position:relative}
+.visor>.marca{position:absolute;width:14px;height:6px;background:var(--blanco);z-index:3;pointer-events:none}
+.visor>.m1{left:16px;top:33%}.visor>.m2{right:16px;top:33%}.visor>.m3{left:16px;top:66%}.visor>.m4{right:16px;top:66%}
+
+/* cartel */
+.cartel{min-height:max(640px,100svh);overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;isolation:isolate}
+.cartel .foto{position:absolute;inset:0;z-index:-2}
+.cartel .foto img{width:100%;height:100%;object-fit:cover;object-position:50% 60%;filter:blur(.3px)}
+.cartel::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.05) 35%,rgba(0,0,0,.55) 78%,rgba(0,0,0,.8)),var(--grano);mix-blend-mode:normal;opacity:1}
+.cartel::after{content:"";position:absolute;inset:0;z-index:-1;background:var(--grano);mix-blend-mode:overlay;opacity:.6;pointer-events:none}
+.arriba{display:grid;grid-template-columns:1fr auto 1fr;align-items:start;gap:12px;padding:16px clamp(14px,2.5vw,24px)}
+.iconos{display:flex;gap:6px}
+.iconos.der{justify-content:flex-end}
+.iconos svg{width:26px;height:26px;color:var(--blanco)}
+.credito{text-align:center;text-decoration:none;padding:4px 0}
+.barra-d{position:absolute;right:12px;top:18%;width:3px;height:22%;background:rgba(241,241,238,.55);border-radius:2px;z-index:3}
+.nav-c{display:flex;justify-content:center;gap:24px;padding:4px 12px 0}
+.nav-c a{text-decoration:none;padding:10px 0;opacity:.85}
+@media(hover:hover) and (pointer:fine){.nav-c a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px}}
+.abajo{padding:0 clamp(10px,2vw,22px) clamp(14px,2.4vw,26px);text-align:center}
+.nombre{display:flex;align-items:flex-end;justify-content:center;font-size:clamp(64px,17.5vw,272px);color:var(--blanco);white-space:nowrap}
+.nombre .lazo{height:1.02em;width:auto;margin:0 -.04em;overflow:visible}
+.nombre .tm{font:600 .1em Archivo,sans-serif;align-self:flex-start;margin-left:.15em;letter-spacing:0}
+.ciudad{font:500 clamp(18px,2vw,28px)/1 Archivo,sans-serif;text-transform:uppercase;letter-spacing:.01em;margin-top:clamp(8px,1vw,14px)}
+.frase{font:400 clamp(13px,1.45vw,20px)/1.1 Archivo,sans-serif;text-transform:uppercase;letter-spacing:.005em;margin-top:4px}
+.acciones{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:20px}
+.boton{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 22px;border:1.5px solid var(--blanco);border-radius:999px;background:var(--blanco);color:var(--negro);font:600 13px Archivo,sans-serif;text-transform:uppercase;letter-spacing:.06em;text-decoration:none;transition:transform 160ms var(--e),background-color 200ms ease,color 200ms ease}
+.boton:active{transform:scale(.97)}
+.boton--linea{background:rgba(0,0,0,.25);color:var(--blanco);backdrop-filter:blur(6px)}
+@media(hover:hover) and (pointer:fine){.boton:hover{background:transparent;color:var(--blanco)}.boton--linea:hover{background:var(--blanco);color:var(--negro)}}
+
+/* tira de marcas */
+.tira{overflow:hidden;border-block:1px solid #2c2c2c;padding:18px 0}
+.pista{white-space:nowrap;font:600 clamp(40px,6vw,92px)/1 Unbounded,sans-serif;letter-spacing:-.04em}
+.pista i{font-style:normal;font-family:Archivo,sans-serif;font-weight:400;font-size:.3em;vertical-align:middle;margin:0 1.4em;letter-spacing:.1em;color:var(--gris)}
+
+/* catálogo como hojas de contacto */
+.catalogo{padding:clamp(56px,7vw,100px) 0}
+.cab-sec{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px;border-bottom:1px solid #2c2c2c;padding-bottom:18px}
+.cab-sec h2{font-size:clamp(52px,8vw,124px)}
+.cab-sec p{max-width:38ch;color:var(--gris)}
+.rejilla{display:grid;gap:1px;background:#2c2c2c;margin-top:1px;grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(min-width:960px){.rejilla{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.bici{position:relative;background:var(--negro);padding:14px 14px 18px;text-decoration:none;display:block}
+.bici .num{display:flex;justify-content:space-between;color:var(--gris)}
+.bici figure{margin:12px 0 0;aspect-ratio:4/3;overflow:hidden;position:relative}
+.bici figure::after{content:"";position:absolute;inset:0;background:var(--grano);mix-blend-mode:overlay;opacity:.35;pointer-events:none}
+.bici img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.15) brightness(.92);transition:filter 500ms ease,transform 700ms var(--e)}
+@media(hover:hover) and (pointer:fine){.bici:hover img{filter:none;transform:scale(1.03)}}
+.bici h3{font:600 14.5px/1.3 Archivo,sans-serif;text-transform:uppercase;margin-top:12px}
+.bici p{margin-top:4px;font-variant-numeric:tabular-nums;font-size:15px}
+.bici s{color:var(--gris);margin-left:6px}
+.bici .dto{position:absolute;right:14px;top:40px;z-index:2;background:var(--blanco);color:var(--negro);font:600 12px Archivo,sans-serif;padding:3px 8px}
+.nota{margin-top:16px;color:var(--gris);font-size:13px}
+
+/* segundo cartel: taller */
+.cartel2{min-height:min(90vh,820px);overflow:hidden;display:grid;align-content:end;isolation:isolate;border-top:1px solid #2c2c2c}
+.cartel2 .foto{position:absolute;inset:0;z-index:-2}
+.cartel2 .foto img{width:100%;height:100%;object-fit:cover}
+.cartel2::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.2),rgba(0,0,0,.85) 80%)}
+.cartel2::after{content:"";position:absolute;inset:0;z-index:-1;background:var(--grano);mix-blend-mode:overlay;opacity:.55}
+.cartel2 .wrap{padding-bottom:clamp(30px,4vw,56px);width:100%}
+.cartel2 h2{font-size:clamp(64px,13vw,200px)}
+.servs{display:grid;gap:0;margin-top:26px;border-top:1px solid rgba(241,241,238,.4)}
+@media(min-width:900px){.servs{grid-template-columns:repeat(3,1fr)}}
+.servs div{padding:14px 0;border-bottom:1px solid rgba(241,241,238,.25)}
+@media(min-width:900px){.servs div{padding:16px 20px 16px 0}}
+.servs b{display:block;font:600 15px Archivo,sans-serif;text-transform:uppercase}
+.servs span{color:#c9c9c4;font-size:14px}
+
+/* visita */
+.visita{padding:clamp(56px,7vw,100px) 0;text-align:center}
+.visita h2{font-size:clamp(46px,8vw,120px)}
+.visita .filas{max-width:720px;margin:36px auto 0;text-align:left;border-top:1px solid #2c2c2c}
+.visita .filas a,.visita .filas div{display:flex;justify-content:space-between;gap:16px;padding:15px 0;border-bottom:1px solid #2c2c2c;text-decoration:none}
+.visita .filas span{color:var(--gris)}
+@media(hover:hover) and (pointer:fine){.visita .filas a:hover b{text-decoration:underline;text-underline-offset:3px}}
+.pie{border-top:1px solid #2c2c2c;padding:20px 0 28px;color:var(--gris)}
+.pie .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+
+.movil{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:30;display:none;grid-template-columns:1fr 1fr;gap:8px;transform:translateY(140%);visibility:hidden;transition:transform 400ms var(--e),visibility 0s linear 400ms}
+.movil.on{transform:none;visibility:visible;transition:transform 400ms var(--e)}
+.movil .boton{min-height:52px}
+.movil .boton--linea{background:rgba(12,12,12,.85)}
+@media(max-width:700px){.movil{display:grid}body{padding-bottom:80px}.iconos svg{width:20px;height:20px}.credito{font-size:10px}}
+@media (prefers-reduced-motion:reduce){.movil{transition:none}}
+</style>
+</head>
+<body>
+<div role="region" aria-label="Aviso"><p class="aviso">Muestra de diseño creada por OI Studio. El nombre, las bicis y los datos son inventados.</p></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="lazo" viewBox="0 0 130 130"><path fill="currentColor" fill-rule="evenodd" transform="rotate(-24 62 70)" d="M6 70a56 48 0 1 0 112 0a56 48 0 1 0-112 0zM34 63a38 28 0 1 0 76 0a38 28 0 1 0-76 0z"/><path fill="currentColor" d="M108 52c9 22 10 48 2 76h7c8-28 7-55-2-78z"/></symbol>
+  <symbol id="i-r" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 17V7h3.5a3 3 0 0 1 0 6H9m3.5 0 3 4" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+  <symbol id="i-t" viewBox="0 0 24 24"><path d="M12 3 22 20H2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 9v5M12 16.5v.5" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="i-c" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="8" cy="14" r="2.6" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="16" cy="14" r="2.6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 14l3-5h3l2 5M11 9h-2" fill="none" stroke="currentColor" stroke-width="1.3"/></symbol>
+  <symbol id="i-u" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 18V7m-4 4 4-4 4 4" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+</defs></svg>
+
+<main>
+<section class="cartel visor" data-portada>
+  <div class="foto"><img src="nueva/fotos/cartel.webp" width="1600" height="1200" alt="Ilustración de una bici de carretera" fetchpriority="high"/></div>
+  <span class="marca m1"></span><span class="marca m2"></span><span class="marca m3"></span><span class="marca m4"></span><span class="barra-d" aria-hidden="true"></span>
+  <div>
+    <div class="arriba">
+      <div class="iconos" aria-hidden="true"><svg><use href="#i-r"/></svg><svg><use href="#i-t"/></svg><svg><use href="#i-c"/></svg><svg><use href="#i-u"/></svg></div>
+      <span class="credito tec">@pedala<br/>www.pedala.example<br/>©2026</span>
+      <div class="iconos der" aria-hidden="true"><svg><use href="#i-u"/></svg><svg><use href="#i-c"/></svg><svg><use href="#i-t"/></svg><svg><use href="#i-r"/></svg></div>
+    </div>
+    <nav class="nav-c tec" aria-label="Secciones"><a href="#bicis">Bicis</a><a href="#taller">Taller</a><a href="#visita">Visítanos</a></nav>
+  </div>
+  <div class="abajo">
+    <h1 class="ancha nombre" aria-label="Pedala" data-parallax="-4"><span aria-hidden="true">ped</span><svg class="lazo" viewBox="0 0 130 130" aria-hidden="true"><use href="#lazo"/></svg><span aria-hidden="true">l</span><svg class="lazo" viewBox="0 0 130 130" aria-hidden="true"><use href="#lazo"/></svg></h1>
+    <p class="ciudad">Gipuzkoa</p>
+    <p class="frase">Pedala · carretera, gravel y eléctricas · montajes a la carta</p>
+    <div class="acciones"><a class="boton" href="#bicis">Ver bicis</a><a class="boton boton--linea" href="#visita">943 00 00 00</a></div>
+  </div>
+</section>
+
+<div class="tira" aria-hidden="true"><div class="pista" data-pista="38">carretera <i>· 01 ·</i> gravel <i>· 02 ·</i> eléctrica <i>· 03 ·</i> montaña <i>· 04 ·</i> ciudad <i>· 05 ·</i> carretera <i>· 01 ·</i> gravel</div></div>
+
+<section class="catalogo" id="bicis"><div class="wrap">
+  <div class="cab-sec"><h2 class="ancha" data-lineas>novedades</h2><p class="tec" data-enciende>Carretera, gravel y eléctricas de montaña. Pasa a verlas o pregúntanos por la tuya.</p></div>
+  <div class="rejilla" data-escalonado>
+    <a class="bici" href="#visita"><span class="num tec"><span>01</span><span>Carretera</span></span><figure><img src="nueva/fotos/air-race-720.webp" width="720" height="540" alt="" loading="lazy"/></figure><h3>Aero 68 Race</h3><p>4.990 €</p></a>
+    <a class="bici" href="#visita"><span class="num tec"><span>02</span><span>Carretera</span></span><span class="dto">−15 %</span><figure><img src="nueva/fotos/aero-teamline-720.webp" width="720" height="540" alt="" loading="lazy"/></figure><h3>Aero 68 Team</h3><p>4.190 €<s>4.930 €</s></p></a>
+    <a class="bici" href="#visita"><span class="num tec"><span>03</span><span>Eléctrica</span></span><figure><img src="nueva/fotos/thron-720.webp" width="720" height="540" alt="" loading="lazy"/></figure><h3>Trail Eléctrica 6.6</h3><p>3.450 €</p></a>
+    <a class="bici" href="#visita"><span class="num tec"><span>04</span><span>Eléctrica</span></span><span class="dto">−25 %</span><figure><img src="nueva/fotos/ams-hybrid-720.webp" width="720" height="540" alt="" loading="lazy"/></figure><h3>Enduro Eléctrica 144</h3><p>4.150 €<s>5.530 €</s></p></a>
+    <a class="bici" href="#visita"><span class="num tec"><span>05</span><span>Gravel</span></span><span class="dto">−14 %</span><figure><img src="nueva/fotos/nuroad-720.webp" width="720" height="540" alt="" loading="lazy"/></figure><h3>Gravel Carbono 62</h3><p>3.990 €<s>4.640 €</s></p></a>
+    <a class="bici" href="#visita"><span class="num tec"><span>06</span><span>Eléctrica</span></span><figure><img src="nueva/fotos/stereo-hybrid-720.webp" width="720" height="540" alt="" loading="lazy"/></figure><h3>Montaña Eléctrica 144</h3><p>4.690 €</p></a>
+    <a class="bici" href="#visita"><span class="num tec"><span>07</span><span>Carretera</span></span><span class="dto">−30 %</span><figure><img src="nueva/fotos/flanders-720.webp" width="720" height="540" alt="" loading="lazy"/></figure><h3>Clásica Pro</h3><p>2.990 €<s>4.270 €</s></p></a>
+    <a class="bici" href="#visita"><span class="num tec"><span>08</span><span>Carretera</span></span><figure><img src="nueva/fotos/aero-pro-720.webp" width="720" height="540" alt="" loading="lazy"/></figure><h3>Aero 68 Pro</h3><p>4.390 €</p></a>
+  </div>
+  <p class="nota">Modelos, ilustraciones y precios de ejemplo. En una web de verdad saldrían de tu catálogo, siempre al día.</p>
+</div></section>
+
+<section class="cartel2 visor" id="taller">
+  <div class="foto"><img src="nueva/fotos/cartel3.webp" width="1600" height="1200" alt="Ilustración de una bici eléctrica de montaña" loading="lazy"/></div>
+  <span class="marca m1"></span><span class="marca m2"></span>
+  <div class="wrap">
+    <h2 class="ancha" data-lineas>taller</h2>
+    <div class="servs" data-escalonado>
+      <div><b>Biomecánica y entrenamiento</b><span>La bici, a tu medida</span></div>
+      <div><b>Montajes a la carta</b><span>Cuadros, ruedas y cambios</span></div>
+      <div><b>Ciclocross</b><span>Bicis y material</span></div>
+      <div><b>Segunda mano</b><span>Pregúntanos</span></div>
+      <div><b>Spinning</b><span>Bicis desde 500 €</span></div>
+      <div><b>Pago en 1 o 2 años</b><span>Sin intereses · también Bizum</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="visita" id="visita"><div class="wrap">
+  <h2 class="ancha" data-lineas>kale nagusia 1</h2>
+  <div class="filas">
+    <a href="#visita"><span class="tec">Tienda</span><b>Kale Nagusia 1, Gipuzkoa</b></a>
+    <a href="#visita"><span class="tec">Teléfono</span><b>943 00 00 00</b></a>
+    <a href="mailto:hola@pedala.example"><span class="tec">Correo</span><b>hola@pedala.example</b></a>
+  </div>
+</div></section>
+</main>
+<footer class="pie tec"><div class="wrap"><span>© Pedala · Gipuzkoa</span><span>Carretera · Gravel · Eléctricas</span></div></footer>
+
+<nav class="movil" data-barra-movil aria-label="Contacto"><a class="boton" href="#visita">Llamar</a><a class="boton boton--linea" href="#bicis">Ver bicis</a></nav>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script src="nueva/anim-texto.js"></script>
+</body>
+</html>

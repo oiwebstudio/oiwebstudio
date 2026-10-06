@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="robots" content="noindex, nofollow"/>
+<title>Etxea Inmobiliaria · Donostia — plantilla</title>
+<meta name="description" content="Venta y alquiler de pisos y casas en Donostia y Gipuzkoa. Tasación gratis de tu vivienda."/>
+<!--
+  PLANTILLA INMOBILIARIA (OI Studio, 2/10/2026). Nace del laboratorio de la mañana (portada de Habitare que gustó a Oier):
+  foto a sangre + nombre gigante + niebla que funde con el papel + pestaña lateral; texto que se enciende; fotos que se
+  descubren; tarjetas que se apilan; galería horizontal fijada. SIN reseñas (Oier, 2/10).
+  CAMBIAR PARA CADA CLIENTE: nombre (ETXEA, <title>, marca), teléfono (943 00 00 00 / +34943000000), WhatsApp,
+  zona, pisos (fotos, precio, m², habitaciones, barrio) y textos. Nada de lo que hay aquí es un dato real.
+  Fotos: Unsplash (ver fotos/creditos.json). En una web de cliente, sus propias fotos.
+  Animaciones: GSAP 3.13 + SplitText + ScrollTrigger + Lenis. Con «reducir movimiento» todo se ve quieto y completo.
+-->
+<script>document.documentElement.classList.add("ef");setTimeout(function(){document.documentElement.classList.remove("ef")},2000);document.fonts&&document.fonts.ready.then(function(){document.documentElement.classList.remove("ef")});</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Figtree:wght@400..700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.css"/>
+<style>
+.ef .gigante,.ef .portada__txt{visibility:hidden}
+:root{
+  --tinta:#1A1714; --papel:#F4EFE8; --piedra:#E7DFD4; --madera:#2B2622; --cobre:#9E6238; --texto2:#625A52;
+  --f:"Figtree",system-ui,sans-serif; --d:"Bricolage Grotesque",system-ui,sans-serif;
+  --ease:cubic-bezier(.23,1,.32,1);
+}
+*{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--papel);color:var(--tinta);font:400 17px/1.6 var(--f);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--cobre);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--d);font-weight:500;letter-spacing:-.035em;line-height:.98;font-variation-settings:"opsz" 96}
+em.s{font-style:normal;font-weight:250;color:var(--cobre);font-variation-settings:"wdth" 100,"opsz" 96}
+.wrap{max-width:1280px;margin:0 auto;padding:0 clamp(18px,4.5vw,48px)}
+section{position:relative}
+.eti{font:600 12px/1 var(--f);letter-spacing:.16em;text-transform:uppercase;color:var(--texto2)}
+
+/* menú en píldoras */
+.menu{position:fixed;top:14px;left:0;right:0;z-index:40;display:flex;justify-content:space-between;padding:0 clamp(14px,3vw,28px);pointer-events:none}
+.pills{display:flex;gap:6px;pointer-events:auto}
+.pill{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;background:rgba(26,23,20,.55);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:#fff;font:600 13.5px var(--f);text-decoration:none;transition:background-color 200ms ease,color 200ms ease}
+.menu.claro .pill{background:rgba(255,255,255,.85);color:var(--tinta);border-color:rgba(26,23,20,.08)}
+.marca{font:700 15px var(--d);letter-spacing:.12em;text-transform:uppercase}
+@media(max-width:699px){.pills .pill:not(.marca):not([href^="tel"]){display:none}.pill{padding:0 14px}}
+
+/* 1 · portada: foto + palabra gigante + niebla */
+.portada{height:100svh;min-height:620px;overflow:hidden;color:#fff;background:var(--madera)}
+.portada__foto{position:absolute;inset:-6% 0 0;will-change:transform}
+.portada__foto img{width:100%;height:100%;object-fit:cover}
+.portada::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,0) 34%,rgba(0,0,0,.2) 70%)}
+.niebla{position:absolute;left:0;right:0;bottom:-1px;height:40%;z-index:2;background:linear-gradient(180deg,rgba(244,239,232,0),var(--papel) 92%)}
+.portada__txt{position:absolute;z-index:3;left:clamp(18px,4.5vw,48px);top:22vh;max-width:28ch;font:500 clamp(18px,1.4vw,21px)/1.4 var(--f);text-shadow:0 1px 14px rgba(0,0,0,.35)}
+.gigante{position:absolute;z-index:3;left:0;right:0;bottom:-.06em;text-align:center;font:800 clamp(110px,27vw,420px)/.8 var(--d);font-variation-settings:"wdth" 75,"opsz" 96;letter-spacing:-.03em;text-transform:uppercase;color:var(--tinta);white-space:nowrap}
+.portada__cta{position:absolute;z-index:4;right:clamp(18px,4.5vw,48px);top:22vh;display:grid;gap:10px;justify-items:end}
+.vidrio{display:grid;gap:4px;padding:14px 18px;border-radius:18px;background:rgba(26,23,20,.3);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);text-decoration:none;max-width:250px}
+.vidrio b{font:500 22px/1.1 var(--d);letter-spacing:-.02em}
+.vidrio small{font-size:13.5px;opacity:.95}
+@media(max-width:699px){.portada__txt{top:auto;bottom:calc(14vh + 130px);right:18px}.portada__cta{display:none}.gigante{bottom:calc(12px + 68px);font-size:41vw}.portada__txt{bottom:calc(80px + 36vw)}.portada{min-height:580px}.vidrio{padding:10px 14px}}
+
+/* pestaña lateral fija */
+.pestana{position:fixed;right:0;top:50%;z-index:45;transform:translateY(-50%);writing-mode:vertical-rl;rotate:180deg;padding:22px 13px;background:var(--cobre);color:#fff;font:700 13px var(--f);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-radius:0 14px 14px 0;transition:padding 250ms var(--ease)}
+@media(hover:hover) and (pointer:fine){.pestana:hover{padding-right:19px}}
+@media(max-width:899px){.pestana{display:none}}
+.barra{position:fixed;left:12px;right:12px;bottom:12px;z-index:45;display:none}
+.barra a{display:flex;justify-content:center;align-items:center;min-height:56px;border-radius:999px;background:var(--cobre);color:#fff;font-weight:700;text-decoration:none;box-shadow:0 14px 30px -12px rgba(0,0,0,.45)}
+@media(max-width:899px){.barra{display:block}body{padding-bottom:80px}}
+
+/* 2 · texto que se enciende */
+.enciende{padding:clamp(90px,12vw,170px) 0 clamp(60px,8vw,110px)}
+.enciende #enciende{font:500 clamp(30px,4.4vw,64px)/1.08 var(--d);letter-spacing:-.03em;max-width:22ch;margin-top:22px}
+
+/* 3 · destacados que se descubren */
+.revela{padding:0 0 clamp(80px,10vw,140px)}
+.revela__g{display:grid;gap:14px}
+@media(min-width:900px){.revela__g{grid-template-columns:1.3fr 1fr;align-items:end}}
+.rv{position:relative;overflow:hidden;border-radius:22px;aspect-ratio:4/3}
+.rv img{width:100%;height:100%;object-fit:cover}
+.rv.alta{aspect-ratio:3/4}
+.ficha{position:absolute;left:14px;right:14px;bottom:14px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:8px;padding:14px 16px;border-radius:16px;background:rgba(255,255,255,.92);color:var(--tinta)}
+.ficha b{font:600 22px/1 var(--d);letter-spacing:-.02em}
+.ficha span{font-size:14px;color:var(--texto2)}
+.ficha .precio{font:500 20px/1 var(--d);color:var(--tinta)}
+
+/* 4 · tasación (banda oscura) */
+.tasa{padding:clamp(80px,10vw,140px) 0;background:var(--madera);color:#fff;overflow:hidden}
+.tasa__g{display:grid;gap:40px;align-items:center}
+@media(min-width:900px){.tasa__g{grid-template-columns:1.1fr .9fr}}
+.tasa h2{font-size:clamp(44px,6vw,96px)}
+.tasa h2 em{color:#E9B48B}
+.tasa p.l{color:#D8CFC4;margin-top:20px;max-width:42ch;font-size:18px}
+.tasa ul{list-style:none;padding:0;margin-top:26px;display:grid;gap:12px}
+.tasa li{display:flex;gap:12px;align-items:baseline}
+.tasa li::before{content:"";width:8px;height:8px;border-radius:50%;background:#E9B48B;flex:none;transform:translateY(-2px)}
+.tasa .acc{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 24px;border-radius:999px;background:#fff;color:var(--tinta);font:700 15.5px var(--f);text-decoration:none;transition:transform 160ms var(--ease)}
+.btn:active{transform:scale(.97)}
+.btn.borde{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.6)}
+.tasa .foto{border-radius:22px;overflow:hidden;aspect-ratio:5/6}
+.tasa .foto img{width:100%;height:100%;object-fit:cover}
+
+/* 5 · tarjetas que se apilan */
+.pasos{padding:clamp(80px,10vw,140px) 0}
+.pasos h2{font-size:clamp(40px,5.6vw,84px);max-width:14ch;margin-top:18px}
+.pila{margin-top:40px;display:grid;gap:22px}
+.carta{position:sticky;top:calc(90px + var(--i) * 22px);display:grid;gap:18px;padding:clamp(22px,3vw,40px);border-radius:26px;background:#fff;box-shadow:0 30px 60px -45px rgba(26,23,20,.45);min-height:300px;transform-origin:center top}
+@media(min-width:900px){.carta{grid-template-columns:.9fr 1.1fr;align-items:center}}
+.carta b{font:300 clamp(56px,7vw,110px)/.8 var(--d);color:var(--cobre)}
+.carta h3{font-size:clamp(26px,2.6vw,38px);margin-top:10px}
+.carta p{color:var(--texto2);margin-top:8px}
+.carta img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:18px}
+
+/* 6 · galería horizontal fijada (escritorio) / scroll-snap (móvil) */
+.hz{padding:clamp(60px,8vw,110px) 0;background:var(--piedra);overflow:hidden}
+.hz h2{font-size:clamp(40px,5.6vw,84px);margin-top:18px}
+.pista{display:flex;gap:16px;margin-top:34px;padding:0 clamp(18px,4.5vw,48px);width:max-content}
+.pista figure{width:min(70vw,560px);flex:none;margin:0}
+.pista img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:20px}
+.pista figcaption{display:flex;justify-content:space-between;gap:12px;margin-top:12px}
+.pista figcaption b{font:500 20px/1.2 var(--d);letter-spacing:-.02em}
+.pista figcaption span{color:var(--texto2);font-size:14.5px;text-align:right}
+@media(max-width:899px){.hz .pista-caja{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}.pista figure{scroll-snap-align:start;width:82vw}}
+
+/* 7 · cierre + botón magnético */
+.cierre{padding:clamp(90px,12vw,170px) 0;text-align:center}
+.cierre h2{font-size:clamp(48px,8vw,130px)}
+.cierre p{color:var(--texto2);margin:18px auto 0;max-width:44ch;font-size:18px}
+.mag{display:inline-flex;align-items:center;gap:14px;margin-top:36px;min-height:62px;padding:8px 8px 8px 28px;border-radius:999px;background:var(--tinta);color:#fff;font:700 16px var(--f);text-decoration:none}
+.mag i{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--cobre);font-style:normal}
+.mag:active{transform:scale(.97)}
+.datos{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 26px;margin-top:30px;color:var(--texto2)}
+.datos a{text-decoration:none;display:inline-block;padding:12px 0}
+
+/* grano de película */
+.grano::after{content:"";position:absolute;inset:-50%;z-index:2;pointer-events:none;opacity:.12;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+.pie{padding:40px 0 60px;color:var(--texto2);font-size:13.5px;border-top:1px solid var(--piedra)}
+.pie .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+</style>
+</head>
+<body>
+
+<nav class="menu" id="menu" aria-label="Principal">
+  <div class="pills"><a class="pill marca" href="#inicio">Etxea</a><a class="pill" href="#en-venta">En venta</a><a class="pill" href="#tasacion">Vender mi casa</a></div>
+  <div class="pills"><a class="pill" href="tel:+34943000000">943 00 00 00</a></div>
+</nav>
+<nav aria-label="Tasación"><a class="pestana" href="#tasacion">Tasar mi casa gratis</a><div class="barra"><a href="#tasacion">Tasar mi casa gratis</a></div></nav>
+
+<main>
+<section class="portada grano" id="inicio">
+  <div class="portada__foto" id="pfoto"><img src="fotos/portada.webp" width="2000" height="1333" alt="Comedor luminoso con vistas al mar" fetchpriority="high"/></div>
+  <p class="portada__txt" id="ptxt">Pisos y casas en Donostia y Gipuzkoa, para encontrar el sitio donde quieres vivir.</p>
+  <div class="portada__cta"><a class="vidrio" href="#tasacion"><b>Tasación gratis</b><small>Te decimos cuánto vale tu casa en 48 horas</small></a></div>
+  <div class="niebla"></div>
+  <h1 class="gigante" id="gigante" aria-label="Etxea Inmobiliaria">Etxea</h1>
+</section>
+
+<section class="enciende">
+  <div class="wrap">
+    <p class="eti">Venta y alquiler · Donostia y Gipuzkoa</p>
+    <p id="enciende">Comprar o vender una casa es de las decisiones más grandes que vas a tomar. Te acompañamos desde la primera visita hasta la firma en notaría, sin sorpresas.</p>
+  </div>
+</section>
+
+<section class="revela" aria-label="Destacados">
+  <div class="wrap revela__g">
+    <figure class="rv"><img src="fotos/salon.webp" width="1400" height="788" alt="Salón amplio con sofá claro y mucha luz" loading="lazy"/><figcaption class="ficha"><div><b>Gros</b><br/><span>3 hab. · 2 baños · 98 m²</span></div><span class="precio">425.000 €</span></figcaption></figure>
+    <figure class="rv alta"><img src="fotos/estudio.webp" width="1400" height="1750" alt="Piso de madera clara con estantería y comedor" loading="lazy"/><figcaption class="ficha"><div><b>Amara</b><br/><span>2 hab. · 1 baño · 70 m²</span></div><span class="precio">1.150 €/mes</span></figcaption></figure>
+  </div>
+</section>
+
+<section class="tasa" id="tasacion">
+  <div class="wrap tasa__g">
+    <div>
+      <p class="eti" style="color:#D8CFC4">Vender tu casa</p>
+      <h2 style="margin-top:18px">¿Cuánto vale <em class="s">tu casa?</em></h2>
+      <p class="l" data-enciende>Ven a vernos o llámanos: visitamos tu vivienda, la comparamos con lo que se ha vendido de verdad en tu barrio y te damos un precio honesto.</p>
+      <ul data-escalonado>
+        <li>Tasación gratis y sin compromiso</li>
+        <li>Fotos profesionales y plano de tu casa</li>
+        <li>Te acompañamos hasta la notaría</li>
+      </ul>
+      <div class="acc"><a class="btn" href="#contacto" target="_blank" rel="noopener">Pedir tasación por WhatsApp</a><a class="btn borde" href="tel:+34943000000">943 00 00 00</a></div>
+    </div>
+    <div class="foto" data-parallax="8"><img src="fotos/puerta.webp" width="1400" height="1167" alt="Puerta de madera abierta a un salón luminoso" loading="lazy"/></div>
+  </div>
+</section>
+
+<section class="pasos" id="pasos">
+  <div class="wrap">
+    <p class="eti">Paso a paso</p>
+    <h2>Así vendemos <em class="s">tu casa</em></h2>
+    <div class="pila">
+      <article class="carta" style="--i:0"><div><b>01</b><h3>Tasamos tu casa</h3><p>La visitamos y te damos un precio real, comparado con ventas de tu zona.</p></div><img src="fotos/comedor.webp" width="1400" height="953" alt="" loading="lazy"/></article>
+      <article class="carta" style="--i:1"><div><b>02</b><h3>La preparamos para enseñar</h3><p>Fotos, plano y anuncio en los portales donde busca la gente.</p></div><img src="fotos/sofa.webp" width="1400" height="1867" alt="" loading="lazy"/></article>
+      <article class="carta" style="--i:2"><div><b>03</b><h3>Hacemos las visitas</h3><p>Filtramos a los interesados y te contamos cada visita.</p></div><img src="fotos/ventana.webp" width="1400" height="1051" alt="" loading="lazy"/></article>
+      <article class="carta" style="--i:3"><div><b>04</b><h3>Firmamos en notaría</h3><p>Arras, papeles y firma: nos encargamos de todo hasta que entregas las llaves.</p></div><img src="fotos/dormitorio.webp" width="1400" height="2100" alt="" loading="lazy"/></article>
+    </div>
+  </div>
+</section>
+
+<section class="hz" id="en-venta">
+  <div class="wrap"><p class="eti">En venta y alquiler</p><h2>Casas <em class="s">disponibles</em></h2></div>
+  <div class="pista-caja" tabindex="0" role="region" aria-label="Casas disponibles, desliza para ver más"><div class="pista" id="pista">
+    <figure><img src="fotos/salon.webp" width="1400" height="788" alt="Salón en Gros" loading="lazy"/><figcaption><b>Gros · 425.000 €</b><span>3 hab. · 98 m²</span></figcaption></figure>
+    <figure><img src="fotos/comedor.webp" width="1400" height="953" alt="Comedor en Egia" loading="lazy"/><figcaption><b>Egia · 310.000 €</b><span>2 hab. · 75 m²</span></figcaption></figure>
+    <figure><img src="fotos/ventana.webp" width="1400" height="1051" alt="Vistas al mar desde un piso en Zarautz" loading="lazy"/><figcaption><b>Zarautz · 540.000 €</b><span>3 hab. · vistas al mar</span></figcaption></figure>
+    <figure><img src="fotos/estudio.webp" width="1400" height="1750" alt="Piso en Amara" loading="lazy"/><figcaption><b>Amara · 1.150 €/mes</b><span>2 hab. · 70 m²</span></figcaption></figure>
+    <figure><img src="fotos/dormitorio.webp" width="1400" height="2100" alt="Dormitorio en Tolosa" loading="lazy"/><figcaption><b>Tolosa · 198.000 €</b><span>2 hab. · 64 m²</span></figcaption></figure>
+  </div></div>
+</section>
+
+<section class="cierre" id="contacto">
+  <div class="wrap">
+    <p class="eti">Hablemos</p>
+    <h2 style="margin-top:18px">Tu próxima <em class="s">casa</em></h2>
+    <p data-enciende>Cuéntanos qué buscas o qué quieres vender. Te respondemos el mismo día.</p>
+    <a class="mag" id="mag" href="tel:+34943000000">Llamar al 943 00 00 00<i aria-hidden="true">→</i></a>
+    <div class="datos"><a href="#contacto">WhatsApp</a><a href="mailto:hola@etxea.example">hola@etxea.example</a><a href="#contacto">Calle Ejemplo 1, Donostia</a></div>
+  </div>
+</section>
+</main>
+<footer class="pie"><div class="wrap"><span>© Etxea Inmobiliaria · Donostia</span><span>Fotos: Unsplash</span></div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger, SplitText);
+const quieto = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const raton = matchMedia("(hover:hover) and (pointer:fine)").matches;
+
+/* Menú: claro cuando sale de la portada */
+ScrollTrigger.create({ start: () => innerHeight * .8, onToggle: (s) => document.getElementById("menu").classList.toggle("claro", s.isActive) });
+
+if (!quieto) {
+  /* Lenis conectado al reloj de GSAP */
+  const lenis = new Lenis({ smoothWheel: raton, lerp: 0.09 });
+  lenis.on("scroll", ScrollTrigger.update);
+  gsap.ticker.add((t) => lenis.raf(t * 1000));
+  gsap.ticker.lagSmoothing(0);
+  document.querySelectorAll('a[href^="#"]').forEach((a) => a.addEventListener("click", (e) => { e.preventDefault(); lenis.scrollTo(a.getAttribute("href"), { offset: -20 }); }));
+
+  document.fonts.ready.then(() => {
+    /* Portada: letras con máscara, foto que se asienta, parallax */
+    const g = SplitText.create("#gigante", { type: "chars", mask: "chars" });
+    const t = SplitText.create("#ptxt", { type: "lines", mask: "lines", aria: "none" });
+    gsap.timeline({ defaults: { ease: "expo.out" } })
+      .from("#pfoto img", { scale: 1.15, duration: 1.8 }, 0)
+      .from(g.chars, { yPercent: 110, duration: 1.3, stagger: 0.05 }, 0.15)
+      .from(t.lines, { yPercent: 100, duration: 1, stagger: 0.08 }, 0.5)
+      .from(".portada__cta, .menu", { opacity: 0, y: 10, duration: 0.8 }, 0.8);
+    gsap.to("#pfoto", { yPercent: 12, ease: "none", scrollTrigger: { trigger: ".portada", start: "top top", end: "bottom top", scrub: true } });
+    gsap.to("#gigante", { yPercent: -25, ease: "none", scrollTrigger: { trigger: ".portada", start: "top top", end: "bottom top", scrub: true } });
+
+    /* Texto que se enciende palabra a palabra */
+    document.querySelectorAll("#enciende,[data-enciende]").forEach((p) => {
+      const w = SplitText.create(p, { type: "words", aria: "none" });
+      gsap.fromTo(w.words, { opacity: 0.14 }, { opacity: 1, ease: "none", stagger: 0.1, scrollTrigger: { trigger: p, start: "top 82%", end: "bottom 45%", scrub: 1 } });
+    });
+
+    /* Titulares de sección: líneas con máscara */
+    document.querySelectorAll("section h2").forEach((h) => {
+      const s = SplitText.create(h, { type: "lines", mask: "lines" });
+      gsap.from(s.lines, { yPercent: 100, duration: 1, ease: "expo.out", stagger: 0.08, scrollTrigger: { trigger: h, start: "top 85%" } });
+    });
+
+    /* Listas que entran una detrás de otra */
+    document.querySelectorAll("[data-escalonado]").forEach((l) => gsap.from(l.children, { y: 22, opacity: 0, duration: 0.9, ease: "expo.out", stagger: 0.08, scrollTrigger: { trigger: l, start: "top 88%" } }));
+  });
+
+  /* Destacados: la foto se descubre de abajo arriba (la ficha llega después) */
+  document.querySelectorAll(".rv").forEach((f, i) => {
+    gsap.timeline({ scrollTrigger: { trigger: f, start: "top 85%" } })
+      .fromTo(f, { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.2, ease: "expo.inOut", delay: i * 0.12, clearProps: "clipPath" })
+      .from(f.querySelector("img"), { scale: 1.25, duration: 1.6, ease: "expo.out" }, "<")
+      .from(f.querySelector(".ficha"), { y: 20, opacity: 0, duration: 0.8, ease: "expo.out" }, "-=0.9");
+  });
+
+  /* Foto de la tasación que se queda atrás */
+  document.querySelectorAll("[data-parallax]").forEach((e) => gsap.to(e, { yPercent: -(+e.dataset.parallax), ease: "none", scrollTrigger: { trigger: e.closest("section"), start: "top bottom", end: "bottom top", scrub: true } }));
+
+  /* La carta de detrás se encoge un poco cuando llega la siguiente */
+  const cartas = gsap.utils.toArray(".carta");
+  cartas.forEach((c, i) => {
+    if (!cartas[i + 1]) return;
+    gsap.to(c, { scale: 0.94, filter: "brightness(.92)", ease: "none", scrollTrigger: { trigger: cartas[i + 1], start: "top 85%", end: "top 30%", scrub: true } });
+  });
+
+  /* Galería horizontal fijada solo en escritorio */
+  gsap.matchMedia().add("(min-width: 900px)", () => {
+    const pista = document.getElementById("pista");
+    const distancia = () => pista.scrollWidth - innerWidth + 60;
+    gsap.to(pista, { x: () => -distancia(), ease: "none", scrollTrigger: { trigger: "#en-venta", start: "top top", end: () => "+=" + distancia(), pin: true, scrub: 1, invalidateOnRefresh: true } });
+  });
+
+  /* Botón magnético (solo ratón) */
+  if (raton) {
+    const m = document.getElementById("mag"), xTo = gsap.quickTo(m, "x", { duration: 0.5, ease: "elastic.out(1,0.4)" }), yTo = gsap.quickTo(m, "y", { duration: 0.5, ease: "elastic.out(1,0.4)" });
+    m.addEventListener("mousemove", (e) => { const r = m.getBoundingClientRect(); xTo((e.clientX - r.left - r.width / 2) * 0.3); yTo((e.clientY - r.top - r.height / 2) * 0.3); });
+    m.addEventListener("mouseleave", () => { xTo(0); yTo(0); });
+  }
+  addEventListener("load", () => ScrollTrigger.refresh());
+}
+</script>
+</body>
+</html>
