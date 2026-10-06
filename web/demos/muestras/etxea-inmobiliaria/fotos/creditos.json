@@ -1,0 +1,66 @@
+[
+ {
+  "foto": "portada.webp",
+  "ancho": 2000,
+  "alto": 1333,
+  "autor": "Caroline Badran",
+  "licencia": "Unsplash License",
+  "enlace": "https://unsplash.com/photos/contemporary-dining-area-overlooking-the-beach-and-ocean-W3MckxPY6Mo?utm_source=oi_studio&utm_medium=referral"
+ },
+ {
+  "foto": "salon.webp",
+  "ancho": 1400,
+  "alto": 788,
+  "autor": "Taitopia Render",
+  "licencia": "Unsplash License",
+  "enlace": "https://unsplash.com/photos/a-living-room-filled-with-furniture-and-lots-of-windows-Xpf6n2SqWEI?utm_source=oi_studio&utm_medium=referral"
+ },
+ {
+  "foto": "estudio.webp",
+  "ancho": 1400,
+  "alto": 1750,
+  "autor": "Puscas Adryan",
+  "licencia": "Unsplash License",
+  "enlace": "https://unsplash.com/photos/modern-living-room-with-natural-light-and-wooden-accents-2cfj0Y5ch00?utm_source=oi_studio&utm_medium=referral"
+ },
+ {
+  "foto": "comedor.webp",
+  "ancho": 1400,
+  "alto": 953,
+  "autor": "Darren Richardson",
+  "licencia": "Unsplash License",
+  "enlace": "https://unsplash.com/photos/brown-wooden-table-with-chairs-CnRVuqc1iuU?utm_source=oi_studio&utm_medium=referral"
+ },
+ {
+  "foto": "puerta.webp",
+  "ancho": 1400,
+  "alto": 1167,
+  "autor": "Taitopia Render",
+  "licencia": "Unsplash License",
+  "enlace": "https://unsplash.com/photos/an-open-door-leading-to-a-living-room-nZnv7z_sECs?utm_source=oi_studio&utm_medium=referral"
+ },
+ {
+  "foto": "dormitorio.webp",
+  "ancho": 1400,
+  "alto": 2100,
+  "autor": "Minh Pham",
+  "licencia": "Unsplash License",
+  "enlace": "https://unsplash.com/photos/white-wooden-dresser-with-mirror-7pCFUybP_P8?utm_source=oi_studio&utm_medium=referral"
+ },
+ {
+  "foto": "ventana.webp",
+  "ancho": 1400,
+  "alto": 1051,
+  "autor": "note thanun",
+  "licencia": "Unsplash License",
+  "enlace": "https://unsplash.com/photos/a-window-with-a-view-of-the-ocean-AT1LcNqyGZ0?utm_source=oi_studio&utm_medium=referral"
+ },
+ {
+  "foto": "sofa.webp",
+  "ancho": 1400,
+  "alto": 1867,
+  "autor": "Kirill",
+  "licencia": "Unsplash License",
+  "enlace": "https://unsplash.com/photos/brown-wooden-center-table-inside-room-9uH-hM0VwPg?utm_source=oi_studio&utm_medium=referral"
+ }
+]

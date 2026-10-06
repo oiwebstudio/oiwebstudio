@@ -1,23 +1,20 @@
 /**
  * Muestras del portfolio con marca inventada.
  *
- * Las demos de web/demos/clientes/ están hechas para negocios reales: llevan su
- * nombre, teléfono, dirección, opiniones de Google y, a veces, fotos suyas. Para
- * enseñar el trabajo en la web pública sin problemas, este script copia tres de
- * ellas a web/demos/muestras/ cambiando todo lo que identifica al negocio:
+ * Las demos de web/demos/clientes/ están hechas para negocios reales (nombre, teléfono, dirección,
+ * opiniones de Google, fotos de personas y de su tienda). Este script genera en web/demos/muestras/
+ * versiones con marca inventada, sin ningún dato del original:
  *
- *   CVS (electricista, Beasain)   -> LUX Elektrikoak (Goierri)
- *   KIRO (fisioterapia, Irun)     -> ARIN Fisioterapia (Gipuzkoa)
- *   Alex (bar restaurante, Eibar) -> Mara Jatetxea (Gipuzkoa)
+ *   KIRO (fisioterapia, Irun)      -> ARIN Fisioterapia
+ *   Leire Godoy (psicología)       -> Ekhi Psicología (equipo con monogramas, foto libre)
+ *   Biciprecisión Igartua (bicis)  -> Pedala (ilustraciones de línea en vez de sus fotos)
+ *   Etxea (inmobiliaria)           -> ya es una plantilla inventada: se copia
  *
- * Nombres, teléfono (943 00 00 00), correo (.example), dirección, opiniones y
- * valoraciones se sustituyen; las fotos que eran del negocio se cambian por
- * fotos de Unsplash que ya estaban en cada demo o en assets/stock.
- *
- * Uso: node herramientas/sitio/muestras.mjs
- * Al terminar imprime lo que haya quedado de los datos originales: debe salir vacío.
+ * Uso: node herramientas/sitio/muestras.mjs   (desde la raíz del repo)
+ * Al terminar comprueba que no queda nada de los datos originales.
  */
 import fs from "node:fs";
+import sharp from "sharp";
 import path from "node:path";
 
 const WEB = path.resolve("web");
@@ -45,37 +42,6 @@ const comunes = (h, { tel, wa }) => aplicar(h, [
   ...(tel ? tel.map(([a, b]) => [a, b]) : []),
   ...(wa ? wa : []),
 ]);
-
-/* ------------------------------------------------------------------- LUX */
-function lux() {
-  const o = path.join(ORIGEN, "cvs-instalazio-elektrikoak/v3"), d = path.join(DESTINO, "lux-elektrikoak");
-  limpiar(d); copiar(o, d);
-  fs.copyFileSync(path.join(d, "fotos/prueba-cuadro.jpg"), path.join(d, "fotos/cuadro.jpg"));
-  fs.rmSync(path.join(d, "fotos/cuadro-suyo.jpg"));
-  let h = quitaComentarios(fs.readFileSync(path.join(d, "index.html"), "utf8"));
-  h = comunes(h, { tel: [[/613 ?26 ?82 ?12/g, "943 00 00 00"], ["+34613268212", "+34943000000"]] });
-  h = aplicar(h, [
-    ["Calle Esteban Lasa 9, 20200 Beasain", "Calle Mayor 1, Goierri (Gipuzkoa)"],
-    [/cvs\.instalaciones\.electricas@gmail\.com/g, "hola@lux-elektrikoak.example"],
-    ["CVS Instalazio Elektrikoak · Beasain, Gipuzkoa · Empresa habilitada en baja tensión 20/EIBT-1827", "LUX Elektrikoak · Goierri, Gipuzkoa · Empresa habilitada en baja tensión"],
-    ["Empresa habilitada en baja tensión · n.º 20/EIBT-1827", "Empresa habilitada en baja tensión"],
-    ["Empresa habilitada · BT 20/EIBT-1827", "Empresa habilitada · BT"],
-    ["<b>20/EIBT-1827</b>", "<b>BT</b>"],
-    ["20/EIBT-1827", "BT"],
-    ["· BT BT", "· BT"],
-    [/<div class="cristal"><b data-cuenta="4\.8">4,8<\/b>[\s\S]*?<\/div><\/div>/, '<div class="cristal"><b>24 h</b><div><span style="color:var(--amarillo);letter-spacing:.12em;font-size:13px">URGENCIAS</span><small>Presupuesto sin compromiso</small></div></div>'],
-    ["<span>C</span><span>V</span><span>S</span>", "<span>L</span><span>U</span><span>X</span>"],
-    ["CVS Instalazio Elektrikoak", "LUX Elektrikoak"],
-    ["CVS Elektrikoak", "LUX Elektrikoak"],
-    ["CVS · BT", "LUX · BT"],
-    [/CVS <small>/g, "LUX <small>"],
-    ["fotos/cuadro-suyo.jpg", "fotos/cuadro.jpg"],
-    [/Beasain/g, "Goierri"],
-    [/Mapa: calle Esteban Lasa 9, Goierri/g, "Mapa de Gipuzkoa"],
-  ]);
-  fs.writeFileSync(path.join(d, "index.html"), h);
-  return h;
-}
 
 /* ------------------------------------------------------------------ ARIN */
 function arin() {
@@ -119,45 +85,135 @@ function arin() {
   return h;
 }
 
-/* ------------------------------------------------------------------ MARA */
-function mara() {
-  const o = path.join(ORIGEN, "alex-jatetxea/v2"), d = path.join(DESTINO, "mara-jatetxea");
-  limpiar(d); copiar(o, d);
-  const sharpless = (de, a) => fs.copyFileSync(de, path.join(d, "fotos", a));
-  sharpless(path.join(STOCK, "sec-cafe-3.jpg"), "barra.jpg");
-  sharpless(path.join(d, "fotos/carne.jpg"), "chuleton.jpg");
-  sharpless(path.join(STOCK, "sec-rest-1.jpg"), "cocktail.jpg");
-  for (const x of ["barra.png", "chuleton.png", "mojito.png"]) fs.rmSync(path.join(d, "fotos", x));
-  let h = quitaComentarios(fs.readFileSync(path.join(d, "index.html"), "utf8"));
-  h = comunes(h, { tel: [[/608 ?85 ?91 ?88/g, "943 00 00 00"], ["+34608859188", "+34943000000"]], wa: [[/https:\/\/wa\.me\/34943000000\?text=/g, "#contacto?text="], [/https:\/\/wa\.me\/34943000000/g, "#contacto"]] });
+/* ------------------------------------------------------------------ EKHI */
+/* Psicología: de la demo de Leire Godoy. Las fotos de las personas se quitan
+   (retratos reales): el equipo lleva monogramas y la portada una foto libre. */
+function ekhi() {
+  const o = path.join(process.cwd(), "_local/demos/leire-godoy"), d = path.join(DESTINO, "ekhi-psikologia");
+  limpiar(d); fs.mkdirSync(path.join(d, "fotos"), { recursive: true });
+  fs.copyFileSync(path.join(WEB, "assets/stock/sec-flor-1.jpg"), path.join(d, "fotos/_flor.jpg"));
+  return sharp(path.join(d, "fotos/_flor.jpg")).resize(949, 1111, { fit: "cover" }).webp({ quality: 80 }).toFile(path.join(d, "fotos/portada.webp"))
+    .then(() => sharp(path.join(d, "fotos/_flor.jpg")).resize(949, 1111, { fit: "cover" }).jpeg({ quality: 84 }).toFile(path.join(d, "fotos/portada.jpg")))
+    .then(() => {
+      fs.rmSync(path.join(d, "fotos/_flor.jpg"));
+      let h = quitaComentarios(fs.readFileSync(path.join(o, "index.html"), "utf8"));
+      const EQ = [["leire", "Ainhoa Etxeberria", "AE", "Trauma y apego · IFS · EMDR", "Psicóloga general sanitaria. Formada en neuropsicología, EMDR, IFS y AEDP."],
+        ["laura", "Maite Olano", "MO", "Familia y pareja", "Psicóloga general sanitaria, especializada en terapia familiar y de pareja. Acompaña también a menores y familias."],
+        ["elena", "Nerea Sagarna", "NS", "Trauma, apego · EMDR · IFS", "Psicóloga sanitaria con formación en trauma, apego y psicología jurídica y forense."],
+        ["ane", "Uxue Lizarraga", "UL", "Ansiedad, depresión · niños y adolescentes", "Psicóloga clínica. Atiende a niños, adolescentes y adultos, en castellano y en inglés."]];
+      // equipo: monogramas en vez de fotos
+      for (const [k, nombre, ini, rol, txt] of EQ) {
+        h = h.replace(new RegExp(`<article class="rev"><picture><source type="image/avif" srcset="fotos/${k}-480\\.avif"/>[\\s\\S]*?</article>`), `<article class="rev"><div class="mono" aria-hidden="true">${ini}</div><h3>${nombre}</h3><p class="rol">${rol}</p><p>${txt}</p></article>`);
+      }
+      h = aplicar(h, [
+        [/var EQ = \{[^}]*\};/, `var EQ = { leire: "Ainhoa Etxeberria", laura: "Maite Olano", elena: "Nerea Sagarna", ane: "Uxue Lizarraga" }, INI = { leire: "AE", laura: "MO", elena: "NS", ane: "UL" };`],
+        [`'<span><img src="fotos/' + n + '-480.webp" alt="" width="32" height="32"/>' + EQ[n] + "</span>"`, `'<span><i class="mono mono--s" aria-hidden="true">' + INI[n] + "</i>" + EQ[n] + "</span>"`],
+        [/<div role="region" aria-label="Aviso"><p class="aviso">[\s\S]*?<\/p><\/div>/, `<div role="region" aria-label="Aviso"><p class="aviso">Muestra de diseño creada por OI Studio: el nombre, las personas y los datos son inventados.</p></div>`],
+        [/<picture><source type="image\/avif" srcset="fotos\/leire-480\.avif 480w[\s\S]*?<\/picture>/, `<picture><source type="image/webp" srcset="fotos/portada.webp"/><img src="fotos/portada.jpg" width="949" height="1111" alt="Ramo de flores rosas en cubos de zinc" fetchpriority="high"/></picture>`],
+        [`<figcaption><b>Leire Godoy</b> · psicóloga general sanitaria</figcaption>`, `<figcaption><b>Ekhi Psicología</b> · consulta presencial y online</figcaption>`],
+        [/<a class="nota" href="[^"]*"[^>]*>[\s\S]*?<\/a>/, `<a class="nota" href="#sesiones"><b>50 min</b><span>por sesión<br/>primera consulta sin compromiso</span></a>`],
+        [/https:\/\/wa\.me\/34688697602(\?text=)?/g, (m, q) => (q ? "#contacto?text=" : "#contacto")],
+        [/tel:\+34688697602/g, "tel:+34943000000"],
+        [/688 ?69 ?76 ?02/g, "943 00 00 00"],
+        [/mailto:leiregodoypsicologia@gmail\.com/g, "mailto:hola@ekhi-psikologia.example"],
+        [/leiregodoypsicologia@gmail\.com/g, "hola@ekhi-psikologia.example"],
+        [/<a href="https:\/\/www\.google\.com\/maps\/dir[^>]*>(<span>Consulta<\/span>)<b>[^<]*<\/b><\/a>/, `<a href="#contacto">$1<b>Calle Mayor 1, Donostia</b></a>`],
+        [/\s*<a href="https:\/\/www\.instagram\.com\/psicoleire\/"[\s\S]*?<\/a>/, ""],
+        [/<title>[^<]*<\/title>/, "<title>Ekhi Psicología · Donostia y online — muestra</title>"],
+        [/<meta name="description" content="[^"]*"\/>/, `<meta name="description" content="Psicólogas en Donostia y online especializadas en trauma, apego, ansiedad, terapia de pareja y familia. Muestra de diseño creada por OI Studio."/>`],
+        [/<a class="marca" href="#inicio">Leire Godoy<small>/, `<a class="marca" href="#inicio">Ekhi<small>`],
+        [/© Leire Godoy Psicología · Donostia/, "© Ekhi Psicología · Donostia"],
+        [/Idiomas<\/dt><dd>Castellano, e inglés con Ane/, "Idiomas</dt><dd>Castellano, e inglés con Uxue"],
+        [/\s*<script type="application\/ld\+json">[\s\S]*?<\/script>/g, ""],
+        [/<\/style>/, `.mono{display:grid;place-items:center;width:100%;aspect-ratio:3/4;border-radius:18px;background:var(--marca-suave);color:var(--marca);font:400 clamp(44px,7vw,84px)/1 Literata,serif;letter-spacing:-.02em;outline:1px solid var(--regla);outline-offset:-1px}
+.quien .mono.mono--s{width:32px;height:32px;aspect-ratio:1;border-radius:50%;font-size:12px;font-weight:600;letter-spacing:0;font-family:"Instrument Sans",sans-serif;background:var(--marca);color:var(--sobre-marca);outline:0}
+</style>`],
+        ["Leire Godoy", "Ekhi"],
+      ]);
+      fs.writeFileSync(path.join(d, "index.html"), h);
+      return h;
+    });
+}
+
+/* ------------------------------------------------------------------ PEDALA */
+/* Tienda de bicis: de Biciprecisión Igartua. Las fotos eran de su tienda, así
+   que se sustituyen por ilustraciones de línea dibujadas aquí. */
+const dibujaBici = (tipo, { fondo, trazo, w = 720, h = 540 }) => {
+  const R = tipo === "mtb" ? 100 : tipo === "gravel" ? 98 : 94;
+  const bb = [335, 330], rear = [185, 330], front = [tipo === "mtb" ? 590 : 565, 330];
+  const seat = tipo === "mtb" ? [292, 185] : [296, 168], head = tipo === "mtb" ? [498, 198] : [488, 182], headB = [head[0] + 14, head[1] + 42];
+  const ln = (a, b, extra = "") => `<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" ${extra}/>`;
+  const rueda = (c) => `<circle cx="${c[0]}" cy="${c[1]}" r="${R}"/><circle cx="${c[0]}" cy="${c[1]}" r="${R - 12}" stroke-opacity=".45"/><circle cx="${c[0]}" cy="${c[1]}" r="6" fill="${trazo}"/>`;
+  const manillar = tipo === "city" ? `<path d="M${head[0] - 6} ${head[1] - 22} h26 m-13 0 v22"/>` : `<path d="M${head[0] - 4} ${head[1] - 24} c24 -4 38 6 34 24 c-3 12 -16 14 -22 6"/>`;
+  const extra = tipo === "mtb" ? `<path d="M${bb[0] - 4} ${bb[1] - 14} L${headB[0] - 24} ${headB[1] - 6}" stroke-width="22" stroke-opacity=".55"/><rect x="${bb[0] - 28}" y="${bb[1] - 22}" width="46" height="26" rx="9" fill="${trazo}" fill-opacity=".85" stroke="none"/>` : tipo === "gravel" ? `<path d="M${rear[0]} ${rear[1] - R - 14} h70 M${front[0] - 60} ${front[1] - R - 14} h66" stroke-opacity=".5"/>` : "";
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 720 540"><rect width="720" height="540" fill="${fondo}"/><g transform="translate(0 28)" fill="none" stroke="${trazo}" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">${rueda(rear)}${rueda(front)}${ln(rear, bb)}${ln(rear, seat)}${ln(bb, seat)}${ln(seat, head)}${ln(bb, headB)}${ln(head, headB)}${ln(headB, front)}${extra}<path d="M${seat[0] - 8} ${seat[1] - 18} h38 M${seat[0] + 4} ${seat[1] - 18} L${seat[0] + 4} ${seat[1]}" stroke-width="8"/>${manillar}<circle cx="${bb[0]}" cy="${bb[1]}" r="16"/><path d="M${bb[0] - 30} ${bb[1] + 18} L${bb[0] + 30} ${bb[1] - 18}" stroke-width="6"/></g></svg>`;
+};
+async function pedala() {
+  const o = path.join(ORIGEN, "biciprecision-igartua"), d = path.join(DESTINO, "pedala-bizikletak");
+  limpiar(d); fs.mkdirSync(path.join(d, "nueva/fotos"), { recursive: true });
+  fs.copyFileSync(path.join(o, "nueva/anim-texto.js"), path.join(d, "nueva/anim-texto.js"));
+  // ilustraciones (cartel grande + 8 fichas)
+  const F = path.join(d, "nueva/fotos");
+  const guarda = async (nombre, svg, w, h) => { await sharp(Buffer.from(svg)).resize(w, h).webp({ quality: 84 }).toFile(path.join(F, nombre + ".webp")); };
+  const carteles = [["cartel", "road", "#3a3a37", "#e9e9e4"], ["cartel3", "mtb", "#2c2c2a", "#dcdcd6"]];
+  for (const [n, t, f, tr] of carteles) {
+    const svg = dibujaBici(t, { fondo: f, trazo: tr }).replace('translate(0 28)', "translate(-40 -20) scale(1.2)").replace('viewBox="0 0 720 540"', 'viewBox="0 0 720 540" preserveAspectRatio="xMidYMid slice"');
+    await sharp(Buffer.from(svg)).resize(1600, 1200).webp({ quality: 82 }).toFile(path.join(F, n + ".webp"));
+  }
+  const fichas = [["air-race-720", "road", "#e6e6e1", "#1c1c1a"], ["aero-teamline-720", "road", "#d9d9d3", "#222220"], ["thron-720", "mtb", "#ececE8", "#1c1c1a"], ["ams-hybrid-720", "mtb", "#d6d6d0", "#262624"], ["nuroad-720", "gravel", "#e2e2dc", "#1d1d1b"], ["stereo-hybrid-720", "mtb", "#dededa", "#222220"], ["flanders-720", "road", "#cfcfc9", "#1c1c1a"], ["aero-pro-720", "road", "#e9e9e4", "#242422"]];
+  for (const [n, t, f, tr] of fichas) await guarda(n, dibujaBici(t, { fondo: f, trazo: tr }), 720, 540);
+  let h = quitaComentarios(fs.readFileSync(path.join(o, "index.html"), "utf8"));
+  const ficha = (num, tipo, nombre, precio, dto, antes) => `<a class="bici" href="#visita"><span class="num tec"><span>${num}</span><span>${tipo}</span></span>${dto ? `<span class="dto">${dto}</span>` : ""}<figure><img src="nueva/fotos/__IMG__.webp" width="720" height="540" alt="" loading="lazy"/></figure><h3>${nombre}</h3><p>${precio}${antes ? `<s>${antes}</s>` : ""}</p></a>`;
+  const MODELOS = [["Carretera", "Aero 68 Race", "4.990 €", "", ""], ["Carretera", "Aero 68 Team", "4.190 €", "−15 %", "4.930 €"], ["Eléctrica", "Trail Eléctrica 6.6", "3.450 €", "", ""], ["Eléctrica", "Enduro Eléctrica 144", "4.150 €", "−25 %", "5.530 €"], ["Gravel", "Gravel Carbono 62", "3.990 €", "−14 %", "4.640 €"], ["Eléctrica", "Montaña Eléctrica 144", "4.690 €", "", ""], ["Carretera", "Clásica Pro", "2.990 €", "−30 %", "4.270 €"], ["Carretera", "Aero 68 Pro", "4.390 €", "", ""]];
+  const IMG = ["air-race-720", "aero-teamline-720", "thron-720", "ams-hybrid-720", "nuroad-720", "stereo-hybrid-720", "flanders-720", "aero-pro-720"];
+  const nuevas = MODELOS.map((m, i) => ficha(String(i + 1).padStart(2, "0"), m[0], m[1], m[2], m[3], m[4]).replace("__IMG__", IMG[i])).join("\n    ");
   h = aplicar(h, [
-    [/<title>[^<]*<\/title>/, "<title>Mara Jatetxea — Bar restaurante en Gipuzkoa</title>"],
-    [/<meta name="description" content="[^"]*"\/>/, '<meta name="description" content="Bar restaurante en Gipuzkoa. Cocina casera, chuletón y plato combinado de 14 € con bebida y postre de lunes a viernes."/>'],
-    [/<div class="cristal"><b>4,4<\/b>[\s\S]*?<\/div><\/div>/, '<div class="cristal"><b>14 €</b><div><span style="color:var(--amarillo);letter-spacing:.12em;font-size:13px">MENÚ DEL DÍA</span><small>Combinado, bebida y postre</small></div></div>'],
-    ["Bar restaurante · Ego-Gain 10, Eibar", "Bar restaurante · Gipuzkoa"],
-    ["<span>A</span><span>l</span><span>e</span><span>x</span>", "<span>M</span><span>a</span><span>r</span><span>a</span>"],
-    ["Ego-Gain Kalea, 10 · 20600 Eibar, Gipuzkoa", "Kale Nagusia, 1 · Gipuzkoa"],
-    ["Ego-Gain Kalea 10, 20600 Eibar", "Kale Nagusia 1, Gipuzkoa"],
-    ["Alex <small>Jatetxea · Eibar</small>", "Mara <small>Jatetxea · Gipuzkoa</small>"],
-    [/baralexrestaurante@gmail\.com/g, "hola@mara-jatetxea.example"],
-    ["Mapa: Ego-Gain 10, Eibar", "Mapa de Gipuzkoa"],
-    [/fotos\/barra\.png/g, "fotos/barra.jpg"],
-    [/fotos\/chuleton\.png/g, "fotos/chuleton.jpg"],
-    [/fotos\/mojito\.png/g, "fotos/cocktail.jpg"],
-    [/Alex Jatetxea/g, "Mara Jatetxea"],
-    [/Alex/g, "Mara"],
-    [/Ego-Gain/g, "Kale Nagusia"],
-    [/\bEibar\b/g, "Gipuzkoa"],
+    [/<a class="bici" href="tel[\s\S]*?<\/a>\s*(?=<\/div>\s*<p class="nota">)/, nuevas + "\n  "],
+    [/<p class="nota">[\s\S]*?<\/p>/, '<p class="nota">Modelos, ilustraciones y precios de ejemplo. En una web de verdad saldrían de tu catálogo, siempre al día.</p>'],
+    [/<title>[^<]*<\/title>/, "<title>Pedala · Tienda de bicis en Gipuzkoa — muestra</title>"],
+    [/<meta name="description" content="[^"]*"\/>/, '<meta name="description" content="Tienda de bicis en Gipuzkoa: carretera, gravel y eléctricas, montajes a la carta, ciclocross, biomecánica y segunda mano. Muestra de diseño de OI Studio."/>'],
+    [/<p class="aviso">[\s\S]*?<\/p>/, '<p class="aviso">Muestra de diseño creada por OI Studio. El nombre, las bicis y los datos son inventados.</p>'],
+    [/<a class="credito tec"[^>]*>[\s\S]*?<\/a>/, '<span class="credito tec">@pedala<br/>www.pedala.example<br/>©2026</span>'],
+    [/<h1 class="ancha nombre" aria-label="Igartua"([^>]*)><span aria-hidden="true">ig<\/span>([\s\S]*?)<span aria-hidden="true">rtu<\/span>/, '<h1 class="ancha nombre" aria-label="Pedala"$1><span aria-hidden="true">ped</span>$2<span aria-hidden="true">l</span>'],
+    [/<p class="ciudad">Bergara<\/p>/, '<p class="ciudad">Gipuzkoa</p>'],
+    [/<p class="frase">[^<]*<\/p>/, '<p class="frase">Pedala · carretera, gravel y eléctricas · montajes a la carta</p>'],
+    [/href="tel:\+34943761121"/g, 'href="#visita"'],
+    [/943 ?76 ?11 ?21/g, "943 00 00 00"],
+    [/<div class="tira" aria-hidden="true"><div class="pista"[^>]*>[\s\S]*?<\/div><\/div>/, '<div class="tira" aria-hidden="true"><div class="pista" data-pista="38">carretera <i>· 01 ·</i> gravel <i>· 02 ·</i> eléctrica <i>· 03 ·</i> montaña <i>· 04 ·</i> ciudad <i>· 05 ·</i> carretera <i>· 01 ·</i> gravel</div></div>'],
+    [/alt="Bici de carretera Cube[^"]*"/, 'alt="Ilustración de una bici de carretera"'],
+    [/alt="Bici eléctrica de montaña apoyada[^"]*"/, 'alt="Ilustración de una bici eléctrica de montaña"'],
+    [/<span>Spinning<\/span>|<b>Spinning<\/b><span>Bicis entre 500 y 1\.000 €<\/span>/, "<b>Spinning</b><span>Bicis desde 500 €</span>"],
+    [/<h2 class="ancha" data-lineas>zubieta 5<\/h2>/, '<h2 class="ancha" data-lineas>kale nagusia 1</h2>'],
+    [/<a href="https:\/\/www\.google\.com\/maps\/dir[^>]*><span class="tec">Tienda<\/span><b>[^<]*<\/b><\/a>/, '<a href="#visita"><span class="tec">Tienda</span><b>Kale Nagusia 1, Gipuzkoa</b></a>'],
+    [/\s*<a href="tel:\+34688673171">[\s\S]*?<\/a>/, ""],
+    [/<a href="mailto:[^"]*"><span class="tec">Correo<\/span><b>[^<]*<\/b><\/a>/, '<a href="mailto:hola@pedala.example"><span class="tec">Correo</span><b>hola@pedala.example</b></a>'],
+    [/\s*<div><span class="tec">Google<\/span><b>[^<]*<\/b><\/div>/, ""],
+    [/<footer class="pie tec"><div class="wrap"><span>[^<]*<\/span><span>[^<]*<\/span>/, '<footer class="pie tec"><div class="wrap"><span>© Pedala · Gipuzkoa</span><span>Carretera · Gravel · Eléctricas</span>'],
   ]);
   fs.writeFileSync(path.join(d, "index.html"), h);
   return h;
 }
 
+/* ------------------------------------------------------------------ ETXEA */
+/* Inmobiliaria: ya es una plantilla con marca inventada (Etxea). Se copia tal cual. */
+function etxea() {
+  const o = path.join(process.cwd(), "_local/material/plantillas/inmobiliaria"), d = path.join(DESTINO, "etxea-inmobiliaria");
+  limpiar(d); copiar(o, d);
+  const p = path.join(d, "index.html");
+  const h = aplicar(fs.readFileSync(p, "utf8"), [
+    [/https:\/\/wa\.me\/34600000000(\?text=[^"]*)?/g, "#contacto"],
+    [/https:\/\/www\.google\.com\/maps\/[^"]*/g, "#contacto"],
+    [/ target="_blank" rel="noopener">(WhatsApp|Calle Ejemplo)/g, ">$1"],
+  ]);
+  fs.writeFileSync(p, h);
+  return h;
+}
+
 fs.mkdirSync(DESTINO, { recursive: true });
-const resultado = { lux: lux(), arin: arin(), mara: mara() };
+const resultado = { arin: arin(), ekhi: await ekhi(), pedala: await pedala(), etxea: etxea() };
 
 /* Comprobación: nada del negocio original debe sobrevivir. */
-const PROHIBIDO = /CVS|cvs|Beasain|613|Esteban|EIBT|Nagore|Olga G|Lourdes|KIRO|kiro|Irun|943 ?63|Amostegi|Sosoaga|Aitor|Lucía H|Ana B\.|San Pedro|Alex|Ego-Gain|Eibar|608|Steven|baralex|@gmail|google\.com\/maps|wa\.me\/346/;
+const PROHIBIDO = /CVS|Beasain|613|Esteban|EIBT|KIRO|kiro|Irun|943 ?63|Amostegi|Sosoaga|Aitor|Alex|Eibar|Leire|Godoy|Soroa|psicoleire|Urrutia|Requena|Igartua|igartua|Bergara|Zubieta|[Bb]iciprecisi|\bCube\b|Flanders|\bMassi\b|Moustache|688|@gmail|google\.com\/maps|wa\.me\/346(?!00000000)|instagram\.com\/(?!oi)/;
 let limpio = true;
 for (const [k, h] of Object.entries(resultado)) {
   h.split("\n").forEach((l, i) => { if (PROHIBIDO.test(l)) { limpio = false; console.log(`  [${k}] línea ${i + 1}: ${l.trim().slice(0, 150)}`); } });

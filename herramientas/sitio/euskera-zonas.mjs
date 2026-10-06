@@ -74,6 +74,8 @@ export const COMUNES = [
   [`Debabarrena`, `Debabarrena`],
   [`Debagoiena`, `Debagoiena`],
   // Muestras nuevas del portfolio (octubre 2026)
+  [`Inmobiliaria`, `Higiezin-agentzia`],
+  [`Inmobiliaria, muestra de web para negocio local`, `Higiezin-agentzia, tokiko negozio baterako web lagina`],
   [`Fisioterapia`, `Fisioterapia`],
   [`Psicología`, `Psikologia`],
   [`Casa rural`, `Landetxea`],

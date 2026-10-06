@@ -57,8 +57,8 @@ const heroImg = (key, seed, nombre) => {
   return `<picture><source srcset="../assets/stock/${f}.webp" type="image/webp"/><img src="../assets/stock/${f}.jpg" alt="${esc(ROTULO[key])} en ${esc(nombre)}" width="1000" height="700" fetchpriority="high"/></picture>`;
 };
 /* Las tres muestras del portfolio (octubre 2026), en orden rotado según la página. */
-const TRIO = [["mara", "Bar restaurante"], ["lux", "Electricista"], ["arin", "Fisioterapia"]];
-const trioMosaico = (n) => [0, 1, 2].map((j) => TRIO[(j + n) % 3]).map(([img, rot]) => `<a class="zshot" href="../trabajos.html"><picture><source srcset="../assets/${img}-desk.webp" type="image/webp"/><img src="../assets/${img}-desk.jpg" alt="${rot}, muestra de web para negocio local" width="900" height="562" loading="lazy"/></picture><span class="zshot__lbl">${rot}</span></a>`).join("\n");
+const TRIO = [["etxea", "Inmobiliaria"], ["pedala", "Tienda de bicicletas"], ["ekhi", "Psicología"], ["arin", "Fisioterapia"]];
+const trioMosaico = (n) => [0, 1, 2].map((j) => TRIO[(j + n) % 4]).map(([img, rot]) => `<a class="zshot" href="../trabajos.html"><picture><source srcset="../assets/${img}-desk.webp" type="image/webp"/><img src="../assets/${img}-desk.jpg" alt="${rot}, muestra de web para negocio local" width="900" height="562" loading="lazy"/></picture><span class="zshot__lbl">${rot}</span></a>`).join("\n");
 
 /* ------------------------------------------------------- índice completo */
 const porSlug = Object.fromEntries(MUN.map((m) => [m.slug, m]));
