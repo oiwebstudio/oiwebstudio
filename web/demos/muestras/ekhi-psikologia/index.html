@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="robots" content="noindex, nofollow"/>
+<title>Ekhi Psicología · Donostia y online — muestra</title>
+<meta name="description" content="Psicólogas en Donostia y online especializadas en trauma, apego, ansiedad, terapia de pareja y familia. Muestra de diseño creada por OI Studio."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,300..600;1,7..72,300..400&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --papel:#f4f8f6;--superficie:#fcfefd;--tinta:#191e1d;--texto2:#5e6563;--regla:#d5dad9;
+  --marca:#3f6b5e;--sobre-marca:#fcfefd;--marca-suave:#dff0ea;--oscura:#0f1f1a;--sobre-oscura:#ecefee;--marca-en-oscura:#8fb8aa;
+  --e:cubic-bezier(.23,1,.32,1);--r:22px;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--papel);color:var(--tinta);font:400 17px/1.65 "Instrument Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:Literata,Georgia,serif;font-weight:350;letter-spacing:-.02em;line-height:1.08;text-wrap:balance}
+p{text-wrap:pretty}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(18px,4.5vw,44px)}
+:focus-visible{outline:2px solid var(--marca);outline-offset:3px;border-radius:6px}
+.solo-lector{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* cabecera */
+.cab{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--papel) 88%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color 200ms ease}
+.cab.bajado{border-color:var(--regla)}
+.cab .wrap{display:flex;align-items:center;gap:20px;min-height:68px}
+.marca{display:block;padding:6px 0;font-family:Literata,serif;font-size:20px;text-decoration:none;white-space:nowrap;line-height:1.1}
+.marca small{display:block;font:500 12px "Instrument Sans",sans-serif;color:var(--texto2);letter-spacing:.01em}
+.nav{display:flex;gap:26px;margin-left:auto;font-size:15px}
+.nav a{display:inline-block;padding:11px 0;text-decoration:none;color:var(--texto2);transition:color 150ms ease}
+@media(hover:hover) and (pointer:fine){.nav a:hover{color:var(--tinta)}}
+@media(max-width:860px){.nav{display:none}.cab .btn{margin-left:auto}}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;border-radius:999px;font-weight:600;font-size:15.5px;text-decoration:none;background:var(--marca);color:var(--sobre-marca);transition:transform 160ms var(--e),background-color 200ms ease;white-space:nowrap}
+.btn svg{width:19px;height:19px;flex:none}
+.btn:active{transform:scale(.97)}
+@media(hover:hover) and (pointer:fine){.btn:hover{background:color-mix(in srgb,var(--marca) 86%,#000)}}
+.btn--claro{background:transparent;color:var(--tinta);box-shadow:inset 0 0 0 1.5px var(--regla)}
+@media(hover:hover) and (pointer:fine){.btn--claro:hover{background:var(--superficie)}}
+.cab .btn{min-height:44px;padding:0 18px;font-size:14.5px}
+
+/* portada */
+.portada{padding:clamp(36px,6vw,80px) 0 clamp(56px,8vw,110px)}
+.portada .wrap{display:grid;gap:clamp(32px,5vw,64px);align-items:center}
+@media(min-width:900px){.portada .wrap{grid-template-columns:1.25fr .85fr}}
+.portada h1{font-size:clamp(42px,6.2vw,80px);font-weight:300;max-width:13ch}
+.portada h1 .hilo{position:relative;white-space:nowrap}
+.portada h1 .hilo svg{position:absolute;left:-2%;right:-2%;bottom:-.14em;width:104%;height:.32em;overflow:visible;pointer-events:none}
+.portada h1 .hilo path{fill:none;stroke:var(--marca);stroke-width:3;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:trazo 1300ms var(--e) 450ms forwards}
+@keyframes trazo{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.portada h1 .hilo path{animation:none;stroke-dashoffset:0}}
+.portada .lead{font-size:clamp(18px,1.6vw,20px);color:var(--texto2);margin-top:22px;max-width:40ch}
+.acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.nota{display:inline-flex;align-items:center;gap:12px;min-height:44px;margin-top:28px;font-size:14.5px;color:var(--texto2);text-decoration:none}
+.nota b{font:400 30px/1 Literata,serif;color:var(--tinta)}
+.nota .est{color:#86590c;letter-spacing:.08em}
+.retrato{position:relative;margin:0}
+.retrato img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;border-radius:var(--r);background:var(--marca-suave)}
+.retrato figcaption{margin-top:12px;font-size:14px;color:var(--texto2)}
+.retrato figcaption b{color:var(--tinta);font-weight:600}
+.etiq{position:absolute;left:-18px;bottom:64px;display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--superficie);border-radius:16px;font-size:14px;box-shadow:0 1px 2px rgba(15,31,26,.06),0 12px 32px -12px rgba(15,31,26,.25)}
+.etiq i{width:9px;height:9px;border-radius:50%;background:#3aa17e;box-shadow:0 0 0 4px #3aa17e33}
+@media(max-width:600px){.etiq{left:12px;bottom:58px}}
+
+/* su frase */
+.frase{background:var(--oscura);color:var(--sobre-oscura);padding:clamp(72px,10vw,140px) 0}
+.frase blockquote{font:italic 300 clamp(30px,4.4vw,58px)/1.15 Literata,serif;letter-spacing:-.015em;max-width:22ch;text-wrap:balance}
+.frase p{margin-top:26px;color:var(--marca-en-oscura);font-size:16px;max-width:52ch}
+
+/* firma: ¿qué te trae aquí? */
+.trae{padding:clamp(72px,9vw,128px) 0}
+.trae h2,.equipo h2,.sesiones h2,.contacto h2{font-size:clamp(34px,4.6vw,58px)}
+.trae .intro{color:var(--texto2);margin-top:14px;max-width:46ch}
+.trae__g{display:grid;gap:28px;margin-top:40px}
+@media(min-width:960px){.trae__g{grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}}
+.opciones{display:grid;gap:10px}
+.op{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;min-height:60px;padding:14px 20px;border:1.5px solid var(--regla);border-radius:16px;background:var(--superficie);font:500 17px/1.3 "Instrument Sans",sans-serif;color:var(--tinta);text-align:left;cursor:pointer;transition:border-color 200ms ease,background-color 200ms ease,transform 160ms var(--e)}
+.op:active{transform:scale(.985)}
+.op svg{width:20px;height:20px;flex:none;color:var(--texto2);transition:transform 250ms var(--e)}
+@media(hover:hover) and (pointer:fine){.op:hover{border-color:color-mix(in srgb,var(--marca) 45%,var(--regla))}}
+.op[aria-pressed="true"]{border-color:var(--marca);background:var(--marca-suave)}
+.op[aria-pressed="true"] svg{transform:translateX(4px);color:var(--marca)}
+.panel{position:sticky;top:96px;padding:clamp(26px,3.4vw,40px);border-radius:var(--r);background:var(--superficie);box-shadow:0 1px 2px rgba(15,31,26,.05),0 24px 60px -30px rgba(15,31,26,.3)}
+.panel__in{transition:opacity 220ms ease,transform 220ms var(--e)}
+.panel__in.cambia{opacity:0;transform:translateY(6px)}
+@media (prefers-reduced-motion:reduce){.panel__in{transition:none}}
+.panel small{display:block;font-size:14px;color:var(--marca);font-weight:600}
+.panel h3{font-size:clamp(26px,2.6vw,34px);margin-top:6px}
+.panel p{margin-top:14px;color:var(--texto2)}
+.quien{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;padding-top:20px;border-top:1px solid var(--regla)}
+.quien span{display:inline-flex;align-items:center;gap:9px;padding:5px 14px 5px 5px;border-radius:999px;background:var(--papel);font-size:14.5px;font-weight:500}
+.quien img{width:32px;height:32px;border-radius:50%;object-fit:cover;object-position:50% 15%}
+.panel .btn{margin-top:24px}
+
+/* equipo */
+.equipo{padding:clamp(72px,9vw,128px) 0;background:var(--superficie);border-block:1px solid var(--regla)}
+.equipo .intro{color:var(--texto2);margin-top:14px;max-width:52ch}
+.equipo__g{display:grid;gap:clamp(28px,3vw,40px) 24px;margin-top:44px;grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(min-width:960px){.equipo__g{grid-template-columns:repeat(4,minmax(0,1fr))}.equipo__g article:nth-child(even){margin-top:56px}}
+.equipo img{outline:1px solid var(--regla);outline-offset:-1px;width:100%;aspect-ratio:3/4;object-fit:cover;object-position:50% 18%;border-radius:18px;background:var(--marca-suave)}
+.equipo h3{font-size:24px;margin-top:16px}
+.equipo .rol{font-size:14px;color:var(--marca);font-weight:600;margin-top:4px}
+.equipo p{font-size:15px;color:var(--texto2);margin-top:8px}
+@media(max-width:520px){.equipo p{font-size:14.5px}}
+
+/* banda: texto que corre con el scroll */
+.banda{overflow:hidden;padding:clamp(40px,6vw,80px) 0;border-bottom:1px solid var(--regla)}
+.pista{white-space:nowrap;font:300 clamp(54px,8.5vw,128px)/1 Literata,serif;letter-spacing:-.02em;color:var(--marca);will-change:transform}
+.pista em{font-style:italic;color:var(--tinta)}
+.pista i{font-style:normal;color:var(--regla);margin:0 .15em}
+
+/* cómo trabajamos + sesiones */
+.sesiones{padding:clamp(72px,9vw,128px) 0}
+.sesiones__g{display:grid;gap:44px}
+@media(min-width:960px){.sesiones__g{grid-template-columns:1fr 1fr;gap:72px}}
+.principios{list-style:none;padding:0;margin-top:28px;border-top:1px solid var(--tinta)}
+.principios li{padding:22px 0;border-bottom:1px solid var(--regla)}
+.principios b{display:block;font:400 23px/1.25 Literata,serif}
+.principios span{display:block;margin-top:6px;color:var(--texto2);font-size:16px}
+.ficha{margin-top:28px;display:grid;gap:0;border-top:1px solid var(--tinta)}
+.ficha div{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:16px;padding:16px 0;border-bottom:1px solid var(--regla);font-size:16px}
+.ficha dt{color:var(--texto2)}
+.ficha dd{margin:0;font-weight:500}
+.incluye{margin-top:24px;font-size:15px;color:var(--texto2)}
+
+/* contacto */
+.contacto{padding:clamp(72px,9vw,120px) 0;background:var(--marca-suave)}
+.contacto .wrap{display:grid;gap:32px}
+@media(min-width:900px){.contacto .wrap{grid-template-columns:1.1fr .9fr;align-items:end}}
+.contacto p.lead{color:var(--texto2);margin-top:14px;max-width:40ch}
+.datos{display:grid;gap:0;font-size:16.5px}
+.datos a,.datos div{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid color-mix(in srgb,var(--marca) 25%,transparent);text-decoration:none}
+.datos span{color:var(--texto2)}
+.datos b{font-weight:600;text-align:right}
+@media(hover:hover) and (pointer:fine){.datos a:hover b{text-decoration:underline;text-underline-offset:3px}}
+
+.pie{padding:32px 0 40px;font-size:13.5px;color:var(--texto2)}
+.pie .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+
+/* barra del móvil: aparece cuando la portada ya no se ve */
+.movil{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:30;display:none;transform:translateY(140%);visibility:hidden;transition:transform 400ms var(--e),visibility 0s linear 400ms}
+.movil.on{transform:none;visibility:visible;transition:transform 400ms var(--e)}
+.movil .btn{width:100%;justify-content:center;min-height:56px;box-shadow:0 14px 30px -12px rgba(15,31,26,.55)}
+@media(max-width:700px){.movil{display:block}body{padding-bottom:84px}}
+@media (prefers-reduced-motion:reduce){.movil{transition:none}}
+
+/* entradas suaves */
+.rev{opacity:0;transform:translateY(14px);transition:opacity 700ms var(--e),transform 700ms var(--e)}
+.rev.on,.rev:focus-within{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rev{opacity:1;transform:none;transition:none}}
+
+.aviso{background:var(--tinta);color:#dfe5e3;font-size:13px;text-align:center;padding:9px 16px}
+.aviso a{color:#fff}
+.mono{display:grid;place-items:center;width:100%;aspect-ratio:3/4;border-radius:18px;background:var(--marca-suave);color:var(--marca);font:400 clamp(44px,7vw,84px)/1 Literata,serif;letter-spacing:-.02em;outline:1px solid var(--regla);outline-offset:-1px}
+.quien .mono.mono--s{width:32px;height:32px;aspect-ratio:1;border-radius:50%;font-size:12px;font-weight:600;letter-spacing:0;font-family:"Instrument Sans",sans-serif;background:var(--marca);color:var(--sobre-marca);outline:0}
+</style>
+</head>
+<body>
+<div role="region" aria-label="Aviso"><p class="aviso">Muestra de diseño creada por OI Studio: el nombre, las personas y los datos son inventados.</p></div>
+
+<header class="cab" id="cab"><div class="wrap">
+  <a class="marca" href="#inicio">Ekhi<small>Psicología · Donostia y online</small></a>
+  <nav class="nav" aria-label="Secciones"><a href="#que-te-trae">¿Qué te trae?</a><a href="#equipo">Equipo</a><a href="#sesiones">Sesiones</a><a href="#contacto">Contacto</a></nav>
+  <a class="btn" href="#contacto?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20una%20primera%20consulta" target="_blank" rel="noopener">Primera consulta</a>
+</div></header>
+
+<main id="inicio">
+<section class="portada" id="portada"><div class="wrap">
+  <div>
+    <h1>Un lugar seguro para <span class="hilo">entender<svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M2 13 C 40 4, 80 18, 120 10 S 180 6, 198 12"/></svg></span> lo que te pasa</h1>
+    <p class="lead">Psicólogas en Donostia y online, especializadas en trauma, apego, ansiedad, pareja y familia. Sesiones de 50 minutos, a tu ritmo.</p>
+    <div class="acciones">
+      <a class="btn" href="#contacto?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20una%20primera%20consulta" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg>Pedir primera consulta</a>
+      <a class="btn btn--claro" href="tel:+34943000000">943 00 00 00</a>
+    </div>
+    <a class="nota" href="#sesiones"><b>50 min</b><span>por sesión<br/>primera consulta sin compromiso</span></a>
+  </div>
+  <figure class="retrato">
+    <picture><source type="image/webp" srcset="fotos/portada.webp"/><img src="fotos/portada.jpg" width="949" height="1111" alt="Ramo de flores rosas en cubos de zinc" fetchpriority="high"/></picture>
+    <div class="etiq"><i aria-hidden="true"></i>Presencial y online</div>
+    <figcaption><b>Ekhi Psicología</b> · consulta presencial y online</figcaption>
+  </figure>
+</div></section>
+
+<section class="frase"><div class="wrap">
+  <blockquote class="enciende">Quizá tus emociones no están intentando destruirte, sino contarte algo que llevas demasiado tiempo sosteniendo.</blockquote>
+  <p class="rev">Te acompañamos a comprender el origen de tu malestar, liberar emociones que llevan demasiado tiempo encerradas y sanar heridas profundas.</p>
+</div></section>
+
+<section class="trae" id="que-te-trae"><div class="wrap">
+  <h2>¿Qué te trae aquí?</h2>
+  <p class="intro enciende">No hace falta tenerlo todo claro. Elige lo que más se parezca a lo que vives y te contamos cómo podemos acompañarte.</p>
+  <div class="trae__g">
+    <div class="opciones" role="group" aria-label="Lo que te trae">
+      <button class="op" type="button" data-o="ansiedad" aria-pressed="true">Ansiedad, tristeza o un bloqueo que no se va<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <button class="op" type="button" data-o="trauma" aria-pressed="false">Algo que pasó y sigue pesando<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <button class="op" type="button" data-o="pareja" aria-pressed="false">En la pareja, siempre acabamos en el mismo punto<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <button class="op" type="button" data-o="familia" aria-pressed="false">En casa nos cuesta escucharnos<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <button class="op" type="button" data-o="peques" aria-pressed="false">Mi hijo o mi hija lo está pasando mal<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    </div>
+    <div class="panel" aria-live="polite">
+      <div class="panel__in" id="panel">
+        <small id="p-tipo">Terapia individual</small>
+        <h3 id="p-tit">Un espacio solo para ti</h3>
+        <p id="p-txt">Un lugar donde poder parar, entender lo que te está pasando y empezar a ordenarlo sin sentirte juzgado/a. No nos quedamos solo en aliviar lo que sientes, sino en comprender qué hay detrás y cómo transformarlo.</p>
+        <div class="quien" id="p-quien"></div>
+        <a class="btn" id="p-cta" href="#contacto" target="_blank" rel="noopener">Escribirnos por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="equipo" id="equipo"><div class="wrap">
+  <h2>El equipo</h2>
+  <p class="intro enciende">Psicólogas sanitarias con formación en trauma, apego, EMDR, IFS y terapia familiar y de pareja. Trabajamos desde una mirada integradora: la terapia se adapta a ti, no al revés.</p>
+  <div class="equipo__g">
+    <article class="rev"><div class="mono" aria-hidden="true">AE</div><h3>Ainhoa Etxeberria</h3><p class="rol">Trauma y apego · IFS · EMDR</p><p>Psicóloga general sanitaria. Formada en neuropsicología, EMDR, IFS y AEDP.</p></article>
+    <article class="rev"><div class="mono" aria-hidden="true">MO</div><h3>Maite Olano</h3><p class="rol">Familia y pareja</p><p>Psicóloga general sanitaria, especializada en terapia familiar y de pareja. Acompaña también a menores y familias.</p></article>
+    <article class="rev"><div class="mono" aria-hidden="true">NS</div><h3>Nerea Sagarna</h3><p class="rol">Trauma, apego · EMDR · IFS</p><p>Psicóloga sanitaria con formación en trauma, apego y psicología jurídica y forense.</p></article>
+    <article class="rev"><div class="mono" aria-hidden="true">UL</div><h3>Uxue Lizarraga</h3><p class="rol">Ansiedad, depresión · niños y adolescentes</p><p>Psicóloga clínica. Atiende a niños, adolescentes y adultos, en castellano y en inglés.</p></article>
+  </div>
+</div></section>
+
+<div class="banda" aria-hidden="true"><div class="pista">Un lugar seguro <i>·</i> <em>trauma y apego</em> <i>·</i> pareja y familia <i>·</i> <em>niños y adolescentes</em> <i>·</i> Donostia y online <i>·</i> <em>un lugar seguro</em> <i>·</i> trauma y apego</div></div>
+
+<section class="sesiones" id="sesiones"><div class="wrap sesiones__g">
+  <div>
+    <h2>Cómo trabajamos</h2>
+    <ul class="principios">
+      <li class="rev"><b>Hecho a tu medida</b><span>Tu proceso se construye en torno a ti, a tu historia y a tus tiempos. Sin terapias rígidas ni fórmulas universales.</span></li>
+      <li class="rev"><b>Profundo e integrador</b><span>Trabajamos sobre el síntoma y también sobre su origen: tu historia, tus emociones, tu cuerpo y tus vínculos.</span></li>
+      <li class="rev"><b>Seguro y compasivo</b><span>Un espacio donde mostrarte sin miedo al juicio, respetando siempre tus ritmos.</span></li>
+    </ul>
+  </div>
+  <div>
+    <h2>Las sesiones</h2>
+    <dl class="ficha rev">
+      <div><dt>Duración</dt><dd>50 minutos</dd></div>
+      <div><dt>Dónde</dt><dd>En la consulta de Donostia u online</dd></div>
+      <div><dt>Para quién</dt><dd>Adultos, parejas, familias, niños y adolescentes</dd></div>
+      <div><dt>Idiomas</dt><dd>Castellano, e inglés con Uxue</dd></div>
+      <div><dt>Bonos</dt><dd>Hay bonos de sesiones: pregúntanos</dd></div>
+      <div><dt>Pago</dt><dd>48 horas antes de la sesión</dd></div>
+    </dl>
+    <p class="incluye rev">La tarifa incluye la preparación de cada sesión, el seguimiento de tu proceso, la supervisión del caso cuando hace falta y el contacto entre sesiones.</p>
+  </div>
+</div></section>
+
+<section class="contacto" id="contacto"><div class="wrap">
+  <div>
+    <h2>Empieza cuando lo necesites</h2>
+    <p class="lead rev">Escríbenos por WhatsApp si te resulta más fácil que llamar. Te respondemos y buscamos el mejor momento para empezar.</p>
+    <div class="acciones rev"><a class="btn" href="#contacto?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20una%20primera%20consulta" target="_blank" rel="noopener">Pedir primera consulta</a></div>
+  </div>
+  <div class="datos rev">
+    <a href="#contacto" target="_blank" rel="noopener"><span>WhatsApp</span><b>943 00 00 00</b></a>
+    <a href="mailto:hola@ekhi-psikologia.example"><span>Correo</span><b>hola@ekhi-psikologia.example</b></a>
+    <a href="#contacto"><span>Consulta</span><b>Calle Mayor 1, Donostia</b></a>
+  </div>
+</div></section>
+</main>
+
+<footer class="pie"><div class="wrap"><span>© Ekhi Psicología · Donostia</span><span>Bienvenido/a a tu lugar seguro.</span></div></footer>
+
+<nav class="movil" id="movil" aria-label="Pedir consulta"><a class="btn" href="#contacto?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20una%20primera%20consulta" target="_blank" rel="noopener">Pedir primera consulta</a></nav>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script>
+/* Animaciones de texto con el scroll (GSAP). Con «reducir movimiento» o sin GSAP, todo se ve quieto y completo. */
+(function () {
+  if (!window.gsap || !window.ScrollTrigger || !window.SplitText || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+  document.fonts.ready.then(function () {
+    /* portada: el titular sube línea a línea */
+    /* sin máscara: la máscara recortaría el trazo dibujado bajo «entender» */
+    var t = SplitText.create(".portada h1", { type: "lines" });
+    gsap.from(t.lines, { y: 34, opacity: 0, duration: 1.2, ease: "expo.out", stagger: 0.12, delay: 0.1 });
+    gsap.from(".portada .lead, .portada .acciones, .portada .nota, .retrato", { opacity: 0, y: 16, duration: 1, ease: "expo.out", stagger: 0.08, delay: 0.5 });
+    gsap.to(".retrato img", { yPercent: -6, ease: "none", scrollTrigger: { trigger: ".portada", start: "top top", end: "bottom top", scrub: true } });
+    /* titulares de sección: línea a línea al entrar */
+    document.querySelectorAll("main h2").forEach(function (h) {
+      var s = SplitText.create(h, { type: "lines", mask: "lines" });
+      gsap.from(s.lines, { yPercent: 105, duration: 1.1, ease: "expo.out", stagger: 0.1, scrollTrigger: { trigger: h, start: "top 86%" } });
+    });
+    /* su frase y las entradillas se encienden palabra a palabra mientras se leen */
+    document.querySelectorAll(".enciende").forEach(function (p) {
+      var w = SplitText.create(p, { type: "words", aria: "none" });
+      gsap.fromTo(w.words, { opacity: 0.16 }, { opacity: 1, ease: "none", stagger: 0.1, scrollTrigger: { trigger: p, start: "top 85%", end: "bottom 45%", scrub: true } });
+    });
+    /* banda: el texto corre de lado al ritmo del scroll */
+    gsap.fromTo(".pista", { xPercent: 0 }, { xPercent: -35, ease: "none", scrollTrigger: { trigger: ".banda", start: "top bottom", end: "bottom top", scrub: true } });
+  });
+})();
+</script>
+<script>
+(function () {
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var EQ = { leire: "Ainhoa Etxeberria", laura: "Maite Olano", elena: "Nerea Sagarna", ane: "Uxue Lizarraga" }, INI = { leire: "AE", laura: "MO", elena: "NS", ane: "UL" };
+  var O = {
+    ansiedad: { tipo: "Terapia individual", tit: "Un espacio solo para ti", txt: "Un lugar donde poder parar, entender lo que te está pasando y empezar a ordenarlo sin sentirte juzgado/a. No nos quedamos solo en aliviar lo que sientes, sino en comprender qué hay detrás y cómo transformarlo.", q: ["ane", "leire", "elena"] },
+    trauma: { tipo: "Trauma y apego", tit: "Lo que hoy te hace sufrir quizá sea la huella de lo que has tenido que sostener", txt: "El trauma no es solo algo grave o puntual: muchas veces se construye poco a poco, en vínculos y heridas que se repiten. Trabajamos con EMDR, IFS y una mirada sensible al apego, sin forzar procesos ni buscar soluciones rápidas.", q: ["leire", "elena", "ane"] },
+    pareja: { tipo: "Terapia de pareja", tit: "Mirar lo que pasa en la relación sin colocarse en bandos", txt: "Entender qué os está alejando, qué se repite y por qué. Comunicación, confianza, intimidad o distancia emocional, a un ritmo que respete a los dos.", q: ["laura"] },
+    familia: { tipo: "Terapia familiar", tit: "Un espacio para escucharos de verdad", txt: "En muchas familias no falta intención: faltan espacios donde escucharse. Miramos los conflictos sin señalar y cuidamos los tiempos, las voces y lo que cuesta decir delante de los demás.", q: ["laura"] },
+    peques: { tipo: "Terapia infantojuvenil", tit: "Para entender lo que les pasa sin sentirse juzgados", txt: "Ansiedad, cambios emocionales, malestar en el colegio o autoestima. Nos adaptamos a su forma de expresarse, con recursos creativos y acordes a su edad.", q: ["ane", "laura"] }
+  };
+  var panel = document.getElementById("panel"), quien = document.getElementById("p-quien");
+  function pinta(k) {
+    var o = O[k];
+    document.getElementById("p-tipo").textContent = o.tipo;
+    document.getElementById("p-tit").textContent = o.tit;
+    document.getElementById("p-txt").textContent = o.txt;
+    quien.innerHTML = '<span class="solo-lector">Te puede acompañar:</span>' + o.q.map(function (n) { return '<span><i class="mono mono--s" aria-hidden="true">' + INI[n] + "</i>" + EQ[n] + "</span>"; }).join("");
+    document.getElementById("p-cta").href = "#contacto?text=" + encodeURIComponent("Hola, me gustaría información sobre " + o.tipo.toLowerCase());
+  }
+  pinta("ansiedad");
+  document.querySelectorAll(".op").forEach(function (b) {
+    b.addEventListener("click", function () {
+      if (b.getAttribute("aria-pressed") === "true") return;
+      document.querySelectorAll(".op").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+      if (reduce) { pinta(b.dataset.o); return; }
+      panel.classList.add("cambia");
+      setTimeout(function () { pinta(b.dataset.o); panel.classList.remove("cambia"); }, 180);
+      if (innerWidth < 960) document.querySelector(".panel").scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+  });
+
+  var cab = document.getElementById("cab");
+  addEventListener("scroll", function () { cab.classList.toggle("bajado", scrollY > 8); }, { passive: true });
+
+  var movil = document.getElementById("movil"), portada = document.getElementById("portada");
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function (e) { movil.classList.toggle("on", !e[0].isIntersecting); }).observe(portada);
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("on"); io.unobserve(e.target); } }); }, { rootMargin: "0px 0px -8% 0px" });
+    document.querySelectorAll(".rev").forEach(function (n) { io.observe(n); });
+  } else { document.querySelectorAll(".rev").forEach(function (n) { n.classList.add("on"); }); movil.classList.add("on"); }
+})();
+</script>
+</body>
+</html>
