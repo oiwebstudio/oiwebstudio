@@ -4,243 +4,99 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta name="robots" content="noindex, nofollow"/>
-<title>Beko Errota · Hondarribia — muestra</title>
+<title>Restaurante en Hondarribia · Beko Errota — parrilla, marisco, bodas y eventos</title>
 <meta name="description" content="Restaurante Beko Errota, en un molino reformado del barrio Jaizubia (Hondarribia): parrilla, marisco, menú del día, bodas y eventos hasta 750 comensales."/>
-<!--
-  MUESTRA v2 · reconstruida sobre la referencia «nicotera» (tablero restaurante n.º 34), elegida por Oier:
-  la carta en tres paneles crema sostenidos delante de la foto (su jardín con la piscina y los viñedos), el panel
-  izquierdo con el nombre en letra caligráfica azul y un recuadro azul con dibujos de línea; los otros dos con los
-  títulos en caligráfica, platos en letra pequeña y dibujos sueltos. Un plato asoma en la esquina, como en la foto.
-  El resto de la página sigue con paneles crema y dibujos. Datos comprobados en su web (v1): menús 35 € y 43 €
-  IVA incl., años 80, 5 comedores, 750 comensales, txakoli, sidra y aceite propios.
--->
+<!-- MUESTRA v3 · web de varias páginas con todo el contenido de bekoerrota.com. Sin formulario de reservas: se reserva llamando. Fotos: suyas, de su web. -->
 <script>document.documentElement.classList.add("ef");setTimeout(function(){document.documentElement.classList.remove("ef")},2000);document.fonts&&document.fonts.ready.then(function(){document.documentElement.classList.remove("ef")});</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600&family=Karla:ital,wght@0,400..700;1,400&display=swap" rel="stylesheet"/>
-<style>
-.ef .heroe{visibility:hidden}
-:root{--crema:#f1ebdd;--crema2:#f6f1e6;--azul:#2c5a7a;--azul2:#3d6d8e;--tinta:#2c3a44;--suave:#55636d;--e:cubic-bezier(.23,1,.32,1)}
-*{box-sizing:border-box;margin:0}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{background:var(--crema2);color:var(--tinta);font:400 16px/1.6 Karla,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-img{display:block;max-width:100%;height:auto}
-a{color:inherit}
-:focus-visible{outline:2px solid var(--azul);outline-offset:3px}
-.script{font-family:"Dancing Script",cursive;font-weight:600;color:var(--azul);line-height:1}
-.aviso{background:var(--azul);color:#e8eff4;font-size:13px;text-align:center;padding:7px 16px}
-.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(18px,4.5vw,44px)}
-.dib{fill:none;stroke:currentColor;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
-.boton{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:999px;background:var(--azul);color:#fff;font:600 15px Karla,sans-serif;text-decoration:none;border:0;cursor:pointer;transition:transform 160ms var(--e),background-color 200ms ease}
-.boton:active{transform:scale(.97)}
-@media(hover:hover) and (pointer:fine){.boton:hover{background:#22495f}}
-.boton--claro{background:var(--crema);color:var(--azul)}
-@media(hover:hover) and (pointer:fine){.boton--claro:hover{background:#fff}}
+<link rel="stylesheet" href="estilo.css"/>
+<style>.ef .heroe .script{visibility:hidden}</style>
+<meta property="og:type" content="restaurant"/><meta property="og:locale" content="es_ES"/><meta property="og:site_name" content="Beko Errota"/>
+<meta property="og:title" content="Restaurante en Hondarribia · Beko Errota — parrilla, marisco, bodas y eventos"/><meta property="og:description" content="Restaurante Beko Errota, en un molino reformado del barrio Jaizubia (Hondarribia): parrilla, marisco, menú del día, bodas y eventos hasta 750 comensales."/><meta property="og:image" content="https://www.bekoerrota.com/nueva/fotos/portada.webp"/><meta name="twitter:card" content="summary_large_image"/>
+<meta name="theme-color" content="#2c5a7a"/>
+<link rel="preload" as="image" href="nueva/fotos/portada.webp" fetchpriority="high"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Restaurant","@id":"https://www.bekoerrota.com/#restaurante","name":"Beko Errota","url":"https://www.bekoerrota.com/","telephone":"+34 943 64 31 94","email":"bekoerrota@bekoerrota.com","image":"https://www.bekoerrota.com/nueva/fotos/portada.webp","servesCuisine":["Vasca","Parrilla","Pescados y mariscos"],"description":"Restaurante en un molino reformado del barrio Jaizubia (Hondarribia): parrilla, pescados, marisco, menú del día, bodas y eventos hasta 750 comensales.","address":{"@type":"PostalAddress","streetAddress":"Barrio Jaizubia, 3","postalCode":"20280","addressLocality":"Hondarribia","addressRegion":"Gipuzkoa","addressCountry":"ES"},"geo":{"@type":"GeoCoordinates","latitude":43.35379,"longitude":-1.8117},"hasMenu":"https://www.bekoerrota.com/carta.html","sameAs":["https://www.facebook.com/Beko-Errota-418353941560586/"]}</script>
 
-/* portada: foto + la carta en tres paneles */
-.heroe{position:relative;min-height:max(720px,100svh);overflow:hidden;display:grid;align-items:center;padding:100px 0 70px}
-.heroe .fondo{position:absolute;inset:0}
-.heroe .fondo img{width:100%;height:100%;object-fit:cover;filter:saturate(1.05)}
-.heroe .fondo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,35,48,.35),rgba(20,35,48,0) 30%,rgba(20,35,48,.1) 70%,rgba(20,35,48,.35))}
-.arriba{position:absolute;z-index:3;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:14px clamp(18px,4.5vw,44px);color:#fff}
-.arriba .script{color:#fff;font-size:30px;text-decoration:none;padding:6px 0;text-shadow:0 1px 10px rgba(0,0,0,.3)}
-.arriba nav{display:flex;gap:6px;font-weight:600;font-size:14.5px}
-.arriba nav a{background:rgba(20,35,48,.55);backdrop-filter:blur(6px);padding:8px 14px!important;border-radius:999px}
-.arriba nav a{text-decoration:none;padding:10px 0}
-@media(max-width:760px){.arriba nav .s{display:none}}
-.plato{position:absolute;z-index:2;left:-70px;bottom:-60px;width:clamp(200px,24vw,320px);aspect-ratio:1;border-radius:50%;overflow:hidden;border:10px solid #fff;box-shadow:0 20px 40px rgba(0,0,0,.35)}
-.plato img{width:100%;height:100%;object-fit:cover}
-.triptico{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(8px,1.2vw,14px);width:min(92vw,880px);margin:0 auto}
-.panel{background:var(--crema);padding:clamp(18px,2.4vw,30px) clamp(14px,2vw,24px);box-shadow:0 1px 2px rgba(0,0,0,.12),0 26px 50px -24px rgba(0,0,0,.55);aspect-ratio:3/5.2;display:flex;flex-direction:column}
-.panel.portadilla{justify-content:center;align-items:center;text-align:center;gap:16px}
-.panel .marca{font-size:clamp(34px,4.4vw,58px)}
-.recuadro{background:var(--azul);color:#e9eff3;width:84%;aspect-ratio:1.15;display:grid;place-items:center;position:relative}
-.recuadro svg{width:100%;height:100%}
-.decor{position:absolute;color:var(--azul);opacity:.9}
-.panel h2{font-size:clamp(20px,2vw,26px);margin:14px 0 8px}
-.panel h2:first-child{margin-top:0}
-.panel ul{list-style:none;padding:0}
-.panel li{font-size:clamp(10.5px,.95vw,12.5px);line-height:1.3;margin-bottom:9px}
-.panel li b{font-weight:700}
-.panel li span{display:block;color:var(--suave)}
-.panel .pie-p{margin-top:auto;font-style:italic;font-size:clamp(10px,.9vw,12px);color:var(--suave);text-align:center}
-.panel .icono{width:30px;height:30px;color:var(--azul);margin:4px 0 0 auto}
-@media(max-width:720px){
-  .triptico{grid-template-columns:1fr;width:min(92vw,420px)}
-  .panel{aspect-ratio:auto}
-  .panel li{font-size:14px}.panel h2{font-size:28px}
-  .plato{display:none}}
-.heroe .cta{position:relative;z-index:2;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:26px}
-
-/* el molino */
-.molino{padding:clamp(72px,9vw,130px) 0}
-.molino .g{display:grid;gap:36px;align-items:center}
-@media(min-width:900px){.molino .g{grid-template-columns:1.1fr .9fr}}
-.foto-marco{position:relative}
-.foto-marco img{width:100%;aspect-ratio:4/3;object-fit:cover}
-.foto-marco .panel{position:absolute;right:-22px;bottom:-30px;width:46%;aspect-ratio:auto;padding:20px}
-@media(max-width:899px){.foto-marco .panel{position:relative;right:auto;bottom:auto;width:auto;margin:-40px 16px 0}}
-.molino h2,.eventos h2,.reservar h2{font-size:clamp(46px,6vw,82px)}
-.molino p{margin-top:16px;font-size:18px;max-width:42ch;color:#475660}
-.cifras{display:flex;gap:28px;margin-top:22px}
-.cifras b{display:block;font:600 44px/1 "Dancing Script",cursive;color:var(--azul)}
-.cifras span{font-size:13.5px;color:var(--suave)}
-
-/* banda */
-.banda{overflow:hidden;background:var(--azul);color:var(--crema);padding:14px 0}
-.pista{white-space:nowrap;font:600 clamp(40px,5.4vw,72px)/1.2 "Dancing Script",cursive}
-.pista i{font-style:normal;font-family:Karla,sans-serif;font-size:.3em;vertical-align:middle;margin:0 1.2em;opacity:.75}
-
-/* bodas y eventos: tres paneles */
-.eventos{padding:clamp(72px,9vw,130px) 0;background:var(--crema)}
-.eventos .intro{max-width:46ch;margin-top:14px;color:#475660}
-.tres{display:grid;gap:18px;margin-top:40px}
-@media(min-width:900px){.tres{grid-template-columns:repeat(3,1fr)}}
-.tres article{background:var(--crema2);box-shadow:0 1px 2px rgba(0,0,0,.08),0 18px 36px -24px rgba(0,0,0,.4)}
-.tres img{width:100%;aspect-ratio:4/3;object-fit:cover}
-.tres div{padding:20px 22px 24px}
-.tres h3{font:600 28px "Dancing Script",cursive;color:var(--azul)}
-.tres p{color:#56656f;font-size:15px;margin-top:6px}
-
-/* reservar */
-.reservar{padding:clamp(72px,9vw,130px) 0}
-.reservar .g{display:grid;gap:40px}
-@media(min-width:940px){.reservar .g{grid-template-columns:1.05fr .95fr}}
-.hoja{background:var(--crema);padding:clamp(22px,3vw,36px);box-shadow:0 1px 2px rgba(0,0,0,.1),0 26px 50px -30px rgba(0,0,0,.45)}
-form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
-form .ancho{grid-column:1/-1}
-label{display:grid;gap:6px;font-size:14px;font-weight:600;min-width:0}
-input,select{width:100%;min-height:48px;padding:0 12px;border:0;border-bottom:1.5px solid #8f9aa2;background:transparent;font:400 16px Karla,sans-serif;color:var(--tinta)}
-input:focus,select:focus,input:focus-visible{outline:2px solid var(--azul);outline-offset:2px;box-shadow:0 0 0 4px rgba(44,90,122,.2)}
-.hecho{grid-column:1/-1;padding:12px;background:#fff;border-left:3px solid var(--azul);font-size:14.5px}
-.filas a,.filas div{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid #d9d1c0;text-decoration:none}
-.filas{border-top:1.5px solid var(--azul)}
-.filas span{color:var(--suave)}
-.filas b{text-align:right}
-.pie{background:var(--azul);color:#dbe5ec;font-size:14px;padding:26px 0}
-.pie .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
-.pie .script{color:#fff;font-size:26px}
-
-.movil{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:30;display:none;grid-template-columns:1.3fr 1fr;gap:8px;transform:translateY(140%);visibility:hidden;transition:transform 400ms var(--e),visibility 0s linear 400ms}
-.movil.on{transform:none;visibility:visible;transition:transform 400ms var(--e)}
-.movil .boton{min-height:52px;box-shadow:0 12px 26px -12px rgba(0,0,0,.5)}
-@media(max-width:700px){.movil{display:grid}body{padding-bottom:80px}}
-@media (prefers-reduced-motion:reduce){.movil{transition:none}}
-</style>
 </head>
 <body>
+<a class="saltar" href="#principal">Saltar al contenido</a>
 <div role="region" aria-label="Aviso"><p class="aviso">Muestra preparada por OI Studio para Beko Errota, con los datos y fotos de su web. Sin compromiso.</p></div>
-
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
   <symbol id="copa" viewBox="0 0 40 60"><path class="dib" d="M10 4h20c0 14-4 22-10 22S10 18 10 4zM20 26v24M12 54h16M11 12h18"/></symbol>
   <symbol id="botella" viewBox="0 0 30 70"><path class="dib" d="M11 4h8v12c5 4 7 8 7 14v34H4V30c0-6 2-10 7-14zM4 40h22M4 52h22"/></symbol>
   <symbol id="pez" viewBox="0 0 80 40"><path class="dib" d="M6 20c10-12 30-16 48-6l14-8-4 14 4 14-14-8C36 36 16 32 6 20zM20 18v.5M30 12c3 4 3 12 0 16"/></symbol>
-  <symbol id="rueda" viewBox="0 0 60 60"><circle class="dib" cx="30" cy="30" r="26"/><circle class="dib" cx="30" cy="30" r="8"/><path class="dib" d="M30 4v18M30 38v18M4 30h18M38 30h18M12 12l12 12M36 36l12 12M48 12 36 24M24 36 12 48"/></symbol>
   <symbol id="uva" viewBox="0 0 50 60"><path class="dib" d="M25 4c0 6 4 8 8 8M25 10c-6 0-6 4-6 4"/><circle class="dib" cx="18" cy="20" r="6"/><circle class="dib" cx="30" cy="20" r="6"/><circle class="dib" cx="24" cy="31" r="6"/><circle class="dib" cx="12" cy="31" r="6"/><circle class="dib" cx="36" cy="31" r="6"/><circle class="dib" cx="18" cy="42" r="6"/><circle class="dib" cx="30" cy="42" r="6"/><circle class="dib" cx="24" cy="53" r="6"/></symbol>
-  <symbol id="txuleta" viewBox="0 0 70 50"><path class="dib" d="M8 22c2-12 18-18 34-14 14 4 22 14 18 24-4 10-18 14-32 12C14 42 6 34 8 22z"/><path class="dib" d="M22 18c6 4 8 12 4 18M44 16c-6 6-6 16 0 22"/></symbol>
-  <symbol id="tenedor" viewBox="0 0 20 70"><path class="dib" d="M4 4v16c0 5 3 7 6 7s6-2 6-7V4M10 4v16M10 27v39"/></symbol>
+  <symbol id="manzana" viewBox="0 0 50 60"><path class="dib" d="M25 16c-6-6-20-4-20 12 0 14 10 28 20 24 10 4 20-10 20-24 0-16-14-18-20-12zM25 16c0-6 2-10 6-12M30 8c4 0 8 2 9 5"/></symbol>
+  <symbol id="oliva" viewBox="0 0 60 60"><path class="dib" d="M6 54C20 40 36 26 54 6M16 42c-6-2-8-8-6-12 6 0 10 4 6 12zM28 30c-6-2-8-8-6-12 6 0 10 4 6 12zM40 18c-6-2-8-8-6-12 6 0 10 4 6 12z"/><ellipse class="dib" cx="44" cy="44" rx="7" ry="10" transform="rotate(35 44 44)"/></symbol>
 </defs></svg>
-
 <header class="heroe" data-portada>
-  <div class="fondo"><img src="nueva/fotos/jardin-piscina.webp" width="798" height="512" alt="" fetchpriority="high"/></div>
-  <div class="arriba"><a class="script" href="#">Beko Errota</a><nav aria-label="Secciones"><a class="s" href="#molino">El molino</a><a class="s" href="#eventos">Bodas y eventos</a><a href="#reservar">Reservar</a></nav></div>
-  <figure class="plato" aria-hidden="true"><img src="nueva/fotos/txuleta.webp" width="450" height="338" alt=""/></figure>
-  <div>
-    <div class="triptico" data-parallax="6">
-      <section class="panel portadilla" aria-label="Beko Errota">
-        <h1 class="script marca" data-letras>Beko Errota</h1>
-        <div class="recuadro" aria-hidden="true"><svg viewBox="0 0 200 172"><g style="color:#e9eff3"><use href="#rueda" x="18" y="16" width="56" height="56"/><use href="#copa" x="96" y="12" width="30" height="45"/><use href="#botella" x="150" y="10" width="24" height="56"/><use href="#pez" x="20" y="96" width="70" height="35"/><use href="#uva" x="106" y="80" width="40" height="48"/><use href="#tenedor" x="160" y="90" width="16" height="56"/><use href="#txuleta" x="48" y="132" width="52" height="36"/></g></svg></div>
-        <p style="font-size:12px;color:#55636d">de la parrilla y del mar</p>
-      </section>
-      <section class="panel" aria-label="Menús y brasa">
-        <h2 class="script">Menús</h2>
-        <ul>
-          <li><b>Menú del día — 35 €</b><span>Martes a viernes a mediodía, salvo festivos. Cuatro primeros y cuatro segundos, postre, vino y café.</span></li>
-          <li><b>Menú de la casa — 43 €</b><span>Sopa de pescado, ensalada mixta o 4 gambones; rape a la parrilla, solomillo o magret de pato.</span></li>
-        </ul>
-        <svg class="icono" aria-hidden="true"><use href="#copa"/></svg>
-        <h2 class="script">De la brasa</h2>
-        <ul>
-          <li><b>Chuletón de buey</b><span>al peso</span></li>
-          <li><b>Entrecot</b></li>
-          <li><b>Solomillo</b><span>también con foie fresco en salsa de Oporto</span></li>
-        </ul>
-        <p class="pie-p">Precios con IVA incluido</p>
-      </section>
-      <section class="panel" aria-label="Del mar y de casa">
-        <h2 class="script">Del mar</h2>
-        <ul>
-          <li><b>A la parrilla</b><span>Rodaballo, besugo, cogote y rape</span></li>
-          <li><b>Merluza</b><span>con kokotxas y almejas</span></li>
-          <li><b>Sopa de pescado</b></li>
-        </ul>
-        <svg class="icono" aria-hidden="true"><use href="#pez"/></svg>
-        <h2 class="script">De temporada</h2>
-        <ul><li><b>Hongos</b><span>salteados o en revuelto</span></li><li><b>Verduras del tiempo</b></li></ul>
-        <h2 class="script">De casa</h2>
-        <ul><li><b>Txakoli</b><span>de nuestra uva Hondarribi zuri</span></li><li><b>Sidra y aceite</b><span>de nuestras manzanas y olivos</span></li></ul>
-        <p class="pie-p">Desde los años 80, en Jaizubia</p>
-      </section>
-    </div>
-    <div class="cta"><a class="boton" href="#reservar">Reservar mesa</a><a class="boton boton--claro" href="tel:+34943643194">943 64 31 94</a></div>
+  <div class="fondo"><img alt="Fachada del restaurante Beko Errota, un caserío en Hondarribia" fetchpriority="high" style="object-position:50% 35%" src="nueva/fotos/portada.webp" width="979" height="653" decoding="async"/></div>
+  <div class="arriba"><a class="script" href="index.html">Beko Errota</a><nav aria-label="Secciones"><a href="carta.html">Carta y menús</a><a href="bodas.html">Bodas</a><a href="eventos.html">Eventos</a><a href="productos.html">Productos</a><a href="mapa.html">Cómo llegar</a><a href="tel:+34943643194">Llamar</a></nav></div>
+  <div class="wrap">
+    <h1 class="script" data-letras>Beko Errota</h1>
+    <p class="sub">Un viejo molino con jardín, en Jaizubia (Hondarribia). De nuestra tierra a la mesa.</p>
+    <div class="cta"><a class="boton" href="tel:+34943643194"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="dib" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>Llamar para reservar</a><a class="boton boton--claro" href="carta.html">Ver la carta</a></div>
   </div>
 </header>
+<main id="principal">
 
-<main>
-<section class="molino" id="molino"><div class="wrap g">
+<section class="seccion" id="molino"><div class="wrap g2">
   <div>
     <h2 class="script" data-lineas>Un viejo molino con jardín</h2>
-    <p data-enciende>A comienzos de los años 80 la familia reformó un viejo molino del barrio Jaizubia, y desde entonces no ha parado de renovarlo. Alrededor, el jardín, el estanque, los viñedos y los olivos de los que salen su txakoli, su sidra y su aceite.</p>
-    <div class="cifras" data-escalonado><div><b>5</b><span>comedores</span></div><div><b>750</b><span>comensales a la vez</span></div></div>
+    <p class="intro" data-enciende>A comienzos de los años 80 la familia reformó un viejo molino del barrio Jaizubia, y desde entonces no ha parado de renovarlo. Más de cuarenta años de trayectoria, y alrededor el jardín, los viñedos y los olivos de los que salen su txakoli, su sidra y su aceite.</p>
+    <div class="cifras" data-escalonado><div><b>+40</b><span>años de trayectoria</span></div><div><b>5</b><span>comedores</span></div><div><b>750</b><span>comensales a la vez</span></div></div>
   </div>
   <div class="foto-marco">
-    <img src="nueva/fotos/molino.webp" width="797" height="513" alt="La piedra del molino en el jardín de Beko Errota" loading="lazy"/>
-    <div class="panel"><h3 class="script" style="font-size:26px">Txakoli</h3><p style="font-size:13.5px;color:#56656f;margin-top:6px">Muy selecto, de viñedo familiar, afrutado y aromático.</p><svg class="icono" aria-hidden="true"><use href="#uva"/></svg></div>
+    <img alt="El caserío de Beko Errota con sus balcones de flores" loading="lazy" src="nueva/fotos/caserio.webp" width="797" height="513" decoding="async"/>
+    <div class="panel"><h3>Txakoli propio</h3><p>Eva Mahastia: de nuestra uva Hondarribi zuri, de un viñedo familiar.</p><svg class="icono" aria-hidden="true"><use href="#uva"/></svg></div>
   </div>
 </div></section>
 
 <div class="banda" aria-hidden="true"><div class="pista" data-pista="40">Txakoli <i>✦</i> Sidra <i>✦</i> Aceite <i>✦</i> Parrilla <i>✦</i> Jardín <i>✦</i> Txakoli <i>✦</i> Sidra <i>✦</i> Aceite</div></div>
 
-<section class="eventos" id="eventos"><div class="wrap">
-  <h2 class="script" data-lineas>Bodas y eventos</h2>
-  <p class="intro" data-enciende>Un referente para las celebraciones de la comarca del Bidasoa: cinco comedores que se combinan, de una boda íntima a un congreso.</p>
-  <div class="tres" data-escalonado>
-    <article><img src="nueva/fotos/boda.webp" width="500" height="375" alt="Ceremonia en el jardín" loading="lazy"/><div><h3>Lunch en el jardín</h3><p>Los primeros bocados al aire libre, en un espacio amplio y tranquilo.</p></div></article>
-    <article><img src="nueva/fotos/salon.webp" width="500" height="334" alt="Comedor preparado para un banquete" loading="lazy"/><div><h3>Menús a medida</h3><p>Cinco comedores de distintos tamaños, que se combinan según lo que necesitéis.</p></div></article>
-    <article><img src="nueva/fotos/farolillos.webp" width="500" height="334" alt="Farolillos de papel en la noche" loading="lazy"/><div><h3>Recena de pintxos</h3><p>Para quien quiera quedarse hasta tarde: pintxos y fiesta.</p></div></article>
+<section class="seccion seccion--crema"><div class="wrap">
+  <h2 class="script" data-lineas>Descubre Beko Errota</h2>
+  <p class="intro">Todo lo que hacemos, en un par de toques.</p>
+  <div class="tarjetas tarjetas--4" data-escalonado>
+    <a class="tarjeta" href="carta.html"><div class="im"><img alt="Chuletón a la parrilla" loading="lazy" src="nueva/fotos/txuleta.webp" width="450" height="338" decoding="async"/></div><div class="tx"><h3>Carta y menús</h3><p>Parrilla, pescados, mariscos y menús desde 35 €.</p><span class="mas">Ver la carta →</span></div></a>
+    <a class="tarjeta" href="bodas.html"><div class="im"><img alt="Ceremonia en el jardín" loading="lazy" src="nueva/fotos/boda.webp" width="500" height="375" decoding="async"/></div><div class="tx"><h3>Bodas</h3><p>Vuestro día merece un trato a medida.</p><span class="mas">Ver bodas →</span></div></a>
+    <a class="tarjeta" href="eventos.html"><div class="im"><img alt="Comedor preparado para un banquete" loading="lazy" src="nueva/fotos/salon.webp" width="500" height="334" decoding="async"/></div><div class="tx"><h3>Eventos</h3><p>Cinco comedores, hasta 750 comensales.</p><span class="mas">Ver eventos →</span></div></a>
+    <a class="tarjeta" href="productos.html"><div class="im"><img alt="El viñedo de la casa" loading="lazy" src="nueva/fotos/vinedo.webp" width="797" height="513" decoding="async"/></div><div class="tx"><h3>Productos</h3><p>Txakoli, sidra y aceite de la casa.</p><span class="mas">Ver productos →</span></div></a>
   </div>
 </div></section>
 
-<section class="reservar" id="reservar"><div class="wrap g">
-  <div class="hoja">
-    <h2 class="script" data-lineas>Reservar mesa</h2>
-    <form id="form" novalidate>
-      <label class="ancho">Nombre<input name="nombre" autocomplete="name"/></label>
-      <label>Teléfono<input name="tel" type="tel" inputmode="tel" autocomplete="tel"/></label>
-      <label>Personas<select name="n"><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7 o más</option></select></label>
-      <label>Día<input name="dia" type="date"/></label>
-      <label>Hora<select name="h"><option>13:30</option><option>14:00</option><option>14:30</option><option>21:00</option><option>21:30</option></select></label>
-      <button class="boton ancho" type="submit">Pedir la reserva</button>
-      <p class="hecho" id="hecho" hidden>Esto es una muestra: en la web de verdad, la petición os llegaría al momento con todos los datos.</p>
-    </form>
+<section class="seccion"><div class="wrap">
+  <h2 class="script" data-lineas>El jardín</h2>
+  <p class="intro">Estanque, fuentes, caminos de piedra y flores: el sitio donde empieza cualquier celebración.</p>
+  <div class="tarjetas tarjetas--3" data-escalonado>
+    <div class="tarjeta"><img alt="Jardín con piscina" loading="lazy" src="nueva/fotos/jardin-piscina.webp" width="798" height="512" decoding="async"/></div>
+    <div class="tarjeta"><img alt="Camino de piedra entre flores" loading="lazy" src="nueva/fotos/jardin-camino.webp" width="797" height="513" decoding="async"/></div>
+    <div class="tarjeta"><img alt="El estanque" loading="lazy" src="nueva/fotos/estanque.webp" width="797" height="513" decoding="async"/></div>
   </div>
-  <div class="filas">
-    <a href="https://www.google.com/maps/dir/?api=1&destination=Restaurante+Beko+Errota+Barrio+Jaizubia+3+Hondarribia" target="_blank" rel="noopener"><span>Dónde</span><b>Barrio Jaizubia 3, Hondarribia</b></a>
-    <a href="tel:+34943643194"><span>Teléfono</span><b>943 64 31 94</b></a>
-    <a href="mailto:bekoerrota@bekoerrota.com"><span>Correo</span><b>bekoerrota@bekoerrota.com</b></a>
-    <div><span>Google</span><b>4,4 ★ · 903 opiniones</b></div>
+</div></section>
+
+<section class="seccion seccion--crema"><div class="wrap g2 g2--inv">
+  <div class="foto-marco"><img alt="Terraza junto al jardín" loading="lazy" src="nueva/fotos/jardin-terraza.webp" width="798" height="512" decoding="async"/></div>
+  <div>
+    <h2 class="script" data-lineas>Cómo llegar</h2>
+    <p class="intro">Barrio Jaizubia 3, Hondarribia. En Hondarribia, entre jardín, viñedos y olivos.</p>
+    <p style="margin-top:22px"><a class="boton" href="mapa.html">Ver el mapa</a></p>
   </div>
+</div></section>
+<section class="llamar"><div class="wrap">
+  <h2 class="script" data-lineas>Para reservar, llamad</h2>
+  <p>Mesa, grupo, boda o evento: lo hablamos por teléfono y os respondemos al momento.</p>
+  <a class="boton" href="tel:+34943643194"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="dib" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>943 64 31 94</a>
+  <small>O por correo: <a href="mailto:bekoerrota@bekoerrota.com">bekoerrota@bekoerrota.com</a></small>
 </div></section>
 </main>
-
-<footer class="pie"><div class="wrap"><span class="script">Beko Errota</span><span>Barrio Jaizubia · Hondarribia · desde los años 80</span></div></footer>
-
-<nav class="movil" data-barra-movil aria-label="Reservar"><a class="boton" href="#reservar">Reservar mesa</a><a class="boton boton--claro" href="tel:+34943643194">Llamar</a></nav>
-
+<footer class="pie"><div class="wrap"><span class="script">Beko Errota</span><nav aria-label="Pie"><a href="index.html">Inicio</a><a href="carta.html">Carta y menús</a><a href="bodas.html">Bodas</a><a href="eventos.html">Eventos</a><a href="productos.html">Productos</a><a href="mapa.html">Cómo llegar</a></nav><span>Barrio Jaizubia 3 · Hondarribia</span></div></footer>
+<nav class="movil" data-barra-movil aria-label="Reservar"><a class="boton" href="tel:+34943643194"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="dib" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>Llamar para reservar</a></nav>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
 <script src="nueva/anim-texto.js"></script>
-<script>document.getElementById("form").addEventListener("submit", function (e) { e.preventDefault(); var p = document.getElementById("hecho"); p.hidden = false; p.setAttribute("role", "status"); });</script>
+
 </body>
 </html>

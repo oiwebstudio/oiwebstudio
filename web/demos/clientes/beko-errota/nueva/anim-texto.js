@@ -13,7 +13,7 @@
   gsap.registerPlugin(ScrollTrigger, SplitText);
   document.fonts.ready.then(function () {
     document.querySelectorAll("[data-letras]").forEach(function (h) {
-      var s = SplitText.create(h, { type: "words,chars", mask: "chars" }); /* words: que no parta palabras al hacer salto de línea */
+      var s = SplitText.create(h, { type: "words,chars,lines", mask: "lines" }); /* words: que no parta palabras al hacer salto de línea */
       gsap.from(s.chars, { yPercent: 110, duration: 1.15, ease: "expo.out", stagger: 0.028, delay: 0.1 });
     });
     document.querySelectorAll("[data-lineas]").forEach(function (h) {
