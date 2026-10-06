@@ -409,17 +409,25 @@ p{text-wrap:pretty;}
   </div>
 </section>
 
-<!-- ═══ 3 · CIFRAS · body-stats-band ═══ -->
-<section class="cifras" aria-label="La clínica en cifras">
-  <div class="wrap">
-    <ul>
-      <li class="rev"><b class="cnum" data-n="14">14</b><small>años<br/>en Tolosa</small></li>
-      <li class="rev" data-d="1"><b class="cnum" data-n="24" data-suf=" h">24 h</b><small>urgencias<br/>todo el año</small></li>
-      <li class="rev" data-d="2"><b>4,9</b><small>Google<br/>268 reseñas</small></li>
-      <li class="rev" data-d="3"><b class="cnum" data-n="6">6</b><small>en el<br/>equipo</small></li>
-    </ul>
+<!-- ═══ 4b · URGENCIAS · body-steps ═══ -->
+<section class="urg sector" id="urgencias">
+  <div class="wrap urg__in">
+    <div class="rev">
+      <p class="rotulo">Urgencias 24 horas</p>
+      <h2>Si es de noche,<br/>llamá igual</h2>
+      <a class="urg__tel" id="urg-tel" href="#"><i aria-hidden="true"></i><span id="urg-num"></span></a>
+      <p class="urg__n">No hay contestador ni centralita. Descuelga un veterinario de la clínica.</p>
+    </div>
+    <ol class="rev" data-d="1">
+      <li><b>Llamás y te contesta un veterinario</b>, no una operadora. A cualquier hora del día o de la noche.</li>
+      <li><b>Te decimos si es urgente de verdad.</b> Muchas veces se resuelve por teléfono y te ahorrás el viaje y el recargo.</li>
+      <li><b>Si hay que venir, venís.</b> Abrimos la clínica y te esperamos en la puerta.</li>
+      <li><b>El recargo de urgencia son 45 €</b> sobre el precio de la consulta. Te lo decimos por teléfono, nunca aparece luego en la factura.</li>
+    </ol>
   </div>
 </section>
+
+
 
 <!-- ═══ 4 · SERVICIOS · body-accordion-media ═══ -->
 <section class="serv" id="servicios">
@@ -497,40 +505,41 @@ p{text-wrap:pretty;}
   </div>
 </section>
 
-<!-- ═══ 4b · URGENCIAS · body-steps ═══ -->
-<section class="urg sector" id="urgencias">
-  <div class="wrap urg__in">
-    <div class="rev">
-      <p class="rotulo">Urgencias 24 horas</p>
-      <h2>Si es de noche,<br/>llamá igual</h2>
-      <a class="urg__tel" id="urg-tel" href="#"><i aria-hidden="true"></i><span id="urg-num"></span></a>
-      <p class="urg__n">No hay contestador ni centralita. Descuelga un veterinario de la clínica.</p>
-    </div>
-    <ol class="rev" data-d="1">
-      <li><b>Llamás y te contesta un veterinario</b>, no una operadora. A cualquier hora del día o de la noche.</li>
-      <li><b>Te decimos si es urgente de verdad.</b> Muchas veces se resuelve por teléfono y te ahorrás el viaje y el recargo.</li>
-      <li><b>Si hay que venir, venís.</b> Abrimos la clínica y te esperamos en la puerta.</li>
-      <li><b>El recargo de urgencia son 45 €</b> sobre el precio de la consulta. Te lo decimos por teléfono, nunca aparece luego en la factura.</li>
-    </ol>
+<!-- ═══ 4 · LOS VETERINARIOS · body-cards-grid (la única cuadrícula de la página) ═══ -->
+<section class="prof" id="equipo">
+  <div class="wrap">
+    <p class="rotulo rev">El equipo</p>
+    <h2 class="prof__t rev" data-d="1">Seis personas y un turno de guardia real</h2>
+    <ul class="prof__g rev" data-d="2">
+      <li class="prof__c">
+        <img loading="lazy" width="500" height="500" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&q=80&auto=format&fit=crop" alt="Leire, veterinaria"/>
+        <h3>Leire Otsoa</h3>
+        <p class="prof__rol">Veterinaria · Abrió la clínica</p>
+        <p>Medicina interna y geriatría. Es a quien acaban llegando los perros mayores con varias cosas a la vez.</p>
+        <a class="btn btn--ghost" href="#contacto">Cita con Leire</a>
+      </li>
+      <li class="prof__c">
+        <img loading="lazy" width="500" height="500" src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=500&q=80&auto=format&fit=crop" alt="Ander, veterinario"/>
+        <h3>Ander Goikoetxea</h3>
+        <p class="prof__rol">Veterinario · Cirugía</p>
+        <p>Quirófano y traumatología. Si tu perro necesita pasar por la mesa, te explica antes qué se va a hacer y qué puede salir mal.</p>
+        <a class="btn btn--ghost" href="#contacto">Cita con Ander</a>
+      </li>
+      <li class="prof__c">
+        <img loading="lazy" width="500" height="500" src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=500&q=80&auto=format&fit=crop" alt="Maddi, auxiliar"/>
+        <h3>Maddi</h3>
+        <p class="prof__rol">Auxiliar · Gatos y exóticos</p>
+        <p>Lleva las consultas de gato, que necesitan otra mano y otro ritmo. También conejos y hurones.</p>
+        <a class="btn btn--ghost" href="#contacto">Cita con Maddi</a>
+      </li>
+    </ul>
+    <p class="prof__pie rev">Las guardias se reparten entre todos, así que <span class="subr">las urgencias las coge alguien de la casa</span>, no un servicio externo. Lo que no llevamos —exóticos grandes, caballos— te lo decimos y te mandamos a quien sí.</p>
   </div>
 </section>
 
-<!-- ═══ 5 · EQUIPO · body-overlap-card ═══ -->
-<section class="equipo" id="equipo">
-  <div class="wrap">
-    <figure class="equipo__m rev">
-      <img loading="lazy" width="1400" height="700"
-        src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1400&q=80&auto=format&fit=crop"
-        alt="El equipo de la clínica veterinaria"/>
-    </figure>
-    <div class="equipo__c rev" data-d="1">
-      <p class="rotulo">El equipo</p>
-      <h2 style="font-size:var(--t4);margin-top:10px">Seis personas y un turno de guardia real</h2>
-      <p>Abrieron Leire Otsoa y Ander Goikoetxea en 2011. Hoy son seis: cuatro veterinarios y dos auxiliares, y las guardias se reparten entre todos. Por eso las urgencias las coge alguien de la casa.</p>
-      <p>Tratamos perros, gatos, conejos y hurones. Lo que no llevamos —exóticos, caballos— <span class="subr">te lo decimos y te mandamos a quien sí</span>, sin marearte.</p>
-    </div>
-  </div>
-</section>
+
+
+
 
 <!-- ═══ 6 · GALERÍA · body-banner ═══ -->
 <section class="banner" id="galeria">
@@ -545,6 +554,18 @@ p{text-wrap:pretty;}
       <figure><img loading="lazy" width="500" height="300" src="https://images.unsplash.com/photo-1607923432780-7a9c30adcb72?w=500&q=80&auto=format&fit=crop" alt="Zona de hospitalización"/><figcaption>Hospitalización</figcaption></figure>
       <figure><img loading="lazy" width="500" height="300" src="https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb?w=500&q=80&auto=format&fit=crop" alt="Quirófano"/><figcaption>Quirófano</figcaption></figure>
     </div>
+  </div>
+</section>
+
+<!-- ═══ 3 · CIFRAS · body-stats-band ═══ -->
+<section class="cifras" aria-label="La clínica en cifras">
+  <div class="wrap">
+    <ul>
+      <li class="rev"><b class="cnum" data-n="14">14</b><small>años<br/>en Tolosa</small></li>
+      <li class="rev" data-d="1"><b class="cnum" data-n="24" data-suf=" h">24 h</b><small>urgencias<br/>todo el año</small></li>
+      <li class="rev" data-d="2"><b>4,9</b><small>Google<br/>268 reseñas</small></li>
+      <li class="rev" data-d="3"><b class="cnum" data-n="6">6</b><small>en el<br/>equipo</small></li>
+    </ul>
   </div>
 </section>
 
@@ -888,6 +909,26 @@ setInterval(pintarEstado, 60000);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- ═══ KIT DE MOVIMIENTO ═══ -->
 <style>
 /* ═══ RITMO Y CABECERA ═══
@@ -932,6 +973,12 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
   --tinta:var(--fondo);
   --tinta-sec:var(--osc-tinta);
   --filete:var(--osc-filete);
+  /* Los colores de estado también se voltean. Se olvidaron en la primera
+     versión: al oscurecer una sección con estrellas de reseña, el dorado de
+     --alerta se quedaba a 4,05 sobre el fondo oscuro, por debajo del 4,5.
+     Los tokens claros ya existían en :root, sólo faltaba usarlos aquí. */
+  --alerta:var(--alerta-clara);
+  --ok:var(--ok-claro);
   --filete-fuerte:var(--osc-filete);
   --fondo-alt:var(--osc);
   --acento:var(--acento-claro);
@@ -951,10 +998,56 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
    scroll-blur-in · scroll-text-highlight
    Límites de ui-ux-pro-max/data/motion.csv — ver scripts/kit-movimiento.mjs  */
 
+/* ═══ BARRA DE ACCIONES EN PÍLDORA ═══
+   La barra inferior iba de lado a lado y pegada al borde, con las esquinas en
+   ángulo recto. Al lado de la cabecera —que ya es una píldora flotante— parecía
+   de otra web. Ahora las dos son islas y comparten radio, filete y sombra.
+
+   Va aquí y no en cada plantilla porque el bloque era idéntico en las once.
+
+   El overflow:hidden es lo que hace que los botones de los extremos se
+   recorten con la curva; sin él, el verde del primario sobresale por la esquina
+   y se ve el pico. */
+.barra{
+  left:50%;right:auto;
+  transform:translateX(-50%);
+  width:min(100% - 24px, 460px);
+  bottom:calc(12px + env(safe-area-inset-bottom));
+  padding-bottom:0;
+  border:1px solid var(--filete-fuerte);
+  border-radius:100px;
+  overflow:hidden;
+  box-shadow:0 6px 26px -10px rgba(0,0,0,.42);
+  background:color-mix(in srgb, var(--fondo) 92%, transparent);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+/* En los extremos, la curva se come parte del ancho útil: un poco más de
+   holgura para que el rótulo no se acerque al filete redondeado. */
+.barra a:first-child{padding-left:12px;}
+.barra a:last-child{padding-right:12px;}
+/* Con la barra estrecha cada botón se queda en 122 px, y "Probar gratis"
+   partía en dos líneas: en una píldora de 58 px de alto eso se ve apretado.
+   El interletrado baja de .13em a .09em —sigue leyéndose como versal— y el
+   rótulo se prohíbe partir. El rótulo más largo de las once, "Cómo llegar",
+   cabe con holgura. */
+.barra a{white-space:nowrap;letter-spacing:.09em;}
+
+/* La barra ya no está pegada abajo, así que el pie necesita 12 px más de
+   holgura para que el último renglón no quede debajo de ella. */
+@media(max-width:899px){
+  .pie{padding-bottom:calc(104px + env(safe-area-inset-bottom));}
+}
+
 /* head-progress · barra de lectura al pie de la cabecera.
    Va dentro de .top, que ya es la isla flotante de arriba: no se le vuelve a
-   tocar la posición aquí o se pisaría el position:fixed. */
-.barra-lectura{position:absolute;left:0;bottom:-1px;height:2px;width:100%;
+   tocar la posición aquí o se pisaría el position:fixed.
+
+   Va metida por los lados a propósito: la cabecera es una píldora con 100px de
+   radio, y una barra que llegaba al borde se metía en la curva y salía cortada
+   en diagonal. Empieza donde empieza el texto, y con las puntas redondeadas. */
+.barra-lectura{position:absolute;left:clamp(20px,4%,38px);right:clamp(20px,4%,38px);
+  bottom:5px;height:2px;width:auto;border-radius:2px;
   transform:scaleX(var(--leido,0));transform-origin:left;background:var(--acento);
   pointer-events:none;}
 
@@ -966,7 +1059,16 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
 .js.encogido .marca small,.js.encogido .marca em{opacity:0;transition:opacity .2s;}
 
 /* head-underline · el subrayado del menú crece desde el centro */
-.nav a{position:relative;}
+/* Los enlaces del menú medían entre 35 y 42 px de alto según la plantilla, por
+   debajo de los 44 px de zona táctil que exige el contrato. Se iguala aquí, en
+   el kit, porque el fallo era el mismo en las once. El alto no cambia la
+   maqueta: la cabecera ya es más alta que eso. */
+/* Los enlaces legales del pie van dentro de un párrafo, así que la excepción
+   de texto en línea del criterio 2.5.8 los cubre; aun así medían 14 px de alto,
+   que con el dedo es una lotería. Un poco de relleno vertical los deja en 24 sin
+   descolocar el renglón. Los 44 px completos sí romperían la línea. */
+.pie a{display:inline-block;padding:5px 0;}
+.nav a{position:relative;min-height:44px;display:inline-flex;align-items:center;}
 .nav a::after{content:"";position:absolute;left:50%;right:50%;bottom:0;height:1px;
   background:var(--acento);transition:left .3s var(--ease),right .3s var(--ease);}
 .nav a:hover::after{left:0;right:0;}
@@ -1043,8 +1145,30 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
   .js .lead .pal{opacity:1!important;}
   .js .top__in{transition:none;}
 }
+/* ═══ PROFESIONALES ═══
+   Sustituye a los tres párrafos de prosa que había antes. products.csv pide
+   «booking system» y «service menu» para el sector; pedir cita con una persona
+   concreta es lo que de verdad distingue a un salón de una cadena, y en prosa
+   no se podía hacer clic. */
+.prof{padding:clamp(48px,7vw,96px) 0;background:var(--fondo-alt);
+  border-top:1px solid var(--filete);border-bottom:1px solid var(--filete);}
+.prof__t{max-width:20ch;margin:12px 0 clamp(22px,3.5vw,38px);}
+.prof__g{list-style:none;display:grid;gap:14px;grid-template-columns:1fr;}
+.prof__c{background:var(--fondo);border:1px solid var(--filete);padding:0 0 18px;
+  display:flex;flex-direction:column;}
+.prof__c img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;display:block;
+  margin-bottom:14px;}
+.prof__c h3{font-size:var(--t2);margin:0 18px 2px;}
+.prof__rol{font-family:var(--detalle);font-size:10.5px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--acento);margin:0 18px 10px;}
+.prof__c p{margin:0 18px 14px;color:var(--tinta-sec);font-size:var(--t0);flex:1;}
+.prof__c .btn{margin:0 18px;justify-content:center;}
+.prof__pie{margin-top:22px;color:var(--tinta-sec);font-size:var(--t0);max-width:70ch;}
+@media(min-width:620px){ .prof__g{grid-template-columns:1fr 1fr;} }
+@media(min-width:980px){ .prof__g{grid-template-columns:repeat(3,1fr);} }
+
 </style>
-<script>window.__RITMO__=[1,5];
+<script>window.__RITMO__=["banner","feed"];
 /* ═══ KIT DE MOVIMIENTO ═══ (ver scripts/kit-movimiento.mjs) */
 (function(){
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -1133,11 +1257,10 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
      scripts/kit-movimiento.mjs. No se mide nada en tiempo de ejecución:
      las secciones a oscurecer están decididas y revisadas una a una. */
   (function(){
-    var indices = window.__RITMO__ || [];
-    if(!indices.length) return;
-    var secciones = [].slice.call(document.querySelectorAll("main > section, body > section"));
-    indices.forEach(function(i){
-      if(secciones[i]) secciones[i].classList.add("oscura");
+    var clases = window.__RITMO__ || [];
+    clases.forEach(function(c){
+      var sec = document.querySelector("main > section." + c + ", body > section." + c);
+      if(sec) sec.classList.add("oscura");
     });
   })();
 
