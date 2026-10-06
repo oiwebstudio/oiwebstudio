@@ -229,7 +229,11 @@ table.serv__t tr td:first-child{padding-left:0;}
 .comp input:focus-visible+.tira{box-shadow:0 0 0 3px var(--acento);}
 .comp .et{position:absolute;bottom:12px;font-family:var(--detalle);font-size:9.5px;
   font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:6px 11px;
-  background:rgba(21,23,26,.82);color:var(--acento-con);pointer-events:none;}
+  /* La plancha es siempre oscura y el rótulo siempre claro: --acento-con no
+     vale aquí, porque dentro de .oscura se vuelve oscuro y el texto
+     desaparecía sobre su propia plancha. --fondo no se remapea nunca. */
+  background:color-mix(in srgb, var(--osc) 82%, transparent);
+  color:var(--fondo);pointer-events:none;}
 .comp .et-a{left:12px;} .comp .et-d{right:12px;}
 .obra h3{font-size:var(--t3);margin-bottom:10px;}
 .obra p{color:var(--tinta-sec);font-size:15.5px;max-width:46ch;}
@@ -371,6 +375,26 @@ table.serv__t tr td:first-child{padding-left:0;}
   .rev{opacity:1!important;transform:none!important;}
   .subr::after{transform:scaleX(1)!important;}
 }
+
+/* ═══ PAPELES EN REGLA ═══
+   products.csv pide «certifications» y «local trust signals» para el gremio.
+   Va como lista de definiciones, no como tarjetas: la cuadrícula de la página
+   ya la gasta el bloque de oficios, y aquí lo que importa es poder leer el
+   texto largo de cada garantía, no que quepan cuatro cuadros iguales. */
+.cert{padding:clamp(48px,7vw,96px) 0;}
+.cert__in{display:grid;gap:clamp(24px,4vw,54px);grid-template-columns:1fr;}
+.cert__cab h2{margin:12px 0 14px;max-width:16ch;}
+.cert__cab p{color:var(--tinta-sec);}
+.cert__l{margin:0;}
+.cert__l > div{padding:18px 0;border-top:1px solid var(--filete);}
+.cert__l > div:last-child{border-bottom:1px solid var(--filete);}
+.cert__l dt{font-family:var(--detalle);font-size:11px;font-weight:700;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--acento);margin-bottom:7px;}
+.cert__l dd{margin:0;color:var(--tinta-sec);}
+.cert__pie{margin-top:22px;color:var(--tinta-sec);font-size:var(--t0);}
+@media(min-width:900px){
+  .cert__in{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);align-items:start;}
+}
 </style>
 <script>document.documentElement.className+=" js";</script>
 </head>
@@ -421,17 +445,7 @@ table.serv__t tr td:first-child{padding-left:0;}
   </figure>
 </section>
 
-<!-- ═══ 3 · CIFRAS · body-logos-strip ═══ -->
-<section class="cifras" aria-label="La empresa en cifras">
-  <div class="wrap">
-    <ul>
-      <li class="rev"><b class="cnum" data-n="22">22</b><small>años<br/>reformando</small></li>
-      <li class="rev" data-d="1"><b class="cnum" data-n="340" data-suf="+">340+</b><small>obras<br/>entregadas</small></li>
-      <li class="rev" data-d="2"><b>4,9</b><small>Google<br/>96 reseñas</small></li>
-      <li class="rev" data-d="3"><b class="cnum" data-n="9">9</b><small>personas<br/>en nómina</small></li>
-    </ul>
-  </div>
-</section>
+
 
 <!-- ═══ 4 · SERVICIOS · body-comparison ═══ -->
 <section class="serv" id="servicios">
@@ -496,7 +510,7 @@ table.serv__t tr td:first-child{padding-left:0;}
     <div class="serv__cab">
       <div class="rev">
         <p class="rotulo">Obras hechas</p>
-        <h2>Arrastrá la barra y mirá el antes</h2>
+        <h2>Arrastra la barra y mira el antes</h2>
       </div>
       <p class="lead rev" data-d="1">Obras reales de los dos últimos años, con su plazo y lo que costaron de verdad.</p>
     </div>
@@ -581,20 +595,56 @@ table.serv__t tr td:first-child{padding-left:0;}
   </div>
 </section>
 
-<!-- ═══ 5 · EQUIPO · body-media-left ═══ -->
-<section class="equipo" id="equipo">
-  <div class="wrap equipo__in">
-    <img class="rev" loading="lazy" width="900" height="700"
-      src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=900&q=80&auto=format&fit=crop"
-      alt="El equipo de obra trabajando en una vivienda"/>
-    <div>
-      <p class="rotulo rev">Quiénes somos</p>
-      <h2 class="rev" data-d="1">Nueve personas,<br/>todas en nómina</h2>
-      <p class="rev" data-d="2">Empezó Andoni Elutxeta en 2003 haciendo baños él solo. Hoy somos nueve: albañiles, fontanero, electricista y una persona en oficina que coge el teléfono siempre.</p>
-      <p class="rev" data-d="2">No subcontratamos la obra a terceros. <span class="subr">La gente que entra en tu casa trabaja aquí</span>, y por eso podemos comprometer plazos por escrito.</p>
-    </div>
+<!-- ═══ 4 · LOS OFICIOS · body-cards-grid (la única cuadrícula de la página) ═══ -->
+<section class="prof" id="equipo">
+  <div class="wrap">
+    <p class="rotulo rev">Quiénes somos</p>
+    <h2 class="prof__t rev" data-d="1">Nueve personas, todas en nómina</h2>
+    <ul class="prof__g rev" data-d="2">
+      <li class="prof__c">
+        <img loading="lazy" width="500" height="500" src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&q=80&auto=format&fit=crop" alt="Andoni, albañil"/>
+        <h3>Andoni</h3>
+        <p class="prof__rol">Albañilería · Montó la empresa</p>
+        <p>Empezó haciendo baños él solo en 2003. Es quien va a la visita y quien firma el presupuesto, así que hablas con él desde el primer día.</p>
+        <a class="btn btn--ghost" href="#contacto">Pedir visita</a>
+      </li>
+      <li class="prof__c">
+        <img loading="lazy" width="500" height="500" src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=500&q=80&auto=format&fit=crop" alt="Iker, fontanero"/>
+        <h3>Iker</h3>
+        <p class="prof__rol">Fontanería · Instalador autorizado</p>
+        <p>Lleva las instalaciones y los boletines. En pisos de los sesenta es el que te dice si hay que cambiar la bajante entera o no.</p>
+        <a class="btn btn--ghost" href="#garantias">Ver certificados</a>
+      </li>
+      <li class="prof__c">
+        <img loading="lazy" width="500" height="500" src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=500&q=80&auto=format&fit=crop" alt="Miren, en oficina"/>
+        <h3>Miren</h3>
+        <p class="prof__rol">Oficina · Coge el teléfono</p>
+        <p>Plazos, permisos y la comunidad de vecinos. Si llamas un martes a las diez, es quien te contesta y quien sabe por dónde va tu obra.</p>
+        <a class="btn btn--ghost" href="#contacto">Llamar a la oficina</a>
+      </li>
+    </ul>
+    <p class="prof__pie rev">No subcontratamos la obra a terceros. <span class="subr">La gente que entra en tu casa trabaja aquí</span>, y por eso podemos comprometer plazos por escrito.</p>
   </div>
 </section>
+
+<!-- ═══ 5 · PAPELES EN REGLA · body-split-list ═══ -->
+<section class="cert" id="garantias">
+  <div class="wrap cert__in">
+    <div class="cert__cab">
+      <p class="rotulo rev">Papeles</p>
+      <h2 class="rev" data-d="1">Lo que casi nadie enseña</h2>
+      <p class="rev" data-d="2">En reformas el problema no suele ser el precio: es no saber quién responde si algo sale mal seis meses después. Esto es lo nuestro, y te lo damos por escrito con el presupuesto.</p>
+    </div>
+    <dl class="cert__l rev" data-d="1">
+      <div><dt>Seguro de responsabilidad civil</dt><dd>600.000 € por siniestro. Cubre daños en tu vivienda y en las de al lado, que es lo que de verdad asusta en un edificio antiguo.</dd></div>
+      <div><dt>Garantía de tres años</dt><dd>Por escrito y sobre la obra terminada, no sólo sobre el material. Si se abre una junta al año, volvemos.</dd></div>
+      <div><dt>Todo el mundo en nómina y al día</dt><dd>Podemos enseñarte el certificado de estar al corriente con la Seguridad Social. Si en tu casa entra alguien sin dar de alta, el problema acaba siendo tuyo.</dd></div>
+      <div><dt>Boletines y certificados</dt><dd>Instalador autorizado de fontanería y electricidad. Sales de la obra con los boletines en la mano, que te van a hacer falta para vender o alquilar.</dd></div>
+    </dl>
+  </div>
+</section>
+
+
 
 <!-- ═══ 6 · GALERÍA · body-masonry ═══ -->
 <section class="masonry" id="galeria">
@@ -616,6 +666,18 @@ table.serv__t tr td:first-child{padding-left:0;}
   <div class="wrap">
     <p class="rotulo rev">4,9 sobre 5 · 96 reseñas en Google</p>
     <div class="banda__g" id="testis"></div>
+  </div>
+</section>
+
+<!-- ═══ 3 · CIFRAS · body-logos-strip ═══ -->
+<section class="cifras" aria-label="La empresa en cifras">
+  <div class="wrap">
+    <ul>
+      <li class="rev"><b class="cnum" data-n="22">22</b><small>años<br/>reformando</small></li>
+      <li class="rev" data-d="1"><b class="cnum" data-n="340" data-suf="+">340+</b><small>obras<br/>entregadas</small></li>
+      <li class="rev" data-d="2"><b>4,9</b><small>Google<br/>96 reseñas</small></li>
+      <li class="rev" data-d="3"><b class="cnum" data-n="9">9</b><small>personas<br/>en nómina</small></li>
+    </ul>
   </div>
 </section>
 
@@ -653,7 +715,7 @@ table.serv__t tr td:first-child{padding-left:0;}
   <div class="cierre__a">
     <p class="rotulo rev">Presupuesto</p>
     <h2 class="rev" data-d="1">La visita es gratis<br/>y sin compromiso</h2>
-    <p class="rev" data-d="2">Vamos, medimos, escuchamos qué querés y te mandamos el presupuesto por escrito en una semana. Si no te encaja, no pasa nada.</p>
+    <p class="rev" data-d="2">Vamos, medimos, escuchamos qué quieres y te mandamos el presupuesto por escrito en una semana. Si no te encaja, no pasa nada.</p>
     <div class="cierre__btns rev" data-d="2">
       <a class="btn" id="c-tel" href="#">Llamar ahora <span class="ar" aria-hidden="true">→</span></a>
       <a class="btn" id="c-wa" href="#" target="_blank" rel="noopener">WhatsApp</a>
@@ -663,7 +725,7 @@ table.serv__t tr td:first-child{padding-left:0;}
     <form class="form rev" data-d="1" id="form" novalidate>
       <div><label for="f-nom">Nombre</label><input id="f-nom" name="nombre" type="text" autocomplete="name" required/></div>
       <div><label for="f-tel">Teléfono</label><input id="f-tel" name="tel" type="tel" autocomplete="tel" required/></div>
-      <div><label for="f-obra">Dónde y qué querés reformar</label><input id="f-obra" name="obra" type="text" placeholder="Piso en Villabona · cocina y baño"/></div>
+      <div><label for="f-obra">Dónde y qué quieres reformar</label><input id="f-obra" name="obra" type="text" placeholder="Piso en Villabona · cocina y baño"/></div>
       <div><label for="f-msg">Contanos un poco más</label><textarea id="f-msg" name="mensaje" rows="2" placeholder="Metros aproximados, si estáis viviendo dentro, para cuándo…"></textarea></div>
       <button class="btn" type="submit">Pedir visita <span class="ar" aria-hidden="true">→</span></button>
       <p class="aviso" id="form-aviso" role="status">Te llamamos en 48 h laborables para concretar la visita.</p>
@@ -937,6 +999,28 @@ setInterval(pintarEstado, 60000);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- ═══ KIT DE MOVIMIENTO ═══ -->
 <style>
 /* ═══ RITMO Y CABECERA ═══
@@ -981,6 +1065,12 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
   --tinta:var(--fondo);
   --tinta-sec:var(--osc-tinta);
   --filete:var(--osc-filete);
+  /* Los colores de estado también se voltean. Se olvidaron en la primera
+     versión: al oscurecer una sección con estrellas de reseña, el dorado de
+     --alerta se quedaba a 4,05 sobre el fondo oscuro, por debajo del 4,5.
+     Los tokens claros ya existían en :root, sólo faltaba usarlos aquí. */
+  --alerta:var(--alerta-clara);
+  --ok:var(--ok-claro);
   --filete-fuerte:var(--osc-filete);
   --fondo-alt:var(--osc);
   --acento:var(--acento-claro);
@@ -1000,10 +1090,56 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
    scroll-blur-in · scroll-text-highlight
    Límites de ui-ux-pro-max/data/motion.csv — ver scripts/kit-movimiento.mjs  */
 
+/* ═══ BARRA DE ACCIONES EN PÍLDORA ═══
+   La barra inferior iba de lado a lado y pegada al borde, con las esquinas en
+   ángulo recto. Al lado de la cabecera —que ya es una píldora flotante— parecía
+   de otra web. Ahora las dos son islas y comparten radio, filete y sombra.
+
+   Va aquí y no en cada plantilla porque el bloque era idéntico en las once.
+
+   El overflow:hidden es lo que hace que los botones de los extremos se
+   recorten con la curva; sin él, el verde del primario sobresale por la esquina
+   y se ve el pico. */
+.barra{
+  left:50%;right:auto;
+  transform:translateX(-50%);
+  width:min(100% - 24px, 460px);
+  bottom:calc(12px + env(safe-area-inset-bottom));
+  padding-bottom:0;
+  border:1px solid var(--filete-fuerte);
+  border-radius:100px;
+  overflow:hidden;
+  box-shadow:0 6px 26px -10px rgba(0,0,0,.42);
+  background:color-mix(in srgb, var(--fondo) 92%, transparent);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+/* En los extremos, la curva se come parte del ancho útil: un poco más de
+   holgura para que el rótulo no se acerque al filete redondeado. */
+.barra a:first-child{padding-left:12px;}
+.barra a:last-child{padding-right:12px;}
+/* Con la barra estrecha cada botón se queda en 122 px, y "Probar gratis"
+   partía en dos líneas: en una píldora de 58 px de alto eso se ve apretado.
+   El interletrado baja de .13em a .09em —sigue leyéndose como versal— y el
+   rótulo se prohíbe partir. El rótulo más largo de las once, "Cómo llegar",
+   cabe con holgura. */
+.barra a{white-space:nowrap;letter-spacing:.09em;}
+
+/* La barra ya no está pegada abajo, así que el pie necesita 12 px más de
+   holgura para que el último renglón no quede debajo de ella. */
+@media(max-width:899px){
+  .pie{padding-bottom:calc(104px + env(safe-area-inset-bottom));}
+}
+
 /* head-progress · barra de lectura al pie de la cabecera.
    Va dentro de .top, que ya es la isla flotante de arriba: no se le vuelve a
-   tocar la posición aquí o se pisaría el position:fixed. */
-.barra-lectura{position:absolute;left:0;bottom:-1px;height:2px;width:100%;
+   tocar la posición aquí o se pisaría el position:fixed.
+
+   Va metida por los lados a propósito: la cabecera es una píldora con 100px de
+   radio, y una barra que llegaba al borde se metía en la curva y salía cortada
+   en diagonal. Empieza donde empieza el texto, y con las puntas redondeadas. */
+.barra-lectura{position:absolute;left:clamp(20px,4%,38px);right:clamp(20px,4%,38px);
+  bottom:5px;height:2px;width:auto;border-radius:2px;
   transform:scaleX(var(--leido,0));transform-origin:left;background:var(--acento);
   pointer-events:none;}
 
@@ -1015,7 +1151,16 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
 .js.encogido .marca small,.js.encogido .marca em{opacity:0;transition:opacity .2s;}
 
 /* head-underline · el subrayado del menú crece desde el centro */
-.nav a{position:relative;}
+/* Los enlaces del menú medían entre 35 y 42 px de alto según la plantilla, por
+   debajo de los 44 px de zona táctil que exige el contrato. Se iguala aquí, en
+   el kit, porque el fallo era el mismo en las once. El alto no cambia la
+   maqueta: la cabecera ya es más alta que eso. */
+/* Los enlaces legales del pie van dentro de un párrafo, así que la excepción
+   de texto en línea del criterio 2.5.8 los cubre; aun así medían 14 px de alto,
+   que con el dedo es una lotería. Un poco de relleno vertical los deja en 24 sin
+   descolocar el renglón. Los 44 px completos sí romperían la línea. */
+.pie a{display:inline-block;padding:5px 0;}
+.nav a{position:relative;min-height:44px;display:inline-flex;align-items:center;}
 .nav a::after{content:"";position:absolute;left:50%;right:50%;bottom:0;height:1px;
   background:var(--acento);transition:left .3s var(--ease),right .3s var(--ease);}
 .nav a:hover::after{left:0;right:0;}
@@ -1092,8 +1237,30 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
   .js .lead .pal{opacity:1!important;}
   .js .top__in{transition:none;}
 }
+/* ═══ PROFESIONALES ═══
+   Sustituye a los tres párrafos de prosa que había antes. products.csv pide
+   «booking system» y «service menu» para el sector; pedir cita con una persona
+   concreta es lo que de verdad distingue a un salón de una cadena, y en prosa
+   no se podía hacer clic. */
+.prof{padding:clamp(48px,7vw,96px) 0;background:var(--fondo-alt);
+  border-top:1px solid var(--filete);border-bottom:1px solid var(--filete);}
+.prof__t{max-width:20ch;margin:12px 0 clamp(22px,3.5vw,38px);}
+.prof__g{list-style:none;display:grid;gap:14px;grid-template-columns:1fr;}
+.prof__c{background:var(--fondo);border:1px solid var(--filete);padding:0 0 18px;
+  display:flex;flex-direction:column;}
+.prof__c img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;display:block;
+  margin-bottom:14px;}
+.prof__c h3{font-size:var(--t2);margin:0 18px 2px;}
+.prof__rol{font-family:var(--detalle);font-size:10.5px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--acento);margin:0 18px 10px;}
+.prof__c p{margin:0 18px 14px;color:var(--tinta-sec);font-size:var(--t0);flex:1;}
+.prof__c .btn{margin:0 18px;justify-content:center;}
+.prof__pie{margin-top:22px;color:var(--tinta-sec);font-size:var(--t0);max-width:70ch;}
+@media(min-width:620px){ .prof__g{grid-template-columns:1fr 1fr;} }
+@media(min-width:980px){ .prof__g{grid-template-columns:repeat(3,1fr);} }
+
 </style>
-<script>window.__RITMO__=[1,3];
+<script>window.__RITMO__=["obras","cert"];
 /* ═══ KIT DE MOVIMIENTO ═══ (ver scripts/kit-movimiento.mjs) */
 (function(){
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -1182,11 +1349,10 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
      scripts/kit-movimiento.mjs. No se mide nada en tiempo de ejecución:
      las secciones a oscurecer están decididas y revisadas una a una. */
   (function(){
-    var indices = window.__RITMO__ || [];
-    if(!indices.length) return;
-    var secciones = [].slice.call(document.querySelectorAll("main > section, body > section"));
-    indices.forEach(function(i){
-      if(secciones[i]) secciones[i].classList.add("oscura");
+    var clases = window.__RITMO__ || [];
+    clases.forEach(function(c){
+      var sec = document.querySelector("main > section." + c + ", body > section." + c);
+      if(sec) sec.classList.add("oscura");
     });
   })();
 

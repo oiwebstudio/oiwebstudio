@@ -417,17 +417,38 @@ table.trat__t tr td:first-child{padding-left:0;}
   </div>
 </section>
 
-<!-- ═══ 3 · CIFRAS · body-stats-band ═══ -->
-<section class="cifras" aria-label="La clínica en cifras">
+<!-- ═══ 3 · ANTES / DESPUÉS · body-before-after ═══ -->
+<section class="ad" id="antesdespues">
   <div class="wrap">
-    <ul>
-      <li class="rev"><b class="cnum" data-n="21">21</b><small>años en Tolosa</small></li>
-      <li class="rev" data-d="1"><b class="cnum" data-n="35" data-suf=" €">35 €</b><small>primera visita</small></li>
-      <li class="rev" data-d="2"><b>4,9</b><small>Google · 187 reseñas</small></li>
-      <li class="rev" data-d="3"><b class="cnum" data-n="5">5</b><small>en el equipo</small></li>
-    </ul>
+    <div class="ad__cab">
+      <p class="rotulo rev">Casos de la clínica</p>
+      <h2 class="rev" data-d="1">Mueve la barra y mira el cambio</h2>
+      <p class="lead rev" data-d="2">Rehabilitación de los dientes de arriba: cuatro sesiones repartidas en tres meses. Es un caso corriente, no el mejor que tenemos.</p>
+    </div>
+
+    <div class="ad__par rev" data-d="1" id="ad-par">
+      <figure>
+        <img loading="lazy" width="1200" height="675" src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=1200&q=80&auto=format&fit=crop" alt="La boca antes del tratamiento"/>
+        <figcaption class="ad__rot">Antes</figcaption>
+      </figure>
+      <figure class="ad__despues">
+        <img loading="lazy" width="1200" height="675" src="https://images.unsplash.com/photo-1595003500447-88ec6a3e2a71?w=1200&q=80&auto=format&fit=crop" alt="La misma boca después del tratamiento"/>
+        <figcaption class="ad__rot">Después</figcaption>
+      </figure>
+      <span class="ad__linea" aria-hidden="true"></span>
+    </div>
+
+    <div class="ad__mando rev">
+      <label for="ad-rango">Descubrir el después</label>
+      <input class="ad__rango" type="range" id="ad-rango" min="0" max="100" value="50"
+             aria-label="Descubrir la foto de después"/>
+    </div>
+
+    <p class="ad__pie rev">Fotos con la misma cámara y la misma luz, sin retoque. <span class="subr">Enseñamos el presupuesto cerrado antes de tocar nada</span>, y si algo se sale de lo previsto se para y se habla.</p>
   </div>
 </section>
+
+
 
 <!-- ═══ 4 · TRATAMIENTOS · body-comparison ═══ -->
 <section class="trat" id="tratamientos">
@@ -534,20 +555,39 @@ table.trat__t tr td:first-child{padding-left:0;}
   </div>
 </section>
 
-<!-- ═══ 5 · EQUIPO · body-media-right ═══ -->
-<section class="equipo" id="equipo">
-  <div class="wrap equipo__in">
-    <div>
-      <p class="rotulo rev">El equipo</p>
-      <h2 class="rev" data-d="1">Siempre te atiende<br/>la misma persona</h2>
-      <p class="rev" data-d="2">Abrió Nerea Arrate en 2004. Hoy somos cinco: tres odontólogas, una higienista y Maider, que lleva la recepción y a la que ya conoces si has llamado alguna vez.</p>
-      <p class="rev" data-d="2">No rotamos pacientes entre profesionales. <span class="subr">Empiezas y acabas con la misma dentista</span>, que es la que conoce tu boca y tu historial.</p>
-    </div>
-    <img class="rev" data-d="1" loading="lazy" width="900" height="700"
-      src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?w=900&q=80&auto=format&fit=crop"
-      alt="El equipo de la clínica dental"/>
+<!-- ═══ 6 · EL EQUIPO · body-cards-grid (la única cuadrícula de la página) ═══ -->
+<section class="prof" id="equipo">
+  <div class="wrap">
+    <p class="rotulo rev">El equipo</p>
+    <h2 class="prof__t rev" data-d="1">Empiezas y acabas con la misma dentista</h2>
+    <ul class="prof__g rev" data-d="2">
+      <li class="prof__c">
+        <img loading="lazy" width="500" height="500" src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=500&q=80&auto=format&fit=crop" alt="Nerea, odontóloga"/>
+        <h3>Nerea Arrate</h3>
+        <p class="prof__rol">Odontóloga · Abrió la clínica</p>
+        <p>Aquí desde 2004. Lleva la parte de rehabilitación y los casos que vienen de otra clínica a medio terminar.</p>
+        <a class="btn btn--ghost" href="#contacto">Cita con Nerea</a>
+      </li>
+      <li class="prof__c">
+        <img loading="lazy" width="500" height="500" src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=500&q=80&auto=format&fit=crop" alt="Julen, odontólogo"/>
+        <h3>Julen Otaegi</h3>
+        <p class="prof__rol">Odontólogo · Endodoncia</p>
+        <p>Es a quien pasan las urgencias de dolor. Si vienes con un flemón un martes, lo más probable es que te vea él.</p>
+        <a class="btn btn--ghost" href="#contacto">Cita con Julen</a>
+      </li>
+      <li class="prof__c">
+        <img loading="lazy" width="500" height="500" src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?w=500&q=80&auto=format&fit=crop" alt="Maider, higienista"/>
+        <h3>Maider</h3>
+        <p class="prof__rol">Higienista · Lleva la recepción</p>
+        <p>Limpiezas y revisiones, y la voz del teléfono. Es quien te dice si lo tuyo puede esperar a la semana que viene o no.</p>
+        <a class="btn btn--ghost" href="#contacto">Cita con Maider</a>
+      </li>
+    </ul>
+    <p class="prof__pie rev">No rotamos pacientes entre profesionales. <span class="subr">La que empieza tu tratamiento es la que lo termina</span>, porque es la que conoce tu boca y tu historial.</p>
   </div>
 </section>
+
+
 
 <!-- ═══ 6 · LA CLÍNICA · body-alternating ═══ -->
 <section class="clinica" id="galeria">
@@ -592,6 +632,18 @@ table.trat__t tr td:first-child{padding-left:0;}
       <button type="button" id="cita-ant" aria-label="Reseña anterior">←</button>
       <button type="button" id="cita-sig" aria-label="Reseña siguiente">→</button>
     </div>
+  </div>
+</section>
+
+<!-- ═══ 3 · CIFRAS · body-stats-band ═══ -->
+<section class="cifras" aria-label="La clínica en cifras">
+  <div class="wrap">
+    <ul>
+      <li class="rev"><b class="cnum" data-n="21">21</b><small>años en Tolosa</small></li>
+      <li class="rev" data-d="1"><b class="cnum" data-n="35" data-suf=" €">35 €</b><small>primera visita</small></li>
+      <li class="rev" data-d="2"><b>4,9</b><small>Google · 187 reseñas</small></li>
+      <li class="rev" data-d="3"><b class="cnum" data-n="5">5</b><small>en el equipo</small></li>
+    </ul>
   </div>
 </section>
 
@@ -913,6 +965,28 @@ setInterval(pintarEstado, 60000);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- ═══ KIT DE MOVIMIENTO ═══ -->
 <style>
 /* ═══ RITMO Y CABECERA ═══
@@ -957,6 +1031,12 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
   --tinta:var(--fondo);
   --tinta-sec:var(--osc-tinta);
   --filete:var(--osc-filete);
+  /* Los colores de estado también se voltean. Se olvidaron en la primera
+     versión: al oscurecer una sección con estrellas de reseña, el dorado de
+     --alerta se quedaba a 4,05 sobre el fondo oscuro, por debajo del 4,5.
+     Los tokens claros ya existían en :root, sólo faltaba usarlos aquí. */
+  --alerta:var(--alerta-clara);
+  --ok:var(--ok-claro);
   --filete-fuerte:var(--osc-filete);
   --fondo-alt:var(--osc);
   --acento:var(--acento-claro);
@@ -976,10 +1056,56 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
    scroll-blur-in · scroll-text-highlight
    Límites de ui-ux-pro-max/data/motion.csv — ver scripts/kit-movimiento.mjs  */
 
+/* ═══ BARRA DE ACCIONES EN PÍLDORA ═══
+   La barra inferior iba de lado a lado y pegada al borde, con las esquinas en
+   ángulo recto. Al lado de la cabecera —que ya es una píldora flotante— parecía
+   de otra web. Ahora las dos son islas y comparten radio, filete y sombra.
+
+   Va aquí y no en cada plantilla porque el bloque era idéntico en las once.
+
+   El overflow:hidden es lo que hace que los botones de los extremos se
+   recorten con la curva; sin él, el verde del primario sobresale por la esquina
+   y se ve el pico. */
+.barra{
+  left:50%;right:auto;
+  transform:translateX(-50%);
+  width:min(100% - 24px, 460px);
+  bottom:calc(12px + env(safe-area-inset-bottom));
+  padding-bottom:0;
+  border:1px solid var(--filete-fuerte);
+  border-radius:100px;
+  overflow:hidden;
+  box-shadow:0 6px 26px -10px rgba(0,0,0,.42);
+  background:color-mix(in srgb, var(--fondo) 92%, transparent);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+/* En los extremos, la curva se come parte del ancho útil: un poco más de
+   holgura para que el rótulo no se acerque al filete redondeado. */
+.barra a:first-child{padding-left:12px;}
+.barra a:last-child{padding-right:12px;}
+/* Con la barra estrecha cada botón se queda en 122 px, y "Probar gratis"
+   partía en dos líneas: en una píldora de 58 px de alto eso se ve apretado.
+   El interletrado baja de .13em a .09em —sigue leyéndose como versal— y el
+   rótulo se prohíbe partir. El rótulo más largo de las once, "Cómo llegar",
+   cabe con holgura. */
+.barra a{white-space:nowrap;letter-spacing:.09em;}
+
+/* La barra ya no está pegada abajo, así que el pie necesita 12 px más de
+   holgura para que el último renglón no quede debajo de ella. */
+@media(max-width:899px){
+  .pie{padding-bottom:calc(104px + env(safe-area-inset-bottom));}
+}
+
 /* head-progress · barra de lectura al pie de la cabecera.
    Va dentro de .top, que ya es la isla flotante de arriba: no se le vuelve a
-   tocar la posición aquí o se pisaría el position:fixed. */
-.barra-lectura{position:absolute;left:0;bottom:-1px;height:2px;width:100%;
+   tocar la posición aquí o se pisaría el position:fixed.
+
+   Va metida por los lados a propósito: la cabecera es una píldora con 100px de
+   radio, y una barra que llegaba al borde se metía en la curva y salía cortada
+   en diagonal. Empieza donde empieza el texto, y con las puntas redondeadas. */
+.barra-lectura{position:absolute;left:clamp(20px,4%,38px);right:clamp(20px,4%,38px);
+  bottom:5px;height:2px;width:auto;border-radius:2px;
   transform:scaleX(var(--leido,0));transform-origin:left;background:var(--acento);
   pointer-events:none;}
 
@@ -991,7 +1117,16 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
 .js.encogido .marca small,.js.encogido .marca em{opacity:0;transition:opacity .2s;}
 
 /* head-underline · el subrayado del menú crece desde el centro */
-.nav a{position:relative;}
+/* Los enlaces del menú medían entre 35 y 42 px de alto según la plantilla, por
+   debajo de los 44 px de zona táctil que exige el contrato. Se iguala aquí, en
+   el kit, porque el fallo era el mismo en las once. El alto no cambia la
+   maqueta: la cabecera ya es más alta que eso. */
+/* Los enlaces legales del pie van dentro de un párrafo, así que la excepción
+   de texto en línea del criterio 2.5.8 los cubre; aun así medían 14 px de alto,
+   que con el dedo es una lotería. Un poco de relleno vertical los deja en 24 sin
+   descolocar el renglón. Los 44 px completos sí romperían la línea. */
+.pie a{display:inline-block;padding:5px 0;}
+.nav a{position:relative;min-height:44px;display:inline-flex;align-items:center;}
 .nav a::after{content:"";position:absolute;left:50%;right:50%;bottom:0;height:1px;
   background:var(--acento);transition:left .3s var(--ease),right .3s var(--ease);}
 .nav a:hover::after{left:0;right:0;}
@@ -1068,8 +1203,95 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
   .js .lead .pal{opacity:1!important;}
   .js .top__in{transition:none;}
 }
+/* ═══ ANTES / DESPUÉS ═══
+   El módulo que más convierte de todo landing.csv («visual proof of value,
+   45% higher conversion»), y el único que ninguna peluquería de la zona tiene.
+
+   Sin JS se ven las dos fotos, una al lado de otra y rotuladas: se entiende
+   igual. Con JS se superponen y el <input type=range> descubre la de después.
+   El input es un control real, así que va con teclado y lo lee el lector de
+   pantalla sin que haya que añadirle nada. */
+.ad{padding:clamp(48px,7vw,96px) 0;}
+.ad__cab{max-width:54ch;margin-bottom:clamp(22px,3.5vw,38px);}
+.ad__cab h2{margin:12px 0 14px;}
+.ad__cab p{color:var(--tinta-sec);}
+
+.ad__par{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.ad__par figure{margin:0;position:relative;overflow:hidden;border-radius:var(--radio-foto);}
+.ad__par img{width:100%;height:auto;display:block;}
+.ad__rot{position:absolute;left:10px;bottom:10px;font-family:var(--detalle);
+  font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  padding:6px 10px;background:var(--osc);color:var(--fondo);}
+
+.ad__mando{margin-top:16px;}
+.ad__mando label{display:block;font-family:var(--detalle);font-size:11px;font-weight:700;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--tinta-sec);margin-bottom:10px;}
+.ad__pie{margin-top:14px;color:var(--tinta-sec);font-size:var(--t0);}
+
+/* Con JS: una sola foto y el corte se mueve. */
+.ad--js .ad__par{display:block;position:relative;line-height:0;
+  border-radius:var(--radio-foto);overflow:hidden;}
+.ad--js .ad__par figure{position:absolute;inset:0;border-radius:0;}
+.ad--js .ad__par figure:first-child{position:relative;}
+.ad--js .ad__par figure:first-child img{position:relative;}
+.ad--js .ad__despues{clip-path:inset(0 0 0 var(--corte,50%));}
+.ad--js .ad__par img{height:100%;object-fit:cover;}
+.ad--js .ad__rot{bottom:14px;}
+.ad--js .ad__despues .ad__rot{left:auto;right:14px;background:var(--acento);color:var(--acento-con);}
+
+/* La línea de corte. Puramente decorativa: quien maneja el control es el
+   input de abajo, que sigue siendo el que recibe el foco. */
+.ad--js .ad__linea{position:absolute;top:0;bottom:0;left:var(--corte,50%);width:2px;
+  background:var(--fondo);pointer-events:none;transform:translateX(-1px);}
+.ad--js .ad__linea::after{content:"";position:absolute;top:50%;left:50%;
+  width:42px;height:42px;margin:-21px 0 0 -21px;border-radius:50%;
+  background:var(--fondo);box-shadow:0 2px 14px rgba(0,0,0,.28);}
+
+/* El input ocupa toda la foto para poder arrastrar encima de ella, pero se
+   mantiene visible debajo: en móvil, un control invisible no se descubre. */
+.ad__rango{width:100%;height:44px;margin:0;cursor:ew-resize;
+  -webkit-appearance:none;appearance:none;background:transparent;}
+.ad__rango:focus-visible{outline:2px solid var(--acento);outline-offset:3px;}
+.ad__rango::-webkit-slider-runnable-track{height:3px;background:var(--filete-fuerte);}
+.ad__rango::-moz-range-track{height:3px;background:var(--filete-fuerte);}
+.ad__rango::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;
+  margin-top:-11px;border-radius:50%;background:var(--acento);border:3px solid var(--fondo);
+  box-shadow:0 1px 6px rgba(0,0,0,.3);}
+.ad__rango::-moz-range-thumb{width:26px;height:26px;border-radius:50%;
+  background:var(--acento);border:3px solid var(--fondo);box-shadow:0 1px 6px rgba(0,0,0,.3);}
+
+@media(min-width:760px){
+  .ad--js .ad__par{aspect-ratio:16/9;}
+}
+@media(max-width:759px){
+  .ad__par{grid-template-columns:1fr;}
+  .ad--js .ad__par{aspect-ratio:4/5;}
+}
+
+/* ═══ PROFESIONALES ═══
+   Sustituye a los tres párrafos de prosa que había antes. products.csv pide
+   «booking system» y «service menu» para el sector; pedir cita con una persona
+   concreta es lo que de verdad distingue a un salón de una cadena, y en prosa
+   no se podía hacer clic. */
+.prof{padding:clamp(48px,7vw,96px) 0;background:var(--fondo-alt);
+  border-top:1px solid var(--filete);border-bottom:1px solid var(--filete);}
+.prof__t{max-width:20ch;margin:12px 0 clamp(22px,3.5vw,38px);}
+.prof__g{list-style:none;display:grid;gap:14px;grid-template-columns:1fr;}
+.prof__c{background:var(--fondo);border:1px solid var(--filete);padding:0 0 18px;
+  display:flex;flex-direction:column;}
+.prof__c img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;display:block;
+  margin-bottom:14px;}
+.prof__c h3{font-size:var(--t2);margin:0 18px 2px;}
+.prof__rol{font-family:var(--detalle);font-size:10.5px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--acento);margin:0 18px 10px;}
+.prof__c p{margin:0 18px 14px;color:var(--tinta-sec);font-size:var(--t0);flex:1;}
+.prof__c .btn{margin:0 18px;justify-content:center;}
+.prof__pie{margin-top:22px;color:var(--tinta-sec);font-size:var(--t0);max-width:70ch;}
+@media(min-width:620px){ .prof__g{grid-template-columns:1fr 1fr;} }
+@media(min-width:980px){ .prof__g{grid-template-columns:repeat(3,1fr);} }
+
 </style>
-<script>window.__RITMO__=[1,3];
+<script>window.__RITMO__=["ad","visita"];
 /* ═══ KIT DE MOVIMIENTO ═══ (ver scripts/kit-movimiento.mjs) */
 (function(){
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -1158,11 +1380,10 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
      scripts/kit-movimiento.mjs. No se mide nada en tiempo de ejecución:
      las secciones a oscurecer están decididas y revisadas una a una. */
   (function(){
-    var indices = window.__RITMO__ || [];
-    if(!indices.length) return;
-    var secciones = [].slice.call(document.querySelectorAll("main > section, body > section"));
-    indices.forEach(function(i){
-      if(secciones[i]) secciones[i].classList.add("oscura");
+    var clases = window.__RITMO__ || [];
+    clases.forEach(function(c){
+      var sec = document.querySelector("main > section." + c + ", body > section." + c);
+      if(sec) sec.classList.add("oscura");
     });
   })();
 
@@ -1174,6 +1395,36 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
     });
   });
 })();
+/* ═══ ANTES / DESPUÉS ═══
+   La superposición sólo se activa aquí, con JS ya en marcha. Si el script no
+   llega, el HTML deja las dos fotos una al lado de otra, rotuladas Antes y
+   Después: se entiende igual, que es la regla 6 del contrato de secciones.
+
+   El control es el <input type=range>, no la propia foto. Arrastrar sobre la
+   imagen es cómodo pero no es accesible por sí solo; teniendo el input debajo,
+   el teclado y el lector de pantalla funcionan sin añadir nada. */
+(function(){
+  var par = document.getElementById("ad-par");
+  var rango = document.getElementById("ad-rango");
+  if(!par || !rango) return;
+  var sec = par.closest("section");
+  if(sec) sec.classList.add("ad--js");
+
+  function pintar(){ par.style.setProperty("--corte", rango.value + "%"); }
+  rango.addEventListener("input", pintar);
+  pintar();
+
+  function desdeX(x){
+    var r = par.getBoundingClientRect();
+    rango.value = Math.round(Math.max(0, Math.min(100, ((x - r.left) / r.width) * 100)));
+    pintar();
+  }
+  var pulsando = false;
+  par.addEventListener("pointerdown", function(e){ pulsando = true; desdeX(e.clientX); });
+  window.addEventListener("pointermove", function(e){ if(pulsando) desdeX(e.clientX); });
+  window.addEventListener("pointerup", function(){ pulsando = false; });
+})();
+
 </script>
 <!-- ═══ FIN KIT DE MOVIMIENTO ═══ -->
 </body>
