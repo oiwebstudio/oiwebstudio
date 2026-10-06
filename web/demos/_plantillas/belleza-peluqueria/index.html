@@ -4,36 +4,34 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta name="robots" content="noindex, follow"/>
-<title>Clínica Dental Arrate — Dentista en Tolosa</title>
-<meta name="description" content="Clínica dental en Tolosa. Primera visita 35 €, con revisión, radiografía y presupuesto por escrito. Implantes, ortodoncia y odontopediatría."/>
-<meta name="theme-color" content="#F8FAFA"/>
-<meta property="og:title" content="Clínica Dental Arrate — Dentista en Tolosa"/>
-<meta property="og:description" content="Primera visita 35 €, con radiografía y presupuesto por escrito."/>
+<title>Ilargi — Peluquería y estética en Tolosa</title>
+<meta name="description" content="Peluquería y centro de estética en Tolosa. Tarifas y duración de cada servicio publicadas. Corte desde 18 €, color desde 42 €. Pide cita por WhatsApp."/>
+<meta name="theme-color" content="#FAF6F2"/>
+<meta property="og:title" content="Ilargi — Peluquería en Tolosa"/>
+<meta property="og:description" content="Las tarifas y lo que dura cada servicio, publicadas. Sin sorpresas al pagar."/>
 <meta property="og:type" content="website"/>
-<meta property="og:image" content="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1200&h=630&q=80&auto=format&fit=crop"/>
+<meta property="og:image" content="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&h=630&q=80&auto=format&fit=crop"/>
 <!--
-  ═══ PLANTILLA DE SECTOR · SALUD / ODONTOLOGÍA ═══
+  ═══ PLANTILLA DE SECTOR · BELLEZA ═══
+  Cubre: peluquería · barbería · estética · uñas · tatuador
   Spec: docs/PROMPT-PLANTILLAS-SECTOR.md · Dirección: docs/PROMPT-DIRECCION-VISUAL.md
   Tipografía (Google Fonts, autoalojadas en fuentes/):
-    Petrona · Public Sans
-  Limpio sin ser frío. Evita el azul-sans de clínica de plantilla.
+    Bodoni Moda · Chivo
 
   Estructura por bloque — ninguna se repite, cero rejillas de tarjetas:
-    2 hero        body-hero-split       asimétrico, foto a la derecha
-    3 confianza   body-stats-band       fila con filetes verticales
-    4 tratamientos body-comparison      tabla de precios publicada
-    4b 1ª visita  body-timeline         reloj proporcional de los 40 minutos
-    5 equipo      body-media-right
-    6 clínica     body-alternating      tres filas en zig-zag
+    2 hero        body-two-hero         dos mitades, texto y foto
+    3 confianza   body-logos-strip      fila corrida con filetes
+    4 servicios   body-alternating      tres servicios estrella en zig-zag
+    4b tarifas    body-comparison       tarifa completa CON DURACIÓN
+    5 equipo      body-magazine         dos columnas con capitular
+    6 trabajos    body-masonry
     7 reseñas     body-quote-full       una cita grande, con navegación
     8 dónde       body-map-listings
     9 contacto    body-split-5050
 
-  Piezas de biblioteca-animaciones:
-    font-reading-serif · font-tabular-nums · par-lines-rise · text-underline-draw
-    loc-hours-today · btn-arrow-slide · micro-live-clock · micro-count-up
-    scroll-reveal-soft
-  Nada de partículas, neón ni 3D: aquí el movimiento resta confianza.
+  BLOQUE DE SECTOR: la tarifa con la duración al lado. En este sector la gente
+  no pregunta solo el precio, pregunta "¿cuánto se tarda?", porque tiene que
+  encajarlo en su día. Casi ninguna peluquería lo publica.
 
   PARA PERSONALIZAR: editar SOLO el bloque DATOS (abajo), :root si hay color
   de marca, y las URLs de las imágenes.
@@ -43,52 +41,52 @@
 /* ═══ FUENTES AUTOALOJADAS ═══
    Se sirven desde esta misma carpeta: la demo no depende de ningún CDN.
    Google Fonts, licencias OFL / Apache 2.0 — permiten el autoalojamiento.
-   Regenerar con: node scripts/autoalojar-fuentes.mjs salud-odontologia  */
-@font-face{font-family:'Petrona';font-style:normal;font-weight:500;font-display:swap;src:url('fuentes/petrona-500-normal-1.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
-@font-face{font-family:'Petrona';font-style:normal;font-weight:600;font-display:swap;src:url('fuentes/petrona-600-normal-3.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
-@font-face{font-family:'Public Sans';font-style:normal;font-weight:400;font-display:swap;src:url('fuentes/public-sans-400-normal-5.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
-@font-face{font-family:'Public Sans';font-style:normal;font-weight:500;font-display:swap;src:url('fuentes/public-sans-500-normal-7.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
-@font-face{font-family:'Public Sans';font-style:normal;font-weight:700;font-display:swap;src:url('fuentes/public-sans-700-normal-9.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
-@font-face{font-family:'Public Sans';font-style:normal;font-weight:700;font-display:swap;src:url('fuentes/public-sans-700-normal-11.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+   Regenerar con: node scripts/autoalojar-fuentes.mjs belleza-peluqueria  */
+@font-face{font-family:'Bodoni Moda';font-style:normal;font-weight:400;font-display:swap;src:url('fuentes/bodoni-moda-400-normal-1.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Bodoni Moda';font-style:normal;font-weight:500;font-display:swap;src:url('fuentes/bodoni-moda-500-normal-3.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Bodoni Moda';font-style:normal;font-weight:700;font-display:swap;src:url('fuentes/bodoni-moda-700-normal-5.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Chivo';font-style:normal;font-weight:400;font-display:swap;src:url('fuentes/chivo-400-normal-7.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Chivo';font-style:normal;font-weight:500;font-display:swap;src:url('fuentes/chivo-500-normal-9.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Chivo';font-style:normal;font-weight:600;font-display:swap;src:url('fuentes/chivo-600-normal-11.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Chivo';font-style:normal;font-weight:700;font-display:swap;src:url('fuentes/chivo-700-normal-13.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
 </style>
 <style>
 /* ═══════════════ CONTRATO DE TOKENS ═══════════════ */
 :root{
   --fondo:#FFFFFF;
-  --fondo-alt:#EFF5F4;
-  --filete:#DCE7E6;
+  --fondo-alt:#F6F1F4;
+  --filete:#E4D8E0;
 
-  --tinta:#12201F;
-  --tinta-sec:#546462;
+  --tinta:#1E1815;
+  --tinta-sec:#6B5A50;
 
-  --acento:#136B62;
+  --acento:#63305A;
   --acento-con:#FFFFFF;
 
-  --ok:#2E8B62;
-  --alerta:#B07A1E;
+  --ok:#2F7D52;
+  --alerta:#A8720A;
 
   /* derivados */
-  --acento-osc:#0C4E47;
-  --acento-claro:#79C8BD;
-  --acento-suave:#DEEDEB;
-  --filete-fuerte:#B3C7C5;
-  --osc:#122220;
-  --osc-filete:#253937;
-  --osc-tinta:#A8BDBA;
-  --osc-tinta2:#8FA5A2;
-  --osc-tinta3:#718B88;
-  --ok-claro:#84D3A9;
+  --acento-osc:#48213F;
+  --acento-claro:#D3A6C9;
+  --acento-suave:#F1E6EE;
+  --filete-fuerte:#C0AA9E;
+  --osc:#231A20;
+  --osc-filete:#392C35;
+  --osc-tinta:#C0AEB9;
+  --osc-tinta2:#A3919C;
+  --osc-tinta3:#7F6E79;
+  --ok-claro:#84C7A2;
   --alerta-clara:#DFB068;
 
-  --display:"Petrona",Georgia,serif;
-  --texto:"Public Sans",system-ui,sans-serif;
-  --detalle:"Public Sans",system-ui,sans-serif;
+  --display:"Bodoni Moda",Georgia,serif;
+  --texto:"Chivo",system-ui,sans-serif;
+  --detalle:"Chivo",system-ui,sans-serif;
 
   --ease:cubic-bezier(.16,1,.3,1);
   --gutter:clamp(20px,5vw,60px);
-  /* el radio se decide por papel, no se aplica a todo por igual */
   --radio:0px;
-  --radio-foto:8px;
+  --radio-foto:2px;
 
   /* escala razón 1.25 desde 17px */
   --t0:13.6px; --t1:17px; --t2:21.3px; --t3:26.6px; --t4:33.2px; --t5:41.5px; --t6:51.9px;
@@ -98,20 +96,20 @@
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
 :target,section[id]{scroll-margin-top:80px;}
 body{background:var(--fondo);color:var(--tinta);font-family:var(--texto);
-  font-size:var(--t1);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  font-size:var(--t1);line-height:1.66;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
 img{display:block;max-width:100%;height:auto;}
 a{color:inherit;text-decoration:none;}
 button{font:inherit;color:inherit;}
-h1,h2,h3{font-family:var(--display);font-weight:600;text-wrap:balance;}
-h1{letter-spacing:-.032em;line-height:1.02;}
-h2{letter-spacing:-.028em;line-height:1.1;font-size:clamp(var(--t4),5vw,var(--t6));}
-h3{letter-spacing:-.02em;line-height:1.22;font-size:var(--t2);font-weight:500;}
+h1,h2,h3{font-family:var(--display);font-weight:500;text-wrap:balance;}
+h1{letter-spacing:-.03em;line-height:.98;}
+h2{letter-spacing:-.025em;line-height:1.04;font-size:clamp(var(--t4),5.2vw,var(--t6));}
+h3{letter-spacing:-.015em;line-height:1.18;font-size:var(--t2);font-weight:400;}
 p{text-wrap:pretty;}
 
 .wrap{max-width:1160px;margin:0 auto;padding:0 var(--gutter);}
-.rotulo{font-family:var(--detalle);font-size:12px;font-weight:700;letter-spacing:.15em;
+.rotulo{font-family:var(--detalle);font-size:11.5px;font-weight:700;letter-spacing:.2em;
   text-transform:uppercase;color:var(--acento);}
-.lead{color:var(--tinta-sec);font-size:var(--t2);line-height:1.5;max-width:38ch;}
+.lead{color:var(--tinta-sec);font-size:var(--t2);line-height:1.48;max-width:36ch;}
 
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
 /* z-index: 10 contenido · 20 cabecera · 30 barra móvil · 50 skip */
@@ -122,9 +120,9 @@ p{text-wrap:pretty;}
 
 /* ── btn-arrow-slide ────────────────────────────── */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  min-height:48px;padding:14px 25px;border-radius:var(--radio);
-  font-family:var(--detalle);font-size:14.5px;font-weight:700;
-  border:1px solid var(--tinta);background:transparent;cursor:pointer;
+  min-height:48px;padding:14px 26px;border-radius:var(--radio);
+  font-family:var(--detalle);font-size:11.5px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;border:1px solid var(--tinta);background:transparent;cursor:pointer;
   transition:background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease);}
 .btn .ar{transition:transform .35s var(--ease);}
 .btn:hover .ar,.btn:focus-visible .ar{transform:translateX(6px);}
@@ -133,155 +131,138 @@ p{text-wrap:pretty;}
 .btn--ghost:hover,.btn--ghost:focus-visible{background:var(--tinta);color:var(--fondo);}
 
 /* ── 1 · cabecera ───────────────────────────────── */
-.top{position:sticky;top:0;z-index:20;background:rgba(248,250,250,.95);
-  backdrop-filter:blur(12px);border-bottom:1px solid var(--filete);}
-.top__in{display:flex;align-items:center;justify-content:space-between;gap:18px;height:70px;}
-.marca{display:flex;align-items:baseline;gap:9px;min-height:44px;align-self:center;
-  font-family:var(--display);font-size:var(--t2);font-weight:600;letter-spacing:-.03em;}
-.marca em{font-family:var(--detalle);font-style:normal;font-size:10.5px;font-weight:700;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-sec);}
+.top{position:sticky;top:0;z-index:20;background:rgba(250,246,242,.95);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--filete);}
+.top__in{display:flex;align-items:center;justify-content:space-between;gap:18px;height:68px;}
+.marca{display:flex;align-items:baseline;gap:10px;min-height:44px;align-self:center;
+  font-family:var(--display);font-size:var(--t3);font-weight:500;letter-spacing:-.03em;}
+.marca em{font-family:var(--detalle);font-style:normal;font-size:9.5px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--tinta-sec);}
 .nav{display:none;gap:28px;}
-.nav a{font-family:var(--detalle);font-size:14.5px;font-weight:500;padding:8px 0;
-  border-bottom:1px solid transparent;transition:border-color .3s,color .3s;}
+.nav a{font-family:var(--detalle);font-size:11.5px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;padding:8px 0;border-bottom:1px solid transparent;
+  transition:border-color .3s,color .3s;}
 .nav a:hover{color:var(--acento);}
 .nav a[aria-current]{color:var(--acento);border-color:var(--acento);}
 .top__cta{display:none;}
-@media(min-width:1000px){.nav{display:flex;}.top__cta{display:inline-flex;}}
+@media(min-width:1010px){.nav{display:flex;}.top__cta{display:inline-flex;}}
 
 /* micro-live-clock */
 .estado{display:flex;align-items:center;gap:8px;font-family:var(--detalle);
-  font-size:13px;color:var(--tinta-sec);}
+  font-size:11.5px;color:var(--tinta-sec);}
 .estado i{width:6px;height:6px;border-radius:50%;background:var(--tinta-sec);flex:none;}
-.estado.abierto i{background:var(--ok);box-shadow:0 0 0 0 rgba(46,139,98,.5);
+.estado.abierto i{background:var(--ok);box-shadow:0 0 0 0 rgba(47,125,82,.5);
   animation:latir 2.6s ease-out infinite;}
-@keyframes latir{70%{box-shadow:0 0 0 8px rgba(46,139,98,0);}100%{box-shadow:0 0 0 0 rgba(46,139,98,0);}}
-@media(max-width:760px){.estado span{display:none;}}
+@keyframes latir{70%{box-shadow:0 0 0 8px rgba(47,125,82,0);}100%{box-shadow:0 0 0 0 rgba(47,125,82,0);}}
+@media(max-width:740px){.estado span{display:none;}}
 
-/* ── 2 · body-hero-split · asimétrico ───────────── */
-.hero{padding:clamp(38px,5.5vw,72px) 0 0;}
-.hero__in{display:grid;gap:clamp(28px,4vw,52px);align-items:center;}
-@media(min-width:940px){.hero__in{grid-template-columns:1.12fr .88fr;}}
-.hero h1{font-size:clamp(37px,5.8vw,68px);margin:18px 0 22px;}
-.hero h1 em{font-style:normal;color:var(--acento);}
-.hero__btns{display:flex;flex-wrap:wrap;gap:11px;margin-top:28px;}
-.hero__nota{margin-top:20px;font-size:14.5px;color:var(--tinta-sec);}
-.hero__foto img{width:100%;height:clamp(300px,52vh,520px);object-fit:cover;border-radius:var(--radio-foto);}
+/* ── 2 · body-two-hero · dos mitades ────────────── */
+.hero{display:grid;border-bottom:1px solid var(--filete);}
+@media(min-width:940px){.hero{grid-template-columns:1.02fr .98fr;}}
+.hero__txt{padding:clamp(44px,7vw,92px) var(--gutter);display:flex;flex-direction:column;
+  justify-content:center;}
+.hero h1{font-size:clamp(42px,7vw,86px);margin:18px 0 0;max-width:11ch;}
+.hero h1 em{font-style:italic;font-weight:400;color:var(--acento);}
+.hero .lead{margin-top:22px;}
+.hero__btns{display:flex;flex-wrap:wrap;gap:11px;margin-top:30px;}
+.hero__nota{margin-top:20px;font-family:var(--detalle);font-size:12.5px;color:var(--tinta-sec);}
+.hero__foto{min-height:320px;background:var(--fondo-alt);}
+.hero__foto img{width:100%;height:100%;min-height:320px;object-fit:cover;}
 
-/* ── 3 · body-stats-band ────────────────────────── */
-.cifras{padding:clamp(42px,5.5vw,72px) 0;}
-.cifras ul{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);
-  border-top:1px solid var(--filete-fuerte);}
-@media(min-width:860px){.cifras ul{grid-template-columns:repeat(4,1fr);}}
-.cifras li{padding:22px 22px 22px 0;border-bottom:1px solid var(--filete);}
-@media(min-width:860px){
-  .cifras li{border-bottom:0;border-right:1px solid var(--filete);padding-left:26px;}
-  .cifras li:first-child{padding-left:0;}
-  .cifras li:last-child{border-right:0;}
+/* ── 3 · body-logos-strip ───────────────────────── */
+.cifras{padding:clamp(30px,4vw,52px) 0;border-bottom:1px solid var(--filete);}
+.cifras ul{list-style:none;display:flex;flex-wrap:wrap;}
+.cifras li{flex:1 1 46%;padding:14px 20px 14px 0;display:flex;align-items:baseline;gap:11px;}
+@media(min-width:880px){
+  .cifras li{flex:1;padding:0 28px;border-left:1px solid var(--filete);}
+  .cifras li:first-child{padding-left:0;border-left:0;}
 }
-.cifras b{display:block;font-family:var(--display);font-size:clamp(32px,4.6vw,50px);
-  font-weight:600;letter-spacing:-.035em;line-height:1;color:var(--acento);
+.cifras b{font-family:var(--display);font-size:clamp(30px,4vw,46px);font-weight:500;
+  letter-spacing:-.03em;line-height:1;color:var(--acento);font-variant-numeric:tabular-nums;}
+.cifras small{font-family:var(--detalle);font-size:11px;font-weight:700;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--tinta-sec);line-height:1.4;}
+
+/* ── 4 · body-alternating · servicios estrella ──── */
+.serv{padding:clamp(48px,7vw,96px) 0;}
+.serv__f{display:grid;gap:clamp(20px,3vw,46px);align-items:center;
+  padding:clamp(26px,3.5vw,46px) 0;border-top:1px solid var(--filete);}
+@media(min-width:880px){
+  .serv__f{grid-template-columns:.95fr 1.05fr;}
+  .serv__f:nth-of-type(even) .serv__m{order:2;}
+}
+.serv__m img{width:100%;height:clamp(230px,36vh,360px);object-fit:cover;border-radius:var(--radio-foto);}
+.serv__n{font-family:var(--detalle);font-size:11px;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--acento);}
+.serv__f h3{font-size:var(--t3);margin:10px 0 9px;}
+.serv__f > div > p{color:var(--tinta-sec);font-size:16px;max-width:46ch;}
+.serv__d{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:18px;padding-top:15px;
+  border-top:1px solid var(--filete);}
+.serv__d span{font-family:var(--detalle);font-size:12.5px;color:var(--tinta-sec);}
+.serv__d b{font-family:var(--display);font-size:var(--t2);font-weight:500;color:var(--tinta);
+  letter-spacing:-.02em;font-variant-numeric:tabular-nums;}
+
+/* ── 4b · body-comparison · TARIFA CON DURACIÓN ─── */
+.tarifas{padding:clamp(48px,7vw,96px) 0;background:var(--fondo-alt);}
+.tarifas__cab{display:grid;gap:18px;margin-bottom:clamp(24px,3.5vw,42px);}
+@media(min-width:900px){.tarifas__cab{grid-template-columns:.5fr .5fr;align-items:end;}}
+.tabla-env{overflow-x:auto;}          /* la tabla scrollea sola, la página no */
+table.tarifa{width:100%;border-collapse:collapse;min-width:460px;}
+table.tarifa caption{text-align:left;font-family:var(--detalle);font-size:11px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--acento);
+  padding:26px 0 12px;border-top:1px solid var(--filete-fuerte);}
+table.tarifa tr:first-child caption{padding-top:0;}
+table.tarifa th{text-align:left;font-family:var(--detalle);font-size:10px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-sec);
+  padding:0 14px 10px 0;border-bottom:1px solid var(--filete-fuerte);}
+table.tarifa th:nth-child(2){text-align:right;width:22%;}
+table.tarifa th:last-child{text-align:right;width:20%;}
+table.tarifa td{padding:15px 14px 15px 0;border-bottom:1px solid var(--filete);}
+table.tarifa td:nth-child(2){text-align:right;font-family:var(--detalle);font-size:13px;
+  color:var(--tinta-sec);white-space:nowrap;font-variant-numeric:tabular-nums;}
+table.tarifa td:last-child{text-align:right;padding-right:0;font-family:var(--display);
+  font-size:var(--t2);font-weight:500;letter-spacing:-.02em;white-space:nowrap;
   font-variant-numeric:tabular-nums;}
-.cifras small{display:block;margin-top:9px;font-family:var(--detalle);font-size:12.5px;
-  color:var(--tinta-sec);line-height:1.4;}
+table.tarifa td small{display:block;font-family:var(--texto);font-size:13.5px;
+  color:var(--tinta-sec);margin-top:3px;}
+.tarifas__pie{margin-top:24px;padding-top:18px;border-top:1px solid var(--filete-fuerte);
+  font-size:15.5px;color:var(--tinta-sec);max-width:64ch;}
+.tarifas__pie b{color:var(--tinta);font-weight:600;}
 
-/* ── 4 · body-comparison · tabla de tratamientos ── */
-.trat{padding:clamp(50px,7vw,98px) 0;background:var(--fondo-alt);}
-.trat__cab{display:grid;gap:18px;margin-bottom:clamp(26px,3.5vw,44px);}
-@media(min-width:900px){.trat__cab{grid-template-columns:.5fr .5fr;align-items:end;}}
-.tabla-env{overflow-x:auto;}         /* la tabla scrollea sola, la página no */
-table.trat__t{width:100%;border-collapse:collapse;min-width:580px;}
-table.trat__t th{text-align:left;font-family:var(--detalle);font-size:11px;font-weight:700;
-  letter-spacing:.13em;text-transform:uppercase;color:var(--tinta-sec);
-  padding:0 16px 12px 0;border-bottom:1px solid var(--filete-fuerte);}
-table.trat__t th:last-child,table.trat__t td:last-child{text-align:right;padding-right:0;}
-table.trat__t td{padding:20px 16px 20px 0;border-bottom:1px solid var(--filete);vertical-align:top;}
-table.trat__t tr td:first-child{padding-left:0;}
-.trat__q{font-family:var(--display);font-size:var(--t2);font-weight:500;letter-spacing:-.02em;
-  line-height:1.2;margin-bottom:6px;}
-.trat__d{font-size:15px;color:var(--tinta-sec);max-width:50ch;}
-.trat__pvp{font-family:var(--display);font-size:var(--t3);font-weight:600;letter-spacing:-.03em;
-  white-space:nowrap;font-variant-numeric:tabular-nums;}
-.trat__pvp em{display:block;font-style:normal;font-family:var(--detalle);font-size:11.5px;
-  font-weight:400;color:var(--tinta-sec);margin-top:5px;}
-.trat__dur{font-family:var(--detalle);font-size:12.5px;color:var(--tinta-sec);white-space:nowrap;}
-.trat__pie{margin-top:22px;font-size:15px;color:var(--tinta-sec);}
-
-/* ── 4b · body-timeline · el reloj de los 40 min ── */
-.visita{padding:clamp(50px,7vw,98px) 0;}
-.visita__in{display:grid;gap:clamp(28px,4vw,54px);align-items:start;
-  margin-top:clamp(26px,3.5vw,44px);}
-@media(min-width:940px){.visita__in{grid-template-columns:.4fr .6fr;}}
-.tarjeta{border-top:3px solid var(--acento);padding-top:22px;}
-.tarjeta .pvp{font-family:var(--display);font-size:clamp(56px,9vw,100px);line-height:.9;
-  letter-spacing:-.045em;color:var(--acento);font-variant-numeric:tabular-nums;}
-.tarjeta .sub{font-family:var(--detalle);font-size:12.5px;font-weight:700;letter-spacing:.13em;
-  text-transform:uppercase;color:var(--tinta-sec);margin-top:14px;}
-.tarjeta ul{list-style:none;margin-top:24px;}
-.tarjeta li{padding:12px 0;border-bottom:1px solid var(--filete);font-size:16px;
-  padding-left:24px;position:relative;}
-.tarjeta li::before{content:"";position:absolute;left:0;top:1.05em;width:11px;height:6px;
-  border-left:2px solid var(--acento);border-bottom:2px solid var(--acento);transform:rotate(-45deg);}
-.tarjeta .nota{margin-top:22px;font-size:15.5px;color:var(--tinta-sec);}
-
-/* el reloj: una barra proporcional a los minutos reales */
-.reloj{display:flex;height:10px;margin-bottom:26px;}
-.reloj span{height:100%;}
-.reloj span+span{border-left:2px solid var(--fondo);}
-.reloj .s1{background:var(--acento-suave);flex:5;}
-.reloj .s2{background:var(--acento-claro);flex:15;}
-.reloj .s3{background:var(--acento);flex:10;}
-.reloj .s4{background:var(--acento-osc);flex:10;}
-.tramos{border-top:1px solid var(--filete-fuerte);}
-.tramo{display:grid;grid-template-columns:auto 1fr;gap:4px 20px;padding:20px 0;
-  border-bottom:1px solid var(--filete);}
-@media(min-width:680px){.tramo{grid-template-columns:78px 1fr;}}
-.tramo__m{font-family:var(--detalle);font-size:12.5px;font-weight:700;color:var(--acento);
-  font-variant-numeric:tabular-nums;white-space:nowrap;}
-.tramo h3{font-size:var(--t2);}
-.tramo p{color:var(--tinta-sec);font-size:15.5px;max-width:52ch;margin-top:5px;}
-@media(max-width:679px){.tramo h3,.tramo p{grid-column:2;}}
-
-.seguros{margin-top:clamp(28px,4vw,44px);padding-top:22px;border-top:1px solid var(--filete-fuerte);}
-.seguros p{font-family:var(--detalle);font-size:12px;font-weight:700;letter-spacing:.13em;
-  text-transform:uppercase;color:var(--tinta-sec);margin-bottom:12px;}
-.seguros ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px 20px;}
-.seguros li{font-family:var(--detalle);font-size:14.5px;color:var(--tinta);}
-.seguros li::before{content:"— ";color:var(--acento);}
-
-/* ── 5 · body-media-right · el equipo ───────────── */
-.equipo{padding:clamp(50px,7vw,98px) 0;background:var(--fondo-alt);}
-.equipo__in{display:grid;gap:clamp(26px,4vw,52px);align-items:center;}
-@media(min-width:900px){.equipo__in{grid-template-columns:1.05fr .95fr;}}
-.equipo img{width:100%;height:clamp(260px,44vh,450px);object-fit:cover;border-radius:var(--radio-foto);}
-.equipo p{color:var(--tinta-sec);margin-top:15px;}
-.subr{position:relative;color:var(--tinta);font-weight:700;white-space:nowrap;}
+/* ── 5 · body-magazine · el equipo ──────────────── */
+.equipo{padding:clamp(48px,7vw,96px) 0;}
+.equipo__t{max-width:18ch;margin:14px 0 clamp(24px,3.5vw,42px);}
+.equipo__cols{columns:1;column-gap:46px;max-width:900px;}
+@media(min-width:760px){.equipo__cols{columns:2;}}
+.equipo__cols p{margin-bottom:16px;color:var(--tinta-sec);break-inside:avoid;}
+/* font-drop-initial */
+.equipo__cols p:first-child::first-letter{
+  float:left;font-family:var(--display);font-weight:700;font-size:4.4em;line-height:.8;
+  padding:6px 11px 0 0;color:var(--acento);}
+.subr{position:relative;color:var(--tinta);font-weight:600;white-space:nowrap;}
 .subr::after{content:"";position:absolute;left:0;bottom:-2px;width:100%;height:2px;
   background:var(--acento);transform:scaleX(0);transform-origin:left;transition:transform .8s var(--ease);}
 .subr.on::after{transform:scaleX(1);}
 
-/* ── 6 · body-alternating · la clínica en tres ──── */
-.clinica{padding:clamp(50px,7vw,98px) 0;}
-.paso{display:grid;gap:clamp(20px,3vw,44px);align-items:center;
-  padding:clamp(26px,3.5vw,44px) 0;border-top:1px solid var(--filete);}
-@media(min-width:860px){
-  .paso{grid-template-columns:.95fr 1.05fr;}
-  .paso:nth-child(even) .paso__m{order:2;}
-}
-.paso__m img{width:100%;height:clamp(220px,34vh,330px);object-fit:cover;border-radius:var(--radio-foto);}
-.paso__n{font-family:var(--detalle);font-size:12.5px;font-weight:700;letter-spacing:.13em;
-  text-transform:uppercase;color:var(--acento);}
-.paso h3{font-size:var(--t3);margin:9px 0 8px;}
-.paso p{color:var(--tinta-sec);font-size:16px;max-width:48ch;}
+/* ── 6 · body-masonry · trabajos ────────────────── */
+.masonry{padding:0 0 clamp(48px,7vw,96px);}
+.masonry__g{columns:2;column-gap:12px;}
+@media(min-width:880px){.masonry__g{columns:3;column-gap:14px;}}
+.masonry figure{break-inside:avoid;margin-bottom:12px;overflow:hidden;}
+.masonry img{width:100%;height:auto;transition:transform .6s var(--ease);}
+@media(hover:hover) and (pointer:fine){.masonry figure:hover img{transform:scale(1.04);}}
+.masonry figcaption{font-family:var(--detalle);font-size:10.5px;font-weight:700;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--tinta-sec);padding-top:8px;}
 
 /* ── 7 · body-quote-full ────────────────────────── */
 .cita{background:var(--osc);color:var(--fondo);padding:clamp(52px,8vw,104px) 0;}
 .cita .rotulo{color:var(--acento-claro);}
-.cita blockquote{font-family:var(--display);font-weight:400;letter-spacing:-.025em;
-  font-size:clamp(24px,4.2vw,48px);line-height:1.2;max-width:20ch;margin:20px 0 0;}
+.cita blockquote{font-family:var(--display);font-weight:400;letter-spacing:-.02em;
+  font-size:clamp(25px,4.4vw,50px);line-height:1.16;max-width:19ch;margin:20px 0 0;}
 .cita__pie{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline;margin-top:28px;
   padding-top:18px;border-top:1px solid var(--osc-filete);max-width:620px;}
-.cita cite{font-style:normal;font-family:var(--detalle);font-size:13px;font-weight:700;}
-.cita__pie small{font-family:var(--detalle);font-size:12.5px;color:var(--osc-tinta);}
+.cita cite{font-style:normal;font-family:var(--detalle);font-size:12.5px;font-weight:700;
+  letter-spacing:.13em;text-transform:uppercase;}
+.cita__pie small{font-family:var(--detalle);font-size:12px;color:var(--osc-tinta);}
 .cita__nav{display:flex;gap:8px;margin-top:24px;}
 .cita__nav button{min-width:44px;min-height:44px;border:1px solid var(--osc-filete);
   background:transparent;color:var(--fondo);cursor:pointer;display:grid;place-items:center;
@@ -289,23 +270,22 @@ table.trat__t tr td:first-child{padding-left:0;}
 .cita__nav button:hover{background:var(--fondo);color:var(--osc);border-color:var(--fondo);}
 
 /* ── 8 · body-map-listings ──────────────────────── */
-.donde{padding:clamp(50px,7vw,98px) 0;}
+.donde{padding:clamp(48px,7vw,96px) 0;}
 .donde__in{display:grid;gap:clamp(26px,3.5vw,44px);margin-top:clamp(24px,3vw,40px);}
 @media(min-width:900px){.donde__in{grid-template-columns:1.25fr .75fr;}}
-.mapa{overflow:hidden;border-radius:var(--radio-foto);border:1px solid var(--filete);
-  min-height:350px;background:var(--fondo-alt);}
+.mapa{overflow:hidden;border:1px solid var(--filete);min-height:350px;background:var(--fondo-alt);}
 .mapa iframe{width:100%;height:100%;min-height:350px;border:0;display:block;}
 .horarios{width:100%;border-collapse:collapse;font-size:15.5px;}
-.horarios caption{text-align:left;font-family:var(--detalle);font-size:12px;font-weight:700;
-  letter-spacing:.13em;text-transform:uppercase;color:var(--acento);padding-bottom:12px;}
+.horarios caption{text-align:left;font-family:var(--detalle);font-size:11px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--acento);padding-bottom:12px;}
 .horarios td{padding:12px 0;border-bottom:1px solid var(--filete);font-variant-numeric:tabular-nums;}
-.horarios td:last-child{text-align:right;font-family:var(--detalle);font-size:14px;}
-.horarios tr.hoy td{color:var(--acento);font-weight:700;}
+.horarios td:last-child{text-align:right;font-family:var(--detalle);font-size:13.5px;}
+.horarios tr.hoy td{color:var(--acento);font-weight:600;}
 .horarios tr.hoy td:first-child::after{content:" · hoy";font-family:var(--detalle);
-  font-size:11px;letter-spacing:.1em;text-transform:uppercase;}
+  font-size:10.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;}
 .datos{list-style:none;margin-top:26px;}
 .datos li{padding:14px 0;border-bottom:1px solid var(--filete);}
-.datos dt{font-family:var(--detalle);font-size:11px;font-weight:700;letter-spacing:.13em;
+.datos dt{font-family:var(--detalle);font-size:10.5px;font-weight:700;letter-spacing:.16em;
   text-transform:uppercase;color:var(--tinta-sec);margin-bottom:4px;}
 .datos dd{margin:0;font-size:15.5px;}
 /* padding/margen negativo: 44px de área táctil sin mover nada */
@@ -319,15 +299,15 @@ table.trat__t tr td:first-child{padding-left:0;}
 .cierre__a h2{color:var(--acento-con);}
 .cierre__a .rotulo{color:rgba(255,255,255,.75);}
 .cierre__a p{margin-top:18px;font-size:var(--t2);line-height:1.45;max-width:28ch;
-  color:rgba(255,255,255,.88);}
+  color:rgba(255,255,255,.9);}
 .cierre__btns{display:flex;flex-wrap:wrap;gap:11px;margin-top:28px;}
 .cierre__a .btn{border-color:var(--acento-con);color:var(--acento-con);}
 .cierre__a .btn:hover,.cierre__a .btn:focus-visible{background:var(--acento-con);color:var(--acento);}
 .cierre__b{background:var(--fondo-alt);padding:clamp(44px,6.5vw,90px) var(--gutter);}
 .form{display:grid;gap:0;}
 .form div{border-bottom:1px solid var(--filete-fuerte);}
-.form label{display:block;font-family:var(--detalle);font-size:11px;font-weight:700;
-  letter-spacing:.13em;text-transform:uppercase;color:var(--tinta-sec);padding-top:14px;}
+.form label{display:block;font-family:var(--detalle);font-size:10.5px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-sec);padding-top:14px;}
 .form input,.form textarea{width:100%;font:inherit;font-size:16px;padding:8px 0 14px;
   min-height:44px;border:0;background:transparent;color:var(--tinta);}
 .form input:focus,.form textarea:focus{outline:none;}
@@ -352,7 +332,7 @@ table.trat__t tr td:first-child{padding-left:0;}
   grid-template-columns:repeat(3,1fr);background:var(--fondo);
   border-top:1px solid var(--filete-fuerte);padding-bottom:env(safe-area-inset-bottom);}
 .barra a{display:flex;align-items:center;justify-content:center;min-height:56px;padding:9px 6px;
-  font-family:var(--detalle);font-size:12.5px;font-weight:700;}
+  font-family:var(--detalle);font-size:10.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;}
 .barra a+a{border-left:1px solid var(--filete-fuerte);}
 .barra a.pri{background:var(--acento);color:var(--acento-con);}
 @media(min-width:900px){.barra{display:none;}}
@@ -383,10 +363,10 @@ table.trat__t tr td:first-child{padding-left:0;}
 <!-- ═══ 1 · CABECERA ═══ -->
 <header class="top">
   <div class="wrap top__in">
-    <a class="marca" href="#inicio">Arrate <em>Clínica dental</em></a>
+    <a class="marca" href="#inicio">Ilargi <em>Peluquería</em></a>
     <nav class="nav" aria-label="Principal">
-      <a href="#tratamientos">Tratamientos</a>
-      <a href="#primera">Primera visita</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#tarifas">Tarifas</a>
       <a href="#equipo">El equipo</a>
       <a href="#donde">Dónde estamos</a>
     </nav>
@@ -397,42 +377,40 @@ table.trat__t tr td:first-child{padding-left:0;}
 
 <main id="main">
 
-<!-- ═══ 2 · HERO · body-hero-split ═══ -->
+<!-- ═══ 2 · HERO · body-two-hero ═══ -->
 <section class="hero" id="inicio">
-  <div class="wrap hero__in">
-    <div>
-      <p class="rotulo rev">Clínica dental en Tolosa desde 2004</p>
-      <h1 class="rev" data-d="1">Te decimos lo que cuesta <em>antes</em> de empezar</h1>
-      <p class="lead rev" data-d="2">La primera visita incluye revisión, radiografía y un presupuesto por escrito que te llevas a casa. Sin compromiso y sin que nadie te llame después.</p>
-      <div class="hero__btns rev" data-d="3">
-        <a class="btn btn--fill" href="#contacto">Pedir cita <span class="ar" aria-hidden="true">→</span></a>
-        <a class="btn btn--ghost" href="#primera">Qué pasa en la primera visita</a>
-      </div>
-      <p class="hero__nota rev" data-d="3">Primera visita 35 € · Financiación sin intereses hasta 12 meses · Atendemos en euskera</p>
+  <div class="hero__txt">
+    <p class="rotulo rev">Peluquería y estética · Tolosa</p>
+    <h1 class="rev" data-d="1">Sabes qué vas a pagar <em>y cuánto vas a tardar</em></h1>
+    <p class="lead rev" data-d="2">Las tarifas están publicadas aquí abajo, con la duración de cada servicio al lado. Para que puedas encajarlo en tu día antes de coger cita.</p>
+    <div class="hero__btns rev" data-d="3">
+      <a class="btn btn--fill" href="#contacto">Pedir cita <span class="ar" aria-hidden="true">→</span></a>
+      <a class="btn btn--ghost" href="#tarifas">Ver tarifas</a>
     </div>
-    <figure class="hero__foto rev" data-d="1">
-      <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1200&q=80&auto=format&fit=crop"
-           alt="Equipo de la clínica dental atendiendo en consulta" width="1200" height="900" fetchpriority="high"/>
-    </figure>
+    <p class="hero__nota rev" data-d="3">Corte desde 18 € · Color desde 42 € · Cita por WhatsApp en un minuto</p>
   </div>
+  <figure class="hero__foto rev" data-d="1">
+    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&q=80&auto=format&fit=crop"
+         alt="Interior de la peluquería con luz natural" width="1200" height="900" fetchpriority="high"/>
+  </figure>
 </section>
 
 <!-- ═══ 3 · ANTES / DESPUÉS · body-before-after ═══ -->
 <section class="ad" id="antesdespues">
   <div class="wrap">
     <div class="ad__cab">
-      <p class="rotulo rev">Casos de la clínica</p>
+      <p class="rotulo rev">El resultado</p>
       <h2 class="rev" data-d="1">Mueve la barra y mira el cambio</h2>
-      <p class="lead rev" data-d="2">Rehabilitación de los dientes de arriba: cuatro sesiones repartidas en tres meses. Es un caso corriente, no el mejor que tenemos.</p>
+      <p class="lead rev" data-d="2">Es una clienta que vino con el tinte de casa a medio crecer. Dos sesiones, cinco semanas entre una y otra, y el pelo entero recuperado sin pasar por el rubio.</p>
     </div>
 
     <div class="ad__par rev" data-d="1" id="ad-par">
       <figure>
-        <img loading="lazy" width="1200" height="675" src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=1200&q=80&auto=format&fit=crop" alt="La boca antes del tratamiento"/>
+        <img loading="lazy" width="1200" height="675" src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=1200&q=80&auto=format&fit=crop" alt="El pelo antes de la sesión, con la raíz crecida y el largo apagado"/>
         <figcaption class="ad__rot">Antes</figcaption>
       </figure>
       <figure class="ad__despues">
-        <img loading="lazy" width="1200" height="675" src="https://images.unsplash.com/photo-1595003500447-88ec6a3e2a71?w=1200&q=80&auto=format&fit=crop" alt="La misma boca después del tratamiento"/>
+        <img loading="lazy" width="1200" height="675" src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&q=80&auto=format&fit=crop" alt="El mismo pelo después, con el color igualado de raíz a puntas"/>
         <figcaption class="ad__rot">Después</figcaption>
       </figure>
       <span class="ad__linea" aria-hidden="true"></span>
@@ -444,186 +422,140 @@ table.trat__t tr td:first-child{padding-left:0;}
              aria-label="Descubrir la foto de después"/>
     </div>
 
-    <p class="ad__pie rev">Fotos con la misma cámara y la misma luz, sin retoque. <span class="subr">Enseñamos el presupuesto cerrado antes de tocar nada</span>, y si algo se sale de lo previsto se para y se habla.</p>
+    <p class="ad__pie rev">Las fotos son del salón, sin retoque de color ni filtro. <span class="subr">Si te apetece ver más casos como el tuyo</span>, dínoslo al pedir cita y te enseñamos los que se parezcan.</p>
   </div>
 </section>
 
 
 
-<!-- ═══ 4 · TRATAMIENTOS · body-comparison ═══ -->
-<section class="trat" id="tratamientos">
+<!-- ═══ 4 · SERVICIOS · body-alternating ═══ -->
+<section class="serv" id="servicios">
   <div class="wrap">
-    <div class="trat__cab">
-      <div class="rev">
-        <p class="rotulo">Tratamientos</p>
-        <h2>Con los precios delante</h2>
+    <p class="rotulo rev" style="margin-bottom:12px">Lo que más hacemos</p>
+    <h2 class="rev" data-d="1" style="max-width:14ch;margin-bottom:20px">Tres cosas, muy bien hechas</h2>
+
+    <article class="serv__f rev">
+      <figure class="serv__m"><img loading="lazy" width="800" height="500" src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&q=80&auto=format&fit=crop" alt="Corte y peinado en el salón"/></figure>
+      <div>
+        <p class="serv__n">01 · Corte</p>
+        <h3>Corte y peinado</h3>
+        <p>Empezamos mirando cómo te cae el pelo y qué haces con él cada mañana. Si el corte que quieres te va a pedir media hora de plancha diaria, te lo decimos antes.</p>
+        <div class="serv__d"><span>Desde <b>18 €</b></span><span>Dura <b>45 min</b></span></div>
       </div>
-      <p class="lead rev" data-d="1">Estos son los precios de partida reales de este año. El tuyo sale de la revisión, y te lo damos por escrito antes de tocarte nada.</p>
+    </article>
+
+    <article class="serv__f rev">
+      <figure class="serv__m"><img loading="lazy" width="800" height="500" src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&q=80&auto=format&fit=crop" alt="Proceso de coloración"/></figure>
+      <div>
+        <p class="serv__n">02 · Color</p>
+        <h3>Color y mechas</h3>
+        <p>Balayage, babylights y cobertura de canas. La primera vez hacemos prueba de mechón: es media hora más, pero evita el disgusto de un tono que no era.</p>
+        <div class="serv__d"><span>Desde <b>42 €</b></span><span>Dura <b>2–3 h</b></span></div>
+      </div>
+    </article>
+
+    <article class="serv__f rev">
+      <figure class="serv__m"><img loading="lazy" width="800" height="500" src="https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?w=800&q=80&auto=format&fit=crop" alt="Tratamiento capilar"/></figure>
+      <div>
+        <p class="serv__n">03 · Tratamientos</p>
+        <h3>Cuidado y estética</h3>
+        <p>Hidratación, queratina, cejas y manicura. Se pueden encadenar con el color en la misma cita para no tener que venir dos veces.</p>
+        <div class="serv__d"><span>Desde <b>12 €</b></span><span>Dura <b>20–60 min</b></span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ═══ 4b · TARIFAS CON DURACIÓN · body-comparison ═══ -->
+<section class="tarifas sector" id="tarifas">
+  <div class="wrap">
+    <div class="tarifas__cab">
+      <div class="rev">
+        <p class="rotulo">Tarifas</p>
+        <h2>Precio y duración,<br/>de todo</h2>
+      </div>
+      <p class="lead rev" data-d="1">Casi ninguna peluquería publica cuánto dura cada cosa, y es lo que de verdad necesitas saber para organizarte la tarde.</p>
     </div>
+
     <div class="tabla-env rev" data-d="1">
-      <table class="trat__t">
-        <caption class="vh">Tratamientos, duración y precio de partida</caption>
-        <thead><tr><th scope="col">Tratamiento</th><th scope="col">Duración</th><th scope="col">Desde</th></tr></thead>
-        <tbody>
-          <tr>
-            <td><p class="trat__q">Revisión y limpieza</p><p class="trat__d">Exploración completa, radiografía y limpieza con ultrasonidos. Es la visita que evita las caras.</p></td>
-            <td><span class="trat__dur">45 min</span></td>
-            <td><span class="trat__pvp">55 €</span></td>
-          </tr>
-          <tr>
-            <td><p class="trat__q">Empastes</p><p class="trat__d">Composite del color de tu diente. En una sesión, y con anestesia si te da apuro el ruido o el frío.</p></td>
-            <td><span class="trat__dur">30 min</span></td>
-            <td><span class="trat__pvp">65 €</span></td>
-          </tr>
-          <tr>
-            <td><p class="trat__q">Implantes</p><p class="trat__d">Implante, pilar y corona incluidos en el precio. Nada de presupuestos que crecen por el camino.</p></td>
-            <td><span class="trat__dur">3–6 meses</span></td>
-            <td><span class="trat__pvp">950 €<em>todo incluido</em></span></td>
-          </tr>
-          <tr>
-            <td><p class="trat__q">Ortodoncia</p><p class="trat__d">Brackets o férulas transparentes. En la primera visita te enseñamos cómo quedaría antes de decidir.</p></td>
-            <td><span class="trat__dur">12–24 meses</span></td>
-            <td><span class="trat__pvp">2.400 €<em>financiable</em></span></td>
-          </tr>
-          <tr>
-            <td><p class="trat__q">Odontopediatría</p><p class="trat__d">La primera visita del peque la dedicamos a que se familiarice con la silla, sin tocar nada.</p></td>
-            <td><span class="trat__dur">20 min</span></td>
-            <td><span class="trat__pvp">Gratis<em>la primera</em></span></td>
-          </tr>
-          <tr>
-            <td><p class="trat__q">Estética dental</p><p class="trat__d">Blanqueamiento y carillas. Te decimos con franqueza cuándo merece la pena y cuándo no hace falta.</p></td>
-            <td><span class="trat__dur">2 sesiones</span></td>
-            <td><span class="trat__pvp">290 €</span></td>
-          </tr>
-        </tbody>
+      <table class="tarifa">
+        <caption>Peluquería</caption>
+        <thead><tr><th scope="col">Servicio</th><th scope="col">Duración</th><th scope="col">Precio</th></tr></thead>
+        <tbody id="t-peluqueria"></tbody>
       </table>
     </div>
-    <p class="trat__pie rev">Todos los precios llevan IVA incluido y se te confirman por escrito antes de empezar.</p>
-  </div>
-</section>
-
-<!-- ═══ 4b · PRIMERA VISITA · body-timeline ═══ -->
-<section class="visita sector" id="primera">
-  <div class="wrap">
-    <p class="rotulo rev">La primera visita</p>
-    <h2 class="rev" data-d="1" style="max-width:18ch">Qué te vamos a hacer exactamente</h2>
-    <div class="visita__in">
-      <div class="tarjeta rev">
-        <p class="pvp">35 €</p>
-        <p class="sub">Unos 40 minutos · IVA incluido</p>
-        <ul>
-          <li>Revisión completa de boca y encías</li>
-          <li>Radiografía panorámica digital</li>
-          <li>Explicación con la imagen delante</li>
-          <li>Presupuesto por escrito, desglosado</li>
-          <li>Se descuenta del tratamiento</li>
-        </ul>
-        <p class="nota">Si no necesitas nada, te lo diremos y te irás habiendo pagado 35 €. Pasa más veces de las que la gente se imagina.</p>
-      </div>
-      <div class="rev" data-d="1">
-        <div class="reloj" aria-hidden="true">
-          <span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span>
-        </div>
-        <div class="tramos">
-          <div class="tramo">
-            <p class="tramo__m">0–5 min</p>
-            <div><h3>Nos cuentas qué te trae</h3>
-              <p>Sentados y vestidos, antes de subir a la silla. Si te da miedo el dentista, es el momento de decirlo: cambia cómo hacemos el resto.</p></div>
-          </div>
-          <div class="tramo">
-            <p class="tramo__m">5–20 min</p>
-            <div><h3>Revisión y radiografía</h3>
-              <p>Miramos dientes, encías y mordida, y hacemos una panorámica digital. No duele y no hace falta morder nada incómodo.</p></div>
-          </div>
-          <div class="tramo">
-            <p class="tramo__m">20–30 min</p>
-            <div><h3>Te enseñamos lo que hemos visto</h3>
-              <p>En la pantalla, señalando. Si hay algo que puede esperar, te decimos que puede esperar y cuánto.</p></div>
-          </div>
-          <div class="tramo">
-            <p class="tramo__m">30–40 min</p>
-            <div><h3>Presupuesto por escrito, y a casa</h3>
-              <p>Con las opciones, el precio de cada una y en qué orden conviene hacerlas. Lo decides tranquilamente y sin que te llamemos.</p></div>
-          </div>
-        </div>
-        <div class="seguros">
-          <p>Trabajamos con estos seguros</p>
-          <ul id="seguros"></ul>
-        </div>
-      </div>
+    <div class="tabla-env rev">
+      <table class="tarifa">
+        <caption>Color</caption>
+        <thead><tr><th scope="col">Servicio</th><th scope="col">Duración</th><th scope="col">Precio</th></tr></thead>
+        <tbody id="t-color"></tbody>
+      </table>
     </div>
+    <div class="tabla-env rev">
+      <table class="tarifa">
+        <caption>Estética</caption>
+        <thead><tr><th scope="col">Servicio</th><th scope="col">Duración</th><th scope="col">Precio</th></tr></thead>
+        <tbody id="t-estetica"></tbody>
+      </table>
+    </div>
+
+    <p class="tarifas__pie rev">Los precios incluyen el lavado y el peinado. En melenas muy largas o muy densas puede haber un suplemento: <b>te lo decimos antes de empezar</b>, nunca al pagar. <span id="tarifa-vigencia"></span>.</p>
   </div>
 </section>
 
-<!-- ═══ 6 · EL EQUIPO · body-cards-grid (la única cuadrícula de la página) ═══ -->
+<!-- ═══ 6 · PROFESIONALES · body-cards-grid (la única cuadrícula de la página) ═══ -->
 <section class="prof" id="equipo">
   <div class="wrap">
     <p class="rotulo rev">El equipo</p>
-    <h2 class="prof__t rev" data-d="1">Empiezas y acabas con la misma dentista</h2>
+    <h2 class="prof__t rev" data-d="1">Pides cita con una persona, no con el salón</h2>
     <ul class="prof__g rev" data-d="2">
       <li class="prof__c">
-        <img loading="lazy" width="500" height="500" src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=500&q=80&auto=format&fit=crop" alt="Nerea, odontóloga"/>
-        <h3>Nerea Arrate</h3>
-        <p class="prof__rol">Odontóloga · Abrió la clínica</p>
-        <p>Aquí desde 2004. Lleva la parte de rehabilitación y los casos que vienen de otra clínica a medio terminar.</p>
+        <img loading="lazy" width="500" height="500" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&q=80&auto=format&fit=crop" alt="Amaia, peluquera"/>
+        <h3>Amaia</h3>
+        <p class="prof__rol">Color · Abrió el salón</p>
+        <p>Lleva desde 2009 aquí. Es a quien pedir el balayage y las correcciones de color de casa, que es lo que más le gusta resolver.</p>
+        <a class="btn btn--ghost" href="#contacto">Cita con Amaia</a>
+      </li>
+      <li class="prof__c">
+        <img loading="lazy" width="500" height="500" src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=500&q=80&auto=format&fit=crop" alt="Leire, peluquera"/>
+        <h3>Leire</h3>
+        <p class="prof__rol">Corte · Melena rizada</p>
+        <p>Si tienes el pelo rizado y llevas años saliendo de la peluquería con él estirado, es con quien tienes que hablar.</p>
+        <a class="btn btn--ghost" href="#contacto">Cita con Leire</a>
+      </li>
+      <li class="prof__c">
+        <img loading="lazy" width="500" height="500" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&q=80&auto=format&fit=crop" alt="Nerea, esteticista"/>
+        <h3>Nerea</h3>
+        <p class="prof__rol">Estética · Lleva la agenda</p>
+        <p>Cejas, manicura y tratamientos. Es la voz del teléfono, así que si has llamado alguna vez ya la conoces.</p>
         <a class="btn btn--ghost" href="#contacto">Cita con Nerea</a>
       </li>
-      <li class="prof__c">
-        <img loading="lazy" width="500" height="500" src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=500&q=80&auto=format&fit=crop" alt="Julen, odontólogo"/>
-        <h3>Julen Otaegi</h3>
-        <p class="prof__rol">Odontólogo · Endodoncia</p>
-        <p>Es a quien pasan las urgencias de dolor. Si vienes con un flemón un martes, lo más probable es que te vea él.</p>
-        <a class="btn btn--ghost" href="#contacto">Cita con Julen</a>
-      </li>
-      <li class="prof__c">
-        <img loading="lazy" width="500" height="500" src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?w=500&q=80&auto=format&fit=crop" alt="Maider, higienista"/>
-        <h3>Maider</h3>
-        <p class="prof__rol">Higienista · Lleva la recepción</p>
-        <p>Limpiezas y revisiones, y la voz del teléfono. Es quien te dice si lo tuyo puede esperar a la semana que viene o no.</p>
-        <a class="btn btn--ghost" href="#contacto">Cita con Maider</a>
-      </li>
     </ul>
-    <p class="prof__pie rev">No rotamos pacientes entre profesionales. <span class="subr">La que empieza tu tratamiento es la que lo termina</span>, porque es la que conoce tu boca y tu historial.</p>
+    <p class="prof__pie rev">Si es tu primera vez, dinos qué buscas y te asignamos a quien mejor encaje. Y si no te convence, la siguiente la coges con otra sin que pase nada.</p>
   </div>
 </section>
 
 
 
-<!-- ═══ 6 · LA CLÍNICA · body-alternating ═══ -->
-<section class="clinica" id="galeria">
+<!-- ═══ 6 · TRABAJOS · body-masonry ═══ -->
+<section class="masonry" id="trabajos">
   <div class="wrap">
-    <p class="rotulo rev" style="margin-bottom:8px">La clínica</p>
-    <article class="paso rev">
-      <figure class="paso__m"><img loading="lazy" width="800" height="500" src="https://images.unsplash.com/photo-1629909615184-74f495363b67?w=800&q=80&auto=format&fit=crop" alt="Sala de espera luminosa"/></figure>
-      <div>
-        <p class="paso__n">Al entrar</p>
-        <h3>Una sala de espera con luz</h3>
-        <p>Da a la calle y tiene ventanas de verdad. No huele a clínica: es lo primero que nos dice la gente que llevaba años sin venir al dentista.</p>
-      </div>
-    </article>
-    <article class="paso rev">
-      <figure class="paso__m"><img loading="lazy" width="800" height="500" src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80&auto=format&fit=crop" alt="Gabinete de tratamiento"/></figure>
-      <div>
-        <p class="paso__n">El gabinete</p>
-        <h3>Dos consultas, sin salas de paso</h3>
-        <p>Cada una con su equipo completo, para que no haya que moverte de silla en mitad de un tratamiento ni esperar a que se libere un aparato.</p>
-      </div>
-    </article>
-    <article class="paso rev">
-      <figure class="paso__m"><img loading="lazy" width="800" height="500" src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=800&q=80&auto=format&fit=crop" alt="Zona de esterilización"/></figure>
-      <div>
-        <p class="paso__n">Detrás</p>
-        <h3>La zona de esterilización, a la vista</h3>
-        <p>Está acristalada a propósito. Puedes ver cómo se prepara el instrumental que se va a usar contigo, que es la clase de cosa que no se debería tener que preguntar.</p>
-      </div>
-    </article>
+    <p class="rotulo rev" style="margin-bottom:18px">Trabajos del salón</p>
+    <div class="masonry__g rev" data-d="1">
+      <figure><img loading="lazy" width="600" height="800" src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=600&q=80&auto=format&fit=crop" alt="Melena con balayage"/><figcaption>Balayage</figcaption></figure>
+      <figure><img loading="lazy" width="600" height="420" src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=600&q=80&auto=format&fit=crop" alt="Corte bob"/><figcaption>Bob</figcaption></figure>
+      <figure><img loading="lazy" width="600" height="700" src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80&auto=format&fit=crop" alt="Recogido de novia"/><figcaption>Recogido</figcaption></figure>
+      <figure><img loading="lazy" width="600" height="450" src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=600&q=80&auto=format&fit=crop" alt="Color cobrizo"/><figcaption>Cobrizo</figcaption></figure>
+      <figure><img loading="lazy" width="600" height="760" src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=600&q=80&auto=format&fit=crop" alt="Corte con flequillo"/><figcaption>Flequillo</figcaption></figure>
+      <figure><img loading="lazy" width="600" height="480" src="https://images.unsplash.com/photo-1554519934-e32b1629d1a1?w=600&q=80&auto=format&fit=crop" alt="Rubio frío"/><figcaption>Rubio frío</figcaption></figure>
+    </div>
   </div>
 </section>
 
 <!-- ═══ 7 · RESEÑAS · body-quote-full ═══ -->
 <section class="cita" id="resenas">
   <div class="wrap">
-    <p class="rotulo rev">4,9 sobre 5 · 187 reseñas en Google</p>
+    <p class="rotulo rev">4,9 sobre 5 · 231 reseñas en Google</p>
     <blockquote class="rev" data-d="1" id="cita-txt"></blockquote>
     <div class="cita__pie rev" data-d="1">
       <cite id="cita-aut"></cite><small id="cita-cuando"></small>
@@ -635,14 +567,14 @@ table.trat__t tr td:first-child{padding-left:0;}
   </div>
 </section>
 
-<!-- ═══ 3 · CIFRAS · body-stats-band ═══ -->
-<section class="cifras" aria-label="La clínica en cifras">
+<!-- ═══ 3 · CIFRAS · body-logos-strip ═══ -->
+<section class="cifras" aria-label="El salón en cifras">
   <div class="wrap">
     <ul>
-      <li class="rev"><b class="cnum" data-n="21">21</b><small>años en Tolosa</small></li>
-      <li class="rev" data-d="1"><b class="cnum" data-n="35" data-suf=" €">35 €</b><small>primera visita</small></li>
-      <li class="rev" data-d="2"><b>4,9</b><small>Google · 187 reseñas</small></li>
-      <li class="rev" data-d="3"><b class="cnum" data-n="5">5</b><small>en el equipo</small></li>
+      <li class="rev"><b class="cnum" data-n="16">16</b><small>años<br/>en Tolosa</small></li>
+      <li class="rev" data-d="1"><b class="cnum" data-n="18" data-suf=" €">18 €</b><small>corte<br/>desde</small></li>
+      <li class="rev" data-d="2"><b>4,9</b><small>Google<br/>231 reseñas</small></li>
+      <li class="rev" data-d="3"><b class="cnum" data-n="5">5</b><small>en el<br/>equipo</small></li>
     </ul>
   </div>
 </section>
@@ -651,12 +583,12 @@ table.trat__t tr td:first-child{padding-left:0;}
 <section class="donde" id="donde">
   <div class="wrap">
     <p class="rotulo rev">Dónde estamos</p>
-    <h2 class="rev" data-d="1" style="max-width:18ch">En Rondilla, en planta baja y sin escaleras</h2>
+    <h2 class="rev" data-d="1" style="max-width:16ch">En Korreo, al lado del mercado</h2>
     <div class="donde__in">
       <div class="mapa rev">
-        <iframe title="Mapa de situación de la clínica" loading="lazy" allowfullscreen
+        <iframe title="Mapa de situación del salón" loading="lazy" allowfullscreen
           referrerpolicy="no-referrer-when-downgrade"
-          src="https://www.openstreetmap.org/export/embed.html?bbox=-2.0810%2C43.1300%2C-2.0650%2C43.1390&layer=mapnik&marker=43.1348%2C-2.0725"></iframe>
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-2.0810%2C43.1300%2C-2.0650%2C43.1390&layer=mapnik&marker=43.1352%2C-2.0726"></iframe>
       </div>
       <div class="rev" data-d="1">
         <table class="horarios">
@@ -679,21 +611,21 @@ table.trat__t tr td:first-child{padding-left:0;}
 <section class="cierre" id="contacto">
   <div class="cierre__a">
     <p class="rotulo rev">Pedir cita</p>
-    <h2 class="rev" data-d="1">Dinos cuándo<br/>te viene bien</h2>
-    <p class="rev" data-d="2">Si es una urgencia y te duele hoy, mejor llama: hacemos hueco el mismo día siempre que podemos.</p>
+    <h2 class="rev" data-d="1">Dinos qué te<br/>quieres hacer</h2>
+    <p class="rev" data-d="2">Por WhatsApp es lo más rápido: te decimos el primer hueco que hay y cuánto va a durar. Si quieres una persona en concreto, dilo y te la buscamos.</p>
     <div class="cierre__btns rev" data-d="2">
-      <a class="btn" id="c-tel" href="#">Llamar ahora <span class="ar" aria-hidden="true">→</span></a>
-      <a class="btn" id="c-wa" href="#" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="btn" id="c-wa" href="#" target="_blank" rel="noopener">WhatsApp <span class="ar" aria-hidden="true">→</span></a>
+      <a class="btn" id="c-tel" href="#">Llamar</a>
     </div>
   </div>
   <div class="cierre__b">
     <form class="form rev" data-d="1" id="form" novalidate>
       <div><label for="f-nom">Nombre</label><input id="f-nom" name="nombre" type="text" autocomplete="name" required/></div>
       <div><label for="f-tel">Teléfono</label><input id="f-tel" name="tel" type="tel" autocomplete="tel" required/></div>
-      <div><label for="f-cuando">Cuándo te viene mejor</label><input id="f-cuando" name="cuando" type="text" placeholder="Mañanas · a partir de las 17:00 · me da igual"/></div>
-      <div><label for="f-msg">Qué te pasa o qué te gustaría</label><textarea id="f-msg" name="mensaje" rows="2" placeholder="Una revisión, me duele una muela, presupuesto de ortodoncia…"></textarea></div>
+      <div><label for="f-serv">Qué te quieres hacer</label><input id="f-serv" name="servicio" type="text" placeholder="Corte y color · solo corte · mechas…"/></div>
+      <div><label for="f-cuando">Cuándo te viene bien</label><textarea id="f-cuando" name="cuando" rows="2" placeholder="Tardes entre semana · sábado por la mañana · me da igual"></textarea></div>
       <button class="btn btn--fill" type="submit">Pedir cita <span class="ar" aria-hidden="true">→</span></button>
-      <p class="aviso" id="form-aviso" role="status">Te llamamos el mismo día para darte hora.</p>
+      <p class="aviso" id="form-aviso" role="status">Te contestamos el mismo día con el primer hueco libre.</p>
     </form>
   </div>
 </section>
@@ -701,7 +633,7 @@ table.trat__t tr td:first-child{padding-left:0;}
 <!-- ═══ 10 · PIE ═══ -->
 <footer class="pie">
   <div class="wrap pie__in">
-    <p>© <span id="year"></span> Clínica Dental Arrate · Tolosa, Gipuzkoa</p>
+    <p>© <span id="year"></span> Ilargi Peluquería · Tolosa, Gipuzkoa</p>
     <p><a href="#">Aviso legal</a> · <a href="#">Privacidad</a> · <a href="#">Cookies</a></p>
     <p class="demo">Demostración sin compromiso creada por OI Studio · los textos e imágenes son orientativos.</p>
   </div>
@@ -709,8 +641,8 @@ table.trat__t tr td:first-child{padding-left:0;}
 
 <!-- ═══ BARRA FIJA MÓVIL ═══ -->
 <nav class="barra" aria-label="Acciones rápidas">
-  <a class="pri" id="b-tel" href="#">Llamar</a>
-  <a id="b-wa" href="#" target="_blank" rel="noopener">WhatsApp</a>
+  <a class="pri" id="b-wa" href="#" target="_blank" rel="noopener">WhatsApp</a>
+  <a id="b-tel" href="#">Llamar</a>
   <a id="b-maps" href="#" target="_blank" rel="noopener">Cómo llegar</a>
 </nav>
 
@@ -718,33 +650,61 @@ table.trat__t tr td:first-child{padding-left:0;}
 /* ═══════════════════════════════════════════════════════════════
    DATOS DEL NEGOCIO — ÚNICO BLOQUE A EDITAR POR CLIENTE
    horario: 0=domingo … 6=sábado · null = cerrado
+   tarifas: el argumento de venta del sector. La duración importa
+            tanto como el precio: hay que mantener las dos al día.
    ═══════════════════════════════════════════════════════════════ */
 const DATOS = {
-  nombre:    "Clínica Dental Arrate",
-  reclamo:   "Te decimos lo que cuesta antes de empezar.",
-  tel:       "+34943672211",
-  whatsapp:  "34943672211",
-  direccion: "Rondilla Kalea 4, bajo · 20400 Tolosa, Gipuzkoa",
-  maps:      "https://www.google.com/maps/search/?api=1&query=Rondilla+4+Tolosa+Gipuzkoa",
-  geo:       { lat:43.1348, lon:-2.0725 },
+  nombre:    "Ilargi Peluquería",
+  reclamo:   "Sabes qué vas a pagar y cuánto vas a tardar.",
+  tel:       "+34943654412",
+  whatsapp:  "34943654412",
+  direccion: "Korreo Kalea 11 · 20400 Tolosa, Gipuzkoa",
+  maps:      "https://www.google.com/maps/search/?api=1&query=Korreo+Kalea+11+Tolosa+Gipuzkoa",
+  geo:       { lat:43.1352, lon:-2.0726 },
   precio:    "€€",
-  seguros:   ["Sanitas","Adeslas","DKV","Asisa","Divina Pastora"],
+  tarifaVigencia: "Tarifas vigentes en 2026",
+  tarifas: {
+    peluqueria: [
+      { que:"Corte mujer", nota:"Lavado, corte y peinado", dur:"45 min", pvp:"18 €" },
+      { que:"Corte hombre", nota:"Lavado, corte y acabado", dur:"30 min", pvp:"14 €" },
+      { que:"Corte infantil", nota:"Hasta 12 años", dur:"25 min", pvp:"11 €" },
+      { que:"Peinado", nota:"Secador o plancha", dur:"30 min", pvp:"15 €" },
+      { que:"Recogido", nota:"Para boda o evento · con prueba previa", dur:"1 h", pvp:"45 €" },
+      { que:"Arreglo de barba", nota:"Perfilado y toalla caliente", dur:"20 min", pvp:"10 €" },
+    ],
+    color: [
+      { que:"Color raíz", nota:"Cobertura de canas", dur:"1 h 30", pvp:"42 €" },
+      { que:"Color completo", nota:"Raíz y medios", dur:"2 h", pvp:"55 €" },
+      { que:"Mechas / babylights", nota:"Según densidad y largo", dur:"2 h 30", pvp:"desde 65 €" },
+      { que:"Balayage", nota:"Con matiz incluido", dur:"3 h", pvp:"desde 85 €" },
+      { que:"Matiz", nota:"Para mantener el rubio frío", dur:"40 min", pvp:"25 €" },
+      { que:"Prueba de mechón", nota:"La primera vez, antes de colorear", dur:"30 min", pvp:"Gratis" },
+    ],
+    estetica: [
+      { que:"Cejas", nota:"Diseño y depilación", dur:"20 min", pvp:"12 €" },
+      { que:"Manicura", nota:"Limado, cutícula y esmaltado", dur:"45 min", pvp:"18 €" },
+      { que:"Manicura semipermanente", nota:"Dura tres semanas", dur:"1 h", pvp:"25 €" },
+      { que:"Pedicura", nota:"Con tratamiento hidratante", dur:"1 h", pvp:"28 €" },
+      { que:"Tratamiento capilar", nota:"Hidratación o queratina", dur:"45 min", pvp:"desde 30 €" },
+      { que:"Limpieza facial", nota:"Con extracción e hidratación", dur:"1 h", pvp:"38 €" },
+    ],
+  },
   horario: {
-    1:[["09:00","13:30"],["15:30","20:00"]],
-    2:[["09:00","13:30"],["15:30","20:00"]],
-    3:[["09:00","13:30"],["15:30","20:00"]],
-    4:[["09:00","13:30"],["15:30","20:00"]],
-    5:[["09:00","14:00"]],
-    6:null,
+    1:null,
+    2:[["09:30","13:30"],["15:30","20:00"]],
+    3:[["09:30","13:30"],["15:30","20:00"]],
+    4:[["09:30","13:30"],["15:30","20:00"]],
+    5:[["09:30","20:00"]],
+    6:[["09:00","14:00"]],
     0:null,
   },
   resenas: [
-    { nombre:"Maite E.", cuando:"hace 3 semanas",
-      texto:"Llevaba nueve años sin ir al dentista de puro miedo. Me sentaron a hablar antes de tocarme nada y salí con la revisión hecha y una cita para la limpieza. Nada de sermones." },
-    { nombre:"Xabier R.", cuando:"hace 2 meses",
-      texto:"Pedí presupuesto de un implante en tres sitios. Aquí fue el único que venía desglosado y con la corona incluida. Al final pagué exactamente lo que ponía." },
-    { nombre:"Idoia S.", cuando:"hace 4 meses",
-      texto:"Llevé a mi hija de cinco años. La primera cita fue solo para que se sentara en la silla y viera los aparatos. Ahora pide ella ir." },
+    { nombre:"Nerea A.", cuando:"hace 2 semanas",
+      texto:"Es la primera peluquería donde sé lo que voy a pagar antes de sentarme. Y cuando dicen dos horas, son dos horas." },
+    { nombre:"Ane L.", cuando:"hace 1 mes",
+      texto:"Fui con una foto de un rubio imposible para mi pelo. Me explicaron por qué no salía y me propusieron otra cosa. Acerté haciéndoles caso." },
+    { nombre:"Josune M.", cuando:"hace 2 meses",
+      texto:"Llevo doce años yendo y siempre me atiende Amaia. Se acuerda de mi fórmula sin mirarla. Eso no se paga." },
   ],
 };
 
@@ -785,15 +745,21 @@ function pintarHorario(){
   ).join("");
 }
 
-/* BLOQUE DE SECTOR · seguros como texto, no como logos: el cliente pondrá
-   los suyos y no hay que perseguir marcas ajenas */
-function pintarSeguros(){
-  document.getElementById("seguros").innerHTML = DATOS.seguros.map(s=>`<li>${s}</li>`).join("");
+/* BLOQUE DE SECTOR · la tarifa sale de DATOS: cambiar un precio o una
+   duración es tocar una línea, no buscarlo por el HTML */
+function pintarTarifas(){
+  const fila = f => `<tr><td>${f.que}<small>${f.nota}</small></td><td>${f.dur}</td><td>${f.pvp}</td></tr>`;
+  document.getElementById("t-peluqueria").innerHTML = DATOS.tarifas.peluqueria.map(fila).join("");
+  document.getElementById("t-color").innerHTML      = DATOS.tarifas.color.map(fila).join("");
+  document.getElementById("t-estetica").innerHTML   = DATOS.tarifas.estetica.map(fila).join("");
+  document.getElementById("tarifa-vigencia").textContent = DATOS.tarifaVigencia;
 }
 
 /* ── enlaces y datos derivados ─────────────────────────── */
 function pintarDatos(){
   const telHref = "tel:"+DATOS.tel.replace(/\s/g,"");
+  /* aquí el canal principal es WhatsApp, no el teléfono: en este sector se
+     pide cita escribiendo, muchas veces fuera del horario del salón */
   const waHref  = "https://wa.me/"+DATOS.whatsapp+"?text="+
     encodeURIComponent("Hola, quería pedir cita en "+DATOS.nombre+".");
   const telVis  = DATOS.tel.replace(/^\+34/,"").replace(/(\d{3})(?=\d)/g,"$1 ").trim();
@@ -835,7 +801,7 @@ function inyectarSchema(){
   const s = document.createElement("script");
   s.type = "application/ld+json";
   s.textContent = JSON.stringify({
-    "@context":"https://schema.org","@type":"Dentist",
+    "@context":"https://schema.org","@type":"HairSalon",
     name:DATOS.nombre, description:DATOS.reclamo,
     telephone:DATOS.tel, priceRange:DATOS.precio, url:location.href,
     address:{"@type":"PostalAddress",streetAddress:calle,
@@ -843,7 +809,7 @@ function inyectarSchema(){
       postalCode:(resto.match(/\d{5}/)||[])[0]||"", addressCountry:"ES"},
     geo:{"@type":"GeoCoordinates",latitude:DATOS.geo.lat,longitude:DATOS.geo.lon},
     openingHoursSpecification:horas,
-    aggregateRating:{"@type":"AggregateRating",ratingValue:"4.9",reviewCount:"187"},
+    aggregateRating:{"@type":"AggregateRating",ratingValue:"4.9",reviewCount:"231"},
   });
   document.head.appendChild(s);
 }
@@ -931,13 +897,14 @@ document.getElementById("cita-sig").addEventListener("click", ()=>moverCita(1));
 pintarDatos();
 pintarEstado();
 pintarHorario();
-pintarSeguros();
+pintarTarifas();
 pintarCita();
 inyectarSchema();
 observarReveal();
 observarSubrayado();
 observarNumeros();
 observarNav();
+
 setInterval(pintarEstado, 60000);
 </script>
 
@@ -1291,7 +1258,7 @@ section{padding-top:clamp(56px,8.5vw,128px);padding-bottom:clamp(56px,8.5vw,128p
 @media(min-width:980px){ .prof__g{grid-template-columns:repeat(3,1fr);} }
 
 </style>
-<script>window.__RITMO__=["ad","visita"];
+<script>window.__RITMO__=["ad","tarifas"];
 /* ═══ KIT DE MOVIMIENTO ═══ (ver scripts/kit-movimiento.mjs) */
 (function(){
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
