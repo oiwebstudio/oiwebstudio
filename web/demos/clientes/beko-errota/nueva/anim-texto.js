@@ -11,6 +11,9 @@
 (function () {
   if (!window.gsap || !window.ScrollTrigger || !window.SplitText || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   gsap.registerPlugin(ScrollTrigger, SplitText);
+  /* las fotos lazy cambian el alto de la página: se recalculan los disparadores al cargar cada una */
+  var t; document.querySelectorAll("img[loading=lazy]").forEach(function (im) { if (!im.complete) im.addEventListener("load", function () { clearTimeout(t); t = setTimeout(function () { ScrollTrigger.refresh(); }, 150); }); });
+  addEventListener("load", function () { ScrollTrigger.refresh(); });
   document.fonts.ready.then(function () {
     document.querySelectorAll("[data-letras]").forEach(function (h) {
       var s = SplitText.create(h, { type: "words,chars,lines", mask: "lines" }); /* words: que no parta palabras al hacer salto de línea */
