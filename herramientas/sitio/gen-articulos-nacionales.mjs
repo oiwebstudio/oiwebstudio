@@ -95,7 +95,7 @@ function pagina(a) {
 <link rel="icon" href="/favicon-96.png" type="image/png" sizes="96x96"/>
 <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
 <link rel="manifest" href="/site.webmanifest"/>
-${fuentes}<link rel="stylesheet" href="assets/styles.css?v=22"/>
+${fuentes}<link rel="stylesheet" href="assets/styles.css?v=23"/>
 <script>if(location.protocol==='http:'&&/(^|\\.)oiwebstudio\\.com$/.test(location.hostname))location.replace('https://'+location.host+location.pathname+location.search+location.hash);document.documentElement.classList.add('js');</script>
 ${estilos}
 <script type="application/ld+json">
