@@ -292,3 +292,67 @@ a{color:inherit}
 .g2>*{min-width:0}
 .heroe--portada .fondo::after{background:linear-gradient(180deg,rgba(14,28,40,.6),rgba(14,28,40,.42) 45%,rgba(14,28,40,.62))}
 .heroe--portada h1{text-shadow:0 2px 40px rgba(8,18,28,.6),0 0 6px rgba(8,18,28,.25)}
+
+/* ═══ máscaras de la animación: hueco para los rasgos de la caligráfica (j, J, L, g) ═══ */
+[data-lineas]>div,[data-letras]>div{padding:0 .14em;margin:0 -.14em}
+.mapa-marco{overflow:hidden}
+.heroe--portada .cta{justify-content:center;margin-top:30px}
+
+/* ═══ MÓVIL ═══ */
+@media(max-width:700px){
+  .aviso{font-size:12px;padding:6px 14px;line-height:1.4}
+  .seccion{padding:60px 0}
+  .seccion h2,.molino h2{font-size:clamp(38px,10.5vw,46px)}
+  [data-lineas],[data-letras]{line-height:1.2}
+  .seccion .intro{font-size:16.5px}
+  .heroe--portada{padding:120px 0 120px;min-height:100svh}
+  .heroe--portada h1{font-size:clamp(64px,19vw,92px)}
+  .heroe--portada .sub{letter-spacing:.18em;font-size:11.5px;line-height:1.7}
+  .heroe--portada .cta{flex-direction:column;align-items:stretch;width:min(100%,300px);gap:10px}
+  .heroe--portada .cta .boton{min-height:52px}
+  .flecha{bottom:28px}
+  .heroe--corto{min-height:380px;padding-top:120px}
+  .heroe--corto h1{font-size:clamp(46px,13vw,60px)}
+  .heroe .sub{font-size:16px}
+  .cifras{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .cifras b{font-size:38px}.cifras span{font-size:12.5px;line-height:1.35;display:block}
+  .collage{padding-bottom:26px;margin-top:6px}
+  .collage .grande{width:88%}.collage .chica{width:44%;border-width:6px}
+  .tarj-osc{gap:16px;margin-top:28px}
+  .tarj-osc .tx{padding:16px 18px 20px}
+  .tarj-osc h3{font-size:30px}
+  .tarj-osc img{aspect-ratio:16/10}
+  /* galerías de fotos: carrusel lateral con el borde de la siguiente asomando */
+  .galeria{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:28px -18px 0;padding:0 18px 18px;scrollbar-width:none}
+  .galeria::-webkit-scrollbar{display:none}
+  .galeria>*{flex:0 0 82%;scroll-snap-align:center}
+  .galeria img{aspect-ratio:4/3}
+  .platos{gap:10px;margin-top:26px}
+  .platos figcaption{font-size:13px;padding:8px 10px 10px}
+  .foto-marco img{aspect-ratio:16/10}
+  .g2{gap:28px}
+  .carta{margin-top:30px}.carta h3{font-size:32px}
+  .menus .panel{padding:22px 20px}.menus .precio{font-size:54px}
+  .paso{grid-template-columns:40px 1fr;gap:4px 14px;padding:20px 0}
+  .paso::before{font-size:44px;min-width:0}
+  .paso h3{font-size:28px}
+  .producto{padding:30px 0;gap:18px}
+  .producto h2{font-size:40px}
+  .p-foto .recuadro{aspect-ratio:16/10}
+  .accesos .panel{padding:18px 20px}
+  .mapa-g .hoja{padding:22px 20px 26px}
+  .hoja .botones{flex-direction:column}
+  .hoja .botones .boton{width:100%}
+  .filas a,.filas div{padding:13px 0;font-size:15px;flex-wrap:wrap;gap:4px 16px}
+  .llamar{padding:56px 0 60px}
+  .llamar .boton{width:min(100%,320px)}
+  .llamar small a{display:inline-block;padding:10px 0}
+  .pie{padding:28px 0 32px}
+  .pie .wrap{flex-direction:column;align-items:flex-start;gap:14px}
+  .pie nav{display:grid;grid-template-columns:1fr 1fr;gap:0 18px;width:100%}
+  .pie nav a{display:flex;align-items:center;min-height:44px;border-bottom:1px solid rgba(255,255,255,.1)}
+  .mapa-marco figcaption a{display:inline-block;padding:6px 0}
+  .cab{padding:10px 16px}
+  .cab__logo{font-size:30px}
+}
+@media(max-width:700px){.tarj-osc a{padding:12px 0 6px}}
