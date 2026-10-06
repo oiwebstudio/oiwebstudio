@@ -17,8 +17,9 @@
       gsap.from(s.chars, { yPercent: 110, duration: 1.15, ease: "expo.out", stagger: 0.028, delay: 0.1 });
     });
     document.querySelectorAll("[data-lineas]").forEach(function (h) {
-      var s = SplitText.create(h, { type: "lines", mask: "lines" });
-      gsap.from(s.lines, { yPercent: 105, duration: 1.1, ease: "expo.out", stagger: 0.1, scrollTrigger: { trigger: h, start: "top 86%" } });
+      SplitText.create(h, { type: "lines", mask: "lines", autoSplit: true, onSplit: function (s) { /* se vuelve a partir si cambia el ancho */
+        return gsap.from(s.lines, { yPercent: 105, duration: 1.1, ease: "expo.out", stagger: 0.1, scrollTrigger: { trigger: h, start: "top 86%" } });
+      } });
     });
     document.querySelectorAll("[data-enciende]").forEach(function (p) {
       var w = SplitText.create(p, { type: "words", aria: "none" });
