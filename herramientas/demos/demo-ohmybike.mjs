@@ -48,7 +48,7 @@ for (const [f, n, c, p, a, et] of P) {
         <a class="preg" href="#contacto" data-bici="${n}">Preguntar por esta bici</a>
       </li>\n`;
 }
-const d = { tf: await dim("tienda-fachada"), tl: await dim("taller"), ti: await dim("tienda-interior"), ru: await dim("ruedas"), bv: await dim("hero-lombardo"), al: await dim("alpina-t"), cr: await dim("cayman"), nc: await dim("neomouv-carlina") };
+const d = { tf: await dim("tienda-fachada"), tl: await dim("taller"), ti: await dim("tienda-interior"), ru: await dim("ruedas"), bv: await dim("hero-poison"), al: await dim("alpina-t"), cr: await dim("cayman"), nc: await dim("neomouv-carlina") };
 
 const html = `<!DOCTYPE html>
 <html lang="es">
@@ -547,7 +547,7 @@ h2{overflow-wrap:break-word;hyphens:manual}
   <p class="palabra gran" aria-hidden="true" data-letras>DONOSTIA</p>
   <span class="suelo" aria-hidden="true"></span>
   <div class="bici3d">
-    <img class="bici-h" src="fotos/hero-lombardo.webp" ${d.bv} fetchpriority="high" alt="Lombardo Montecatini 7.0, bici eléctrica urbana de su tienda"/>
+    <img class="bici-h" src="fotos/hero-poison.webp" ${d.bv} fetchpriority="high" alt="WST Poison 9411, bici de montaña deportiva de su tienda"/>
   </div>
   <span class="giro" aria-hidden="true"><svg class="aro" viewBox="0 0 120 120"><defs><path id="oh" d="M60 60m-45 0a45 45 0 1 1 90 0a45 45 0 1 1-90 0"/></defs><text><textPath href="#oh" textLength="277" lengthAdjust="spacing">FINANCIACIÓN EN BICIS Y ACCESORIOS • </textPath></text></svg><b>60<small>meses</small></b></span>
   <div class="textos" id="contenido">
