@@ -28,7 +28,15 @@ const P = [
   ["wst-poison", "WST Poison 9411 29\" disc", "outlet", "799", "875", "Outlet"],
   ["cayman", "Berria Cayman Elite NX", "outlet", "4.599", "5.799", "Outlet"],
   ["met-echo", "Casco MET Echo MIPS azul mate", "equipamiento", "90", null, "Equipamiento"],
+  ["met-crossover", "Casco MET Crossover negro/gris/rosa mate", "equipamiento", "75", null, "Equipamiento"],
   ["onguard-k9", "Candado plegable Onguard K9", "ofertas", "65", "75", "Oferta"],
+  ["lazer-chiru", "Casco Lazer Chiru azul mate", "equipamiento", "55", "70", "Equipamiento"],
+  ["speedsix-air35", "SpeedSix Air 35 Ultralight carbono disc", "ruedas", "1.495", "1.895", "Ruedas"],
+  ["speedsix-air55", "SpeedSix Air 55 Ultralight carbono disc", "ruedas", "1.495", "1.895", "Ruedas"],
+  ["speedsix-earth", "SpeedSix Earth gravel carbono disc", "ruedas", "1.295", null, "Ruedas"],
+  ["onguard-mastiff", "Candado de cadena Onguard Mastiff", "accesorios", "49", "60", "Accesorio"],
+  ["gurpil-plegable", "Candado plegable Gurpil", "accesorios", "29", "35", "Accesorio"],
+  ["onguard-doberman", "Candado Onguard Doberman 15x185", "accesorios", "22", "26", "Accesorio"],
 ];
 let cards = "";
 for (const [f, n, c, p, a, et] of P) {
@@ -40,7 +48,7 @@ for (const [f, n, c, p, a, et] of P) {
         <a class="preg" href="#contacto" data-bici="${n}">Preguntar por esta bici</a>
       </li>\n`;
 }
-const d = { tf: await dim("tienda-fachada"), tl: await dim("taller"), ti: await dim("tienda-interior"), ru: await dim("ruedas"), bv: await dim("bravo"), al: await dim("alpina-t"), cr: await dim("cayman"), nc: await dim("neomouv-carlina") };
+const d = { tf: await dim("tienda-fachada"), tl: await dim("taller"), ti: await dim("tienda-interior"), ru: await dim("ruedas"), bv: await dim("hero-lombardo"), al: await dim("alpina-t"), cr: await dim("cayman"), nc: await dim("neomouv-carlina") };
 
 const html = `<!DOCTYPE html>
 <html lang="es">
@@ -487,6 +495,24 @@ html{scroll-padding-top:96px}
 .alquiler__cab,.tours__cab,.tienda__cab{grid-template-columns:minmax(0,1fr) auto}
 h2{overflow-wrap:break-word;hyphens:manual}
 @media(max-width:900px){.alquiler__cab,.tours__cab,.tienda__cab{grid-template-columns:minmax(0,1fr)}}
+
+/* elegir categoría: bicis, equipamiento, accesorios, ruedas, outlet */
+.elige{margin-bottom:28px}
+.elige__t{color:var(--acero);margin-bottom:12px}
+.tiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.tile{position:relative;display:flex;flex-direction:column;text-align:left;padding:0 0 16px;border:0;border-radius:10px;overflow:hidden;background:#fff;color:var(--tinta);box-shadow:0 1px 0 var(--linea),0 14px 30px -24px rgba(13,20,28,.5);transition:transform 300ms var(--e),box-shadow 300ms var(--e),background 220ms var(--e),color 220ms var(--e)}
+.tile__foto{position:relative;display:block;aspect-ratio:4/3;overflow:hidden;background:linear-gradient(180deg,var(--bruma3),var(--bruma2));padding:12px}
+.tile__foto img{position:absolute;inset:12px;margin:auto;max-width:calc(100% - 24px);max-height:calc(100% - 24px);width:auto;height:auto;object-fit:contain;mix-blend-mode:multiply;transition:transform 400ms var(--e)}
+.tile__t{min-height:2.05em;margin:14px 16px 0;font:900 clamp(18px,1.9vw,26px)/1 Archivo,sans-serif;text-transform:uppercase;letter-spacing:-.035em}
+.tile__n{margin:8px 16px 0;font:700 12px "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.05em;color:var(--gris)}
+.tile[aria-pressed=true]{background:var(--tinta);color:#fff;box-shadow:0 22px 40px -22px rgba(13,20,28,.7)}
+.tile[aria-pressed=true] .tile__n{color:var(--bruma2)}
+.tile[aria-pressed=true]::after{content:"";position:absolute;left:50%;bottom:-9px;width:18px;height:18px;background:var(--tinta);transform:translateX(-50%) rotate(45deg)}
+@media(hover:hover) and (pointer:fine){.tile:hover{transform:translateY(-6px)}.tile:hover .tile__foto img{transform:scale(1.06)}}
+.elige .cats{margin:22px 0 0}
+.elige .cats[hidden]{display:none}
+@media(max-width:1000px){.tiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:620px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.tile__t{font-size:17px}}
 </style>
 <script>document.documentElement.classList.add("js")</script>
 </head>
@@ -521,7 +547,7 @@ h2{overflow-wrap:break-word;hyphens:manual}
   <p class="palabra gran" aria-hidden="true" data-letras>DONOSTIA</p>
   <span class="suelo" aria-hidden="true"></span>
   <div class="bici3d">
-    <img class="bici-h" src="fotos/bravo.webp" ${d.bv} fetchpriority="high" alt="Berria Bravo HPR Elite NX, bici eléctrica de montaña de su tienda"/>
+    <img class="bici-h" src="fotos/hero-lombardo.webp" ${d.bv} fetchpriority="high" alt="Lombardo Montecatini 7.0, bici eléctrica urbana de su tienda"/>
   </div>
   <span class="giro" aria-hidden="true"><svg class="aro" viewBox="0 0 120 120"><defs><path id="oh" d="M60 60m-45 0a45 45 0 1 1 90 0a45 45 0 1 1-90 0"/></defs><text><textPath href="#oh" textLength="277" lengthAdjust="spacing">FINANCIACIÓN EN BICIS Y ACCESORIOS • </textPath></text></svg><b>60<small>meses</small></b></span>
   <div class="textos" id="contenido">
@@ -677,20 +703,25 @@ h2{overflow-wrap:break-word;hyphens:manual}
     </div>
     <a class="btn btn--linea" href="#contacto">Preguntar por una bici <i aria-hidden="true">→</i></a>
   </div>
-  <div class="cats" role="group" aria-label="Categorías">
-    <button class="cat" type="button" data-f="todo" aria-pressed="true">Todo</button>
-    <button class="cat" type="button" data-f="carbono" aria-pressed="false">Carbono <small>33</small></button>
-    <button class="cat" type="button" data-f="electricas" aria-pressed="false">Eléctricas <small>15</small></button>
-    <button class="cat" type="button" data-f="aluminio" aria-pressed="false">Aluminio <small>25</small></button>
-    <button class="cat" type="button" data-f="ruedas" aria-pressed="false">Ruedas <small>15</small></button>
-    <button class="cat" type="button" data-f="equipamiento" aria-pressed="false">Equipamiento <small>47</small></button>
-    <button class="cat" type="button" data-f="accesorios" aria-pressed="false">Accesorios <small>68</small></button>
-    <button class="cat" type="button" data-f="ofertas" aria-pressed="false">Ofertas <small>77</small></button>
-    <button class="cat" type="button" data-f="outlet" aria-pressed="false">Outlet <small>45</small></button>
+  <div class="elige" role="group" aria-label="Elige qué buscas">
+    <p class="mono elige__t">Elige qué buscas</p>
+    <div class="tiles">
+    <button class="tile" type="button" data-g="bicis" data-cats="carbono,electricas,aluminio" data-sub="1" aria-pressed="true"><span class="tile__foto"><img src="fotos/bravo.webp" alt="" loading="lazy"/></span><span class="tile__t">Bicicletas</span><span class="tile__n">73 artículos</span></button>
+    <button class="tile" type="button" data-g="equipamiento" data-cats="equipamiento" data-sub="0" aria-pressed="false"><span class="tile__foto"><img src="fotos/met-echo.webp" alt="" loading="lazy"/></span><span class="tile__t">Equipamiento ciclista</span><span class="tile__n">47 artículos</span></button>
+    <button class="tile" type="button" data-g="accesorios" data-cats="accesorios" data-sub="0" aria-pressed="false"><span class="tile__foto"><img src="fotos/onguard-mastiff.webp" alt="" loading="lazy"/></span><span class="tile__t">Accesorios y componentes</span><span class="tile__n">68 artículos</span></button>
+    <button class="tile" type="button" data-g="ruedas" data-cats="ruedas" data-sub="0" aria-pressed="false"><span class="tile__foto"><img src="fotos/speedsix-air35.webp" alt="" loading="lazy"/></span><span class="tile__t">Ruedas</span><span class="tile__n">15 artículos</span></button>
+    <button class="tile" type="button" data-g="ofertas" data-cats="outlet,ofertas" data-sub="0" aria-pressed="false"><span class="tile__foto"><img src="fotos/cayman.webp" alt="" loading="lazy"/></span><span class="tile__t">Outlet y ofertas</span><span class="tile__n">122 artículos</span></button>
+    </div>
+    <div class="cats" role="group" aria-label="Tipo de bicicleta" data-sub>
+      <button class="cat" type="button" data-f="todo" aria-pressed="true">Todas</button>
+      <button class="cat" type="button" data-f="electricas" aria-pressed="false">Eléctricas <small>15</small></button>
+      <button class="cat" type="button" data-f="carbono" aria-pressed="false">Carbono <small>33</small></button>
+      <button class="cat" type="button" data-f="aluminio" aria-pressed="false">Aluminio <small>25</small></button>
+    </div>
   </div>
   <ul class="prods" data-rejilla>
 ${cards}  </ul>
-  <p class="vacio" data-vacio hidden>Esta categoría está en su tienda online; en la muestra solo enseñamos una selección.</p>
+  <p class="vacio" data-vacio hidden>En la muestra solo enseñamos una selección; el resto está en su tienda online.</p>
   <div class="fin">
     <div><b>Financiación hasta 60 meses</b><p>En bicis y accesorios.</p></div>
     <div><b>Tu bici como parte de pago</b><p>Aceptamos tu bici al comprar una nueva. Tasación inmediata.</p></div>
