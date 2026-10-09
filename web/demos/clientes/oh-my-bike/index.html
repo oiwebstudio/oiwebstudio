@@ -443,6 +443,24 @@ html{scroll-padding-top:96px}
 .alquiler__cab,.tours__cab,.tienda__cab{grid-template-columns:minmax(0,1fr) auto}
 h2{overflow-wrap:break-word;hyphens:manual}
 @media(max-width:900px){.alquiler__cab,.tours__cab,.tienda__cab{grid-template-columns:minmax(0,1fr)}}
+
+/* elegir categoría: bicis, equipamiento, accesorios, ruedas, outlet */
+.elige{margin-bottom:28px}
+.elige__t{color:var(--acero);margin-bottom:12px}
+.tiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.tile{position:relative;display:flex;flex-direction:column;text-align:left;padding:0 0 16px;border:0;border-radius:10px;overflow:hidden;background:#fff;color:var(--tinta);box-shadow:0 1px 0 var(--linea),0 14px 30px -24px rgba(13,20,28,.5);transition:transform 300ms var(--e),box-shadow 300ms var(--e),background 220ms var(--e),color 220ms var(--e)}
+.tile__foto{position:relative;display:block;aspect-ratio:4/3;overflow:hidden;background:linear-gradient(180deg,var(--bruma3),var(--bruma2));padding:12px}
+.tile__foto img{position:absolute;inset:12px;margin:auto;max-width:calc(100% - 24px);max-height:calc(100% - 24px);width:auto;height:auto;object-fit:contain;mix-blend-mode:multiply;transition:transform 400ms var(--e)}
+.tile__t{min-height:2.05em;margin:14px 16px 0;font:900 clamp(18px,1.9vw,26px)/1 Archivo,sans-serif;text-transform:uppercase;letter-spacing:-.035em}
+.tile__n{margin:8px 16px 0;font:700 12px "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.05em;color:var(--gris)}
+.tile[aria-pressed=true]{background:var(--tinta);color:#fff;box-shadow:0 22px 40px -22px rgba(13,20,28,.7)}
+.tile[aria-pressed=true] .tile__n{color:var(--bruma2)}
+.tile[aria-pressed=true]::after{content:"";position:absolute;left:50%;bottom:-9px;width:18px;height:18px;background:var(--tinta);transform:translateX(-50%) rotate(45deg)}
+@media(hover:hover) and (pointer:fine){.tile:hover{transform:translateY(-6px)}.tile:hover .tile__foto img{transform:scale(1.06)}}
+.elige .cats{margin:22px 0 0}
+.elige .cats[hidden]{display:none}
+@media(max-width:1000px){.tiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:620px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.tile__t{font-size:17px}}
 </style>
 <script>document.documentElement.classList.add("js")</script>
 </head>
@@ -477,7 +495,7 @@ h2{overflow-wrap:break-word;hyphens:manual}
   <p class="palabra gran" aria-hidden="true" data-letras>DONOSTIA</p>
   <span class="suelo" aria-hidden="true"></span>
   <div class="bici3d">
-    <img class="bici-h" src="fotos/bravo.webp" width="1131" height="637" fetchpriority="high" alt="Berria Bravo HPR Elite NX, bici eléctrica de montaña de su tienda"/>
+    <img class="bici-h" src="fotos/hero-lombardo.webp" width="1000" height="613" fetchpriority="high" alt="Lombardo Montecatini 7.0, bici eléctrica urbana de su tienda"/>
   </div>
   <span class="giro" aria-hidden="true"><svg class="aro" viewBox="0 0 120 120"><defs><path id="oh" d="M60 60m-45 0a45 45 0 1 1 90 0a45 45 0 1 1-90 0"/></defs><text><textPath href="#oh" textLength="277" lengthAdjust="spacing">FINANCIACIÓN EN BICIS Y ACCESORIOS • </textPath></text></svg><b>60<small>meses</small></b></span>
   <div class="textos" id="contenido">
@@ -633,16 +651,21 @@ h2{overflow-wrap:break-word;hyphens:manual}
     </div>
     <a class="btn btn--linea" href="#contacto">Preguntar por una bici <i aria-hidden="true">→</i></a>
   </div>
-  <div class="cats" role="group" aria-label="Categorías">
-    <button class="cat" type="button" data-f="todo" aria-pressed="true">Todo</button>
-    <button class="cat" type="button" data-f="carbono" aria-pressed="false">Carbono <small>33</small></button>
-    <button class="cat" type="button" data-f="electricas" aria-pressed="false">Eléctricas <small>15</small></button>
-    <button class="cat" type="button" data-f="aluminio" aria-pressed="false">Aluminio <small>25</small></button>
-    <button class="cat" type="button" data-f="ruedas" aria-pressed="false">Ruedas <small>15</small></button>
-    <button class="cat" type="button" data-f="equipamiento" aria-pressed="false">Equipamiento <small>47</small></button>
-    <button class="cat" type="button" data-f="accesorios" aria-pressed="false">Accesorios <small>68</small></button>
-    <button class="cat" type="button" data-f="ofertas" aria-pressed="false">Ofertas <small>77</small></button>
-    <button class="cat" type="button" data-f="outlet" aria-pressed="false">Outlet <small>45</small></button>
+  <div class="elige" role="group" aria-label="Elige qué buscas">
+    <p class="mono elige__t">Elige qué buscas</p>
+    <div class="tiles">
+    <button class="tile" type="button" data-g="bicis" data-cats="carbono,electricas,aluminio" data-sub="1" aria-pressed="true"><span class="tile__foto"><img src="fotos/bravo.webp" alt="" loading="lazy"/></span><span class="tile__t">Bicicletas</span><span class="tile__n">73 artículos</span></button>
+    <button class="tile" type="button" data-g="equipamiento" data-cats="equipamiento" data-sub="0" aria-pressed="false"><span class="tile__foto"><img src="fotos/met-echo.webp" alt="" loading="lazy"/></span><span class="tile__t">Equipamiento ciclista</span><span class="tile__n">47 artículos</span></button>
+    <button class="tile" type="button" data-g="accesorios" data-cats="accesorios" data-sub="0" aria-pressed="false"><span class="tile__foto"><img src="fotos/onguard-mastiff.webp" alt="" loading="lazy"/></span><span class="tile__t">Accesorios y componentes</span><span class="tile__n">68 artículos</span></button>
+    <button class="tile" type="button" data-g="ruedas" data-cats="ruedas" data-sub="0" aria-pressed="false"><span class="tile__foto"><img src="fotos/speedsix-air35.webp" alt="" loading="lazy"/></span><span class="tile__t">Ruedas</span><span class="tile__n">15 artículos</span></button>
+    <button class="tile" type="button" data-g="ofertas" data-cats="outlet,ofertas" data-sub="0" aria-pressed="false"><span class="tile__foto"><img src="fotos/cayman.webp" alt="" loading="lazy"/></span><span class="tile__t">Outlet y ofertas</span><span class="tile__n">122 artículos</span></button>
+    </div>
+    <div class="cats" role="group" aria-label="Tipo de bicicleta" data-sub>
+      <button class="cat" type="button" data-f="todo" aria-pressed="true">Todas</button>
+      <button class="cat" type="button" data-f="electricas" aria-pressed="false">Eléctricas <small>15</small></button>
+      <button class="cat" type="button" data-f="carbono" aria-pressed="false">Carbono <small>33</small></button>
+      <button class="cat" type="button" data-f="aluminio" aria-pressed="false">Aluminio <small>25</small></button>
+    </div>
   </div>
   <ul class="prods" data-rejilla>
       <li class="prod" data-cat="electricas">
@@ -743,6 +766,13 @@ h2{overflow-wrap:break-word;hyphens:manual}
         <button class="anadir" type="button" data-nombre="Casco MET Echo MIPS azul mate">Añadir al carrito</button>
         <a class="preg" href="#contacto" data-bici="Casco MET Echo MIPS azul mate">Preguntar por esta bici</a>
       </li>
+      <li class="prod" data-cat="equipamiento">
+        <div class="prod__foto"><img src="fotos/met-crossover.webp" width="604" height="357" alt="Casco MET Crossover negro/gris/rosa mate" loading="lazy"/><span class="etiq">Equipamiento</span></div>
+        <h3>Casco MET Crossover negro/gris/rosa mate</h3>
+        <p class="precio"><strong>75 €</strong></p>
+        <button class="anadir" type="button" data-nombre="Casco MET Crossover negro/gris/rosa mate">Añadir al carrito</button>
+        <a class="preg" href="#contacto" data-bici="Casco MET Crossover negro/gris/rosa mate">Preguntar por esta bici</a>
+      </li>
       <li class="prod" data-cat="ofertas">
         <div class="prod__foto"><img src="fotos/onguard-k9.webp" width="424" height="346" alt="Candado plegable Onguard K9" loading="lazy"/><span class="etiq">Oferta</span></div>
         <h3>Candado plegable Onguard K9</h3>
@@ -750,8 +780,57 @@ h2{overflow-wrap:break-word;hyphens:manual}
         <button class="anadir" type="button" data-nombre="Candado plegable Onguard K9">Añadir al carrito</button>
         <a class="preg" href="#contacto" data-bici="Candado plegable Onguard K9">Preguntar por esta bici</a>
       </li>
+      <li class="prod" data-cat="equipamiento">
+        <div class="prod__foto"><img src="fotos/lazer-chiru.webp" width="700" height="599" alt="Casco Lazer Chiru azul mate" loading="lazy"/><span class="etiq">Equipamiento</span></div>
+        <h3>Casco Lazer Chiru azul mate</h3>
+        <p class="precio"><s>70 €</s> <strong>55 €</strong></p>
+        <button class="anadir" type="button" data-nombre="Casco Lazer Chiru azul mate">Añadir al carrito</button>
+        <a class="preg" href="#contacto" data-bici="Casco Lazer Chiru azul mate">Preguntar por esta bici</a>
+      </li>
+      <li class="prod" data-cat="ruedas">
+        <div class="prod__foto"><img src="fotos/speedsix-air35.webp" width="697" height="700" alt="SpeedSix Air 35 Ultralight carbono disc" loading="lazy"/><span class="etiq">Ruedas</span></div>
+        <h3>SpeedSix Air 35 Ultralight carbono disc</h3>
+        <p class="precio"><s>1.895 €</s> <strong>1.495 €</strong></p>
+        <button class="anadir" type="button" data-nombre="SpeedSix Air 35 Ultralight carbono disc">Añadir al carrito</button>
+        <a class="preg" href="#contacto" data-bici="SpeedSix Air 35 Ultralight carbono disc">Preguntar por esta bici</a>
+      </li>
+      <li class="prod" data-cat="ruedas">
+        <div class="prod__foto"><img src="fotos/speedsix-air55.webp" width="692" height="692" alt="SpeedSix Air 55 Ultralight carbono disc" loading="lazy"/><span class="etiq">Ruedas</span></div>
+        <h3>SpeedSix Air 55 Ultralight carbono disc</h3>
+        <p class="precio"><s>1.895 €</s> <strong>1.495 €</strong></p>
+        <button class="anadir" type="button" data-nombre="SpeedSix Air 55 Ultralight carbono disc">Añadir al carrito</button>
+        <a class="preg" href="#contacto" data-bici="SpeedSix Air 55 Ultralight carbono disc">Preguntar por esta bici</a>
+      </li>
+      <li class="prod" data-cat="ruedas">
+        <div class="prod__foto"><img src="fotos/speedsix-earth.webp" width="700" height="700" alt="SpeedSix Earth gravel carbono disc" loading="lazy"/><span class="etiq">Ruedas</span></div>
+        <h3>SpeedSix Earth gravel carbono disc</h3>
+        <p class="precio"><strong>1.295 €</strong></p>
+        <button class="anadir" type="button" data-nombre="SpeedSix Earth gravel carbono disc">Añadir al carrito</button>
+        <a class="preg" href="#contacto" data-bici="SpeedSix Earth gravel carbono disc">Preguntar por esta bici</a>
+      </li>
+      <li class="prod" data-cat="accesorios">
+        <div class="prod__foto"><img src="fotos/onguard-mastiff.webp" width="366" height="507" alt="Candado de cadena Onguard Mastiff" loading="lazy"/><span class="etiq">Accesorio</span></div>
+        <h3>Candado de cadena Onguard Mastiff</h3>
+        <p class="precio"><s>60 €</s> <strong>49 €</strong></p>
+        <button class="anadir" type="button" data-nombre="Candado de cadena Onguard Mastiff">Añadir al carrito</button>
+        <a class="preg" href="#contacto" data-bici="Candado de cadena Onguard Mastiff">Preguntar por esta bici</a>
+      </li>
+      <li class="prod" data-cat="accesorios">
+        <div class="prod__foto"><img src="fotos/gurpil-plegable.webp" width="512" height="496" alt="Candado plegable Gurpil" loading="lazy"/><span class="etiq">Accesorio</span></div>
+        <h3>Candado plegable Gurpil</h3>
+        <p class="precio"><s>35 €</s> <strong>29 €</strong></p>
+        <button class="anadir" type="button" data-nombre="Candado plegable Gurpil">Añadir al carrito</button>
+        <a class="preg" href="#contacto" data-bici="Candado plegable Gurpil">Preguntar por esta bici</a>
+      </li>
+      <li class="prod" data-cat="accesorios">
+        <div class="prod__foto"><img src="fotos/onguard-doberman.webp" width="461" height="767" alt="Candado Onguard Doberman 15x185" loading="lazy"/><span class="etiq">Accesorio</span></div>
+        <h3>Candado Onguard Doberman 15x185</h3>
+        <p class="precio"><s>26 €</s> <strong>22 €</strong></p>
+        <button class="anadir" type="button" data-nombre="Candado Onguard Doberman 15x185">Añadir al carrito</button>
+        <a class="preg" href="#contacto" data-bici="Candado Onguard Doberman 15x185">Preguntar por esta bici</a>
+      </li>
   </ul>
-  <p class="vacio" data-vacio hidden>Esta categoría está en su tienda online; en la muestra solo enseñamos una selección.</p>
+  <p class="vacio" data-vacio hidden>En la muestra solo enseñamos una selección; el resto está en su tienda online.</p>
   <div class="fin">
     <div><b>Financiación hasta 60 meses</b><p>En bicis y accesorios.</p></div>
     <div><b>Tu bici como parte de pago</b><p>Aceptamos tu bici al comprar una nueva. Tasación inmediata.</p></div>
