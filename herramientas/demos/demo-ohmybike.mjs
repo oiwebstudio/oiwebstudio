@@ -513,6 +513,25 @@ h2{overflow-wrap:break-word;hyphens:manual}
 .elige .cats[hidden]{display:none}
 @media(max-width:1000px){.tiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:620px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.tile__t{font-size:17px}}
+
+/* croquis del mapa */
+.llegar{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:clamp(18px,3vw,40px);align-items:center;max-width:1080px;margin:clamp(24px,3vw,40px) auto 0;text-align:left;background:#fff;color:var(--tinta);border-radius:10px;padding:clamp(14px,2vw,24px);box-shadow:0 20px 50px -30px rgba(13,20,28,.5)}
+.croquis{margin:0;position:relative}
+.croquis .mapa{display:block;width:100%;height:auto;border-radius:10px}
+.croquis figcaption{margin-top:8px;color:var(--gris);font-size:11.5px}
+.llegar__t h3{font:900 clamp(26px,3vw,40px)/.95 Archivo,sans-serif;letter-spacing:-.04em;text-transform:uppercase;margin:8px 0 10px}
+.llegar__t p{color:var(--gris);margin-bottom:6px}
+.llegar__t .mono{color:var(--acero)}
+.js .croquis .ruta,.js .croquis .ruta-l{stroke-dashoffset:1000}
+.js .croquis .ruta{stroke-dasharray:1 11}
+.js .croquis .ruta-l{stroke-dasharray:1000}
+.js .croquis .pin{opacity:0;transform-box:fill-box;transition:opacity 500ms var(--e) 1.9s}
+.croquis.vista .ruta-l{animation:trazo 2.2s var(--e) forwards}
+.croquis.vista .ruta{animation:trazo 2.2s var(--e) forwards}
+.croquis.vista .pin{opacity:1}
+@keyframes trazo{to{stroke-dashoffset:0}}
+@media(prefers-reduced-motion:reduce){.js .croquis .ruta,.js .croquis .ruta-l{stroke-dashoffset:0}.js .croquis .pin{opacity:1;transition:none}.croquis.vista .ruta,.croquis.vista .ruta-l{animation:none}}
+@media(max-width:860px){.llegar{grid-template-columns:minmax(0,1fr)}}
 </style>
 <script>document.documentElement.classList.add("js")</script>
 </head>
@@ -757,6 +776,40 @@ ${cards}  </ul>
       <button class="btn" type="submit">Enviar mensaje <i aria-hidden="true">→</i></button>
       <p class="ok" role="status" data-ok></p>
     </form>
+  </div>
+
+  <div class="llegar">
+    <figure class="croquis" data-croquis>
+      <svg class="mapa" viewBox="0 0 960 440" role="img" aria-labelledby="croq-t croq-d">
+    <title id="croq-t">Croquis de cómo llegar a Oh My Bike!</title>
+    <desc id="croq-d">Dibujo esquemático, sin escala: una ruta en bici llega hasta la tienda, en la Plaza Teresa de Calcuta, 6 bajo, con el río cerca.</desc>
+    <defs><linearGradient id="fondoMapa" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfdde8"/><stop offset="1" stop-color="#a1b8c9"/></linearGradient>
+    <pattern id="adoquin" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#fff" opacity=".55"/></pattern></defs>
+    <rect width="960" height="440" rx="14" fill="url(#fondoMapa)"/>
+    <rect width="960" height="440" rx="14" fill="url(#adoquin)"/>
+    <g fill="#fff" opacity=".62"><rect x="40" y="40" width="120" height="70" rx="10"/><rect x="180" y="40" width="90" height="70" rx="10"/><rect x="290" y="40" width="130" height="70" rx="10"/><rect x="40" y="130" width="70" height="80" rx="10"/><rect x="130" y="130" width="140" height="80" rx="10"/><rect x="40" y="230" width="100" height="70" rx="10"/><rect x="160" y="230" width="110" height="70" rx="10"/><rect x="40" y="320" width="130" height="80" rx="10"/><rect x="190" y="320" width="80" height="80" rx="10"/><rect x="560" y="40" width="100" height="60" rx="10"/><rect x="680" y="40" width="120" height="60" rx="10"/><rect x="820" y="40" width="100" height="60" rx="10"/><rect x="600" y="120" width="90" height="70" rx="10"/><rect x="710" y="120" width="110" height="70" rx="10"/><rect x="840" y="120" width="80" height="70" rx="10"/><rect x="560" y="210" width="110" height="60" rx="10"/><rect x="690" y="210" width="70" height="60" rx="10"/><rect x="780" y="210" width="140" height="60" rx="10"/><rect x="600" y="290" width="120" height="70" rx="10"/><rect x="740" y="290" width="90" height="70" rx="10"/><rect x="850" y="290" width="70" height="70" rx="10"/><rect x="560" y="380" width="150" height="40" rx="10"/><rect x="730" y="380" width="190" height="40" rx="10"/><rect x="330" y="330" width="90" height="70" rx="10"/><rect x="330" y="230" width="70" height="60" rx="10"/></g>
+    <path class="rio" d="M-20 395 C 150 330, 300 420, 430 300 S 640 150, 980 215" fill="none" stroke="#5d7f97" stroke-width="58" stroke-linecap="round"/>
+    <path d="M-20 395 C 150 330, 300 420, 430 300 S 640 150, 980 215" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="2 14" stroke-linecap="round" opacity=".8"/>
+    <text x="108" y="388" font-family="JetBrains Mono,monospace" font-size="13" font-weight="700" fill="#fff" letter-spacing="2" transform="rotate(-12 108 388)">RÍO</text>
+    <path class="ruta" d="M70 120 L70 215 L300 215 L300 150 L470 150 L470 250 L530 250 L530 205" fill="none" stroke="#0d141c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 11" pathLength="1000"/>
+    <path class="ruta-l" d="M70 120 L70 215 L300 215 L300 150 L470 150 L470 250 L530 250 L530 205" fill="none" stroke="#0d141c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" pathLength="1000"/>
+    <g transform="translate(70 120)"><circle r="19" fill="#fff"/><circle cx="0" cy="0" r="13" fill="none" stroke="#0d141c" stroke-width="1.56"/><line x1="0" y1="0" x2="13.0" y2="0.0" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="0" x2="11.3" y2="6.5" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="0" x2="6.5" y2="11.3" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="0" x2="0.0" y2="13.0" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="0" x2="-6.5" y2="11.3" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="0" x2="-11.3" y2="6.5" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="0" x2="-13.0" y2="0.0" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="0" x2="-11.3" y2="-6.5" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="0" x2="-6.5" y2="-11.3" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="0" x2="-0.0" y2="-13.0" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="0" x2="6.5" y2="-11.3" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="0" x2="11.3" y2="-6.5" stroke="#0d141c" stroke-width="1"/><circle cx="0" cy="0" r="1.8200000000000003" fill="#0d141c"/></g>
+    <g><rect x="38" y="62" width="64" height="26" rx="13" fill="#0d141c"/><text x="70" y="79.5" text-anchor="middle" font-family="Archivo,sans-serif" font-size="13" font-weight="900" fill="#fff" letter-spacing="1">TÚ</text></g>
+    <g class="pin" transform="translate(530 192)">
+      <path d="M0 14 L-13 -10 A26 26 0 1 1 13 -10 Z" fill="#0d141c" transform="translate(0 6)"/>
+      <circle cy="-22" r="24" fill="#fff"/><circle cx="0" cy="-22" r="17" fill="none" stroke="#0d141c" stroke-width="2.04"/><line x1="0" y1="-22" x2="17.0" y2="-22.0" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="-22" x2="14.7" y2="-13.5" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="-22" x2="8.5" y2="-7.3" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="-22" x2="0.0" y2="-5.0" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="-22" x2="-8.5" y2="-7.3" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="-22" x2="-14.7" y2="-13.5" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="-22" x2="-17.0" y2="-22.0" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="-22" x2="-14.7" y2="-30.5" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="-22" x2="-8.5" y2="-36.7" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="-22" x2="-0.0" y2="-39.0" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="-22" x2="8.5" y2="-36.7" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="-22" x2="14.7" y2="-30.5" stroke="#0d141c" stroke-width="1"/><circle cx="0" cy="-22" r="2.3800000000000003" fill="#0d141c"/>
+    </g>
+    <g transform="translate(560 140)"><rect width="250" height="62" rx="12" fill="#fff"/><text x="16" y="27" font-family="Archivo,sans-serif" font-size="21" font-weight="900" fill="#0d141c" letter-spacing="-.5">OH MY BIKE!</text><text x="16" y="48" font-family="Satoshi,sans-serif" font-size="14" fill="#566471">Plaza Teresa de Calcuta, 6 bajo</text></g>
+    <g transform="translate(895 395)"><circle r="30" fill="#fff" opacity=".85"/><circle cx="0" cy="0" r="26" fill="none" stroke="#3d5a73" stroke-width="3.12"/><line x1="0" y1="0" x2="26.0" y2="0.0" stroke="#3d5a73" stroke-width="1.04"/><line x1="0" y1="0" x2="22.5" y2="13.0" stroke="#3d5a73" stroke-width="1.04"/><line x1="0" y1="0" x2="13.0" y2="22.5" stroke="#3d5a73" stroke-width="1.04"/><line x1="0" y1="0" x2="0.0" y2="26.0" stroke="#3d5a73" stroke-width="1.04"/><line x1="0" y1="0" x2="-13.0" y2="22.5" stroke="#3d5a73" stroke-width="1.04"/><line x1="0" y1="0" x2="-22.5" y2="13.0" stroke="#3d5a73" stroke-width="1.04"/><line x1="0" y1="0" x2="-26.0" y2="0.0" stroke="#3d5a73" stroke-width="1.04"/><line x1="0" y1="0" x2="-22.5" y2="-13.0" stroke="#3d5a73" stroke-width="1.04"/><line x1="0" y1="0" x2="-13.0" y2="-22.5" stroke="#3d5a73" stroke-width="1.04"/><line x1="0" y1="0" x2="-0.0" y2="-26.0" stroke="#3d5a73" stroke-width="1.04"/><line x1="0" y1="0" x2="13.0" y2="-22.5" stroke="#3d5a73" stroke-width="1.04"/><line x1="0" y1="0" x2="22.5" y2="-13.0" stroke="#3d5a73" stroke-width="1.04"/><circle cx="0" cy="0" r="3.6400000000000006" fill="#3d5a73"/><text y="-34" text-anchor="middle" font-family="Archivo,sans-serif" font-size="15" font-weight="900" fill="#0d141c">N</text></g>
+  </svg>
+      <figcaption class="mono">Croquis orientativo · sin escala</figcaption>
+    </figure>
+    <div class="llegar__t">
+      <span class="mono">Cómo llegar</span>
+      <h3>En bici, hasta la puerta</h3>
+      <p>Plaza Teresa de Calcuta, 6 bajo, en Donostia. Si vienes con tu bici, el taller atiende sin cita y tiene lavadero.</p>
+      <div class="acc2"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Oh+My+Bike+Plaza+Teresa+de+Calcuta+6+Donostia">Abrir en el mapa <i aria-hidden="true">→</i></a><a class="btn btn--linea" href="tel:+34943539703">Llamar <i aria-hidden="true">→</i></a></div>
+    </div>
   </div>
 </section>
 

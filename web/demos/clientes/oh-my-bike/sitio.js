@@ -128,3 +128,11 @@
     setTimeout(function () { m.focus({ preventScroll: true }); }, 700);
   });
 })();
+
+/* el croquis dibuja la ruta al llegar a él */
+(function () {
+  var c = document.querySelector("[data-croquis]"); if (!c) return;
+  if (!("IntersectionObserver" in window)) { c.classList.add("vista"); return; }
+  var io = new IntersectionObserver(function (e) { if (e[0].isIntersecting) { c.classList.add("vista"); io.disconnect(); } }, { threshold: 0.35 });
+  io.observe(c);
+})();
