@@ -29,18 +29,36 @@
     pon(0);
   }
 
-  /* tienda: filtro y carrito de prueba */
+  /* tienda: elegir categoría, afinar entre bicis y carrito de prueba */
   var g = document.querySelector("[data-rejilla]");
   if (g) {
-    var fs = document.querySelectorAll(".cat"), vac = document.querySelector("[data-vacio]");
-    fs.forEach(function (x) {
-      x.addEventListener("click", function () {
-        var f = x.dataset.f, n = 0;
-        fs.forEach(function (y) { y.setAttribute("aria-pressed", y === x); });
-        g.querySelectorAll(".prod").forEach(function (p) { var ok = f === "todo" || p.dataset.cat === f; p.hidden = !ok; if (ok) n++; });
-        if (vac) vac.hidden = n > 0;
+    var tiles = document.querySelectorAll(".tile"), subs = document.querySelectorAll(".cat[data-f]"), subBox = document.querySelector(".cats[data-sub]"), vac = document.querySelector("[data-vacio]");
+    var grupo = null, sub = "todo";
+    var pinta = function () {
+      var cats = grupo ? grupo.dataset.cats.split(",") : [], n = 0;
+      g.querySelectorAll(".prod").forEach(function (p) {
+        var ok = cats.indexOf(p.dataset.cat) > -1 && (sub === "todo" || p.dataset.cat === sub);
+        p.hidden = !ok; if (ok) n++;
+      });
+      if (vac) vac.hidden = n > 0;
+      if (subBox) subBox.hidden = !(grupo && grupo.dataset.sub === "1");
+    };
+    tiles.forEach(function (t) {
+      t.addEventListener("click", function () {
+        grupo = t; sub = "todo";
+        tiles.forEach(function (y) { y.setAttribute("aria-pressed", y === t); });
+        subs.forEach(function (y) { y.setAttribute("aria-pressed", y.dataset.f === "todo"); });
+        pinta();
       });
     });
+    subs.forEach(function (x) {
+      x.addEventListener("click", function () {
+        sub = x.dataset.f;
+        subs.forEach(function (y) { y.setAttribute("aria-pressed", y === x); });
+        pinta();
+      });
+    });
+    grupo = document.querySelector(".tile[aria-pressed=true]") || tiles[0]; pinta();
     var c = document.getElementById("cuenta"), q = 0;
     g.addEventListener("click", function (e) {
       var a = e.target.closest(".anadir"); if (!a || !c) return;
