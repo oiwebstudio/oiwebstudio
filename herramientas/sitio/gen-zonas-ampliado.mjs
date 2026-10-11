@@ -47,7 +47,7 @@ const CSS = trozo("<style>", "</style>") + "</style>";
 const NAV = trozo('<div class="nav-wrap">', '<header class="zh">');
 const PIE = trozo('<footer class="footer">');
 const CABECERA_COMUN = trozo('<meta http-equiv="Content-Security-Policy"', "<title>");
-const FUENTES = trozo('<link rel="preconnect" href="https://fonts.googleapis.com"/>', "<style>");
+const FUENTES = trozo('<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/geist-latin-04ce1a61.woff2" crossorigin/>', "<style>");
 
 /* ------------------------------------------------------------ imágenes */
 const STOCK = { pan: 4, gym: 2, cafe: 3, pelu: 3, flor: 2, rest: 3, taller: 3, vet: 2 };
