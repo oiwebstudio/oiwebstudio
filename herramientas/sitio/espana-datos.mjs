@@ -5,7 +5,7 @@
  */
 const PAGO = "La mitad al aceptar la propuesta y la otra mitad cuando la web está publicada. Si te viene mejor, lo hablamos y se paga a plazos. Los precios son sin IVA.";
 const DOMINIO = "El primer año van incluidos: registro el dominio a tu nombre y dejo la web publicada con https. La web es tuya, no queda atada a mí. Desde el segundo año entran en el mantenimiento o, si no lo quieres, pagas solo dominio y alojamiento: 15 € al año.";
-const VER = "Sí. Las webs del portfolio están publicadas y se pueden abrir y recorrer, y además te preparo una muestra con tu negocio, gratis y sin compromiso. Solo si te convence, seguimos.";
+const VER = "Sí. Las muestras del portfolio están publicadas y se pueden abrir y recorrer, y además te preparo una muestra con tu negocio, gratis y sin compromiso. Solo si te convence, seguimos.";
 const REMOTO = "El precio es el mismo estés donde estés: landing desde 199€, Web Negocio desde 299€ y tienda online desde 790€ (+ IVA).";
 const PRECIO = (donde) => ["¿Cuánto cuesta una web para un negocio de " + donde + "?", "Landing desde 199€, Web Negocio desde 299€ y tienda online desde 790€ (+ IVA), con precio cerrado por escrito y 30 días de ajustes incluidos. El precio es el mismo que en Gipuzkoa."];
 

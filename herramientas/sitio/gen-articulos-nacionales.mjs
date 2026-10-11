@@ -140,7 +140,7 @@ export const ARTICULOS = [
 /* ------------------------------------------------------------------ 1 */
 {
   slug: "pagina-web-para-autonomos",
-  title: "Página Web para Autónomos: Qué Necesitas y Cuánto Cuesta | OI Studio",
+  title: "Página web para autónomos: qué necesitas y cuánto cuesta",
   headline: "Página web para autónomos: qué necesitas, qué incluir y cuánto cuesta",
   desc: "Qué debe tener la web de un autónomo, cuándo compensa una landing y cuándo una web completa, qué datos legales incluir y cuánto cuesta en 2026.",
   ogdesc: "Lo mínimo que tiene que tener la web de un autónomo, qué incluir por ley y cuánto cuesta hacerla bien.",
@@ -187,7 +187,7 @@ ${figura("taller-desk", "taller · web de ejemplo", "Web de ejemplo de un negoci
 <p>Más detalle, partida por partida, en la <a href="precio-diseno-web-profesional.html">guía de precios de una web profesional</a> y en <a href="cuanto-cuesta-mantener-una-web-al-ano.html">cuánto cuesta mantenerla al año</a>.</p>
 
 <h2 id="google">Antes que la web: tu ficha de Google</h2>
-<p>Para un autónomo local, la ficha de Google Business (la que sale en el mapa) suele traer más llamadas que la propia web. Es gratis, y con fotos, horario y reseñas bien cuidados te pone en el mapa cuando alguien busca cerca. La web y la ficha se refuerzan: hay una <a href="google-business-profile-guia.html">guía paso a paso</a> para montarla.</p>
+<p>Para un autónomo local, la ficha de Google Business (la que sale en el mapa) suele generar más llamadas que la propia web. Es gratis, y con fotos, horario y reseñas bien cuidados te pone en el mapa cuando alguien busca cerca. La web y la ficha se refuerzan: hay una <a href="google-business-profile-guia.html">guía paso a paso</a> para montarla.</p>
 
 <h2 id="ayudas">¿Hay ayudas para pagarla?</h2>
 <p>En algunos sitios sí: varios ayuntamientos de Gipuzkoa pagan parte de la web de un negocio, sobre todo si está en euskera. Casi todas se piden con factura y con la web ya publicada, así que conviene mirarlo <strong>antes</strong> de empezar. Las abiertas ahora están en la <a href="ayudas-subvenciones-pagina-web-gipuzkoa.html">página de ayudas</a>.</p>
@@ -208,7 +208,7 @@ ${cta("¿Tienes un servicio y quieres que te encuentren?", "Cuéntame qué haces
 /* ------------------------------------------------------------------ 2 */
 {
   slug: "landing-page-o-web-completa",
-  title: "Landing Page o Web Completa: Cuál Necesita Tu Negocio | OI Studio",
+  title: "Landing page o web completa: cuál necesita tu negocio",
   headline: "Landing page o web completa: cuál necesita tu negocio",
   desc: "Diferencias entre una landing page y una web completa, cuándo basta una página, cuándo hacen falta varias y cómo decidirlo sin pagar de más.",
   ogdesc: "Una página o varias: cómo saber cuál de las dos necesita tu negocio y cuánto cuesta cada una.",
@@ -276,7 +276,7 @@ ${cta("¿No sabes cuál te conviene?", "Cuéntame tu negocio y te digo, sin comp
 /* ------------------------------------------------------------------ 3 */
 {
   slug: "como-crear-pagina-web-negocio-paso-a-paso",
-  title: "Cómo Crear la Web de tu Negocio Paso a Paso (2026) | OI Studio",
+  title: "Cómo crear la web de tu negocio paso a paso (2026)",
   headline: "Cómo crear la web de tu negocio paso a paso",
   desc: "Guía práctica para crear la página web de un negocio local: qué preparar, dominio, alojamiento, estructura, publicar y que Google la encuentre.",
   ogdesc: "Los pasos para tener la web de tu negocio publicada y encontrable en Google, con lo que se hace por tu cuenta y lo que conviene encargar.",

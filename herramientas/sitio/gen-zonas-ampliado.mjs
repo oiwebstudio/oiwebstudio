@@ -105,7 +105,7 @@ function preguntas(m, d, dist) {
     : pob < 10000 ? `Sí, y bastante: hay competencia moderada y todavía mucha gente que depende solo de las redes. La web se orienta a búsquedas de ${nombre}${alt} y de ${d.comarca}, y se complementa con tu ficha de Google Business, que repaso en <a href="../google-business-profile-guia.html">esta guía</a>.`
     : `Sí. En un municipio de este tamaño hay competencia real por las búsquedas de cada sector, y las primeras posiciones del mapa se llevan casi todos los clics. La web se orienta a ${nombre}${alt} y a ${d.comarca}, y se trabaja junto con tu ficha de Google Business, que repaso en <a href="../google-business-profile-guia.html">esta guía</a>.`;
   const q5 = "¿Puedo verlo antes de decidir?";
-  const a5 = `Claro. No enseño maquetas: las webs del <a href="../trabajos.html">portfolio</a> están publicadas y se pueden abrir y recorrer. Con eso y la propuesta en 48h tienes de sobra para decidir sin compromiso.`;
+  const a5 = `Claro. No enseño capturas: las muestras del <a href="../trabajos.html">portfolio</a> están publicadas y se pueden abrir y recorrer. Con eso y la propuesta en 48h tienes de sobra para decidir sin compromiso.`;
   return [[q1, a1], [q2, a2], [q3, a3], [d.faq.q, d.faq.a], [q5, a5]];
 }
 const textoPlano = (h) => h.replace(/<[^>]+>/g, "");
@@ -247,11 +247,11 @@ ${avisoAyuda(d.slug)}
 
 <section class="zsec--tight zsec" style="padding-top:0;">
 <div class="container">
-<div class="zhead"><span class="k">Portfolio</span><h2>Webs reales, publicadas y navegables</h2></div>
+<div class="zhead"><span class="k">Portfolio</span><h2>Muestras publicadas y navegables</h2></div>
 <div class="zmosaic" data-anim="assemble">
 ${trioMosaico(idx)}
 </div>
-<p style="text-align:center;margin-top:16px;font-size:14px;color:var(--text-muted);">No enseño maquetas: las webs del <a href="../trabajos.html" class="link-terra">portfolio</a> están online y puedes abrirlas.</p>
+<p style="text-align:center;margin-top:16px;font-size:14px;color:var(--text-muted);">No enseño capturas: las muestras del <a href="../trabajos.html" class="link-terra">portfolio</a> están online y puedes abrirlas.</p>
 </div>
 </section>
 
