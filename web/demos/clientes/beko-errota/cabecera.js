@@ -32,3 +32,11 @@
     auto();
   }
 })();
+
+/* Entradas de las fotos: aparecen con un zoom suave al llegar a ellas. Sin GSAP o con «reducir movimiento», se ven quietas. */
+(function () {
+  if (!window.gsap || !window.ScrollTrigger || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  gsap.utils.toArray(".collage .grande,.collage .chica,.tarj-osc .im img,.platos img,.galeria .tarjeta img,.foto-marco img").forEach(function (el) {
+    gsap.from(el, { scale: 1.14, opacity: 0, duration: 1.5, ease: "expo.out", clearProps: "transform,opacity", scrollTrigger: { trigger: el, start: "top 92%" } });
+  });
+})();
