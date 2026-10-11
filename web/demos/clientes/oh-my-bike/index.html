@@ -480,6 +480,79 @@ h2{overflow-wrap:break-word;hyphens:manual}
 @keyframes trazo{to{stroke-dashoffset:0}}
 @media(prefers-reduced-motion:reduce){.js .croquis .ruta,.js .croquis .ruta-l{stroke-dashoffset:0}.js .croquis .pin{opacity:1;transition:none}.croquis.vista .ruta,.croquis.vista .ruta-l{animation:none}}
 @media(max-width:860px){.llegar{grid-template-columns:minmax(0,1fr)}}
+
+/* v7 · más moderna: bento, cristal, esquinas amplias, carrito con pago */
+.progreso{position:fixed;left:0;top:0;height:3px;width:100%;z-index:60;background:var(--tinta);transform-origin:0 50%;transform:scaleX(0)}
+.bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:14px}
+.bento__c{position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:flex-end;min-height:clamp(260px,30vw,400px);padding:clamp(18px,2.2vw,30px);border-radius:24px;overflow:hidden;text-decoration:none;color:var(--tinta);background:linear-gradient(160deg,var(--bruma3),var(--bruma2))}
+.bento__a{grid-column:span 7}.bento__b{grid-column:span 5}.bento__c3{grid-column:span 5}.bento__d{grid-column:span 7}
+.bento__c img{position:absolute;z-index:-2;transition:transform 700ms var(--e)}
+.bento__a img{right:-4%;top:6%;width:62%;height:auto}
+.bento__c3 img{right:-6%;top:8%;width:78%;height:auto}
+.bento__b img,.bento__d img{inset:0;width:100%;height:100%;object-fit:cover}
+.bento__b,.bento__d{color:#fff}
+.bento__b::before,.bento__d::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(13,20,28,.05) 20%,rgba(13,20,28,.78) 100%)}
+.bento__c3{background:var(--tinta);color:#fff}
+.bento__n{position:absolute;left:clamp(18px,2.2vw,30px);top:clamp(16px,2vw,26px);font:700 13px "JetBrains Mono",monospace;letter-spacing:.06em;background:rgba(255,255,255,.9);color:var(--tinta);padding:5px 10px;border-radius:99px}
+.bento__c strong{font:900 clamp(26px,3.4vw,50px)/.95 Archivo,sans-serif;letter-spacing:-.04em;text-transform:uppercase;max-width:12ch}
+.bento__c small{display:block;margin-top:10px;max-width:34ch;font-size:clamp(14px,1.2vw,17px);opacity:.92}
+.bento__f{position:absolute;right:clamp(14px,1.8vw,24px);bottom:clamp(14px,1.8vw,24px);display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:#fff;color:var(--tinta);font-style:normal;font-size:20px;transition:transform 400ms var(--e)}
+@media(hover:hover) and (pointer:fine){.bento__c:hover img{transform:scale(1.05)}.bento__c:hover .bento__f{transform:rotate(-45deg) scale(1.08)}}
+.bento__c:active{transform:scale(.99)}
+@media(max-width:860px){.bento{grid-template-columns:minmax(0,1fr)}.bento__a,.bento__b,.bento__c3,.bento__d{grid-column:auto}.bento__a img{width:70%}.bento__c3 img{width:86%}}
+.prod,.tarifas,.contacto,.llegar,.fin div,.razones .foto{border-radius:20px}
+.prod__foto,.taller__foto img{border-radius:14px}
+.btn{box-shadow:0 8px 22px -12px rgba(13,20,28,.5)}
+.btn--linea,.btn--tr{box-shadow:inset 0 0 0 1.5px currentColor}
+.btn--tr{box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.9)}
+.fin{grid-template-columns:repeat(3,minmax(0,1fr))}
+.fin div:nth-child(3){background:var(--bruma2);color:var(--tinta)}
+.fin b{font-size:clamp(24px,3vw,44px)}
+@media(max-width:900px){.fin{grid-template-columns:minmax(0,1fr)}}
+.carrito{cursor:pointer;border:0;font-family:inherit}
+@media(max-width:760px){
+  .nav{top:10px;left:10px;right:10px;padding:8px 8px 8px 16px;border-radius:99px;background:rgba(13,20,28,.28);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4)}
+  .nav.solid{padding:8px 8px 8px 16px;background:rgba(255,255,255,.88);box-shadow:0 10px 30px -12px rgba(13,20,28,.35)}
+  .panelmenu{top:74px;left:10px;right:10px;border-radius:22px}
+  .burger{min-height:44px;padding:0 18px}
+  .carrito{min-height:44px}
+  html{scroll-padding-top:88px}
+}
+/* carrito con pago */
+.cajon{position:fixed;inset:0;z-index:80;display:flex;justify-content:flex-end}
+.cajon[hidden]{display:none}
+.cajon__velo{position:absolute;inset:0;background:rgba(13,20,28,.5);backdrop-filter:blur(3px);animation:vela 250ms var(--e)}
+.cajon__hoja{position:relative;display:flex;flex-direction:column;width:min(440px,100%);height:100%;background:#fff;color:var(--tinta);box-shadow:-30px 0 60px -30px rgba(13,20,28,.6);animation:entra 420ms var(--e)}
+.cajon__cab{display:flex;align-items:center;justify-content:space-between;padding:20px 22px;border-bottom:1px solid var(--linea)}
+.cajon__cab h2{font:900 28px/1 Archivo,sans-serif;letter-spacing:-.04em;text-transform:uppercase}
+.cajon__cab button{width:44px;height:44px;border-radius:50%;border:0;background:var(--papel);font-size:16px}
+.cajon__cuerpo{display:flex;flex-direction:column;flex:1;min-height:0}
+.cajon__cuerpo[hidden]{display:none}
+.cajon__lista{list-style:none;padding:8px 22px;margin:0;overflow:auto;flex:1}
+.cajon__lista li{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--linea)}
+.cajon__lista img{width:64px;height:48px;object-fit:contain;background:var(--papel);border-radius:8px;mix-blend-mode:multiply}
+.cajon__lista b{display:block;font:800 14px/1.2 Archivo,sans-serif;text-transform:uppercase}
+.cajon__lista span{font:900 18px Archivo,sans-serif}
+.cajon__lista button{margin-left:8px;width:36px;height:36px;border-radius:50%;border:0;background:var(--papel)}
+.cajon__vacio{padding:34px 22px;color:var(--gris);flex:1}
+.cajon__vacio[hidden]{display:none}
+.cajon__pie{padding:18px 22px calc(22px + env(safe-area-inset-bottom));border-top:1px solid var(--linea);display:grid;gap:12px}
+.cajon__total{display:flex;justify-content:space-between;align-items:baseline}
+.cajon__total b{font:900 34px Archivo,sans-serif;letter-spacing:-.04em}
+.cajon__pie .btn{justify-content:space-between;width:100%}
+.cajon__pie .btn[disabled]{opacity:.4;pointer-events:none}
+.cajon__metodos{font:700 12px "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.05em;text-align:center;color:var(--acero)}
+.cajon__nota{font-size:12.5px;color:var(--gris);text-align:center}
+.cajon__gracias{align-items:center;justify-content:center;text-align:center;padding:28px;gap:10px}
+.cajon__gracias h3{font:900 34px/.95 Archivo,sans-serif;letter-spacing:-.04em;text-transform:uppercase}
+.cajon__gracias p{color:var(--gris);max-width:30ch}
+.cajon__ok{display:grid;place-items:center;width:84px;height:84px;border-radius:50%;background:var(--tinta);color:#fff;font-size:38px}
+@keyframes entra{from{transform:translateX(100%)}to{transform:none}}
+@keyframes vela{from{opacity:0}to{opacity:1}}
+@media(max-width:760px){.cajon{align-items:flex-end}.cajon__hoja{height:auto;max-height:88%;width:100%;border-radius:26px 26px 0 0;animation:sube 420ms var(--e)}}
+@keyframes sube{from{transform:translateY(100%)}to{transform:none}}
+@media(prefers-reduced-motion:reduce){.cajon__hoja,.cajon__velo{animation:none}}
+body.cajon-abierto{overflow:hidden}
 </style>
 <script>document.documentElement.classList.add("js")</script>
 </head>
@@ -502,7 +575,7 @@ h2{overflow-wrap:break-word;hyphens:manual}
     <div class="nav__d">
       <a class="llamar" href="tel:+34943539703">943 539 703</a>
       <span class="idioma" aria-label="Idioma">ES <span>· EU</span></span>
-      <a class="carrito" href="#tienda" aria-label="Carrito"><span>Carrito</span> <b id="cuenta" aria-live="polite">0</b></a>
+      <a class="carrito" href="#tienda" aria-label="Abrir el carrito" data-abrir-carrito><span>Carrito</span> <b id="cuenta" aria-live="polite">0</b></a>
       <button class="burger" type="button" aria-expanded="false" aria-controls="menu">Menú</button>
     </div>
   </nav>
@@ -532,16 +605,12 @@ h2{overflow-wrap:break-word;hyphens:manual}
 
 <section class="busca wrap" aria-labelledby="busca-t">
   <h2 id="busca-t" data-lineas>Lo que estabas <span class="hueco">buscando</span></h2>
-  <ol class="filas" data-escalonado>
-    <li><a class="fila" href="#alquiler"><span class="n">01</span><span><strong>Alquila una bici</strong><small>Desde 8 € las 2 horas. Con luces, timbre, candado y mapa.</small></span><span class="ver">Ver tarifas →</span>
-      <span class="mini" aria-hidden="true"><img src="fotos/ruedas.webp" alt="" loading="lazy"/><img class="m-b" src="fotos/alpina.webp" alt="" loading="lazy"/></span></a></li>
-    <li><a class="fila" href="#taller"><span class="n">02</span><span><strong>Taller sin cita previa</strong><small>Revisión básica 35 €. Express: 30 minutos o menos.</small></span><span class="ver">Ver taller →</span>
-      <span class="mini" aria-hidden="true"><img src="fotos/taller.webp" alt="" loading="lazy"/><img src="fotos/tienda-interior.webp" alt="" loading="lazy"/></span></a></li>
-    <li><a class="fila" href="#tienda"><span class="n">03</span><span><strong>Bicis nuevas y outlet</strong><small>Nuevas, reacondicionadas y outlet: carbono, eléctricas y aluminio. Financiación hasta 60 meses.</small></span><span class="ver">Ver tienda →</span>
-      <span class="mini" aria-hidden="true"><img class="m-b" src="fotos/cayman.webp" alt="" loading="lazy"/><img class="m-b" src="fotos/neomouv-carlina.webp" alt="" loading="lazy"/></span></a></li>
-    <li><a class="fila" href="#tours"><span class="n">04</span><span><strong>Tours en bici con pintxo</strong><small>Por Donostia y alrededores, en español e inglés. Desde 39 €.</small></span><span class="ver">Ver tours →</span>
-      <span class="mini" aria-hidden="true"><img src="fotos/tienda-fachada.webp" alt="" loading="lazy"/><img class="m-b" src="fotos/wst-cosmo.webp" alt="" loading="lazy"/></span></a></li>
-  </ol>
+  <div class="bento" data-escalonado>
+    <a class="bento__c bento__a" href="#alquiler"><img src="fotos/alpina-t.webp" alt="" loading="lazy"/><span class="bento__n">01</span><strong>Alquila una bici</strong><small>Desde 8 € las 2 horas. Con luces, timbre, candado y mapa.</small><i class="bento__f" aria-hidden="true">→</i></a>
+    <a class="bento__c bento__b" href="#taller"><img src="fotos/taller.webp" alt="" loading="lazy"/><span class="bento__n">02</span><strong>Taller sin cita previa</strong><small>Revisión básica 35 €. Express: 30 minutos o menos.</small><i class="bento__f" aria-hidden="true">→</i></a>
+    <a class="bento__c bento__c3" href="#tienda"><img src="fotos/bravo.webp" alt="" loading="lazy"/><span class="bento__n">03</span><strong>Bicis nuevas y outlet</strong><small>Nuevas, reacondicionadas y outlet. Financiación hasta 60 meses.</small><i class="bento__f" aria-hidden="true">→</i></a>
+    <a class="bento__c bento__d" href="#tours"><img src="fotos/ruedas.webp" alt="" loading="lazy"/><span class="bento__n">04</span><strong>Tours en bici con pintxo</strong><small>Por Donostia y alrededores, en español e inglés. Desde 39 €.</small><i class="bento__f" aria-hidden="true">→</i></a>
+  </div>
 </section>
 
 <section class="razones" aria-labelledby="razones-t">
@@ -687,161 +756,161 @@ h2{overflow-wrap:break-word;hyphens:manual}
     </div>
   </div>
   <ul class="prods" data-rejilla>
-      <li class="prod" data-cat="electricas">
+      <li class="prod" data-cat="electricas" data-precio="2799">
         <div class="prod__foto"><img src="fotos/bravo.webp" width="1131" height="637" alt="Berria Bravo HPR Elite NX" loading="lazy"/><span class="etiq">Eléctrica</span></div>
         <h3>Berria Bravo HPR Elite NX</h3>
         <p class="precio"><s>3.299 €</s> <strong>2.799 €</strong></p>
         <button class="anadir" type="button" data-nombre="Berria Bravo HPR Elite NX">Añadir al carrito</button>
         <a class="preg" href="#contacto" data-bici="Berria Bravo HPR Elite NX">Preguntar por esta bici</a>
       </li>
-      <li class="prod" data-cat="carbono">
+      <li class="prod" data-cat="carbono" data-precio="3099">
         <div class="prod__foto"><img src="fotos/mako-elite.webp" width="600" height="320" alt="Berria Mako Elite Deore" loading="lazy"/><span class="etiq">Carbono</span></div>
         <h3>Berria Mako Elite Deore</h3>
         <p class="precio"><s>3.299 €</s> <strong>3.099 €</strong></p>
         <button class="anadir" type="button" data-nombre="Berria Mako Elite Deore">Añadir al carrito</button>
         <a class="preg" href="#contacto" data-bici="Berria Mako Elite Deore">Preguntar por esta bici</a>
       </li>
-      <li class="prod" data-cat="carbono">
+      <li class="prod" data-cat="carbono" data-precio="3299">
         <div class="prod__foto"><img src="fotos/belador.webp" width="516" height="316" alt="Berria Belador Pro Ultegra Di2" loading="lazy"/><span class="etiq">Carbono</span></div>
         <h3>Berria Belador Pro Ultegra Di2</h3>
         <p class="precio"><s>3.499 €</s> <strong>3.299 €</strong></p>
         <button class="anadir" type="button" data-nombre="Berria Belador Pro Ultegra Di2">Añadir al carrito</button>
         <a class="preg" href="#contacto" data-bici="Berria Belador Pro Ultegra Di2">Preguntar por esta bici</a>
       </li>
-      <li class="prod" data-cat="electricas">
+      <li class="prod" data-cat="electricas" data-precio="4099">
         <div class="prod__foto"><img src="fotos/mistral.webp" width="543" height="317" alt="Berria Mistral HPR Apex" loading="lazy"/><span class="etiq">Eléctrica</span></div>
         <h3>Berria Mistral HPR Apex</h3>
         <p class="precio"><s>4.299 €</s> <strong>4.099 €</strong></p>
         <button class="anadir" type="button" data-nombre="Berria Mistral HPR Apex">Añadir al carrito</button>
         <a class="preg" href="#contacto" data-bici="Berria Mistral HPR Apex">Preguntar por esta bici</a>
       </li>
-      <li class="prod" data-cat="electricas">
+      <li class="prod" data-cat="electricas" data-precio="3999">
         <div class="prod__foto"><img src="fotos/ursus.webp" width="543" height="303" alt="Berria Ursus Elite" loading="lazy"/><span class="etiq">Eléctrica</span></div>
         <h3>Berria Ursus Elite</h3>
         <p class="precio"><s>4.299 €</s> <strong>3.999 €</strong></p>
         <button class="anadir" type="button" data-nombre="Berria Ursus Elite">Añadir al carrito</button>
         <a class="preg" href="#contacto" data-bici="Berria Ursus Elite">Preguntar por esta bici</a>
       </li>
-      <li class="prod" data-cat="electricas">
+      <li class="prod" data-cat="electricas" data-precio="2349">
         <div class="prod__foto"><img src="fotos/neomouv-mountain.webp" width="603" height="532" alt="Neomouv Mountain 2" loading="lazy"/><span class="etiq">Eléctrica</span></div>
         <h3>Neomouv Mountain 2</h3>
         <p class="precio"><s>2.749 €</s> <strong>2.349 €</strong></p>
         <button class="anadir" type="button" data-nombre="Neomouv Mountain 2">Añadir al carrito</button>
         <a class="preg" href="#contacto" data-bici="Neomouv Mountain 2">Preguntar por esta bici</a>
       </li>
-      <li class="prod" data-cat="electricas">
+      <li class="prod" data-cat="electricas" data-precio="1799">
         <div class="prod__foto"><img src="fotos/neomouv-carlina.webp" width="800" height="528" alt="Neomouv Carlina HY rojo" loading="lazy"/><span class="etiq">Eléctrica</span></div>
         <h3>Neomouv Carlina HY rojo</h3>
         <p class="precio"><s>1.899 €</s> <strong>1.799 €</strong></p>
         <button class="anadir" type="button" data-nombre="Neomouv Carlina HY rojo">Añadir al carrito</button>
         <a class="preg" href="#contacto" data-bici="Neomouv Carlina HY rojo">Preguntar por esta bici</a>
       </li>
-      <li class="prod" data-cat="electricas">
+      <li class="prod" data-cat="electricas" data-precio="1990">
         <div class="prod__foto"><img src="fotos/littium-ibiza.webp" width="482" height="631" alt="Littium Ibiza Titanium" loading="lazy"/><span class="etiq">Plegable eléctrica</span></div>
         <h3>Littium Ibiza Titanium</h3>
         <p class="precio"><strong>1.990 €</strong></p>
         <button class="anadir" type="button" data-nombre="Littium Ibiza Titanium">Añadir al carrito</button>
         <a class="preg" href="#contacto" data-bici="Littium Ibiza Titanium">Preguntar por esta bici</a>
       </li>
-      <li class="prod" data-cat="aluminio">
+      <li class="prod" data-cat="aluminio" data-precio="339">
         <div class="prod__foto"><img src="fotos/wst-cosmo.webp" width="800" height="483" alt="WST Cosmo 27,5"" loading="lazy"/><span class="etiq">Aluminio</span></div>
         <h3>WST Cosmo 27,5"</h3>
         <p class="precio"><strong>339 €</strong></p>
         <button class="anadir" type="button" data-nombre="WST Cosmo 27,5"">Añadir al carrito</button>
         <a class="preg" href="#contacto" data-bici="WST Cosmo 27,5"">Preguntar por esta bici</a>
       </li>
-      <li class="prod" data-cat="aluminio">
+      <li class="prod" data-cat="aluminio" data-precio="350">
         <div class="prod__foto"><img src="fotos/alpina.webp" width="624" height="534" alt="Alpina Freetime caqui" loading="lazy"/><span class="etiq">Aluminio</span></div>
         <h3>Alpina Freetime caqui</h3>
         <p class="precio"><s>460 €</s> <strong>350 €</strong></p>
         <button class="anadir" type="button" data-nombre="Alpina Freetime caqui">Añadir al carrito</button>
         <a class="preg" href="#contacto" data-bici="Alpina Freetime caqui">Preguntar por esta bici</a>
       </li>
-      <li class="prod" data-cat="outlet">
+      <li class="prod" data-cat="outlet" data-precio="2599">
         <div class="prod__foto"><img src="fotos/lombardo.webp" width="800" height="491" alt="Lombardo Montecatini 7.0" loading="lazy"/><span class="etiq">Outlet</span></div>
         <h3>Lombardo Montecatini 7.0</h3>
         <p class="precio"><s>3.099 €</s> <strong>2.599 €</strong></p>
         <button class="anadir" type="button" data-nombre="Lombardo Montecatini 7.0">Añadir al carrito</button>
         <a class="preg" href="#contacto" data-bici="Lombardo Montecatini 7.0">Preguntar por esta bici</a>
       </li>
-      <li class="prod" data-cat="outlet">
+      <li class="prod" data-cat="outlet" data-precio="799">
         <div class="prod__foto"><img src="fotos/wst-poison.webp" width="800" height="463" alt="WST Poison 9411 29" disc" loading="lazy"/><span class="etiq">Outlet</span></div>
         <h3>WST Poison 9411 29" disc</h3>
         <p class="precio"><s>875 €</s> <strong>799 €</strong></p>
         <button class="anadir" type="button" data-nombre="WST Poison 9411 29" disc">Añadir al carrito</button>
         <a class="preg" href="#contacto" data-bici="WST Poison 9411 29" disc">Preguntar por esta bici</a>
       </li>
-      <li class="prod" data-cat="outlet">
+      <li class="prod" data-cat="outlet" data-precio="4599">
         <div class="prod__foto"><img src="fotos/cayman.webp" width="547" height="314" alt="Berria Cayman Elite NX" loading="lazy"/><span class="etiq">Outlet</span></div>
         <h3>Berria Cayman Elite NX</h3>
         <p class="precio"><s>5.799 €</s> <strong>4.599 €</strong></p>
         <button class="anadir" type="button" data-nombre="Berria Cayman Elite NX">Añadir al carrito</button>
         <a class="preg" href="#contacto" data-bici="Berria Cayman Elite NX">Preguntar por esta bici</a>
       </li>
-      <li class="prod" data-cat="equipamiento">
+      <li class="prod" data-cat="equipamiento" data-precio="90">
         <div class="prod__foto"><img src="fotos/met-echo.webp" width="800" height="605" alt="Casco MET Echo MIPS azul mate" loading="lazy"/><span class="etiq">Equipamiento</span></div>
         <h3>Casco MET Echo MIPS azul mate</h3>
         <p class="precio"><strong>90 €</strong></p>
         <button class="anadir" type="button" data-nombre="Casco MET Echo MIPS azul mate">Añadir al carrito</button>
         <a class="preg" href="#contacto" data-bici="Casco MET Echo MIPS azul mate">Preguntar por esta bici</a>
       </li>
-      <li class="prod" data-cat="equipamiento">
+      <li class="prod" data-cat="equipamiento" data-precio="75">
         <div class="prod__foto"><img src="fotos/met-crossover.webp" width="604" height="357" alt="Casco MET Crossover negro/gris/rosa mate" loading="lazy"/><span class="etiq">Equipamiento</span></div>
         <h3>Casco MET Crossover negro/gris/rosa mate</h3>
         <p class="precio"><strong>75 €</strong></p>
         <button class="anadir" type="button" data-nombre="Casco MET Crossover negro/gris/rosa mate">Añadir al carrito</button>
         <a class="preg" href="#contacto" data-bici="Casco MET Crossover negro/gris/rosa mate">Preguntar por esta bici</a>
       </li>
-      <li class="prod" data-cat="ofertas">
+      <li class="prod" data-cat="ofertas" data-precio="65">
         <div class="prod__foto"><img src="fotos/onguard-k9.webp" width="424" height="346" alt="Candado plegable Onguard K9" loading="lazy"/><span class="etiq">Oferta</span></div>
         <h3>Candado plegable Onguard K9</h3>
         <p class="precio"><s>75 €</s> <strong>65 €</strong></p>
         <button class="anadir" type="button" data-nombre="Candado plegable Onguard K9">Añadir al carrito</button>
         <a class="preg" href="#contacto" data-bici="Candado plegable Onguard K9">Preguntar por esta bici</a>
       </li>
-      <li class="prod" data-cat="equipamiento">
+      <li class="prod" data-cat="equipamiento" data-precio="55">
         <div class="prod__foto"><img src="fotos/lazer-chiru.webp" width="700" height="599" alt="Casco Lazer Chiru azul mate" loading="lazy"/><span class="etiq">Equipamiento</span></div>
         <h3>Casco Lazer Chiru azul mate</h3>
         <p class="precio"><s>70 €</s> <strong>55 €</strong></p>
         <button class="anadir" type="button" data-nombre="Casco Lazer Chiru azul mate">Añadir al carrito</button>
         <a class="preg" href="#contacto" data-bici="Casco Lazer Chiru azul mate">Preguntar por esta bici</a>
       </li>
-      <li class="prod" data-cat="ruedas">
+      <li class="prod" data-cat="ruedas" data-precio="1495">
         <div class="prod__foto"><img src="fotos/speedsix-air35.webp" width="697" height="700" alt="SpeedSix Air 35 Ultralight carbono disc" loading="lazy"/><span class="etiq">Ruedas</span></div>
         <h3>SpeedSix Air 35 Ultralight carbono disc</h3>
         <p class="precio"><s>1.895 €</s> <strong>1.495 €</strong></p>
         <button class="anadir" type="button" data-nombre="SpeedSix Air 35 Ultralight carbono disc">Añadir al carrito</button>
         <a class="preg" href="#contacto" data-bici="SpeedSix Air 35 Ultralight carbono disc">Preguntar por esta bici</a>
       </li>
-      <li class="prod" data-cat="ruedas">
+      <li class="prod" data-cat="ruedas" data-precio="1495">
         <div class="prod__foto"><img src="fotos/speedsix-air55.webp" width="692" height="692" alt="SpeedSix Air 55 Ultralight carbono disc" loading="lazy"/><span class="etiq">Ruedas</span></div>
         <h3>SpeedSix Air 55 Ultralight carbono disc</h3>
         <p class="precio"><s>1.895 €</s> <strong>1.495 €</strong></p>
         <button class="anadir" type="button" data-nombre="SpeedSix Air 55 Ultralight carbono disc">Añadir al carrito</button>
         <a class="preg" href="#contacto" data-bici="SpeedSix Air 55 Ultralight carbono disc">Preguntar por esta bici</a>
       </li>
-      <li class="prod" data-cat="ruedas">
+      <li class="prod" data-cat="ruedas" data-precio="1295">
         <div class="prod__foto"><img src="fotos/speedsix-earth.webp" width="700" height="700" alt="SpeedSix Earth gravel carbono disc" loading="lazy"/><span class="etiq">Ruedas</span></div>
         <h3>SpeedSix Earth gravel carbono disc</h3>
         <p class="precio"><strong>1.295 €</strong></p>
         <button class="anadir" type="button" data-nombre="SpeedSix Earth gravel carbono disc">Añadir al carrito</button>
         <a class="preg" href="#contacto" data-bici="SpeedSix Earth gravel carbono disc">Preguntar por esta bici</a>
       </li>
-      <li class="prod" data-cat="accesorios">
+      <li class="prod" data-cat="accesorios" data-precio="49">
         <div class="prod__foto"><img src="fotos/onguard-mastiff.webp" width="366" height="507" alt="Candado de cadena Onguard Mastiff" loading="lazy"/><span class="etiq">Accesorio</span></div>
         <h3>Candado de cadena Onguard Mastiff</h3>
         <p class="precio"><s>60 €</s> <strong>49 €</strong></p>
         <button class="anadir" type="button" data-nombre="Candado de cadena Onguard Mastiff">Añadir al carrito</button>
         <a class="preg" href="#contacto" data-bici="Candado de cadena Onguard Mastiff">Preguntar por esta bici</a>
       </li>
-      <li class="prod" data-cat="accesorios">
+      <li class="prod" data-cat="accesorios" data-precio="29">
         <div class="prod__foto"><img src="fotos/gurpil-plegable.webp" width="512" height="496" alt="Candado plegable Gurpil" loading="lazy"/><span class="etiq">Accesorio</span></div>
         <h3>Candado plegable Gurpil</h3>
         <p class="precio"><s>35 €</s> <strong>29 €</strong></p>
         <button class="anadir" type="button" data-nombre="Candado plegable Gurpil">Añadir al carrito</button>
         <a class="preg" href="#contacto" data-bici="Candado plegable Gurpil">Preguntar por esta bici</a>
       </li>
-      <li class="prod" data-cat="accesorios">
+      <li class="prod" data-cat="accesorios" data-precio="22">
         <div class="prod__foto"><img src="fotos/onguard-doberman.webp" width="461" height="767" alt="Candado Onguard Doberman 15x185" loading="lazy"/><span class="etiq">Accesorio</span></div>
         <h3>Candado Onguard Doberman 15x185</h3>
         <p class="precio"><s>26 €</s> <strong>22 €</strong></p>
@@ -853,6 +922,7 @@ h2{overflow-wrap:break-word;hyphens:manual}
   <div class="fin">
     <div><b>Financiación hasta 60 meses</b><p>En bicis y accesorios.</p></div>
     <div><b>Tu bici como parte de pago</b><p>Aceptamos tu bici al comprar una nueva. Tasación inmediata.</p></div>
+    <div><b>Paga online</b><p>Con tarjeta o Bizum desde el móvil, sin salir de casa.</p></div>
   </div>
   <p class="tienda__nota">Precios de su tienda online a octubre de 2026.</p>
 </section>
@@ -928,6 +998,31 @@ h2{overflow-wrap:break-word;hyphens:manual}
   <span>Muestra de diseño de <a href="https://oiwebstudio.com">OI Studio</a>, no es la web oficial.</span>
 </footer>
 </div>
+
+<div class="cajon" data-cajon hidden>
+  <div class="cajon__velo" data-cerrar></div>
+  <aside class="cajon__hoja" role="dialog" aria-modal="true" aria-labelledby="cajon-t">
+    <header class="cajon__cab"><h2 id="cajon-t">Tu carrito</h2><button type="button" data-cerrar aria-label="Cerrar el carrito">✕</button></header>
+    <div class="cajon__cuerpo" data-paso="carrito">
+      <ul class="cajon__lista" data-lista></ul>
+      <p class="cajon__vacio" data-vacio-carrito>Todavía no has añadido nada. Elige una bici y vuelve aquí.</p>
+      <div class="cajon__pie">
+        <div class="cajon__total"><span>Total</span><b data-total>0 €</b></div>
+        <button class="btn" type="button" data-pagar>Pagar con tarjeta o Bizum <i aria-hidden="true">→</i></button>
+        <p class="cajon__metodos">Tarjeta · Apple Pay · Google Pay · Bizum</p>
+        <p class="cajon__nota">Muestra de cómo sería: el pago se hace en una página segura de Stripe y la tienda no ve tu tarjeta.</p>
+      </div>
+    </div>
+    <div class="cajon__cuerpo cajon__gracias" data-paso="gracias" hidden>
+      <span class="cajon__ok" aria-hidden="true">✓</span>
+      <h3>Gracias por tu pedido</h3>
+      <p>Pedido <b data-pedido>OMB-0000</b></p>
+      <p>Así recibiría la tienda el aviso por correo y tú el justificante. Esto es una muestra: no se ha cobrado nada.</p>
+      <button class="btn btn--linea" type="button" data-cerrar>Seguir mirando <i aria-hidden="true">→</i></button>
+    </div>
+  </aside>
+</div>
+<div class="progreso" data-progreso aria-hidden="true"></div>
 
 <div class="movil" data-barra-movil>
   <a class="btn btn--claro" href="tel:+34943539703">Llamar <i aria-hidden="true">→</i></a>

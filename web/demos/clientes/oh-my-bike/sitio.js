@@ -59,11 +59,6 @@
       });
     });
     grupo = document.querySelector(".tile[aria-pressed=true]") || tiles[0]; pinta();
-    var c = document.getElementById("cuenta"), q = 0;
-    g.addEventListener("click", function (e) {
-      var a = e.target.closest(".anadir"); if (!a || !c) return;
-      q++; c.textContent = q; a.textContent = "Añadida ✓"; setTimeout(function () { a.textContent = "Añadir al carrito"; }, 1400);
-    });
   }
 
   /* ahora abierto (hora de Madrid, horario habitual) */
@@ -135,4 +130,48 @@
   if (!("IntersectionObserver" in window)) { c.classList.add("vista"); return; }
   var io = new IntersectionObserver(function (e) { if (e[0].isIntersecting) { c.classList.add("vista"); io.disconnect(); } }, { threshold: 0.35 });
   io.observe(c);
+})();
+
+/* carrito con pago (muestra), barra de progreso */
+(function () {
+  var caj = document.querySelector("[data-cajon]"); if (!caj) return;
+  var lista = caj.querySelector("[data-lista]"), vacio = caj.querySelector("[data-vacio-carrito]"), total = caj.querySelector("[data-total]"), pagar = caj.querySelector("[data-pagar]");
+  var cuenta = document.getElementById("cuenta"), items = [], pasoC = caj.querySelector("[data-paso=carrito]"), pasoG = caj.querySelector("[data-paso=gracias]"), ultimo = null;
+  var eur = function (n) { return n.toLocaleString("es-ES") + " €"; };
+  var pinta = function () {
+    lista.innerHTML = "";
+    items.forEach(function (it, i) {
+      var li = document.createElement("li");
+      li.innerHTML = '<img alt="" src="' + it.foto + '"/><div><b></b></div><div><span></span><button type="button" aria-label="Quitar"></button></div>';
+      li.querySelector("b").textContent = it.nombre; li.querySelector("span").textContent = eur(it.precio);
+      var x = li.querySelector("button"); x.textContent = "✕"; x.addEventListener("click", function () { items.splice(i, 1); pinta(); });
+      lista.appendChild(li);
+    });
+    var t = items.reduce(function (s, it) { return s + it.precio; }, 0);
+    total.textContent = eur(t); vacio.hidden = items.length > 0; pagar.disabled = !items.length;
+    if (cuenta) cuenta.textContent = items.length;
+  };
+  var abre = function () { pasoC.hidden = false; pasoG.hidden = true; caj.hidden = false; document.body.classList.add("cajon-abierto"); ultimo = document.activeElement; var c = caj.querySelector(".cajon__cab button"); if (c) c.focus(); };
+  var cierra = function () { caj.hidden = true; document.body.classList.remove("cajon-abierto"); if (ultimo && ultimo.focus) ultimo.focus(); };
+  document.addEventListener("click", function (e) {
+    var ab = e.target.closest("[data-abrir-carrito]"); if (ab) { e.preventDefault(); pinta(); abre(); return; }
+    if (e.target.closest("[data-cerrar]")) { cierra(); return; }
+    var a = e.target.closest(".anadir"); if (!a) return;
+    var p = a.closest(".prod"), img = p.querySelector("img");
+    items.push({ nombre: a.dataset.nombre, precio: +p.dataset.precio, foto: img ? img.getAttribute("src") : "" });
+    pinta(); a.textContent = "Añadida ✓"; setTimeout(function () { a.textContent = "Añadir al carrito"; }, 1200);
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !caj.hidden) cierra(); });
+  pagar.addEventListener("click", function () {
+    if (!items.length) return;
+    caj.querySelector("[data-pedido]").textContent = "OMB-" + String(Math.floor(1000 + Math.random() * 9000));
+    items = []; pinta(); pasoC.hidden = true; pasoG.hidden = false;
+  });
+  pinta();
+
+  var bar = document.querySelector("[data-progreso]");
+  if (bar) {
+    var mueve = function () { var h = document.documentElement.scrollHeight - innerHeight; bar.style.transform = "scaleX(" + (h > 0 ? Math.min(1, scrollY / h) : 0) + ")"; };
+    mueve(); addEventListener("scroll", mueve, { passive: true }); addEventListener("resize", mueve);
+  }
 })();
