@@ -16,9 +16,9 @@
   Animaciones: GSAP 3.13 + SplitText + ScrollTrigger + Lenis. Con «reducir movimiento» todo se ve quieto y completo.
 -->
 <script>document.documentElement.classList.add("ef");setTimeout(function(){document.documentElement.classList.remove("ef")},2000);document.fonts&&document.fonts.ready.then(function(){document.documentElement.classList.remove("ef")});</script>
-<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Figtree:wght@400..700&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.css"/>
+<link rel="stylesheet" href="/assets/fonts-css/1661aa32.css">
+
+<link rel="stylesheet" href="/assets/vendor/lenis.css"/>
 <style>
 .ef .gigante,.ef .portada__txt{visibility:hidden}
 :root{
@@ -224,10 +224,10 @@ section{position:relative}
 </main>
 <footer class="pie"><div class="wrap"><span>© Etxea Inmobiliaria · Donostia</span><span>Fotos: Unsplash</span></div></footer>
 
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+<script src="/assets/vendor/gsap.min.js"></script>
+<script src="/assets/vendor/ScrollTrigger.min.js"></script>
+<script src="/assets/vendor/SplitText.min.js"></script>
+<script src="/assets/vendor/lenis.min.js"></script>
 <script>
 gsap.registerPlugin(ScrollTrigger, SplitText);
 const quieto = matchMedia("(prefers-reduced-motion: reduce)").matches;

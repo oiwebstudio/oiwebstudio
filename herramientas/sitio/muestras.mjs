@@ -211,3 +211,6 @@ for (const [k, h] of Object.entries(resultado)) {
   h.split("\n").forEach((l, i) => { if (PROHIBIDO.test(l)) { limpio = false; console.log(`  [${k}] línea ${i + 1}: ${l.trim().slice(0, 150)}`); } });
 }
 console.log(limpio ? "muestras generadas: sin restos de los datos originales ✓" : "¡OJO! quedan restos (arriba)");
+
+/* Las plantillas de origen traen <link> a Google Fonts: se autoaloja para no enviar la IP de las visitas a Google. */
+await import("./autoalojar-fuentes-demos.mjs");
