@@ -356,3 +356,74 @@ a{color:inherit}
   .cab__logo{font-size:30px}
 }
 @media(max-width:700px){.tarj-osc a{padding:12px 0 6px}}
+
+/* ═══════════ v4 · más bonita: arcos, platos redondos, sello, grano, revelados ═══════════ */
+/* portada */
+.adorno{width:120px;height:24px;color:#fff;opacity:.9;margin-bottom:6px}
+.slides img{transform-origin:50% 60%}
+.slides img.on{animation:zoom 16s ease-out both}
+@keyframes zoom{from{transform:scale(1)}to{transform:scale(1.09)}}
+.heroe--portada .fondo::before{content:"";position:absolute;inset:0;z-index:1;opacity:.16;mix-blend-mode:overlay;pointer-events:none;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.cue{position:absolute;z-index:3;bottom:24px;left:50%;transform:translateX(-50%);color:#fff;display:grid;justify-items:center;gap:8px;font:600 11px Karla,sans-serif;letter-spacing:.26em;text-transform:uppercase;text-decoration:none}
+.cue i{width:1px;height:44px;background:linear-gradient(#fff,transparent);transform-origin:top;animation:cue 2.4s var(--e) infinite}
+@keyframes cue{0%{transform:scaleY(0)}60%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);opacity:0}}
+
+/* sección oscura: dibujos de fondo, sello y collage en arco */
+.oscura{position:relative;overflow:hidden}
+.oscura>.wrap{position:relative;z-index:1}
+.orn{position:absolute;color:#fff;opacity:.055;pointer-events:none}
+.orn--1{width:440px;height:440px;left:-150px;top:-70px}
+.orn--2{width:300px;height:360px;right:-70px;bottom:-60px;transform:rotate(14deg)}
+.collage .grande{width:80%;aspect-ratio:4/5;border-radius:999px 999px 0 0;margin-left:auto;object-position:50% 40%}
+.collage .chica{border-radius:50%;border:8px solid #f6f1e6;width:40%;left:2%;bottom:6px}
+.sello{position:absolute;top:-6px;right:-6px;width:128px;height:128px;animation:gira 30s linear infinite;filter:drop-shadow(0 12px 18px rgba(0,0,0,.35))}
+.sello-fondo{fill:#f6f1e6}
+.sello-txt{font:700 11.4px Karla,sans-serif;letter-spacing:.2em;fill:var(--azul)}
+.sello use{color:var(--azul)}
+@keyframes gira{to{transform:rotate(360deg)}}
+
+/* tarjetas con foto en arco */
+.tarj-osc article{padding:14px 14px 0}
+.tarj-osc .im{border-radius:999px 999px 0 0}
+.tarj-osc img{aspect-ratio:4/4.3;border-radius:999px 999px 0 0}
+.tarj-osc .tx{padding:20px 12px 28px;text-align:center}
+.tarj-osc a{margin:0 8px}
+
+/* festón de arcos entre lo oscuro y lo crema */
+.oscura--b+.seccion--crema{position:relative}
+.oscura--b+.seccion--crema::before{content:"";position:absolute;top:-1px;left:0;right:0;height:26px;background:radial-gradient(circle at 50% 0,#1b3a4e 0 24px,transparent 25px) 0 0/52px 26px repeat-x}
+
+/* platos como platos: redondos, con aro blanco */
+.platos{gap:26px 18px}
+.platos figure{background:none;box-shadow:none;text-align:center;overflow:visible}
+.platos img{border-radius:50%;border:7px solid #fff;box-shadow:0 22px 34px -16px rgba(0,0,0,.5)}
+.platos figcaption{font-size:27px;line-height:1.1;color:var(--azul);padding:16px 0 0}
+
+/* galerías en arco, la del medio más baja */
+.galeria .tarjeta{background:none;box-shadow:none}
+.galeria .tarjeta img{aspect-ratio:3/4;border-radius:999px 999px 0 0;box-shadow:0 22px 40px -22px rgba(0,0,0,.5)}
+@media(min-width:700px){.galeria>:nth-child(2){margin-top:46px}}
+
+/* tarjetas de menú de la carta, como una carta impresa */
+.menus .panel{outline:1px solid rgba(44,90,122,.55);outline-offset:-10px;padding:34px 32px}
+.seccion h2{letter-spacing:.005em}
+
+@media(max-width:700px){
+  .cue{display:none}
+  .orn--1{width:300px;height:300px;left:-110px}.orn--2{width:200px;height:240px}
+  .sello{width:104px;height:104px;top:-18px;right:-4px}
+  .collage .grande{width:84%}
+  .collage .chica{width:42%;border-width:6px}
+  .platos{gap:22px 12px}
+  .platos img{border-width:5px}
+  .platos figcaption{font-size:21px;padding-top:12px}
+  .galeria>*{flex-basis:72%}
+  .galeria .tarjeta img{aspect-ratio:4/5}
+  .tarj-osc article{padding:10px 10px 0}
+  .tarj-osc img{aspect-ratio:4/4}
+  .oscura--b+.seccion--crema::before{background-size:40px 20px;height:20px;background-image:radial-gradient(circle at 50% 0,#1b3a4e 0 18px,transparent 19px)}
+}
+@media(prefers-reduced-motion:reduce){.slides img.on,.sello,.cue i{animation:none}}
+.platos figcaption{font:600 28px/1.1 "Dancing Script",cursive}
+.sello-txt{letter-spacing:0;font-size:12.5px}
+@media(max-width:700px){.platos figcaption{font-size:22px}}
