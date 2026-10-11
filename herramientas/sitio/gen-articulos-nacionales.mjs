@@ -22,28 +22,28 @@ const esc = (s) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g
 const txt = (s) => s.replace(/<[^>]+>/g, "");
 const HOY = "2026-10-05";
 
-const consejo = (t) => `<div class="dev-tip">
+export const consejo = (t) => `<div class="dev-tip">
 <div class="who">
 <img src="favicon-96.png" alt="OI Studio" width="96" height="96"/>
 <div><b>Consejo del desarrollador</b><small>OI Studio · Tolosa</small></div>
 </div>
 <p>"${t}"</p>
 </div>`;
-const cta = (h, p, btn, href = "contacto.html") => `<div class="cta-band">
+export const cta = (h, p, btn, href = "contacto.html") => `<div class="cta-band">
 <div>
 <h3>${h}</h3>
 <p>${p}</p>
 </div>
 <a class="btn btn--light" href="${href}">${btn}</a>
 </div>`;
-const figura = (img, url, alt, cap) => `<figure>
+export const figura = (img, url, alt, cap) => `<figure>
 <div class="browser">
 <div class="browser__bar"><span class="browser__dots"><i></i><i></i><i></i></span><span class="browser__url">${url}</span><span style="width:34px;"></span></div>
 <picture><source srcset="assets/${img}.webp" type="image/webp"/><img src="assets/${img}.jpg" alt="${esc(alt)}" width="900" height="562" loading="lazy"/></picture>
 </div>
 <figcaption>${cap}</figcaption>
 </figure>`;
-const tabla = (cab, filas) => `<div class="tbl-wrap">
+export const tabla = (cab, filas) => `<div class="tbl-wrap">
 <table class="tbl">
 <thead>
 <tr>${cab.map((c) => `<th>${c}</th>`).join("")}</tr>
@@ -54,7 +54,7 @@ ${filas.map((f) => `<tr>${f.map((c) => `<td>${c}</td>`).join("")}</tr>`).join("\
 </table>
 </div>`;
 
-function pagina(a) {
+export function pagina(a) {
   const url = `https://oiwebstudio.com/${a.slug}.html`;
   const imgAbs = `https://oiwebstudio.com/assets/${a.img}.jpg`;
   const ld = {
@@ -63,7 +63,7 @@ function pagina(a) {
       { "@type": "Article", headline: a.headline, description: a.desc, image: imgAbs,
         author: { "@type": "Organization", name: "OI Studio", url: "https://oiwebstudio.com/sobre-mi.html" },
         publisher: { "@type": "Organization", name: "OI Studio", logo: { "@type": "ImageObject", url: "https://oiwebstudio.com/icon-512.png" } },
-        datePublished: HOY, dateModified: HOY, mainEntityOfPage: url, inLanguage: "es" },
+        datePublished: a.fecha || HOY, dateModified: a.fecha || HOY, mainEntityOfPage: url, inLanguage: "es" },
       { "@type": "BreadcrumbList", itemListElement: [
         { "@type": "ListItem", position: 1, name: "Inicio", item: "https://oiwebstudio.com/" },
         { "@type": "ListItem", position: 2, name: "Artículos", item: "https://oiwebstudio.com/articulos.html" },
@@ -346,7 +346,7 @@ ${cta("¿Prefieres que te la haga yo?", "Cuéntame tu negocio y en 48 horas tien
 /* El bloque «Sigue leyendo» (RELACIONADOS) lo añade otro paso y no está en la
    plantilla: se conserva de la página que ya existe para no perderlo al regenerar. */
 const INI = "<!-- RELACIONADOS:inicio -->", FIN = "<!-- RELACIONADOS:fin -->";
-function conservarRelacionados(ruta, nuevo) {
+export function conservarRelacionados(ruta, nuevo) {
   if (!fs.existsSync(ruta)) return nuevo;
   const viejo = fs.readFileSync(ruta, "utf8");
   const i = viejo.indexOf(INI), f = viejo.indexOf(FIN);

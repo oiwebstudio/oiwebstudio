@@ -121,6 +121,9 @@ export const ZONAS_EU = {
     title: "Web diseinua Donostian: webguneak negozioentzat | OI Studio",
     desc: "Web diseinua eta webguneak Donostiako negozioentzat. Prezio itxia 199€-tik eta proposamena 48 ordutan. Estudioa Tolosan, 26 km-ra.",
     pares: [
+      [`¿Mejor una agencia de Donostia o un diseñador freelance?`, `Donostiako agentzia bat ala diseinatzaile autonomo bat hobe?`],
+      [`Para el negocio de un barrio suele bastar un estudio pequeño: trato directo, plazos cortos y precio cerrado. Tienes los detalles en la guía de agencia o freelance en Donostia.`, `Auzo bateko negozio baterako estudio txiki batek askotan nahikoa da: zuzeneko tratua, epe laburrak eta prezio itxia. Xehetasunak Donostiako agentzia ala autonomoa gidan dituzu.`],
+      [`Para el negocio de un barrio suele bastar un estudio pequeño: trato directo, plazos cortos y precio cerrado. Tienes los detalles en la guía de <a href="../diseno-web-donostia-agencia-o-freelance.html">agencia o freelance en Donostia</a>.`, `Auzo bateko negozio baterako estudio txiki batek askotan nahikoa da: zuzeneko tratua, epe laburrak eta prezio itxia. Xehetasunak <a href="../diseno-web-donostia-agencia-o-freelance.html">Donostiako agentzia ala autonomoa</a> gidan dituzu.`],
       [`toda Donostialdea`, `Donostialde osoa`],
       [`Ayudas para digitalizar tu negocio en Donostia`, `Zure negozioa digitalizatzeko laguntzak Donostian`],
       [`Fomento de San Sebastián convoca cada año ayudas de innovación y digitalización para el comercio, la hostelería y el turismo de la ciudad.`, `Fomento de San Sebastianek urtero deitzen ditu hiriko merkataritza, ostalaritza eta turismorako berrikuntza eta digitalizazio laguntzak.`],
@@ -170,6 +173,8 @@ export const ZONAS_EU = {
     title: "Web diseinua Irunen: webguneak negozioentzat | OI Studio",
     desc: "Web diseinua eta webguneak Irungo negozioentzat (Bidasoa). Prezio itxia 199€-tik eta proposamena 48 ordutan. Estudioa Tolosan, 45 km-ra.",
     pares: [
+      [`¿Haces SEO para negocios de Irun?`, `Irungo negozioentzat SEOa egiten duzu?`],
+      [`Sí, SEO local básico en todas las webs: títulos y descripciones con Irun, estructura, velocidad y ficha de Google Business. El SEO avanzado, con campañas continuas, se contrata aparte.`, `Bai, tokiko oinarrizko SEOa webgune guztietan: Irun duten izenburuak eta azalpenak, egitura, abiadura eta Google Business fitxa. SEO aurreratua, etengabeko kanpainekin, bereiz kontratatzen da.`],
       [`toda Bidasoa`, `Bidasoa osoa`],
       [`Irun paga parte de poner tu web en euskera`, `Irunek zure webgunea euskaratzearen zati bat ordaintzen du`],
       [`Abierta hasta el 30 de octubre de 2026: hasta el 75 % si la web queda solo en euskera (máximo 1.000 €) y el 50 % si es bilingüe (máximo 600 €).`, `2026ko urriaren 30era arte zabalik: % 75 arte webgunea euskara hutsean geratzen bada (gehienez 1.000 €) eta % 50 elebiduna bada (gehienez 600 €).`],
