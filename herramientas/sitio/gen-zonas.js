@@ -536,11 +536,11 @@ ${z.sectores.map(s => `<span class="zchip">${s}</span>`).join('\n')}
 
 <section class="zsec--tight zsec" style="padding-top:0;">
 <div class="container">
-<div class="zhead"><span class="k">Portfolio</span><h2>Webs reales, publicadas y navegables</h2></div>
+<div class="zhead"><span class="k">Portfolio</span><h2>Muestras publicadas y navegables</h2></div>
 <div class="zmosaic" data-anim="assemble">
 ${z.mosaico.map(k => `<a class="zshot" href="${UP}trabajos.html">${pic(k, null, `${IMG[k][1]}, ejemplo de web para negocio local`)}<span class="zshot__lbl">${IMG[k][1]}</span></a>`).join('\n')}
 </div>
-<p style="text-align:center;margin-top:16px;font-size:14px;color:var(--text-muted);">No enseño maquetas: las ocho webs del <a href="${UP}trabajos.html" style="color:var(--terra);">portfolio</a> están online y puedes abrirlas.</p>
+<p style="text-align:center;margin-top:16px;font-size:14px;color:var(--text-muted);">No enseño capturas: las muestras del <a href="${UP}trabajos.html" style="color:var(--terra);">portfolio</a> están online y puedes abrirlas.</p>
 </div>
 </section>
 
@@ -565,7 +565,7 @@ ${z.mosaico.map(k => `<a class="zshot" href="${UP}trabajos.html">${pic(k, null, 
 <details><summary>¿Trabajas con negocios de ${z.name}?</summary><p>Sí. El estudio está en Tolosa, a ${z.dist}, y trabajo habitualmente con negocios de ${z.comarca}. Las reuniones pueden ser presenciales o por videollamada, como te venga mejor.</p></details>
 <details><summary>¿El precio cambia por estar fuera de Tolosa?</summary><p>No. Precio cerrado e igual para toda Gipuzkoa: Landing desde 199€ y Web Negocio desde 299€, con 30 días de ajustes gratis.</p></details>
 <details><summary>¿Saldré en Google cuando busquen en ${z.name}?</summary><p>Todas las webs llevan SEO local orientado a ${z.name}. Aparecer arriba depende también de tu ficha de Google Business — lo explico en <a href="${UP}google-business-profile-guia.html">esta guía</a>.</p></details>
-<details><summary>¿Puedo verlo antes de decidir?</summary><p>Sí: las ocho webs del <a href="${UP}trabajos.html">portfolio</a> están publicadas y son navegables. La propuesta en 48h es gratis y sin compromiso.</p></details>
+<details><summary>¿Puedo verlo antes de decidir?</summary><p>Sí: las muestras del <a href="${UP}trabajos.html">portfolio</a> están publicadas y son navegables. La propuesta en 48h es gratis y sin compromiso.</p></details>
 </div>
 </div>
 <div>

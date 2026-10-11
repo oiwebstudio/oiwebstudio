@@ -103,7 +103,7 @@ const EU = {
   ben1_h: "Google-n aurkituko zaituzte",
   ben1_p: "Egitura, abiadura eta testuak, norbaitek zure hirian zure negozioa bilatzen duenean agertzeko pentsatuak.",
   ben2_h: "Bikaina mugikorrean",
-  ben2_p: "Zure bezeroen %80k mugikorretik bilatzen zaitu. Webgunea han diseinatu eta probatzen da lehenik, ez gehigarri gisa.",
+  ben2_p: "Zure bezeroen gehienek mugikorretik bilatzen zaituzte. Webgunea han diseinatu eta probatzen da lehenik, ez gehigarri gisa.",
   ben3_h: "Konfiantza lehen begiratuan",
   ben3_p: "Diseinu zainduak, hitzik gabe, atzean negozio serio bat dagoela esaten du. Bezero berri batek ebaluatzen duen lehen gauza da.",
   ben4_h: "2 segundo baino gutxiagoan kargatzen da",
@@ -165,7 +165,8 @@ const EU = {
 
   /* Precios */
   pre_eyebrow: "Prezioak",
-  pre_h2: 'Bere kabuz <span class="grad">berreskuratzen</span> den inbertsioa.',
+  pre_h2: 'Prezio argiak, <span class="grad">letra txikirik gabe</span>.',
+  pre_h1: 'Webgune baten prezioa: <span class="grad">argia eta letra txikirik gabe</span>.',
   pre_p: "Ezkutuko kuotarik gabe. Zure negozioak orain behar duen maila aukeratzen duzu.",
   pre_iva: "Prezioak BEZik gabe.",
   pre_pago: "ordainketa bakarra",
@@ -275,7 +276,7 @@ const EU = {
   st2_h: "Proposamena diseinatzen dut",
   st2_p: "Egitura, erreferentzia bisualak eta aurrekontu itxia. Ezustekorik gabe.",
   st3_h: "Webgunea eraikitzen dut",
-  st3_p: "Programatzera sartzen naiz plano tekniko baten zorroztasunarekin. Azkarra eta akatsik gabe.",
+  st3_p: "Programatu egiten dut plano tekniko baten zorroztasunarekin: azkarra, arina eta mugikorrean probatua, zuri erakutsi baino lehen.",
   st4_h: "Argitaratzen dut",
   st4_p: "Domeinua, ostatatzea eta zure sare edo tresnekin konexioa.",
   st5_h: "Laguntza ematen dut",
@@ -313,8 +314,8 @@ const EU = {
   faq3_a: "Lehen 30 egunetan aldaketak barne daude. Ondoren, mantentzearekin (20€/hilean) neuk eguneratuko ditut testuak, argazkiak eta ordutegiak behar duzunean.",
   faq4_q: "Google-n posizionamendua (SEO) barne al dago?",
   faq4_a: "Bai, webgune guztiek oinarrizko SEOa dakarte: izenburuak, meta-deskribapenak, abiadura eta egitura. SEO aurreratua bereiz kontratatzen da.",
-  faq5_q: "Zer gertatzen da entregaren ondoren aldaketak behar baditut?",
-  faq5_a: "30 egun dituzu doako doikuntzetarako entregaren ondoren. Epe hori igarota, mantentzea kontrata dezakezu 20€/hilean-etik aurrera.",
+  faq5_q: "Testuak eta argazkiak prestatu behar ditut?",
+  faq5_a: "Ez. Hamabost minutuko solasaldi batekin eta mugikorrean dagoeneko dituzun argazkiekin nahikoa dut: testuak nik idazten ditut, eta zuk zure antza duten ala ez esan besterik ez duzu egin behar.",
 
   /* Sección "si todavía no tienes web" */
   sw_eyebrow: "Oraindik webgunerik ez baduzu",
@@ -327,7 +328,7 @@ const EU = {
   sw_o2_a: "Betiko hileroko kuota duen plataforma bat eskaini dizute seguruenik. Hemen ordainketa bakarra da, 199 €-tik aurrera, ezkutuko kuotarik gabe eta domeinua zure izenean. Egunen batean joaten bazara, zure webgunea eramaten duzu.",
   sw_o2_l: "Prezioen gida zintzoa →",
   sw_o3_q: "«Ez dut astirik, ezta zer jarri jakin ere»",
-  sw_o3_a: "Ez duzu ezer idatzi behar. Hogei minutuko elkarrizketa batekin eta mugikorrean dagoeneko dituzun argazkiekin nahikoa dut. Nik idazten dut, eta zuk esan besterik ez duzu egin behar zure antza duen ala ez.",
+  sw_o3_a: "Ez duzu ezer idatzi behar. Hamabost minutuko elkarrizketa batekin eta mugikorrean dagoeneko dituzun argazkiekin nahikoa dut. Nik idazten dut, eta zuk esan besterik ez duzu egin behar zure antza duen ala ez.",
   sw_o3_l: "Zenbat denbora behar den benetan →",
   sw_flag: "Konpromisorik gabe",
   sw_of_h: "Ezer erabaki aurretik prestatzen dizut",
@@ -346,7 +347,7 @@ const EU = {
   sw_sect2: "tailerrak, klinikak, erreformak, merkataritza eta bulegoak.",
 
   /* Enlaces a las guías, bajo los precios */
-  pre_guias: 'Aurrekontuak alderatzen? Irakurri gure <a href="precio-diseno-web-profesional.html" class="link-terra">web diseinuaren prezioei buruzko gida zintzoa</a>, <a href="seo-local-tolosa-google-maps.html" class="link-terra">nola agertu Google-n Tolosan</a> edo <a href="pagina-web-o-solo-instagram.html" class="link-terra">zergatik ez den nahikoa Instagram bakarrik</a>.',
+  pre_guias: 'Aurrekontuak alderatzen? Irakurri nire <a href="precio-diseno-web-profesional.html" class="link-terra">web diseinuaren prezioei buruzko gida zintzoa</a>, <a href="seo-local-tolosa-google-maps.html" class="link-terra">nola agertu Google-n Tolosan</a> edo <a href="pagina-web-o-solo-instagram.html" class="link-terra">zergatik ez den nahikoa Instagram bakarrik</a>.',
 
   /* Sección de zonas de la portada */
   zon_ver: "Ikusi eremu guztiak →",

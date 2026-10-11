@@ -56,8 +56,8 @@ const META = {
     desc: "Kontatu zure negozioa zertan datzan eta proposamen zintzoa jasoko duzu 48 ordu baino gutxiagotan. Konpromisorik gabe.",
   },
   "trabajos.html": {
-    title: "Lanak: zortzi webgune zuzenean | OI Studio",
-    desc: "Zortzi webgune oso eta nabigagarri, sektore bakoitzeko bat: okindegia, albaitaria, kafetegia, ile-apaindegia, gimnasioa eta gehiago.",
+    title: "Webgune adibideak negozio lokalentzat | OI Studio",
+    desc: "Tolosan egindako webgune adibideak: Errotatxoren benetako kasua eta lau lagin nabigagarri (higiezin-agentzia, bizikleta-denda, psikologia eta fisioterapia).",
   },
   "sobre-mi.html": {
     title: "Niri buruz: nola lan egiten dudan | OI Studio",
