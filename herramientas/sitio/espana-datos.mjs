@@ -3,7 +3,7 @@
  * tres comunidades limítrofes. Textos a mano; nada que no se pueda sostener.
  * El plan de pago, el dominio y el hosting repiten lo que ya dice precios.html.
  */
-const PAGO = "La mitad al aceptar la propuesta y la otra mitad cuando la web está publicada. Si te viene mejor, lo hablamos y se paga a plazos. Los precios son sin IVA.";
+const PAGO = "Pagas una sola vez, al final: cuando la web está terminada y publicada. Si te viene mejor otra forma de pago, lo hablamos. Los precios son sin IVA.";
 const DOMINIO = "El primer año van incluidos: registro el dominio a tu nombre y dejo la web publicada con https. La web es tuya, no queda atada a mí. Desde el segundo año entran en el mantenimiento o, si no lo quieres, pagas solo dominio y alojamiento: 15 € al año.";
 const VER = "Sí. Las muestras del portfolio están publicadas y se pueden abrir y recorrer, y además te preparo una muestra con tu negocio, gratis y sin compromiso. Solo si te convence, seguimos.";
 const REMOTO = "El precio es el mismo estés donde estés: landing desde 199€, Web Negocio desde 299€ y tienda online desde 790€ (+ IVA).";

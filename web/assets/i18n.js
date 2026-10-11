@@ -188,7 +188,7 @@ const EU = {
   pf5_q: "Weba ikus dezaket ordaindu aurretik?",
   pf5_a: "Bai. Zure negozioarekin lagin bat prestatzen dizut, doan eta konpromisorik gabe. Konbentzitzen bazaitu bakarrik jarraitzen dugu.",
   pf6_q: "Nola ordaintzen da?",
-  pf6_a: "Erdia proposamena onartzean eta beste erdia weba argitaratuta dagoenean. Hobeto etortzen bazaizu, hitz egingo dugu eta epeka ordain daiteke.",
+  pf6_a: "Behin bakarrik ordaintzen duzu, amaieran: weba amaituta eta argitaratuta dagoenean. Beste ordainketa modu bat komeni bazaizu, hitz egingo dugu.",
   pre_mes: "/hilean",
   p1_desc: "Orrialde bakarra, azkar ezagutzera emateko eta kontaktuak jasotzen hasteko.",
   p1_btn: "Landing aukeratu",
