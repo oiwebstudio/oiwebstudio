@@ -8,7 +8,7 @@
 <meta name="description" content="Restaurante Beko Errota, en un molino reformado del barrio Jaizubia (Hondarribia): parrilla, marisco, menú del día, bodas y eventos hasta 750 comensales."/>
 <!-- MUESTRA v3 · web de varias páginas con todo el contenido de bekoerrota.com. Sin formulario de reservas: se reserva llamando. Fotos: suyas, de su web. -->
 <script>document.documentElement.classList.add("ef");setTimeout(function(){document.documentElement.classList.remove("ef")},2000);document.fonts&&document.fonts.ready.then(function(){document.documentElement.classList.remove("ef")});</script>
-<link rel="stylesheet" href="/assets/fonts-css/c869007a.css">
+<link rel="stylesheet" href="/assets/fonts-css/fc51af5c.css">
 
 <link rel="stylesheet" href="estilo.css"/>
 <style>.ef .heroe .script{visibility:hidden}</style>
@@ -32,68 +32,95 @@
   <symbol id="oliva" viewBox="0 0 60 60"><path class="dib" d="M6 54C20 40 36 26 54 6M16 42c-6-2-8-8-6-12 6 0 10 4 6 12zM28 30c-6-2-8-8-6-12 6 0 10 4 6 12zM40 18c-6-2-8-8-6-12 6 0 10 4 6 12z"/><ellipse class="dib" cx="44" cy="44" rx="7" ry="10" transform="rotate(35 44 44)"/></symbol>
 </defs></svg>
 <header class="cab" data-cab>
-  <a class="cab__logo" href="index.html" aria-label="Beko Errota, inicio" aria-current="page">Beko Errota</a>
-  <button class="cab__burger" type="button" aria-expanded="false" aria-controls="menu-m"><i aria-hidden="true"></i><span>Menú</span></button>
-  <div class="cab__info"><a href="tel:+34943643194">943 64 31 94<br/><span>bekoerrota@bekoerrota.com</span></a><address>Barrio Jaizubia, 3<br/>20280 Hondarribia</address></div>
-  <a class="cab__cta" href="tel:+34943643194">Llamar para reservar</a>
+  <a class="cab__tel" href="tel:+34943643194"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path class="dib" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span>943 64 31 94</span></a>
+  <nav class="cab__nav" aria-label="Principal"><a href="carta.html">Carta</a><a href="bodas.html">Bodas</a><a href="eventos.html">Eventos</a><a class="cab__logo script" href="index.html" aria-current="page">Beko Errota</a><a href="productos.html">Productos</a><a href="mapa.html">Cómo llegar</a></nav>
+  <div class="cab__der"><a class="boton" href="tel:+34943643194">Llamar para reservar</a><button class="cab__burger" type="button" aria-expanded="false" aria-controls="menu-m" aria-label="Abrir el menú"><span></span><span></span></button></div>
 </header>
 <div class="menu-m" id="menu-m" hidden>
-  <nav aria-label="Menú"><a href="index.html" aria-current="page">Inicio</a><a href="carta.html">Carta y menús</a><a href="bodas.html">Bodas</a><a href="eventos.html">Eventos</a><a href="productos.html">Productos</a><a href="mapa.html">Cómo llegar</a></nav>
-  <div class="menu-m__pie"><a href="tel:+34943643194"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path class="dib" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>943 64 31 94</a><span>Barrio Jaizubia 3 · Hondarribia</span></div>
+  <nav aria-label="Menú"><a class="script" href="index.html">Inicio</a><a class="script" href="carta.html">Carta y menús</a><a class="script" href="bodas.html">Bodas</a><a class="script" href="eventos.html">Eventos</a><a class="script" href="productos.html">Productos</a><a class="script" href="mapa.html">Cómo llegar</a></nav>
+  <a class="boton boton--claro" href="tel:+34943643194"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path class="dib" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>Llamar para reservar</a>
 </div>
 <section class="heroe heroe--portada" data-portada data-slides aria-roledescription="carrusel" aria-label="Fotos de Beko Errota">
   <div class="fondo slides"><img alt="Fachada del restaurante Beko Errota, un caserío en Hondarribia" class="on" fetchpriority="high" src="nueva/fotos/portada.webp" width="979" height="653" decoding="async"/><img alt="El caserío de Beko Errota con sus balcones de flores" loading="lazy" src="nueva/fotos/caserio.webp" width="797" height="513" decoding="async"/><img alt="Jardín con piscina de Beko Errota" loading="lazy" src="nueva/fotos/jardin-piscina.webp" width="798" height="512" decoding="async"/></div>
+  <button class="flecha flecha--izq" type="button" aria-label="Foto anterior"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path class="dib" d="M15 4 7 12l8 8"/></svg></button><button class="flecha flecha--der" type="button" aria-label="Foto siguiente"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path class="dib" d="m9 4 8 8-8 8"/></svg></button>
   <div class="wrap">
-    <h1 class="hero-h1"><span data-letras>Restaurante Beko Errota</span><small>Un viejo molino con jardín · Hondarribia</small></h1>
-    
-    
+    <svg class="adorno" viewBox="0 0 120 24" aria-hidden="true"><path class="dib" d="M2 12h42M76 12h42"/><use href="#uva" x="52" y="0" width="16" height="24"/></svg><h1 class="script" data-letras>Beko Errota</h1>
+    <p class="sub">Un viejo molino con jardín · Hondarribia</p>
+    <div class="cta"><a class="boton" href="tel:+34943643194"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="dib" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>Llamar para reservar</a><a class="boton boton--claro" href="carta.html">Ver la carta</a></div>
   </div>
-  <nav class="pildora" aria-label="Accesos rápidos"><a href="tel:+34943643194">Reservar</a><a href="carta.html">La carta</a><a href="bodas.html">Bodas y eventos</a><a href="mapa.html">Cómo llegar</a></nav>
+  <a class="cue" href="#molino"><span>Descubrir</span><i></i></a>
 </section>
 <main id="principal">
 
-<section class="intro-n" id="molino"><div class="wrap">
-  <p class="intro-n__t" data-enciende>Beko Errota es un restaurante familiar, con más de cuarenta años de trayectoria, en un viejo molino del barrio Jaizubia, en Hondarribia.<br/><br/>A comienzos de los años 80 la familia reformó el molino y desde entonces no ha parado de renovarlo. Alrededor, el jardín, los viñedos y los olivos de los que salen su txakoli, su sidra y su aceite. Cinco comedores, hasta 750 comensales.</p>
-  <svg class="emblema" viewBox="0 0 60 60" aria-hidden="true"><use href="#rueda"/></svg>
-</div></section>
-
-<section class="cards-n"><div class="wrap">
-  <div class="cards-n__g" data-escalonado>
-    <a class="card-n" href="carta.html"><img alt="Chuletón a la parrilla" loading="lazy" src="nueva/fotos/txuleta.webp" width="450" height="338" decoding="async"/><h2>Carta y menús</h2><span class="pil">Ver la carta</span></a>
-    <a class="card-n" href="bodas.html"><img alt="Comedor con arcos de piedra y vigas de madera" loading="lazy" src="nueva/fotos/evento.webp" width="1421" height="773" decoding="async"/><h2>Bodas y eventos</h2><span class="pil">Ver bodas y eventos</span></a>
-    <a class="card-n" href="productos.html"><img alt="Viñedo de la casa en otoño" loading="lazy" src="nueva/fotos/vinedo-otono.webp" width="797" height="513" decoding="async"/><h2>Txakoli, sidra y aceite</h2><span class="pil">Ver productos</span></a>
-    <a class="card-n" href="mapa.html"><img alt="Jardín y casa de Beko Errota" loading="lazy" src="nueva/fotos/jardin-casa.webp" width="797" height="513" decoding="async"/><h2>Cómo llegar</h2><span class="pil">Ver el croquis</span></a>
+<section class="seccion oscura" id="molino">
+  <svg class="orn orn--1" viewBox="0 0 60 60" aria-hidden="true"><use href="#rueda"/></svg>
+  <svg class="orn orn--2" viewBox="0 0 50 60" aria-hidden="true"><use href="#uva"/></svg>
+  <div class="wrap g2">
+  <div>
+    <p class="etiqueta">El molino · desde los años 80</p>
+    <h2 class="script" data-lineas style="margin-top:14px">Un viejo molino con jardín</h2>
+    <p class="intro" data-enciende>A comienzos de los años 80 la familia reformó un viejo molino del barrio Jaizubia, y desde entonces no ha parado de renovarlo. Más de cuarenta años de trayectoria, y alrededor el jardín, los viñedos y los olivos de los que salen su txakoli, su sidra y su aceite.</p>
+    <div class="cifras" data-escalonado><div><b>+40</b><span>años de trayectoria</span></div><div><b>5</b><span>comedores</span></div><div><b>750</b><span>comensales a la vez</span></div></div>
+  </div>
+  <div class="collage">
+    <img class="grande"  alt="La piedra del molino en el jardín de Beko Errota" loading="lazy" src="nueva/fotos/molino.webp" width="797" height="513" decoding="async"/>
+    <img class="chica"  alt="Chuletón a la parrilla" loading="lazy" src="nueva/fotos/txuleta.webp" width="450" height="338" decoding="async"/>
+    <svg class="sello" viewBox="0 0 140 140" aria-hidden="true"><defs><path id="circ" d="M70 70m-52 0a52 52 0 1 1 104 0a52 52 0 1 1-104 0"/></defs><circle class="sello-fondo" cx="70" cy="70" r="66"/><text class="sello-txt"><textPath href="#circ" textLength="318" lengthAdjust="spacing">DESDE LOS AÑOS 80 · HONDARRIBIA ·</textPath></text><use href="#rueda" x="46" y="46" width="48" height="48"/></svg>
   </div>
 </div></section>
 
-<section class="seccion-n"><div class="wrap">
-  <p class="etq-n">De la parrilla y del mar</p>
-  <h2 class="tit-n" data-lineas>Los platos de la casa</h2>
+<section class="seccion oscura oscura--b" style="padding-top:0"><div class="wrap">
+  <p class="etiqueta">De nuestra tierra a la mesa</p>
+  <h2 class="script" data-lineas style="margin-top:14px">El arte de la parrilla</h2>
+  <div class="tarj-osc" data-escalonado>
+    <article><div class="im"><img alt="Chuletón a la parrilla" loading="lazy" src="nueva/fotos/txuleta.webp" width="450" height="338" decoding="async"/></div><div class="tx"><span class="et">Para comer</span><h3>Carta y menús</h3><p>Parrilla, pescados frescos y mariscos, y menú del día desde 35 €.</p><a href="carta.html">Ver la carta</a></div></article>
+    <article><div class="im"><img alt="Ceremonia en el jardín" loading="lazy" src="nueva/fotos/boda.webp" width="500" height="375" decoding="async"/></div><div class="tx"><span class="et">Para celebrar</span><h3>Bodas y eventos</h3><p>Lunch en el jardín, banquete y recena. Cinco comedores, hasta 750 comensales.</p><a href="bodas.html">Bodas</a> <a href="eventos.html">Eventos</a></div></article>
+    <article><div class="im"><img alt="El viñedo de la casa" loading="lazy" src="nueva/fotos/vinedo.webp" width="797" height="513" decoding="async"/></div><div class="tx"><span class="et">De la finca</span><h3>Productos</h3><p>Txakoli Eva Mahastia, sidra y aceite virgen extra de la casa.</p><a href="productos.html">Ver productos</a></div></article>
+  </div>
+</div></section>
+
+<section class="seccion seccion--crema"><div class="wrap">
+  <h2 class="script" data-lineas>De la parrilla y del mar</h2>
+  <p class="intro">Pescados frescos, carnes selectas y verduras de temporada: algunos de los platos de la casa.</p>
   <div class="platos" data-escalonado>
-    <figure><img alt="Chuletón a la parrilla" loading="lazy" src="nueva/fotos/txuleta.webp" width="450" height="338" decoding="async"/><figcaption>Chuletón a la parrilla</figcaption></figure>
-    <figure><img alt="Parrillada de mariscos" loading="lazy" src="nueva/fotos/marisco.webp" width="479" height="327" decoding="async"/><figcaption>Parrillada de mariscos</figcaption></figure>
-    <figure><img alt="Pescado a la parrilla con ajos" loading="lazy" src="nueva/fotos/pescado.webp" width="420" height="315" decoding="async"/><figcaption>Pescado a la parrilla</figcaption></figure>
-    <figure><img alt="Alcachofas, verdura de temporada" loading="lazy" src="nueva/fotos/temporada.webp" width="359" height="240" decoding="async"/><figcaption>Verduras de temporada</figcaption></figure>
+    <figure><img alt="Chuletón a la parrilla" loading="lazy" src="nueva/fotos/txuleta.webp" width="450" height="338" decoding="async"/><figcaption class="script">Chuletón a la parrilla</figcaption></figure>
+    <figure><img alt="Parrillada de mariscos" loading="lazy" src="nueva/fotos/marisco.webp" width="479" height="327" decoding="async"/><figcaption class="script">Parrillada de mariscos</figcaption></figure>
+    <figure><img alt="Pescado a la parrilla con ajos" loading="lazy" src="nueva/fotos/pescado.webp" width="420" height="315" decoding="async"/><figcaption class="script">Pescado a la parrilla</figcaption></figure>
+    <figure><img alt="Alcachofas, verdura de temporada" loading="lazy" src="nueva/fotos/temporada.webp" width="359" height="240" decoding="async"/><figcaption class="script">Verduras de temporada</figcaption></figure>
   </div>
+  <p style="margin-top:28px"><a class="boton" href="carta.html">Ver la carta completa</a></p>
 </div></section>
 
-<section class="seccion-n seccion-n--oscura"><div class="wrap">
-  <p class="etq-n">De la finca a la mesa</p>
-  <h2 class="tit-n" data-lineas>Txakoli, sidra y aceite</h2>
+<div class="banda" aria-hidden="true"><div class="pista" data-pista="40">Txakoli <i>✦</i> Sidra <i>✦</i> Aceite <i>✦</i> Parrilla <i>✦</i> Jardín <i>✦</i> Txakoli <i>✦</i> Sidra <i>✦</i> Aceite</div></div>
+
+<section class="seccion seccion--prod"><div class="wrap">
+  <p class="etiqueta etiqueta--c">De la finca a la mesa</p>
+  <h2 class="script centro" data-lineas>Txakoli, sidra y aceite</h2>
+  <p class="intro centro">Elaborados en casa, con la uva, la manzana y la oliva de la finca.</p>
   <div class="botellas" data-escalonado>
-    <a href="productos.html"><figure class="botella" style="--tinte:#ebe3c4"><img alt="Botella de txakoli Eva Mahastia" loading="lazy" src="nueva/fotos/producto-txakoli.webp" width="340" height="880" decoding="async"/></figure><span>Eva Mahastia</span><small>Txakoli</small></a>
-    <a href="productos.html"><figure class="botella" style="--tinte:#dbe6cc"><img alt="Botella de sidra Beko Errota" loading="lazy" src="nueva/fotos/producto-sidra.webp" width="340" height="880" decoding="async"/></figure><span>Sidra</span><small>Beko Errota</small></a>
-    <a href="productos.html"><figure class="botella" style="--tinte:#d2dcc4"><img alt="Botella de aceite virgen extra Beko Errota" loading="lazy" src="nueva/fotos/producto-aceite.webp" width="340" height="880" decoding="async"/></figure><span>Aceite</span><small>Virgen extra</small></a>
+    <a href="productos.html"><figure class="botella" style="--tinte:#ebe3c4"><img alt="Botella de txakoli Eva Mahastia" loading="lazy" src="nueva/fotos/producto-txakoli.webp" width="340" height="880" decoding="async"/></figure><span class="script">Eva Mahastia</span><small>Txakoli</small></a>
+    <a href="productos.html"><figure class="botella" style="--tinte:#dbe6cc"><img alt="Botella de sidra Beko Errota" loading="lazy" src="nueva/fotos/producto-sidra.webp" width="340" height="880" decoding="async"/></figure><span class="script">Sidra</span><small>Beko Errota</small></a>
+    <a href="productos.html"><figure class="botella" style="--tinte:#d2dcc4"><img alt="Botella de aceite virgen extra Beko Errota" loading="lazy" src="nueva/fotos/producto-aceite.webp" width="340" height="880" decoding="async"/></figure><span class="script">Aceite</span><small>Virgen extra</small></a>
   </div>
+  <p style="margin-top:34px;text-align:center"><a class="boton" href="productos.html">Conocer los productos</a></p>
 </div></section>
 
-<section class="seccion-n"><div class="wrap">
-  <p class="etq-n">Estanque, fuentes y caminos de piedra</p>
-  <h2 class="tit-n" data-lineas>El jardín</h2>
+<section class="seccion"><div class="wrap">
+  <h2 class="script" data-lineas>El jardín</h2>
+  <p class="intro">Estanque, fuentes, caminos de piedra y flores: el sitio donde empieza cualquier celebración.</p>
   <div class="tarjetas tarjetas--3 galeria" data-escalonado>
     <div class="tarjeta"><img alt="Jardín con piscina" loading="lazy" src="nueva/fotos/jardin-piscina.webp" width="798" height="512" decoding="async"/></div>
     <div class="tarjeta"><img alt="Camino de piedra entre flores" loading="lazy" src="nueva/fotos/jardin-camino.webp" width="797" height="513" decoding="async"/></div>
     <div class="tarjeta"><img alt="El estanque" loading="lazy" src="nueva/fotos/estanque.webp" width="797" height="513" decoding="async"/></div>
+  </div>
+</div></section>
+
+<section class="seccion seccion--crema"><div class="wrap g2 g2--inv">
+  <div class="foto-marco"><img alt="Terraza junto al jardín" loading="lazy" src="nueva/fotos/jardin-terraza.webp" width="798" height="512" decoding="async"/></div>
+  <div>
+    <h2 class="script" data-lineas>Cómo llegar</h2>
+    <p class="intro">Barrio Jaizubia 3, 20280 Hondarribia. Entre jardín, viñedos y olivos.</p>
+    <p style="margin-top:22px"><a class="boton" href="mapa.html">Ver el croquis</a></p>
   </div>
 </div></section>
 <section class="llamar"><div class="wrap">
@@ -103,15 +130,7 @@
   <small>O por correo: <a href="mailto:bekoerrota@bekoerrota.com">bekoerrota@bekoerrota.com</a></small>
 </div></section>
 </main>
-<footer class="pie">
-  <div class="pie__cols">
-    <div><h4>Social</h4><a href="https://www.facebook.com/Beko-Errota-418353941560586/" target="_blank" rel="noopener">Facebook</a></div>
-    <div><h4>Contacto</h4><a href="tel:+34943643194">943 64 31 94</a><a href="mailto:bekoerrota@bekoerrota.com">bekoerrota@bekoerrota.com</a></div>
-    <div><h4>Dirección</h4><address>Barrio Jaizubia, 3<br/>20280 Hondarribia<br/>Gipuzkoa</address></div>
-    <div><h4>Navegación</h4><a href="index.html">Inicio</a><a href="carta.html">Carta y menús</a><a href="bodas.html">Bodas</a><a href="eventos.html">Eventos</a><a href="productos.html">Productos</a><a href="mapa.html">Cómo llegar</a></div>
-  </div>
-  <p class="pie__fantasma" aria-hidden="true">Beko Errota</p>
-</footer>
+<footer class="pie"><div class="wrap"><span class="script">Beko Errota</span><nav aria-label="Pie"><a href="index.html">Inicio</a><a href="carta.html">Carta y menús</a><a href="bodas.html">Bodas</a><a href="eventos.html">Eventos</a><a href="productos.html">Productos</a><a href="mapa.html">Cómo llegar</a></nav><span>Barrio Jaizubia 3 · Hondarribia</span></div></footer>
 <nav class="movil" data-barra-movil aria-label="Reservar"><a class="boton" href="tel:+34943643194"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="dib" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>Llamar para reservar</a></nav>
 <script src="/assets/vendor/gsap.min.js"></script>
 <script src="/assets/vendor/ScrollTrigger.min.js"></script>
