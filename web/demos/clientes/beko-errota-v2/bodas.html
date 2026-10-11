@@ -10,6 +10,7 @@
 <script>document.documentElement.classList.add("ef");setTimeout(function(){document.documentElement.classList.remove("ef")},2000);document.fonts&&document.fonts.ready.then(function(){document.documentElement.classList.remove("ef")});</script>
 <link rel="stylesheet" href="/assets/fonts-css/c869007a.css">
 
+<link rel="stylesheet" href="/assets/vendor/lenis.css"/>
 <link rel="stylesheet" href="estilo.css"/>
 <style>.ef .heroe .script{visibility:hidden}</style>
 <meta property="og:type" content="restaurant"/><meta property="og:locale" content="es_ES"/><meta property="og:site_name" content="Beko Errota"/>
@@ -24,6 +25,7 @@
 <div role="region" aria-label="Aviso"><p class="aviso">Muestra preparada por OI Studio para Beko Errota, con los datos y fotos de su web. Sin compromiso.</p></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
   <symbol id="txuleta" viewBox="0 0 70 50"><path class="dib" d="M8 22c2-12 18-18 34-14 14 4 22 14 18 24-4 10-18 14-32 12C14 42 6 34 8 22z"/><path class="dib" d="M22 18c6 4 8 12 4 18M44 16c-6 6-6 16 0 22"/></symbol>
+  <symbol id="rueda" viewBox="0 0 60 60"><circle class="dib" cx="30" cy="30" r="26"/><circle class="dib" cx="30" cy="30" r="8"/><path class="dib" d="M30 4v18M30 38v18M4 30h18M38 30h18M12 12l12 12M36 36l12 12M48 12 36 24M24 36 12 48"/></symbol>
   <symbol id="copa" viewBox="0 0 40 60"><path class="dib" d="M10 4h20c0 14-4 22-10 22S10 18 10 4zM20 26v24M12 54h16M11 12h18"/></symbol>
   <symbol id="botella" viewBox="0 0 30 70"><path class="dib" d="M11 4h8v12c5 4 7 8 7 14v34H4V30c0-6 2-10 7-14zM4 40h22M4 52h22"/></symbol>
   <symbol id="pez" viewBox="0 0 80 40"><path class="dib" d="M6 20c10-12 30-16 48-6l14-8-4 14 4 14-14-8C36 36 16 32 6 20zM20 18v.5M30 12c3 4 3 12 0 16"/></symbol>
@@ -32,14 +34,17 @@
   <symbol id="oliva" viewBox="0 0 60 60"><path class="dib" d="M6 54C20 40 36 26 54 6M16 42c-6-2-8-8-6-12 6 0 10 4 6 12zM28 30c-6-2-8-8-6-12 6 0 10 4 6 12zM40 18c-6-2-8-8-6-12 6 0 10 4 6 12z"/><ellipse class="dib" cx="44" cy="44" rx="7" ry="10" transform="rotate(35 44 44)"/></symbol>
 </defs></svg>
 <header class="cab" data-cab>
-  <a class="cab__logo" href="index.html" aria-label="Beko Errota, inicio">Beko Errota</a>
+  <a class="cab__logo" href="index.html" aria-label="Beko Errota, inicio"><svg class="cab__emb" viewBox="0 0 60 60" aria-hidden="true"><use href="#rueda"/></svg><span>Beko Errota</span></a>
   <button class="cab__burger" type="button" aria-expanded="false" aria-controls="menu-m"><i aria-hidden="true"></i><span>Menú</span></button>
   <div class="cab__info"><a href="tel:+34943643194">943 64 31 94<br/><span>bekoerrota@bekoerrota.com</span></a><address>Barrio Jaizubia, 3<br/>20280 Hondarribia</address></div>
   <a class="cab__cta" href="tel:+34943643194">Llamar para reservar</a>
 </header>
 <div class="menu-m" id="menu-m" hidden>
-  <nav aria-label="Menú"><a href="index.html">Inicio</a><a href="carta.html">Carta y menús</a><a href="bodas.html" aria-current="page">Bodas</a><a href="eventos.html">Eventos</a><a href="productos.html">Productos</a><a href="mapa.html">Cómo llegar</a></nav>
-  <div class="menu-m__pie"><a href="tel:+34943643194"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path class="dib" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>943 64 31 94</a><span>Barrio Jaizubia 3 · Hondarribia</span></div>
+  <div class="menu-m__izq">
+    <nav aria-label="Menú"><a href="index.html" data-i="0"><span class="n">01</span><span class="t">Inicio</span><small>Un viejo molino con jardín</small></a><a href="carta.html" data-i="1"><span class="n">02</span><span class="t">Carta y menús</span><small>Parrilla, pescados y menús desde 35 €</small></a><a href="bodas.html" data-i="2" aria-current="page"><span class="n">03</span><span class="t">Bodas</span><small>Lunch en el jardín, banquete y recena</small></a><a href="eventos.html" data-i="3"><span class="n">04</span><span class="t">Eventos</span><small>Cinco comedores, hasta 750 comensales</small></a><a href="productos.html" data-i="4"><span class="n">05</span><span class="t">Productos</span><small>Txakoli, sidra y aceite de la casa</small></a><a href="mapa.html" data-i="5"><span class="n">06</span><span class="t">Cómo llegar</span><small>Barrio Jaizubia 3, Hondarribia</small></a></nav>
+    <div class="menu-m__pie"><a href="tel:+34943643194"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path class="dib" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>943 64 31 94</a><span>Barrio Jaizubia 3 · Hondarribia</span></div>
+  </div>
+  <div class="menu-m__der" aria-hidden="true"><img data- alt="" class="on" src="nueva/fotos/portada.webp" width="979" height="653" decoding="async"/><img data- alt="" class="" src="nueva/fotos/txuleta.webp" width="450" height="338" decoding="async"/><img data- alt="" class="" src="nueva/fotos/jardin-fuente.webp" width="797" height="513" decoding="async"/><img data- alt="" class="" src="nueva/fotos/evento.webp" width="1421" height="773" decoding="async"/><img data- alt="" class="" src="nueva/fotos/vinedo-otono.webp" width="797" height="513" decoding="async"/><img data- alt="" class="" src="nueva/fotos/jardin-casa.webp" width="797" height="513" decoding="async"/><p class="menu-m__pie2">Reservas: <b>943 64 31 94</b></p></div>
 </div>
 <section class="heroe heroe--corto" data-portada>
   <div class="fondo"><img alt="Jardín con fuente de Beko Errota, donde se celebra el lunch de boda" fetchpriority="high" src="nueva/fotos/jardin-fuente.webp" width="797" height="513" decoding="async"/></div>
@@ -92,6 +97,7 @@
   <p class="pie__fantasma" aria-hidden="true">Beko Errota</p>
 </footer>
 <nav class="movil" data-barra-movil aria-label="Reservar"><a class="boton" href="tel:+34943643194"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="dib" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>Llamar para reservar</a></nav>
+<script src="/assets/vendor/lenis.min.js"></script>
 <script src="/assets/vendor/gsap.min.js"></script>
 <script src="/assets/vendor/ScrollTrigger.min.js"></script>
 <script src="/assets/vendor/SplitText.min.js"></script>
