@@ -40,3 +40,31 @@
     gsap.from(el, { scale: 1.14, opacity: 0, duration: 1.5, ease: "expo.out", clearProps: "transform,opacity", scrollTrigger: { trigger: el, start: "top 92%" } });
   });
 })();
+
+/* Galerías del móvil: se deslizan solas hacia el lado al bajar la página. Si la persona las toca, manda su dedo. */
+(function () {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var gs = [].slice.call(document.querySelectorAll(".galeria"));
+  if (!gs.length) return;
+  var mano = new Map(), pendiente = false;
+  gs.forEach(function (g) {
+    g.addEventListener("touchstart", function () { mano.set(g, true); }, { passive: true });
+  });
+  function mover() {
+    pendiente = false;
+    var vh = innerHeight;
+    gs.forEach(function (g) {
+      var max = g.scrollWidth - g.clientWidth;
+      if (max < 4) return;
+      var r = g.getBoundingClientRect();
+      var p = (vh * 0.92 - r.top) / (vh * 0.62); /* 0 al asomar por abajo, 1 cuando la galería llega al tercio de arriba */
+      if (p <= 0 || p >= 1) { g.style.scrollSnapType = ""; mano.set(g, false); if (p >= 1) g.scrollLeft = max; else g.scrollLeft = 0; return; }
+      if (mano.get(g)) return;
+      g.style.scrollSnapType = "none";
+      g.scrollLeft = p * max;
+    });
+  }
+  addEventListener("scroll", function () { if (!pendiente) { pendiente = true; requestAnimationFrame(mover); } }, { passive: true });
+  addEventListener("resize", mover);
+  mover();
+})();
