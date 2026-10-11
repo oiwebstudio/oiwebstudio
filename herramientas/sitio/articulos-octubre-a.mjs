@@ -323,7 +323,7 @@ ${tabla(["Texto", "Para qué sirve", "¿Siempre hace falta?"], [
 ${consejo("Los textos legales buenos son cortos y están hechos con tus datos reales. Mejor un aviso legal sencillo y cierto que uno larguísimo copiado de otra web. Y que lo revise tu gestoría o un abogado.")}
 
 <h2 id="mi-caso">Cómo lo resuelvo yo</h2>
-<p>En las webs que hago preparo el aviso legal y la política de privacidad con los datos reales del negocio, y por defecto no instalo cookies de seguimiento, así que no hace falta banner. Conviene que tu gestoría los revise antes de publicar. Si estás empezando como autónomo, la <a href="pagina-web-para-autonomos.html">guía de web para autónomos</a> te explica qué datos tienes que tener a mano.</p>
+<p>Quien te haga la web debería preparar el aviso legal y la política de privacidad con los datos reales de tu negocio, y conviene que tu gestoría los revise antes de publicar. Cuando una web no usa cookies de seguimiento, como esta, tampoco hace falta banner. Si estás empezando como autónomo, la <a href="pagina-web-para-autonomos.html">guía de web para autónomos</a> te explica qué datos tienes que tener a mano.</p>
 
 ${cta("¿Quieres una web con todo en regla?", "Cuéntame tu negocio y te digo qué datos necesito para los textos legales.", "Pedir presupuesto")}
 `,
