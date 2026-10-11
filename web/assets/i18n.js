@@ -81,7 +81,7 @@ const EU = {
   /* Hero index */
   hero_badge: "Proiektu berrietarako prest",
   hero_h1: 'OI Studio-k diseinatutako webak negozioak <span class="grad">nahi bezain onak</span> erakusteko.',
-  hero_lede: "Neurrira egindako webguneak Tolosako eta Gipuzkoako negozioentzat. Azkarrak, politak eta bezeroak ekartzeko pentsatuak.",
+  hero_lede: "Neurrira egindako webguneak Tolosako eta Gipuzkoako negozioentzat. Azkarrak, politak eta bezeroak erakartzeko pentsatuak.",
   hero_trust1: "Proposamena 48 ordutan",
   hero_trust2: "Epe-konpromisorik gabe",
   hero_trust3: "30 egun doako doikuntzekin",
