@@ -10,7 +10,6 @@ const path = require('path');
 
 const OUT = 'zonas';
 const UP = '../';                       // las páginas viven un nivel más abajo
-const FONTS = 'https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap';
 const CSS_V = UP + 'assets/styles.css?v=11';
 const JS_V = UP + 'assets/main.js?v=7';
 
@@ -480,11 +479,8 @@ ZONAS.forEach((z, zIdx) => {
   ]
 }
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="preload" as="style" href="${FONTS}"/>
-<link href="${FONTS}" rel="stylesheet" media="print" onload="this.media='all'"/>
-<noscript><link href="${FONTS}" rel="stylesheet"/></noscript>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/geist-latin-04ce1a61.woff2" crossorigin/>
+<link rel="stylesheet" href="/assets/fuentes.css?v=1"/>
 <link rel="stylesheet" href="${CSS_V}"/>
 <style>${ZONA_CSS}</style>
 </head>

@@ -39,3 +39,10 @@ web/eu/
 .wrangler
 
 *.bat
+
+# Datos de clientes: este repositorio es PÚBLICO. Nada de clientes (CIF, correos,
+# teléfonos, código de sus webs) ni los scripts que generan sus demos con sus
+# datos reales. Siguen en el disco; solo no se suben.
+clientes/
+herramientas/demos/demo-*.mjs
+herramientas/demos/fotos-biciprecision.mjs

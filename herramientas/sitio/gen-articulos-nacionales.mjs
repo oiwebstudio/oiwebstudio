@@ -17,7 +17,7 @@ const estilos = trozo("<style>", "</style>") + "</style>";
 const nav = trozo('<div class="nav-wrap">', '<div class="container">\n<header class="art-hero">');
 const pie = trozo('<footer class="footer">', '<script src="assets/i18n.js');
 const wa = trozo('<a class="wa-float"', "</body>");
-const fuentes = trozo('<link rel="preconnect" href="https://fonts.googleapis.com"/>', '<link rel="stylesheet" href="assets/styles.css');
+const fuentes = trozo('<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/geist-latin-04ce1a61.woff2" crossorigin/>', '<link rel="stylesheet" href="assets/styles.css');
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
 const txt = (s) => s.replace(/<[^>]+>/g, "");
 const HOY = "2026-10-05";
