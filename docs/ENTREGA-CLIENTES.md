@@ -24,13 +24,13 @@ Coste por cliente: el dominio (~10–15 €/año). Todo lo demás, 0 €.
 
 1. Mandarle el **presupuesto por escrito** por correo y que conteste "de acuerdo".
    Eso ya vale como aceptación. Tiene que decir:
-   - precio + IVA y forma de pago (50 % al aceptar, 50 % al publicar; o plazos pactados)
+   - precio + IVA y forma de pago (todo al final, al publicar; por ahora no se cobra nada por adelantado)
    - qué incluye (páginas, dominio y alojamiento el primer año, 30 días de ajustes)
    - que el dominio va a su nombre y la web es suya
    - mantenimiento: 20 €/mes + IVA sin permanencia, o solo dominio y alojamiento 15 €/año
    - plazo de entrega (desde que manda fotos y textos)
 2. **Alta de autónomo** si aún no está hecha (Hacienda Foral + Seguridad Social con tarifa plana).
-3. **Factura del primer 50 %** con FakturaBAI. Retención 7 % si el cliente es empresa o autónomo.
+3. **Factura única** con FakturaBAI al publicar, ya con el alta hecha. Retención 7 % si el cliente es empresa o autónomo.
 
 ## 2. Qué pedirle al cliente
 
@@ -70,7 +70,7 @@ Partir de la demo publicada en `web/demos/clientes/<slug>/` y copiarla a `client
 - [ ] La demo de `oiwebstudio.com/demos/clientes/<slug>/` pasa a redirigir a su dominio
 - [ ] Si el cliente da permiso, añadirla a `web/trabajos.html` como trabajo real
 - [ ] Correo de entrega: la dirección, qué incluye, cómo pedir cambios y cuándo vence el dominio
-- [ ] **Factura del segundo 50 %**
+- [ ] **Factura y cobro** (todo el importe, al publicar)
 - [ ] Apuntar en el calendario la renovación del dominio (y a los 11 meses, recordarle el mantenimiento)
 
 ## 6. Mantenimiento (20 €/mes)

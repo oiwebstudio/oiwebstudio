@@ -343,9 +343,25 @@ ${cta("¿Prefieres que te la haga yo?", "Cuéntame tu negocio y en 48 horas tien
 },
 ];
 
+/* El bloque «Sigue leyendo» (RELACIONADOS) lo añade otro paso y no está en la
+   plantilla: se conserva de la página que ya existe para no perderlo al regenerar. */
+const INI = "<!-- RELACIONADOS:inicio -->", FIN = "<!-- RELACIONADOS:fin -->";
+function conservarRelacionados(ruta, nuevo) {
+  if (!fs.existsSync(ruta)) return nuevo;
+  const viejo = fs.readFileSync(ruta, "utf8");
+  const i = viejo.indexOf(INI), f = viejo.indexOf(FIN);
+  if (i < 0 || f < 0 || nuevo.includes(INI)) return nuevo;
+  const bloque = viejo.slice(i, f + FIN.length) + "\n";
+  const ancla = viejo.slice(Math.max(0, i - 60), i);
+  const pos = nuevo.indexOf(ancla);
+  if (pos < 0) { console.warn("  aviso: no encuentro dónde reponer «Sigue leyendo» en", ruta); return nuevo; }
+  return nuevo.slice(0, pos + ancla.length) + bloque + nuevo.slice(pos + ancla.length);
+}
+
 if (process.argv[1] && process.argv[1].endsWith("gen-articulos-nacionales.mjs")) {
   for (const a of ARTICULOS) {
-    fs.writeFileSync(path.join(WEB, `${a.slug}.html`), pagina(a).replace(/\r?\n/g, "\n"));
+    const ruta = path.join(WEB, `${a.slug}.html`);
+    fs.writeFileSync(ruta, conservarRelacionados(ruta, pagina(a).replace(/\r?\n/g, "\n")));
     console.log("  escrito", a.slug + ".html");
   }
 }
