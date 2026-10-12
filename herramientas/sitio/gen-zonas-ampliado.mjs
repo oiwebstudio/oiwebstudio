@@ -92,20 +92,20 @@ const avisoAyuda = (slug) => {
 /* ------------------------------------------------------------ preguntas */
 function preguntas(m, d, dist) {
   const nombre = d.name, alt = d.alt ? ` (${d.alt})` : "";
-  const q1 = `¿Te mueves hasta ${nombre}?`;
+  const q1 = `¿Te desplazas hasta ${nombre}?`;
   const a1 = d.slug === "tolosa" ? "Aquí tengo el estudio, así que me paso por tu negocio cuando haga falta, sin cita eterna ni papeleo. Lo del día a día lo resolvemos por WhatsApp."
-    : dist <= 12 ? `Casi no hay que moverse: ${nombre} está a unos ${dist} km de Tolosa. Me paso por tu negocio cuando haga falta, sin cita eterna ni papeleo, y lo del día a día lo resolvemos por WhatsApp.`
+    : dist <= 12 ? `Casi no hay que moverse: ${nombre} está a unos ${dist} km de Tolosa. Me paso por tu negocio cuando haga falta, y el día a día lo resolvemos por WhatsApp o por correo.`
     : dist <= 35 ? `Sí. ${nombre} está a unos ${dist} km de Tolosa. Quedamos en tu negocio para conocerlo y hacer las fotos si hace falta, y el resto lo llevamos por WhatsApp y videollamada para no hacerte perder tiempo.`
     : `Sí, cuando compensa. ${nombre} está a unos ${dist} km de Tolosa, así que lo habitual es empezar por videollamada o WhatsApp y quedar en persona para conocer el negocio y hacer las fotos. El precio es el mismo.`;
   const q2 = "¿Cuesta lo mismo que en Tolosa?";
-  const a2 = `Exactamente lo mismo. Landing desde 199€ y Web Negocio desde 299€, precio cerrado por escrito y 30 días de ajustes incluidos. ${dist <= 12 ? "A tan poca distancia no hay desplazamiento que repercutir ni excusa para cobrarlo." : "Ir a " + nombre + " no lleva ningún recargo."}`;
+  const a2 = `Exactamente lo mismo. Landing desde 199€ y Web Negocio desde 299€, precio cerrado por escrito y 30 días de ajustes incluidos. ${dist <= 12 ? "A tan poca distancia no hay ningún desplazamiento que repercutir." : "Ir a " + nombre + " no lleva ningún recargo."}`;
   const pob = redondea(m.pob);
   const q3 = `¿Merece la pena el SEO en ${pob >= 10000 ? "un municipio de unos " + miles(pob) : "un pueblo de unos " + miles(pob)} habitantes?`;
-  const a3 = pob < 3000 ? `Precisamente ahí es donde más rinde. Son pocos negocios peleando y muchos sin web, así que hacerlo bien te pone por delante sin gran esfuerzo. La web sale orientada a búsquedas de ${nombre}${alt} y de ${d.comarca}, y el complemento es tu ficha de Google Business, que repaso en <a href="../google-business-profile-guia.html">esta guía</a>.`
+  const a3 = pob < 3000 ? `Precisamente ahí es donde más rinde. Son poca competencia y muchos negocios sin web, así que una web bien hecha te sitúa por delante con poco esfuerzo. La web sale orientada a búsquedas de ${nombre}${alt} y de ${d.comarca}, y el complemento es tu ficha de Google Business, que repaso en <a href="../google-business-profile-guia.html">esta guía</a>.`
     : pob < 10000 ? `Sí, y bastante: hay competencia moderada y todavía mucha gente que depende solo de las redes. La web se orienta a búsquedas de ${nombre}${alt} y de ${d.comarca}, y se complementa con tu ficha de Google Business, que repaso en <a href="../google-business-profile-guia.html">esta guía</a>.`
     : `Sí. En un municipio de este tamaño hay competencia real por las búsquedas de cada sector, y las primeras posiciones del mapa se llevan casi todos los clics. La web se orienta a ${nombre}${alt} y a ${d.comarca}, y se trabaja junto con tu ficha de Google Business, que repaso en <a href="../google-business-profile-guia.html">esta guía</a>.`;
   const q5 = "¿Puedo verlo antes de decidir?";
-  const a5 = `Claro. No enseño capturas: las muestras del <a href="../trabajos.html">portfolio</a> están publicadas y se pueden abrir y recorrer. Con eso y la propuesta en 48h tienes de sobra para decidir sin compromiso.`;
+  const a5 = `Claro. No enseño capturas: las muestras del <a href="../trabajos.html">portfolio</a> están publicadas y se pueden abrir y recorrer. Con ellas y la propuesta en 48 h tienes información suficiente para decidir sin compromiso.`;
   return [[q1, a1], [q2, a2], [q3, a3], [d.faq.q, d.faq.a], [q5, a5]];
 }
 const textoPlano = (h) => h.replace(/<[^>]+>/g, "");
@@ -309,7 +309,7 @@ ${PIE}`;
 const COMARCAS = {
   Tolosaldea: { titulo: "Diseño web en Tolosaldea | Páginas web para negocios", lede: "La comarca donde tengo el estudio: 28 municipios alrededor del Oria, con Tolosa como capital y mucho pueblo pequeño. Aquí trabajo en persona.",
     texto: "Tolosaldea es una comarca de pueblos pequeños que se mueven alrededor de Tolosa: la gente compra, come y hace gestiones en la capital y vuelve a casa. Para un negocio de Alegia, Anoeta o Berastegi eso significa dos cosas: que tu clientela real está repartida por toda la comarca, y que quien te busca en Google suele escribir lo que haces más «Tolosaldea» o «Tolosa». Por eso cada web que hago aquí se escribe para la comarca entera, no solo para el nombre del pueblo.",
-    faq: ["¿Trabajas con negocios de todos los pueblos de Tolosaldea?", "Sí. El estudio está en Tolosa y me muevo por toda la comarca. Con los pueblos más grandes tengo página propia; los más pequeños aparecen en esta lista, y para ellos el trabajo es el mismo: web proporcionada al negocio y ficha de Google bien hecha."] },
+    faq: ["¿Trabajas con negocios de todos los pueblos de Tolosaldea?", "Sí. El estudio está en Tolosa y trabajo en toda la comarca. Con los pueblos más grandes tengo página propia; los más pequeños aparecen en esta lista, y para ellos el trabajo es el mismo: web proporcionada al negocio y ficha de Google bien hecha."] },
   Buruntzaldea: { titulo: "Diseño web en Buruntzaldea | Andoain, Urnieta y Lasarte-Oria", lede: "La salida de Tolosaldea hacia Donostia: Andoain, Urnieta y Lasarte-Oria, con mucho comercio y clientela que compara.",
     texto: "En Buruntzaldea el cliente se mueve entre municipios y Donostia está a diez o veinte minutos, así que un negocio compite con lo de aquí y con lo de la capital. La diferencia está en ser fácil de encontrar y de contactar: ficha de Google al día, horarios claros, reseñas y una web rápida desde el móvil.",
     faq: ["¿Qué municipios de Buruntzaldea cubres?", "Andoain, Urnieta y Lasarte-Oria tienen página propia, y trabajo con negocios de los pueblos de alrededor. El criterio es el mismo en todos: una web proporcionada y una ficha de Google cuidada."] },
