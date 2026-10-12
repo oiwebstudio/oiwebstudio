@@ -1,0 +1,187 @@
+/* Oh My Bike! (muestra): menú móvil, pestañas de tarifas, filtro y carrito de la tienda, «ahora abierto», formulario de prueba.
+   Sin JavaScript todo se ve: las tres tarifas salen una debajo de otra, todos los productos visibles y el menú es la barra de arriba. */
+(function () {
+  var b = document.querySelector(".burger"), m = document.getElementById("menu");
+  if (b && m) {
+    b.addEventListener("click", function () { var on = m.classList.toggle("on"); b.setAttribute("aria-expanded", on); b.textContent = on ? "Cerrar" : "Menú"; });
+    m.addEventListener("click", function (e) { if (e.target.closest("a")) { m.classList.remove("on"); b.setAttribute("aria-expanded", "false"); b.textContent = "Menú"; } });
+  }
+
+  /* pestañas de alquiler */
+  var tabs = document.querySelector(".tabs"), panels = document.querySelectorAll(".panel");
+  if (tabs && panels.length) {
+    panels.forEach(function (p, i) {
+      var t = document.createElement("button");
+      t.type = "button"; t.className = "tab"; t.setAttribute("role", "tab"); t.id = "t-" + p.id;
+      t.setAttribute("aria-controls", p.id); t.textContent = p.dataset.titulo;
+      p.setAttribute("role", "tabpanel"); p.setAttribute("aria-labelledby", t.id);
+      tabs.appendChild(t);
+    });
+    var bt = tabs.querySelectorAll(".tab");
+    var pon = function (i) { bt.forEach(function (t, j) { t.setAttribute("aria-selected", i === j); t.tabIndex = i === j ? 0 : -1; }); panels.forEach(function (p, j) { p.hidden = i !== j; }); };
+    bt.forEach(function (t, i) {
+      t.addEventListener("click", function () { pon(i); });
+      t.addEventListener("keydown", function (e) {
+        var k = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0; if (!k) return;
+        var n = (i + k + bt.length) % bt.length; pon(n); bt[n].focus(); e.preventDefault();
+      });
+    });
+    pon(0);
+  }
+
+  /* tienda: elegir categoría, afinar entre bicis y carrito de prueba */
+  var g = document.querySelector("[data-rejilla]");
+  if (g) {
+    var tiles = document.querySelectorAll(".tile"), subs = document.querySelectorAll(".cat[data-f]"), subBox = document.querySelector(".cats[data-sub]"), vac = document.querySelector("[data-vacio]");
+    var grupo = null, sub = "todo";
+    var pinta = function () {
+      var cats = grupo ? grupo.dataset.cats.split(",") : [], n = 0;
+      g.querySelectorAll(".prod").forEach(function (p) {
+        var ok = cats.indexOf(p.dataset.cat) > -1 && (sub === "todo" || p.dataset.cat === sub);
+        p.hidden = !ok; if (ok) n++;
+      });
+      if (vac) vac.hidden = n > 0;
+      if (subBox) subBox.hidden = !(grupo && grupo.dataset.sub === "1");
+    };
+    tiles.forEach(function (t) {
+      t.addEventListener("click", function () {
+        grupo = t; sub = "todo";
+        tiles.forEach(function (y) { y.setAttribute("aria-pressed", y === t); });
+        subs.forEach(function (y) { y.setAttribute("aria-pressed", y.dataset.f === "todo"); });
+        pinta();
+      });
+    });
+    subs.forEach(function (x) {
+      x.addEventListener("click", function () {
+        sub = x.dataset.f;
+        subs.forEach(function (y) { y.setAttribute("aria-pressed", y === x); });
+        pinta();
+      });
+    });
+    grupo = document.querySelector(".tile[aria-pressed=true]") || tiles[0]; pinta();
+  }
+
+  /* ahora abierto (hora de Madrid, horario habitual) */
+  var est = document.querySelector("[data-estado]");
+  if (est && window.Intl) {
+    try {
+      var f = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Madrid", weekday: "short", hour: "2-digit", minute: "2-digit", hour12: false }).formatToParts(new Date()), o = {};
+      f.forEach(function (p) { o[p.type] = p.value; });
+      var min = (+o.hour % 24) * 60 + +o.minute, d = o.weekday, ab = false;
+      if (/Mon|Tue|Wed|Thu|Fri/.test(d)) ab = (min >= 600 && min < 810) || (min >= 960 && min < 1170);
+      else if (d === "Sat") ab = min >= 630 && min < 810;
+      est.classList.toggle("on", ab);
+      est.lastElementChild.textContent = ab ? "Abierto ahora (horario habitual)" : "Cerrado ahora (horario habitual)";
+    } catch (e) {}
+  }
+
+  /* formulario de la muestra: no envía nada */
+  var fm = document.querySelector("[data-form]");
+  if (fm) fm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    fm.querySelector("[data-ok]").textContent = "Muestra: en la web final este mensaje llega a ohmybike@hotmail.com.";
+  });
+})();
+
+/* movimiento de la portada y cifras que cuentan (con «reducir movimiento» o sin GSAP todo queda quieto y completo) */
+(function () {
+  if (!window.gsap || !window.ScrollTrigger || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  gsap.registerPlugin(ScrollTrigger);
+  var b = document.querySelector(".bici3d"), w = document.querySelector(".palabra"), h = document.querySelector(".portada");
+  if (b && h) {
+    gsap.from(b, { x: -140, opacity: 0, duration: 1.5, ease: "expo.out", delay: 0.25 });
+    gsap.to(b, { y: 70, ease: "none", scrollTrigger: { trigger: h, start: "top top", end: "bottom top", scrub: true } });
+    if (w) gsap.to(w, { y: -50, ease: "none", scrollTrigger: { trigger: h, start: "top top", end: "bottom top", scrub: true } });
+  }
+  var im = document.querySelector(".taller__foto img");
+  if (im) gsap.from(im, { clipPath: "inset(100% 0 0 0)", scale: 1.12, duration: 1.3, ease: "expo.out", scrollTrigger: { trigger: im, start: "top 85%" } });
+  document.querySelectorAll("[data-cuenta]").forEach(function (e) {
+    var t = e.dataset.cuenta, o = { v: 0 }, fin = +t;
+    gsap.to(o, { v: fin, duration: 1.6, ease: "power2.out", scrollTrigger: { trigger: e, start: "top 90%", once: true }, onUpdate: function () { e.textContent = Math.round(o.v); } });
+  });
+})();
+
+/* barra fija que se vuelve blanca, sección activa y «preguntar por esta bici» */
+(function () {
+  var nav = document.querySelector(".nav");
+  if (nav) {
+    var al = function () { nav.classList.toggle("solid", window.scrollY > 40); };
+    al(); window.addEventListener("scroll", al, { passive: true });
+    var enl = {}; nav.querySelectorAll("ul a").forEach(function (a) { enl[a.getAttribute("href")] = a; });
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { var a = enl["#" + e.target.id]; if (a) { if (e.isIntersecting) { Object.keys(enl).forEach(function (k) { enl[k].removeAttribute("aria-current"); }); a.setAttribute("aria-current", "true"); } } });
+      }, { rootMargin: "-45% 0px -50% 0px" });
+      Object.keys(enl).forEach(function (k) { var s = document.querySelector(k); if (s) io.observe(s); });
+    }
+  }
+  var f = document.querySelector("[data-form]");
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest("[data-bici]"); if (!a || !f) return;
+    f.querySelector("#f-t").value = "Comprar una bici";
+    var m = f.querySelector("#f-m"); m.value = "Hola, me interesa la " + a.dataset.bici + ". ¿Está disponible? ¿Puedo probarla?";
+    setTimeout(function () { m.focus({ preventScroll: true }); }, 700);
+  });
+})();
+
+/* el croquis dibuja la ruta al llegar a él */
+(function () {
+  var c = document.querySelector("[data-croquis]"); if (!c) return;
+  if (!("IntersectionObserver" in window)) { c.classList.add("vista"); return; }
+  var io = new IntersectionObserver(function (e) { if (e[0].isIntersecting) { c.classList.add("vista"); io.disconnect(); } }, { threshold: 0.35 });
+  io.observe(c);
+})();
+
+/* carrito con pago (muestra), barra de progreso */
+(function () {
+  var caj = document.querySelector("[data-cajon]"); if (!caj) return;
+  var lista = caj.querySelector("[data-lista]"), vacio = caj.querySelector("[data-vacio-carrito]"), total = caj.querySelector("[data-total]"), pagar = caj.querySelector("[data-pagar]");
+  var cuenta = document.getElementById("cuenta"), items = [], pasoC = caj.querySelector("[data-paso=carrito]"), pasoG = caj.querySelector("[data-paso=gracias]"), ultimo = null;
+  var eur = function (n) { return n.toLocaleString("es-ES") + " €"; };
+  var pinta = function () {
+    lista.innerHTML = "";
+    items.forEach(function (it, i) {
+      var li = document.createElement("li");
+      li.innerHTML = '<img alt="" src="' + it.foto + '"/><div><b></b></div><div><span></span><button type="button" aria-label="Quitar"></button></div>';
+      li.querySelector("b").textContent = it.nombre; li.querySelector("span").textContent = eur(it.precio);
+      var x = li.querySelector("button"); x.textContent = "✕"; x.addEventListener("click", function () { items.splice(i, 1); pinta(); });
+      lista.appendChild(li);
+    });
+    var t = items.reduce(function (s, it) { return s + it.precio; }, 0);
+    total.textContent = eur(t); vacio.hidden = items.length > 0; pagar.disabled = !items.length;
+    if (cuenta) cuenta.textContent = items.length;
+  };
+  var abre = function () { pasoC.hidden = false; pasoG.hidden = true; caj.hidden = false; document.body.classList.add("cajon-abierto"); ultimo = document.activeElement; var c = caj.querySelector(".cajon__cab button"); if (c) c.focus(); };
+  var cierra = function () { caj.hidden = true; document.body.classList.remove("cajon-abierto"); if (ultimo && ultimo.focus) ultimo.focus(); };
+  document.addEventListener("click", function (e) {
+    var ab = e.target.closest("[data-abrir-carrito]"); if (ab) { e.preventDefault(); pinta(); abre(); return; }
+    if (e.target.closest("[data-cerrar]")) { cierra(); return; }
+    var a = e.target.closest(".anadir"); if (!a) return;
+    var p = a.closest(".prod"), img = p.querySelector("img");
+    items.push({ nombre: a.dataset.nombre, precio: +p.dataset.precio, foto: img ? img.getAttribute("src") : "" });
+    pinta(); a.textContent = "Añadida ✓"; setTimeout(function () { a.textContent = "Añadir al carrito"; }, 1200);
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !caj.hidden) cierra(); });
+  pagar.addEventListener("click", function () {
+    if (!items.length) return;
+    caj.querySelector("[data-pedido]").textContent = "OMB-" + String(Math.floor(1000 + Math.random() * 9000));
+    items = []; pinta(); pasoC.hidden = true; pasoG.hidden = false;
+  });
+  pinta();
+
+  var bar = document.querySelector("[data-progreso]");
+  if (bar) {
+    var mueve = function () { var h = document.documentElement.scrollHeight - innerHeight; bar.style.transform = "scaleX(" + (h > 0 ? Math.min(1, scrollY / h) : 0) + ")"; };
+    mueve(); addEventListener("scroll", mueve, { passive: true }); addEventListener("resize", mueve);
+  }
+})();
+
+/* franja de categorías y pie: llevan a la tienda con la categoría ya elegida */
+(function () {
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest("[data-ir]"); if (!a) return;
+    var p = a.dataset.ir.split(":"), t = document.querySelector('.tile[data-g="' + p[0] + '"]');
+    if (t) t.click();
+    if (p[1]) { var c = document.querySelector('.cat[data-f="' + p[1] + '"]'); if (c) c.click(); }
+  });
+})();

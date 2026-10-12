@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="robots" content="noindex, nofollow"/>
+<title>Oh My Bike! · Donostia — muestra v2</title>
+<meta name="description" content="Tienda, taller y alquiler de bicis en Donostia: bicis nuevas y reacondicionadas, taller sin cita, alquiler desde 8 € y tours con pintxo."/>
+<!--
+  MUESTRA · reconstruida sobre la referencia n.º 18 del tablero de bicis («SAILING»), elegida por Oier:
+  bruma azul con tarjeta blanca, palabra gigante blanca DETRÁS de la bici, lista numerada con miniaturas que
+  salen al pasar, bloque «lista de razones» con foto inclinada y tres líneas, bici con rótulos de detalle unidos
+  por puntos, acordeón con foto, cierre con teléfono y bici dibujada de fondo.
+  Contenido: el de su web actual (ombdonostia.com, 9/10/2026). Fotos: las suyas (tienda, taller) y su catálogo.
+-->
+<link rel="stylesheet" href="fuentes/letras.css"/>
+<link rel="preload" href="fuentes/archivo-400_900.woff2" as="font" type="font/woff2" crossorigin/>
+<style>
+:root{--tinta:#0d141c;--gris:#566471;--linea:#dde4ea;--papel:#f4f7f9;--blanco:#fff;--bruma1:#6f8da4;--bruma2:#b9cddb;--bruma3:#e6eef4;--azul:#3d5a73;--e:cubic-bezier(.23,1,.32,1);--lat:max(clamp(18px,4vw,56px),calc((100vw - 1240px)/2))}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:16px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font:400 16px/1.55 Satoshi,system-ui,sans-serif;color:var(--tinta);background:#fff;-webkit-font-smoothing:antialiased;padding:0}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--azul);outline-offset:3px}
+.pagina{background:var(--blanco);overflow:clip}
+.wrap{padding:0 var(--lat)}
+.mono{font:700 12px/1.2 "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.06em}
+.gran{font-family:Archivo,sans-serif;font-weight:900;font-stretch:100%;letter-spacing:-.035em;line-height:.92}
+h2{font:900 clamp(30px,4.4vw,56px)/.98 Archivo,sans-serif;letter-spacing:-.03em;text-transform:uppercase}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 8px 0 22px;border-radius:99px;background:var(--tinta);color:#fff;text-decoration:none;font-weight:700;font-size:15px;border:0;transition:transform 160ms var(--e)}
+.btn i{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#fff;color:var(--tinta);font-style:normal;transition:transform 240ms var(--e)}
+.btn:active{transform:scale(.97)}
+.btn--claro{background:#fff;color:var(--tinta)}
+.btn--claro i{background:var(--tinta);color:#fff}
+.btn--linea{background:transparent;color:var(--tinta);box-shadow:inset 0 0 0 1.5px var(--tinta)}
+.btn--linea i{background:var(--tinta);color:#fff}
+@media(hover:hover) and (pointer:fine){.btn:hover i{transform:translateX(3px)}}
+
+/* portada */
+.portada{position:relative;container-type:inline-size;overflow:hidden;isolation:isolate;height:clamp(600px,100svh,980px);background:radial-gradient(120% 90% at 20% 0%,#cfe0ec 0%,rgba(207,224,236,0) 55%),linear-gradient(180deg,var(--bruma1) 0%,var(--bruma2) 62%,var(--bruma3) 100%)}
+.nav{position:absolute;top:0;left:0;right:0;z-index:5;display:flex;align-items:center;gap:20px;padding:18px var(--lat)}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none;font:900 19px/1 Archivo,sans-serif;letter-spacing:-.02em;color:#fff;text-transform:uppercase}
+.logo svg{width:30px;height:30px;color:#fff}
+.nav ul{display:flex;gap:26px;list-style:none;padding:0;margin:0 auto;font-size:14px;font-weight:700}
+.nav ul a{text-decoration:none;color:#fff;opacity:.9;padding:10px 2px}
+@media(hover:hover) and (pointer:fine){.nav ul a:hover{opacity:1;text-decoration:underline;text-underline-offset:5px}}
+.nav__d{display:flex;align-items:center;gap:14px;margin-left:auto}
+.idioma{font:700 12px/1 "JetBrains Mono",monospace;color:#fff;letter-spacing:.06em}
+.idioma span{opacity:.6}
+.carrito{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--tinta);border-radius:99px;min-height:40px;padding:0 16px;font-weight:700;font-size:14px;text-decoration:none}
+.carrito b{display:grid;place-items:center;min-width:22px;height:22px;border-radius:99px;background:var(--azul);color:#fff;font-size:12px;padding:0 6px}
+.burger{display:none;min-height:44px;padding:0 16px;border:0;border-radius:99px;background:#fff;font-weight:700;font-size:14px}
+.palabra{position:absolute;z-index:1;left:0;right:0;top:15%;line-height:1.12;text-align:center;color:#fff;font-size:17.4cqw;white-space:nowrap;user-select:none}
+.bici-h{position:absolute;z-index:2;left:3%;bottom:12%;width:60%;filter:drop-shadow(0 3cqw 3cqw rgba(30,55,75,.28))}
+.suelo{position:absolute;z-index:1;left:9%;width:50%;bottom:9.5%;height:5%;background:radial-gradient(closest-side,rgba(20,40,58,.28),rgba(20,40,58,0));filter:blur(6px)}
+.textos{position:absolute;z-index:4;right:var(--lat);bottom:clamp(18px,3.6vw,44px);max-width:min(400px,31%);color:#fff}
+.textos h1{font:900 clamp(22px,3.1cqw,40px)/1.12 Archivo,sans-serif;letter-spacing:-.03em;text-transform:uppercase}
+.textos p{margin:10px 0 18px;font-size:clamp(14px,1.5cqw,18px);color:rgba(255,255,255,.95)}
+.textos .acc{display:flex;flex-wrap:wrap;gap:10px}
+.sello{display:block;margin-bottom:10px;opacity:.95}
+.aire{position:absolute;inset:auto 0 0;height:20%;z-index:3;background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,0))}
+
+/* lista numerada */
+.busca{padding-top:clamp(40px,6vw,76px);padding-bottom:clamp(24px,4vw,48px)}
+.busca h2{font-size:clamp(26px,3.3vw,40px);margin-bottom:clamp(14px,2vw,24px)}
+.filas{list-style:none;padding:0;border-top:1px solid var(--linea)}
+.fila{position:relative;display:grid;grid-template-columns:44px 1fr auto;gap:16px;align-items:center;padding:clamp(16px,2vw,24px) 6px;border-bottom:1px solid var(--linea);text-decoration:none;transition:background 200ms var(--e)}
+.fila .n{font:700 14px "JetBrains Mono",monospace;color:var(--gris)}
+.fila strong{display:block;font:800 clamp(19px,2.2vw,28px)/1.1 Archivo,sans-serif;letter-spacing:-.02em;text-transform:uppercase}
+.fila small{display:block;color:var(--gris);font-size:15px;margin-top:3px}
+.fila .ver{font:700 12px "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.06em;display:inline-flex;gap:6px;align-items:center}
+.mini{position:absolute;right:110px;top:50%;width:130px;height:84px;pointer-events:none;opacity:0;transform:translateY(-44%) rotate(0);transition:opacity 200ms var(--e),transform 300ms var(--e)}
+.mini img{position:absolute;width:104px;height:78px;object-fit:cover;border-radius:4px;box-shadow:0 8px 18px rgba(13,20,28,.2);background:var(--papel)}
+.mini img:nth-child(1){left:0;top:0;transform:rotate(-7deg)}.mini img:nth-child(2){right:0;top:8px;transform:rotate(6deg)}
+.mini .m-b{object-fit:contain;padding:4px}
+@media(hover:hover) and (pointer:fine){.fila:hover{background:var(--papel)}.fila:hover .mini,.fila:focus-visible .mini{opacity:1;transform:translateY(-50%)}}
+@media(hover:none),(max-width:760px){.mini{display:none}}
+
+/* razones */
+.razones{display:grid;grid-template-columns:1.05fr .9fr 1.05fr;gap:clamp(18px,3vw,44px);align-items:center;padding:clamp(34px,5vw,64px) var(--lat)}
+.razones h2{margin-bottom:16px}
+.razones p.txt{font-size:clamp(17px,1.5vw,20px);line-height:1.5;color:var(--tinta);max-width:44ch}
+.razones .foto{position:relative;background:var(--bruma2);padding:14px;aspect-ratio:1/1.05;display:grid;place-items:center;transform:rotate(2.2deg)}
+.razones .foto img{width:100%;height:100%;object-fit:cover;object-position:50% 60%;border:6px solid #fff}
+.razones ul{list-style:none;padding:0;border-top:1px solid var(--linea)}
+.razones li{padding:16px 0;border-bottom:1px solid var(--linea);font:800 14.5px/1.25 Archivo,sans-serif;text-transform:uppercase;letter-spacing:.01em}
+.razones li small{display:block;font:400 14px/1.4 Satoshi,sans-serif;text-transform:none;color:var(--gris);margin-top:3px}
+
+/* cifras */
+.cifras{position:relative;overflow:hidden;isolation:isolate;color:#fff;padding:clamp(56px,8vw,110px) var(--lat)}
+.cifras>img{position:absolute;left:0;top:-12%;width:100%;height:124%;object-fit:cover;z-index:-2}
+.cifras::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(13,20,28,.88),rgba(13,20,28,.55))}
+.cifras h2{max-width:14ch;margin-bottom:clamp(28px,4vw,56px)}
+.cifras dl{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,3vw,40px);margin:0}
+.cifras dl div{border-top:1px solid rgba(255,255,255,.4);padding-top:14px}
+.cifras dt{font:900 clamp(40px,6.4vw,92px)/.95 Archivo,sans-serif;letter-spacing:-.04em}
+.cifras dt small{font-size:.42em;letter-spacing:-.01em;margin-left:4px}
+.cifras dd{margin:8px 0 0;font:700 12px/1.3 "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.06em;color:#c5d3de}
+@media(max-width:760px){.cifras dl{grid-template-columns:1fr 1fr;row-gap:28px}}
+
+/* alquiler */
+.alquiler{background:linear-gradient(180deg,#fff 0%,var(--bruma3) 38%,var(--bruma2) 100%);padding:clamp(40px,6vw,80px) var(--lat)}
+.alquiler__cab{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;margin-bottom:clamp(18px,3vw,40px)}
+.alquiler__cab p{max-width:46ch;color:var(--gris);margin-top:12px;font-size:17px}
+.detalle{position:relative;max-width:900px;margin:0 auto;aspect-ratio:900/470}
+.detalle>img{position:absolute;left:50%;top:6%;width:58%;transform:translateX(-50%);mix-blend-mode:multiply}
+.rot{position:absolute;display:flex;align-items:center;gap:12px;width:210px;font:800 12.5px/1.2 Archivo,sans-serif;text-transform:uppercase;letter-spacing:.02em}
+.rot span{display:grid;place-items:center;flex:none;width:58px;height:58px;background:#fff;border-radius:4px;box-shadow:0 6px 16px rgba(13,20,28,.12);color:var(--tinta)}
+.rot svg{width:30px;height:30px}
+.rot small{display:block;font:400 12.5px/1.3 Satoshi,sans-serif;text-transform:none;color:var(--gris);margin-top:2px}
+.rot.a{left:2%;top:10%}.rot.b{right:2%;top:6%;flex-direction:row-reverse;text-align:right}.rot.c{left:4%;bottom:6%}.rot.d{right:4%;bottom:10%;flex-direction:row-reverse;text-align:right}
+.puntos{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.puntos line{stroke:var(--tinta);stroke-width:1;stroke-dasharray:3 4;opacity:.55}
+.puntos circle{fill:var(--azul);stroke:#fff;stroke-width:2}
+.nota-ej{text-align:center;font-size:12.5px;color:var(--gris);margin-top:6px}
+.tarifas{margin-top:clamp(28px,4vw,48px);background:#fff;border-radius:8px;padding:clamp(16px,2.4vw,30px);box-shadow:0 16px 40px -24px rgba(13,20,28,.35)}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.tab{min-height:44px;padding:0 18px;border-radius:99px;border:1.5px solid var(--tinta);background:#fff;font-weight:700;font-size:14px}
+.tab[aria-selected=true]{background:var(--tinta);color:#fff}
+.panel table{width:100%;border-collapse:collapse}
+.panel th,.panel td{text-align:left;padding:12px 6px;border-bottom:1px solid var(--linea);font-size:16px}
+.panel table,.panel tbody,.panel caption{display:block}.panel tbody{display:grid;grid-template-columns:1fr 1fr;column-gap:48px}.panel tr{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid var(--linea)}.panel td{border:0!important}@media(max-width:760px){.panel tbody{grid-template-columns:1fr}}
+.panel td:last-child{text-align:right;font:800 18px Archivo,sans-serif;white-space:nowrap}
+.panel caption{text-align:left;font-size:14px;color:var(--gris);padding-bottom:8px}
+.panel .extra{margin-top:12px;font-size:14px;color:var(--gris)}
+.js .panel[hidden]{display:none}
+.panel+.panel{margin-top:26px}.js .panel+.panel{margin-top:0}
+.panel__h{font:800 14px Archivo,sans-serif;text-transform:uppercase;margin-bottom:6px}
+.js .panel__h{display:none}
+
+/* tours */
+.tours{background:var(--tinta);color:#fff;padding:clamp(40px,6vw,80px) var(--lat)}
+.tours__cab{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:end;margin-bottom:clamp(18px,3vw,36px)}
+.tours__cab .mono{color:#9fb4c4;margin-bottom:10px;display:block}
+.tours__cab p{color:#b8c6d1;max-width:36ch}
+.tour{display:grid;grid-template-columns:44px 1.5fr 1fr auto;gap:18px;align-items:center;padding:clamp(16px,2vw,24px) 6px;border-top:1px solid rgba(255,255,255,.18)}
+.tour:last-of-type{border-bottom:1px solid rgba(255,255,255,.18)}
+.tour .n{font:700 14px "JetBrains Mono",monospace;color:#9fb4c4}
+.tour h3{font:800 clamp(18px,2vw,26px)/1.1 Archivo,sans-serif;text-transform:uppercase;letter-spacing:-.01em}
+.tour p{font-size:14.5px;color:#b8c6d1;margin-top:4px}
+.tour .meta{font-size:14.5px;color:#d5dfe7}
+.tour .pr{text-align:right;font:900 clamp(22px,2.6vw,34px)/1 Archivo,sans-serif;letter-spacing:-.02em}
+.tour .pr small{display:block;font:400 13px Satoshi,sans-serif;color:#9fb4c4;margin-top:4px;letter-spacing:0}
+.tours__pie{margin-top:18px;color:#9fb4c4;font-size:14px}
+
+/* taller */
+.taller{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);align-items:center;padding:clamp(40px,6vw,84px) var(--lat)}
+.taller h2{margin-bottom:12px}
+.taller .lead{color:var(--gris);font-size:17px;max-width:46ch;margin-bottom:18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.chip{display:inline-flex;align-items:center;min-height:36px;padding:0 14px;border-radius:99px;background:var(--papel);font:700 13px Satoshi,sans-serif}
+.acordeon details{border-top:1px solid var(--linea)}
+.acordeon details:last-of-type{border-bottom:1px solid var(--linea)}
+.acordeon summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:60px;padding:10px 4px;cursor:pointer;font:800 15px Archivo,sans-serif;text-transform:uppercase}
+.acordeon summary::-webkit-details-marker{display:none}
+.acordeon summary b{margin-left:auto;font-size:20px}
+.acordeon summary::after{content:"+";display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--tinta);color:#fff;font:700 18px/1 Satoshi;transition:transform 240ms var(--e)}
+.acordeon details[open] summary::after{transform:rotate(45deg)}
+.acordeon ul{padding:0 4px 18px 20px;color:var(--gris);font-size:15.5px;line-height:1.55}
+.taller__nota{font-size:13.5px;color:var(--gris);margin-top:10px}
+.taller__foto{position:relative}
+.taller__foto img{width:100%;aspect-ratio:4/4.4;object-fit:cover;object-position:35% 50%;border-radius:6px}
+.taller__foto .tag{position:absolute;left:-14px;bottom:24px;background:#fff;box-shadow:0 10px 26px rgba(13,20,28,.18);padding:12px 16px;border-radius:6px;font:800 13px/1.2 Archivo,sans-serif;text-transform:uppercase}
+.taller__foto .tag small{display:block;font:400 13px Satoshi;text-transform:none;color:var(--gris);margin-top:2px}
+
+/* tienda */
+.tienda{background:var(--papel);padding:clamp(40px,6vw,84px) var(--lat)}
+.tienda__cab{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:end;margin-bottom:20px}
+.tienda__cab p{color:var(--gris);max-width:44ch;margin-top:10px}
+.cats{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.cat{min-height:44px;padding:0 16px;border-radius:99px;border:1.5px solid var(--tinta);background:#fff;font:700 14px Satoshi,sans-serif}
+.cat[aria-pressed=true]{background:var(--tinta);color:#fff}
+.cat small{opacity:.65;font-weight:400;margin-left:4px}
+.prods{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;list-style:none;padding:0}
+.prod{background:#fff;border-radius:8px;padding:12px 12px 14px;display:flex;flex-direction:column}
+.prod[hidden]{display:none}
+.prod__foto{position:relative;aspect-ratio:4/3;display:grid;place-items:center;background:#fff;border-radius:4px;overflow:hidden}
+.prod__foto img{max-height:100%;width:auto;object-fit:contain;mix-blend-mode:multiply}
+.etiq{position:absolute;left:0;top:0;font:700 10.5px "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.05em;background:var(--tinta);color:#fff;padding:5px 8px;border-radius:3px}
+.prod h3{font:800 14.5px/1.2 Archivo,sans-serif;margin:12px 0 6px;text-transform:uppercase;letter-spacing:.005em;flex:1}
+.precio{font-size:15px;margin-bottom:10px;color:var(--gris)}
+.precio strong{font:900 21px Archivo,sans-serif;color:var(--tinta);letter-spacing:-.02em}
+.anadir{min-height:44px;border-radius:99px;border:1.5px solid var(--tinta);background:#fff;font:700 13.5px Satoshi,sans-serif;transition:background 160ms,color 160ms,transform 120ms var(--e)}
+.anadir:active{transform:scale(.97)}
+@media(hover:hover) and (pointer:fine){.anadir:hover{background:var(--tinta);color:#fff}}
+.vacio{padding:34px 12px;color:var(--gris)}
+.fin{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}
+.fin div{background:var(--tinta);color:#fff;border-radius:8px;padding:clamp(18px,2.4vw,30px)}
+.fin div:nth-child(2){background:var(--azul)}
+.fin b{display:block;font:900 clamp(20px,2.4vw,30px)/1.05 Archivo,sans-serif;text-transform:uppercase;letter-spacing:-.02em}
+.fin p{margin-top:8px;opacity:.9;font-size:15.5px}
+.tienda__nota{margin-top:14px;font-size:13px;color:var(--gris)}
+
+/* cierre */
+.cierre{position:relative;overflow:hidden;text-align:center;padding:clamp(56px,8vw,110px) var(--lat) clamp(48px,6vw,80px)}
+.cierre .rueda{position:absolute;left:50%;bottom:-16%;width:min(900px,120%);transform:translateX(-50%);color:var(--linea);opacity:.9;z-index:0}
+.cierre>*{position:relative;z-index:1}
+.cierre h2{font-size:clamp(28px,4.6vw,60px);max-width:16ch;margin:0 auto 14px}
+.cierre p.sub{color:var(--gris);font-size:17px;max-width:44ch;margin:0 auto 22px}
+.tels{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-bottom:18px}
+.tel{font:900 clamp(24px,3.6vw,44px)/1 Archivo,sans-serif;letter-spacing:-.03em;text-decoration:none}
+.contacto{display:grid;grid-template-columns:1fr 1fr 1.1fr;gap:clamp(18px,3vw,40px);max-width:1080px;margin:clamp(36px,5vw,64px) auto 0;text-align:left;background:#fff;border-radius:10px;padding:clamp(18px,3vw,36px);box-shadow:0 20px 50px -30px rgba(13,20,28,.4)}
+.contacto h3{font:800 14px Archivo,sans-serif;text-transform:uppercase;margin-bottom:10px}
+.horas{list-style:none;padding:0;font-size:15.5px}
+.horas li{display:flex;flex-direction:column;padding:8px 0;border-bottom:1px solid var(--linea)}.horas li span:last-child{font-weight:700}
+.estado{display:inline-flex;align-items:center;gap:8px;margin:12px 0 0;font:700 12px "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.05em}
+.estado i{width:9px;height:9px;border-radius:50%;background:#9aa7b2}
+.estado.on i{background:#13a05a}
+.contacto address{font-style:normal;font-size:15.5px;line-height:1.5}
+.contacto a.cl{display:inline-block;margin-top:10px;font-weight:700}
+form{display:grid;gap:10px}
+label{font-size:13.5px;font-weight:700}
+input,textarea,select{width:100%;font:inherit;padding:12px 14px;border:1.5px solid #c3cfd8;border-radius:6px;background:#fff;color:var(--tinta)}
+textarea{min-height:92px;resize:vertical}
+.ok{font-size:14px;color:var(--gris);min-height:20px}
+footer{background:var(--tinta);color:#9fb4c4;padding:28px var(--lat);display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;font-size:13.5px}
+footer a{color:#d5dfe7}
+.movil{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:30;display:none;grid-template-columns:1fr 1fr;gap:8px;transform:translateY(140%);visibility:hidden;transition:transform 400ms var(--e),visibility 0s 400ms}
+.movil.on{transform:none;visibility:visible;transition:transform 400ms var(--e)}
+.movil .btn{justify-content:center;padding:0 16px;min-height:52px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+@media(max-width:1000px){
+  .nav ul{display:none}
+  .burger{display:inline-block}
+  .panelmenu{display:none;position:absolute;z-index:6;top:70px;left:14px;right:14px;background:#fff;border-radius:10px;padding:10px;box-shadow:0 20px 40px rgba(13,20,28,.3)}
+  .panelmenu.on{display:block}
+  .panelmenu a{display:flex;align-items:center;min-height:48px;padding:0 12px;text-decoration:none;font-weight:700;border-bottom:1px solid var(--linea)}
+  .razones{grid-template-columns:1fr 1fr}.razones ul{grid-column:1/-1}
+  .prods{grid-template-columns:repeat(3,1fr)}
+}
+@media(min-width:1001px){.panelmenu{display:none}}
+@media(max-width:760px){
+  .portada{height:auto;min-height:700px;display:flex;flex-direction:column;justify-content:flex-end}
+  .palabra{font-size:16.6cqw;top:104px}
+  .bici-h{width:112%;left:-6%;top:150px;bottom:auto}
+  .suelo{left:8%;width:84%;top:366px;bottom:auto}
+  .textos{position:relative;right:auto;bottom:auto;max-width:none;padding:0 18px 96px;margin-top:auto}
+  .textos h1{font-size:26px}
+  .sello{display:none}
+  .carrito{padding:0 12px}.carrito span{display:none}
+  .idioma{display:none}
+  .razones{grid-template-columns:1fr}.razones .foto{transform:none;max-width:420px}
+  .alquiler__cab,.tours__cab,.tienda__cab{grid-template-columns:1fr}
+  .detalle{aspect-ratio:auto;display:grid;gap:12px}
+  .detalle>img{position:static;width:90%;margin:0 auto;transform:none}
+  .puntos{display:none}
+  .rot,.rot.a,.rot.b,.rot.c,.rot.d{position:static;width:auto;flex-direction:row;text-align:left}
+  .tour{grid-template-columns:34px 1fr auto;gap:12px}.tour .meta{grid-column:2/-1;grid-row:2}
+  .taller{grid-template-columns:1fr}.taller__foto .tag{left:10px}
+  .prods{grid-template-columns:repeat(2,1fr);gap:12px}
+  .fin{grid-template-columns:1fr}
+  .contacto{grid-template-columns:1fr}
+  .movil{display:grid}body{padding-bottom:84px}
+  .fila{grid-template-columns:34px 1fr}.fila .ver{display:none}
+}
+@media(prefers-reduced-motion:reduce){.movil,.btn,.btn i,.mini,.anadir{transition:none}}
+
+/* v4 · misma paleta que la referencia 18: bruma azul, blanco y negro. Titulares enormes, pegatinas blancas y negras. */
+:root{--acero:#3d5a73;--trazo:var(--tinta)}
+html{scroll-padding-top:72px}
+h2{font-size:clamp(40px,7.4vw,112px);line-height:.88;letter-spacing:-.045em}
+.hueco{color:transparent;-webkit-text-stroke:max(2px,.025em) var(--trazo)}
+mark{background:var(--tinta);color:#fff;padding:0 .12em;margin:0 -.04em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.mono{font-size:13px}
+.btn--tr{background:rgba(255,255,255,.18);color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.85)}
+.btn--tr i{background:#fff;color:var(--tinta)}
+.btn--sm{min-height:44px;margin-top:16px}
+
+/* barra fija */
+.nav{position:fixed;z-index:40;padding:14px var(--lat);transition:background 300ms var(--e),box-shadow 300ms var(--e)}
+.nav.solid{background:rgba(255,255,255,.92);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);box-shadow:0 1px 0 var(--linea)}
+.nav.solid .logo,.nav.solid ul a,.nav.solid .idioma,.nav.solid .llamar{color:var(--tinta)}
+.nav ul a[aria-current=true]{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px;opacity:1}
+.llamar{color:#fff;text-decoration:none;font:800 15px Archivo,sans-serif;letter-spacing:-.01em;padding:10px 4px}
+.panelmenu{position:fixed;top:66px}
+.nav.solid .carrito{background:var(--tinta);color:#fff}
+.nav.solid .carrito b{background:#fff;color:var(--tinta)}
+
+/* portada */
+.bici3d{position:absolute;z-index:2;left:2%;bottom:12%;width:57%}
+.bici3d.agarrada{cursor:grabbing}
+.bici3d canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y;filter:drop-shadow(0 2cqw 2.4cqw rgba(30,55,75,.2))}
+.bici3d .bici-h{position:static;display:block;width:100%;transform:none;transition:opacity 500ms var(--e)}
+.bici3d.lista .bici-h{opacity:0;pointer-events:none}
+.con3d .suelo{display:none}
+.hint360{position:absolute;left:50%;bottom:-6%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--tinta);padding:8px 16px;border-radius:99px;font:700 13px Satoshi,sans-serif;white-space:nowrap;box-shadow:0 8px 22px rgba(13,20,28,.2);pointer-events:none;opacity:0;transition:opacity 400ms var(--e)}
+.hint360 b{font:900 13px Archivo,sans-serif;letter-spacing:-.01em}
+.bici3d.lista .hint360:not([hidden]){opacity:1}
+.mando{position:absolute;left:50%;bottom:-6%;transform:translateX(150px);display:none;gap:8px}
+.bici3d.lista .mando{display:flex}
+.mando button{width:44px;height:44px;border-radius:50%;border:0;background:#fff;color:var(--tinta);font:700 18px Satoshi,sans-serif;box-shadow:0 8px 22px rgba(13,20,28,.2)}
+.mando button:active{transform:scale(.94)}
+.mando button:first-child{margin-right:0}
+.hint360,.mando{z-index:3}
+.giro{position:absolute;display:grid;place-items:center;width:clamp(96px,10.5vw,156px);aspect-ratio:1;border-radius:50%;background:#fff;color:var(--tinta);z-index:6;box-shadow:0 12px 30px -12px rgba(13,20,28,.4)}
+.giro .aro{position:absolute;inset:0;width:100%;height:100%;animation:giro 18s linear infinite}
+.giro text{font:800 10.4px Archivo,sans-serif;letter-spacing:.4px;fill:currentColor;text-transform:uppercase}
+.giro b{font:900 clamp(30px,3.6vw,54px)/.85 Archivo,sans-serif;letter-spacing:-.04em;text-align:center}
+.giro b small{display:block;font:700 clamp(9px,.9vw,12px) "JetBrains Mono",monospace;letter-spacing:.05em;text-transform:uppercase;margin-top:3px}
+@keyframes giro{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.giro .aro{animation:none}}
+.portada>.giro{right:calc(var(--lat) - 14px);top:clamp(80px,13%,150px)}
+.textos{max-width:min(500px,36%)}
+.textos h1{font-size:clamp(28px,3.9cqw,58px);line-height:1.02}
+.sello{background:#fff;color:var(--tinta);display:inline-block;padding:6px 10px;border-radius:3px;opacity:1}
+.textos .acc{gap:10px}
+.atajos{display:flex;flex-wrap:wrap;gap:6px 18px;width:100%;margin:8px 0 0!important;font-size:14px!important;font-weight:700}
+.atajos a{color:#fff;text-underline-offset:4px;padding:6px 0}
+
+/* lista */
+.busca h2{font-size:clamp(40px,7.4vw,112px);margin-bottom:clamp(18px,3vw,36px)}
+.fila{grid-template-columns:clamp(46px,7vw,110px) 1fr auto;padding:clamp(18px,2.6vw,34px) 10px;transition:background 220ms var(--e),color 220ms var(--e),padding 300ms var(--e)}
+.fila .n{font:900 clamp(18px,3vw,40px)/1 Archivo,sans-serif;color:var(--acero);letter-spacing:-.03em}
+.fila strong{font-size:clamp(24px,5vw,72px);line-height:.95;letter-spacing:-.04em}
+.fila small{font-size:clamp(14px,1.3vw,18px);margin-top:8px}
+.mini{right:150px;width:210px;height:130px}.mini img{width:170px;height:128px}
+@media(hover:hover) and (pointer:fine){.fila:hover{background:var(--tinta);color:#fff;padding-left:28px}.fila:hover .n{color:var(--bruma2)}.fila:hover small{color:#c5d3de}}
+
+/* razones: bruma clara, texto negro */
+.razones{background:linear-gradient(180deg,var(--bruma3),var(--bruma2));color:var(--tinta);--trazo:var(--tinta);padding-top:clamp(56px,8vw,110px);padding-bottom:clamp(56px,8vw,110px);grid-template-columns:1.25fr .85fr 1fr}
+.razones>div:first-child{display:contents}
+.razones h2{grid-column:1/-1;max-width:16ch;margin-bottom:0}
+.razones .txt{align-self:center;color:var(--tinta);font-size:clamp(17px,1.6vw,22px)}
+.razones .foto{background:#fff;transform:rotate(-3deg);overflow:visible;box-shadow:0 24px 50px -26px rgba(13,20,28,.5)}
+.razones .foto img{border-color:#fff}
+.razones .foto .giro{right:-34px;top:-34px;background:var(--tinta);color:#fff}
+.razones ul{border-top-color:rgba(13,20,28,.3)}
+.razones li{border-bottom-color:rgba(13,20,28,.3);font-size:16px}
+.razones li small{color:#36424d}
+
+/* cifras: foto en gris con velo de bruma */
+.cifras{--trazo:#fff}
+.cifras>img{filter:grayscale(1) contrast(1.15)}
+.cifras::before{background:linear-gradient(100deg,rgba(61,90,115,.92),rgba(13,20,28,.8))}
+.cifras dt{font-size:clamp(54px,11.5vw,180px);line-height:.85}
+.cifras dt small{color:var(--bruma2)}
+.cifras dl div{border-top:3px solid #fff;padding-top:16px}
+.cifras h2{max-width:11ch}
+
+/* alquiler: bruma que oscurece hacia abajo y palabra blanca detrás de la bici, como la portada */
+.alquiler{position:relative;background:linear-gradient(180deg,#fff 0%,#cfdde8 16%,#9fb6c7 58%,#6f8da4 100%);overflow:hidden;--trazo:var(--tinta)}
+.alquiler>*{position:relative;z-index:1}
+.alquiler>.detalle{z-index:auto}
+.alquiler .fondo{position:absolute;z-index:0;left:0;right:0;top:30%;margin:0;text-align:center;font:900 24vw/.8 Archivo,sans-serif;letter-spacing:-.05em;color:#fff;opacity:.9;pointer-events:none;white-space:nowrap}
+.alquiler__cab p{color:var(--tinta)}
+.detalle>img{width:64%;top:2%;mix-blend-mode:normal}
+.rot span{border-radius:50%;width:64px;height:64px;background:var(--tinta);color:#fff}
+.rot{font-size:14px;width:240px}
+.puntos line{stroke:var(--tinta);opacity:.7}.puntos circle{fill:var(--tinta);stroke:#fff}
+.nota-ej{color:var(--tinta)}
+.tarifas{box-shadow:0 30px 60px -30px rgba(13,20,28,.6)}
+.panel td:last-child{font-size:clamp(20px,2.4vw,30px)}
+
+/* tours */
+.tours{--trazo:#fff}
+.tours__cab .mono{color:var(--bruma2)}
+.tour{padding:clamp(20px,3vw,40px) 10px;transition:background 220ms var(--e),padding 300ms var(--e)}
+.tour h3{font-size:clamp(22px,3.4vw,48px);letter-spacing:-.03em}
+.tour .pr{font-size:clamp(34px,5.6vw,84px);letter-spacing:-.045em}
+.tour .n{color:var(--bruma2);font-size:16px}
+.res{display:inline-block;margin-top:10px;padding:10px 0;font:700 13px "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.05em;color:#fff;text-decoration:underline;text-underline-offset:5px}
+.tour .pr .res{font-size:13px}
+@media(hover:hover) and (pointer:fine){.tour:hover{background:rgba(255,255,255,.07);padding-left:26px}.res:hover{color:var(--bruma2)}}
+
+/* taller */
+.taller{background:#fff;position:relative}
+.taller__foto img{aspect-ratio:4/4.8}
+.pegatina{position:absolute;z-index:3;right:-18px;top:-26px;display:grid;place-items:center;width:clamp(100px,11vw,150px);aspect-ratio:1;border-radius:50%;background:var(--tinta);color:#fff;text-align:center;font:900 clamp(15px,1.7vw,22px)/1 Archivo,sans-serif;text-transform:uppercase;letter-spacing:-.02em;transform:rotate(12deg);box-shadow:0 14px 30px -10px rgba(13,20,28,.5)}
+.acordeon summary{font-size:17px;min-height:68px}
+.acordeon summary b{font-size:clamp(24px,3vw,38px);letter-spacing:-.03em}
+.chip{background:var(--bruma3);color:var(--tinta)}
+.acc2{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+
+/* tienda */
+.tienda{background:var(--papel)}
+.prod{transition:transform 300ms var(--e),box-shadow 300ms var(--e)}
+@media(hover:hover) and (pointer:fine){.prod:hover{transform:translateY(-8px);box-shadow:0 24px 40px -22px rgba(13,20,28,.45)}}
+.precio strong{font-size:clamp(24px,2.2vw,32px)}
+.preg{display:block;text-align:center;margin-top:6px;padding:10px 0 2px;font-size:13.5px;font-weight:700;color:var(--tinta);text-underline-offset:4px}
+.fin div:nth-child(1){background:var(--tinta);color:#fff}
+.fin div:nth-child(2){background:var(--acero);color:#fff}
+.fin b{font-size:clamp(28px,4.2vw,60px);line-height:.92;letter-spacing:-.04em}
+
+/* cierre */
+.cierre{background:linear-gradient(180deg,#3d5a73,#587a94);color:#fff;--trazo:#fff}
+.cierre .rueda{color:rgba(255,255,255,.18)}
+.cierre p.sub{color:#fff}
+.cierre h2{max-width:13ch}
+.tel[aria-hidden]{display:none}.tels{gap:0 .6em}
+.tel{font-size:clamp(34px,7vw,112px);color:#fff;letter-spacing:-.05em}
+.cierre>.btn{background:#fff;color:var(--tinta)}
+.cierre>.btn i{background:var(--tinta);color:#fff}
+.contacto{color:var(--tinta);text-align:left}
+footer a{color:#fff}
+
+@media(max-width:1000px){.razones{grid-template-columns:1fr 1fr}.llamar{display:none}}
+@media(max-width:760px){
+  .portada>.giro{right:10px;top:84px;width:92px}
+  .textos{max-width:none}.textos h1{font-size:30px}
+  .portada{min-height:840px}
+  .bici3d{left:-6%;width:112%;top:150px;bottom:auto}
+  .hint360{left:14px;bottom:2px;transform:none}.mando{left:auto;right:14px;bottom:0;transform:none}
+  .razones{grid-template-columns:1fr}.razones .foto{transform:rotate(-2deg);max-width:380px;margin-right:auto}.razones .foto .giro{right:-10px;top:-24px;width:96px}
+  .mini{display:none}.pegatina{right:6px;top:-18px}
+  .alquiler .fondo{top:26%}
+  .tel{font-size:clamp(30px,10vw,52px)}
+}
+
+/* legibilidad del texto blanco sobre la bruma */
+.portada{background:radial-gradient(120% 90% at 20% 0%,#c3d6e4 0%,rgba(195,214,228,0) 55%),linear-gradient(180deg,#678699 0%,#86a0b3 62%,#a1b8c9 100%)}
+.textos{text-shadow:0 1px 20px rgba(30,55,75,.4)}
+.textos .btn{text-shadow:none}
+.btn--tr{background:rgba(13,20,28,.5);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.9)}
+@media(max-width:760px){.portada{background:radial-gradient(120% 60% at 20% 0%,#9fb8ca 0%,rgba(159,184,202,0) 55%),linear-gradient(180deg,#587a94 0%,#6a89a0 55%,#7c97ab 100%)}}
+
+/* menú superior más grande */
+html{scroll-padding-top:96px}
+.nav{padding:22px var(--lat);gap:28px}
+.nav.solid{padding:14px var(--lat)}
+.logo{font-size:27px;gap:12px}.logo svg{width:40px;height:40px}
+.nav ul{gap:38px;font-size:18px}
+.nav ul a{padding:12px 4px}
+.llamar{font-size:19px}
+.idioma{font-size:14px}
+.carrito{min-height:50px;padding:0 22px;font-size:17px}.carrito b{min-width:26px;height:26px;font-size:14px}
+.burger{min-height:52px;padding:0 22px;font-size:17px}
+.panelmenu{top:84px}.panelmenu a{min-height:56px;font-size:18px}
+@media(max-width:1180px){.nav ul{gap:24px;font-size:16px}.llamar{display:none}}
+@media(max-width:760px){.nav{padding:14px 16px;gap:12px}.logo{font-size:20px;white-space:nowrap}.logo svg{width:32px;height:32px}.carrito{min-height:48px;padding:0 16px}}
+
+/* sin sombra que se cuele por los huecos de las ruedas; cifras que caben en su columna */
+.bici3d .bici-h{filter:none}
+.cifras dl{container-type:inline-size;grid-template-columns:repeat(4,minmax(0,1fr))}
+.cifras dt{font-size:8.2cqw;line-height:.9;white-space:nowrap}
+.cifras dt small{font-size:.4em}
+.cifras dd{overflow-wrap:anywhere}
+@media(max-width:760px){.cifras dl{grid-template-columns:repeat(2,minmax(0,1fr))}.cifras dt{font-size:15cqw}}
+
+.alquiler__cab,.tours__cab,.tienda__cab{grid-template-columns:minmax(0,1fr) auto}
+h2{overflow-wrap:break-word;hyphens:manual}
+@media(max-width:900px){.alquiler__cab,.tours__cab,.tienda__cab{grid-template-columns:minmax(0,1fr)}}
+
+/* elegir categoría: bicis, equipamiento, accesorios, ruedas, outlet */
+.elige{margin-bottom:28px}
+.elige__t{color:var(--acero);margin-bottom:12px}
+.tiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.tile{position:relative;display:flex;flex-direction:column;text-align:left;padding:0 0 16px;border:0;border-radius:10px;overflow:hidden;background:#fff;color:var(--tinta);box-shadow:0 1px 0 var(--linea),0 14px 30px -24px rgba(13,20,28,.5);transition:transform 300ms var(--e),box-shadow 300ms var(--e),background 220ms var(--e),color 220ms var(--e)}
+.tile__foto{position:relative;display:block;aspect-ratio:4/3;overflow:hidden;background:linear-gradient(180deg,var(--bruma3),var(--bruma2));padding:12px}
+.tile__foto img{position:absolute;inset:12px;margin:auto;max-width:calc(100% - 24px);max-height:calc(100% - 24px);width:auto;height:auto;object-fit:contain;mix-blend-mode:multiply;transition:transform 400ms var(--e)}
+.tile__t{min-height:2.05em;margin:14px 16px 0;font:900 clamp(18px,1.9vw,26px)/1 Archivo,sans-serif;text-transform:uppercase;letter-spacing:-.035em}
+.tile__n{margin:8px 16px 0;font:700 12px "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.05em;color:var(--gris)}
+.tile[aria-pressed=true]{background:var(--tinta);color:#fff;box-shadow:0 22px 40px -22px rgba(13,20,28,.7)}
+.tile[aria-pressed=true] .tile__n{color:var(--bruma2)}
+.tile[aria-pressed=true]::after{content:"";position:absolute;left:50%;bottom:-9px;width:18px;height:18px;background:var(--tinta);transform:translateX(-50%) rotate(45deg)}
+@media(hover:hover) and (pointer:fine){.tile:hover{transform:translateY(-6px)}.tile:hover .tile__foto img{transform:scale(1.06)}}
+.elige .cats{margin:22px 0 0}
+.elige .cats[hidden]{display:none}
+@media(max-width:1000px){.tiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:620px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.tile__t{font-size:17px}}
+
+/* croquis del mapa */
+.llegar{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:clamp(18px,3vw,40px);align-items:center;max-width:1080px;margin:clamp(24px,3vw,40px) auto 0;text-align:left;background:#fff;color:var(--tinta);border-radius:10px;padding:clamp(14px,2vw,24px);box-shadow:0 20px 50px -30px rgba(13,20,28,.5)}
+.croquis{margin:0;position:relative}
+.croquis .mapa{display:block;width:100%;height:auto;border-radius:10px}
+.croquis figcaption{margin-top:8px;color:var(--gris);font-size:11.5px}
+.llegar__t h3{font:900 clamp(26px,3vw,40px)/.95 Archivo,sans-serif;letter-spacing:-.04em;text-transform:uppercase;margin:8px 0 10px}
+.llegar__t p{color:var(--gris);margin-bottom:6px}
+.llegar__t .mono{color:var(--acero)}
+.js .croquis .ruta,.js .croquis .ruta-l{stroke-dashoffset:1000}
+.js .croquis .ruta{stroke-dasharray:1 11}
+.js .croquis .ruta-l{stroke-dasharray:1000}
+.js .croquis .pin{opacity:0;transform-box:fill-box;transition:opacity 500ms var(--e) 1.9s}
+.croquis.vista .ruta-l{animation:trazo 2.2s var(--e) forwards}
+.croquis.vista .ruta{animation:trazo 2.2s var(--e) forwards}
+.croquis.vista .pin{opacity:1}
+@keyframes trazo{to{stroke-dashoffset:0}}
+@media(prefers-reduced-motion:reduce){.js .croquis .ruta,.js .croquis .ruta-l{stroke-dashoffset:0}.js .croquis .pin{opacity:1;transition:none}.croquis.vista .ruta,.croquis.vista .ruta-l{animation:none}}
+@media(max-width:860px){.llegar{grid-template-columns:minmax(0,1fr)}}
+
+/* v7 · más moderna: bento, cristal, esquinas amplias, carrito con pago */
+.progreso{position:fixed;left:0;top:0;height:3px;width:100%;z-index:60;background:var(--tinta);transform-origin:0 50%;transform:scaleX(0)}
+.bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:14px}
+.bento__c{position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:flex-end;min-height:clamp(260px,30vw,400px);padding:clamp(18px,2.2vw,30px);border-radius:24px;overflow:hidden;text-decoration:none;color:var(--tinta);background:linear-gradient(160deg,var(--bruma3),var(--bruma2))}
+.bento__a{grid-column:span 7}.bento__b{grid-column:span 5}.bento__c3{grid-column:span 5}.bento__d{grid-column:span 7}
+.bento__c img{position:absolute;z-index:-2;transition:transform 700ms var(--e)}
+.bento__a img{right:-4%;top:6%;width:62%;height:auto}
+.bento__c3 img{right:-6%;top:8%;width:78%;height:auto}
+.bento__b img,.bento__d img{inset:0;width:100%;height:100%;object-fit:cover}
+.bento__b,.bento__d{color:#fff}
+.bento__b::before,.bento__d::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(13,20,28,.05) 20%,rgba(13,20,28,.78) 100%)}
+.bento__c3{background:var(--tinta);color:#fff}
+.bento__n{position:absolute;left:clamp(18px,2.2vw,30px);top:clamp(16px,2vw,26px);font:700 13px "JetBrains Mono",monospace;letter-spacing:.06em;background:rgba(255,255,255,.9);color:var(--tinta);padding:5px 10px;border-radius:99px}
+.bento__c strong{font:900 clamp(26px,3.4vw,50px)/.95 Archivo,sans-serif;letter-spacing:-.04em;text-transform:uppercase;max-width:12ch}
+.bento__c small{display:block;margin-top:10px;max-width:34ch;font-size:clamp(14px,1.2vw,17px);opacity:.92}
+.bento__f{position:absolute;right:clamp(14px,1.8vw,24px);bottom:clamp(14px,1.8vw,24px);display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:#fff;color:var(--tinta);font-style:normal;font-size:20px;transition:transform 400ms var(--e)}
+@media(hover:hover) and (pointer:fine){.bento__c:hover img{transform:scale(1.05)}.bento__c:hover .bento__f{transform:rotate(-45deg) scale(1.08)}}
+.bento__c:active{transform:scale(.99)}
+@media(max-width:860px){.bento{grid-template-columns:minmax(0,1fr)}.bento__a,.bento__b,.bento__c3,.bento__d{grid-column:auto}.bento__a img{width:70%}.bento__c3 img{width:86%}}
+.prod,.tarifas,.contacto,.llegar,.fin div,.razones .foto{border-radius:20px}
+.prod__foto,.taller__foto img{border-radius:14px}
+.btn{box-shadow:0 8px 22px -12px rgba(13,20,28,.5)}
+.btn--linea,.btn--tr{box-shadow:inset 0 0 0 1.5px currentColor}
+.btn--tr{box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.9)}
+.fin{grid-template-columns:repeat(3,minmax(0,1fr))}
+.fin div:nth-child(3){background:var(--bruma2);color:var(--tinta)}
+.fin b{font-size:clamp(24px,3vw,44px)}
+@media(max-width:900px){.fin{grid-template-columns:minmax(0,1fr)}}
+.carrito{cursor:pointer;border:0;font-family:inherit}
+@media(max-width:760px){
+  .nav{top:10px;left:10px;right:10px;padding:8px 8px 8px 16px;border-radius:99px;background:rgba(13,20,28,.28);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4)}
+  .nav.solid{padding:8px 8px 8px 16px;background:rgba(255,255,255,.88);box-shadow:0 10px 30px -12px rgba(13,20,28,.35)}
+  .panelmenu{top:74px;left:10px;right:10px;border-radius:22px}
+  .burger{min-height:44px;padding:0 18px}
+  .carrito{min-height:44px}
+  html{scroll-padding-top:88px}
+}
+/* carrito con pago */
+.cajon{position:fixed;inset:0;z-index:80;display:flex;justify-content:flex-end}
+.cajon[hidden]{display:none}
+.cajon__velo{position:absolute;inset:0;background:rgba(13,20,28,.5);backdrop-filter:blur(3px);animation:vela 250ms var(--e)}
+.cajon__hoja{position:relative;display:flex;flex-direction:column;width:min(440px,100%);height:100%;background:#fff;color:var(--tinta);box-shadow:-30px 0 60px -30px rgba(13,20,28,.6);animation:entra 420ms var(--e)}
+.cajon__cab{display:flex;align-items:center;justify-content:space-between;padding:20px 22px;border-bottom:1px solid var(--linea)}
+.cajon__cab h2{font:900 28px/1 Archivo,sans-serif;letter-spacing:-.04em;text-transform:uppercase}
+.cajon__cab button{width:44px;height:44px;border-radius:50%;border:0;background:var(--papel);font-size:16px}
+.cajon__cuerpo{display:flex;flex-direction:column;flex:1;min-height:0}
+.cajon__cuerpo[hidden]{display:none}
+.cajon__lista{list-style:none;padding:8px 22px;margin:0;overflow:auto;flex:1}
+.cajon__lista li{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--linea)}
+.cajon__lista img{width:64px;height:48px;object-fit:contain;background:var(--papel);border-radius:8px;mix-blend-mode:multiply}
+.cajon__lista b{display:block;font:800 14px/1.2 Archivo,sans-serif;text-transform:uppercase}
+.cajon__lista span{font:900 18px Archivo,sans-serif}
+.cajon__lista button{margin-left:8px;width:36px;height:36px;border-radius:50%;border:0;background:var(--papel)}
+.cajon__vacio{padding:34px 22px;color:var(--gris);flex:1}
+.cajon__vacio[hidden]{display:none}
+.cajon__pie{padding:18px 22px calc(22px + env(safe-area-inset-bottom));border-top:1px solid var(--linea);display:grid;gap:12px}
+.cajon__total{display:flex;justify-content:space-between;align-items:baseline}
+.cajon__total b{font:900 34px Archivo,sans-serif;letter-spacing:-.04em}
+.cajon__pie .btn{justify-content:space-between;width:100%}
+.cajon__pie .btn[disabled]{opacity:.4;pointer-events:none}
+.cajon__metodos{font:700 12px "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.05em;text-align:center;color:var(--acero)}
+.cajon__nota{font-size:12.5px;color:var(--gris);text-align:center}
+.cajon__gracias{align-items:center;justify-content:center;text-align:center;padding:28px;gap:10px}
+.cajon__gracias h3{font:900 34px/.95 Archivo,sans-serif;letter-spacing:-.04em;text-transform:uppercase}
+.cajon__gracias p{color:var(--gris);max-width:30ch}
+.cajon__ok{display:grid;place-items:center;width:84px;height:84px;border-radius:50%;background:var(--tinta);color:#fff;font-size:38px}
+@keyframes entra{from{transform:translateX(100%)}to{transform:none}}
+@keyframes vela{from{opacity:0}to{opacity:1}}
+@media(max-width:760px){.cajon{align-items:flex-end}.cajon__hoja{height:auto;max-height:88%;width:100%;border-radius:26px 26px 0 0;animation:sube 420ms var(--e)}}
+@keyframes sube{from{transform:translateY(100%)}to{transform:none}}
+@media(prefers-reduced-motion:reduce){.cajon__hoja,.cajon__velo{animation:none}}
+body.cajon-abierto{overflow:hidden}
+
+/* v8 · formal, como las tiendas de las grandes marcas: menú en mayúsculas, botones rectos, tarjetas sobrias, sin pegatinas */
+.avisos{position:relative;z-index:45;display:flex;justify-content:center;gap:clamp(18px,4vw,56px);height:36px;align-items:center;background:var(--tinta);color:#fff;font:600 11.5px/1 Satoshi,sans-serif;text-transform:uppercase;letter-spacing:.12em;white-space:nowrap;overflow:hidden}
+.nav{top:36px;transition:top 300ms var(--e),background 300ms var(--e),box-shadow 300ms var(--e)}
+.nav.solid{top:0}
+.nav ul{gap:34px}
+.nav ul a,.panelmenu a,.llamar,.carrito,.burger{text-transform:uppercase;letter-spacing:.1em;font-family:Satoshi,sans-serif;font-weight:700}
+.nav ul a{font-size:13.5px}
+.llamar{font-size:13.5px}
+.carrito,.burger{font-size:12.5px;border-radius:4px}
+.carrito b{border-radius:3px}
+.panelmenu a{font-size:15px}
+.logo{letter-spacing:-.01em}
+/* titulares sobrios */
+h2,.busca h2{font-size:clamp(30px,4.4vw,64px);font-weight:800;line-height:1;letter-spacing:-.03em}
+.hueco{color:inherit;-webkit-text-stroke:0}
+mark{background:none;color:inherit;padding:0;margin:0}
+.giro,.pegatina{display:none!important}
+.sello{background:none;color:#fff;padding:0;font-size:12px;letter-spacing:.14em}
+.textos h1{font-weight:800;letter-spacing:-.02em}
+.mono{letter-spacing:.14em;font-size:12px}
+/* botones rectos */
+.btn{border-radius:4px;min-height:50px;padding:0 24px;gap:14px;font:700 12.5px/1 Satoshi,sans-serif;text-transform:uppercase;letter-spacing:.1em;box-shadow:none}
+.btn i{width:auto;height:auto;background:none!important;color:inherit!important;font-size:15px}
+.btn--claro{background:#fff;color:var(--tinta)}
+.btn--tr{background:transparent;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.9)}
+.btn--linea{box-shadow:inset 0 0 0 1.5px currentColor}
+.res,.preg{text-transform:uppercase;letter-spacing:.1em;font-size:12px}
+/* tarjetas y bloques con esquinas discretas */
+.bento__c,.tile,.prod,.tarifas,.contacto,.llegar,.fin div,.razones .foto,.cajon__hoja,.croquis .mapa{border-radius:6px}
+.bento__n{display:none}
+.bento__c strong{font-weight:800;letter-spacing:-.02em;font-size:clamp(24px,2.6vw,38px)}
+.bento__f{border-radius:4px;width:46px;height:46px}
+.tab,.cat,.chip{border-radius:4px;text-transform:uppercase;letter-spacing:.08em;font-size:12px}
+.tile__t{font-weight:800;letter-spacing:-.01em;font-size:clamp(16px,1.5vw,21px)}
+/* producto como en una tienda de marca: foto sobre gris claro, nombre normal, precio claro */
+.prod{background:transparent;padding:0;box-shadow:none}
+.prod__foto{background:#eef1f4;border-radius:6px;padding:14px}
+.prod__foto img{mix-blend-mode:multiply}
+.etiq{background:none;color:var(--gris);padding:0;left:14px;top:12px;font-size:10.5px;letter-spacing:.12em}
+.prod h3{text-transform:none;font:700 16px/1.25 Satoshi,sans-serif;letter-spacing:0;margin:14px 0 4px}
+.precio{margin-bottom:12px}
+.precio strong{font:800 19px Satoshi,sans-serif;letter-spacing:0}
+.anadir{border-radius:4px;background:var(--tinta);color:#fff;border-color:var(--tinta);text-transform:uppercase;letter-spacing:.1em;font-size:11.5px;font-weight:700}
+@media(hover:hover) and (pointer:fine){.anadir:hover{background:#2a3642}.prod:hover{transform:none;box-shadow:none}.prod:hover .prod__foto img{transform:scale(1.04)}}
+.prod__foto img{transition:transform 500ms var(--e)}
+@media(hover:hover) and (pointer:fine){.tile:hover{transform:none}}
+/* bloques en blanco y gris, sin degradados llamativos */
+.razones{background:#fff;color:var(--tinta)}
+.razones .foto{background:#eef1f4;transform:none;box-shadow:none}
+.tienda{background:#fff}
+.fin div:nth-child(1){background:var(--tinta)}
+.fin div:nth-child(2){background:#eef1f4;color:var(--tinta)}
+.fin div:nth-child(3){background:#eef1f4;color:var(--tinta)}
+.fin b{font-weight:800;letter-spacing:-.02em;font-size:clamp(20px,2.2vw,30px)}
+.cierre{background:var(--tinta)}
+.tel{color:#fff;font-weight:800;letter-spacing:-.03em}
+.cierre>.btn{background:#fff;color:var(--tinta)}
+@media(max-width:760px){
+  .avisos span:not(:first-child){display:none}
+  .nav{top:36px;left:0;right:0;border-radius:0;padding:12px 16px;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none}
+  .nav.solid{top:0;padding:10px 16px;background:rgba(255,255,255,.96);box-shadow:0 1px 0 var(--linea)}
+  .panelmenu{top:70px;left:0;right:0;border-radius:0}
+}
+.prod__foto{position:relative;display:block}
+.prod__foto img{position:absolute;inset:16px;margin:auto;max-width:calc(100% - 32px);max-height:calc(100% - 40px);width:auto;height:auto;object-fit:contain}
+
+/* v9 · letra y diseño de tienda de marca: Switzer (neogrotesca, como Orbea o Canyon) para titulares y texto,
+   Archivo estrecha en mayúsculas para menú, etiquetas y botones (como Cube, Cervélo o el DIN de Specialized). */
+:root{--sans:Switzer,system-ui,sans-serif;--cond:Archivo,sans-serif}
+body{font-family:var(--sans)}
+h1,h2,h3,h4,.textos h1,.busca h2,.bento__c strong,.tile__t,.fin b,.tour h3,.acordeon summary,.llegar__t h3,.cajon__cab h2,.cajon__gracias h3,.razones li,.prod h3,.rot,.tel,.cifras dt,.precio strong,.panel td:last-child,.tour .pr,.acordeon summary b,.cajon__total b{font-family:var(--sans)!important;text-transform:none!important}
+h2,.busca h2{font-weight:600;font-size:clamp(32px,4.2vw,60px);letter-spacing:-.03em;line-height:1.04}
+.textos h1{font-weight:600;font-size:clamp(34px,4.4cqw,68px);letter-spacing:-.035em;line-height:1}
+.palabra{display:none}
+.mono,.sello,.etiq,.tile__n,.cajon__metodos,.croquis figcaption,.tours__cab .mono,.tour .n,.fila .n{font-family:var(--cond)!important;font-stretch:75%;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.nav ul a,.llamar,.carrito,.burger,.panelmenu a,.btn,.anadir,.tab,.cat,.chip,.res,.preg,.avisos,.pie h4{font-family:var(--cond)!important;font-stretch:87.5%;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.nav ul a{font-size:15px}
+.btn{font-size:14px}
+.anadir{font-size:13px}
+.bento__c strong{font-weight:600;font-size:clamp(24px,2.4vw,36px);letter-spacing:-.025em}
+.tour h3,.acordeon summary,.tile__t,.fin b,.prod h3,.rot,.razones li,.llegar__t h3{font-weight:600;letter-spacing:-.01em}
+.acordeon summary{font-size:18px}
+.precio strong,.cifras dt,.tel,.tour .pr,.acordeon summary b,.panel td:last-child,.cajon__total b{font-weight:600;letter-spacing:-.03em}
+.razones li{font-size:17px}
+.razones li small{font-weight:400}
+/* cabecera blanca, como en todas las tiendas de marca */
+.nav,.nav.solid{background:#fff;box-shadow:0 1px 0 var(--linea);backdrop-filter:none;-webkit-backdrop-filter:none}
+.nav .logo,.nav ul a,.nav .idioma,.nav .llamar{color:var(--tinta);text-shadow:none}
+.nav .logo svg{color:var(--tinta)}
+.nav .carrito{background:var(--tinta);color:#fff}
+.nav .carrito b{background:#fff;color:var(--tinta)}
+.burger{background:var(--tinta);color:#fff}
+.bici3d{bottom:9%;width:59%}
+/* franja de categorías */
+.franja{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;padding:18px var(--lat);background:#fff;border-bottom:1px solid var(--linea)}
+.franja a{display:flex;flex-direction:column;align-items:center;gap:10px;padding:14px 6px 12px;border-radius:6px;text-decoration:none;color:var(--tinta);font:600 15px var(--sans);transition:background 200ms var(--e)}
+.franja img{height:68px;width:auto;max-width:100%;object-fit:contain;mix-blend-mode:multiply;transition:transform 400ms var(--e)}
+@media(hover:hover) and (pointer:fine){.franja a:hover{background:#eef1f4}.franja a:hover img{transform:translateY(-3px)}}
+@media(max-width:860px){.franja{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:34%;overflow-x:auto;scroll-snap-type:x mandatory;padding:12px 16px;scrollbar-width:none}.franja a{scroll-snap-align:start}.franja img{height:54px}}
+/* pie */
+.pie{display:grid;grid-template-columns:1.5fr repeat(3,minmax(0,1fr));gap:36px;padding:64px var(--lat) 28px;background:var(--tinta);color:#c5d3de;font-size:15px;justify-content:initial}
+.pie h4{font-size:12.5px;color:#fff;margin-bottom:14px}
+.pie a{display:block;color:#c5d3de;text-decoration:none;padding:6px 0}
+@media(hover:hover) and (pointer:fine){.pie a:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}}
+.pie__logo{font:900 26px/1 Archivo,sans-serif;letter-spacing:-.02em;color:#fff;margin-bottom:14px}
+.pie__marca p{margin-bottom:8px;max-width:34ch}
+.pie__legal{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-between;border-top:1px solid rgba(255,255,255,.16);padding-top:22px;margin-top:8px;font-size:13px}
+.pie__legal a{display:inline;color:#fff;padding:0;text-decoration:underline}
+@media(max-width:860px){.pie{grid-template-columns:1fr 1fr;gap:28px}.pie__marca{grid-column:1/-1}}
+
+.nav{gap:24px}.nav ul{gap:26px}
+.nav ul a,.llamar,.idioma,.logo,.carrito{white-space:nowrap}
+.portada{height:clamp(620px,90svh,880px)}
+.bici3d{top:calc(50% + 50px);bottom:auto;translate:0 -50%}
+.textos{top:calc(50% + 50px);bottom:auto;translate:0 -50%}
+.textos,.textos h1,.textos p{text-shadow:none}
+@media(max-width:1180px){.idioma{display:none}}
+@media(max-width:760px){.portada{height:auto}.bici3d{top:150px;translate:none}.textos{top:auto;translate:none}}
+.suelo{display:none!important}
+@media(max-width:760px){.bici3d{left:-3%;width:106%;top:130px;bottom:auto;translate:none}.portada{min-height:760px}}
+@media(max-width:760px){.portada{height:auto;min-height:0;padding-top:392px}.textos{margin-top:0;padding-bottom:44px}}
+
+/* v2 · portada sobre la referencia «ZEPHYR» con los azules de la v1 */
+:root{--n0:#0b1620;--n1:#132331;--n2:#1f3446}
+.avisos{display:none}
+.nav{top:0!important;transform:translateY(-120%);transition:transform 400ms var(--e),background 300ms}
+.nav.pasado{transform:none}
+.h2{padding:10px;background:#fff}
+.h2__marco{position:relative;height:calc(100svh - 20px);min-height:640px;max-height:980px;border-radius:30px;overflow:hidden;isolation:isolate;color:#fff;background:radial-gradient(60% 75% at 52% 42%,#4a6a84 0%,#2a445a 32%,#16283a 62%,var(--n0) 100%)}
+.h2__marco::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(180deg,rgba(11,22,32,.35) 0%,rgba(11,22,32,0) 22%,rgba(11,22,32,0) 52%,rgba(11,22,32,.88) 100%)}
+.h2__slides{position:absolute;inset:0;z-index:1}
+.h2__bici{position:absolute;inset:0;margin:0;opacity:0;transform:scale(1.05) translateX(3%);transition:opacity 900ms var(--e),transform 1400ms var(--e)}
+.h2__bici.activa{opacity:1;transform:none}
+.h2__bici img{position:absolute;left:4%;top:-8%;width:104%;max-width:none;height:auto;filter:brightness(.8) contrast(1.08) saturate(.92) drop-shadow(0 40px 60px rgba(0,0,0,.45))}
+.h2__logo{position:absolute;z-index:6;top:clamp(18px,2.4vw,30px);left:clamp(18px,2.4vw,32px);display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font:600 13px/1 Panchang,Archivo,sans-serif;letter-spacing:.08em}
+.h2__logo svg{width:26px;height:26px}
+/* muesca de arriba */
+.h2__nav{position:absolute;z-index:6;top:0;right:0;display:flex;align-items:center;gap:clamp(16px,2.4vw,34px);padding:12px 12px 14px 18px;background:#fff;border-bottom-left-radius:28px;color:var(--n0)}
+.h2__nav::before,.h2__nav::after{content:"";position:absolute;width:28px;height:28px;background:radial-gradient(circle at 0 100%,transparent 27.5px,#fff 28px)}
+.h2__nav::before{top:0;left:-28px}
+.h2__nav::after{right:0;bottom:-28px}
+.h2__enl{color:var(--n0);text-decoration:none;font:500 11.5px/1 Archivo,sans-serif;font-stretch:125%;letter-spacing:.2em;text-transform:uppercase;padding:12px 0}
+@media(hover:hover) and (pointer:fine){.h2__enl:hover{text-decoration:underline;text-underline-offset:6px}}
+.h2__carrito{position:relative;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;color:var(--n0);text-decoration:none}
+.h2__carrito svg{width:22px;height:22px}
+.h2__carrito b{position:absolute;top:2px;right:0;min-width:17px;height:17px;border-radius:9px;background:var(--acero);color:#fff;font:700 10px/17px Satoshi,sans-serif;text-align:center}
+.h2__contacto{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 18px 0 6px;border-radius:99px;background:var(--n0);color:#fff;text-decoration:none;font:500 11.5px/1 Archivo,sans-serif;font-stretch:125%;letter-spacing:.2em;text-transform:uppercase}
+.h2__contacto span{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:#fff;color:var(--n0)}
+.h2__contacto svg{width:14px;height:14px}
+.h2__menu{display:none;min-height:44px;padding:0 16px;border:0;border-radius:99px;background:var(--bruma3);color:var(--n0);font:500 11px/1 Archivo,sans-serif;font-stretch:125%;letter-spacing:.18em;text-transform:uppercase}
+/* numeración */
+.h2__nums{position:absolute;z-index:6;left:clamp(20px,3vw,44px);top:50%;translate:0 -50%;list-style:none;margin:0;padding:0;display:grid;gap:clamp(12px,2.2vh,24px)}
+.h2__nums button{border:0;background:none;color:rgba(255,255,255,.4);font:500 clamp(15px,1.3vw,19px)/1 Archivo,sans-serif;font-stretch:112%;padding:6px 8px 6px 0;cursor:pointer;transition:color 300ms}
+.h2__nums button[aria-current=true]{color:#fff}
+@media(hover:hover) and (pointer:fine){.h2__nums button:hover{color:#fff}}
+/* tarjetas de cristal */
+.h2__datos{position:absolute;z-index:6;right:clamp(24px,7vw,110px);top:clamp(120px,24%,260px);display:grid;gap:16px;justify-items:start}
+.vidrio{min-width:clamp(140px,12vw,180px);padding:16px 18px 14px;border-radius:20px;background:rgba(185,205,219,.12);border:1px solid rgba(255,255,255,.24);backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3)}
+.vidrio--2{margin-left:clamp(40px,5vw,80px)}
+.vidrio p{display:flex;align-items:baseline;gap:4px;margin:0}
+.vidrio b{font:800 clamp(24px,2.4vw,36px)/1 Panchang,sans-serif;letter-spacing:-.01em}
+.vidrio span{font:500 clamp(18px,1.8vw,26px)/1 Archivo,sans-serif;font-stretch:112%}
+.vidrio small,.dial small{display:block;margin-top:6px;font:500 11px/1.2 Archivo,sans-serif;font-stretch:112%;letter-spacing:.04em;color:#d3dee7}
+.dial{position:relative;display:grid;place-items:center;align-content:center;width:clamp(104px,9vw,130px);aspect-ratio:1;margin-left:clamp(56px,6.5vw,104px);border-radius:50%;background:rgba(11,22,32,.45);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);text-align:center}
+.dial svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
+.dial circle{fill:none;stroke:rgba(255,255,255,.18);stroke-width:3}
+.dial .dial__arco{stroke:var(--bruma2);stroke-width:3;stroke-linecap:round;stroke-dasharray:calc(var(--p) * 1) 100;transition:stroke-dasharray 900ms var(--e)}
+.dial b{font:800 clamp(16px,1.5vw,21px)/1 Panchang,sans-serif}
+/* pie de la portada */
+.h2__pie{position:absolute;z-index:6;left:clamp(220px,24vw,340px);right:clamp(22px,4vw,56px);bottom:clamp(20px,3.2vw,40px);display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"marca marca" "nombre texto";align-items:end;column-gap:clamp(20px,3vw,44px);row-gap:6px}
+.h2__marca{grid-area:marca;display:flex;align-items:center;gap:14px;margin:0;font:500 clamp(12px,1.05vw,15px)/1 Archivo,sans-serif;font-stretch:125%;letter-spacing:.32em;color:#e6eef4;white-space:nowrap}
+.h2__marca i{flex:0 1 220px;height:1px;background:rgba(255,255,255,.55)}
+.h2__nombre{grid-area:nombre;margin:0;font:800 clamp(46px,8.6vw,136px)/.9 Panchang,sans-serif;letter-spacing:.005em;white-space:nowrap;color:#fff}
+.h2__texto{grid-area:texto;max-width:290px;padding-bottom:.4em}
+.h2__texto p{margin:0 0 10px;font-size:14px;line-height:1.45;color:#d3dee7}
+.h2__link{white-space:nowrap;color:#fff;font:500 11.5px/1 Archivo,sans-serif;font-stretch:125%;letter-spacing:.18em;text-transform:uppercase;text-underline-offset:5px;padding:8px 0;display:inline-block}
+/* muesca de abajo con la siguiente bici */
+.h2__mini{position:absolute;z-index:6;left:0;bottom:0;width:clamp(190px,21vw,290px);height:clamp(118px,13.5vw,176px);padding:0;border:0;background:#fff;border-top-right-radius:28px;cursor:pointer}
+.h2__mini::before,.h2__mini::after{content:"";position:absolute;width:28px;height:28px;background:radial-gradient(circle at 100% 0,transparent 27.5px,#fff 28px)}
+.h2__mini::before{left:0;top:-28px}
+.h2__mini::after{right:-28px;bottom:0}
+.h2__minifoto{position:absolute;inset:12px 12px 0 0;overflow:hidden;border-radius:0 20px 0 0;background:radial-gradient(80% 90% at 60% 40%,#3d5a73,#16283a)}
+.h2__minifoto img{position:absolute;left:-30%;top:-10%;width:170%;max-width:none;filter:brightness(.85);transition:transform 600ms var(--e)}
+.h2__flecha{position:absolute;top:24px;right:26px;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#fff;color:var(--n0);font-size:16px;transition:transform 300ms var(--e)}
+@media(hover:hover) and (pointer:fine){.h2__mini:hover .h2__minifoto img{transform:scale(1.06)}.h2__mini:hover .h2__flecha{transform:rotate(45deg)}}
+.h2 :focus-visible{outline:2px solid var(--bruma2);outline-offset:3px}
+@media(max-width:1100px){.h2__enl:nth-of-type(n+3){display:none}}
+@media(max-width:760px){
+  .h2{padding:8px}
+  .h2__marco{height:auto;min-height:0;padding:96px 18px 22px;border-radius:24px;display:flex;flex-direction:column}
+  .h2__slides{position:relative;height:250px;margin:0 -18px}
+  .h2__bici img{left:-18%;top:2%;width:150%}
+  .h2__enl{display:none}
+  .h2__menu{display:inline-flex;align-items:center}
+  .h2__contacto{padding:0 14px 0 6px}
+  .h2__contacto{font-size:0;letter-spacing:0;gap:0;padding:0 6px}
+  .h2__nums{position:static;translate:none;display:flex;gap:4px;margin:6px 0 10px}
+  .h2__nums button{padding:10px 10px 10px 0;font-size:15px}
+  .h2__datos{position:static;display:flex;gap:10px;flex-wrap:wrap}
+  .vidrio{min-width:0;flex:1;padding:12px 14px}
+  .vidrio--2{margin:0}
+  .dial{display:none}
+  .h2__pie{position:static;margin-top:18px;grid-template-columns:minmax(0,1fr);grid-template-areas:"marca" "nombre" "texto"}
+  .h2__mini{display:none}
+  .h2__marco::after{background:linear-gradient(180deg,rgba(11,22,32,.25),rgba(11,22,32,0) 30%,rgba(11,22,32,.55) 70%)}
+  .h2__logo{top:22px;left:16px;gap:8px}.h2__logo span{font-size:10.5px}.h2__logo svg{width:22px;height:22px}
+  .h2__nav{gap:6px;padding:8px 8px 10px 12px}.h2__menu{padding:0 12px}
+}
+@media(prefers-reduced-motion:reduce){.h2__bici,.dial .dial__arco{transition:none}}
+</style>
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="sr" href="#contenido">Saltar al contenido</a>
+
+<div class="pagina">
+
+  <nav class="nav" aria-label="Principal">
+    <a class="logo" href="#">
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="16" cy="16" r="13"/><circle cx="16" cy="16" r="2.4" fill="currentColor"/><path d="M16 3v10M16 19v10M3 16h10M19 16h10M6.8 6.8l7.4 7.4M17.8 17.8l7.4 7.4M25.2 6.8l-7.4 7.4M14.2 17.8l-7.4 7.4" stroke-width="1"/></svg>
+      Oh My Bike!
+    </a>
+    <ul>
+      <li><a href="#tienda">Tienda</a></li>
+      <li><a href="#alquiler">Alquiler bicis</a></li>
+      <li><a href="#tours">Tours</a></li>
+      <li><a href="#taller">Taller</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <div class="nav__d">
+      <a class="llamar" href="tel:+34943539703">943 539 703</a>
+      <span class="idioma" aria-label="Idioma">ES <span>· EU</span></span>
+      <a class="carrito" href="#tienda" aria-label="Abrir el carrito" data-abrir-carrito><span>Carrito</span> <b id="cuenta" aria-live="polite">0</b></a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="menu">Menú</button>
+    </div>
+  </nav>
+  <div class="panelmenu" id="menu">
+    <a href="#tienda">Tienda</a><a href="#alquiler">Alquiler bicis</a><a href="#tours">Tours</a><a href="#taller">Taller</a><a href="#contacto">Contacto</a><a href="tel:+34943539703">Llamar: 943 539 703</a>
+  </div>
+<header class="h2" data-portada data-slides='[{"foto":"v2-poison","marca":"WST","nombre":"POISON","completo":"WST Poison 9411 29\" disc","precio":"799","tPrecio":"Precio outlet","dial":"−9%","tDial":"Rebaja","p":9,"texto":"Rígida de 29 pulgadas con frenos de disco. En el outlet de la tienda."},{"foto":"v2-bravo","marca":"BERRIA","nombre":"BRAVO","completo":"Berria Bravo HPR Elite NX","precio":"2.799","tPrecio":"Precio","dial":"−15%","tDial":"Rebaja","p":15,"texto":"Eléctrica de montaña de Berria, ahora con precio rebajado."},{"foto":"v2-lombardo","marca":"LOMBARDO","nombre":"MONTECATINI","completo":"Lombardo Montecatini 7.0","precio":"2.599","tPrecio":"Precio outlet","dial":"−16%","tDial":"Rebaja","p":16,"texto":"Eléctrica urbana con portabultos. En el outlet de la tienda."},{"foto":"v2-carlina","marca":"NEOMOUV","nombre":"CARLINA","completo":"Neomouv Carlina HY rojo","precio":"1.799","tPrecio":"Precio","dial":"−5%","tDial":"Rebaja","p":5,"texto":"Eléctrica de cuadro bajo para moverse por la ciudad."},{"foto":"v2-cosmo","marca":"WST","nombre":"COSMO","completo":"WST Cosmo 27,5\"","precio":"339","tPrecio":"Precio","dial":"27,5″","tDial":"Rueda","p":100,"texto":"Montaña en aluminio con ruedas de 27,5 pulgadas."}]'>
+  <h1 class="sr">Oh My Bike! · Tienda, taller y alquiler de bicis en Donostia</h1>
+  <div class="h2__marco">
+    <div class="h2__slides">
+      <figure class="h2__bici activa"><img src="fotos/v2-poison.webp?v=20261012" alt="WST Poison 9411 29&quot; disc" fetchpriority="high"/></figure>
+      <figure class="h2__bici"><img src="fotos/v2-bravo.webp?v=20261012" alt="Berria Bravo HPR Elite NX" loading="lazy"/></figure>
+      <figure class="h2__bici"><img src="fotos/v2-lombardo.webp?v=20261012" alt="Lombardo Montecatini 7.0" loading="lazy"/></figure>
+      <figure class="h2__bici"><img src="fotos/v2-carlina.webp?v=20261012" alt="Neomouv Carlina HY rojo" loading="lazy"/></figure>
+      <figure class="h2__bici"><img src="fotos/v2-cosmo.webp?v=20261012" alt="WST Cosmo 27,5&quot;" loading="lazy"/></figure>
+    </div>
+    <a class="h2__logo" href="#"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="16" cy="16" r="13"/><circle cx="16" cy="16" r="2.4" fill="currentColor"/><path d="M16 3v10M16 19v10M3 16h10M19 16h10M6.8 6.8l7.4 7.4M17.8 17.8l7.4 7.4M25.2 6.8l-7.4 7.4M14.2 17.8l-7.4 7.4" stroke-width="1"/></svg><span>OH MY BIKE!</span></a>
+    <ol class="h2__nums" aria-label="Bicis destacadas">
+      <li><button type="button" data-ir-slide="0" aria-label="WST Poison 9411 29&quot; disc" aria-current="true">01</button></li>
+      <li><button type="button" data-ir-slide="1" aria-label="Berria Bravo HPR Elite NX">02</button></li>
+      <li><button type="button" data-ir-slide="2" aria-label="Lombardo Montecatini 7.0">03</button></li>
+      <li><button type="button" data-ir-slide="3" aria-label="Neomouv Carlina HY rojo">04</button></li>
+      <li><button type="button" data-ir-slide="4" aria-label="WST Cosmo 27,5&quot;">05</button></li>
+    </ol>
+    <div class="h2__datos" aria-live="polite">
+      <div class="vidrio"><p><b data-precio>799</b><span>€</span></p><small data-tprecio>Precio outlet</small></div>
+      <div class="vidrio vidrio--2"><p><b>60</b><span>M</span></p><small>Financiación</small></div>
+      <div class="dial" style="--p:9"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="44"/><circle class="dial__arco" cx="50" cy="50" r="44" pathLength="100"/></svg><b data-dial>−9%</b><small data-tdial>Rebaja</small></div>
+    </div>
+    <div class="h2__pie">
+      <p class="h2__marca"><span data-num>0 1</span> / <span data-marcabici>W S T</span><i aria-hidden="true"></i></p>
+      <p class="h2__nombre" data-nombre>POISON</p>
+      <div class="h2__texto"><p data-texto>Rígida de 29 pulgadas con frenos de disco. En el outlet de la tienda.</p><a class="h2__link" href="#contacto" data-bici="WST Poison 9411 29&quot; disc" data-pregunta>Preguntar por ella <span aria-hidden="true">↗</span></a></div>
+    </div>
+    <div class="h2__nav">
+      <a class="h2__carrito" href="#tienda" data-abrir-carrito aria-label="Abrir el carrito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 4h2l2.4 11h11L21 7H6.3"/><circle cx="9" cy="19.5" r="1.4"/><circle cx="17" cy="19.5" r="1.4"/></svg><b class="cuenta-h">0</b></a>
+      <a class="h2__enl" href="#tienda">Tienda</a><a class="h2__enl" href="#alquiler">Alquiler</a><a class="h2__enl" href="#taller">Taller</a><a class="h2__enl" href="#tours">Tours</a>
+      <button class="h2__menu" type="button" data-abre-menu>Menú</button>
+      <a class="h2__contacto" href="#contacto"><span aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 11.5 20.5 4 13 21.5l-2.2-7.3z"/></svg></span>Contacto</a>
+    </div>
+    <button class="h2__mini" type="button" data-siguiente aria-label="Ver la siguiente bici"><span class="h2__minifoto"><img data-mini src="fotos/v2-bravo.webp?v=20261012" alt=""/></span><span class="h2__flecha" aria-hidden="true">↗</span></button>
+  </div>
+</header>
+<nav class="franja" aria-label="Categorías de la tienda">
+  <a href="#tienda" data-ir="bicis:electricas"><img src="fotos/bravo.webp?v=20261012" alt="" loading="lazy"/><span>Eléctricas</span></a>
+  <a href="#tienda" data-ir="bicis:carbono"><img src="fotos/belador.webp?v=20261012" alt="" loading="lazy"/><span>Carbono</span></a>
+  <a href="#tienda" data-ir="bicis:aluminio"><img src="fotos/wst-cosmo.webp?v=20261012" alt="" loading="lazy"/><span>Aluminio</span></a>
+  <a href="#tienda" data-ir="ofertas"><img src="fotos/cayman.webp?v=20261012" alt="" loading="lazy"/><span>Outlet</span></a>
+  <a href="#tienda" data-ir="equipamiento"><img src="fotos/met-echo.webp?v=20261012" alt="" loading="lazy"/><span>Equipamiento</span></a>
+  <a href="#tienda" data-ir="accesorios"><img src="fotos/onguard-mastiff.webp?v=20261012" alt="" loading="lazy"/><span>Accesorios</span></a>
+  <a href="#tienda" data-ir="ruedas"><img src="fotos/speedsix-air35.webp?v=20261012" alt="" loading="lazy"/><span>Ruedas</span></a>
+</nav>
+
+<section class="busca wrap" aria-labelledby="busca-t">
+  <h2 id="busca-t" data-lineas>Lo que estabas <span class="hueco">buscando</span></h2>
+  <div class="bento" data-escalonado>
+    <a class="bento__c bento__a" href="#alquiler"><img src="fotos/alpina-t.webp?v=20261012" alt="" loading="lazy"/><span class="bento__n">01</span><strong>Alquila una bici</strong><small>Desde 8 € las 2 horas. Con luces, timbre, candado y mapa.</small><i class="bento__f" aria-hidden="true">→</i></a>
+    <a class="bento__c bento__b" href="#taller"><img src="fotos/taller.webp?v=20261012" alt="" loading="lazy"/><span class="bento__n">02</span><strong>Taller sin cita previa</strong><small>Revisión básica 35 €. Express: 30 minutos o menos.</small><i class="bento__f" aria-hidden="true">→</i></a>
+    <a class="bento__c bento__c3" href="#tienda"><img src="fotos/bravo.webp?v=20261012" alt="" loading="lazy"/><span class="bento__n">03</span><strong>Bicis nuevas y outlet</strong><small>Nuevas, reacondicionadas y outlet. Financiación hasta 60 meses.</small><i class="bento__f" aria-hidden="true">→</i></a>
+    <a class="bento__c bento__d" href="#tours"><img src="fotos/ruedas.webp?v=20261012" alt="" loading="lazy"/><span class="bento__n">04</span><strong>Tours en bici con pintxo</strong><small>Por Donostia y alrededores, en español e inglés. Desde 39 €.</small><i class="bento__f" aria-hidden="true">→</i></a>
+  </div>
+</section>
+
+<section class="razones" aria-labelledby="razones-t">
+  <div>
+    <h2 id="razones-t" data-lineas>Una tienda de barrio con <mark>135 m</mark> de bicis</h2>
+    <p class="txt" data-enciende>Oh My Bike! nació en 2016 como proyecto familiar. Hoy tenemos dos plantas en la Plaza Teresa de Calcuta: 135 m para exponer bicicletas y accesorios y 65 m para el taller, con personal cualificado y años de experiencia.</p>
+  </div>
+  <div class="foto"><span class="giro" aria-hidden="true"><svg class="aro" viewBox="0 0 120 120"><defs><path id="or" d="M60 60m-45 0a45 45 0 1 1 90 0a45 45 0 1 1-90 0"/></defs><text><textPath href="#or" textLength="277" lengthAdjust="spacing">ACEPTAMOS TU BICI • TASACIÓN INMEDIATA • </textPath></text></svg><b>€<small>tasación</small></b></span><img src="fotos/tienda-fachada.webp?v=20261012" width="640" height="480" alt="Fachada de Oh My Bike! con dos bicis plegables eléctricas Littium en la puerta" loading="lazy"/></div>
+  <ul data-escalonado>
+    <li>Aceptamos tu bici como parte de pago<small>Tasación inmediata al comprar una nueva.</small></li>
+    <li>Financiación hasta 60 meses<small>En bicis y accesorios.</small></li>
+    <li>Bici nueva o reacondicionada<small>Tienda con exposición de 135 m y outlet.</small></li>
+  </ul>
+</section>
+
+<section class="cifras" aria-labelledby="cifras-t">
+  <img src="fotos/tienda-interior.webp?v=20261012" width="980" height="734" alt="" loading="lazy" data-parallax="8"/>
+  <h2 id="cifras-t" data-lineas>Bicis, taller y cariño desde <span class="hueco">2016</span></h2>
+  <dl>
+    <div><dt data-cuenta="2016">2016</dt><dd>Año en que empezó el proyecto familiar</dd></div>
+    <div><dt><span data-cuenta="135">135</span><small>m</small></dt><dd>De exposición de bicis y accesorios</dd></div>
+    <div><dt><span data-cuenta="65">65</span><small>m</small></dt><dd>De taller con lavadero</dd></div>
+    <div><dt><span data-cuenta="60">60</span><small>meses</small></dt><dd>De financiación en bicis y accesorios</dd></div>
+  </dl>
+</section>
+
+<section class="alquiler" id="alquiler" aria-labelledby="alq-t">
+  <p class="fondo" aria-hidden="true">ALQUILER</p>
+  <div class="alquiler__cab">
+    <div>
+      <span class="mono">Alquiler de bicis</span>
+      <h2 id="alq-t" data-lineas>Alquila una bici en <span class="hueco">San Sebastián</span></h2>
+      <p>Alquiler a cualquier hora, todos los días, por teléfono o WhatsApp. Urbanas, carretera, montaña, infantiles, portabebés y remolques.</p>
+    </div>
+    <a class="btn" href="https://wa.me/34688756396?text=Hola%2C%20quiero%20alquilar%20una%20bici%20en%20Donostia.%20%C2%BFQu%C3%A9%20ten%C3%A9is%20disponible%3F">Reservar por WhatsApp <i aria-hidden="true">→</i></a>
+  </div>
+
+  <div class="detalle">
+    <img src="fotos/alpina-t.webp?v=20261012" width="627" height="534" alt="Bici urbana de paseo" loading="lazy"/>
+    <svg class="puntos" viewBox="0 0 900 470" preserveAspectRatio="none" aria-hidden="true">
+      <line x1="215" y1="75" x2="406" y2="32"/><circle cx="406" cy="32" r="5"/>
+      <line x1="685" y1="55" x2="548" y2="85"/><circle cx="548" cy="85" r="5"/>
+      <line x1="215" y1="400" x2="356" y2="188"/><circle cx="356" cy="188" r="5"/>
+      <line x1="685" y1="385" x2="545" y2="227"/><circle cx="545" cy="227" r="5"/>
+    </svg>
+    <div class="rot a"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 17a7 7 0 0 1 14 0z"/><path d="M12 6V4M4 19h16"/></svg></span><div>Timbre<small>Incluido en todas.</small></div></div>
+    <div class="rot b"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></span><div>Luces<small>Delantera y trasera.</small></div></div>
+    <div class="rot c"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span><div>Candado<small>Para dejarla tranquila.</small></div></div>
+    <div class="rot d"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg></span><div>Mapa y guía<small>De la ciudad.</small></div></div>
+  </div>
+  <p class="nota-ej">Imagen de ejemplo. Todas las bicis de alquiler se entregan con luces, timbre, candado y mapa.</p>
+
+  <div class="tarifas">
+    <div class="tabs" role="tablist" aria-label="Tarifas de alquiler"></div>
+    <section class="panel" id="p-urbana" data-titulo="Urbana">
+      <h3 class="panel__h">Bici urbana</h3>
+      <table><caption>Tarifa por bici</caption><tbody>
+        <tr><td>2 horas</td><td>8 €</td></tr><tr><td>4 horas</td><td>12 €</td></tr><tr><td>6 horas</td><td>14 €</td></tr>
+        <tr><td>8 horas</td><td>16 €</td></tr><tr><td>1 día</td><td>18 €</td></tr><tr><td>24 horas</td><td>22 €</td></tr><tr><td>Día extra</td><td>15 €</td></tr>
+        <tr><td>Casco</td><td>2 €</td></tr><tr><td>Sillita de bebé</td><td>5 €</td></tr></tbody></table>
+      <p class="extra">Fines de semana, sábados y festivos: 5 € más por bici.</p>
+    <a class="btn btn--sm" href="https://wa.me/34688756396?text=Hola%2C%20quiero%20alquilar%20una%20bici%20urbana.%20%C2%BFQu%C3%A9%20ten%C3%A9is%20disponible%3F">Reservar este alquiler <i aria-hidden="true">→</i></a>
+    </section>
+    <section class="panel" id="p-mtb" data-titulo="Montaña y carretera">
+      <h3 class="panel__h">Montaña y carretera</h3>
+      <table><caption>Tarifa por bici</caption><tbody>
+        <tr><td>Media jornada (menos de 4 h)</td><td>25 €</td></tr><tr><td>1 día (4 h o más)</td><td>35 €</td></tr><tr><td>24 horas</td><td>45 €</td></tr><tr><td>Día extra</td><td>35 €</td></tr>
+        <tr><td>1 semana</td><td>130 €</td></tr><tr><td>10 días</td><td>160 €</td></tr><tr><td>2 semanas</td><td>190 €</td></tr><tr><td>3 semanas</td><td>225 €</td></tr><tr><td>4 semanas</td><td>260 €</td></tr></tbody></table>
+      <p class="extra">Fines de semana y festivos: 20 % más, salvo en las tarifas semanales.</p>
+    <a class="btn btn--sm" href="https://wa.me/34688756396?text=Hola%2C%20quiero%20alquilar%20una%20bici%20de%20monta%C3%B1a%20o%20carretera.%20%C2%BFQu%C3%A9%20ten%C3%A9is%20disponible%3F">Reservar este alquiler <i aria-hidden="true">→</i></a>
+    </section>
+    <section class="panel" id="p-remolque" data-titulo="Remolque">
+      <h3 class="panel__h">Remolque</h3>
+      <table><caption>Por horas y día, igual que la bici urbana (de 8 € a 22 €; día extra 15 €)</caption><tbody>
+        <tr><td>1 semana</td><td>90 €</td></tr><tr><td>10 días</td><td>110 €</td></tr><tr><td>2 semanas</td><td>140 €</td></tr><tr><td>3 semanas</td><td>170 €</td></tr><tr><td>4 semanas</td><td>200 €</td></tr></tbody></table>
+      <p class="extra">Fines de semana y festivos: 20 % más, salvo en las tarifas semanales.</p>
+    <a class="btn btn--sm" href="https://wa.me/34688756396?text=Hola%2C%20quiero%20alquilar%20un%20remolque.%20%C2%BFQu%C3%A9%20ten%C3%A9is%20disponible%3F">Reservar este alquiler <i aria-hidden="true">→</i></a>
+    </section>
+  </div>
+</section>
+
+<section class="tours" id="tours" aria-labelledby="tours-t">
+  <div class="tours__cab">
+    <div>
+      <span class="mono">Bike tours · ES / EN</span>
+      <h2 id="tours-t" data-lineas>Tours en bici por <span class="hueco">Donostia</span></h2>
+    </div>
+    <p>Desde solo 39 €, con pintxo y bebida. Precios válidos de lunes a domingo.</p>
+  </div>
+  <div data-escalonado>
+    <article class="tour"><span class="n">01</span><div><h3>Tour guiado por la ciudad</h3><p>Casco, candado, luces, timbre, un pintxo y una bebida.</p></div><div class="meta">2,5 h · Muy fácil</div><div class="pr">45 €<small>39 € a partir de 5 personas</small><a class="res" href="https://wa.me/34688756396?text=Hola%2C%20quiero%20reservar%20el%20tour%20guiado%20por%20la%20ciudad%20(2%2C5%20h).%20%C2%BFQu%C3%A9%20fechas%20ten%C3%A9is%3F">Reservar →</a></div></article>
+    <article class="tour"><span class="n">02</span><div><h3>Donostia – Oiartzun</h3><p>Hasta las minas de Arditurri. Mismo equipo, pintxo y bebida.</p></div><div class="meta">4,5 h · Fácil</div><div class="pr">75 €<small>69 € a partir de 5 personas</small><a class="res" href="https://wa.me/34688756396?text=Hola%2C%20quiero%20reservar%20el%20tour%20Donostia%20%E2%80%93%20Oiartzun%20(4%2C5%20h).%20%C2%BFQu%C3%A9%20fechas%20ten%C3%A9is%3F">Reservar →</a></div></article>
+    <article class="tour"><span class="n">03</span><div><h3>Montaña · Monte Ulia</h3><p>A elegir nivel. Casco, candado, luces y pedales; sin zapatillas ni ropa. Pintxo y bebida.</p></div><div class="meta">3,5 h · De fácil a difícil</div><div class="pr">105 €<small>95 € a partir de 5 personas</small><a class="res" href="https://wa.me/34688756396?text=Hola%2C%20quiero%20reservar%20el%20tour%20de%20monta%C3%B1a%20por%20Monte%20Ulia%20(3%2C5%20h).%20%C2%BFQu%C3%A9%20fechas%20ten%C3%A9is%3F">Reservar →</a></div></article>
+    <article class="tour"><span class="n">04</span><div><h3>Carretera · Costa vasca</h3><p>Casco, candado, luces y pedales; sin zapatillas ni ropa. Pintxo y bebida.</p></div><div class="meta">4,5 h · De medio a difícil</div><div class="pr">125 €<small>115 € a partir de 5 personas</small><a class="res" href="https://wa.me/34688756396?text=Hola%2C%20quiero%20reservar%20el%20tour%20de%20carretera%20por%20la%20costa%20vasca%20(4%2C5%20h).%20%C2%BFQu%C3%A9%20fechas%20ten%C3%A9is%3F">Reservar →</a></div></article>
+  </div>
+  <p class="tours__pie">Precio por persona, de 1 a 4 personas, salvo que se indique otra cosa.</p>
+</section>
+
+<section class="taller" id="taller" aria-labelledby="taller-t">
+  <div>
+    <span class="mono">Taller · lavadero incluido</span>
+    <h2 id="taller-t" data-lineas>El taller al que tu bici quiere ir <mark>una vez al año</mark></h2>
+    <p class="lead">Reparamos bicis con cariño. Trabajamos sin cita previa, con personal cualificado y años de experiencia.</p>
+    <div class="chips"><span class="chip">Sin cita previa</span><span class="chip">Express: 30 min o menos</span><span class="chip">Lavadero</span></div>
+    <div class="acordeon">
+      <details open><summary>Revisión básica <b>35 €</b></summary><ul><li>Ajuste de frenos</li><li>Ajuste de cambios</li><li>Limpieza básica</li><li>Lubricación</li><li>Hinchado</li></ul></details>
+      <details><summary>Revisión intermedia <b>55 €</b></summary><ul><li>Todo lo de la básica</li><li>Centrado de ruedas</li><li>Limpieza intermedia</li></ul></details>
+      <details><summary>Revisión completa <b>85 €</b></summary><ul><li>Todo lo de la intermedia</li><li>Ajuste y engrase de rodamientos</li><li>Limpieza a fondo</li></ul></details>
+    </div>
+    <p class="taller__nota">Precios sin IVA.</p>
+    <div class="acc2"><a class="btn" href="tel:+34943539703">Llamar al taller <i aria-hidden="true">→</i></a><a class="btn btn--linea" href="https://www.google.com/maps/search/?api=1&query=Oh+My+Bike+Plaza+Teresa+de+Calcuta+6+Donostia">Cómo llegar <i aria-hidden="true">→</i></a></div>
+  </div>
+  <div class="taller__foto">
+    <span class="pegatina" aria-hidden="true">Sin cita<br/>previa</span>
+    <img src="fotos/taller.webp?v=20261012" width="980" height="734" alt="Mecánico de Oh My Bike! montando una bici de carretera en el soporte del taller" loading="lazy"/>
+    <div class="tag">Taller express<small>30 minutos o menos</small></div>
+  </div>
+</section>
+
+<section class="tienda" id="tienda" aria-labelledby="tienda-t">
+  <div class="tienda__cab">
+    <div>
+      <span class="mono">Tienda · 135 m de exposición</span>
+      <h2 id="tienda-t" data-lineas>Bicis nuevas, reacondicionadas y <mark>outlet</mark></h2>
+      <p>Una muestra de su catálogo. En la web final, las más de 300 referencias con su carrito.</p>
+    </div>
+    <a class="btn btn--linea" href="#contacto">Preguntar por una bici <i aria-hidden="true">→</i></a>
+  </div>
+  <div class="elige" role="group" aria-label="Elige qué buscas">
+    <p class="mono elige__t">Elige qué buscas</p>
+    <div class="tiles">
+    <button class="tile" type="button" data-g="bicis" data-cats="carbono,electricas,aluminio" data-sub="1" aria-pressed="true"><span class="tile__foto"><img src="fotos/bravo.webp?v=20261012" alt="" loading="lazy"/></span><span class="tile__t">Bicicletas</span><span class="tile__n">73 artículos</span></button>
+    <button class="tile" type="button" data-g="equipamiento" data-cats="equipamiento" data-sub="0" aria-pressed="false"><span class="tile__foto"><img src="fotos/met-echo.webp?v=20261012" alt="" loading="lazy"/></span><span class="tile__t">Equipamiento ciclista</span><span class="tile__n">47 artículos</span></button>
+    <button class="tile" type="button" data-g="accesorios" data-cats="accesorios" data-sub="0" aria-pressed="false"><span class="tile__foto"><img src="fotos/onguard-mastiff.webp?v=20261012" alt="" loading="lazy"/></span><span class="tile__t">Accesorios y componentes</span><span class="tile__n">68 artículos</span></button>
+    <button class="tile" type="button" data-g="ruedas" data-cats="ruedas" data-sub="0" aria-pressed="false"><span class="tile__foto"><img src="fotos/speedsix-air35.webp?v=20261012" alt="" loading="lazy"/></span><span class="tile__t">Ruedas</span><span class="tile__n">15 artículos</span></button>
+    <button class="tile" type="button" data-g="ofertas" data-cats="outlet,ofertas" data-sub="0" aria-pressed="false"><span class="tile__foto"><img src="fotos/cayman.webp?v=20261012" alt="" loading="lazy"/></span><span class="tile__t">Outlet y ofertas</span><span class="tile__n">122 artículos</span></button>
+    </div>
+    <div class="cats" role="group" aria-label="Tipo de bicicleta" data-sub>
+      <button class="cat" type="button" data-f="todo" aria-pressed="true">Todas</button>
+      <button class="cat" type="button" data-f="electricas" aria-pressed="false">Eléctricas <small>15</small></button>
+      <button class="cat" type="button" data-f="carbono" aria-pressed="false">Carbono <small>33</small></button>
+      <button class="cat" type="button" data-f="aluminio" aria-pressed="false">Aluminio <small>25</small></button>
+    </div>
+  </div>
+  <ul class="prods" data-rejilla>
+      <li class="prod" data-cat="electricas" data-precio="2799">
+        <div class="prod__foto"><img src="fotos/bravo.webp?v=20261012" width="1131" height="637" alt="Berria Bravo HPR Elite NX" loading="lazy"/><span class="etiq">Eléctrica</span></div>
+        <h3>Berria Bravo HPR Elite NX</h3>
+        <p class="precio"><s>3.299 €</s> <strong>2.799 €</strong></p>
+        <button class="anadir" type="button" data-nombre="Berria Bravo HPR Elite NX">Añadir al carrito</button>
+        <a class="preg" href="#contacto" data-bici="Berria Bravo HPR Elite NX">Preguntar por esta bici</a>
+      </li>
+      <li class="prod" data-cat="carbono" data-precio="3099">
+        <div class="prod__foto"><img src="fotos/mako-elite.webp?v=20261012" width="550" height="300" alt="Berria Mako Elite Deore" loading="lazy"/><span class="etiq">Carbono</span></div>
+        <h3>Berria Mako Elite Deore</h3>
+        <p class="precio"><s>3.299 €</s> <strong>3.099 €</strong></p>
+        <button class="anadir" type="button" data-nombre="Berria Mako Elite Deore">Añadir al carrito</button>
+        <a class="preg" href="#contacto" data-bici="Berria Mako Elite Deore">Preguntar por esta bici</a>
+      </li>
+      <li class="prod" data-cat="carbono" data-precio="3299">
+        <div class="prod__foto"><img src="fotos/belador.webp?v=20261012" width="516" height="316" alt="Berria Belador Pro Ultegra Di2" loading="lazy"/><span class="etiq">Carbono</span></div>
+        <h3>Berria Belador Pro Ultegra Di2</h3>
+        <p class="precio"><s>3.499 €</s> <strong>3.299 €</strong></p>
+        <button class="anadir" type="button" data-nombre="Berria Belador Pro Ultegra Di2">Añadir al carrito</button>
+        <a class="preg" href="#contacto" data-bici="Berria Belador Pro Ultegra Di2">Preguntar por esta bici</a>
+      </li>
+      <li class="prod" data-cat="electricas" data-precio="4099">
+        <div class="prod__foto"><img src="fotos/mistral.webp?v=20261012" width="543" height="316" alt="Berria Mistral HPR Apex" loading="lazy"/><span class="etiq">Eléctrica</span></div>
+        <h3>Berria Mistral HPR Apex</h3>
+        <p class="precio"><s>4.299 €</s> <strong>4.099 €</strong></p>
+        <button class="anadir" type="button" data-nombre="Berria Mistral HPR Apex">Añadir al carrito</button>
+        <a class="preg" href="#contacto" data-bici="Berria Mistral HPR Apex">Preguntar por esta bici</a>
+      </li>
+      <li class="prod" data-cat="electricas" data-precio="3999">
+        <div class="prod__foto"><img src="fotos/ursus.webp?v=20261012" width="544" height="302" alt="Berria Ursus Elite" loading="lazy"/><span class="etiq">Eléctrica</span></div>
+        <h3>Berria Ursus Elite</h3>
+        <p class="precio"><s>4.299 €</s> <strong>3.999 €</strong></p>
+        <button class="anadir" type="button" data-nombre="Berria Ursus Elite">Añadir al carrito</button>
+        <a class="preg" href="#contacto" data-bici="Berria Ursus Elite">Preguntar por esta bici</a>
+      </li>
+      <li class="prod" data-cat="electricas" data-precio="2349">
+        <div class="prod__foto"><img src="fotos/neomouv-mountain.webp?v=20261012" width="589" height="524" alt="Neomouv Mountain 2" loading="lazy"/><span class="etiq">Eléctrica</span></div>
+        <h3>Neomouv Mountain 2</h3>
+        <p class="precio"><s>2.749 €</s> <strong>2.349 €</strong></p>
+        <button class="anadir" type="button" data-nombre="Neomouv Mountain 2">Añadir al carrito</button>
+        <a class="preg" href="#contacto" data-bici="Neomouv Mountain 2">Preguntar por esta bici</a>
+      </li>
+      <li class="prod" data-cat="electricas" data-precio="1799">
+        <div class="prod__foto"><img src="fotos/neomouv-carlina.webp?v=20261012" width="900" height="588" alt="Neomouv Carlina HY rojo" loading="lazy"/><span class="etiq">Eléctrica</span></div>
+        <h3>Neomouv Carlina HY rojo</h3>
+        <p class="precio"><s>1.899 €</s> <strong>1.799 €</strong></p>
+        <button class="anadir" type="button" data-nombre="Neomouv Carlina HY rojo">Añadir al carrito</button>
+        <a class="preg" href="#contacto" data-bici="Neomouv Carlina HY rojo">Preguntar por esta bici</a>
+      </li>
+      <li class="prod" data-cat="electricas" data-precio="1990">
+        <div class="prod__foto"><img src="fotos/littium-ibiza.webp?v=20261012" width="471" height="622" alt="Littium Ibiza Titanium" loading="lazy"/><span class="etiq">Plegable eléctrica</span></div>
+        <h3>Littium Ibiza Titanium</h3>
+        <p class="precio"><strong>1.990 €</strong></p>
+        <button class="anadir" type="button" data-nombre="Littium Ibiza Titanium">Añadir al carrito</button>
+        <a class="preg" href="#contacto" data-bici="Littium Ibiza Titanium">Preguntar por esta bici</a>
+      </li>
+      <li class="prod" data-cat="aluminio" data-precio="339">
+        <div class="prod__foto"><img src="fotos/wst-cosmo.webp?v=20261012" width="900" height="543" alt="WST Cosmo 27,5"" loading="lazy"/><span class="etiq">Aluminio</span></div>
+        <h3>WST Cosmo 27,5"</h3>
+        <p class="precio"><strong>339 €</strong></p>
+        <button class="anadir" type="button" data-nombre="WST Cosmo 27,5"">Añadir al carrito</button>
+        <a class="preg" href="#contacto" data-bici="WST Cosmo 27,5"">Preguntar por esta bici</a>
+      </li>
+      <li class="prod" data-cat="aluminio" data-precio="350">
+        <div class="prod__foto"><img src="fotos/alpina.webp?v=20261012" width="627" height="534" alt="Alpina Freetime caqui" loading="lazy"/><span class="etiq">Aluminio</span></div>
+        <h3>Alpina Freetime caqui</h3>
+        <p class="precio"><s>460 €</s> <strong>350 €</strong></p>
+        <button class="anadir" type="button" data-nombre="Alpina Freetime caqui">Añadir al carrito</button>
+        <a class="preg" href="#contacto" data-bici="Alpina Freetime caqui">Preguntar por esta bici</a>
+      </li>
+      <li class="prod" data-cat="outlet" data-precio="2599">
+        <div class="prod__foto"><img src="fotos/lombardo.webp?v=20261012" width="900" height="552" alt="Lombardo Montecatini 7.0" loading="lazy"/><span class="etiq">Outlet</span></div>
+        <h3>Lombardo Montecatini 7.0</h3>
+        <p class="precio"><s>3.099 €</s> <strong>2.599 €</strong></p>
+        <button class="anadir" type="button" data-nombre="Lombardo Montecatini 7.0">Añadir al carrito</button>
+        <a class="preg" href="#contacto" data-bici="Lombardo Montecatini 7.0">Preguntar por esta bici</a>
+      </li>
+      <li class="prod" data-cat="outlet" data-precio="799">
+        <div class="prod__foto"><img src="fotos/wst-poison.webp?v=20261012" width="900" height="520" alt="WST Poison 9411 29" disc" loading="lazy"/><span class="etiq">Outlet</span></div>
+        <h3>WST Poison 9411 29" disc</h3>
+        <p class="precio"><s>875 €</s> <strong>799 €</strong></p>
+        <button class="anadir" type="button" data-nombre="WST Poison 9411 29" disc">Añadir al carrito</button>
+        <a class="preg" href="#contacto" data-bici="WST Poison 9411 29" disc">Preguntar por esta bici</a>
+      </li>
+      <li class="prod" data-cat="outlet" data-precio="4599">
+        <div class="prod__foto"><img src="fotos/cayman.webp?v=20261012" width="548" height="313" alt="Berria Cayman Elite NX" loading="lazy"/><span class="etiq">Outlet</span></div>
+        <h3>Berria Cayman Elite NX</h3>
+        <p class="precio"><s>5.799 €</s> <strong>4.599 €</strong></p>
+        <button class="anadir" type="button" data-nombre="Berria Cayman Elite NX">Añadir al carrito</button>
+        <a class="preg" href="#contacto" data-bici="Berria Cayman Elite NX">Preguntar por esta bici</a>
+      </li>
+      <li class="prod" data-cat="equipamiento" data-precio="90">
+        <div class="prod__foto"><img src="fotos/met-echo.webp?v=20261012" width="800" height="605" alt="Casco MET Echo MIPS azul mate" loading="lazy"/><span class="etiq">Equipamiento</span></div>
+        <h3>Casco MET Echo MIPS azul mate</h3>
+        <p class="precio"><strong>90 €</strong></p>
+        <button class="anadir" type="button" data-nombre="Casco MET Echo MIPS azul mate">Añadir al carrito</button>
+        <a class="preg" href="#contacto" data-bici="Casco MET Echo MIPS azul mate">Preguntar por esta bici</a>
+      </li>
+      <li class="prod" data-cat="equipamiento" data-precio="75">
+        <div class="prod__foto"><img src="fotos/met-crossover.webp?v=20261012" width="604" height="357" alt="Casco MET Crossover negro/gris/rosa mate" loading="lazy"/><span class="etiq">Equipamiento</span></div>
+        <h3>Casco MET Crossover negro/gris/rosa mate</h3>
+        <p class="precio"><strong>75 €</strong></p>
+        <button class="anadir" type="button" data-nombre="Casco MET Crossover negro/gris/rosa mate">Añadir al carrito</button>
+        <a class="preg" href="#contacto" data-bici="Casco MET Crossover negro/gris/rosa mate">Preguntar por esta bici</a>
+      </li>
+      <li class="prod" data-cat="ofertas" data-precio="65">
+        <div class="prod__foto"><img src="fotos/onguard-k9.webp?v=20261012" width="424" height="346" alt="Candado plegable Onguard K9" loading="lazy"/><span class="etiq">Oferta</span></div>
+        <h3>Candado plegable Onguard K9</h3>
+        <p class="precio"><s>75 €</s> <strong>65 €</strong></p>
+        <button class="anadir" type="button" data-nombre="Candado plegable Onguard K9">Añadir al carrito</button>
+        <a class="preg" href="#contacto" data-bici="Candado plegable Onguard K9">Preguntar por esta bici</a>
+      </li>
+      <li class="prod" data-cat="equipamiento" data-precio="55">
+        <div class="prod__foto"><img src="fotos/lazer-chiru.webp?v=20261012" width="700" height="599" alt="Casco Lazer Chiru azul mate" loading="lazy"/><span class="etiq">Equipamiento</span></div>
+        <h3>Casco Lazer Chiru azul mate</h3>
+        <p class="precio"><s>70 €</s> <strong>55 €</strong></p>
+        <button class="anadir" type="button" data-nombre="Casco Lazer Chiru azul mate">Añadir al carrito</button>
+        <a class="preg" href="#contacto" data-bici="Casco Lazer Chiru azul mate">Preguntar por esta bici</a>
+      </li>
+      <li class="prod" data-cat="ruedas" data-precio="1495">
+        <div class="prod__foto"><img src="fotos/speedsix-air35.webp?v=20261012" width="697" height="700" alt="SpeedSix Air 35 Ultralight carbono disc" loading="lazy"/><span class="etiq">Ruedas</span></div>
+        <h3>SpeedSix Air 35 Ultralight carbono disc</h3>
+        <p class="precio"><s>1.895 €</s> <strong>1.495 €</strong></p>
+        <button class="anadir" type="button" data-nombre="SpeedSix Air 35 Ultralight carbono disc">Añadir al carrito</button>
+        <a class="preg" href="#contacto" data-bici="SpeedSix Air 35 Ultralight carbono disc">Preguntar por esta bici</a>
+      </li>
+      <li class="prod" data-cat="ruedas" data-precio="1495">
+        <div class="prod__foto"><img src="fotos/speedsix-air55.webp?v=20261012" width="692" height="692" alt="SpeedSix Air 55 Ultralight carbono disc" loading="lazy"/><span class="etiq">Ruedas</span></div>
+        <h3>SpeedSix Air 55 Ultralight carbono disc</h3>
+        <p class="precio"><s>1.895 €</s> <strong>1.495 €</strong></p>
+        <button class="anadir" type="button" data-nombre="SpeedSix Air 55 Ultralight carbono disc">Añadir al carrito</button>
+        <a class="preg" href="#contacto" data-bici="SpeedSix Air 55 Ultralight carbono disc">Preguntar por esta bici</a>
+      </li>
+      <li class="prod" data-cat="ruedas" data-precio="1295">
+        <div class="prod__foto"><img src="fotos/speedsix-earth.webp?v=20261012" width="700" height="700" alt="SpeedSix Earth gravel carbono disc" loading="lazy"/><span class="etiq">Ruedas</span></div>
+        <h3>SpeedSix Earth gravel carbono disc</h3>
+        <p class="precio"><strong>1.295 €</strong></p>
+        <button class="anadir" type="button" data-nombre="SpeedSix Earth gravel carbono disc">Añadir al carrito</button>
+        <a class="preg" href="#contacto" data-bici="SpeedSix Earth gravel carbono disc">Preguntar por esta bici</a>
+      </li>
+      <li class="prod" data-cat="accesorios" data-precio="49">
+        <div class="prod__foto"><img src="fotos/onguard-mastiff.webp?v=20261012" width="366" height="507" alt="Candado de cadena Onguard Mastiff" loading="lazy"/><span class="etiq">Accesorio</span></div>
+        <h3>Candado de cadena Onguard Mastiff</h3>
+        <p class="precio"><s>60 €</s> <strong>49 €</strong></p>
+        <button class="anadir" type="button" data-nombre="Candado de cadena Onguard Mastiff">Añadir al carrito</button>
+        <a class="preg" href="#contacto" data-bici="Candado de cadena Onguard Mastiff">Preguntar por esta bici</a>
+      </li>
+      <li class="prod" data-cat="accesorios" data-precio="29">
+        <div class="prod__foto"><img src="fotos/gurpil-plegable.webp?v=20261012" width="512" height="496" alt="Candado plegable Gurpil" loading="lazy"/><span class="etiq">Accesorio</span></div>
+        <h3>Candado plegable Gurpil</h3>
+        <p class="precio"><s>35 €</s> <strong>29 €</strong></p>
+        <button class="anadir" type="button" data-nombre="Candado plegable Gurpil">Añadir al carrito</button>
+        <a class="preg" href="#contacto" data-bici="Candado plegable Gurpil">Preguntar por esta bici</a>
+      </li>
+      <li class="prod" data-cat="accesorios" data-precio="22">
+        <div class="prod__foto"><img src="fotos/onguard-doberman.webp?v=20261012" width="461" height="767" alt="Candado Onguard Doberman 15x185" loading="lazy"/><span class="etiq">Accesorio</span></div>
+        <h3>Candado Onguard Doberman 15x185</h3>
+        <p class="precio"><s>26 €</s> <strong>22 €</strong></p>
+        <button class="anadir" type="button" data-nombre="Candado Onguard Doberman 15x185">Añadir al carrito</button>
+        <a class="preg" href="#contacto" data-bici="Candado Onguard Doberman 15x185">Preguntar por esta bici</a>
+      </li>
+  </ul>
+  <p class="vacio" data-vacio hidden>En la muestra solo enseñamos una selección; el resto está en su tienda online.</p>
+  <div class="fin">
+    <div><b>Financiación hasta 60 meses</b><p>En bicis y accesorios.</p></div>
+    <div><b>Tu bici como parte de pago</b><p>Aceptamos tu bici al comprar una nueva. Tasación inmediata.</p></div>
+    <div><b>Paga online</b><p>Con tarjeta o Bizum desde el móvil, sin salir de casa.</p></div>
+  </div>
+  <p class="tienda__nota">Precios de su tienda online a octubre de 2026.</p>
+</section>
+
+<section class="cierre" id="contacto" aria-labelledby="cierre-t">
+  <svg class="rueda" viewBox="0 0 800 300" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><circle cx="190" cy="180" r="110"/><circle cx="610" cy="180" r="110"/><path d="M190 180l130-90h160l130 90M320 90l-40 90h170l30-90M480 90l-15-30h50M320 90l-10-26h-30"/></svg>
+  <span class="mono">¿Te ayudamos?</span>
+  <h2 id="cierre-t" data-lineas>Si necesitas ayuda, <span class="hueco">el equipo te atiende</span></h2>
+  <p class="sub">Llámanos, escríbenos por WhatsApp o pásate por la tienda. Alquileres a cualquier hora.</p>
+  <div class="tels"><a class="tel" href="tel:+34943539703">943 539 703</a><span class="tel" aria-hidden="true" style="opacity:.3">/</span><a class="tel" href="tel:+34688756396">688 756 396</a></div>
+  <a class="btn" href="https://wa.me/34688756396">Escribir por WhatsApp <i aria-hidden="true">→</i></a>
+
+  <div class="contacto">
+    <div>
+      <h3>Horario</h3>
+      <ul class="horas"><li><span>Lunes a viernes</span><span>10:00–13:30 · 16:00–19:30</span></li><li><span>Sábados</span><span>10:30–13:30</span></li></ul>
+      <p class="estado" data-estado><i></i><span>Horario habitual</span></p>
+    </div>
+    <div>
+      <h3>Dónde estamos</h3>
+      <address>Plaza Teresa de Calcuta, 6 bajo<br/>20012 Donostia – San Sebastián<br/>ohmybike@hotmail.com</address>
+      <a class="cl" href="https://www.google.com/maps/search/?api=1&query=Oh+My+Bike+Plaza+Teresa+de+Calcuta+6+Donostia">Cómo llegar →</a>
+    </div>
+    <form data-form novalidate>
+      <h3>Escríbenos</h3>
+      <div><label for="f-t">Motivo</label><select id="f-t" name="motivo"><option>Comprar una bici</option><option>Alquilar una bici</option><option>Reservar un tour</option><option>Taller o reparación</option><option>Otra consulta</option></select></div>
+      <div><label for="f-n">Nombre</label><input id="f-n" name="nombre" autocomplete="name"/></div>
+      <div><label for="f-e">Correo</label><input id="f-e" name="email" type="email" autocomplete="email"/></div>
+      <div><label for="f-m">¿Qué necesitas?</label><textarea id="f-m" name="mensaje"></textarea></div>
+      <button class="btn" type="submit">Enviar mensaje <i aria-hidden="true">→</i></button>
+      <p class="ok" role="status" data-ok></p>
+    </form>
+  </div>
+
+  <div class="llegar">
+    <figure class="croquis" data-croquis>
+      <svg class="mapa" viewBox="0 0 960 440" role="img" aria-labelledby="croq-t croq-d">
+    <title id="croq-t">Croquis de cómo llegar a Oh My Bike!</title>
+    <desc id="croq-d">Dibujo esquemático, sin escala: una ruta en bici llega hasta la tienda, en la Plaza Teresa de Calcuta, 6 bajo, con el río cerca.</desc>
+    <defs><linearGradient id="fondoMapa" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfdde8"/><stop offset="1" stop-color="#a1b8c9"/></linearGradient>
+    <pattern id="adoquin" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#fff" opacity=".55"/></pattern></defs>
+    <rect width="960" height="440" rx="14" fill="url(#fondoMapa)"/>
+    <rect width="960" height="440" rx="14" fill="url(#adoquin)"/>
+    <g fill="#fff" opacity=".62"><rect x="40" y="40" width="120" height="70" rx="10"/><rect x="180" y="40" width="90" height="70" rx="10"/><rect x="290" y="40" width="130" height="70" rx="10"/><rect x="40" y="130" width="70" height="80" rx="10"/><rect x="130" y="130" width="140" height="80" rx="10"/><rect x="40" y="230" width="100" height="70" rx="10"/><rect x="160" y="230" width="110" height="70" rx="10"/><rect x="40" y="320" width="130" height="80" rx="10"/><rect x="190" y="320" width="80" height="80" rx="10"/><rect x="560" y="40" width="100" height="60" rx="10"/><rect x="680" y="40" width="120" height="60" rx="10"/><rect x="820" y="40" width="100" height="60" rx="10"/><rect x="600" y="120" width="90" height="70" rx="10"/><rect x="710" y="120" width="110" height="70" rx="10"/><rect x="840" y="120" width="80" height="70" rx="10"/><rect x="560" y="210" width="110" height="60" rx="10"/><rect x="690" y="210" width="70" height="60" rx="10"/><rect x="780" y="210" width="140" height="60" rx="10"/><rect x="600" y="290" width="120" height="70" rx="10"/><rect x="740" y="290" width="90" height="70" rx="10"/><rect x="850" y="290" width="70" height="70" rx="10"/><rect x="560" y="380" width="150" height="40" rx="10"/><rect x="730" y="380" width="190" height="40" rx="10"/><rect x="330" y="330" width="90" height="70" rx="10"/><rect x="330" y="230" width="70" height="60" rx="10"/></g>
+    <path class="rio" d="M-20 395 C 150 330, 300 420, 430 300 S 640 150, 980 215" fill="none" stroke="#5d7f97" stroke-width="58" stroke-linecap="round"/>
+    <path d="M-20 395 C 150 330, 300 420, 430 300 S 640 150, 980 215" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="2 14" stroke-linecap="round" opacity=".8"/>
+    <text x="108" y="388" font-family="JetBrains Mono,monospace" font-size="13" font-weight="700" fill="#fff" letter-spacing="2" transform="rotate(-12 108 388)">RÍO</text>
+    <path class="ruta" d="M70 120 L70 215 L300 215 L300 150 L470 150 L470 250 L530 250 L530 205" fill="none" stroke="#0d141c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 11" pathLength="1000"/>
+    <path class="ruta-l" d="M70 120 L70 215 L300 215 L300 150 L470 150 L470 250 L530 250 L530 205" fill="none" stroke="#0d141c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" pathLength="1000"/>
+    <g transform="translate(70 120)"><circle r="19" fill="#fff"/><circle cx="0" cy="0" r="13" fill="none" stroke="#0d141c" stroke-width="1.56"/><line x1="0" y1="0" x2="13.0" y2="0.0" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="0" x2="11.3" y2="6.5" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="0" x2="6.5" y2="11.3" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="0" x2="0.0" y2="13.0" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="0" x2="-6.5" y2="11.3" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="0" x2="-11.3" y2="6.5" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="0" x2="-13.0" y2="0.0" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="0" x2="-11.3" y2="-6.5" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="0" x2="-6.5" y2="-11.3" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="0" x2="-0.0" y2="-13.0" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="0" x2="6.5" y2="-11.3" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="0" x2="11.3" y2="-6.5" stroke="#0d141c" stroke-width="1"/><circle cx="0" cy="0" r="1.8200000000000003" fill="#0d141c"/></g>
+    <g><rect x="38" y="62" width="64" height="26" rx="13" fill="#0d141c"/><text x="70" y="79.5" text-anchor="middle" font-family="Archivo,sans-serif" font-size="13" font-weight="900" fill="#fff" letter-spacing="1">TÚ</text></g>
+    <g class="pin" transform="translate(530 192)">
+      <path d="M0 14 L-13 -10 A26 26 0 1 1 13 -10 Z" fill="#0d141c" transform="translate(0 6)"/>
+      <circle cy="-22" r="24" fill="#fff"/><circle cx="0" cy="-22" r="17" fill="none" stroke="#0d141c" stroke-width="2.04"/><line x1="0" y1="-22" x2="17.0" y2="-22.0" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="-22" x2="14.7" y2="-13.5" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="-22" x2="8.5" y2="-7.3" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="-22" x2="0.0" y2="-5.0" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="-22" x2="-8.5" y2="-7.3" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="-22" x2="-14.7" y2="-13.5" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="-22" x2="-17.0" y2="-22.0" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="-22" x2="-14.7" y2="-30.5" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="-22" x2="-8.5" y2="-36.7" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="-22" x2="-0.0" y2="-39.0" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="-22" x2="8.5" y2="-36.7" stroke="#0d141c" stroke-width="1"/><line x1="0" y1="-22" x2="14.7" y2="-30.5" stroke="#0d141c" stroke-width="1"/><circle cx="0" cy="-22" r="2.3800000000000003" fill="#0d141c"/>
+    </g>
+    <g transform="translate(560 140)"><rect width="250" height="62" rx="12" fill="#fff"/><text x="16" y="27" font-family="Archivo,sans-serif" font-size="21" font-weight="900" fill="#0d141c" letter-spacing="-.5">OH MY BIKE!</text><text x="16" y="48" font-family="Satoshi,sans-serif" font-size="14" fill="#566471">Plaza Teresa de Calcuta, 6 bajo</text></g>
+    <g transform="translate(895 395)"><circle r="30" fill="#fff" opacity=".85"/><circle cx="0" cy="0" r="26" fill="none" stroke="#3d5a73" stroke-width="3.12"/><line x1="0" y1="0" x2="26.0" y2="0.0" stroke="#3d5a73" stroke-width="1.04"/><line x1="0" y1="0" x2="22.5" y2="13.0" stroke="#3d5a73" stroke-width="1.04"/><line x1="0" y1="0" x2="13.0" y2="22.5" stroke="#3d5a73" stroke-width="1.04"/><line x1="0" y1="0" x2="0.0" y2="26.0" stroke="#3d5a73" stroke-width="1.04"/><line x1="0" y1="0" x2="-13.0" y2="22.5" stroke="#3d5a73" stroke-width="1.04"/><line x1="0" y1="0" x2="-22.5" y2="13.0" stroke="#3d5a73" stroke-width="1.04"/><line x1="0" y1="0" x2="-26.0" y2="0.0" stroke="#3d5a73" stroke-width="1.04"/><line x1="0" y1="0" x2="-22.5" y2="-13.0" stroke="#3d5a73" stroke-width="1.04"/><line x1="0" y1="0" x2="-13.0" y2="-22.5" stroke="#3d5a73" stroke-width="1.04"/><line x1="0" y1="0" x2="-0.0" y2="-26.0" stroke="#3d5a73" stroke-width="1.04"/><line x1="0" y1="0" x2="13.0" y2="-22.5" stroke="#3d5a73" stroke-width="1.04"/><line x1="0" y1="0" x2="22.5" y2="-13.0" stroke="#3d5a73" stroke-width="1.04"/><circle cx="0" cy="0" r="3.6400000000000006" fill="#3d5a73"/><text y="-34" text-anchor="middle" font-family="Archivo,sans-serif" font-size="15" font-weight="900" fill="#0d141c">N</text></g>
+  </svg>
+      <figcaption class="mono">Croquis orientativo · sin escala</figcaption>
+    </figure>
+    <div class="llegar__t">
+      <span class="mono">Cómo llegar</span>
+      <h3>En bici, hasta la puerta</h3>
+      <p>Plaza Teresa de Calcuta, 6 bajo, en Donostia. Si vienes con tu bici, el taller atiende sin cita y tiene lavadero.</p>
+      <div class="acc2"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Oh+My+Bike+Plaza+Teresa+de+Calcuta+6+Donostia">Abrir en el mapa <i aria-hidden="true">→</i></a><a class="btn btn--linea" href="tel:+34943539703">Llamar <i aria-hidden="true">→</i></a></div>
+    </div>
+  </div>
+</section>
+
+<footer class="pie">
+  <div class="pie__marca">
+    <p class="pie__logo">OH MY BIKE!</p>
+    <p>Tienda, taller y alquiler de bicis en Donostia desde 2016.</p>
+    <p>Plaza Teresa de Calcuta, 6 bajo · 20012 Donostia – San Sebastián</p>
+  </div>
+  <div><h4>Tienda</h4><a href="#tienda" data-ir="bicis">Bicicletas</a><a href="#tienda" data-ir="equipamiento">Equipamiento</a><a href="#tienda" data-ir="accesorios">Accesorios y componentes</a><a href="#tienda" data-ir="ruedas">Ruedas</a><a href="#tienda" data-ir="ofertas">Outlet y ofertas</a></div>
+  <div><h4>Servicios</h4><a href="#alquiler">Alquiler de bicis</a><a href="#tours">Tours guiados</a><a href="#taller">Taller y lavadero</a><a href="#tienda">Financiación hasta 60 meses</a></div>
+  <div><h4>Ayuda</h4><a href="tel:+34943539703">943 539 703</a><a href="https://wa.me/34688756396">WhatsApp 688 756 396</a><a href="mailto:ohmybike@hotmail.com">ohmybike@hotmail.com</a><a href="#contacto">Horario y cómo llegar</a></div>
+  <div class="pie__legal"><span>© Donostibizi 2016 S.L.</span><span>Aviso legal · Política de cookies y privacidad · Términos y condiciones</span><span>Muestra de diseño de <a href="https://oiwebstudio.com">OI Studio</a>, no es la web oficial.</span></div>
+</footer>
+</div>
+
+<div class="cajon" data-cajon hidden>
+  <div class="cajon__velo" data-cerrar></div>
+  <aside class="cajon__hoja" role="dialog" aria-modal="true" aria-labelledby="cajon-t">
+    <header class="cajon__cab"><h2 id="cajon-t">Tu carrito</h2><button type="button" data-cerrar aria-label="Cerrar el carrito">✕</button></header>
+    <div class="cajon__cuerpo" data-paso="carrito">
+      <ul class="cajon__lista" data-lista></ul>
+      <p class="cajon__vacio" data-vacio-carrito>Todavía no has añadido nada. Elige una bici y vuelve aquí.</p>
+      <div class="cajon__pie">
+        <div class="cajon__total"><span>Total</span><b data-total>0 €</b></div>
+        <button class="btn" type="button" data-pagar>Pagar con tarjeta o Bizum <i aria-hidden="true">→</i></button>
+        <p class="cajon__metodos">Tarjeta · Apple Pay · Google Pay · Bizum</p>
+        <p class="cajon__nota">Muestra de cómo sería: el pago se hace en una página segura de Stripe y la tienda no ve tu tarjeta.</p>
+      </div>
+    </div>
+    <div class="cajon__cuerpo cajon__gracias" data-paso="gracias" hidden>
+      <span class="cajon__ok" aria-hidden="true">✓</span>
+      <h3>Gracias por tu pedido</h3>
+      <p>Pedido <b data-pedido>OMB-0000</b></p>
+      <p>Así recibiría la tienda el aviso por correo y tú el justificante. Esto es una muestra: no se ha cobrado nada.</p>
+      <button class="btn btn--linea" type="button" data-cerrar>Seguir mirando <i aria-hidden="true">→</i></button>
+    </div>
+  </aside>
+</div>
+<div class="progreso" data-progreso aria-hidden="true"></div>
+
+<div class="movil" data-barra-movil>
+  <a class="btn btn--claro" href="tel:+34943539703">Llamar <i aria-hidden="true">→</i></a>
+  <a class="btn" href="https://wa.me/34688756396">WhatsApp <i aria-hidden="true">→</i></a>
+</div>
+
+<script src="/assets/vendor/gsap.min.js"></script>
+<script src="/assets/vendor/ScrollTrigger.min.js"></script>
+<script src="/assets/vendor/SplitText.min.js"></script>
+<script src="anim-texto.js"></script>
+<script src="sitio.js"></script>
+<script>
+/* v2: portada con cinco bicis */
+(function () {
+  var h = document.querySelector(".h2"); if (!h) return;
+  var S = JSON.parse(h.dataset.slides), figs = h.querySelectorAll(".h2__bici"), nums = h.querySelectorAll("[data-ir-slide]");
+  var q = function (s) { return h.querySelector(s); };
+  var nombre = q("[data-nombre]"), pie = q(".h2__pie"), texto = q(".h2__texto"), i = 0, t = null;
+  var quieto = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var esp = function (s) { return s.split("").join(" "); };
+  function ajusta() {
+    nombre.style.fontSize = "";
+    var base = parseFloat(getComputedStyle(nombre).fontSize);
+    var una = getComputedStyle(pie).gridTemplateColumns.split(" ").length < 2;
+    var disp = pie.clientWidth - (una ? 0 : texto.offsetWidth + parseFloat(getComputedStyle(pie).columnGap || 0));
+    if (nombre.scrollWidth > disp) nombre.style.fontSize = Math.floor(base * disp / nombre.scrollWidth) + "px";
+  }
+  function pon(n, anima) {
+    i = (n + S.length) % S.length; var s = S[i];
+    figs.forEach(function (f, k) { f.classList.toggle("activa", k === i); });
+    nums.forEach(function (b, k) { if (k === i) b.setAttribute("aria-current", "true"); else b.removeAttribute("aria-current"); });
+    q("[data-precio]").textContent = s.precio; q("[data-tprecio]").textContent = s.tPrecio;
+    q("[data-dial]").textContent = s.dial; q("[data-tdial]").textContent = s.tDial; q(".dial").style.setProperty("--p", s.p);
+    q("[data-num]").textContent = esp("0" + (i + 1)); q("[data-marcabici]").textContent = esp(s.marca);
+    q("[data-texto]").textContent = s.texto; q("[data-pregunta]").dataset.bici = s.completo;
+    var sig = S[(i + 1) % S.length]; q("[data-mini]").src = "fotos/" + sig.foto + ".webp";
+    nombre.textContent = s.nombre; ajusta();
+    if (anima && !quieto && window.gsap) {
+      if (window.SplitText) { var sp = SplitText.create(nombre, { type: "chars", mask: "chars" }); gsap.from(sp.chars, { yPercent: 110, duration: .9, ease: "expo.out", stagger: .035, onComplete: function () { sp.revert(); } }); }
+      gsap.from(h.querySelectorAll(".vidrio,.dial"), { y: 18, opacity: 0, duration: .7, ease: "expo.out", stagger: .07 });
+    }
+  }
+  function arranca() { if (quieto) return; para(); t = setInterval(function () { pon(i + 1, true); }, 7000); }
+  function para() { if (t) clearInterval(t); t = null; }
+  nums.forEach(function (b) { b.addEventListener("click", function () { pon(+b.dataset.irSlide, true); arranca(); }); });
+  q("[data-siguiente]").addEventListener("click", function () { pon(i + 1, true); arranca(); });
+  h.addEventListener("pointerenter", para); h.addEventListener("pointerleave", arranca);
+  h.addEventListener("focusin", para); h.addEventListener("focusout", arranca);
+  var m = q("[data-abre-menu]"), bur = document.querySelector(".nav .burger");
+  if (m && bur) m.addEventListener("click", function () { bur.click(); });
+  var c = document.getElementById("cuenta"), ch = q(".cuenta-h");
+  if (c && ch && window.MutationObserver) new MutationObserver(function () { ch.textContent = c.textContent; }).observe(c, { childList: true, characterData: true, subtree: true });
+  var nav = document.querySelector(".nav");
+  var mira = function () { if (nav) nav.classList.toggle("pasado", scrollY > h.offsetHeight - 70); };
+  addEventListener("scroll", mira, { passive: true }); mira();
+  addEventListener("resize", ajusta);
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(function () { pon(0, false); if (!quieto && window.gsap && window.SplitText) { var sp = SplitText.create(nombre, { type: "chars", mask: "chars" }); gsap.from(sp.chars, { yPercent: 110, duration: 1.1, ease: "expo.out", stagger: .04, delay: .2, onComplete: function () { sp.revert(); } }); } arranca(); });
+})();
+</script>
+</body>
+</html>
