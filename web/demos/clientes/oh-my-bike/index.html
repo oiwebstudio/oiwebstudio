@@ -619,6 +619,62 @@ mark{background:none;color:inherit;padding:0;margin:0}
 }
 .prod__foto{position:relative;display:block}
 .prod__foto img{position:absolute;inset:16px;margin:auto;max-width:calc(100% - 32px);max-height:calc(100% - 40px);width:auto;height:auto;object-fit:contain}
+
+/* v9 · letra y diseño de tienda de marca: Switzer (neogrotesca, como Orbea o Canyon) para titulares y texto,
+   Archivo estrecha en mayúsculas para menú, etiquetas y botones (como Cube, Cervélo o el DIN de Specialized). */
+:root{--sans:Switzer,system-ui,sans-serif;--cond:Archivo,sans-serif}
+body{font-family:var(--sans)}
+h1,h2,h3,h4,.textos h1,.busca h2,.bento__c strong,.tile__t,.fin b,.tour h3,.acordeon summary,.llegar__t h3,.cajon__cab h2,.cajon__gracias h3,.razones li,.prod h3,.rot,.tel,.cifras dt,.precio strong,.panel td:last-child,.tour .pr,.acordeon summary b,.cajon__total b{font-family:var(--sans)!important;text-transform:none!important}
+h2,.busca h2{font-weight:600;font-size:clamp(32px,4.2vw,60px);letter-spacing:-.03em;line-height:1.04}
+.textos h1{font-weight:600;font-size:clamp(34px,4.4cqw,68px);letter-spacing:-.035em;line-height:1}
+.palabra{display:none}
+.mono,.sello,.etiq,.tile__n,.cajon__metodos,.croquis figcaption,.tours__cab .mono,.tour .n,.fila .n{font-family:var(--cond)!important;font-stretch:75%;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.nav ul a,.llamar,.carrito,.burger,.panelmenu a,.btn,.anadir,.tab,.cat,.chip,.res,.preg,.avisos,.pie h4{font-family:var(--cond)!important;font-stretch:87.5%;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.nav ul a{font-size:15px}
+.btn{font-size:14px}
+.anadir{font-size:13px}
+.bento__c strong{font-weight:600;font-size:clamp(24px,2.4vw,36px);letter-spacing:-.025em}
+.tour h3,.acordeon summary,.tile__t,.fin b,.prod h3,.rot,.razones li,.llegar__t h3{font-weight:600;letter-spacing:-.01em}
+.acordeon summary{font-size:18px}
+.precio strong,.cifras dt,.tel,.tour .pr,.acordeon summary b,.panel td:last-child,.cajon__total b{font-weight:600;letter-spacing:-.03em}
+.razones li{font-size:17px}
+.razones li small{font-weight:400}
+/* cabecera blanca, como en todas las tiendas de marca */
+.nav,.nav.solid{background:#fff;box-shadow:0 1px 0 var(--linea);backdrop-filter:none;-webkit-backdrop-filter:none}
+.nav .logo,.nav ul a,.nav .idioma,.nav .llamar{color:var(--tinta);text-shadow:none}
+.nav .logo svg{color:var(--tinta)}
+.nav .carrito{background:var(--tinta);color:#fff}
+.nav .carrito b{background:#fff;color:var(--tinta)}
+.burger{background:var(--tinta);color:#fff}
+.bici3d{bottom:9%;width:59%}
+/* franja de categorías */
+.franja{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;padding:18px var(--lat);background:#fff;border-bottom:1px solid var(--linea)}
+.franja a{display:flex;flex-direction:column;align-items:center;gap:10px;padding:14px 6px 12px;border-radius:6px;text-decoration:none;color:var(--tinta);font:600 15px var(--sans);transition:background 200ms var(--e)}
+.franja img{height:68px;width:auto;max-width:100%;object-fit:contain;mix-blend-mode:multiply;transition:transform 400ms var(--e)}
+@media(hover:hover) and (pointer:fine){.franja a:hover{background:#eef1f4}.franja a:hover img{transform:translateY(-3px)}}
+@media(max-width:860px){.franja{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:34%;overflow-x:auto;scroll-snap-type:x mandatory;padding:12px 16px;scrollbar-width:none}.franja a{scroll-snap-align:start}.franja img{height:54px}}
+/* pie */
+.pie{display:grid;grid-template-columns:1.5fr repeat(3,minmax(0,1fr));gap:36px;padding:64px var(--lat) 28px;background:var(--tinta);color:#c5d3de;font-size:15px;justify-content:initial}
+.pie h4{font-size:12.5px;color:#fff;margin-bottom:14px}
+.pie a{display:block;color:#c5d3de;text-decoration:none;padding:6px 0}
+@media(hover:hover) and (pointer:fine){.pie a:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}}
+.pie__logo{font:900 26px/1 Archivo,sans-serif;letter-spacing:-.02em;color:#fff;margin-bottom:14px}
+.pie__marca p{margin-bottom:8px;max-width:34ch}
+.pie__legal{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-between;border-top:1px solid rgba(255,255,255,.16);padding-top:22px;margin-top:8px;font-size:13px}
+.pie__legal a{display:inline;color:#fff;padding:0;text-decoration:underline}
+@media(max-width:860px){.pie{grid-template-columns:1fr 1fr;gap:28px}.pie__marca{grid-column:1/-1}}
+
+.nav{gap:24px}.nav ul{gap:26px}
+.nav ul a,.llamar,.idioma,.logo,.carrito{white-space:nowrap}
+.portada{height:clamp(620px,90svh,880px)}
+.bici3d{top:calc(50% + 50px);bottom:auto;translate:0 -50%}
+.textos{top:calc(50% + 50px);bottom:auto;translate:0 -50%}
+.textos,.textos h1,.textos p{text-shadow:none}
+@media(max-width:1180px){.idioma{display:none}}
+@media(max-width:760px){.portada{height:auto}.bici3d{top:150px;translate:none}.textos{top:auto;translate:none}}
+.suelo{display:none!important}
+@media(max-width:760px){.bici3d{left:-3%;width:106%;top:130px;bottom:auto;translate:none}.portada{min-height:760px}}
+@media(max-width:760px){.portada{height:auto;min-height:0;padding-top:392px}.textos{margin-top:0;padding-bottom:44px}}
 </style>
 <script>document.documentElement.classList.add("js")</script>
 </head>
@@ -669,6 +725,15 @@ mark{background:none;color:inherit;padding:0;margin:0}
     </div>
   </div>
 </header>
+<nav class="franja" aria-label="Categorías de la tienda">
+  <a href="#tienda" data-ir="bicis:electricas"><img src="fotos/bravo.webp?v=20261012" alt="" loading="lazy"/><span>Eléctricas</span></a>
+  <a href="#tienda" data-ir="bicis:carbono"><img src="fotos/belador.webp?v=20261012" alt="" loading="lazy"/><span>Carbono</span></a>
+  <a href="#tienda" data-ir="bicis:aluminio"><img src="fotos/wst-cosmo.webp?v=20261012" alt="" loading="lazy"/><span>Aluminio</span></a>
+  <a href="#tienda" data-ir="ofertas"><img src="fotos/cayman.webp?v=20261012" alt="" loading="lazy"/><span>Outlet</span></a>
+  <a href="#tienda" data-ir="equipamiento"><img src="fotos/met-echo.webp?v=20261012" alt="" loading="lazy"/><span>Equipamiento</span></a>
+  <a href="#tienda" data-ir="accesorios"><img src="fotos/onguard-mastiff.webp?v=20261012" alt="" loading="lazy"/><span>Accesorios</span></a>
+  <a href="#tienda" data-ir="ruedas"><img src="fotos/speedsix-air35.webp?v=20261012" alt="" loading="lazy"/><span>Ruedas</span></a>
+</nav>
 
 <section class="busca wrap" aria-labelledby="busca-t">
   <h2 id="busca-t" data-lineas>Lo que estabas <span class="hueco">buscando</span></h2>
@@ -1059,10 +1124,16 @@ mark{background:none;color:inherit;padding:0;margin:0}
   </div>
 </section>
 
-<footer>
-  <span>© Donostibizi 2016 S.L. · Taller, venta y alquiler de bicis · Tours guiados por Donostia y alrededores · Accesorios y componentes</span>
-  <span>Aviso legal · Política de cookies y privacidad · Términos y condiciones</span>
-  <span>Muestra de diseño de <a href="https://oiwebstudio.com">OI Studio</a>, no es la web oficial.</span>
+<footer class="pie">
+  <div class="pie__marca">
+    <p class="pie__logo">OH MY BIKE!</p>
+    <p>Tienda, taller y alquiler de bicis en Donostia desde 2016.</p>
+    <p>Plaza Teresa de Calcuta, 6 bajo · 20012 Donostia – San Sebastián</p>
+  </div>
+  <div><h4>Tienda</h4><a href="#tienda" data-ir="bicis">Bicicletas</a><a href="#tienda" data-ir="equipamiento">Equipamiento</a><a href="#tienda" data-ir="accesorios">Accesorios y componentes</a><a href="#tienda" data-ir="ruedas">Ruedas</a><a href="#tienda" data-ir="ofertas">Outlet y ofertas</a></div>
+  <div><h4>Servicios</h4><a href="#alquiler">Alquiler de bicis</a><a href="#tours">Tours guiados</a><a href="#taller">Taller y lavadero</a><a href="#tienda">Financiación hasta 60 meses</a></div>
+  <div><h4>Ayuda</h4><a href="tel:+34943539703">943 539 703</a><a href="https://wa.me/34688756396">WhatsApp 688 756 396</a><a href="mailto:ohmybike@hotmail.com">ohmybike@hotmail.com</a><a href="#contacto">Horario y cómo llegar</a></div>
+  <div class="pie__legal"><span>© Donostibizi 2016 S.L.</span><span>Aviso legal · Política de cookies y privacidad · Términos y condiciones</span><span>Muestra de diseño de <a href="https://oiwebstudio.com">OI Studio</a>, no es la web oficial.</span></div>
 </footer>
 </div>
 

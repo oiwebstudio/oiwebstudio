@@ -175,3 +175,13 @@
     mueve(); addEventListener("scroll", mueve, { passive: true }); addEventListener("resize", mueve);
   }
 })();
+
+/* franja de categorías y pie: llevan a la tienda con la categoría ya elegida */
+(function () {
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest("[data-ir]"); if (!a) return;
+    var p = a.dataset.ir.split(":"), t = document.querySelector('.tile[data-g="' + p[0] + '"]');
+    if (t) t.click();
+    if (p[1]) { var c = document.querySelector('.cat[data-f="' + p[1] + '"]'); if (c) c.click(); }
+  });
+})();
