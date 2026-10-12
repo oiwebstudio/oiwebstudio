@@ -688,8 +688,12 @@ h2,.busca h2{font-weight:600;font-size:clamp(32px,4.2vw,60px);letter-spacing:-.0
 .h2__bici{position:absolute;inset:0;margin:0;opacity:0;transform:scale(1.05) translateX(3%);transition:opacity 900ms var(--e),transform 1400ms var(--e)}
 .h2__bici.activa{opacity:1;transform:none}
 .h2__bici img{position:absolute;left:4%;top:-8%;width:104%;max-width:none;height:auto;filter:brightness(.8) contrast(1.08) saturate(.92) drop-shadow(0 40px 60px rgba(0,0,0,.45))}
+.h2__h1{margin:0;font:inherit}
 .h2__logo{position:absolute;z-index:6;top:clamp(18px,2.4vw,30px);left:clamp(18px,2.4vw,32px);display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font:600 13px/1 Panchang,Archivo,sans-serif;letter-spacing:.08em}
-.h2__logo svg{width:26px;height:26px}
+.h2__logo{gap:14px;align-items:center}.h2__logo svg{width:clamp(34px,3.2vw,46px);height:clamp(34px,3.2vw,46px);flex:none}
+.h2__titulo{display:grid;gap:7px}
+.h2__titulo b{font:800 clamp(20px,2.3vw,34px)/1 Panchang,sans-serif;letter-spacing:.01em;color:#fff}
+.h2__titulo small{font:500 clamp(9.5px,.85vw,12px)/1.2 Archivo,sans-serif;font-stretch:125%;letter-spacing:.2em;text-transform:uppercase;color:#c5d3de}
 /* muesca de arriba */
 .h2__nav{position:absolute;z-index:6;top:0;right:0;display:flex;align-items:center;gap:clamp(16px,2.4vw,34px);padding:12px 12px 14px 18px;background:#fff;border-bottom-left-radius:28px;color:var(--n0)}
 .h2__nav::before,.h2__nav::after{content:"";position:absolute;width:28px;height:28px;background:radial-gradient(circle at 0 100%,transparent 27.5px,#fff 28px)}
@@ -743,7 +747,7 @@ h2,.busca h2{font-weight:600;font-size:clamp(32px,4.2vw,60px);letter-spacing:-.0
 @media(max-width:1100px){.h2__enl:nth-of-type(n+3){display:none}}
 @media(max-width:760px){
   .h2{padding:8px}
-  .h2__marco{height:auto;min-height:0;padding:96px 18px 22px;border-radius:24px;display:flex;flex-direction:column}
+  .h2__marco{height:auto;min-height:0;padding:84px 18px 22px;border-radius:24px;display:flex;flex-direction:column}
   .h2__slides{position:relative;height:250px;margin:0 -18px}
   .h2__bici img{left:-18%;top:2%;width:150%}
   .h2__enl{display:none}
@@ -760,7 +764,7 @@ h2,.busca h2{font-weight:600;font-size:clamp(32px,4.2vw,60px);letter-spacing:-.0
   .h2__mini{display:none}
   .h2__marca{white-space:normal;letter-spacing:.22em;font-size:11px;line-height:1.6}.h2__marca i{display:none}
   .h2__marco::after{background:linear-gradient(180deg,rgba(11,22,32,.25),rgba(11,22,32,0) 30%,rgba(11,22,32,.55) 70%)}
-  .h2__logo{top:22px;left:16px;gap:8px}.h2__logo span{font-size:10.5px}.h2__logo svg{width:22px;height:22px}
+  .h2__logo{top:22px;left:16px;gap:8px}.h2__h1{order:-1;margin:-10px 0 10px;position:relative;z-index:6}.h2__logo{position:static;gap:12px}.h2__logo svg{width:36px;height:36px}.h2__titulo{gap:6px}.h2__titulo b{font-size:clamp(22px,7vw,28px)}.h2__titulo small{font-size:10px;letter-spacing:.16em}
   .h2__nav{gap:6px;padding:8px 8px 10px 12px}.h2__menu{padding:0 12px}
 }
 @media(prefers-reduced-motion:reduce){.h2__bici,.dial .dial__arco{transition:none}}
@@ -795,7 +799,6 @@ h2,.busca h2{font-weight:600;font-size:clamp(32px,4.2vw,60px);letter-spacing:-.0
     <a href="#tienda">Tienda</a><a href="#alquiler">Alquiler bicis</a><a href="#tours">Tours</a><a href="#taller">Taller</a><a href="#contacto">Contacto</a><a href="tel:+34943539703">Llamar: 943 539 703</a>
   </div>
 <header class="h2" data-portada data-slides='[{"foto":"v2-belador-br","marca":"BERRIA BELADOR BR","nombre":"DURA-ACE","completo":"Berria Belador BR Dura-Ace Di2","precio":"6.399","tPrecio":"Precio","dial":"−6%","tDial":"Rebaja","p":6,"texto":"Carretera de carbono con cambio electrónico Shimano Dura-Ace Di2."},{"foto":"v2-poison","marca":"WST","nombre":"POISON","completo":"WST Poison 9411 29\" disc","precio":"799","tPrecio":"Precio outlet","dial":"−9%","tDial":"Rebaja","p":9,"texto":"Montaña rígida de 29 pulgadas con frenos de disco. En el outlet de la tienda."},{"foto":"v2-belador-ultegra","marca":"BERRIA BELADOR PRO","nombre":"ULTEGRA","completo":"Berria Belador Pro Ultegra Di2","precio":"3.299","tPrecio":"Precio","dial":"−6%","tDial":"Rebaja","p":6,"texto":"Carretera de carbono con cambio electrónico Shimano Ultegra Di2."},{"foto":"v2-bravo","marca":"BERRIA","nombre":"BRAVO","completo":"Berria Bravo HPR Elite NX","precio":"2.799","tPrecio":"Precio","dial":"−15%","tDial":"Rebaja","p":15,"texto":"Montaña eléctrica de Berria, ahora con precio rebajado."},{"foto":"v2-belador-rival","marca":"BERRIA BELADOR PRO","nombre":"RIVAL AXS","completo":"Berria Belador Pro Rival AXS PWM","precio":"3.199","tPrecio":"Precio","dial":"−6%","tDial":"Rebaja","p":6,"texto":"Carretera de carbono con grupo SRAM Rival AXS y medidor de potencia."}]'>
-  <h1 class="sr">Oh My Bike! · Tienda, taller y alquiler de bicis en Donostia</h1>
   <div class="h2__marco">
     <div class="h2__slides">
       <figure class="h2__bici activa"><img src="fotos/v2-belador-br.webp?v=20261012" alt="Berria Belador BR Dura-Ace Di2" fetchpriority="high"/></figure>
@@ -804,7 +807,7 @@ h2,.busca h2{font-weight:600;font-size:clamp(32px,4.2vw,60px);letter-spacing:-.0
       <figure class="h2__bici"><img src="fotos/v2-bravo.webp?v=20261012" alt="Berria Bravo HPR Elite NX" loading="lazy"/></figure>
       <figure class="h2__bici"><img src="fotos/v2-belador-rival.webp?v=20261012" alt="Berria Belador Pro Rival AXS PWM" loading="lazy"/></figure>
     </div>
-    <a class="h2__logo" href="#"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="16" cy="16" r="13"/><circle cx="16" cy="16" r="2.4" fill="currentColor"/><path d="M16 3v10M16 19v10M3 16h10M19 16h10M6.8 6.8l7.4 7.4M17.8 17.8l7.4 7.4M25.2 6.8l-7.4 7.4M14.2 17.8l-7.4 7.4" stroke-width="1"/></svg><span>OH MY BIKE!</span></a>
+    <h1 class="h2__h1"><a class="h2__logo" href="#"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="16" cy="16" r="13"/><circle cx="16" cy="16" r="2.4" fill="currentColor"/><path d="M16 3v10M16 19v10M3 16h10M19 16h10M6.8 6.8l7.4 7.4M17.8 17.8l7.4 7.4M25.2 6.8l-7.4 7.4M14.2 17.8l-7.4 7.4" stroke-width="1"/></svg><span class="h2__titulo"><b>OH MY BIKE!</b><small>Tienda y taller de bicis · Donostia</small></span></a></h1>
     <ol class="h2__nums" aria-label="Bicis destacadas">
       <li><button type="button" data-ir-slide="0" aria-label="Berria Belador BR Dura-Ace Di2" aria-current="true">01</button></li>
       <li><button type="button" data-ir-slide="1" aria-label="WST Poison 9411 29&quot; disc">02</button></li>
