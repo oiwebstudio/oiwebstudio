@@ -754,3 +754,183 @@ body{background:var(--crema2);font:400 16px/1.65 var(--sans);letter-spacing:.01e
 @media(max-width:859px){
   .lugar__a{aspect-ratio:6/5}.lugar__b{aspect-ratio:3/2}.lugar__c{aspect-ratio:3/1.9}
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   v6 · «casa con historia». Papel cálido, tinta y un solo color (el ocre de la brasa), rótulos en máquina de
+   escribir, títulos serif, dibujo a mano de la casa como logotipo. Referencias: Asador Nicolás (rótulos mono,
+   botones de contorno, fotos redondeadas), Casa Julián (foto a sangre + «llama y reserva»), Casa Cámara
+   (tres datos, historia con foto antigua y círculo de color, «desde»).
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root{--papel:#efe9df;--papel2:#e7dfd1;--tinta:#1d1a17;--suave:#6b6259;--oro:#c9781a;--oro2:#b36a14;--oroT:#9a5a0e;--linea:rgba(29,26,23,.18);
+  --crema:#e7dfd1;--crema2:#efe9df;--azul:#1d1a17;--serif:"Fraunces",Georgia,serif;--sans:"IBM Plex Mono",ui-monospace,monospace;--texto:"Newsreader",Georgia,serif}
+body{background:var(--papel);color:var(--tinta);font:400 17.5px/1.65 var(--texto)}
+.aviso{background:#1d1a17;color:#d8d0c4;font:400 11.5px var(--sans);letter-spacing:.04em}
+.script,.tit-n,.seccion h2,.seccion .script{font-family:var(--serif)}
+.tit-n,.seccion h2{font-weight:300;font-variation-settings:"opsz" 96;letter-spacing:-.01em}
+.etq-n,.etiqueta{font:400 11px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--oroT)}
+.etq-n--c,.tit-n--c{text-align:center}
+.seccion .intro,.intro-n__t{font-family:var(--sans)}
+
+/* botones: contorno y relleno ocre, como en Nicolás y Julián */
+.boton{font:500 12px var(--sans);letter-spacing:.12em;border-radius:999px;background:var(--tinta);color:#f4efe6;min-height:48px}
+@media(hover:hover) and (pointer:fine){.boton:hover{background:#3a342e}}
+.boton--oro{background:var(--oro);color:#1d1a17}
+@media(hover:hover) and (pointer:fine){.boton--oro:hover{background:#dc8a26}}
+.boton--linea{background:transparent;color:var(--tinta);border:1px solid var(--tinta)}
+@media(hover:hover) and (pointer:fine){.boton--linea:hover{background:var(--tinta);color:#f4efe6}}
+.boton--linea-oro{background:transparent;color:var(--oroT);border:1px solid var(--oro)}
+@media(hover:hover) and (pointer:fine){.boton--linea-oro:hover{background:var(--oro);color:#1d1a17}}
+.boton--cristal{background:rgba(239,233,223,.14);color:#f4efe6;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(239,233,223,.5)}
+@media(hover:hover) and (pointer:fine){.boton--cristal:hover{background:rgba(239,233,223,.28)}}
+.flecha-n{display:inline-flex;gap:10px;align-items:center;margin-top:14px;font:500 11.5px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--tinta);text-decoration:none;border-bottom:1px solid var(--oro);padding:4px 0}
+.flecha-n::after{content:"→";color:var(--oroT);transition:transform .4s var(--e)}
+@media(hover:hover) and (pointer:fine){.flecha-n:hover::after{transform:translateX(5px)}}
+
+/* cabecera: dibujo de la casa · enlaces · reservar */
+.cab{gap:clamp(14px,2.4vw,34px);padding:10px clamp(16px,3vw,40px);color:#f4efe6}
+.cab__logo{padding:0;display:block;line-height:0;letter-spacing:0;position:relative;width:58px;height:58px;flex:none}
+.cab__logo .lg{position:absolute;inset:0;width:100%;height:100%;transition:opacity .35s ease}
+.cab__logo .lg--t{opacity:0}
+.cab.solida .cab__logo .lg--c{opacity:0}.cab.solida .cab__logo .lg--t{opacity:1}
+.menu-abierto .cab .cab__logo .lg--c{opacity:1}.menu-abierto .cab .cab__logo .lg--t{opacity:0}
+.cab__nav{display:flex;gap:clamp(18px,2.2vw,36px);margin-left:clamp(10px,3vw,56px)}
+.cab__nav a{font:400 11.5px var(--sans);letter-spacing:.18em;text-transform:uppercase;padding:12px 0;color:inherit}
+.cab__nav a[aria-current="page"]::after{background:var(--oro)}
+.cab__burger{margin-left:auto;font:400 11.5px var(--sans);letter-spacing:.2em}
+.cab__cta{display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 20px;border-radius:999px;background:transparent;border:1px solid var(--oro);color:#f4efe6!important;font:500 11.5px var(--sans);letter-spacing:.12em;text-transform:uppercase;box-shadow:none;transition:background-color .3s ease,color .3s ease}
+.cab__cta svg{color:var(--oro)}
+.cab__cta-n{font-weight:500;color:var(--oro)}
+@media(hover:hover) and (pointer:fine){.cab__cta:hover{background:var(--oro);color:#1d1a17!important}.cab__cta:hover svg,.cab__cta:hover .cab__cta-n{color:#1d1a17}}
+.cab.solida{background:rgba(239,233,223,.95);color:var(--tinta);box-shadow:0 1px 0 var(--linea)}
+.cab.solida .cab__cta{color:var(--tinta)!important}.cab.solida .cab__cta-n,.cab.solida .cab__cta svg{color:var(--oroT)}
+@media(hover:hover) and (pointer:fine){.cab.solida .cab__cta:hover{color:#1d1a17!important}.cab.solida .cab__cta:hover .cab__cta-n,.cab.solida .cab__cta:hover svg{color:#1d1a17}}
+@media(max-width:1100px){.cab__nav{display:none}}
+@media(max-width:700px){.cab__logo{width:50px;height:50px}.cab__cta{width:46px;height:46px;padding:0;justify-content:center}.cab__cta-t,.cab__cta-n{display:none}.cab__cta svg{width:19px;height:19px}}
+.menu-abierto .cab__nav,.menu-abierto .cab__cta{opacity:0;pointer-events:none}
+.menu-m{background:#1d1a17}
+.menu-m nav a .t{font-family:var(--serif);font-weight:300}
+.menu-m nav a .n,.menu-m nav a small{font-family:var(--sans)}
+.menu-m nav a[aria-current="page"] .n{color:var(--oro)}
+
+/* portada */
+.heroe--portada{padding:150px 0 130px}
+.slides img{filter:brightness(.84) saturate(1.08) contrast(1.05)}
+.heroe--portada .fondo::after{background:linear-gradient(180deg,rgba(20,17,14,.5),rgba(20,17,14,.1) 28%,rgba(20,17,14,.14) 52%,rgba(20,17,14,.66))}
+.heroe--portada .wrap{display:grid;justify-items:center;position:relative;isolation:isolate}
+.heroe--portada .wrap::before{content:"";position:absolute;z-index:-1;inset:-90px -22vw -70px;background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(20,17,14,.58),rgba(20,17,14,.28) 55%,transparent 80%)}
+.hero-pre{font:400 11.5px var(--sans);letter-spacing:.26em;text-transform:uppercase;color:#f4efe6;margin:0 0 22px;text-shadow:0 1px 14px rgba(0,0,0,.7)}
+.heroe.heroe--portada h1.hero-h1{display:block;max-width:17ch;font:300 clamp(44px,6.4vw,100px)/1.04 var(--serif)!important;font-variation-settings:"opsz" 144;letter-spacing:-.015em;text-transform:none;color:#fff;text-shadow:0 2px 40px rgba(0,0,0,.55);padding-bottom:.06em}
+.heroe--portada .cta{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:34px}
+.heroe--portada .cta .boton{min-height:54px;padding:0 30px}
+.valoracion{margin-top:26px;font:400 11.5px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:#f4efe6;text-shadow:0 1px 12px rgba(0,0,0,.7)}
+.valoracion span{color:#f0b35a;letter-spacing:.18em;margin-right:6px}
+.heroe--corto .fondo::before{background:#1d1a17;opacity:.45}
+.heroe h1.script{font:300 clamp(44px,6.6vw,92px)/1.08 var(--serif);font-variation-settings:"opsz" 144;color:#f6f1e8}
+.heroe .sub{font:400 11.5px var(--sans);letter-spacing:.22em}
+@media(max-width:700px){.hero-pre{font-size:10px;letter-spacing:.18em;line-height:1.7}.heroe.heroe--portada h1.hero-h1{font-size:clamp(38px,11.6vw,54px)!important;max-width:11ch}.heroe--portada .cta{flex-direction:column;align-items:stretch;width:min(100%,290px)}.valoracion{font-size:10px;letter-spacing:.06em}.heroe--portada{padding:120px 0 110px}}
+
+/* tres datos (Casa Cámara) */
+.datos{padding:clamp(54px,7vw,100px) 0 clamp(30px,4vw,60px)}
+.datos__g{display:grid;gap:clamp(26px,4vw,64px);max-width:1180px}
+@media(min-width:800px){.datos__g{grid-template-columns:repeat(3,1fr)}}
+.datos h3{font:400 11.5px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--oroT);padding-bottom:12px;border-bottom:1px solid var(--linea)}
+.datos p{margin-top:14px;font:400 18px/1.55 var(--texto);max-width:30ch}
+
+/* historia (Cámara + Julián): foto antigua con círculo de color */
+.historia{padding:clamp(40px,6vw,90px) 0}
+.historia__g{display:grid;gap:clamp(28px,5vw,80px);align-items:center;max-width:1180px}
+@media(min-width:900px){.historia__g{grid-template-columns:1.1fr .9fr}}
+.historia__foto{position:relative;margin:0}
+.historia__foto img{width:100%;aspect-ratio:4/3.3;object-fit:cover;border-radius:6px}
+.sello-n{position:absolute;right:clamp(-14px,-1vw,-6px);bottom:clamp(-28px,-2vw,-14px);width:clamp(128px,14vw,176px);aspect-ratio:1;border-radius:50%;background:var(--oro);color:#1d1a17;display:grid;place-content:center;text-align:center;gap:2px;box-shadow:0 18px 30px -14px rgba(0,0,0,.45)}
+.sello-n span{font:500 9.5px/1.45 var(--sans);letter-spacing:.14em;text-transform:uppercase}
+.sello-n b{font:400 clamp(30px,3.4vw,44px)/1 var(--serif);letter-spacing:-.01em}
+.historia__t .tit-n{font-size:clamp(34px,4.2vw,58px);line-height:1.1;margin-top:14px;text-align:left}
+.historia__t p:not(.etq-n){margin-top:18px;font:400 18px/1.7 var(--texto);max-width:46ch;color:#3a342e}
+.historia__b{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+@media(max-width:899px){.sello-n{right:10px;bottom:-22px}}
+
+/* menús (Nicolás): título con rayas, precio por persona, botón de contorno */
+.menus-n{padding:clamp(54px,7vw,110px) 0;background:var(--papel2)}
+.menus-n .wrap{max-width:1100px}
+.menus-n .tit-n{margin-top:12px}
+.menu-n{display:grid;gap:clamp(24px,4vw,64px);align-items:center;margin-top:clamp(40px,5vw,70px)}
+@media(min-width:820px){.menu-n{grid-template-columns:1fr 1fr}.menu-n--inv .menu-n__f{order:-1}}
+.menu-n__t{text-align:center;max-width:44ch;margin:0 auto}
+.menu-n .rot{font:400 clamp(13px,1.2vw,15px) var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--tinta)}
+.menu-n__t p:not(.rot):not(.menu-n__e):not(.precio-n){margin-top:16px;font:400 19px/1.6 var(--texto);color:#3a342e}
+.menu-n__e{margin-top:16px;font:400 10.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--suave)}
+.precio-n{margin:20px 0 22px;font:300 clamp(48px,5vw,70px)/1 var(--serif);color:var(--tinta)}
+.precio-n small{font:400 10.5px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--suave);margin-left:6px}
+.menu-n__f{margin:0}
+.menu-n__f img{width:100%;aspect-ratio:4/3.4;object-fit:cover;border-radius:18px}
+
+/* cuatro fotos altas numeradas (Nicolás «01 Observar») */
+.cuatro{padding:clamp(54px,7vw,110px) 0}
+.cuatro .wrap{max-width:1320px}
+.cuatro .tit-n{max-width:20ch;margin:12px auto 0;font-size:clamp(32px,4vw,56px)}
+.cuatro__g{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(10px,1.4vw,20px);margin-top:46px}
+.cuatro__g a{display:grid;gap:12px;text-decoration:none;color:var(--tinta)}
+.cuatro__g img{width:100%;aspect-ratio:3/4.2;object-fit:cover;border-radius:16px}
+.cuatro__g span{font:400 11px var(--sans);letter-spacing:.18em;text-transform:uppercase;text-align:center}
+@media(hover:hover) and (pointer:fine){.cuatro__g a img{transition:transform .8s var(--e)}.cuatro__g a:hover img{transform:scale(1.03)}}
+@media(max-width:700px){.cuatro__g{display:flex}.cuatro__g a{flex:0 0 74%}}
+
+/* productos */
+.productos-n{padding:clamp(40px,6vw,90px) 0;background:var(--papel2)}
+.productos-n .tit-n{margin-top:12px}
+.productos-n .botellas{max-width:760px}
+.botella{border-radius:16px;box-shadow:none;aspect-ratio:340/760;background:#d9d4cb}
+.botella::before{opacity:.28}
+.botellas span{font:300 clamp(24px,2.6vw,34px)/1.1 var(--serif);color:var(--tinta)}
+.botellas small{font:400 10.5px var(--sans);letter-spacing:.2em;color:var(--suave)}
+
+/* el lugar y bodas */
+.lugar{text-align:left}
+.lugar .etq-n,.lugar .tit-n{text-align:center}
+.lugar__g{margin-top:44px}
+.lugar__g figure{border-radius:14px}
+.lugar__g figcaption{font:400 10.5px var(--sans);letter-spacing:.2em}
+.bodas-n{padding:clamp(54px,7vw,110px) 0}
+.bodas-n__g{display:grid;gap:clamp(26px,5vw,80px);align-items:center;max-width:1180px}
+@media(min-width:900px){.bodas-n__g{grid-template-columns:.9fr 1.1fr}}
+.bodas-n__t .tit-n{font-size:clamp(34px,4.2vw,58px);line-height:1.1;margin-top:14px;text-align:left}
+.bodas-n__t p:not(.etq-n){margin-top:18px;font:400 18px/1.7 var(--texto);max-width:44ch;color:#3a342e}
+.bodas-n__f{margin:0}
+.bodas-n__f img{width:100%;aspect-ratio:4/3.1;object-fit:cover;border-radius:18px}
+
+/* reservar */
+.llamar{background:#1d1a17;color:#d8d0c4}
+.llamar .etq-n{color:var(--oro)}
+.llamar .script{font:300 clamp(40px,5.4vw,78px)/1.1 var(--serif);color:#f4efe6;margin-top:10px}
+.llamar .boton{margin-top:28px;font-size:15px;letter-spacing:.1em;min-height:58px;padding:0 34px;background:var(--oro);color:#1d1a17}
+@media(hover:hover) and (pointer:fine){.llamar .boton:hover{background:#dc8a26}}
+.llamar small{font:400 12px var(--sans);letter-spacing:.04em;margin-top:18px}
+.llamar small a{color:#f4efe6}
+
+/* pie */
+.pie{background:#141210;color:#cfc6b8;padding:clamp(44px,6vw,80px) 0 clamp(26px,3vw,44px)}
+.pie__top{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:clamp(18px,3vw,40px);text-align:left;padding:0 20px clamp(34px,4vw,56px);border-bottom:1px solid rgba(239,233,223,.14);max-width:1320px;margin:0 auto}
+.pie__logo{width:clamp(96px,10vw,140px);height:auto}
+.pie__lema{font:300 clamp(22px,2.6vw,34px)/1.25 var(--serif);color:#efe9df}
+.pie__cols{padding-top:clamp(30px,4vw,50px)}
+.pie h4{font:400 10.5px var(--sans);letter-spacing:.2em;color:var(--oro)}
+.pie__cols a,.pie address{font:400 14px/1.8 var(--sans)}
+.pie__fantasma{display:none}
+
+/* resto de páginas con la misma voz */
+.mcard h3,.prod h3,.cat h3,.paso h3,.menu-m nav a .t{font-family:var(--serif)}
+.mcard__precio b,.mcard__precio span{font-family:var(--serif)}
+.prod .lema{font-family:var(--serif)}
+.paso::before{font-family:var(--serif);font-weight:300;color:var(--oro)}
+.chips a{font:400 11.5px var(--sans);border-color:var(--tinta);color:var(--tinta)}
+@media(hover:hover) and (pointer:fine){.chips a:hover{background:var(--oro);border-color:var(--oro);color:#1d1a17}}
+.cat__ico{color:var(--oroT)}
+.ficha dt,.curso span,.mcard__et{font-family:var(--sans)}
+.pista{font-family:var(--serif)}
+.banda{background:#1d1a17;color:#efe9df}
+.seccion--crema{background:var(--papel2)}
+.cab__logo,.cab__logo *{letter-spacing:0}
+@media(max-width:820px){.pie__top{flex-direction:column;text-align:center}}
+.botella{overflow:hidden}.botella img{width:100%;height:100%;object-fit:cover;display:block;mix-blend-mode:normal}
+.botellas a{gap:0}.botellas span{margin-top:16px;display:block}.botellas small{margin-top:6px}
