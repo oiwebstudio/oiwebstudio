@@ -737,3 +737,82 @@ body{background:var(--crema2);font:400 16px/1.65 var(--sans);letter-spacing:.01e
 .cab.solida .cab__burger,.cab__burger:hover{background:none}
 .cab .cab__burger,.menu-abierto .cab .cab__burger,.cab.solida .cab__burger{background:none}
 .cab .cab__burger[aria-expanded="true"] span:first-child,.cab .cab__burger[aria-expanded="true"] span:last-child,.cab .cab__burger span:first-child,.cab .cab__burger span:last-child{transform:none;top:auto}
+
+/* ═══ v2.2 · que den ganas de ir: brasa como único color, portada con mensaje y reserva, cabecera con enlaces, menú del día ═══ */
+:root{--brasa:#b4482a;--brasa2:#9c3d22}
+.boton--brasa{background:var(--brasa);color:#fff}
+@media(hover:hover) and (pointer:fine){.boton--brasa:hover{background:var(--brasa2)}}
+.boton--cristal{background:rgba(236,232,226,.16);color:#f4f1ec;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(236,232,226,.45)}
+@media(hover:hover) and (pointer:fine){.boton--cristal:hover{background:rgba(236,232,226,.3)}}
+.boton--linea{background:transparent;color:var(--tinta);border:1px solid var(--tinta)}
+@media(hover:hover) and (pointer:fine){.boton--linea:hover{background:var(--tinta);color:#f4f1ec}}
+
+/* cabecera: logotipo · enlaces · menú · reservar */
+.cab{gap:clamp(16px,2.4vw,36px)}
+.cab__nav{display:flex;gap:clamp(16px,2vw,32px);margin-left:clamp(10px,3vw,50px)}
+.cab__nav a{position:relative;color:inherit;text-decoration:none;font:400 11.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;padding:10px 0}
+.cab__nav a::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .45s var(--e)}
+.cab__nav a[aria-current="page"]::after{transform:scaleX(1);background:var(--brasa)}
+@media(hover:hover) and (pointer:fine){.cab__nav a:hover::after{transform:scaleX(1);transform-origin:left}}
+.cab__burger{margin-left:auto}
+.cab__cta{display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 22px 0 18px;border-radius:999px;background:var(--brasa);color:#fff!important;font:500 12px var(--sans);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;box-shadow:0 10px 24px -12px rgba(180,72,42,.8);transition:background-color .3s ease,transform .3s var(--e)}
+.cab__cta b{font-weight:600;letter-spacing:.08em}
+@media(hover:hover) and (pointer:fine){.cab__cta:hover{background:var(--brasa2);transform:translateY(-1px)}}
+.cab.solida .cab__cta{background:var(--brasa)}
+@media(max-width:1100px){.cab__nav{display:none}}
+@media(max-width:700px){.cab__cta{width:46px;height:46px;padding:0;justify-content:center}.cab__cta-t{display:none}.cab__cta svg{width:19px;height:19px}.cab__burger{margin-left:auto}}
+
+/* portada: foto viva, mensaje, dos botones y la nota de Google */
+.slides img{filter:brightness(.93) saturate(1.1) contrast(1.05)}
+.heroe.heroe--portada .fondo::after{background:linear-gradient(180deg,rgba(15,13,11,.5),rgba(15,13,11,.08) 26%,rgba(15,13,11,.12) 52%,rgba(15,13,11,.62))}
+.heroe--portada .fondo::before{opacity:.1}
+.heroe--portada .wrap{display:grid;justify-items:center;gap:0}
+.hero-pre{font:500 12px var(--sans);letter-spacing:.34em;text-transform:uppercase;color:#f4f1ec;opacity:.95;margin:0 0 20px;text-shadow:0 1px 14px rgba(0,0,0,.6)}
+.heroe.heroe--portada h1.hero-h1{display:block;max-width:15ch;font:300 clamp(44px,6.6vw,104px)/1.02 var(--serif)!important;letter-spacing:-.005em;text-transform:none;text-shadow:0 2px 40px rgba(0,0,0,.55),0 0 8px rgba(0,0,0,.25);color:#fff}
+.heroe--portada .cta{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:34px}
+.heroe--portada .cta .boton{min-height:54px;padding:0 30px;font-size:12.5px}
+.valoracion{margin-top:26px;font:400 12px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:#f4f1ec;text-shadow:0 1px 12px rgba(0,0,0,.6)}
+.valoracion span{color:#f0b35a;letter-spacing:.2em;margin-right:6px;font-size:13px}
+.heroe--portada{padding:150px 0 150px}
+@media(max-width:700px){
+  .hero-pre{font-size:10.5px;letter-spacing:.24em;margin-bottom:16px}
+  .heroe.heroe--portada h1.hero-h1{font-size:clamp(40px,12.4vw,56px)!important;max-width:11ch}
+  .heroe--portada .cta{flex-direction:column;align-items:stretch;width:min(100%,290px);margin-top:26px}
+  .valoracion{font-size:10.5px;letter-spacing:.1em;margin-top:20px}
+  .heroe--portada{padding:120px 0 120px}
+}
+
+/* menú del día: la razón más concreta para reservar */
+.menudia{background:#141210;color:#e6e0d8;padding:clamp(54px,7vw,100px) 0}
+.menudia__g{display:grid;gap:clamp(24px,5vw,80px);align-items:center;max-width:1100px}
+@media(min-width:860px){.menudia__g{grid-template-columns:auto 1fr}}
+.menudia__p{text-align:center}
+.menudia .etq-n{color:#a8a199}
+.menudia__precio{display:inline-flex;align-items:flex-start;gap:6px;color:#fff;margin:10px 0 0}
+.menudia__precio b{font:300 clamp(120px,15vw,210px)/.85 var(--serif)}
+.menudia__precio span{font:300 clamp(40px,4.6vw,66px)/1 var(--serif);margin-top:.15em;color:#e8a07f}
+.menudia__iva{font:400 11px var(--sans);letter-spacing:.26em;text-transform:uppercase;color:#8d867e;margin-top:10px}
+.menudia__t .tit-n{color:#fff;text-align:left}
+.menudia__t p{font:400 clamp(15px,1.25vw,17px)/1.75 var(--sans);color:#cfc8bf;max-width:46ch;margin-top:14px}
+.menudia__t .menudia__2{color:#a8a199}
+.menudia__t .menudia__2 b{color:#e8a07f;font-weight:500}
+.menudia__b{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.menudia .boton--linea{color:#ece8e2;border-color:rgba(236,232,226,.5)}
+@media(hover:hover) and (pointer:fine){.menudia .boton--linea:hover{background:#ece8e2;color:#141210}}
+@media(max-width:859px){.menudia__t .tit-n{text-align:center}.menudia__t{text-align:center}.menudia__t p{margin-inline:auto}.menudia__b{justify-content:center}}
+
+/* detalles de brasa: el subrayado de lo activo y el borde de las fichas */
+.chips a:hover{background:var(--brasa);border-color:var(--brasa)}
+.menu-m nav a[aria-current="page"] .n{color:var(--brasa)}
+.heroe.heroe--portada h1.hero-h1{max-width:18ch!important;font-size:clamp(42px,5.6vw,92px)!important;line-height:1.08!important;padding-bottom:.08em}
+.heroe--portada .hero-h1 [data-letras]{display:block}
+.hero-pre{text-shadow:0 1px 16px rgba(0,0,0,.85),0 0 4px rgba(0,0,0,.6);font-weight:500}
+.menudia__p{display:grid;justify-items:center}
+.menudia__precio{margin:6px 0 0}
+.menudia__iva{margin-top:16px}
+.pildora{display:none}
+@media(max-width:700px){.heroe.heroe--portada h1.hero-h1{font-size:clamp(38px,11.4vw,52px)!important;max-width:12ch!important}}
+.heroe--portada .wrap{position:relative;isolation:isolate}
+.heroe--portada .wrap::before{content:"";position:absolute;z-index:-1;inset:-90px -22vw -70px;background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(15,13,11,.62),rgba(15,13,11,.3) 55%,transparent 80%)}
+.slides img{filter:brightness(.86) saturate(1.1) contrast(1.05)}
+.menu-abierto .cab__nav,.menu-abierto .cab__cta{opacity:0;pointer-events:none}.cab__nav,.cab__cta{transition:opacity .3s ease}
