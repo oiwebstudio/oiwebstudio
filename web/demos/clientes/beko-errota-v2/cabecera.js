@@ -127,7 +127,7 @@
   on(".emblema", function (e) { G.to(e, { rotation: 200, ease: "none", scrollTrigger: { trigger: e, start: "top bottom", end: "bottom top", scrub: 0.6 } }); });
 
   /* platos, botellas y galerías: entran con un zoom suave y se mueven un poco con el scroll */
-  on(".platos img,.tarjeta img,.botella img,.foto-marco img", function (el) {
+  on(".platos img,.tarjeta img,.botella img,.foto-marco img,.lugar img", function (el) {
     G.from(el, { scale: 1.14, opacity: 0, duration: 1.5, ease: "expo.out", clearProps: "transform,opacity", scrollTrigger: { trigger: el, start: "top 92%" } });
   });
   on(".botella", function (el) {
