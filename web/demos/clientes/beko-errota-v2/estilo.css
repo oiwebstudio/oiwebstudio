@@ -958,3 +958,5 @@ body{background:var(--papel);color:var(--tinta);font:400 17.5px/1.65 var(--texto
 .menu-n .rot{font-size:15px}
 .menu-n__e,.precio-n small,.cuatro__g span{font-size:11.5px}
 .boton{font-size:12.5px}
+.cab__cta svg{flex:none;width:17px;height:17px}
+@media(max-width:700px){.cab__cta svg{width:21px;height:21px}}
