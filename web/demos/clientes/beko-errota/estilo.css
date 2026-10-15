@@ -527,3 +527,66 @@ a{color:inherit}
 @media(max-width:700px){.botella{padding:0}}
 .botellas{max-width:720px}
 .pie__credito{width:100%;margin-top:8px;font-size:12px;opacity:.7}
+
+/* ═══ v1.2 · más dinámica: contador de portada, ¿a qué venís?, paseo horizontal, visor de fotos ═══ */
+.heroe--portada .fondo{will-change:transform;inset:-24px}
+.slide-info{position:absolute;z-index:3;left:clamp(18px,4vw,48px);bottom:34px;display:grid;gap:6px;color:#fff;font:600 12px Karla,sans-serif;letter-spacing:.16em;text-transform:uppercase;text-shadow:0 1px 10px rgba(0,0,0,.5)}
+.slide-n b{font-size:15px}
+.slide-t{font:600 22px "Dancing Script",cursive;letter-spacing:0;text-transform:none}
+.slide-barra{display:block;width:140px;height:2px;background:rgba(255,255,255,.3);overflow:hidden}
+.slide-barra i{display:block;height:100%;background:#fff;transform-origin:left;animation:barra 6.5s linear infinite}
+@keyframes barra{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media(max-width:700px){.slide-info{bottom:auto;top:96px;left:16px}.slide-barra{width:90px}}
+@media(prefers-reduced-motion:reduce){.slide-barra{display:none}}
+
+/* ¿a qué venís? */
+.venis{padding:clamp(64px,8vw,116px) 0;background:var(--crema2)}
+.venis .etiqueta{color:var(--suave)}
+.venis h2{font-size:clamp(46px,6vw,82px);margin-top:8px}
+.venis__g{display:grid;gap:clamp(20px,3vw,40px);margin-top:34px;grid-template-areas:"tabs" "foto" "panel"}
+@media(min-width:900px){.venis__g{grid-template-columns:.9fr 1.1fr;grid-template-areas:"tabs foto" "panel foto";align-items:start}}
+.venis__tabs{grid-area:tabs;display:grid;border-top:1.5px solid var(--azul)}
+.venis__tabs button{display:flex;justify-content:space-between;align-items:center;width:100%;min-height:64px;padding:12px 4px;background:none;border:0;border-bottom:1px solid #d9d1c0;color:var(--suave);font:600 clamp(28px,3vw,40px)/1.1 "Dancing Script",cursive;text-align:left;cursor:pointer;transition:color .3s,padding .5s var(--e)}
+.venis__tabs button::after{content:"→";font:400 20px Karla,sans-serif;opacity:0;transform:translateX(-10px);transition:opacity .3s,transform .5s var(--e)}
+.venis__tabs button[aria-selected="true"]{color:var(--azul);padding-left:14px}
+.venis__tabs button[aria-selected="true"]::after{opacity:1;transform:none}
+@media(hover:hover) and (pointer:fine){.venis__tabs button:hover{color:var(--azul)}}
+.venis__foto{grid-area:foto;position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:999px 999px 0 0;background:#d9d1c0}
+.venis__foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity .7s ease,transform 1.4s var(--e)}
+.venis__foto img.on{opacity:1;transform:none}
+.venis__panel{grid-area:panel}
+.venis__panel h3{font:600 30px "Dancing Script",cursive;color:var(--azul)}
+.venis__panel p{margin:8px 0 20px;font-size:17px;color:#475660;max-width:46ch}
+@media(max-width:899px){.venis__tabs{grid-template-columns:1fr 1fr;border-top:0;gap:8px}.venis__tabs button{min-height:52px;justify-content:center;text-align:center;border:1.5px solid #cfc6b4;border-radius:999px;font-size:24px;padding:6px 10px}.venis__tabs button::after{display:none}.venis__tabs button[aria-selected="true"]{background:var(--azul);color:#fff;border-color:var(--azul);padding-left:10px}.venis__foto{border-radius:20px}}
+
+/* paseo por la casa */
+.paseo{padding:clamp(64px,8vw,110px) 0 clamp(40px,5vw,70px);overflow:hidden}
+.paseo__cab h2{font-size:clamp(46px,6vw,82px)}
+.paseo__pista{display:flex;gap:clamp(14px,2vw,28px);margin-top:36px;padding:0 clamp(18px,4.5vw,44px);will-change:transform}
+.paseo__f{margin:0;flex:0 0 clamp(280px,34vw,520px)}
+.paseo__f:nth-child(even){margin-top:56px}
+.paseo .zoom{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;overflow:hidden;border-radius:18px}
+.paseo__f img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;transform:scale(1.18)}
+.paseo__f figcaption{margin-top:12px;font:600 26px "Dancing Script",cursive;color:var(--azul)}
+.paseo__f figcaption span{font:600 12px Karla,sans-serif;letter-spacing:.16em;color:var(--suave);margin-right:10px}
+.paseo.lateral .paseo__f img{transform:scale(1.04)}
+.paseo.fijo .paseo__in{width:100%}
+@media(max-width:899px){.paseo__pista{overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:10px}.paseo__pista::-webkit-scrollbar{display:none}.paseo__f{flex-basis:76%;scroll-snap-align:center}.paseo__f:nth-child(even){margin-top:0}.paseo__f img{transform:none}}
+@media(prefers-reduced-motion:reduce){.paseo__f img{transform:none}}
+
+/* fotos que se pueden ampliar */
+.ampliable{cursor:zoom-in}
+.ampliable:focus-visible{outline:3px solid var(--azul);outline-offset:3px}
+@media(hover:hover) and (pointer:fine){.paseo .zoom:hover img{filter:brightness(1.06)}}
+.visor{position:fixed;inset:0;z-index:200;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:clamp(16px,3vw,40px);background:rgba(14,22,30,.94);backdrop-filter:blur(6px)}
+.visor[hidden]{display:none}
+.visor figure{margin:0;display:grid;justify-items:center;gap:12px;min-width:0}
+.visor img{max-width:100%;max-height:calc(100svh - 130px);object-fit:contain;border-radius:6px}
+.visor figcaption{color:#e8eff4;font:500 15px Karla,sans-serif;text-align:center}
+.visor__x{position:absolute;top:16px;right:16px;width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:none;color:#fff;font-size:20px;cursor:pointer}
+.visor__a{width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:none;color:#fff;font-size:30px;line-height:1;cursor:pointer}
+@media(hover:hover) and (pointer:fine){.visor__x:hover,.visor__a:hover{background:rgba(255,255,255,.14)}}
+.visor__n{position:absolute;left:0;right:0;bottom:14px;text-align:center;color:#a9bccb;font:600 12px Karla,sans-serif;letter-spacing:.14em}
+@media(max-width:700px){.visor{grid-template-columns:1fr;padding:70px 10px 50px}.visor__a{position:absolute;bottom:36px;width:46px;height:46px}.visor__a--i{left:16px}.visor__a--d{right:16px}}
+.visor-abierto,.visor-abierto body{overflow:hidden}
+@media(min-width:900px){.paseo__f{flex-basis:clamp(260px,26vw,400px)}.paseo__pista{padding-left:clamp(18px,16vw,260px)}}
