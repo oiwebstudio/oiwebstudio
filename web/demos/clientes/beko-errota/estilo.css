@@ -591,3 +591,21 @@ a{color:inherit}
 .visor-abierto,.visor-abierto body{overflow:hidden}
 @media(min-width:900px){.paseo__f{flex-basis:clamp(260px,26vw,400px)}.paseo__pista{padding-left:clamp(18px,16vw,260px)}}
 .slides img[src*="gv-caserio-puente"]{object-position:30% 45%}@media(max-width:700px){.slides img[src*="gv-caserio-puente"]{object-position:22% 40%}}
+
+/* paseo pegado: la sección se queda quieta y las fotos pasan de lado (ordenador y móvil) */
+.paseo.pegado{padding:0;overflow:visible}
+.paseo.pegado .paseo__in{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding-top:70px}
+.paseo.pegado .paseo__pista{overflow:visible;scroll-snap-type:none;flex-wrap:nowrap;margin-top:24px;padding-bottom:0}
+.paseo.pegado .paseo__f{flex:0 0 clamp(250px,28vw,420px)}
+.paseo.pegado .paseo__f:nth-child(even){margin-top:46px}
+.paseo.pegado .paseo__f img{transform:none;aspect-ratio:4/5;max-height:58svh;width:100%}
+@media(max-width:899px){
+  .paseo.pegado .paseo__in{padding-top:64px;padding-bottom:96px}
+  .paseo.pegado .paseo__cab h2{font-size:clamp(38px,10.5vw,46px)}
+  .paseo.pegado .paseo__cab .intro{font-size:15px;margin-top:6px}
+  .paseo.pegado .paseo__pista{gap:14px;padding:0 18px;margin-top:18px}
+  .paseo.pegado .paseo__f{flex-basis:72vw}
+  .paseo.pegado .paseo__f:nth-child(even){margin-top:26px}
+  .paseo.pegado .paseo__f img{max-height:46svh}
+  .paseo.pegado .paseo__f figcaption{font-size:22px;margin-top:8px}
+}

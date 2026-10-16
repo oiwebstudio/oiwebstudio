@@ -76,26 +76,33 @@
     cifras.forEach(function (c) { c.textContent = (c.dataset.pre || "") + "0"; io.observe(c); });
   }
 
-  /* ── paseo: en ordenador las fotos se desplazan de lado mientras la sección cruza la pantalla.
-     Se calcula a mano con la posición real de la sección en cada fotograma (no depende de medidas guardadas). ── */
+  /* ── paseo: la sección se queda quieta en pantalla (position: sticky) mientras las fotos pasan de lado,
+     en ordenador y en móvil. La altura de la sección da el recorrido: tanto como lo que hay que desplazar.
+     Se calcula a mano con la posición real en cada fotograma. ── */
   var paseo = document.querySelector(".paseo"), pista = paseo && paseo.querySelector(".paseo__pista");
   if (paseo && pista && !quieto) {
-    var ancho = matchMedia("(min-width: 900px)"), x = 0, meta = 0, corriendo = false;
+    var x = 0, meta = 0, corriendo = false, recorrido = 0;
+    var medir = function () {
+      paseo.classList.add("pegado");
+      recorrido = Math.max(0, pista.scrollWidth - innerWidth + 40);
+      paseo.style.height = "calc(100svh + " + Math.round(recorrido * 1.15) + "px)";
+    };
     var objetivo = function () {
-      if (!ancho.matches) return 0;
-      var r = paseo.getBoundingClientRect(), vh = innerHeight;
-      var p = Math.min(1, Math.max(0, (vh - r.top) / (vh + r.height)));
-      return -p * Math.max(0, pista.scrollWidth - innerWidth + 60);
+      var r = paseo.getBoundingClientRect(), largo = paseo.offsetHeight - innerHeight;
+      var p = largo > 0 ? Math.min(1, Math.max(0, -r.top / largo)) : 0;
+      return -p * recorrido;
     };
     var bucle = function () {
-      x += (meta - x) * 0.12;
+      x += (meta - x) * 0.14;
       if (Math.abs(meta - x) < 0.3) x = meta;
-      pista.style.transform = ancho.matches ? "translate3d(" + x.toFixed(1) + "px,0,0)" : "";
+      pista.style.transform = "translate3d(" + x.toFixed(1) + "px,0,0)";
       if (x !== meta) requestAnimationFrame(bucle); else corriendo = false;
     };
-    var mover = function () { meta = objetivo(); paseo.classList.toggle("lateral", ancho.matches); if (!corriendo) { corriendo = true; requestAnimationFrame(bucle); } };
-    addEventListener("scroll", mover, { passive: true }); addEventListener("resize", mover); addEventListener("load", mover);
-    mover();
+    var mover = function () { meta = objetivo(); if (!corriendo) { corriendo = true; requestAnimationFrame(bucle); } };
+    medir(); mover();
+    addEventListener("scroll", mover, { passive: true });
+    addEventListener("resize", function () { medir(); mover(); });
+    addEventListener("load", function () { medir(); mover(); });
   }
 
   /* las letras y las fotos cambian la altura de la página: se recalculan las posiciones al terminar de cargar */
