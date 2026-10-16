@@ -76,17 +76,26 @@
     cifras.forEach(function (c) { c.textContent = (c.dataset.pre || "") + "0"; io.observe(c); });
   }
 
-  /* ── paseo: en ordenador las fotos se desplazan de lado mientras la sección cruza la pantalla ── */
+  /* ── paseo: en ordenador las fotos se desplazan de lado mientras la sección cruza la pantalla.
+     Se calcula a mano con la posición real de la sección en cada fotograma (no depende de medidas guardadas). ── */
   var paseo = document.querySelector(".paseo"), pista = paseo && paseo.querySelector(".paseo__pista");
-  if (paseo && pista && G && ST && !quieto) {
-    ST.matchMedia({
-      "(min-width: 900px)": function () {
-        paseo.classList.add("lateral");
-        G.fromTo(pista, { x: 0 }, { x: function () { return -(pista.scrollWidth - innerWidth + 60); }, ease: "none", immediateRender: false,
-          scrollTrigger: { trigger: paseo, start: "top bottom", end: "bottom top", scrub: 0.8, invalidateOnRefresh: true } });
-        return function () { paseo.classList.remove("lateral"); G.set(pista, { clearProps: "x" }); };
-      }
-    });
+  if (paseo && pista && !quieto) {
+    var ancho = matchMedia("(min-width: 900px)"), x = 0, meta = 0, corriendo = false;
+    var objetivo = function () {
+      if (!ancho.matches) return 0;
+      var r = paseo.getBoundingClientRect(), vh = innerHeight;
+      var p = Math.min(1, Math.max(0, (vh - r.top) / (vh + r.height)));
+      return -p * Math.max(0, pista.scrollWidth - innerWidth + 60);
+    };
+    var bucle = function () {
+      x += (meta - x) * 0.12;
+      if (Math.abs(meta - x) < 0.3) x = meta;
+      pista.style.transform = ancho.matches ? "translate3d(" + x.toFixed(1) + "px,0,0)" : "";
+      if (x !== meta) requestAnimationFrame(bucle); else corriendo = false;
+    };
+    var mover = function () { meta = objetivo(); paseo.classList.toggle("lateral", ancho.matches); if (!corriendo) { corriendo = true; requestAnimationFrame(bucle); } };
+    addEventListener("scroll", mover, { passive: true }); addEventListener("resize", mover); addEventListener("load", mover);
+    mover();
   }
 
   /* las letras y las fotos cambian la altura de la página: se recalculan las posiciones al terminar de cargar */
