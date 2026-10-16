@@ -114,9 +114,9 @@ const EU = {
   ben6_p: "Txatera zuzenean sartzeko botoi bat, erreserbatzea edo galdetzea berehalakoa izan dadin.",
   /* Trabajos (home + página) */
   work_eyebrow: "Proiektuak",
-  work_h2: "Txantiloiak ez diruditen diseinuak.",
-  work_p: "Marka asmatuko laginak, nire lan egiteko modua erakusten dutenak. Ireki eta arakatu ditzakezu.",
-  tra_honesty: "Izen eta datu asmatuak dituzten laginak dira, nola lan egiten dudan erakusteko: ez dira bezero errealak. Kasu erreala Errotatxo da.",
+  work_h2: "Argitaratutako webguneak eta laginak.",
+  work_p: "Benetako bezeroentzat argitaratutako bi webgune eta, azpian, marka asmatuko laginak, ireki eta arakatu ditzakezunak.",
+  tra_honesty: "Izen eta datu asmatuak dituzten laginak dira, nik eginak nola lan egiten dudan erakusteko: ez dira bezero errealak. Kasu errealak Errotatxo eta A.Berri dira.",
   badge_live: "Lagina",
   badge_concept: "Kontzeptua",
   badge_demo: "Demoa",
@@ -139,7 +139,7 @@ const EU = {
   /* Página trabajos */
   tra_eyebrow: "Portfolioa",
   tra_h1: "Nire lanak, neurrira.",
-  tra_lede: "Lau web-lagin, ireki eta arakatzeko — bakoitza negozio mota ezberdin batena.",
+  tra_lede: "Benetako bezeroentzat argitaratutako bi webgune eta ireki eta arakatu ditzakezun lau lagin.",
   tra_hint: "Kolorea gainetik pasatzean agertzen da — negozio batek weba estreinatzean bezala.",
   gal_eyebrow: "Galeria",
   gal_h2: "Zortzi pieza. Zortzi negozio.",
@@ -358,7 +358,7 @@ const EU = {
   /* "Cómo trabajo": la web del portfolio que se construye al bajar */
   pro_eyebrow: "Nola lan egiten dudan",
   pro_h2: "Lehen solasalditik zure webgunea argitaratu arte.",
-  pro_p: "Korritu poliki: horrela eraiki zen urratsez urrats Errotatxoren webgunea, Tolosako okindegiarena. Prozesua bera da proiektu guztietan.",
+  pro_p: "Bost urrats argi, prezio itxia hasi aurretik eta webgunea zure izenean argitaratuta.",
   pro_sr: "Irudia: Errotatxoren webgunea, Tolosako okindegia, galdera solteetatik zirriborrora, webgune bukatura eta mugikorreko bertsioarekin argitaratzera pasatzen da, eta ondoren eskatutako aldaketa bat jasotzen du.",
   pro_url: "zirriborroa · argitaratu gabe",
   pro_q1: "Zer galdetzen dizu jendeak beti?",
@@ -382,9 +382,18 @@ const EU = {
   fm_llamar: "Deitu",
   fm_email: "Emaila",
   fm_hablamos: "Hitz egingo dugu?",
-  pro_c_hecho: "Eginda ✓"
+  pro_c_hecho: "Eginda ✓",
+  caso2_h: "A.Berri, landetxea Getarian",
+  caso2_p: "Landetxea eta apartamentua, beren webgunetik erreserbak jasotzen dituztenak, hiru hizkuntzatan eta jabeentzako panel erraz batekin.",
+  caso2_cita: "«Primeram gelditu da. Lan bikaina eta askarra.»",
+  caso2_autor: "María Jesús, A.Berriko jabea",
+  opi_eyebrow: "Bezeroek diotena",
+  opi_txt: "«Eskerrak eman nahi nizkizun webgunea eguneratzen egindako lan handiagaitik. Primeram gelditu da, nabegazio askarra eta diseñuak gure espektatibak bete deitu, lan bikaina eta askarra.»",
+  opi_orig: "Bere hitzak, idatzi zituen bezala.",
+  opi_autor: "A.Berri landetxea, Getaria",
+  sob_pub_h: "Bezeroentzat argitaratutako webguneak",
+  opi_go: "Ikusi egin nion webgunea →",
 };
-
 (function () {
   const KEY = 'oi_lang';
   const nodes = document.querySelectorAll('[data-t]');

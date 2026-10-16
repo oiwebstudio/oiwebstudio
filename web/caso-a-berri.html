@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="theme-color" content="#ffffff"/>
+<meta http-equiv="Content-Security-Policy" content="base-uri 'self'; form-action 'self' mailto: https://wa.me"/>
+<title>Caso real: web con reservas de A.Berri, casa rural en Getaria | OI Studio</title>
+<meta name="description" content="Así es la web de A.Berri, casa rural y apartamento en Getaria: reservas con calendario, panel para los dueños, tres idiomas y sus propias fotos. Con la opinión de la dueña."/>
+<meta name="robots" content="index, follow"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="OI Studio"/>
+<meta property="og:url" content="https://oiwebstudio.com/caso-a-berri.html"/>
+<meta property="og:title" content="Caso real: la web con reservas de A.Berri, casa rural en Getaria"/>
+<meta property="og:description" content="Un caserío entre viñas de txakoli que ahora recibe reservas desde su propia web."/>
+<meta property="og:image" content="https://oiwebstudio.com/assets/aberri/foto-caserio.jpg"/>
+<meta property="og:locale" content="es_ES"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://oiwebstudio.com/caso-a-berri.html"/>
+<link rel="icon" href="/favicon.ico" sizes="48x48"/>
+<link rel="icon" href="/favicon-96.png" type="image/png" sizes="96x96"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link rel="manifest" href="/site.webmanifest"/>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/geist-latin-04ce1a61.woff2" crossorigin/>
+<link rel="stylesheet" href="/assets/fuentes.css?v=1"/>
+<link rel="stylesheet" href="assets/styles.css?v=23"/>
+<script>if(location.protocol==='http:'&&/(^|\.)oiwebstudio\.com$/.test(location.hostname))location.replace('https://'+location.host+location.pathname+location.search+location.hash);document.documentElement.classList.add('js');</script>
+<style>
+  .cs-hero{padding:140px 0 0;}
+  .cs-crumbs{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-faint);}
+  .cs-crumbs a{color:inherit;}
+  .cs-crumbs a:hover{color:var(--terra-link);}
+  .cs-hero__grid{display:grid;gap:44px;align-items:center;margin-top:26px;}
+  @media(min-width:960px){.cs-hero__grid{grid-template-columns:5fr 6fr;gap:64px;}}
+  .cs-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#1f5f3a;background:#e3f1e7;border-radius:999px;padding:6px 12px;}
+  .cs-tag i{width:7px;height:7px;border-radius:50%;background:#2f9e5b;}
+  .cs-hero h1{font-size:clamp(40px,5.2vw,68px);margin-top:18px;}
+  .cs-hero h1 em{font-family:"Fraunces",serif;font-style:normal;font-weight:500;color:var(--ink);background-image:linear-gradient(120deg,var(--terra-soft),var(--terra-soft));background-repeat:no-repeat;background-position:0 90%;background-size:100% 38%;}
+  .cs-lede{font-size:18.5px;line-height:1.65;color:var(--text-muted);margin-top:20px;max-width:46ch;}
+  .cs-acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px;}
+
+  /* Escena: la foto de la fachada con la web encima, en portátil y móvil */
+  .cs-escena{position:relative;padding:0 0 40px 0;}
+  .cs-escena__foto{border-radius:22px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(40,30,15,.45);aspect-ratio:4/3;}
+  .cs-escena__foto img{width:100%;height:100%;object-fit:cover;display:block;}
+  .cs-escena__web{position:absolute;left:-6%;bottom:0;width:62%;border-radius:12px;overflow:hidden;background:#fff;border:1px solid var(--border-strong);box-shadow:0 26px 50px -20px rgba(25,23,18,.5);}
+  .cs-escena__web b{display:flex;gap:5px;padding:8px 10px;background:var(--surface-2);border-bottom:1px solid var(--border);}
+  .cs-escena__web b i{width:7px;height:7px;border-radius:50%;background:var(--border-strong);}
+  .cs-escena__web img{display:block;width:100%;height:auto;}
+  .cs-escena__movil{position:absolute;right:-3%;bottom:-18px;width:23%;border-radius:22px;padding:5px;background:#1b1712;box-shadow:0 26px 50px -18px rgba(25,23,18,.6);}
+  .cs-escena__movil img{display:block;width:100%;height:auto;border-radius:17px;aspect-ratio:9/19;object-fit:cover;object-position:top;}
+  @media(max-width:600px){.cs-escena__web{left:-2%;width:70%;}.cs-escena__movil{right:0;width:27%;}}
+
+  /* Ficha */
+  .cs-ficha{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--border-strong);border-bottom:1px solid var(--border-strong);margin:90px 0 0;}
+  @media(min-width:860px){.cs-ficha{grid-template-columns:repeat(5,1fr);}}
+  .cs-ficha div{padding:22px 18px 22px 0;}
+  .cs-ficha span{display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);}
+  .cs-ficha b{display:block;margin-top:8px;font-family:var(--font-serif);font-weight:500;font-size:21px;line-height:1.2;color:var(--ink);}
+  .cs-ficha a{color:var(--terra-link);}
+
+  .cs-sec{padding:110px 0 0;}
+  .cs-intro{max-width:760px;}
+  .cs-intro h2{font-size:clamp(32px,4vw,50px);}
+  .cs-intro p{font-size:18px;line-height:1.7;color:var(--text-muted);margin-top:18px;}
+
+  /* Cada pieza de la web: texto + captura, alternando */
+  .cs-pieza{display:grid;gap:34px;align-items:center;margin-top:90px;}
+  @media(min-width:900px){.cs-pieza{grid-template-columns:5fr 7fr;gap:70px;}.cs-pieza--inv .cs-pieza__txt{order:2;}}
+  .cs-num{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;color:var(--terra-link);}
+  .cs-pieza h3{font-family:var(--font-serif);font-weight:500;font-size:clamp(26px,2.8vw,36px);letter-spacing:-.02em;line-height:1.1;margin-top:12px;}
+  .cs-pieza p{font-size:17px;line-height:1.7;color:var(--text-muted);margin-top:14px;max-width:44ch;}
+  .cs-captura{border-radius:14px;overflow:hidden;border:1px solid var(--border-strong);background:#fff;box-shadow:0 24px 50px -28px rgba(25,23,18,.4);}
+  .cs-captura img{display:block;width:100%;height:auto;}
+  .cs-captura--movil{max-width:300px;margin:0 auto;border-radius:30px;padding:7px;background:#1b1712;border:0;}
+  .cs-captura--movil img{border-radius:24px;aspect-ratio:9/16;object-fit:cover;object-position:top;}
+  .cs-idiomas{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px;}
+  .cs-idiomas span{font-family:var(--font-serif);font-style:normal;font-size:22px;color:var(--ink);background:var(--surface);border:1px solid var(--border-strong);border-radius:16px;padding:14px 20px;}
+  .cs-idiomas small{display:block;font-family:var(--font-mono);font-style:normal;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);margin-bottom:4px;}
+
+  /* Fotos reales */
+  .cs-fotos{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:40px;}
+  @media(min-width:860px){.cs-fotos{grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:16px;}
+    .cs-fotos figure:nth-child(1){grid-column:span 2;grid-row:span 2;}
+    .cs-fotos figure:nth-child(4){grid-row:span 2;}}
+  .cs-fotos figure{margin:0;border-radius:16px;overflow:hidden;position:relative;background:var(--surface-2);}
+  .cs-fotos img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--ease);}
+  @media(max-width:859px){.cs-fotos figure{aspect-ratio:1;}.cs-fotos figure:nth-child(1){grid-column:span 2;aspect-ratio:4/3;}}
+  @media(hover:hover) and (pointer:fine){.cs-fotos figure:hover img{transform:scale(1.04);}}
+  .cs-fotos figcaption{position:absolute;left:12px;bottom:12px;font-size:12.5px;font-weight:600;color:#fff;background:rgba(20,16,10,.55);backdrop-filter:blur(6px);border-radius:999px;padding:5px 11px;}
+
+  .cs-incluye{display:grid;gap:12px;margin-top:34px;list-style:none;padding:0;}
+  @media(min-width:760px){.cs-incluye{grid-template-columns:repeat(3,1fr);}}
+  .cs-incluye li{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px 22px;font-size:15.5px;line-height:1.55;color:var(--text-muted);}
+  .cs-incluye b{display:block;color:var(--ink);font-size:16px;margin-bottom:4px;}
+
+  .cs-cta{margin:120px 0 110px;background:var(--ink);color:#f6f1e7;border-radius:28px;padding:56px 40px;display:grid;gap:28px;align-items:center;overflow:hidden;position:relative;}
+  @media(min-width:900px){.cs-cta{grid-template-columns:1.4fr 1fr;padding:64px;}}
+  .cs-cta h2{color:#fff;font-size:clamp(30px,3.6vw,46px);}
+  .cs-cta h2 em{font-style:normal;color:#e0a868;}
+  .cs-cta p{color:#c9c2b2;margin-top:14px;font-size:17px;line-height:1.6;max-width:44ch;}
+  .cs-cta__acts{display:flex;flex-wrap:wrap;gap:12px;}
+  .cs-nota{font-size:13px;color:var(--text-faint);margin-top:14px;}
+  @media(prefers-reduced-motion:reduce){.cs-fotos img{transition:none;}}
+  .cs-opinion{margin:64px 0 0;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:clamp(28px,4vw,48px);display:grid;gap:26px;}
+  @media(min-width:900px){.cs-opinion{grid-template-columns:1.25fr 1fr;align-items:start;gap:48px;}}
+  .cs-opinion__estrellas{color:#c98a2b;font-size:18px;letter-spacing:.12em;}
+  .cs-opinion blockquote{margin:12px 0 0;font-family:var(--font-serif);font-size:clamp(22px,2.6vw,30px);line-height:1.35;letter-spacing:-.01em;color:var(--ink);}
+  .cs-opinion__trad{margin-top:16px;font-size:16px;line-height:1.65;color:var(--text-muted);}
+  .cs-opinion__trad small{display:block;margin-top:6px;font-size:12.5px;color:var(--text-faint);}
+  .cs-opinion__autor{display:flex;flex-direction:column;gap:4px;padding-top:18px;border-top:1px solid var(--border);}
+  .cs-opinion__autor b{font-size:17px;color:var(--ink);}
+  .cs-opinion__autor span{font-size:14.5px;color:var(--text-muted);}
+  .cs-opinion__mejor{font-size:15px;color:var(--text-muted);line-height:1.6;}
+  .cs-opinion__mejor b{color:var(--ink);}
+  @media(min-width:760px){.cs-fotos figure:nth-child(4){grid-row:auto;}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CreativeWork",
+      "name": "Web de A.Berri, casa rural en Getaria",
+      "url": "https://oiwebstudio.com/caso-a-berri.html",
+      "about": "Diseño y desarrollo de la web aberricasarural.com, con reservas",
+      "creator": {
+        "@type": "Organization",
+        "name": "OI Studio",
+        "url": "https://oiwebstudio.com/"
+      },
+      "image": "https://oiwebstudio.com/assets/aberri/foto-caserio.jpg",
+      "inLanguage": "es",
+      "dateCreated": "2026-10-16",
+      "mainEntity": {
+        "@type": "LodgingBusiness",
+        "name": "A.Berri landetxea",
+        "url": "https://aberricasarural.com/",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Getaria",
+          "addressRegion": "Gipuzkoa",
+          "addressCountry": "ES"
+        }
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://oiwebstudio.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Trabajos",
+          "item": "https://oiwebstudio.com/trabajos.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Caso real: A.Berri",
+          "item": "https://oiwebstudio.com/caso-a-berri.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<div class="nav-wrap">
+<nav class="nav">
+<a href="index.html" class="nav__logo"><img src="assets/logo-nav-black.png" alt="OI Studio" class="nav__logo-img" width="320" height="86"/></a>
+<ul class="nav__links">
+<li><a href="index.html" data-t="nav_inicio">Inicio</a></li>
+<li><a href="sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
+<li><a href="trabajos.html" data-t="nav_trabajos">Trabajos</a></li>
+<li><a href="precios.html" data-t="nav_precios">Precios</a></li>
+<li><a href="ayudas-subvenciones-pagina-web-gipuzkoa.html" data-t="nav_ayudas">Ayudas</a></li>
+<li><a href="zonas.html" data-t="nav_zonas">Zonas</a></li>
+<li><a href="chatbot-reservas.html" data-t="nav_chatbot">Chatbot</a></li>
+<li><a href="articulos.html" data-t="nav_articulos">Artículos</a></li>
+</ul>
+<div class="nav__right">
+<a href="tel:+34680956755" class="nav__phone" aria-label="Llamar al 680 95 67 55">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+<span>680 95 67 55</span>
+</a>
+<div class="lang-switch" role="group" aria-label="Idioma / Hizkuntza">
+<button type="button" data-lang="es">ES</button>
+<button type="button" data-lang="eu">EU</button>
+</div>
+<a href="contacto.html" class="btn btn--accent nav__cta" data-t="btn_presupuesto">Solicitar presupuesto</a>
+<button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+</button>
+</div>
+</nav>
+</div>
+<div class="mobile-menu">
+<ul>
+<li><a href="index.html" data-t="nav_inicio">Inicio</a></li>
+<li><a href="sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
+<li><a href="trabajos.html" data-t="nav_trabajos">Trabajos</a></li>
+<li><a href="precios.html" data-t="nav_precios">Precios</a></li>
+<li><a href="ayudas-subvenciones-pagina-web-gipuzkoa.html" data-t="nav_ayudas">Ayudas</a></li>
+<li><a href="zonas.html" data-t="nav_zonas">Zonas</a></li>
+<li><a href="chatbot-reservas.html" data-t="nav_chatbot">Chatbot</a></li>
+<li><a href="articulos.html" data-t="nav_articulos">Artículos</a></li>
+<li><a href="contacto.html" data-t="nav_contacto">Contacto</a></li>
+</ul>
+</div>
+
+<main>
+<div class="container">
+<header class="cs-hero">
+<p class="cs-crumbs"><a href="index.html">Inicio</a> / <a href="trabajos.html">Trabajos</a> / Caso real</p>
+<div class="cs-hero__grid">
+<div class="reveal">
+<span class="cs-tag"><i></i>Caso real · en vivo en aberricasarural.com</span>
+<h1>A.Berri: un caserío de Getaria que ahora <em>recibe reservas</em> desde su web.</h1>
+<p class="cs-lede">Casa rural y apartamento entre viñas de txakoli, a cinco kilómetros de Getaria. María Jesús y Carlos querían una web que enseñara la casa tal como es y que las reservas les llegaran directamente, sin depender solo de los portales.</p>
+<div class="cs-acts">
+<a class="btn btn--primary btn--lg" href="https://aberricasarural.com/" target="_blank" rel="noopener">Visitar aberricasarural.com ↗</a>
+<a class="btn btn--ghost btn--lg" href="contacto.html">Quiero una así</a>
+</div>
+</div>
+<div class="cs-escena reveal" data-d="1">
+<div class="cs-escena__foto"><picture><source srcset="assets/aberri/foto-caserio.webp" type="image/webp"/><img src="assets/aberri/foto-caserio.jpg" alt="El caserío de A.Berri al atardecer, entre viñas, en Getaria" width="800" height="450" loading="eager" fetchpriority="high"/></picture></div>
+<div class="cs-escena__web"><b><i></i><i></i><i></i></b><picture><source srcset="assets/aberri-desk.webp" type="image/webp"/><img src="assets/aberri-desk.jpg" alt="Portada de la web aberricasarural.com en un ordenador" width="1440" height="900" /></picture></div>
+<div class="cs-escena__movil"><picture><source srcset="assets/aberri-mobile.webp" type="image/webp"/><img src="assets/aberri-mobile.jpg" alt="La web de A.Berri en un móvil" width="585" height="1266" /></picture></div>
+</div>
+</div>
+</header>
+
+<div class="cs-ficha reveal">
+<div><span>Cliente</span><b>A.Berri landetxea</b></div>
+<div><span>Sector</span><b>Casa rural y apartamento</b></div>
+<div><span>Lugar</span><b>Barrio Meaga · Getaria</b></div>
+<div><span>Idiomas</span><b>Castellano, euskera e inglés</b></div>
+<div><span>En vivo</span><b><a href="https://aberricasarural.com/" target="_blank" rel="noopener">aberricasarural.com</a></b></div>
+</div>
+
+<section class="cs-opinion reveal" aria-label="Opinión de la clienta">
+<div>
+<div class="cs-opinion__estrellas" aria-label="5 de 5 estrellas">★★★★★</div>
+<blockquote lang="eu">«Eskerrak eman nahi nizkizun webgunea eguneratzen egindako lan handiagaitik. Primeram gelditu da, nabegazio askarra eta diseñuak gure espektatibak bete deitu, lan bikaina eta askarra.»</blockquote>
+<p class="cs-opinion__trad">«Quería darte las gracias por el gran trabajo de actualizar la web. Ha quedado de maravilla: la navegación es rápida y el diseño ha cumplido nuestras expectativas. Un trabajo excelente y rápido.»<small>Traducción del euskera. La opinión original se publica tal cual la escribió.</small></p>
+</div>
+<div style="display:grid;gap:18px;">
+<p class="cs-opinion__mejor"><b>Lo que más valoró:</b> la atención y la profesionalidad.</p>
+<div class="cs-opinion__autor"><b>María Jesús</b><span>A.Berri landetxea, Getaria · octubre de 2026</span></div>
+</div>
+</section>
+
+<section class="cs-sec">
+<div class="cs-intro reveal">
+<h2>Una casa que se alquila entera y un apartamento: dos reservas distintas en la misma web.</h2>
+<p>A.Berri alquila un caserío de piedra para grupos y un apartamento para parejas o familias, cada uno con su entrada, su precio y su calendario. La web tenía que explicar en segundos qué se alquila, para cuántas personas y qué noches están libres, en castellano, euskera e inglés.</p>
+</div>
+
+<div class="cs-pieza reveal">
+<div class="cs-pieza__txt">
+<span class="cs-num">01 · Reservas con calendario</span>
+<h3>El huésped elige, ve las noches libres y envía su solicitud</h3>
+<p>Se elige casa o apartamento, se marcan las fechas en un calendario que solo deja libres las noches disponibles y el precio aparece calculado antes de enviar. A los dueños les llega un aviso al correo con todos los datos.</p>
+</div>
+<div class="cs-captura cs-captura--movil"><picture><source srcset="assets/aberri/web-reserva-movil.webp" type="image/webp"/><img src="assets/aberri/web-reserva-movil.jpg" alt="Calendario de reservas de la web de A.Berri en el móvil" width="585" height="1266" loading="lazy"/></picture></div>
+</div>
+
+<div class="cs-pieza cs-pieza--inv reveal">
+<div class="cs-pieza__txt">
+<span class="cs-num">02 · Un panel sencillo para los dueños</span>
+<h3>Abierto u ocupado, y la respuesta ya escrita</h3>
+<p>Desde el móvil marcan cada noche como abierta u ocupada y aceptan o rechazan las solicitudes. Al responder, el correo sale ya redactado en el idioma del huésped y con su firma. Sin programas complicados ni comisiones por reserva.</p>
+</div>
+<div class="cs-captura"><picture><source srcset="assets/aberri/web-reserva.webp" type="image/webp"/><img src="assets/aberri/web-reserva.jpg" alt="Sección de reservas de la web de A.Berri en un ordenador" width="1440" height="900" loading="lazy"/></picture></div>
+</div>
+
+<div class="cs-pieza reveal">
+<div class="cs-pieza__txt">
+<span class="cs-num">03 · Casa rural y apartamento</span>
+<h3>Cada alojamiento, con su precio y su entrada</h3>
+<p>Desde la portada se entiende que son dos alojamientos independientes: la casa para grupos de hasta nueve personas y el apartamento para parejas o familias. Cada ficha enseña plazas, precio por noche y fotos propias.</p>
+</div>
+<div class="cs-captura"><picture><source srcset="assets/aberri/web-alojamientos.webp" type="image/webp"/><img src="assets/aberri/web-alojamientos.jpg" alt="Fichas de la casa rural y del apartamento en la web de A.Berri" width="1440" height="900" loading="lazy"/></picture></div>
+</div>
+</section>
+
+<section class="cs-sec">
+<div class="cs-pieza cs-pieza--inv reveal" style="margin-top:0">
+<div class="cs-pieza__txt">
+<span class="cs-num">04 · Sus fotos, con filtros</span>
+<h3>Piedra, madera y jardín, tal como son</h3>
+<p>La galería se ordena por exterior, casa rural y apartamento, y cada foto se abre a pantalla completa. Son las fotos de la propia casa: el atardecer sobre las viñas, el comedor, la barbacoa del jardín.</p>
+</div>
+<div class="cs-captura"><picture><source srcset="assets/aberri/web-galeria.webp" type="image/webp"/><img src="assets/aberri/web-galeria.jpg" alt="Galería de fotos con filtros en la web de A.Berri" width="1440" height="900" loading="lazy"/></picture></div>
+</div>
+<div class="cs-fotos reveal">
+<figure><picture><source srcset="assets/aberri/foto-apartamento.webp" type="image/webp"/><img src="assets/aberri/foto-apartamento.jpg" alt="Apartamento de A.Berri con jardín y barbacoa" width="800" height="450" loading="lazy"/></picture><figcaption>El apartamento</figcaption></figure>
+<figure><picture><source srcset="assets/aberri/foto-comedor.webp" type="image/webp"/><img src="assets/aberri/foto-comedor.jpg" alt="Comedor de la casa rural de A.Berri" width="800" height="450" loading="lazy"/></picture><figcaption>Comedor de la casa</figcaption></figure>
+<figure><picture><source srcset="assets/aberri/foto-salon.webp" type="image/webp"/><img src="assets/aberri/foto-salon.jpg" alt="Salón y cocina del apartamento de A.Berri" width="800" height="361" loading="lazy"/></picture><figcaption>Salón del apartamento</figcaption></figure>
+<figure><picture><source srcset="assets/aberri/foto-habitacion.webp" type="image/webp"/><img src="assets/aberri/foto-habitacion.jpg" alt="Habitación de la casa rural de A.Berri" width="800" height="360" loading="lazy"/></picture><figcaption>Una habitación</figcaption></figure>
+<figure><picture><source srcset="assets/aberri/foto-vinas.webp" type="image/webp"/><img src="assets/aberri/foto-vinas.jpg" alt="Viñas de txakoli junto a A.Berri, en Getaria" width="800" height="450" loading="lazy"/></picture><figcaption>Las viñas de alrededor</figcaption></figure>
+</div>
+
+<div class="cs-pieza reveal">
+<div class="cs-pieza__txt">
+<span class="cs-num">05 · Cómo llegar</span>
+<h3>Un caserío en el monte, fácil de encontrar</h3>
+<p>Un plano propio con Getaria, Zarautz y Zumaia, las distancias y los botones para abrir la ruta en Google Maps, Apple Maps o Waze. Es lo primero que pregunta quien llega por primera vez a un caserío.</p>
+</div>
+<div class="cs-captura"><picture><source srcset="assets/aberri/web-llegar.webp" type="image/webp"/><img src="assets/aberri/web-llegar.jpg" alt="Sección Cómo llegar con plano y distancias en la web de A.Berri" width="1440" height="900" loading="lazy"/></picture></div>
+</div>
+</section>
+
+<section class="cs-sec">
+<div class="cs-intro reveal">
+<h2>Y lo que no se ve, también.</h2>
+</div>
+<ul class="cs-incluye reveal">
+<li><b>Su propio dominio</b>aberricasarural.com, a su nombre. La web es suya.</li>
+<li><b>Tres idiomas para Google</b>Castellano, euskera e inglés, cada uno con su dirección para que Google lo enseñe a cada visitante.</li>
+<li><b>Datos de alojamiento para Google</b>Dirección, horarios de entrada y salida y tipos de alojamiento, en el formato que entiende el buscador.</li>
+<li><b>Avisos a su correo</b>Cada solicitud de reserva llega a su correo de siempre, con todos los datos.</li>
+<li><b>WhatsApp y llamar, a un toque</b>Una barra fija en el móvil para quien prefiere preguntar antes de reservar.</li>
+<li><b>Aviso legal y privacidad</b>En los tres idiomas, como pide la ley.</li>
+</ul>
+</section>
+
+<section class="cs-cta reveal">
+<div>
+<h2>¿Tienes un alojamiento y quieres reservas directas?</h2>
+<p>Cuéntame cómo funciona tu casa y te preparo una propuesta con precio cerrado en menos de 48 horas.</p>
+</div>
+<div class="cs-cta__acts">
+<a class="btn btn--light btn--lg" href="contacto.html">Pedir propuesta</a>
+<a class="btn btn--lg" style="--btn-bg:transparent;--btn-fg:#f6f1e7;border:1px solid rgba(246,241,231,.3)" href="trabajos.html">Ver más trabajos</a>
+</div>
+</section>
+</div>
+</main>
+
+<footer class="footer">
+<div class="container">
+<div class="footer__grid">
+<div class="footer__col footer__col--brand">
+<a href="index.html" class="footer__logo"><img src="assets/logo-nav-black.png" alt="OI Studio" class="footer__logo-img" width="320" height="86"/></a>
+<p class="footer__desc" data-t="foot_desc" style="margin-top:20px;">Webs rápidas, modernas y efectivas para negocios locales que quieren destacar en internet.</p>
+</div>
+<div class="footer__col">
+<p class="foot-h" data-t="foot_secciones">Secciones</p>
+<ul>
+<li><a href="sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
+<li><a href="trabajos.html" data-t="foot_portfolio">Portfolio</a></li>
+<li><a href="precios.html" data-t="nav_precios">Precios</a></li>
+<li><a href="ayudas-subvenciones-pagina-web-gipuzkoa.html" data-t="nav_ayudas">Ayudas</a></li>
+<li><a href="articulos.html" data-t="nav_articulos">Artículos</a></li>
+<li><a href="contacto.html" data-t="nav_contacto">Contacto</a></li>
+</ul>
+<p class="foot-h" data-t="foot_servicios">Servicios</p>
+<ul>
+<li><a href="precios.html" data-t="ft_s1">Landing · 199 €</a></li>
+<li><a href="precios.html" data-t="ft_s2">Web de negocio · 299 €</a></li>
+<li><a href="precios.html" data-t="ft_s3">Tienda online · 790 €</a></li>
+<li><a href="chatbot-reservas.html" data-t="ft_s4">Chatbot de reservas</a></li>
+</ul>
+</div>
+<div class="footer__col">
+<p class="foot-h" data-t="foot_guias">Guías</p>
+<ul>
+<li><a href="precio-diseno-web-profesional.html">Cuánto cuesta una web profesional</a></li>
+<li><a href="pagina-web-para-autonomos.html">Página web para autónomos</a></li>
+<li><a href="landing-page-o-web-completa.html">Landing o web completa</a></li>
+<li><a href="como-crear-pagina-web-negocio-paso-a-paso.html">Crear la web de tu negocio</a></li>
+<li><a href="seo-local-tolosa-google-maps.html">SEO local y Google Maps</a></li>
+<li><a href="google-business-profile-guia.html">Guía de Google Business Profile</a></li>
+<li><a href="ayudas-subvenciones-pagina-web-gipuzkoa.html">Ayudas para tu web en Gipuzkoa</a></li>
+</ul>
+</div>
+<div class="footer__col">
+<p class="foot-h" data-t="foot_zonas">Dónde trabajo</p>
+<ul class="footer__zonas">
+<li><a href="zonas/tolosaldea.html">Tolosaldea</a></li>
+<li><a href="zonas/buruntzaldea.html">Buruntzaldea</a></li>
+<li><a href="zonas/donostialdea.html">Donostialdea</a></li>
+<li><a href="zonas/oarsoaldea.html">Oarsoaldea</a></li>
+<li><a href="zonas/bidasoa.html">Bidasoa</a></li>
+<li><a href="zonas/goierri.html">Goierri</a></li>
+<li><a href="zonas/urola-garaia.html">Urola Garaia</a></li>
+<li><a href="zonas/urola-erdia.html">Urola Erdia</a></li>
+<li><a href="zonas/urola-kosta.html">Urola Kosta</a></li>
+<li><a href="zonas/debabarrena.html">Debabarrena</a></li>
+<li><a href="zonas/debagoiena.html">Debagoiena</a></li>
+<li><a href="diseno-web-negocios-espana.html" data-t="ft_esp">Toda España</a></li>
+<li><a href="zonas.html" data-t="ft_todas">Los 88 municipios →</a></li>
+</ul>
+</div>
+<div class="footer__col">
+<p class="foot-h" data-t="nav_contacto">Contacto</p>
+<ul>
+<li><a class="js-mail" data-u="contactoiwebstudio" data-d="gmail.com"></a></li>
+<li><a href="https://wa.me/34680956755">+34 680 95 67 55</a></li>
+<li><a href="https://instagram.com/oi.webstudio" target="_blank" rel="noopener">Instagram · @oi.webstudio</a></li>
+<li>Tolosa, País Vasco</li>
+</ul>
+</div>
+</div>
+<div class="footer__bottom">
+<p>© 2026 OI Studio · <a href="legal.html" data-t="foot_legal">Aviso legal y privacidad</a></p>
+<p data-t="foot_made">Diseñado y desarrollado en Tolosa</p>
+</div>
+</div>
+<div class="footer__mark" aria-hidden="true">OI STUDIO</div>
+</footer>
+
+<script src="assets/i18n.js?v=6"></script>
+<script src="assets/main.js?v=10"></script>
+</body>
+</html>

@@ -33,6 +33,7 @@ Fuera de Gipuzkoa trabaja a distancia, con el mismo precio: [toda España](https
 - [Precios](https://oiwebstudio.com/precios.html): planes y qué incluye cada uno.
 - [Trabajos](https://oiwebstudio.com/trabajos.html): webs publicadas, una por sector.
 - [Caso real: Errotatxo](https://oiwebstudio.com/caso-errotatxo.html): la web de una panadería de Tolosa con tres tiendas, en castellano y euskera.
+- [Caso real: A.Berri, casa rural en Getaria](https://oiwebstudio.com/caso-a-berri.html): web con reservas, panel para los dueños y tres idiomas; con la opinión de la dueña (5 estrellas).
 - [Zonas](https://oiwebstudio.com/zonas.html): diseño web en los municipios de Gipuzkoa.
 - [Sobre el estudio](https://oiwebstudio.com/sobre-mi.html): quién hay detrás y cómo trabaja.
 - [Contacto](https://oiwebstudio.com/contacto.html): pedir propuesta.

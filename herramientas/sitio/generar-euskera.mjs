@@ -57,7 +57,7 @@ const META = {
   },
   "trabajos.html": {
     title: "Webgune adibideak negozio lokalentzat | OI Studio",
-    desc: "Tolosan egindako webgune adibideak: Errotatxoren benetako kasua eta lau lagin nabigagarri (higiezin-agentzia, bizikleta-denda, psikologia eta fisioterapia).",
+    desc: "Tolosan egindako webgune adibideak: bi kasu erreal (Errotatxo eta A.Berri, haien iritziarekin) eta lau lagin nabigagarri.",
   },
   "sobre-mi.html": {
     title: "Niri buruz: nola lan egiten dudan | OI Studio",
