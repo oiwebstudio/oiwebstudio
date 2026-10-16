@@ -140,7 +140,6 @@
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/geist-latin-04ce1a61.woff2" crossorigin/>
 <link rel="stylesheet" href="/assets/fuentes.css?v=1"/>
 <link rel="stylesheet" href="assets/styles.css?v=23"/>
-<link rel="stylesheet" href="assets/proceso.css?v=5"/>
 <link rel="stylesheet" href="assets/portada.css?v=11"/>
 <script>if(location.protocol==='http:'&&/(^|\.)oiwebstudio\.com$/.test(location.hostname))location.replace('https://'+location.host+location.pathname+location.search+location.hash);document.documentElement.classList.add('js');</script>
 <link rel="preload" as="image" href="assets/etxea-desk.webp" fetchpriority="high"/>
@@ -295,63 +294,28 @@
 </div>
 </section>
 
-<!-- CÓMO TRABAJO — una web del portfolio construyéndose mientras bajas (assets/proceso.*) -->
-<section class="section pro" id="como-trabajo" data-pro aria-labelledby="pro-title">
-<div class="container pro-grid">
-
-<div class="pro-head reveal">
+<!-- CÓMO TRABAJO -->
+<section class="section" id="como-trabajo" aria-labelledby="pro-title">
+<div class="container">
+<style>
+.pasos5{list-style:none;margin:40px 0 0;padding:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));}
+.pasos5 li{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:22px 20px 24px;}
+.pasos5 .n{font-size:13px;color:var(--text-faint);}
+.pasos5 h3{font-size:18px;margin:10px 0 6px;}
+.pasos5 p{font-size:14.5px;line-height:1.55;color:var(--text-muted);margin:0;}
+</style>
+<div class="section-head reveal">
 <span class="eyebrow" data-t="pro_eyebrow">Cómo trabajo</span>
 <h2 id="pro-title" data-t="pro_h2">De la primera conversación a tu web publicada.</h2>
-<p data-t="pro_p">Desplázate despacio: así se construyó paso a paso la web de Errotatxo, panadería de Tolosa. El proceso es el mismo en cada proyecto.</p>
-<a class="pro-caso" href="caso-errotatxo.html" data-t="caso_go">Ver el caso completo →</a>
+<p data-t="pro_p">Cinco pasos claros, con el precio cerrado antes de empezar y la web publicada a tu nombre.</p>
 </div>
-
-<p class="sr-only" data-t="pro_sr">Ilustración: la web de Errotatxo, panadería de Tolosa, pasa de preguntas sueltas a boceto, a web terminada y a publicada con su versión móvil, y después recibe un cambio pedido.</p>
-
-<div class="pro-vista" aria-hidden="true">
-<div class="pro-nav">
-<div class="pro-barra">
-<span class="pro-puntos"><i></i><i></i><i></i></span>
-<span class="pro-url"><span class="pro-url-bor" data-t="pro_url">borrador · sin publicar</span><span class="pro-url-pub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>errotatxo.com</span></span>
-<span style="width:34px;"></span>
-</div>
-<div class="pro-lienzo">
-<div class="pro-preguntas">
-<span class="pro-pregunta" data-t="pro_q1">¿Qué te pregunta siempre la gente?</span>
-<span class="pro-pregunta" data-t="pro_q2">¿Quién es tu cliente?</span>
-<span class="pro-pregunta" data-t="pro_q3">¿Por qué te eligen a ti?</span>
-</div>
-<div class="pro-boceto">
-<span class="pro-bloque" style="left:5%;top:4%;width:4.4%;height:5.4%;">Logo</span>
-<span class="pro-bloque" style="left:27.6%;top:4.7%;width:37.8%;height:3.6%;" data-t="pro_w_menu">Menú</span>
-<span class="pro-bloque" style="left:89.9%;top:3.9%;width:7.6%;height:4.4%;" data-t="pro_w_tiendas">Tiendas</span>
-<span class="pro-bloque" style="left:6%;top:38.9%;width:23.4%;height:2.4%;"></span>
-<span class="pro-bloque" style="left:6%;top:43.6%;width:52.6%;height:20.6%;" data-t="pro_w_titular">Titular<em>: qué haces y dónde</em></span>
-<span class="pro-bloque" style="left:6%;top:66.6%;width:31%;height:6%;" data-t="pro_w_texto">Para quién</span>
-<span class="pro-bloque" style="left:6%;top:76.8%;width:14.1%;height:5.1%;" data-t="pro_w_boton">Botón</span>
-<span class="pro-bloque" style="left:6%;top:84.3%;width:15.8%;height:3.4%;" data-t="pro_w_horario">Horario</span>
-<span class="pro-bloque" style="left:63%;top:17%;width:32%;height:58%;" data-t="pro_w_foto">Foto real del local</span>
-</div>
-<picture><source srcset="assets/errotatxo-desk.webp" type="image/webp"/><img class="pro-web" src="assets/errotatxo-desk.jpg" alt="" width="1440" height="900" loading="lazy"/></picture>
-<span class="pro-sello"><i></i><span data-t="pro_sello">Publicada · dice en directo si está abierto</span></span>
-</div>
-</div>
-<div class="pro-movil"><picture><source srcset="assets/errotatxo-mobile.webp" type="image/webp"/><img src="assets/errotatxo-mobile.jpg" alt="" width="585" height="1234" loading="lazy"/></picture></div>
-<div class="pro-cambio">
-<small data-t="pro_c_de">Cambio pedido por WhatsApp</small>
-<p data-t="pro_c_txt">¿Me cambias la foto de la portada?</p>
-<span class="pro-estado"><span class="pro-pend" data-t="pro_c_pend">Pendiente</span><span class="pro-hecho" data-t="pro_c_hecho">Hecho ✓</span></span>
-</div>
-</div>
-
-<ol class="pro-pasos">
-<li class="pro-paso"><span class="pro-num">1 / 5</span><h3 data-t="st1_h">Reunión inicial</h3><p data-t="st1_p">Entiendo tu negocio, qué necesitas y si puedo ayudarte de verdad.</p></li>
-<li class="pro-paso"><span class="pro-num">2 / 5</span><h3 data-t="st2_h">Diseño la propuesta</h3><p data-t="st2_p">Estructura, referencias visuales y un presupuesto cerrado. Sin sorpresas.</p></li>
-<li class="pro-paso"><span class="pro-num">3 / 5</span><h3 data-t="st3_h">Construyo la web</h3><p data-t="st3_p">La programo con el rigor de un plano técnico: rápida, ligera y probada en el móvil antes de enseñártela.</p></li>
-<li class="pro-paso"><span class="pro-num">4 / 5</span><h3 data-t="st4_h">La publico</h3><p data-t="st4_p">Dominio, alojamiento y conexión con tus redes o herramientas.</p></li>
-<li class="pro-paso"><span class="pro-num">5 / 5</span><h3 data-t="st5_h">Doy soporte</h3><p data-t="st5_p">30 días de ajustes gratis y mantenimiento continuo si lo quieres.</p></li>
+<ol class="pasos5 reveal" data-d="1">
+<li><span class="n">1 / 5</span><h3 data-t="st1_h">Reunión inicial</h3><p data-t="st1_p">Entiendo tu negocio, qué necesitas y si puedo ayudarte de verdad.</p></li>
+<li><span class="n">2 / 5</span><h3 data-t="st2_h">Diseño la propuesta</h3><p data-t="st2_p">Estructura, referencias visuales y un presupuesto cerrado. Sin sorpresas.</p></li>
+<li><span class="n">3 / 5</span><h3 data-t="st3_h">Construyo la web</h3><p data-t="st3_p">La programo con el rigor de un plano técnico: rápida, ligera y probada en el móvil antes de enseñártela.</p></li>
+<li><span class="n">4 / 5</span><h3 data-t="st4_h">La publico</h3><p data-t="st4_p">Dominio, alojamiento y conexión con tus redes o herramientas.</p></li>
+<li><span class="n">5 / 5</span><h3 data-t="st5_h">Doy soporte</h3><p data-t="st5_p">30 días de ajustes gratis y mantenimiento continuo si lo quieres.</p></li>
 </ol>
-
 </div>
 </section>
 
@@ -360,8 +324,8 @@
 <div class="container">
 <div class="section-head reveal">
 <span class="eyebrow" data-t="work_eyebrow">Proyectos</span>
-<h2 data-t="work_h2">Diseños que no parecen plantillas.</h2>
-<p data-t="work_p">Muestras con marca ficticia que reflejan mi forma de trabajar. Puedes abrirlas y recorrerlas.</p>
+<h2 data-t="work_h2">Webs publicadas y muestras.</h2>
+<p data-t="work_p">Dos webs ya publicadas para clientes reales y, debajo, muestras con marca ficticia que puedes abrir y recorrer.</p>
 </div>
 <a class="caso-dest reveal" href="caso-errotatxo.html">
 <span class="caso-dest__foto"><picture><source srcset="assets/errotatxo/foto-fachada.webp" type="image/webp"/><img src="assets/errotatxo/foto-fachada.jpg" alt="Fachada de la panadería Errotatxo en Tolosa" width="1400" height="1050" loading="lazy"/></picture></span>
@@ -369,6 +333,17 @@
 <span class="caso-dest__tag" data-t="caso_tag">Caso real · cliente</span>
 <span class="caso-dest__h" data-t="caso_h">Errotatxo, panadería de Tolosa desde 1996</span>
 <span class="caso-dest__p" data-t="caso_p">Tres tiendas, castellano y euskera, y una web que dice en directo si está abierto.</span>
+<span class="caso-dest__go" data-t="caso_go">Ver el caso completo →</span>
+</span>
+</a>
+<style>@media(min-width:860px){.caso-dest--inv{grid-template-columns:1fr 1.15fr}.caso-dest--inv .caso-dest__foto{order:2}}.caso-dest__cita{font-family:var(--font-serif);font-size:19px;line-height:1.45;color:#fff;border-left:2px solid #3fbf73;padding-left:14px}.caso-dest__cita small{display:block;margin-top:6px;font-family:var(--font-sans);font-size:13.5px;color:#c9c2b2}</style>
+<a class="caso-dest caso-dest--inv reveal" href="caso-a-berri.html">
+<span class="caso-dest__foto"><picture><source srcset="assets/aberri/foto-caserio.webp" type="image/webp"/><img src="assets/aberri/foto-caserio.jpg" alt="El caserío de A.Berri al atardecer, en Getaria" width="800" height="450" loading="lazy"/></picture></span>
+<span class="caso-dest__txt">
+<span class="caso-dest__tag" data-t="caso_tag">Caso real · cliente</span>
+<span class="caso-dest__h" data-t="caso2_h">A.Berri, casa rural en Getaria</span>
+<span class="caso-dest__p" data-t="caso2_p">Casa rural y apartamento con reservas desde su propia web, en tres idiomas y con un panel sencillo para los dueños.</span>
+<span class="caso-dest__cita"><span data-t="caso2_cita">«Ha quedado de maravilla. Un trabajo excelente y rápido.»</span><small data-t="caso2_autor">María Jesús, dueña de A.Berri · traducido del euskera</small></span>
 <span class="caso-dest__go" data-t="caso_go">Ver el caso completo →</span>
 </span>
 </a>
@@ -390,19 +365,29 @@
 </div>
 </section>
 
-<!-- HECHOS -->
+<!-- OPINION -->
 <section class="section section--subtle">
 <div class="container">
-<div class="stats-head reveal">
-<span class="eyebrow" data-t="stats_eyebrow">El estudio, en números</span>
+<style>
+.opi{max-width:880px;margin:0 auto;text-align:center;}
+.opi__estrellas{color:#c98a2b;font-size:20px;letter-spacing:.14em;margin-top:18px;}
+.opi blockquote{margin:18px 0 0;font-family:var(--font-serif);font-size:clamp(24px,3.2vw,36px);line-height:1.32;letter-spacing:-.012em;color:var(--ink);}
+.opi__orig{margin:18px auto 0;max-width:60ch;font-size:14.5px;line-height:1.6;color:var(--text-faint);}
+.opi__autor{margin-top:26px;display:inline-flex;align-items:center;gap:14px;text-align:left;}
+.opi__autor img{width:56px;height:56px;border-radius:50%;object-fit:cover;}
+.opi__autor b{display:block;font-size:16px;color:var(--ink);}
+.opi__autor span{font-size:14px;color:var(--text-muted);}
+.opi__go{display:inline-block;margin-top:22px;font-weight:600;color:var(--ink);border-bottom:1px solid var(--border-strong);}
+.opi__go:hover{border-color:var(--ink);}
+</style>
+<div class="opi reveal">
+<span class="eyebrow" data-t="opi_eyebrow">Lo que dicen los clientes</span>
+<div class="opi__estrellas" aria-label="5 de 5 estrellas">★★★★★</div>
+<blockquote data-t="opi_txt">«Quería darte las gracias por el gran trabajo de actualizar la web. Ha quedado de maravilla: la navegación es rápida y el diseño ha cumplido nuestras expectativas. Un trabajo excelente y rápido.»</blockquote>
+<p class="opi__orig" data-t="opi_orig">Lo escribió en euskera; esta es la traducción. El original está en la página del caso.</p>
+<div class="opi__autor"><img src="assets/aberri/foto-caserio.jpg" alt="" width="56" height="56" loading="lazy"/><span><b>María Jesús</b><span data-t="opi_autor">A.Berri landetxea, casa rural en Getaria</span></span></div>
+<div><a class="opi__go" href="caso-a-berri.html" data-t="opi_go">Ver la web que le hice →</a></div>
 </div>
-<div class="stats reveal" data-d="1">
-<div class="stat"><b><span class="cnum" data-count="4">0</span></b><span data-t="stat1">muestras de web para ver ahora</span></div>
-<div class="stat"><b><span class="cnum" data-count="48">0</span><em>h</em></b><span data-t="stat2">para recibir tu propuesta</span></div>
-<div class="stat"><b><span class="cnum" data-count="30">0</span></b><span data-t="stat3">días de ajustes gratis</span></div>
-<div class="stat"><b><span class="cnum" data-count="100">0</span><em>%</em></b><span data-t="stat4">a medida, cero plantillas</span></div>
-</div>
-<p class="stats-nota reveal" data-d="2" data-t="stats_nota">Cada web se diseña desde cero para el negocio que la va a usar.</p>
 </div>
 </section>
 
@@ -637,9 +622,8 @@
 <div class="footer__mark" aria-hidden="true">OI STUDIO</div>
 </footer>
 
-<script src="assets/i18n.js?v=15"></script>
+<script src="assets/i18n.js?v=16"></script>
 <script src="assets/main.js?v=10"></script>
-<script src="assets/proceso.js?v=1" defer></script>
 <script>
 (function(){
   /* Sectores con letras escalonadas: hover anima el texto y cambia los dispositivos */
