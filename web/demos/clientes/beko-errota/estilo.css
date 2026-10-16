@@ -609,3 +609,4 @@ a{color:inherit}
   .paseo.pegado .paseo__f img{max-height:46svh}
   .paseo.pegado .paseo__f figcaption{font-size:22px;margin-top:8px}
 }
+html,body{overflow-x:clip}
