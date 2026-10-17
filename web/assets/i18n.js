@@ -13,6 +13,31 @@ const EU = {
   nav_precios: "Prezioak",
   nav_zonas: "Eremuak",
   nav_ayudas: "Laguntzak",
+  /* Menú nuevo, accesos de portada, FAQ con «¿Otra duda?», filtros de Trabajos (17/10/2026) */
+  nav_mas: "Gehiago",
+  mm_presu: "Aurrekontua eskatu",
+  at_t: "Orri honetan",
+  at_prueba: "Ikusi zure weba",
+  at_trabajos: "Lanak",
+  at_como: "Nola lan egiten dudan",
+  at_precios: "Prezioak",
+  at_faq: "Galderak",
+  pi_msg1: "Abuztuko ordutegia aldatu dezakezu webean?",
+  pi_msg2: "Eginda. Eguneratuta dago.",
+  fo_pub: "argitaratutako weba",
+  fo_h: "Beste zalantzarik?",
+  fo_p: "Galdetu nahi duzuna. Egun berean erantzuten dut, WhatsApp bidez edo telefonoz.",
+  fil_t: "Lanak iragazi",
+  fil_todo: "Denak",
+  fil_casos: "Kasu errealak",
+  fil_muestras: "Laginak",
+  fil_comercio: "Merkataritza eta tailerrak",
+  fil_salud: "Osasuna",
+  fil_turismo: "Turismoa",
+  fil_estudio: "Argazkigintza eta arkitektura",
+  fil_vacio: "Sektore honetan ez dago mota horretako lanik. Probatu «Denak» aukerarekin.",
+  ct_gal_h: 'Idatzi aurretik, <span class="grad">ikusi zer egiten dudan</span>',
+  ct_gal_p: "Bezeroentzat argitaratutako bi webgune eta nire lau lagin. Guztiak ireki daitezke.",
   ayc_t: "Zure udalak webgunearen zati bat ordain dezake",
   ayc_p: "Laguntzak zabalik daude Andoainen (% 100era arte), Irunen, Tolosan, Hernanin, Beasainen, Bergaran eta Gipuzkoako beste herri batzuetan. Zure negozioak eska ditzakeen esango dizut.",
   ayc_go: "Laguntzak ikusi →",
@@ -588,7 +613,7 @@ const EU = {
      castellano, que confunde a Google y a los lectores de pantalla). En esas
      páginas se oculta el selector y se fuerza el castellano.
      En cuanto se traduzca el cuerpo, el selector reaparece solo. */
-  const MARCO = 30;                      // claves de navegación + pie
+  const MARCO = 34;                      // claves de navegación + pie (menú nuevo: +4)
   const MINIMO_PROPIO = 12;              // claves propias que exigimos al cuerpo
   const traducibles = [...nodes].filter(el => EU[el.dataset.t] != null).length;
   const paginaTraducida = traducibles - MARCO >= MINIMO_PROPIO;
