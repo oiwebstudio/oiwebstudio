@@ -88,10 +88,90 @@
   // Las páginas que ya traen su propio GSAP (ayudas, reservas…) se animan solas.
   if (document.querySelector('script[src*="vendor/gsap"]')) return;
 
+  const fuera = (el) => el.closest('.hero, header, .footer, .mobile-menu, .nav-wrap, [data-quieto], .prueba, details, .desliza');
+  // Bloque .reveal que solo envuelve texto: si su texto ya entra por su cuenta,
+  // el bloque deja de entrar (no hay doble movimiento). Devuelve false si el
+  // bloque lleva imágenes o tarjetas de precio: ahí manda la entrada del bloque.
+  const calmable = (el) => {
+    const r = el.closest('.reveal');
+    if (!r) return true;
+    return r === el || (!r.querySelector('img, form, .price, .pk, picture') && r.textContent.length < 700);
+  };
+  const calmar = (el) => { const r = el.closest('.reveal'); if (r && calmable(el)) r.classList.add('mv-texto'); };
+  const una = (el, fn, margen) => {
+    const io = new IntersectionObserver((ents) => {
+      if (!ents[0].isIntersecting) return;
+      io.disconnect();
+      fn();
+    }, { threshold: 0, rootMargin: margen || '0px 0px -12% 0px' });
+    io.observe(el);
+  };
+
+  /* 4 · Listas y preguntas en cascada: cada fila sube un poco después de la
+         anterior (máx. 8 escalones). Al terminar se quitan las clases y la
+         lista queda como siempre (hover, acordeón…). */
+  const CASCADA = '.hfaq__lista, .faq-pre, .faq-list, .carta, .ct-pasos, section ul.check, section ol, section ul, .section ul, .zsec ul';
+  const listas = new Set();
+  document.querySelectorAll(CASCADA).forEach(l => {
+    if (listas.has(l) || fuera(l) || l.closest('.pasos-linea, .city-tags, nav, .mini-board, .mu__sw, .galeria-trabajo, .foot-contacto, .art, [data-anim]')) return;
+    if (l.matches('.pasos-linea, .city-tags, .mu__sw, .footer__zonas, .nav__links')) return;
+    const hijos = Array.from(l.children);
+    if (hijos.length < 2 || l.querySelector('img, picture, iframe, form')) return;
+    // Solo si ningún bloque de fuera ya entra por su cuenta (o es la propia lista)
+    const r = l.closest('.reveal');
+    if (r && r !== l) return;
+    if (!abajo(l)) return;
+    listas.add(l);
+  });
+  listas.forEach(l => {
+    if (l.classList.contains('reveal')) l.classList.add('mv-texto');
+    Array.from(l.children).forEach((li, i) => li.style.setProperty('--mv-i', Math.min(i, 8)));
+    l.classList.add('mv-cascada');
+    una(l, () => {
+      l.classList.add('is-in');
+      setTimeout(() => {
+        l.classList.remove('mv-cascada', 'is-in');
+        Array.from(l.children).forEach(li => li.style.removeProperty('--mv-i'));
+      }, 700 + 8 * 60 + 200);
+    });
+  });
+
+  /* 5 · Precios que cuentan hasta su valor (de 100 a 399, mismas cifras: no
+         baila el ancho). Esperan transparentes hasta verse; el texto real está
+         en la página desde el principio (Google y los lectores lo leen bien) y
+         al final se repone exacto. */
+  const PRECIOS = '.price__amount b, .pm > b, .pk__pr, .carta__p b, .rs-precios b';
+  document.querySelectorAll(PRECIOS).forEach(el => {
+    if (el.closest('.hero, header, .footer, [data-quieto]') || !abajo(el)) return;
+    const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, { acceptNode: n => /\d/.test(n.data) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP });
+    const nodo = w.nextNode();
+    if (!nodo) return;
+    const m = nodo.data.match(/^(\D*)(\d+)([\s\S]*)$/);
+    if (!m) return;
+    const original = nodo.data, fin = parseInt(m[2], 10);
+    if (fin < 10) return;
+    const ini = Math.pow(10, m[2].length - 1);
+    el.classList.add('mv-cuenta');
+    una(el, () => {
+      el.classList.add('is-in');
+      const t0 = performance.now(), dur = 1100;
+      const paso = (t) => {
+        const p = Math.min((t - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3);
+        nodo.data = p < 1 ? m[1] + Math.round(ini + (fin - ini) * e) + m[3] : original;
+        if (p < 1) requestAnimationFrame(paso);
+        else setTimeout(() => el.classList.remove('mv-cuenta', 'is-in'), 600);
+      };
+      nodo.data = m[1] + ini + m[3];
+      requestAnimationFrame(paso);
+    }, '0px 0px -15% 0px');
+  });
+
   const TITULARES = 'main h2, .section h2, .cs-cta h2, .lin__h, .zsec h2, .art h2';
   const ENTRADILLAS = '.section-head > p, .lin__cab > p:first-of-type, .cs-intro > p, .pre-mu__h > p, .eleg > p';
-  const ENCENDER = '.opi blockquote, .cs-opinion blockquote';
-  const fuera = (el) => el.closest('.hero, header, .footer, .mobile-menu, .nav-wrap, [data-quieto], .prueba, details');
+  const ENCENDER = '.opi blockquote, .cs-opinion blockquote, [data-encender]';
+  // Párrafos: entran línea a línea, cada una desde detrás de su máscara.
+  const PARRAFOS = 'section p, .section p, .zsec p, .cs-intro p';
+  const fueraTexto = (el) => el.closest('.hero, header, .footer, .mobile-menu, .nav-wrap, [data-quieto], .prueba, details');
 
   const cargar = (src) => new Promise((ok, mal) => {
     const s = document.createElement('script');
@@ -108,16 +188,17 @@
     // trocea: medir entre troceo y troceo obligaba a recalcular la página entera
     // cada vez.
     const pendientes = new Set();
-    document.querySelectorAll(TITULARES + ', ' + ENTRADILLAS + ', ' + ENCENDER).forEach(el => { if (!fuera(el) && abajo(el)) pendientes.add(el); });
+    document.querySelectorAll(TITULARES + ', ' + ENTRADILLAS + ', ' + ENCENDER).forEach(el => { if (!fueraTexto(el) && abajo(el)) pendientes.add(el); });
     const vale = (el) => pendientes.has(el);
-
-    // Bloque .reveal que solo envuelve texto: si su texto ya entra por su cuenta,
-    // el bloque deja de entrar (no hay doble movimiento).
-    const calmar = (el) => {
-      const r = el.closest('.reveal');
-      if (!r) return;
-      if (r === el || (!r.querySelector('img, form, .price, .pk') && r.textContent.length < 700)) r.classList.add('mv-texto');
-    };
+    // Párrafos que entrarán línea a línea: con texto de verdad, por debajo de la
+    // pantalla, fuera de tarjetas deslizables y de bloques con foto (ahí ya
+    // entra el bloque entero) y sin otro movimiento propio.
+    const parrafos = [];
+    document.querySelectorAll(PARRAFOS).forEach(p => {
+      if (pendientes.has(p) || p._mv || fuera(p) || p.closest('[data-anim], .art, .par-cascade, .mv-cascada, blockquote, .opi, .cs-opinion, .faq-otra, .stat, .stats, label, form, .price, .pk, .pm, a, button')) return;
+      if (p.classList.contains('par-cascade') || p.matches(ENCENDER) || p.textContent.trim().length < 50 || !calmable(p) || !abajo(p)) return;
+      parrafos.push(p);
+    });
 
     const io = new IntersectionObserver((ents) => {
       ents.forEach(en => {
@@ -162,6 +243,30 @@
       p._mv = () => {
         p.classList.add('mv-sube-p');
         setTimeout(() => p.classList.remove('mv-listo-p', 'mv-sube-p'), 1200);
+      };
+      io.observe(p);
+    });
+
+    // Párrafos: esperan transparentes; al llegar se trocean en líneas (con el
+    // ancho real de ese momento) y cada línea sube desde su máscara, escalonada.
+    // Al terminar se recompone como texto normal.
+    parrafos.forEach(p => {
+      calmar(p);
+      p.classList.add('mv-espera');
+      p._mv = () => {
+        const s = Split.create(p, { type: 'lines', mask: 'lines', linesClass: 'mvl', aria: 'auto', propIndex: true });
+        const n = s.lines.length;
+        p.classList.remove('mv-espera');
+        if (!n) { s.revert(); return; }
+        p.classList.add('mv-lineas');
+        let hecho = false;
+        const recomponer = () => {
+          if (hecho) return; hecho = true;
+          s.revert();
+          p.classList.remove('mv-lineas');
+        };
+        s.lines[n - 1].addEventListener('animationend', recomponer, { once: true });
+        setTimeout(recomponer, 750 + 70 * n + 400);
       };
       io.observe(p);
     });
