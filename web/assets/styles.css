@@ -931,8 +931,9 @@ a.work:hover .work__link { gap: 11px; color: var(--accent-hover); }
 }
 
 /* Párrafos en cascada palabra a palabra (par-word-cascade) */
-.par-cascade span { display: inline-block; opacity: 0; filter: blur(3px); transform: translateY(16px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease), filter 0.9s var(--ease); }
-.par-cascade.vis span { opacity: 1; filter: blur(0); transform: none; }
+/* Sin desenfoque: filter en cada palabra costaba fotogramas en móviles de gama media */
+.par-cascade span { display: inline-block; opacity: 0; transform: translateY(14px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
+.par-cascade.vis span { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   .par-cascade span { opacity: 1; filter: none; transform: none; transition: none; }
 }
@@ -2022,3 +2023,179 @@ html.flotante-fuera .subir { bottom: calc(22px + env(safe-area-inset-bottom, 0px
 
 /* Sin movimiento: las tarifas de Precios aparecen quietas (antes entraban girando igualmente) */
 @media (prefers-reduced-motion: reduce) { .price, .price__flag, .price--featured .price__halo { animation: none; } }
+
+/* ==========================================================================
+   MOVIMIENTO AL BAJAR (v26) — pensado para el móvil
+   Reglas: solo transform, opacity y clip-path. Donde hay animation-timeline
+   va en CSS (sin JS); donde no, movimiento.js pone el respaldo (.mv-sin-sda).
+   Nada de esto oculta contenido sin JS ni con movimiento reducido.
+   ========================================================================== */
+
+/* Barra de lectura: en páginas cortas sobra */
+.pag-corta body::before { display: none; }
+
+/* Texto troceado por SplitText (movimiento.js): la máscara deja aire a tildes y colas */
+.mvw-mask { padding: .14em .05em .12em; margin: -.14em -.05em -.12em; }
+/* Si el texto ya entra palabra a palabra, su bloque no entra además por su cuenta */
+.js .reveal.mv-texto { animation: none !important; opacity: 1 !important; transform: none !important; transition: none !important; }
+
+/* Menú del móvil: los enlaces entran escalonados al abrirlo */
+@media (max-width: 1199.98px) and (prefers-reduced-motion: no-preference) {
+  .mobile-menu.is-open .mobile-menu__main li,
+  .mobile-menu.is-open .mobile-menu__sec,
+  .mobile-menu.is-open .mobile-menu__atajos > a { animation: mv-menu .55s cubic-bezier(.16, 1, .3, 1) both; }
+  .mobile-menu.is-open .mobile-menu__main li:nth-child(1) { animation-delay: .03s; }
+  .mobile-menu.is-open .mobile-menu__main li:nth-child(2) { animation-delay: .07s; }
+  .mobile-menu.is-open .mobile-menu__main li:nth-child(3) { animation-delay: .11s; }
+  .mobile-menu.is-open .mobile-menu__main li:nth-child(4) { animation-delay: .15s; }
+  .mobile-menu.is-open .mobile-menu__main li:nth-child(5) { animation-delay: .19s; }
+  .mobile-menu.is-open .mobile-menu__sec { animation-delay: .24s; }
+  .mobile-menu.is-open .mobile-menu__atajos > a:nth-child(1) { animation-delay: .28s; }
+  .mobile-menu.is-open .mobile-menu__atajos > a:nth-child(2) { animation-delay: .31s; }
+  .mobile-menu.is-open .mobile-menu__atajos > a:nth-child(3) { animation-delay: .34s; }
+  @keyframes mv-menu { from { opacity: 0; transform: translateY(18px); } }
+}
+
+/* Filas deslizables: las tarjetas llegan desde la derecha y se pasan un poco,
+   así asoma la siguiente. El indicador sigue al dedo sin saltos. */
+@media (max-width: 759px) and (prefers-reduced-motion: no-preference) {
+  .js .desliza.mv-fila > * { opacity: 0 !important; transform: translateX(64px) !important; }
+  .js .desliza.mv-fila.is-in > * { opacity: 1 !important; transform: none !important; animation: mv-fila .95s cubic-bezier(.16, 1, .3, 1) both !important; animation-delay: calc(var(--mv-i, 0) * 85ms) !important; }
+  @keyframes mv-fila { 0% { opacity: 0; transform: translateX(64px); } 55% { opacity: 1; transform: translateX(-14px); } 100% { opacity: 1; transform: none; } }
+  .desliza-ind__barra i { transition: transform .1s linear; }
+}
+
+/* «Cómo trabajo» en el móvil: los pasos en vertical, con una línea que se
+   rellena al bajar y un punto que se enciende en cada paso. Sin pin: el
+   scroll es el de siempre y nunca deja a nadie atrapado. */
+@media (max-width: 759px) {
+  .pasos-linea { position: relative; grid-template-columns: 1fr; gap: 12px; padding-left: 28px; view-timeline: --mv-pasos block; }
+  .pasos-linea::before, .pasos-linea::after { content: ""; position: absolute; left: 9px; top: 14px; bottom: 14px; width: 2px; border-radius: 2px; background: var(--border-strong); }
+  .pasos-linea::after { background: var(--ink); transform-origin: 50% 0; transform: scaleY(var(--mv-p, 1)); }
+  .pasos-linea > li { flex-direction: row; align-items: stretch; position: relative; overflow: visible; view-timeline: --mv-paso block; }
+  .pasos-linea > li::before, .pasos-linea > li::after { content: ""; position: absolute; z-index: 1; left: -24px; top: 50%; width: 12px; height: 12px; margin-top: -6px; border-radius: 50%; background: var(--bg); box-shadow: 0 0 0 2px var(--border-strong); }
+  .pasos-linea > li::after { z-index: 2; background: var(--ink); box-shadow: none; }
+  .pasos-linea .pi__img { flex: 0 0 40%; aspect-ratio: auto; min-height: 118px; border-radius: var(--r-md) 0 0 var(--r-md); }
+  .pasos-linea .pi__txt { flex: 1; min-width: 0; align-self: center; padding: 12px 14px 14px; }
+  .pasos-linea h3 { font-size: 15.5px; }
+  .pasos-linea p { font-size: 14px; }
+  .pasos-linea .pi__url { display: none; }
+  .pasos-linea .pi__img--chat { padding: 8px; gap: 5px; }
+  .pasos-linea .pi__msg { font-size: 11px; line-height: 1.3; padding: 6px 8px; max-width: 94%; }
+  .pasos-linea .pi__img--pc { padding: 12% 8%; }
+  .mv-sin-sda .pasos-linea > li::after { transform: scale(0); transition: transform .45s cubic-bezier(.16, 1, .3, 1) .15s; }
+  .mv-sin-sda .pasos-linea > li.is-in::after { transform: none; }
+}
+
+/* Los dos casos reales se apilan como tarjetas al bajar (solo con sticky:
+   si se baja rápido, se pasan sin más). */
+@media (max-width: 859px) {
+  .casos-pila > .caso-dest { position: sticky; top: 14px; }
+  .casos-pila > .caso-dest + .caso-dest { top: 28px; }
+}
+
+/* Fotos: se destapan desde un marco más pequeño al aparecer. Va por tiempo (movimiento.js
+   les pone .is-in al entrar), no ligado al scroll: clip-path se repinta en cada
+   fotograma, y ligado al scroll costaba fluidez en móviles modestos mientras se
+   bajaba; así solo se repinta durante los 0,6 s que dura. */
+@media (prefers-reduced-motion: no-preference) {
+  .mv-tapa { transition: clip-path .6s cubic-bezier(.16, 1, .3, 1); }
+  .mv-tapa:not(.is-in) { clip-path: inset(12% 9% 12% 9% round 18px); }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    /* En pantallas táctiles la foto se desplaza un poco dentro de su marco */
+    @media (hover: none) {
+      .caso-dest__foto img, .opi__foto img, .cs-fotos img {
+        animation: mv-paralaje linear both;
+        animation-timeline: view();
+        animation-range: cover 0% cover 100%;
+      }
+      @keyframes mv-paralaje { from { transform: translateY(-6%) scale(1.13); } to { transform: translateY(6%) scale(1.13); } }
+    }
+  }
+  @media (max-width: 759px) and (prefers-reduced-motion: no-preference) {
+    /* Pasos: la línea se rellena con la parte de la lista ya leída (mitad de
+       la pantalla; movimiento.js ajusta el tramo a la altura real) y cada punto se
+       enciende al pasar por ahí. Cada paso entra desde la derecha. */
+    .pasos-linea::after {
+      animation: mv-carril linear both;
+      animation-timeline: --mv-pasos;
+      animation-range: cover var(--mv-a, 25%) cover var(--mv-b, 70%);
+    }
+    @keyframes mv-carril { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+    .pasos-linea > li::after {
+      animation: mv-punto linear both;
+      animation-timeline: --mv-paso;
+      animation-range: cover 42% cover 48%;
+    }
+    @keyframes mv-punto { from { transform: scale(0); } to { transform: scale(1); } }
+    .js .pasos-linea > li.reveal { animation-name: mv-paso !important; animation-range: entry 0% entry 85% !important; }
+    @keyframes mv-paso { from { opacity: 0; transform: translateX(34px); } 60% { opacity: 1; } }
+  }
+}
+
+/* Casos apilados: el de abajo se encoge mientras el siguiente lo cubre (sin
+   apagarlo: su texto sigue con el contraste de siempre mientras se ve) */
+@supports (animation-timeline: view()) and (timeline-scope: --a) {
+  @media (max-width: 859px) and (prefers-reduced-motion: no-preference) {
+    .casos-pila { timeline-scope: --mv-caso2; }
+    .casos-pila > .caso-dest:last-child { view-timeline: --mv-caso2 block; }
+    .js .casos-pila > .caso-dest:first-child {
+      transform-origin: 50% 0;
+      animation: mv-hunde linear both !important;
+      animation-timeline: --mv-caso2 !important;
+      animation-range: entry 40% entry 100% !important;
+    }
+    @keyframes mv-hunde { from { transform: none; } to { transform: scale(.9); } }
+  }
+}
+
+/* «Leer más»: texto útil pero largo, plegado con un details nativo (se lee sin JS) */
+.leer-mas { margin-top: 12px; }
+.leer-mas > summary { display: inline-flex; align-items: center; gap: 10px; padding: 10px 0; cursor: pointer; list-style: none; font-weight: 600; font-size: 15.5px; color: var(--ink); text-decoration: underline; text-decoration-color: var(--border-strong); text-underline-offset: 5px; }
+.leer-mas > summary::-webkit-details-marker { display: none; }
+.leer-mas > summary::after { content: "+"; display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--terra-soft); font-size: 16px; line-height: 1; text-decoration: none; transition: transform .25s var(--ease); }
+.leer-mas[open] > summary::after { transform: rotate(45deg); }
+.leer-mas > summary:hover { text-decoration-color: var(--ink); }
+@media (prefers-reduced-motion: reduce) { .leer-mas > summary::after { transition: none; } }
+
+/* Entradas de bloque al bajar, más cortas: antes un bloque alto (la carta de
+   extras, la calculadora) seguía desplazado hasta que entraba ENTERO, y se leía
+   movido de lado. Ahora se coloca en los primeros ~280 px de scroll. En el
+   móvil, además, los bloques suben en vez de entrar de lado (de lado se salían
+   de la pantalla). */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .js .reveal:not(.hero .reveal, .pre-hero .reveal, .bot-hero .reveal, .contact-grid > .reveal, header .reveal) { animation-range: entry 0% entry 280px; }
+    .js .reveal[data-d="1"]:not(.hero .reveal, .pre-hero .reveal, .bot-hero .reveal, .contact-grid > .reveal, header .reveal) { animation-range: entry 20px entry 300px; }
+    .js .reveal[data-d="2"]:not(.hero .reveal, .pre-hero .reveal, .bot-hero .reveal, .contact-grid > .reveal, header .reveal) { animation-range: entry 40px entry 320px; }
+    .js .reveal[data-d="3"]:not(.hero .reveal, .pre-hero .reveal, .bot-hero .reveal, .contact-grid > .reveal, header .reveal) { animation-range: entry 60px entry 340px; }
+  }
+  @media (max-width: 759px) and (prefers-reduced-motion: no-preference) {
+    .js .reveal--left:not(.hero .reveal, .pre-hero .reveal, .bot-hero .reveal, .contact-grid > .reveal, header .reveal),
+    .js .reveal--right:not(.hero .reveal, .pre-hero .reveal, .bot-hero .reveal, .contact-grid > .reveal, header .reveal) { animation-name: oi-asoma; }
+  }
+}
+@media (max-width: 759px) {
+  .js .reveal--left, .js .reveal--right { transform: translateY(22px); }
+  .js .reveal.is-visible { transform: none; }
+}
+
+/* Texto al bajar (movimiento.js trocea con SplitText; el movimiento va aquí, en el
+   compositor). Las clases solo existen si el JS las pone: sin JS, sin SplitText o
+   con movimiento reducido, el texto se ve quieto desde el principio. */
+@media (prefers-reduced-motion: no-preference) {
+  .mv-listo .mvw { transform: translateY(115%); }
+  .mv-sube .mvw { animation: mv-sube .8s cubic-bezier(.16, 1, .3, 1) both; animation-delay: calc((var(--word, 1) - 1) * var(--mv-paso, 45ms)); }
+  @keyframes mv-sube { from { transform: translateY(115%); } to { transform: none; } }
+  .mv-listo-p { opacity: 0; transform: translateY(16px); }
+  .mv-listo-p.mv-sube-p { opacity: 1; transform: none; transition: opacity .5s ease .12s, transform .6s cubic-bezier(.16, 1, .3, 1) .12s; }
+}
+/* La opinión se enciende palabra a palabra al ritmo del scroll (movimiento.js pone
+   .is-on a las palabras que ya han pasado la línea de lectura) */
+@media (prefers-reduced-motion: no-preference) {
+  .mv-cita .mv-c { opacity: .16; transition: opacity .35s ease; }
+  .mv-cita .mv-c.is-on { opacity: 1; }
+}
