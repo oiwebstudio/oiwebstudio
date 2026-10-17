@@ -1,0 +1,60 @@
+{
+  "_nota": "Fotos de ejemplo para una muestra de diseño (marca inventada). Descargadas el 17/10/2026 de Wikimedia Commons.",
+  "fotos": [
+    {
+      "archivo": "portada-2000.webp / portada-900.webp",
+      "titulo": "File:Dark haired woman on the beach (Unsplash).jpg",
+      "autor": "Mario Klassen marioklassen",
+      "licencia": "CC0",
+      "licencia_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "fuente": "https://commons.wikimedia.org/wiki/File:Dark_haired_woman_on_the_beach_(Unsplash).jpg",
+      "origen": "Wikimedia Commons (importada de Unsplash)",
+      "medidas_2000": "2000x1333",
+      "uso": "portada"
+    },
+    {
+      "archivo": "retrato-2000.webp / retrato-900.webp",
+      "titulo": "File:Woman among green branches (Unsplash).jpg",
+      "autor": "Cameron Kirby ckirby",
+      "licencia": "CC0",
+      "licencia_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "fuente": "https://commons.wikimedia.org/wiki/File:Woman_among_green_branches_(Unsplash).jpg",
+      "origen": "Wikimedia Commons (importada de Unsplash)",
+      "medidas_2000": "2000x1333",
+      "uso": "retrato"
+    },
+    {
+      "archivo": "bodas-2000.webp / bodas-900.webp",
+      "titulo": "File:Wedding walk dark forest path (Unsplash).jpg",
+      "autor": "photo-nic.co.uk nic chiro",
+      "licencia": "CC0",
+      "licencia_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "fuente": "https://commons.wikimedia.org/wiki/File:Wedding_walk_dark_forest_path_(Unsplash).jpg",
+      "origen": "Wikimedia Commons (importada de Unsplash)",
+      "medidas_2000": "2000x1333",
+      "uso": "bodas"
+    },
+    {
+      "archivo": "producto-2000.webp / producto-900.webp",
+      "titulo": "File:Large ceramic bottles (Unsplash).jpg",
+      "autor": "Jessica Ruscello jruscello",
+      "licencia": "CC0",
+      "licencia_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "fuente": "https://commons.wikimedia.org/wiki/File:Large_ceramic_bottles_(Unsplash).jpg",
+      "origen": "Wikimedia Commons (importada de Unsplash)",
+      "medidas_2000": "2000x1333",
+      "uso": "producto"
+    },
+    {
+      "archivo": "contacto-2000.webp / contacto-900.webp",
+      "titulo": "File:Woman walking through waves (Unsplash).jpg",
+      "autor": "Killian Pham fluffpiece",
+      "licencia": "CC0",
+      "licencia_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "fuente": "https://commons.wikimedia.org/wiki/File:Woman_walking_through_waves_(Unsplash).jpg",
+      "origen": "Wikimedia Commons (importada de Unsplash)",
+      "medidas_2000": "2000x1331",
+      "uso": "contacto"
+    }
+  ]
+}

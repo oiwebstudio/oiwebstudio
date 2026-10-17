@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<!--
+  MAILA · Escaleras a medida en Tolosaldea — muestra de diseño de OI Studio (marca inventada).
+  Calco de la referencia «AEROSTEP» (3.jpg) elegida por Oier el 17/10/2026: misma estructura, proporciones, radios y componentes
+  (petición de Oier: «que el diseño sea idéntico aunque las imágenes no lo sean»). Medidas sacadas de la referencia a 1440 px (1 u = 1/1440 del ancho).
+  Letra: 14 Switzer (400 y 600), autoalojada en fuentes/.
+  Fotos de ejemplo con licencia libre (Wikimedia Commons y Flickr vía Openverse); autor, archivo y licencia en fotos/creditos.json:
+    portada Nikolai Twin, CC BY 4.0 · volada Klepfer de, CC BY-SA 3.0 · caracol Petar Milošević, CC BY-SA 4.0
+    tramos Dirk Broßke, CC BY-SA 3.0 · zanca seier+seier, CC BY 2.0 · obras Flikkersteph, CC BY 2.0; nicolas.boullosa, CC BY 2.0;
+    최광모 (Choe Kwangmo), CC0 · taller Lucascu, CC BY 4.0 · banda chuttersnap (Unsplash, en Commons), CC0
+-->
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="robots" content="noindex, nofollow"/>
+<title>MAILA · Escaleras a medida en Tolosaldea — muestra</title>
+<meta name="description" content="Escaleras de madera, acero y vidrio hechas a medida en Tolosaldea: diseño, taller propio y montaje. Muestra de diseño de OI Studio."/>
+<meta property="og:title" content="MAILA Eskailerak — Escaleras a medida en Tolosaldea"/>
+<meta property="og:description" content="Escaleras de madera, acero y vidrio: diseño, taller propio y montaje. Muestra de diseño de OI Studio."/>
+<meta property="og:type" content="website"/>
+<meta property="og:image" content="fotos/og.jpg"/>
+<link rel="preload" href="fuentes/switzer-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fotos/portada-1300.webp" as="image" imagesrcset="fotos/portada-760.webp 760w, fotos/portada-1300.webp 1300w" imagesizes="(min-width: 1000px) 62vw, 100vw">
+<style>
+@font-face{font-family:'Switzer';font-style:normal;font-weight:400;font-display:swap;src:url('fuentes/switzer-400.woff2') format('woff2')}
+@font-face{font-family:'Switzer';font-style:normal;font-weight:600;font-display:swap;src:url('fuentes/switzer-600.woff2') format('woff2')}
+
+:root{
+  --fondo:#fbfaf8;
+  --caja:#f2f0ed;
+  --blanco:#ffffff;
+  --tinta:#1b1a19;
+  --gris:#7b7874;      /* segundo tono del titular */
+  --texto-2:#6f6b66;
+  --regla:#e7e3de;
+  --naranja:#c4703a;   /* punto de las etiquetas e iconos */
+  --e:cubic-bezier(.23,1,.32,1);
+  --u:calc(min(100vw,1600px) / 1440);   /* 1 u = 1 px de la referencia a 1440 */
+  --lado:calc(76 * var(--u));
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--fondo);color:var(--tinta);font:400 15px/1.55 Switzer,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--tinta);outline-offset:3px;border-radius:6px}
+h1,h2,h3,h4{font-weight:400;letter-spacing:-.025em}
+.wrap{max-width:1600px;margin:0 auto;padding:0 var(--lado)}
+.salta{position:absolute;left:-999px;top:8px;background:var(--tinta);color:#fff;padding:13px 14px;z-index:50}
+.salta:focus{left:8px}
+.u{font-size:max(13px,calc(15 * var(--u)))}
+
+/* etiqueta con punto */
+.etq{display:flex;align-items:center;gap:calc(12 * var(--u));font-size:max(10.5px,calc(11.5 * var(--u)));font-weight:600;text-transform:uppercase;letter-spacing:.02em;color:#3d3a37}
+.etq::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--naranja)}
+
+/* botones */
+.pildora{display:inline-flex;align-items:center;justify-content:space-between;gap:calc(22 * var(--u));background:var(--tinta);color:#fff;border-radius:999px;border:0;cursor:pointer;
+  height:max(44px,calc(49 * var(--u)));padding:0 calc(12 * var(--u)) 0 calc(26 * var(--u));font-size:max(13px,calc(14 * var(--u)));font-weight:400;transition:transform .16s var(--e),background-color .2s var(--e)}
+.pildora .fl{flex:none;width:max(24px,calc(28 * var(--u)));height:max(24px,calc(28 * var(--u)));border-radius:50%;background:#fff;color:var(--tinta);display:grid;place-items:center}
+.pildora .fl svg,.circ svg{width:44%;height:44%}
+.pildora.clara{background:#fff;color:var(--tinta);height:max(40px,calc(43 * var(--u)));padding-left:calc(24 * var(--u));padding-right:calc(8 * var(--u));box-shadow:0 1px 0 rgba(0,0,0,.04)}
+.pildora.clara .fl{background:var(--tinta);color:#fff}
+.pildora:active,.circ:active,.enl:active{transform:scale(.97)}
+.circ{flex:none;display:grid;place-items:center;border-radius:50%;width:max(26px,calc(30 * var(--u)));height:max(26px,calc(30 * var(--u)));background:#fff;color:var(--tinta);transition:transform .2s var(--e),background-color .2s var(--e),color .2s var(--e)}
+.circ.borde{background:transparent;border:1px solid var(--regla)}
+.enl{display:inline-flex;align-items:center;gap:calc(12 * var(--u));font-size:max(13px,calc(13.5 * var(--u)));transition:transform .16s var(--e)}
+.enl .circ{width:max(30px,calc(32 * var(--u)));height:max(30px,calc(32 * var(--u)))}
+@media (hover:hover) and (pointer:fine){
+  .pildora:hover{background:#3b3733}
+  .pildora.clara:hover{background:#f3f1ee}
+  .enl:hover .circ,.tarjeta:hover .circ,.obra:hover .circ{background:var(--tinta);color:#fff;border-color:var(--tinta)}
+}
+
+/* cabecera */
+.cab{position:absolute;top:0;left:0;right:0;z-index:6}
+.cab .wrap{display:flex;align-items:center;height:calc(126 * var(--u));min-height:76px}
+.logo{display:flex;flex-direction:column;line-height:1}
+.logo b{font-weight:400;font-size:max(22px,calc(31 * var(--u)));letter-spacing:.005em}
+.logo small{font-size:max(7.5px,calc(8.5 * var(--u)));letter-spacing:.32em;text-transform:uppercase;color:var(--texto-2);margin-top:calc(8 * var(--u));padding-left:.2em}
+.menu{display:flex;gap:calc(37 * var(--u));list-style:none;padding:0;margin-left:calc(180 * var(--u))}
+.menu a{font-size:max(12px,calc(13 * var(--u)));padding:6px 0;transition:color .2s var(--e)}
+@media (hover:hover) and (pointer:fine){.menu a:hover{color:var(--naranja)}}
+.cab .derecha{margin-left:auto;display:flex;align-items:center;gap:calc(30 * var(--u))}
+.hamb{width:max(40px,calc(44 * var(--u)));height:max(40px,calc(44 * var(--u)));border-radius:50%;border:1px solid var(--regla);background:transparent;display:grid;place-items:center;cursor:pointer;transition:transform .16s var(--e)}
+.hamb:active{transform:scale(.95)}
+.hamb span{display:block;width:14px;height:1px;background:var(--tinta);box-shadow:0 -4px 0 var(--tinta),0 4px 0 var(--tinta)}
+.desplegable{position:absolute;right:var(--lado);top:calc(100% - 14px);background:#fff;border:1px solid var(--regla);border-radius:18px;padding:12px;list-style:none;min-width:220px;display:none}
+.desplegable.abierto{display:block}
+.desplegable a{display:block;padding:10px 12px;border-radius:10px}
+@media (hover:hover) and (pointer:fine){.desplegable a:hover{background:var(--caja)}}
+
+/* portada */
+.portada{position:relative;height:calc(782 * var(--u));min-height:620px;overflow:hidden}
+.portada .foto{position:absolute;top:0;right:0;width:calc(900 * var(--u));height:100%;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.5) 18%,#000 38%),linear-gradient(0deg,transparent 0,#000 22%);-webkit-mask-composite:source-in;
+  mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.5) 18%,#000 38%),linear-gradient(0deg,transparent 0,#000 22%);mask-composite:intersect}
+.portada .foto img{width:100%;height:100%;object-fit:cover;object-position:62% 38%}
+.portada .texto{position:absolute;left:var(--lado);top:calc(172 * var(--u));width:calc(560 * var(--u));z-index:2}
+.portada h1{font-size:calc(70 * var(--u));line-height:.98;margin-top:calc(18 * var(--u));letter-spacing:-.03em}
+.portada h1 .gris{color:var(--gris);display:block}
+.portada .texto>p{color:var(--texto-2);font-size:max(13px,calc(15.5 * var(--u)));line-height:1.6;margin-top:calc(22 * var(--u));max-width:calc(470 * var(--u))}
+.acciones{display:flex;align-items:center;gap:calc(40 * var(--u));margin-top:calc(36 * var(--u))}
+.acciones .pildora{min-width:calc(263 * var(--u))}
+.video{display:flex;align-items:center;gap:calc(11 * var(--u));font-size:max(12px,calc(13 * var(--u)));line-height:1.35;color:var(--texto-2)}
+.video .circ{width:max(42px,calc(48 * var(--u)));height:max(42px,calc(48 * var(--u)));background:rgba(255,255,255,.7);border:1px solid var(--regla)}
+.video .circ svg{width:30%;height:30%}
+.contador{position:absolute;left:var(--lado);top:calc(708 * var(--u));display:flex;align-items:center;gap:calc(14 * var(--u));font-size:max(10.5px,calc(11.5 * var(--u)));color:var(--texto-2);z-index:2}
+.contador i{display:block;width:calc(148 * var(--u));height:1px;background:var(--regla);position:relative}
+.contador i::before{content:"";position:absolute;left:0;top:-.5px;height:2px;width:65%;background:#55514d}
+.flotante{position:absolute;z-index:3;left:calc(1170 * var(--u));top:calc(360 * var(--u));width:calc(200 * var(--u));height:calc(240 * var(--u));background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.9);border-radius:calc(20 * var(--u));padding:calc(26 * var(--u)) calc(24 * var(--u));display:flex;flex-direction:column}
+.flotante .ico{width:calc(44 * var(--u));height:calc(44 * var(--u));border-radius:50%;background:#2a2725;display:grid;place-items:center}
+.flotante .ico svg{width:45%;height:45%;stroke:#fff;fill:none;stroke-width:1.4}
+.flotante p{font-size:calc(15 * var(--u));line-height:1.55;margin-top:calc(16 * var(--u))}
+.avatares{display:flex;align-items:center;margin-top:auto}
+.avatares span{width:calc(32 * var(--u));height:calc(32 * var(--u));border-radius:50%;border:2px solid #fff;margin-right:calc(-8 * var(--u));display:grid;place-items:center;font-size:calc(11 * var(--u));font-weight:600;color:#fff}
+.avatares span:nth-child(1){background:#8f6444}.avatares span:nth-child(2){background:#66735f}.avatares span:nth-child(3){background:#936a45}.avatares span:nth-child(4){background:#5f5a55}
+.avatares em{font-style:normal;font-size:calc(12.5 * var(--u));margin-left:calc(20 * var(--u));color:#3d3a37}
+.ventajas{position:absolute;z-index:3;left:calc(500 * var(--u));right:0;top:calc(665 * var(--u));height:calc(95 * var(--u));background:linear-gradient(90deg,rgba(255,255,255,.55),rgba(255,255,255,.8));border-top-left-radius:calc(22 * var(--u));border-bottom-left-radius:calc(22 * var(--u))}
+.ventajas ul{list-style:none;padding:0 0 0 calc(15 * var(--u));height:100%;display:grid;grid-template-columns:250fr 220fr 220fr 250fr;align-items:center}
+.ventajas li{display:flex;align-items:center;gap:calc(14 * var(--u));font-size:max(11px,calc(13 * var(--u)));line-height:1.45}
+.ventajas .caja{flex:none;width:calc(40 * var(--u));height:calc(40 * var(--u));border-radius:50%;background:#fff;border:1px solid var(--regla);display:grid;place-items:center}
+.ventajas svg{width:52%;height:52%;stroke:var(--naranja);fill:none;stroke-width:1.3}
+
+/* secciones */
+.sec h2{font-size:max(28px,calc(40 * var(--u)));line-height:1.1;margin-top:calc(14 * var(--u))}
+.sec .intro>p{color:var(--texto-2);font-size:max(12.5px,calc(13.5 * var(--u)));line-height:1.55;margin-top:calc(28 * var(--u))}
+
+.sec .intro>p.etq,.portada .texto>p.etq{margin-top:0;font-size:max(10.5px,calc(11.5 * var(--u)));color:#3d3a37;max-width:none}
+
+/* categorías */
+.cats{padding-top:calc(34 * var(--u))}
+.cats .wrap{display:grid;grid-template-columns:calc(304 * var(--u)) 1fr;position:relative}
+.cats .intro{padding-top:calc(2 * var(--u));display:flex;flex-direction:column;align-items:flex-start}
+.cats .intro>p{max-width:calc(280 * var(--u));margin-top:calc(22 * var(--u))}
+.cats .intro .enl{margin-top:calc(62 * var(--u))}
+.tarjetas{list-style:none;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:calc(15 * var(--u))}
+.tarjeta{display:block;background:var(--caja);border-radius:calc(18 * var(--u));overflow:hidden}
+.tarjeta figure{aspect-ratio:1/1;overflow:hidden}
+.tarjeta img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--e)}
+.tarjeta .barra{height:calc(58 * var(--u));min-height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 calc(16 * var(--u)) 0 calc(22 * var(--u))}
+.tarjeta h3{font-size:max(13.5px,calc(15 * var(--u)));letter-spacing:-.01em}
+@media (hover:hover) and (pointer:fine){.tarjeta:hover img{transform:scale(1.04)}}
+.cats .linea{grid-column:1/-1;height:1px;background:var(--regla);margin-top:calc(2 * var(--u));opacity:.7}
+
+/* proyectos */
+.proy{padding-top:calc(54 * var(--u))}
+.cats .linea{display:none}
+.cabeza{display:flex;justify-content:space-between;align-items:flex-start}
+.proy ul{list-style:none;padding:0;display:grid;grid-template-columns:424fr 378fr 427fr;column-gap:calc(30 * var(--u));margin-top:calc(12 * var(--u))}
+.obra{position:relative;display:block;height:calc(212 * var(--u));min-height:180px;border-radius:calc(18 * var(--u));overflow:hidden;color:#fff;background:#3a332d}
+.obra img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--e)}
+.obra::after{content:"";position:absolute;inset:40% 0 0;background:linear-gradient(180deg,transparent,rgba(30,24,20,.62))}
+.obra .t{position:absolute;z-index:1;left:calc(20 * var(--u));bottom:calc(20 * var(--u));font-size:max(12.5px,calc(13.5 * var(--u)));line-height:1.45}
+.obra .t h3{font-size:inherit;letter-spacing:0}
+.obra .t span{opacity:.82}
+.obra .circ{position:absolute;z-index:1;right:calc(18 * var(--u));bottom:calc(22 * var(--u));width:max(30px,calc(34 * var(--u)));height:max(30px,calc(34 * var(--u)))}
+@media (hover:hover) and (pointer:fine){.obra:hover img{transform:scale(1.035)}}
+
+/* taller */
+.tec{padding-top:calc(42 * var(--u))}
+.tec .intro{align-items:flex-start}
+.tec .wrap{display:grid;grid-template-columns:calc(351 * var(--u)) calc(721 * var(--u)) 1fr;column-gap:0}
+.tec .intro{padding-top:calc(7 * var(--u));display:flex;flex-direction:column}
+.tec .intro>p{max-width:calc(270 * var(--u));margin-top:calc(22 * var(--u))}
+.tec .intro .enl{margin-top:calc(46 * var(--u))}
+.panel{display:grid;grid-template-columns:459fr 262fr;height:calc(274 * var(--u));min-height:240px;border-radius:calc(18 * var(--u));overflow:hidden;background:var(--caja)}
+.panel figure{overflow:hidden;border-radius:calc(18 * var(--u))}
+.panel figure img{width:100%;height:100%;object-fit:cover}
+.panel ul{list-style:none;padding:calc(30 * var(--u)) calc(20 * var(--u)) calc(20 * var(--u)) calc(36 * var(--u));display:flex;flex-direction:column;justify-content:space-between}
+.panel li{display:flex;gap:calc(20 * var(--u));align-items:flex-start;font-size:max(11px,calc(12.5 * var(--u)));line-height:1.5}
+.panel svg{flex:none;width:calc(24 * var(--u));height:calc(24 * var(--u));min-width:18px;min-height:18px;stroke:var(--naranja);fill:none;stroke-width:1.3}
+.cifras{margin-left:calc(49 * var(--u));height:calc(274 * var(--u));min-height:240px;background:var(--caja);border-radius:calc(18 * var(--u));padding:calc(26 * var(--u)) calc(26 * var(--u));display:flex;flex-direction:column;justify-content:space-between}
+.cifras b{display:block;font-weight:400;font-size:max(18px,calc(25 * var(--u)));letter-spacing:-.02em;line-height:1}
+.cifras b small{font-size:.72em}
+.cifras span{display:block;font-size:max(10.5px,calc(12 * var(--u)));color:var(--texto-2);line-height:1.45;margin-top:calc(4 * var(--u))}
+
+/* banda final */
+.cta{padding:calc(20 * var(--u)) 0 0}
+.cta .bloque{position:relative;height:calc(147 * var(--u));min-height:128px;border-radius:calc(18 * var(--u));overflow:hidden;background:linear-gradient(90deg,#ebeae8,#e4e2df 60%,#e9e8e6);display:flex;align-items:center;justify-content:space-between;padding:0 calc(45 * var(--u))}
+.cta .foto{position:absolute;left:calc(760 * var(--u));top:0;bottom:0;width:calc(340 * var(--u));-webkit-mask-image:linear-gradient(90deg,transparent,#000 30%,#000 70%,transparent);mask-image:linear-gradient(90deg,transparent,#000 30%,#000 70%,transparent)}
+.cta .foto img{width:100%;height:100%;object-fit:cover;filter:grayscale(.35) contrast(.95)}
+.cta .txt{position:relative;z-index:1}
+.cta h2{font-size:max(20px,calc(26 * var(--u)));line-height:1.12;letter-spacing:-.02em}
+.cta p{font-size:max(12px,calc(13.5 * var(--u)));color:var(--texto-2);line-height:1.55;margin-top:calc(10 * var(--u))}
+.cta .pildora{position:relative;z-index:1;padding-left:calc(28 * var(--u));gap:calc(46 * var(--u))}
+
+/* pie */
+.pie{padding:calc(44 * var(--u)) 0 calc(24 * var(--u))}
+.pie .cols{display:grid;grid-template-columns:337fr 191fr 210fr 396fr 156fr;align-items:start}
+.pie .logo b{font-size:max(20px,calc(24 * var(--u)))}
+.pie .logo small{font-size:max(7px,calc(7 * var(--u)))}
+.pie h3{font-size:max(11px,calc(11 * var(--u)));font-weight:600;letter-spacing:0;margin-bottom:calc(14 * var(--u))}
+.pie ul{list-style:none;padding:0;display:grid;gap:0;font-size:max(11px,calc(11 * var(--u)));color:var(--texto-2)}.pie ul a{display:inline-block;padding:4px 0}
+@media (hover:hover) and (pointer:fine){.pie ul a:hover{color:var(--tinta)}}
+.redes{display:flex;gap:calc(14 * var(--u));margin-top:calc(4 * var(--u))}
+.redes a{width:max(32px,calc(36 * var(--u)));height:max(32px,calc(36 * var(--u)));border-radius:50%;background:#fff;border:1px solid var(--regla);display:grid;place-items:center;transition:transform .16s var(--e)}
+.redes a:active{transform:scale(.95)}
+.redes svg{width:40%;height:40%;fill:none;stroke:var(--tinta);stroke-width:1.6}
+.pie .bajo{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:calc(34 * var(--u));font-size:max(10px,calc(10 * var(--u)));color:var(--texto-2)}
+.creditos{font-size:11px;color:var(--texto-2);margin-top:22px;line-height:1.5;max-width:1000px}
+.aviso{font-size:12px;color:var(--texto-2);margin-top:8px}
+
+/* formulario en diálogo */
+dialog{border:0;border-radius:22px;padding:0;width:min(640px,calc(100vw - 24px));max-height:calc(100dvh - 24px);background:var(--fondo);color:var(--tinta)}
+dialog::backdrop{background:rgba(20,18,16,.45)}
+.dlg{padding:28px}
+.dlg header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.dlg h2{font-size:26px;line-height:1.15}
+.dlg header button{border:1px solid var(--regla);background:#fff;border-radius:50%;width:44px;height:44px;cursor:pointer;flex:none}
+.dlg>p{color:var(--texto-2);margin-top:8px;font-size:14px}
+form{margin-top:20px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.campo{display:flex;flex-direction:column;gap:6px}
+.campo.ancho{grid-column:1/-1}.campo.medio{grid-column:span 2}
+label{font-size:12.5px;font-weight:600}
+input,select{font:inherit;font-size:16px;background:#fff;border:1px solid #8f8a84;border-radius:12px;padding:11px 12px;width:100%;min-width:0;color:var(--tinta)}
+input[type=file]{font-size:14px;padding:9px}
+.ayuda{font-size:12px;color:var(--texto-2)}
+.enviar{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;margin-top:6px}
+.respuesta{grid-column:1/-1;font-size:14px;font-weight:600;color:var(--naranja)}
+.enl.sub{text-decoration:underline;text-underline-offset:4px}
+
+/* barra fija del móvil */
+.movil{display:none}
+
+/* ---------- tableta y móvil ---------- */
+@media (max-width:999px){
+  :root{--lado:20px}
+  body{font-size:15px}
+  .cab{position:relative}
+  .pildora{padding-left:20px;padding-right:10px;gap:14px}.pildora.clara{padding-left:16px;padding-right:7px}
+  .cab .wrap{height:76px}
+  .menu{display:none}
+  .cab .derecha{gap:10px}
+  .portada{height:auto;min-height:0;overflow:visible;padding-bottom:8px;display:flex;flex-direction:column}
+  .portada .texto{order:1}.portada .foto{order:2}.portada .flotante{order:3}.portada .ventajas{order:4}
+  .portada .texto{position:relative;left:auto;top:auto;width:auto;padding:14px var(--lado) 0}
+  .portada h1{font-size:clamp(40px,11.4vw,64px);margin-top:16px}
+  .portada .texto>p{font-size:15px;max-width:34em;margin-top:18px}
+  .acciones{flex-wrap:wrap;gap:18px 24px;margin-top:28px}
+  .portada .foto{position:relative;width:auto;height:min(118vw,620px);margin-top:8px;
+    -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 20%,#000 82%,transparent);mask-image:linear-gradient(180deg,transparent 0,#000 20%,#000 82%,transparent);-webkit-mask-composite:source-over;mask-composite:add}
+  .contador{display:none}
+  .flotante{position:relative;left:auto;top:auto;align-self:flex-end;margin:-150px var(--lado) 0 0;width:200px;height:auto;padding:18px;border-radius:18px;background:rgba(255,255,255,.88)}
+  .flotante .ico{width:40px;height:40px}
+  .flotante p{font-size:14px;margin:12px 0 14px}
+  .avatares span{width:28px;height:28px;margin-right:-7px;font-size:10px}
+  .avatares em{font-size:12px;margin-left:16px}
+  .ventajas{position:relative;left:auto;top:auto;height:auto;margin:16px var(--lado) 0;border-radius:18px;background:rgba(255,255,255,.85);padding:16px}
+  .ventajas ul{grid-template-columns:1fr 1fr;gap:16px 12px;padding:0}
+  .ventajas li{font-size:13px;gap:10px}
+  .ventajas .caja{width:38px;height:38px}
+  .sec h2{font-size:32px;margin-top:12px}
+  .sec .intro>p{font-size:14.5px;margin-top:16px;max-width:30em}
+  .cats{padding-top:56px}
+  .cats .wrap{grid-template-columns:1fr}
+  .cats .intro{padding-top:0}
+  .cats .intro>p{max-width:30em}
+  .cats .intro .enl{margin:22px 0 26px}
+  .tarjetas{grid-template-columns:repeat(2,1fr);gap:12px}
+  .tarjeta{border-radius:16px}
+  .tarjeta .barra{padding:0 10px 0 14px}
+  .cats .linea{margin-top:40px}
+  .proy{padding-top:48px}
+  .cabeza{flex-direction:column;gap:18px}
+  .proy ul{grid-template-columns:1fr;row-gap:12px;margin-top:24px}
+  .obra{height:auto;aspect-ratio:16/11;border-radius:16px}
+  .obra .t{left:16px;bottom:16px;font-size:14px}
+  .obra .circ{right:16px;bottom:18px}
+  .tec{padding-top:56px}
+  .tec .wrap{grid-template-columns:1fr;row-gap:14px}
+  .tec .intro>p{max-width:30em;margin-top:16px}
+  .tec .intro .enl{margin:22px 0 12px}
+  .panel{grid-template-columns:1fr;height:auto;border-radius:16px}
+  .panel figure{aspect-ratio:4/3;border-radius:16px}
+  .panel ul{padding:22px 20px;gap:18px}
+  .panel li{font-size:14px;gap:14px}
+  .panel svg{width:22px;height:22px}
+  .cifras{margin-left:0;height:auto;min-height:0;border-radius:16px;flex-direction:row;flex-wrap:wrap;gap:18px 12px;padding:22px 20px}
+  .cifras div{flex:1 1 30%}
+  .cifras b{font-size:24px}
+  .cifras span{font-size:12.5px}
+  .cta{padding-top:40px}
+  .cta .bloque{height:auto;min-height:0;flex-direction:column;align-items:flex-start;gap:22px;padding:28px 22px 24px;border-radius:16px}
+  .cta .foto{left:auto;right:-30px;width:55%;opacity:.35}
+  .cta p br,.cta h2 br{display:none}
+  .cta h2{font-size:24px}
+  .cta p{font-size:14px}
+  .pie{padding:40px 0 calc(96px + env(safe-area-inset-bottom))}
+  .pie .cols{grid-template-columns:1fr 1fr;gap:28px 16px}
+  .pie .cols>div:first-child{grid-column:1/-1}
+  .pie h3,.pie ul{font-size:13px}
+  .pie ul{gap:0}.pie ul a{display:inline-block;padding:13px 0}.logo{padding:6px 0}
+  .pie .bajo{font-size:12px;margin-top:30px}
+  .movil{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:var(--fondo);border-top:1px solid var(--regla);transform:translateY(110%);visibility:hidden;transition:transform .35s var(--e),visibility 0s .35s}
+  .movil.on{transform:none;visibility:visible;transition:transform .35s var(--e)}
+  .movil .pildora{flex:1;justify-content:center;padding:0 16px;gap:12px}
+  .movil .pildora.clara{border:1px solid var(--regla)}
+}
+@media (max-width:560px){
+  .cab .derecha .pildora.clara span.txt{display:inline}
+  form{grid-template-columns:1fr 1fr}
+  .campo.medio,.campo.alto{grid-column:1/-1}
+  .dlg{padding:22px 18px}
+}
+</style>
+</head>
+<body>
+<a class="salta" href="#contenido">Saltar al contenido</a>
+
+<header class="cab">
+  <div class="wrap">
+    <a class="logo" href="#" aria-label="MAILA, inicio"><b>MAILA</b><small>Eskailerak Tolosaldea</small></a>
+    <nav aria-label="Principal">
+      <ul class="menu">
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="#taller">Empresa</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#taller">Tecnología</a></li>
+        <li><a href="#catalogo">Materiales</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="derecha">
+      <a class="pildora clara" href="https://wa.me/34600000000" rel="noopener"><span class="txt">Contactar</span><span class="fl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <button class="hamb" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="desplegable"><span></span></button>
+    </div>
+    <ul class="desplegable" id="desplegable">
+      <li><a href="#catalogo">Catálogo</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#taller">Taller y tecnología</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="tel:+34943000000">943 00 00 00</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="contenido">
+<section class="portada" data-portada aria-labelledby="titulo">
+  <div class="foto">
+    <img src="fotos/portada-1300.webp" srcset="fotos/portada-760.webp 760w, fotos/portada-1300.webp 1300w" sizes="(min-width: 1000px) 62vw, 100vw" width="1300" height="1439" alt="Escalera de haya clara con peldaños volados que giran junto a una pared blanca" fetchpriority="high"/>
+  </div>
+  <div class="texto">
+    <p class="etq">Carpintería de escaleras</p>
+    <h1 id="titulo" data-letras>Escaleras de madera para <span class="gris">casas de Tolosaldea</span></h1>
+    <p>Hacemos escaleras como piezas de la casa: madera, acero y vidrio unidos en un taller propio, con las medidas de tu hueco.</p>
+    <div class="acciones">
+      <button class="pildora" type="button" data-abre-form>Pedir presupuesto <span class="fl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
+      <a class="video" href="#taller"><span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg></span><span>Ver el taller<br>por dentro</span></a>
+    </div>
+  </div>
+  <div class="contador" aria-hidden="true"><span>01</span><i></i><span>04</span></div>
+  <aside class="flotante" aria-label="Proyecto a medida">
+    <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5zM5 9h14M9 9v11M13 13h3M13 16h3"/></svg></span>
+    <p>Proyecto a medida para tu casa</p>
+    <div class="avatares" aria-label="Más de 150 familias"><span aria-hidden="true">AI</span><span aria-hidden="true">JM</span><span aria-hidden="true">NE</span><span aria-hidden="true">UL</span><em>+150</em></div>
+  </aside>
+  <div class="ventajas">
+    <ul>
+      <li><span class="caja"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 4v6c0 4-3 7-7 8-4-1-7-4-7-8V7z"/><circle cx="12" cy="11" r="2.5"/></svg></span><span>Diseño<br>a medida</span></li>
+      <li><span class="caja"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4zM4 9h16M4 14h16M9 4v16M15 4v16"/></svg></span><span>Roble y haya<br>macizos</span></li>
+      <li><span class="caja"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v18M17 3v18M4 7h6M14 12h6M4 15h6M14 18h6"/></svg></span><span>Precisión<br>al milímetro</span></li>
+      <li><span class="caja"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><span>Garantía<br>de 10 años</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec cats" id="catalogo" aria-labelledby="t-cats">
+  <div class="wrap">
+    <div class="intro">
+      <p class="etq">Categorías</p>
+      <h2 id="t-cats" data-lineas>Nuestras<br>escaleras</h2>
+      <p>Cada escalera equilibra diseño, resistencia y el oficio del taller.</p>
+      <a class="enl" href="#proyectos">Ver catálogo <span class="circ borde"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    </div>
+    <ul class="tarjetas" data-escalonado>
+      <li><a class="tarjeta" href="#proyectos"><figure><img src="fotos/volada-720.webp" srcset="fotos/volada-480.webp 480w, fotos/volada-720.webp 720w" sizes="(min-width: 1000px) 17vw, 46vw" width="720" height="720" alt="Escalera volada en curva con peldaños oscuros y barandilla de acero" loading="lazy"/></figure><div class="barra"><h3>Voladas</h3><span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a></li>
+      <li><a class="tarjeta" href="#proyectos"><figure><img src="fotos/caracol-720.webp" srcset="fotos/caracol-480.webp 480w, fotos/caracol-720.webp 720w" sizes="(min-width: 1000px) 17vw, 46vw" width="720" height="555" alt="Escalera de caracol de madera vista desde arriba" loading="lazy"/></figure><div class="barra"><h3>De caracol</h3><span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a></li>
+      <li><a class="tarjeta" href="#proyectos"><figure><img src="fotos/tramos-720.webp" srcset="fotos/tramos-480.webp 480w, fotos/tramos-720.webp 720w" sizes="(min-width: 1000px) 17vw, 46vw" width="720" height="538" alt="Escalera de madera clara de dos tramos con barandilla de barrotes" loading="lazy"/></figure><div class="barra"><h3>De tramos</h3><span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a></li>
+      <li><a class="tarjeta" href="#proyectos"><figure><img src="fotos/zanca-720.webp" srcset="fotos/zanca-480.webp 480w, fotos/zanca-720.webp 720w" sizes="(min-width: 1000px) 17vw, 46vw" width="720" height="478" alt="Escalera con zanca de acero y barandilla de varillas finas" loading="lazy"/></figure><div class="barra"><h3>De zanca</h3><span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a></li>
+    </ul>
+    <div class="linea" aria-hidden="true"></div>
+  </div>
+</section>
+
+<section class="sec proy" id="proyectos" aria-labelledby="t-proy">
+  <div class="wrap">
+    <div class="cabeza">
+      <div class="intro">
+        <p class="etq">Nuestros proyectos</p>
+        <h2 id="t-proy" data-lineas>Proyectos<br>realizados</h2>
+      </div>
+      <a class="enl" href="#contacto">Ver todos los proyectos <span class="circ borde"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    </div>
+    <ul data-escalonado>
+      <li><a class="obra" href="#contacto"><img src="fotos/obra-caserio-1000.webp" srcset="fotos/obra-caserio-600.webp 600w, fotos/obra-caserio-1000.webp 1000w" sizes="(min-width: 1000px) 31vw, 92vw" width="1000" height="670" alt="Escalera de roble oscuro de dos tramos en una casa de piedra" loading="lazy"/><div class="t"><h3>Caserío · roble</h3><span>Dos tramos con barandilla de barrotes</span></div><span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+      <li><a class="obra" href="#contacto"><img src="fotos/obra-madera-1000.webp" srcset="fotos/obra-madera-600.webp 600w, fotos/obra-madera-1000.webp 1000w" sizes="(min-width: 1000px) 28vw, 92vw" width="1000" height="670" alt="Tramo de madera clara junto a una librería en una casa forrada de tablas" loading="lazy"/><div class="t"><h3>Casa de madera</h3><span>Tramo de pino con librería</span></div><span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+      <li><a class="obra" href="#contacto"><img src="fotos/obra-recta-1000.webp" srcset="fotos/obra-recta-600.webp 600w, fotos/obra-recta-1000.webp 1000w" sizes="(min-width: 1000px) 31vw, 92vw" width="1000" height="1333" alt="Escalera recta de madera entre dos paredes blancas" loading="lazy" style="object-position:50% 70%"/><div class="t"><h3>Vivienda · recta</h3><span>Pino barnizado entre muros</span></div><span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec tec" id="taller" aria-labelledby="t-tec">
+  <div class="wrap">
+    <div class="intro">
+      <p class="etq">Taller</p>
+      <h2 id="t-tec" data-lineas>Precisión<br>de taller</h2>
+      <p data-enciende>Fabricamos todo en nuestro taller: así controlamos cada paso, desde el plano hasta el montaje en tu casa.</p>
+      <a class="enl" href="#contacto">Visita al taller <span class="circ borde"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 5l11 7-11 7z"/></svg></span></a>
+    </div>
+    <div class="panel">
+      <figure><img src="fotos/taller-cnc-1200.webp" srcset="fotos/taller-cnc-700.webp 700w, fotos/taller-cnc-1200.webp 1200w" sizes="(min-width: 1000px) 32vw, 92vw" width="1200" height="800" alt="Fresa de control numérico tallando un bloque de madera" loading="lazy"/></figure>
+      <ul data-escalonado>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M9 9h6v6H9zM4 12h5M15 12h5"/></svg><span>Fresadora de control<br>numérico</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20L20 4M7 4l13 13M4 7l3-3M17 20l3-3"/></svg><span>Oficina técnica<br>propia</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg><span>Control en<br>cada fase</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg><span>Carpinteros con más<br>de 10 años de oficio</span></li>
+      </ul>
+    </div>
+    <div class="cifras">
+      <div><b>&gt; 300</b><span>escaleras<br>montadas</span></div>
+      <div><b>10 <small>años</small></b><span>de garantía en<br>todas</span></div>
+      <div><b>100%</b><span>hechas<br>a medida</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contacto" aria-labelledby="t-cta">
+  <div class="wrap">
+    <div class="bloque">
+      <div class="foto" aria-hidden="true"><img src="fotos/banda-900.webp" srcset="fotos/banda-900.webp 900w, fotos/banda-1600.webp 1600w" sizes="(min-width: 1000px) 24vw, 60vw" width="1600" height="1068" alt="" loading="lazy"/></div>
+      <div class="txt">
+        <h2 id="t-cta" data-lineas>Hagamos una escalera<br>que cambie tu casa</h2>
+        <p>Mándanos las medidas y una foto del hueco: te llamamos<br>y te damos precio.</p>
+      </div>
+      <button class="pildora" type="button" data-abre-form>Pedir presupuesto <span class="fl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="pie">
+  <div class="wrap">
+    <div class="cols">
+      <div><a class="logo" href="#" aria-label="MAILA, inicio"><b>MAILA</b><small>Eskailerak Tolosaldea</small></a></div>
+      <div><h3>Catálogo</h3><ul><li><a href="#catalogo">Voladas</a></li><li><a href="#catalogo">De caracol</a></li><li><a href="#catalogo">De tramos</a></li><li><a href="#catalogo">De zanca</a></li></ul></div>
+      <div><h3>Empresa</h3><ul><li><a href="#taller">Nosotros</a></li><li><a href="#taller">Taller</a></li><li><a href="#catalogo">Materiales</a></li><li><a href="#taller">Garantía y servicio</a></li></ul></div>
+      <div><h3>Contacto</h3><ul><li><a href="tel:+34943000000">943 00 00 00</a></li><li><a href="mailto:kaixo@maila.example">kaixo@maila.example</a></li><li>Tolosaldea, Gipuzkoa</li></ul></div>
+      <div><h3>Redes</h3>
+        <div class="redes">
+          <a href="https://wa.me/34600000000" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-3.8A8 8 0 1 1 8 19z"/></svg></a>
+          <a href="#" aria-label="Instagram (de ejemplo)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.5"/></svg></a>
+          <a href="#" aria-label="Pinterest (de ejemplo)"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M11 9l-2 11M10 14c3 1 6-1 5.5-4"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="bajo"><span>© MAILA, 2026. Todos los derechos reservados.</span><span>Política de privacidad</span></div>
+    <p class="creditos">Fotos de ejemplo, recortadas: Nikolai Twin (CC BY 4.0) · Klepfer de (CC BY-SA 3.0) · Petar Milošević (CC BY-SA 4.0) · Dirk Broßke (CC BY-SA 3.0) · seier+seier (CC BY 2.0) · Flikkersteph (CC BY 2.0) · nicolas.boullosa (CC BY 2.0) · 최광모 (CC0) · Lucascu (CC BY 4.0) · chuttersnap (CC0). Vía Wikimedia Commons y Flickr; detalle en fotos/creditos.json.</p>
+    <p class="aviso">Muestra de diseño creada por OI Studio. El nombre, los datos, los textos y los precios son inventados; las fotos son de ejemplo (créditos en fotos/creditos.json).</p>
+  </div>
+</footer>
+
+<dialog id="dlg" aria-labelledby="t-dlg">
+  <div class="dlg">
+    <header><h2 id="t-dlg">Cuéntanos cómo es tu hueco</h2><button type="button" data-cierra aria-label="Cerrar">✕</button></header>
+    <p>Con tres medidas y una foto te decimos qué escalera cabe y cuánto costaría.</p>
+    <form id="form" novalidate>
+      <div class="campo"><label for="alto">Alto entre suelos</label><input id="alto" name="alto" inputmode="decimal" placeholder="cm"/></div>
+      <div class="campo"><label for="largo">Largo libre</label><input id="largo" name="largo" inputmode="decimal" placeholder="cm"/></div>
+      <div class="campo alto"><label for="anchura">Ancho libre</label><input id="anchura" name="anchura" inputmode="decimal" placeholder="cm"/></div>
+      <div class="campo medio"><label for="tipo">Tipo de escalera</label><select id="tipo" name="tipo"><option>Aún no lo sé</option><option>Volada</option><option>De caracol</option><option>De tramos</option><option>De zanca</option></select></div>
+      <div class="campo alto"><label for="material">Material</label><select id="material" name="material"><option>Roble</option><option>Haya</option><option>Madera y acero</option><option>Con vidrio</option></select></div>
+      <div class="campo ancho"><label for="foto">Foto del hueco</label><input id="foto" name="foto" type="file" accept="image/*"/><span class="ayuda">Desde abajo y desde arriba, si puedes.</span></div>
+      <div class="campo alto"><label for="nombre">Nombre</label><input id="nombre" name="nombre" autocomplete="name"/></div>
+      <div class="campo medio"><label for="telefono">Teléfono</label><input id="telefono" name="telefono" type="tel" autocomplete="tel"/></div>
+      <div class="enviar">
+        <button class="pildora" type="submit">Enviar <span class="fl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
+        <a class="enl sub" href="https://wa.me/34600000000" rel="noopener">Mandarlo por WhatsApp</a>
+      </div>
+      <p class="respuesta" id="respuesta" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</dialog>
+
+<nav class="movil" data-barra-movil aria-label="Contacto rápido"><button class="pildora" type="button" data-abre-form>Presupuesto</button><a class="pildora clara" href="https://wa.me/34600000000" rel="noopener">WhatsApp</a></nav>
+
+<script>
+(function(){
+  var d=document.getElementById("dlg");
+  document.querySelectorAll("[data-abre-form]").forEach(function(b){b.addEventListener("click",function(){if(d.showModal)d.showModal();else d.setAttribute("open","");});});
+  d.querySelector("[data-cierra]").addEventListener("click",function(){d.close();});
+  d.addEventListener("click",function(e){if(e.target===d)d.close();});
+  d.addEventListener("keydown",function(e){if(e.key==="Escape"&&!d.showModal){d.removeAttribute("open");}});
+  document.getElementById("form").addEventListener("submit",function(e){e.preventDefault();document.getElementById("respuesta").textContent="Esto es una muestra: el formulario no envía nada.";});
+  var h=document.querySelector(".hamb"),m=document.getElementById("desplegable");
+  h.addEventListener("click",function(){var a=m.classList.toggle("abierto");h.setAttribute("aria-expanded",a);});
+  m.addEventListener("click",function(e){if(e.target.closest("a")){m.classList.remove("abierto");h.setAttribute("aria-expanded","false");}});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&m.classList.contains("abierto")){m.classList.remove("abierto");h.setAttribute("aria-expanded","false");h.focus();}});
+})();
+</script>
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/SplitText.min.js"></script>
+<script src="js/anim-texto.js"></script>
+</body>
+</html>

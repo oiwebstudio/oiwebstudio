@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="robots" content="noindex, nofollow"/>
+<title>GAINETIK Arkitektura · Casas unifamiliares y caseríos en Gipuzkoa — muestra de diseño</title>
+<meta name="description" content="Muestra de diseño de OI Studio: estudio de arquitectura inventado que proyecta viviendas unifamiliares y rehabilita caseríos en Gipuzkoa."/>
+<meta property="og:title" content="GAINETIK Arkitektura — Casas y caseríos en Gipuzkoa"/>
+<meta property="og:description" content="Viviendas unifamiliares y caseríos rehabilitados. Muestra de diseño de OI Studio."/>
+<meta property="og:type" content="website"/>
+<meta property="og:image" content="fotos/og-gainetik.jpg"/>
+<!--
+  MUESTRA «GAINETIK» (OI Studio, 17/10/2026). Marca, datos, textos y cifras inventados. «Etxeak gainetik» ≈ «casas por encima».
+  Referencia: «ABOVE THE REST» (@kozyuk.design). Calcada al detalle por indicación de Oier («que el diseño sea idéntico
+  aunque las imágenes no lo sean»): tarjeta de portada a sangre con el titular gigante fino en dos líneas (la segunda
+  sangrada) y dos letras en minúscula, la casa recortada por delante del titular, menú a la derecha con el teléfono,
+  «Desde 2014» + texto en mayúsculas con su texto pequeño al lado, botón píldora blanco, avatares (monogramas, sin
+  caras) con «120 +», dos miniaturas apiladas y la tarjeta blanca «35+»; «Estudio» con párrafo grande en mayúsculas
+  alineado a la derecha y palabras en tierra, cifras «12+ / 100 %» y botón píldora de contorno; tres interiores con el
+  del centro más alto; foto a sangre con play (abre una galería: no hay vídeo); cierre con palabras en tierra.
+  Letra: Outfit (Google Fonts, OFL; en «con_moderacion» del catálogo), variable, una sola familia, autoalojada en fuentes/.
+  Paleta: blanco #FFFFFF · tierra #93542F · tinta #1E1A17.
+  Fotos: Wikimedia Commons (CC BY-SA 4.0) y Unsplash vía Commons (CC0). Autores en el pie y en fotos/creditos.json.
+  Movimiento: GSAP 3.13 + ScrollTrigger + SplitText (/assets/vendor) + anim-texto.js. Con «reducir movimiento» o sin JS, todo quieto y visible.
+-->
+<style>
+@font-face{font-family:'Outfit';font-style:normal;font-weight:100 900;font-display:swap;src:url('fuentes/outfit-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Outfit';font-style:normal;font-weight:100 900;font-display:swap;src:url('fuentes/outfit-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+:root{
+  --blanco:#FFFFFF; --tinta:#1E1A17; --gris:#6E655F; --tierra:#93542F; --regla:#E4DED7; --hueso:#F4F0EA;
+  --e:cubic-bezier(.23,1,.32,1);
+  /* medidas de la referencia a 1280 px de ancho, en vw y con tope */
+  --pad:clamp(16px,3.4vw,62px);
+  --r:clamp(18px,2.1vw,36px);
+  --r-s:clamp(12px,1.25vw,22px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--blanco);color:var(--tinta);font:400 16px/1.5 Outfit,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3,h4{font-weight:400;text-transform:uppercase;line-height:1}
+:focus-visible{outline:2px solid var(--tierra);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.saltar{position:absolute;left:12px;top:-60px;z-index:50;background:var(--tinta);color:#fff;padding:10px 14px;border-radius:99px}
+.saltar:focus{top:12px}
+.t{color:var(--tierra)}
+
+/* botones píldora, como en la referencia */
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:clamp(48px,4.3vw,62px);padding:0 clamp(26px,2.6vw,40px);border-radius:999px;font:400 clamp(14px,1.1vw,17px)/1 Outfit,system-ui,sans-serif;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:transform .14s var(--e),background-color .2s var(--e),color .2s var(--e)}
+.pill:active{transform:scale(.97)}
+.pill-blanco{background:var(--blanco);color:var(--tinta);min-width:clamp(180px,15.9vw,250px)}
+.pill-linea{background:transparent;color:var(--tinta);border-color:var(--tinta);min-width:clamp(180px,15.9vw,250px)}
+.pill-tinta{background:var(--tinta);color:#fff}
+@media (hover:hover) and (pointer:fine){
+  .pill-blanco:hover{background:var(--hueso)}
+  .pill-linea:hover{background:var(--tinta);color:#fff}
+  .pill-tinta:hover{background:#3a312b}
+}
+
+/* ---------- portada ---------- */
+.portada{position:relative;isolation:isolate;overflow:hidden;margin:6px;border-radius:var(--r);color:#fff;background:#3B2619;
+  height:max(560px,49vw);max-height:min(980px,100svh)}
+.portada .capa{position:absolute;inset:0;transform:scale(1.13);transform-origin:50% 100%}
+.portada .capa img{width:100%;height:100%;object-fit:cover;object-position:50% 100%;filter:sepia(.38) saturate(1.25) brightness(.92) contrast(1.03)}
+.portada .fondo{z-index:-3}
+.portada .delante{z-index:1;pointer-events:none}
+.portada::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(50,28,14,.34) 0%,rgba(50,28,14,0) 32%)}
+.portada::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(180deg,rgba(28,15,7,0) 60%,rgba(28,15,7,.58) 100%)}
+.cab{position:absolute;z-index:4;top:clamp(14px,3.2vw,52px);right:var(--pad);display:flex;align-items:center;gap:clamp(24px,5vw,90px);font-size:clamp(12px,.95vw,15px)}
+.menu{display:flex;gap:clamp(18px,3vw,54px);list-style:none}
+.menu a,.tel{text-decoration:none;display:inline-block;padding:10px 0;position:relative}
+.menu a::after,.tel::after{content:"";position:absolute;left:0;right:0;bottom:6px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .25s var(--e)}
+@media (hover:hover) and (pointer:fine){.menu a:hover::after,.tel:hover::after{transform:scaleX(1)}}
+
+.titular{position:absolute;z-index:0;left:calc(var(--pad) - .045em);top:clamp(14px,1.3vw,28px);font-weight:300;font-size:min(13vw,226px);line-height:.77;letter-spacing:-.035em;white-space:nowrap}
+.titular .linea{display:block;overflow:hidden;padding-top:.06em}
+.titular .linea+.linea{margin-left:.78em}
+.titular .l{display:inline-block}
+.titular .min{text-transform:none}
+
+.texto-portada{position:absolute;z-index:3;left:var(--pad);bottom:clamp(20px,2.6vw,44px);max-width:52%}
+.lema{display:block;font-size:clamp(20px,2.3vw,40px);line-height:1.04;text-transform:uppercase;letter-spacing:-.01em;font-weight:400}
+.lema .desde{font-size:clamp(10px,.78vw,13px);text-transform:none;margin-right:.6em;letter-spacing:0;line-height:1}
+.lema .ultima{display:inline-flex;align-items:flex-end;gap:clamp(10px,1.1vw,18px)}
+.lema .peque{font-size:clamp(11px,.82vw,14px);line-height:1.2;text-transform:none;letter-spacing:0;max-width:20em;padding-bottom:.25em;opacity:.92}
+.texto-portada .cta{margin-top:clamp(18px,3.5vw,58px)}
+
+.gente{position:absolute;z-index:3;left:50%;bottom:clamp(20px,2.6vw,44px);display:flex;align-items:center;gap:10px}
+.caras{display:flex}
+.caras span{width:clamp(30px,2.65vw,44px);height:clamp(30px,2.65vw,44px);border-radius:50%;border:2px solid #fff;display:grid;place-items:center;font-size:clamp(10px,.85vw,14px);font-weight:500;letter-spacing:.02em;color:#fff}
+.caras span+span{margin-left:-8px}
+.caras span:nth-child(1){background:#B07A52}.caras span:nth-child(2){background:#5B4434}.caras span:nth-child(3){background:#93542F}
+.gente b{display:block;font-weight:400;font-size:clamp(18px,1.6vw,27px);line-height:1}
+.gente small{display:block;font-size:clamp(10px,.8vw,13px);line-height:1.2;margin-top:2px}
+
+.lado{position:absolute;z-index:3;right:var(--pad);bottom:clamp(20px,2.6vw,44px);width:clamp(150px,14.1vw,240px);display:grid;gap:clamp(6px,.6vw,10px)}
+.mini{display:block;border-radius:var(--r-s);overflow:hidden;aspect-ratio:2.05/1;outline:1.5px solid rgba(255,255,255,.6);outline-offset:-1.5px}
+.mini img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--e)}
+@media (hover:hover) and (pointer:fine){.mini:hover img{transform:scale(1.05)}}
+.ficha{background:var(--blanco);color:var(--tinta);border-radius:var(--r-s);padding:clamp(12px,1.5vw,24px) clamp(14px,1.6vw,26px);margin-top:clamp(8px,1.4vw,22px);min-height:clamp(80px,7vw,118px)}
+.ficha b{display:block;font-weight:400;font-size:clamp(18px,1.6vw,27px);line-height:1}
+.ficha span{display:block;margin-top:6px;font-size:clamp(11px,.82vw,14px);line-height:1.2;color:var(--gris)}
+
+/* ---------- estudio ---------- */
+.estudio{display:grid;grid-template-columns:1fr 1fr;padding:clamp(48px,8vw,130px) var(--pad) 0;column-gap:var(--pad)}
+.rotulo{font-size:clamp(12px,.9vw,15px);text-transform:none;font-weight:400;letter-spacing:0}
+.rotulo .t{color:var(--tierra)}
+.estudio .izq{display:flex;flex-direction:column;justify-content:space-between}
+.cifras{display:flex;gap:clamp(28px,4.4vw,72px);margin-top:40px}
+.cifras b{display:block;font-weight:400;font-size:clamp(20px,1.75vw,30px);line-height:1}
+.cifras span{display:block;font-size:clamp(11px,.85vw,14px);color:var(--gris);margin-top:6px}
+.grande{font-size:clamp(22px,2.4vw,40px);line-height:1.06;text-transform:uppercase;text-align:right;letter-spacing:-.01em;font-weight:400;margin-left:-24%}
+.grande br{display:inline}
+.estudio .bajo{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:clamp(18px,1.9vw,32px)}
+.estudio .bajo p{font-size:clamp(12px,.85vw,14.5px);line-height:1.5;color:var(--gris);max-width:30em;font-weight:300}
+
+.interiores{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(8px,.8vw,14px);padding:clamp(40px,5.8vw,96px) var(--pad) 0;align-items:start}
+.interiores picture{display:block;overflow:hidden;border-radius:var(--r-s);height:clamp(180px,18.4vw,320px)}
+.interiores figure:nth-child(2) picture{height:clamp(220px,23vw,400px);margin-top:calc(clamp(180px,18.4vw,320px) * -.1)}
+.interiores figure:nth-child(1),.interiores figure:nth-child(3){padding-top:calc(clamp(180px,18.4vw,320px) * .1)}
+.interiores img{width:100%;height:100%;object-fit:cover}
+.interiores figcaption{padding-top:clamp(8px,1.4vw,22px)}
+.interiores h3{font-size:clamp(12px,.88vw,15px);text-transform:none;letter-spacing:0;font-weight:400}
+.interiores figcaption p{font-size:clamp(11.5px,.85vw,14.5px);color:var(--gris);margin-top:2px;font-weight:300}
+
+/* ---------- «vídeo»: foto a sangre con play que abre la galería ---------- */
+.peli{position:relative;display:block;margin:clamp(24px,2.3vw,40px) var(--pad) 0;border-radius:var(--r);overflow:hidden;aspect-ratio:2.4/1}
+.peli picture{position:absolute;inset:0}
+.peli img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--e)}
+.peli .play{position:absolute;left:50%;top:50%;width:clamp(56px,5.9vw,96px);height:clamp(56px,5.9vw,96px);transform:translate(-50%,-50%);border-radius:50%;background:#fff;color:var(--tinta);display:grid;place-items:center;transition:transform .25s var(--e)}
+.peli .play svg{width:28%;height:28%;margin-left:6%}
+.peli:active .play{transform:translate(-50%,-50%) scale(.94)}
+@media (hover:hover) and (pointer:fine){.peli:hover img{transform:scale(1.03)}.peli:hover .play{transform:translate(-50%,-50%) scale(1.06)}}
+.cierre{display:grid;grid-template-columns:1fr 1fr 1fr;align-items:start;gap:24px;padding:clamp(16px,1.9vw,32px) var(--pad) 0}
+.cierre h2{font-size:clamp(22px,2.2vw,38px);line-height:1.05;letter-spacing:-.01em}
+.cierre p{font-size:clamp(11px,.8vw,14px);line-height:1.35;color:var(--gris);font-weight:300;max-width:24em;padding-top:.6em}
+.cierre .der{justify-self:end;text-align:right;font-size:clamp(11px,.8vw,14px);line-height:1.35;color:var(--gris);padding-top:.6em}
+.enlace{background:none;border:0;padding:0;font:inherit;color:var(--tinta);cursor:pointer;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.enlace:active{transform:scale(.97)}
+
+/* ---------- cómo trabajamos (sigue el estilo del «Estudio») ---------- */
+.metodo{padding:clamp(64px,9vw,150px) var(--pad) 0}
+.metodo .cab-m{display:grid;grid-template-columns:1fr 1fr;column-gap:var(--pad)}
+.metodo h2{font-size:clamp(22px,2.5vw,42px);line-height:1.06;text-align:right;margin-left:-6%}
+.pasos{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.6vw,26px);margin-top:clamp(28px,3.5vw,56px)}
+.paso{border-top:1px solid var(--tinta);padding-top:16px}
+.paso h3{font-size:clamp(16px,1.35vw,23px);letter-spacing:-.005em}
+.paso p{font-size:clamp(13px,.95vw,16px);color:var(--gris);margin-top:10px;line-height:1.5;font-weight:300}
+.paso .lleva{color:var(--tinta);font-weight:400}
+.paso .lleva b{font-weight:400;color:var(--tierra)}
+
+/* ---------- contacto ---------- */
+.contacto{margin:clamp(64px,9vw,150px) var(--pad) 0;display:grid;grid-template-columns:1fr 1fr;gap:var(--pad);align-items:start}
+.contacto h2{font-size:clamp(28px,4.2vw,72px);line-height:.95;letter-spacing:-.02em;font-weight:300}
+.contacto .intro{margin-top:20px;max-width:30em;font-weight:300;color:var(--gris)}
+.acciones{display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px;margin-top:28px}
+.acciones a.txt{text-underline-offset:4px;padding:10px 0}
+.datos-c{margin-top:30px;display:grid;grid-template-columns:auto 1fr;gap:6px 20px;font-size:14px;max-width:440px}
+.datos-c dt{color:var(--gris)}
+.form{background:var(--hueso);border-radius:var(--r);padding:clamp(22px,2.6vw,40px);display:grid;gap:14px}
+.form h3{font-size:clamp(18px,1.5vw,26px)}
+.campo{display:grid;gap:6px}
+.campo label{font-size:14px}
+.campo input,.campo select,.campo textarea{width:100%;font:inherit;font-size:16px;color:var(--tinta);background:#fff;border:1px solid #8B7F76;border-radius:14px;padding:12px 16px;min-height:48px}
+.campo textarea{min-height:110px;resize:vertical}
+.form .legal{font-size:13px;color:var(--gris)}
+.form .aviso-form{font-size:14px;color:var(--tierra)}
+
+/* ---------- pie ---------- */
+.pie{margin:clamp(64px,9vw,150px) var(--pad) 0;padding:24px 0 28px;border-top:1px solid var(--regla);display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;font-size:13px;color:var(--gris)}
+.pie .marca-pie{color:var(--tinta);font-size:15px;letter-spacing:.06em}
+.pie ul{list-style:none;display:grid;gap:2px;align-content:start}
+.pie ul a{text-decoration:none;display:inline-block;padding:3px 0}
+@media (hover:hover) and (pointer:fine){.pie ul a:hover{text-decoration:underline;text-underline-offset:3px}}
+.pie .creditos{grid-column:1/-1;font-size:12px;line-height:1.5}
+.pie .muestra{grid-column:1/-1;font-size:13px;color:var(--tinta)}
+
+/* galería en pantalla */
+dialog.visor{border:0;padding:0;margin:auto;width:min(1200px,94vw);max-height:92svh;background:transparent;color:#fff;overflow:visible}
+dialog.visor::backdrop{background:rgba(22,15,11,.92)}
+.visor figure{display:grid;gap:12px}
+.visor img{width:100%;max-height:78svh;object-fit:contain;border-radius:16px;background:#000}
+.visor figcaption{display:flex;justify-content:space-between;gap:16px;font-size:15px}
+.visor .ctrl{display:flex;gap:10px;justify-content:flex-end;margin-top:12px}
+
+.movil{display:none}
+
+/* ---------- tablet ---------- */
+@media (max-width:1000px){
+  .menu{display:none}
+  .gente{display:none}
+  .texto-portada{max-width:62%}
+}
+/* ---------- móvil ---------- */
+@media (max-width:760px){
+  .portada{margin:6px;height:calc(100svh - 12px);min-height:600px;max-height:820px}
+  .portada .capa{transform:scale(1.18)}
+  .portada::before{background:linear-gradient(180deg,rgba(40,22,10,.55) 0%,rgba(40,22,10,.2) 40%,rgba(40,22,10,0) 55%)}
+  .portada::after{background:linear-gradient(180deg,rgba(24,13,6,0) 55%,rgba(24,13,6,.72) 100%)}
+  .lema br{display:none}
+  .portada .capa img{object-position:42% 100%}
+  .cab{top:16px}
+  .titular{font-size:min(19vw,120px);top:64px;line-height:.84}
+  .titular .linea+.linea{margin-left:.5em}
+  .lado{display:none}
+  .texto-portada{max-width:none;right:var(--pad)}
+  .lema{font-size:clamp(20px,6.2vw,26px)}
+  .lema .ultima{display:inline}
+  .lema .peque{display:block;margin-top:12px;font-size:13.5px;max-width:28em}
+  .lema .desde{font-size:12px}
+  .texto-portada .cta{margin-top:20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .texto-portada .cta .pill{min-width:0}
+  .gente.movil-si{display:flex;position:static}
+  .estudio{grid-template-columns:1fr}
+  .estudio .izq{display:contents}
+  .estudio .rotulo{order:1}
+  .grande{order:2;text-align:left;margin:16px 0 0;font-size:clamp(21px,6vw,26px)}
+  .grande br{display:none}
+  .estudio .der{order:3}
+  .cifras{order:4;margin-top:30px}
+  .estudio .bajo{flex-direction:column;align-items:flex-start}
+  .interiores{grid-template-columns:1fr;gap:24px}
+  .interiores picture,.interiores figure:nth-child(2) picture{height:auto;aspect-ratio:4/3;margin-top:0}
+  .interiores figure:nth-child(1),.interiores figure:nth-child(3){padding-top:0}
+  .interiores h3{font-size:15px}.interiores figcaption p{font-size:14px}
+  .peli{aspect-ratio:4/5}
+  .cierre{grid-template-columns:1fr;gap:10px}
+  .cierre .der{justify-self:start;text-align:left}
+  .cierre p,.cierre .der{font-size:14px}
+  .metodo .cab-m{grid-template-columns:1fr}
+  .metodo h2{text-align:left;margin:14px 0 0;font-size:clamp(21px,6vw,26px)}
+  .pasos{grid-template-columns:1fr}
+  .contacto{grid-template-columns:1fr}
+  .pie{grid-template-columns:1fr;padding-bottom:96px}
+  .movil{display:flex;align-items:center;gap:16px;position:fixed;left:8px;right:8px;bottom:8px;z-index:20;background:var(--tinta);color:#fff;border-radius:999px;padding:6px 6px 6px 22px;transform:translateY(130%);transition:transform .35s var(--e);visibility:hidden}
+  .movil.on{transform:none;visibility:visible}
+  .movil a.txt{font-size:15px;text-underline-offset:4px;padding:10px 0}
+  .movil .pill{margin-left:auto;height:46px}
+}
+@media (max-width:760px) and (max-height:700px){.portada{min-height:560px}}
+@media (prefers-reduced-motion:reduce){.movil{transition:none}.peli img,.mini img{transition:none}}
+</style>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="portada" data-portada>
+  <picture class="capa fondo"><source type="image/avif" srcset="fotos/portada-480.avif 480w, fotos/portada-960.avif 960w, fotos/portada-1600.avif 1600w, fotos/portada-1920.avif 1920w" sizes="(max-width:760px) 100vw, 100vw"><img src="fotos/portada-1600.webp" srcset="fotos/portada-480.webp 480w, fotos/portada-960.webp 960w, fotos/portada-1600.webp 1600w, fotos/portada-1920.webp 1920w" sizes="(max-width:760px) 100vw, 100vw" width="1920" height="1080" alt="Casa de una planta con todo el frente de vidrio y las luces encendidas, al anochecer" fetchpriority="high" decoding="async"></picture>
+  <h1 class="titular"><span class="sr">Etxeak gainetik · GAINETIK Arkitektura</span><span aria-hidden="true"><span class="linea"><span class="l">E</span><span class="l">T</span><span class="l min">x</span><span class="l min">e</span><span class="l">A</span><span class="l">K</span></span><span class="linea"><span class="l">G</span><span class="l">A</span><span class="l">I</span><span class="l">N</span><span class="l">E</span><span class="l">T</span><span class="l">I</span><span class="l">K</span></span></span></h1>
+  <picture class="capa delante" aria-hidden="true"><source type="image/avif" srcset="fotos/portada-delante-480.avif 480w, fotos/portada-delante-960.avif 960w, fotos/portada-delante-1600.avif 1600w, fotos/portada-delante-1920.avif 1920w" sizes="(max-width:760px) 100vw, 100vw"><img src="fotos/portada-delante-1600.webp" srcset="fotos/portada-delante-480.webp 480w, fotos/portada-delante-960.webp 960w, fotos/portada-delante-1600.webp 1600w, fotos/portada-delante-1920.webp 1920w" sizes="(max-width:760px) 100vw, 100vw" width="1920" height="1080" alt="" fetchpriority="high" decoding="async"></picture>
+
+  <div class="cab">
+    <nav aria-label="Principal"><ul class="menu">
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#estudio">Estudio</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#metodo">Método</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul></nav>
+    <a class="tel" href="tel:+34943000000">+34 943 00 00 00</a>
+  </div>
+
+  <div class="texto-portada">
+    <p class="lema"><span class="desde">Desde 2014</span>Viviendas que miran al valle <br>y caseríos que vuelven a <br><span class="ultima">abrir la puerta <span class="peque">Para quien quiere una casa a su medida, dibujada con la parcela delante y seguida en obra cada semana.</span></span></p>
+    <div class="cta"><a class="pill pill-blanco" href="#proyectos">Ver proyectos</a></div>
+  </div>
+
+  <div class="gente">
+    <span class="caras" aria-hidden="true"><span>AE</span><span>IM</span><span>JL</span></span>
+    <span><b>120 +</b><small>Familias en su casa</small></span>
+  </div>
+
+  <div class="lado">
+    <a class="mini" href="#galeria" aria-label="Ver la galería"><picture><source type="image/avif" srcset="fotos/caserio-piedra-480.avif 480w, fotos/caserio-piedra-960.avif 960w, fotos/caserio-piedra-1600.avif 1600w" sizes="240px"><img src="fotos/caserio-piedra-1600.webp" srcset="fotos/caserio-piedra-480.webp 480w, fotos/caserio-piedra-960.webp 960w, fotos/caserio-piedra-1600.webp 1600w" sizes="240px" width="3413" height="2560" alt="Fachada de piedra de un caserío" loading="lazy" decoding="async"></picture></a>
+    <a class="mini" href="#galeria" aria-label="Ver la galería"><picture><source type="image/avif" srcset="fotos/casa-negra-480.avif 480w, fotos/casa-negra-960.avif 960w, fotos/casa-negra-1600.avif 1600w" sizes="240px"><img src="fotos/casa-negra-1600.webp" srcset="fotos/casa-negra-480.webp 480w, fotos/casa-negra-960.webp 960w, fotos/casa-negra-1600.webp 1600w" sizes="240px" width="3339" height="2504" alt="Casa de madera negra en un prado" loading="lazy" decoding="async"></picture></a>
+    <p class="ficha"><b>35+</b><span>Caseríos rehabilitados, de Tolosaldea a la costa</span></p>
+  </div>
+</header>
+
+<main id="contenido">
+<section class="estudio" id="estudio" aria-labelledby="t-estudio">
+  <div class="izq">
+    <h2 class="rotulo" id="t-estudio">El <span class="t">estudio</span></h2>
+    <div class="cifras" data-escalonado>
+      <p><b>12+</b><span>Años dibujando casas</span></p>
+      <p><b>100%</b><span>Proyectos a medida</span></p>
+    </div>
+  </div>
+  <div class="der">
+    <p class="grande" data-enciende>Cada casa que dibujamos es <br>una conversación entre <span class="t">la arquitectura</span>, <br>el caserío de siempre y quien va <br>a vivir en ella. Sin prisa.</p>
+    <div class="bajo">
+      <p>Cada proyecto es más que una casa: es una forma de vivir en un sitio. En Gainetik juntamos el oficio de antes, materiales del valle y una atención al detalle que se nota cuando abres la puerta.</p>
+      <a class="pill pill-linea" href="#proyectos">Ver proyectos</a>
+    </div>
+  </div>
+</section>
+
+<div class="interiores" id="proyectos" data-escalonado>
+  <figure><picture><source type="image/avif" srcset="fotos/salon-ventanal-480.avif 480w, fotos/salon-ventanal-960.avif 960w, fotos/salon-ventanal-1600.avif 1600w" sizes="(max-width:760px) 100vw, 32vw"><img src="fotos/salon-ventanal-1600.webp" srcset="fotos/salon-ventanal-480.webp 480w, fotos/salon-ventanal-960.webp 960w, fotos/salon-ventanal-1600.webp 1600w" sizes="(max-width:760px) 100vw, 32vw" width="3417" height="2563" alt="Butaca de cuero junto a unos ventanales con cortinas blancas" loading="lazy" decoding="async"></picture><figcaption><h3>Sala del pajar</h3><p>El antiguo pajar, ahora sala con luz de mañana.</p></figcaption></figure>
+  <figure><picture><source type="image/avif" srcset="fotos/comedor-480.avif 480w, fotos/comedor-960.avif 960w, fotos/comedor-1600.avif 1600w" sizes="(max-width:760px) 100vw, 32vw"><img src="fotos/comedor-1600.webp" srcset="fotos/comedor-480.webp 480w, fotos/comedor-960.webp 960w, fotos/comedor-1600.webp 1600w" sizes="(max-width:760px) 100vw, 32vw" width="3417" height="2563" alt="Mesa de madera con seis sillas blancas junto a la ventana" loading="lazy" decoding="async"></picture><figcaption><h3>Comedor de roble</h3><p>Mesa para seis. Ventanas al este. Suelo de siempre.</p></figcaption></figure>
+  <figure><picture><source type="image/avif" srcset="fotos/sala-madera-480.avif 480w, fotos/sala-madera-960.avif 960w, fotos/sala-madera-1600.avif 1600w" sizes="(max-width:760px) 100vw, 32vw"><img src="fotos/sala-madera-1600.webp" srcset="fotos/sala-madera-480.webp 480w, fotos/sala-madera-960.webp 960w, fotos/sala-madera-1600.webp 1600w" sizes="(max-width:760px) 100vw, 32vw" width="3344" height="2508" alt="Pared forrada de paneles de nogal con una mesa baja y libros" loading="lazy" decoding="async"></picture><figcaption><h3>Sala de nogal</h3><p>Los paneles de siempre, limpios y vueltos a colocar.</p></figcaption></figure>
+</div>
+
+<a class="peli" id="galeria" href="fotos/borda-amanecer-2400.webp" data-galeria aria-label="Ver las fotos de los proyectos (galería)">
+  <picture><source type="image/avif" srcset="fotos/borda-amanecer-480.avif 480w, fotos/borda-amanecer-960.avif 960w, fotos/borda-amanecer-1600.avif 1600w, fotos/borda-amanecer-2400.avif 2400w" sizes="(max-width:760px) 100vw, 96vw"><img src="fotos/borda-amanecer-1600.webp" srcset="fotos/borda-amanecer-480.webp 480w, fotos/borda-amanecer-960.webp 960w, fotos/borda-amanecer-1600.webp 1600w, fotos/borda-amanecer-2400.webp 2400w" sizes="(max-width:760px) 100vw, 96vw" width="3840" height="1920" alt="Borda de madera y ladrillo al amanecer, con niebla en el prado" loading="lazy" decoding="async"></picture>
+  <span class="play" aria-hidden="true"><svg viewBox="0 0 22 22" fill="currentColor"><path d="M5 3v16l14-8z"/></svg></span>
+</a>
+<div class="cierre">
+  <h2 data-lineas><span class="t">Casas</span> hechas<br>para <span class="t">quedarse</span></h2>
+  <p>Gainetik es un estudio de arquitectura de Gipuzkoa que dibuja casas unifamiliares y rehabilita caseríos para quien quiere hacerlo bien y sin prisa.</p>
+  <div class="der"><p>Borda en el prado</p><button class="enlace" type="button" data-galeria>Ver todas las fotos</button></div>
+</div>
+
+<section class="metodo" id="metodo" aria-labelledby="t-metodo">
+  <div class="cab-m">
+    <p class="rotulo">Cómo <span class="t">trabajamos</span></p>
+    <h2 id="t-metodo" data-lineas>De la parcela a la llave, <br>con <span class="t">el mismo estudio</span> <br>en cada paso.</h2>
+  </div>
+  <ol class="pasos" data-escalonado>
+    <li class="paso"><h3>Visita</h3><p>Vamos contigo a la parcela o al caserío: orientación, accesos, pendiente y lo que permite el ayuntamiento.</p><p class="lleva"><b>Te llevas:</b> lo que se puede hacer y lo que no.</p></li>
+    <li class="paso"><h3>Anteproyecto</h3><p>Dos o tres propuestas de planta y volumen. Las cambiamos contigo hasta que una sea la tuya.</p><p class="lleva"><b>Te llevas:</b> planos, maqueta y un coste estimado.</p></li>
+    <li class="paso"><h3>Licencia</h3><p>Proyecto básico y de ejecución. Lo presentamos en el ayuntamiento y contestamos a lo que pidan.</p><p class="lleva"><b>Te llevas:</b> la licencia de obra.</p></li>
+    <li class="paso"><h3>Obra</h3><p>Comparamos presupuestos de constructores contigo y llevamos la dirección de obra, con visita semanal.</p><p class="lleva"><b>Te llevas:</b> la casa y el final de obra.</p></li>
+  </ol>
+</section>
+
+<section class="contacto" id="contacto" aria-labelledby="t-contacto">
+  <div>
+    <h2 id="t-contacto" data-lineas>Cuéntanos <br><span class="t">qué tienes</span></h2>
+    <p class="intro">Una parcela, un caserío cerrado o una casa que se ha quedado pequeña. Te contestamos en dos días laborables.</p>
+    <div class="acciones">
+      <a class="pill pill-tinta" href="https://wa.me/34600000000" rel="noopener">Escribir por WhatsApp</a>
+      <a class="txt" href="tel:+34943000000">o llama al 943 00 00 00</a>
+    </div>
+    <dl class="datos-c">
+      <dt>Correo</dt><dd><a href="mailto:hola@gainetik.example">hola@gainetik.example</a></dd>
+      <dt>Estudio</dt><dd>Gipuzkoa, con cita</dd>
+      <dt>Horario</dt><dd>De lunes a viernes, de 9:00 a 14:00 y de 16:00 a 18:30</dd>
+    </dl>
+  </div>
+  <form class="form" action="#" method="post" data-form novalidate>
+    <h3>Pedir una primera visita</h3>
+    <div class="campo"><label for="f-nombre">Nombre</label><input id="f-nombre" name="nombre" autocomplete="name" required></div>
+    <div class="campo"><label for="f-contacto">Teléfono o correo</label><input id="f-contacto" name="contacto" autocomplete="email" required></div>
+    <div class="campo"><label for="f-tipo">Qué tienes</label><select id="f-tipo" name="tipo"><option>Una parcela para hacer casa</option><option>Un caserío para rehabilitar</option><option>Una casa para reformar o ampliar</option><option>Otra cosa</option></select></div>
+    <div class="campo"><label for="f-msg">Cuéntanos un poco</label><textarea id="f-msg" name="mensaje"></textarea></div>
+    <button class="pill pill-tinta" type="submit">Pedir la visita</button>
+    <p class="legal">Usaremos estos datos solo para contestarte.</p>
+    <p class="aviso-form" role="status" aria-live="polite" hidden></p>
+  </form>
+</section>
+</main>
+
+<footer class="pie">
+  <div><p class="marca-pie">GAINETIK</p><p>Estudio de arquitectura · Gipuzkoa</p></div>
+  <ul><li><a href="#estudio">Estudio</a></li><li><a href="#proyectos">Proyectos</a></li><li><a href="#metodo">Método</a></li><li><a href="#contacto">Contacto</a></li></ul>
+  <ul><li><a href="tel:+34943000000">943 00 00 00</a></li><li><a href="https://wa.me/34600000000" rel="noopener">WhatsApp</a></li><li><a href="mailto:hola@gainetik.example">hola@gainetik.example</a></li></ul>
+  <p class="creditos">Fotos de ejemplo, de Wikimedia Commons: KadimaDesign, Gobierno Vasco (Ondarea), Ksarasola, Wikimaribarre y Dietmar Rabich (CC BY-SA 4.0, recortadas); Breather, Crew y Alexander Andrews (Unsplash, CC0).</p>
+  <p class="muestra">Muestra de diseño creada por OI Studio. El nombre, los datos, los textos y los precios son inventados; las fotos son de ejemplo (créditos en <a href="fotos/creditos.json">fotos/creditos.json</a>).</p>
+</footer>
+
+<nav class="movil" data-barra-movil aria-label="Contacto rápido"><a class="txt" href="tel:+34943000000">Llamar</a><a class="pill pill-blanco" href="https://wa.me/34600000000" rel="noopener">WhatsApp</a></nav>
+
+<dialog class="visor" id="visor" aria-label="Fotos de los proyectos">
+  <figure><img alt="" width="1600" height="1067"><figcaption><span class="pie-foto"></span><span class="cuenta"></span></figcaption></figure>
+  <div class="ctrl">
+    <button class="pill pill-blanco" type="button" data-ant>Anterior</button>
+    <button class="pill pill-blanco" type="button" data-sig>Siguiente</button>
+    <button class="pill pill-tinta" type="button" data-cerrar style="border-color:#fff">Cerrar</button>
+  </div>
+</dialog>
+
+<script src="../../../assets/vendor/gsap.min.js"></script>
+<script src="../../../assets/vendor/ScrollTrigger.min.js"></script>
+<script src="../../../assets/vendor/SplitText.min.js"></script>
+<script src="anim-texto.js"></script>
+<script>
+/* Portada: las letras del titular caen a su sitio (cada línea hace de máscara) y la foto se asienta. */
+(function(){
+  if(!window.gsap||matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  gsap.from(".portada .capa img",{scale:1.06,duration:2.2,ease:"expo.out",transformOrigin:"50% 100%"});
+  document.fonts.ready.then(function(){
+    gsap.from(".titular .l",{yPercent:-115,duration:1.25,ease:"expo.out",stagger:.055,delay:.1});
+    gsap.from(".texto-portada>*, .gente, .lado>*",{y:20,opacity:0,duration:.9,ease:"power3.out",stagger:.07,delay:.6,clearProps:"transform"});
+  });
+})();
+/* Galería: el play abre las fotos (no hay vídeo). Sin JavaScript, el enlace abre la foto grande. */
+(function(){
+  var d=document.getElementById("visor"); if(!d||!d.showModal) return;
+  var fotos=[{"src":"fotos/borda-amanecer-1600.webp","alt":"Borda de madera y ladrillo al amanecer, con niebla en el prado","pie":"Borda junto al prado, al amanecer"},{"src":"fotos/portada-1600.webp","alt":"Casa de una planta con todo el frente de vidrio, al anochecer","pie":"Casa baja con el frente de vidrio"},{"src":"fotos/casa-negra-1600.webp","alt":"Tres volúmenes de madera negra con cubierta a dos aguas sobre la hierba","pie":"Tres volúmenes de madera negra"},{"src":"fotos/caserio-ladera-1600.webp","alt":"Caserío blanco en una ladera, con ovejas pastando delante","pie":"Caserío en ladera, rehabilitado"},{"src":"fotos/caserio-ruina-1600.webp","alt":"Caserío de piedra y entramado de madera, sin rehabilitar","pie":"Caserío antes de la obra"},{"src":"fotos/caserio-piedra-1600.webp","alt":"Fachada de piedra de un caserío con la puerta del pajar","pie":"Fachada de piedra del pajar"},{"src":"fotos/salon-ventanal-1600.webp","alt":"Butaca de cuero junto a unos ventanales con cortinas blancas","pie":"Sala del pajar"},{"src":"fotos/comedor-1600.webp","alt":"Mesa de madera con seis sillas blancas junto a la ventana","pie":"Comedor con suelo de roble"},{"src":"fotos/sala-madera-1600.webp","alt":"Pared forrada de paneles de nogal con una mesa baja","pie":"Sala forrada de nogal"}];
+  var i=0, img=d.querySelector("img"), pie=d.querySelector(".pie-foto"), cuenta=d.querySelector(".cuenta");
+  function pinta(){var f=fotos[i]; img.src=f.src; img.alt=f.alt; pie.textContent=f.pie+" (foto de ejemplo)"; cuenta.textContent=(i+1)+" / "+fotos.length;}
+  function mueve(n){i=(i+n+fotos.length)%fotos.length; pinta();}
+  document.querySelectorAll("[data-galeria]").forEach(function(b){b.addEventListener("click",function(e){e.preventDefault(); i=0; pinta(); d.showModal();});});
+  d.querySelector("[data-ant]").addEventListener("click",function(){mueve(-1)});
+  d.querySelector("[data-sig]").addEventListener("click",function(){mueve(1)});
+  d.querySelector("[data-cerrar]").addEventListener("click",function(){d.close()});
+  d.addEventListener("click",function(e){if(e.target===d) d.close();});
+  d.addEventListener("keydown",function(e){if(e.key==="ArrowRight") mueve(1); if(e.key==="ArrowLeft") mueve(-1);});
+})();
+/* Formulario de muestra: no envía nada. */
+(function(){
+  var f=document.querySelector("[data-form]"); if(!f) return;
+  f.addEventListener("submit",function(e){e.preventDefault(); var a=f.querySelector(".aviso-form"); a.hidden=false; a.textContent="Esto es una muestra: el formulario no envía nada.";});
+})();
+</script>
+</body>
+</html>

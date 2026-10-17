@@ -46,3 +46,7 @@ web/eu/
 clientes/
 herramientas/demos/demo-*.mjs
 herramientas/demos/fotos-biciprecision.mjs
+
+# Capturas de trabajo de las muestras (se usan para generar las tarjetas de
+# web/assets/; no se publican).
+web/demos/muestras/*/_capturas/
