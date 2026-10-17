@@ -51,7 +51,7 @@
 <link rel="manifest" href="/site.webmanifest"/>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/geist-latin-04ce1a61.woff2" crossorigin/>
 <link rel="stylesheet" href="/assets/fuentes.css?v=1"/>
-<link rel="stylesheet" href="assets/styles.css?v=23"/>
+<link rel="stylesheet" href="assets/styles.css?v=24"/>
 <script>if(location.protocol==='http:'&&/(^|\.)oiwebstudio\.com$/.test(location.hostname))location.replace('https://'+location.host+location.pathname+location.search+location.hash);document.documentElement.classList.add('js');</script>
 <style>
   /* Moodboard editorial: capturas planas sobre lienzo crema, con paletas y etiquetas mono */
@@ -99,7 +99,7 @@
     .mb-corner.tr{display:none;}
   }
   @media(prefers-reduced-motion:reduce){ .mb-item .ph,.mb-go{transition:none;} }
-  html,body{overflow-x:hidden;}
+  html,body{overflow-x:hidden;overflow-x:clip;}
 
   /* BackgroundPaths hero — trazos animados detrás de título */
   .hero{position:relative;overflow:hidden;}
@@ -200,6 +200,100 @@
 </span>
 </a>
 </div></section>
+
+<!-- Los dos casos de clientes, en vivo (assets/vivas.js). errotatxo.com se abre de verdad
+     dentro del móvil al tocarlo (no antes: así no pesa ni atrapa el scroll).
+     aberricasarural.com no se deja abrir dentro de otra página (X-Frame-Options),
+     así que pasan sus capturas. -->
+<section class="vivas" id="vivas" aria-labelledby="vivas-t">
+<div class="container">
+<style>
+.vivas{padding:40px 0 32px;scroll-margin-top:90px;}
+.vivas__par{display:grid;grid-template-columns:1fr;gap:56px;max-width:900px;margin:44px auto 0;}
+@media(min-width:760px){.vivas__par{grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,88px);}}
+.viva{margin:0;display:grid;justify-items:center;align-content:start;gap:22px;}
+.viva .marco-movil{width:min(300px,78vw);}
+.viva__poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;}
+.viva__poster img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;}
+.viva__tapa{position:absolute;inset:0;z-index:2;display:flex;align-items:flex-end;justify-content:center;padding:0 14px 22px;border:0;background:linear-gradient(180deg,rgba(20,17,12,0) 45%,rgba(20,17,12,.72));cursor:pointer;font:inherit;color:#fff;}
+.viva__tapa span{display:inline-flex;align-items:center;gap:9px;padding:12px 18px;border-radius:12px;background:#fff;color:var(--ink);font-size:14.5px;font-weight:600;box-shadow:0 10px 24px -10px rgba(0,0,0,.5);transition:transform .25s var(--ease);}
+.viva__tapa span::before{content:"";width:9px;height:9px;border-radius:50%;background:#3fbf73;box-shadow:0 0 0 4px rgba(63,191,115,.25);}
+@media(hover:hover) and (pointer:fine){.viva__tapa:hover span{transform:translateY(-2px);}}
+.viva__tapa:focus-visible{outline:3px solid var(--terra);outline-offset:-3px;}
+.viva__tapa[aria-busy="true"] span::before{animation:viva-late 1s ease-in-out infinite;}
+@keyframes viva-late{50%{opacity:.25;}}
+.viva iframe{position:absolute;top:0;left:0;z-index:1;width:100%;height:100%;border:0;background:#fff;opacity:0;transform-origin:0 0;transition:opacity .4s ease;}
+.viva iframe.cargado{opacity:1;}
+.viva figcaption{text-align:center;max-width:34ch;}
+.viva figcaption b{display:block;font-family:var(--font-serif);font-weight:500;font-size:24px;letter-spacing:-.015em;color:var(--ink);}
+.viva figcaption > span{display:block;margin-top:4px;font-size:15px;line-height:1.55;color:var(--text-muted);}
+.viva__enlaces{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px;margin-top:12px;font-size:15px;font-weight:600;}
+.viva__enlaces a{color:var(--terra-link);text-decoration:underline;text-decoration-color:var(--border-strong);text-underline-offset:4px;padding:6px 0;}
+.viva__enlaces a:hover{text-decoration-color:currentColor;}
+.pase{position:absolute;inset:0;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;}
+.pase::-webkit-scrollbar{display:none;}
+.pase:focus-visible{outline:3px solid var(--terra);outline-offset:-3px;}
+.pase picture{flex:0 0 100%;scroll-snap-align:start;}
+.pase img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;}
+.pase__mandos{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:12px;}
+.pase__mandos button{width:44px;height:44px;border-radius:12px;border:1px solid var(--border-strong);background:var(--surface);color:var(--ink);font-size:18px;cursor:pointer;transition:border-color .2s;}
+.pase__mandos button:hover{border-color:var(--ink);}
+.pase__mandos button:disabled{opacity:.4;cursor:default;border-color:var(--border-strong);}
+.pase__nombre{min-width:12ch;font-size:14.5px;font-weight:600;color:var(--ink);}
+.pase__nombre small{display:block;font-weight:400;font-size:12.5px;color:var(--text-faint);}
+@media(prefers-reduced-motion:reduce){.viva iframe,.viva__tapa span,.pase__mandos button{transition:none;}.viva__tapa[aria-busy="true"] span::before{animation:none;}.pase{scroll-behavior:auto;}}
+</style>
+<div class="section-head reveal">
+<span class="eyebrow" data-t="viv_eyebrow">Casos reales</span>
+<h2 id="vivas-t" data-t="viv_h2">Las dos webs, <span class="grad">aquí mismo</span></h2>
+<p data-t="viv_p">Toca el móvil de Errotatxo y se abre su web de verdad: puedes bajar, ver sus tiendas y cambiar de idioma. La de A.Berri no se deja abrir dentro de otra página, por seguridad, así que aquí puedes pasar sus pantallas; el enlace la abre entera.</p>
+</div>
+<div class="vivas__par">
+
+<figure class="viva reveal">
+<div class="marco-movil"><div class="marco-movil__pantalla">
+<picture class="viva__poster"><source srcset="assets/errotatxo-mobile.webp" type="image/webp"/><img src="assets/errotatxo-mobile.jpg" alt="La portada de errotatxo.com en un móvil" width="585" height="1235" loading="lazy"/></picture>
+<button class="viva__tapa" type="button" data-src="https://errotatxo.com/" aria-describedby="viva-e"><span data-t="viv_tocar">Toca para abrir la web de verdad</span></button>
+</div></div>
+<figcaption id="viva-e">
+<b>Errotatxo</b>
+<span data-t="viv_e_p">Panadería de Tolosa, con tres tiendas, en castellano y euskera.</span>
+<div class="viva__enlaces"><a href="https://errotatxo.com/" target="_blank" rel="noopener" data-t="viv_e_a">Abrir errotatxo.com ↗</a><a href="caso-errotatxo.html" data-t="caso_go">Ver el caso completo →</a></div>
+</figcaption>
+</figure>
+
+<figure class="viva reveal" data-d="1">
+<div class="marco-movil"><div class="marco-movil__pantalla">
+<div class="pase" id="pase-aberri" tabindex="0" role="region" aria-labelledby="pase-titulo">
+<picture><source srcset="assets/aberri-mobile.webp" type="image/webp"/><img src="assets/aberri-mobile.jpg" alt="" width="585" height="1266" loading="lazy"/></picture>
+<picture><source srcset="assets/aberri/web-alojamientos-movil.webp" type="image/webp"/><img src="assets/aberri/web-alojamientos-movil.jpg" alt="" width="585" height="1266" loading="lazy"/></picture>
+<picture><source srcset="assets/aberri/web-galeria-movil.webp" type="image/webp"/><img src="assets/aberri/web-galeria-movil.jpg" alt="" width="585" height="1266" loading="lazy"/></picture>
+<picture><source srcset="assets/aberri/web-reserva-movil.webp" type="image/webp"/><img src="assets/aberri/web-reserva-movil.jpg" alt="" width="585" height="1266" loading="lazy"/></picture>
+<picture><source srcset="assets/aberri/web-opiniones-movil.webp" type="image/webp"/><img src="assets/aberri/web-opiniones-movil.jpg" alt="" width="585" height="1266" loading="lazy"/></picture>
+<picture><source srcset="assets/aberri/web-llegar-movil.webp" type="image/webp"/><img src="assets/aberri/web-llegar-movil.jpg" alt="" width="585" height="1266" loading="lazy"/></picture>
+</div>
+</div></div>
+<figcaption>
+<b>A.Berri</b>
+<span data-t="viv_a_p">Casa rural en Getaria, con reservas desde su propia web.</span>
+<div class="pase__mandos">
+<button type="button" id="pase-ant" aria-controls="pase-aberri"><span aria-hidden="true">←</span><span class="sr-only" data-t="viv_ant">Pantalla anterior</span></button>
+<span class="pase__nombre" id="pase-nombre" aria-live="polite">Portada<small>1 / 6</small></span>
+<button type="button" id="pase-sig" aria-controls="pase-aberri"><span aria-hidden="true">→</span><span class="sr-only" data-t="viv_sig">Pantalla siguiente</span></button>
+</div>
+<div class="viva__enlaces"><a href="https://aberricasarural.com/" target="_blank" rel="noopener" data-t="viv_a_a">Abrir aberricasarural.com ↗</a><a href="caso-a-berri.html" data-t="caso_go">Ver el caso completo →</a></div>
+</figcaption>
+</figure>
+
+</div>
+<div hidden>
+<span id="pase-titulo" data-t="viv_pase_t">Pantallas de aberricasarural.com</span>
+<span data-k="iframe" data-t="viv_iframe">errotatxo.com, la web de Errotatxo, en directo</span>
+<span data-k="cargando" data-t="viv_cargando">Abriendo la web…</span>
+<span data-k="pase" data-t="viv_pase">Portada|La casa y el apartamento|Galería de fotos|Calendario de reserva|Opiniones|Cómo llegar</span>
+</div>
+</div>
+</section>
 
 <section class="muestras" aria-labelledby="mu-t">
 <div class="container">
@@ -431,8 +525,9 @@
 <div class="footer__mark" aria-hidden="true">OI STUDIO</div>
 </footer>
 
-<script src="assets/i18n.js?v=18"></script>
-<script src="assets/main.js?v=9"></script>
+<script src="assets/i18n.js?v=19"></script>
+<script src="assets/main.js?v=11"></script>
+<script src="assets/vivas.js?v=1"></script>
 <script>
 (function(){
   // Hero Heading — Letter spring animation (agrupado por palabras para no romper)

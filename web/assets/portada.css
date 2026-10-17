@@ -269,3 +269,76 @@
   .mini-board { gap: 30px; }
   .mbp { margin: 0 !important; }
 }
+
+/* ---- «Escribe tu negocio y mira tu web» (17/10/2026, assets/prueba.js) -----
+   Va dentro de la oferta «Una muestra de tu web antes de decidir»: el texto y
+   el formulario a la izquierda, el boceto en portátil y móvil a la derecha, y
+   los tres pasos debajo. */
+.sw-oferta.prueba { grid-template-columns: minmax(0, 1fr); grid-template-areas: "txt" "form" "escena" "acciones" "pasos"; align-items: start; row-gap: 24px; scroll-margin-top: 90px; }
+@media (min-width: 980px) {
+  .sw-oferta.prueba { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); grid-template-areas: "txt escena" "form escena" "acciones escena" "pasos pasos"; column-gap: clamp(36px, 4vw, 60px); row-gap: 22px; }
+}
+.prueba__txt { grid-area: txt; }
+.prueba__txt p + p { margin-top: 12px; }
+.prueba .prueba__intro { color: var(--ink); }
+.prueba__form { grid-area: form; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.prueba__campo { display: grid; gap: 6px; min-width: 0; }
+.prueba__campo--nombre { grid-column: 1 / -1; }
+.prueba__campo > span { font-size: 13.5px; font-weight: 600; color: var(--ink); }
+.prueba__campo input, .prueba__campo select { width: 100%; min-width: 0; height: 48px; padding: 0 14px; border: 1px solid var(--border-strong); border-radius: 12px; background: var(--surface); color: var(--ink); font: inherit; font-size: 16px; }
+.prueba__campo select { appearance: none; padding-right: 38px; background: var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23191712' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") right 12px center / 16px no-repeat; cursor: pointer; }
+.prueba__campo input:focus, .prueba__campo select:focus { outline: 2px solid var(--terra); outline-offset: 1px; border-color: var(--ink); }
+.prueba__escena { grid-area: escena; min-width: 0; }
+.prueba__marcos { position: relative; padding: 0 0 46% 0; }
+@media (min-width: 600px) { .prueba__marcos { padding-bottom: 12%; } }
+@media (min-width: 980px) { .prueba__escena { align-self: center; } }
+.prueba__marcos .marco-portatil { width: 100%; }
+@media (min-width: 600px) { .prueba__marcos .marco-portatil { width: 88%; } }
+.prueba__marcos .marco-movil { position: absolute; right: 2%; bottom: 0; width: 38%; padding: 14px 5px 9px; border-radius: 22px; }
+.prueba__marcos .marco-movil::before { top: 5px; height: 4px; }
+.prueba__marcos .marco-movil__pantalla { border-radius: 15px; }
+@media (min-width: 600px) { .prueba__marcos .marco-movil { right: 0; width: 25%; } }
+.prueba__acciones { grid-area: acciones; }
+.prueba__acciones .sw-oferta__btns { margin-top: 0; }
+.prueba .prueba__credito { margin: 10px 0 0; font-size: 12.5px; color: var(--text-faint); }
+.prueba .prueba__nota { margin-top: 16px; font-size: 14px; line-height: 1.6; color: var(--text-muted); }
+.prueba__copiar { display: inline; padding: 10px 0; border: 0; background: none; font: inherit; font-size: 14px; font-weight: 600; color: var(--terra-link); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.prueba__aviso { display: block; font-size: 13.5px; color: var(--ok-text); overflow-wrap: anywhere; }
+.prueba__aviso:empty { display: none; }
+.prueba .sw-pasos { grid-area: pasos; }
+@media (min-width: 760px) { .prueba .sw-pasos { grid-template-columns: repeat(3, 1fr); gap: 10px; } .prueba .sw-pasos li + li { margin-top: 0; } }
+
+/* El boceto: una portada de verdad en miniatura, con la letra y el color del sector */
+.maq { --acento: #9b2a1b; --sobre: #fff; --fuente: var(--font-sans); --peso: 600; --n: 10; --w: 8; position: absolute; inset: 0; overflow: hidden; container-type: inline-size; background: #2b2722; color: #fff; text-align: left; }
+.maq__foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.maq::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(12, 10, 8, .55) 0%, rgba(12, 10, 8, .12) 30%, rgba(12, 10, 8, .2) 50%, rgba(12, 10, 8, .78) 100%); }
+.maq__barra { position: absolute; z-index: 2; top: 0; left: 0; right: 0; display: flex; align-items: center; gap: 3cqi; padding: 3cqi 4cqi; font-size: max(6px, 1.9cqi); letter-spacing: .06em; text-transform: uppercase; }
+.maq__marca { min-width: 0; max-width: 42%; overflow: hidden; font-family: var(--fuente); font-weight: var(--peso); font-size: max(8px, 2.7cqi); letter-spacing: .01em; text-overflow: ellipsis; white-space: nowrap; }
+.maq__menu { min-width: 0; margin-left: auto; overflow: hidden; opacity: .92; text-overflow: ellipsis; white-space: nowrap; }
+.maq__tel { flex: none; padding: 1.2cqi 2.4cqi; border-radius: 3px; background: var(--acento); color: var(--sobre); font-weight: 600; }
+.maq__hamb { display: grid; gap: 3px; margin-left: auto; }
+.maq__hamb i { display: block; width: 14px; height: 2px; border-radius: 2px; background: #fff; }
+.maq__texto { position: absolute; z-index: 2; left: 5.5cqi; right: 5.5cqi; bottom: 6.5cqi; display: grid; justify-items: start; gap: 2.2cqi; }
+.maq__lugar { font-size: max(7px, 2.1cqi); opacity: .9; }
+.maq__nombre { max-width: 100%; font-family: var(--fuente); font-weight: var(--peso); font-size: clamp(12px, min(calc(150cqi / var(--n)), calc(135cqi / var(--w))), 12.5cqi); line-height: .98; letter-spacing: -.005em; text-transform: uppercase; overflow-wrap: break-word; text-wrap: balance; }
+.maq__linea { max-width: 46ch; font-size: max(7.5px, 2.3cqi); line-height: 1.35; opacity: .95; }
+.maq__boton { margin-top: 1cqi; padding: 1.8cqi 3.2cqi; border-radius: 4px; background: var(--acento); color: var(--sobre); font-size: max(7.5px, 2.2cqi); font-weight: 600; }
+/* en el móvil la pantalla es estrecha: todo un poco más grande en proporción */
+.marco-movil .maq__barra { padding: 7cqi 7cqi; }
+.marco-movil .maq__marca { max-width: 75%; font-size: max(8px, 7cqi); }
+.marco-movil .maq__texto { left: 8cqi; right: 8cqi; bottom: 10cqi; gap: 4cqi; }
+.marco-movil .maq__lugar { font-size: max(7px, 5.4cqi); }
+.marco-movil .maq__nombre { font-size: clamp(11px, min(calc(260cqi / var(--n)), calc(122cqi / var(--w))), 20cqi); }
+.marco-movil .maq__linea { font-size: max(7.5px, 5.8cqi); }
+.marco-movil .maq__boton { padding: 3.6cqi 6cqi; font-size: max(7.5px, 5.6cqi); }
+.marco-movil .maq__foto { object-position: 40% center; }
+.prueba--cambia .maq__nombre { animation: prb-nombre .5s cubic-bezier(0.16, 1, 0.3, 1); }
+@keyframes prb-nombre { from { opacity: .2; transform: translateY(8%); filter: blur(2px); } }
+@media (prefers-reduced-motion: reduce) { .prueba--cambia .maq__nombre { animation: none; } }
+
+/* Accesos nuevos de la portada: «¿Y la tuya? Mide cuánto tarda» y las webs vivas */
+.bn__link { display: inline-block; margin-top: 10px; padding: 8px 0; font-size: 14.5px; font-weight: 600; color: var(--terra-link); text-decoration: underline; text-decoration-color: var(--border-strong); text-underline-offset: 4px; }
+.bn__link:hover { text-decoration-color: currentColor; }
+.vivas-link { max-width: 1080px; margin: -36px auto 56px; text-align: center; font-size: 15.5px; font-weight: 600; }
+.vivas-link a { display: inline-block; padding: 8px 0; color: var(--ink); text-decoration: underline; text-decoration-color: var(--border-strong); text-underline-offset: 5px; }
+.vivas-link a:hover { text-decoration-color: var(--terra-link); }

@@ -1,0 +1,18 @@
+{
+  "_nota": "Fotos de la prueba «Escribe tu negocio y mira tu web» de la portada (assets/prueba.js). El resto de sectores usa assets/stock/ (créditos en assets/stock/manifest.json). Recortadas a 960x640.",
+  "casa-rural.webp": {
+    "autor": "Makoki20",
+    "licencia": "CC0",
+    "origen": "https://commons.wikimedia.org/wiki/File:Baserri_en_Ozaeta_2.jpg"
+  },
+  "inmobiliaria.webp": {
+    "autor": "Caroline Badran",
+    "licencia": "Unsplash License",
+    "origen": "https://unsplash.com/photos/contemporary-dining-area-overlooking-the-beach-and-ocean-W3MckxPY6Mo"
+  },
+  "psicologia.webp": {
+    "autor": "note thanun",
+    "licencia": "Unsplash License",
+    "origen": "https://unsplash.com/photos/a-window-with-a-view-of-the-ocean-AT1LcNqyGZ0"
+  }
+}
