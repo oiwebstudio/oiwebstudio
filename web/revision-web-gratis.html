@@ -25,7 +25,7 @@
 <link rel="manifest" href="/site.webmanifest"/>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/geist-latin-04ce1a61.woff2" crossorigin/>
 <link rel="stylesheet" href="/assets/fuentes.css?v=1"/>
-<link rel="stylesheet" href="assets/styles.css?v=23"/>
+<link rel="stylesheet" href="assets/styles.css?v=24"/>
 <script>if(location.protocol==='http:'&&/(^|\.)oiwebstudio\.com$/.test(location.hostname))location.replace('https://'+location.host+location.pathname+location.search+location.hash);document.documentElement.classList.add('js');</script>
 <style>
   .art-hero{padding:150px 0 30px;max-width:760px;margin:0 auto;}
@@ -236,6 +236,60 @@
 <div class="art-meta"><span>Gratis</span><span>Respuesta en 48 h</span><span>Tolosa · Gipuzkoa</span></div>
 </header>
 
+<!-- «¿Cuánto tarda tu web?» con la API pública de PageSpeed Insights (assets/velocidad.js) -->
+<section class="vel" id="velocidad" aria-labelledby="vel-t">
+<style>
+.vel{max-width:760px;margin:6px auto 0;padding:28px;border:1px solid var(--border-strong);border-radius:22px;background:var(--surface);box-shadow:0 24px 50px -34px rgba(25,23,18,.4);scroll-margin-top:96px;}
+.vel h2{font-size:clamp(25px,3.4vw,33px);letter-spacing:-.015em;line-height:1.15;margin:0 0 10px;}
+.vel h2 em{font-style:normal;background-image:linear-gradient(120deg,var(--terra-soft),var(--terra-soft));background-repeat:no-repeat;background-position:0 90%;background-size:100% 38%;}
+.vel__intro{color:var(--text-muted);font-size:16px;line-height:1.65;margin:0 0 18px;}
+.vel label{display:block;font-size:14px;font-weight:600;color:var(--ink);margin:0 0 6px;}
+.vel__fila{display:flex;flex-wrap:wrap;gap:10px;}
+.vel__fila input{flex:1 1 220px;min-width:0;height:50px;padding:0 14px;border:1px solid var(--border-strong);border-radius:12px;background:var(--bg);color:var(--ink);font:inherit;font-size:16px;}
+.vel__fila input:focus{outline:2px solid var(--terra);outline-offset:1px;}
+.vel__fila input[aria-invalid="true"]{border-color:#b3412f;}
+.vel__fila .btn{flex:0 0 auto;height:50px;}
+@media(max-width:520px){.vel{padding:22px 18px;}.vel__fila .btn{flex:1 1 100%;}}
+.vel__estado{margin:14px 0 0;min-height:1.5em;font-size:15px;line-height:1.6;color:var(--ink);}
+.vel__medidas{display:grid;gap:12px;margin-top:16px;}
+@media(min-width:600px){.vel__medidas{grid-template-columns:1fr 1fr;}}
+.vel__medidas[hidden]{display:none;}
+.medida{--c:var(--text-faint);padding:18px;border:1px solid var(--border);border-radius:16px;background:var(--bg-subtle);}
+.medida--buena{--c:#147a4c;}.medida--media{--c:#a35a00;}.medida--mala{--c:#b3412f;}
+.medida__quien{display:block;font-size:13.5px;font-weight:700;color:var(--ink);}
+.medida__url{display:block;font-size:13px;color:var(--text-muted);overflow-wrap:anywhere;}
+.medida__nota{display:flex;align-items:baseline;gap:8px;margin-top:12px;}
+.medida__nota b{font-size:38px;font-weight:700;letter-spacing:-.03em;line-height:1;color:var(--c);}
+.medida__nota small{font-size:13.5px;color:var(--text-muted);}
+.medida__barra{height:6px;margin-top:10px;border-radius:999px;background:var(--border);overflow:hidden;}
+.medida__barra span{display:block;height:100%;width:100%;transform-origin:0 50%;transform:scaleX(var(--p,0));background:var(--c);border-radius:inherit;transition:transform .8s cubic-bezier(0.16,1,0.3,1);}
+.medida.midiendo .medida__barra span{width:30%;transform:none;background:var(--border-strong);animation:vel-mide 1.4s ease-in-out infinite;}
+@keyframes vel-mide{from{transform:translateX(-100%);}to{transform:translateX(340%);}}
+.medida dl{display:flex;justify-content:space-between;gap:10px;margin:12px 0 0;font-size:14px;}
+.medida dt{color:var(--text-muted);}
+.medida dd{margin:0;font-weight:700;color:var(--ink);}
+.medida__veredicto{margin:8px 0 0;font-size:14px;line-height:1.5;color:var(--text);}
+.vel__mas{margin:16px 0 0;font-size:13.5px;line-height:1.6;color:var(--text-faint);}
+.vel__mas a,.vel__siguiente a{color:var(--terra-link);font-weight:600;text-decoration:underline;text-underline-offset:3px;}
+.vel__siguiente{margin:12px 0 0;font-size:15px;}
+.vel__siguiente[hidden]{display:none;}
+@media(prefers-reduced-motion:reduce){.medida__barra span{transition:none;}.medida.midiendo .medida__barra span{animation:none;}}
+</style>
+<h2 id="vel-t">¿Cuánto tarda <em>tu web</em>?</h2>
+<p class="vel__intro">Pega la dirección de tu web y Google la mide en un móvil simulado, con su herramienta PageSpeed Insights. Al lado sale oiwebstudio.com para comparar. No guardo nada.</p>
+<form class="vel__form" id="v-form" novalidate>
+<label for="v-url">Dirección de tu web</label>
+<div class="vel__fila"><input id="v-url" name="url" type="text" inputmode="url" autocomplete="url" spellcheck="false" placeholder="tunegocio.com" aria-describedby="v-estado"/><button class="btn btn--accent btn--lg" type="submit">Medir mi web</button></div>
+</form>
+<p class="vel__estado" id="v-estado" role="status" aria-live="polite"></p>
+<div class="vel__medidas" id="v-medidas" hidden>
+<div class="medida" data-quien="tuya"><span class="medida__quien">Tu web</span><span class="medida__url">—</span><div class="medida__nota"><b>—</b><small>de 100 en el móvil</small></div><div class="medida__barra"><span></span></div><dl><dt>Lo principal aparece en</dt><dd class="medida__lcp">—</dd></dl><p class="medida__veredicto"></p></div>
+<div class="medida" data-quien="oi"><span class="medida__quien">La mía</span><span class="medida__url">oiwebstudio.com</span><div class="medida__nota"><b>—</b><small>de 100 en el móvil</small></div><div class="medida__barra"><span></span></div><dl><dt>Lo principal aparece en</dt><dd class="medida__lcp">—</dd></dl><p class="medida__veredicto"></p></div>
+</div>
+<p class="vel__siguiente" id="v-siguiente" hidden><a href="#pedir">Pide la revisión gratis: te digo qué arreglaría primero ↓</a></p>
+<p class="vel__mas">La nota es la de rendimiento de Google y cambia un poco de una medida a otra. «Lo principal aparece en» es el LCP: lo que tarda en verse el elemento más grande de la pantalla. <a id="v-psi" href="https://pagespeed.web.dev/" target="_blank" rel="noopener">Ver el informe completo en PageSpeed Insights ↗</a></p>
+</section>
+
 <article class="art">
 <h2 id="que-miro">Qué miro</h2>
 <div class="rv-grid">
@@ -385,8 +439,9 @@
 <div class="footer__mark" aria-hidden="true">OI STUDIO</div>
 </footer>
 
-<script src="assets/i18n.js?v=18"></script>
-<script src="assets/main.js?v=10"></script>
+<script src="assets/i18n.js?v=19"></script>
+<script src="assets/main.js?v=11"></script>
+<script src="assets/velocidad.js?v=1"></script>
 <a class="wa-float" href="https://wa.me/34680956755?text=Hola%2C%20he%20leido%20un%20articulo%20de%20vuestra%20web%20y%20quiero%20mas%20informaci%C3%B3n." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2.05 22l5.27-1.38c1.45.79 3.08 1.21 4.72 1.21 5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.05-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29z"/></svg>
 </a>

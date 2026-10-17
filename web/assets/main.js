@@ -5,6 +5,25 @@ document.documentElement.classList.add('js');
 
 if (window.self !== window.top) { document.documentElement.style.display = 'none'; window.top.location = window.self.location; }
 
+/* Transiciones entre páginas (styles.css): el logo y el titular viajan a la
+   página siguiente. Si al salir ya no se ven (has bajado, o la barra se ha
+   escondido), se les quita el nombre para que no entren volando desde fuera
+   de la pantalla. Al volver con «atrás» se les devuelve. */
+(function () {
+  const fuera = (el) => { const r = el.getBoundingClientRect(); return r.bottom <= 0 || r.top >= window.innerHeight; };
+  window.addEventListener('pageswap', (e) => {
+    if (!e.viewTransition) return;
+    const h1 = document.querySelector('h1');
+    if (h1 && fuera(h1)) h1.style.viewTransitionName = 'none';
+    const logo = document.querySelector('.nav__logo');
+    const barra = document.querySelector('.nav-wrap');
+    if (logo && (fuera(logo) || (barra && barra.classList.contains('is-hidden')))) logo.style.viewTransitionName = 'none';
+  });
+  window.addEventListener('pageshow', () => {
+    document.querySelectorAll('h1, .nav__logo').forEach((el) => { el.style.viewTransitionName = ''; });
+  });
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
 
   // Navbar scroll state

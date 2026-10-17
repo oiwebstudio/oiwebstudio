@@ -1077,8 +1077,59 @@ body::after {
   @keyframes mockup-drift { from { transform: translateY(26px); } to { transform: translateY(-22px); } }
 }
 
-/* Transiciones suaves entre páginas (View Transitions API, cross-document) */
-@view-transition { navigation: auto; }
+/* Transiciones entre páginas (View Transitions entre documentos) -----------
+   Chrome, Edge y Safari 18.2+. En Firefox se navega como siempre, sin romper
+   nada. El logo y el titular «viajan» de una página a la siguiente y el resto
+   funde. Con movimiento reducido no hay transición. main.js les quita el
+   nombre al salir si no se ven (si no, entrarían volando desde fuera). */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+}
+.nav__logo { view-transition-name: oi-logo; }
+h1 { view-transition-name: oi-titular; }
+::view-transition-group(*) { animation-duration: .42s; animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
+::view-transition-old(root) { animation: .2s ease-out both oi-vt-sale; }
+::view-transition-new(root) { animation: .34s cubic-bezier(0.16, 1, 0.3, 1) both oi-vt-entra; }
+@keyframes oi-vt-sale { to { opacity: 0; } }
+@keyframes oi-vt-entra { from { opacity: 0; transform: translateY(12px); } }
+
+/* Entradas al bajar con CSS (animation-timeline: view()) -------------------
+   Donde se puede, cada bloque .reveal se va montando a medida que entra en
+   pantalla, ligado al scroll y sin JavaScript. Donde no (Firefox, Safari
+   antiguo) se queda la entrada de siempre: main.js le pone .is-visible al
+   aparecer. Los héroes conservan su animación de carga. Sin fotograma final:
+   al terminar manda el estado normal del bloque, así no pisa sus efectos al
+   pasar el ratón. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .js .reveal:not(.hero .reveal, .pre-hero .reveal, .bot-hero .reveal, .contact-grid > .reveal, header .reveal) {
+      opacity: 1; transform: none;
+      animation: oi-asoma linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 100%;
+    }
+    .js .reveal--left:not(.hero .reveal, .pre-hero .reveal, .bot-hero .reveal, .contact-grid > .reveal, header .reveal) { animation-name: oi-asoma-izq; }
+    .js .reveal--right:not(.hero .reveal, .pre-hero .reveal, .bot-hero .reveal, .contact-grid > .reveal, header .reveal) { animation-name: oi-asoma-der; }
+    .js .reveal[data-d="1"]:not(.hero .reveal, .pre-hero .reveal, .bot-hero .reveal, .contact-grid > .reveal, header .reveal) { animation-range: entry 6% entry 100%; }
+    .js .reveal[data-d="2"]:not(.hero .reveal, .pre-hero .reveal, .bot-hero .reveal, .contact-grid > .reveal, header .reveal) { animation-range: entry 12% entry 100%; }
+    .js .reveal[data-d="3"]:not(.hero .reveal, .pre-hero .reveal, .bot-hero .reveal, .contact-grid > .reveal, header .reveal) { animation-range: entry 18% entry 100%; }
+    @keyframes oi-asoma { from { opacity: 0; transform: translateY(34px); } 55% { opacity: 1; } }
+    @keyframes oi-asoma-izq { from { opacity: 0; transform: translateX(-48px); } 55% { opacity: 1; } }
+    @keyframes oi-asoma-der { from { opacity: 0; transform: translateX(48px); } 55% { opacity: 1; } }
+  }
+}
+
+/* Marcos de móvil y de portátil (prueba de la portada, webs vivas de Trabajos) */
+.marco-movil { position: relative; width: 100%; aspect-ratio: 9 / 19; padding: 22px 8px 14px; border-radius: 34px; background: #14110c; box-shadow: 0 34px 60px -30px rgba(25, 23, 18, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.07); }
+.marco-movil::before { content: ""; position: absolute; top: 9px; left: 50%; width: 22%; height: 5px; border-radius: 999px; background: #2c2820; transform: translateX(-50%); }
+.marco-movil__pantalla { position: relative; height: 100%; overflow: hidden; border-radius: 22px; background: #fff; isolation: isolate; }
+.marco-portatil { position: relative; }
+.marco-portatil__pantalla { padding: 9px 9px 11px; border-radius: 14px 14px 4px 4px; background: #14110c; box-shadow: 0 34px 60px -32px rgba(25, 23, 18, 0.55); }
+.marco-portatil__barra { display: flex; align-items: center; gap: 10px; height: 24px; padding: 0 10px; border-radius: 5px 5px 0 0; background: #f1f0ec; }
+.marco-portatil__barra::before { content: ""; width: 34px; height: 8px; flex: none; background: radial-gradient(circle 4px at 4px 4px, #d9d6ce 98%, transparent) 0 0 / 13px 8px repeat-x; }
+.marco-portatil__barra span { flex: 1; min-width: 0; max-width: 260px; margin: 0 auto; padding: 2px 10px; overflow: hidden; border-radius: 999px; background: #fff; font-family: var(--font-mono); font-size: 10.5px; color: var(--text-muted); text-align: center; text-overflow: ellipsis; white-space: nowrap; }
+.marco-portatil__web { position: relative; aspect-ratio: 16 / 10; overflow: hidden; border-radius: 0 0 4px 4px; background: #fff; }
+.marco-portatil__base { height: 12px; margin: 0 -5%; border-radius: 0 0 16px 16px; background: linear-gradient(#e2e0d9, #b9b6ad); box-shadow: 0 10px 18px -12px rgba(25, 23, 18, 0.5); }
 
 /* Teléfono visible en la cabecera */
 .nav__phone{display:none;align-items:center;gap:7px;font-size:13.5px;font-weight:600;color:var(--text);white-space:nowrap;padding:6px 4px;}

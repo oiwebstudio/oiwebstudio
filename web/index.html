@@ -143,8 +143,8 @@
 </script>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/geist-latin-04ce1a61.woff2" crossorigin/>
 <link rel="stylesheet" href="/assets/fuentes.css?v=1"/>
-<link rel="stylesheet" href="assets/styles.css?v=23"/>
-<link rel="stylesheet" href="assets/portada.css?v=11"/>
+<link rel="stylesheet" href="assets/styles.css?v=24"/>
+<link rel="stylesheet" href="assets/portada.css?v=12"/>
 <script>if(location.protocol==='http:'&&/(^|\.)oiwebstudio\.com$/.test(location.hostname))location.replace('https://'+location.host+location.pathname+location.search+location.hash);document.documentElement.classList.add('js');</script>
 <link rel="preload" as="image" href="assets/etxea-desk.webp" fetchpriority="high"/>
 </head>
@@ -268,9 +268,9 @@
 
 <article class="bn bn--rapida reveal" data-d="1">
 <div class="bn__ill" aria-hidden="true">
-<div class="anillo"><svg viewBox="0 0 120 120"><circle class="anillo__bg" cx="60" cy="60" r="48"/><circle class="anillo__fg" cx="60" cy="60" r="48" pathLength="100"/></svg><span class="anillo__n"><b>2 s</b><small data-t="ill_max">como máximo</small></span></div>
+<div class="anillo"><svg viewBox="0 0 120 120"><circle class="anillo__bg" cx="60" cy="60" r="48"/><circle class="anillo__fg" cx="60" cy="60" r="48" pathLength="100"/></svg><span class="anillo__n"><b>2 s</b><small data-t="ill_max">objetivo</small></span></div>
 </div>
-<div class="bn__txt"><h3 data-t="ben4_h">Carga en menos de 2 segundos</h3><p data-t="ben4_p">Código ligero, sin plantillas sobrecargadas ni complementos innecesarios, para que ninguna visita se pierda por lentitud.</p></div>
+<div class="bn__txt"><h3 data-t="ben4_h">Pensada para cargar rápido</h3><p data-t="ben4_p">Código ligero, sin plantillas sobrecargadas ni complementos innecesarios, para que ninguna visita se pierda por lentitud.</p><a class="bn__link" href="revision-web-gratis.html#velocidad" data-t="ben4_l">¿Y la tuya? Mide cuánto tarda →</a></div>
 </article>
 
 <article class="bn bn--confianza reveal" data-d="2">
@@ -351,6 +351,7 @@
 <span class="caso-dest__go" data-t="caso_go">Ver el caso completo →</span>
 </span>
 </a>
+<p class="vivas-link reveal"><a href="trabajos.html#vivas" data-t="viv_link">Abre las dos webs aquí mismo, dentro de un móvil →</a></p>
 <div class="mini-board reveal">
 <a class="mbp mbp-1" href="/demos/muestras/etxea-inmobiliaria/" target="_blank" rel="noopener">
 <picture><source srcset="assets/etxea-desk.webp" type="image/webp"/><img src="assets/etxea-desk.jpg" alt="Diseño web para inmobiliaria: muestra" width="900" height="562" loading="lazy"/></picture>
@@ -425,16 +426,81 @@
   </article>
 </div>
 
-<!-- la oferta que quita el riesgo: la demo va antes que la factura -->
-<div class="sw-oferta reveal" data-d="2">
-  <div class="sw-oferta__txt">
+<!-- la oferta que quita el riesgo: la demo va antes que la factura.
+     Y la prueba en el momento: escribe tu negocio y mira tu web (assets/prueba.js) -->
+<div class="sw-oferta prueba reveal" data-d="2" id="prueba">
+  <div class="prueba__txt">
     <span class="sw-oferta__flag" data-t="sw_flag">Sin compromiso</span>
     <h3 data-t="sw_of_h">Una muestra de tu web antes de decidir</h3>
     <p data-t="sw_of_p">Con el nombre de tu negocio preparo una muestra con tus datos, tus fotos, tus horarios y tus precios. La revisas en tu móvil y decides. Si no te convence, no adquieres ningún compromiso.</p>
+    <p class="prueba__intro" data-t="prb_intro">Puedes hacerte una idea ahora mismo: escribe el nombre de tu negocio y mira cómo podría empezar su portada, en el móvil y en el ordenador. Todo pasa en tu navegador; no se envía ni se guarda nada.</p>
+  </div>
+  <form class="prueba__form" autocomplete="off" novalidate>
+    <label class="prueba__campo prueba__campo--nombre"><span data-t="prb_l_nombre">Nombre del negocio</span><input id="p-nombre" name="negocio" type="text" maxlength="40" spellcheck="false" placeholder="El nombre de tu negocio" data-tp="prb_ph_nombre"/></label>
+    <label class="prueba__campo"><span data-t="prb_l_sector">Sector</span>
+      <select id="p-sector" name="sector">
+        <option value="restaurante" data-t="prb_s_rest">Restaurante</option>
+        <option value="peluqueria" data-t="prb_s_pelu">Peluquería</option>
+        <option value="fisioterapia" data-t="prb_s_fisio">Fisioterapia</option>
+        <option value="tienda" data-t="prb_s_tienda">Tienda</option>
+        <option value="casa-rural" data-t="prb_s_rural">Casa rural</option>
+        <option value="taller" data-t="prb_s_taller">Taller</option>
+        <option value="inmobiliaria" data-t="prb_s_inmo">Inmobiliaria</option>
+        <option value="psicologia" data-t="prb_s_psico">Psicología</option>
+        <option value="otro" data-t="prb_s_otro">Otro</option>
+      </select>
+    </label>
+    <label class="prueba__campo"><span data-t="prb_l_pueblo">Pueblo</span><input id="p-pueblo" name="pueblo" type="text" maxlength="30" spellcheck="false" placeholder="Tolosa" data-tp="prb_ph_pueblo"/></label>
+  </form>
+  <div class="prueba__escena">
+   <div class="prueba__marcos" role="img" aria-label="Boceto de portada">
+    <div class="marco-portatil" aria-hidden="true">
+      <div class="marco-portatil__pantalla">
+        <div class="marco-portatil__barra"><span>turestaurante.com</span></div>
+        <div class="marco-portatil__web">
+          <div class="maq">
+            <img class="maq__foto" src="assets/stock/sec-rest-1.webp" alt="" width="640" height="448" loading="lazy" decoding="async"/>
+            <div class="maq__barra"><span class="maq__marca" data-t="prb_nombre">Tu negocio</span><span class="maq__menu" data-t="prb_rest_m">Carta · Reservas · Contacto</span><span class="maq__tel" data-t="prb_tel">Llamar</span></div>
+            <div class="maq__texto"><span class="maq__lugar">Restaurante · Tolosa</span><span class="maq__nombre" data-t="prb_nombre">Tu negocio</span><span class="maq__linea" data-t="prb_rest_l">Mira la carta y reserva mesa sin llamar.</span><span class="maq__boton" data-t="prb_rest_b">Reservar mesa</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="marco-portatil__base"></div>
+    </div>
+    <div class="marco-movil" aria-hidden="true">
+      <div class="marco-movil__pantalla">
+        <div class="maq">
+          <img class="maq__foto" src="assets/stock/sec-rest-1.webp" alt="" width="640" height="448" loading="lazy" decoding="async"/>
+          <div class="maq__barra"><span class="maq__marca" data-t="prb_nombre">Tu negocio</span><span class="maq__hamb"><i></i><i></i></span></div>
+          <div class="maq__texto"><span class="maq__lugar">Restaurante · Tolosa</span><span class="maq__nombre" data-t="prb_nombre">Tu negocio</span><span class="maq__linea" data-t="prb_rest_l">Mira la carta y reserva mesa sin llamar.</span><span class="maq__boton" data-t="prb_rest_b">Reservar mesa</span></div>
+        </div>
+      </div>
+    </div>
+   </div>
+   <p class="prueba__credito"><span data-t="prb_foto">Foto de ejemplo:</span> <span id="p-credito">Jay Wennington / Unsplash</span></p>
+  </div>
+  <div class="prueba__acciones">
     <div class="sw-oferta__btns">
-      <a class="btn btn--accent btn--lg" href="contacto.html" data-t="sw_of_cta">Quiero ver la mía</a>
+      <a class="btn btn--accent btn--lg" id="p-quiero" href="https://wa.me/34680956755" target="_blank" rel="noopener" data-t="prb_quiero">Quiero esta, por WhatsApp</a>
       <a class="btn btn--soft btn--lg" href="trabajos.html" data-t="sw_of_cta2">Ver ejemplos primero</a>
     </div>
+    <p class="prueba__nota"><span data-t="prb_nota">Es un boceto automático para que te hagas una idea. La muestra de verdad la preparo yo, con tus fotos, tus textos y tus precios.</span> <button type="button" class="prueba__copiar" id="p-copiar" data-t="prb_copiar">Copiar el enlace de esta prueba</button> <span class="prueba__aviso" id="p-aviso" role="status"></span></p>
+  </div>
+  <div hidden>
+    <span data-k="nombre" data-t="prb_nombre">Tu negocio</span>
+    <span data-k="alt" data-t="prb_alt">Boceto de portada para {negocio}: {sector} en {pueblo}, en un ordenador y en un móvil</span>
+    <span data-k="wa" data-t="prb_wa">Hola. He probado en oiwebstudio.com la portada de ejemplo para {negocio} ({sector}, {pueblo}) y quiero una así. ¿Hablamos?</span>
+    <span data-k="wa0" data-t="prb_wa0">Hola. He probado en oiwebstudio.com la portada de ejemplo ({sector}, {pueblo}) y quiero una así para mi negocio. ¿Hablamos?</span>
+    <span data-k="copiado" data-t="prb_copiado">Enlace copiado.</span>
+    <span data-k="restaurante.menu" data-t="prb_rest_m">Carta · Reservas · Contacto</span><span data-k="restaurante.linea" data-t="prb_rest_l">Mira la carta y reserva mesa sin llamar.</span><span data-k="restaurante.boton" data-t="prb_rest_b">Reservar mesa</span>
+    <span data-k="peluqueria.menu" data-t="prb_pelu_m">Servicios · Precios · Cita</span><span data-k="peluqueria.linea" data-t="prb_pelu_l">Pide tu cita desde el móvil, a cualquier hora.</span><span data-k="peluqueria.boton" data-t="prb_pelu_b">Pedir cita</span>
+    <span data-k="fisioterapia.menu" data-t="prb_fisio_m">Tratamientos · Precios · Contacto</span><span data-k="fisioterapia.linea" data-t="prb_fisio_l">Cuéntanos dónde te duele y te damos cita.</span><span data-k="fisioterapia.boton" data-t="prb_pelu_b">Pedir cita</span>
+    <span data-k="tienda.menu" data-t="prb_tienda_m">Productos · La tienda · Cómo llegar</span><span data-k="tienda.linea" data-t="prb_tienda_l">Mira lo que hay antes de venir, o pídelo desde casa.</span><span data-k="tienda.boton" data-t="prb_tienda_b">Ver productos</span>
+    <span data-k="casa-rural.menu" data-t="prb_rural_m">La casa · Habitaciones · Cómo llegar</span><span data-k="casa-rural.linea" data-t="prb_rural_l">Mira las fechas libres y reserva directamente con nosotros.</span><span data-k="casa-rural.boton" data-t="prb_rural_b">Ver fechas libres</span>
+    <span data-k="taller.menu" data-t="prb_taller_m">Servicios · Presupuesto · Contacto</span><span data-k="taller.linea" data-t="prb_taller_l">Pide cita para tu coche sin esperar al teléfono.</span><span data-k="taller.boton" data-t="prb_pelu_b">Pedir cita</span>
+    <span data-k="inmobiliaria.menu" data-t="prb_inmo_m">Comprar · Vender · Contacto</span><span data-k="inmobiliaria.linea" data-t="prb_inmo_l">Casas a la venta y la tasación de la tuya, sin compromiso.</span><span data-k="inmobiliaria.boton" data-t="prb_inmo_b">Tasar mi casa</span>
+    <span data-k="psicologia.menu" data-t="prb_psico_m">Cómo trabajo · Terapias · Contacto</span><span data-k="psicologia.linea" data-t="prb_psico_l">Un primer paso con calma: cuéntanos qué te pasa.</span><span data-k="psicologia.boton" data-t="prb_psico_b">Pedir una primera cita</span>
+    <span data-k="otro.menu" data-t="prb_otro_m">Qué hacemos · Precios · Contacto</span><span data-k="otro.linea" data-t="prb_otro_l">Todo lo de tu negocio, claro y a mano en el móvil.</span><span data-k="otro.boton" data-t="prb_otro_b">Contactar</span>
   </div>
   <ol class="sw-pasos">
     <li><b data-t="sw_p1_h">Contacto</b><span data-t="sw_p1_p">Basta con el nombre del negocio, por WhatsApp o por correo.</span></li>
@@ -627,8 +693,9 @@
 <div class="footer__mark" aria-hidden="true">OI STUDIO</div>
 </footer>
 
-<script src="assets/i18n.js?v=18"></script>
-<script src="assets/main.js?v=10"></script>
+<script src="assets/i18n.js?v=19"></script>
+<script src="assets/main.js?v=11"></script>
+<script src="assets/prueba.js?v=1"></script>
 <script>
 (function(){
   /* Sectores con letras escalonadas: hover anima el texto y cambia los dispositivos */

@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#f6f3ea"/>
 <meta http-equiv="Content-Security-Policy" content="base-uri 'self'; form-action 'self' mailto: https://wa.me"/>
 <title>Precio de una página web en Tolosa: desde 399 € | OI Studio</title>
-<meta name="description" content="Cuánto cuesta una página web para tu negocio: Landing 399 €, Web Negocio 499 €, reservas online sin comisiones y packs desde 549 €. Precio cerrado y pago al final."/>
+<meta name="description" content="Cuánto cuesta una web para tu negocio: landing 399 €, web con secciones 499 €, reservas desde 290 € y packs desde 549 € + IVA. Precio cerrado y pago al final."/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="OI Studio"/>
 <meta property="og:url" content="https://oiwebstudio.com/precios.html"/>
@@ -39,7 +39,7 @@
 <link rel="manifest" href="/site.webmanifest"/>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/geist-latin-04ce1a61.woff2" crossorigin/>
 <link rel="stylesheet" href="/assets/fuentes.css?v=1"/>
-<link rel="stylesheet" href="assets/styles.css?v=23"/>
+<link rel="stylesheet" href="assets/styles.css?v=24"/>
 <script>if(location.protocol==='http:'&&/(^|\.)oiwebstudio\.com$/.test(location.hostname))location.replace('https://'+location.host+location.pathname+location.search+location.hash);document.documentElement.classList.add('js');</script>
 <style>
   .pre-hero{padding:150px 0 26px;text-align:center;}
@@ -217,6 +217,7 @@
 <a href="#web" data-t="pre_nav1">1 · Solo la web</a>
 <a href="#reservas" data-t="pre_nav2">2 · Reservas y extras</a>
 <a href="#packs" data-t="pre_nav3">3 · Packs</a>
+<a href="#calculadora" data-t="pre_nav4">Calcula tu precio</a>
 </p>
 </div>
 </header>
@@ -445,6 +446,129 @@
 </div>
 </section>
 
+<!-- Calculadora de precio (assets/calculadora.js). Usa exactamente los precios de
+     esta página: si cambia uno arriba, hay que cambiarlo también en ese fichero. -->
+<section class="section section--subtle lin" id="calculadora">
+<div class="container">
+<style>
+.calc{display:grid;gap:22px;max-width:1080px;margin:0 auto;grid-template-columns:minmax(0,1fr);align-items:start;}
+@media(min-width:940px){.calc{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:32px;}}
+.calc fieldset{margin:0 0 18px;padding:0;border:0;min-width:0;}
+.calc legend{padding:0;margin:0 0 12px;font-size:15px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.02em;}
+.calc__tipos{display:grid;gap:10px;grid-template-columns:1fr;}
+@media(min-width:560px){.calc__tipos{grid-template-columns:1fr 1fr;}}
+.calc__op{position:relative;display:grid;grid-template-columns:auto 1fr auto;gap:2px 12px;align-items:start;padding:15px 16px;border:1px solid var(--border-strong);border-radius:var(--r-md);background:var(--surface);cursor:pointer;transition:border-color .2s,box-shadow .2s;}
+.calc__op:hover{border-color:var(--ink);}
+.calc__op input{grid-row:1 / span 2;width:18px;height:18px;margin:2px 0 0;accent-color:var(--ink);cursor:pointer;}
+.calc__n{font-weight:650;color:var(--ink);font-size:15.5px;line-height:1.3;}
+.calc__d{grid-column:2;font-size:13.5px;line-height:1.45;color:var(--text-muted);}
+.calc__p{grid-column:3;grid-row:1;font-size:15.5px;font-weight:700;color:var(--ink);white-space:nowrap;}
+.calc__p small{font-weight:500;color:var(--text-muted);}
+.calc__op:has(input:checked){border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink);}
+.calc__op:has(input:focus-visible){outline:2px solid var(--terra-link);outline-offset:3px;}
+.calc__op.apagada{opacity:.48;cursor:not-allowed;}
+.calc__op.apagada:hover{border-color:var(--border-strong);}
+.calc__op.apagada input{cursor:not-allowed;}
+.calc__extras{display:grid;gap:10px;}
+.calc__cant{grid-column:2 / -1;display:flex;align-items:center;gap:10px;margin-top:8px;font-size:13.5px;color:var(--text-muted);}
+.calc__cant input{width:96px;height:40px;padding:0 10px;border:1px solid var(--border-strong);border-radius:10px;font:inherit;font-size:16px;color:var(--ink);background:var(--surface);}
+.calc__cant[hidden]{display:none;}
+.calc__flota{position:sticky;bottom:14px;z-index:5;display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:6px 72px 0 0;padding:13px 16px;border-radius:14px;background:var(--ink);color:#d9d2c3;font-size:14px;box-shadow:0 14px 30px -14px rgba(0,0,0,.55);}
+.calc__flota b{color:#fff;font-size:18px;white-space:nowrap;}
+@media(min-width:940px){.calc__flota{display:none;}}
+.calc__res{position:relative;scroll-margin-top:90px;padding:26px 24px;border-radius:var(--r-lg);background:var(--ink);color:#f6f1e7;}
+@media(min-width:940px){.calc__res{position:sticky;top:96px;}}
+.calc__res h3{margin:0 0 16px;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;color:#fff;}
+.calc__lineas{display:grid;gap:9px;padding-bottom:16px;border-bottom:1px solid rgba(246,241,231,.18);font-size:14.5px;}
+.calc__lineas div{display:flex;justify-content:space-between;gap:16px;}
+.calc__lineas div span:last-child{white-space:nowrap;font-weight:600;}
+.calc__lineas .ahorro{color:#9fe0b6;}
+.calc__total{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:16px;}
+.calc__total span{font-size:15px;color:#d9d2c3;}
+.calc__total b{font-size:clamp(28px,3.2vw,36px);font-weight:700;letter-spacing:-.02em;color:#fff;white-space:nowrap;}
+.calc__res p{margin:8px 0 0;font-size:14px;line-height:1.55;color:#d9d2c3;}
+.calc__res .calc__mes{color:#fff;font-weight:600;font-size:15px;}
+.calc__res .calc__aparte{color:#f3d9b8;}
+.calc__res .btn{margin-top:20px;}
+.calc__res .calc__fino{font-size:13px;color:#b9b2a3;}
+.calc__res a.link{color:#fff;text-decoration:underline;text-underline-offset:3px;}
+@media(prefers-reduced-motion:reduce){.calc__op{transition:none;}}
+</style>
+<div class="lin__cab reveal">
+<h2 class="lin__h" data-t="calc_h">Calcula tu precio</h2>
+<p data-t="calc_p">Elige lo que necesitas y te sale el total al momento, con los mismos precios de esta página. Si lo que eliges coincide con un pack, se aplica solo.</p>
+</div>
+<form class="calc reveal" id="calc" data-d="1" novalidate>
+<div class="calc__opciones">
+<fieldset>
+<legend data-t="calc_g1">1 · Tu web</legend>
+<div class="calc__tipos">
+<label class="calc__op"><input type="radio" name="tipo" value="landing"/><span class="calc__n">Landing</span><b class="calc__p">399 €</b><span class="calc__d" data-t="calc_t1">Una sola página</span></label>
+<label class="calc__op"><input type="radio" name="tipo" value="negocio" checked/><span class="calc__n" data-t="p2_name">Web Negocio</span><b class="calc__p">499 €</b><span class="calc__d" data-t="calc_t2">Hasta 5 páginas</span></label>
+<label class="calc__op"><input type="radio" name="tipo" value="tienda"/><span class="calc__n" data-t="p4_name">Tienda Online</span><b class="calc__p">850 €</b><span class="calc__d" data-t="calc_t3">Con hasta 50 productos cargados</span></label>
+<label class="calc__op"><input type="radio" name="tipo" value="ninguna"/><span class="calc__n" data-t="calc_t4">Ya tengo web</span><b class="calc__p">0 €</b><span class="calc__d" data-t="calc_t4d">Solo reservas o extras para la que tengo</span></label>
+</div>
+</fieldset>
+<fieldset>
+<legend data-t="calc_g2">2 · Reservas y extras</legend>
+<div class="calc__extras">
+<label class="calc__op"><input type="checkbox" name="reservas"/><span class="calc__n" data-t="a1_h">Reservas y citas online</span><b class="calc__p" id="c-p-reservas">+190 €</b><span class="calc__d" data-t="calc_x1">Con recordatorio y petición de reseña por correo. Sin comisión por reserva.</span></label>
+<label class="calc__op"><input type="checkbox" name="senal"/><span class="calc__n" data-t="a2_h">Cobro de señal</span><b class="calc__p">+49 €</b><span class="calc__d" data-t="calc_x2">Va con las reservas.</span></label>
+<label class="calc__op"><input type="checkbox" name="carta"/><span class="calc__n" data-t="a3_h">Carta editable</span><b class="calc__p">+79 €</b><span class="calc__d" data-t="calc_x3">Cambias la carta o el menú del día desde el móvil.</span></label>
+<label class="calc__op"><input type="checkbox" name="qr"/><span class="calc__n" data-t="a4_h">Reseñas con QR</span><b class="calc__p">49 €</b><span class="calc__d" data-t="calc_x4">Enlace a tu ficha de Google, código QR y cartel.</span></label>
+<label class="calc__op"><input type="checkbox" name="chatbot"/><span class="calc__n" data-t="a5_h">Chatbot en tu web</span><b class="calc__p">+190 € <small data-t="a5_s">y 15 €/mes</small></b><span class="calc__d" data-t="calc_x5">Contesta las preguntas de siempre a cualquier hora.</span></label>
+<label class="calc__op"><input type="checkbox" name="productos"/><span class="calc__n" data-t="calc_x6">Más de 50 productos</span><b class="calc__p" data-t="calc_x6p">1 € cada uno</b><span class="calc__d" data-t="calc_x6d">Si los cargo yo. Si los subes tú desde tu panel, no cuestan nada.</span>
+<span class="calc__cant" id="c-cant" hidden><span id="c-num-l" data-t="calc_x6n">¿Cuántos más cargo yo?</span><input type="number" id="c-num" name="num" min="0" max="5000" step="1" value="0" inputmode="numeric" aria-labelledby="c-num-l"/></span></label>
+<label class="calc__op"><input type="checkbox" name="paginas"/><span class="calc__n" data-t="calc_x7">Más de 5 páginas</span><b class="calc__p" data-t="calc_presu">Se presupuesta</b><span class="calc__d" data-t="calc_x7d">Te digo el precio cerrado antes de empezar.</span></label>
+<label class="calc__op"><input type="checkbox" name="idiomas"/><span class="calc__n" data-t="calc_x8">Más idiomas</span><b class="calc__p" data-t="calc_presu">Se presupuesta</b><span class="calc__d" data-t="calc_x8d">Te digo qué páginas merece la pena traducir y cuánto supone.</span></label>
+</div>
+</fieldset>
+<fieldset>
+<legend data-t="calc_g3">3 · Mantenimiento</legend>
+<label class="calc__op"><input type="checkbox" name="mant"/><span class="calc__n" data-t="p3_name">Mantenimiento</span><b class="calc__p" id="c-p-mant">25 €/mes</b><span class="calc__d" id="c-mant-nota"></span></label>
+</fieldset>
+<a class="calc__flota" href="#c-res"><span data-t="calc_total">Total, pago único</span> <b id="c-flota">499 € + IVA</b></a>
+</div>
+<aside class="calc__res" id="c-res" aria-live="polite">
+<h3 data-t="calc_res_h">Tu presupuesto</h3>
+<div class="calc__lineas" id="c-lineas"></div>
+<div class="calc__total"><span data-t="calc_total">Total, pago único</span><b id="c-total">499 € + IVA</b></div>
+<p data-t="calc_pago">Lo pagas al final, cuando todo está publicado.</p>
+<p class="calc__mes" id="c-mes" hidden></p>
+<p class="calc__aparte" id="c-aparte" hidden></p>
+<p id="c-dominio" data-t="calc_dominio">Dominio y alojamiento del primer año incluidos. Después van dentro del mantenimiento o, sin él, 15 € al año.</p>
+<a class="btn btn--light btn--full" id="c-wa" href="https://wa.me/34680956755" target="_blank" rel="noopener" data-t="calc_wa">Enviármelo por WhatsApp</a>
+<p class="calc__fino" data-t="calc_fino">Antes de empezar te lo confirmo por escrito, con el precio cerrado. <a class="link" href="contacto.html">¿Prefieres el formulario?</a></p>
+</aside>
+<div hidden>
+<span data-k="landing" data-t="calc_n_landing">Landing</span>
+<span data-k="negocio" data-t="p2_name">Web Negocio</span>
+<span data-k="tienda" data-t="p4_name">Tienda Online</span>
+<span data-k="reservas_solas" data-t="calc_n_rsolas">Reservas y citas online (sin tocar tu web)</span>
+<span data-k="productos" data-t="calc_n_prod">{n} productos más, cargados por mí</span>
+<span data-k="pack_reservas" data-t="calc_n_pk1">Pack web + reservas</span>
+<span data-k="pack_restaurante" data-t="calc_n_pk2">Pack restaurante</span>
+<span data-k="pack_rural" data-t="calc_n_pk3">Pack casa rural</span>
+<span data-k="en_vez" data-t="calc_envez">{pack} (en vez de {antes})</span>
+<span data-k="iva" data-t="calc_iva">+ IVA</span>
+<span data-k="pormes" data-t="calc_pormes">€/mes</span>
+<span data-k="mes" data-t="calc_mes">Y después, {mes} al mes + IVA ({que}).</span>
+<span data-k="que_mant" data-t="calc_q_mant">mantenimiento</span>
+<span data-k="que_chat" data-t="calc_q_chat">chatbot</span>
+<span data-k="y" data-t="calc_y">y</span>
+<span data-k="aparte" data-t="calc_aparte">Aparte, con presupuesto cerrado: {cosas}.</span>
+<span data-k="nada" data-t="calc_nada">Elige al menos una cosa.</span>
+<span data-k="mant_obl" data-t="calc_m_obl">Obligatorio con reservas o chatbot: es lo que los mantiene en marcha. Incluye hasta 3 cambios al mes.</span>
+<span data-k="mant_opc" data-t="calc_m_opc">Opcional y sin permanencia. Incluye hasta 3 cambios al mes.</span>
+<span data-k="mant_no" data-t="calc_m_no">Sin una web hecha por mí ni reservas, no hace falta.</span>
+<span data-k="wa" data-t="calc_wa_txt">Hola. He hecho el cálculo en oiwebstudio.com: {lineas}. Total: {total} + IVA, pago único.{mes}{aparte} ¿Lo hablamos?</span>
+<span data-k="wa_mes" data-t="calc_wa_mes">Después, {mes} al mes + IVA.</span>
+<span data-k="wa_aparte" data-t="calc_wa_aparte">Aparte: {cosas}.</span>
+</div>
+</form>
+</div>
+</section>
+
 <section class="section pre-mu">
 <div class="container">
 <div class="pre-mu__h reveal">
@@ -569,8 +693,9 @@
 <div class="footer__mark" aria-hidden="true">OI STUDIO</div>
 </footer>
 
-<script src="assets/i18n.js?v=18"></script>
-<script src="assets/main.js?v=10"></script>
+<script src="assets/i18n.js?v=19"></script>
+<script src="assets/main.js?v=11"></script>
+<script src="assets/calculadora.js?v=1"></script>
 
 <!-- Pricing Glassmorphism + 3D Tilt -->
 <script>
