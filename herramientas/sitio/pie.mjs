@@ -42,9 +42,10 @@ ${li("contacto.html", "Contacto", "nav_contacto")}
 </ul>
 <p class="foot-h" data-t="foot_servicios">Servicios</p>
 <ul>
-${li("precios.html", "Landing · 199 €", "ft_s1")}
-${li("precios.html", "Web de negocio · 299 €", "ft_s2")}
-${li("precios.html", "Tienda online · 790 €", "ft_s3")}
+${li("precios.html", "Landing · 399 €", "ft_s1")}
+${li("precios.html", "Web de negocio · 499 €", "ft_s2")}
+${li("precios.html", "Tienda online · 850 €", "ft_s3")}
+${li("reservas-online-sin-comisiones.html", "Reservas online sin comisiones", "ft_s5")}
 ${li("chatbot-reservas.html", "Chatbot de reservas", "ft_s4")}
 </ul>
 </div>
