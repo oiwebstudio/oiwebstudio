@@ -270,8 +270,11 @@ document.addEventListener('DOMContentLoaded', () => {
           if (!enPantalla) { e.manual = false; return; }
           if (e.manual || !e.puede()) { if (e.activa) { e.fila.style.scrollSnapType = ''; e.activa = false; } return; }
           if (!e.activa) { e.fila.style.scrollSnapType = 'none'; e.activa = true; }
-          // de la tarjeta 1 (fila entrando por abajo, al 85 % de la pantalla) a la última (fila al 20 %)
-          const p = Math.min(Math.max((vh * 0.85 - r.top) / (vh * 0.65), 0), 1);
+          // Empieza cuando la fila ya se ve ENTERA (su borde de abajo dentro de la pantalla)
+          // y acaba en la última tarjeta cuando la fila empieza a salir por arriba (más recorrido = más suave).
+          const fin = -r.height * 0.15;
+          const inicio = Math.max(vh * 0.97 - r.height, fin + vh * 0.3);
+          const p = Math.min(Math.max((inicio - r.top) / (inicio - fin), 0), 1);
           const max = e.fila.scrollWidth - e.fila.clientWidth;
           e.fila.scrollLeft = p * max;
         });
