@@ -239,65 +239,48 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', () => { medir(); pintar(); foco(); }, { passive: true });
     fila.addEventListener('desliza:cambio', () => { fila.scrollLeft = 0; medir(); pintar(); });
     medir(); pintar(); foco();
-    autoDesliza(fila, items, () => visibles);
+    autoDesliza(fila);
   });
 
-  /* Las filas avanzan solas en el móvil: una tarjeta cada 4 s, en bucle (al
-     llegar al final vuelve a la primera). Solo con la fila a la vista y la
-     pestaña visible. Al tocarla, arrastrarla o entrar con el teclado se para y
-     vuelve a arrancar 6 s después de soltarla. Con «reducir movimiento», nunca.
-     El desplazamiento es horizontal dentro de la fila: no mueve la página. */
-  function autoDesliza(fila, items, getVisibles) {
+  /* En el móvil, las filas se deslizan de lado al bajar por la página: según la
+     fila sube por la pantalla, sus tarjetas pasan de la primera a la última (como
+     si el scroll vertical las empujara). Si la persona la toca o la arrastra, la
+     fila queda en manual hasta que sale de la pantalla. Con «reducir movimiento»
+     o en ordenador, nada se mueve solo. */
+  function autoDesliza(fila) {
+    const FILAS_SCROLL = (window.__oiFilasScroll = window.__oiFilasScroll || []);
     const quietoMQ = window.matchMedia('(prefers-reduced-motion: reduce)');
     const movilMQ = window.matchMedia('(max-width: 759px)');
-    if (!('IntersectionObserver' in window)) return;
-    const PASO = 4000, ESPERA = 6000;
-    let timer = 0, reanudar = 0, aVista = false, tocando = false, enFoco = false, ultimoScrollPagina = 0;
-    const puede = () => aVista && !tocando && !enFoco && !document.hidden && movilMQ.matches && !quietoMQ.matches
-      && fila.scrollWidth - fila.clientWidth > 4;
-    const parar = () => { clearTimeout(timer); timer = 0; };
-    const programar = (ms) => { parar(); if (puede()) timer = setTimeout(avanzar, ms); };
-    const relleno = () => parseFloat(getComputedStyle(fila).scrollPaddingLeft) || 0;
-    function avanzar() {
-      timer = 0;
-      if (!puede()) return;
-      // Mientras el dedo mueve la página, espera un poco: nada se mueve de lado a la vez.
-      if (Date.now() - ultimoScrollPagina < 700) { programar(900); return; }
-      const lista = getVisibles();
-      const max = fila.scrollWidth - fila.clientWidth;
-      const caja = fila.getBoundingClientRect();
-      const pad = relleno();
-      let destino = 0;
-      if (fila.scrollLeft < max - 4) {
-        const sig = lista.find(el => el.getBoundingClientRect().left - caja.left - pad > 8);
-        destino = sig ? Math.min(fila.scrollLeft + sig.getBoundingClientRect().left - caja.left - pad, max) : max;
-      }
-      fila.scrollTo({ left: destino, behavior: 'smooth' });
-      programar(PASO);
+    const estado = { fila, manual: false, activa: false };
+    const manual = () => { estado.manual = true; fila.style.scrollSnapType = ''; };
+    fila.addEventListener('touchstart', manual, { passive: true });
+    fila.addEventListener('pointerdown', manual);
+    fila.addEventListener('wheel', manual, { passive: true });
+    fila.addEventListener('focusin', manual);
+    estado.puede = () => movilMQ.matches && !quietoMQ.matches && fila.scrollWidth - fila.clientWidth > 4;
+    FILAS_SCROLL.push(estado);
+    if (FILAS_SCROLL.length === 1) {
+      let pend = false;
+      const mover = () => {
+        pend = false;
+        const vh = window.innerHeight;
+        FILAS_SCROLL.forEach(e => {
+          const r = e.fila.getBoundingClientRect();
+          const enPantalla = r.bottom > 0 && r.top < vh;
+          if (!enPantalla) { e.manual = false; return; }
+          if (e.manual || !e.puede()) { if (e.activa) { e.fila.style.scrollSnapType = ''; e.activa = false; } return; }
+          if (!e.activa) { e.fila.style.scrollSnapType = 'none'; e.activa = true; }
+          // de la tarjeta 1 (fila entrando por abajo, al 85 % de la pantalla) a la última (fila al 20 %)
+          const p = Math.min(Math.max((vh * 0.85 - r.top) / (vh * 0.65), 0), 1);
+          const max = e.fila.scrollWidth - e.fila.clientWidth;
+          e.fila.scrollLeft = p * max;
+        });
+      };
+      const pedir = () => { if (!pend) { pend = true; requestAnimationFrame(mover); } };
+      window.addEventListener('scroll', pedir, { passive: true });
+      window.addEventListener('resize', pedir, { passive: true });
+      OI_TARDE ? OI_TARDE(pedir) : pedir();
     }
-    const pausar = () => {
-      parar(); clearTimeout(reanudar);
-    };
-    const soltar = () => {
-      clearTimeout(reanudar);
-      reanudar = setTimeout(() => { tocando = false; programar(PASO); }, ESPERA);
-    };
-    fila.addEventListener('touchstart', () => { tocando = true; pausar(); }, { passive: true });
-    fila.addEventListener('touchend', soltar, { passive: true });
-    fila.addEventListener('touchcancel', soltar, { passive: true });
-    fila.addEventListener('pointerdown', () => { tocando = true; pausar(); });
-    fila.addEventListener('pointerup', soltar);
-    fila.addEventListener('wheel', () => { tocando = true; pausar(); soltar(); }, { passive: true });
-    fila.addEventListener('focusin', () => { enFoco = true; pausar(); });
-    fila.addEventListener('focusout', (e) => { if (!fila.contains(e.relatedTarget)) { enFoco = false; programar(PASO); } });
-    window.addEventListener('scroll', () => { ultimoScrollPagina = Date.now(); }, { passive: true });
-    new IntersectionObserver(([en]) => {
-      aVista = en.isIntersecting;
-      if (aVista) programar(PASO); else parar();
-    }, { threshold: 0.6 }).observe(fila);
-    document.addEventListener('visibilitychange', () => { if (document.hidden) parar(); else programar(PASO); });
-    const cambio = () => { if (puede()) programar(PASO); else parar(); };
-    if (quietoMQ.addEventListener) { quietoMQ.addEventListener('change', cambio); movilMQ.addEventListener('change', cambio); }
   }
 
   // Filas deslizables en el móvil: al entrar en pantalla las tarjetas llegan
