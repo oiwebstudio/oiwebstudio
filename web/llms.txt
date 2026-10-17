@@ -12,14 +12,28 @@
 - Contacto: WhatsApp y teléfono +34 680 95 67 55 · contactoiwebstudio@gmail.com · Instagram @oi.webstudio
 - Propuesta: gratuita y en 48 horas. Se puede ver una muestra con tu negocio antes de pagar.
 
-## Precios (cerrados, IVA no incluido)
+## Precios (cerrados, IVA no incluido; tarifa del 17/10/2026)
 
-- Landing (web de una página): 199 €, pago único.
-- Web Negocio (varias páginas, SEO local, Google Maps): 299 €, pago único.
-- Tienda Online (hasta 50 productos, pago con tarjeta y Bizum): 790 €, pago único.
-- Mantenimiento opcional: 20 €/mes (tienda online: 35 €/mes). Sin permanencia.
-- El primer año incluye dominio y alojamiento. El dominio se registra a nombre del cliente.
-- Chatbot de reservas para web y WhatsApp: a presupuesto.
+Se paga una sola vez, al final, cuando la web está terminada y publicada. El primer año incluye dominio y alojamiento. El dominio se registra a nombre del cliente.
+
+1. Solo la web
+- Landing (web de una página): 399 €, pago único.
+- Web Negocio (varias páginas, SEO local, Google Maps): 499 €, pago único.
+- Tienda Online (hasta 50 productos, pago con tarjeta y Bizum): 850 €, pago único. Mantenimiento opcional de la tienda: 35 €/mes.
+- Mantenimiento: 25 €/mes, con hasta 3 cambios al mes. Opcional con una web sola; obligatorio mientras haya reservas o chatbot. Sin permanencia.
+
+2. Reservas y extras (sin comisión por reserva)
+- Reservas y citas online: 290 € solas (sin tocar la web que ya tiene el negocio) o +190 € con una web de OI Studio. Incluye página de reservas, panel con calendario, aviso de cada reserva por correo, recordatorio el día antes y petición de reseña por correo.
+- Cobro de señal con tarjeta: +49 €.
+- Carta o menú editable desde el móvil: +79 €.
+- Reseñas con QR (enlace a la ficha de Google, QR y cartel): 49 €.
+- Chatbot en la web: +190 € y 15 €/mes.
+- Los avisos van por correo electrónico. Recordatorios por WhatsApp o SMS y chatbot en WhatsApp: no se ofrecen todavía.
+
+3. Packs (con mantenimiento de 25 €/mes)
+- Web + reservas: 549 €.
+- Restaurante (web con secciones, reservas y carta editable): 699 €.
+- Casa rural (web con secciones, reservas y cobro de señal): 699 €.
 
 ## Zonas donde trabaja
 
@@ -31,6 +45,8 @@ Fuera de Gipuzkoa trabaja a distancia, con el mismo precio: [toda España](https
 
 - [Inicio](https://oiwebstudio.com/): qué hace el estudio y cómo trabaja.
 - [Precios](https://oiwebstudio.com/precios.html): planes y qué incluye cada uno.
+- [Reservas online sin comisiones](https://oiwebstudio.com/reservas-online-sin-comisiones.html): reservas y citas online en la web propia del negocio (peluquerías, estética, fisios, restaurantes y casas rurales), sin comisión por reserva.
+- [Chatbot](https://oiwebstudio.com/chatbot-reservas.html): demo del chatbot que contesta las preguntas de siempre en la web.
 - [Trabajos](https://oiwebstudio.com/trabajos.html): webs publicadas, una por sector.
 - [Caso real: Errotatxo](https://oiwebstudio.com/caso-errotatxo.html): la web de una panadería de Tolosa con tres tiendas, en castellano y euskera.
 - [Caso real: A.Berri, casa rural en Getaria](https://oiwebstudio.com/caso-a-berri.html): web con reservas, panel para los dueños y tres idiomas; con la opinión de la dueña (5 estrellas).

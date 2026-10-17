@@ -6,18 +6,18 @@
 const PAGO = "Pagas una sola vez, al final: cuando la web está terminada y publicada. Si te viene mejor otra forma de pago, lo hablamos. Los precios son sin IVA.";
 const DOMINIO = "El primer año van incluidos: registro el dominio a tu nombre y dejo la web publicada con https. La web es tuya, no queda atada a mí. Desde el segundo año entran en el mantenimiento o, si no lo quieres, pagas solo dominio y alojamiento: 15 € al año.";
 const VER = "Sí. Las muestras del portfolio están publicadas y se pueden abrir y recorrer, y además te preparo una muestra con tu negocio, gratis y sin compromiso. Solo si te convence, seguimos.";
-const REMOTO = "El precio es el mismo estés donde estés: landing desde 199€, Web Negocio desde 299€ y tienda online desde 790€ (+ IVA).";
-const PRECIO = (donde) => ["¿Cuánto cuesta una web para un negocio de " + donde + "?", "Landing desde 199€, Web Negocio desde 299€ y tienda online desde 790€ (+ IVA), con precio cerrado por escrito y 30 días de ajustes incluidos. El precio es el mismo que en Gipuzkoa."];
+const REMOTO = "El precio es el mismo estés donde estés: landing desde 399€, Web Negocio desde 499€ y tienda online desde 850€ (+ IVA).";
+const PRECIO = (donde) => ["¿Cuánto cuesta una web para un negocio de " + donde + "?", "Landing desde 399€, Web Negocio desde 499€ y tienda online desde 850€ (+ IVA), con precio cerrado por escrito y 30 días de ajustes incluidos. El precio es el mismo que en Gipuzkoa."];
 
 export const ESPANA = [
   {
     slug: "diseno-web-negocios-espana", ambito: "España", nombre: "toda España",
     titulo: "Diseño web para negocios en toda España | OI Studio",
-    desc: "Diseño y desarrollo de páginas web para negocios de toda España, a distancia y con precio cerrado desde 199€. Propuesta en 48h. Estudio en Tolosa (Gipuzkoa).",
+    desc: "Diseño y desarrollo de páginas web para negocios de toda España, a distancia y con precio cerrado desde 399€. Propuesta en 48h. Estudio en Tolosa (Gipuzkoa).",
     h1: "Diseño web para negocios en", acento: "toda España",
     lede: "Trabajo desde Tolosa, pero tu web no necesita que estemos en la misma ciudad. Videollamada, WhatsApp y una propuesta por escrito en 48 horas.",
     kw: "diseño web España, páginas web para negocios, diseñador web freelance, diseño web a distancia, página web autónomos, web para pymes",
-    hechos: [["100 %", "A distancia, si quieres"], ["199€", "Desde, precio cerrado"], ["48h", "Propuesta"], ["30 días", "Ajustes incluidos"]],
+    hechos: [["100 %", "A distancia, si quieres"], ["399€", "Desde, precio cerrado"], ["48h", "Propuesta"], ["30 días", "Ajustes incluidos"]],
     k: "A distancia", h2: "Cómo se hace una web sin vernos en persona",
     texto: [
       "Muchos negocios me escriben desde fuera de Gipuzkoa y el proceso es el mismo: hablamos 15 minutos por videollamada o por WhatsApp, te mando la propuesta con el precio cerrado y, cuando la aceptas, voy enseñándote la web por un enlace privado hasta que está lista.",
@@ -38,11 +38,11 @@ export const ESPANA = [
   {
     slug: "diseno-web-bizkaia", ambito: "Bizkaia", nombre: "Bizkaia",
     titulo: "Diseño web en Bizkaia | Páginas web para negocios | OI Studio",
-    desc: "Diseño y desarrollo de páginas web para negocios de Bizkaia (Bilbao, Uribe, Urdaibai, Durangaldea), a distancia y con precio cerrado desde 199€. Propuesta en 48h.",
+    desc: "Diseño y desarrollo de páginas web para negocios de Bizkaia (Bilbao, Uribe, Urdaibai, Durangaldea), a distancia y con precio cerrado desde 399€. Propuesta en 48h.",
     h1: "Diseño web en", acento: "Bizkaia",
     lede: "Bilbao, la costa de Uribe, Urdaibai y el Duranguesado: cuatro formas distintas de buscar en Google. Webs a distancia con precio cerrado.",
     kw: "diseño web Bizkaia, páginas web Bilbao, diseño web Vizcaya, diseñador web Bilbao, web negocio Bizkaia",
-    hechos: [["A distancia", "Videollamada y WhatsApp"], ["199€", "Desde, precio cerrado"], ["48h", "Propuesta"], ["Euskera", "Y castellano si lo pides"]],
+    hechos: [["A distancia", "Videollamada y WhatsApp"], ["399€", "Desde, precio cerrado"], ["48h", "Propuesta"], ["Euskera", "Y castellano si lo pides"]],
     k: "Bizkaia", h2: "Cómo se busca en Bizkaia",
     texto: [
       "Bizkaia es el mercado más grande de Euskadi y también el más competido. Bilbao y su área metropolitana concentran agencias y estudios de todos los tamaños; fuera de ahí, cada comarca tiene su propia realidad: la costa de Uribe y Urdaibai viven mucho del visitante, con Getxo, Mundaka o Bermeo; Durangaldea tiene un tejido industrial fuerte, y Enkarterri un comercio muy de pueblo.",
@@ -60,11 +60,11 @@ export const ESPANA = [
   {
     slug: "diseno-web-alava-araba", ambito: "Álava", nombre: "Álava (Araba)",
     titulo: "Diseño web en Álava (Araba) | OI Studio",
-    desc: "Diseño y desarrollo de páginas web para negocios de Álava (Araba): Vitoria-Gasteiz, Rioja Alavesa, Llanada y Ayala. A distancia, desde 199€ y con propuesta en 48h.",
+    desc: "Diseño y desarrollo de páginas web para negocios de Álava (Araba): Vitoria-Gasteiz, Rioja Alavesa, Llanada y Ayala. A distancia, desde 399€ y con propuesta en 48h.",
     h1: "Diseño web en", acento: "Álava",
     lede: "Vitoria-Gasteiz, la Llanada, la Rioja Alavesa y el valle de Ayala. Webs a distancia para negocios locales, con precio cerrado.",
     kw: "diseño web Álava, diseño web Araba, páginas web Vitoria-Gasteiz, diseñador web Vitoria, web bodega Rioja Alavesa",
-    hechos: [["A distancia", "Videollamada y WhatsApp"], ["199€", "Desde, precio cerrado"], ["48h", "Propuesta"], ["Euskera", "Y castellano si lo pides"]],
+    hechos: [["A distancia", "Videollamada y WhatsApp"], ["399€", "Desde, precio cerrado"], ["48h", "Propuesta"], ["Euskera", "Y castellano si lo pides"]],
     k: "Álava", h2: "Cómo se busca en Araba",
     texto: [
       "Álava tiene a Vitoria-Gasteiz, capital de Euskadi, con comercio, servicios e industria, y alrededor territorios muy distintos: la Llanada con su tejido industrial y agroalimentario, la Rioja Alavesa con bodegas y enoturismo —Laguardia, Elciego—, Añana con sus salinas y el valle de Ayala. Una bodega, un alojamiento rural y una tienda de barrio en Vitoria buscan en Google de maneras distintas, y la web tiene que estar escrita para cada una.",
@@ -81,11 +81,11 @@ export const ESPANA = [
   {
     slug: "diseno-web-navarra", ambito: "Navarra", nombre: "Navarra",
     titulo: "Diseño web en Navarra | Páginas web para negocios | OI Studio",
-    desc: "Diseño y desarrollo de páginas web para negocios de Navarra: Pamplona, Ribera, Tierra Estella y Pirineo. A distancia, desde 199€ y con propuesta en 48h.",
+    desc: "Diseño y desarrollo de páginas web para negocios de Navarra: Pamplona, Ribera, Tierra Estella y Pirineo. A distancia, desde 399€ y con propuesta en 48h.",
     h1: "Diseño web en", acento: "Navarra",
     lede: "Iruña-Pamplona, la Ribera, Tierra Estella y el Pirineo. Webs a distancia para negocios locales, con precio cerrado.",
     kw: "diseño web Navarra, páginas web Pamplona, diseñador web Pamplona, diseño web Iruña, web negocio Navarra",
-    hechos: [["A distancia", "Videollamada y WhatsApp"], ["199€", "Desde, precio cerrado"], ["48h", "Propuesta"], ["Euskera", "Y castellano si lo pides"]],
+    hechos: [["A distancia", "Videollamada y WhatsApp"], ["399€", "Desde, precio cerrado"], ["48h", "Propuesta"], ["Euskera", "Y castellano si lo pides"]],
     k: "Navarra", h2: "Cómo se busca en Navarra",
     texto: [
       "Navarra se busca de formas muy distintas según la zona: en Iruña-Pamplona hay comercio, servicios y mucha competencia; la Ribera, con Tudela, tiene agroalimentación y comercio de pueblo; Tierra Estella vive en buena parte del Camino de Santiago y del turismo; y el Pirineo —Roncal, Baztan, Salazar— depende del visitante de fin de semana y de vacaciones. Cada zona pide una web con el foco puesto en lo que busca su cliente.",

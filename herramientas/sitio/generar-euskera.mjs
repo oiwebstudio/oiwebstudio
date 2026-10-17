@@ -45,11 +45,11 @@ const TRADUCIDAS = new Set([...PAGINAS, ...ZONAS]);
 const META = {
   "index.html": {
     title: "Web diseinua Tolosan: webguneak negozioentzat | OI Studio",
-    desc: "Neurrira egindako webguneak Gipuzkoako negozioentzat. Prezio itxia 199€-tik, proposamena 48 ordutan. Tolosako estudioa.",
+    desc: "Neurrira egindako webguneak Gipuzkoako negozioentzat. Prezio itxia 399€-tik, proposamena 48 ordutan. Tolosako estudioa.",
   },
   "precios.html": {
     title: "Webgune baten prezioa: itxia eta idatzita | OI Studio",
-    desc: "Landing 199€ eta Negozio Weba 299€, ordainketa bakarrean eta prezio itxiarekin. Ezkutuko kuotarik eta epe-konpromisorik gabe.",
+    desc: "Landing 399€ eta Negozio Weba 499€, komisiorik gabeko online erreserbak eta paketeak 549€-tik. Prezio itxia eta ordainketa amaieran.",
   },
   "contacto.html": {
     title: "Kontaktua: hitz egin dezagun zure webaz | OI Studio",
