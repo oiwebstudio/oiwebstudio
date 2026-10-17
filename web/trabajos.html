@@ -51,7 +51,7 @@
 <link rel="manifest" href="/site.webmanifest"/>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/geist-latin-04ce1a61.woff2" crossorigin/>
 <link rel="stylesheet" href="/assets/fuentes.css?v=1"/>
-<link rel="stylesheet" href="assets/styles.css?v=25"/>
+<link rel="stylesheet" href="assets/styles.css?v=26"/>
 <script>if(location.protocol==='http:'&&/(^|\.)oiwebstudio\.com$/.test(location.hostname))location.replace('https://'+location.host+location.pathname+location.search+location.hash);document.documentElement.classList.add('js');</script>
 <style>
   /* Moodboard editorial: capturas planas sobre lienzo crema, con paletas y etiquetas mono */
@@ -184,7 +184,7 @@
 <span class="hero-cta-arrow">→</span>
 </a>
 </div>
-<p class="reveal" data-d="3" data-t="tra_honesty" style="max-width:600px; margin:22px auto 0; background:var(--accent-soft); color:var(--accent-press); border-radius:14px; padding:14px 20px; font-size:14.5px; font-weight:500;">Son muestras con nombre y datos inventados, hechas por mí para enseñar cómo trabajo: no son clientes reales. Los casos reales son Errotatxo y A.Berri.</p>
+<p class="reveal" data-d="3" data-t="tra_honesty" style="max-width:600px; margin:22px auto 0; background:var(--accent-soft); color:var(--accent-press); border-radius:14px; padding:14px 20px; font-size:14.5px; font-weight:500;">Las muestras llevan nombre y datos inventados: no son clientes. Los casos reales son Errotatxo y A.Berri.</p>
 </div>
 </div>
 </header>
@@ -211,6 +211,8 @@
 </div>
 
 <section class="caso-sec" data-grupo style="padding:30px 0 4px"><div class="container">
+<style>@media(min-width:860px){.caso-dest--inv{grid-template-columns:1fr 1.15fr}.caso-dest--inv .caso-dest__foto{order:2}}.caso-dest__cita{font-family:var(--font-serif);font-size:19px;line-height:1.45;color:#fff;border-left:2px solid #3fbf73;padding-left:14px}.caso-dest__cita small{display:block;margin-top:6px;font-family:var(--font-sans);font-size:13.5px;color:#c9c2b2}</style>
+<div class="casos-pila">
 <a class="caso-dest reveal" href="caso-errotatxo.html" data-tipo="caso" data-sector="comercio">
 <span class="caso-dest__foto"><picture><source srcset="assets/errotatxo/foto-fachada.webp" type="image/webp"/><img src="assets/errotatxo/foto-fachada.jpg" alt="Fachada de la panadería Errotatxo en Tolosa" width="1400" height="1050" loading="lazy"/></picture></span>
 <span class="caso-dest__txt">
@@ -220,17 +222,17 @@
 <span class="caso-dest__go" data-t="caso_go">Ver el caso completo →</span>
 </span>
 </a>
-<style>@media(min-width:860px){.caso-dest--inv{grid-template-columns:1fr 1.15fr}.caso-dest--inv .caso-dest__foto{order:2}}.caso-dest__cita{font-family:var(--font-serif);font-size:19px;line-height:1.45;color:#fff;border-left:2px solid #3fbf73;padding-left:14px}.caso-dest__cita small{display:block;margin-top:6px;font-family:var(--font-sans);font-size:13.5px;color:#c9c2b2}</style>
 <a class="caso-dest caso-dest--inv reveal" href="caso-a-berri.html" data-tipo="caso" data-sector="turismo">
 <span class="caso-dest__foto"><picture><source srcset="assets/aberri/foto-caserio.webp" type="image/webp"/><img src="assets/aberri/foto-caserio.jpg" alt="El caserío de A.Berri al atardecer, en Getaria" width="800" height="450" loading="lazy"/></picture></span>
 <span class="caso-dest__txt">
 <span class="caso-dest__tag" data-t="caso_tag">Caso real · cliente</span>
 <span class="caso-dest__h" data-t="caso2_h">A.Berri, casa rural en Getaria</span>
-<span class="caso-dest__p" data-t="caso2_p">Casa rural y apartamento con reservas desde su propia web, en tres idiomas y con un panel sencillo para los dueños.</span>
+<span class="caso-dest__p" data-t="caso2_p">Reservas desde su propia web, en tres idiomas.</span>
 <span class="caso-dest__cita"><span data-t="caso2_cita">«Ha quedado de maravilla. Un trabajo excelente y rápido.»</span><small data-t="caso2_autor">María Jesús, dueña de A.Berri · traducido del euskera</small></span>
 <span class="caso-dest__go" data-t="caso_go">Ver el caso completo →</span>
 </span>
 </a>
+</div>
 </div></section>
 
 <!-- Los dos casos de clientes, en vivo (assets/vivas.js). errotatxo.com se abre de verdad
@@ -278,7 +280,7 @@
 <div class="section-head reveal">
 <span class="eyebrow" data-t="viv_eyebrow">Casos reales</span>
 <h2 id="vivas-t" data-t="viv_h2">Las dos webs, <span class="grad">aquí mismo</span></h2>
-<p data-t="viv_p">Toca el móvil de Errotatxo y se abre su web de verdad: puedes bajar, ver sus tiendas y cambiar de idioma. La de A.Berri no se deja abrir dentro de otra página, por seguridad, así que aquí puedes pasar sus pantallas; el enlace la abre entera.</p>
+<p data-t="viv_p">Toca el móvil de Errotatxo y se abre su web. De A.Berri puedes pasar las pantallas; el enlace la abre entera.</p>
 </div>
 <div class="vivas__par">
 
@@ -375,7 +377,7 @@
 <div class="mu__txt">
 <span class="mu__tag"><span data-t="tag_inm">Inmobiliaria</span> · <span data-t="badge_live">Muestra</span></span>
 <h3>Etxea Inmobiliaria</h3>
-<p data-t="mu_etxea">Portada con foto grande y la tasación gratis a un toque. Casas con su precio, cómo se vende paso a paso y un apartado claro para vender la tuya.</p>
+<p data-t="mu_etxea">Foto grande, casas con su precio y la tasación gratis a un toque.</p>
 <ul class="mu__sw" aria-hidden="true"><li style="background:#a8532f"></li><li style="background:#2b2420"></li><li style="background:#f4ede4"></li></ul>
 <a class="mu__go" href="/demos/muestras/etxea-inmobiliaria/" target="_blank" rel="noopener" data-t="mu_go">Abrir la muestra →</a>
 </div>
@@ -389,7 +391,7 @@
 <div class="mu__txt">
 <span class="mu__tag"><span data-t="tag_bici">Tienda de bicis</span> · <span data-t="badge_live">Muestra</span></span>
 <h3>Pedala</h3>
-<p data-t="mu_pedala">Cartel con la bici a toda pantalla y el nombre gigante, fichas de bicis con su precio y el taller explicado. Directa y muy visual.</p>
+<p data-t="mu_pedala">La bici a toda pantalla, fichas con precio y el taller explicado.</p>
 <ul class="mu__sw" aria-hidden="true"><li style="background:#0c0c0c"></li><li style="background:#f1f1ee"></li><li style="background:#9a9a95"></li></ul>
 <a class="mu__go" href="/demos/muestras/pedala-bizikletak/" target="_blank" rel="noopener" data-t="mu_go">Abrir la muestra →</a>
 </div>
@@ -403,7 +405,7 @@
 <div class="mu__txt">
 <span class="mu__tag"><span data-t="tag_psi">Psicología</span> · <span data-t="badge_live">Muestra</span></span>
 <h3>Ekhi Psicología</h3>
-<p data-t="mu_ekhi">Una web serena para una consulta: la persona elige qué le pasa y la web le cuenta qué terapia y quién puede acompañarla. Sin tecnicismos.</p>
+<p data-t="mu_ekhi">Una web serena: la persona elige qué le pasa y ve qué terapia le encaja.</p>
 <ul class="mu__sw" aria-hidden="true"><li style="background:#3f6b5e"></li><li style="background:#f4f8f6"></li><li style="background:#191e1d"></li></ul>
 <a class="mu__go" href="/demos/muestras/ekhi-psikologia/" target="_blank" rel="noopener" data-t="mu_go">Abrir la muestra →</a>
 </div>
@@ -417,7 +419,7 @@
 <div class="mu__txt">
 <span class="mu__tag"><span data-t="tag_fis">Fisioterapia</span> · <span data-t="badge_live">Muestra</span></span>
 <h3>ARIN Fisioterapia</h3>
-<p data-t="mu_arin">Un mapa del cuerpo para elegir dónde duele, las técnicas explicadas con claridad y la cita a un toque. Tono sereno y fotos grandes.</p>
+<p data-t="mu_arin">Un mapa del cuerpo para elegir dónde duele y la cita a un toque.</p>
 <ul class="mu__sw" aria-hidden="true"><li style="background:#1f4a3d"></li><li style="background:#e9efe9"></li><li style="background:#ffffff"></li></ul>
 <a class="mu__go" href="/demos/muestras/arin-fisioterapia/" target="_blank" rel="noopener" data-t="mu_go">Abrir la muestra →</a>
 </div>
@@ -431,7 +433,7 @@
 <div class="mu__txt">
 <span class="mu__tag"><span data-t="tag_foto">Fotografía</span> · <span data-t="badge_live">Muestra</span></span>
 <h3>LAINO Argazkiak</h3>
-<p data-t="mu_laino">La foto de portada está detrás de un cristal empañado que se limpia al pasar el ratón, como en un póster. La pensé para un estudio de fotografía que vende con la imagen.</p>
+<p data-t="mu_laino">La foto de portada, tras un cristal empañado que se limpia al pasar el ratón.</p>
 <ul class="mu__sw" aria-hidden="true"><li style="background:#4f6472"></li><li style="background:#eeeae3"></li><li style="background:#1b1d1f"></li></ul>
 <a class="mu__go" href="/demos/muestras/laino-argazkiak/" target="_blank" rel="noopener" data-t="mu_go">Abrir la muestra →</a>
 </div>
@@ -445,7 +447,7 @@
 <div class="mu__txt">
 <span class="mu__tag"><span data-t="tag_inm">Inmobiliaria</span> · <span data-t="badge_live">Muestra</span></span>
 <h3>HIRIA Etxebizitzak</h3>
-<p data-t="mu_hiria">Puse el nombre en grande con el edificio recortado por delante y las viviendas en una lista clara, cada una con su flecha. Gris frío y azul para una inmobiliaria de obra nueva y alquiler.</p>
+<p data-t="mu_hiria">El nombre en grande, el edificio por delante y las viviendas en una lista clara.</p>
 <ul class="mu__sw" aria-hidden="true"><li style="background:#5aa6d6"></li><li style="background:#eeeeee"></li><li style="background:#111111"></li></ul>
 <a class="mu__go" href="/demos/muestras/hiria-etxebizitzak/" target="_blank" rel="noopener" data-t="mu_go">Abrir la muestra →</a>
 </div>
@@ -459,7 +461,7 @@
 <div class="mu__txt">
 <span class="mu__tag"><span data-t="tag_carp">Carpintería</span> · <span data-t="badge_live">Muestra</span></span>
 <h3>MAILA Eskailerak</h3>
-<p data-t="mu_maila">Un titular en dos tonos sobre la foto y las escaleras en tarjetas redondeadas, en madera, blanco y negro. Quería que se viera el oficio de un taller de carpintería.</p>
+<p data-t="mu_maila">Titular en dos tonos y escaleras en tarjetas, en madera, blanco y negro.</p>
 <ul class="mu__sw" aria-hidden="true"><li style="background:#c4703a"></li><li style="background:#fbfaf8"></li><li style="background:#1b1a19"></li></ul>
 <a class="mu__go" href="/demos/muestras/maila-eskailerak/" target="_blank" rel="noopener" data-t="mu_go">Abrir la muestra →</a>
 </div>
@@ -473,7 +475,7 @@
 <div class="mu__txt">
 <span class="mu__tag"><span data-t="tag_arq">Arquitectura</span> · <span data-t="badge_live">Muestra</span></span>
 <h3>GAINETIK Arkitektura</h3>
-<p data-t="mu_gainetik">Coloqué un titular gigante y fino, con las letras a distinta altura, sobre una casa al atardecer. Lo pensé para un estudio de arquitectura de casas y caseríos, donde manda la foto.</p>
+<p data-t="mu_gainetik">Un titular gigante y fino sobre una casa al atardecer. Manda la foto.</p>
 <ul class="mu__sw" aria-hidden="true"><li style="background:#93542f"></li><li style="background:#f4f0ea"></li><li style="background:#1e1a17"></li></ul>
 <a class="mu__go" href="/demos/muestras/gainetik-arkitektura/" target="_blank" rel="noopener" data-t="mu_go">Abrir la muestra →</a>
 </div>
@@ -487,7 +489,7 @@
 <div class="container">
 <div class="reveal">
 <h2 data-t="tra_cta_h">¿Tu negocio es el siguiente?</h2>
-<p data-t="tra_cta_p">Cuéntame en qué consiste y te preparo una propuesta honesta en menos de 48 horas.</p>
+<p data-t="tra_cta_p">Cuéntame qué haces y en menos de 48 horas tienes una propuesta.</p>
 <div class="hero__actions">
 <a href="contacto.html" class="btn btn--light btn--lg" data-t="btn_presupuesto">Solicitar presupuesto</a>
 <a href="https://wa.me/34680956755" target="_blank" rel="noopener" class="btn btn--dark-ghost btn--lg" data-t="btn_whatsapp">Escribir por WhatsApp</a>
@@ -570,8 +572,8 @@
 <div class="footer__mark" aria-hidden="true">OI STUDIO</div>
 </footer>
 
-<script src="assets/i18n.js?v=20"></script>
-<script src="assets/main.js?v=12"></script>
+<script src="assets/i18n.js?v=21"></script>
+<script src="assets/main.js?v=13"></script>
 <script src="assets/vivas.js?v=1"></script>
 <script>
 /* Filtros de Trabajos: tipo (todo, casos reales, muestras) y sector. Sin JS se ve todo. */

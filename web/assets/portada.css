@@ -264,9 +264,9 @@
    Va dentro de la oferta «Una muestra de tu web antes de decidir»: el texto y
    el formulario a la izquierda, el boceto en portátil y móvil a la derecha, y
    los tres pasos debajo. */
-.sw-oferta.prueba { grid-template-columns: minmax(0, 1fr); grid-template-areas: "txt" "form" "escena" "acciones" "pasos"; align-items: start; row-gap: 24px; scroll-margin-top: 90px; }
+.sw-oferta.prueba { grid-template-columns: minmax(0, 1fr); grid-template-areas: "txt" "form" "escena" "acciones"; align-items: start; row-gap: 24px; scroll-margin-top: 90px; }
 @media (min-width: 980px) {
-  .sw-oferta.prueba { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); grid-template-areas: "txt escena" "form escena" "acciones escena" "pasos pasos"; column-gap: clamp(36px, 4vw, 60px); row-gap: 22px; }
+  .sw-oferta.prueba { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); grid-template-areas: "txt escena" "form escena" "acciones escena"; column-gap: clamp(36px, 4vw, 60px); row-gap: 22px; }
 }
 .prueba__txt { grid-area: txt; }
 .prueba__txt p + p { margin-top: 12px; }

@@ -3,6 +3,20 @@
    clase, así que si este script no llega a cargarse la web se lee entera. */
 document.documentElement.classList.add('js');
 
+/* Carpeta de assets/ tal como la pide esta página (assets/ o ../assets/):
+   la usa el bloque de movimiento para cargar SplitText solo cuando hace falta. */
+/* Trabajo que no corre prisa (lo de más abajo de la pantalla): después de la
+   carga y cuando el navegador está libre, para no competir con el primer pintado. */
+var OI_TARDE = function (fn) {
+  var ir = function () { if (window.requestIdleCallback) requestIdleCallback(fn, { timeout: 1500 }); else setTimeout(fn, 200); };
+  if (document.readyState === 'complete') ir(); else window.addEventListener('load', ir, { once: true });
+};
+
+var OI_ASSETS = (function () {
+  var s = document.currentScript && document.currentScript.src;
+  return s ? s.replace(/main\.js(\?.*)?$/, '') : '/assets/';
+})();
+
 if (window.self !== window.top) { document.documentElement.style.display = 'none'; window.top.location = window.self.location; }
 
 /* Transiciones entre páginas (styles.css): el logo y el titular viajan a la
@@ -169,24 +183,56 @@ document.addEventListener('DOMContentLoaded', () => {
     fila.insertAdjacentElement('afterend', ind);
     const barra = ind.querySelector('i');
     const n = ind.querySelector('.desliza-ind__n');
-    const pintar = () => {
-      const visibles = items.filter(el => !el.hidden && el.offsetParent !== null);
-      const total = Math.max(visibles.length, 1);
-      const max = fila.scrollWidth - fila.clientWidth;
-      const p = max > 0 ? fila.scrollLeft / max : 0;
-      const actual = Math.min(total, Math.round(p * (total - 1)) + 1);
+    // El indicador sigue al dedo de forma continua (no salta de tarjeta en
+    // tarjeta): la barra se desplaza en proporción exacta a lo deslizado.
+    let visibles = items, total = 1, max = 0, pend = false;
+    const medir = () => {
+      visibles = items.filter(el => !el.hidden && el.offsetParent !== null);
+      total = Math.max(visibles.length, 1);
+      max = fila.scrollWidth - fila.clientWidth;
       barra.style.width = (100 / total) + '%';
-      barra.style.transform = 'translateX(' + ((actual - 1) * 100) + '%)';
-      n.textContent = actual + ' / ' + total;
       ind.style.display = max > 4 ? '' : 'none';
+    };
+    const pintar = () => {
+      pend = false;
+      const p = max > 0 ? Math.min(Math.max(fila.scrollLeft / max, 0), 1) : 0;
+      const actual = Math.min(total, Math.round(p * (total - 1)) + 1);
+      barra.style.transform = 'translateX(' + (p * (total - 1) * 100).toFixed(2) + '%)';
+      const txt = actual + ' / ' + total;
+      if (n.textContent !== txt) n.textContent = txt;
     };
     // Con teclado también se puede recorrer: la fila entra en el orden de tabulación
     const foco = () => { if (fila.scrollWidth - fila.clientWidth > 4) fila.setAttribute('tabindex', '0'); else fila.removeAttribute('tabindex'); };
-    fila.addEventListener('scroll', () => requestAnimationFrame(pintar), { passive: true });
-    window.addEventListener('resize', () => { pintar(); foco(); }, { passive: true });
-    fila.addEventListener('desliza:cambio', () => { fila.scrollLeft = 0; pintar(); });
-    pintar(); foco();
+    fila.addEventListener('scroll', () => { if (!pend) { pend = true; requestAnimationFrame(pintar); } }, { passive: true });
+    window.addEventListener('resize', () => { medir(); pintar(); foco(); }, { passive: true });
+    fila.addEventListener('desliza:cambio', () => { fila.scrollLeft = 0; medir(); pintar(); });
+    medir(); pintar(); foco();
   });
+
+  // Filas deslizables en el móvil: al entrar en pantalla las tarjetas llegan
+  // desde la derecha y se pasan un poco de largo, así se insinúa la siguiente
+  // y se entiende que la fila se desliza. Solo las que aún no se ven al cargar
+  // (las de arriba no deben parpadear). Sin JS o sin movimiento: quietas.
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      && window.matchMedia('(max-width: 759px)').matches) {
+    const ioFila = new IntersectionObserver((ents) => {
+      ents.forEach(en => {
+        if (!en.isIntersecting) return;
+        ioFila.unobserve(en.target);
+        en.target.classList.add('is-in');
+        setTimeout(() => en.target.classList.remove('mv-fila', 'is-in'), 1400);
+      });
+    }, { threshold: 0.3 });
+    // primero se mide (todas), luego se escribe: así no se recalcula la página por fila
+    OI_TARDE(() => {
+      const filas = Array.from(document.querySelectorAll('.desliza')).filter(f => f.getBoundingClientRect().top >= window.innerHeight);
+      filas.forEach(fila => {
+        Array.from(fila.children).forEach((el, i) => el.style.setProperty('--mv-i', Math.min(i, 3)));
+        fila.classList.add('mv-fila');
+        ioFila.observe(fila);
+      });
+    });
+  }
 
   // Scroll reveal
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -484,8 +530,14 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    /* 07 · adv-scroll-progress — barra de progreso de lectura ----------------- */
-    if (!reduce) {
+    /* 07 · adv-scroll-progress — barra de progreso de lectura -----------------
+       Donde el navegador sabe ligar animaciones al scroll, la barra la pinta el
+       CSS (body::before, sin JS). Aquí solo el respaldo para los demás, para no
+       tener dos barras a la vez. En páginas cortas no hay barra. */
+    const corta = document.documentElement.scrollHeight < window.innerHeight * 2.6;
+    if (corta) document.documentElement.classList.add('pag-corta');
+    const cssBarra = window.CSS && CSS.supports && CSS.supports('animation-timeline: scroll()');
+    if (!reduce && !corta && !cssBarra) {
       const bar = document.createElement('div');
       bar.className = 'readbar';
       bar.setAttribute('aria-hidden', 'true');
@@ -648,4 +700,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
   else start();
+})();
+
+/* Movimiento al bajar (assets/movimiento.js): se carga tarde, cuando el
+   navegador está libre después de la carga, o antes si se empieza a bajar.
+   Sin JS o con «reducir movimiento» no se carga y todo se ve quieto. */
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+  var hecho = false;
+  var cargar = function () {
+    if (hecho) return;
+    hecho = true;
+    var s = document.createElement('script');
+    s.src = OI_ASSETS + 'movimiento.js?v=1';
+    s.async = true;
+    document.head.appendChild(s);
+  };
+  window.addEventListener('scroll', cargar, { passive: true, once: true });
+  window.addEventListener('touchstart', cargar, { passive: true, once: true });
+  OI_TARDE(cargar);
 })();
