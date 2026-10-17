@@ -2199,3 +2199,125 @@ html.flotante-fuera .subir { bottom: calc(22px + env(safe-area-inset-bottom, 0px
   .mv-cita .mv-c { opacity: .16; transition: opacity .35s ease; }
   .mv-cita .mv-c.is-on { opacity: 1; }
 }
+
+/* ==========================================================================
+   ARREGLOS DEL MÓVIL (v27, 17/10/2026)
+   Filas que avanzan solas (main.js), tarjetas sin hueco, «¿Otra duda?» con la
+   foto arriba, flotantes que no tapan la banda final, cabecera más opaca,
+   pie resumido y más texto que entra al bajar (movimiento.js).
+   ========================================================================== */
+
+/* Tarjetas deslizables: el hueco que deja la tarjeta más alta lo llena la
+   ilustración (en «Lo que consigues»), no un blanco debajo del texto. */
+@media (max-width: 759px) {
+  .desliza > .bn { gap: 16px; padding-bottom: 20px; }
+  .desliza > .bn .bn__ill { flex: 1 1 auto; min-height: 190px; }
+  .desliza > .bn .bn__txt { flex: none; }
+}
+
+/* «¿Otra duda?»: la foto es un <figure> y traía su margen por defecto (40 px a cada
+   lado): en el móvil quedaba una tira de 30 px. Sin margen, y en el móvil arriba a lo ancho. */
+.faq-otra__foto { margin: 0; }
+@media (max-width: 899px) {
+  .faq-otra { grid-template-columns: 1fr; }
+  .faq-otra__foto { aspect-ratio: 16 / 7; }
+  .faq-otra__txt { padding: 18px 18px 18px; }
+}
+
+/* Flotantes: fuera mientras se ve la banda oscura del final (trae sus propios
+   botones) y un aro claro para que el botón oscuro no se pierda sobre lo oscuro */
+html.flotante-cta .wa-float, html.flotante-cta .fmenu, html.flotante-cta .subir { opacity: 0; visibility: hidden; pointer-events: none; }
+.fmenu__toggle { box-shadow: 0 0 0 2px rgba(255,255,255,.7), 0 4px 12px rgba(9,10,15,.22), 0 14px 34px -10px rgba(9,10,15,.4); }
+
+/* Cabecera del móvil: más opaca al bajar y una veladura detrás, para que el
+   texto que pasa por debajo no se lea a medias alrededor de la isla */
+@media (max-width: 1199.98px) {
+  .nav-wrap::before {
+    content: ""; position: absolute; inset: 0 0 -18px; z-index: -1; pointer-events: none;
+    background: linear-gradient(to bottom, rgba(255,255,255,.92) 0%, rgba(255,255,255,.78) 62%, rgba(255,255,255,0) 100%);
+    opacity: 0; transition: opacity .3s ease;
+  }
+  .nav-wrap.is-scrolled::before { opacity: 1; }
+  .nav-wrap.is-scrolled .nav { background: rgba(255,255,255,.95); }
+}
+
+/* --------------------------------------------------------------- Pie resumido */
+.foot-contacto { display: grid !important; gap: 8px !important; margin-top: 18px !important; }
+.footer .foot-contacto a { display: inline-flex; align-items: center; gap: 9px; min-height: 28px; color: var(--ink); font-weight: 500; font-size: 14px; }
+.foot-contacto svg { width: 17px; height: 17px; flex: none; color: var(--terra-link); }
+.foot-g > summary { list-style: none; }
+.foot-g > summary::-webkit-details-marker { display: none; }
+.footer .foot-g ul { gap: 8px; }
+.footer__desc { margin-top: 16px; }
+@media (min-width: 760px) {
+  .footer__grid { grid-template-columns: 1.25fr .8fr 1fr 1.3fr 1.35fr; gap: 28px; padding: 44px 0 28px; }
+  .footer__col--brand { grid-column: auto; }
+  .foot-g > summary { cursor: default; pointer-events: none; }
+  .footer__zonas { grid-template-columns: 1fr 1fr; column-gap: 16px; }
+  .footer__zonas li:nth-last-child(2) { margin-top: 0; }
+  .footer__zonas li:nth-last-child(-n+2) { grid-column: 1 / -1; }
+  .footer__zonas li:nth-last-child(2) { margin-top: 6px; }
+  /* Sin JS (o antes de que main.js las abra), los grupos se ven igual */
+  html:not(.js) .foot-g::details-content { content-visibility: visible; block-size: auto; }
+}
+@media (min-width: 760px) and (max-width: 1099px) {
+  .footer__grid { grid-template-columns: repeat(3, 1fr); }
+  .footer__col--brand { grid-column: 1 / -1; }
+}
+@media (max-width: 759px) {
+  .footer__grid { grid-template-columns: 1fr; gap: 0; padding: 34px 0 6px; }
+  .footer__col--brand { padding-bottom: 22px; }
+  .foot-contacto { grid-template-columns: 1fr 1fr; }
+  .footer .foot-contacto a { width: 100%; min-height: 46px; padding: 0 14px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
+  .foot-g { border-top: 1px solid var(--border); }
+  .foot-g:last-of-type { border-bottom: 1px solid var(--border); }
+  .footer .foot-g > summary.foot-h { display: flex; align-items: center; justify-content: space-between; min-height: 52px; margin: 0; cursor: pointer; }
+  .foot-g > summary::after {
+    content: ""; width: 22px; height: 22px; border-radius: 50%; flex: none;
+    background: var(--terra-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238f5720' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M12 6v12M6 12h12'/%3E%3C/svg%3E") center / 12px no-repeat;
+    transition: transform .3s var(--ease);
+  }
+  .foot-g[open] > summary::after { transform: rotate(45deg); }
+  .footer .foot-g ul { padding: 0 0 16px; gap: 2px; }
+  .footer .foot-g li a { display: block; padding: 7px 0; }
+  .footer__zonas { grid-template-columns: 1fr 1fr; column-gap: 14px; }
+  .footer__zonas li:nth-last-child(-n+2) { grid-column: 1 / -1; }
+  .footer__zonas li:nth-last-child(2) { margin-top: 4px; }
+  .footer__bottom { padding: 16px 0; font-size: 12px; justify-content: flex-start; border-top: 0; }
+  .footer__bottom p:last-child { display: none; }
+  .footer__bottom a { display: inline-block; padding: 6px 0; }
+  .footer__mark { font-size: 15vw; padding-bottom: 10px; }
+  /* Apertura suave donde el navegador sabe animar hasta «auto» */
+  .footer { interpolate-size: allow-keywords; }
+  .foot-g::details-content { block-size: 0; overflow: clip; transition: block-size .35s var(--ease), content-visibility .35s allow-discrete; }
+  .foot-g[open]::details-content { block-size: auto; }
+}
+@media (max-width: 759px) and (prefers-reduced-motion: no-preference) {
+  .foot-g[open] li { animation: mv-pie .4s var(--ease) both; }
+  .foot-g[open] li:nth-child(2) { animation-delay: .03s; } .foot-g[open] li:nth-child(3) { animation-delay: .06s; }
+  .foot-g[open] li:nth-child(4) { animation-delay: .09s; } .foot-g[open] li:nth-child(n+5) { animation-delay: .12s; }
+  @keyframes mv-pie { from { opacity: 0; transform: translateY(8px); } }
+}
+@media (prefers-reduced-motion: reduce) {
+  .foot-g::details-content { transition: none; }
+  .foot-g > summary::after { transition: none; }
+}
+
+/* ------------------------------------------------- Más texto que entra al bajar
+   Las clases las pone movimiento.js solo en lo que aún no se ve; sin JS o con
+   «reducir movimiento» no existen y todo está quieto y visible. */
+@media (prefers-reduced-motion: no-preference) {
+  /* Párrafos línea a línea */
+  .mv-espera { opacity: 0; }
+  .mv-lineas .mvl { animation: mv-linea .75s cubic-bezier(.16, 1, .3, 1) both; animation-delay: calc((var(--line, 1) - 1) * 70ms); }
+  @keyframes mv-linea { from { transform: translateY(105%); } to { transform: none; } }
+  /* Listas y preguntas en cascada */
+  .mv-cascada > * { opacity: 0; transform: translateY(16px); }
+  .mv-cascada.is-in > * { opacity: 1; transform: none; transition: opacity .5s ease, transform .7s cubic-bezier(.16, 1, .3, 1); transition-delay: calc(var(--mv-i, 0) * 60ms); }
+  /* Precios que cuentan */
+  b.mv-cuenta, span.mv-cuenta { display: inline-block; }
+  .mv-cuenta { opacity: 0; transform: translateY(8px); font-variant-numeric: tabular-nums; }
+  .mv-cuenta.is-in { opacity: 1; transform: none; transition: opacity .4s ease, transform .6s cubic-bezier(.16, 1, .3, 1); }
+}
+/* La máscara de cada línea deja aire a tildes y colas */
+.mvl-mask { padding: .1em 0 .08em; margin: -.1em 0 -.08em; }

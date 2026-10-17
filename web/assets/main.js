@@ -145,9 +145,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const logo = document.querySelector('.nav__logo');
       if (logo) logo.focus({ preventScroll: true });
     });
-    let marca = false;
+    // En el móvil solo aparece al subir (cuando se quiere volver arriba): al
+    // bajar leyendo se aparta y no tapa el final de los bloques.
+    // (hace falta subir de verdad, 40 px: los reajustes pequeños de la página no cuentan)
+    let marca = false, yAntes = window.scrollY, pico = window.scrollY;
     const mirar = () => {
-      const on = window.scrollY > window.innerHeight * 1.4;
+      const y = window.scrollY;
+      let on = y > window.innerHeight * 1.4;
+      if (y > yAntes) pico = y;
+      if (on && window.innerWidth < 760) on = y < pico - 40 ? true : (y > yAntes + 2 ? false : marca);
+      yAntes = y;
       if (on !== marca) { marca = on; subir.classList.toggle('is-on', on); }
     };
     window.addEventListener('scroll', mirar, { passive: true });
@@ -170,6 +177,31 @@ document.addEventListener('DOMContentLoaded', () => {
       document.documentElement.classList.toggle('flotante-fuera', vistos.size > 0);
     }, { rootMargin: '0px 0px -40px 0px' });
     finales.forEach(el => io.observe(el));
+  }
+
+  // La banda oscura del final (con sus propios botones de presupuesto y
+  // WhatsApp): mientras se ve en la parte de abajo de la pantalla, los
+  // flotantes se esconden para no tapar esos botones (y el oscuro no se pierde
+  // sobre el fondo oscuro).
+  const bandas = document.querySelectorAll('.dark-section, .cs-cta');
+  if (bandas.length && 'IntersectionObserver' in window) {
+    const vistas = new Set();
+    const io = new IntersectionObserver((entradas) => {
+      entradas.forEach(en => { if (en.isIntersecting) vistas.add(en.target); else vistas.delete(en.target); });
+      document.documentElement.classList.toggle('flotante-cta', vistas.size > 0);
+    }, { rootMargin: '0px 0px -12px 0px' });
+    bandas.forEach(el => io.observe(el));
+  }
+
+  // Pie: en el ordenador los grupos se ven abiertos en columnas; en el móvil,
+  // plegados (se abren al tocarlos).
+  const gruposPie = document.querySelectorAll('.foot-g');
+  if (gruposPie.length) {
+    const anchoPie = window.matchMedia('(min-width: 760px)');
+    const abrirPie = () => gruposPie.forEach(d => { d.open = anchoPie.matches; });
+    abrirPie();
+    if (anchoPie.addEventListener) anchoPie.addEventListener('change', abrirPie);
+    gruposPie.forEach(d => d.querySelector('summary').addEventListener('click', (e) => { if (anchoPie.matches) e.preventDefault(); }));
   }
 
   // Filas que se deslizan en el móvil: indicador de posición debajo
@@ -207,7 +239,66 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', () => { medir(); pintar(); foco(); }, { passive: true });
     fila.addEventListener('desliza:cambio', () => { fila.scrollLeft = 0; medir(); pintar(); });
     medir(); pintar(); foco();
+    autoDesliza(fila, items, () => visibles);
   });
+
+  /* Las filas avanzan solas en el móvil: una tarjeta cada 4 s, en bucle (al
+     llegar al final vuelve a la primera). Solo con la fila a la vista y la
+     pestaña visible. Al tocarla, arrastrarla o entrar con el teclado se para y
+     vuelve a arrancar 6 s después de soltarla. Con «reducir movimiento», nunca.
+     El desplazamiento es horizontal dentro de la fila: no mueve la página. */
+  function autoDesliza(fila, items, getVisibles) {
+    const quietoMQ = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const movilMQ = window.matchMedia('(max-width: 759px)');
+    if (!('IntersectionObserver' in window)) return;
+    const PASO = 4000, ESPERA = 6000;
+    let timer = 0, reanudar = 0, aVista = false, tocando = false, enFoco = false, ultimoScrollPagina = 0;
+    const puede = () => aVista && !tocando && !enFoco && !document.hidden && movilMQ.matches && !quietoMQ.matches
+      && fila.scrollWidth - fila.clientWidth > 4;
+    const parar = () => { clearTimeout(timer); timer = 0; };
+    const programar = (ms) => { parar(); if (puede()) timer = setTimeout(avanzar, ms); };
+    const relleno = () => parseFloat(getComputedStyle(fila).scrollPaddingLeft) || 0;
+    function avanzar() {
+      timer = 0;
+      if (!puede()) return;
+      // Mientras el dedo mueve la página, espera un poco: nada se mueve de lado a la vez.
+      if (Date.now() - ultimoScrollPagina < 700) { programar(900); return; }
+      const lista = getVisibles();
+      const max = fila.scrollWidth - fila.clientWidth;
+      const caja = fila.getBoundingClientRect();
+      const pad = relleno();
+      let destino = 0;
+      if (fila.scrollLeft < max - 4) {
+        const sig = lista.find(el => el.getBoundingClientRect().left - caja.left - pad > 8);
+        destino = sig ? Math.min(fila.scrollLeft + sig.getBoundingClientRect().left - caja.left - pad, max) : max;
+      }
+      fila.scrollTo({ left: destino, behavior: 'smooth' });
+      programar(PASO);
+    }
+    const pausar = () => {
+      parar(); clearTimeout(reanudar);
+    };
+    const soltar = () => {
+      clearTimeout(reanudar);
+      reanudar = setTimeout(() => { tocando = false; programar(PASO); }, ESPERA);
+    };
+    fila.addEventListener('touchstart', () => { tocando = true; pausar(); }, { passive: true });
+    fila.addEventListener('touchend', soltar, { passive: true });
+    fila.addEventListener('touchcancel', soltar, { passive: true });
+    fila.addEventListener('pointerdown', () => { tocando = true; pausar(); });
+    fila.addEventListener('pointerup', soltar);
+    fila.addEventListener('wheel', () => { tocando = true; pausar(); soltar(); }, { passive: true });
+    fila.addEventListener('focusin', () => { enFoco = true; pausar(); });
+    fila.addEventListener('focusout', (e) => { if (!fila.contains(e.relatedTarget)) { enFoco = false; programar(PASO); } });
+    window.addEventListener('scroll', () => { ultimoScrollPagina = Date.now(); }, { passive: true });
+    new IntersectionObserver(([en]) => {
+      aVista = en.isIntersecting;
+      if (aVista) programar(PASO); else parar();
+    }, { threshold: 0.6 }).observe(fila);
+    document.addEventListener('visibilitychange', () => { if (document.hidden) parar(); else programar(PASO); });
+    const cambio = () => { if (puede()) programar(PASO); else parar(); };
+    if (quietoMQ.addEventListener) { quietoMQ.addEventListener('change', cambio); movilMQ.addEventListener('change', cambio); }
+  }
 
   // Filas deslizables en el móvil: al entrar en pantalla las tarjetas llegan
   // desde la derecha y se pasan un poco de largo, así se insinúa la siguiente
@@ -712,7 +803,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (hecho) return;
     hecho = true;
     var s = document.createElement('script');
-    s.src = OI_ASSETS + 'movimiento.js?v=1';
+    s.src = OI_ASSETS + 'movimiento.js?v=2';
     s.async = true;
     document.head.appendChild(s);
   };
