@@ -327,13 +327,18 @@ const navLink = (active) => `<div class="nav-wrap">
 <nav class="nav">
 <a href="${UP}index.html" class="nav__logo"><img src="${UP}assets/logo-nav-black.png" alt="OI Studio" class="nav__logo-img"/></a>
 <ul class="nav__links">
-<li><a href="${UP}index.html" data-t="nav_inicio">Inicio</a></li>
-<li><a href="${UP}sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
 <li><a href="${UP}trabajos.html" data-t="nav_trabajos">Trabajos</a></li>
 <li><a href="${UP}precios.html" data-t="nav_precios">Precios</a></li>
-<li><a href="${UP}zonas.html"${active === 'zonas' ? ' class="is-active"' : ''} data-t="nav_zonas">Zonas</a></li>
 <li><a href="${UP}reservas-online-sin-comisiones.html" data-t="nav_reservas">Reservas</a></li>
+<li><a href="${UP}sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
+<li><a href="${UP}contacto.html" data-t="nav_contacto">Contacto</a></li>
+<li class="nav__mas"><button type="button" class="nav__mas-btn is-active" aria-expanded="false" aria-controls="nav-mas"><span data-t="nav_mas">Más</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+<ul class="nav__drop" id="nav-mas">
+<li><a href="${UP}ayudas-subvenciones-pagina-web-gipuzkoa.html" data-t="nav_ayudas">Ayudas</a></li>
+<li><a href="${UP}zonas.html" class="is-active" aria-current="page" data-t="nav_zonas">Zonas</a></li>
 <li><a href="${UP}articulos.html" data-t="nav_articulos">Artículos</a></li>
+<li><a href="${UP}chatbot-reservas.html" data-t="nav_chatbot">Chatbot</a></li>
+</ul></li>
 </ul>
 <div class="nav__right">
 <a href="tel:+34680956755" class="nav__phone" aria-label="Llamar al 680 95 67 55">
@@ -345,23 +350,31 @@ const navLink = (active) => `<div class="nav-wrap">
 <button type="button" data-lang="eu">EU</button>
 </div>
 <a href="${UP}contacto.html" class="btn btn--accent nav__cta" data-t="btn_presupuesto">Solicitar presupuesto</a>
-<button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+<button class="nav__toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-movil">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path class="nav__toggle-a" d="M4 7h16M4 12h16M4 17h16"/><path class="nav__toggle-b" d="M6 6l12 12M18 6L6 18"/></svg>
 </button>
 </div>
 </nav>
 </div>
-<div class="mobile-menu">
-<ul>
-<li><a href="${UP}index.html" data-t="nav_inicio">Inicio</a></li>
-<li><a href="${UP}sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
+<div class="mobile-menu" id="menu-movil">
+<ul class="mobile-menu__main">
 <li><a href="${UP}trabajos.html" data-t="nav_trabajos">Trabajos</a></li>
 <li><a href="${UP}precios.html" data-t="nav_precios">Precios</a></li>
-<li><a href="${UP}zonas.html" data-t="nav_zonas">Zonas</a></li>
 <li><a href="${UP}reservas-online-sin-comisiones.html" data-t="nav_reservas">Reservas</a></li>
-<li><a href="${UP}articulos.html" data-t="nav_articulos">Artículos</a></li>
+<li><a href="${UP}sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
 <li><a href="${UP}contacto.html" data-t="nav_contacto">Contacto</a></li>
 </ul>
+<ul class="mobile-menu__sec">
+<li><a href="${UP}ayudas-subvenciones-pagina-web-gipuzkoa.html" data-t="nav_ayudas">Ayudas</a></li>
+<li><a href="${UP}zonas.html" class="is-active" aria-current="page" data-t="nav_zonas">Zonas</a></li>
+<li><a href="${UP}articulos.html" data-t="nav_articulos">Artículos</a></li>
+<li><a href="${UP}chatbot-reservas.html" data-t="nav_chatbot">Chatbot</a></li>
+</ul>
+<div class="mobile-menu__atajos">
+<a href="tel:+34680956755"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span data-t="fm_llamar">Llamar</span></a>
+<a href="https://wa.me/34680956755" target="_blank" rel="noopener" class="is-wa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.5 8.5 0 0 1-4-1L3 20l1-5.5A8.5 8.5 0 1 1 21 11.5z"/></svg><span>WhatsApp</span></a>
+<a href="${UP}contacto.html" class="is-main"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span data-t="mm_presu">Pedir presupuesto</span></a>
+</div>
 </div>`;
 
 const footer = () => `<footer class="footer">

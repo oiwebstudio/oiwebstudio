@@ -39,10 +39,10 @@
 <link rel="manifest" href="/site.webmanifest"/>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/geist-latin-04ce1a61.woff2" crossorigin/>
 <link rel="stylesheet" href="/assets/fuentes.css?v=1"/>
-<link rel="stylesheet" href="assets/styles.css?v=24"/>
+<link rel="stylesheet" href="assets/styles.css?v=25"/>
 <script>if(location.protocol==='http:'&&/(^|\.)oiwebstudio\.com$/.test(location.hostname))location.replace('https://'+location.host+location.pathname+location.search+location.hash);document.documentElement.classList.add('js');</script>
 <style>
-  .pre-hero{padding:150px 0 26px;text-align:center;}
+  .pre-hero{padding:118px 0 18px;text-align:center;}
   .pre-hero h1{font-size:clamp(38px,6vw,64px);margin-top:18px;}
   .pre-hero .lede{font-size:19px;color:var(--text-muted);margin:18px auto 0;max-width:52ch;}
   .pre-iva{font-size:13px;color:var(--text-faint);margin-top:10px;}
@@ -161,14 +161,18 @@
 <nav class="nav">
 <a href="index.html" class="nav__logo"><img src="assets/logo-nav-black.png" alt="OI Studio" class="nav__logo-img" width="320" height="86"/></a>
 <ul class="nav__links">
-<li><a href="index.html" data-t="nav_inicio">Inicio</a></li>
-<li><a href="sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
 <li><a href="trabajos.html" data-t="nav_trabajos">Trabajos</a></li>
-<li><a href="precios.html" class="is-active" data-t="nav_precios">Precios</a></li>
+<li><a href="precios.html" class="is-active" aria-current="page" data-t="nav_precios">Precios</a></li>
+<li><a href="reservas-online-sin-comisiones.html" data-t="nav_reservas">Reservas</a></li>
+<li><a href="sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
+<li><a href="contacto.html" data-t="nav_contacto">Contacto</a></li>
+<li class="nav__mas"><button type="button" class="nav__mas-btn" aria-expanded="false" aria-controls="nav-mas"><span data-t="nav_mas">Más</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+<ul class="nav__drop" id="nav-mas">
 <li><a href="ayudas-subvenciones-pagina-web-gipuzkoa.html" data-t="nav_ayudas">Ayudas</a></li>
 <li><a href="zonas.html" data-t="nav_zonas">Zonas</a></li>
-<li><a href="reservas-online-sin-comisiones.html" data-t="nav_reservas">Reservas</a></li>
 <li><a href="articulos.html" data-t="nav_articulos">Artículos</a></li>
+<li><a href="chatbot-reservas.html" data-t="nav_chatbot">Chatbot</a></li>
+</ul></li>
 </ul>
 <div class="nav__right">
 <a href="tel:+34680956755" class="nav__phone" aria-label="Llamar al 680 95 67 55">
@@ -180,24 +184,31 @@
 <a class="lang-link" href="/eu/precios.html" hreflang="eu" lang="eu" aria-label="Euskaraz ikusi">EU</a>
 </div>
 <a href="contacto.html" class="btn btn--accent nav__cta" data-t="btn_presupuesto">Solicitar presupuesto</a>
-<button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+<button class="nav__toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-movil">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path class="nav__toggle-a" d="M4 7h16M4 12h16M4 17h16"/><path class="nav__toggle-b" d="M6 6l12 12M18 6L6 18"/></svg>
 </button>
 </div>
 </nav>
 </div>
-<div class="mobile-menu">
-<ul>
-<li><a href="index.html" data-t="nav_inicio">Inicio</a></li>
-<li><a href="sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
+<div class="mobile-menu" id="menu-movil">
+<ul class="mobile-menu__main">
 <li><a href="trabajos.html" data-t="nav_trabajos">Trabajos</a></li>
-<li><a href="precios.html" data-t="nav_precios">Precios</a></li>
-<li><a href="ayudas-subvenciones-pagina-web-gipuzkoa.html" data-t="nav_ayudas">Ayudas</a></li>
-<li><a href="zonas.html" data-t="nav_zonas">Zonas</a></li>
+<li><a href="precios.html" class="is-active" aria-current="page" data-t="nav_precios">Precios</a></li>
 <li><a href="reservas-online-sin-comisiones.html" data-t="nav_reservas">Reservas</a></li>
-<li><a href="articulos.html" data-t="nav_articulos">Artículos</a></li>
+<li><a href="sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
 <li><a href="contacto.html" data-t="nav_contacto">Contacto</a></li>
 </ul>
+<ul class="mobile-menu__sec">
+<li><a href="ayudas-subvenciones-pagina-web-gipuzkoa.html" data-t="nav_ayudas">Ayudas</a></li>
+<li><a href="zonas.html" data-t="nav_zonas">Zonas</a></li>
+<li><a href="articulos.html" data-t="nav_articulos">Artículos</a></li>
+<li><a href="chatbot-reservas.html" data-t="nav_chatbot">Chatbot</a></li>
+</ul>
+<div class="mobile-menu__atajos">
+<a href="tel:+34680956755"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span data-t="fm_llamar">Llamar</span></a>
+<a href="https://wa.me/34680956755" target="_blank" rel="noopener" class="is-wa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.5 8.5 0 0 1-4-1L3 20l1-5.5A8.5 8.5 0 1 1 21 11.5z"/></svg><span>WhatsApp</span></a>
+<a href="contacto.html" class="is-main"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span data-t="mm_presu">Pedir presupuesto</span></a>
+</div>
 </div>
 
 <header class="pre-hero">
@@ -233,8 +244,8 @@
 .eleg{max-width:1040px;margin:0 auto 44px;text-align:center;}
 .eleg h2{font-size:clamp(24px,3vw,32px);letter-spacing:-.01em;margin:0 0 8px;}
 .eleg>p{color:var(--text-muted);margin:0 0 22px;}
-.eleg__ops{display:grid;gap:12px;grid-template-columns:1fr;}
-@media(min-width:620px){.eleg__ops{grid-template-columns:repeat(2,1fr);}}
+.eleg__ops{display:grid;gap:10px;grid-template-columns:1fr 1fr;}
+@media(max-width:619px){.eleg__op{padding:14px;font-size:14.5px;}.eleg{margin-bottom:8px;}}
 @media(min-width:1000px){.eleg__ops{grid-template-columns:repeat(4,1fr);}}
 .eleg__op{font:inherit;text-align:left;padding:18px 20px;border-radius:var(--r-md);border:1px solid var(--border-strong);background:var(--surface);color:var(--ink);font-size:15.5px;font-weight:550;line-height:1.35;cursor:pointer;transition:border-color .2s,box-shadow .2s,background .2s;}
 .eleg__op:hover{border-color:var(--ink);}
@@ -245,13 +256,14 @@
 .eleg__res a{color:var(--terra-link);font-weight:600;margin-left:8px;text-decoration:underline;text-underline-offset:3px;}
 .is-pick{outline:3px solid var(--terra);outline-offset:4px;transition:outline-color .3s;}
 .lin{scroll-margin-top:110px;}
-#web.lin{padding-top:56px;}
+#web.lin{padding-top:30px;}
 .lin__cab{max-width:760px;margin:0 auto 30px;text-align:center;}
 .lin__num{display:block;font-size:15px;font-weight:600;color:var(--terra-link);margin-bottom:6px;}
 .lin__h{font-size:clamp(28px,3.6vw,40px);letter-spacing:-.01em;margin:0 0 10px;}
 .lin__cab p{color:var(--text-muted);font-size:16.5px;margin:0;}
 .lin__cab p+p{margin-top:8px;font-size:14.5px;}
 .pricing .price{min-height:0;}
+@media(max-width:759px){.pricing.desliza{padding-top:26px!important;}.pricing .price{padding:30px 22px;}.price__list{gap:9px;}.lin__cab{margin-bottom:18px;}}
 .carta{list-style:none;margin:0 auto;padding:0;max-width:880px;border-top:1px solid var(--border-strong);}
 .carta li{display:grid;grid-template-columns:1fr;gap:10px;padding:22px 0;border-bottom:1px solid var(--border);}
 @media(min-width:720px){.carta li{grid-template-columns:1fr 220px;gap:28px;align-items:start;}}
@@ -310,7 +322,7 @@
 <h2 class="lin__h" data-t="pre_l1_h">Solo la web</h2>
 <p data-t="pre_l1_p">Para que te encuentren, te llamen o te compren. Dominio y alojamiento del primer año incluidos.</p>
 </div>
-<div class="pricing" id="planes">
+<div class="pricing desliza" id="planes">
 <article class="price reveal" id="plan-landing">
 <div class="price__name">Landing</div>
 <p class="price__desc" data-t="p1_desc">Una sola página para darte a conocer rápido y empezar a recibir contactos.</p>
@@ -405,7 +417,7 @@
 <h2 class="lin__h" data-t="pre_l3_h">Packs</h2>
 <p data-t="pre_l3_p">La web y las reservas, montadas a la vez y con un precio cerrado. Llevan el mantenimiento de 25 €/mes.</p>
 </div>
-<div class="packs">
+<div class="packs desliza">
 <article class="pk reveal" id="pack-reservas">
 <div class="pk__name" data-t="k1_name">Web + reservas</div>
 <p class="pk__desc" data-t="k1_desc">Una página con reservas o citas online dentro. Para peluquerías, estética, fisios y negocios con cita.</p>
@@ -575,7 +587,7 @@
 <h2 data-t="pre_mu_h">Así queda una web hecha a medida</h2>
 <p data-t="pre_mu_p">Tres muestras para abrir en el móvil o en el ordenador.</p>
 </div>
-<div class="pre-mu__g">
+<div class="pre-mu__g desliza">
 <a class="pre-mu__c reveal" href="/demos/muestras/etxea-inmobiliaria/" target="_blank" rel="noopener"><picture><source srcset="assets/etxea-desk.webp" type="image/webp"/><img src="assets/etxea-desk.jpg" alt="Muestra de web para inmobiliaria" width="900" height="562" loading="lazy"/></picture><span><b data-t="tag_inm">Inmobiliaria</b> · <i data-t="badge_live">Muestra</i></span></a>
 <a class="pre-mu__c reveal" data-d="1" href="/demos/muestras/pedala-bizikletak/" target="_blank" rel="noopener"><picture><source srcset="assets/pedala-desk.webp" type="image/webp"/><img src="assets/pedala-desk.jpg" alt="Muestra de web para tienda de bicicletas" width="900" height="562" loading="lazy"/></picture><span><b data-t="tag_bici">Tienda de bicis</b> · <i data-t="badge_live">Muestra</i></span></a>
 <a class="pre-mu__c reveal" data-d="2" href="/demos/muestras/ekhi-psikologia/" target="_blank" rel="noopener"><picture><source srcset="assets/ekhi-desk.webp" type="image/webp"/><img src="assets/ekhi-desk.jpg" alt="Muestra de web para psicología" width="900" height="562" loading="lazy"/></picture><span><b data-t="tag_psi">Psicología</b> · <i data-t="badge_live">Muestra</i></span></a>
@@ -583,13 +595,26 @@
 </div>
 </section>
 
-<section class="section section--subtle">
-<div class="container">
+<section class="section section--subtle" id="faq">
+<div class="container hfaq">
+<div class="hfaq__lado">
 <div class="section-head reveal">
 <span class="eyebrow" data-t="pre_faq_eyebrow">Dudas frecuentes</span>
 <h2 class="faq-h2" data-t="pre_faq_h2">Preguntas frecuentes</h2>
 </div>
-<div class="faq-pre reveal" data-d="1">
+<aside class="faq-otra reveal" data-d="1" aria-labelledby="fo-h">
+<figure class="faq-otra__foto"><picture><source srcset="assets/aberri-desk.webp" type="image/webp"/><img src="assets/aberri-desk.jpg" alt="La web de A.Berri, casa rural en Getaria, en un ordenador" width="1440" height="900" loading="lazy" decoding="async"/></picture><span>aberricasarural.com · <span data-t="fo_pub">web publicada</span></span></figure>
+<div class="faq-otra__txt">
+<p class="faq-otra__h" id="fo-h" data-t="fo_h">¿Otra duda?</p>
+<p class="faq-otra__p" data-t="fo_p">Pregúntame lo que quieras. Contesto en el día, por WhatsApp o por teléfono.</p>
+<div class="faq-otra__btns">
+<a class="btn btn--accent" href="https://wa.me/34680956755" target="_blank" rel="noopener" data-t="btn_whatsapp">Escribir por WhatsApp</a>
+<a class="faq-otra__tel" href="tel:+34680956755"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>680 95 67 55</a>
+</div>
+</div>
+</aside>
+</div>
+<div class="hfaq__lista reveal" data-d="1">
 <details><summary data-t="pf1_q">¿El precio es cerrado de verdad?</summary><p data-t="pf1_a">Sí. Antes de empezar te doy el precio por escrito y no cambia, salvo que tú pidas cosas nuevas a mitad de proyecto — y en ese caso también te lo presupuesto antes.</p></details>
 <details><summary data-t="pf2_q">¿Qué pasa con el dominio y el hosting?</summary><p data-t="pf2_a">El primer año van incluidos: registro el dominio a tu nombre y dejo la web publicada con https. La web es tuya, no queda atada a mí. Desde el segundo año entran en el mantenimiento o, si no lo quieres, pagas solo dominio y alojamiento: 15 € al año.</p></details>
 <details><summary data-t="pf3_q">¿Cuánto se tarda?</summary><p data-t="pf3_a">Una Landing suele estar en una semana; una Web Negocio, en dos o tres. El plazo exacto te lo confirmo con la propuesta.</p></details>
@@ -601,8 +626,9 @@
 <details><summary data-t="pf7_q">¿Y si quiero vender por internet?</summary><p data-t="pf7_a">Para eso está la Tienda Online: 850 €, con hasta 50 productos cargados, pago con tarjeta y Bizum y aviso de cada pedido. Si tienes más productos, los subes tú desde tu panel o los cargo yo a 1 € cada uno. Las comisiones de cobro (alrededor del 1,5 % por venta) las cobra directamente la pasarela de pago. El mantenimiento de una tienda es opcional y cuesta 35 €/mes, porque da más trabajo que una web normal.</p></details>
 <details><summary data-t="pf5_q">¿Puedo ver la web antes de pagar?</summary><p data-t="pf5_a">Sí. Te preparo una muestra con tu negocio, gratis y sin compromiso. Solo si te convence, seguimos.</p></details>
 <details><summary data-t="pf6_q">¿Cómo se paga?</summary><p data-t="pf6_a">Pagas una sola vez, al final: cuando la web está terminada y publicada. Si te viene mejor otra forma de pago, lo hablamos.</p></details>
+<p class="reveal" style="margin-top:14px;font-size:15px;color:var(--text-muted);" data-t="pre_guia_link">¿Quieres entender por qué otros presupuestos varían tanto? Lee la <a href="precio-diseno-web-profesional.html" class="link-terra">guía completa: cuánto cuesta una web profesional en 2026</a> o, si quieres vender por internet, <a href="cuanto-cuesta-tienda-online-pequeno-comercio.html" class="link-terra">cuánto cuesta una tienda online</a>.</p>
 </div>
-<p class="reveal" style="text-align:center;margin-top:28px;font-size:15px;color:var(--text-muted);" data-t="pre_guia_link">¿Quieres entender por qué otros presupuestos varían tanto? Lee la <a href="precio-diseno-web-profesional.html" class="link-terra">guía completa: cuánto cuesta una web profesional en 2026</a> o, si quieres vender por internet, <a href="cuanto-cuesta-tienda-online-pequeno-comercio.html" class="link-terra">cuánto cuesta una tienda online</a>.</p>
+
 </div>
 </section>
 
@@ -693,8 +719,8 @@
 <div class="footer__mark" aria-hidden="true">OI STUDIO</div>
 </footer>
 
-<script src="assets/i18n.js?v=19"></script>
-<script src="assets/main.js?v=11"></script>
+<script src="assets/i18n.js?v=20"></script>
+<script src="assets/main.js?v=12"></script>
 <script src="assets/calculadora.js?v=1"></script>
 
 <!-- Pricing Glassmorphism + 3D Tilt -->

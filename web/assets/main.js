@@ -67,20 +67,126 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Mobile nav toggle
+  const enEuskera = (document.documentElement.lang || '').toLowerCase().startsWith('eu');
+
+  // Menú del móvil a pantalla completa: bloquea el scroll de detrás, se
+  // cierra con Esc o al elegir un enlace y devuelve el foco al botón.
   const toggle = document.querySelector('.nav__toggle');
   const menu = document.querySelector('.mobile-menu');
   if (toggle && menu) {
-    toggle.addEventListener('click', () => {
-      const open = menu.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      if (open && navWrap) navWrap.classList.remove('is-hidden');
+    const etiqueta = (abierto) => abierto
+      ? (enEuskera ? 'Menua itxi' : 'Cerrar menú')
+      : (enEuskera ? 'Menua ireki' : 'Abrir menú');
+    const abrir = (si) => {
+      menu.classList.toggle('is-open', si);
+      document.documentElement.classList.toggle('menu-abierto', si);
+      toggle.setAttribute('aria-expanded', si ? 'true' : 'false');
+      toggle.setAttribute('aria-label', etiqueta(si));
+      if (si && navWrap) navWrap.classList.remove('is-hidden', 'is-contracted');
+      if (si) { const primero = menu.querySelector('a'); if (primero) primero.focus({ preventScroll: true }); }
+    };
+    toggle.addEventListener('click', () => abrir(!menu.classList.contains('is-open')));
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => abrir(false)));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.classList.contains('is-open')) { abrir(false); toggle.focus(); }
     });
-    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      menu.classList.remove('is-open');
-      toggle.setAttribute('aria-expanded', 'false');
-    }));
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 1200 && menu.classList.contains('is-open')) abrir(false);
+    }, { passive: true });
   }
+
+  // «Más» en el menú de escritorio: botón con aria-expanded, Esc cierra,
+  // flecha abajo entra en la lista, clic fuera o salir con el tabulador cierra.
+  document.querySelectorAll('.nav__mas').forEach(mas => {
+    const btn = mas.querySelector('.nav__mas-btn');
+    const enlaces = Array.from(mas.querySelectorAll('.nav__drop a'));
+    if (!btn) return;
+    const abrir = (si) => { mas.classList.toggle('is-open', si); btn.setAttribute('aria-expanded', si ? 'true' : 'false'); };
+    btn.addEventListener('click', () => abrir(!mas.classList.contains('is-open')));
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown') { e.preventDefault(); e.stopPropagation(); abrir(true); if (enlaces[0]) enlaces[0].focus(); }
+    });
+    mas.addEventListener('keydown', (e) => {
+      const i = enlaces.indexOf(document.activeElement);
+      if (e.key === 'Escape' && mas.classList.contains('is-open')) { abrir(false); btn.focus(); }
+      else if (i >= 0 && e.key === 'ArrowDown') { e.preventDefault(); enlaces[(i + 1) % enlaces.length].focus(); }
+      else if (i >= 0 && e.key === 'ArrowUp') { e.preventDefault(); if (i === 0) btn.focus(); else enlaces[i - 1].focus(); }
+    });
+    mas.addEventListener('focusout', (e) => { if (!mas.contains(e.relatedTarget)) abrir(false); });
+    document.addEventListener('click', (e) => { if (!mas.contains(e.target)) abrir(false); });
+    window.addEventListener('scroll', () => { if (navWrap && navWrap.classList.contains('is-hidden')) abrir(false); }, { passive: true });
+  });
+
+  // Volver arriba: solo en páginas largas y cuando ya se ha bajado bastante
+  if (document.documentElement.scrollHeight > window.innerHeight * 3) {
+    const subir = document.createElement('button');
+    subir.type = 'button';
+    subir.className = 'subir';
+    subir.setAttribute('aria-label', enEuskera ? 'Gora itzuli' : 'Volver arriba');
+    subir.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>';
+    document.body.appendChild(subir);
+    const quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    subir.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: quieto ? 'auto' : 'smooth' });
+      const logo = document.querySelector('.nav__logo');
+      if (logo) logo.focus({ preventScroll: true });
+    });
+    let marca = false;
+    const mirar = () => {
+      const on = window.scrollY > window.innerHeight * 1.4;
+      if (on !== marca) { marca = on; subir.classList.toggle('is-on', on); }
+    };
+    window.addEventListener('scroll', mirar, { passive: true });
+    mirar();
+  }
+
+  // En el móvil, mientras se ve el héroe (que ya tiene sus botones), el flotante
+  // de WhatsApp espera: así no tapa los sectores ni los botones de la cabecera.
+  const arriba = () => document.documentElement.classList.toggle('flotante-arriba', window.innerWidth < 760 && window.scrollY < window.innerHeight * 0.5);
+  window.addEventListener('scroll', arriba, { passive: true });
+  window.addEventListener('resize', arriba, { passive: true });
+  arriba();
+
+  // Al llegar al pie (que ya trae WhatsApp y teléfono), el botón flotante se aparta
+  const finales = document.querySelectorAll('.footer');
+  if (finales.length && 'IntersectionObserver' in window) {
+    const vistos = new Set();
+    const io = new IntersectionObserver((entradas) => {
+      entradas.forEach(en => { if (en.isIntersecting) vistos.add(en.target); else vistos.delete(en.target); });
+      document.documentElement.classList.toggle('flotante-fuera', vistos.size > 0);
+    }, { rootMargin: '0px 0px -40px 0px' });
+    finales.forEach(el => io.observe(el));
+  }
+
+  // Filas que se deslizan en el móvil: indicador de posición debajo
+  document.querySelectorAll('.desliza').forEach(fila => {
+    const items = Array.from(fila.children).filter(el => el.nodeType === 1);
+    if (items.length < 2) return;
+    const ind = document.createElement('div');
+    ind.className = 'desliza-ind';
+    ind.setAttribute('aria-hidden', 'true');
+    ind.innerHTML = '<span class="desliza-ind__barra"><i></i></span><span class="desliza-ind__n"></span>';
+    fila.insertAdjacentElement('afterend', ind);
+    const barra = ind.querySelector('i');
+    const n = ind.querySelector('.desliza-ind__n');
+    const pintar = () => {
+      const visibles = items.filter(el => !el.hidden && el.offsetParent !== null);
+      const total = Math.max(visibles.length, 1);
+      const max = fila.scrollWidth - fila.clientWidth;
+      const p = max > 0 ? fila.scrollLeft / max : 0;
+      const actual = Math.min(total, Math.round(p * (total - 1)) + 1);
+      barra.style.width = (100 / total) + '%';
+      barra.style.transform = 'translateX(' + ((actual - 1) * 100) + '%)';
+      n.textContent = actual + ' / ' + total;
+      ind.style.display = max > 4 ? '' : 'none';
+    };
+    // Con teclado también se puede recorrer: la fila entra en el orden de tabulación
+    const foco = () => { if (fila.scrollWidth - fila.clientWidth > 4) fila.setAttribute('tabindex', '0'); else fila.removeAttribute('tabindex'); };
+    fila.addEventListener('scroll', () => requestAnimationFrame(pintar), { passive: true });
+    window.addEventListener('resize', () => { pintar(); foco(); }, { passive: true });
+    fila.addEventListener('desliza:cambio', () => { fila.scrollLeft = 0; pintar(); });
+    pintar(); foco();
+  });
 
   // Scroll reveal
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

@@ -382,21 +382,24 @@ a:hover .roll > span, a:focus-visible .roll > span { transform: translateY(-100%
 
 /* Sections ------------------------------------------------------------------ */
 
-.section { padding: 68px 0; }
-@media (min-width: 768px) { .section { padding: 100px 0; } }
-.section--sm { padding: 52px 0; }
-@media (min-width: 768px) { .section--sm { padding: 76px 0; } }
+/* Aire entre secciones: un 35-40 % menos que antes (17/10/2026). Había bloques
+   con un titular y mucho blanco alrededor; ahora el contenido llega antes. */
+.section { padding: 42px 0; }
+@media (min-width: 768px) { .section { padding: 64px 0; } }
+.section--sm { padding: 34px 0; }
+@media (min-width: 768px) { .section--sm { padding: 48px 0; } }
 .section--subtle { background: var(--bg-subtle); }
 
-.section-head { max-width: 620px; margin: 0 auto 44px; text-align: center; }
+.section-head { max-width: 640px; margin: 0 auto 28px; text-align: center; }
+@media (min-width: 768px) { .section-head { margin-bottom: 36px; } }
 .section-head.left { margin-left: 0; text-align: left; }
-.section-head h2 { font-size: clamp(33px, 5vw, 54px); margin-top: 18px; letter-spacing: -0.038em; line-height: 1.06; }
-.section-head p { color: var(--text-muted); font-size: 18px; margin-top: 18px; }
+.section-head h2 { font-size: clamp(30px, 4.6vw, 50px); margin-top: 12px; letter-spacing: -0.038em; line-height: 1.06; }
+.section-head p { color: var(--text-muted); font-size: 17px; margin-top: 12px; }
 
 /* Hero ---------------------------------------------------------------------- */
 
-.hero { position: relative; padding: 132px 0 72px; overflow: hidden; }
-@media (min-width: 768px) { .hero { padding: 164px 0 96px; } }
+.hero { position: relative; padding: 112px 0 44px; overflow: hidden; }
+@media (min-width: 768px) { .hero { padding: 140px 0 64px; } }
 
 .hero__bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
 .hero__bg::before {
@@ -1737,7 +1740,7 @@ summary:focus-visible,
 /* Caso real destacado (portada y Trabajos) ---------------------------------
    Foto real del cliente a sangre y el texto al lado: es lo único del portfolio
    que no es una demo, así que tiene que verse distinto. */
-.caso-dest{display:grid;border-radius:26px;overflow:hidden;background:var(--ink);color:#f6f1e7;text-decoration:none;max-width:1080px;margin:0 auto 64px;box-shadow:0 30px 60px -34px rgba(25,23,18,.55);}
+.caso-dest{display:grid;border-radius:26px;overflow:hidden;background:var(--ink);color:#f6f1e7;text-decoration:none;max-width:1080px;margin:0 auto 28px;box-shadow:0 30px 60px -34px rgba(25,23,18,.55);}
 @media(min-width:860px){.caso-dest{grid-template-columns:1.15fr 1fr;}}
 .caso-dest__foto{position:relative;display:block;min-height:260px;overflow:hidden;}
 .caso-dest__foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease);}
@@ -1756,12 +1759,6 @@ summary:focus-visible,
 .pro-caso{display:inline-block;margin-top:16px;font-weight:600;color:var(--terra-link);text-decoration:underline;text-underline-offset:4px;}
 @media(prefers-reduced-motion:reduce){.caso-dest__foto img,.caso-dest__go{transition:none;}}
 
-/* Con 8 entradas (Ayudas) el menú no cabe entre 1200 y 1400px: menos aire
-   entre enlaces y el teléfono solo con el icono. */
-@media (min-width: 1200px) and (max-width: 1399px) {
-  .nav__links a { padding: 8px 10px; }
-  .nav__phone span { display: none; }
-}
 /* Aviso de ayudas para la web (portada, precios y zonas) */
 .ayuda-cta{display:flex;align-items:center;gap:16px;margin:32px auto 0;max-width:860px;padding:18px 20px;background:var(--surface);border:1px solid var(--border);border-radius:18px;color:var(--ink);text-decoration:none;text-align:left;transition:border-color .2s ease,transform .16s cubic-bezier(.23,1,.32,1);}
 .ayuda-cta:hover{border-color:var(--terra);}
@@ -1789,7 +1786,7 @@ summary:focus-visible,
 .footer__bottom { border-top-color: var(--border); }
 .footer__mark { color: rgba(25, 23, 18, 0.045); }
 .footer .link-terra { color: var(--terra-link); }
-.footer__grid { gap: 34px 28px; padding: 64px 0 40px; grid-template-columns: 1fr 1fr; }
+.footer__grid { gap: 30px 28px; padding: 48px 0 32px; grid-template-columns: 1fr 1fr; }
 .footer__col--brand { grid-column: 1 / -1; }
 @media (min-width: 1000px) {
   .footer__grid { grid-template-columns: 1.5fr 1fr 1.25fr 1fr 1.1fr; gap: 32px; }
@@ -1800,3 +1797,228 @@ summary:focus-visible,
 .footer ul { gap: 9px; }
 .footer__zonas { gap: 7px; }
 .footer__zonas li:nth-last-child(2) { margin-top: 6px; }
+
+/* ==========================================================================
+   Navegación nueva (17/10/2026)
+   Cinco entradas + «Más», la página actual marcada con el subrayado de la
+   casa, menú del móvil a pantalla completa, botón de volver arriba y filas
+   que se deslizan de lado en el móvil.
+   ========================================================================== */
+
+/* Página actual: el mismo marcador terracota que los titulares */
+.nav__links a.is-active, .nav__mas-btn.is-active {
+  color: var(--ink);
+  background-image: linear-gradient(var(--terra-soft), var(--terra-soft));
+  background-repeat: no-repeat; background-size: calc(100% - 26px) 7px; background-position: center 74%;
+}
+.nav__links a.is-active:hover, .nav__mas-btn.is-active:hover { background-color: var(--bg-subtle); }
+.nav__links a:focus-visible, .nav__mas-btn:focus-visible { outline-offset: -2px; }
+
+/* «Más»: botón con flecha y un panel pequeño debajo */
+.nav__mas { position: relative; }
+.nav__mas-btn {
+  display: flex; align-items: center; gap: 6px; padding: 8px 14px; border: 0; border-radius: var(--r-xs);
+  background-color: transparent; font: inherit; font-size: 13.5px; font-weight: 500; letter-spacing: 0.03em;
+  text-transform: uppercase; color: var(--text-muted); cursor: pointer; transition: color .15s, background-color .15s;
+}
+.nav__mas-btn svg { width: 13px; height: 13px; transition: transform .2s var(--ease); }
+.nav__mas-btn:hover, .nav__mas-btn[aria-expanded="true"] { color: var(--ink); background-color: var(--bg-subtle); }
+.nav__mas-btn[aria-expanded="true"] svg { transform: rotate(180deg); }
+.nav__drop {
+  display: none; position: absolute; top: calc(100% + 14px); right: -8px; z-index: 5; min-width: 210px;
+  margin: 0; padding: 8px; list-style: none; background: #fff; border: 1px solid var(--border);
+  border-radius: 14px; box-shadow: var(--shadow-lg);
+}
+.nav__drop::before { content: ""; position: absolute; left: 0; right: 0; top: -16px; height: 16px; }
+.nav__drop a { padding: 11px 14px; }
+.nav__mas.is-open .nav__drop { display: block; animation: dropIn .18s var(--ease); }
+html:not(.js) .nav__mas:focus-within .nav__drop { display: block; }
+@keyframes dropIn { from { opacity: 0; transform: translateY(-6px); } }
+/* La isla recorta lo que sobresale para poder encogerse: con el panel abierto, no */
+.nav__links:has(.nav__mas.is-open), html:not(.js) .nav__links:has(.nav__mas:focus-within) { overflow: visible; }
+@media (min-width: 1200px) and (max-width: 1330px) { .nav__phone { display: inline-flex; } .nav__phone span { display: none; } }
+
+/* Menú del móvil a pantalla completa */
+@media (max-width: 1199.98px) {
+  .mobile-menu {
+    inset: 0; z-index: 99; flex-direction: column; gap: 22px; overflow-y: auto; overscroll-behavior: contain;
+    padding: calc(100px + env(safe-area-inset-top, 0px)) 24px calc(22px + env(safe-area-inset-bottom, 0px));
+    background: var(--bg); border: 0; border-radius: 0; box-shadow: none;
+    -webkit-backdrop-filter: none; backdrop-filter: none; animation: menuFull .28s var(--ease);
+  }
+  .mobile-menu.is-open { display: flex; }
+  .mobile-menu ul { list-style: none; margin: 0; padding: 0; }
+  .mobile-menu__main li + li { border-top: 1px solid var(--border); }
+  .mobile-menu__main a {
+    display: flex; align-items: center; justify-content: space-between; padding: 13px 2px; border-radius: 0;
+    font-family: var(--font-serif); font-size: clamp(28px, 8vw, 40px); font-weight: 500; line-height: 1.1;
+    letter-spacing: -0.01em; text-transform: uppercase; color: var(--ink);
+  }
+  .mobile-menu__main a::after { content: "→"; font-family: var(--font-sans); font-size: 20px; color: var(--text-faint); transition: transform .2s var(--ease); }
+  .mobile-menu__main a:hover { background: none; color: var(--ink); }
+  .mobile-menu__main a:hover::after { transform: translateX(4px); color: var(--ink); }
+  .mobile-menu__main a.is-active { text-decoration: underline; text-decoration-color: var(--terra-soft); text-decoration-thickness: .3em; text-underline-offset: -.14em; text-decoration-skip-ink: none; }
+  .mobile-menu__sec { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 16px; padding-top: 6px; border-top: 1px solid var(--border-strong); }
+  .mobile-menu__sec a { display: block; padding: 12px 0; border-radius: 0; font-size: 15px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-muted); }
+  .mobile-menu__sec a.is-active { color: var(--ink); text-decoration: underline; text-decoration-color: var(--terra); text-decoration-thickness: 3px; text-underline-offset: 6px; }
+  .mobile-menu__atajos { margin-top: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .mobile-menu__atajos a {
+    display: flex; align-items: center; justify-content: center; gap: 9px; min-height: 54px; padding: 0 12px;
+    border-radius: var(--r-sm); border: 1px solid var(--border-strong); background: var(--surface);
+    font-size: 15.5px; font-weight: 600; color: var(--ink);
+  }
+  .mobile-menu__atajos svg { width: 19px; height: 19px; flex: none; }
+  .mobile-menu__atajos .is-wa { background: #25d366; border-color: #25d366; color: #073b26; }
+  .mobile-menu__atajos .is-main { grid-column: 1 / -1; background: var(--ink); border-color: var(--ink); color: #fff; }
+  .mobile-menu__atajos .is-main svg { order: 2; }
+  .mobile-menu a:focus-visible { outline-color: var(--terra-link); }
+  html.menu-abierto { overflow: hidden; }
+  html.menu-abierto .nav { background: #fff; box-shadow: none; border-color: var(--border); }
+}
+@keyframes menuFull { from { opacity: 0; } to { opacity: 1; } }
+.nav__toggle .nav__toggle-b { display: none; }
+.nav__toggle[aria-expanded="true"] .nav__toggle-a { display: none; }
+.nav__toggle[aria-expanded="true"] .nav__toggle-b { display: inline; }
+@media (prefers-reduced-motion: reduce) { .mobile-menu, .nav__mas.is-open .nav__drop { animation: none; } }
+
+/* Botones flotantes: fuera con el menú abierto y cuando ya se ve el pie
+   (que trae los mismos contactos), para no tapar enlaces del final. */
+html.menu-abierto .wa-float, html.menu-abierto .fmenu, html.menu-abierto .subir,
+html.flotante-fuera .wa-float, html.flotante-fuera .fmenu,
+html.flotante-arriba .wa-float, html.flotante-arriba .fmenu { opacity: 0; visibility: hidden; pointer-events: none; }
+.wa-float, .fmenu { transition: opacity .25s ease, visibility .25s; }
+
+/* Volver arriba: discreto, encima del botón de WhatsApp */
+.subir {
+  position: fixed; z-index: 89; right: calc(28px + env(safe-area-inset-right, 0px)); bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+  width: 46px; height: 46px; display: grid; place-items: center; border-radius: 50%;
+  border: 1px solid var(--border-strong); background: rgba(255,255,255,.94); color: var(--ink);
+  box-shadow: 0 8px 20px -10px rgba(25,23,18,.4); cursor: pointer;
+  opacity: 0; visibility: hidden; transform: translateY(8px); transition: opacity .25s ease, transform .25s var(--ease), visibility .25s;
+}
+.subir svg { width: 18px; height: 18px; }
+.subir.is-on { opacity: 1; visibility: visible; transform: none; }
+html.flotante-fuera .subir { bottom: calc(22px + env(safe-area-inset-bottom, 0px)); }
+@media (hover: hover) and (pointer: fine) { .subir:hover { border-color: var(--ink); } }
+@media (max-width: 640px) { .subir { right: calc(19px + env(safe-area-inset-right, 0px)); bottom: calc(80px + env(safe-area-inset-bottom, 0px)); width: 44px; height: 44px; } }
+@media (prefers-reduced-motion: reduce) { .subir, .wa-float, .fmenu { transition: none; } }
+
+/* Las anclas no quedan debajo de la barra */
+[id] { scroll-margin-top: 92px; }
+
+/* Filas que se deslizan de lado en el móvil (tarjetas, tarifas, pasos,
+   muestras). Se ve un trozo de la siguiente y debajo va un indicador. */
+@media (max-width: 759px) {
+  .desliza {
+    display: flex !important; flex-wrap: nowrap; gap: 12px !important; overflow-x: auto; overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory; scroll-padding-inline: 24px; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+    margin-left: -24px !important; margin-right: -24px !important; padding: 6px 24px 10px !important;
+    grid-template-columns: none !important; max-width: none !important; perspective: none;
+  }
+  .desliza::-webkit-scrollbar { display: none; }
+  .desliza > * { flex: 0 0 84%; min-width: 0; scroll-snap-align: start; margin: 0 !important; grid-column: auto !important; grid-row: auto !important; }
+  .desliza--estrecha > * { flex-basis: 72%; }
+  .desliza > .reveal, .js .desliza > .reveal, .js .desliza .reveal { opacity: 1 !important; transform: none !important; animation: none !important; }
+  .desliza-ind { display: flex; align-items: center; gap: 12px; margin: 4px 0 0; }
+  .desliza-ind__barra { position: relative; flex: 1; height: 3px; border-radius: 3px; background: var(--border); overflow: hidden; }
+  .desliza-ind__barra i { position: absolute; inset: 0 auto 0 0; border-radius: 3px; background: var(--ink); transition: transform .25s var(--ease); }
+  .desliza-ind__n { font-size: 13px; font-variant-numeric: tabular-nums; color: var(--text-muted); min-width: 4ch; text-align: right; }
+}
+@media (min-width: 760px) { .desliza-ind { display: none; } }
+@media (prefers-reduced-motion: reduce) { .desliza-ind__barra i { transition: none; } }
+
+/* ==========================================================================
+   Preguntas frecuentes en dos columnas (portada, precios, contacto)
+   A la izquierda, fijo al bajar: el titular, una web publicada y «¿Otra duda?»
+   ========================================================================== */
+.hfaq { display: grid; gap: 26px; max-width: 1100px; }
+.hfaq__lado { display: grid; gap: 22px; align-content: start; }
+@media (min-width: 900px) {
+  .hfaq { grid-template-columns: 4fr 7fr; gap: 64px; align-items: start; }
+  .hfaq__lado { position: sticky; top: 100px; }
+}
+.hfaq__lista { display: grid; gap: 10px; }
+.hfaq details { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 2px 22px; transition: border-color .25s, box-shadow .25s; }
+.hfaq details[open] { border-color: var(--border-strong); box-shadow: var(--shadow-sm); }
+.hfaq summary { cursor: pointer; list-style: none; position: relative; padding: 17px 36px 17px 0; font-size: 16.5px; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); }
+.hfaq summary::-webkit-details-marker { display: none; }
+.hfaq summary::after { content: ""; position: absolute; right: 2px; top: 50%; width: 22px; height: 22px; margin-top: -11px; border-radius: 50%; background: var(--terra-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238f5720' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M12 6v12M6 12h12'/%3E%3C/svg%3E") center / 12px no-repeat; transition: transform .3s var(--ease); }
+.hfaq details[open] summary::after { transform: rotate(45deg); }
+.hfaq details p { margin: 0; padding: 0 0 20px; font-size: 15.5px; line-height: 1.7; color: var(--text-muted); max-width: 62ch; }
+.hfaq .section-head { text-align: left; margin: 0; }
+.faq-otra { display: grid; grid-template-columns: 1fr; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; }
+.faq-otra__foto { position: relative; display: block; aspect-ratio: 16 / 9; overflow: hidden; background: var(--bg-subtle); }
+.faq-otra__foto img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform .6s var(--ease); }
+.faq-otra__foto span { position: absolute; left: 12px; bottom: 12px; padding: 6px 11px; border-radius: 8px; background: rgba(20,17,12,.84); color: #fff; font-size: 12.5px; font-weight: 600; }
+@media (hover: hover) and (pointer: fine) { .faq-otra__foto:hover img { transform: scale(1.03); } }
+.faq-otra__txt { padding: 20px 22px 22px; }
+.faq-otra__h { font-family: var(--font-serif); font-size: 24px; line-height: 1.15; letter-spacing: -0.02em; color: var(--ink); text-transform: uppercase; }
+.faq-otra__p { margin-top: 8px; font-size: 15px; line-height: 1.6; color: var(--text-muted); }
+.faq-otra__btns { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 18px; margin-top: 16px; }
+.faq-otra__tel { display: inline-flex; align-items: center; gap: 8px; padding: 10px 0; font-weight: 600; color: var(--ink); text-decoration: underline; text-decoration-color: var(--border-strong); text-underline-offset: 4px; }
+.faq-otra__tel svg { width: 16px; height: 16px; color: var(--terra-link); }
+.faq-otra__tel:hover { text-decoration-color: var(--ink); }
+@media (max-width: 899px) {
+  .hfaq { display: flex; flex-direction: column; }
+  .hfaq__lado { display: contents; }
+  .hfaq .section-head { order: 1; }
+  .hfaq__lista { order: 2; }
+  .faq-otra { order: 3; grid-template-columns: 112px 1fr; align-items: stretch; }
+  .faq-otra__foto { aspect-ratio: auto; }
+  .faq-otra__foto span { display: none; }
+  .faq-otra__txt { padding: 16px 16px 14px; }
+  .faq-otra__h { font-size: 20px; }
+  .faq-otra__p { font-size: 14.5px; }
+}
+@media (prefers-reduced-motion: reduce) { .faq-otra__foto img { transition: none; } }
+
+/* ==========================================================================
+   «Cómo trabajo» con imagen en cada paso (portada y sobre mí)
+   ========================================================================== */
+.pasos-img { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; grid-template-columns: 1fr; }
+@media (min-width: 640px) { .pasos-img { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .pasos-img { grid-template-columns: repeat(5, 1fr); } }
+.pasos-img > li { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-md); overflow: hidden; }
+.pi__img { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--bg-subtle); }
+.pi__img > picture > img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pi__txt { padding: 16px 18px 20px; }
+.pi__n { font-size: 13px; font-variant-numeric: tabular-nums; color: var(--text-faint); }
+.pasos-img h3 { font-size: 16.5px; margin: 6px 0; text-transform: uppercase; letter-spacing: 0; line-height: 1.2; }
+.pasos-img p { font-size: 14.5px; line-height: 1.55; color: var(--text-muted); margin: 0; }
+/* paso 2: tres referencias sobre la mesa */
+.pi__refs { position: absolute; inset: 0; background: #ebe7df; }
+.pi__refs picture { position: absolute; width: 62%; box-shadow: 0 10px 22px -10px rgba(25,23,18,.45); border-radius: 6px; overflow: hidden; }
+.pi__refs picture img { width: 100%; height: auto; display: block; }
+.pi__refs picture:nth-child(1) { left: 6%; top: 9%; transform: rotate(-4deg); }
+.pi__refs picture:nth-child(2) { right: 5%; top: 24%; transform: rotate(3deg); }
+.pi__refs picture:nth-child(3) { left: 19%; bottom: 7%; transform: rotate(-1deg); }
+/* paso 3: la web en el ordenador */
+.pi__img--pc { background: #e9e6df; display: grid; place-items: center; padding: 9% 8% 11%; }
+.pi__pantalla { width: 100%; padding: 5px 5px 7px; border-radius: 8px 8px 3px 3px; background: #14110c; box-shadow: 0 16px 28px -16px rgba(25,23,18,.6); }
+.pi__pantalla img { width: 100%; height: auto; display: block; border-radius: 3px; }
+/* paso 4: publicada, en un móvil con su dirección */
+.pi__img--movil { background: #dfe4e2; display: grid; place-items: end center; }
+.pi__tel { width: 46%; margin-bottom: -22%; border: 5px solid #14110c; border-radius: 18px; overflow: hidden; background: #14110c; box-shadow: 0 16px 30px -14px rgba(25,23,18,.6); }
+.pi__tel img { width: 100%; height: auto; display: block; }
+.pi__url { position: absolute; left: 10px; top: 10px; z-index: 2; display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px; border-radius: 8px; background: #fff; font-size: 12px; font-weight: 600; color: var(--ink); box-shadow: 0 6px 14px -8px rgba(25,23,18,.4); }
+.pi__url svg { width: 12px; height: 12px; color: var(--ok-text); }
+/* paso 5: un cambio por WhatsApp */
+.pi__img--chat { background: #efeae2; display: flex; flex-direction: column; justify-content: center; gap: 8px; padding: 14px; }
+.pi__msg { max-width: 88%; padding: 9px 12px; border-radius: 12px; font-size: 13px; line-height: 1.4; color: #1f2c22; box-shadow: 0 1px 1px rgba(0,0,0,.08); }
+.pi__msg--el { align-self: flex-start; background: #fff; border-top-left-radius: 3px; }
+.pi__msg--yo { align-self: flex-end; background: #d9fdd3; border-top-right-radius: 3px; }
+
+/* Galería de trabajo real (sobre mí y contacto) */
+.galeria-trabajo { display: grid; gap: 14px; grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 900px) { .galeria-trabajo { grid-template-columns: repeat(3, 1fr); } }
+.gt { position: relative; display: block; margin: 0; border-radius: var(--r-md); overflow: hidden; background: var(--surface); border: 1px solid var(--border); color: inherit; }
+.gt img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; display: block; transition: transform .5s var(--ease); }
+.gt__pie { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 10px 12px; font-size: 13px; color: var(--text-muted); }
+.gt__pie b { color: var(--ink); font-weight: 600; text-transform: uppercase; letter-spacing: .02em; font-size: 13px; }
+.gt__real { color: var(--ok-text); font-weight: 600; }
+@media (hover: hover) and (pointer: fine) { .gt:hover img { transform: scale(1.03); } }
+@media (max-width: 520px) { .gt__pie { flex-direction: column; gap: 2px; } }
+@media (prefers-reduced-motion: reduce) { .gt img { transition: none; } }
+
+/* Sin movimiento: las tarifas de Precios aparecen quietas (antes entraban girando igualmente) */
+@media (prefers-reduced-motion: reduce) { .price, .price__flag, .price--featured .price__halo { animation: none; } }

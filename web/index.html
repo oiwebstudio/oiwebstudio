@@ -143,8 +143,8 @@
 </script>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/geist-latin-04ce1a61.woff2" crossorigin/>
 <link rel="stylesheet" href="/assets/fuentes.css?v=1"/>
-<link rel="stylesheet" href="assets/styles.css?v=24"/>
-<link rel="stylesheet" href="assets/portada.css?v=12"/>
+<link rel="stylesheet" href="assets/styles.css?v=25"/>
+<link rel="stylesheet" href="assets/portada.css?v=13"/>
 <script>if(location.protocol==='http:'&&/(^|\.)oiwebstudio\.com$/.test(location.hostname))location.replace('https://'+location.host+location.pathname+location.search+location.hash);document.documentElement.classList.add('js');</script>
 <link rel="preload" as="image" href="assets/etxea-desk.webp" fetchpriority="high"/>
 </head>
@@ -154,14 +154,18 @@
 <nav class="nav">
 <a href="index.html" class="nav__logo"><img src="assets/logo-nav-black.png" alt="OI Studio" class="nav__logo-img" width="97" height="26"/></a>
 <ul class="nav__links">
-<li><a href="index.html" class="is-active" data-t="nav_inicio">Inicio</a></li>
-<li><a href="sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
 <li><a href="trabajos.html" data-t="nav_trabajos">Trabajos</a></li>
 <li><a href="precios.html" data-t="nav_precios">Precios</a></li>
+<li><a href="reservas-online-sin-comisiones.html" data-t="nav_reservas">Reservas</a></li>
+<li><a href="sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
+<li><a href="contacto.html" data-t="nav_contacto">Contacto</a></li>
+<li class="nav__mas"><button type="button" class="nav__mas-btn" aria-expanded="false" aria-controls="nav-mas"><span data-t="nav_mas">Más</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+<ul class="nav__drop" id="nav-mas">
 <li><a href="ayudas-subvenciones-pagina-web-gipuzkoa.html" data-t="nav_ayudas">Ayudas</a></li>
 <li><a href="zonas.html" data-t="nav_zonas">Zonas</a></li>
-<li><a href="reservas-online-sin-comisiones.html" data-t="nav_reservas">Reservas</a></li>
 <li><a href="articulos.html" data-t="nav_articulos">Artículos</a></li>
+<li><a href="chatbot-reservas.html" data-t="nav_chatbot">Chatbot</a></li>
+</ul></li>
 </ul>
 <div class="nav__right">
 <a href="tel:+34680956755" class="nav__phone" aria-label="Llamar al 680 95 67 55">
@@ -173,24 +177,31 @@
 <a class="lang-link" href="/eu/index.html" hreflang="eu" lang="eu" aria-label="Euskaraz ikusi">EU</a>
 </div>
 <a href="contacto.html" class="btn btn--accent nav__cta" data-t="btn_presupuesto">Solicitar presupuesto</a>
-<button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+<button class="nav__toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-movil">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path class="nav__toggle-a" d="M4 7h16M4 12h16M4 17h16"/><path class="nav__toggle-b" d="M6 6l12 12M18 6L6 18"/></svg>
 </button>
 </div>
 </nav>
 </div>
-<div class="mobile-menu">
-<ul>
-<li><a href="index.html" data-t="nav_inicio">Inicio</a></li>
-<li><a href="sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
+<div class="mobile-menu" id="menu-movil">
+<ul class="mobile-menu__main">
 <li><a href="trabajos.html" data-t="nav_trabajos">Trabajos</a></li>
 <li><a href="precios.html" data-t="nav_precios">Precios</a></li>
-<li><a href="ayudas-subvenciones-pagina-web-gipuzkoa.html" data-t="nav_ayudas">Ayudas</a></li>
-<li><a href="zonas.html" data-t="nav_zonas">Zonas</a></li>
 <li><a href="reservas-online-sin-comisiones.html" data-t="nav_reservas">Reservas</a></li>
-<li><a href="articulos.html" data-t="nav_articulos">Artículos</a></li>
+<li><a href="sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
 <li><a href="contacto.html" data-t="nav_contacto">Contacto</a></li>
 </ul>
+<ul class="mobile-menu__sec">
+<li><a href="ayudas-subvenciones-pagina-web-gipuzkoa.html" data-t="nav_ayudas">Ayudas</a></li>
+<li><a href="zonas.html" data-t="nav_zonas">Zonas</a></li>
+<li><a href="articulos.html" data-t="nav_articulos">Artículos</a></li>
+<li><a href="chatbot-reservas.html" data-t="nav_chatbot">Chatbot</a></li>
+</ul>
+<div class="mobile-menu__atajos">
+<a href="tel:+34680956755"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span data-t="fm_llamar">Llamar</span></a>
+<a href="https://wa.me/34680956755" target="_blank" rel="noopener" class="is-wa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.5 8.5 0 0 1-4-1L3 20l1-5.5A8.5 8.5 0 1 1 21 11.5z"/></svg><span>WhatsApp</span></a>
+<a href="contacto.html" class="is-main"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span data-t="mm_presu">Pedir presupuesto</span></a>
+</div>
 </div>
 
 <!-- HERO -->
@@ -236,6 +247,18 @@
 </div>
 </header>
 
+<!-- Accesos a las partes de la portada -->
+<nav class="atajos" aria-labelledby="atajos-t">
+<div class="container atajos__in">
+<span id="atajos-t" class="sr-only" data-t="at_t">En esta página</span>
+<a href="#prueba"><span data-t="at_prueba">Mira tu web</span></a>
+<a href="#trabajos"><span data-t="at_trabajos">Trabajos</span></a>
+<a href="#como-trabajo"><span data-t="at_como">Cómo trabajo</span></a>
+<a href="#precios"><span data-t="at_precios">Precios</span></a>
+<a href="#faq"><span data-t="at_faq">Preguntas</span></a>
+</div>
+</nav>
+
 <!-- BENEFICIOS -->
 <section class="section section--subtle" id="beneficios">
 <div class="container">
@@ -243,15 +266,17 @@
 <span class="eyebrow" data-t="ben_eyebrow">Lo que consigues</span>
 <h2 data-t="ben_h2">Una web que trabaja por tu negocio las 24 horas.</h2>
 </div>
-<div class="bento">
+<div class="bento desliza">
 
 <article class="bn bn--google reveal">
 <div class="bn__ill" aria-hidden="true">
 <div class="serp">
 <div class="serp__bar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span data-t="ill_query">panadería en Tolosa</span></div>
 <div class="serp__lista">
-<div class="serp__res serp__res--top"><span class="serp__ico"></span><span class="serp__cuerpo"><b data-t="ill_negocio">Tu negocio · Tolosa</b><span class="serp__sub" data-t="ill_abierto">Abierto · cierra a las 20:00</span><span class="serp__pills"><em data-t="ill_llamar">Llamar</em><em data-t="ill_web">Web</em><em data-t="ill_ruta">Cómo llegar</em></span></span><span class="serp__rank">1</span></div>
-<div class="serp__res serp__res--g"><span class="serp__ico"></span><span class="serp__cuerpo"><b></b><span class="serp__sub"></span></span></div>
+<div class="serp__res serp__res--top">
+<span class="serp__fila"><span class="serp__cuerpo"><b data-t="ill_negocio">Tu negocio · Tolosa</b><span class="serp__sub" data-t="ill_abierto">Abierto · cierra a las 20:00</span><span class="serp__pills"><em data-t="ill_llamar">Llamar</em><em data-t="ill_web">Web</em><em data-t="ill_ruta">Cómo llegar</em></span></span><span class="serp__rank">1</span></span>
+<span class="serp__fotos"><img src="assets/stock/sec-pan-1.webp" alt="" width="640" height="448" loading="lazy" decoding="async"/><img src="assets/stock/sec-pan-3.webp" alt="" width="640" height="448" loading="lazy" decoding="async"/><img src="assets/stock/sec-pan-4.webp" alt="" width="640" height="448" loading="lazy" decoding="async"/></span>
+</div>
 <div class="serp__res serp__res--g"><span class="serp__ico"></span><span class="serp__cuerpo"><b></b><span class="serp__sub"></span></span></div>
 </div>
 </div>
@@ -260,8 +285,9 @@
 </article>
 
 <article class="bn bn--movil reveal" data-d="1">
-<div class="bn__ill" aria-hidden="true">
-<div class="tel"><span class="tel__notch"></span><div class="tel__web"><span class="tel__nav"><i></i><i></i></span><span class="tel__hero"></span><span class="tel__l"></span><span class="tel__l tel__l--c"></span><span class="tel__btn"><span class="tel__toque"></span></span><span class="tel__fotos"><i></i><i></i></span></div></div>
+<div class="bn__ill bn__ill--tel" aria-hidden="true">
+<div class="marco-movil bn-tel"><div class="marco-movil__pantalla"><picture><source srcset="assets/errotatxo/web-tienda-movil.webp" type="image/webp"/><img src="assets/errotatxo/web-tienda-movil.jpg" alt="" width="585" height="1266" loading="lazy" decoding="async"/></picture></div></div>
+<span class="bn-cap">errotatxo.com</span>
 </div>
 <div class="bn__txt"><h3 data-t="ben2_h">Perfecta en el móvil</h3><p data-t="ben2_p">La mayoría de tus clientes te busca desde el móvil. La web se diseña y se prueba ahí primero, no como un añadido.</p></div>
 </article>
@@ -274,21 +300,24 @@
 </article>
 
 <article class="bn bn--confianza reveal" data-d="2">
-<div class="bn__ill" aria-hidden="true">
-<div class="url"><span class="url__bar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span>tunegocio.com</span></span><span class="url__ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6L9 17l-5-5"/></svg><span data-t="ill_seguro">Web segura</span></span></div>
+<div class="bn__ill bn__ill--web" aria-hidden="true">
+<div class="bn-nav"><span class="bn-nav__bar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span>aberricasarural.com</span></span><picture><source srcset="assets/aberri/web-galeria.webp" type="image/webp"/><img src="assets/aberri/web-galeria.jpg" alt="" width="1440" height="900" loading="lazy" decoding="async"/></picture></div>
+<span class="url__ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6L9 17l-5-5"/></svg><span data-t="ill_seguro">Web segura</span></span>
 </div>
 <div class="bn__txt"><h3 data-t="ben3_h">Confianza a primera vista</h3><p data-t="ben3_p">Un diseño cuidado dice, sin palabras, que detrás hay un negocio serio. Es lo primero que evalúa un cliente nuevo.</p></div>
 </article>
 
 <article class="bn bn--cambios reveal" data-d="1">
-<div class="bn__ill" aria-hidden="true">
+<div class="bn__ill bn__ill--fondo" aria-hidden="true">
+<picture class="bn-fondo"><source srcset="assets/errotatxo/web-tiendas.webp" type="image/webp"/><img src="assets/errotatxo/web-tiendas.jpg" alt="" width="1440" height="900" loading="lazy" decoding="async"/></picture>
 <div class="cam"><span class="cam__t" data-t="ill_horario">Horario</span><span class="cam__fila"><s>9:00 – 20:00</s><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg><b>10:00 – 21:00</b></span><span class="cam__hecho"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6L9 17l-5-5"/></svg><span data-t="ill_minutos">Hecho en minutos</span></span></div>
 </div>
 <div class="bn__txt"><h3 data-t="ben5_h">Cambios rápidos cuando los necesites</h3><p data-t="ben5_p">Envías el cambio de texto, foto u horario por WhatsApp o por correo y queda actualizado en poco tiempo.</p></div>
 </article>
 
 <article class="bn bn--wa reveal" data-d="2">
-<div class="bn__ill" aria-hidden="true">
+<div class="bn__ill bn__ill--recorte" aria-hidden="true">
+<picture class="bn-recorte"><source srcset="assets/aberri/web-reserva-movil.webp" type="image/webp"/><img src="assets/aberri/web-reserva-movil.jpg" alt="" width="585" height="1266" loading="lazy" decoding="async"/></picture>
 <span class="wa"><span class="wa__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><span class="wa__txt" data-t="btn_whatsapp">Escribir por WhatsApp</span><span class="wa__onda"></span></span>
 </div>
 <div class="bn__txt"><h3 data-t="ben6_h">Más contactos por WhatsApp</h3><p data-t="ben6_p">Un botón de acceso directo al chat para que reservar o preguntar sea inmediato.</p></div>
@@ -301,30 +330,38 @@
 <!-- CÓMO TRABAJO -->
 <section class="section" id="como-trabajo" aria-labelledby="pro-title">
 <div class="container">
-<style>
-.pasos5{list-style:none;margin:40px 0 0;padding:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));}
-.pasos5 li{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:22px 20px 24px;}
-.pasos5 .n{font-size:13px;color:var(--text-faint);}
-.pasos5 h3{font-size:18px;margin:10px 0 6px;}
-.pasos5 p{font-size:14.5px;line-height:1.55;color:var(--text-muted);margin:0;}
-</style>
 <div class="section-head reveal">
 <span class="eyebrow" data-t="pro_eyebrow">Cómo trabajo</span>
 <h2 id="pro-title" data-t="pro_h2">De la primera conversación a tu web publicada.</h2>
 <p data-t="pro_p">Cinco pasos claros, con el precio cerrado antes de empezar y la web publicada a tu nombre.</p>
 </div>
-<ol class="pasos5 reveal" data-d="1">
-<li><span class="n">1 / 5</span><h3 data-t="st1_h">Reunión inicial</h3><p data-t="st1_p">Entiendo tu negocio, qué necesitas y si puedo ayudarte de verdad.</p></li>
-<li><span class="n">2 / 5</span><h3 data-t="st2_h">Diseño la propuesta</h3><p data-t="st2_p">Estructura, referencias visuales y un presupuesto cerrado. Sin sorpresas.</p></li>
-<li><span class="n">3 / 5</span><h3 data-t="st3_h">Construyo la web</h3><p data-t="st3_p">La programo con el rigor de un plano técnico: rápida, ligera y probada en el móvil antes de enseñártela.</p></li>
-<li><span class="n">4 / 5</span><h3 data-t="st4_h">La publico</h3><p data-t="st4_p">Dominio, alojamiento y conexión con tus redes o herramientas.</p></li>
-<li><span class="n">5 / 5</span><h3 data-t="st5_h">Doy soporte</h3><p data-t="st5_p">30 días de ajustes gratis y mantenimiento continuo si lo quieres.</p></li>
+<ol class="pasos-img desliza desliza--estrecha">
+<li class="reveal">
+<div class="pi__img"><picture><source srcset="assets/errotatxo/foto-cafeteria.webp" type="image/webp"/><img src="assets/errotatxo/foto-cafeteria.jpg" alt="Interior de la panadería y cafetería Errotatxo, en Tolosa" width="1024" height="899" loading="lazy" decoding="async"/></picture></div>
+<div class="pi__txt"><span class="pi__n">1 / 5</span><h3 data-t="st1_h">Reunión inicial</h3><p data-t="st1_p">Entiendo tu negocio, qué necesitas y si puedo ayudarte de verdad.</p></div>
+</li>
+<li class="reveal" data-d="1">
+<div class="pi__img"><div class="pi__refs" aria-hidden="true"><picture><source srcset="assets/ekhi-desk.webp" type="image/webp"/><img src="assets/ekhi-desk.jpg" alt="" width="900" height="562" loading="lazy" decoding="async"/></picture><picture><source srcset="assets/maila-desk.webp" type="image/webp"/><img src="assets/maila-desk.jpg" alt="" width="900" height="562" loading="lazy" decoding="async"/></picture><picture><source srcset="assets/etxea-desk.webp" type="image/webp"/><img src="assets/etxea-desk.jpg" alt="" width="900" height="562" loading="lazy" decoding="async"/></picture></div></div>
+<div class="pi__txt"><span class="pi__n">2 / 5</span><h3 data-t="st2_h">Diseño la propuesta</h3><p data-t="st2_p">Estructura, referencias visuales y un presupuesto cerrado. Sin sorpresas.</p></div>
+</li>
+<li class="reveal" data-d="2">
+<div class="pi__img pi__img--pc"><div class="pi__pantalla"><picture><source srcset="assets/errotatxo-desk.webp" type="image/webp"/><img src="assets/errotatxo-desk.jpg" alt="La web de Errotatxo en un ordenador" width="1440" height="900" loading="lazy" decoding="async"/></picture></div></div>
+<div class="pi__txt"><span class="pi__n">3 / 5</span><h3 data-t="st3_h">Construyo la web</h3><p data-t="st3_p">La programo con el rigor de un plano técnico: rápida, ligera y probada en el móvil antes de enseñártela.</p></div>
+</li>
+<li class="reveal" data-d="3">
+<div class="pi__img pi__img--movil"><span class="pi__url" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>aberricasarural.com</span><div class="pi__tel"><picture><source srcset="assets/aberri-mobile.webp" type="image/webp"/><img src="assets/aberri-mobile.jpg" alt="La web de A.Berri publicada, en un móvil" width="585" height="1266" loading="lazy" decoding="async"/></picture></div></div>
+<div class="pi__txt"><span class="pi__n">4 / 5</span><h3 data-t="st4_h">La publico</h3><p data-t="st4_p">Dominio, alojamiento y conexión con tus redes o herramientas.</p></div>
+</li>
+<li class="reveal" data-d="4">
+<div class="pi__img pi__img--chat" aria-hidden="true"><span class="pi__msg pi__msg--el" data-t="pi_msg1">¿Puedes cambiar el horario de agosto en la web?</span><span class="pi__msg pi__msg--yo" data-t="pi_msg2">Hecho. Ya está actualizado.</span></div>
+<div class="pi__txt"><span class="pi__n">5 / 5</span><h3 data-t="st5_h">Doy soporte</h3><p data-t="st5_p">30 días de ajustes gratis y mantenimiento continuo si lo quieres.</p></div>
+</li>
 </ol>
 </div>
 </section>
 
 <!-- TRABAJOS -->
-<section class="section">
+<section class="section" id="trabajos">
 <div class="container">
 <div class="section-head reveal">
 <span class="eyebrow" data-t="work_eyebrow">Proyectos</span>
@@ -342,7 +379,7 @@
 </a>
 <style>@media(min-width:860px){.caso-dest--inv{grid-template-columns:1fr 1.15fr}.caso-dest--inv .caso-dest__foto{order:2}}.caso-dest__cita{font-family:var(--font-serif);font-size:19px;line-height:1.45;color:#fff;border-left:2px solid #3fbf73;padding-left:14px}.caso-dest__cita small{display:block;margin-top:6px;font-family:var(--font-sans);font-size:13.5px;color:#c9c2b2}</style>
 <a class="caso-dest caso-dest--inv reveal" href="caso-a-berri.html">
-<span class="caso-dest__foto"><picture><source srcset="assets/aberri/foto-caserio.webp" type="image/webp"/><img src="assets/aberri/foto-caserio.jpg" alt="El caserío de A.Berri al atardecer, en Getaria" width="800" height="450" loading="lazy"/></picture></span>
+<span class="caso-dest__foto"><picture><source srcset="assets/aberri/foto-apartamento.webp" type="image/webp"/><img src="assets/aberri/foto-apartamento.jpg" alt="La casa de A.Berri con su jardín, en Getaria" width="800" height="450" loading="lazy"/></picture></span>
 <span class="caso-dest__txt">
 <span class="caso-dest__tag" data-t="caso_tag">Caso real · cliente</span>
 <span class="caso-dest__h" data-t="caso2_h">A.Berri, casa rural en Getaria</span>
@@ -352,7 +389,7 @@
 </span>
 </a>
 <p class="vivas-link reveal"><a href="trabajos.html#vivas" data-t="viv_link">Abre las dos webs aquí mismo, dentro de un móvil →</a></p>
-<div class="mini-board reveal">
+<div class="mini-board desliza reveal">
 <a class="mbp mbp-1" href="/demos/muestras/etxea-inmobiliaria/" target="_blank" rel="noopener">
 <picture><source srcset="assets/etxea-desk.webp" type="image/webp"/><img src="assets/etxea-desk.jpg" alt="Diseño web para inmobiliaria: muestra" width="900" height="562" loading="lazy"/></picture>
 <span class="cap"><span class="num">01</span><b data-t="tag_inm">Inmobiliaria</b><span class="live" data-t="badge_live">Muestra</span><span class="sw"><i style="background:#a8532f"></i><i style="background:#2b2420"></i><i style="background:#f4ede4"></i></span></span>
@@ -366,32 +403,40 @@
 <span class="cap"><span class="num">03</span><b data-t="tag_psi">Psicología</b><span class="live" data-t="badge_live">Muestra</span><span class="sw"><i style="background:#3f6b5e"></i><i style="background:#f4f8f6"></i><i style="background:#191e1d"></i></span></span>
 </a>
 </div>
-<div style="text-align:center; margin-top:36px;" class="reveal"><a href="trabajos.html" class="btn btn--soft btn--lg" data-t="work_ver5">Ver todos los proyectos</a></div>
+<div style="text-align:center; margin-top:26px;" class="reveal"><a href="trabajos.html" class="btn btn--soft btn--lg" data-t="work_ver5">Ver todos los proyectos</a></div>
 </div>
 </section>
 
 <!-- OPINION -->
-<section class="section section--subtle">
+<section class="section section--subtle" id="opinion">
 <div class="container">
 <style>
-.opi{max-width:880px;margin:0 auto;text-align:center;}
-.opi__estrellas{color:#c98a2b;font-size:20px;letter-spacing:.14em;margin-top:18px;}
-.opi blockquote{margin:18px 0 0;font-family:var(--font-serif);font-size:clamp(24px,3.2vw,36px);line-height:1.32;letter-spacing:-.012em;color:var(--ink);}
-.opi__orig{margin:18px auto 0;max-width:60ch;font-size:14.5px;line-height:1.6;color:var(--text-faint);}
-.opi__autor{margin-top:26px;display:inline-flex;align-items:center;gap:14px;text-align:left;}
-.opi__autor img{width:56px;height:56px;border-radius:50%;object-fit:cover;}
+.opi{display:grid;grid-template-columns:1fr;max-width:1080px;margin:0 auto;background:var(--surface);border:1px solid var(--border);border-radius:26px;overflow:hidden;}
+@media(min-width:860px){.opi{grid-template-columns:1.05fr 1fr;}}
+.opi__foto{position:relative;margin:0;min-height:240px;}
+.opi__foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.opi__foto figcaption{position:absolute;left:14px;bottom:14px;padding:6px 11px;border-radius:8px;background:rgba(20,17,12,.84);color:#fff;font-size:12.5px;font-weight:600;}
+.opi__txt{padding:30px 26px 32px;}
+@media(min-width:860px){.opi__txt{padding:48px 46px;display:flex;flex-direction:column;justify-content:center;}}
+.opi__estrellas{color:var(--terra-link);font-size:19px;letter-spacing:.14em;margin-top:14px;}
+.opi blockquote{margin:12px 0 0;font-family:var(--font-serif);font-size:clamp(22px,2.4vw,30px);line-height:1.3;letter-spacing:-.012em;color:var(--ink);}
+.opi__orig{margin:14px 0 0;max-width:60ch;font-size:14px;line-height:1.6;color:var(--text-faint);}
+.opi__autor{margin-top:20px;}
 .opi__autor b{display:block;font-size:16px;color:var(--ink);}
 .opi__autor span{font-size:14px;color:var(--text-muted);}
-.opi__go{display:inline-block;margin-top:22px;font-weight:600;color:var(--ink);border-bottom:1px solid var(--border-strong);}
+.opi__go{display:inline-block;margin-top:18px;padding:6px 0;font-weight:600;color:var(--ink);border-bottom:1px solid var(--border-strong);}
 .opi__go:hover{border-color:var(--ink);}
 </style>
 <div class="opi reveal">
+<figure class="opi__foto"><picture><source srcset="assets/aberri/foto-caserio.webp" type="image/webp"/><img src="assets/aberri/foto-caserio.jpg" alt="El caserío de A.Berri al atardecer, en Getaria" width="800" height="450" loading="lazy"/></picture><figcaption>aberricasarural.com</figcaption></figure>
+<div class="opi__txt">
 <span class="eyebrow" data-t="opi_eyebrow">Lo que dicen los clientes</span>
 <div class="opi__estrellas" aria-label="5 de 5 estrellas">★★★★★</div>
 <blockquote data-t="opi_txt">«Quería darte las gracias por el gran trabajo de actualizar la web. Ha quedado de maravilla: la navegación es rápida y el diseño ha cumplido nuestras expectativas. Un trabajo excelente y rápido.»</blockquote>
 <p class="opi__orig" data-t="opi_orig">Lo escribió en euskera; esta es la traducción. El original está en la página del caso.</p>
-<div class="opi__autor"><img src="assets/aberri/foto-caserio.jpg" alt="" width="56" height="56" loading="lazy"/><span><b>María Jesús</b><span data-t="opi_autor">A.Berri landetxea, casa rural en Getaria</span></span></div>
+<div class="opi__autor"><b>María Jesús</b><span data-t="opi_autor">A.Berri landetxea, casa rural en Getaria</span></div>
 <div><a class="opi__go" href="caso-a-berri.html" data-t="opi_go">Ver la web que le hice →</a></div>
+</div>
 </div>
 </div>
 </section>
@@ -405,7 +450,7 @@
 <p data-t="sw_p">Estás en Google Maps, en las reseñas de tus clientes y en las fotos que sube la gente. Esa es hoy tu carta de presentación, y no la controlas tú.</p>
 </div>
 
-<div class="sw-obj reveal" data-d="1">
+<div class="sw-obj desliza reveal" data-d="1">
   <article class="sw-o">
     <span class="sw-o__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg></span>
     <p class="sw-o__q" data-t="sw_o1_q">«Ya tengo Instagram»</p>
@@ -527,7 +572,7 @@
 <p data-t="pre_p">Sin cuotas escondidas. Eliges el nivel que tu negocio necesita ahora mismo.</p>
 <p data-t="pre_iva" style="font-size:13px;color:var(--text-faint);margin-top:10px;">Precios sin IVA.</p>
 </div>
-<div class="pre-mini reveal" data-d="1">
+<div class="pre-mini desliza desliza--estrecha reveal" data-d="1">
 <a class="pm" href="precios.html"><span class="pm__name">Landing</span><b>399€</b><span class="pm__note" data-t="pre_pago">pago único</span><span class="pm__desc" data-t="p1_desc">Una sola página para darte a conocer rápido y empezar a recibir contactos.</span></a>
 <a class="pm pm--feat" href="precios.html"><span class="pm__flag" data-t="p2_flag">Más elegido</span><span class="pm__name" data-t="p2_name">Web Negocio</span><b>499€</b><span class="pm__note" data-t="pre_pago">pago único</span><span class="pm__desc" data-t="p2_desc">Web completa con varias páginas para negocios ya consolidados.</span></a>
 <a class="pm" href="precios.html"><span class="pm__name" data-t="p4_name">Tienda Online</span><b>850€</b><span class="pm__note" data-t="pre_pago">pago único</span><span class="pm__desc" data-t="p4_desc">Para vender por internet: tu web con catálogo, carrito y cobro con tarjeta.</span></a>
@@ -590,9 +635,22 @@
 <!-- PREGUNTAS FRECUENTES -->
 <section class="section section--subtle" id="faq">
 <div class="container hfaq">
-<div class="section-head reveal" style="text-align:left;margin:0;">
+<div class="hfaq__lado">
+<div class="section-head reveal">
 <span class="eyebrow" data-t="pre_faq_eyebrow">Dudas frecuentes</span>
 <h2 data-t="pre_faq_h2">Preguntas frecuentes</h2>
+</div>
+<aside class="faq-otra reveal" data-d="1" aria-labelledby="fo-h">
+<figure class="faq-otra__foto"><picture><source srcset="assets/errotatxo-desk.webp" type="image/webp"/><img src="assets/errotatxo-desk.jpg" alt="La web de Errotatxo, panadería de Tolosa, en un ordenador" width="1440" height="900" loading="lazy" decoding="async"/></picture><span>errotatxo.com · <span data-t="fo_pub">web publicada</span></span></figure>
+<div class="faq-otra__txt">
+<p class="faq-otra__h" id="fo-h" data-t="fo_h">¿Otra duda?</p>
+<p class="faq-otra__p" data-t="fo_p">Pregúntame lo que quieras. Contesto en el día, por WhatsApp o por teléfono.</p>
+<div class="faq-otra__btns">
+<a class="btn btn--accent" href="https://wa.me/34680956755" target="_blank" rel="noopener" data-t="btn_whatsapp">Escribir por WhatsApp</a>
+<a class="faq-otra__tel" href="tel:+34680956755"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>680 95 67 55</a>
+</div>
+</div>
+</aside>
 </div>
 <div class="hfaq__lista reveal" data-d="1">
 <details><summary data-t="hfaq_zona_q">¿Haces páginas web en Tolosa y en el resto de Gipuzkoa?</summary><p data-t="hfaq_zona_a">Sí. El estudio está en Tolosa y trabajo con negocios de toda Gipuzkoa: Tolosaldea, Goierri, Buruntzaldea y Donostialdea.</p></details>
@@ -693,8 +751,8 @@
 <div class="footer__mark" aria-hidden="true">OI STUDIO</div>
 </footer>
 
-<script src="assets/i18n.js?v=19"></script>
-<script src="assets/main.js?v=11"></script>
+<script src="assets/i18n.js?v=20"></script>
+<script src="assets/main.js?v=12"></script>
 <script src="assets/prueba.js?v=1"></script>
 <script>
 (function(){

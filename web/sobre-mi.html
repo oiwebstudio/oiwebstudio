@@ -39,7 +39,7 @@
 <link rel="manifest" href="/site.webmanifest"/>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/geist-latin-04ce1a61.woff2" crossorigin/>
 <link rel="stylesheet" href="/assets/fuentes.css?v=1"/>
-<link rel="stylesheet" href="assets/styles.css?v=24"/>
+<link rel="stylesheet" href="assets/styles.css?v=25"/>
 <script>if(location.protocol==='http:'&&/(^|\.)oiwebstudio\.com$/.test(location.hostname))location.replace('https://'+location.host+location.pathname+location.search+location.hash);document.documentElement.classList.add('js');</script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"AboutPage","@id":"https://oiwebstudio.com/sobre-mi.html","url":"https://oiwebstudio.com/sobre-mi.html","name":"Sobre OI Studio","about":{"@id":"https://oiwebstudio.com/#estudio"},"inLanguage":"es","dateModified":"2026-10-12"}
@@ -51,14 +51,18 @@
 <nav class="nav">
 <a href="index.html" class="nav__logo"><img src="assets/logo-nav-black.png" alt="OI Studio" class="nav__logo-img" width="320" height="86"/></a>
 <ul class="nav__links">
-<li><a href="index.html" data-t="nav_inicio">Inicio</a></li>
-<li><a href="sobre-mi.html" class="is-active" data-t="nav_sobre">Sobre mí</a></li>
 <li><a href="trabajos.html" data-t="nav_trabajos">Trabajos</a></li>
 <li><a href="precios.html" data-t="nav_precios">Precios</a></li>
+<li><a href="reservas-online-sin-comisiones.html" data-t="nav_reservas">Reservas</a></li>
+<li><a href="sobre-mi.html" class="is-active" aria-current="page" data-t="nav_sobre">Sobre mí</a></li>
+<li><a href="contacto.html" data-t="nav_contacto">Contacto</a></li>
+<li class="nav__mas"><button type="button" class="nav__mas-btn" aria-expanded="false" aria-controls="nav-mas"><span data-t="nav_mas">Más</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+<ul class="nav__drop" id="nav-mas">
 <li><a href="ayudas-subvenciones-pagina-web-gipuzkoa.html" data-t="nav_ayudas">Ayudas</a></li>
 <li><a href="zonas.html" data-t="nav_zonas">Zonas</a></li>
-<li><a href="reservas-online-sin-comisiones.html" data-t="nav_reservas">Reservas</a></li>
 <li><a href="articulos.html" data-t="nav_articulos">Artículos</a></li>
+<li><a href="chatbot-reservas.html" data-t="nav_chatbot">Chatbot</a></li>
+</ul></li>
 </ul>
 <div class="nav__right">
 <a href="tel:+34680956755" class="nav__phone" aria-label="Llamar al 680 95 67 55">
@@ -70,24 +74,31 @@
 <a class="lang-link" href="/eu/sobre-mi.html" hreflang="eu" lang="eu" aria-label="Euskaraz ikusi">EU</a>
 </div>
 <a href="contacto.html" class="btn btn--accent nav__cta" data-t="btn_presupuesto">Solicitar presupuesto</a>
-<button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+<button class="nav__toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-movil">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path class="nav__toggle-a" d="M4 7h16M4 12h16M4 17h16"/><path class="nav__toggle-b" d="M6 6l12 12M18 6L6 18"/></svg>
 </button>
 </div>
 </nav>
 </div>
-<div class="mobile-menu">
-<ul>
-<li><a href="index.html" data-t="nav_inicio">Inicio</a></li>
-<li><a href="sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
+<div class="mobile-menu" id="menu-movil">
+<ul class="mobile-menu__main">
 <li><a href="trabajos.html" data-t="nav_trabajos">Trabajos</a></li>
 <li><a href="precios.html" data-t="nav_precios">Precios</a></li>
-<li><a href="ayudas-subvenciones-pagina-web-gipuzkoa.html" data-t="nav_ayudas">Ayudas</a></li>
-<li><a href="zonas.html" data-t="nav_zonas">Zonas</a></li>
 <li><a href="reservas-online-sin-comisiones.html" data-t="nav_reservas">Reservas</a></li>
-<li><a href="articulos.html" data-t="nav_articulos">Artículos</a></li>
+<li><a href="sobre-mi.html" class="is-active" aria-current="page" data-t="nav_sobre">Sobre mí</a></li>
 <li><a href="contacto.html" data-t="nav_contacto">Contacto</a></li>
 </ul>
+<ul class="mobile-menu__sec">
+<li><a href="ayudas-subvenciones-pagina-web-gipuzkoa.html" data-t="nav_ayudas">Ayudas</a></li>
+<li><a href="zonas.html" data-t="nav_zonas">Zonas</a></li>
+<li><a href="articulos.html" data-t="nav_articulos">Artículos</a></li>
+<li><a href="chatbot-reservas.html" data-t="nav_chatbot">Chatbot</a></li>
+</ul>
+<div class="mobile-menu__atajos">
+<a href="tel:+34680956755"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span data-t="fm_llamar">Llamar</span></a>
+<a href="https://wa.me/34680956755" target="_blank" rel="noopener" class="is-wa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.5 8.5 0 0 1-4-1L3 20l1-5.5A8.5 8.5 0 1 1 21 11.5z"/></svg><span>WhatsApp</span></a>
+<a href="contacto.html" class="is-main"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span data-t="mm_presu">Pedir presupuesto</span></a>
+</div>
 </div>
 
 <header class="hero" style="padding-bottom:0;">
@@ -99,9 +110,13 @@
 <p class="hero__lede reveal" data-d="2" data-t="sob_lede">Un estudio de una sola persona, con la ventaja de que hablas siempre con quien construye tu web.</p>
 </div>
 </div>
+<div class="banda" aria-hidden="true">
+<div class="banda__fila banda__fila--a"><picture><source srcset="assets/errotatxo-desk.webp" type="image/webp"/><img src="assets/errotatxo-desk.jpg" alt="" width="1440" height="900" decoding="async"/></picture><picture><source srcset="assets/etxea-desk.webp" type="image/webp"/><img src="assets/etxea-desk.jpg" alt="" width="900" height="562" decoding="async"/></picture><picture><source srcset="assets/aberri-desk.webp" type="image/webp"/><img src="assets/aberri-desk.jpg" alt="" width="1440" height="900" decoding="async"/></picture><picture><source srcset="assets/pedala-desk.webp" type="image/webp"/><img src="assets/pedala-desk.jpg" alt="" width="900" height="562" decoding="async"/></picture><picture><source srcset="assets/ekhi-desk.webp" type="image/webp"/><img src="assets/ekhi-desk.jpg" alt="" width="900" height="562" decoding="async"/></picture><picture><source srcset="assets/laino-desk.webp" type="image/webp"/><img src="assets/laino-desk.jpg" alt="" width="900" height="562" decoding="async"/></picture><picture><source srcset="assets/errotatxo-desk.webp" type="image/webp"/><img src="assets/errotatxo-desk.jpg" alt="" width="1440" height="900" loading="lazy" decoding="async"/></picture><picture><source srcset="assets/etxea-desk.webp" type="image/webp"/><img src="assets/etxea-desk.jpg" alt="" width="900" height="562" loading="lazy" decoding="async"/></picture><picture><source srcset="assets/aberri-desk.webp" type="image/webp"/><img src="assets/aberri-desk.jpg" alt="" width="1440" height="900" loading="lazy" decoding="async"/></picture><picture><source srcset="assets/pedala-desk.webp" type="image/webp"/><img src="assets/pedala-desk.jpg" alt="" width="900" height="562" loading="lazy" decoding="async"/></picture><picture><source srcset="assets/ekhi-desk.webp" type="image/webp"/><img src="assets/ekhi-desk.jpg" alt="" width="900" height="562" loading="lazy" decoding="async"/></picture><picture><source srcset="assets/laino-desk.webp" type="image/webp"/><img src="assets/laino-desk.jpg" alt="" width="900" height="562" loading="lazy" decoding="async"/></picture></div>
+<div class="banda__fila banda__fila--b"><picture><source srcset="assets/hiria-desk.webp" type="image/webp"/><img src="assets/hiria-desk.jpg" alt="" width="900" height="562" decoding="async"/></picture><picture><source srcset="assets/errotatxo/web-tiendas.webp" type="image/webp"/><img src="assets/errotatxo/web-tiendas.jpg" alt="" width="1440" height="900" decoding="async"/></picture><picture><source srcset="assets/arin-desk.webp" type="image/webp"/><img src="assets/arin-desk.jpg" alt="" width="900" height="562" decoding="async"/></picture><picture><source srcset="assets/aberri/web-galeria.webp" type="image/webp"/><img src="assets/aberri/web-galeria.jpg" alt="" width="1440" height="900" decoding="async"/></picture><picture><source srcset="assets/maila-desk.webp" type="image/webp"/><img src="assets/maila-desk.jpg" alt="" width="900" height="562" decoding="async"/></picture><picture><source srcset="assets/gainetik-desk.webp" type="image/webp"/><img src="assets/gainetik-desk.jpg" alt="" width="900" height="562" decoding="async"/></picture><picture><source srcset="assets/hiria-desk.webp" type="image/webp"/><img src="assets/hiria-desk.jpg" alt="" width="900" height="562" loading="lazy" decoding="async"/></picture><picture><source srcset="assets/errotatxo/web-tiendas.webp" type="image/webp"/><img src="assets/errotatxo/web-tiendas.jpg" alt="" width="1440" height="900" loading="lazy" decoding="async"/></picture><picture><source srcset="assets/arin-desk.webp" type="image/webp"/><img src="assets/arin-desk.jpg" alt="" width="900" height="562" loading="lazy" decoding="async"/></picture><picture><source srcset="assets/aberri/web-galeria.webp" type="image/webp"/><img src="assets/aberri/web-galeria.jpg" alt="" width="1440" height="900" loading="lazy" decoding="async"/></picture><picture><source srcset="assets/maila-desk.webp" type="image/webp"/><img src="assets/maila-desk.jpg" alt="" width="900" height="562" loading="lazy" decoding="async"/></picture><picture><source srcset="assets/gainetik-desk.webp" type="image/webp"/><img src="assets/gainetik-desk.jpg" alt="" width="900" height="562" loading="lazy" decoding="async"/></picture></div>
+</div>
 </header>
 
-<section class="section section--subtle sob-num" style="padding:44px 0;">
+<section class="section section--subtle sob-num" style="padding:36px 0;">
 <div class="container">
 <style>
 .sob-num .stat b em{font-style:normal;font-family:inherit;color:var(--terra-link);}
@@ -117,9 +132,10 @@
 <div class="sob-pub reveal">
 <style>.sob-pub__h{font-size:15px;color:var(--text-muted);margin:0 0 14px;text-align:center}.sob-pub__grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));max-width:880px;margin:0 auto}.sob-pub__grid a{display:flex;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:12px;color:inherit;transition:border-color .2s}.sob-pub__grid a:hover{border-color:var(--ink)}.sob-pub__grid img{width:96px;height:72px;object-fit:cover;border-radius:10px;flex:none}.sob-pub__grid b{display:block;font-size:16px;color:var(--ink);line-height:1.3}.sob-pub__grid small{font-size:13.5px;color:var(--text-muted)}</style>
 <p class="sob-pub__h" data-t="sob_pub_h">Webs ya publicadas para clientes</p>
-<div class="sob-pub__grid">
-<a href="caso-errotatxo.html"><picture><source srcset="assets/errotatxo/foto-fachada.webp" type="image/webp"/><img src="assets/errotatxo/foto-fachada.jpg" alt="Fachada de la panadería Errotatxo en Tolosa" width="96" height="72" loading="lazy"/></picture><span><b data-t="caso_h">Errotatxo, panadería de Tolosa desde 1996</b><small>errotatxo.com</small></span></a>
-<a href="caso-a-berri.html"><picture><source srcset="assets/aberri/foto-caserio.webp" type="image/webp"/><img src="assets/aberri/foto-caserio.jpg" alt="El caserío de A.Berri en Getaria" width="96" height="72" loading="lazy"/></picture><span><b data-t="caso2_h">A.Berri, casa rural en Getaria</b><small>aberricasarural.com</small></span></a>
+<div class="galeria-trabajo sob-casos">
+<a class="gt" href="caso-errotatxo.html"><picture><source srcset="assets/errotatxo-desk.webp" type="image/webp"/><img src="assets/errotatxo-desk.jpg" alt="La web de Errotatxo, panadería de Tolosa" width="1440" height="900" loading="lazy" decoding="async"/></picture><span class="gt__pie"><b data-t="caso_h">Errotatxo, panadería de Tolosa desde 1996</b><span>errotatxo.com</span></span></a>
+<a class="gt" href="caso-a-berri.html"><picture><source srcset="assets/aberri-desk.webp" type="image/webp"/><img src="assets/aberri-desk.jpg" alt="La web de A.Berri, casa rural en Getaria" width="1440" height="900" loading="lazy" decoding="async"/></picture><span class="gt__pie"><b data-t="caso2_h">A.Berri, casa rural en Getaria</b><span>aberricasarural.com</span></span></a>
+</div>
 </div>
 </div>
 </div>
@@ -128,6 +144,7 @@
 <section class="section">
 <div class="container">
 <div class="about-grid reveal">
+<div class="sob-izq">
 <div class="form-card" style="align-self:start;">
 <img src="assets/logo-mark-bw.png" alt="OI Studio" style="width:66px; height:auto; margin-bottom:20px;" width="128" height="89"/>
 <h3 style="font-size:22px;" data-t="sob_brand">OI Studio</h3>
@@ -136,6 +153,11 @@
 <div style="display:flex; justify-content:space-between; gap:12px;"><span style="color:var(--text-muted);" data-t="sob_k_form">Formación</span><b style="color:var(--ink); font-weight:500;" data-t="sob_v_form">Ing. Mecánica</b></div>
 <div style="display:flex; justify-content:space-between; gap:12px;"><span style="color:var(--text-muted);" data-t="sob_k_base">Base</span><b style="color:var(--ink); font-weight:500;" data-t="sob_v_base">Tolosa, País Vasco</b></div>
 <div style="display:flex; justify-content:space-between; gap:12px;"><span style="color:var(--text-muted);" data-t="sob_k_enf">Enfoque</span><b style="color:var(--ink); font-weight:500;" data-t="sob_v_enf">Negocios locales</b></div>
+</div>
+</div>
+<div class="ct-mapa sob-mapa">
+<svg class="ct-mapa__svg" viewBox="0 0 640 510" role="img" aria-label="Gipuzkoa, con el estudio en Tolosa"><defs><linearGradient id="ctG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#f1f1ee"/></linearGradient></defs><path d="M572.7,36.8L578.2,47.4L583.8,51.9L578.5,58.8L580.8,61.4L589.9,68.5L598.0,67.4L603.0,70.3L605.1,78.6L613.6,80.9L611.7,93.1L620.0,112.6L618.6,114.4L609.9,114.2L595.7,121.2L589.8,119.5L582.7,121.4L580.5,127.4L575.6,132.1L574.6,158.9L568.9,161.7L566.1,166.0L557.6,167.4L553.6,175.9L547.8,176.9L543.8,180.1L536.1,178.6L534.3,186.6L529.1,190.8L526.0,186.1L524.7,176.3L520.9,177.7L519.0,173.9L516.9,176.5L516.6,186.4L519.4,190.3L516.7,192.2L510.7,190.0L509.4,195.0L501.5,192.7L497.8,187.3L499.2,185.1L495.7,181.4L495.0,177.5L492.2,181.3L494.6,199.3L492.1,208.7L487.7,215.9L488.1,228.9L490.9,232.1L491.5,237.1L489.9,241.1L488.9,249.9L498.1,255.0L500.5,258.9L500.3,263.8L491.2,271.3L486.5,282.0L476.4,289.1L475.3,292.5L469.8,296.8L469.9,299.5L457.6,301.8L452.1,305.1L453.5,309.2L452.3,311.7L441.8,317.5L440.9,316.5L425.4,322.5L423.0,329.0L418.2,330.0L421.2,339.8L420.0,346.2L411.7,361.1L405.4,363.4L406.0,371.1L411.9,385.0L411.6,391.3L414.4,392.4L411.6,402.2L407.0,409.0L399.3,411.1L397.7,413.6L377.0,414.1L368.4,417.1L362.0,438.7L353.1,445.7L342.3,447.0L326.2,446.0L320.0,451.0L314.5,452.3L310.2,452.0L308.3,447.1L300.9,439.3L297.3,437.7L289.5,438.5L289.0,442.7L285.4,445.9L285.9,450.7L282.5,454.2L281.3,453.8L274.4,455.5L272.1,460.4L270.5,465.2L271.3,469.8L270.6,489.2L269.1,489.9L263.3,487.9L261.6,489.4L257.5,486.7L235.2,482.9L226.3,461.4L218.8,460.3L212.1,455.7L201.0,451.2L192.9,445.3L192.2,441.0L190.2,438.3L184.5,441.1L162.4,435.7L153.7,429.7L143.8,432.6L128.4,430.7L122.7,431.9L105.1,423.4L88.3,429.0L66.3,416.3L63.0,424.0L63.9,431.0L62.0,436.4L60.0,437.8L57.4,435.4L55.4,430.3L35.7,424.8L24.0,413.9L20.0,408.0L26.6,403.5L21.7,390.4L23.9,383.8L34.8,383.1L46.4,374.3L57.8,371.5L62.0,367.8L62.7,360.8L69.3,350.2L73.5,348.7L69.4,339.5L62.5,331.9L61.5,325.0L57.5,320.7L58.7,319.3L62.4,319.1L58.1,311.6L59.6,309.4L58.7,308.4L59.8,304.9L63.8,304.8L72.7,301.5L81.0,306.5L89.7,300.5L87.0,300.0L89.6,279.6L93.1,275.2L88.4,260.6L89.6,248.7L84.3,240.3L85.2,235.9L100.9,229.8L95.7,221.0L98.1,215.0L99.0,202.5L93.0,195.9L91.2,191.7L91.6,185.8L94.7,179.6L109.1,182.2L115.8,181.0L125.9,171.3L128.8,167.5L129.7,164.5L133.9,162.2L132.4,154.3L142.1,147.1L146.8,139.4L140.1,126.8L134.1,122.1L132.1,119.1L133.7,110.2L150.4,89.1L154.8,87.8L163.6,91.2L171.8,97.1L173.2,101.1L178.7,100.7L186.6,104.6L189.6,109.3L194.9,109.4L197.7,106.3L209.9,111.5L221.7,111.1L238.1,113.9L253.4,109.1L256.4,105.8L265.2,106.7L270.7,101.3L277.9,98.9L292.5,104.5L295.6,98.9L296.8,100.7L295.0,107.5L301.3,110.6L303.7,116.3L308.2,114.7L312.1,120.0L315.4,120.5L326.2,117.9L330.9,114.7L336.8,115.5L344.7,120.4L358.0,108.5L376.9,101.5L425.2,87.6L433.3,88.6L433.8,92.1L439.1,92.7L441.5,90.1L440.2,85.7L450.5,83.8L454.3,77.5L459.2,74.7L468.7,77.6L477.5,76.1L481.1,77.9L485.3,78.7L484.9,75.5L501.3,69.4L512.9,61.8L522.3,44.9L531.4,38.3L537.1,36.1L540.5,37.2L550.6,30.2L567.8,26.3L577.5,20.0L579.1,23.7L572.9,32.5L572.7,36.8Z" fill="url(#ctG)" stroke="#d8d6cf" stroke-width="1.5" stroke-linejoin="round"/><line x1="384.4" y1="260.4" x2="444.8" y2="88.2" stroke="#c07a35" stroke-opacity=".28" stroke-width="1.4"/><circle cx="444.8" cy="88.2" r="5" fill="#c07a35" stroke="#fff" stroke-width="2"/><line x1="384.4" y1="260.4" x2="578.7" y2="73.2" stroke="#c07a35" stroke-opacity=".28" stroke-width="1.4"/><circle cx="578.7" cy="73.2" r="5" fill="#c07a35" stroke="#fff" stroke-width="2"/><line x1="384.4" y1="260.4" x2="450.3" y2="140.9" stroke="#c07a35" stroke-opacity=".28" stroke-width="1.4"/><circle cx="450.3" cy="140.9" r="5" fill="#c07a35" stroke="#fff" stroke-width="2"/><line x1="384.4" y1="260.4" x2="419.4" y2="186.1" stroke="#c07a35" stroke-opacity=".28" stroke-width="1.4"/><circle cx="419.4" cy="186.1" r="5" fill="#c07a35" stroke="#fff" stroke-width="2"/><line x1="384.4" y1="260.4" x2="317.1" y2="124" stroke="#c07a35" stroke-opacity=".28" stroke-width="1.4"/><circle cx="317.1" cy="124" r="5" fill="#c07a35" stroke="#fff" stroke-width="2"/><line x1="384.4" y1="260.4" x2="295.8" y2="347" stroke="#c07a35" stroke-opacity=".28" stroke-width="1.4"/><circle cx="295.8" cy="347" r="5" fill="#c07a35" stroke="#fff" stroke-width="2"/><line x1="384.4" y1="260.4" x2="109.1" y2="218.1" stroke="#c07a35" stroke-opacity=".28" stroke-width="1.4"/><circle cx="109.1" cy="218.1" r="5" fill="#c07a35" stroke="#fff" stroke-width="2"/><line x1="384.4" y1="260.4" x2="97.4" y2="329.1" stroke="#c07a35" stroke-opacity=".28" stroke-width="1.4"/><circle cx="97.4" cy="329.1" r="5" fill="#c07a35" stroke="#fff" stroke-width="2"/><line x1="384.4" y1="260.4" x2="139.3" y2="273.6" stroke="#c07a35" stroke-opacity=".28" stroke-width="1.4"/><circle cx="139.3" cy="273.6" r="5" fill="#c07a35" stroke="#fff" stroke-width="2"/><line x1="384.4" y1="260.4" x2="251.2" y2="218.1" stroke="#c07a35" stroke-opacity=".28" stroke-width="1.4"/><circle cx="251.2" cy="218.1" r="5" fill="#c07a35" stroke="#fff" stroke-width="2"/><line x1="384.4" y1="260.4" x2="503.2" y2="96.7" stroke="#c07a35" stroke-opacity=".28" stroke-width="1.4"/><circle cx="503.2" cy="96.7" r="5" fill="#c07a35" stroke="#fff" stroke-width="2"/><circle class="ct-pulso" cx="384.4" cy="260.4" r="9"/><circle cx="384.4" cy="260.4" r="9" fill="#191712" stroke="#fff" stroke-width="3"/></svg>
+<p class="ct-mapa__pie"><b data-t="zon_leg">Estudio en Tolosa</b> · <span data-t="ct_remoto">Trabajo en persona en Tolosaldea y a distancia en toda España.</span></p>
 </div>
 </div>
 <div>
@@ -154,7 +176,7 @@
 <span class="eyebrow" data-t="sob_enf_eyebrow">Mi enfoque</span>
 <h2 data-t="sob_enf_h2">Cómo pienso cada proyecto.</h2>
 </div>
-<div class="pillars">
+<div class="pillars desliza">
 <div class="pillar reveal"><span class="pillar__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg></span><span class="pillar__num">01</span><h3 data-t="pil1_h">Método antes que estética</h3><p data-t="pil1_p">Primero entiendo el problema del negocio. El diseño llega después, como consecuencia, no como punto de partida.</p></div>
 <div class="pillar reveal" data-d="1"><span class="pillar__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l6-6M14 4l6 6-10 10-6-6zM12 6l6 6"/></svg></span><span class="pillar__num">02</span><h3 data-t="pil2_h">Detalle al milímetro</h3><p data-t="pil2_p">Espaciados, tiempos de carga, alineaciones. Los detalles pequeños son los que generan o rompen la confianza.</p></div>
 <div class="pillar reveal" data-d="2"><span class="pillar__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><span class="pillar__num">03</span><h3 data-t="pil3_h">Sin jerga técnica</h3><p data-t="pil3_p">Te explico todo en lenguaje llano. Tú no tienes que entender de código, solo de tu negocio.</p></div>
@@ -169,13 +191,49 @@
 <span class="eyebrow" data-t="sob_pro_eyebrow">Cómo trabajo</span>
 <h2 data-t="sob_pro_h2">Cinco pasos. Cero sorpresas.</h2>
 </div>
-<div class="steps">
-<div class="step reveal"><span class="step__num">01</span><h3 data-t="st1_h">Reunión inicial</h3><p data-t="st1_p">Entiendo tu negocio, qué necesitas y si puedo ayudarte de verdad.</p></div>
-<div class="step reveal" data-d="1"><span class="step__num">02</span><h3 data-t="st2_h">Diseño la propuesta</h3><p data-t="st2_p">Estructura, referencias visuales y un presupuesto cerrado. Sin sorpresas.</p></div>
-<div class="step reveal" data-d="2"><span class="step__num">03</span><h3 data-t="st3_h">Construyo la web</h3><p data-t="st3_p">La programo con el rigor de un plano técnico: rápida, ligera y probada en el móvil antes de enseñártela.</p></div>
-<div class="step reveal" data-d="3"><span class="step__num">04</span><h3 data-t="st4_h">La publico</h3><p data-t="st4_p">Dominio, alojamiento y conexión con tus redes o herramientas.</p></div>
-<div class="step reveal" data-d="4"><span class="step__num">05</span><h3 data-t="st5_h">Doy soporte</h3><p data-t="st5_p">30 días de ajustes gratis y mantenimiento continuo si lo quieres.</p></div>
+<ol class="pasos-img desliza desliza--estrecha">
+<li class="reveal">
+<div class="pi__img"><picture><source srcset="assets/errotatxo/foto-cafeteria.webp" type="image/webp"/><img src="assets/errotatxo/foto-cafeteria.jpg" alt="Interior de la panadería y cafetería Errotatxo, en Tolosa" width="1024" height="899" loading="lazy" decoding="async"/></picture></div>
+<div class="pi__txt"><span class="pi__n">1 / 5</span><h3 data-t="st1_h">Reunión inicial</h3><p data-t="st1_p">Entiendo tu negocio, qué necesitas y si puedo ayudarte de verdad.</p></div>
+</li>
+<li class="reveal" data-d="1">
+<div class="pi__img"><div class="pi__refs" aria-hidden="true"><picture><source srcset="assets/ekhi-desk.webp" type="image/webp"/><img src="assets/ekhi-desk.jpg" alt="" width="900" height="562" loading="lazy" decoding="async"/></picture><picture><source srcset="assets/maila-desk.webp" type="image/webp"/><img src="assets/maila-desk.jpg" alt="" width="900" height="562" loading="lazy" decoding="async"/></picture><picture><source srcset="assets/etxea-desk.webp" type="image/webp"/><img src="assets/etxea-desk.jpg" alt="" width="900" height="562" loading="lazy" decoding="async"/></picture></div></div>
+<div class="pi__txt"><span class="pi__n">2 / 5</span><h3 data-t="st2_h">Diseño la propuesta</h3><p data-t="st2_p">Estructura, referencias visuales y un presupuesto cerrado. Sin sorpresas.</p></div>
+</li>
+<li class="reveal" data-d="2">
+<div class="pi__img pi__img--pc"><div class="pi__pantalla"><picture><source srcset="assets/errotatxo-desk.webp" type="image/webp"/><img src="assets/errotatxo-desk.jpg" alt="La web de Errotatxo en un ordenador" width="1440" height="900" loading="lazy" decoding="async"/></picture></div></div>
+<div class="pi__txt"><span class="pi__n">3 / 5</span><h3 data-t="st3_h">Construyo la web</h3><p data-t="st3_p">La programo con el rigor de un plano técnico: rápida, ligera y probada en el móvil antes de enseñártela.</p></div>
+</li>
+<li class="reveal" data-d="3">
+<div class="pi__img pi__img--movil"><span class="pi__url" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>aberricasarural.com</span><div class="pi__tel"><picture><source srcset="assets/aberri-mobile.webp" type="image/webp"/><img src="assets/aberri-mobile.jpg" alt="La web de A.Berri publicada, en un móvil" width="585" height="1266" loading="lazy" decoding="async"/></picture></div></div>
+<div class="pi__txt"><span class="pi__n">4 / 5</span><h3 data-t="st4_h">La publico</h3><p data-t="st4_p">Dominio, alojamiento y conexión con tus redes o herramientas.</p></div>
+</li>
+<li class="reveal" data-d="4">
+<div class="pi__img pi__img--chat" aria-hidden="true"><span class="pi__msg pi__msg--el" data-t="pi_msg1">¿Puedes cambiar el horario de agosto en la web?</span><span class="pi__msg pi__msg--yo" data-t="pi_msg2">Hecho. Ya está actualizado.</span></div>
+<div class="pi__txt"><span class="pi__n">5 / 5</span><h3 data-t="st5_h">Doy soporte</h3><p data-t="st5_p">30 días de ajustes gratis y mantenimiento continuo si lo quieres.</p></div>
+</li>
+</ol>
 </div>
+</div>
+</section>
+
+<section class="section sob-mu">
+<div class="container">
+<div class="section-head reveal">
+<h2 data-t="mu_h2">Ocho muestras, ocho formas de trabajar</h2>
+<p data-t="mu_p">Nombres y datos ficticios; el método de trabajo, real. Puedes abrirlas en el móvil.</p>
+</div>
+<div class="galeria-trabajo galeria-trabajo--4 desliza desliza--estrecha">
+<a class="gt" href="/demos/muestras/etxea-inmobiliaria/" target="_blank" rel="noopener"><picture><source srcset="assets/etxea-desk.webp" type="image/webp"/><img src="assets/etxea-desk.jpg" alt="Muestra de web: Etxea Inmobiliaria" width="900" height="562" loading="lazy" decoding="async"/></picture><span class="gt__pie"><b>Etxea Inmobiliaria</b><span><span data-t="tag_inm">Inmobiliaria</span> · <span data-t="badge_live">Muestra</span></span></span></a>
+<a class="gt" href="/demos/muestras/pedala-bizikletak/" target="_blank" rel="noopener"><picture><source srcset="assets/pedala-desk.webp" type="image/webp"/><img src="assets/pedala-desk.jpg" alt="Muestra de web: Pedala" width="900" height="562" loading="lazy" decoding="async"/></picture><span class="gt__pie"><b>Pedala</b><span><span data-t="tag_bici">Tienda de bicis</span> · <span data-t="badge_live">Muestra</span></span></span></a>
+<a class="gt" href="/demos/muestras/ekhi-psikologia/" target="_blank" rel="noopener"><picture><source srcset="assets/ekhi-desk.webp" type="image/webp"/><img src="assets/ekhi-desk.jpg" alt="Muestra de web: Ekhi Psicología" width="900" height="562" loading="lazy" decoding="async"/></picture><span class="gt__pie"><b>Ekhi Psicología</b><span><span data-t="tag_psi">Psicología</span> · <span data-t="badge_live">Muestra</span></span></span></a>
+<a class="gt" href="/demos/muestras/arin-fisioterapia/" target="_blank" rel="noopener"><picture><source srcset="assets/arin-desk.webp" type="image/webp"/><img src="assets/arin-desk.jpg" alt="Muestra de web: ARIN Fisioterapia" width="900" height="562" loading="lazy" decoding="async"/></picture><span class="gt__pie"><b>ARIN Fisioterapia</b><span><span data-t="tag_fis">Fisioterapia</span> · <span data-t="badge_live">Muestra</span></span></span></a>
+<a class="gt" href="/demos/muestras/laino-argazkiak/" target="_blank" rel="noopener"><picture><source srcset="assets/laino-desk.webp" type="image/webp"/><img src="assets/laino-desk.jpg" alt="Muestra de web: LAINO Argazkiak" width="900" height="562" loading="lazy" decoding="async"/></picture><span class="gt__pie"><b>LAINO Argazkiak</b><span><span data-t="tag_foto">Fotografía</span> · <span data-t="badge_live">Muestra</span></span></span></a>
+<a class="gt" href="/demos/muestras/hiria-etxebizitzak/" target="_blank" rel="noopener"><picture><source srcset="assets/hiria-desk.webp" type="image/webp"/><img src="assets/hiria-desk.jpg" alt="Muestra de web: HIRIA Etxebizitzak" width="900" height="562" loading="lazy" decoding="async"/></picture><span class="gt__pie"><b>HIRIA Etxebizitzak</b><span><span data-t="tag_inm">Inmobiliaria</span> · <span data-t="badge_live">Muestra</span></span></span></a>
+<a class="gt" href="/demos/muestras/maila-eskailerak/" target="_blank" rel="noopener"><picture><source srcset="assets/maila-desk.webp" type="image/webp"/><img src="assets/maila-desk.jpg" alt="Muestra de web: MAILA Eskailerak" width="900" height="562" loading="lazy" decoding="async"/></picture><span class="gt__pie"><b>MAILA Eskailerak</b><span><span data-t="tag_carp">Carpintería</span> · <span data-t="badge_live">Muestra</span></span></span></a>
+<a class="gt" href="/demos/muestras/gainetik-arkitektura/" target="_blank" rel="noopener"><picture><source srcset="assets/gainetik-desk.webp" type="image/webp"/><img src="assets/gainetik-desk.jpg" alt="Muestra de web: GAINETIK Arkitektura" width="900" height="562" loading="lazy" decoding="async"/></picture><span class="gt__pie"><b>GAINETIK Arkitektura</b><span><span data-t="tag_arq">Arquitectura</span> · <span data-t="badge_live">Muestra</span></span></span></a>
+</div>
+<p class="sob-mu__mas reveal"><a class="btn btn--soft btn--lg" href="trabajos.html" data-t="work_ver5">Ver todos los proyectos</a></p>
 </div>
 </section>
 
@@ -269,9 +327,37 @@
 <style>
 .about-grid { display: grid; gap: 40px; grid-template-columns: 1fr; align-items: start; }
 @media (min-width: 820px) { .about-grid { grid-template-columns: 340px 1fr; gap: 56px; } }
+/* Sobre mí más visual (17/10/2026): trabajo real en vez de huecos */
+.banda{position:relative;z-index:1;display:grid;gap:14px;margin-top:40px;overflow:hidden;}
+.banda__fila{display:flex;gap:14px;width:max-content;}
+.banda__fila picture{flex:none;width:clamp(220px,26vw,340px);border-radius:12px;overflow:hidden;border:1px solid var(--border);box-shadow:0 14px 28px -18px rgba(25,23,18,.45);background:var(--bg-subtle);}
+.banda__fila img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top;display:block;}
+.banda__fila--b{margin-left:-120px;}
+@media (prefers-reduced-motion:no-preference){
+  .banda__fila--a{animation:banda-izq 60s linear infinite;}
+  .banda__fila--b{animation:banda-der 70s linear infinite;}
+  .banda:hover .banda__fila{animation-play-state:paused;}
+}
+@keyframes banda-izq{to{transform:translateX(-50%);}}
+@keyframes banda-der{from{transform:translateX(-50%);}to{transform:translateX(0);}}
+.sob-pub__h{font-size:15px;color:var(--text-muted);margin:0 0 14px;text-align:center;}
+.sob-casos{max-width:980px;margin:0 auto;grid-template-columns:1fr 1fr!important;}
+@media(max-width:620px){.sob-casos{grid-template-columns:1fr!important;}}
+.sob-izq{display:grid;gap:18px;align-self:start;}
+.ct-mapa{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:20px;}
+.ct-mapa__svg{display:block;width:100%;height:auto;overflow:visible;}
+.ct-pulso{fill:none;stroke:#191712;stroke-width:2;opacity:0;transform-box:fill-box;transform-origin:center;animation:ctP 2.8s ease-out infinite;}
+@keyframes ctP{0%{transform:scale(1);opacity:.5}100%{transform:scale(3.2);opacity:0}}
+.ct-mapa__pie{margin:12px 0 0;font-size:14px;color:var(--text-muted);line-height:1.55;}
+.ct-mapa__pie b{color:var(--ink);}
+@media(prefers-reduced-motion:reduce){.ct-pulso{animation:none;}}
+@media (min-width:900px){.galeria-trabajo--4{grid-template-columns:repeat(4,1fr);}}
+.sob-mu__mas{text-align:center;margin-top:26px;}
+@media(max-width:759px){.banda{margin-top:28px;gap:10px;}.banda__fila{gap:10px;}.banda__fila picture{width:200px;}}
+
 </style>
-<script src="assets/i18n.js?v=19"></script>
-<script src="assets/main.js?v=11"></script>
+<script src="assets/i18n.js?v=20"></script>
+<script src="assets/main.js?v=12"></script>
 <a class="wa-float" href="https://wa.me/34680956755?text=Hola%2C%20vengo%20de%20tu%20web%20y%20quiero%20informaci%C3%B3n%20para%20la%20web%20de%20mi%20negocio." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2.05 22l5.27-1.38c1.45.79 3.08 1.21 4.72 1.21 5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.05-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29z"/></svg>
 </a>
