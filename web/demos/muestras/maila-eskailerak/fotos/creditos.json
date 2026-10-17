@@ -1,0 +1,82 @@
+{
+ "portada": {
+  "archivo": "File:Staircase modern.jpg",
+  "autor": "Nikolai Twin",
+  "licencia": "CC BY 4.0",
+  "fuente": "https://commons.wikimedia.org/wiki/File%3AStaircase_modern.jpg",
+  "tamano": "1300x1439",
+  "cambios": "Recortada, redimensionada y convertida a WebP para esta muestra"
+ },
+ "caracol": {
+  "archivo": "File:Wooden spiral stairs (Nebotičnik, Ljubljana) croped.jpg",
+  "autor": "Petar Milošević",
+  "licencia": "CC BY-SA 4.0",
+  "fuente": "https://commons.wikimedia.org/wiki/File%3AWooden_spiral_stairs_(Neboti%C4%8Dnik%2C_Ljubljana)_croped.jpg",
+  "tamano": "720x555",
+  "cambios": "Recortada, redimensionada y convertida a WebP para esta muestra"
+ },
+ "tramos": {
+  "archivo": "File:Holztreppe 2.jpg",
+  "autor": "Dirk Broßke",
+  "licencia": "CC BY-SA 3.0",
+  "fuente": "https://commons.wikimedia.org/wiki/File%3AHolztreppe_2.jpg",
+  "tamano": "720x538",
+  "cambios": "Recortada, redimensionada y convertida a WebP para esta muestra"
+ },
+ "zanca": {
+  "archivo": "interior stairs, bjarke ingels group, BIG, bighouse or 8-tallet, copenhagen 2006-2010",
+  "autor": "seier+seier",
+  "licencia": "CC BY 2.0",
+  "fuente": "https://www.flickr.com/photos/94852245@N00/4609351049",
+  "tamano": "720x478",
+  "cambios": "Recortada, redimensionada y convertida a WebP para esta muestra"
+ },
+ "obra-caserio": {
+  "archivo": "The rustic oak staircase -L'escalier en chêne rustique",
+  "autor": "Flikkersteph",
+  "licencia": "CC BY 2.0",
+  "fuente": "https://www.flickr.com/photos/42741665@N08/6053116240",
+  "tamano": "1000x670",
+  "cambios": "Recortada, redimensionada y convertida a WebP para esta muestra"
+ },
+ "taller-cnc": {
+  "archivo": "File:CNC ROUTING.jpg",
+  "autor": "Lucascu",
+  "licencia": "CC BY 4.0",
+  "fuente": "https://commons.wikimedia.org/wiki/File%3ACNC_ROUTING.jpg",
+  "tamano": "1200x800",
+  "cambios": "Recortada, redimensionada y convertida a WebP para esta muestra"
+ },
+ "banda": {
+  "archivo": "File:Spiral staircase (Unsplash).jpg",
+  "autor": "chuttersnap (Unsplash)",
+  "licencia": "CC0",
+  "fuente": "https://commons.wikimedia.org/wiki/File%3ASpiral_staircase_(Unsplash).jpg",
+  "tamano": "1600x1068",
+  "cambios": "Recortada, redimensionada y convertida a WebP para esta muestra"
+ },
+ "obra-madera": {
+  "archivo": "stairs from the bedroom",
+  "autor": "nicolas.boullosa",
+  "licencia": "CC BY 2.0",
+  "fuente": "https://www.flickr.com/photos/90802476@N00/6616369365",
+  "tamano": "1000x670",
+  "cambios": "Recortada, redimensionada y convertida a WebP para esta muestra"
+ },
+ "volada": {
+  "archivo": "File:Freitragende treppe.jpg",
+  "autor": "Klepfer de",
+  "licencia": "CC BY-SA 3.0",
+  "fuente": "https://commons.wikimedia.org/wiki/File%3AFreitragende_treppe.jpg",
+  "tamano": "720x720",
+  "cambios": "Recortada, redimensionada y convertida a WebP para esta muestra"
+ },
+ "obra-recta": {
+  "archivo": "File:2014-04-21 IMG 7233 최광모.JPG",
+  "autor": "최광모 (Choe Kwangmo)",
+  "licencia": "CC0",
+  "fuente": "https://commons.wikimedia.org/wiki/File%3A2014-04-21_IMG_7233_%EC%B5%9C%EA%B4%91%EB%AA%A8.JPG",
+  "tamano": "1000x1333",
+  "cambios": "Recortada, redimensionada y convertida a WebP para esta muestra"
+ }
+}

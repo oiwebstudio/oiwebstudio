@@ -150,11 +150,13 @@ async function pedala() {
   limpiar(d); fs.mkdirSync(path.join(d, "nueva/fotos"), { recursive: true });
   fs.copyFileSync(path.join(o, "nueva/anim-texto.js"), path.join(d, "nueva/anim-texto.js"));
   const F = path.join(d, "nueva/fotos");
-  for (const n of ["cartel", "cartel3"]) await sharp(path.join(FB, n + ".jpg")).resize(1600, 1200, { fit: "cover" }).webp({ quality: 82 }).toFile(path.join(F, n + ".webp"));
+  for (const n of ["cartel-v2", "cartel3"]) await sharp(path.join(FB, n + ".jpg")).resize(1600, 1200, { fit: "cover" }).webp({ quality: 82 }).toFile(path.join(F, n + ".webp"));
   const FICHAS = ["air-race-720", "aero-teamline-720", "thron-720", "ams-hybrid-720", "nuroad-720", "stereo-hybrid-720", "flanders-720", "aero-pro-720"];
   for (const n of FICHAS) await sharp(path.join(FB, n + ".jpg")).resize(720, 540, { fit: "cover", position: "centre" }).webp({ quality: 82 }).toFile(path.join(F, n + ".webp"));
   const cred = JSON.parse(fs.readFileSync(path.join(FB, "creditos.json"), "utf8"));
-  const autores = [...new Set(Object.values(cred).map((c) => `${c.autor.replace(/\s+/g, " ").trim().slice(0, 40)} (${c.licencia})`))].join(" · ");
+  /* solo las fotos que salen en la muestra (cartel, la Cinelli, ya no se usa desde el 17/10) */
+  const usadas = ["cartel-v2", "cartel3", ...FICHAS];
+  const autores = [...new Set(usadas.map((n) => cred[n]).map((c) => `${c.autor.replace(/\s+/g, " ").trim().slice(0, 40)} (${c.licencia})`))].join(" · ");
   let h = quitaComentarios(fs.readFileSync(path.join(o, "index.html"), "utf8"));
   const ficha = (num, tipo, nombre, precio, dto, antes, img) => `<a class="bici" href="#visita"><span class="num tec"><span>${num}</span><span>${tipo}</span></span>${dto ? `<span class="dto">${dto}</span>` : ""}<figure><img src="nueva/fotos/${img}.webp" width="720" height="540" alt="" loading="lazy"/></figure><h3>${nombre}</h3><p>${precio}${antes ? `<s>${antes}</s>` : ""}</p></a>`;
   const MODELOS = [["Gravel", "Gravel Marrón 58", "3.690 €", "", ""], ["Carretera", "Aero Rojo Team", "4.190 €", "−15 %", "4.930 €"], ["Eléctrica", "Trail Eléctrica 29", "3.450 €", "", ""], ["Eléctrica", "Montaña Azul 144", "4.150 €", "−25 %", "5.530 €"], ["Gravel", "Gravel Verde Acero", "2.990 €", "−14 %", "3.480 €"], ["Eléctrica", "Urbana Eléctrica", "2.690 €", "", ""], ["Gravel", "Gravel Rosa Carbono", "3.990 €", "−30 %", "5.700 €"], ["Gravel", "Gravel Aventura Pro", "4.390 €", "", ""]];
@@ -172,7 +174,8 @@ async function pedala() {
     [/href="tel:\+34943761121"/g, 'href="#visita"'],
     [/943 ?76 ?11 ?21/g, "943 00 00 00"],
     [/<div class="tira" aria-hidden="true"><div class="pista"[^>]*>[\s\S]*?<\/div><\/div>/, '<div class="tira" aria-hidden="true"><div class="pista" data-pista="38">carretera <i>· 01 ·</i> gravel <i>· 02 ·</i> eléctrica <i>· 03 ·</i> montaña <i>· 04 ·</i> ciudad <i>· 05 ·</i> carretera <i>· 01 ·</i> gravel</div></div>'],
-    [/alt="Bici de carretera Cube[^"]*"/, 'alt="Bici apoyada en un muro de ladrillo, en blanco y negro"'],
+    ['src="nueva/fotos/cartel.webp"', 'src="nueva/fotos/cartel-v2.webp"'],
+    [/alt="Bici de carretera Cube[^"]*"/, 'alt="Bici de pista negra, sin marcas, apoyada en un muro de ladrillo viejo"'],
     [/alt="Bici eléctrica de montaña apoyada[^"]*"/, 'alt="Bici eléctrica de montaña, en blanco y negro"'],
     [/<b>Spinning<\/b><span>Bicis entre 500 y 1\.000 €<\/span>/, "<b>Spinning</b><span>Bicis desde 500 €</span>"],
     [/<h2 class="ancha" data-lineas>zubieta 5<\/h2>/, '<h2 class="ancha" data-lineas>kale nagusia 1</h2>'],

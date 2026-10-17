@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="robots" content="noindex, follow"/>
+<title>LAINO Argazkiak — Estudio de fotografía en Tolosa</title>
+<meta name="description" content="Estudio de fotografía en Tolosa: retrato, bodas y fotos de producto para negocios. Muestra de diseño de OI Studio."/>
+<meta name="theme-color" content="#1B1D1F"/>
+<meta property="og:title" content="LAINO Argazkiak — Fotografía en Tolosa"/>
+<meta property="og:description" content="Retrato, bodas y producto. Muestra de diseño de OI Studio."/>
+<meta property="og:type" content="website"/>
+<meta property="og:image" content="fotos/og-laino.jpg"/>
+<!--
+  Muestra de diseño de OI Studio (marca inventada). Referencia: póster «Foggy glass effect».
+  Letra: 17 Archivo (variable en peso y anchura: marca, titulares y el «01» condensado) + 14 Switzer (texto), autoalojadas en fuentes/.
+  Fotos: Wikimedia Commons, importadas de Unsplash, CC0 (detalle en fotos/creditos.json):
+    portada  — «Dark haired woman on the beach», Mario Klassen
+    retrato  — «Woman among green branches», Cameron Kirby
+    bodas    — «Wedding walk dark forest path», photo-nic.co.uk (nic chiro)
+    producto — «Large ceramic bottles», Jessica Ruscello
+    contacto — «Woman walking through waves», Killian Pham
+  El cristal empañado está «horneado» en fotos/*-niebla-*.webp (desenfoque + relieve de ruido + brillo);
+  la zona limpia se dibuja en un <canvas> que borra la niebla al pasar el ratón y se vuelve a empañar.
+  Sin JavaScript o con «reducir movimiento»: niebla fija con una franja limpia hecha con mask-image.
+-->
+<style>
+@font-face{font-family:'Archivo';font-style:normal;font-weight:400 900;font-stretch:62% 125%;font-display:swap;src:url('fuentes/archivo-400_900.woff2') format('woff2');}
+@font-face{font-family:'Switzer';font-style:normal;font-weight:400;font-display:swap;src:url('fuentes/switzer-400.woff2') format('woff2');}
+@font-face{font-family:'Switzer';font-style:normal;font-weight:600;font-display:swap;src:url('fuentes/switzer-600.woff2') format('woff2');}
+
+:root{
+  --papel:#EEEAE3; --superficie:#F7F5F1; --tinta:#1B1D1F; --texto-2:#5A5F63; --regla:#D3CEC5;
+  --niebla:#4F6472; --niebla-suave:#DCE3E7; --oscura:#14191D; --sobre-oscura:#EDEFF0;
+  --t:"Archivo",system-ui,sans-serif; --f:"Switzer",system-ui,sans-serif;
+  --ease-out:cubic-bezier(.23,1,.32,1); --ease-mov:cubic-bezier(.77,0,.175,1);
+  /* escala «cartel» (escala.mjs) */
+  --paso-m1:clamp(0.8398rem,0.9041rem - 0.0829vw,0.8854rem);
+  --paso-0:clamp(1.0625rem,1.0114rem + 0.2273vw,1.1875rem);
+  --paso-1:clamp(1.275rem,1.1097rem + 0.7348vw,1.6791rem);
+  --paso-2:clamp(1.53rem,1.1846rem + 1.5351vw,2.3743rem);
+  --paso-3:clamp(1.836rem,1.2137rem + 2.7659vw,3.3572rem);
+  --paso-4:clamp(2.2032rem,1.1625rem + 4.6253vw,4.7471rem);
+  --paso-5:clamp(2.6438rem,0.9794rem + 7.3975vw,6.7124rem);
+  --paso-6:clamp(3.1726rem,0.5876rem + 11.4887vw,9.4914rem);
+  --esp-s:clamp(1.0625rem,1.0114rem + 0.2273vw,1.1875rem);
+  --esp-m:clamp(1.5938rem,1.517rem + 0.3409vw,1.7813rem);
+  --esp-l:clamp(2.125rem,2.0227rem + 0.4545vw,2.375rem);
+  --esp-xl:clamp(3.1875rem,3.0341rem + 0.6818vw,3.5625rem);
+  --esp-seccion:clamp(3.1875rem,1.5767rem + 7.1591vw,7.125rem);
+  --borde:clamp(20px,3.2vw,48px);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+section[id]{scroll-margin-top:24px;}
+body{background:var(--papel);color:var(--tinta);font:400 var(--paso-0)/1.6 var(--f);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+img{display:block;max-width:100%;}
+a{color:inherit;}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px;}
+h1,h2,h3,h4{font-family:var(--t);font-weight:700;text-transform:uppercase;line-height:1;letter-spacing:-.01em;text-wrap:balance;}
+p{text-wrap:pretty;}
+.salto{position:absolute;left:-9999px;top:0;background:var(--tinta);color:#fff;padding:12px 16px;z-index:50;}
+.salto:focus{left:12px;top:12px;}
+
+/* ---------- botones ---------- */
+.boton{display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:48px;padding:0 22px;border:0;border-radius:2px;
+  font:700 var(--paso-m1)/1 var(--t);text-transform:uppercase;letter-spacing:.02em;text-decoration:none;cursor:pointer;
+  background:var(--niebla);color:#fff;transition:transform .14s var(--ease-out),background-color .2s var(--ease-out);}
+.boton:active{transform:scale(.97);}
+.boton--blanco{background:#fff;color:var(--tinta);}
+.enlace{font:700 var(--paso-m1)/1 var(--t);text-transform:uppercase;letter-spacing:.02em;text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px;}
+@media (hover:hover) and (pointer:fine){
+  .boton:hover{background:#3f525e;}
+  .boton--blanco:hover{background:var(--niebla-suave);}
+  .enlace:hover{text-decoration-thickness:2px;}
+  .cab nav a:hover{opacity:.7;}
+}
+
+/* ---------- cristal empañado ---------- */
+.vidrio{position:absolute;inset:0;overflow:hidden;background:#9aa6ad;}
+.vidrio img,.vidrio canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--op,50% 50%);}
+.vidrio .empanada{
+  -webkit-mask-image:radial-gradient(ellipse var(--rx,16%) var(--ry,6%) at var(--cx,50%) var(--cy,40%),transparent 45%,#000 100%);
+          mask-image:radial-gradient(ellipse var(--rx,16%) var(--ry,6%) at var(--cx,50%) var(--cy,40%),transparent 45%,#000 100%);}
+.vidrio.con-lienzo .empanada{visibility:hidden;}
+.vidrio::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(20,25,29,.34) 0%,rgba(20,25,29,0) 26%,rgba(20,25,29,0) 58%,rgba(20,25,29,.5) 100%),rgba(20,25,29,.1);}
+
+/* texto de póster (blanco sobre la foto) */
+.cartel{position:relative;color:#fff;isolation:isolate;}
+.cartel .vidrio{z-index:-1;}
+.vertical{white-space:nowrap;position:absolute;top:var(--arriba,var(--borde));right:var(--borde);writing-mode:vertical-rl;display:flex;flex-direction:column;gap:.1em;
+  font-family:var(--t);font-weight:500;text-transform:uppercase;line-height:.95;pointer-events:none;text-shadow:0 1px 18px rgba(0,0,0,.18);}
+.vertical b{font-weight:500;font-size:var(--paso-4);letter-spacing:-.01em;}
+.vertical span{font-size:var(--paso-2);}
+.num{position:absolute;left:var(--borde);top:50%;font:700 var(--paso-4)/1 var(--t);letter-spacing:-.04em;pointer-events:none;}
+.titulo-cartel{position:absolute;left:50%;top:62%;transform:translateX(-50%);text-align:center;font-size:var(--paso-2);line-height:1;max-width:12ch;pointer-events:none;text-shadow:0 1px 18px rgba(0,0,0,.2);}
+
+/* ---------- cabecera ---------- */
+.cab{position:absolute;top:0;left:0;right:0;z-index:20;color:#fff;display:flex;align-items:flex-start;gap:clamp(20px,4vw,64px);padding:var(--borde) var(--borde) 0;}
+.logo{font:700 clamp(17px,1.5vw,21px)/.86 var(--t);text-transform:uppercase;letter-spacing:-.01em;text-decoration:none;display:block;}
+.logo span{display:block;}
+.cab nav{display:flex;gap:clamp(14px,2vw,30px);padding-top:2px;}
+.cab nav a,.cab .tel{font:700 var(--paso-m1)/1 var(--t);text-transform:uppercase;text-decoration:none;letter-spacing:.01em;transition:opacity .2s var(--ease-out);}
+.cab .tel{margin-left:auto;margin-right:calc(var(--paso-4) + var(--paso-2) + 18px);padding-top:2px;white-space:nowrap;}
+.menu-btn{display:none;}
+@media (max-width:900px){
+  .cab nav{display:none;}
+  .cab .tel{display:none;}
+  .menu-btn{display:block;margin-left:auto;background:none;border:0;color:inherit;font:700 var(--paso-m1)/1 var(--t);text-transform:uppercase;padding:10px 0 10px 12px;margin-top:-8px;cursor:pointer;}
+  .cab.abierta{position:fixed;inset:0;background:var(--tinta);flex-direction:column;align-items:stretch;padding-bottom:var(--borde);}
+  .cab.abierta .menu-btn{position:absolute;right:var(--borde);top:var(--borde);}
+  .cab.abierta nav{display:flex;flex-direction:column;gap:6px;margin-top:40px;}
+  .cab.abierta nav a{font-size:var(--paso-4);line-height:1.05;}
+  .cab.abierta .tel{display:block;margin:auto 0 0;font-size:var(--paso-1);}
+}
+
+/* ---------- portada: calco del póster «Foggy glass effect» (900×1200) ----------
+   Medidas tomadas de la referencia en % del póster; --u = 1 % del ancho a 900 px (9 px) y no crece más que el alto. */
+.portada{position:relative;height:100svh;min-height:560px;--u:min(1vw,1.25svh);}
+.portada .vidrio{--op:46% 50%;}
+.portada .vidrio::after{background:linear-gradient(180deg,rgba(20,25,29,.16) 0%,rgba(20,25,29,0) 22%,rgba(20,25,29,0) 62%,rgba(20,25,29,.34) 100%);}
+.cab{position:absolute;top:0;left:0;width:100%;height:100svh;min-height:560px;z-index:20;color:#fff;pointer-events:none;padding:0;display:block;}
+.cab .logo{position:absolute;left:6.4%;top:6.25%;pointer-events:auto;font:900 max(15px,calc(var(--u) * 2.3))/.82 var(--t);font-stretch:100%;letter-spacing:-.005em;--u:min(1vw,1.25svh);}
+.portada .vertical{top:7.7%;right:4.2%;gap:.12em;text-transform:none;font-family:var(--f);font-weight:400;line-height:1;text-shadow:none;}
+.portada .vertical b{font-weight:400;font-size:max(32px,calc(var(--u) * 5.7));letter-spacing:-.01em;}
+.portada .vertical span{font-size:max(20px,calc(var(--u) * 3.5));letter-spacing:.01em;}
+.portada .num{left:6.9%;top:47.3%;font:500 max(38px,calc(var(--u) * 5.5))/1 var(--t);font-stretch:62%;letter-spacing:0;}
+.portada h1{position:absolute;left:50%;top:60.3%;transform:translateX(-50%);text-align:center;font:400 max(19px,calc(var(--u) * 2.75))/1.04 var(--f);letter-spacing:-.01em;width:max-content;text-shadow:none;}
+.detalle{position:absolute;bottom:2.5%;left:6.9%;width:max(250px,calc(var(--u) * 29.5));font:400 max(14px,calc(var(--u) * 1.52))/1.24 var(--f);}
+.detalle h2{font:600 max(15px,calc(var(--u) * 1.9))/1.1 var(--f);letter-spacing:-.01em;margin-bottom:.3em;}
+.detalle a{text-underline-offset:3px;}
+.detalle .vias-cartel{margin-top:.35em;}
+.espejo{position:absolute;bottom:2.5%;left:68.3%;width:max(250px,calc(var(--u) * 29.5));font:400 max(14px,calc(var(--u) * 1.52))/1.24 var(--f);transform:scaleY(-1);opacity:.55;filter:blur(.3px);pointer-events:none;user-select:none;}
+@media (hover:hover) and (pointer:fine){.detalle a:hover{opacity:.75;}}
+@media (max-width:640px){
+  .portada .vidrio{--op:44% 50%;}
+  .espejo{display:none;}
+  .detalle{width:auto;right:6.9%;bottom:3.5%;}
+  .portada h1{top:56%;}
+}
+
+/* ---------- presentación ---------- */
+.presenta{padding:var(--esp-seccion) var(--borde) var(--esp-seccion);display:grid;grid-template-columns:repeat(12,1fr);gap:0 24px;}
+.presenta p{grid-column:4/span 8;font:500 var(--paso-2)/1.22 var(--t);letter-spacing:-.01em;max-width:30ch;}
+@media (max-width:760px){.presenta p{grid-column:1/-1;}}
+
+/* ---------- láminas 01 / 02 / 03 ---------- */
+.lamina{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--esp-l) 24px;padding:0 var(--borde) var(--esp-seccion);align-items:end;}
+.lamina .cartel{grid-column:1/span 7;aspect-ratio:4/5;max-height:92vh;width:100%;}
+.lamina .ficha{grid-column:9/span 4;padding-bottom:4px;}
+.lamina--der .cartel{grid-column:6/span 7;grid-row:1;}
+.lamina--der .ficha{grid-column:1/span 4;grid-row:1;}
+.ficha p{margin-bottom:var(--esp-m);max-width:38ch;}
+.ficha ul{list-style:none;border-top:1px solid var(--regla);margin-bottom:var(--esp-m);}
+.ficha li{border-bottom:1px solid var(--regla);padding:11px 0;font-size:var(--paso-m1);display:flex;justify-content:space-between;gap:12px;}
+.ficha .desde{font:700 var(--paso-1)/1 var(--t);text-transform:uppercase;margin-bottom:var(--esp-m);}
+.lamina .cartel h2{position:absolute;left:50%;top:60%;transform:translateX(-50%);text-align:center;font-size:var(--paso-3);text-shadow:0 1px 18px rgba(0,0,0,.22);}
+.lamina .vertical b{font-size:var(--paso-3);}
+.lamina .vertical span{font-size:var(--paso-1);}
+.lamina .num{top:auto;bottom:var(--borde);}
+@media (max-width:860px){
+  .lamina{grid-template-columns:1fr;padding-left:0;padding-right:0;}
+  .lamina .cartel,.lamina--der .cartel{grid-column:1;grid-row:auto;max-height:none;aspect-ratio:4/5;}
+  .lamina .ficha,.lamina--der .ficha{grid-column:1;grid-row:auto;padding:0 var(--borde);}
+}
+
+/* 02: póster a sangre */
+.ancha{position:relative;min-height:100svh;min-height:max(100svh,600px);padding:var(--borde);display:flex;flex-direction:column;justify-content:flex-end;margin-bottom:var(--esp-seccion);}
+.ancha h2{position:absolute;left:50%;top:56%;transform:translateX(-50%);text-align:center;font-size:var(--paso-4);text-shadow:0 1px 18px rgba(0,0,0,.22);}
+.ancha .num{top:calc(var(--borde) + 70px);}
+.ancha .vertical b{font-size:var(--paso-4);}
+.ancha .ficha{max-width:36ch;}
+.ancha .ficha p{max-width:none;}
+.ancha .ficha ul{border-color:rgba(255,255,255,.45);}
+.ancha .ficha li{border-color:rgba(255,255,255,.45);}
+.ancha .ficha .boton{background:#fff;color:var(--tinta);}
+@media (hover:hover) and (pointer:fine){.ancha .ficha .boton:hover{background:var(--niebla-suave);}}
+@media (max-width:640px){.ancha h2{top:30%;}.ancha .num{top:var(--borde);}}
+
+
+/* mismo lenguaje de póster en el resto de carteles */
+.cartel .vertical{font-family:var(--f);font-weight:400;text-transform:none;text-shadow:none;}
+.cartel .vertical b{font-weight:400;}
+.cartel .num{font-weight:500;font-stretch:62%;letter-spacing:0;}
+.lamina .cartel h2,.ancha h2{font-family:var(--f);font-weight:400;letter-spacing:-.01em;line-height:1.04;text-shadow:none;}
+.lamina .cartel h2{font-size:var(--paso-2);}
+.ancha h2{font-size:var(--paso-3);}
+
+/* ---------- cómo es una sesión ---------- */
+.sesion{padding:0 var(--borde) var(--esp-seccion);display:grid;grid-template-columns:repeat(12,1fr);gap:var(--esp-l) 24px;}
+.sesion h2{grid-column:1/span 5;font-size:var(--paso-5);line-height:.92;}
+.pasos{grid-column:6/span 7;list-style:none;border-top:1px solid var(--tinta);}
+.pasos li{display:grid;grid-template-columns:minmax(120px,14ch) 1fr;gap:8px 24px;padding:var(--esp-s) 0 calc(var(--esp-s) + 4px);border-bottom:1px solid var(--regla);}
+.pasos h3{font-size:var(--paso-1);line-height:1.1;}
+.pasos p{color:var(--texto-2);max-width:46ch;}
+@media (max-width:860px){.sesion h2,.pasos{grid-column:1/-1;}}
+@media (max-width:520px){.pasos li{grid-template-columns:1fr;}}
+
+/* ---------- tarifas (lista de precios) ---------- */
+.tarifas{background:var(--superficie);padding:var(--esp-seccion) var(--borde);}
+.tarifas-cab{display:flex;justify-content:space-between;align-items:flex-end;gap:16px 40px;flex-wrap:wrap;margin-bottom:var(--esp-xl);}
+.tarifas h2{font-size:var(--paso-5);line-height:.92;}
+.tarifas-cab p{max-width:38ch;color:var(--texto-2);}
+.precios{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--esp-xl) clamp(24px,3vw,48px);}
+.precios table{width:100%;border-collapse:collapse;}
+.precios caption{text-align:left;font:700 var(--paso-1)/1 var(--t);text-transform:uppercase;padding-bottom:14px;border-bottom:1px solid var(--tinta);}
+.precios th,.precios td{padding:14px 0;border-bottom:1px solid var(--regla);vertical-align:top;text-align:left;font-weight:400;}
+.precios th b{display:block;font:700 var(--paso-0)/1.15 var(--t);text-transform:uppercase;margin-bottom:3px;}
+.precios th span{font-size:var(--paso-m1);color:var(--texto-2);}
+.precios td{text-align:right;white-space:nowrap;font:700 var(--paso-0)/1.15 var(--t);font-variant-numeric:tabular-nums;padding-left:16px;}
+.tarifas .nota{margin-top:var(--esp-l);font-size:var(--paso-m1);color:var(--texto-2);max-width:60ch;}
+@media (max-width:980px){.precios{grid-template-columns:1fr;}}
+
+/* ---------- contacto ---------- */
+.contacto{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--esp-l) 24px;padding:var(--esp-seccion) var(--borde);align-items:start;}
+.contacto .cartel{grid-column:1/span 5;aspect-ratio:3/4;position:sticky;top:24px;}
+.contacto .cartel .vidrio{--op:50% 50%;}
+.contacto .lado{grid-column:7/span 6;}
+.contacto h2{font-size:var(--paso-5);line-height:.92;margin-bottom:var(--esp-m);}
+.contacto .lado > p{max-width:40ch;margin-bottom:var(--esp-m);}
+.vias{list-style:none;border-top:1px solid var(--tinta);margin:var(--esp-l) 0;}
+.vias li{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:14px 0;border-bottom:1px solid var(--regla);}
+.vias span{color:var(--texto-2);}
+.vias a,.vias b{font:700 var(--paso-0)/1.3 var(--t);text-transform:uppercase;text-decoration:none;}
+form{display:grid;grid-template-columns:1fr 1fr;gap:18px 20px;}
+form .entera{grid-column:1/-1;}
+label{display:block;font:700 var(--paso-m1)/1.2 var(--t);text-transform:uppercase;margin-bottom:7px;}
+input,select,textarea{width:100%;font:400 16px/1.4 var(--f);color:var(--tinta);background:var(--superficie);border:1px solid var(--texto-2);border-radius:2px;padding:12px 13px;min-height:48px;}
+textarea{min-height:120px;resize:vertical;}
+input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--niebla);outline-offset:1px;}
+.form-pie{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+.aviso-form{font-size:var(--paso-m1);color:var(--texto-2);}
+@media (max-width:860px){
+  .contacto{grid-template-columns:1fr;padding-left:0;padding-right:0;}
+  .contacto .cartel{grid-column:1;position:relative;top:0;aspect-ratio:4/5;}
+  .contacto .lado{grid-column:1;padding:0 var(--borde);}
+}
+@media (max-width:520px){form{grid-template-columns:1fr;}}
+
+/* ---------- pie ---------- */
+.pie{background:var(--oscura);color:var(--sobre-oscura);padding:var(--esp-xl) var(--borde) var(--esp-l);}
+.pie-arriba{display:flex;justify-content:space-between;gap:24px 48px;flex-wrap:wrap;padding-bottom:var(--esp-l);border-bottom:1px solid rgba(237,239,240,.18);}
+.pie .logo{font-size:clamp(28px,4vw,52px);}
+.pie nav{display:flex;flex-wrap:wrap;gap:10px 26px;align-content:flex-start;}
+.pie nav a{font:700 var(--paso-m1)/1.4 var(--t);text-transform:uppercase;text-decoration:none;}
+.pie small{display:block;font-size:14px;line-height:1.55;color:rgba(237,239,240,.72);margin-top:var(--esp-m);max-width:90ch;}
+.pie small a{color:inherit;}
+
+/* barra fija del móvil */
+.movil{display:none;}
+@media (max-width:760px){
+  .movil{display:flex;gap:8px;position:fixed;left:10px;right:10px;bottom:10px;z-index:30;transform:translateY(140%);visibility:hidden;transition:transform .35s var(--ease-out),visibility 0s .35s;}
+  .movil.on{transform:none;visibility:visible;transition:transform .35s var(--ease-out);}
+  .movil .boton{flex:1;box-shadow:0 6px 24px rgba(0,0,0,.18);}
+  .movil .boton--blanco{flex:0 0 auto;}
+  .pie{padding-bottom:96px;}
+}
+</style>
+</head>
+<body>
+<a class="salto" href="#contenido">Saltar al contenido</a>
+
+<header class="cab" id="cab">
+  <a class="logo" href="#contenido" aria-label="LAINO Argazkiak, inicio"><span>LAINO</span><span>ARGAZKIAK</span></a>
+</header>
+
+<main id="contenido">
+<section class="portada cartel" data-portada aria-label="Portada">
+  <div class="vidrio" data-vidrio data-limpio="44 33 8 3.4" data-limpio-alto="33 31 13 2.6" data-limpio-movil="40 36 26 2.6" style="--cx:44%;--cy:33%;--rx:10%;--ry:4%">
+    <img class="nitida" src="fotos/portada-2000.webp" srcset="fotos/portada-900.webp 900w, fotos/portada-2000.webp 2000w" sizes="(max-width:640px) 220vw, 100vw" width="2000" height="1333" alt="Una chica de espaldas camina por la playa, con el pelo al viento" fetchpriority="high"/>
+    <img class="empanada" src="fotos/portada-niebla-2000.webp" srcset="fotos/portada-niebla-900.webp 900w, fotos/portada-niebla-2000.webp 2000w" sizes="(max-width:640px) 220vw, 100vw" width="2000" height="1333" alt="" aria-hidden="true" fetchpriority="high"/>
+  </div>
+  <p class="vertical"><b>Fotografía//</b><span>17.10.26</span></p>
+  <span class="num" aria-hidden="true">01</span>
+  <h1 data-letras>Fotografía<br/>en Tolosa</h1>
+  <div class="detalle">
+    <h2>Retrato/Bodas/Producto</h2>
+    <p>Estudio de fotografía en Tolosa, Gipuzkoa. Retratos en estudio o al aire libre, bodas en Tolosaldea y fotos de producto para negocios. Luz natural y sin poses forzadas. Con cita, de lunes a sábado.</p>
+    <p class="vias-cartel"><a href="tel:+34943000000">943 00 00 00</a> · <a href="#contacto">WhatsApp</a> · <a href="#tarifas">Tarifas</a></p>
+  </div>
+  <div class="espejo" aria-hidden="true">
+    <p>Estudio de fotografía en Tolosa, Gipuzkoa. Retratos en estudio o al aire libre, bodas en Tolosaldea y fotos de producto para negocios. Luz natural y sin poses forzadas. Con cita, de lunes a sábado.</p>
+    <p class="vias-cartel">943 00 00 00 · WhatsApp · Tarifas</p>
+  </div>
+</section>
+
+
+<section class="presenta" aria-label="El estudio">
+  <p data-enciende>Laino es un estudio de fotografía en Tolosa. Hacemos retratos, bodas y fotos de producto para negocios de Tolosaldea, con luz natural siempre que se puede y con tiempo para que salgas como eres.</p>
+</section>
+
+<section class="lamina" id="retrato">
+  <div class="cartel">
+    <div class="vidrio" data-vidrio data-limpio="30 34 22 6" style="--op:72% 50%;--cx:30%;--cy:34%;--rx:22%;--ry:6%">
+      <img class="nitida" src="fotos/retrato-2000.webp" srcset="fotos/retrato-900.webp 900w, fotos/retrato-2000.webp 2000w" sizes="(max-width:860px) 100vw, 58vw" width="2000" height="1333" alt="Mujer con sombrero negro entre ramas verdes, de perfil y de espaldas" loading="lazy"/>
+      <img class="empanada" src="fotos/retrato-niebla-2000.webp" srcset="fotos/retrato-niebla-900.webp 900w, fotos/retrato-niebla-2000.webp 2000w" sizes="(max-width:860px) 100vw, 58vw" width="2000" height="1333" alt="" aria-hidden="true" loading="lazy"/>
+    </div>
+    <span class="num" aria-hidden="true">02</span>
+    <h2 data-lineas>Retrato</h2>
+    <p class="vertical"><b>Con luz de ventana</b><span>En el estudio o fuera</span></p>
+  </div>
+  <div class="ficha">
+    <p>Retratos para ti, para tu familia o para tu perfil profesional. En el estudio, con luz de ventana, o al aire libre: a orillas del Oria, subiendo a Uzturre o donde estés a gusto.</p>
+    <ul data-escalonado>
+      <li><span>Sesión sin prisa</span><span>45 min a 1 hora</span></li>
+      <li><span>Fotos editadas a mano</span><span>De 10 a 20</span></li>
+      <li><span>Galería privada para elegir</span><span>En una semana</span></li>
+    </ul>
+    <p class="desde">Desde 90 €</p>
+    <a class="boton" href="#contacto">Pedir fecha</a>
+  </div>
+</section>
+
+<section class="ancha cartel" id="bodas">
+  <div class="vidrio" data-vidrio data-limpio="52 50 13 13" data-limpio-movil="56 52 30 9" style="--cx:52%;--cy:50%;--rx:13%;--ry:13%">
+    <img class="nitida" src="fotos/bodas-2000.webp" srcset="fotos/bodas-900.webp 900w, fotos/bodas-2000.webp 2000w" sizes="(max-width:640px) 260vw, 100vw" width="2000" height="1333" alt="Una pareja de novios camina de espaldas por un sendero entre árboles" loading="lazy"/>
+    <img class="empanada" src="fotos/bodas-niebla-2000.webp" srcset="fotos/bodas-niebla-900.webp 900w, fotos/bodas-niebla-2000.webp 2000w" sizes="(max-width:640px) 260vw, 100vw" width="2000" height="1333" alt="" aria-hidden="true" loading="lazy"/>
+  </div>
+  <span class="num" aria-hidden="true">03</span>
+  <h2 data-lineas>Bodas</h2>
+  <p class="vertical"><b>Como pasa</b><span>Tolosaldea y Gipuzkoa</span></p>
+  <div class="ficha">
+    <p>Bodas civiles y religiosas. Contamos el día como pasa, sin hacer esperar a los invitados y sin posados de una hora.</p>
+    <ul data-escalonado>
+      <li><span>Una reunión antes de la boda</span></li>
+      <li><span>Preparativos, ceremonia y comida</span></li>
+      <li><span>Galería para compartir con la familia</span></li>
+    </ul>
+    <p class="desde">Desde 550 €</p>
+    <a class="boton" href="#contacto">Preguntar por vuestra fecha</a>
+  </div>
+</section>
+
+<section class="lamina lamina--der" id="producto">
+  <div class="cartel">
+    <div class="vidrio" data-vidrio data-limpio="45 80 22 6" style="--op:40% 50%;--cx:45%;--cy:80%;--rx:22%;--ry:6%">
+      <img class="nitida" src="fotos/producto-2000.webp" srcset="fotos/producto-900.webp 900w, fotos/producto-2000.webp 2000w" sizes="(max-width:860px) 100vw, 58vw" width="2000" height="1333" alt="Botellas de cerámica verdes y azules en filas" loading="lazy"/>
+      <img class="empanada" src="fotos/producto-niebla-2000.webp" srcset="fotos/producto-niebla-900.webp 900w, fotos/producto-niebla-2000.webp 2000w" sizes="(max-width:860px) 100vw, 58vw" width="2000" height="1333" alt="" aria-hidden="true" loading="lazy"/>
+    </div>
+    <span class="num" aria-hidden="true">04</span>
+    <h2 data-lineas>Producto y negocios</h2>
+    <p class="vertical"><b>Para tu negocio</b><span>Web, carta o tienda</span></p>
+  </div>
+  <div class="ficha">
+    <p>Fotos para la web, la carta o las redes de tu negocio: producto sobre fondo liso, el local, el equipo trabajando. Lo traes al estudio o vamos nosotros.</p>
+    <ul data-escalonado>
+      <li><span>Fondo y luz para cada producto</span></li>
+      <li><span>Listas para tienda online</span></li>
+      <li><span>Uso libre para tu negocio</span></li>
+    </ul>
+    <p class="desde">Desde 120 €</p>
+    <a class="boton" href="#contacto">Pedir presupuesto</a>
+  </div>
+</section>
+
+<section class="sesion" id="sesion">
+  <h2 data-lineas>Cómo es una sesión</h2>
+  <ol class="pasos" data-escalonado>
+    <li><h3>Antes</h3><p>Hablamos por WhatsApp o en el estudio. Nos cuentas para qué son las fotos y elegimos sitio, hora y ropa.</p></li>
+    <li><h3>El día</h3><p>Vamos sin prisa. Entre foto y foto se habla, se descansa y se prueba otra luz.</p></li>
+    <li><h3>La selección</h3><p>En una semana te mandamos una galería privada para que marques tus favoritas.</p></li>
+    <li><h3>La entrega</h3><p>Recibes las fotos editadas en alta resolución, listas para imprimir o para subir a la web.</p></li>
+  </ol>
+</section>
+
+<section class="tarifas" id="tarifas">
+  <div class="tarifas-cab">
+    <h2 data-lineas>Tarifas</h2>
+    <p>Precios orientativos con IVA. Antes de reservar te pasamos el presupuesto cerrado, sin sorpresas.</p>
+  </div>
+  <div class="precios" data-escalonado>
+    <table>
+      <caption>Retrato</caption>
+      <tbody>
+        <tr><th scope="row"><b>En estudio</b><span>45 minutos · 10 fotos</span></th><td>90 €</td></tr>
+        <tr><th scope="row"><b>En exterior</b><span>1 hora en Tolosaldea · 15 fotos</span></th><td>130 €</td></tr>
+        <tr><th scope="row"><b>Familia o pareja</b><span>1 hora · 20 fotos</span></th><td>150 €</td></tr>
+      </tbody>
+    </table>
+    <table>
+      <caption>Bodas</caption>
+      <tbody>
+        <tr><th scope="row"><b>Ceremonia civil</b><span>Hasta 3 horas</span></th><td>550 €</td></tr>
+        <tr><th scope="row"><b>Media jornada</b><span>Preparativos y ceremonia</span></th><td>850 €</td></tr>
+        <tr><th scope="row"><b>Día completo</b><span>Hasta 10 horas</span></th><td>1.400 €</td></tr>
+      </tbody>
+    </table>
+    <table>
+      <caption>Producto y negocios</caption>
+      <tbody>
+        <tr><th scope="row"><b>Producto</b><span>Hasta 10 piezas sobre fondo liso</span></th><td>120 €</td></tr>
+        <tr><th scope="row"><b>Local y equipo</b><span>2 horas en tu negocio</span></th><td>220 €</td></tr>
+        <tr><th scope="row"><b>Carta o catálogo</b><span>Una jornada</span></th><td>420 €</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="nota">Desplazamiento incluido en Tolosaldea. Fuera de la comarca, te lo decimos antes.</p>
+</section>
+
+<section class="contacto" id="contacto">
+  <div class="cartel">
+    <div class="vidrio" data-vidrio data-limpio="50 58 20 7" style="--cx:50%;--cy:58%;--rx:20%;--ry:7%">
+      <img class="nitida" src="fotos/contacto-2000.webp" srcset="fotos/contacto-900.webp 900w, fotos/contacto-2000.webp 2000w" sizes="(max-width:860px) 100vw, 42vw" width="2000" height="1331" alt="Una mujer de espaldas entra en el mar al atardecer" loading="lazy"/>
+      <img class="empanada" src="fotos/contacto-niebla-2000.webp" srcset="fotos/contacto-niebla-900.webp 900w, fotos/contacto-niebla-2000.webp 2000w" sizes="(max-width:860px) 100vw, 42vw" width="2000" height="1331" alt="" aria-hidden="true" loading="lazy"/>
+    </div>
+    <p class="vertical"><b>Escríbenos</b><span>943 00 00 00</span></p>
+  </div>
+  <div class="lado">
+    <h2 data-lineas>Hablamos</h2>
+    <p>Cuéntanos qué foto necesitas y para cuándo. Te contestamos el mismo día, normalmente por la tarde.</p>
+    <a class="boton" href="#contacto">Escribir por WhatsApp</a>
+    <ul class="vias">
+      <li><span>Teléfono</span><a href="tel:+34943000000">943 00 00 00</a></li>
+      <li><span>Correo</span><a href="mailto:kaixo@laino.example">kaixo@laino.example</a></li>
+      <li><span>Estudio</span><b>Tolosa, con cita</b></li>
+    </ul>
+    <form id="form" novalidate>
+      <div><label for="f-nombre">Nombre</label><input id="f-nombre" name="nombre" autocomplete="name"/></div>
+      <div><label for="f-contacto">Teléfono o correo</label><input id="f-contacto" name="contacto" autocomplete="email"/></div>
+      <div><label for="f-tipo">Qué te interesa</label>
+        <select id="f-tipo" name="tipo"><option>Retrato</option><option>Boda</option><option>Producto o negocio</option><option>Otra cosa</option></select></div>
+      <div><label for="f-fecha">Fecha (si la tienes)</label><input id="f-fecha" name="fecha" type="date"/></div>
+      <div class="entera"><label for="f-msg">Mensaje</label><textarea id="f-msg" name="mensaje"></textarea></div>
+      <div class="entera form-pie"><button class="boton" type="submit">Enviar mensaje</button><p class="aviso-form" role="status" id="f-estado"></p></div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="pie">
+  <div class="pie-arriba">
+    <a class="logo" href="#contenido"><span>LAINO</span><span>ARGAZKIAK</span></a>
+    <nav aria-label="Pie"><a href="#retrato">Retrato</a><a href="#bodas">Bodas</a><a href="#producto">Producto</a><a href="#sesion">La sesión</a><a href="#tarifas">Tarifas</a><a href="#contacto">Contacto</a></nav>
+  </div>
+  <small>Fotos de ejemplo (CC0, de Unsplash vía Wikimedia Commons): Mario Klassen, Cameron Kirby, nic chiro (photo-nic.co.uk), Jessica Ruscello y Killian Pham. El efecto de cristal empañado está hecho sobre esas fotos.</small>
+  <small>Muestra de diseño creada por OI Studio. El nombre, los datos, los textos y los precios son inventados; las fotos son de ejemplo (créditos en este pie y en <a href="fotos/creditos.json">fotos/creditos.json</a>).</small>
+</footer>
+
+<nav class="movil" data-barra-movil aria-label="Contacto rápido"><a class="boton" href="#contacto">WhatsApp</a><a class="boton boton--blanco" href="tel:+34943000000">Llamar</a></nav>
+
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/SplitText.min.js"></script>
+<script src="js/anim-texto.js"></script>
+<script src="js/vidrio.js"></script>
+</body>
+</html>

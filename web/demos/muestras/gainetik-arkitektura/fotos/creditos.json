@@ -1,0 +1,89 @@
+{
+ "_leeme": "Fotos de ejemplo de la muestra GAINETIK (OI Studio, 17/10/2026). Ninguna es de un estudio real ni de una obra propia. Las CC BY-SA se han recortado o difuminado y se comparten con la misma licencia.",
+ "portada": {
+  "archivo": "File:Integra House.jpg",
+  "autor": "KadimaDesign",
+  "licencia": "CC BY-SA 4.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Integra_House.jpg",
+  "fuente": "Wikimedia Commons",
+  "nota": "Render de proyecto publicado en Commons. Cuadro del interior difuminado. Portada de la muestra."
+ },
+ "caserio-piedra": {
+  "archivo": "File:Caserío Urbina-Ondarea- 09.jpg",
+  "autor": "Gobierno Vasco, Ondarea",
+  "licencia": "CC BY-SA 4.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Caser%C3%ADo_Urbina-Ondarea-_09.jpg",
+  "fuente": "Wikimedia Commons",
+  "nota": "Recortada a 4:3. Miniatura de la portada y galería."
+ },
+ "caserio-ladera": {
+  "archivo": "File:Baserri eta ardiak Eskoriatzako Mendiolan.jpg",
+  "autor": "Ksarasola",
+  "licencia": "CC BY-SA 4.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Baserri_eta_ardiak_Eskoriatzako_Mendiolan.jpg",
+  "fuente": "Wikimedia Commons",
+  "nota": "Recortada a 4:3."
+ },
+ "salon-ventanal": {
+  "archivo": "File:Breather Montreal interior (Unsplash).jpg",
+  "autor": "Breather",
+  "licencia": "CC0",
+  "url": "https://commons.wikimedia.org/wiki/File:Breather_Montreal_interior_(Unsplash).jpg",
+  "fuente": "Unsplash, vía Wikimedia Commons",
+  "nota": "Recortada a 4:3."
+ },
+ "comedor": {
+  "archivo": "File:Chairs in a meeting room (Unsplash).jpg",
+  "autor": "Breather",
+  "licencia": "CC0",
+  "url": "https://commons.wikimedia.org/wiki/File:Chairs_in_a_meeting_room_(Unsplash).jpg",
+  "fuente": "Unsplash, vía Wikimedia Commons",
+  "nota": "Recortada a 4:3; tarjeta de la mesa difuminada."
+ },
+ "sala-madera": {
+  "archivo": "File:Coffee table by a wooden wall (Unsplash).jpg",
+  "autor": "Crew",
+  "licencia": "CC0",
+  "url": "https://commons.wikimedia.org/wiki/File:Coffee_table_by_a_wooden_wall_(Unsplash).jpg",
+  "fuente": "Unsplash, vía Wikimedia Commons",
+  "nota": "Recortada a 4:3."
+ },
+ "casa-negra": {
+  "archivo": "File:Lonealy house (Unsplash).jpg",
+  "autor": "Alexander Andrews",
+  "licencia": "CC0",
+  "url": "https://commons.wikimedia.org/wiki/File:Lonealy_house_(Unsplash).jpg",
+  "fuente": "Unsplash, vía Wikimedia Commons",
+  "nota": "Recortada a 4:3."
+ },
+ "caserio-ruina": {
+  "archivo": "File:Baserri zaharra.jpg",
+  "autor": "Wikimaribarre",
+  "licencia": "CC BY-SA 4.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Baserri_zaharra.jpg",
+  "fuente": "Wikimedia Commons",
+  "nota": "Recortada a 4:3."
+ },
+ "borda-amanecer": {
+  "archivo": "File:Kirchspiel, Rödder, Mäusescheune -- 2014 -- 2915-19.jpg",
+  "autor": "Dietmar Rabich",
+  "licencia": "CC BY-SA 4.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Kirchspiel,_R%C3%B6dder,_M%C3%A4usescheune_--_2014_--_2915-19.jpg",
+  "fuente": "Wikimedia Commons",
+  "nota": "Recortada a 2:1. Foto del bloque «galería»."
+ },
+ "portada-delante": {
+  "archivo": "File:Integra House.jpg",
+  "autor": "KadimaDesign",
+  "licencia": "CC BY-SA 4.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Integra_House.jpg",
+  "fuente": "Wikimedia Commons",
+  "nota": "Recorte de la misma foto de portada (solo la casa y el césped, con transparencia) para que la casa quede delante del titular."
+ },
+ "og-gainetik": {
+  "archivo": "Captura de la portada de la muestra",
+  "autor": "OI Studio (contiene la foto de KadimaDesign y las miniaturas de Gobierno Vasco/Ondarea y Alexander Andrews)",
+  "licencia": "CC BY-SA 4.0 (por la foto de portada)",
+  "nota": "Imagen para compartir (og:image)."
+ }
+}

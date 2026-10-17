@@ -1,0 +1,53 @@
+{
+  "nota": "Fotos de ejemplo para una muestra de diseño de OI Studio. Todas de Wikimedia Commons con licencia libre. Ninguna es de un negocio real ni de una vivienda en venta.",
+  "fotos": [
+    {
+      "archivos": "portada-*.webp, portada-recorte-*.webp, edificio-bn-*.webp",
+      "original": "Vitoria - Bulevar de Mariturri 46-52 (14).jpg",
+      "autor": "Zarateman",
+      "licencia": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Vitoria_-_Bulevar_de_Mariturri_46-52_(14).jpg",
+      "cambios": "recortada, redimensionada y pasada a WebP; versión en blanco y negro; versión con el cielo recortado"
+    },
+    {
+      "archivos": "banda-bn-*.webp",
+      "original": "Vitoria - Bulevar de Mariturri 46-52 (15).jpg",
+      "autor": "Zarateman",
+      "licencia": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Vitoria_-_Bulevar_de_Mariturri_46-52_(15).jpg",
+      "cambios": "recortada, redimensionada y pasada a WebP; versión en blanco y negro"
+    },
+    {
+      "archivos": "loiola-*.webp",
+      "original": "San Sebastián - Barrio de Riberas de Loyola 2.jpg",
+      "autor": "Zarateman",
+      "licencia": "CC0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:San_Sebasti%C3%A1n_-_Barrio_de_Riberas_de_Loyola_2.jpg",
+      "cambios": "recortada, redimensionada y pasada a WebP"
+    },
+    {
+      "archivos": "cocina-*.webp",
+      "original": "Modern kitchen and dining area in a simple home setting showing light colors and minimal decor.jpg",
+      "autor": "Shixart1985",
+      "licencia": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Modern_kitchen_and_dining_area_in_a_simple_home_setting_showing_light_colors_and_minimal_decor.jpg",
+      "cambios": "recortada, redimensionada y pasada a WebP"
+    },
+    {
+      "archivos": "salon-*.webp",
+      "original": "Modern luxury living room with kitchen interior.jpg",
+      "autor": "Shixart1985",
+      "licencia": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Modern_luxury_living_room_with_kitchen_interior.jpg",
+      "cambios": "recortada, redimensionada y pasada a WebP"
+    },
+    {
+      "archivos": "casa-*.webp",
+      "original": "Modern house exterior with red roof and landscaped garden under clear blue sky.jpg",
+      "autor": "Shixart1985",
+      "licencia": "CC BY 2.0",
+      "pagina": "https://commons.wikimedia.org/wiki/File:Modern_house_exterior_with_red_roof_and_landscaped_garden_under_clear_blue_sky.jpg",
+      "cambios": "recortada, redimensionada y pasada a WebP"
+    }
+  ]
+}
