@@ -144,7 +144,7 @@
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/geist-latin-04ce1a61.woff2" crossorigin/>
 <link rel="stylesheet" href="/assets/fuentes.css?v=1"/>
 <link rel="stylesheet" href="assets/styles.css?v=27"/>
-<link rel="stylesheet" href="assets/portada.css?v=14"/>
+<link rel="stylesheet" href="assets/portada.css?v=15"/>
 <script>if(location.protocol==='http:'&&/(^|\.)oiwebstudio\.com$/.test(location.hostname))location.replace('https://'+location.host+location.pathname+location.search+location.hash);document.documentElement.classList.add('js');</script>
 <link rel="preload" as="image" href="assets/etxea-desk.webp" fetchpriority="high"/>
 </head>
@@ -787,14 +787,14 @@
     [[desk, 'desk'], [tab, 'tablet'], [mob, 'mobile']].forEach(function(par){
       var img = par[0];
       if (!img) return;
-      var src = 'assets/' + k + '-' + par[1] + '.jpg';
+      var src = 'assets/' + k + '-' + par[1] + '.jpg?v=3';
       // Cada <img> vive dentro de un <picture> con un <source> WebP que tiene
       // prioridad sobre el src: si no se cambia también el srcset, el navegador
       // sigue pintando la imagen anterior aunque el src ya sea el nuevo.
       var source = img.parentNode && img.parentNode.querySelector
         ? img.parentNode.querySelector('source')
         : null;
-      var webp = 'assets/' + k + '-' + par[1] + '.webp';
+      var webp = 'assets/' + k + '-' + par[1] + '.webp?v=3';
       img.style.opacity = '0';
       var show = function(){
         if (source) source.srcset = webp;

@@ -73,7 +73,8 @@
 .hchip--2 { top: 18%; right: -2%; animation-delay: -2s; }
 .hchip--3 { bottom: 20%; left: 3%; animation-delay: -4s; }
 @keyframes hflota { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
-@media (max-width: 760px) { .hchip--3 { display: none; } .hchip--1 { left: 4%; } .hchip--2 { right: 0; top: 8%; } .hchip { font-size: 12px; padding: 7px 12px 7px 9px; } }
+/* En el móvil solo queda «Abierto ahora», a caballo del borde inferior del portátil: las otras taparían la web del móvil */
+@media (max-width: 760px) { .hchip--2, .hchip--3 { display: none; } .hchip--1 { top: auto; bottom: 78px; left: 3%; } .hchip { font-size: 12px; padding: 7px 12px 7px 9px; } }
 
 /* ---- Lo que consigues: mosaico ------------------------------------------ */
 .bento { display: grid; gap: 16px; grid-template-columns: 1fr; margin-top: 0; }
@@ -252,7 +253,6 @@
   .dv-laptop { width: 100%; }
   .dv-phone { width: 30%; right: 3%; bottom: -10px; }
   .hero__ver { width: 100%; margin-top: 14px; padding: 15px 22px; font-size: 15px; }
-  .hchip--1 { top: -6%; }
 }
 /* Destacados: una columna limpia en el móvil */
 @media (max-width: 879px) {
