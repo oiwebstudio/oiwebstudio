@@ -435,7 +435,12 @@
 @keyframes hxSello { to { transform: rotate(360deg); } }
 
 /* Escena */
-.hx__escena { position: relative; height: var(--eh); margin-top: 10px; }
+.hx__escena { position: relative; height: var(--eh); margin-top: 10px; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+/* Solo la pantalla del móvil es enlace: sin el recuadro azul de Android al tocar */
+.hx__mano { -webkit-tap-highlight-color: transparent; }
+.hx__mano, .hx__foto { pointer-events: none; }
+.hx__pantalla { pointer-events: auto; cursor: pointer; }
+.hx__mano:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
 .hx__hilos { position: absolute; inset: -40px 0 0; width: 100%; height: calc(100% + 40px); pointer-events: none; z-index: 1; overflow: visible; }
 .hx__hilos path { fill: none; stroke: rgba(25,23,18,.22); stroke-width: 1; stroke-dasharray: 900; stroke-dashoffset: 900; animation: hxHilo 1.6s .9s cubic-bezier(.4,0,.2,1) forwards; }
 @keyframes hxHilo { to { stroke-dashoffset: 0; } }
@@ -458,7 +463,9 @@
 .hx__3d { position: absolute; inset: 0; }
 .hx__anillo { position: absolute; left: 50%; top: 27%; width: 0; height: 0; }
 @keyframes hxGira { to { transform: rotateZ(-6deg) rotateX(-13deg) rotateY(-360deg); } }
-.hx__p { --w: clamp(104px, 13vw, 176px); position: absolute; left: 0; top: 0; width: var(--w); height: calc(var(--w) * .66); border-radius: 18px; will-change: transform, opacity; }
+.hx__p { --w: clamp(104px, 13vw, 176px); position: absolute; left: 0; top: 0; width: var(--w); height: calc(var(--w) * .66); border-radius: 18px; will-change: transform, opacity; display: block; color: inherit; -webkit-tap-highlight-color: transparent; transition: box-shadow .25s ease; }
+.hx__p.is-en-movil { opacity: 0 !important; pointer-events: none; }
+@media (hover: hover) and (pointer: fine) { .hx__p:hover { box-shadow: 0 0 0 2px var(--ink), 0 22px 44px -18px rgba(25,23,18,.5); } }
 @keyframes hxAparece { from { opacity: 0; } }
 .hx__anillo:not(.is-js) .hx__p { display: none; }
 /* Las de detrás se funden con el fondo en vez de transparentarse */
@@ -521,7 +528,7 @@
   .hx__tarjeta--izq { left: -4px; top: 0; }
   .hx__tarjeta--der { right: -4px; top: auto; bottom: 22px; }
   .hx__anillo { top: 41%; }
-  .hx__p { --w: 88px; border-radius: 12px; }
+  .hx__p { --w: 80px; border-radius: 11px; }
   .hx__p--vidrio { padding: 7px 9px; }
   .hx__p--vidrio i { width: 18px; height: 18px; border-radius: 6px; margin-bottom: 3px; }
   .hx__p--vidrio i svg { width: 11px; height: 11px; }
