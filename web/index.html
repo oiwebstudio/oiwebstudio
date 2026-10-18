@@ -144,9 +144,9 @@
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/geist-latin-04ce1a61.woff2" crossorigin/>
 <link rel="stylesheet" href="/assets/fuentes.css?v=1"/>
 <link rel="stylesheet" href="assets/styles.css?v=27"/>
-<link rel="stylesheet" href="assets/portada.css?v=15"/>
+<link rel="stylesheet" href="assets/portada.css?v=16"/>
 <script>if(location.protocol==='http:'&&/(^|\.)oiwebstudio\.com$/.test(location.hostname))location.replace('https://'+location.host+location.pathname+location.search+location.hash);document.documentElement.classList.add('js');</script>
-<link rel="preload" as="image" href="assets/etxea-desk.webp" fetchpriority="high"/>
+<link rel="preload" as="image" href="assets/hero/mano-520.webp" imagesrcset="assets/hero/mano-520.webp 520w, assets/hero/mano-900.webp 900w" imagesizes="(max-width: 760px) 340px, 480px" fetchpriority="high"/>
 </head>
 <body>
 
@@ -204,45 +204,66 @@
 </div>
 </div>
 
-<!-- HERO -->
-<header class="hero">
-<div class="hero__bg"><div class="hero__grid"></div></div>
+<!-- HERO: mano con el móvil y las muestras girando alrededor -->
+<header class="hero hx">
 <div class="container">
-<div class="hero__inner">
-<span class="hero__badge reveal"><span class="dot"></span><span data-t="hero_badge">Disponible para nuevos proyectos</span></span>
-<h1 class="reveal" data-d="1" data-t="hero_h1">Diseño web para negocios que quieren verse <span class="grad">tan bien como son</span>.</h1>
-<p class="hero__lede reveal" data-d="2" data-t="hero_lede">Webs a medida para negocios de Tolosa y Gipuzkoa. Rápidas, cuidadas y pensadas para atraer clientes.</p>
-<div class="hero__actions reveal" data-d="3">
-<a href="contacto.html" class="btn btn--accent btn--lg" data-t="btn_presupuesto">Solicitar presupuesto</a>
-<a href="trabajos.html" class="btn btn--ghost btn--lg" data-t="btn_vertrabajos">Ver trabajos</a>
+<div class="hx__sello" aria-hidden="true">
+<svg viewBox="0 0 120 120"><defs><path id="hxCirc" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs><text><textPath href="#hxCirc" textLength="274" lengthAdjust="spacing" data-t="hx_sello">HECHO A MANO · DESDE TOLOSA · </textPath></text><path class="hx__estrella" d="M60 45 C61.6 55.5 64.5 58.4 75 60 C64.5 61.6 61.6 64.5 60 75 C58.4 64.5 55.5 61.6 45 60 C55.5 58.4 58.4 55.5 60 45Z"/></svg>
 </div>
-<div class="hero__trust reveal" data-d="4">
-<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="hero_trust1">Propuesta en 48h</span></span>
-<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="hero_trust2">Sin permanencia</span></span>
-<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="hero_trust3">30 días de ajustes gratis</span></span>
+<h1 class="hx__h1" data-t="hero_h1"><span class="hx__l1">Diseño web que se ve</span> <em class="hx__l2">tan bien como tu negocio.</em></h1>
+<p class="hx__lede" data-t="hero_lede">Webs a medida para negocios de Tolosa y Gipuzkoa. Rápidas, cuidadas y pensadas para atraer clientes.</p>
+<div class="hx__acc">
+<a href="contacto.html" class="hx__btn hx__btn--negro"><span data-t="btn_presupuesto">Solicitar presupuesto</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+<a href="trabajos.html" class="hx__btn hx__btn--claro"><i aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></i><span data-t="btn_vertrabajos">Ver trabajos</span></a>
+</div>
+
+<div class="hx__escena">
+<svg class="hx__hilos" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true"><path d="M125 110 C 115 230, 190 300, 330 318"/><path d="M1080 230 C 1092 300, 1030 330, 880 338"/></svg>
+
+<div class="hx__tarjeta hx__tarjeta--izq">
+<span class="hx__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 10v4M8 7v10M12 4v16M16 8v8M20 11v2"/></svg></span>
+<b data-t="hx_c1t">PROPUESTA EN 48&nbsp;H.</b>
+<span data-t="hx_c1s">Diseño y precio cerrado, sin compromiso.</span>
+</div>
+<div class="hx__tarjeta hx__tarjeta--der">
+<span class="hx__caras" aria-hidden="true"><img src="assets/hero/etxea-c.webp" alt="" width="40" height="40"/><img src="assets/hero/pedala-c.webp" alt="" width="40" height="40"/><img src="assets/hero/ekhi-c.webp" alt="" width="40" height="40"/><i>+</i></span>
+<b data-t="hx_c2t">PAGAS AL FINAL.</b>
+<span data-t="hx_c2s">Cuando tu web ya está publicada.</span>
+</div>
+
+<div class="hx__3d" aria-hidden="true">
+<div class="hx__anillo" id="hxAnillo">
+<div class="hx__p hx__p--foto" style="--i:0"><img src="assets/hero/etxea-c.webp" alt="" width="400" height="260"/><em>ETXEA</em></div>
+<div class="hx__p hx__p--vidrio" style="--i:1"><i style="--c:#5fb36b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></i><b data-t="hx_g1t">RESERVAS</b><span data-t="hx_g1s">Sin comisiones.</span></div>
+<div class="hx__p hx__p--foto" style="--i:2"><img src="assets/hero/pedala-c.webp" alt="" width="400" height="260"/><em>PEDALA</em></div>
+<div class="hx__p hx__p--vidrio" style="--i:3"><i style="--c:#8b7cf0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.5 8.5 0 0 1-4-1L3 20l1-5.5A8.5 8.5 0 1 1 21 11.5z"/></svg></i><b>WHATSAPP</b><span data-t="hx_g2s">Te escriben al momento.</span></div>
+<div class="hx__p hx__p--foto" style="--i:4"><img src="assets/hero/ekhi-c.webp" alt="" width="400" height="260"/><em>EKHI</em></div>
+<div class="hx__p hx__p--vidrio" style="--i:5"><i style="--c:#f08a4b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></i><b>GOOGLE MAPS</b><span data-t="hx_g3s">Te encuentran a la primera.</span></div>
+<div class="hx__p hx__p--foto" style="--i:6"><img src="assets/hero/arin-c.webp" alt="" width="400" height="260"/><em>ARIN</em></div>
+<div class="hx__p hx__p--foto" style="--i:7"><img src="assets/hero/laino-c.webp" alt="" width="400" height="260"/><em>LAINO</em></div>
+<div class="hx__p hx__p--vidrio" style="--i:8"><i style="--c:#e6b422"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg></i><b data-t="hx_g4t">RESEÑAS</b><span data-t="hx_g4s">Más estrellas en Google.</span></div>
+<div class="hx__p hx__p--foto" style="--i:9"><img src="assets/hero/gainetik-c.webp" alt="" width="400" height="260"/><em>GAINETIK</em></div>
 </div>
 </div>
 
-<div class="hero__showcase reveal" data-d="4">
-<div class="hero__sectors">
-<p class="marquee-label" data-t="sectors_label">Diseño webs para todo tipo de negocio local</p>
-<div class="hsx-row" id="hsxRow">
-<button type="button" class="hsx is-active" data-shot="etxea"><i style="background:#a8532f"></i><span class="hs-txt" data-t="sector_inm">Inmobiliarias</span></button>
-<button type="button" class="hsx" data-shot="pedala"><i style="background:#2a2a28"></i><span class="hs-txt" data-t="sector_bici">Tiendas de bicis</span></button>
-<button type="button" class="hsx" data-shot="ekhi"><i style="background:#3f6b5e"></i><span class="hs-txt" data-t="sector_psi">Psicología</span></button>
-<button type="button" class="hsx" data-shot="arin"><i style="background:#2f6b57"></i><span class="hs-txt" data-t="sector_fis">Fisioterapia</span></button>
-</div>
-</div>
-<div class="hero__mockup" id="heroMock">
-<div class="hchip hchip--1" aria-hidden="true"><span class="hchip__dot"></span><span data-t="chip_abierto">Abierto ahora</span></div>
-<div class="hchip hchip--2" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span data-t="chip_wa">Te escriben por WhatsApp</span></div>
-<div class="hchip hchip--3" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span data-t="chip_maps">Sales en Google Maps</span></div>
-<a class="devices" id="dvLink" href="/demos/muestras/etxea-inmobiliaria/" target="_blank" rel="noopener" aria-label="Ver esta web de ejemplo en vivo">
-<div class="dv-laptop"><div class="scr"><picture><source srcset="assets/etxea-desk.webp" type="image/webp"/><img id="dvDesk" src="assets/etxea-desk.jpg" alt="Diseño web para inmobiliarias: ejemplo de web en ordenador" width="900" height="562" fetchpriority="high"/></picture></div></div>
-<div class="dv-tablet"><div class="scr"><picture><source srcset="assets/etxea-tablet.webp" type="image/webp"/><img id="dvTab" src="assets/etxea-tablet.jpg" alt="Diseño web para inmobiliarias: ejemplo de web en tablet" width="640" height="844"/></picture></div></div>
-<div class="dv-phone"><picture><source srcset="assets/etxea-mobile.webp" type="image/webp"/><img id="dvMob" src="assets/etxea-mobile.jpg" alt="Diseño web para inmobiliarias: ejemplo de web en móvil" width="266" height="561"/></picture></div>
+<a class="hx__mano" id="hxMano" href="/demos/muestras/etxea-inmobiliaria/" target="_blank" rel="noopener">
+<span class="hx__flota">
+<img class="hx__foto" src="assets/hero/mano-520.webp" srcset="assets/hero/mano-520.webp 520w, assets/hero/mano-900.webp 900w" sizes="(max-width: 760px) 340px, 480px" alt="" width="1457" height="1868" fetchpriority="high"/>
+<span class="hx__pantalla" id="hxEnciende"><img id="hxPantalla" src="assets/etxea-mobile.webp?v=3" alt="" width="266" height="561"/><span class="hx__arranque" aria-hidden="true"><img src="assets/logo-nav-black.png" alt="" width="320" height="86"/></span><span class="hx__brillo" aria-hidden="true"></span></span>
+<span class="hx__isla" aria-hidden="true"></span>
+</span>
+<span class="sr-only" data-t="hx_ver">Ver esta muestra en vivo</span>
 </a>
-<a class="hero__ver" id="dvVer" href="/demos/muestras/etxea-inmobiliaria/" target="_blank" rel="noopener" data-t="hero_ver">Ver esta muestra →</a>
+
+<div class="hx__pie hx__pie--izq">
+<i class="hx__raya" aria-hidden="true"></i>
+<p data-t="hx_conf">Errotatxo y A.Berri ya tienen la suya.</p>
+<span class="hx__caras" aria-hidden="true"><img src="assets/hero/errotatxo-av.webp" alt="" width="40" height="40"/><img src="assets/hero/aberri-av.webp" alt="" width="40" height="40"/><i>+</i></span>
+</div>
+<div class="hx__pie hx__pie--der">
+<svg class="hx__chispa" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 C12.9 9.6 14.4 11.1 22 12 C14.4 12.9 12.9 14.4 12 22 C11.1 14.4 9.6 12.9 2 12 C9.6 11.1 11.1 9.6 12 2Z"/></svg>
+<p><i class="hx__raya" aria-hidden="true"></i><span data-t="hx_lema">Menos líos.<br/>Más visibilidad.</span></p>
+</div>
 </div>
 </div>
 </header>
@@ -746,94 +767,98 @@
 <div class="footer__mark" aria-hidden="true">OI STUDIO</div>
 </footer>
 
-<script src="assets/i18n.js?v=22"></script>
+<script src="assets/i18n.js?v=23"></script>
 <script src="assets/main.js?v=16"></script>
 <script src="assets/prueba.js?v=1"></script>
 <script>
 (function(){
-  /* Sectores con letras escalonadas: hover anima el texto y cambia los dispositivos */
-  var items = Array.prototype.slice.call(document.querySelectorAll('#hsxRow .hsx'));
-  if (!items.length) return;
-  var desk = document.getElementById('dvDesk');
-  var tab = document.getElementById('dvTab');
-  var mob = document.getElementById('dvMob');
-  var dvLink = document.getElementById('dvLink');
-  var demoUrls = {
-    etxea: '/demos/muestras/etxea-inmobiliaria/',
-    pedala: '/demos/muestras/pedala-bizikletak/',
-    ekhi: '/demos/muestras/ekhi-psikologia/',
-    arin: '/demos/muestras/arin-fisioterapia/'
-  };
-
-  function splitChars(){
-    items.forEach(function(t){
-      var txt = t.querySelector('.hs-txt');
-      if (!txt || txt.querySelector('.hs-ch')) return;
-      var raw = txt.textContent;
-      txt.textContent = '';
-      raw.split('').forEach(function(ch, i){
+  /* Hero: el titular entra palabra a palabra y el móvil va enseñando las muestras */
+  function trocearTitular(){
+    var h = document.querySelector('.hx__h1');
+    if (!h || h.querySelector('.hx__w')) return;
+    var n = 0;
+    Array.prototype.forEach.call(h.querySelectorAll('.hx__l1, .hx__l2'), function(linea){
+      var palabras = linea.textContent.trim().split(/\s+/);
+      linea.textContent = '';
+      palabras.forEach(function(p, j){
         var w = document.createElement('span');
-        w.className = 'hs-ch';
-        w.style.setProperty('--d', (i * 0.025).toFixed(3) + 's');
-        var a = document.createElement('b'); a.className = 'a'; a.innerHTML = ch === ' ' ? '&nbsp;' : ch;
-        var b = document.createElement('b'); b.className = 'b'; b.innerHTML = ch === ' ' ? '&nbsp;' : ch;
-        w.appendChild(a); w.appendChild(b);
-        txt.appendChild(w);
+        w.className = 'hx__w';
+        w.style.setProperty('--i', n++);
+        w.textContent = p;
+        linea.appendChild(w);
+        if (j < palabras.length - 1) linea.appendChild(document.createTextNode(' '));
       });
     });
   }
+  trocearTitular();
 
-  function swapDevices(k){
-    [[desk, 'desk'], [tab, 'tablet'], [mob, 'mobile']].forEach(function(par){
-      var img = par[0];
-      if (!img) return;
-      var src = 'assets/' + k + '-' + par[1] + '.jpg?v=3';
-      // Cada <img> vive dentro de un <picture> con un <source> WebP que tiene
-      // prioridad sobre el src: si no se cambia también el srcset, el navegador
-      // sigue pintando la imagen anterior aunque el src ya sea el nuevo.
-      var source = img.parentNode && img.parentNode.querySelector
-        ? img.parentNode.querySelector('source')
-        : null;
-      var webp = 'assets/' + k + '-' + par[1] + '.webp?v=3';
-      img.style.opacity = '0';
-      var show = function(){
-        if (source) source.srcset = webp;
-        img.src = src;
-        img.style.opacity = '1';
-      };
-      // Se precarga el formato que el navegador va a pintar de verdad (el WebP
-      // si lo soporta) para que el cambio no parpadee.
-      var pre = new Image();
-      pre.onload = show;
-      pre.onerror = function(){
-        var jpg = new Image();
-        jpg.onload = function(){ img.src = src; img.style.opacity = '1'; };
-        jpg.onerror = function(){ img.style.opacity = '1'; };
-        jpg.src = src;
-      };
-      pre.src = source ? webp : src;
+  var pantalla = document.getElementById('hxPantalla');
+  var mano = document.getElementById('hxMano');
+  var muestras = [
+    ['etxea', '/demos/muestras/etxea-inmobiliaria/'],
+    ['pedala', '/demos/muestras/pedala-bizikletak/'],
+    ['ekhi', '/demos/muestras/ekhi-psikologia/'],
+    ['arin', '/demos/muestras/arin-fisioterapia/'],
+    ['laino', '/demos/muestras/laino-argazkiak/'],
+    ['gainetik', '/demos/muestras/gainetik-arkitektura/'],
+    ['hiria', '/demos/muestras/hiria-etxebizitzak/'],
+    ['maila', '/demos/muestras/maila-eskailerak/']
+  ];
+  var actual = 0, enPantalla = true, reloj = null;
+  function siguiente(){
+    if (!pantalla || !enPantalla || document.hidden) return;
+    actual = (actual + 1) % muestras.length;
+    var m = muestras[actual];
+    var pre = new Image();
+    pre.onload = function(){
+      pantalla.style.opacity = '0';
+      setTimeout(function(){
+        pantalla.src = pre.src;
+        pantalla.style.opacity = '1';
+        if (mano) mano.href = m[1];
+      }, 520);
+    };
+    pre.src = 'assets/' + m[0] + '-mobile.webp?v=3';
+  }
+  var pant = document.getElementById('hxEnciende');
+  var quieto = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* El móvil entra apagado y se enciende: logo de OI y luego la primera muestra */
+  if (pant) {
+    if (quieto) pant.classList.add('is-on');
+    else {
+      setTimeout(function(){ pant.classList.add('is-encendiendo'); }, 1250);
+      setTimeout(function(){ pant.classList.add('is-on'); }, 2550);
+    }
+  }
+
+  /* Hilos que unen las tarjetas con el anillo */
+  function hilos(){
+    var svg = document.querySelector('.hx__hilos'), an = document.getElementById('hxAnillo');
+    if (!svg || !an || getComputedStyle(svg).display === 'none') return;
+    var w = svg.clientWidth || svg.getBoundingClientRect().width, hh = svg.getBoundingClientRect().height;
+    svg.setAttribute('viewBox', '0 0 ' + w + ' ' + hh);
+    var R = Math.min(310, Math.max(165, innerWidth * .24)) * .9;
+    var cx = an.offsetLeft, cy = an.offsetTop + 40;
+    var ts = document.querySelectorAll('.hx__tarjeta'), ps = svg.querySelectorAll('path');
+    [[ts[0], ps[0], -1], [ts[1], ps[1], 1]].forEach(function(t){
+      if (!t[0] || !t[1]) return;
+      var sx = t[0].offsetLeft + t[0].offsetWidth / 2, sy = t[0].offsetTop + t[0].offsetHeight + 40 - 16;
+      var ex = cx + t[2] * R, ey = cy - t[2] * R * .1;
+      t[1].setAttribute('d', 'M' + sx + ' ' + sy + ' C ' + sx + ' ' + ey + ', ' + (ex + t[2] * 70) + ' ' + (ey + 6) + ', ' + ex + ' ' + ey);
+      var l = t[1].getTotalLength ? Math.ceil(t[1].getTotalLength()) : 900;
+      t[1].style.strokeDasharray = l;
+      if (!t[1].dataset.ok) { t[1].style.strokeDashoffset = l; t[1].dataset.ok = 1; }
     });
   }
+  hilos();
+  addEventListener('resize', hilos);
 
-  function activate(item){
-    items.forEach(function(t){ t.classList.toggle('is-active', t === item); });
-    var k = item.dataset.shot;
-    var etiqueta = ({etxea:"inmobiliarias",pedala:"tiendas de bicis",ekhi:"psicología",arin:"fisioterapia"})[item.dataset.shot] || "negocios locales";
-    [[desk, "ordenador"], [tab, "tablet"], [mob, "móvil"]].forEach(function(p){ if (p[0]) p[0].alt = "Diseño web para " + etiqueta + ": ejemplo de web en " + p[1]; });
-    var dot = item.querySelector("i"), mock = document.getElementById("heroMock");
-    if (dot && mock) mock.style.setProperty("--tinte", dot.style.background);
-    swapDevices(k);
-    if (dvLink && demoUrls[k]) dvLink.href = demoUrls[k];
-    var ver = document.getElementById("dvVer"); if (ver && demoUrls[k]) ver.href = demoUrls[k];
+  if (pantalla) {
+    setTimeout(function(){ reloj = setInterval(siguiente, 3400); }, quieto ? 0 : 2600);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function(e){ enPantalla = e[0].isIntersecting; }).observe(pantalla);
+    }
   }
-
-  items.forEach(function(t){
-    t.addEventListener('mouseenter', function(){ activate(t); });
-    t.addEventListener('focus', function(){ activate(t); });
-    t.addEventListener('click', function(){ activate(t); });
-  });
-
-  splitChars();
 
   /* Mapa de zonas: pasar por un botón ilumina su punto y al revés */
   var zonas = document.querySelectorAll(".zmap [data-z]");
@@ -848,7 +873,7 @@
 
   /* Reconstruir letras cuando el i18n reescribe los textos (toggle ES/EU) */
   document.addEventListener('click', function(e){
-    if (e.target.closest('[data-lang]')) setTimeout(splitChars, 60);
+    if (e.target.closest('[data-lang]')) setTimeout(trocearTitular, 60);
   });
 })();
 </script>
