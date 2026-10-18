@@ -446,6 +446,11 @@
 @keyframes hxHilo { to { stroke-dashoffset: 0; } }
 
 .hx__tarjeta { position: absolute; z-index: 110; width: 188px; padding: 20px 20px 22px; text-align: left; background: #fff; border-radius: 26px; box-shadow: 0 1px 0 rgba(25,23,18,.04), 0 24px 50px -24px rgba(60,45,20,.28); display: flex; flex-direction: column; gap: 6px; animation: hxEntraT .9s .5s var(--ease) both, hxFlota 8s 1.4s ease-in-out infinite; }
+a.hx__tarjeta { color: inherit; transition: scale .35s var(--ease), box-shadow .35s ease; -webkit-tap-highlight-color: transparent; }
+@media (hover: hover) and (pointer: fine) { a.hx__tarjeta:hover { scale: 1.04; box-shadow: 0 1px 0 rgba(25,23,18,.04), 0 30px 60px -24px rgba(60,45,20,.4); } }
+a.hx__tarjeta:active { scale: .98; }
+a.hx__pie { color: inherit; display: block; -webkit-tap-highlight-color: transparent; }
+@media (hover: hover) and (pointer: fine) { a.hx__pie:hover p { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; } }
 .hx__tarjeta b { font-size: 15px; font-weight: 650; letter-spacing: -.01em; line-height: 1.2; color: var(--ink); margin-top: 8px; }
 .hx__tarjeta > span:last-child { font-size: 13px; line-height: 1.4; color: var(--text-muted); }
 .hx__tarjeta--izq { left: 0; top: -140px; rotate: -6deg; }
@@ -461,10 +466,9 @@
 
 /* Mundo 3D: el anillo y la mano comparten profundidad, así las muestras pasan por delante y por detrás del móvil */
 .hx__3d { position: absolute; inset: 0; }
-.hx__anillo { position: absolute; left: 50%; top: 27%; width: 0; height: 0; }
+.hx__anillo { position: absolute; left: 50%; top: 45%; width: 0; height: 0; }
 @keyframes hxGira { to { transform: rotateZ(-6deg) rotateX(-13deg) rotateY(-360deg); } }
-.hx__p { --w: clamp(104px, 13vw, 176px); position: absolute; left: 0; top: 0; width: var(--w); height: calc(var(--w) * .66); border-radius: 18px; will-change: transform, opacity; display: block; color: inherit; -webkit-tap-highlight-color: transparent; transition: box-shadow .25s ease; }
-.hx__p.is-en-movil { opacity: 0 !important; pointer-events: none; }
+.hx__p { --w: clamp(84px, 9vw, 128px); position: absolute; left: 0; top: 0; width: var(--w); height: calc(var(--w) * .66); border-radius: 18px; will-change: transform, opacity; display: block; color: inherit; -webkit-tap-highlight-color: transparent; transition: box-shadow .25s ease; }
 @media (hover: hover) and (pointer: fine) { .hx__p:hover { box-shadow: 0 0 0 2px var(--ink), 0 22px 44px -18px rgba(25,23,18,.5); } }
 @keyframes hxAparece { from { opacity: 0; } }
 .hx__anillo:not(.is-js) .hx__p { display: none; }
@@ -473,17 +477,20 @@
 .hx__p--foto { overflow: hidden; border: 3px solid rgba(255,255,255,.9); box-shadow: 0 18px 40px -18px rgba(25,23,18,.45); background: #ddd; }
 .hx__p--foto img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
 .hx__p--foto em { position: absolute; left: 8px; bottom: 8px; font-style: normal; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .12em; color: #fff; background: rgba(20,18,14,.62); padding: 4px 8px; border-radius: 999px; }
-.hx__p--vidrio { background: #fcfbf9; border: 1px solid rgba(255,255,255,.95); box-shadow: 0 18px 40px -18px rgba(25,23,18,.35), inset 0 1px 0 #fff; padding: 12px 14px; text-align: left; display: flex; flex-direction: column; justify-content: center; gap: 2px; }
-.hx__p--vidrio i { width: 28px; height: 28px; border-radius: 9px; display: grid; place-items: center; color: var(--c); background: color-mix(in srgb, var(--c) 18%, #fff); margin-bottom: 6px; }
+.hx__p--vidrio { background: #fcfbf9; border: 1px solid rgba(255,255,255,.95); box-shadow: 0 18px 40px -18px rgba(25,23,18,.35), inset 0 1px 0 #fff; padding: 9px 11px; text-align: left; display: flex; flex-direction: column; justify-content: center; gap: 1px; }
+.hx__p--vidrio i { width: 22px; height: 22px; border-radius: 7px; display: grid; place-items: center; color: var(--c); background: color-mix(in srgb, var(--c) 18%, #fff); margin-bottom: 4px; }
 .hx__p--vidrio i svg { width: 16px; height: 16px; }
-.hx__p--vidrio b { font-size: 13px; font-weight: 650; letter-spacing: .01em; color: var(--ink); }
-.hx__p--vidrio span { font-size: 11.5px; color: var(--text-muted); line-height: 1.3; }
+.hx__p--vidrio b { font-size: 11px; font-weight: 650; letter-spacing: .01em; color: var(--ink); }
+.hx__p--vidrio span { font-size: 9.5px; color: var(--text-muted); line-height: 1.25; }
 
 /* Mano con el móvil: el centro del teléfono está al 68,8 % del ancho de la foto */
 .hx__mano { --mw: calc(var(--pw) / .4132); position: absolute; left: 50%; top: 6px; z-index: 50; width: var(--mw); transform: translateX(-68.8%); display: block; animation: hxEntraM 1.1s .2s var(--ease) both; }
 .hx__foto { width: 100%; height: auto; display: block; -webkit-mask-image: linear-gradient(90deg, transparent 2%, #000 30%); mask-image: linear-gradient(90deg, transparent 2%, #000 30%); }
 .hx__pantalla { position: absolute; left: 48.11%; top: 1.98%; width: 41.32%; height: 68.79%; border-radius: 13.5% / 6.3%; overflow: hidden; clip-path: inset(0 round 13.5% / 6.3%); background: linear-gradient(160deg, #1d1d1d, #040404 60%); }
-#hxPantalla { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: opacity .35s ease; }
+/* La web empieza bajo la isla: arriba queda la barra negra del teléfono */
+#hxPantalla, .hx__capa { position: absolute; left: 0; top: 6.5%; width: 100%; height: 93.5%; object-fit: cover; object-position: top; display: block; }
+.hx__capa { opacity: 0; transition: opacity 1s cubic-bezier(.4,0,.2,1); }
+.hx__capa.is-vista { opacity: 1; }
 /* Encendido: apagado → brillo y logo → primera muestra */
 .js .hx__pantalla:not(.is-on) #hxPantalla { opacity: 0; transform: scale(1.06); filter: brightness(1.7); }
 .js .hx__pantalla.is-on #hxPantalla { transition: opacity .7s ease, transform 1.3s var(--ease), filter 1.1s ease; }
@@ -527,15 +534,15 @@
   .hx__caras img, .hx__caras i { width: 24px; height: 24px; margin-left: -7px; font-size: 13px; }
   .hx__tarjeta--izq { left: -4px; top: 0; }
   .hx__tarjeta--der { right: -4px; top: auto; bottom: 22px; }
-  .hx__anillo { top: 41%; }
-  .hx__p { --w: 80px; border-radius: 11px; }
-  .hx__p--vidrio { padding: 7px 9px; }
-  .hx__p--vidrio i { width: 18px; height: 18px; border-radius: 6px; margin-bottom: 3px; }
+  .hx__anillo { top: 58%; }
+  .hx__p { --w: 72px; border-radius: 10px; }
+  .hx__p--vidrio { padding: 6px 7px; }
+  .hx__p--vidrio i { width: 15px; height: 15px; border-radius: 5px; margin-bottom: 3px; }
   .hx__p--vidrio i svg { width: 11px; height: 11px; }
-  .hx__p--vidrio b { font-size: 9px; }
-  .hx__p--vidrio span { font-size: 8px; }
+  .hx__p--vidrio b { font-size: 8px; }
+  .hx__p--vidrio span { display: none; }
   .hx__p--foto em { font-size: 7px; left: 5px; bottom: 5px; padding: 2px 5px; }
-  .hx__pie { display: none; }
+  .hx__pie, a.hx__pie { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hx__w, .hx__tarjeta, .hx__p, .hx__mano, .hx__flota, .hx__pie, .hx__sello text, .hx__hilos path, .hx__brillo { animation: none !important; }

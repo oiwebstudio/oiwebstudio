@@ -1,0 +1,12 @@
+{
+  "nota": "Foto de ejemplo para una muestra de diseño de OI Studio. No es de un negocio real.",
+  "fotos": [
+    {
+      "archivos": "cartel-carretera.webp",
+      "autor": "Mikkel Bech",
+      "licencia": "Licencia de Unsplash",
+      "pagina": "https://unsplash.com/photos/yjAFnkLtKY0",
+      "cambios": "recortada, oscurecida y pasada a WebP"
+    }
+  ]
+}
