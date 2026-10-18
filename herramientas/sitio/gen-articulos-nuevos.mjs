@@ -1,21 +1,26 @@
 /**
- * Publica las guías de octubre de 2026 (articulos-octubre-a.mjs y -b.mjs):
+ * Publica las guías de octubre de 2026 (articulos-octubre-a.mjs, -b.mjs y -c.mjs):
  *   1. escribe cada página con la carcasa común (gen-articulos-nacionales.mjs),
  *   2. añade su bloque «Sigue leyendo»,
  *   3. las da de alta en articulos.html, sitemap.xml y llms.txt,
  *   4. enlaza hacia ellas desde guías relacionadas ya publicadas.
- * Es idempotente: se puede relanzar sin duplicar nada.
+ * Es idempotente: se puede relanzar sin duplicar nada. Solo ESCRIBE las páginas que aún no existen en web/
+ * (las ya publicadas llevan retoques posteriores, como ?v=4 en las fotos, que regenerarlas borraría);
+ * con --rehacer las reescribe todas.
  *
- * Uso: node herramientas/sitio/gen-articulos-nuevos.mjs
+ * Uso: node herramientas/sitio/gen-articulos-nuevos.mjs [--rehacer]
  */
 import fs from "node:fs";
 import path from "node:path";
 import { pagina, conservarRelacionados } from "./gen-articulos-nacionales.mjs";
 import { ARTICULOS_A } from "./articulos-octubre-a.mjs";
 import { ARTICULOS_B } from "./articulos-octubre-b.mjs";
+import { ARTICULOS_C } from "./articulos-octubre-c.mjs";
 
 const WEB = path.resolve("web");
-const TODOS = [...ARTICULOS_A, ...ARTICULOS_B];
+const TODOS = [...ARTICULOS_A, ...ARTICULOS_B, ...ARTICULOS_C];
+const REHACER = process.argv.includes("--rehacer");
+const NUEVAS = TODOS.filter((a) => REHACER || !fs.existsSync(path.join(WEB, `${a.slug}.html`)));
 const rd = (f) => fs.readFileSync(path.join(WEB, f), "utf8");
 const wr = (f, t) => fs.writeFileSync(path.join(WEB, f), t);
 
@@ -30,6 +35,8 @@ const HUB = {
   "web-para-fisioterapia-clinica": { cat: "Por sector", tag: "Fisioterapia", h2: "Web para fisioterapia: qué necesita una clínica", p: "Técnicas explicadas, equipo y colegiación, primera cita, precios y privacidad: lo que atrae pacientes.", img: "arin-desk", alt: "Muestra de web de fisioterapia con mapa del cuerpo" },
   "web-para-psicologo-consulta": { cat: "Por sector", tag: "Psicología", h2: "Web para psicólogo: qué necesita una consulta", p: "Tono sereno, primera sesión, privacidad de los datos de salud y euskera: cómo generar confianza antes de la primera cita.", img: "ekhi-desk", alt: "Muestra de web de psicología con tono sereno" },
   "web-para-inmobiliaria": { cat: "Por sector", tag: "Inmobiliaria", h2: "Web para inmobiliaria: qué necesita para captar vendedores", p: "Tasación gratuita, fichas, zonas y confianza: cómo captar propietarios sin depender de los portales.", img: "etxea-desk", alt: "Muestra de web de inmobiliaria con tasación gratuita" },
+  "cuanto-cobra-disenador-web-freelance": { cat: "Precios y plazos", tag: "Precios", h2: "Cuánto cobra un diseñador web freelance en 2026", p: "Por proyecto o por horas, qué entra en el precio, en qué se diferencia de una agencia y seis preguntas antes de aceptar un presupuesto.", img: "stock/art-precio-web", alt: "Escritorio de trabajo con portátil, representando lo que cobra un diseñador web" },
+  "diseno-web-euskadi-pais-vasco": { cat: "Empezar", tag: "Euskadi", h2: "Diseño web en Euskadi: precios y cómo elegir", p: "Qué cuesta una web en Gipuzkoa, Bizkaia y Álava, qué debe incluir, el euskera bien hecho y cómo trabajo a distancia desde Tolosa.", img: "errotatxo-desk", alt: "Web de la panadería Errotatxo de Tolosa, en castellano y euskera" },
 };
 
 /* Enlaces «Sigue leyendo» de cada guía nueva. */
@@ -43,24 +50,30 @@ const REL = {
   "web-para-fisioterapia-clinica": ["web-para-psicologo-consulta", "web-para-clinica-veterinaria", "google-business-profile-guia"],
   "web-para-psicologo-consulta": ["web-para-fisioterapia-clinica", "web-bilingue-euskera-castellano", "aviso-legal-privacidad-cookies-web-negocio"],
   "web-para-inmobiliaria": ["google-business-profile-guia", "conseguir-resenas-google-negocio-local", "precio-diseno-web-profesional"],
+  "cuanto-cobra-disenador-web-freelance": ["precio-diseno-web-profesional", "diseno-web-barato-merece-la-pena", "diseno-web-donostia-agencia-o-freelance"],
+  "diseno-web-euskadi-pais-vasco": ["web-bilingue-euskera-castellano", "ayudas-subvenciones-pagina-web-gipuzkoa", "como-elegir-disenador-web-gipuzkoa"],
 };
 
 /* Y las guías ya publicadas que enlazan hacia las nuevas (se añade una tarjeta al final). */
 const RECIPROCO = {
-  "precio-diseno-web-profesional": ["diseno-web-barato-merece-la-pena", "diseno-web-profesional-que-incluye"],
+  "precio-diseno-web-profesional": ["diseno-web-barato-merece-la-pena", "diseno-web-profesional-que-incluye", "cuanto-cobra-disenador-web-freelance"],
   "cuanto-cuesta-mantener-una-web-al-ano": ["wordpress-wix-o-web-a-medida"],
   "landing-page-o-web-completa": ["wordpress-wix-o-web-a-medida"],
-  "dominio-eus-es-com": ["wordpress-wix-o-web-a-medida"],
+  "dominio-eus-es-com": ["wordpress-wix-o-web-a-medida", "diseno-web-euskadi-pais-vasco"],
   "que-debe-tener-web-negocio-local": ["diseno-web-profesional-que-incluye", "aviso-legal-privacidad-cookies-web-negocio"],
   "pagina-web-para-autonomos": ["aviso-legal-privacidad-cookies-web-negocio", "web-para-psicologo-consulta"],
   "como-crear-pagina-web-negocio-paso-a-paso": ["aviso-legal-privacidad-cookies-web-negocio"],
-  "como-elegir-disenador-web-gipuzkoa": ["diseno-web-donostia-agencia-o-freelance", "diseno-web-profesional-que-incluye"],
+  "como-elegir-disenador-web-gipuzkoa": ["diseno-web-donostia-agencia-o-freelance", "diseno-web-profesional-que-incluye", "cuanto-cobra-disenador-web-freelance", "diseno-web-euskadi-pais-vasco"],
   "web-para-clinica-veterinaria": ["web-para-fisioterapia-clinica"],
   "web-para-peluqueria-centro-estetica": ["web-para-fisioterapia-clinica"],
   "web-para-taller-mecanico": ["web-para-empresa-industrial-gipuzkoa"],
-  "web-bilingue-euskera-castellano": ["web-para-psicologo-consulta", "web-para-empresa-industrial-gipuzkoa"],
+  "web-bilingue-euskera-castellano": ["web-para-psicologo-consulta", "web-para-empresa-industrial-gipuzkoa", "diseno-web-euskadi-pais-vasco"],
   "seo-local-tolosa-google-maps": ["web-para-inmobiliaria"],
   "google-business-profile-guia": ["web-para-fisioterapia-clinica", "web-para-inmobiliaria"],
+  "diseno-web-barato-merece-la-pena": ["cuanto-cobra-disenador-web-freelance"],
+  "diseno-web-donostia-agencia-o-freelance": ["cuanto-cobra-disenador-web-freelance"],
+  "diseno-web-profesional-que-incluye": ["cuanto-cobra-disenador-web-freelance"],
+  "ayudas-subvenciones-pagina-web-gipuzkoa": ["diseno-web-euskadi-pais-vasco"],
 };
 
 const INI = "<!-- RELACIONADOS:inicio -->", FIN = "<!-- RELACIONADOS:fin -->";
@@ -81,7 +94,7 @@ const bloque = (slugs) => `${estiloRel}<h2 id="rel-t" class="rel__h">Sigue leyen
 
 /* 1. Páginas. */
 let escritas = 0;
-for (const a of TODOS) {
+for (const a of NUEVAS) {
   const ruta = path.join(WEB, `${a.slug}.html`);
   let h = pagina(a).replace(/\r?\n/g, "\n");
   h = conservarRelacionados(ruta, h);
@@ -89,7 +102,7 @@ for (const a of TODOS) {
   escritas++;
 }
 /* 2. «Sigue leyendo» (necesita que todas las páginas existan ya). */
-for (const a of TODOS) {
+for (const a of NUEVAS) {
   let h = rd(`${a.slug}.html`);
   if (h.includes(INI)) h = h.slice(0, h.indexOf(INI)) + h.slice(h.indexOf(FIN) + FIN.length).replace(/^\n/, "");
   const ancla = h.indexOf('<footer class="footer">');
@@ -97,7 +110,7 @@ for (const a of TODOS) {
   h = h.slice(0, ancla) + bloque(REL[a.slug]) + h.slice(ancla);
   wr(`${a.slug}.html`, h);
 }
-console.log("páginas escritas:", escritas);
+console.log("páginas escritas:", escritas, NUEVAS.map((a) => a.slug).join(", "));
 
 /* 3. Portada de artículos. */
 {
