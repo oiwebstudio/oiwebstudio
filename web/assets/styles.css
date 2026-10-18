@@ -1741,20 +1741,24 @@ summary:focus-visible,
 /* Caso real destacado (portada y Trabajos) ---------------------------------
    Foto real del cliente a sangre y el texto al lado: es lo único del portfolio
    que no es una demo, así que tiene que verse distinto. */
-.caso-dest{display:grid;border-radius:26px;overflow:hidden;background:var(--ink);color:#f6f1e7;text-decoration:none;max-width:1080px;margin:0 auto 28px;box-shadow:0 30px 60px -34px rgba(25,23,18,.55);}
+/* Casos reales con el estilo general (18/10): tarjeta clara cálida, foto enmarcada y botón negro */
+.caso-dest{display:grid;gap:10px;padding:10px;border-radius:30px;background:#f4f2ee;border:1px solid rgba(25,23,18,.07);color:var(--ink);text-decoration:none;max-width:1080px;margin:0 auto 28px;box-shadow:0 1px 0 rgba(25,23,18,.04),0 30px 60px -36px rgba(60,45,20,.32);transition:box-shadow .35s ease;}
 @media(min-width:860px){.caso-dest{grid-template-columns:1.15fr 1fr;}}
-.caso-dest__foto{position:relative;display:block;min-height:260px;overflow:hidden;}
+.caso-dest__foto{position:relative;display:block;min-height:260px;overflow:hidden;border-radius:22px;}
 .caso-dest__foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease);}
-.caso-dest__txt{display:flex;flex-direction:column;justify-content:center;gap:14px;padding:38px 34px 40px;}
-@media(min-width:860px){.caso-dest__txt{padding:52px 50px;}}
-.caso-dest__tag{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#bfe8cd;background:rgba(47,158,91,.18);border-radius:999px;padding:6px 12px;}
+.caso-dest__txt{display:flex;flex-direction:column;justify-content:center;gap:14px;padding:22px 18px 24px;}
+@media(min-width:860px){.caso-dest__txt{padding:40px 38px;}}
+.caso-dest__tag{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:#fff;border:1px solid rgba(25,23,18,.08);border-radius:999px;padding:6px 12px;}
 .caso-dest__tag::before{content:"";width:7px;height:7px;border-radius:50%;background:#3fbf73;}
-.caso-dest__h{font-family:var(--font-serif);font-weight:500;font-size:clamp(28px,3vw,40px);line-height:1.08;letter-spacing:-.02em;color:#fff;}
-.caso-dest__p{font-size:16.5px;line-height:1.6;color:#c9c2b2;}
-.caso-dest__go{margin-top:6px;align-self:flex-start;background:#fff;color:var(--ink);font-weight:600;font-size:15px;border-radius:999px;padding:12px 22px;transition:transform .25s var(--ease);}
+.caso-dest__h{font-family:var(--font-serif);font-weight:500;font-size:clamp(28px,3vw,40px);line-height:1.05;letter-spacing:-.025em;color:var(--ink);}
+.caso-dest__p{font-size:16.5px;line-height:1.6;color:var(--text-muted);}
+.casos-pila .caso-dest__cita{color:var(--ink);}
+.casos-pila .caso-dest__cita small{color:var(--text-muted);}
+.caso-dest__go{margin-top:6px;align-self:flex-start;background:var(--ink);color:#fff;font-weight:600;font-size:15px;border-radius:999px;padding:13px 24px;box-shadow:0 10px 24px -12px rgba(25,23,18,.7);transition:transform .25s var(--ease),background-color .2s ease;}
 @media(hover:hover) and (pointer:fine){
   .caso-dest:hover .caso-dest__foto img{transform:scale(1.04);}
-  .caso-dest:hover .caso-dest__go{transform:translateX(4px);}
+  .caso-dest:hover{box-shadow:0 1px 0 rgba(25,23,18,.04),0 40px 70px -34px rgba(60,45,20,.42);}
+  .caso-dest:hover .caso-dest__go{transform:translateX(4px);background:#000;}
 }
 .caso-dest:focus-visible{outline:3px solid var(--terra);outline-offset:4px;}
 .pro-caso{display:inline-block;margin-top:16px;font-weight:600;color:var(--terra-link);text-decoration:underline;text-underline-offset:4px;}
