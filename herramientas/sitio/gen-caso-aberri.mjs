@@ -51,8 +51,8 @@ let h = base;
 const rep = (a, b) => { if (!h.includes(a)) throw new Error("no encuentro: " + a.slice(0, 60)); h = h.replace(a, b); };
 const repRe = (re, b) => { if (!re.test(h)) throw new Error("no encuentro: " + re); h = h.replace(re, b); };
 
-repRe(/<title>[^<]*<\/title>/, "<title>Caso real: web con reservas de A.Berri, casa rural en Getaria | OI Studio</title>");
-repRe(/<meta name="description" content="[^"]*"\/>/, `<meta name="description" content="Así es la web de A.Berri, casa rural y apartamento en Getaria: reservas con calendario, panel para los dueños, tres idiomas y sus propias fotos. Con la opinión de la dueña."/>`);
+repRe(/<title>[^<]*<\/title>/, "<title>Caso real: web de reservas para A.Berri en Getaria | OI Studio</title>");
+repRe(/<meta name="description" content="[^"]*"\/>/, `<meta name="description" content="Así es la web de A.Berri, casa rural en Getaria: reservas con calendario, panel para los dueños, tres idiomas y fotos propias. Con la opinión de la dueña."/>`);
 repRe(/<meta property="og:url" content="[^"]*"\/>/, `<meta property="og:url" content="${URL}"/>`);
 repRe(/<meta property="og:title" content="[^"]*"\/>/, `<meta property="og:title" content="Caso real: la web con reservas de A.Berri, casa rural en Getaria"/>`);
 repRe(/<meta property="og:description" content="[^"]*"\/>/, `<meta property="og:description" content="Un caserío entre viñas de txakoli que ahora recibe reservas desde su propia web."/>`);

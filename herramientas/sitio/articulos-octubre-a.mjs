@@ -64,7 +64,7 @@ ${figura("etxea-desk", "etxea · muestra", "Muestra de web de inmobiliaria con f
 </ol>
 
 <h2 id="precio">Cuánto cuesta una web profesional</h2>
-<p>En el mercado local verás desde unos cientos de euros hasta varios miles, según quién la haga y qué incluya. En OI Studio una landing cuesta 399 € + IVA y una web de negocio 499 € + IVA, con el precio cerrado por escrito. El desglose completo del mercado está en la <a href="precio-diseno-web-profesional.html">guía de precios</a>.</p>
+<p>En el mercado local verás desde unos cientos de euros hasta varios miles, según quién la haga y qué incluya. En OI Studio una landing cuesta 399 € + IVA y una web de negocio 499 € + IVA, con el <a href="precios.html">precio cerrado por escrito</a>. El desglose completo del mercado está en la <a href="precio-diseno-web-profesional.html">guía de precios</a>.</p>
 
 ${consejo("Una web profesional se nota en lo que no tiene: ni diez fuentes distintas, ni un carrusel que nadie mira, ni cuatro formas de contactar que se pisan. Lo bueno de verdad suele ser sencillo.")}
 
@@ -85,7 +85,7 @@ ${cta("¿Quieres ver cómo quedaría la tuya?", "Dime el nombre de tu negocio y 
   fecha: FECHA,
   title: "Diseño web barato: cuándo merece la pena y cuándo no",
   headline: "Diseño web barato: cuándo merece la pena, qué esperar y dónde están las trampas",
-  desc: "Qué puedes esperar de una web barata, cuándo merece la pena, qué comprobar en el presupuesto y cuánto cuesta de verdad una web sencilla para un negocio local.",
+  desc: "Qué esperar de una web barata, cuándo merece la pena, qué comprobar en el presupuesto y cuánto cuesta de verdad una web sencilla para un negocio local.",
   ogdesc: "Barato no es lo mismo que malo, pero hay trampas. Qué mirar antes de pagar una web económica.",
   keywords: "diseño web barato, página web barata, web barata negocio, cuánto cuesta una web, precio diseño web, web económica, landing barata",
   crumb: "Diseño web barato",
@@ -111,8 +111,8 @@ ${cta("¿Quieres ver cómo quedaría la tuya?", "Dime el nombre de tu negocio y 
 ${tabla(["Qué compras", "Orden de precio", "Qué suele pasar"], [
   ["Web gratis de plataforma", "0 € al principio", "Publicidad ajena, dominio de la plataforma y cuotas si quieres quitarla"],
   ["Plantilla con cuota mensual", "10–40 €/mes", "Pagas mientras la uses; si te vas, te quedas sin web"],
-  ["Landing a medida (1 página)", "Desde 399 € + IVA en OI Studio", "Pago único, dominio y alojamiento el primer año"],
-  ["Web a medida de varias páginas", "Desde 499 € + IVA en OI Studio", "Pago único, más contenido y SEO básico"],
+  ["Landing a medida (1 página)", "Desde 399 € + IVA <a href="precios.html">en OI Studio</a>", "Pago único, dominio y alojamiento el primer año"],
+  ["Web a medida de varias páginas", "Desde 499 € + IVA <a href="precios.html">en OI Studio</a>", "Pago único, más contenido y SEO básico"],
 ])}
 <p>Son órdenes de magnitud, no ofertas: las cuotas de las plataformas cambian y conviene mirarlas en cada caso. El mercado completo, con rangos de freelance y agencia, está en la <a href="precio-diseno-web-profesional.html">guía de precios</a>.</p>
 
@@ -169,7 +169,7 @@ ${tabla(["", "Agencia", "Freelance / estudio pequeño"], [
 <h2 id="elegir">Qué preguntar a cualquiera de los dos</h2>
 <ul class="check">
 <li><strong>Ejemplos online que puedas abrir en el móvil,</strong> no solo capturas.</li>
-<li><strong>Precio cerrado por escrito</strong> y qué incluye: dominio, alojamiento, textos, fotos y cambios después.</li>
+<li><strong><a href="precios.html">Precio cerrado por escrito</a></strong> y qué incluye: dominio, alojamiento, textos, fotos y cambios después.</li>
 <li><strong>A nombre de quién queda el dominio.</strong> Tiene que ser el tuyo.</li>
 <li><strong>Quién hace los cambios y cuánto cuesta.</strong> Y en cuánto tiempo.</li>
 <li><strong>Quién trabaja en tu proyecto.</strong> Una persona concreta, no «el equipo».</li>
@@ -203,7 +203,7 @@ ${cta("¿Tienes un negocio en Donostia?", "Cuéntame qué haces y te preparo una
   fecha: FECHA,
   title: "Web para empresa industrial en Gipuzkoa: qué necesita",
   headline: "Web para una empresa industrial en Gipuzkoa: qué necesita para que te encuentren y se fíen",
-  desc: "Qué debe tener la web de una empresa industrial o de un taller de mecanizado en Gipuzkoa: capacidades, certificaciones, catálogo, idiomas y cómo captar clientes B2B.",
+  desc: "Qué debe tener la web de una empresa industrial o taller de mecanizado en Gipuzkoa: capacidades, certificaciones, catálogo, idiomas y captar clientes B2B.",
   ogdesc: "La web de una empresa industrial no vende al público: tiene que convencer a un comprador técnico. Qué incluir.",
   keywords: "web industrial Gipuzkoa, página web empresa industrial, web mecanizado, web para pyme industrial, diseño web industria País Vasco, web B2B",
   crumb: "Web para empresa industrial",

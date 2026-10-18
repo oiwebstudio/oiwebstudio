@@ -14,7 +14,7 @@ export const ARTICULOS_B = [
   fecha: FECHA,
   title: "WordPress, Wix o web a medida: cuál te conviene",
   headline: "WordPress, Wix o web a medida: cuál te conviene para tu negocio local",
-  desc: "Comparativa sincera entre WordPress, Wix o Squarespace y una web a medida para un negocio local: coste real, velocidad, quién la mantiene y cuándo conviene cada una.",
+  desc: "Comparativa sincera entre WordPress, Wix o Squarespace y una web a medida: coste real, velocidad, quién la mantiene y cuándo conviene cada una.",
   ogdesc: "WordPress, Wix o a medida: ventajas, inconvenientes y para quién sirve cada opción, sin humo.",
   keywords: "wordpress o wix, web a medida o wordpress, wix o wordpress negocio, crear web con wix, web a medida vs wordpress, plataforma para crear web negocio",
   crumb: "WordPress, Wix o a medida",
@@ -44,7 +44,7 @@ ${tabla(["", "Wix / Squarespace", "WordPress", "Web a medida"], [
 <p><strong>Inconvenientes:</strong> necesita actualizaciones constantes de WordPress, tema y plugins, o se vuelve lento e inseguro. Cada plugin añade peso y riesgo. Montarlo bien lleva tiempo.</p>
 
 <h2 id="medida">Web a medida (código ligero)</h2>
-<p><strong>Para quién:</strong> negocios locales con una web que cambia poco: horario, servicios, fotos, contacto. Es lo que hago en OI Studio.</p>
+<p><strong>Para quién:</strong> negocios locales con una web que cambia poco: horario, servicios, fotos, contacto. Es lo que hago en OI Studio, con <a href="precios.html">precio cerrado</a>.</p>
 <p><strong>Ventajas:</strong> muy rápida, sin plugins que mantener, sin cuota por la herramienta y con el diseño pensado para tu negocio. La web es tuya.</p>
 <p><strong>Inconvenientes:</strong> los cambios los hace quien la construyó; no tienes un panel para editar tú mismo. Para un blog que publica cada semana o una tienda con cientos de productos, no es lo más cómodo.</p>
 
@@ -94,7 +94,7 @@ ${cta("¿No sabes cuál encaja contigo?", "Cuéntame tu negocio y te digo, aunqu
 <h2 id="imprescindible">Lo imprescindible</h2>
 <ul class="check">
 <li><strong>Qué tratas y para quién,</strong> en la primera pantalla: lesiones deportivas, dolor crónico, embarazo y posparto, rehabilitación tras una operación…</li>
-<li><strong>Cita a un toque:</strong> teléfono, WhatsApp y, si puedes, reserva online. Desde el móvil, sin tener que buscar.</li>
+<li><strong>Cita a un toque:</strong> teléfono, WhatsApp y, si puedes, <a href="reservas-online-sin-comisiones.html">reserva online</a>. Desde el móvil, sin tener que buscar.</li>
 <li><strong>Dónde estáis y cómo llegar:</strong> dirección, aparcamiento o transporte, y horario real.</li>
 <li><strong>El equipo, con nombre y cara,</strong> y el número de colegiado de cada profesional.</li>
 <li><strong>Qué pasa en la primera sesión:</strong> cuánto dura, qué se hace y qué ropa llevar. Quita miedo.</li>
@@ -154,7 +154,7 @@ ${cta("¿Tienes una clínica de fisioterapia?", "Te preparo una muestra con tu c
 <li><strong>Con qué ayudas, en palabras de la gente:</strong> ansiedad, duelo, relaciones, estrés, autoestima… no solo «psicología clínica».</li>
 <li><strong>Cómo trabajas:</strong> enfoque, duración de las sesiones, si son individuales, de pareja o familiares, presenciales u online.</li>
 <li><strong>Quién eres:</strong> formación, colegiación y una presentación humana, en primera persona.</li>
-<li><strong>Cómo es la primera sesión:</strong> qué ocurre, cuánto dura, qué compromiso supone. La pregunta que más frena.</li>
+<li><strong>Cómo es la primera sesión:</strong> qué ocurre, cuánto dura, qué compromiso supone. La pregunta que más frena. Si quieres que la pidan sin llamar, puedes añadir <a href="reservas-online-sin-comisiones.html">citas online</a> a la web.</li>
 <li><strong>Precio de la sesión,</strong> bonos o condiciones. Esconderlo genera desconfianza.</li>
 <li><strong>Idiomas:</strong> en Euskadi, poder atender en euskera es un valor. Si lo haces, que se vea (y la web, <a href="web-bilingue-euskera-castellano.html">en los dos idiomas</a>).</li>
 <li><strong>Un contacto fácil y discreto:</strong> formulario corto, correo y WhatsApp. Sin obligar a llamar.</li>
@@ -202,7 +202,7 @@ ${cta("¿Tienes una consulta de psicología?", "Te preparo una muestra con tu co
   fecha: FECHA,
   title: "Web para inmobiliaria: qué necesita para captar vendedores",
   headline: "La web de una inmobiliaria local: qué necesita para captar propietarios y compradores",
-  desc: "Qué debe tener la web de una inmobiliaria local: fichas, tasación gratuita, zonas, certificado energético y cómo captar propietarios sin depender de portales.",
+  desc: "Qué debe tener la web de una inmobiliaria local: fichas, tasación gratuita, zonas, certificado energético y captar propietarios sin depender de portales.",
   ogdesc: "La web de una inmobiliaria local compite con los portales: tiene que captar al propietario, no solo al comprador.",
   keywords: "web para inmobiliaria, página web inmobiliaria, diseño web inmobiliaria, web agencia inmobiliaria local, captar propietarios, tasación gratuita web",
   crumb: "Web para inmobiliaria",
