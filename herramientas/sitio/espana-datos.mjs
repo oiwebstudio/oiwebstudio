@@ -13,7 +13,7 @@ export const ESPANA = [
   {
     slug: "diseno-web-negocios-espana", ambito: "España", nombre: "toda España",
     titulo: "Diseño web para negocios en toda España | OI Studio",
-    desc: "Diseño y desarrollo de páginas web para negocios de toda España, a distancia y con precio cerrado desde 399€. Propuesta en 48h. Estudio en Tolosa (Gipuzkoa).",
+    desc: "Diseño y desarrollo de páginas web para negocios de toda España, a distancia y con precio cerrado desde 399 €. Propuesta en 48 h. Estudio en Tolosa.",
     h1: "Diseño web para negocios en", acento: "toda España",
     lede: "Trabajo desde Tolosa, pero tu web no necesita que estemos en la misma ciudad. Videollamada, WhatsApp y una propuesta por escrito en 48 horas.",
     kw: "diseño web España, páginas web para negocios, diseñador web freelance, diseño web a distancia, página web autónomos, web para pymes",
@@ -38,7 +38,7 @@ export const ESPANA = [
   {
     slug: "diseno-web-bizkaia", ambito: "Bizkaia", nombre: "Bizkaia",
     titulo: "Diseño web en Bizkaia | Páginas web para negocios | OI Studio",
-    desc: "Diseño y desarrollo de páginas web para negocios de Bizkaia (Bilbao, Uribe, Urdaibai, Durangaldea), a distancia y con precio cerrado desde 399€. Propuesta en 48h.",
+    desc: "Diseño y desarrollo de páginas web para negocios de Bizkaia (Bilbao, Uribe, Urdaibai, Durangaldea), a distancia y desde 399 €. Propuesta en 48 h.",
     h1: "Diseño web en", acento: "Bizkaia",
     lede: "Bilbao, la costa de Uribe, Urdaibai y el Duranguesado: cuatro formas distintas de buscar en Google. Webs a distancia con precio cerrado.",
     kw: "diseño web Bizkaia, páginas web Bilbao, diseño web Vizcaya, diseñador web Bilbao, web negocio Bizkaia",
@@ -60,7 +60,7 @@ export const ESPANA = [
   {
     slug: "diseno-web-alava-araba", ambito: "Álava", nombre: "Álava (Araba)",
     titulo: "Diseño web en Álava (Araba) | OI Studio",
-    desc: "Diseño y desarrollo de páginas web para negocios de Álava (Araba): Vitoria-Gasteiz, Rioja Alavesa, Llanada y Ayala. A distancia, desde 399€ y con propuesta en 48h.",
+    desc: "Diseño web para negocios de Álava (Araba): Vitoria-Gasteiz, Rioja Alavesa, Llanada y Ayala. A distancia, desde 399 € y propuesta en 48 h.",
     h1: "Diseño web en", acento: "Álava",
     lede: "Vitoria-Gasteiz, la Llanada, la Rioja Alavesa y el valle de Ayala. Webs a distancia para negocios locales, con precio cerrado.",
     kw: "diseño web Álava, diseño web Araba, páginas web Vitoria-Gasteiz, diseñador web Vitoria, web bodega Rioja Alavesa",
