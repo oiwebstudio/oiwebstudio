@@ -111,8 +111,8 @@ ${cta("¿Quieres ver cómo quedaría la tuya?", "Dime el nombre de tu negocio y 
 ${tabla(["Qué compras", "Orden de precio", "Qué suele pasar"], [
   ["Web gratis de plataforma", "0 € al principio", "Publicidad ajena, dominio de la plataforma y cuotas si quieres quitarla"],
   ["Plantilla con cuota mensual", "10–40 €/mes", "Pagas mientras la uses; si te vas, te quedas sin web"],
-  ["Landing a medida (1 página)", "Desde 399 € + IVA <a href="precios.html">en OI Studio</a>", "Pago único, dominio y alojamiento el primer año"],
-  ["Web a medida de varias páginas", "Desde 499 € + IVA <a href="precios.html">en OI Studio</a>", "Pago único, más contenido y SEO básico"],
+  ["Landing a medida (1 página)", "Desde 399 € + IVA <a href=\"precios.html\">en OI Studio</a>", "Pago único, dominio y alojamiento el primer año"],
+  ["Web a medida de varias páginas", "Desde 499 € + IVA <a href=\"precios.html\">en OI Studio</a>", "Pago único, más contenido y SEO básico"],
 ])}
 <p>Son órdenes de magnitud, no ofertas: las cuotas de las plataformas cambian y conviene mirarlas en cada caso. El mercado completo, con rangos de freelance y agencia, está en la <a href="precio-diseno-web-profesional.html">guía de precios</a>.</p>
 
