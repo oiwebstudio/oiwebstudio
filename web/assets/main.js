@@ -204,6 +204,18 @@ document.addEventListener('DOMContentLoaded', () => {
     gruposPie.forEach(d => d.querySelector('summary').addEventListener('click', (e) => { if (anchoPie.matches) e.preventDefault(); }));
   }
 
+  /* Lo que se anima en bucle se para cuando sale de la pantalla y sigue al volver:
+     así no gasta nada mientras se lee el resto de la página */
+  if ('IntersectionObserver' in window) {
+    const bucles = document.querySelectorAll('.hx, .tel__toque, .wa__onda, .cta-ping, .zm-hq');
+    if (bucles.length) {
+      const ioBucle = new IntersectionObserver((ents) => {
+        ents.forEach(en => en.target.classList.toggle('is-fuera', !en.isIntersecting));
+      }, { rootMargin: '15% 0px' });
+      bucles.forEach(el => ioBucle.observe(el));
+    }
+  }
+
   // Filas que se deslizan en el móvil: indicador de posición debajo
   document.querySelectorAll('.desliza').forEach(fila => {
     const items = Array.from(fila.children).filter(el => el.nodeType === 1);
@@ -252,22 +264,41 @@ document.addEventListener('DOMContentLoaded', () => {
     const quietoMQ = window.matchMedia('(prefers-reduced-motion: reduce)');
     const movilMQ = window.matchMedia('(max-width: 759px)');
     const estado = { fila, manual: false, activa: false };
-    const manual = () => { estado.manual = true; fila.style.scrollSnapType = ''; };
+    const manual = () => { estado.manual = true; estado.x = undefined; fila.style.scrollSnapType = ''; };
+    fila.addEventListener('desliza:cambio', () => { estado.max = undefined; estado.x = undefined; });
     fila.addEventListener('touchstart', manual, { passive: true });
     fila.addEventListener('pointerdown', manual);
     fila.addEventListener('wheel', manual, { passive: true });
     fila.addEventListener('focusin', manual);
-    estado.puede = () => movilMQ.matches && !quietoMQ.matches && fila.scrollWidth - fila.clientWidth > 4;
+    estado.puede = () => movilMQ.matches && !quietoMQ.matches && estado.max > 4;
+    /* Solo se mide la fila cuando está cerca de la pantalla: lejos no cuesta nada */
+    estado.cerca = true;
+    if ('IntersectionObserver' in window) new IntersectionObserver((en) => { estado.cerca = en[0].isIntersecting; if (!estado.cerca) { estado.manual = false; estado.x = undefined; } }, { rootMargin: '20% 0px' }).observe(fila);
     FILAS_SCROLL.push(estado);
     if (FILAS_SCROLL.length === 1) {
       let pend = false;
+      /* El ancho que se puede deslizar se mide al cargar y al cambiar el tamaño, no en cada scroll */
+      /* Ancho deslizable, altura y posición en la página: se miden al cargar y cuando cambia el tamaño de algo,
+         no en cada scroll (leer medidas mientras la página se mueve obliga al navegador a recalcularla) */
+      const medirMax = () => {
+        const y = window.scrollY;
+        FILAS_SCROLL.forEach(e => { const r = e.fila.getBoundingClientRect(); e.max = e.fila.scrollWidth - e.fila.clientWidth; e.top = r.top + y; e.h = r.height; });
+      };
+      if (window.ResizeObserver) new ResizeObserver(() => { medirMax(); pedir(); }).observe(document.body);
+      window.addEventListener('load', () => { medirMax(); pedir(); });
       const mover = () => {
         pend = false;
         const vh = window.innerHeight;
-        FILAS_SCROLL.forEach(e => {
-          const r = e.fila.getBoundingClientRect();
+        if (FILAS_SCROLL.some(e => e.max === undefined)) medirMax();
+        // Primero se leen todas las posiciones y después se escribe: así el navegador
+        // no tiene que recalcular la página entre fila y fila
+        const sy = window.scrollY;
+        const rs = FILAS_SCROLL.map(e => e.cerca ? { top: e.top - sy, bottom: e.top - sy + e.h, height: e.h } : null);
+        FILAS_SCROLL.forEach((e, i) => {
+          const r = rs[i];
+          if (!r) return;
           const enPantalla = r.bottom > 0 && r.top < vh;
-          if (!enPantalla) { e.manual = false; return; }
+          if (!enPantalla) { e.manual = false; e.x = undefined; return; }
           if (e.manual || !e.puede()) { if (e.activa) { e.fila.style.scrollSnapType = ''; e.activa = false; } return; }
           if (!e.activa) { e.fila.style.scrollSnapType = 'none'; e.activa = true; }
           // Empieza cuando la fila ya se ve ENTERA (su borde de abajo dentro de la pantalla)
@@ -275,13 +306,13 @@ document.addEventListener('DOMContentLoaded', () => {
           const fin = -r.height * 0.15;
           const inicio = Math.max(vh * 0.97 - r.height, fin + vh * 0.3);
           const p = Math.min(Math.max((inicio - r.top) / (inicio - fin), 0), 1);
-          const max = e.fila.scrollWidth - e.fila.clientWidth;
-          e.fila.scrollLeft = p * max;
+          const x = Math.round(p * e.max);
+          if (x !== e.x) { e.x = x; e.fila.scrollLeft = x; }
         });
       };
       const pedir = () => { if (!pend) { pend = true; requestAnimationFrame(mover); } };
       window.addEventListener('scroll', pedir, { passive: true });
-      window.addEventListener('resize', pedir, { passive: true });
+      window.addEventListener('resize', () => { medirMax(); pedir(); }, { passive: true });
       OI_TARDE ? OI_TARDE(pedir) : pedir();
     }
   }
@@ -536,16 +567,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-    /* 01 · adv-aurora — blobs a la deriva bajo la rejilla del hero ------------ */
-    const heroBg = document.querySelector('.hero__bg');
-    if (heroBg && !heroBg.querySelector('.aur')) {
-      for (let i = 1; i <= 3; i++) {
-        const b = document.createElement('span');
-        b.className = 'aur aur-' + i;
-        b.setAttribute('aria-hidden', 'true');
-        heroBg.insertBefore(b, heroBg.firstChild);
-      }
-    }
+    /* 01 · adv-aurora — quitado el 18/10: las manchas del fondo de cabecera son ahora un degradado quieto en el CSS */
 
     /* 02 · card-cursor-glow — la luz sigue al cursor dentro de la tarjeta ----- */
     if (fine) {
@@ -621,9 +643,10 @@ document.addEventListener('DOMContentLoaded', () => {
       bar.innerHTML = '<i></i>';
       document.body.appendChild(bar);
       const fill = bar.firstChild;
-      let ticking = false;
+      let ticking = false, max = 0;
+      /* La altura de la página se mide al cargar y al cambiar el tamaño, no en cada scroll */
+      const medir = () => { max = document.documentElement.scrollHeight - window.innerHeight; };
       const paint = () => {
-        const max = document.documentElement.scrollHeight - window.innerHeight;
         const p = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
         fill.style.transform = 'scaleX(' + p.toFixed(4) + ')';
         ticking = false;
@@ -631,8 +654,10 @@ document.addEventListener('DOMContentLoaded', () => {
       window.addEventListener('scroll', () => {
         if (!ticking) { ticking = true; requestAnimationFrame(paint); }
       }, { passive: true });
-      window.addEventListener('resize', paint, { passive: true });
-      paint();
+      window.addEventListener('resize', () => { medir(); paint(); }, { passive: true });
+      window.addEventListener('load', () => { medir(); paint(); });
+      if (window.ResizeObserver) new ResizeObserver(medir).observe(document.body);
+      medir(); paint();
     }
 
     /* 08 · text-scramble-scroll — las etiquetas se descifran al entrar -------- */
@@ -721,19 +746,24 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!visible) { running = false; return; }
         if (!pts.length && !build()) { requestAnimationFrame(draw); return; }
         ctx.clearRect(0, 0, w, h);
+        let mueve = false;
         for (let i = 0; i < pts.length; i++) {
           const p = pts[i];
           const dx = p.ox - mx, dy = p.oy - my;
           const d = Math.hypot(dx, dy) || 1;
           const f = d < 110 ? (1 - d / 110) : 0;
-          p.x += (p.ox + dx / d * f * 24 - p.x) * 0.16;
-          p.y += (p.oy + dy / d * f * 24 - p.y) * 0.16;
+          const vx = (p.ox + dx / d * f * 24 - p.x) * 0.16, vy = (p.oy + dy / d * f * 24 - p.y) * 0.16;
+          if (vx > .02 || vx < -.02 || vy > .02 || vy < -.02) mueve = true;
+          p.x += vx;
+          p.y += vy;
           ctx.fillStyle = 'rgba(232,210,178,' + (0.16 + f * 0.6).toFixed(3) + ')';
           ctx.beginPath();
           ctx.arc(p.x, p.y, 1.1 + f * 2.1, 0, 6.2832);
           ctx.fill();
         }
-        requestAnimationFrame(draw);
+        /* Solo se sigue dibujando mientras el ratón está encima o los puntos se recolocan:
+           quieta, la rejilla no gasta nada (antes se redibujaba en cada fotograma, también en el móvil) */
+        if (mueve || mx > -9000) requestAnimationFrame(draw); else running = false;
       };
 
       const kick = () => { if (!running) { running = true; requestAnimationFrame(draw); } };
@@ -742,8 +772,9 @@ document.addEventListener('DOMContentLoaded', () => {
         sec.addEventListener('mousemove', e => {
           const r = sec.getBoundingClientRect();
           mx = e.clientX - r.left; my = e.clientY - r.top;
+          kick();
         });
-        sec.addEventListener('mouseleave', () => { mx = my = -9999; });
+        sec.addEventListener('mouseleave', () => { mx = my = -9999; kick(); });
       }
       window.addEventListener('resize', () => { build(); kick(); }, { passive: true });
 

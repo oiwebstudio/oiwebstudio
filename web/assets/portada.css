@@ -213,7 +213,7 @@
 .zm-p:hover .zm-l, .zm-p:focus-visible .zm-l, .zm-p.is-hot .zm-l { opacity: 1; }
 .zm-p:hover .zm-d, .zm-p:focus-visible .zm-d, .zm-p.is-hot .zm-d { r: 9; fill: var(--ink); }
 .zm-hq__dot { fill: var(--ink); stroke: #ffffff; stroke-width: 3; }
-.zm-hq__pulso { fill: none; stroke: var(--ink); stroke-width: 2; opacity: 0; transform-box: fill-box; transform-origin: center; animation: zmPulso 2.8s ease-out infinite; }
+.zm-hq__pulso { fill: none; stroke: var(--ink); stroke-width: 2; opacity: 0; transform-box: fill-box; transform-origin: center; animation: zmPulso 2.8s ease-out 4; }
 .zm-hq__pulso--2 { animation-delay: 1.4s; }
 @keyframes zmPulso { 0% { transform: scale(1); opacity: .5; } 100% { transform: scale(3.2); opacity: 0; } }
 .zm-hq__t { font-family: Geist, system-ui, sans-serif; font-size: 15px; font-weight: 700; fill: var(--ink); paint-order: stroke; stroke: #ffffff; stroke-width: 4.5px; stroke-linejoin: round; }
@@ -429,8 +429,8 @@
 
 /* Sello redondo que gira */
 .hx__sello { position: absolute; top: 18px; right: 24px; width: 104px; height: 104px; z-index: 110; }
-.hx__sello svg { width: 100%; height: 100%; overflow: visible; }
-.hx__sello text { font-family: var(--font-mono); font-size: 9.4px; letter-spacing: .2em; fill: var(--ink); transform-origin: 60px 60px; animation: hxSello 24s linear infinite; }
+.hx__sello svg { width: 100%; height: 100%; overflow: visible; animation: hxSello 24s linear infinite; }
+.hx__sello text { font-family: var(--font-mono); font-size: 9.4px; letter-spacing: .2em; fill: var(--ink); }
 .hx__estrella { fill: var(--ink); }
 @keyframes hxSello { to { transform: rotate(360deg); } }
 
@@ -468,12 +468,11 @@ a.hx__pie { color: inherit; display: block; -webkit-tap-highlight-color: transpa
 .hx__3d { position: absolute; inset: 0; }
 .hx__anillo { position: absolute; left: 50%; top: 45%; width: 0; height: 0; }
 @keyframes hxGira { to { transform: rotateZ(-6deg) rotateX(-13deg) rotateY(-360deg); } }
-.hx__p { --w: clamp(84px, 9vw, 128px); position: absolute; left: 0; top: 0; width: var(--w); height: calc(var(--w) * .66); border-radius: 18px; will-change: transform, opacity; display: block; color: inherit; -webkit-tap-highlight-color: transparent; transition: box-shadow .25s ease; }
+.hx__p { --w: clamp(84px, 9vw, 128px); position: absolute; left: calc(var(--w) / -2); top: calc(var(--w) * -.33); width: var(--w); height: calc(var(--w) * .66); border-radius: 18px; will-change: transform, opacity; display: block; color: inherit; -webkit-tap-highlight-color: transparent; transition: box-shadow .25s ease; }
 @media (hover: hover) and (pointer: fine) { .hx__p:hover { box-shadow: 0 0 0 2px var(--ink), 0 22px 44px -18px rgba(25,23,18,.5); } }
 @keyframes hxAparece { from { opacity: 0; } }
 .hx__anillo:not(.is-js) .hx__p { display: none; }
-/* Las de detrás se funden con el fondo en vez de transparentarse */
-.hx__p::after { content: ""; position: absolute; inset: -3px; border-radius: inherit; background: #f4f2ee; opacity: var(--niebla, 0); pointer-events: none; }
+.hx__anillo.is-js { animation: hxAparece 1s .45s backwards; }
 .hx__p--foto { overflow: hidden; border: 3px solid rgba(255,255,255,.9); box-shadow: 0 18px 40px -18px rgba(25,23,18,.45); background: #ddd; }
 .hx__p--foto img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
 .hx__p--foto em { position: absolute; left: 8px; bottom: 8px; font-style: normal; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .12em; color: #fff; background: rgba(20,18,14,.62); padding: 4px 8px; border-radius: 999px; }
@@ -546,7 +545,7 @@ a.hx__pie { color: inherit; display: block; -webkit-tap-highlight-color: transpa
   .hx__pie, a.hx__pie { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hx__w, .hx__tarjeta, .hx__p, .hx__mano, .hx__flota, .hx__pie, .hx__sello text, .hx__hilos path, .hx__brillo { animation: none !important; }
+  .hx__w, .hx__tarjeta, .hx__p, .hx__mano, .hx__flota, .hx__pie, .hx__sello svg, .hx__hilos path, .hx__brillo { animation: none !important; }
   .hx__hilos path { stroke-dasharray: none !important; }
   .hx__hilos path { stroke-dashoffset: 0; }
   .hx__l2 { animation: none; }
