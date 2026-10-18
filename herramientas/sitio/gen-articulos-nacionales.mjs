@@ -95,7 +95,7 @@ export function pagina(a) {
 <link rel="icon" href="/favicon-96.png" type="image/png" sizes="96x96"/>
 <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
 <link rel="manifest" href="/site.webmanifest"/>
-${fuentes}<link rel="stylesheet" href="assets/styles.css?v=28"/>
+${fuentes}<link rel="stylesheet" href="assets/styles.css?v=29"/>
 <script>if(location.protocol==='http:'&&/(^|\\.)oiwebstudio\\.com$/.test(location.hostname))location.replace('https://'+location.host+location.pathname+location.search+location.hash);document.documentElement.classList.add('js');</script>
 ${estilos}
 <script type="application/ld+json">
@@ -130,7 +130,7 @@ ${a.faq.map(([q, r]) => `<details>\n<summary>${q}</summary>\n<p>${r}</p>\n</deta
 </div>
 
 ${pie}<script src="assets/i18n.js?v=24"></script>
-<script src="assets/main.js?v=16"></script>
+<script src="assets/main.js?v=17"></script>
 ${wa}</body>
 </html>
 `;

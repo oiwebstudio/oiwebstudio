@@ -2325,3 +2325,33 @@ html.flotante-cta .wa-float, html.flotante-cta .fmenu, html.flotante-cta .subir 
 }
 /* La máscara de cada línea deja aire a tildes y colas */
 .mvl-mask { padding: .1em 0 .08em; margin: -.1em 0 -.08em; }
+
+/* ==== FLUIDEZ (18/10) ======================================================
+   Lo que más frenaba el scroll en móvil: el desenfoque del menú fijo (se
+   recalcula en cada fotograma) y animaciones infinitas que repintan sin parar.
+   El aspecto se mantiene; solo cambia lo que cuesta. */
+.nav { -webkit-backdrop-filter: none; backdrop-filter: none; background: rgba(255, 255, 255, 0.95); }
+.nav-wrap.is-scrolled .nav { background: rgba(255, 255, 255, 0.98); }
+.mobile-menu, .price, .price--featured, .hero-cta-btn { -webkit-backdrop-filter: none; backdrop-filter: none; }
+.price { background: rgba(255, 255, 255, 0.94); }
+/* Brillos que daban vueltas siempre: ahora solo al pasar el ratón */
+.btn-spark::before, .pm--feat::before, .hero__gradient { animation: none; }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .btn-spark:hover::before { animation: btnSpark 2.6s linear infinite; }
+  .pm--feat:hover::before { animation: pmRingSpin 6s linear infinite; }
+}
+/* Grano de las secciones oscuras: quieto (se fundía con el fondo en cada fotograma) */
+.dark-section .film-grain { animation: none; }
+/* Manchas de color del fondo de cabecera: antes eran tres círculos desenfocados
+   (blur 80px) moviéndose siempre, lo más caro de toda la web en el móvil. Ahora
+   el mismo tinte suave con degradados quietos, que no cuestan nada. */
+.hero__bg .aur { display: none; animation: none; }
+.hero__bg {
+  background:
+    radial-gradient(32% 46% at 10% 6%, rgba(234, 220, 200, .24), transparent 72%),
+    radial-gradient(32% 46% at 92% 96%, rgba(232, 212, 204, .22), transparent 72%),
+    radial-gradient(26% 40% at 56% 100%, rgba(217, 223, 210, .22), transparent 72%);
+}
+/* Animaciones en bucle que no se ven: quietas. main.js marca con .is-fuera lo que
+   ha salido de la pantalla (el hero, los pulsos del teléfono y del WhatsApp…). */
+.is-fuera, .is-fuera *, .is-fuera::before, .is-fuera::after, .is-fuera *::before, .is-fuera *::after { animation-play-state: paused !important; }

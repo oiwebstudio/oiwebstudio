@@ -143,8 +143,8 @@
 </script>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/geist-latin-04ce1a61.woff2" crossorigin/>
 <link rel="stylesheet" href="/assets/fuentes.css?v=1"/>
-<link rel="stylesheet" href="assets/styles.css?v=28"/>
-<link rel="stylesheet" href="assets/portada.css?v=20"/>
+<link rel="stylesheet" href="assets/styles.css?v=29"/>
+<link rel="stylesheet" href="assets/portada.css?v=21"/>
 <script>if(location.protocol==='http:'&&/(^|\.)oiwebstudio\.com$/.test(location.hostname))location.replace('https://'+location.host+location.pathname+location.search+location.hash);document.documentElement.classList.add('js');</script>
 <link rel="preload" as="image" href="assets/hero/mano-520.webp" imagesrcset="assets/hero/mano-520.webp 520w, assets/hero/mano-900.webp 900w" imagesizes="(max-width: 760px) 340px, 480px" fetchpriority="high"/>
 </head>
@@ -769,7 +769,7 @@
 </footer>
 
 <script src="assets/i18n.js?v=24"></script>
-<script src="assets/main.js?v=16"></script>
+<script src="assets/main.js?v=17"></script>
 <script src="assets/prueba.js?v=1"></script>
 <script>
 (function(){
@@ -835,54 +835,89 @@
 
   /* Anillo de muestras. Gira solo y cada tarjeta mira casi de frente. Al pasar por detrás del
      móvil se desvanece poco a poco y, justo entonces, el móvil enseña esa muestra: el cambio va
-     al ritmo del giro y ninguna muestra se ve dos veces a la vez */
+     al ritmo del giro y ninguna muestra se ve dos veces a la vez.
+     El giro lo hace la tarjeta gráfica (una animación por pieza con todo el recorrido ya
+     calculado); aquí solo se mira unas pocas veces por segundo qué va delante, qué se puede
+     pulsar y qué enseña el móvil. Así el procesador del teléfono queda libre para el scroll. */
   var anillo = document.getElementById('hxAnillo');
   if (anillo) {
     var piezas = anillo.querySelectorAll('.hx__p'), n = piezas.length;
+    var VUELTA = 42000, BASE = 200, PASOS = 72;
     var radio = function(){ return innerWidth <= 760 ? Math.min(135, innerWidth * .31) : Math.min(270, Math.max(150, innerWidth * .21)); };
-    var Rr = radio(), base = 200, antes = null, inicio = null, visible = true, vel = 1, velObj = 1;
-    /* Con el ratón encima de una muestra el anillo casi se para, para poder pulsarla */
-    anillo.addEventListener('pointerover', function(e){ if (e.pointerType === 'mouse' && e.target.closest('.hx__p')) velObj = .08; });
-    anillo.addEventListener('pointerout', function(e){ if (e.pointerType === 'mouse') velObj = 1; });
-    anillo.classList.add('is-js');
+    var Rr = radio(), anims = [], visible = true, vel = 1, velObj = 1, rampa = null;
     var suave = function(x){ x = Math.min(1, Math.max(0, x)); return x * x * (3 - 2 * x); };
-    var pinta = function(t){
-      var mejor = null, mejorU = -1;
+    /* Ángulo de cada pieza: 180 = justo detrás del móvil; baja con el giro */
+    var angulo = function(i, f){ return ((BASE + i * 360 / n - 360 * f) % 360 + 540) % 360 - 180; };
+    var lejosDe = function(th){ var u = th < 0 ? th + 360 : th; return suave((Math.abs(180 - u) - 38) / 52); };
+    /* Proyección a mano (sin 3D del navegador): inclinación de 13° hacia nosotros, giro de -6° y perspectiva */
+    var proyecta = function(th){
+      var r = th * Math.PI / 180, X = Rr * Math.sin(r), Z = Rr * Math.cos(r);
+      var Y = Z * .225, Zp = Z * .974;
+      var px = X * .9945 + Y * .1045, py = -X * .1045 + Y * .9945;
+      var s = 1500 / (1500 - Zp);
+      return { Zp: Zp, t: 'translate3d(' + (px * s).toFixed(1) + 'px,' + (py * s).toFixed(1) + 'px,0) scale(' + (s * Math.cos(th * .28 * Math.PI / 180)).toFixed(3) + ',' + s.toFixed(3) + ') rotate(-6deg)' };
+    };
+    var progreso = function(){
+      var a = anims[0];
+      if (!a || a.currentTime == null) return 0;
+      return ((a.currentTime % VUELTA) + VUELTA) % VUELTA / VUELTA;
+    };
+    var montar = function(){
+      var f0 = progreso();
+      anims.forEach(function(a){ a.cancel(); });
+      anims = [];
+      Array.prototype.forEach.call(piezas, function(p, i){
+        if (quieto) { var q = proyecta(angulo(i, 0)); p.style.transform = q.t; p.style.opacity = lejosDe(angulo(i, 0)).toFixed(2); return; }
+        var kfs = [];
+        for (var k = 0; k <= PASOS; k++) {
+          var th = angulo(i, k / PASOS);
+          kfs.push({ offset: k / PASOS, transform: proyecta(th).t, opacity: +lejosDe(th).toFixed(3) });
+        }
+        var a = p.animate(kfs, { duration: VUELTA, iterations: Infinity, easing: 'linear' });
+        a.currentTime = f0 * VUELTA;
+        a.playbackRate = vel;
+        anims.push(a);
+      });
+      revisa();
+    };
+    /* Unas 8 veces por segundo: profundidad, qué se puede pulsar y qué enseña el móvil */
+    var cache = Array.prototype.map.call(piezas, function(){ return {}; });
+    var revisa = function(){
+      var f = quieto ? 0 : progreso(), mejor = null, mejorU = -1;
       for (var i = 0; i < n; i++) {
-        var th = ((base + i * 360 / n) % 360 + 540) % 360 - 180;
-        var u = th < 0 ? th + 360 : th;            /* 180 = justo detrás del móvil; baja con el giro */
-        var hondo = (Math.cos(th * Math.PI / 180) + 1) / 2;
-        var entra = quieto || inicio === null ? 1 : suave((t - inicio - 350 - i * 55) / 900);
-        var lejos = suave((Math.abs(180 - u) - 38) / 52);   /* 0 detrás del móvil, 1 a los lados y delante */
-        /* Proyección a mano (sin 3D del navegador): inclinación de 13° hacia nosotros, giro de -6° y perspectiva */
-        var r = th * Math.PI / 180, X = Rr * Math.sin(r), Z = Rr * Math.cos(r);
-        var Y = Z * .225, Zp = Z * .974;
-        var px = X * .9945 + Y * .1045, py = -X * .1045 + Y * .9945;
-        var s = 1500 / (1500 - Zp);
-        piezas[i].style.transform = 'translate(' + (px * s).toFixed(1) + 'px,' + (py * s).toFixed(1) + 'px) translate(-50%,-50%) scale(' + s.toFixed(3) + ') perspective(900px) rotateY(' + (th * .28).toFixed(2) + 'deg) rotate(-6deg)';
-        /* Orden por profundidad: las de detrás (1–49) bajo la mano (50), las de delante (51–99) encima */
-        piezas[i].style.zIndex = Zp < 0 ? 1 + Math.round((Zp + Rr) / Rr * 48) : 51 + Math.round(Zp / Rr * 48);
-        piezas[i].style.setProperty('--niebla', ((1 - hondo) * .45).toFixed(3));
-        piezas[i].style.opacity = (entra * lejos).toFixed(3);
-        piezas[i].style.pointerEvents = lejos > .5 ? 'auto' : 'none';
-        /* La última muestra que ha entrado en la zona de detrás es la que enseña el móvil */
+        var th = angulo(i, f), u = th < 0 ? th + 360 : th, Zp = proyecta(th).Zp, c = cache[i], st = piezas[i].style;
+        /* Las de detrás (1–49) bajo la mano (50), las de delante (51–99) encima */
+        var z = Zp < 0 ? 1 + Math.round((Zp + Rr) / Rr * 48) : 51 + Math.round(Zp / Rr * 48);
+        if (z !== c.z) { c.z = z; st.zIndex = z; }
+        var pe = lejosDe(th) > .5 ? 'auto' : 'none';
+        if (pe !== c.pe) { c.pe = pe; st.pointerEvents = pe; }
         if (piezas[i].dataset.k && u <= 212 && u >= 140 && u > mejorU) { mejorU = u; mejor = piezas[i]; }
       }
       if (mejor) ponerEnMovil(mejor.dataset.k, mejor.getAttribute('href'));
     };
-    addEventListener('resize', function(){ Rr = radio(); if (quieto) pinta(0); });
-    if (quieto) { pinta(0); }
-    else {
-      if ('IntersectionObserver' in window) new IntersectionObserver(function(e){ visible = e[0].isIntersecting; }).observe(anillo.parentNode);
-      var gira = function(t){
-        if (inicio === null) inicio = t;
-        vel += (velObj - vel) * .06;
-        if (antes !== null && visible && !document.hidden) base -= Math.min(t - antes, 50) * 360 / 42000 * vel;
-        antes = t;
-        if (visible) pinta(t);
-        requestAnimationFrame(gira);
-      };
-      requestAnimationFrame(gira);
+    /* Con el ratón encima de una muestra el anillo casi se para (frenando suave), para poder pulsarla */
+    var frena = function(obj){
+      velObj = obj;
+      if (rampa) return;
+      rampa = setInterval(function(){
+        vel += (velObj - vel) * .25;
+        if (Math.abs(velObj - vel) < .01) { vel = velObj; clearInterval(rampa); rampa = null; }
+        anims.forEach(function(a){ a.playbackRate = vel; });
+      }, 40);
+    };
+    anillo.addEventListener('pointerover', function(e){ if (e.pointerType === 'mouse' && e.target.closest('.hx__p')) frena(.08); });
+    anillo.addEventListener('pointerout', function(e){ if (e.pointerType === 'mouse') frena(1); });
+    anillo.classList.add('is-js');
+    var tRes = null;
+    addEventListener('resize', function(){ clearTimeout(tRes); tRes = setTimeout(function(){ var r = radio(); if (r !== Rr) { Rr = r; montar(); } }, 200); });
+    montar();
+    if (!quieto) {
+      /* Fuera de la pantalla, quieto: ni tarjeta gráfica ni comprobaciones */
+      if ('IntersectionObserver' in window) new IntersectionObserver(function(e){
+        visible = e[0].isIntersecting;
+        anims.forEach(function(a){ if (visible) a.play(); else a.pause(); });
+      }).observe(anillo.parentNode);
+      setInterval(function(){ if (visible && !document.hidden) revisa(); }, 120);
     }
   }
 
