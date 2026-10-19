@@ -341,9 +341,9 @@ const navLink = (active) => `<div class="nav-wrap">
 </ul></li>
 </ul>
 <div class="nav__right">
-<a href="tel:+34680956755" class="nav__phone" aria-label="Llamar al 680 95 67 55">
+<a href="tel:+34611497409" class="nav__phone" aria-label="Llamar al 611 49 74 09">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
-<span>680 95 67 55</span>
+<span>611 49 74 09</span>
 </a>
 <div class="lang-switch" role="group" aria-label="Idioma / Hizkuntza">
 <button type="button" data-lang="es">ES</button>
@@ -371,8 +371,8 @@ const navLink = (active) => `<div class="nav-wrap">
 <li><a href="${UP}chatbot-reservas.html" data-t="nav_chatbot">Chatbot</a></li>
 </ul>
 <div class="mobile-menu__atajos">
-<a href="tel:+34680956755"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span data-t="fm_llamar">Llamar</span></a>
-<a href="https://wa.me/34680956755" target="_blank" rel="noopener" class="is-wa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.5 8.5 0 0 1-4-1L3 20l1-5.5A8.5 8.5 0 1 1 21 11.5z"/></svg><span>WhatsApp</span></a>
+<a href="tel:+34611497409"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span data-t="fm_llamar">Llamar</span></a>
+<a href="https://wa.me/34611497409" target="_blank" rel="noopener" class="is-wa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.5 8.5 0 0 1-4-1L3 20l1-5.5A8.5 8.5 0 1 1 21 11.5z"/></svg><span>WhatsApp</span></a>
 <a href="${UP}contacto.html" class="is-main"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span data-t="mm_presu">Pedir presupuesto</span></a>
 </div>
 </div>`;
@@ -399,7 +399,7 @@ const footer = () => `<footer class="footer">
 <h4 data-t="nav_contacto">Contacto</h4>
 <ul>
 <li><a href="mailto:contactoiwebstudio@gmail.com">contactoiwebstudio@gmail.com</a></li>
-<li><a href="https://wa.me/34680956755">+34 680 95 67 55</a></li>
+<li><a href="https://wa.me/34611497409">+34 611 49 74 09</a></li>
 <li><a href="https://instagram.com/oi.webstudio" target="_blank" rel="noopener">Instagram · @oi.webstudio</a></li>
 <li>Tolosa, País Vasco</li>
 </ul>
@@ -415,7 +415,7 @@ const footer = () => `<footer class="footer">
 
 <script src="${UP}assets/i18n.js"></script>
 <script src="${JS_V}"></script>
-<a class="wa-float" href="https://wa.me/34680956755?text=Hola%2C%20quiero%20informaci%C3%B3n%20para%20la%20web%20de%20mi%20negocio." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+<a class="wa-float" href="https://wa.me/34611497409?text=Hola%2C%20quiero%20informaci%C3%B3n%20para%20la%20web%20de%20mi%20negocio." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2.05 22l5.27-1.38c1.45.79 3.08 1.21 4.72 1.21 5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.05-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29z"/></svg>
 </a>
 </body>
@@ -474,7 +474,7 @@ ZONAS.forEach((z, zIdx) => {
   "image":"https://oiwebstudio.com/assets/stock/${heroFile}.jpg",
   "description":${JSON.stringify(desc)},
   "email":"contactoiwebstudio@gmail.com",
-  "telephone":"+34680956755",
+  "telephone":"+34611497409",
   "priceRange":"399€ - 499€",
   "address":{"@type":"PostalAddress","addressLocality":"Tolosa","addressRegion":"Gipuzkoa","addressCountry":"ES"},
   "areaServed":{"@type":"City","name":"${z.name}","containedInPlace":{"@type":"AdministrativeArea","name":"Gipuzkoa"}},
@@ -589,7 +589,7 @@ ${z.mosaico.map(k => `<a class="zshot" href="${UP}trabajos.html">${pic(k, null, 
 </div>
 <div class="zcta__btns">
 <a href="${UP}contacto.html" class="btn btn--light">Solicitar presupuesto</a>
-<a href="https://wa.me/34680956755" target="_blank" rel="noopener" class="btn btn--dark-ghost">WhatsApp</a>
+<a href="https://wa.me/34611497409" target="_blank" rel="noopener" class="btn btn--dark-ghost">WhatsApp</a>
 </div>
 </div>
 <p class="znear"><strong style="color:var(--text-muted);font-weight:500;">También trabajo en:</strong><br/>${otras} · <a href="${UP}zonas.html">ver todas</a></p>

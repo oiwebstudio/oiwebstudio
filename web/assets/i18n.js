@@ -393,7 +393,7 @@ const EU = {
   con_h1: 'Hitz egingo dugu <span class="grad">zure webaz</span>?',
   con_p: "Kontatu zer egiten duzun eta zer behar duzun. 48 ordu baino gutxiagotan proposamen bat izango duzu, konpromisorik gabe.",
   con_wa_b: "WhatsApp zuzena",
-  con_wa_s: "+34 680 95 67 55 — egun berean erantzuten dut",
+  con_wa_s: "+34 611 49 74 09 — egun berean erantzuten dut",
   con_mail_b: "Emaila",
   con_base_b: "Kokalekua",
   con_base_s: "Tolosa (Gipuzkoa) · urrutitik ere bai",

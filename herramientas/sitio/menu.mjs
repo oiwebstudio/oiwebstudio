@@ -73,8 +73,8 @@ ${PRINCIPAL.map(a).join("\n")}
 ${MAS.map(a).join("\n")}
 </ul>
 <div class="mobile-menu__atajos">
-<a href="tel:+34680956755">${ICONO_TEL}<span data-t="fm_llamar">Llamar</span></a>
-<a href="https://wa.me/34680956755" target="_blank" rel="noopener" class="is-wa">${ICONO_WA}<span>WhatsApp</span></a>
+<a href="tel:+34611497409">${ICONO_TEL}<span data-t="fm_llamar">Llamar</span></a>
+<a href="https://wa.me/34611497409" target="_blank" rel="noopener" class="is-wa">${ICONO_WA}<span>WhatsApp</span></a>
 <a href="${p}contacto.html" class="is-main">${ICONO_FLECHA}<span data-t="mm_presu">Pedir presupuesto</span></a>
 </div>
 </div>`;

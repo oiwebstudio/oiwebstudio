@@ -178,7 +178,7 @@ ${CABECERA_COMUN}<title>${esc(titulo)}</title>
   "image":"${img}",
   "description":"${jsn(desc)}",
   "email":"contactoiwebstudio@gmail.com",
-  "telephone":"+34680956755",
+  "telephone":"+34611497409",
   "priceRange":"399€ - 499€",
   "address":{"@type":"PostalAddress","addressLocality":"Tolosa","addressRegion":"Gipuzkoa","addressCountry":"ES"},
   "areaServed":{"@type":"City","name":"${jsn(nombre)}","containedInPlace":{"@type":"AdministrativeArea","name":"Gipuzkoa"}},
@@ -294,7 +294,7 @@ ${qa.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${a}</p></details>
 </div>
 <div class="zcta__btns">
 <a href="../contacto.html" class="btn btn--light">Solicitar presupuesto</a>
-<a href="https://wa.me/34680956755" target="_blank" rel="noopener" class="btn btn--dark-ghost">WhatsApp</a>
+<a href="https://wa.me/34611497409" target="_blank" rel="noopener" class="btn btn--dark-ghost">WhatsApp</a>
 </div>
 </div>
 <p class="znear"><strong style="color:var(--text-muted);font-weight:500;">También trabajo en:</strong><br/>${vec.map(enlace).join(" · ")} · <a href="${slugComarca(d.comarca)}.html">toda ${esc(d.comarca)}</a> · <a href="../zonas.html">ver todas</a></p>
@@ -398,7 +398,7 @@ ${CABECERA_COMUN}<title>${esc(titulo)}</title>
   "url":"${url}",
   "description":"${jsn(desc)}",
   "email":"contactoiwebstudio@gmail.com",
-  "telephone":"+34680956755",
+  "telephone":"+34611497409",
   "priceRange":"399€ - 499€",
   "address":{"@type":"PostalAddress","addressLocality":"Tolosa","addressRegion":"Gipuzkoa","addressCountry":"ES"},
   "areaServed":[${miembros.map((m) => `{"@type":"City","name":"${jsn(nombreVisible(m))}"}`).join(",")}]
@@ -478,7 +478,7 @@ ${avisoAyuda("x")}
 </div>
 <div class="zcta__btns">
 <a href="../contacto.html" class="btn btn--light">Solicitar presupuesto</a>
-<a href="https://wa.me/34680956755" target="_blank" rel="noopener" class="btn btn--dark-ghost">WhatsApp</a>
+<a href="https://wa.me/34611497409" target="_blank" rel="noopener" class="btn btn--dark-ghost">WhatsApp</a>
 </div>
 </div>
 <p class="znear"><strong style="color:var(--text-muted);font-weight:500;">Otras comarcas:</strong><br/>${otras.map((x) => `<a href="${slugComarca(x)}.html">${esc(x)}</a>`).join(" · ")} · <a href="../zonas.html">ver todas</a></p>
@@ -591,7 +591,7 @@ ${CABECERA_COMUN}<title>${esc(d.titulo)}</title>
   "url":"${url}",
   "description":"${jsn(d.desc)}",
   "email":"contactoiwebstudio@gmail.com",
-  "telephone":"+34680956755",
+  "telephone":"+34611497409",
   "priceRange":"399€ - 850€",
   "address":{"@type":"PostalAddress","addressLocality":"Tolosa","addressRegion":"Gipuzkoa","addressCountry":"ES"},
   "areaServed":${JSON.stringify(ambito)}
@@ -684,7 +684,7 @@ ${d.faq.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></
 </div>
 <div class="zcta__btns">
 <a href="../contacto.html" class="btn btn--light">Solicitar presupuesto</a>
-<a href="https://wa.me/34680956755" target="_blank" rel="noopener" class="btn btn--dark-ghost">WhatsApp</a>
+<a href="https://wa.me/34611497409" target="_blank" rel="noopener" class="btn btn--dark-ghost">WhatsApp</a>
 </div>
 </div>
 <p class="znear"><strong style="color:var(--text-muted);font-weight:500;">Mira también:</strong><br/><a href="../precios.html">precios</a> · <a href="../ayudas-subvenciones-pagina-web-gipuzkoa.html">ayudas en Gipuzkoa</a> · <a href="../precio-diseno-web-profesional.html">guía de precios</a> · <a href="../cuanto-tarda-hacer-pagina-web.html">cuánto se tarda</a></p>

@@ -158,7 +158,7 @@
       mes: mensual ? " " + rellenar(txt("wa_mes"), { mes: eur(mensual) }) : "",
       aparte: porPresupuestar.length ? " " + rellenar(txt("wa_aparte"), { cosas: porPresupuestar.join(", ") }) : ""
     });
-    wa.href = "https://wa.me/34680956755?text=" + encodeURIComponent(texto);
+    wa.href = "https://wa.me/34611497409?text=" + encodeURIComponent(texto);
     wa.setAttribute("aria-disabled", nada ? "true" : "false");
     wa.style.pointerEvents = nada ? "none" : "";
     wa.style.opacity = nada ? ".5" : "";

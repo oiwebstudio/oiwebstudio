@@ -61,8 +61,8 @@ ${cuerpo}
 <a href="${p}index.html" class="footer__logo"><img src="${p}assets/logo-nav-black.png" alt="OI Studio" class="footer__logo-img" width="320" height="86"/></a>
 <p class="footer__desc" data-t="foot_desc">Webs a medida para negocios locales.</p>
 <ul class="foot-contacto">
-<li><a href="https://wa.me/34680956755" target="_blank" rel="noopener">${ICONO.wa}<span>WhatsApp</span></a></li>
-<li><a href="tel:+34680956755">${ICONO.tel}<span>680 95 67 55</span></a></li>
+<li><a href="https://wa.me/34611497409" target="_blank" rel="noopener">${ICONO.wa}<span>WhatsApp</span></a></li>
+<li><a href="tel:+34611497409">${ICONO.tel}<span>611 49 74 09</span></a></li>
 <li><a class="js-mail" data-u="contactoiwebstudio" data-d="gmail.com">${ICONO.mail}<span data-t="ft_correo">Correo</span></a></li>
 <li><a href="https://instagram.com/oi.webstudio" target="_blank" rel="noopener">${ICONO.ig}<span>Instagram</span></a></li>
 </ul>

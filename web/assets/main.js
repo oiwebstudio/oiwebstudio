@@ -534,7 +534,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (negocio) lineas.push(`• Negocio: ${negocio}`);
       if (mensaje) lineas.push(`• Detalles: ${mensaje}`);
       const texto = lineas.join('\n');
-      window.open('https://wa.me/34680956755?text=' + encodeURIComponent(texto), '_blank', 'noopener');
+      window.open('https://wa.me/34611497409?text=' + encodeURIComponent(texto), '_blank', 'noopener');
 
       // WhatsApp no siempre está disponible (escritorio sin app, bloqueo de
       // ventanas emergentes). Se deja a la vista una salida por correo con el

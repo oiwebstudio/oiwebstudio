@@ -29,7 +29,7 @@ export const COMUNES = [
   [`Ver la ayuda →`, `Laguntza ikusi →`],
   [`Solicitar presupuesto`, `Aurrekontua eskatu`],
   [`Ver trabajos`, `Lanak ikusi`],
-  [`Llamar al 680 95 67 55`, `680 95 67 55 zenbakira deitu`],
+  [`Llamar al 611 49 74 09`, `611 49 74 09 zenbakira deitu`],
   [`Abrir menú`, `Menua ireki`],
   [`Escribir por WhatsApp`, `WhatsApp bidez idatzi`],
 

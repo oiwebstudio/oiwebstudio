@@ -96,7 +96,7 @@
     var texto = propio
       ? rellenar(txt("wa"), { negocio: propio, sector: sector.toLowerCase(), pueblo: pueblo })
       : rellenar(txt("wa0"), { sector: sector.toLowerCase(), pueblo: pueblo });
-    quiero.href = "https://wa.me/34680956755?text=" + encodeURIComponent(texto);
+    quiero.href = "https://wa.me/34611497409?text=" + encodeURIComponent(texto);
   };
 
   /* Rellenar desde el enlace */

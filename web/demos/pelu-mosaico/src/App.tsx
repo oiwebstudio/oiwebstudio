@@ -277,7 +277,7 @@ function openBooking() {
     return;
   }
   window.open(
-    "https://wa.me/34680956755?text=Hola%2C%20quiero%20pedir%20cita",
+    "https://wa.me/34611497409?text=Hola%2C%20quiero%20pedir%20cita",
     "_blank",
     "noopener",
   );
