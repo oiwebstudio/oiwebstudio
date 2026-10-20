@@ -37,15 +37,15 @@ export const ESPANA = [
   },
   {
     slug: "diseno-web-bizkaia", ambito: "Bizkaia", nombre: "Bizkaia",
-    titulo: "Diseño web en Bizkaia | Páginas web para negocios | OI Studio",
-    desc: "Diseño y desarrollo de páginas web para negocios de Bizkaia (Bilbao, Uribe, Urdaibai, Durangaldea), a distancia y desde 399 €. Propuesta en 48 h.",
+    titulo: "Diseño y páginas web en Bizkaia (Vizcaya) | OI Studio",
+    desc: "Diseño y páginas web para negocios de Bizkaia (Vizcaya): Bilbao, Barakaldo, Getxo, Durango y Urdaibai. A distancia, desde 399 € y propuesta en 48 h.",
     h1: "Diseño web en", acento: "Bizkaia",
     lede: "Bilbao, la costa de Uribe, Urdaibai y el Duranguesado: cuatro formas distintas de buscar en Google. Webs a distancia con precio cerrado.",
     kw: "diseño web Bizkaia, páginas web Bilbao, diseño web Vizcaya, diseñador web Bilbao, web negocio Bizkaia",
     hechos: [["A distancia", "Videollamada y WhatsApp"], ["399€", "Desde, precio cerrado"], ["48h", "Propuesta"], ["Euskera", "Y castellano si lo pides"]],
     k: "Bizkaia", h2: "Cómo se busca en Bizkaia",
     texto: [
-      "Bizkaia es el mercado más grande de Euskadi y también el más competido. Bilbao y su área metropolitana concentran agencias y estudios de todos los tamaños; fuera de ahí, cada comarca tiene su propia realidad: la costa de Uribe y Urdaibai viven mucho del visitante, con Getxo, Mundaka o Bermeo; Durangaldea tiene un tejido industrial fuerte, y Enkarterri un comercio muy de pueblo.",
+      "Bizkaia (Vizcaya, en castellano) es el mercado más grande de Euskadi y también el más competido. Bilbao y su área metropolitana, con Barakaldo y la Margen Izquierda, concentran agencias y estudios de todos los tamaños; fuera de ahí, cada comarca tiene su propia realidad: la costa de Uribe y Urdaibai viven mucho del visitante, con Getxo, Mundaka o Bermeo; Durangaldea, con Durango a la cabeza, tiene un tejido industrial fuerte, y Enkarterri un comercio muy de pueblo.",
       "Mi hueco no son las cuentas grandes, sino el negocio local que necesita una web clara, rápida y bien encontrada en su zona, sin pagar precio de capital. Trabajo a distancia: videollamada, WhatsApp y un enlace privado para revisar la web mientras se construye.",
     ],
     pull: REMOTO,

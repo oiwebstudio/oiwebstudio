@@ -118,7 +118,8 @@ export const COMUNES = [
    propios de esa zona. */
 export const ZONAS_EU = {
   "zonas/donostia-san-sebastian.html": {
-    title: "Web diseinua Donostian: webguneak negozioentzat | OI Studio",
+    // 20/10: «Donostia» sin declinar en el título, porque la consulta real es «web diseinua donostia» (120 impr., pos. 77). Itzultzaile Neuronala.
+    title: "Donostia web diseinua: negozioetarako webguneak | OI Studio",
     desc: "Web diseinua eta webguneak Donostiako negozioentzat. Prezio itxia 399€-tik eta proposamena 48 ordutan. Estudioa Tolosan, 26 km-ra.",
     pares: [
       [`¿Mejor una agencia de Donostia o un diseñador freelance?`, `Donostiako agentzia bat ala diseinatzaile autonomo bat hobe?`],
@@ -138,6 +139,11 @@ export const ZONAS_EU = {
       [`Qué necesita un negocio de Donostia-San Sebastián`, `Zer behar du Donostiako negozio batek`],
       [`Donostia es el mercado más competido de Gipuzkoa: estudios grandes, agencias con equipo comercial y presupuestos que empiezan donde los míos acaban. Mi hueco no es competir por la cuenta de una multinacional, sino atender al comercio de Gros, Egia o Amara que necesita una web rápida y bien posicionada en su barrio, con precio cerrado.`,
        `Donostia da Gipuzkoako merkaturik lehiakorrena: estudio handiak, salmenta-taldea duten agentziak eta nire aurrekontuak amaitzen diren tokian hasten diren aurrekontuak. Nire tokia ez da multinazional baten kontua lortzeko lehiatzea, baizik eta Gros, Egia edo Amarako merkataritzari erantzutea: webgune azkar bat behar du, bere auzoan ondo kokatua eta prezio itxiarekin.`],
+      // 20/10, con Itzultzaile Neuronala («gutuna» corregido a «karta»: es la carta del restaurante)
+      [`Cada barrio pide algo distinto. En la Parte Vieja y el Centro, bares, restaurantes y tiendas viven también del visitante: la carta, el horario y cómo llegar tienen que leerse bien en el móvil y en más de un idioma. En Gros, junto a la Zurriola, hay mucho comercio joven y escuelas de surf; en Amara, Egia, el Antiguo o Intxaurrondo manda la clientela de siempre, que busca «cerca de mí» y llama.`,
+       `Auzo bakoitzak zerbait desberdina eskatzen du. Alde Zaharrean eta Erdialdean, tabernak, jatetxeak eta dendak ere bisitariarengandik bizi dira: karta, ordutegia eta nola iritsi ondo irakurri behar dira mugikorrean eta hizkuntza batean baino gehiagotan. Grosen, Zurriolaren ondoan, denda gazte asko eta surf eskolak daude; Amaran, Egian, Antiguan edo Intxaurrondon betiko bezeroek agintzen dute, «nigandik gertu» bilatu eta deitzen dutenak.`],
+      [`Si recibes turistas, tener la web también en inglés ya no es un extra. La hago con el mismo diseño que la versión en castellano y euskera: <a class="link-terra" href="../caso-a-berri.html">A.Berri</a>, una casa rural de Getaria, recibe reservas en tres idiomas desde su propia web.`,
+       `Turistak jasotzen badituzu, webgunea ingelesez ere edukitzea jada ez da estra bat. Gaztelaniazko eta euskarazko bertsioen diseinu berarekin egiten dut: <a class="link-terra" href="../caso-a-berri.html">A.Berri</a> Getariako landetxeak hiru hizkuntzatan jasotzen ditu erreserbak bere webgunetik.`],
       [`En Donostia la búsqueda relevante casi nunca es "Donostia" a secas, sino el barrio: trabajo el SEO a ese nivel.`,
        `Donostian bilaketa garrantzitsua ia inoiz ez da "Donostia" hutsa, auzoa baizik: SEOa maila horretan lantzen dut.`],
       [`Turismo y alojamiento`, `Turismoa eta ostatuak`],
@@ -239,6 +245,9 @@ export const ZONAS_EU = {
       [`Qué necesita un negocio de Zarautz`, `Zer behar du Zarautzko negozio batek`],
       [`En Zarautz la estacionalidad lo condiciona todo: en agosto no das abasto y en febrero el pueblo es otro. La web tiene que servir para las dos realidades — en temporada alta para filtrar y automatizar (reservas, horarios, disponibilidad), y en temporada baja para que la clientela local sepa que sigues abierto y con qué horario.`,
        `Zarautzen denboraldiak dena baldintzatzen du: abuztuan ez zara iristen, eta otsailean herria beste bat da. Webguneak bi errealitateetarako balio behar du — denboraldi betean iragazteko eta automatizatzeko (erreserbak, ordutegiak, erabilgarritasuna), eta denboraldi baxuan tokiko bezeroek jakin dezaten irekita jarraitzen duzula eta zein ordutegirekin.`],
+      // 20/10, con Itzultzaile Neuronala («ere» añadido: «también en francés»). Oier ofrece webs en francés (20/10).
+      [`Buena parte del visitante de verano llega de Francia. Si vives de él, tener la carta, los horarios y las reservas también en francés se nota. Lo hago con el mismo diseño que la versión en castellano y euskera.`,
+       `Udako bisitariaren zati handi bat Frantziatik dator. Harengandik bizi bazara, karta, ordutegiak eta erreserbak frantsesez ere izatea nabaritu egiten da. Gaztelaniazko eta euskarazko bertsioen diseinu berarekin egiten dut.`],
       [`Para negocios de temporada, las reservas automáticas son lo que más se nota: en agosto responden solas.`,
        `Denboraldiko negozioetan, erreserba automatikoak dira gehien nabaritzen direnak: abuztuan beren kabuz erantzuten dute.`],
       [`Alojamiento y apartamentos`, `Ostatuak eta apartamentuak`],
