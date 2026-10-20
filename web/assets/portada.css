@@ -407,6 +407,11 @@
    segunda en cursiva, dos tarjetas a los lados unidas con hilos, sello que gira
    y un anillo 3D de muestras alrededor del móvil. */
 .hx { --eh: clamp(470px, 40vw, 520px); --R: clamp(165px, 24vw, 310px); --pw: clamp(150px, 14vw, 200px); background: #f4f2ee; padding: 116px 0 0; text-align: center; }
+/* El héroe es su propio contexto de apilado: las tarjetas, el sello y los pies (z-index 110,
+   por encima del anillo) se ordenan dentro de él y nunca suben por encima del menú fijo
+   (.nav-wrap 100, .mobile-menu 99). Antes tapaban RESERVAS y SOBRE MÍ en el menú del móvil. */
+.hx { z-index: 0; isolation: isolate; }
+html.menu-abierto .hx__tarjeta, html.menu-abierto .hx__sello, html.menu-abierto .hx__pie { visibility: hidden; }
 .hx .container { position: relative; }
 .hx .hx__h1 { font-family: var(--font-serif); font-weight: 500; font-size: clamp(40px, 6.1vw, 84px); line-height: .98; letter-spacing: -0.035em; color: var(--ink); margin: 0 auto; max-width: 13em; }
 .hx__l1, .hx__l2 { display: block; }

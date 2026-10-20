@@ -119,6 +119,16 @@
   [data-anim="cards"] .zcard:nth-child(20){transition-delay:0.855s;}
   @media (prefers-reduced-motion: reduce){[data-anim="cards"] .zcard{opacity:1!important;transform:none!important;transition:none!important;}}
   .hubcta p{color:#c9c2b2;margin:0;font-size:15px;max-width:48ch;}
+  /* Móvil (20/10/2026): las 20 tarjetas a foto completa hacían una página de 12.000 px.
+     En el móvil, foto pequeña a la izquierda y texto al lado. */
+  @media(max-width:600px){
+    .zgrid{grid-template-columns:1fr;gap:10px;}
+    .zcard{display:grid;grid-template-columns:104px 1fr;}
+    .zcard__img{aspect-ratio:auto;height:100%;min-height:100%;}
+    .zcard__b{padding:13px 15px 14px;}
+    .zcard__b p:last-child{font-size:13px;margin-top:6px;}
+    .hubcta{padding:28px 24px;}
+  }
 </style>
 </head>
 <body>

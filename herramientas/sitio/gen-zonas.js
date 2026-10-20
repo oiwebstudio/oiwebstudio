@@ -258,6 +258,15 @@ const ZONA_CSS = `
   .znear{margin-top:26px;font-size:13.5px;color:var(--text-faint);line-height:1.9;}
   .znear a{color:var(--text-muted);text-decoration:none;border-bottom:1px solid var(--border-strong);}
   .znear a:hover{color:var(--terra);}
+  /* Arreglos del móvil (20/10/2026): la lista «También trabajo en» separada del recuadro oscuro
+     (.zsplit p le quitaba el margen), sin hueco doble encima del aviso de ayudas y, en el móvil,
+     la etiqueta siempre encima del título (antes unas veces al lado y otras debajo). */
+  .zsplit .znear{margin:26px 0 0;font-size:13.5px;line-height:1.9;}
+  .zsec .ayuda-cta{margin-top:0;}
+  @media(max-width:720px){
+    .zhead{flex-direction:column;align-items:flex-start;gap:8px;}
+    .zcta{padding:28px 24px;}
+  }
 
   /* Hub */
   .zgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;}
