@@ -58,7 +58,7 @@ const heroImg = (key, seed, nombre) => {
 };
 /* Las tres muestras del portfolio (octubre 2026), en orden rotado según la página. */
 /* Tercer campo: versión de la captura (?v=), para saltar la caché de Cloudflare cuando se rehace. */
-const TRIO = [["etxea", "Inmobiliaria"], ["pedala", "Tienda de bicicletas", "?v=3"], ["ekhi", "Psicología", "?v=3"], ["arin", "Fisioterapia"]];
+const TRIO = [["etxea", "Inmobiliaria"], ["pedala", "Tienda de bicicletas", "?v=4"], ["ekhi", "Psicología", "?v=3"], ["arin", "Fisioterapia"]];
 const trioMosaico = (n) => [0, 1, 2].map((j) => TRIO[(j + n) % 4]).map(([img, rot, v = ""]) => `<a class="zshot" href="../trabajos.html"><picture><source srcset="../assets/${img}-desk.webp${v}" type="image/webp"/><img src="../assets/${img}-desk.jpg${v}" alt="${rot}, muestra de web para negocio local" width="900" height="562" loading="lazy"/></picture><span class="zshot__lbl">${rot}</span></a>`).join("\n");
 
 /* ------------------------------------------------------- índice completo */
