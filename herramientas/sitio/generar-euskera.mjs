@@ -25,7 +25,7 @@ const SOLO_COMPROBAR = process.argv.includes("--check");
    propósito: apenas tienen texto marcado como traducible y saldrían medio en
    castellano, que es peor que no tenerlas. Las de zona no usan data-t: las que
    tienen versión en euskera se traducen con los pares de euskera-zonas.mjs. */
-const PAGINAS = ["index.html", "precios.html", "contacto.html", "trabajos.html", "sobre-mi.html"];
+const PAGINAS = ["index.html", "precios.html", "contacto.html", "trabajos.html", "sobre-mi.html", "seo-posicionamiento-google.html"];
 const ZONAS = Object.keys(ZONAS_EU);
 
 /* Todo lo que existe en /eu/: los enlaces internos que apunten aquí se
@@ -62,6 +62,11 @@ const META = {
   "sobre-mi.html": {
     title: "Niri buruz: nola lan egiten dudan | OI Studio",
     desc: "Pertsona bakarreko estudioa Tolosan. Ingeniari-logika eta diseinatzaile-begia, tokiko negozioentzako webguneak egiteko.",
+  },
+  // 21/10/2026, con Itzultzaile Neuronala («azterketa» → «berrikuspena», como en la página).
+  "seo-posicionamiento-google.html": {
+    title: "SEO Tolosan eta Gipuzkoan: tokiko web posizionamendua | OI Studio",
+    desc: "SEO lokala Tolosan eta Gipuzkoan, baita nik egin ez ditudan webguneentzat ere: Googleren fitxa, berrikuspen teknikoa, edukia eta laguntzaile birtualak. Doako berrikuspena 48 ordutan.",
   },
 };
 

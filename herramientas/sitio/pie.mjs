@@ -79,6 +79,7 @@ ${grupo("foot_servicios", "Servicios", [
   li("precios.html", "Landing ·&nbsp;399&nbsp;€", "ft_s1"),
   li("precios.html", "Web de negocio ·&nbsp;499&nbsp;€", "ft_s2"),
   li("precios.html", "Tienda online ·&nbsp;850&nbsp;€", "ft_s3"),
+  li("seo-posicionamiento-google.html", "SEO y posicionamiento en Google", "ft_s6"),
   li("reservas-online-sin-comisiones.html", "Reservas online sin comisiones", "ft_s5"),
   li("chatbot-reservas.html", "Chatbot de reservas", "ft_s4"),
 ].join("\n"))}
