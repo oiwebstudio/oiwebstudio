@@ -10,7 +10,7 @@
  * clientela, no de cifras ni de negocios concretos.
  */
 export const NUEVAS = [
-  { slug: "tolosa", name: "Tolosa", comarca: "Tolosaldea", hero: "pan", mosaico: ["pan", "cafe", "pelu"],
+  { slug: "tolosa", name: "Tolosa", comarca: "Tolosaldea", caso: {"titulo":"Un negocio de aquí, con la web hecha en este estudio","texto":"Errotatxo, panadería con dos tiendas en Tolosa (Andia y San Frantzisko, con cafetería) y una en Anoeta, tiene su web hecha por mí: una página por tienda con dirección, horario en directo y teléfono, en castellano y euskera.","href":"caso-errotatxo.html","enlace":"Ver el caso de Errotatxo"}, hero: "pan", mosaico: ["pan", "cafe", "pelu"],
     lede: "Aquí tengo el estudio. Trabajo con negocios de Tolosa a pie, sin desplazamientos ni cita eterna.",
     contexto: "Tolosa es la capital de Tolosaldea: gente de toda la comarca baja a comprar, a comer y a hacer gestiones. Eso significa que tu negocio no compite solo con la calle de al lado, sino con todo lo que sale cuando alguien busca «Tolosa» en el móvil. La diferencia la marcan la ficha de Google, las reseñas y una web que cargue rápido y diga lo básico (horario, teléfono, cómo llegar) sin obligar a hacer scroll.",
     sectores: ["Comercio y alimentación", "Hostelería y sidrerías", "Servicios profesionales", "Salud y estética", "Talleres y oficios"],
@@ -182,7 +182,7 @@ export const NUEVAS = [
     gancho: "Para alojamientos y bodegas preparo la web con reservas directas y mapa claro, que es lo que más se pregunta.",
     faq: { q: "¿Cómo se reserva desde la web de un agroturismo?", a: "Con un formulario sencillo o un botón de WhatsApp con el mensaje ya preparado (fechas, personas). Si el volumen crece, se puede añadir un sistema de reservas con disponibilidad en tiempo real." } },
 
-  { slug: "getaria", name: "Getaria", alt: "Guetaria", comarca: "Urola Kosta", hero: "rest", mosaico: ["rest", "cafe", "pan"],
+  { slug: "getaria", name: "Getaria", alt: "Guetaria", comarca: "Urola Kosta", caso: {"titulo":"Una casa rural de Getaria, con reservas propias","texto":"A.Berri, un caserío entre viñas de txakoli a cinco kilómetros de Getaria, tiene su web en castellano, euskera e inglés, con calendario de reservas y un panel privado para los dueños, sin comisiones por reserva.","href":"caso-a-berri.html","enlace":"Ver el caso de A.Berri"}, hero: "rest", mosaico: ["rest", "cafe", "pan"],
     lede: "Txakoli, parrillas y el museo de Balenciaga. Getaria vive de gente que llega buscando una buena mesa.",
     contexto: "Getaria es uno de los destinos gastronómicos de Gipuzkoa, con parrillas conocidas, txakoli y el museo dedicado a Balenciaga. La clientela es mayoritariamente de fuera, planifica con antelación y compara. Para quien tiene un restaurante, un alojamiento o una tienda, una web que muestre carta, fotos reales y reservas con claridad, en más de un idioma, es parte del servicio.",
     sectores: ["Restaurantes y parrillas", "Bodegas de txakoli", "Alojamiento y turismo", "Comercio y artesanía", "Servicios"],

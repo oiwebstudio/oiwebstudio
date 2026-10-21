@@ -58,6 +58,11 @@
   .cs-ficha span{display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);}
   .cs-ficha b{display:block;margin-top:8px;font-family:var(--font-serif);font-weight:500;font-size:21px;line-height:1.2;color:var(--ink);}
   .cs-ficha a{color:var(--terra-link);}
+  .cs-resumen{display:grid;gap:14px;margin:44px 0 0;}
+  @media(min-width:860px){.cs-resumen{grid-template-columns:repeat(3,1fr);gap:18px;}}
+  .cs-resumen div{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px 24px 26px;}
+  .cs-resumen h3{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);margin:0 0 12px;font-weight:500;}
+  .cs-resumen p{font-size:16px;line-height:1.65;color:var(--text-muted);margin:0;}
 
   .cs-sec{padding:110px 0 0;}
   .cs-intro{max-width:760px;}
@@ -256,6 +261,12 @@
 <div><span>Idiomas</span><b>Castellano, euskera e inglés</b></div>
 <div><span>En vivo</span><b><a href="https://aberricasarural.com/" target="_blank" rel="noopener">aberricasarural.com</a></b></div>
 </div>
+
+<section class="cs-resumen reveal" aria-label="Resumen del caso">
+<div><h3>Qué necesitaban</h3><p>Un caserío de piedra para grupos y un apartamento para parejas o familias, en Getaria. Querían enseñar cada alojamiento tal como es, explicar qué noches están libres y recibir las reservas directamente, sin depender solo de los portales, en castellano, euskera e inglés.</p></div>
+<div><h3>Qué hice</h3><p>Un calendario por alojamiento que solo deja marcar las noches libres y calcula el precio antes de enviar; la solicitud llega con todos los datos al correo de los dueños, y un panel privado les permite marcar noches como abiertas u ocupadas y aceptar o rechazar cada solicitud con la respuesta ya redactada. El panel también puede enlazar los calendarios de Booking o Airbnb (iCal) para no ofrecer una noche ocupada allí. Sin comisión por reserva.</p></div>
+<div><h3>Cómo va</h3><p>Publicada en octubre de 2026, con dominio propio. Las reservas son por solicitud: los dueños confirman por correo y no hay pago online. Es pronto para hablar de número de reservas y no voy a inventarlo. Abajo, la opinión de María Jesús, tal cual la escribió.</p></div>
+</section>
 
 <section class="cs-opinion reveal" aria-label="Opinión de la clienta">
 <div>

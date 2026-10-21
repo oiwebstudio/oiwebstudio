@@ -105,6 +105,12 @@ const main = `<main>
 <div><span>En vivo</span><b><a href="https://aberricasarural.com/" target="_blank" rel="noopener">aberricasarural.com</a></b></div>
 </div>
 
+<section class="cs-resumen reveal" aria-label="Resumen del caso">
+<div><h3>Qué necesitaban</h3><p>Un caserío de piedra para grupos y un apartamento para parejas o familias, en Getaria. Querían enseñar cada alojamiento tal como es, explicar qué noches están libres y recibir las reservas directamente, sin depender solo de los portales, en castellano, euskera e inglés.</p></div>
+<div><h3>Qué hice</h3><p>Un calendario por alojamiento que solo deja marcar las noches libres y calcula el precio antes de enviar; la solicitud llega con todos los datos al correo de los dueños, y un panel privado les permite marcar noches como abiertas u ocupadas y aceptar o rechazar cada solicitud con la respuesta ya redactada. El panel también puede enlazar los calendarios de Booking o Airbnb (iCal) para no ofrecer una noche ocupada allí. Sin comisión por reserva.</p></div>
+<div><h3>Cómo va</h3><p>Publicada en octubre de 2026, con dominio propio. Las reservas son por solicitud: los dueños confirman por correo y no hay pago online. Es pronto para hablar de número de reservas y no voy a inventarlo. Abajo, la opinión de María Jesús, tal cual la escribió.</p></div>
+</section>
+
 <section class="cs-opinion reveal" aria-label="Opinión de la clienta">
 <div>
 <div class="cs-opinion__estrellas" aria-label="5 de 5 estrellas">★★★★★</div>
