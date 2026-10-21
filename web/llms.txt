@@ -29,6 +29,7 @@ Se paga una sola vez, al final, cuando la web está terminada y publicada. El pr
 - Reseñas con QR (enlace a la ficha de Google, QR y cartel): 49 €.
 - Chatbot en la web: +190 € y 15 €/mes.
 - De serie, los avisos van por correo electrónico. Avisos por WhatsApp o SMS, conexión con Booking o TheFork u otros extras: a medida, con el precio antes de empezar.
+- SEO y posicionamiento en Google (también para webs que no ha hecho OI Studio): ficha de Google Business Profile completa (categorías, servicios, zonas, fotos, publicaciones, enlace y mensaje para pedir reseñas), revisión técnica de la web (velocidad, móvil, https, títulos y descripciones, datos estructurados, sitemap, alta e indexación en Google Search Console y Bing Webmaster Tools), contenido para las búsquedas reales de la zona y visibilidad en asistentes de IA (llms.txt, acceso de ChatGPT o Gemini a la web, Bing Places). Revisión gratuita en 48 horas y precio cerrado después; no hay tarifa fija publicada. No se promete ningún puesto concreto en Google. Detalle: https://oiwebstudio.com/seo-posicionamiento-google.html
 
 3. Packs (con mantenimiento de 25 €/mes)
 - Web + reservas: 549 €.
@@ -53,6 +54,7 @@ Fuera de Gipuzkoa trabaja a distancia, con el mismo precio: [toda España](https
 - [Zonas](https://oiwebstudio.com/zonas.html): diseño web en los municipios de Gipuzkoa.
 - [Sobre el estudio](https://oiwebstudio.com/sobre-mi.html): quién hay detrás y cómo trabaja.
 - [Contacto](https://oiwebstudio.com/contacto.html): pedir propuesta.
+- [SEO y posicionamiento en Google](https://oiwebstudio.com/seo-posicionamiento-google.html): SEO local en Tolosa y Gipuzkoa, también para webs que no ha hecho OI Studio; ejemplos en la propia web y en los casos de Errotatxo y A.Berri.
 - [Revisión gratis de tu web](https://oiwebstudio.com/revision-web-gratis.html): reviso gratis la web (o la presencia en Google) de un negocio y digo qué arreglar primero.
 - [Versión en euskera](https://oiwebstudio.com/eu/index.html)
 

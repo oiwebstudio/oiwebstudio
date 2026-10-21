@@ -20,7 +20,7 @@ import path from "node:path";
 
 const RAIZ = path.resolve("web");
 const BASE = "https://oiwebstudio.com";
-const PAGINAS = ["index.html", "precios.html", "contacto.html", "trabajos.html", "sobre-mi.html"];
+const PAGINAS = ["index.html", "precios.html", "contacto.html", "trabajos.html", "sobre-mi.html", "seo-posicionamiento-google.html"];
 
 let tocadas = 0;
 
