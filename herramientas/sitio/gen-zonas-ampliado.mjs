@@ -109,6 +109,15 @@ function preguntas(m, d, dist) {
   const a5 = `Claro. No enseño capturas: las muestras del <a href="../trabajos.html">portfolio</a> están publicadas y se pueden abrir y recorrer. Con ellas y la propuesta en 48 h tienes información suficiente para decidir sin compromiso.`;
   return [[q1, a1], [q2, a2], [q3, a3], [d.faq.q, d.faq.a], [q5, a5]];
 }
+/* Caso real cerca de la zona (opcional: campo «caso» en los datos). Solo hechos comprobables de las dos webs publicadas. */
+const casoZona = (c) => !c ? "" : `<section class="zsec" style="padding-top:0;padding-bottom:44px;">
+<div class="container">
+<div class="zhead"><span class="k">Caso real</span><h2>${esc(c.titulo)}</h2></div>
+<p style="max-width:68ch;font-size:17px;line-height:1.7;color:var(--text-muted);">${esc(c.texto)} <a href="../${c.href}" class="link-terra">${esc(c.enlace)} &rarr;</a></p>
+</div>
+</section>
+
+`;
 const textoPlano = (h) => h.replace(/<[^>]+>/g, "");
 
 /* ------------------------------------------------------ página de municipio */
@@ -244,7 +253,7 @@ ${d.sectores.map((s) => `<span class="zchip">${esc(s)}</span>`).join("\n")}
 </div>
 </section>
 
-${avisoAyuda(d.slug)}
+${casoZona(d.caso)}${avisoAyuda(d.slug)}
 
 <section class="zsec--tight zsec" style="padding-top:0;">
 <div class="container">
@@ -308,7 +317,7 @@ ${PIE}`;
 
 /* ------------------------------------------------------------- comarcas */
 const COMARCAS = {
-  Tolosaldea: { titulo: "Diseño web en Tolosaldea | Páginas web para negocios", lede: "La comarca donde tengo el estudio: 28 municipios alrededor del Oria, con Tolosa como capital y mucho pueblo pequeño. Aquí trabajo en persona.",
+  Tolosaldea: { caso: {"titulo":"Un negocio de aquí, con la web hecha en este estudio","texto":"Errotatxo, panadería con dos tiendas en Tolosa (Andia y San Frantzisko, con cafetería) y una en Anoeta, tiene su web hecha por mí: una página por tienda con dirección, horario en directo y teléfono, en castellano y euskera.","href":"caso-errotatxo.html","enlace":"Ver el caso de Errotatxo"}, titulo: "Diseño web en Tolosaldea | Páginas web para negocios", lede: "La comarca donde tengo el estudio: 28 municipios alrededor del Oria, con Tolosa como capital y mucho pueblo pequeño. Aquí trabajo en persona.",
     texto: "Tolosaldea es una comarca de pueblos pequeños que se mueven alrededor de Tolosa: la gente compra, come y hace gestiones en la capital y vuelve a casa. Para un negocio de Alegia, Anoeta o Berastegi eso significa dos cosas: que tu clientela real está repartida por toda la comarca, y que quien te busca en Google suele escribir lo que haces más «Tolosaldea» o «Tolosa». Por eso cada web que hago aquí se escribe para la comarca entera, no solo para el nombre del pueblo.",
     faq: ["¿Trabajas con negocios de todos los pueblos de Tolosaldea?", "Sí. El estudio está en Tolosa y trabajo en toda la comarca. Con los pueblos más grandes tengo página propia; los más pequeños aparecen en esta lista, y para ellos el trabajo es el mismo: web proporcionada al negocio y ficha de Google bien hecha."] },
   Buruntzaldea: { titulo: "Diseño web en Buruntzaldea | Andoain, Urnieta y Lasarte-Oria", lede: "La salida de Tolosaldea hacia Donostia: Andoain, Urnieta y Lasarte-Oria, con mucho comercio y clientela que compara.",
@@ -332,7 +341,7 @@ const COMARCAS = {
   "Urola Erdia": { titulo: "Diseño web en Urola Erdia | Azpeitia y Azkoitia", lede: "Loiola, casco histórico e industria. Dos pueblos que se comparan, y un cliente que elige al que se ve más serio.",
     texto: "Azpeitia y Azkoitia son vecinas y a menudo compiten por el mismo cliente. Cuando alguien busca un servicio en Urola Erdia mira dos o tres opciones en Google y se queda con la que parece más seria y más fácil de contactar. Eso se juega en la ficha de Google, las reseñas y una web que cargue rápido.",
     faq: ["¿Cómo me diferencio de otros negocios de Azpeitia o Azkoitia?", "Con una web clara y rápida, tus datos correctos en Google Maps y reseñas recientes. La mayoría de la competencia local no cuida ninguna de las tres."] },
-  "Urola Kosta": { titulo: "Diseño web en Urola Kosta | Zarautz, Getaria, Zumaia y Orio", lede: "Costa, txakoli y turismo. Negocios que dependen de que el visitante los encuentre antes de llegar.",
+  "Urola Kosta": { caso: {"titulo":"Una casa rural de Getaria, con reservas propias","texto":"A.Berri, un caserío entre viñas de txakoli a cinco kilómetros de Getaria, tiene su web en castellano, euskera e inglés, con calendario de reservas y un panel privado para los dueños, sin comisiones por reserva.","href":"caso-a-berri.html","enlace":"Ver el caso de A.Berri"}, titulo: "Diseño web en Urola Kosta | Zarautz, Getaria, Zumaia y Orio", lede: "Costa, txakoli y turismo. Negocios que dependen de que el visitante los encuentre antes de llegar.",
     texto: "Urola Kosta vive en buena parte del visitante: Zarautz con su playa y su temporada, Getaria con el txakoli y las parrillas, Zumaia con el flysch, Orio con su puerto y su remo. El visitante decide con el móvil y compara; la web y la ficha de Google, con fotos propias y la información práctica a la vista, deciden si te elige. Y en varios idiomas, mejor.",
     faq: ["¿Hacen falta varios idiomas en la web?", "Si tu clientela viene de fuera, sí: castellano y euskera como base, y inglés o francés si lo piden. Se decide mirando de dónde llegan tus clientes, no por intuición."] },
   Debabarrena: { titulo: "Diseño web en Debabarrena | Eibar, Elgoibar, Deba y Mutriku", lede: "Industria de precisión en el valle y turismo de costa. Dos formas distintas de buscar en Google.",
@@ -467,7 +476,7 @@ ${sinPagina.length ? `<p style="margin-top:22px;font-size:15px;line-height:1.8;c
 </div>
 </section>
 
-${avisoAyuda("x")}
+${casoZona(c.caso)}${avisoAyuda("x")}
 
 <section class="zsec" style="padding-top:0;">
 <div class="container">
