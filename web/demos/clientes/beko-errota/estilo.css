@@ -6,7 +6,7 @@ body{background:var(--crema2);color:var(--tinta);font:400 16px/1.6 Karla,system-
 img{display:block;max-width:100%;height:auto}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--azul);outline-offset:3px}
-.script{font-family:"Dancing Script",cursive;font-weight:600;color:var(--azul);line-height:1}
+.script{font-family:"Libre Caslon Text",Georgia,serif;font-weight:700;color:var(--azul);line-height:1}
 .aviso{background:var(--azul);color:#e8eff4;font-size:13px;text-align:center;padding:7px 16px}
 .wrap{max-width:1180px;margin:0 auto;padding:0 clamp(18px,4.5vw,44px)}
 .dib{fill:none;stroke:currentColor;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
@@ -52,14 +52,14 @@ a{color:inherit}
 .panel{background:var(--crema);padding:22px 24px;box-shadow:0 1px 2px rgba(0,0,0,.12),0 26px 50px -24px rgba(0,0,0,.55)}
 .foto-marco .panel{position:absolute;right:-22px;bottom:-30px;width:46%}
 @media(max-width:899px){.foto-marco .panel{position:relative;right:auto;bottom:auto;width:auto;margin:-40px 16px 0}}
-.panel h3{font:600 28px "Dancing Script",cursive;color:var(--azul)}
+.panel h3{font:700 20.7px/1.15 "Libre Caslon Text",Georgia,serif;color:var(--azul)}
 .panel p{font-size:14.5px;color:#56656f;margin-top:6px}
 .icono{width:30px;height:30px;color:var(--azul);margin:10px 0 0 auto;display:block}
 .cifras{display:flex;gap:30px;margin-top:24px;flex-wrap:wrap}
-.cifras b{display:block;font:600 46px/1 "Dancing Script",cursive;color:var(--azul)}
+.cifras b{display:block;font:700 34px/1.05 "Libre Caslon Text",Georgia,serif;color:var(--azul)}
 .cifras span{font-size:13.5px;color:var(--suave)}
 .banda{overflow:hidden;background:var(--azul);color:var(--crema);padding:14px 0}
-.pista{white-space:nowrap;font:600 clamp(40px,5.4vw,72px)/1.2 "Dancing Script",cursive}
+.pista{white-space:nowrap;font:700 clamp(29.6px,4vw,53.3px)/1.2 "Libre Caslon Text",Georgia,serif}
 .pista i{font-style:normal;font-family:Karla,sans-serif;font-size:.3em;vertical-align:middle;margin:0 1.2em;opacity:.75}
 
 /* tarjetas */
@@ -72,14 +72,14 @@ a{color:inherit}
 .tarjeta img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform 600ms var(--e)}
 @media(hover:hover) and (pointer:fine){a.tarjeta:hover img{transform:scale(1.04)}}
 .tarjeta div.tx{padding:18px 22px 22px}
-.tarjeta h3{font:600 28px "Dancing Script",cursive;color:var(--azul)}
+.tarjeta h3{font:700 20.7px/1.15 "Libre Caslon Text",Georgia,serif;color:var(--azul)}
 .tarjeta p{color:#56656f;font-size:15px;margin-top:4px}
 .tarjeta .mas{display:inline-block;margin-top:10px;font-weight:700;font-size:14px;color:var(--azul)}
 
 /* carta */
 .carta{display:grid;gap:clamp(28px,4vw,56px);margin-top:44px}
 @media(min-width:900px){.carta{grid-template-columns:1fr 1fr}}
-.carta h3{font:600 36px "Dancing Script",cursive;color:var(--azul);padding-bottom:6px;border-bottom:1.5px solid var(--azul);margin-bottom:6px}
+.carta h3{font:700 26.6px/1.15 "Libre Caslon Text",Georgia,serif;color:var(--azul);padding-bottom:6px;border-bottom:1.5px solid var(--azul);margin-bottom:6px}
 .carta ul{list-style:none;padding:0;margin-bottom:34px}
 .carta li{padding:10px 0;border-bottom:1px solid #d9d1c0;font-size:16.5px}
 .carta li small{display:block;color:var(--suave);font-size:14px}
@@ -87,7 +87,7 @@ a{color:inherit}
 .menus{display:grid;gap:18px;margin-top:40px}
 @media(min-width:800px){.menus{grid-template-columns:1fr 1fr}}
 .menus .panel{padding:28px}
-.menus .precio{font:600 64px/1 "Dancing Script",cursive;color:var(--azul);margin-top:8px}
+.menus .precio{font:700 47.4px/1.05 "Libre Caslon Text",Georgia,serif;color:var(--azul);margin-top:8px}
 .menus .precio small{font:400 14px Karla,sans-serif;color:var(--suave);margin-left:6px}
 .menus ul{list-style:none;padding:0;margin-top:12px}
 .menus li{padding:8px 0;border-bottom:1px solid #d9d1c0;font-size:15.5px}
@@ -96,8 +96,8 @@ a{color:inherit}
 /* pasos (bodas) */
 .pasos{display:grid;gap:0;margin-top:40px;counter-reset:p;border-top:1.5px solid var(--azul)}
 .paso{display:grid;grid-template-columns:auto 1fr;gap:18px 28px;padding:26px 0;border-bottom:1px solid #d9d1c0}
-.paso::before{counter-increment:p;content:counter(p);font:600 56px/1 "Dancing Script",cursive;color:var(--azul);min-width:44px}
-.paso h3{font:600 32px "Dancing Script",cursive;color:var(--azul)}
+.paso::before{counter-increment:p;content:counter(p);font:700 41.4px/1.05 "Libre Caslon Text",Georgia,serif;color:var(--azul);min-width:44px}
+.paso h3{font:700 23.7px/1.15 "Libre Caslon Text",Georgia,serif;color:var(--azul)}
 .paso p{color:#56656f;margin-top:4px;max-width:58ch}
 
 /* productos */
@@ -107,7 +107,7 @@ a{color:inherit}
 .p-foto .recuadro{background:var(--azul);color:#e9eff3;aspect-ratio:4/3;display:grid;place-items:center}
 .p-foto .recuadro svg{width:44%;height:70%}
 .producto h2{font-size:clamp(42px,5vw,64px)}
-.producto .lema{font:600 24px "Dancing Script",cursive;color:var(--suave);margin-top:6px}
+.producto .lema{font:700 17.8px/1.15 "Libre Caslon Text",Georgia,serif;color:var(--suave);margin-top:6px}
 .producto p.tx{margin-top:12px;font-size:17.5px;color:#475660;max-width:48ch}
 
 /* mapa */
@@ -118,7 +118,7 @@ a{color:inherit}
 .leaflet-tile-pane{filter:saturate(.7) sepia(.14) hue-rotate(-6deg) brightness(1.03)}
 .leaflet-container{font-family:Karla,sans-serif}
 .chincheta{display:grid;justify-items:center}
-.chincheta b{display:block;background:var(--azul);color:#fff;font:600 22px "Dancing Script",cursive;padding:6px 16px 8px;border-radius:999px;white-space:nowrap;box-shadow:0 8px 18px -6px rgba(0,0,0,.45)}
+.chincheta b{display:block;background:var(--azul);color:#fff;font:700 16.3px/1.15 "Libre Caslon Text",Georgia,serif;padding:6px 16px 8px;border-radius:999px;white-space:nowrap;box-shadow:0 8px 18px -6px rgba(0,0,0,.45)}
 .chincheta i{width:0;height:0;border:9px solid transparent;border-top-color:var(--azul);border-bottom:0;margin-top:-1px}
 .chincheta .punto{width:14px;height:14px;border-radius:50%;background:#fff;border:4px solid var(--azul);margin-top:4px;box-shadow:0 0 0 8px rgba(44,90,122,.22)}
 .filas{border-top:1.5px solid var(--azul);margin-top:18px}
@@ -167,7 +167,7 @@ a{color:inherit}
 .croquis .tren path{stroke:#5d5146;stroke-width:1.8;stroke-dasharray:7 6}
 .croquis .rio-mancha path,.croquis .costa-mancha path{stroke:#9dbfd3;stroke-opacity:.5;stroke-width:13}
 .croquis .rio path,.croquis .costa path{stroke:#5e8daa;stroke-width:2.4}
-.croquis text{font-family:"Dancing Script",cursive;font-weight:600;fill:var(--tinta)}
+.croquis text{font-family:"Libre Caslon Text",Georgia,serif;font-weight:700;fill:var(--tinta)}
 .croquis .e-mar{font-size:36px;fill:#4d7893}
 .croquis .e-sitio{font-size:34px;fill:#4b5a64}.croquis .e-sitio2{font-size:26px;fill:#6b7780}
 .croquis .e-dist{font-size:30px;fill:var(--azul)}
@@ -277,7 +277,7 @@ a{color:inherit}
 @media(hover:hover) and (pointer:fine){.tarj-osc article:hover img{transform:scale(1.05)}}
 .tarj-osc .tx{padding:20px 24px 26px}
 .tarj-osc .et{font:700 11.5px Karla,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--suave)}
-.tarj-osc h3{font:600 34px "Dancing Script",cursive;color:var(--azul);margin-top:4px}
+.tarj-osc h3{font:700 25.2px/1.15 "Libre Caslon Text",Georgia,serif;color:var(--azul);margin-top:4px}
 .tarj-osc p{color:#56656f;font-size:15px;margin:6px 0 14px}
 .tarj-osc a{display:inline-block;margin-right:16px;font:700 12px Karla,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--azul);border-bottom:1px solid currentColor;padding:6px 0 3px}
 
@@ -424,7 +424,7 @@ a{color:inherit}
   .oscura--b+.seccion--crema::before{background-size:40px 20px;height:20px;background-image:radial-gradient(circle at 50% 0,#1b3a4e 0 18px,transparent 19px)}
 }
 @media(prefers-reduced-motion:reduce){.slides img.on,.sello,.cue i{animation:none}}
-.platos figcaption{font:600 28px/1.1 "Dancing Script",cursive}
+.platos figcaption{font:700 20.7px/1.1 "Libre Caslon Text",Georgia,serif}
 .sello-txt{letter-spacing:0;font-size:12.5px}
 @media(max-width:700px){.platos figcaption{font-size:22px}}
 
@@ -441,17 +441,17 @@ a{color:inherit}
 .mcard__in{flex:1;display:flex;flex-direction:column;justify-content:center;position:relative;border:1px solid var(--azul);outline:1px solid rgba(44,90,122,.3);outline-offset:-8px;padding:clamp(34px,3.6vw,50px) clamp(22px,3vw,38px) 34px;text-align:center}
 .mcard__in::before{content:"✦";position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:#fffdf8;padding:0 12px;color:var(--azul);font-size:15px;line-height:1}
 .mcard__et{font:700 11.5px Karla,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--suave)}
-.mcard h3{font:600 clamp(42px,4vw,54px)/1.15 "Dancing Script",cursive;color:var(--azul);margin-top:6px}
+.mcard h3{font:700 clamp(31.1px,3vw,40px)/1.15 "Libre Caslon Text",Georgia,serif;color:var(--azul);margin-top:6px}
 .mcard__precio{display:inline-flex;align-items:flex-start;justify-content:center;gap:6px;margin:4px 0 0;color:var(--azul)}
-.mcard__precio b{font:600 clamp(96px,9vw,130px)/.95 "Dancing Script",cursive}
-.mcard__precio span{display:grid;justify-items:start;font:600 40px/1 "Dancing Script",cursive;margin-top:14px}
+.mcard__precio b{font:700 clamp(71px,6.7vw,96.2px)/1.05 "Libre Caslon Text",Georgia,serif}
+.mcard__precio span{display:grid;justify-items:start;font:700 29.6px/1.05 "Libre Caslon Text",Georgia,serif;margin-top:14px}
 .mcard__precio small{font:700 10.5px Karla,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--suave);margin-top:6px}
 .orn-linea{display:flex;align-items:center;gap:12px;margin:18px auto;max-width:230px;color:var(--azul)}
 .orn-linea i{flex:1;height:1px;background:currentColor;opacity:.4}
 .orn-linea svg{width:14px;height:14px;flex:none}
 .curso span{display:block;font:700 11px Karla,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--suave)}
 .curso p{font:500 clamp(18px,1.5vw,20px)/1.6 Karla,sans-serif;margin-top:6px;color:var(--tinta)}
-.curso p i{font:600 23px "Dancing Script",cursive;color:var(--azul);margin-right:3px}
+.curso p i{font:700 17px/1.15 "Libre Caslon Text",Georgia,serif;color:var(--azul);margin-right:3px}
 .curso em{display:block;font-style:normal;font-size:14px;color:var(--suave);margin-top:4px}
 .mcard__pie{font-size:13px;color:var(--suave);margin-top:20px}
 .mcard--casa{background:#1b3a4e}
@@ -469,7 +469,7 @@ a{color:inherit}
 @media(max-width:860px){.carta2{columns:1}}
 .cat{break-inside:avoid;position:relative;background:#fffdf8;padding:26px 28px 14px;margin-bottom:30px;box-shadow:0 1px 2px rgba(0,0,0,.08),0 26px 44px -30px rgba(0,0,0,.4);scroll-margin-top:110px}
 .cat__ico{position:absolute;right:24px;top:22px;width:64px;height:48px;color:var(--azul);opacity:.85}
-.cat h3{font:600 clamp(36px,3.4vw,44px)/1.2 "Dancing Script",cursive;color:var(--azul);padding-bottom:10px;border-bottom:1.5px solid var(--azul);margin:0}
+.cat h3{font:700 clamp(26.6px,2.5vw,32.6px)/1.2 "Libre Caslon Text",Georgia,serif;color:var(--azul);padding-bottom:10px;border-bottom:1.5px solid var(--azul);margin:0}
 .cat ul{list-style:none;padding:0;margin:0}
 .cat li{display:flex;flex-direction:column;padding:12px 0;border-bottom:1px dotted #c9bfa9;font-size:17px;line-height:1.35}
 .cat li:last-child{border-bottom:0}
@@ -494,7 +494,7 @@ a{color:inherit}
 .botellas{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,3vw,44px);max-width:900px;margin:44px auto 0}
 .botellas a{display:grid;justify-items:center;text-align:center;text-decoration:none;gap:4px}
 .botellas .botella{width:100%}
-.botellas span{font:600 clamp(26px,3vw,38px)/1.1 "Dancing Script",cursive;color:var(--azul);margin-top:16px}
+.botellas span{font:700 clamp(19.2px,2.2vw,28.1px)/1.1 "Libre Caslon Text",Georgia,serif;color:var(--azul);margin-top:16px}
 .botellas small{font:700 11px Karla,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--suave)}
 @media(hover:hover) and (pointer:fine){.botellas a .botella{transition:transform .6s var(--e)}.botellas a:hover .botella{transform:translateY(-8px)}}
 .prods{display:grid;gap:clamp(48px,6vw,90px);margin-top:56px}
@@ -507,8 +507,8 @@ a{color:inherit}
 .prod .botella{width:min(260px,70vw);justify-self:center}
 .prod__tx{justify-self:start;max-width:520px}
 .prod__tx .etiqueta{color:var(--suave)}
-.prod h3{font:600 clamp(44px,5vw,66px)/1.1 "Dancing Script",cursive;color:var(--azul);margin-top:6px}
-.prod .lema{font:600 25px "Dancing Script",cursive;color:var(--suave);margin-top:4px}
+.prod h3{font:700 clamp(32.6px,3.7vw,48.8px)/1.1 "Libre Caslon Text",Georgia,serif;color:var(--azul);margin-top:6px}
+.prod .lema{font:700 18.5px/1.15 "Libre Caslon Text",Georgia,serif;color:var(--suave);margin-top:4px}
 .prod .tx{margin-top:14px;font-size:17.5px;color:#475660}
 .ficha{display:grid;margin-top:22px;border-top:1.5px solid var(--azul)}
 .ficha div{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid #d9d1c0}
@@ -532,7 +532,7 @@ a{color:inherit}
 .heroe--portada .fondo{will-change:transform;inset:-24px}
 .slide-info{position:absolute;z-index:3;left:clamp(18px,4vw,48px);bottom:34px;display:grid;gap:6px;color:#fff;font:600 12px Karla,sans-serif;letter-spacing:.16em;text-transform:uppercase;text-shadow:0 1px 10px rgba(0,0,0,.5)}
 .slide-n b{font-size:15px}
-.slide-t{font:600 22px "Dancing Script",cursive;letter-spacing:0;text-transform:none}
+.slide-t{font:700 16.3px/1.15 "Libre Caslon Text",Georgia,serif;letter-spacing:0;text-transform:none}
 .slide-barra{display:block;width:140px;height:2px;background:rgba(255,255,255,.3);overflow:hidden}
 .slide-barra i{display:block;height:100%;background:#fff;transform-origin:left;animation:barra 6.5s linear infinite}
 @keyframes barra{from{transform:scaleX(0)}to{transform:scaleX(1)}}
@@ -546,7 +546,7 @@ a{color:inherit}
 .venis__g{display:grid;gap:clamp(20px,3vw,40px);margin-top:34px;grid-template-areas:"tabs" "foto" "panel"}
 @media(min-width:900px){.venis__g{grid-template-columns:.9fr 1.1fr;grid-template-areas:"tabs foto" "panel foto";align-items:start}}
 .venis__tabs{grid-area:tabs;display:grid;border-top:1.5px solid var(--azul)}
-.venis__tabs button{display:flex;justify-content:space-between;align-items:center;width:100%;min-height:64px;padding:12px 4px;background:none;border:0;border-bottom:1px solid #d9d1c0;color:var(--suave);font:600 clamp(28px,3vw,40px)/1.1 "Dancing Script",cursive;text-align:left;cursor:pointer;transition:color .3s,padding .5s var(--e)}
+.venis__tabs button{display:flex;justify-content:space-between;align-items:center;width:100%;min-height:64px;padding:12px 4px;background:none;border:0;border-bottom:1px solid #d9d1c0;color:var(--suave);font:700 clamp(20.7px,2.2vw,29.6px)/1.1 "Libre Caslon Text",Georgia,serif;text-align:left;cursor:pointer;transition:color .3s,padding .5s var(--e)}
 .venis__tabs button::after{content:"→";font:400 20px Karla,sans-serif;opacity:0;transform:translateX(-10px);transition:opacity .3s,transform .5s var(--e)}
 .venis__tabs button[aria-selected="true"]{color:var(--azul);padding-left:14px}
 .venis__tabs button[aria-selected="true"]::after{opacity:1;transform:none}
@@ -555,7 +555,7 @@ a{color:inherit}
 .venis__foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity .7s ease,transform 1.4s var(--e)}
 .venis__foto img.on{opacity:1;transform:none}
 .venis__panel{grid-area:panel}
-.venis__panel h3{font:600 30px "Dancing Script",cursive;color:var(--azul)}
+.venis__panel h3{font:700 22.2px/1.15 "Libre Caslon Text",Georgia,serif;color:var(--azul)}
 .venis__panel p{margin:8px 0 20px;font-size:17px;color:#475660;max-width:46ch}
 @media(max-width:899px){.venis__tabs{grid-template-columns:1fr 1fr;border-top:0;gap:8px}.venis__tabs button{min-height:52px;justify-content:center;text-align:center;border:1.5px solid #cfc6b4;border-radius:999px;font-size:24px;padding:6px 10px}.venis__tabs button::after{display:none}.venis__tabs button[aria-selected="true"]{background:var(--azul);color:#fff;border-color:var(--azul);padding-left:10px}.venis__foto{border-radius:20px}}
 
@@ -567,7 +567,7 @@ a{color:inherit}
 .paseo__f:nth-child(even){margin-top:56px}
 .paseo .zoom{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;overflow:hidden;border-radius:18px}
 .paseo__f img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;transform:scale(1.18)}
-.paseo__f figcaption{margin-top:12px;font:600 26px "Dancing Script",cursive;color:var(--azul)}
+.paseo__f figcaption{margin-top:12px;font:700 19.2px/1.15 "Libre Caslon Text",Georgia,serif;color:var(--azul)}
 .paseo__f figcaption span{font:600 12px Karla,sans-serif;letter-spacing:.16em;color:var(--suave);margin-right:10px}
 .paseo.lateral .paseo__f img{transform:scale(1.04)}
 .paseo.fijo .paseo__in{width:100%}
@@ -610,3 +610,12 @@ a{color:inherit}
   .paseo.pegado .paseo__f figcaption{font-size:22px;margin-top:8px}
 }
 html,body{overflow-x:clip}
+
+/* letra de la casa (Oier, 23/10): la de su carta, una romana negrita clásica (Libre Caslon Text 700) en vez de la caligráfica */
+.script{font-family:"Libre Caslon Text",Georgia,serif;font-weight:700;letter-spacing:-.01em;line-height:1.08}
+.heroe h1.script,.heroe--portada h1{font-size:clamp(50px,9vw,138px);letter-spacing:-.02em}
+.heroe--corto h1{font-size:clamp(42px,6.4vw,88px)}
+.seccion h2,.seccion h2.script,.molino h2,.eventos h2,.reservar h2,.venis h2,.paseo__cab h2,.llamar .script{font-size:clamp(34px,4.3vw,60px)}
+.cab__logo{font-size:clamp(24px,2.2vw,30px)}
+[data-letras],[data-lineas]{line-height:1.12}
+.slides img[src*="bk-fachada"]{object-position:35% 40%}
