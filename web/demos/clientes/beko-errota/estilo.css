@@ -619,3 +619,4 @@ html,body{overflow-x:clip}
 .cab__logo{font-size:clamp(24px,2.2vw,30px)}
 [data-letras],[data-lineas]{line-height:1.12}
 .slides img[src*="bk-fachada"]{object-position:35% 40%}
+.heroe--portada{cursor:pointer}
