@@ -27,8 +27,8 @@
     var fotos = [].slice.call(car.querySelectorAll(".slides img")), i = 0, t;
     var ir = function (n) { fotos[i].classList.remove("on"); i = (n + fotos.length) % fotos.length; fotos[i].classList.add("on"); };
     var auto = function () { clearInterval(t); if (!quieto) t = setInterval(function () { ir(i + 1); }, 6500); };
-    car.querySelector(".flecha--izq").addEventListener("click", function () { ir(i - 1); auto(); });
-    car.querySelector(".flecha--der").addEventListener("click", function () { ir(i + 1); auto(); });
+    /* un clic en la foto pasa a la siguiente (salvo en botones y enlaces) */
+    car.addEventListener("click", function (e) { if (e.target.closest("a,button")) return; ir(i + 1); auto(); });
     auto();
   }
 })();
