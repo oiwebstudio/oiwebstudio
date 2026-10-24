@@ -1,6 +1,6 @@
 /**
  * Menú de la cabecera (octubre 2026): TRABAJOS · PRECIOS · RESERVAS · SOBRE MÍ ·
- * CONTACTO + «Más» (SEO, Ayudas, Zonas, Artículos, Chatbot; SEO desde el 21/10), y el menú del móvil a
+ * CONTACTO + «Más» (SEO, Ayudas, Zonas, Artículos; SEO desde el 21/10; Chatbot fuera desde el 24/10 con la oferta nueva), y el menú del móvil a
  * pantalla completa con tres accesos directos (Llamar, WhatsApp, Pedir presupuesto).
  *
  * El menú está copiado en todas las páginas (raíz, zonas/ y guías). Este script
@@ -30,7 +30,6 @@ const MAS = [
   ["ayudas", "ayudas-subvenciones-pagina-web-gipuzkoa.html", "nav_ayudas", "Ayudas"],
   ["zonas", "zonas.html", "nav_zonas", "Zonas"],
   ["articulos", "articulos.html", "nav_articulos", "Artículos"],
-  ["chatbot", "chatbot-reservas.html", "nav_chatbot", "Chatbot"],
 ];
 
 /* Qué entrada del menú corresponde a cada página. Las guías se sacan del

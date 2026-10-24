@@ -208,6 +208,11 @@ section{padding:clamp(56px,8vw,112px) 0;}
 @media(prefers-reduced-motion:reduce){.rev{opacity:1;transform:none;transition:none;}html{scroll-behavior:auto;}}
 /* 3/10/2026: fuera la serif cursiva de acento (Oier: «genérica, parece IA») */
 h1,h2,h3{font-weight:600;letter-spacing:-.025em} h1 em,h2 em,h3 em{font-weight:400}
+/* sin recuadro azul al tocar (Oier, 24/10): tap-highlight transparente; contorno solo con teclado (:focus-visible) */
+html{-webkit-tap-highlight-color:transparent}
+a,button,[role="button"],input,select,textarea,summary,label{-webkit-tap-highlight-color:transparent}
+:focus:not(:focus-visible){outline:none}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
 </style>
 </head>
 <body>

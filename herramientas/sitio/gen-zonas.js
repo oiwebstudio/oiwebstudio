@@ -10,7 +10,7 @@ const path = require('path');
 
 const OUT = 'zonas';
 const UP = '../';                       // las páginas viven un nivel más abajo
-const CSS_V = UP + 'assets/styles.css?v=11';
+const CSS_V = UP + 'assets/styles.css?v=30';
 const JS_V = UP + 'assets/main.js?v=7';
 
 const ZONAS = [
@@ -496,7 +496,7 @@ ZONAS.forEach((z, zIdx) => {
   "@type":"FAQPage",
   "mainEntity":[
     {"@type":"Question","name":"¿Trabajas con negocios de ${z.name}?","acceptedAnswer":{"@type":"Answer","text":"Sí. El estudio está en Tolosa, a ${z.dist} de ${z.name}, y trabajo habitualmente con negocios de ${z.comarca}. Las reuniones pueden ser presenciales o por videollamada."}},
-    {"@type":"Question","name":"¿Cuánto cuesta una página web para un negocio de ${z.name}?","acceptedAnswer":{"@type":"Answer","text":"El precio es cerrado y no cambia según el municipio: Landing desde 399€ y Web Negocio desde 499€, con propuesta en 48 horas y 30 días de ajustes gratis."}},
+    {"@type":"Question","name":"¿Cuánto cuesta una página web para un negocio de ${z.name}?","acceptedAnswer":{"@type":"Answer","text":"El precio es cerrado y no cambia según el municipio: Landing desde 399€ y Web bonita + presencia desde 499€, con propuesta en 48 horas y 30 días de ajustes gratis."}},
     {"@type":"Question","name":"¿Saldrá mi negocio en Google cuando busquen en ${z.name}?","acceptedAnswer":{"@type":"Answer","text":"Todas las webs llevan SEO local básico: títulos y descripciones orientados a ${z.name}, datos estructurados de negocio local y conexión con tu ficha de Google Business, que es lo que decide tu posición en el mapa."}}
   ]
 }
@@ -585,7 +585,7 @@ ${z.mosaico.map(k => `<a class="zshot" href="${UP}trabajos.html">${pic(k, null, 
 <div class="zhead"><span class="k">Dudas</span><h2>Preguntas frecuentes</h2></div>
 <div class="zfaq" data-anim="up">
 <details><summary>¿Trabajas con negocios de ${z.name}?</summary><p>Sí. El estudio está en Tolosa, a ${z.dist}, y trabajo habitualmente con negocios de ${z.comarca}. Las reuniones pueden ser presenciales o por videollamada, como te venga mejor.</p></details>
-<details><summary>¿El precio cambia por estar fuera de Tolosa?</summary><p>No. Precio cerrado e igual para toda Gipuzkoa: Landing desde 399€ y Web Negocio desde 499€, con 30 días de ajustes gratis.</p></details>
+<details><summary>¿El precio cambia por estar fuera de Tolosa?</summary><p>No. Precio cerrado e igual para toda Gipuzkoa: Landing desde 399€ y Web bonita + presencia desde 499€, con 30 días de ajustes gratis.</p></details>
 <details><summary>¿Saldré en Google cuando busquen en ${z.name}?</summary><p>Todas las webs llevan SEO local orientado a ${z.name}. Aparecer arriba depende también de tu ficha de Google Business — lo explico en <a href="${UP}google-business-profile-guia.html">esta guía</a>.</p></details>
 <details><summary>¿Puedo verlo antes de decidir?</summary><p>Sí: las muestras del <a href="${UP}trabajos.html">portfolio</a> están publicadas y son navegables. La propuesta en 48h es gratis y sin compromiso.</p></details>
 </div>

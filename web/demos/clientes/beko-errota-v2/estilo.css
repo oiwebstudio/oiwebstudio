@@ -1122,3 +1122,7 @@ main{background:var(--papel)}
 .panel{box-shadow:none;background:transparent;border:1px solid var(--linea)}
 .mapa-marco,.hoja{box-shadow:none;border:1px solid var(--linea)}
 .mcard{box-shadow:none}
+/* sin recuadro azul al tocar (Oier, 24/10): tap-highlight transparente; contorno solo con teclado (:focus-visible) */
+html{-webkit-tap-highlight-color:transparent}
+a,button,[role="button"],input,select,textarea,summary,label{-webkit-tap-highlight-color:transparent}
+:focus:not(:focus-visible){outline:none}

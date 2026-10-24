@@ -838,6 +838,10 @@ input,textarea,select{border-radius:16px!important}
 .cajon__lista img{border-radius:12px}
 @media(max-width:760px){.cifras,.alquiler,.tours,.tienda,.cierre{border-radius:24px;margin:8px}.pie{margin:8px 8px 0;border-radius:24px 24px 0 0}}
 
+/* sin recuadro azul al tocar (Oier, 24/10): tap-highlight transparente; contorno solo con teclado (:focus-visible) */
+html{-webkit-tap-highlight-color:transparent}
+a,button,[role="button"],input,select,textarea,summary,label{-webkit-tap-highlight-color:transparent}
+:focus:not(:focus-visible){outline:none}
 </style>
 <script>document.documentElement.classList.add("js")</script>
 </head>

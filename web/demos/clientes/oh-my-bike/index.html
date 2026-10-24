@@ -724,6 +724,10 @@ h2,.busca h2{letter-spacing:-.015em;line-height:1}
 @keyframes onda{0%{transform:scale(.6);opacity:1}100%{transform:scale(2.6);opacity:0}}
 @media(prefers-reduced-motion:reduce){.pin__onda{animation:none}}
 .croquis figcaption a{color:inherit}
+/* sin recuadro azul al tocar (Oier, 24/10): tap-highlight transparente; contorno solo con teclado (:focus-visible) */
+html{-webkit-tap-highlight-color:transparent}
+a,button,[role="button"],input,select,textarea,summary,label{-webkit-tap-highlight-color:transparent}
+:focus:not(:focus-visible){outline:none}
 </style>
 <script>document.documentElement.classList.add("js")</script>
 </head>

@@ -45,14 +45,14 @@ export const NUEVAS = [
     contexto: "Astigarraga es famosa por sus sagardotegis y por la Sagardoetxea, y eso trae visitantes todo el invierno, justo en temporada de sidra. Muchos reservan con semanas de antelación y buscan menú, precio y cómo llegar desde el móvil. Una web con la información práctica visible y una vía directa para reservar evita decenas de llamadas repetidas.",
     sectores: ["Sidrerías y hostelería", "Producto local y alimentación", "Turismo y visitas", "Comercio de proximidad", "Servicios profesionales"],
     gancho: "Para sidrerías y restaurantes preparo menú, precios y reservas visibles y en varios idiomas: lo que más preguntan quienes vienen de fuera.",
-    faq: { q: "¿Se puede gestionar la reserva de grupos desde la web?", a: "Sí. Se puede montar un formulario de reserva o un botón directo a WhatsApp con el mensaje ya escrito (fecha, número de personas), y un chatbot de reservas si el volumen lo pide. Lo vemos según cómo trabajes ahora." } },
+    faq: { q: "¿Se puede gestionar la reserva de grupos desde la web?", a: "Sí. Se puede montar un formulario de reserva o un botón directo a WhatsApp con el mensaje ya escrito (fecha, número de personas), y reservas online si el volumen lo pide. Lo vemos según cómo trabajes ahora." } },
 
   { slug: "usurbil", name: "Usurbil", alt: "Usúrbil", comarca: "Donostialdea", hero: "cafe", mosaico: ["cafe", "pan", "rest"],
     lede: "Entre Donostia y Zarautz, con caseríos, sidrerías y mucha gente que vive aquí y trabaja fuera.",
     contexto: "Usurbil es de esos sitios donde convive el caserío con el residente que sale a trabajar a Donostia. El negocio local tiene que ser fácil de encontrar para los dos: el vecino que busca algo cerca de casa y el visitante que llega por la sidra o por el entorno del Oria. La web cubre ese hueco cuando el boca a boca no llega.",
     sectores: ["Sidrerías y hostelería", "Producto de caserío", "Comercio de proximidad", "Oficios y reformas", "Servicios profesionales"],
     gancho: "Para negocios de caserío y de barrio, una landing de 399€ con ficha de Google bien hecha suele ser suficiente para empezar.",
-    faq: { q: "¿Qué web necesita un negocio pequeño de Usurbil?", a: "Casi siempre una landing: una página con quién eres, qué haces, horario, teléfono y mapa. Cuesta 399€ y se puede ampliar a Web Negocio (499€) si luego necesitas más páginas." } },
+    faq: { q: "¿Qué web necesita un negocio pequeño de Usurbil?", a: "Casi siempre una landing: una página con quién eres, qué haces, horario, teléfono y mapa. Cuesta 399€ y se puede ampliar a Web bonita + presencia (499€) si luego necesitas más páginas." } },
 
   { slug: "urnieta", name: "Urnieta", comarca: "Buruntzaldea", hero: "gym", mosaico: ["gym", "pelu", "cafe"],
     lede: "Pueblo de paso y residencial, a diez minutos de Donostia. Tu clientela te compara con lo que hay en Andoain y Hernani.",
@@ -143,7 +143,7 @@ export const NUEVAS = [
     contexto: "Zegama recibe cada año a miles de personas por la carrera de montaña y vive de un entorno privilegiado, con Aizkorri al fondo. Esa visibilidad es una oportunidad que se aprovecha mejor con una web que funcione todo el año: alojamiento, hostelería, guías, productos locales. El visitante que descubre el pueblo por la carrera busca después dónde volver.",
     sectores: ["Hostelería y alojamiento", "Montaña, guías y turismo activo", "Producto local", "Comercio de proximidad", "Servicios"],
     gancho: "La web sirve para que el que vino por la carrera pueda volver en cualquier otra época: reservas y datos claros todo el año.",
-    faq: { q: "¿Se puede preparar la web para la temporada de la carrera?", a: "Sí. Se destacan alojamiento, comida y reservas en las fechas de mayor demanda y se mantiene el resto del año con contenido útil. En picos de demanda, un chatbot de reservas responde mientras estás ocupado." } },
+    faq: { q: "¿Se puede preparar la web para la temporada de la carrera?", a: "Sí. Se destacan alojamiento, comida y reservas en las fechas de mayor demanda y se mantiene el resto del año con contenido útil. En picos de demanda, las reservas online recogen las peticiones mientras estás ocupado." } },
 
   { slug: "legazpi", name: "Legazpi", alt: "Legazpia", comarca: "Urola Garaia", hero: "taller", mosaico: ["taller", "gym", "cafe"],
     lede: "Tradición del hierro y una industria que sigue activa. Webs que explican bien lo que sabes hacer.",
@@ -265,5 +265,5 @@ export const NUEVAS = [
     contexto: "Elgeta es un municipio pequeño en el Alto Deba, con carácter rural y cerca de Bergara y Eibar. Los negocios locales viven del vecino y del visitante que llega por el monte y los caminos de la zona. Una web sencilla con horarios, ubicación y fotos reales, y una ficha de Google bien hecha, es proporcionada y suficiente.",
     sectores: ["Hostelería y casas de comida", "Producto local", "Oficios y servicios rurales", "Comercio de proximidad"],
     gancho: "Landing de 399€: quién eres, qué haces y cómo llegar. Sin adornos que no necesitas.",
-    faq: { q: "¿Me hace falta algo más que una landing?", a: "Si ofreces pocos servicios y tu clientela viene por recomendación, no. Si quieres vender productos o tener varias secciones, pasarías a Web Negocio (499€) o a tienda online (850€)." } },
+    faq: { q: "¿Me hace falta algo más que una landing?", a: "Si ofreces pocos servicios y tu clientela viene por recomendación, no. Si quieres vender productos o tener varias secciones, pasarías a Web bonita + presencia (499€) o a tienda online (850€)." } },
 ];

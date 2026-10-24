@@ -155,3 +155,7 @@ a{color:inherit}
 .movil .boton{min-height:52px}
 .movil .boton--linea{background:rgba(12,12,12,.9)}
 @media(max-width:700px){.movil{display:grid}body{padding-bottom:84px}}
+/* sin recuadro azul al tocar (Oier, 24/10): tap-highlight transparente; contorno solo con teclado (:focus-visible) */
+html{-webkit-tap-highlight-color:transparent}
+a,button,[role="button"],input,select,textarea,summary,label{-webkit-tap-highlight-color:transparent}
+:focus:not(:focus-visible){outline:none}

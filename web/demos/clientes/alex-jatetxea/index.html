@@ -121,6 +121,10 @@ dd a{text-decoration:none;display:inline-block;padding:3px 0;min-height:24px}
 .movil a+a{background:var(--noche);color:#fff}
 @media(max-width:700px){.movil{display:grid}body{padding-bottom:56px}}
 @media (prefers-reduced-motion:reduce){.movil{transition:none}}
+/* sin recuadro azul al tocar (Oier, 24/10): tap-highlight transparente; contorno solo con teclado (:focus-visible) */
+html{-webkit-tap-highlight-color:transparent}
+a,button,[role="button"],input,select,textarea,summary,label{-webkit-tap-highlight-color:transparent}
+:focus:not(:focus-visible){outline:none}
 </style>
 </head>
 <body>
