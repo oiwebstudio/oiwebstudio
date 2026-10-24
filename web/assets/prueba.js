@@ -3,8 +3,7 @@
    También se rellena desde el enlace: /?negocio=Nombre&sector=peluqueria&pueblo=Tolosa
    Los textos salen de los [data-t] de la página (así la versión en euskera,
    que se genera con esos mismos textos, también funciona). Las letras de cada
-   sector se cargan solo al elegirlo. Créditos de las fotos: assets/stock/manifest.json
-   y assets/prueba/creditos.json. */
+   sector se cargan solo al elegirlo. Créditos de las fotos: assets/prueba/creditos.json (fotos HD en assets/prueba/hd/, 24/10). */
 (function () {
   "use strict";
   var raiz = document.getElementById("prueba");
@@ -12,15 +11,15 @@
 
   var F = "/assets/fonts/";
   var SECTORES = {
-    restaurante:  { foto: "/assets/stock/sec-rest-1.webp",   credito: "Jay Wennington / Unsplash",       acento: "#9b2a1b", sobre: "#fff", letra: ["prb-dmserif", "dm-serif-display-latin-6e4e3d44.woff2", "400"], peso: 400 },
-    peluqueria:   { foto: "/assets/stock/sec-pelu-1.webp",   credito: "Greg Trowman / Unsplash",         acento: "#e9c9c1", sobre: "#1a1a1a", letra: ["prb-syne", "syne-latin-c0b6673b.woff2", "400 800"], peso: 700 },
-    fisioterapia: { foto: "/assets/stock/sec-gym-2.webp",    credito: "S. Aji W / Unsplash",             acento: "#2f6b57", sobre: "#fff", letra: ["prb-manrope", "manrope-latin-bcbadccc.woff2", "200 800"], peso: 800 },
-    tienda:       { foto: "/assets/stock/sec-flor-1.webp",   credito: "Alisa Anton / Unsplash",          acento: "#b8452a", sobre: "#fff", letra: ["prb-archivo", "archivo-black-latin-45f5d465.woff2", "400"], peso: 400 },
-    "casa-rural": { foto: "/assets/prueba/casa-rural.webp",  credito: "Makoki20 / Wikimedia Commons (CC0)", acento: "#2f4a3a", sobre: "#fff", letra: ["prb-marcellus", "marcellus-latin-396e4dd6.woff2", "400"], peso: 400 },
-    taller:       { foto: "/assets/stock/sec-taller-3.webp", credito: "Quilia / Unsplash",               acento: "#f2c200", sobre: "#111", letra: ["prb-anton", "anton-latin-f043da41.woff2", "400"], peso: 400 },
-    inmobiliaria: { foto: "/assets/prueba/inmobiliaria.webp", credito: "Caroline Badran / Unsplash",     acento: "#14304f", sobre: "#fff", letra: ["prb-jost", "jost-latin-b58a5805.woff2", "300 600"], peso: 500 },
-    psicologia:   { foto: "/assets/prueba/psicologia.webp",  credito: "note thanun / Unsplash",          acento: "#5b4a7a", sobre: "#fff", letra: ["prb-lora", "lora-latin-1ace0d36.woff2", "400 700"], peso: 500 },
-    otro:         { foto: "/assets/stock/sec-cafe-3.webp",   credito: "RR Abrot / Unsplash",             acento: "#2f6db0", sobre: "#fff", letra: null, peso: 650 }
+    restaurante:  { foto: "/assets/prueba/hd/restaurante.webp",   credito: "Jason Leung / Unsplash",       acento: "#9b2a1b", sobre: "#fff", letra: ["prb-dmserif", "dm-serif-display-latin-6e4e3d44.woff2", "400"], peso: 400 },
+    peluqueria:   { foto: "/assets/prueba/hd/peluqueria.webp",   credito: "Greg Trowman / Unsplash",         acento: "#e9c9c1", sobre: "#1a1a1a", letra: ["prb-syne", "syne-latin-c0b6673b.woff2", "400 800"], peso: 700 },
+    fisioterapia: { foto: "/assets/prueba/hd/fisioterapia.webp",    credito: "Marc Zeman / Unsplash",             acento: "#2f6b57", sobre: "#fff", letra: ["prb-manrope", "manrope-latin-bcbadccc.woff2", "200 800"], peso: 800 },
+    tienda:       { foto: "/assets/prueba/hd/tienda.webp",   credito: "Laura Peruchi / Unsplash",          acento: "#b8452a", sobre: "#fff", letra: ["prb-archivo", "archivo-black-latin-45f5d465.woff2", "400"], peso: 400 },
+    "casa-rural": { foto: "/assets/prueba/hd/casa-rural.webp",  credito: "Makoki20 / Wikimedia Commons (CC0)", acento: "#2f4a3a", sobre: "#fff", letra: ["prb-marcellus", "marcellus-latin-396e4dd6.woff2", "400"], peso: 400 },
+    taller:       { foto: "/assets/prueba/hd/taller.webp", credito: "Kato Blackmore / Unsplash",               acento: "#f2c200", sobre: "#111", letra: ["prb-anton", "anton-latin-f043da41.woff2", "400"], peso: 400 },
+    inmobiliaria: { foto: "/assets/prueba/hd/inmobiliaria.webp", credito: "Caroline Badran / Unsplash",     acento: "#14304f", sobre: "#fff", letra: ["prb-jost", "jost-latin-b58a5805.woff2", "300 600"], peso: 500 },
+    psicologia:   { foto: "/assets/prueba/hd/psicologia.webp",  credito: "note thanun / Unsplash",          acento: "#5b4a7a", sobre: "#fff", letra: ["prb-lora", "lora-latin-1ace0d36.woff2", "400 700"], peso: 500 },
+    otro:         { foto: "/assets/prueba/hd/otro.webp",   credito: "Petr Sevcovic / Unsplash",             acento: "#2f6db0", sobre: "#fff", letra: null, peso: 650 }
   };
 
   var campo = {

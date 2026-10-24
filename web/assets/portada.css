@@ -615,3 +615,29 @@ a.hx__pie { color: inherit; display: block; -webkit-tap-highlight-color: transpa
 @media (prefers-reduced-motion: reduce) { .prueba__marcos .marco-movil { animation: none; } }
 .prueba__copiar { display: flex; width: fit-content; }
 .prueba__campo select { padding-left: 12px; padding-right: 30px; background-position: right 9px center; }
+
+/* ==== Boceto de «Mira tu web» más cuidado (24/10) ============================
+   Como una portada de verdad de las muestras: foto HD con poca sombra, menú fino,
+   botón en píldora, nombre grande con su letra y una línea de lugar en mono. */
+.maq::after { background: linear-gradient(180deg, rgba(10,8,6,.42) 0%, rgba(10,8,6,0) 26%, rgba(10,8,6,0) 42%, rgba(10,8,6,.72) 100%); }
+.maq__foto { transform: scale(1.02); }
+.maq__barra { gap: 2.6cqi; padding: 3.2cqi 4.4cqi; letter-spacing: .14em; font-size: max(5.5px, 1.6cqi); font-weight: 500; }
+.maq__marca { font-size: max(8px, 2.6cqi); letter-spacing: 0; text-transform: none; font-weight: var(--peso); }
+.maq__menu { opacity: .85; }
+.maq__tel { padding: 1.1cqi 2.6cqi; border-radius: 999px; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.55); color: #fff; letter-spacing: .12em; }
+.maq__texto { left: 4.4cqi; right: 4.4cqi; bottom: 5.4cqi; gap: 1.8cqi; }
+.maq__lugar { display: inline-flex; align-items: center; gap: 1.6cqi; font-family: var(--font-mono); font-size: max(5.5px, 1.55cqi); letter-spacing: .16em; text-transform: uppercase; opacity: .92; }
+.maq__lugar::before { content: ""; width: 4cqi; height: 1px; background: currentColor; opacity: .8; }
+.maq__nombre { letter-spacing: -.015em; line-height: .92; text-shadow: 0 2px 30px rgba(0,0,0,.25); }
+.maq__linea { max-width: 40ch; font-size: max(7px, 2.05cqi); opacity: .9; }
+.maq__boton { margin-top: 1.4cqi; padding: 1.7cqi 3.6cqi; border-radius: 999px; font-size: max(7px, 1.95cqi); letter-spacing: .01em; box-shadow: 0 6px 18px -8px rgba(0,0,0,.5); }
+.maq__boton::after { content: " →"; }
+.marco-movil .maq__barra { padding: 7cqi 7cqi; }
+.marco-movil .maq__marca { font-size: max(8px, 6.6cqi); }
+.marco-movil .maq__texto { left: 7cqi; right: 7cqi; bottom: 8cqi; gap: 3.4cqi; }
+.marco-movil .maq__lugar { font-size: max(5.5px, 4.2cqi); gap: 3cqi; }
+.marco-movil .maq__lugar::before { width: 7cqi; }
+.marco-movil .maq__linea { font-size: max(7px, 5.2cqi); }
+.marco-movil .maq__boton { padding: 3.4cqi 6.4cqi; font-size: max(7px, 5cqi); }
+.marco-movil .maq__foto { object-position: 50% center; }
+.marco-movil .maq__hamb i { width: 13px; height: 1.5px; }
