@@ -73,7 +73,17 @@
       m.style.setProperty("--n", Math.max(6, nombre.length));
       m.style.setProperty("--w", Math.max(5, nombre.split(/\s+/).reduce(function (x, p) { return Math.max(x, p.length); }, 0)));
       var foto = m.querySelector(".maq__foto");
-      if (foto.getAttribute("src") !== s.foto) foto.setAttribute("src", s.foto);
+      /* La foto nueva entra fundida, sin parpadeo: se carga antes y luego se cambia */
+      if (foto.dataset.quiere !== s.foto && foto.getAttribute("src") !== s.foto) {
+        var nueva = s.foto, foto2 = foto;
+        foto2.dataset.quiere = nueva;
+        foto2.style.opacity = "0";
+        var pre = new Image(), listo = false, espera = false;
+        var cambia = function () { if (!listo || !espera || foto2.dataset.quiere !== nueva) return; foto2.setAttribute("src", nueva); foto2.style.opacity = "1"; };
+        pre.onload = pre.onerror = function () { listo = true; cambia(); };
+        setTimeout(function () { espera = true; cambia(); }, reduce ? 0 : 220);
+        pre.src = nueva;
+      }
       m.querySelector(".maq__marca").textContent = nombre;
       m.querySelector(".maq__nombre").textContent = nombre;
       var menu = m.querySelector(".maq__menu"); if (menu) menu.textContent = txt(clave + ".menu");

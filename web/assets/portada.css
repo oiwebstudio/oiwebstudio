@@ -569,3 +569,49 @@ a.hx__pie { color: inherit; display: block; -webkit-tap-highlight-color: transpa
   .hx__hilos path { stroke-dashoffset: 0; }
   .hx__l2 { animation: none; }
 }
+
+/* ==== «Mira tu web» con el estilo de la portada (24/10) ======================
+   Tarjeta cálida como el hero y los casos, formulario en tarjeta blanca, botones
+   negros/blancos como los del hero y cambios de sector fundidos. */
+.sw-oferta.prueba { position: relative; isolation: isolate; overflow: hidden; background: #f4f2ee; border: 1px solid rgba(25,23,18,.07); border-radius: 30px; box-shadow: 0 1px 0 rgba(25,23,18,.04), 0 30px 60px -36px rgba(60,45,20,.32); padding: clamp(22px, 4.2vw, 52px); }
+.sw-oferta.prueba::before { content: ""; position: absolute; z-index: -1; right: -16%; top: 6%; width: min(760px, 80%); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(closest-side, rgba(214,160,110,.2), transparent 72%); pointer-events: none; }
+.prueba .sw-oferta__flag { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 16px; padding: 6px 12px; background: #fff; color: var(--ink); border: 1px solid rgba(25,23,18,.08); font-size: 11px; letter-spacing: .08em; }
+.prueba .sw-oferta__flag::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #3fbf73; }
+.prueba h3 { font-size: clamp(30px, 3.6vw, 46px); font-weight: 500; line-height: 1.02; letter-spacing: -.03em; margin-bottom: 14px; text-wrap: balance; }
+.prueba .prueba__txt > p:not(.prueba__intro) { font-size: 16.5px; line-height: 1.6; }
+.prueba .prueba__intro { display: flex; gap: 12px; align-items: flex-start; margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(25,23,18,.09); font-size: 15px; line-height: 1.55; color: var(--ink); max-width: 46ch; }
+.prueba .prueba__intro::before { content: "↓"; flex: none; display: grid; place-items: center; width: 26px; height: 26px; margin-top: -1px; border-radius: 50%; background: var(--ink); color: #fff; font-size: 14px; line-height: 1; }
+/* formulario en tarjeta blanca */
+.prueba__form { gap: 10px; padding: 14px; background: #fff; border: 1px solid rgba(25,23,18,.06); border-radius: 22px; box-shadow: 0 1px 0 rgba(25,23,18,.04), 0 18px 40px -26px rgba(60,45,20,.35); }
+.prueba__campo > span { padding-left: 4px; font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); }
+.prueba__campo input, .prueba__campo select { height: 50px; border: 1px solid transparent; border-radius: 14px; background-color: #f6f4ef; transition: background-color .2s ease, border-color .2s ease, box-shadow .2s ease; }
+.prueba__campo input::placeholder { color: #9b978d; }
+.prueba__campo input:focus, .prueba__campo select:focus { outline: none; background-color: #fff; border-color: var(--ink); box-shadow: 0 0 0 4px rgba(25,23,18,.08); }
+/* aparatos: el móvil flota suave; la foto y los colores cambian fundidos */
+.prueba__marcos .marco-portatil__pantalla { border-radius: 16px 16px 6px 6px; }
+.prueba__marcos .marco-movil { animation: prbFlota 7s ease-in-out infinite; }
+@keyframes prbFlota { 0%, 100% { translate: 0 0; } 50% { translate: 0 -8px; } }
+.maq__foto { transition: opacity .32s ease; }
+.maq__tel, .maq__boton { transition: background-color .35s ease, color .35s ease; }
+.prueba .prueba__credito { margin-top: 14px; font-size: 11.5px; text-align: right; }
+/* botones como los del hero */
+.prueba .sw-oferta__btns { gap: 10px; }
+.prueba .btn--accent { gap: 10px; padding-inline: 26px; box-shadow: 0 10px 24px -12px rgba(25,23,18,.7); }
+.prueba .btn--accent::after { content: "→"; font-size: 1.05em; transition: translate .25s var(--ease); }
+.prueba .btn--soft { background: #fff; color: var(--ink); border: 1px solid rgba(25,23,18,.1); }
+@media (hover: hover) and (pointer: fine) {
+  .prueba .btn--accent:hover::after { translate: 3px 0; }
+  .prueba .btn--soft:hover { background: #fff; border-color: rgba(25,23,18,.28); transform: translateY(-2px); }
+}
+.prueba .prueba__nota { font-size: 13.5px; line-height: 1.6; }
+.prueba__copiar { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; padding: 7px 13px; border: 1px solid rgba(25,23,18,.12); border-radius: 999px; background: #fff; color: var(--ink); font-size: 13px; text-decoration: none; transition: border-color .2s ease, transform .2s var(--ease); }
+.prueba__copiar::before { content: ""; width: 13px; height: 13px; background: currentColor; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1'/%3E%3C/svg%3E") center / contain no-repeat; }
+@media (hover: hover) and (pointer: fine) { .prueba__copiar:hover { border-color: rgba(25,23,18,.3); transform: translateY(-1px); } }
+.prueba__copiar:active { transform: scale(.97); }
+@media (max-width: 599px) {
+  .prueba .sw-oferta__btns .btn { width: 100%; justify-content: center; }
+  .prueba h3 { font-size: 30px; }
+}
+@media (prefers-reduced-motion: reduce) { .prueba__marcos .marco-movil { animation: none; } }
+.prueba__copiar { display: flex; width: fit-content; }
+.prueba__campo select { padding-left: 12px; padding-right: 30px; background-position: right 9px center; }
