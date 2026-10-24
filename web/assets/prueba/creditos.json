@@ -1,18 +1,48 @@
 {
-  "_nota": "Fotos de la prueba «Escribe tu negocio y mira tu web» de la portada (assets/prueba.js). El resto de sectores usa assets/stock/ (créditos en assets/stock/manifest.json). Recortadas a 960x640.",
-  "casa-rural.webp": {
+  "_nota": "Fotos de la prueba «Escribe tu negocio y mira tu web» de la portada (assets/prueba.js). Desde el 24/10 todas en alta resolución en hd/ (1440x900, recortadas y pasadas a WebP).",
+  "hd/restaurante.webp": {
+    "autor": "Jason Leung",
+    "licencia": "Unsplash License",
+    "origen": "https://unsplash.com/photos/poI7DelFiVA"
+  },
+  "hd/peluqueria.webp": {
+    "autor": "Greg Trowman",
+    "licencia": "Unsplash License",
+    "origen": "https://unsplash.com/photos/jsuWg7IXx1k"
+  },
+  "hd/fisioterapia.webp": {
+    "autor": "Marc Zeman",
+    "licencia": "Unsplash License",
+    "origen": "https://unsplash.com/photos/uLWW09LLG04"
+  },
+  "hd/tienda.webp": {
+    "autor": "Laura Peruchi",
+    "licencia": "Unsplash License",
+    "origen": "https://unsplash.com/photos/2gLL2ZgBlcU"
+  },
+  "hd/taller.webp": {
+    "autor": "Kato Blackmore",
+    "licencia": "Unsplash License",
+    "origen": "https://unsplash.com/photos/KhF58h0hTbc"
+  },
+  "hd/otro.webp": {
+    "autor": "Petr Sevcovic",
+    "licencia": "Unsplash License",
+    "origen": "https://unsplash.com/photos/qE1jxYXiwOA"
+  },
+  "hd/inmobiliaria.webp": {
+    "autor": "Caroline Badran",
+    "licencia": "Unsplash License",
+    "origen": "https://unsplash.com/photos/W3MckxPY6Mo"
+  },
+  "hd/psicologia.webp": {
+    "autor": "note thanun",
+    "licencia": "Unsplash License",
+    "origen": "https://unsplash.com/photos/AT1LcNqyGZ0"
+  },
+  "hd/casa-rural.webp": {
     "autor": "Makoki20",
     "licencia": "CC0",
     "origen": "https://commons.wikimedia.org/wiki/File:Baserri_en_Ozaeta_2.jpg"
-  },
-  "inmobiliaria.webp": {
-    "autor": "Caroline Badran",
-    "licencia": "Unsplash License",
-    "origen": "https://unsplash.com/photos/contemporary-dining-area-overlooking-the-beach-and-ocean-W3MckxPY6Mo"
-  },
-  "psicologia.webp": {
-    "autor": "note thanun",
-    "licencia": "Unsplash License",
-    "origen": "https://unsplash.com/photos/a-window-with-a-view-of-the-ocean-AT1LcNqyGZ0"
   }
 }
