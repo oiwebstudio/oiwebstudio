@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* Lo que se anima en bucle se para cuando sale de la pantalla y sigue al volver:
      así no gasta nada mientras se lee el resto de la página */
   if ('IntersectionObserver' in window) {
-    const bucles = document.querySelectorAll('.hx, .tel__toque, .wa__onda, .cta-ping, .zm-hq');
+    const bucles = document.querySelectorAll('.hx, .tel__toque, .wa__onda, .cta-ping, .zm-hq, .prueba__marcos');
     if (bucles.length) {
       const ioBucle = new IntersectionObserver((ents) => {
         ents.forEach(en => en.target.classList.toggle('is-fuera', !en.isIntersecting));

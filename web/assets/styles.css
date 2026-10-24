@@ -119,6 +119,11 @@ p { margin: 0; }
 
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 
+/* sin recuadro azul al tocar (Oier, 24/10): tap-highlight transparente; el contorno solo con teclado (:focus-visible) */
+html { -webkit-tap-highlight-color: transparent; }
+a, button, [role="button"], input, select, textarea, summary, label { -webkit-tap-highlight-color: transparent; }
+:focus:not(:focus-visible) { outline: none; }
+
 .container {
   max-width: var(--container);
   margin: 0 auto;
