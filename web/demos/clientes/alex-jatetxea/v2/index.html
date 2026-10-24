@@ -322,6 +322,11 @@ section{padding:clamp(80px,10vw,140px) 0;}
   .plato,.incluye span{opacity:1;transform:none;} .lista li{animation:none;}
   .portada__in{transform:none;opacity:1;} .cuadrilla__foto img{transform:none;}
 }
+/* sin recuadro azul al tocar (Oier, 24/10): tap-highlight transparente; contorno solo con teclado (:focus-visible) */
+html{-webkit-tap-highlight-color:transparent}
+a,button,[role="button"],input,select,textarea,summary,label{-webkit-tap-highlight-color:transparent}
+:focus:not(:focus-visible){outline:none}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
 </style>
 </head>
 <body>

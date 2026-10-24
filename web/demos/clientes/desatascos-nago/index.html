@@ -165,6 +165,10 @@ footer .cr{width:100%;max-width:90ch;line-height:1.5}
 .barra-movil .l{background:var(--azul);color:#fff}
 .barra-movil .p{background:#fff;color:var(--tinta);border:1px solid var(--regla)}
 @media(min-width:760px){.barra-movil{display:none}}
+/* sin recuadro azul al tocar (Oier, 24/10): tap-highlight transparente; contorno solo con teclado (:focus-visible) */
+html{-webkit-tap-highlight-color:transparent}
+a,button,[role="button"],input,select,textarea,summary,label{-webkit-tap-highlight-color:transparent}
+:focus:not(:focus-visible){outline:none}
 </style>
 </head>
 <body>

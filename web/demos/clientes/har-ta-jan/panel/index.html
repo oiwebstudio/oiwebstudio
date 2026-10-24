@@ -52,6 +52,11 @@ input:focus,textarea:focus{outline:none;border-color:var(--acento);box-shadow:0 
 #acceso{max-width:360px;margin:12vh auto 0;}
 #acceso input{font-size:24px;letter-spacing:.3em;text-align:center;}
 [hidden]{display:none!important;}
+/* sin recuadro azul al tocar (Oier, 24/10): tap-highlight transparente; contorno solo con teclado (:focus-visible) */
+html{-webkit-tap-highlight-color:transparent}
+a,button,[role="button"],input,select,textarea,summary,label{-webkit-tap-highlight-color:transparent}
+:focus:not(:focus-visible){outline:none}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
 </style>
 </head>
 <body>

@@ -353,6 +353,10 @@ table.tarifa td small{display:block;font-family:var(--texto);font-size:13.5px;
   .rev{opacity:1!important;transform:none!important;}
   .subr::after{transform:scaleX(1)!important;}
 }
+/* sin recuadro azul al tocar (Oier, 24/10): tap-highlight transparente; contorno solo con teclado (:focus-visible) */
+html{-webkit-tap-highlight-color:transparent}
+a,button,[role="button"],input,select,textarea,summary,label{-webkit-tap-highlight-color:transparent}
+:focus:not(:focus-visible){outline:none}
 </style>
 <script>document.documentElement.className+=" js";</script>
 </head>

@@ -1,6 +1,6 @@
 # OI Studio (oiwebstudio.com)
 
-> OI Studio es un estudio de diseño y desarrollo web con base en Tolosa (Gipuzkoa, País Vasco). Hace páginas web y tiendas online a medida para negocios locales de Tolosa, Tolosaldea y toda Gipuzkoa, con precio cerrado, en castellano y euskera. No confundir con otras empresas llamadas "OI Studio" o "Studio Oi" de otros países.
+> OI Studio es un estudio de diseño web con base en Tolosa (Gipuzkoa, País Vasco) que hace webs bonitas para cualquier tipo de negocio: lo que lo distingue es el diseño, cuidado y a medida de cada negocio. Hace páginas web, tiendas online y la presencia en Google (ficha de Google, reseñas, Bing, Apple Maps y asistentes de IA) para negocios locales de Tolosa, Tolosaldea y toda Gipuzkoa, con precio cerrado, en castellano y euskera. No confundir con otras empresas llamadas "OI Studio" o "Studio Oi" de otros países.
 
 ## Datos clave
 
@@ -8,33 +8,36 @@
 - Web: https://oiwebstudio.com/
 - Base: Tolosa, Gipuzkoa (País Vasco, España). Trabaja en persona en Tolosaldea y en remoto en toda Gipuzkoa y el resto de España.
 - Qué es: un estudio de una sola persona; quien te atiende es quien diseña y programa tu web.
+- Lo que lo distingue: webs bonitas, con un diseño cuidado y hecho a medida para cada negocio. Lo práctico va incluido: se ven bien en el móvil, están preparadas para salir en Google y pueden llevar reservas online.
 - Idiomas: castellano y euskera (webs bilingües con páginas propias para cada idioma).
 - Contacto: WhatsApp y teléfono +34 611 49 74 09 · contactoiwebstudio@gmail.com · Instagram @oi.webstudio
 - Propuesta: gratuita y en 48 horas. Se puede ver una muestra con tu negocio antes de pagar.
 
-## Precios (cerrados, IVA no incluido; tarifa del 17/10/2026)
+## Precios (cerrados, IVA no incluido; oferta del 23/10/2026)
 
-Se paga una sola vez, al final, cuando la web está terminada y publicada. El primer año incluye dominio y alojamiento. El dominio se registra a nombre del cliente.
+Se paga una sola vez, al final, cuando el trabajo está terminado y publicado. Las webs incluyen el primer año de dominio y alojamiento. El dominio se registra a nombre del cliente. Lo ya presupuestado o aceptado antes se respeta.
 
-1. Solo la web
-- Landing (web de una página): 399 €, pago único.
-- Web Negocio (varias páginas, SEO local, Google Maps): 499 €, pago único.
-- Tienda Online (hasta 50 productos, pago con tarjeta y Bizum): 850 €, pago único. Mantenimiento opcional de la tienda: 35 €/mes.
-- Mantenimiento: 25 €/mes, con hasta 3 cambios al mes. Opcional con una web sola; obligatorio mientras haya reservas o chatbot. Sin permanencia.
+1. La web
+- Web bonita + presencia (web con secciones, hasta 5 páginas, diseño a medida, SEO básico, Google Maps en la web, y la presencia en Google incluida): 499 €, pago único. Es la recomendada.
+- Tienda Online (web con secciones, hasta 50 productos, pago con tarjeta y Bizum): 850 €, pago único. Mantenimiento opcional de la tienda: 35 €/mes.
+- Landing (web de una sola página): 399 €, pago único.
 
-2. Reservas y extras (sin comisión por reserva)
-- Reservas y citas online: 290 € solas (sin tocar la web que ya tiene el negocio) o +190 € con una web de OI Studio. Incluye página de reservas, panel con calendario, aviso de cada reserva por correo, recordatorio el día antes y petición de reseña por correo.
-- Cobro de señal con tarjeta: +49 €.
-- Carta o menú editable desde el móvil: +79 €.
-- Reseñas con QR (enlace a la ficha de Google, QR y cartel): 49 €.
-- Chatbot en la web: +190 € y 15 €/mes.
-- De serie, los avisos van por correo electrónico. Avisos por WhatsApp o SMS, conexión con Booking o TheFork u otros extras: a medida, con el precio antes de empezar.
-- SEO y posicionamiento en Google (también para webs que no ha hecho OI Studio): ficha de Google Business Profile completa (categorías, servicios, zonas, fotos, publicaciones, enlace y mensaje para pedir reseñas), revisión técnica de la web (velocidad, móvil, https, títulos y descripciones, datos estructurados, sitemap, alta e indexación en Google Search Console y Bing Webmaster Tools), contenido para las búsquedas reales de la zona y visibilidad en asistentes de IA (llms.txt, acceso de ChatGPT o Gemini a la web, Bing Places). Revisión gratuita en 48 horas y precio cerrado después; no hay tarifa fija publicada. No se promete ningún puesto concreto en Google. Detalle: https://oiwebstudio.com/seo-posicionamiento-google.html
+2. Presencia en Google (también para negocios con una web que no ha hecho OI Studio, o sin web): 99 €, pago único.
+- Ficha de Google Business Profile completa: categorías, horario, servicios, zonas, descripción en castellano y euskera, y fotos.
+- QR de reseñas: enlace directo, código QR y cartel para el mostrador.
+- Alta en Bing Places y Apple Maps, con los mismos datos que en Google.
+- Una página con cómo ven al negocio Google y ChatGPT, antes y después.
+- No se promete ningún puesto concreto en Google ni que ChatGPT nombre al negocio. Arreglar una web que no ha hecho OI Studio no entra en los 99 €: se presupuesta aparte, con precio cerrado. Detalle: https://oiwebstudio.com/seo-posicionamiento-google.html
 
-3. Packs (con mantenimiento de 25 €/mes)
-- Web + reservas: 549 €.
-- Restaurante (web con secciones, reservas y carta editable): 699 €.
-- Casa rural (web con secciones, reservas y cobro de señal): 699 €.
+3. Packs con reservas (sin comisión por reserva; incluyen la presencia en Google y llevan el mantenimiento de 25 €/mes). Las reservas solo se ofrecen dentro de un pack.
+- Web + reservas (una página con reservas o citas): 549 €.
+- Restaurante (web con secciones, reservas de mesa y carta editable): 699 €.
+- Casa rural (web con secciones, reservas con calendario y cobro de señal): 699 €.
+- Los avisos de cada reserva, el recordatorio del día antes y la petición de reseña van por correo electrónico. Por WhatsApp o SMS: a medida, con el precio antes de empezar.
+
+4. Cuotas (sin permanencia)
+- Mantenimiento: 25 €/mes (35 €/mes con tienda), con seguridad, copias semanales, monitorización y hasta 3 cambios al mes. Opcional con una web sola; obligatorio con reservas.
+- Cuota de presencia: 39 €/mes. Todo lo del mantenimiento (si la web es de OI Studio) y además la ficha de Google al día (festivos, fotos nuevas y 2 publicaciones al mes), borradores de respuesta a las reseñas y una revisión cada trimestre de cómo nombran al negocio los asistentes de IA.
 
 ## Zonas donde trabaja
 
@@ -47,14 +50,13 @@ Fuera de Gipuzkoa trabaja a distancia, con el mismo precio: [toda España](https
 - [Inicio](https://oiwebstudio.com/): qué hace el estudio y cómo trabaja.
 - [Precios](https://oiwebstudio.com/precios.html): planes y qué incluye cada uno.
 - [Reservas online sin comisiones](https://oiwebstudio.com/reservas-online-sin-comisiones.html): reservas y citas online en la web propia del negocio (peluquerías, estética, fisios, restaurantes y casas rurales), sin comisión por reserva.
-- [Chatbot](https://oiwebstudio.com/chatbot-reservas.html): demo del chatbot que contesta las preguntas de siempre en la web.
 - [Trabajos](https://oiwebstudio.com/trabajos.html): webs publicadas, una por sector.
 - [Caso real: Errotatxo](https://oiwebstudio.com/caso-errotatxo.html): la web de una panadería de Tolosa con tres tiendas, en castellano y euskera.
 - [Caso real: A.Berri, casa rural en Getaria](https://oiwebstudio.com/caso-a-berri.html): web con reservas, panel para los dueños y tres idiomas; con la opinión de la dueña (5 estrellas).
 - [Zonas](https://oiwebstudio.com/zonas.html): diseño web en los municipios de Gipuzkoa.
 - [Sobre el estudio](https://oiwebstudio.com/sobre-mi.html): quién hay detrás y cómo trabaja.
 - [Contacto](https://oiwebstudio.com/contacto.html): pedir propuesta.
-- [SEO y posicionamiento en Google](https://oiwebstudio.com/seo-posicionamiento-google.html): SEO local en Tolosa y Gipuzkoa, también para webs que no ha hecho OI Studio; ejemplos en la propia web y en los casos de Errotatxo y A.Berri.
+- [Presencia en Google y en las IAs](https://oiwebstudio.com/seo-posicionamiento-google.html): SEO local en Tolosa y Gipuzkoa por 99 € (ficha de Google, QR de reseñas, Bing, Apple Maps y cómo te ven Google y ChatGPT) y cuota de presencia de 39 €/mes; también para webs que no ha hecho OI Studio; ejemplos en la propia web y en los casos de Errotatxo y A.Berri.
 - [Revisión gratis de tu web](https://oiwebstudio.com/revision-web-gratis.html): reviso gratis la web (o la presencia en Google) de un negocio y digo qué arreglar primero.
 - [Versión en euskera](https://oiwebstudio.com/eu/index.html)
 

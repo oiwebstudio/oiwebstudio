@@ -43,13 +43,15 @@ const TRADUCIDAS = new Set([...PAGINAS, ...ZONAS]);
    Aun así, conviene que lo lea un euskaldun antes de darlo por definitivo: son
    la línea que decide si alguien hace clic. */
 const META = {
+  // 22/10/2026, identidad «webs bonitas», con Itzultzaile Neuronala tal cual.
   "index.html": {
-    title: "Web diseinua Tolosan: webguneak negozioentzat | OI Studio",
-    desc: "Neurrira egindako webguneak Gipuzkoako negozioentzat. Prezio itxia 399€-tik, proposamena 48 ordutan. Tolosako estudioa.",
+    title: "Web politak: web diseinua Tolosan eta Gipuzkoan | OI Studio",
+    desc: "Web politak eta neurrira egindakoak Tolosa eta Gipuzkoako negozioetarako. Prezioa 399 €-tik aurrera itxita + BEZa, 48 orduko proposamena eta ordainketa amaieran.",
   },
   "precios.html": {
     title: "Webgune baten prezioa: itxia eta idatzita | OI Studio",
-    desc: "Landing 399€ eta Negozio Weba 499€, komisiorik gabeko online erreserbak eta paketeak 549€-tik. Prezio itxia eta ordainketa amaieran.",
+    // 23/10/2026, oferta nueva, con Itzultzaile Neuronala tal cual (solo espacios ante «€»).
+    desc: "Web polita + Googlen presentzia 499 €, Googlen presentzia 99 € bakarrik, landinga 399 €, erreserbak 549 €-tik aurrera dituzten packak eta online denda 850 € + BEZ. Prezioa itxita eta ordainketa amaieran.",
   },
   "contacto.html": {
     title: "Kontaktua: hitz egin dezagun zure webaz | OI Studio",
@@ -65,8 +67,9 @@ const META = {
   },
   // 21/10/2026, con Itzultzaile Neuronala («azterketa» → «berrikuspena», como en la página).
   "seo-posicionamiento-google.html": {
-    title: "SEO Tolosan eta Gipuzkoan: tokiko web posizionamendua | OI Studio",
-    desc: "SEO lokala Tolosan eta Gipuzkoan, baita nik egin ez ditudan webguneentzat ere: Googleren fitxa, berrikuspen teknikoa, edukia eta laguntzaile birtualak. Doako berrikuspena 48 ordutan.",
+    // 23/10/2026: «Presencia en Google y en las IAs», con Itzultzaile Neuronala.
+    title: "Presentzia Googlen eta IAetan: SEO lokala Tolosan | OI Studio",
+    desc: "Google fitxa osoa, erreseinen QR, Bing eta Apple Maps, eta Google eta ChatGPT nola ikusten zaituzten: 99 € + BEZ. Presentzia-kuota, 39 € hilean. SEO lokala Tolosan eta Gipuzkoan.",
   },
 };
 

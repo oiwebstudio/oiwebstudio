@@ -99,7 +99,7 @@ function preguntas(m, d, dist) {
     : dist <= 35 ? `Sí. ${nombre} está a unos ${dist} km de Tolosa. Quedamos en tu negocio para conocerlo y hacer las fotos si hace falta, y el resto lo llevamos por WhatsApp y videollamada para no hacerte perder tiempo.`
     : `Sí, cuando compensa. ${nombre} está a unos ${dist} km de Tolosa, así que lo habitual es empezar por videollamada o WhatsApp y quedar en persona para conocer el negocio y hacer las fotos. El precio es el mismo.`;
   const q2 = "¿Cuesta lo mismo que en Tolosa?";
-  const a2 = `Exactamente lo mismo. Landing desde 399€ y Web Negocio desde 499€, precio cerrado por escrito y 30 días de ajustes incluidos. ${dist <= 12 ? "A tan poca distancia no hay ningún desplazamiento que repercutir." : "Ir a " + nombre + " no lleva ningún recargo."}`;
+  const a2 = `Exactamente lo mismo. Landing desde 399€ y Web bonita + presencia desde 499€, precio cerrado por escrito y 30 días de ajustes incluidos. ${dist <= 12 ? "A tan poca distancia no hay ningún desplazamiento que repercutir." : "Ir a " + nombre + " no lleva ningún recargo."}`;
   const pob = redondea(m.pob);
   const q3 = `¿Merece la pena el SEO en ${pob >= 10000 ? "un municipio de unos " + miles(pob) : "un pueblo de unos " + miles(pob)} habitantes?`;
   const a3 = pob < 3000 ? `Precisamente ahí es donde más rinde. Son poca competencia y muchos negocios sin web, así que una web bien hecha te sitúa por delante con poco esfuerzo. La web sale orientada a búsquedas de ${nombre}${alt} y de ${d.comarca}, y el complemento es tu ficha de Google Business, que repaso en <a href="../google-business-profile-guia.html">esta guía</a>.`
@@ -363,7 +363,7 @@ function paginaComarca(nombreComarca) {
   const titulo = `Diseño y páginas web en ${nombreComarca} | OI Studio`;
   const tarjeta = (m) => `<li><a href="${m.slug}.html"><b>${esc(nombreVisible(m))}</b><i>${miles(redondea(m.pob))} hab. &rarr;</i></a></li>`;
   const ldFaq = `    {"@type":"Question","name":"${jsn(c.faq[0])}","acceptedAnswer":{"@type":"Answer","text":"${jsn(c.faq[1])}"}},
-    {"@type":"Question","name":"¿Cuánto cuesta una web en ${jsn(nombreComarca)}?","acceptedAnswer":{"@type":"Answer","text":"Landing desde 399€ y Web Negocio desde 499€, precio cerrado por escrito y 30 días de ajustes incluidos, con propuesta en 48 horas. El precio es el mismo en todos los municipios."}}`;
+    {"@type":"Question","name":"¿Cuánto cuesta una web en ${jsn(nombreComarca)}?","acceptedAnswer":{"@type":"Answer","text":"Landing desde 399€ y Web bonita + presencia desde 499€, precio cerrado por escrito y 30 días de ajustes incluidos, con propuesta en 48 horas. El precio es el mismo en todos los municipios."}}`;
   const otras = Object.keys(COMARCAS).filter((x) => x !== nombreComarca);
   return `<!DOCTYPE html>
 <html lang="es">
@@ -459,7 +459,7 @@ ${NAV}<header class="zh">
 <div class="zhead"><span class="k">Dudas</span><h2>Preguntas frecuentes</h2></div>
 <div class="zfaq">
 <details open><summary>${esc(c.faq[0])}</summary><p>${esc(c.faq[1])}</p></details>
-<details><summary>¿Cuánto cuesta una web en ${esc(nombreComarca)}?</summary><p>Landing desde 399€ y Web Negocio desde 499€, precio cerrado por escrito y 30 días de ajustes incluidos, con propuesta en 48 horas. El precio es el mismo en todos los municipios.</p></details>
+<details><summary>¿Cuánto cuesta una web en ${esc(nombreComarca)}?</summary><p>Landing desde 399€ y Web bonita + presencia desde 499€, precio cerrado por escrito y 30 días de ajustes incluidos, con propuesta en 48 horas. El precio es el mismo en todos los municipios.</p></details>
 </div>
 </div>
 </div>

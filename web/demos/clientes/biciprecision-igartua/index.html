@@ -118,6 +118,10 @@ a{color:inherit}
 .movil .boton--linea{background:rgba(12,12,12,.85)}
 @media(max-width:700px){.movil{display:grid}body{padding-bottom:80px}.iconos svg{width:20px;height:20px}.credito{font-size:10px}}
 @media (prefers-reduced-motion:reduce){.movil{transition:none}}
+/* sin recuadro azul al tocar (Oier, 24/10): tap-highlight transparente; contorno solo con teclado (:focus-visible) */
+html{-webkit-tap-highlight-color:transparent}
+a,button,[role="button"],input,select,textarea,summary,label{-webkit-tap-highlight-color:transparent}
+:focus:not(:focus-visible){outline:none}
 </style>
 </head>
 <body>

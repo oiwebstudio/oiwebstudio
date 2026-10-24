@@ -351,6 +351,10 @@ p{text-wrap:pretty;}
   .subr::after{transform:scaleX(1)!important;}
   .tira__scroll{scroll-snap-type:none;}
 }
+/* sin recuadro azul al tocar (Oier, 24/10): tap-highlight transparente; contorno solo con teclado (:focus-visible) */
+html{-webkit-tap-highlight-color:transparent}
+a,button,[role="button"],input,select,textarea,summary,label{-webkit-tap-highlight-color:transparent}
+:focus:not(:focus-visible){outline:none}
 </style>
 <script>document.documentElement.className+=" js";</script>
 </head>

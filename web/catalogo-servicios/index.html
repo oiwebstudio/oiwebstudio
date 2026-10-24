@@ -59,6 +59,11 @@
   footer{margin-top:40px; padding-top:22px; border-top:1px solid var(--line); font-size:13px; color:var(--mute);}
   footer code{font-family:var(--mono); background:var(--soft); padding:2px 6px; border-radius:5px; color:#4a4a52;}
   @media (max-width:560px){ .top{flex-direction:column;} .estado{align-self:flex-start;} }
+/* sin recuadro azul al tocar (Oier, 24/10): tap-highlight transparente; contorno solo con teclado (:focus-visible) */
+html{-webkit-tap-highlight-color:transparent}
+a,button,[role="button"],input,select,textarea,summary,label{-webkit-tap-highlight-color:transparent}
+:focus:not(:focus-visible){outline:none}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
 </style></head>
 <body><div class="wrap">
 
