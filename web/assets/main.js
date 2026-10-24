@@ -266,10 +266,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const estado = { fila, manual: false, activa: false };
     const manual = () => { estado.manual = true; estado.x = undefined; fila.style.scrollSnapType = ''; };
     fila.addEventListener('desliza:cambio', () => { estado.max = undefined; estado.x = undefined; });
-    fila.addEventListener('touchstart', manual, { passive: true });
-    fila.addEventListener('pointerdown', manual);
-    fila.addEventListener('wheel', manual, { passive: true });
-    fila.addEventListener('focusin', manual);
+    /* La fila pasa a mano solo si la persona la arrastra DE LADO. Rozarla con el dedo al
+       bajar por la página (gesto vertical) ya no la para: sigue deslizándose con el scroll. */
+    let x0 = 0, y0 = 0, dedo = false;
+    fila.addEventListener('touchstart', (e) => { const t = e.touches[0]; x0 = t.clientX; y0 = t.clientY; dedo = true; }, { passive: true });
+    fila.addEventListener('touchmove', (e) => {
+      if (!dedo || estado.manual) return;
+      const t = e.touches[0], dx = Math.abs(t.clientX - x0), dy = Math.abs(t.clientY - y0);
+      if (dx > 14 && dx > dy * 1.3) manual();
+      else if (dy > 14) dedo = false;   /* el gesto es vertical: es scroll de la página */
+    }, { passive: true });
+    fila.addEventListener('touchend', () => { dedo = false; }, { passive: true });
+    fila.addEventListener('pointerdown', (e) => { if (e.pointerType === 'mouse') manual(); });
+    fila.addEventListener('wheel', (e) => { if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) manual(); }, { passive: true });
+    fila.addEventListener('focusin', (e) => { if (e.target.matches && e.target.matches(':focus-visible')) manual(); });
     estado.puede = () => movilMQ.matches && !quietoMQ.matches && estado.max > 4;
     /* Solo se mide la fila cuando está cerca de la pantalla: lejos no cuesta nada */
     estado.cerca = true;
