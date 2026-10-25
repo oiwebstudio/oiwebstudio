@@ -15,7 +15,7 @@
  */
 import fs from "node:fs";
 import path from "node:path";
-import { COMUNES, ZONAS_EU, NEUTRAS } from "./euskera-zonas.mjs";
+import { COMUNES, ZONAS_EU, NEUTRAS, MARCO_EU } from "./euskera-zonas.mjs";
 
 const RAIZ = path.resolve("web");
 const SALIDA = path.join(RAIZ, "eu");
@@ -47,6 +47,8 @@ const META = {
   "index.html": {
     title: "Web politak: web diseinua Tolosan eta Gipuzkoan | OI Studio",
     desc: "Web politak eta neurrira egindakoak Tolosa eta Gipuzkoako negozioetarako. Prezioa 420 €-tik aurrera itxita + BEZa, 48 orduko proposamena eta ordainketa amaieran.",
+    // 24/10/2026, con Itzultzaile Neuronala tal cual: el alt de la imagen al compartir.
+    imgAlt: "OI Studio: Tolosa eta Gipuzkoako negozioetarako neurrira egindako webguneak, ordenagailuan, tabletean eta mugikorrean erakutsiak",
   },
   "precios.html": {
     title: "Webgune baten prezioa: itxia eta idatzita | OI Studio",
@@ -71,6 +73,17 @@ const META = {
     title: "Presentzia Googlen eta IAetan: SEO lokala Tolosan | OI Studio",
     desc: "Google fitxa osoa, erreseinen QR, Bing eta Apple Maps, eta Google eta ChatGPT nola ikusten zaituzten: 120 € + BEZ. Presentzia-kuota, 40 € hilean. SEO lokala Tolosan eta Gipuzkoan.",
   },
+};
+
+/* Textos sin data-t de las seis páginas principales que se quedaban en
+   castellano en /eu/. Los del menú y el pie (MARCO_EU) son los mismos que en
+   las zonas. 24/10/2026: «40 €/mes» de la calculadora no lo cambia el JS (el de
+   25 sí, con calc_pormes) y el aria-label repite el título pre_elige_h. */
+const PARES_PAGINAS = {
+  "precios.html": [
+    [`40 €/mes`, `40 €/hilean`],
+    [`¿Cuál te conviene?`, `Zein komeni zaizu?`],
+  ],
 };
 
 const BASE = "https://oiwebstudio.com";
@@ -183,6 +196,16 @@ function absolutizarRutas(html, pagina) {
 
 const escaparRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
+/** Páginas principales: menú, pie y sus pares propios, solo en el cuerpo y
+ *  solo si el fragmento ocupa el texto o el atributo entero (como en las zonas). */
+function traducirMarco(html, pagina) {
+  const pares = [...(PARES_PAGINAS[pagina] || []), ...MARCO_EU].sort((a, b) => b[0].length - a[0].length);
+  const cab = html.indexOf("</head>");
+  let body = html.slice(cab);
+  for (const [es, eu] of pares) body = body.replace(new RegExp(`(?<=[>"])${escaparRe(es)}(?=[<"])`, "g"), eu);
+  return html.slice(0, cab) + body;
+}
+
 /**
  * Sustituye cada fragmento en castellano por su traducción. Solo cuenta si
  * el fragmento ocupa un texto o un atributo entero (va entre > y <, o entre
@@ -278,6 +301,13 @@ function ajustarCabecera(html, pagina) {
   html = html.replace(/(<meta\s+name="description"\s+content=")[^"]*(")/i, `$1${meta.desc}$2`);
   html = html.replace(/(<meta\s+property="og:title"\s+content=")[^"]*(")/i, `$1${meta.title}$2`);
   html = html.replace(/(<meta\s+property="og:description"\s+content=")[^"]*(")/i, `$1${meta.desc}$2`);
+  // 24/10/2026: en /eu/index.html las de Twitter y el alt de la imagen seguían en castellano.
+  html = html.replace(/(<meta\s+name="twitter:title"\s+content=")[^"]*(")/i, `$1${meta.title}$2`);
+  html = html.replace(/(<meta\s+name="twitter:description"\s+content=")[^"]*(")/i, `$1${meta.desc}$2`);
+  if (meta.imgAlt) {
+    html = html.replace(/(<meta\s+property="og:image:alt"\s+content=")[^"]*(")/i, `$1${meta.imgAlt}$2`);
+    html = html.replace(/(<meta\s+name="twitter:image:alt"\s+content=")[^"]*(")/i, `$1${meta.imgAlt}$2`);
+  }
   html = html.replace(/(<meta\s+property="og:url"\s+content=")[^"]*(")/i, `$1${urlEu}$2`);
   html = html.replace(/(<meta\s+property="og:locale"\s+content=")[^"]*(")/i, `$1eu_ES$2`);
   html = html.replace(/<meta\s+property="og:locale:alternate"[^>]*>\s*/i, "");
@@ -351,6 +381,7 @@ for (const pagina of [...PAGINAS, ...ZONAS]) {
   html = traducirElementos(html, dic, faltan);
   html = traducirPlaceholders(html, dic, faltan);
   if (esZona) html = traducirZona(html, pagina, errores);
+  else html = traducirMarco(html, pagina);
 
   /* Fuera i18n.js: aquí sobra y además estorba. La página ya viene traducida en
      el HTML, y ese script reescribía document.documentElement.lang a "es" al

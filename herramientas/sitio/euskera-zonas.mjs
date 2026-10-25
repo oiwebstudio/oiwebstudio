@@ -20,8 +20,29 @@
  * títulos de generar-euskera.mjs.
  */
 
+/* Menú y pie sin data-t: lo comparten TODAS las páginas en euskera (las de
+   zona por COMUNES y las seis principales desde generar-euskera.mjs). Sin
+   esto, el pie de /eu/index.html, /eu/precios.html… salía con las guías en
+   castellano. 24/10/2026, con Itzultzaile Neuronala tal cual. */
+export const MARCO_EU = [
+  [`Llamar al 611 49 74 09`, `Deitu 611 49 74 09 zenbakira`],
+  [`Abrir menú`, `Ireki menua`],
+  [`Escribir por WhatsApp`, `Idatzi WhatsApp bidez`],
+  [`Enviar email`, `Emaila bidali`],
+  [`Instagram de OI Studio`, `OI Studioko instagrama`],
+  [`Abrir menú de contacto`, `Ireki kontaktu-menua`],
+  [`Cuánto cuesta una web profesional`, `Zenbat balio du webgune profesional batek?`],
+  [`Página web para autónomos`, `Autonomoentzako webgunea`],
+  [`Landing o web completa`, `Landing edo webgune osoa`],
+  [`Crear la web de tu negocio`, `Zure negozioaren webgunea sortzea`],
+  [`SEO local y Google Maps`, `SEO lokala eta Google Maps`],
+  [`Guía de Google Business Profile`, `Google Business Profileren gida`],
+  [`Ayudas para tu web en Gipuzkoa`, `Gipuzkoako zure webgunerako laguntzak`],
+];
+
 /* Textos que se repiten en todas las páginas de zona. */
 export const COMUNES = [
+  ...MARCO_EU,
   // Cabecera y migas
   [`Inicio`, `Hasiera`],
   [`Zonas`, `Eremuak`],
@@ -29,9 +50,6 @@ export const COMUNES = [
   [`Ver la ayuda →`, `Laguntza ikusi →`],
   [`Solicitar presupuesto`, `Aurrekontua eskatu`],
   [`Ver trabajos`, `Lanak ikusi`],
-  [`Llamar al 611 49 74 09`, `611 49 74 09 zenbakira deitu`],
-  [`Abrir menú`, `Menua ireki`],
-  [`Escribir por WhatsApp`, `WhatsApp bidez idatzi`],
 
   // Cifras
   [`Desde Tolosa`, `Tolosatik`],
@@ -60,14 +78,7 @@ export const COMUNES = [
   [`Restaurante, ejemplo de web para negocio local`, `Jatetxea, tokiko negozio baterako web adibidea`],
   [`Taller mecánico, ejemplo de web para negocio local`, `Tailer mekanikoa, tokiko negozio baterako web adibidea`],
   [`Gimnasio, ejemplo de web para negocio local`, `Gimnasioa, tokiko negozio baterako web adibidea`],
-  // Pie con mapa de enlaces (octubre 2026): guías y comarcas
-  [`Cuánto cuesta una web profesional`, `Zenbat balio du web profesional batek`],
-  [`Página web para autónomos`, `Webgunea autonomoentzat`],
-  [`Landing o web completa`, `Landing-a ala web osoa`],
-  [`Crear la web de tu negocio`, `Zure negozioaren webgunea sortzea`],
-  [`SEO local y Google Maps`, `Tokiko SEO eta Google Maps`],
-  [`Guía de Google Business Profile`, `Google Business Profile gida`],
-  [`Ayudas para tu web en Gipuzkoa`, `Zure weberako diru-laguntzak Gipuzkoan`],
+  // Pie con mapa de enlaces (octubre 2026): las guías están en MARCO_EU; aquí, las comarcas
   [`Oarsoaldea`, `Oarsoaldea`],
   [`Urola Garaia`, `Urola Garaia`],
   [`Urola Erdia`, `Urola Erdia`],
@@ -257,8 +268,9 @@ export const ZONAS_EU = {
        `Zarautzko zure negozioa ulertzen dut, eta benetan lagun zaitzakedan ala ez.`],
       [`Cerca de Zarautz`, `Zarautztik gertu`],
       [`¿Cubres Zarautz desde Tolosa?`, `Tolosatik Zarautzen ere lan egiten duzu?`],
+      // 24/10, con Itzultzaile Neuronala: la última frase no decía «o por correo».
       [`Sí. A 35 km lo práctico es empezar por videollamada y reservar el desplazamiento para cuando aporte valor: ver el local o hacer las fotos. El seguimiento se hace por WhatsApp o por correo, que es lo más ágil.`,
-       `Bai. 35 km-ra, praktikoena bideodeiz hastea da, eta bidaia benetan zerbait ekartzen duenerako gordetzea: lokala ikusteko edo argazkiak egiteko. Jarraipena WhatsApp bidez egiten da, bientzat azkarragoa baita.`],
+       `Bai. 35 km-ra, praktikoena bideodeiz hastea da, eta bidaia benetan zerbait ekartzen duenerako gordetzea: lokala ikusteko edo argazkiak egiteko. Jarraipena WhatsApp edo posta bidez egiten da, eta hori da arinena.`],
       [`¿Los 35 km se pagan aparte?`, `35 km-ak aparte ordaintzen dira?`],
       [`No se pagan. El precio es cerrado y único en toda Gipuzkoa — 420€ Landing, 540€ Web bonita + presencia, 30 días de ajustes incluidos — y los viajes corren de mi cuenta. El precio firmado es el definitivo.`,
        `Ez dira ordaintzen. Prezioa itxia eta bakarra da Gipuzkoa osoan — Landing 420€, Web polita + presentzia 540€, 30 egunez doikuntzak barne — eta bidaiak nire kontura dira. Sinatzen duzuna da dagoena.`],
