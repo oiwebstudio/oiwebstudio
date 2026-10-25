@@ -1,7 +1,7 @@
 /* Calculadora de precio (precios.html, #calculadora). Rehecha el 23/10/2026 con la
-   oferta nueva: presencia en Google 99, web bonita + presencia 499, landing 399,
-   tienda 850, packs con reservas 549/699/699; cuotas: mantenimiento 25 €/mes
-   (35 con tienda) o presencia 39 €/mes. Las reservas solo van en un pack, y en
+   oferta nueva; precios del 25/10/2026: presencia en Google 120, web bonita +
+   presencia 540, landing 420, tienda 880, packs con reservas 580/740/740;
+   cuotas: mantenimiento 28 €/mes (38 con tienda) o presencia 40 €/mes. Las reservas solo van en un pack, y en
    un pack la cuota es obligatoria. Todo + IVA, pago único al final.
    Los importes son EXACTAMENTE los de precios.html: si cambia uno en la página,
    hay que cambiarlo aquí también, y en el JSON-LD de index.html.
@@ -14,15 +14,15 @@
 
   /* web: lleva una web hecha por mí · reservas: es un pack (cuota obligatoria) */
   var TIPOS = {
-    presencia:        { precio: 99,  web: false },
-    landing:          { precio: 399, web: true },
-    negocio:          { precio: 499, web: true, secciones: true },
-    tienda:           { precio: 850, web: true, secciones: true, tienda: true },
-    pack_reservas:    { precio: 549, web: true, reservas: true },
-    pack_restaurante: { precio: 699, web: true, reservas: true, secciones: true },
-    pack_rural:       { precio: 699, web: true, reservas: true, secciones: true }
+    presencia:        { precio: 120, web: false },
+    landing:          { precio: 420, web: true },
+    negocio:          { precio: 540, web: true, secciones: true },
+    tienda:           { precio: 880, web: true, secciones: true, tienda: true },
+    pack_reservas:    { precio: 580, web: true, reservas: true },
+    pack_restaurante: { precio: 740, web: true, reservas: true, secciones: true },
+    pack_rural:       { precio: 740, web: true, reservas: true, secciones: true }
   };
-  var CUOTA = { mant: 25, mantTienda: 35, presencia: 39 };
+  var CUOTA = { mant: 28, mantTienda: 38, presencia: 40 };
 
   var $ = function (id) { return document.getElementById(id); };
   var txt = function (k) { var el = form.querySelector('[data-k="' + k + '"]'); return el ? el.textContent.trim() : ""; };

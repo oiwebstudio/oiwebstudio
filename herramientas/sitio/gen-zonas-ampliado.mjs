@@ -99,7 +99,7 @@ function preguntas(m, d, dist) {
     : dist <= 35 ? `Sí. ${nombre} está a unos ${dist} km de Tolosa. Quedamos en tu negocio para conocerlo y hacer las fotos si hace falta, y el resto lo llevamos por WhatsApp y videollamada para no hacerte perder tiempo.`
     : `Sí, cuando compensa. ${nombre} está a unos ${dist} km de Tolosa, así que lo habitual es empezar por videollamada o WhatsApp y quedar en persona para conocer el negocio y hacer las fotos. El precio es el mismo.`;
   const q2 = "¿Cuesta lo mismo que en Tolosa?";
-  const a2 = `Exactamente lo mismo. Landing desde 399€ y Web bonita + presencia desde 499€, precio cerrado por escrito y 30 días de ajustes incluidos. ${dist <= 12 ? "A tan poca distancia no hay ningún desplazamiento que repercutir." : "Ir a " + nombre + " no lleva ningún recargo."}`;
+  const a2 = `Exactamente lo mismo. Landing desde 420€ y Web bonita + presencia desde 540€, precio cerrado por escrito y 30 días de ajustes incluidos. ${dist <= 12 ? "A tan poca distancia no hay ningún desplazamiento que repercutir." : "Ir a " + nombre + " no lleva ningún recargo."}`;
   const pob = redondea(m.pob);
   const q3 = `¿Merece la pena el SEO en ${pob >= 10000 ? "un municipio de unos " + miles(pob) : "un pueblo de unos " + miles(pob)} habitantes?`;
   const a3 = pob < 3000 ? `Precisamente ahí es donde más rinde. Son poca competencia y muchos negocios sin web, así que una web bien hecha te sitúa por delante con poco esfuerzo. La web sale orientada a búsquedas de ${nombre}${alt} y de ${d.comarca}, y el complemento es tu ficha de Google Business, que repaso en <a href="../google-business-profile-guia.html">esta guía</a>.`
@@ -129,8 +129,8 @@ function paginaMunicipio(d, idx) {
   let titulo = `Diseño y páginas web en ${nombre}${alt} | OI Studio`;
   if (titulo.length > 62) titulo = `Diseño web en ${nombre}${alt} | OI Studio`;
   const cercaTxt = d.slug === "tolosa" ? "Estudio en Tolosa." : `Estudio en Tolosa, a ${dist} km.`;
-  let desc = `Diseño y desarrollo de páginas web para negocios de ${nombre}${alt} (${d.comarca}). Precio cerrado desde 399€, propuesta en 48h. ${cercaTxt}`;
-  if (desc.length > 160) desc = `Páginas web para negocios de ${nombre}${alt} (${d.comarca}). Precio cerrado desde 399€, propuesta en 48h. ${cercaTxt}`;
+  let desc = `Diseño y desarrollo de páginas web para negocios de ${nombre}${alt} (${d.comarca}). Precio cerrado desde 420€, propuesta en 48h. ${cercaTxt}`;
+  if (desc.length > 160) desc = `Páginas web para negocios de ${nombre}${alt} (${d.comarca}). Precio cerrado desde 420€, propuesta en 48h. ${cercaTxt}`;
   const url = `${BASE}/zonas/${d.slug}.html`;
   const img = `${BASE}/assets/stock/sec-${d.hero}-${(idx % STOCK[d.hero]) + 1}.jpg`;
   const kw = [`diseño web ${nombre}`, `páginas web ${nombre}`, d.alt && `diseño web ${d.alt}`, d.alt && `páginas web ${d.alt}`, `desarrollo web ${d.comarca}`, `web negocio ${nombre}`, "diseñador web Gipuzkoa"].filter(Boolean).join(", ");
@@ -188,7 +188,7 @@ ${CABECERA_COMUN}<title>${esc(titulo)}</title>
   "description":"${jsn(desc)}",
   "email":"contactoiwebstudio@gmail.com",
   "telephone":"+34611497409",
-  "priceRange":"399€ - 499€",
+  "priceRange":"420€ - 540€",
   "address":{"@type":"PostalAddress","addressLocality":"Tolosa","addressRegion":"Gipuzkoa","addressCountry":"ES"},
   "areaServed":{"@type":"City","name":"${jsn(nombre)}","containedInPlace":{"@type":"AdministrativeArea","name":"Gipuzkoa"}},
   "sameAs":["https://instagram.com/oi.webstudio"]
@@ -228,7 +228,7 @@ ${heroImg(d.hero, idx, nombre)}
 <div class="zfacts" data-anim="facts">
 ${factDist}
 <div class="zfact"><b>${miles(pob)}</b><span>Habitantes</span></div>
-<div class="zfact"><b>399€</b><span>Desde, precio cerrado</span></div>
+<div class="zfact"><b>420€</b><span>Desde, precio cerrado</span></div>
 <div class="zfact"><b>48h</b><span>Propuesta</span></div>
 </div>
 </div>
@@ -359,11 +359,11 @@ function paginaComarca(nombreComarca) {
   const miembros = MUN.filter((m) => m.comarca === nombreComarca).sort((a, b) => b.pob - a.pob);
   const conPagina = miembros.filter(tienePagina), sinPagina = miembros.filter((m) => !tienePagina(m));
   const pobTotal = miembros.reduce((s, m) => s + m.pob, 0);
-  const desc = `Diseño y páginas web para negocios de ${nombreComarca} (${miembros.length} municipios). Precio cerrado desde 399€, propuesta en 48h. Estudio en Tolosa.`;
+  const desc = `Diseño y páginas web para negocios de ${nombreComarca} (${miembros.length} municipios). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa.`;
   const titulo = `Diseño y páginas web en ${nombreComarca} | OI Studio`;
   const tarjeta = (m) => `<li><a href="${m.slug}.html"><b>${esc(nombreVisible(m))}</b><i>${miles(redondea(m.pob))} hab. &rarr;</i></a></li>`;
   const ldFaq = `    {"@type":"Question","name":"${jsn(c.faq[0])}","acceptedAnswer":{"@type":"Answer","text":"${jsn(c.faq[1])}"}},
-    {"@type":"Question","name":"¿Cuánto cuesta una web en ${jsn(nombreComarca)}?","acceptedAnswer":{"@type":"Answer","text":"Landing desde 399€ y Web bonita + presencia desde 499€, precio cerrado por escrito y 30 días de ajustes incluidos, con propuesta en 48 horas. El precio es el mismo en todos los municipios."}}`;
+    {"@type":"Question","name":"¿Cuánto cuesta una web en ${jsn(nombreComarca)}?","acceptedAnswer":{"@type":"Answer","text":"Landing desde 420€ y Web bonita + presencia desde 540€, precio cerrado por escrito y 30 días de ajustes incluidos, con propuesta en 48 horas. El precio es el mismo en todos los municipios."}}`;
   const otras = Object.keys(COMARCAS).filter((x) => x !== nombreComarca);
   return `<!DOCTYPE html>
 <html lang="es">
@@ -408,7 +408,7 @@ ${CABECERA_COMUN}<title>${esc(titulo)}</title>
   "description":"${jsn(desc)}",
   "email":"contactoiwebstudio@gmail.com",
   "telephone":"+34611497409",
-  "priceRange":"399€ - 499€",
+  "priceRange":"420€ - 540€",
   "address":{"@type":"PostalAddress","addressLocality":"Tolosa","addressRegion":"Gipuzkoa","addressCountry":"ES"},
   "areaServed":[${miembros.map((m) => `{"@type":"City","name":"${jsn(nombreVisible(m))}"}`).join(",")}]
 }
@@ -442,7 +442,7 @@ ${NAV}<header class="zh">
 <div class="zfacts" data-anim="facts">
 <div class="zfact"><b>${miembros.length}</b><span>Municipios</span></div>
 <div class="zfact"><b>${miles(redondea(pobTotal))}</b><span>Habitantes</span></div>
-<div class="zfact"><b>399€</b><span>Desde, precio cerrado</span></div>
+<div class="zfact"><b>420€</b><span>Desde, precio cerrado</span></div>
 <div class="zfact"><b>48h</b><span>Propuesta</span></div>
 </div>
 </div>
@@ -459,7 +459,7 @@ ${NAV}<header class="zh">
 <div class="zhead"><span class="k">Dudas</span><h2>Preguntas frecuentes</h2></div>
 <div class="zfaq">
 <details open><summary>${esc(c.faq[0])}</summary><p>${esc(c.faq[1])}</p></details>
-<details><summary>¿Cuánto cuesta una web en ${esc(nombreComarca)}?</summary><p>Landing desde 399€ y Web bonita + presencia desde 499€, precio cerrado por escrito y 30 días de ajustes incluidos, con propuesta en 48 horas. El precio es el mismo en todos los municipios.</p></details>
+<details><summary>¿Cuánto cuesta una web en ${esc(nombreComarca)}?</summary><p>Landing desde 420€ y Web bonita + presencia desde 540€, precio cerrado por escrito y 30 días de ajustes incluidos, con propuesta en 48 horas. El precio es el mismo en todos los municipios.</p></details>
 </div>
 </div>
 </div>
@@ -545,7 +545,7 @@ export function aplicarHub(html) {
   }
   return html
     .split("Diseño y páginas web en Gipuzkoa: 20 municipios | OI Studio").join("Diseño web en Gipuzkoa: 88 municipios y 11 comarcas | OI Studio")
-    .replace(/(<meta name="description" content=")[^"]*(")/, "$1Diseño y páginas web para negocios de los 88 municipios de Gipuzkoa, por comarcas: Tolosaldea, Goierri, Donostialdea, Debagoiena y más. Desde 399€.$2")
+    .replace(/(<meta name="description" content=")[^"]*(")/, "$1Diseño y páginas web para negocios de los 88 municipios de Gipuzkoa, por comarcas: Tolosaldea, Goierri, Donostialdea, Debagoiena y más. Desde 420€.$2")
     .replace("Gipuzkoa · 20 municipios", "Gipuzkoa · 88 municipios");
 }
 
@@ -601,7 +601,7 @@ ${CABECERA_COMUN}<title>${esc(d.titulo)}</title>
   "description":"${jsn(d.desc)}",
   "email":"contactoiwebstudio@gmail.com",
   "telephone":"+34611497409",
-  "priceRange":"399€ - 850€",
+  "priceRange":"420€ - 880€",
   "address":{"@type":"PostalAddress","addressLocality":"Tolosa","addressRegion":"Gipuzkoa","addressCountry":"ES"},
   "areaServed":${JSON.stringify(ambito)}
 }

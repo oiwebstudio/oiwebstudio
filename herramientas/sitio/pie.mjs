@@ -76,12 +76,12 @@ ${grupo("foot_secciones", "Secciones", [
   li("contacto.html", "Contacto", "nav_contacto"),
 ].join("\n"))}
 ${grupo("foot_servicios", "Servicios", [
-  // 23/10/2026: oferta nueva (web bonita + presencia, presencia en Google 99 €;
+  // 23/10/2026: oferta nueva (web bonita + presencia, presencia en Google 120 €;
   // el chatbot sale de la lista y la landing pasa a segundo plano).
-  li("precios.html", "Web bonita + presencia ·&nbsp;499&nbsp;€", "ft_s2"),
-  li("seo-posicionamiento-google.html", "SEO y presencia en Google ·&nbsp;99&nbsp;€", "ft_s6"),
-  li("precios.html", "Tienda online ·&nbsp;850&nbsp;€", "ft_s3"),
-  li("precios.html", "Landing ·&nbsp;399&nbsp;€", "ft_s1"),
+  li("precios.html", "Web bonita + presencia ·&nbsp;540&nbsp;€", "ft_s2"),
+  li("seo-posicionamiento-google.html", "SEO y presencia en Google ·&nbsp;120&nbsp;€", "ft_s6"),
+  li("precios.html", "Tienda online ·&nbsp;880&nbsp;€", "ft_s3"),
+  li("precios.html", "Landing ·&nbsp;420&nbsp;€", "ft_s1"),
   li("reservas-online-sin-comisiones.html", "Reservas online sin comisiones", "ft_s5"),
 ].join("\n"))}
 ${grupo("foot_guias", "Guías", GUIAS.map(([h, t]) => li(h, t)).join("\n"))}
