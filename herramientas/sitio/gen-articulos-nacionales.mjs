@@ -129,7 +129,7 @@ ${a.faq.map(([q, r]) => `<details>\n<summary>${q}</summary>\n<p>${r}</p>\n</deta
 </article>
 </div>
 
-${pie}<script src="assets/i18n.js?v=27"></script>
+${pie}<script src="assets/i18n.js?v=28"></script>
 <script src="assets/main.js?v=19"></script>
 ${wa}</body>
 </html>
