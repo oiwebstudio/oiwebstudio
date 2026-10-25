@@ -46,12 +46,12 @@ const META = {
   // 22/10/2026, identidad «webs bonitas», con Itzultzaile Neuronala tal cual.
   "index.html": {
     title: "Web politak: web diseinua Tolosan eta Gipuzkoan | OI Studio",
-    desc: "Web politak eta neurrira egindakoak Tolosa eta Gipuzkoako negozioetarako. Prezioa 399 €-tik aurrera itxita + BEZa, 48 orduko proposamena eta ordainketa amaieran.",
+    desc: "Web politak eta neurrira egindakoak Tolosa eta Gipuzkoako negozioetarako. Prezioa 420 €-tik aurrera itxita + BEZa, 48 orduko proposamena eta ordainketa amaieran.",
   },
   "precios.html": {
     title: "Webgune baten prezioa: itxia eta idatzita | OI Studio",
     // 23/10/2026, oferta nueva, con Itzultzaile Neuronala tal cual (solo espacios ante «€»).
-    desc: "Web polita + Googlen presentzia 499 €, Googlen presentzia 99 € bakarrik, landinga 399 €, erreserbak 549 €-tik aurrera dituzten packak eta online denda 850 € + BEZ. Prezioa itxita eta ordainketa amaieran.",
+    desc: "Web polita + Googlen presentzia 540 €, Googlen presentzia 120 € bakarrik, landinga 420 €, erreserbak 580 €-tik aurrera dituzten packak eta online denda 880 € + BEZ. Prezioa itxita eta ordainketa amaieran.",
   },
   "contacto.html": {
     title: "Kontaktua: hitz egin dezagun zure webaz | OI Studio",
@@ -69,7 +69,7 @@ const META = {
   "seo-posicionamiento-google.html": {
     // 23/10/2026: «Presencia en Google y en las IAs», con Itzultzaile Neuronala.
     title: "Presentzia Googlen eta IAetan: SEO lokala Tolosan | OI Studio",
-    desc: "Google fitxa osoa, erreseinen QR, Bing eta Apple Maps, eta Google eta ChatGPT nola ikusten zaituzten: 99 € + BEZ. Presentzia-kuota, 39 € hilean. SEO lokala Tolosan eta Gipuzkoan.",
+    desc: "Google fitxa osoa, erreseinen QR, Bing eta Apple Maps, eta Google eta ChatGPT nola ikusten zaituzten: 120 € + BEZ. Presentzia-kuota, 40 € hilean. SEO lokala Tolosan eta Gipuzkoan.",
   },
 };
 

@@ -129,7 +129,7 @@ ${a.faq.map(([q, r]) => `<details>\n<summary>${q}</summary>\n<p>${r}</p>\n</deta
 </article>
 </div>
 
-${pie}<script src="assets/i18n.js?v=26"></script>
+${pie}<script src="assets/i18n.js?v=27"></script>
 <script src="assets/main.js?v=19"></script>
 ${wa}</body>
 </html>
@@ -169,9 +169,9 @@ export const ARTICULOS = [
 
 <h2 id="landing-o-web">Landing o web completa</h2>
 ${tabla(["Opción", "Cuándo encaja", "Desde"], [
-  ["Landing (una página)", "Das uno o dos servicios claros y quieres que te encuentren y te llamen", "399 € + IVA"],
-  ["Web de negocio (varias páginas)", "Tienes varios servicios, un equipo o contenido que explicar", "499 € + IVA"],
-  ["Tienda online", "Vendes productos y quieres cobrar con tarjeta o Bizum", "850 € + IVA"],
+  ["Landing (una página)", "Das uno o dos servicios claros y quieres que te encuentren y te llamen", "420 € + IVA"],
+  ["Web de negocio (varias páginas)", "Tienes varios servicios, un equipo o contenido que explicar", "540 € + IVA"],
+  ["Tienda online", "Vendes productos y quieres cobrar con tarjeta o Bizum", "880 € + IVA"],
 ])}
 <p>Para la mayoría de autónomos que empiezan, una landing bien hecha es suficiente. Se puede ampliar más adelante cuando haya algo que contar. Hay una guía entera sobre <a href="landing-page-o-web-completa.html">cuándo elegir cada una</a>.</p>
 
@@ -179,9 +179,9 @@ ${figura("taller-desk", "taller · web de ejemplo", "Web de ejemplo de un negoci
 
 <h2 id="coste">Cuánto cuesta y qué más se paga</h2>
 <ul class="check">
-<li><strong>La web.</strong> Un pago único: desde 399 € una landing y desde 499 € una web de negocio, más IVA, con el <a href="precios.html">precio cerrado por escrito</a>.</li>
-<li><strong>Dominio y alojamiento.</strong> El primer año van incluidos; después son unos 15 € al año si solo quieres mantenerlos.</li>
-<li><strong>Mantenimiento.</strong> Opcional: 25 € al mes, con hasta tres cambios al mes, si prefieres que te encargues de cambios y actualizaciones a otra persona.</li>
+<li><strong>La web.</strong> Un pago único: desde 420 € una landing y desde 540 € una web de negocio, más IVA, con el <a href="precios.html">precio cerrado por escrito</a>.</li>
+<li><strong>Dominio y alojamiento.</strong> El primer año van incluidos; después son unos 20 € al año si solo quieres mantenerlos.</li>
+<li><strong>Mantenimiento.</strong> Opcional: 28 € al mes, con hasta tres cambios al mes, si prefieres que te encargues de cambios y actualizaciones a otra persona.</li>
 <li><strong>Tu tiempo.</strong> Reunir fotos y contar qué haces. Es lo que más se subestima y lo que más se nota en el resultado.</li>
 </ul>
 <p>Más detalle, partida por partida, en la <a href="precio-diseno-web-profesional.html">guía de precios de una web profesional</a> y en <a href="cuanto-cuesta-mantener-una-web-al-ano.html">cuánto cuesta mantenerla al año</a>.</p>
@@ -197,7 +197,7 @@ ${consejo("Antes de pagar por una web, escribe en un papel qué le preguntan sie
 ${cta("¿Tienes un servicio y quieres que te encuentren?", "Cuéntame qué haces y dónde, y en 48 horas tienes una propuesta con el precio cerrado. Funciona igual a distancia que en persona.", "Solicitar presupuesto")}
 `,
   faq: [
-    ["¿Cuánto cuesta una página web para un autónomo?", "Una landing de una página cuesta desde 399 € + IVA y una web de negocio con varias páginas desde 499 € + IVA, con el precio cerrado por escrito. El primer año incluye dominio y alojamiento."],
+    ["¿Cuánto cuesta una página web para un autónomo?", "Una landing de una página cuesta desde 420 € + IVA y una web de negocio con varias páginas desde 540 € + IVA, con el precio cerrado por escrito. El primer año incluye dominio y alojamiento."],
     ["¿Puedo hacerla yo mismo?", "Sí, con un constructor de webs se puede. Cuesta tiempo, y lo habitual es que quede genérica, lenta en el móvil y sin planteamiento para aparecer en Google. Si tu hora vale dinero, suele compensar encargarla."],
     ["¿Qué datos legales tiene que llevar?", "Datos identificativos del titular (nombre, domicilio, NIF, contacto), política de privacidad si hay formularios y aviso de cookies si usas analítica o publicidad. Lo concreto conviene validarlo con tu gestor."],
     ["¿Trabajas con autónomos de fuera de Gipuzkoa?", "Sí. El estudio está en Tolosa, pero el proceso funciona a distancia, con videollamada, WhatsApp y un enlace privado para revisar la web. El precio es el mismo."],
@@ -254,9 +254,9 @@ ${figura("cafe-desk", "cafetería · web de ejemplo", "Web de ejemplo de una caf
 
 <h2 id="precio">Cuánto cuesta cada una</h2>
 ${tabla(["Opción", "Precio", "Incluye"], [
-  ["Landing", "Desde 399 € + IVA", "Una página a medida, adaptada a móvil, formulario de contacto, botón de WhatsApp y dominio y hosting el primer año"],
-  ["Web de negocio", "Desde 499 € + IVA", "Varias páginas, todo lo de la landing y más contenido"],
-  ["Tienda online", "Desde 850 € + IVA", "Todo lo anterior, hasta 50 productos cargados, pago con tarjeta y Bizum"],
+  ["Landing", "Desde 420 € + IVA", "Una página a medida, adaptada a móvil, formulario de contacto, botón de WhatsApp y dominio y hosting el primer año"],
+  ["Web de negocio", "Desde 540 € + IVA", "Varias páginas, todo lo de la landing y más contenido"],
+  ["Tienda online", "Desde 880 € + IVA", "Todo lo anterior, hasta 50 productos cargados, pago con tarjeta y Bizum"],
 ])}
 <p>Se puede empezar por una landing y ampliar más adelante cuando haya algo más que contar. Todo está en la <a href="precios.html">página de precios</a>.</p>
 
@@ -265,7 +265,7 @@ ${consejo("Si dudas, empieza por la landing. Es más fácil ampliar una página 
 ${cta("¿No sabes cuál te conviene?", "Cuéntame tu negocio y te digo, sin compromiso, cuál de las dos encaja y por qué.", "Solicitar presupuesto")}
 `,
   faq: [
-    ["¿Cuánto cuesta una landing page?", "Desde 399 € + IVA en OI Studio, con dominio y alojamiento el primer año, adaptación a móvil, formulario de contacto y botón de WhatsApp."],
+    ["¿Cuánto cuesta una landing page?", "Desde 420 € + IVA en OI Studio, con dominio y alojamiento el primer año, adaptación a móvil, formulario de contacto y botón de WhatsApp."],
     ["¿Puedo ampliar una landing a web completa más adelante?", "Sí. Se empieza por la landing y, cuando hay más que contar, se añaden páginas. Lo importante es planteársela desde el principio con ese margen."],
     ["¿Una landing sale en Google?", "Sí, sobre todo para búsquedas locales concretas y si la ficha de Google Business está bien cuidada. Para muchas búsquedas distintas conviene una web con varias páginas."],
     ["¿Cuál es mejor para un negocio local?", "Depende de cuántos servicios ofrezcas y de cómo te busque el cliente. Con uno o dos servicios claros suele bastar una landing; con varios, una web de negocio."],
@@ -311,7 +311,7 @@ ${figura("pan-desk", "panadería · web de ejemplo", "Web de ejemplo de una pana
 <h2 id="diseno">6. Diseña y construye</h2>
 <p>Aquí está el gran dilema: hacerlo tú con un constructor o encargarlo. Compara con honestidad:</p>
 ${tabla(["", "La haces tú", "La encargas"], [
-  ["Coste de entrada", "Bajo (suscripción mensual)", "Un pago único desde unos 399 €"],
+  ["Coste de entrada", "Bajo (suscripción mensual)", "Un pago único desde unos 420 €"],
   ["Tiempo tuyo", "Muchas horas, y aprender la herramienta", "Una conversación y reunir material"],
   ["Resultado", "Correcto, pero suele parecerse a otras", "A medida, pensado para tu negocio y para Google"],
   ["Después", "Cuota mensual mientras la tengas", "Tuya, con mantenimiento opcional"],

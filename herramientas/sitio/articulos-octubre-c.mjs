@@ -77,10 +77,10 @@ ${consejo("Un diseñador freelance barato que no responde sale más caro que uno
 ${cta("¿Quieres un precio cerrado para tu web?", "Cuéntame tu negocio y en 48 horas tienes una propuesta por escrito, sin compromiso.", "Pedir propuesta")}
 `,
   faq: [
-    ["¿Cuánto cobra un diseñador web freelance por una web de negocio?", "Como orientación del mercado, entre 300 y 1.500 € según el alcance; una agencia, entre 1.500 y 6.000 €. En OI Studio, una landing cuesta 399 € y una web con secciones 499 €, más IVA, con precio cerrado por escrito."],
+    ["¿Cuánto cobra un diseñador web freelance por una web de negocio?", "Como orientación del mercado, entre 300 y 1.500 € según el alcance; una agencia, entre 1.500 y 6.000 €. En OI Studio, una landing cuesta 420 € y una web con secciones 540 €, más IVA, con precio cerrado por escrito."],
     ["¿Es mejor pagar por horas o por proyecto?", "Por proyecto. Con un precio cerrado sabes lo que pagas antes de empezar; por horas sin tope, no. Si te ofrecen horas, pide que lo conviertan en un precio fijo con alcance escrito."],
     ["¿Qué incluye el precio de un diseñador web?", "Diseño a medida, versión móvil, dominio y alojamiento el primer año, lo básico de SEO, textos legales y un periodo de ajustes. Si algo de esto no está, pregúntalo antes de firmar."],
-    ["¿Cuánto cuesta un cambio después de publicar la web?", "Depende de quién la haga. En OI Studio el primer mes va incluido; después, con mantenimiento de 25 €/mes (tres cambios al mes) o con un presupuesto antes de hacerlo."],
+    ["¿Cuánto cuesta un cambio después de publicar la web?", "Depende de quién la haga. En OI Studio el primer mes va incluido; después, con mantenimiento de 28 €/mes (tres cambios al mes) o con un presupuesto antes de hacerlo."],
   ],
   cierre: `Sigue leyendo: <a href="precio-diseno-web-profesional.html">precios de un diseño web profesional</a>, <a href="diseno-web-barato-merece-la-pena.html">cuándo merece la pena una web barata</a> y <a href="como-elegir-disenador-web-gipuzkoa.html">cómo elegir diseñador web en Gipuzkoa</a>.`,
 },
@@ -101,7 +101,7 @@ ${cta("¿Quieres un precio cerrado para tu web?", "Cuéntame tu negocio y en 48 
   cuerpo: `
 <h2 id="precio">Qué cuesta una web en Euskadi en 2026</h2>
 <p>El precio depende de quién la haga más que de la provincia. Como orientación del mercado, una agencia cobra entre 1.500 y 6.000 € por una web completa; un diseñador freelance o un estudio pequeño, entre 300 y 1.500 €. Tienes los rangos explicados en la guía de <a href="precio-diseno-web-profesional.html">precios de un diseño web profesional</a>.</p>
-<p>Mi tarifa es la misma en las tres provincias: landing 399 €, web con secciones 499 € y tienda online 850 €, más IVA, con el <a href="precios.html">precio cerrado por escrito</a>, propuesta en 48 horas y pago al final, cuando la web está publicada.</p>
+<p>Mi tarifa es la misma en las tres provincias: landing 420 €, web con secciones 540 € y tienda online 880 €, más IVA, con el <a href="precios.html">precio cerrado por escrito</a>, propuesta en 48 horas y pago al final, cuando la web está publicada.</p>
 
 <h2 id="euskera">El euskera, bien hecho</h2>
 <p>En Euskadi una web en castellano y euskera no es un extra: es lo que esperan muchos clientes, y en varios municipios de Gipuzkoa hay ayudas para pagarla. Hacerla bien significa una página propia en cada idioma (no un traductor automático encima), etiquetas para que Google sepa qué idioma enseñar y una traducción revisada. Lo explico en <a href="web-bilingue-euskera-castellano.html">cómo hacer una web en euskera y castellano</a> y tienes la lista de <a href="ayudas-subvenciones-pagina-web-gipuzkoa.html">ayudas abiertas en Gipuzkoa</a>.</p>
@@ -128,7 +128,7 @@ ${consejo("Pide a quien te presupueste una web publicada que puedas abrir y el c
 ${cta("¿Tu negocio está en Euskadi y necesita web?", "Cuéntame qué haces y dónde, y en 48 horas tienes una propuesta con precio cerrado, en castellano y euskera si lo quieres.", "Pedir propuesta")}
 `,
   faq: [
-    ["¿Cuánto cuesta una página web en el País Vasco?", "Depende de quién la haga: como orientación del mercado, entre 300 y 1.500 € con un freelance o estudio pequeño, y entre 1.500 y 6.000 € en una agencia. En OI Studio, landing 399 €, web con secciones 499 € y tienda online 850 €, más IVA, con precio cerrado."],
+    ["¿Cuánto cuesta una página web en el País Vasco?", "Depende de quién la haga: como orientación del mercado, entre 300 y 1.500 € con un freelance o estudio pequeño, y entre 1.500 y 6.000 € en una agencia. En OI Studio, landing 420 €, web con secciones 540 € y tienda online 880 €, más IVA, con precio cerrado."],
     ["¿Trabajas con negocios de Bizkaia y Álava?", "Sí, a distancia desde Tolosa, con el mismo precio y el mismo proceso: charla, propuesta en 48 horas y revisión por WhatsApp hasta publicar."],
     ["¿Haces la web en euskera?", "Sí. Una página propia en cada idioma, con las etiquetas que Google necesita y traducción revisada. En varios municipios de Gipuzkoa hay ayudas para la web en euskera."],
     ["¿Hay ayudas para hacer la web en Euskadi?", "En Gipuzkoa hay ayudas municipales (imagen digital, euskera en la web) con plazos que cambian cada año; las tengo reunidas en la página de ayudas. Para Bizkaia y Álava, consulta tu ayuntamiento o la Cámara de Comercio."],
