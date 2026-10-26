@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="theme-color" content="#ffffff"/>
 <meta http-equiv="Content-Security-Policy" content="base-uri 'self'; form-action 'self' mailto: https://wa.me"/>
-<title>Reservas y citas online sin comisiones | OI Studio</title>
-<meta name="description" content="Reservas y citas en tu propia web, sin comisión: peluquerías, estética, fisios, restaurantes y casas rurales. En pack con tu web, desde 580 € + IVA."/>
+<title>Citas y reservas online sin comisiones | OI Studio</title>
+<meta name="description" content="Página de citas con tu nombre para peluquerías, barberías, estética, talleres, asesorías y cualquier negocio con cita. Sin comisiones, desde 160 € + 20 €/mes."/>
 <meta name="robots" content="index, follow, max-image-preview:large"/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="OI Studio"/>
 <meta property="og:url" content="https://oiwebstudio.com/reservas-online-sin-comisiones.html"/>
-<meta property="og:title" content="Reservas y citas online sin comisiones | OI Studio"/>
-<meta property="og:description" content="Tus clientes reservan desde el móvil y a ti te llega cada reserva al correo. Sin comisión por reserva."/>
+<meta property="og:title" content="Citas y reservas online sin comisiones | OI Studio"/>
+<meta property="og:description" content="Tus clientes piden cita desde el móvil, a la hora que quieran, y tú lo ves en tu panel. Sin comisión por cliente."/>
 <meta property="og:image" content="https://oiwebstudio.com/assets/og-precios.jpg"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
@@ -34,7 +34,7 @@
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "Reservas online",
+      "name": "Citas y reservas online",
       "item": "https://oiwebstudio.com/reservas-online-sin-comisiones.html"
     }
   ]
@@ -44,9 +44,9 @@
 {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "Reservas y citas online sin comisiones",
-  "serviceType": "Sistema de reservas online",
-  "description": "Reservas y citas online en tu propia web, sin comisión por reserva: peluquerías, estética, fisios, restaurantes y casas rurales. En pack con tu web y tu presencia en Google, desde 580 € (sin IVA).",
+  "name": "Citas y reservas online sin comisiones",
+  "serviceType": "Agenda de citas online",
+  "description": "Página de citas online con el nombre del negocio y panel en el móvil, sin comisión por cita ni por cliente nuevo, para negocios que trabajan con cita: peluquería, barbería, estética y uñas, peluquería canina, masajes, talleres, asesorías y clases particulares. Desde 160 € de montaje y 20 €/mes (sin IVA).",
   "url": "https://oiwebstudio.com/reservas-online-sin-comisiones.html",
   "provider": {
     "@type": "ProfessionalService",
@@ -73,6 +73,20 @@
   "offers": [
     {
       "@type": "Offer",
+      "price": "160",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "160",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      },
+      "name": "Solo agenda",
+      "description": "Montaje de la página de citas y el panel. Cuota de 20 €/mes hasta 2 personas y 8 €/mes por cada persona más (sin IVA).",
+      "url": "https://oiwebstudio.com/reservas-online-sin-comisiones.html#precio"
+    },
+    {
+      "@type": "Offer",
       "price": "580",
       "priceCurrency": "EUR",
       "priceSpecification": {
@@ -81,8 +95,9 @@
         "priceCurrency": "EUR",
         "valueAddedTaxIncluded": false
       },
-      "name": "Pack web + reservas",
-      "url": "https://oiwebstudio.com/precios.html#packs"
+      "name": "Web bonita + agenda",
+      "description": "Web diseñada a medida con la página de citas. Cuota de 28 €/mes con la agenda y el mantenimiento de la web (sin IVA).",
+      "url": "https://oiwebstudio.com/reservas-online-sin-comisiones.html#precio"
     },
     {
       "@type": "Offer",
@@ -94,21 +109,9 @@
         "priceCurrency": "EUR",
         "valueAddedTaxIncluded": false
       },
-      "name": "Pack restaurante",
-      "url": "https://oiwebstudio.com/precios.html#packs"
-    },
-    {
-      "@type": "Offer",
-      "price": "740",
-      "priceCurrency": "EUR",
-      "priceSpecification": {
-        "@type": "PriceSpecification",
-        "price": "740",
-        "priceCurrency": "EUR",
-        "valueAddedTaxIncluded": false
-      },
-      "name": "Pack casa rural",
-      "url": "https://oiwebstudio.com/precios.html#packs"
+      "name": "Web + agenda + presencia en Google",
+      "description": "Web, página de citas y presencia en Google. Cuota de 48 €/mes (sin IVA).",
+      "url": "https://oiwebstudio.com/reservas-online-sin-comisiones.html#precio"
     }
   ]
 }
@@ -122,48 +125,126 @@
 <link rel="stylesheet" href="assets/styles.css?v=30"/>
 <script>if(location.protocol==='http:'&&/(^|\.)oiwebstudio\.com$/.test(location.hostname))location.replace('https://'+location.host+location.pathname+location.search+location.hash);document.documentElement.classList.add('js');</script>
 <style>
-  .rs-hero{padding:140px 0 40px;}
-  .rs-hero__grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;}
+  .rs-hero{padding:140px 0 56px;}
+  .rs-hero__grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;}
   .rs-k{font-size:15px;font-weight:600;color:var(--terra-link);margin:0 0 14px;}
-  .rs-titulo{font-size:clamp(34px,5.2vw,60px);line-height:1.04;text-transform:uppercase;}
+  .rs-titulo{font-size:clamp(34px,5vw,58px);line-height:1.04;text-transform:uppercase;}
   .rs-lede{font-size:18.5px;line-height:1.65;color:var(--text-muted);margin-top:20px;max-width:56ch;}
   .rs-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;}
   .rs-precio-corto{margin-top:22px;font-size:15px;color:var(--text-muted);line-height:1.6;}
   .rs-precio-corto b{color:var(--ink);}
-  .rs-movil{margin:0;justify-self:center;max-width:290px;}
-  .rs-movil img{width:100%;height:auto;max-height:560px;object-fit:cover;object-position:top;border-radius:28px;border:8px solid var(--dark);box-shadow:var(--shadow-xl);}
-  .rs-movil figcaption,.rs-caso__img figcaption{font-size:13.5px;color:var(--text-muted);margin-top:12px;text-align:center;}
-  .rs-movil a{color:inherit;}
-  .rs-movil figcaption a{text-decoration:underline;text-underline-offset:3px;}
-  @media(max-width:900px){.rs-hero{padding:120px 0 30px;}.rs-hero__grid{grid-template-columns:1fr;gap:40px;}.rs-movil{max-width:240px;}}
+  /* Dos móviles: delante lo que ve el cliente, detrás lo que ve el dueño. */
+  .rs-tels{position:relative;margin:0;justify-self:center;width:100%;max-width:440px;aspect-ratio:440/560;}
+  .rs-tel{position:absolute;margin:0;border:8px solid var(--dark);border-radius:30px;overflow:hidden;background:var(--dark);box-shadow:var(--shadow-xl);}
+  .rs-tel img{display:block;width:100%;height:auto;}
+  .rs-tel--dueno{width:50%;top:0;right:0;}
+  .rs-tel--cliente{width:56%;left:0;bottom:0;}
+  .rs-tels figcaption{position:absolute;left:0;right:0;bottom:-44px;font-size:13.5px;color:var(--text-muted);text-align:center;}
+  .rs-tels figcaption a{color:inherit;text-decoration:underline;text-underline-offset:3px;}
+  @media(max-width:900px){.rs-hero{padding:120px 0 70px;}.rs-hero__grid{grid-template-columns:1fr;gap:40px;}.rs-tels{max-width:360px;}}
   .rs-banda-wrap{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:18px 0;}
   .rs-banda{white-space:nowrap;font-family:var(--font-serif);font-weight:500;font-size:clamp(30px,5vw,58px);line-height:1;color:var(--ink);opacity:.12;text-transform:uppercase;}
   .rs-sec{padding:84px 0;}
   .rs-sec--gris{background:var(--bg-subtle);}
   .rs-estrecho{max-width:820px;}
   .rs-h2{font-size:clamp(28px,3.6vw,40px);line-height:1.08;text-transform:uppercase;margin:0 0 28px;}
+  .rs-intro{font-size:17px;line-height:1.65;color:var(--text-muted);margin:-8px 0 34px;max-width:60ch;}
   .rs-enciende{font-size:clamp(19px,2.2vw,23px);line-height:1.55;color:var(--ink);margin:0 0 34px;max-width:40ch;}
   .rs-lista{list-style:none;margin:0;padding:0;border-top:1px solid var(--border-strong);}
   .rs-lista li{padding:18px 0;border-bottom:1px solid var(--border);}
-  .rs-sect li,.rs-incl li,.rs-pasos li{display:grid;grid-template-columns:1fr;gap:4px;}
-  @media(min-width:720px){.rs-sect li,.rs-incl li,.rs-pasos li{grid-template-columns:300px 1fr;gap:24px;}}
-  .rs-lista b{color:var(--ink);font-size:16.5px;}
+  .rs-incl li,.rs-pasos li{display:grid;grid-template-columns:1fr;gap:4px;}
+  @media(min-width:720px){.rs-incl li,.rs-pasos li{grid-template-columns:300px 1fr;gap:24px;}}
+  .rs-lista b{color:var(--ink);font-size:16.5px;text-transform:uppercase;}
   .rs-lista span{color:var(--text-muted);font-size:15.5px;line-height:1.6;}
   .rs-incl,.rs-pasos{counter-reset:n;}
   .rs-incl li b::before,.rs-pasos li b::before{counter-increment:n;content:counter(n) ". ";color:var(--terra-link);}
-  .rs-caso{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:center;}
-  @media(max-width:900px){.rs-caso{grid-template-columns:1fr;gap:28px;}}
-  .rs-caso__txt p{font-size:17px;line-height:1.7;color:var(--text-muted);}
-  .rs-caso__txt b{color:var(--ink);}
-  .rs-link{display:inline-block;margin-top:18px;color:var(--terra-link);font-weight:600;text-decoration:underline;text-underline-offset:4px;}
-  .rs-caso__img{margin:0;}
-  .rs-caso__img img{width:100%;height:auto;border-radius:var(--r-md);border:1px solid var(--border-strong);box-shadow:0 18px 44px -22px rgba(25,23,18,.28);}
-  .rs-precios li{display:flex;justify-content:space-between;align-items:baseline;gap:18px;}
-  .rs-precios li span{flex:1;}
-  .rs-precios li b{font-size:20px;white-space:nowrap;}
   .rs-nota{margin-top:20px;font-size:15px;color:var(--text-muted);line-height:1.6;}
-  .rs-nota a,.faq-pre a{color:var(--terra-link);font-weight:600;text-decoration:underline;text-underline-offset:3px;}
-  .rs-amedida__p{font-size:clamp(18px,2vw,21px);line-height:1.6;color:var(--ink);margin:0 0 26px;max-width:46ch;}
+  .rs-nota a,.faq-pre a,.rs-aparte a,.rs-fuentes a{color:var(--terra-link);font-weight:600;text-decoration:underline;text-underline-offset:3px;}
+  /* PARA QUIÉN: los negocios a la izquierda, lo de cada uno a la derecha. */
+  .rs-q{display:grid;grid-template-columns:minmax(230px,.8fr) 1.2fr;gap:56px;align-items:start;}
+  .rs-q__menu{display:flex;flex-direction:column;border-top:1px solid var(--border-strong);}
+  .rs-q__menu button{all:unset;cursor:pointer;display:block;padding:12px 0;border-bottom:1px solid var(--border);font-family:var(--font-serif);font-weight:500;font-size:clamp(19px,2vw,24px);line-height:1.15;text-transform:uppercase;color:var(--text-faint);transition:color .25s,transform .35s var(--ease);}
+  .rs-q__menu button:hover{color:var(--ink);}
+  .rs-q__menu button:focus-visible{outline:2px solid var(--ink);outline-offset:3px;}
+  .rs-q__menu button.is-on{color:var(--ink);transform:translateX(12px);}
+  .rs-q__menu button.is-on::before{content:"→ ";color:var(--terra-link);}
+  .rs-q__panel h3{font-size:clamp(22px,2.4vw,28px);line-height:1.1;text-transform:uppercase;margin:0 0 14px;}
+  .rs-q__panel p{font-size:17px;line-height:1.65;color:var(--text);margin:0 0 22px;max-width:52ch;}
+  .rs-q__panel + .rs-q__panel{margin-top:44px;}
+  .rs-q__panel[hidden]{display:none;}
+  .rs-q__menu[hidden]{display:none;}
+  .js .rs-q__panel + .rs-q__panel{margin-top:0;}
+  .rs-carta ul{list-style:none;margin:0;padding:0;}
+  .rs-carta{margin:0;padding:18px 20px;background:var(--surface);border:1px solid var(--border-strong);border-radius:var(--r-sm);max-width:440px;}
+  .rs-carta small{display:block;font-size:13px;color:var(--text-muted);margin-bottom:8px;}
+  .rs-carta li{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:15.5px;color:var(--ink);}
+  .rs-carta li i{flex:1;border-bottom:1px dotted var(--border-strong);transform:translateY(-4px);}
+  .rs-carta li b{font-weight:600;white-space:nowrap;}
+  .rs-aparte{margin-top:56px;display:grid;gap:14px;font-size:15.5px;line-height:1.6;color:var(--text-muted);max-width:68ch;}
+  .rs-aparte b{color:var(--ink);}
+  @media(max-width:900px){
+    .rs-q{grid-template-columns:1fr;gap:28px;}
+    .rs-q__menu{flex-direction:row;overflow-x:auto;gap:22px;border-top:0;border-bottom:1px solid var(--border-strong);scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+    .rs-q__menu::-webkit-scrollbar{display:none;}
+    .rs-q__menu button{white-space:nowrap;border-bottom:0;padding:10px 0 12px;font-size:18px;}
+    .rs-q__menu button.is-on{transform:none;box-shadow:inset 0 -3px 0 var(--ink);}
+    .rs-q__menu button.is-on::before{content:none;}
+  }
+  /* Ejemplos para probar */
+  .rs-demos{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:8px;}
+  .rs-demo{display:block;color:inherit;text-decoration:none;}
+  .rs-demo__tel{border:7px solid var(--dark);border-radius:26px;overflow:hidden;background:var(--dark);aspect-ratio:780/1100;transition:transform .45s var(--ease);}
+  .rs-demo__tel img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;}
+  .rs-demo b{display:block;margin-top:16px;color:var(--ink);font-size:16.5px;text-transform:uppercase;}
+  .rs-demo span{display:block;color:var(--text-muted);font-size:15px;line-height:1.5;margin-top:2px;}
+  .rs-demo em{display:inline-block;font-style:normal;margin-top:8px;color:var(--terra-link);font-weight:600;text-decoration:underline;text-underline-offset:4px;}
+  @media(hover:hover) and (pointer:fine){.rs-demo:hover .rs-demo__tel{transform:translateY(-6px) rotate(-1deg);}}
+  .rs-demo:focus-visible{outline:2px solid var(--ink);outline-offset:6px;border-radius:8px;}
+  .rs-dueno{margin-top:56px;padding:30px 32px;background:var(--dark);color:var(--dark-text);border-radius:var(--r-md);display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;}
+  .rs-dueno h3{color:#fff;text-transform:uppercase;font-size:22px;margin:0 0 8px;}
+  .rs-dueno p{margin:0;color:var(--dark-text-muted);font-size:15.5px;line-height:1.6;max-width:60ch;}
+  @media(max-width:900px){
+    .rs-demos{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:68%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;}
+    .rs-demo{scroll-snap-align:start;}
+    .rs-dueno{grid-template-columns:1fr;padding:26px 22px;}
+  }
+  /* Precios, como una carta */
+  .rs-planes li{display:grid;grid-template-columns:1fr auto;gap:10px 28px;align-items:start;padding:24px 0;}
+  .rs-planes li > div > span{display:block;margin-top:6px;max-width:48ch;}
+  .rs-planes .rs-cifra{text-align:right;white-space:nowrap;}
+  .rs-planes .rs-cifra b{display:block;font-size:24px;text-transform:none;}
+  .rs-planes .rs-cifra span{font-size:15px;}
+  .rs-planes a{color:var(--terra-link);font-weight:600;text-decoration:underline;text-underline-offset:3px;}
+  .rs-pers{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:16px;font-size:15px;color:var(--text-muted);}
+  .rs-pers button{all:unset;cursor:pointer;width:38px;height:38px;display:grid;place-items:center;border:1px solid var(--border-strong);border-radius:var(--r-xs);background:var(--surface);color:var(--ink);font-size:20px;line-height:1;}
+  .rs-pers button:hover{border-color:var(--ink);}
+  .rs-pers button:focus-visible{outline:2px solid var(--ink);outline-offset:2px;}
+  .rs-pers button[disabled]{opacity:.35;cursor:default;}
+  .rs-pers output{min-width:1.6em;text-align:center;font-size:20px;font-weight:600;color:var(--ink);}
+  .rs-pers__res{flex-basis:100%;}
+  @media(max-width:560px){#rs-pers-l{flex-basis:100%;}}
+  .rs-pers__res b{color:var(--ink);text-transform:none;font-size:inherit;}
+  .salta{animation:rs-salta .45s var(--ease);}
+  @keyframes rs-salta{0%{transform:translateY(0)}35%{transform:translateY(-7px)}100%{transform:translateY(0)}}
+  .rs-pers output,.rs-pers__res b{display:inline-block;}
+  @media(max-width:560px){.rs-planes li{gap:10px 16px;}.rs-planes .rs-cifra b{font-size:21px;}}
+  .rs-porque{font-size:clamp(18px,2vw,21px);line-height:1.6;color:var(--ink);margin:40px 0 0;max-width:52ch;}
+  /* Comparación */
+  .rs-tabla-wrap{overflow-x:auto;border-top:1px solid var(--border-strong);-webkit-overflow-scrolling:touch;}
+  .rs-tabla{width:100%;min-width:720px;border-collapse:collapse;font-size:15px;line-height:1.5;}
+  .rs-tabla th,.rs-tabla td{padding:14px 14px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top;}
+  .rs-tabla thead th{font-size:15px;color:var(--ink);text-transform:uppercase;}
+  .rs-tabla tbody th{font-weight:600;color:var(--ink);position:sticky;left:0;background:var(--bg-subtle);min-width:150px;}
+  .rs-desliza{display:none;font-size:13.5px;color:var(--text-muted);margin:0 0 10px;}
+  @media(max-width:760px){.rs-desliza{display:block;}.rs-tabla tbody th{min-width:120px;}}
+  .rs-tabla td{color:var(--text-muted);}
+  .rs-tabla .rs-oi{background:#fff;color:var(--ink);}
+  .rs-tabla tbody tr{transition:background .2s;}
+  .rs-tabla tbody tr:hover td{background:var(--terra-soft);}
+  .rs-claro{list-style:none;margin:34px 0 0;padding:0;display:grid;gap:14px;max-width:66ch;}
+  .rs-claro li{font-size:17px;line-height:1.6;color:var(--ink);padding-left:22px;position:relative;}
+  .rs-claro li::before{content:"";position:absolute;left:0;top:.7em;width:10px;height:2px;background:var(--terra-link);}
+  .rs-fuentes{margin-top:26px;font-size:13.5px;color:var(--text-muted);line-height:1.6;}
   .faq-pre{display:grid;gap:12px;}
   .faq-pre details{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:4px 22px;}
   .faq-pre details[open]{border-color:var(--border-strong);}
@@ -173,7 +254,10 @@
   .faq-pre details[open] summary::after{transform:rotate(45deg);}
   .faq-pre p{padding:0 0 18px;color:var(--text-muted);font-size:15px;line-height:1.6;}
   .cta h2{text-transform:uppercase;}
-  @media(prefers-reduced-motion:reduce){.faq-pre summary::after{transition:none;}}
+  @media(prefers-reduced-motion:reduce){
+    .faq-pre summary::after,.rs-q__menu button,.rs-demo__tel,.rs-tabla tbody tr{transition:none;}
+    .salta{animation:none;}
+  }
 </style>
 <script type="application/ld+json">
 {
@@ -182,10 +266,10 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "¿Cobras comisión por cada reserva?",
+      "name": "¿Cobras comisión por cada cita o por cada cliente nuevo?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. Pagas la puesta en marcha una vez y el mantenimiento de 28 €/mes, recibas diez reservas al mes o doscientas. Las reservas llegan a tu web, no a una plataforma que se queda una parte."
+        "text": "No. Pagas el montaje una vez y una cuota fija al mes, tengas diez citas o doscientas."
       }
     },
     {
@@ -193,31 +277,103 @@
       "name": "¿Funciona con la web que ya tengo?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No por separado: las reservas van siempre en un pack con la web, desde 580 € y con tu presencia en Google incluida. Si ya tienes web, cuéntamelo y lo vemos en la propuesta."
+        "text": "Sí. Pones un botón «Pedir cita» que lleva a tu página de citas. Si aún no tienes web, la hacemos juntos con WEB BONITA + AGENDA."
       }
     },
     {
       "@type": "Question",
-      "name": "¿Los avisos llegan por WhatsApp?",
+      "name": "¿Puedo aceptar o rechazar cada cita?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "De serie, el aviso de cada reserva, el recordatorio del día antes y la petición de reseña van por correo electrónico. Si los quieres por WhatsApp o SMS, te lo preparo a medida y te digo el precio antes de empezar."
+        "text": "La cita queda hecha en cuanto tu cliente la pide, y solo puede elegir horas que tienes libres. Si algo no te cuadra, la mueves o la anulas desde el panel."
       }
     },
     {
       "@type": "Question",
-      "name": "¿El mantenimiento es obligatorio?",
+      "name": "¿Los avisos llegan por WhatsApp o SMS?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sí, mientras tengas las reservas: el mantenimiento de 28 €/mes las mantiene en marcha, hace copias de seguridad e incluye hasta 3 cambios al mes (horarios, servicios o cierres). Sin permanencia."
+        "text": "Por correo. Por WhatsApp o SMS, de momento no."
       }
     },
     {
       "@type": "Question",
-      "name": "¿Qué necesitas de mí para empezar?",
+      "name": "¿Está en euskera?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Tus servicios o tipos de reserva, tu horario, los días que cierras, tu logo y el correo donde quieres recibir las reservas."
+        "text": "Hoy la página de citas y los avisos están en castellano. Si tu clientela pide la cita en euskera, dímelo y lo hablamos antes de empezar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Mis clientas mayores prefieren llamar.",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Que sigan llamando. Apuntas su cita en el panel en un momento, y la página recoge las de quien te busca cuando tienes cerrado."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Me va a atraer clientes nuevos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No: no es un escaparate con otros negocios. Es tu agenda, para tus clientes. Para que te encuentre gente nueva está la presencia en Google."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Sirve para una clínica o una consulta de salud?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Consúltame. De momento no lo ofrezco para fisioterapia, psicología, dental ni otras consultas de salud: esas citas piden más medidas de protección de datos de las que hoy te puedo garantizar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Los datos de mis clientes de quién son?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tuyos. Los guardo solo por encargo tuyo y no los uso para nada más. Los descargas en Excel cuando quieras."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo cobrar una señal al reservar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "De momento no."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Necesito instalar algo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Tus clientes piden la cita desde el navegador del móvil y tú entras al panel con tu usuario y tu contraseña."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Hace tickets o facturas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. No es una caja ni un TPV: sigues facturando como hasta ahora."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Hay permanencia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Si un mes lo quieres dejar, lo dejas, y te llevas tus citas en Excel."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuándo pago?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Al final, cuando las citas ya entran. Los precios de esta página son sin IVA."
       }
     }
   ]
@@ -284,83 +440,124 @@
 <header class="rs-hero">
 <div class="container rs-hero__grid">
 <div class="rs-hero__txt">
-<p class="rs-k">Reservas y citas online</p>
-<h1 class="rs-titulo">Reservas sin comisiones, en tu propia web</h1>
-<p class="rs-lede">Tus clientes eligen día y hora desde el móvil, también a las once de la noche. A ti te llega cada reserva al correo y la ves en un panel con calendario. No cobro comisión por reserva ni por cliente nuevo: pagas la puesta en marcha una vez y el mantenimiento cada mes.</p>
+<p class="rs-k">Citas y reservas online</p>
+<h1 class="rs-titulo">Tus clientes piden cita solos. Tú sigues trabajando.</h1>
+<p class="rs-lede">Una página de citas con tu nombre y tus colores, enlazada desde tu web, tu Instagram y tu ficha de Google. Tus clientes eligen el servicio, la persona y la hora, también a las once de la noche. Tú lo ves todo en el móvil. Sin comisión por cliente: una cuota fija al mes, y el montaje lo hago yo.</p>
 <div class="rs-btns">
-<a class="btn btn--accent btn--lg" href="contacto.html">Quiero reservas en mi web</a>
-<a class="btn btn--soft btn--lg" href="precios.html#packs">Ver precios</a>
+<a class="btn btn--accent btn--lg" href="https://agenda-oi-demo.oi-studio-web.workers.dev/s/salon-demo" target="_blank" rel="noopener">Ver un ejemplo</a>
+<a class="btn btn--soft btn--lg" href="https://wa.me/34611497409?text=Hola%2C%20me%20interesan%20las%20citas%20online%20para%20mi%20negocio" target="_blank" rel="noopener">Pedir precio por WhatsApp</a>
 </div>
-<p class="rs-precio-corto"><b>580 €</b> web + reservas · <b>740 €</b> restaurante o casa rural · <b>28 €/mes</b> de mantenimiento. Sin IVA.</p>
+<p class="rs-precio-corto"><b>Desde 160 €</b> de montaje y <b>20 €/mes</b>. Sin IVA. Pagas al final, cuando ya funciona.</p>
 </div>
-<figure class="rs-movil">
-<a href="caso-a-berri.html"><picture><source srcset="assets/aberri/web-reserva-movil.webp" type="image/webp"/><img src="assets/aberri/web-reserva-movil.jpg" alt="Calendario de reservas de la web de A.Berri, casa rural en Getaria, en el móvil" width="585" height="1266"/></picture></a>
-<figcaption>Caso real: las reservas de <a href="caso-a-berri.html">A.Berri</a>, casa rural en Getaria.</figcaption>
+<figure class="rs-tels">
+<div class="rs-tel rs-tel--dueno"><picture><source srcset="assets/agenda/panel-agenda.webp" type="image/webp"/><img src="assets/agenda/panel-agenda.jpg" alt="Panel del dueño en el móvil: la agenda del día con una columna por persona" width="780" height="1560" loading="eager"/></picture></div>
+<div class="rs-tel rs-tel--cliente"><picture><source srcset="assets/agenda/cita-dia-hora.webp" type="image/webp"/><img src="assets/agenda/cita-dia-hora.jpg" alt="Página de citas en el móvil: el cliente elige día y hora entre los huecos libres" width="780" height="1570" loading="eager"/></picture></div>
+<figcaption>Página de citas y panel de ejemplo, con datos inventados. <a href="https://agenda-oi-demo.oi-studio-web.workers.dev/s/salon-demo" target="_blank" rel="noopener">Pruébala</a>.</figcaption>
 </figure>
 </div>
 </header>
 
-<div class="rs-banda-wrap" aria-hidden="true"><div class="rs-banda">Peluquerías · Barberías · Estética · Fisioterapia · Restaurantes · Sidrerías · Casas rurales · Peluquerías · Barberías · Estética · Fisioterapia · Restaurantes</div></div>
+<div class="rs-banda-wrap" aria-hidden="true"><div class="rs-banda">Peluquerías · Barberías · Estética y uñas · Peluquería canina · Masajes · Talleres · Asesorías · Clases particulares · Peluquerías · Barberías · Estética y uñas</div></div>
 
-<section class="rs-sec">
-<div class="container rs-estrecho">
-<h2 class="rs-h2">Para negocios que viven de la agenda</h2>
-<ul class="rs-sect rs-lista">
-<li><b>Peluquerías y barberías</b><span>El teléfono suena cuando tienes las manos ocupadas. Con la cita online, el cliente la pide solo y tú la ves en el panel.</span></li>
-<li><b>Estética y uñas</b><span>Citas a cualquier hora, recordatorio el día antes y petición de reseña después de cada visita.</span></li>
-<li><b>Fisioterapia</b><span>El recordatorio del día antes le llega a cada paciente sin que tengas que llamar.</span></li>
-<li><b>Restaurantes y sidrerías</b><span>Piden mesa desde el móvil, cuando deciden dónde cenar. Con la carta editable cambias tú el menú del día.</span></li>
-<li><b>Casas rurales</b><span>Reservas directas en tu web, con calendario y la señal cobrada con tarjeta. En esas reservas no pagas la comisión de los portales.</span></li>
-</ul>
+<section class="rs-sec" id="para-quien">
+<div class="container">
+<h2 class="rs-h2">Para cualquier negocio que trabaja con cita</h2>
+<p class="rs-intro">Si tu día se organiza en citas de una persona con un cliente, te sirve. Elige el tuyo:</p>
+<div class="rs-q">
+<div class="rs-q__menu" role="tablist" aria-label="Tipo de negocio" hidden>
+<button type="button" role="tab" id="q-tab-peluqueria" aria-controls="q-peluqueria" aria-selected="true" class="is-on">Peluquería</button>
+<button type="button" role="tab" id="q-tab-barberia" aria-controls="q-barberia" aria-selected="false" tabindex="-1">Barbería</button>
+<button type="button" role="tab" id="q-tab-estetica-y-unas" aria-controls="q-estetica-y-unas" aria-selected="false" tabindex="-1">Estética y uñas</button>
+<button type="button" role="tab" id="q-tab-peluqueria-canina" aria-controls="q-peluqueria-canina" aria-selected="false" tabindex="-1">Peluquería canina</button>
+<button type="button" role="tab" id="q-tab-masajes" aria-controls="q-masajes" aria-selected="false" tabindex="-1">Masajes</button>
+<button type="button" role="tab" id="q-tab-talleres" aria-controls="q-talleres" aria-selected="false" tabindex="-1">Talleres</button>
+<button type="button" role="tab" id="q-tab-asesorias-y-gestorias" aria-controls="q-asesorias-y-gestorias" aria-selected="false" tabindex="-1">Asesorías y gestorías</button>
+<button type="button" role="tab" id="q-tab-clases-particulares" aria-controls="q-clases-particulares" aria-selected="false" tabindex="-1">Clases particulares</button>
+</div>
+<div class="rs-q__paneles">
+<div class="rs-q__panel is-on" id="q-peluqueria" role="tabpanel" aria-labelledby="q-tab-peluqueria">
+<h3>Peluquería</h3>
+<p>Dejas de coger el teléfono con las manos en una cabeza. La cita entra sola, con el tiempo que dura de verdad cada servicio: un corte no ocupa lo mismo que un tinte.</p>
+<div class="rs-carta"><small>Así saldrían, por ejemplo, dos de tus servicios:</small><ul><li><span>Corte y peinado</span><i></i><b>45 min</b></li><li><span>Tinte de raíz</span><i></i><b>1 h 30 min</b></li></ul></div>
+</div>
+<div class="rs-q__panel" id="q-barberia" role="tabpanel" aria-labelledby="q-tab-barberia">
+<h3>Barbería</h3>
+<p>Cada cliente elige su hora y su barbero, o «me da igual». Tú ves la tarde entera de un vistazo, persona por persona.</p>
+<div class="rs-carta"><small>Así saldrían, por ejemplo, dos de tus servicios:</small><ul><li><span>Corte</span><i></i><b>30 min</b></li><li><span>Corte y barba</span><i></i><b>45 min</b></li></ul></div>
+</div>
+<div class="rs-q__panel" id="q-estetica-y-unas" role="tabpanel" aria-labelledby="q-tab-estetica-y-unas">
+<h3>Estética y uñas</h3>
+<p>Citas a cualquier hora y, si tu clienta lo pide, un recordatorio el día antes para que el hueco no se quede vacío.</p>
+<div class="rs-carta"><small>Así saldrían, por ejemplo, dos de tus servicios:</small><ul><li><span>Manicura semipermanente</span><i></i><b>1 h</b></li><li><span>Cejas y pestañas</span><i></i><b>30 min</b></li></ul></div>
+</div>
+<div class="rs-q__panel" id="q-peluqueria-canina" role="tabpanel" aria-labelledby="q-tab-peluqueria-canina">
+<h3>Peluquería canina</h3>
+<p>El baño de un perro grande no dura lo mismo que el de uno pequeño: cada servicio ocupa su tiempo y las citas no se pisan.</p>
+<div class="rs-carta"><small>Así saldrían, por ejemplo, dos de tus servicios:</small><ul><li><span>Baño perro pequeño</span><i></i><b>45 min</b></li><li><span>Baño y corte perro grande</span><i></i><b>2 h</b></li></ul></div>
+</div>
+<div class="rs-q__panel" id="q-masajes" role="tabpanel" aria-labelledby="q-tab-masajes">
+<h3>Masajes</h3>
+<p>Las horas libres se ven solas. Cierras una tarde desde el móvil y la página deja de ofrecerla.</p>
+<div class="rs-carta"><small>Así saldrían, por ejemplo, dos de tus servicios:</small><ul><li><span>Masaje relajante</span><i></i><b>1 h</b></li><li><span>Masaje de espalda</span><i></i><b>30 min</b></li></ul></div>
+</div>
+<div class="rs-q__panel" id="q-talleres" role="tabpanel" aria-labelledby="q-tab-talleres">
+<h3>Talleres</h3>
+<p>Te piden hora para la revisión o el cambio de ruedas sin llamar al taller. Si sois dos mecánicos, cada uno lleva su agenda.</p>
+<div class="rs-carta"><small>Así saldrían, por ejemplo, dos de tus servicios:</small><ul><li><span>Cambio de aceite y filtros</span><i></i><b>45 min</b></li><li><span>Cambio de neumáticos</span><i></i><b>30 min</b></li></ul></div>
+</div>
+<div class="rs-q__panel" id="q-asesorias-y-gestorias" role="tabpanel" aria-labelledby="q-tab-asesorias-y-gestorias">
+<h3>Asesorías y gestorías</h3>
+<p>La primera consulta se pide desde tu web, sin cruzar diez correos para cuadrar una hora.</p>
+<div class="rs-carta"><small>Así saldrían, por ejemplo, dos de tus servicios:</small><ul><li><span>Primera consulta</span><i></i><b>30 min</b></li><li><span>Declaración de la renta</span><i></i><b>1 h</b></li></ul></div>
+</div>
+<div class="rs-q__panel" id="q-clases-particulares" role="tabpanel" aria-labelledby="q-tab-clases-particulares">
+<h3>Clases particulares</h3>
+<p>Cada alumno coge su hora con su profesor, y tú ves la semana de cada uno sin apuntar nada en papel.</p>
+<div class="rs-carta"><small>Así saldrían, por ejemplo, dos de tus servicios:</small><ul><li><span>Clase de guitarra</span><i></i><b>1 h</b></li><li><span>Repaso de matemáticas</span><i></i><b>1 h</b></li></ul></div>
+</div>
+</div>
+</div>
+<div class="rs-aparte">
+<p><b>¿Tu negocio no sale aquí?</b> <a href="https://wa.me/34611497409?text=Hola%2C%20me%20interesan%20las%20citas%20online%20para%20mi%20negocio" target="_blank" rel="noopener">Cuéntamelo</a> y te digo con sinceridad si te sirve.</p>
+<p><b>¿Clínica, fisioterapia, psicología u otra consulta de salud?</b> Consúltame antes: de momento no lo ofrezco para citas de salud, porque piden más medidas de protección de datos de las que hoy te puedo garantizar.</p>
+<p><b>¿Mesas de restaurante o noches de casa rural?</b> Eso no es una agenda de citas: va con otra pieza, como la que hice para <a href="caso-a-berri.html">A.Berri</a>. Mira los <a href="precios.html#packs">packs con reservas</a>.</p>
+</div>
 </div>
 </section>
 
-<section class="rs-sec rs-sec--gris">
+<section class="rs-sec rs-sec--gris" id="ejemplos">
+<div class="container">
+<h2 class="rs-h2">Pruébala en tu móvil</h2>
+<p class="rs-intro">Tres negocios inventados, con datos de ejemplo. Elige un servicio, una persona, un día y una hora, como lo haría tu cliente.</p>
+<div class="rs-demos">
+<a class="rs-demo rs-panel" href="https://agenda-oi-demo.oi-studio-web.workers.dev/s/salon-demo" target="_blank" rel="noopener"><div class="rs-demo__tel"><picture><source srcset="assets/agenda/demo-salon.webp" type="image/webp"/><img src="assets/agenda/demo-salon.jpg" alt="Portada de la página de citas de ejemplo de una peluquería" width="780" height="1100" loading="lazy"/></picture></div><b>Salón demo</b><span>Peluquería, con fotos y dos personas.</span><em>Abrir el ejemplo</em></a>
+<a class="rs-demo rs-panel" href="https://agenda-oi-demo.oi-studio-web.workers.dev/s/barberia-prueba" target="_blank" rel="noopener"><div class="rs-demo__tel"><picture><source srcset="assets/agenda/demo-barberia.webp" type="image/webp"/><img src="assets/agenda/demo-barberia.jpg" alt="Portada de la página de citas de ejemplo de una barbería" width="780" height="1100" loading="lazy"/></picture></div><b>Barbería prueba</b><span>Barbería, en oscuro y con su propia letra.</span><em>Abrir el ejemplo</em></a>
+<a class="rs-demo rs-panel" href="https://agenda-oi-demo.oi-studio-web.workers.dev/s/estetica-demo" target="_blank" rel="noopener"><div class="rs-demo__tel"><picture><source srcset="assets/agenda/demo-estetica.webp" type="image/webp"/><img src="assets/agenda/demo-estetica.jpg" alt="Portada de la página de citas de ejemplo de un centro de estética" width="780" height="1100" loading="lazy"/></picture></div><b>Estética demo</b><span>Uñas, cejas, pestañas y facial.</span><em>Abrir el ejemplo</em></a>
+</div>
+<div class="rs-dueno rs-panel">
+<div>
+<h3>Así lo ve el dueño</h3>
+<p>Un panel en el móvil: la agenda del día con una columna por persona, la semana de cada una, «+ cita» para las que te piden por teléfono, cerrar horas y festivos, y tus servicios con su descripción. Te lo enseño con una cuenta de prueba cuando hablemos.</p>
+</div>
+<a class="btn btn--light btn--lg" href="https://agenda-oi-demo.oi-studio-web.workers.dev/panel/" target="_blank" rel="noopener">Ver la entrada al panel</a>
+</div>
+</div>
+</section>
+
+<section class="rs-sec">
 <div class="container rs-estrecho">
 <h2 class="rs-h2">Lo que te dejo funcionando</h2>
-<p class="rs-enciende">Muchas plataformas de reservas cobran por cada comensal o por cada cliente nuevo que te traen. Aquí no: las reservas llegan a tu web y a tu correo, y son tuyas.</p>
+<p class="rs-enciende">Muchas plataformas cobran por cada cliente nuevo que te llega a través de ellas. Aquí no: las citas entran en tu página y son tuyas.</p>
 <ol class="rs-incl rs-lista">
-<li><b>Página de reservas con tu nombre y tus colores</b><span>Dentro de tu web, o enlazada desde ella, desde tu ficha de Google y desde tu Instagram.</span></li>
-<li><b>Panel con calendario</b><span>Aceptas o rechazas cada reserva y cierras días desde el móvil.</span></li>
-<li><b>Aviso de cada reserva</b><span>Te llega al correo con todos los datos.</span></li>
-<li><b>Recordatorio el día antes</b><span>Por correo, para que tu cliente no se olvide.</span></li>
-<li><b>Petición de reseña</b><span>Después de la visita, por correo, con el enlace a tu ficha de Google.</span></li>
-<li><b>Sin comisión</b><span>Ni por reserva ni por cliente nuevo.</span></li>
+<li><b>Tu página de citas</b><span>Con tu nombre, tus colores y tus servicios, cada uno con su descripción, su duración y su precio. Tu cliente elige servicio, persona (o «me da igual»), día y hora. Las horas cogidas, las cerradas y los festivos no salen.</span></li>
+<li><b>La agenda en el móvil</b><span>El día en columnas, una por persona, y la semana de cada una. Las citas que te piden por teléfono las apuntas en un momento, y las mueves si hace falta.</span></li>
+<li><b>Cada persona con su horario</b><span>Quién trabaja, qué servicios hace y cuándo. Cierras una mañana o marcas un festivo y la página deja de ofrecerlo.</span></li>
+<li><b>Avisos por correo</b><span>A ti, cada cita nueva y cada una que anulan. A tu cliente, si lo pide, la confirmación y un recordatorio el día antes.</span></li>
+<li><b>Un enlace para anular</b><span>Tu cliente anula desde el enlace de su cita, sin llamarte, y esa hora vuelve a quedar libre para otro.</span></li>
+<li><b>El botón y el QR</b><span>El enlace para tu web, tu Instagram y tu ficha de Google, y un código QR para el mostrador.</span></li>
+<li><b>Tus citas, en Excel</b><span>Las descargas cuando quieras. Si un cliente te pide que borres sus datos, lo haces desde el panel.</span></li>
+<li><b>Sin comisiones ni permanencia</b><span>Ni por cita ni por cliente nuevo. Si un mes lo quieres dejar, lo dejas.</span></li>
 </ol>
-</div>
-</section>
-
-<section class="rs-sec">
-<div class="container rs-caso">
-<div class="rs-caso__txt">
-<h2 class="rs-h2">Un caso real</h2>
-<p><b>A.Berri</b>, casa rural y apartamento en Getaria, recibe las reservas desde su propia web: calendario, panel para los dueños y aviso de cada solicitud a su correo de siempre.</p>
-<a class="rs-link" href="caso-a-berri.html">Ver el caso de A.Berri →</a>
-</div>
-<figure class="rs-caso__img">
-<picture><source srcset="assets/aberri/web-reserva.webp" type="image/webp"/><img src="assets/aberri/web-reserva.jpg" alt="Sección de reservas de la web de A.Berri en un ordenador" width="1440" height="900" loading="lazy"/></picture>
-</figure>
-</div>
-</section>
-
-<section class="rs-sec rs-sec--gris" id="precio">
-<div class="container rs-estrecho">
-<h2 class="rs-h2">Cuánto cuesta</h2>
-<ul class="rs-precios rs-lista">
-<li><span>Pack web + reservas: una página con reservas o citas</span><b>580 €</b></li>
-<li><span>Pack restaurante: web con secciones, reservas y carta editable</span><b>740 €</b></li>
-<li><span>Pack casa rural: web con secciones, reservas y cobro de señal</span><b>740 €</b></li>
-<li><span>Mantenimiento, obligatorio con reservas (incluye hasta 3 cambios al mes)</span><b>28 €/mes</b></li>
-</ul>
-<p class="rs-nota">Precios sin IVA. Todos los packs llevan tu presencia en Google incluida. La puesta en marcha la pagas una sola vez, al final, cuando las reservas ya funcionan. <a href="precios.html">Ver todos los precios →</a></p>
-</div>
-</section>
-
-<section class="rs-sec rs-amedida" id="a-medida">
-<div class="container rs-estrecho">
-<h2 class="rs-h2">Si lo necesitas, lo preparo</h2>
-<p class="rs-amedida__p rs-sube">¿Avisos por WhatsApp, conectar con Booking o TheFork, algo que no ves aquí? Cuéntamelo: lo preparo a medida para tu negocio y te digo el precio antes de empezar.</p>
-<a class="btn btn--accent btn--lg rs-sube" href="https://wa.me/34611497409?text=Hola%2C%20para%20las%20reservas%20de%20mi%20negocio%20necesitar%C3%ADa%20algo%20a%20medida%3A%20" target="_blank" rel="noopener">Cuéntamelo por WhatsApp</a>
 </div>
 </section>
 
@@ -368,11 +565,66 @@
 <div class="container rs-estrecho">
 <h2 class="rs-h2">Cómo empezamos</h2>
 <ol class="rs-pasos rs-lista">
-<li><b>Hablamos 15 minutos</b><span>Me cuentas tus servicios, tu horario y cómo reservan hoy tus clientes.</span></li>
-<li><b>Propuesta en 48 h</b><span>Con el precio cerrado por escrito.</span></li>
-<li><b>Lo monto y lo pruebas</b><span>Hacemos reservas de prueba antes de abrirlo a tus clientes.</span></li>
-<li><b>Pagas al final</b><span>Cuando las reservas ya funcionan.</span></li>
+<li><b>Me pasas tus servicios</b><span>Lo que haces, lo que dura, lo que cuesta, quién trabaja y cuándo.</span></li>
+<li><b>Te lo dejo montado</b><span>Hacemos citas de prueba juntos y te enseño el panel en tu móvil.</span></li>
+<li><b>Pones el botón</b><span>En tu web, en Instagram y en Google. Pagas al final, cuando ya funciona.</span></li>
 </ol>
+</div>
+</section>
+
+<section class="rs-sec" id="precio">
+<div class="container rs-estrecho">
+<h2 class="rs-h2">Cuánto cuesta</h2>
+<ul class="rs-planes rs-lista">
+<li>
+<div><b>Solo agenda</b><span>Para la web que ya tienes, o aunque no tengas web: el botón lleva a tu página de citas.</span>
+<div class="rs-pers" data-base="20" data-incluye="2" data-extra="8">
+<span id="rs-pers-l">Personas que dan citas:</span>
+<button type="button" class="rs-pers__menos" aria-label="Una persona menos" aria-controls="rs-pers-n">−</button>
+<output id="rs-pers-n" aria-labelledby="rs-pers-l">2</output>
+<button type="button" class="rs-pers__mas" aria-label="Una persona más" aria-controls="rs-pers-n">+</button>
+<span class="rs-pers__res" aria-live="polite">Tu cuota: <b>20 €/mes</b>. Hasta 2 personas son 20 €/mes, y cada persona más suma 8 €/mes.</span>
+</div>
+</div>
+<div class="rs-cifra"><b>160 €</b><span>+ 20 €/mes</span></div>
+</li>
+<li>
+<div><b>Web bonita + agenda</b><span>Tu web, diseñada por mí, con la página de citas en cada botón «Pedir cita». La cuota cubre la agenda y el mantenimiento de la web.</span></div>
+<div class="rs-cifra"><b>580 €</b><span>+ 28 €/mes</span></div>
+</li>
+<li>
+<div><b>Web + agenda + presencia en Google</b><span>Lo anterior y tu <a href="seo-posicionamiento-google.html">presencia en Google</a>: tu ficha completa y los mismos datos en Bing y Apple Maps, para que te encuentren.</span></div>
+<div class="rs-cifra"><b>740 €</b><span>+ 48 €/mes</span></div>
+</li>
+</ul>
+<p class="rs-nota">Precios sin IVA. Sin permanencia. El montaje lo pagas una sola vez, al final, cuando las citas ya entran. <a href="precios.html">Ver todos los precios →</a></p>
+<p class="rs-porque rs-sube"><b>¿Por qué cuesta menos que otras?</b> No mantengo una app ni un escaparate con miles de negocios. Tu página de citas funciona en los mismos servidores sencillos que uso para las webs que hago, y el montaje lo hago yo una vez.</p>
+</div>
+</section>
+
+<section class="rs-sec rs-sec--gris" id="comparar">
+<div class="container">
+<h2 class="rs-h2">Comparado con las plataformas conocidas</h2>
+<p class="rs-intro">Precios publicados por cada una, sin IVA, consultados el 26/10/2026. Pueden cambiar.</p>
+<p class="rs-desliza" aria-hidden="true">Desliza la tabla para ver las demás →</p>
+<div class="rs-tabla-wrap rs-panel" tabindex="0" role="region" aria-label="Comparación con Booksy, Fresha y Doctoralia">
+<table class="rs-tabla">
+<thead><tr><th scope="col"><span class="sr-only">Qué se compara</span></th><th scope="col" class="rs-oi">OI Studio</th><th scope="col">Booksy</th><th scope="col">Fresha</th><th scope="col">Doctoralia</th></tr></thead>
+<tbody>
+<tr><th scope="row">Cuota</th><td class="rs-oi">20 €/mes hasta 2 personas, +8 € por persona más. Montaje: 160 €, una vez</td><td>34,99 €/mes, +8 € por empleado</td><td>19,95 €/mes una persona, o 12,95 € por persona en equipo</td><td>Desde 89 €/mes, facturado al año</td></tr>
+<tr><th scope="row">Comisión por cliente nuevo</th><td class="rs-oi">No</td><td>30 % de la primera visita si te llega por su escaparate (máximo 50 €)</td><td>Una tarifa por cliente nuevo de su escaparate (no publica la cifra)</td><td>No aparece en su página de precios</td></tr>
+<tr><th scope="row">Te atrae clientes nuevos</th><td class="rs-oi">No</td><td>Sí</td><td>Sí</td><td>Sí</td></tr>
+<tr><th scope="row">Tu página</th><td class="rs-oi">Con tu nombre y tu diseño</td><td>Tu perfil dentro de Booksy</td><td>Tu perfil dentro de Fresha</td><td>Tu perfil dentro de Doctoralia</td></tr>
+<tr><th scope="row">Para quién</th><td class="rs-oi">Negocios con cita, sin datos de salud</td><td>Belleza</td><td>Belleza y bienestar</td><td>Sanidad</td></tr>
+</tbody>
+</table>
+</div>
+<ul class="rs-claro">
+<li>Si lo que necesitas es que te encuentre gente nueva, Booksy o Fresha te pueden servir más que yo.</li>
+<li>Si tus clientes ya son tuyos y lo que quieres es que pidan cita sin llamarte, en tu propia página y sin pagar por cada uno, esto es para ti.</li>
+<li>Si eres fisio, psicóloga o clínica, de momento no lo ofrezco: las citas de salud necesitan más medidas de las que hoy te puedo garantizar.</li>
+</ul>
+<p class="rs-fuentes">Fuentes: <a href="https://biz.booksy.com/es-es/precios" target="_blank" rel="noopener nofollow">precios de Booksy</a> · <a href="https://www.fresha.com/es/pricing" target="_blank" rel="noopener nofollow">precios de Fresha</a> · <a href="https://pro.doctoralia.es/precios" target="_blank" rel="noopener nofollow">precios de Doctoralia</a>.</p>
 </div>
 </section>
 
@@ -380,12 +632,20 @@
 <div class="container rs-estrecho">
 <h2 class="rs-h2">Preguntas frecuentes</h2>
 <div class="faq-pre">
-<details><summary>¿Cobras comisión por cada reserva?</summary><p>No. Pagas la puesta en marcha una vez y el mantenimiento de 28 €/mes, recibas diez reservas al mes o doscientas. Las reservas llegan a tu web, no a una plataforma que se queda una parte.</p></details>
-<details><summary>¿Funciona con la web que ya tengo?</summary><p>No por separado: las reservas van siempre en un pack con la web, desde 580 € y con tu presencia en Google incluida. Si ya tienes web, cuéntamelo y lo vemos en la propuesta.</p></details>
-<details><summary>¿Los avisos llegan por WhatsApp?</summary><p>De serie, el aviso de cada reserva, el recordatorio del día antes y la petición de reseña van por correo electrónico. Si los quieres por WhatsApp o SMS, te lo preparo a medida y te digo el precio antes de empezar.</p></details>
-<details><summary>¿El mantenimiento es obligatorio?</summary><p>Sí, mientras tengas las reservas: el mantenimiento de 28 €/mes las mantiene en marcha, hace copias de seguridad e incluye hasta 3 cambios al mes (horarios, servicios o cierres). Sin permanencia.</p></details>
-<details><summary>¿Qué necesitas de mí para empezar?</summary><p>Tus servicios o tipos de reserva, tu horario, los días que cierras, tu logo y el correo donde quieres recibir las reservas.</p></details>
-
+<details><summary>¿Cobras comisión por cada cita o por cada cliente nuevo?</summary><p>No. Pagas el montaje una vez y una cuota fija al mes, tengas diez citas o doscientas.</p></details>
+<details><summary>¿Funciona con la web que ya tengo?</summary><p>Sí. Pones un botón «Pedir cita» que lleva a tu página de citas. Si aún no tienes web, la hacemos juntos con WEB BONITA + AGENDA.</p></details>
+<details><summary>¿Puedo aceptar o rechazar cada cita?</summary><p>La cita queda hecha en cuanto tu cliente la pide, y solo puede elegir horas que tienes libres. Si algo no te cuadra, la mueves o la anulas desde el panel.</p></details>
+<details><summary>¿Los avisos llegan por WhatsApp o SMS?</summary><p>Por correo. Por WhatsApp o SMS, de momento no.</p></details>
+<details><summary>¿Está en euskera?</summary><p>Hoy la página de citas y los avisos están en castellano. Si tu clientela pide la cita en euskera, dímelo y lo hablamos antes de empezar.</p></details>
+<details><summary>Mis clientas mayores prefieren llamar.</summary><p>Que sigan llamando. Apuntas su cita en el panel en un momento, y la página recoge las de quien te busca cuando tienes cerrado.</p></details>
+<details><summary>¿Me va a atraer clientes nuevos?</summary><p>No: no es un escaparate con otros negocios. Es tu agenda, para tus clientes. Para que te encuentre gente nueva está la presencia en Google.</p></details>
+<details><summary>¿Sirve para una clínica o una consulta de salud?</summary><p>Consúltame. De momento no lo ofrezco para fisioterapia, psicología, dental ni otras consultas de salud: esas citas piden más medidas de protección de datos de las que hoy te puedo garantizar.</p></details>
+<details><summary>¿Los datos de mis clientes de quién son?</summary><p>Tuyos. Los guardo solo por encargo tuyo y no los uso para nada más. Los descargas en Excel cuando quieras.</p></details>
+<details><summary>¿Puedo cobrar una señal al reservar?</summary><p>De momento no.</p></details>
+<details><summary>¿Necesito instalar algo?</summary><p>No. Tus clientes piden la cita desde el navegador del móvil y tú entras al panel con tu usuario y tu contraseña.</p></details>
+<details><summary>¿Hace tickets o facturas?</summary><p>No. No es una caja ni un TPV: sigues facturando como hasta ahora.</p></details>
+<details><summary>¿Hay permanencia?</summary><p>No. Si un mes lo quieres dejar, lo dejas, y te llevas tus citas en Excel.</p></details>
+<details><summary>¿Cuándo pago?</summary><p>Al final, cuando las citas ya entran. Los precios de esta página son sin IVA.</p></details>
 </div>
 </div>
 </section>
@@ -393,11 +653,11 @@
 <section class="section dark-section cta">
 <div class="container">
 <div>
-<h2>¿Quieres que tus clientes reserven sin llamar?</h2>
-<p>Cuéntame qué negocio tienes y cómo reservan hoy tus clientes. En 48 horas te mando una propuesta con precio cerrado.</p>
+<h2>¿Quieres que tus clientes pidan cita sin llamarte?</h2>
+<p>Cuéntame qué haces y cómo te piden cita hoy. Te digo el precio y te enseño un ejemplo en tu móvil.</p>
 <div class="hero__actions">
-<a href="contacto.html" class="btn btn--light btn--lg" data-t="btn_presupuesto">Solicitar presupuesto</a>
-<a href="https://wa.me/34611497409?text=Hola%2C%20me%20interesan%20las%20reservas%20online%20para%20mi%20negocio" target="_blank" rel="noopener" class="btn btn--dark-ghost btn--lg" data-t="btn_whatsapp">Escribir por WhatsApp</a>
+<a href="https://wa.me/34611497409?text=Hola%2C%20me%20interesan%20las%20citas%20online%20para%20mi%20negocio" target="_blank" rel="noopener" class="btn btn--light btn--lg" data-t="btn_whatsapp">Escribir por WhatsApp</a>
+<a href="https://agenda-oi-demo.oi-studio-web.workers.dev/s/salon-demo" target="_blank" rel="noopener" class="btn btn--dark-ghost btn--lg">Ver un ejemplo</a>
 </div>
 </div>
 </div>
@@ -484,10 +744,73 @@
 <script src="assets/i18n.js?v=30"></script>
 <script src="assets/main.js?v=19"></script>
 <script>
-/* Texto en movimiento, como en la página de ayudas: titular letra a letra, h2
-   línea a línea, el párrafo que se enciende al leer, listas escalonadas y la
-   banda de sectores con el scroll. Sin GSAP o con movimiento reducido, todo
-   queda quieto y visible. */
+/* Lo que se toca reacciona (funciona también sin GSAP):
+   - PARA QUIÉN: cada negocio enseña su texto y dos servicios de ejemplo.
+   - SOLO AGENDA: la cuota cambia con el número de personas. */
+(function () {
+  var quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function salta(el) { if (quieto || !el) return; el.classList.remove('salta'); void el.offsetWidth; el.classList.add('salta'); }
+
+  var menu = document.querySelector('.rs-q__menu');
+  if (menu) {
+    var tabs = [].slice.call(menu.querySelectorAll('[role="tab"]'));
+    var paneles = tabs.map(function (t) { return document.getElementById(t.getAttribute('aria-controls')); });
+    function elegir(i, foco) {
+      tabs.forEach(function (t, j) {
+        var on = i === j;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.tabIndex = on ? 0 : -1;
+        t.classList.toggle('is-on', on);
+        paneles[j].hidden = !on;
+      });
+      if (foco) { tabs[i].focus(); tabs[i].scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: quieto ? 'auto' : 'smooth' }); }
+      if (!quieto && window.gsap) {
+        gsap.from(paneles[i].querySelectorAll('h3, p, .rs-carta'), { y: 18, opacity: 0, duration: 0.55, ease: 'expo.out', stagger: 0.06 });
+        gsap.from(paneles[i].querySelectorAll('.rs-carta li'), { x: -14, opacity: 0, duration: 0.5, ease: 'expo.out', stagger: 0.08, delay: 0.15 });
+      }
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { elegir(i, false); });
+      t.addEventListener('keydown', function (e) {
+        var k = e.key, n = tabs.length, d = 0;
+        if (k === 'ArrowDown' || k === 'ArrowRight') d = 1;
+        else if (k === 'ArrowUp' || k === 'ArrowLeft') d = -1;
+        else if (k === 'Home') { e.preventDefault(); return elegir(0, true); }
+        else if (k === 'End') { e.preventDefault(); return elegir(n - 1, true); }
+        if (d) { e.preventDefault(); elegir((i + d + n) % n, true); }
+      });
+    });
+    menu.hidden = false;
+    paneles.forEach(function (p, j) { p.hidden = j !== 0; });
+  }
+
+  var pers = document.querySelector('.rs-pers');
+  if (pers) {
+    var base = +pers.dataset.base, incl = +pers.dataset.incluye, extra = +pers.dataset.extra, n = incl;
+    var out = pers.querySelector('output'), res = pers.querySelector('.rs-pers__res');
+    var menos = pers.querySelector('.rs-pers__menos'), mas = pers.querySelector('.rs-pers__mas');
+    var cifra = pers.closest('li').querySelector('.rs-cifra span');
+    function pintar() {
+      var cuota = base + Math.max(0, n - incl) * extra;
+      out.textContent = n;
+      res.innerHTML = 'Tu cuota: <b>' + cuota + ' €/mes</b>' + (n <= incl
+        ? '. Hasta ' + incl + ' personas son ' + base + ' €/mes, y cada persona más suma ' + extra + ' €/mes.'
+        : ' (' + base + ' € hasta ' + incl + ' personas y ' + (n - incl) + ' × ' + extra + ' € por ' + (n - incl === 1 ? 'la persona' : 'las personas') + ' de más).');
+      cifra.textContent = '+ ' + cuota + ' €/mes';
+      menos.disabled = n <= 1; mas.disabled = n >= 12;
+      salta(out); salta(res.querySelector('b')); salta(cifra);
+    }
+    menos.addEventListener('click', function () { if (n > 1) { n--; pintar(); } });
+    mas.addEventListener('click', function () { if (n < 12) { n++; pintar(); } });
+    menos.disabled = n <= 1;
+  }
+})();
+
+/* Texto y paneles en movimiento, como en la página de ayudas: titular letra a
+   letra, h2 línea a línea, el párrafo que se enciende al leer, listas
+   escalonadas, la banda de negocios con el scroll, los móviles que se asientan
+   y los bloques que se abren desde un recorte. Sin GSAP o con movimiento
+   reducido, todo queda quieto y visible. */
 window.addEventListener('load', function () {
   if (!window.gsap || !window.SplitText || !window.ScrollTrigger) return;
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -496,7 +819,14 @@ window.addEventListener('load', function () {
     var h1 = document.querySelector('.rs-titulo');
     if (h1) {
       var s = SplitText.create(h1, { type: 'words,chars', mask: 'chars', aria: 'auto' });
-      gsap.from(s.chars, { yPercent: 110, duration: 0.8, ease: 'expo.out', stagger: 0.018 });
+      gsap.from(s.chars, { yPercent: 110, duration: 0.8, ease: 'expo.out', stagger: 0.016 });
+    }
+    var tels = gsap.utils.toArray('.rs-tel');
+    if (tels.length) {
+      gsap.from(tels, { y: 60, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: 0.15, delay: 0.2 });
+      gsap.from('.rs-tel img', { scale: 1.12, duration: 1.6, ease: 'expo.out', delay: 0.2 });
+      gsap.to('.rs-tel--dueno', { yPercent: -10, ease: 'none',
+        scrollTrigger: { trigger: '.rs-tels', start: 'top 70%', end: 'bottom top', scrub: true } });
     }
     gsap.utils.toArray('.rs-h2').forEach(function (h) {
       var l = SplitText.create(h, { type: 'lines', mask: 'lines', aria: 'auto' });
@@ -509,13 +839,19 @@ window.addEventListener('load', function () {
       gsap.fromTo(w.words, { opacity: 0.18 }, { opacity: 1, stagger: 0.04, ease: 'none',
         scrollTrigger: { trigger: p, start: 'top 85%', end: 'bottom 45%', scrub: true } });
     }
-    gsap.utils.toArray('.rs-lista').forEach(function (lista) {
+    gsap.utils.toArray(innerWidth > 900 ? '.rs-lista, .rs-q__menu, .rs-claro, .faq-pre' : '.rs-lista, .rs-claro, .faq-pre').forEach(function (lista) {
       gsap.from(lista.children, { y: 22, opacity: 0, duration: 0.7, ease: 'expo.out', stagger: 0.06,
         scrollTrigger: { trigger: lista, start: 'top 88%', once: true } });
     });
-    gsap.utils.toArray('.rs-sube').forEach(function (el, i) {
-      // El botón no empieza transparente: con el teclado se puede llegar a él antes de verlo.
-      gsap.from(el, { y: 22, opacity: el.matches('a, button') ? 1 : 0, duration: 0.8, ease: 'expo.out', delay: i % 2 ? 0.1 : 0,
+    ScrollTrigger.batch('.rs-panel', { start: 'top 88%', once: true, onEnter: function (lote) {
+      gsap.fromTo(lote, { clipPath: 'inset(14% 0% 0% 0% round 22px)', y: 40 },
+        { clipPath: 'inset(0% 0% 0% 0% round 0px)', y: 0, duration: 1, ease: 'expo.out', stagger: 0.12, clearProps: 'clipPath,transform' });
+    } });
+    gsap.utils.toArray('.rs-demo__tel img').forEach(function (im) {
+      gsap.from(im, { scale: 1.12, duration: 1.4, ease: 'expo.out', scrollTrigger: { trigger: im, start: 'top 90%', once: true } });
+    });
+    gsap.utils.toArray('.rs-sube').forEach(function (el) {
+      gsap.from(el, { y: 22, opacity: 0, duration: 0.8, ease: 'expo.out',
         scrollTrigger: { trigger: el, start: 'top 90%', once: true } });
     });
     var banda = document.querySelector('.rs-banda');
