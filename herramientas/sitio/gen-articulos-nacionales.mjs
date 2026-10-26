@@ -129,7 +129,7 @@ ${a.faq.map(([q, r]) => `<details>\n<summary>${q}</summary>\n<p>${r}</p>\n</deta
 </article>
 </div>
 
-${pie}<script src="assets/i18n.js?v=28"></script>
+${pie}<script src="assets/i18n.js?v=29"></script>
 <script src="assets/main.js?v=19"></script>
 ${wa}</body>
 </html>
@@ -179,7 +179,7 @@ ${figura("taller-desk", "taller · web de ejemplo", "Web de ejemplo de un negoci
 
 <h2 id="coste">Cuánto cuesta y qué más se paga</h2>
 <ul class="check">
-<li><strong>La web.</strong> Un pago único: desde 420 € una landing y desde 540 € una web de negocio, más IVA, con el <a href="precios.html">precio cerrado por escrito</a>.</li>
+<li><strong>La web.</strong> Un pago único: desde 420 € una web de una página y desde 540 € una web con secciones, más IVA, con el <a href="precios.html">precio cerrado por escrito</a>.</li>
 <li><strong>Dominio y alojamiento.</strong> El primer año van incluidos; después son unos 20 € al año si solo quieres mantenerlos.</li>
 <li><strong>Mantenimiento.</strong> Opcional: 28 € al mes, con hasta tres cambios al mes, si prefieres que te encargues de cambios y actualizaciones a otra persona.</li>
 <li><strong>Tu tiempo.</strong> Reunir fotos y contar qué haces. Es lo que más se subestima y lo que más se nota en el resultado.</li>
@@ -197,7 +197,7 @@ ${consejo("Antes de pagar por una web, escribe en un papel qué le preguntan sie
 ${cta("¿Tienes un servicio y quieres que te encuentren?", "Cuéntame qué haces y dónde, y en 48 horas tienes una propuesta con el precio cerrado. Funciona igual a distancia que en persona.", "Solicitar presupuesto")}
 `,
   faq: [
-    ["¿Cuánto cuesta una página web para un autónomo?", "Una landing de una página cuesta desde 420 € + IVA y una web de negocio con varias páginas desde 540 € + IVA, con el precio cerrado por escrito. El primer año incluye dominio y alojamiento."],
+    ["¿Cuánto cuesta una página web para un autónomo?", "Una web de una página cuesta desde 420 € + IVA y una web con secciones, de varias páginas, desde 540 € + IVA, con el precio cerrado por escrito. El primer año incluye dominio y alojamiento."],
     ["¿Puedo hacerla yo mismo?", "Sí, con un constructor de webs se puede. Cuesta tiempo, y lo habitual es que quede genérica, lenta en el móvil y sin planteamiento para aparecer en Google. Si tu hora vale dinero, suele compensar encargarla."],
     ["¿Qué datos legales tiene que llevar?", "Datos identificativos del titular (nombre, domicilio, NIF, contacto), política de privacidad si hay formularios y aviso de cookies si usas analítica o publicidad. Lo concreto conviene validarlo con tu gestor."],
     ["¿Trabajas con autónomos de fuera de Gipuzkoa?", "Sí. El estudio está en Tolosa, pero el proceso funciona a distancia, con videollamada, WhatsApp y un enlace privado para revisar la web. El precio es el mismo."],

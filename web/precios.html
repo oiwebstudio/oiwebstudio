@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#f6f3ea"/>
 <meta http-equiv="Content-Security-Policy" content="base-uri 'self'; form-action 'self' mailto: https://wa.me"/>
 <title>Precio de una página web en Tolosa: desde 420 € | OI Studio</title>
-<meta name="description" content="Web bonita + presencia en Google 540 €, presencia sola 120 €, landing 420 €, packs con reservas desde 580 € y tienda 880 € + IVA. Pago al final."/>
+<meta name="description" content="Web de una página: 420 €. Web con secciones: 540 €. Presencia en Google: 120 €. Packs con reservas desde 580 € y tienda online: 880 € + IVA. Pago al final."/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="OI Studio"/>
 <meta property="og:url" content="https://oiwebstudio.com/precios.html"/>
@@ -84,7 +84,7 @@
       "name": "¿Qué es la presencia en Google?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Es dejar tu negocio bien puesto donde la gente lo busca. Dejo completa tu ficha de Google, te preparo un QR de reseñas, pongo los mismos datos en Bing Places y Apple Maps, y te paso una página con lo que dicen de ti Google y ChatGPT, antes y después. Cuesta 120 € y va incluida en la web bonita + presencia y en los packs."
+        "text": "Es dejar tu negocio bien puesto donde la gente lo busca. Dejo completa tu ficha de Google, te preparo un QR de reseñas, pongo los mismos datos en Bing Places y Apple Maps, y te paso una página con lo que dicen de ti Google y ChatGPT, antes y después. Cuesta 120 €: puedes añadirla a cualquiera de las dos webs, y en los packs va incluida."
       }
     },
     {
@@ -92,7 +92,7 @@
       "name": "¿Cuánto se tarda?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Una landing suele estar en una semana; una web con secciones, en dos o tres. El plazo exacto te lo confirmo con la propuesta."
+        "text": "Una web de una página suele estar en una semana; una web con secciones, en dos o tres. El plazo exacto te lo confirmo con la propuesta."
       }
     },
     {
@@ -284,8 +284,12 @@
 .pricing.pricing--dos{max-width:880px;margin:0 auto;}
 @media(min-width:1180px){.pricing.pricing--dos{grid-template-columns:repeat(2,minmax(0,1fr));}}
 @media(max-width:759px){.pricing.desliza{padding-top:26px!important;}.pricing .price{padding:30px 22px;}.price__list{gap:9px;}.lin__cab{margin-bottom:18px;}}
-/* La landing, en segundo plano: una fila debajo de las tarjetas */
-.lan{max-width:880px;margin:22px auto 0;display:grid;gap:14px 26px;align-items:center;padding:22px 24px;border:1px dashed var(--border-strong);border-radius:var(--r-md);background:var(--bg-subtle);}
+/* 26/10: las dos webs (una página · con secciones) al mismo nivel; la presencia, aparte;
+   la tienda, en una fila debajo */
+@media(min-width:760px){.pricing.pricing--dos{grid-template-columns:repeat(2,minmax(0,1fr));}#planes .price__desc{min-height:3.3em;}}
+.w-pz{max-width:880px;margin:26px auto 0;text-align:center;font-size:15.5px;line-height:1.55;color:var(--text-muted);}
+.w-pz a{color:var(--terra-link);font-weight:600;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;}
+.lan{max-width:880px;margin:22px auto 0;display:grid;gap:14px 26px;align-items:center;padding:22px 24px;border:1px solid var(--border-strong);border-radius:var(--r-md);background:var(--surface);}
 @media(min-width:760px){.lan{grid-template-columns:1fr auto auto;}}
 .lan__k{display:block;font-size:13.5px;color:var(--text-muted);margin-bottom:4px;}
 .lan .price__name{font-size:16px;}
@@ -354,11 +358,23 @@
 <p data-t="pre_l1_p">Para que te encuentren, te llamen o te compren. Dominio y alojamiento del primer año incluidos.</p>
 </div>
 <div class="pricing pricing--dos desliza" id="planes">
-<article class="price price--featured reveal" id="plan-web">
+<article class="price price--featured reveal" id="plan-una">
 <span class="price__halo" aria-hidden="true"></span>
-<div class="price__flag" data-t="p2_flag">Recomendada</div>
-<div class="price__name" data-t="p2_name">Web bonita + presencia</div>
-<p class="price__desc" data-t="p2_desc">Tu web con secciones, diseñada a medida, y tu presencia en Google ya hecha.</p>
+<div class="price__name" data-t="w1_name">Web de una página</div>
+<p class="price__desc" data-t="w1_desc">Todo tu negocio en una sola página, diseñada a medida.</p>
+<div class="price__amount"><b>420€</b><span data-t="pre_pago">pago único</span></div>
+<a href="contacto.html" class="btn btn--accent btn--full btn-spark" data-t="p2_btn">Elegir esta web</a>
+<ul class="price__list">
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p1_l1">Diseño a medida (1 página)</span></li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p1_l2">Adaptación completa al móvil</span></li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="wb_l2">Formulario de contacto y botón de WhatsApp</span></li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p1_l5">Dominio y hosting el primer año</span></li>
+</ul>
+</article>
+<article class="price price--featured reveal" data-d="1" id="plan-web">
+<span class="price__halo" aria-hidden="true"></span>
+<div class="price__name" data-t="p2_name">Web con secciones</div>
+<p class="price__desc" data-t="p2_desc">Varias secciones o páginas, diseñadas a medida para tu negocio.</p>
 <div class="price__amount"><b>540€</b><span data-t="pre_pago">pago único</span></div>
 <a href="contacto.html" class="btn btn--accent btn--full btn-spark" data-t="p2_btn">Elegir esta web</a>
 <ul class="price__list">
@@ -366,34 +382,20 @@
 <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p1_l2">Adaptación completa al móvil</span></li>
 <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="wb_l2">Formulario de contacto y botón de WhatsApp</span></li>
 <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="wb_l3">SEO básico y Google Maps en la web</span></li>
-<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="wb_l4">Presencia en Google incluida</span></li>
 <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p2_l5">Cambios de contenido por WhatsApp</span></li>
 <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p1_l5">Dominio y hosting el primer año</span></li>
 </ul>
 </article>
-<article class="price reveal" data-d="1" id="plan-tienda">
-<div class="price__name" data-t="p4_name">Tienda Online</div>
-<p class="price__desc" data-t="p4_desc">Tu web con catálogo, carrito y cobro con tarjeta.</p>
-<div class="price__amount"><b>880€</b><span data-t="pre_pago">pago único</span></div>
-<a href="contacto.html" class="btn btn--ghost btn--full" data-t="p4_btn">Pedir tienda online</a>
-<ul class="price__list">
-<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p4_l1">Web a medida con secciones</span></li>
-<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p4_l2">Hasta 50 productos cargados</span></li>
-<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p4_l3">Pago con tarjeta y Bizum</span></li>
-<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p4_l4">Aviso de cada pedido por correo</span></li>
-<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p4_l5">Tú mismo añades productos y stock</span></li>
-<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p4_l6">Mantenimiento opcional: 38 €/mes</span></li>
-</ul>
-</article>
 </div>
-<article class="lan reveal" id="plan-landing">
+<p class="w-pz reveal" data-t="w_pz">La presencia en Google va aparte: puedes añadirla a cualquiera de las dos por 120 €. <a href="#presencia">Qué incluye ↓</a></p>
+<article class="lan reveal" id="plan-tienda">
 <div>
-<span class="lan__k" data-t="lan_k">¿Solo necesitas una página?</span>
-<div class="price__name">Landing</div>
-<p data-t="lan_inc">Diseño a medida, móvil, formulario, WhatsApp, y dominio y hosting el primer año.</p>
+<span class="lan__k" data-t="tie_k">¿Quieres vender por internet?</span>
+<div class="price__name" data-t="p4_name">Tienda Online</div>
+<p data-t="tie_inc">Web con secciones, hasta 50 productos cargados, pago con tarjeta y Bizum y aviso de cada pedido. Mantenimiento opcional: 38 €/mes.</p>
 </div>
-<div class="lan__pr">420€<small data-t="pre_pago">pago único</small></div>
-<a href="contacto.html" class="btn btn--ghost" data-t="p1_btn">Elegir Landing</a>
+<div class="lan__pr">880€<small data-t="pre_pago">pago único</small></div>
+<a href="contacto.html" class="btn btn--ghost" data-t="p4_btn">Pedir tienda online</a>
 </article>
 <a class="ayuda-cta" href="ayudas-subvenciones-pagina-web-gipuzkoa.html"><span class="ayuda-cta__dot" aria-hidden="true"></span><span class="ayuda-cta__txt"><b data-t="ayc_t">Tu ayuntamiento puede pagarte parte de la web</b><span data-t="ayc_p">Hay ayudas abiertas en Andoain (hasta el 100 %), Irun, Tolosa y otros pueblos de Gipuzkoa. Te digo si puedes pedirlas.</span></span><span class="ayuda-cta__go" data-t="ayc_go">Ver ayudas →</span></a>
 </div>
@@ -421,7 +423,7 @@
 <li class="pz__item"><i>3</i><span data-t="pz_l3"><b>Bing Places y Apple Maps,</b> con los mismos datos que en Google.</span></li>
 <li class="pz__item"><i>4</i><span data-t="pz_l4"><b>Cómo te ven Google y ChatGPT:</b> te paso en una página lo que sale antes y después.</span></li>
 </ul>
-<p class="pz__nota" data-t="pz_nota">Va incluida en la web bonita + presencia y en los packs con reservas.</p>
+<p class="pz__nota" data-t="pz_nota">Puedes añadirla a la web de una página o a la web con secciones. En los packs con reservas va incluida.</p>
 </div>
 </article>
 </div>
@@ -441,7 +443,7 @@
 <p class="pk__pr">580€</p>
 <p class="pk__mes" data-t="k_mes">+ 28 €/mes de mantenimiento</p>
 <ul>
-<li data-t="k1_l1">Todo lo de la Landing</li>
+<li data-t="k1_l1">Todo lo de la web de una página</li>
 <li data-t="k1_l2">Reservas y citas online</li>
 <li data-t="k1_l3">Recordatorio y petición de reseña por correo</li>
 <li data-t="k_pz">Presencia en Google incluida</li>
@@ -580,8 +582,8 @@
 <legend data-t="calc_g1">1 · Qué necesitas</legend>
 <div class="calc__tipos">
 <label class="calc__op"><input type="radio" name="tipo" value="presencia"/><span class="calc__n" data-t="pz_name">Presencia en Google</span><b class="calc__p">120 €</b><span class="calc__d" data-t="pz_desc">Ficha de Google completa, QR de reseñas, Bing y Apple Maps.</span></label>
-<label class="calc__op"><input type="radio" name="tipo" value="negocio" checked/><span class="calc__n" data-t="p2_name">Web bonita + presencia</span><b class="calc__p">540 €</b><span class="calc__d" data-t="calc_t2">Hasta 5 páginas, con la presencia incluida</span></label>
-<label class="calc__op"><input type="radio" name="tipo" value="landing"/><span class="calc__n">Landing</span><b class="calc__p">420 €</b><span class="calc__d" data-t="calc_t1">Una sola página</span></label>
+<label class="calc__op"><input type="radio" name="tipo" value="landing"/><span class="calc__n" data-t="w1_name">Web de una página</span><b class="calc__p">420 €</b><span class="calc__d" data-t="calc_t1">Todo en una página, diseñada a medida</span></label>
+<label class="calc__op"><input type="radio" name="tipo" value="negocio" checked/><span class="calc__n" data-t="p2_name">Web con secciones</span><b class="calc__p">540 €</b><span class="calc__d" data-t="calc_t2">Hasta 5 páginas</span></label>
 <label class="calc__op"><input type="radio" name="tipo" value="tienda"/><span class="calc__n" data-t="p4_name">Tienda Online</span><b class="calc__p">880 €</b><span class="calc__d" data-t="calc_t3">Con hasta 50 productos cargados</span></label>
 <label class="calc__op"><input type="radio" name="tipo" value="pack_reservas"/><span class="calc__n" data-t="calc_n_pk1">Pack web + reservas</span><b class="calc__p">580 €</b><span class="calc__d" data-t="calc_tk1">Una página con reservas o citas</span></label>
 <label class="calc__op"><input type="radio" name="tipo" value="pack_restaurante"/><span class="calc__n" data-t="calc_n_pk2">Pack restaurante</span><b class="calc__p">740 €</b><span class="calc__d" data-t="k2_desc">Web con secciones, reservas de mesa y carta editable desde el móvil.</span></label>
@@ -591,6 +593,7 @@
 <fieldset>
 <legend data-t="calc_g2">2 · Extras</legend>
 <div class="calc__extras">
+<label class="calc__op"><input type="checkbox" name="presencia_x"/><span class="calc__n" data-t="pz_name">Presencia en Google</span><b class="calc__p">+120 €</b><span class="calc__d" data-t="pz_desc">Ficha de Google completa, QR de reseñas, Bing y Apple Maps.</span></label>
 <label class="calc__op"><input type="checkbox" name="productos"/><span class="calc__n" data-t="calc_x6">Más de 50 productos</span><b class="calc__p" data-t="calc_x6p">1 € cada uno</b><span class="calc__d" data-t="calc_x6d">Si los cargo yo. Si los subes tú desde tu panel, no cuestan nada.</span>
 <span class="calc__cant" id="c-cant" hidden><span id="c-num-l" data-t="calc_x6n">¿Cuántos más cargo yo?</span><input type="number" id="c-num" name="num" min="0" max="5000" step="1" value="0" inputmode="numeric" aria-labelledby="c-num-l"/></span></label>
 <label class="calc__op"><input type="checkbox" name="paginas"/><span class="calc__n" data-t="calc_x7">Más de 5 páginas</span><b class="calc__p" data-t="calc_presu">Se presupuesta</b><span class="calc__d" data-t="calc_x7d">Te digo el precio cerrado antes de empezar.</span></label>
@@ -620,8 +623,8 @@
 </aside>
 <div hidden>
 <span data-k="presencia" data-t="pz_name">Presencia en Google</span>
-<span data-k="landing" data-t="calc_n_landing">Landing</span>
-<span data-k="negocio" data-t="p2_name">Web bonita + presencia</span>
+<span data-k="landing" data-t="w1_name">Web de una página</span>
+<span data-k="negocio" data-t="p2_name">Web con secciones</span>
 <span data-k="tienda" data-t="p4_name">Tienda Online</span>
 <span data-k="pack_reservas" data-t="calc_n_pk1">Pack web + reservas</span>
 <span data-k="pack_restaurante" data-t="calc_n_pk2">Pack restaurante</span>
@@ -685,8 +688,8 @@
 <div class="hfaq__lista reveal" data-d="1">
 <details><summary data-t="pf1_q">¿El precio es cerrado de verdad?</summary><p data-t="pf1_a">Sí. Antes de empezar te doy el precio por escrito y no cambia, salvo que tú pidas cosas nuevas a mitad de proyecto — y en ese caso también te lo presupuesto antes.</p></details>
 <details><summary data-t="pf2_q">¿Qué pasa con el dominio y el hosting?</summary><p data-t="pf2_a">El primer año van incluidos: registro el dominio a tu nombre y dejo la web publicada con https. La web es tuya, no queda atada a mí. Desde el segundo año entran en el mantenimiento o, si no lo quieres, pagas solo dominio y alojamiento: 20 € al año.</p></details>
-<details><summary data-t="pf12_q">¿Qué es la presencia en Google?</summary><p data-t="pf12_a">Es dejar tu negocio bien puesto donde la gente lo busca. Dejo completa tu ficha de Google, te preparo un QR de reseñas, pongo los mismos datos en Bing Places y Apple Maps, y te paso una página con lo que dicen de ti Google y ChatGPT, antes y después. Cuesta 120 € y va incluida en la web bonita + presencia y en los packs.</p></details>
-<details><summary data-t="pf3_q">¿Cuánto se tarda?</summary><p data-t="pf3_a">Una landing suele estar en una semana; una web con secciones, en dos o tres. El plazo exacto te lo confirmo con la propuesta.</p></details>
+<details><summary data-t="pf12_q">¿Qué es la presencia en Google?</summary><p data-t="pf12_a">Es dejar tu negocio bien puesto donde la gente lo busca. Dejo completa tu ficha de Google, te preparo un QR de reseñas, pongo los mismos datos en Bing Places y Apple Maps, y te paso una página con lo que dicen de ti Google y ChatGPT, antes y después. Cuesta 120 €: puedes añadirla a cualquiera de las dos webs, y en los packs va incluida.</p></details>
+<details><summary data-t="pf3_q">¿Cuánto se tarda?</summary><p data-t="pf3_a">Una web de una página suele estar en una semana; una web con secciones, en dos o tres. El plazo exacto te lo confirmo con la propuesta.</p></details>
 <details><summary data-t="pf4_q">¿Y si luego quiero cambios?</summary><p data-t="pf4_a">Los primeros 30 días los ajustes van incluidos. Después, puedes contratar el mantenimiento (28 €/mes, sin permanencia, con hasta 3 cambios al mes) o pedirme cambios sueltos con presupuesto por adelantado.</p></details>
 <details><summary data-t="pf13_q">¿Qué diferencia hay entre el mantenimiento y la cuota de presencia?</summary><p data-t="pf13_a">El mantenimiento (28 €/mes) cuida tu web: seguridad, copias y hasta 3 cambios al mes. La cuota de presencia (40 €/mes) incluye todo eso y además mantiene al día tu ficha de Google, te prepara las respuestas a tus reseñas y revisa cada trimestre cómo te nombran las IAs. Las dos son sin permanencia.</p></details>
 <details><summary data-t="pf8_q">¿Cobras comisión por cada reserva?</summary><p data-t="pf8_a">No. Pagas la puesta en marcha una vez y el mantenimiento de 28 €/mes, recibas diez reservas al mes o doscientas. Las reservas llegan a tu web, no a una plataforma que se queda una parte.</p></details>
@@ -742,10 +745,10 @@
 <details class="foot-g">
 <summary class="foot-h"><span data-t="foot_servicios">Servicios</span></summary>
 <ul>
-<li><a href="precios.html" data-t="ft_s2">Web bonita + presencia ·&nbsp;540&nbsp;€</a></li>
+<li><a href="precios.html#plan-una" data-t="ft_s1">Web de una página ·&nbsp;420&nbsp;€</a></li>
+<li><a href="precios.html#plan-web" data-t="ft_s2">Web con secciones ·&nbsp;540&nbsp;€</a></li>
 <li><a href="seo-posicionamiento-google.html" data-t="ft_s6">SEO y presencia en Google ·&nbsp;120&nbsp;€</a></li>
 <li><a href="precios.html" data-t="ft_s3">Tienda online ·&nbsp;880&nbsp;€</a></li>
-<li><a href="precios.html" data-t="ft_s1">Landing ·&nbsp;420&nbsp;€</a></li>
 <li><a href="reservas-online-sin-comisiones.html" data-t="ft_s5">Reservas online sin comisiones</a></li>
 </ul>
 </details>
@@ -788,9 +791,9 @@
 <div class="footer__mark" aria-hidden="true">OI STUDIO</div>
 </footer>
 
-<script src="assets/i18n.js?v=28"></script>
+<script src="assets/i18n.js?v=29"></script>
 <script src="assets/main.js?v=19"></script>
-<script src="assets/calculadora.js?v=3"></script>
+<script src="assets/calculadora.js?v=4"></script>
 
 <!-- Pricing Glassmorphism + 3D Tilt -->
 <script>

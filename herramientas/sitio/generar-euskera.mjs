@@ -52,8 +52,8 @@ const META = {
   },
   "precios.html": {
     title: "Webgune baten prezioa: itxia eta idatzita | OI Studio",
-    // 23/10/2026, oferta nueva, con Itzultzaile Neuronala tal cual (solo espacios ante «€»).
-    desc: "Web polita + Googlen presentzia 540 €, Googlen presentzia 120 € bakarrik, landinga 420 €, erreserbak 580 €-tik aurrera dituzten packak eta online denda 880 € + BEZ. Prezioa itxita eta ordainketa amaieran.",
+    // 26/10/2026, dos webs al mismo nivel y la presencia aparte, con Itzultzaile Neuronala tal cual (solo espacios ante «€»).
+    desc: "Orrialde baten webgunea: 420 €. Webgunea atalekin: 540 €. Presentzia Googlen: 120 €. Packak erreserbekin 580 €-tik aurrera eta online denda: 880 € + BEZ. Ordainketa amaieran.",
   },
   "contacto.html": {
     title: "Kontaktua: hitz egin dezagun zure webaz | OI Studio",

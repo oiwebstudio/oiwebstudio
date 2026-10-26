@@ -32,7 +32,7 @@ const ZONAS = [
     lede:'En un pueblo de 2.000 habitantes el boca a boca funciona, pero solo llega hasta donde llega.',
     contexto:'En Anoeta ya te conoce quien te tiene que conocer. El problema es el cliente nuevo: el que se acaba de mudar, el que viene de Tolosa o Irura, el que busca en Google antes de llamar. La web no sustituye al boca a boca — lo amplía a los pueblos de al lado.',
     sectores:['Servicios a domicilio','Hostelería y ocio','Oficios y reformas','Comercio local'],
-    gancho:'Para negocios pequeños suele bastar una landing a 420€: una página, tus servicios y salir en Google Maps.',
+    gancho:'Para negocios pequeños suele bastar una web de una página a 420€: tus servicios y salir en Google Maps.',
     hero:'flor', mosaico:['flor','cafe','pelu'] },
 
   { slug:'alegia', name:'Alegia', comarca:'Tolosaldea', dist:'8 km', pob:'1.800',
@@ -496,7 +496,7 @@ ZONAS.forEach((z, zIdx) => {
   "@type":"FAQPage",
   "mainEntity":[
     {"@type":"Question","name":"¿Trabajas con negocios de ${z.name}?","acceptedAnswer":{"@type":"Answer","text":"Sí. El estudio está en Tolosa, a ${z.dist} de ${z.name}, y trabajo habitualmente con negocios de ${z.comarca}. Las reuniones pueden ser presenciales o por videollamada."}},
-    {"@type":"Question","name":"¿Cuánto cuesta una página web para un negocio de ${z.name}?","acceptedAnswer":{"@type":"Answer","text":"El precio es cerrado y no cambia según el municipio: Landing desde 420€ y Web bonita + presencia desde 540€, con propuesta en 48 horas y 30 días de ajustes gratis."}},
+    {"@type":"Question","name":"¿Cuánto cuesta una página web para un negocio de ${z.name}?","acceptedAnswer":{"@type":"Answer","text":"El precio es cerrado y no cambia según el municipio: web de una página desde 420€ y web con secciones desde 540€, con propuesta en 48 horas y 30 días de ajustes gratis."}},
     {"@type":"Question","name":"¿Saldrá mi negocio en Google cuando busquen en ${z.name}?","acceptedAnswer":{"@type":"Answer","text":"Todas las webs llevan SEO local básico: títulos y descripciones orientados a ${z.name}, datos estructurados de negocio local y conexión con tu ficha de Google Business, que es lo que decide tu posición en el mapa."}}
   ]
 }
@@ -585,7 +585,7 @@ ${z.mosaico.map(k => `<a class="zshot" href="${UP}trabajos.html">${pic(k, null, 
 <div class="zhead"><span class="k">Dudas</span><h2>Preguntas frecuentes</h2></div>
 <div class="zfaq" data-anim="up">
 <details><summary>¿Trabajas con negocios de ${z.name}?</summary><p>Sí. El estudio está en Tolosa, a ${z.dist}, y trabajo habitualmente con negocios de ${z.comarca}. Las reuniones pueden ser presenciales o por videollamada, como te venga mejor.</p></details>
-<details><summary>¿El precio cambia por estar fuera de Tolosa?</summary><p>No. Precio cerrado e igual para toda Gipuzkoa: Landing desde 420€ y Web bonita + presencia desde 540€, con 30 días de ajustes gratis.</p></details>
+<details><summary>¿El precio cambia por estar fuera de Tolosa?</summary><p>No. Precio cerrado e igual para toda Gipuzkoa: web de una página desde 420€ y web con secciones desde 540€, con 30 días de ajustes gratis.</p></details>
 <details><summary>¿Saldré en Google cuando busquen en ${z.name}?</summary><p>Todas las webs llevan SEO local orientado a ${z.name}. Aparecer arriba depende también de tu ficha de Google Business — lo explico en <a href="${UP}google-business-profile-guia.html">esta guía</a>.</p></details>
 <details><summary>¿Puedo verlo antes de decidir?</summary><p>Sí: las muestras del <a href="${UP}trabajos.html">portfolio</a> están publicadas y son navegables. La propuesta en 48h es gratis y sin compromiso.</p></details>
 </div>

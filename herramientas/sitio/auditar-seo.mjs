@@ -36,7 +36,8 @@ const limpia = (s) => s.replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").replace(/
 const largo = (s) => [...s].length;
 
 const VIEJO = [
-  [/Web Negocio/, "«Web Negocio» (ahora «Web bonita + presencia»)"],
+  [/Web Negocio/, "«Web Negocio» (ahora «Web con secciones»)"],
+  [/Web bonita \+ presencia|Landing (desde )?420/i, "«Web bonita + presencia» o «Landing» (desde el 26/10: «Web con secciones» y «Web de una página»)"],
   [/\b290 ?€|290€/, "reservas sueltas a 290 €"],
   [/\+190 ?€/, "reservas o chatbot a +190 €"],
   [/15 ?€\/mes/, "cuota de 15 €/mes"],
