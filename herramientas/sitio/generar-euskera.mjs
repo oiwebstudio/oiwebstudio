@@ -61,7 +61,8 @@ const META = {
   },
   "trabajos.html": {
     title: "Webgune adibideak negozio lokalentzat | OI Studio",
-    desc: "Tolosan egindako webgune adibideak: bi kasu erreal (Errotatxo eta A.Berri, haien iritziarekin) eta zortzi lagin nabigagarri.",
+    // 26/10/2026, nueve muestras (HAUSPO), con Itzultzaile Neuronala tal cual.
+    desc: "Tolosan egindako webguneak: bi kasu erreal (Errotatxo eta A.Berri, bere iritziarekin) eta bederatzi lagin nabigagarri tokiko negozioetarako.",
   },
   "sobre-mi.html": {
     title: "Niri buruz: nola lan egiten dudan | OI Studio",
