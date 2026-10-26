@@ -30,11 +30,11 @@ Se paga una sola vez, al final, cuando el trabajo está terminado y publicado. L
 - Una página con cómo ven al negocio Google y ChatGPT, antes y después.
 - No se promete ningún puesto concreto en Google ni que ChatGPT nombre al negocio. Arreglar una web que no ha hecho OI Studio no entra en los 120 €: se presupuesta aparte, con precio cerrado. Detalle: https://oiwebstudio.com/seo-posicionamiento-google.html
 
-3. Packs con reservas (sin comisión por reserva; incluyen la presencia en Google y llevan el mantenimiento de 28 €/mes). Las reservas solo se ofrecen dentro de un pack.
+3. Packs con reservas (sin comisión por reserva; incluyen la presencia en Google y llevan el mantenimiento de 28 €/mes). Las citas online también se ofrecen solas (ver «Citas y reservas online sin comisiones» más abajo).
 - Web + reservas (una página con reservas o citas): 580 €.
 - Restaurante (web con secciones, reservas de mesa y carta editable): 740 €.
 - Casa rural (web con secciones, reservas con calendario y cobro de señal): 740 €.
-- Los avisos de cada reserva, el recordatorio del día antes y la petición de reseña van por correo electrónico. Por WhatsApp o SMS: a medida, con el precio antes de empezar.
+- Los avisos van por correo electrónico. Por WhatsApp o SMS, de momento no.
 
 4. Cuotas (sin permanencia)
 - Mantenimiento: 28 €/mes (38 €/mes con tienda), con seguridad, copias semanales, monitorización y hasta 3 cambios al mes. Opcional con una web sola; obligatorio con reservas.
@@ -50,7 +50,7 @@ Fuera de Gipuzkoa trabaja a distancia, con el mismo precio: [toda España](https
 
 - [Inicio](https://oiwebstudio.com/): qué hace el estudio y cómo trabaja.
 - [Precios](https://oiwebstudio.com/precios.html): planes y qué incluye cada uno.
-- [Reservas online sin comisiones](https://oiwebstudio.com/reservas-online-sin-comisiones.html): reservas y citas online en la web propia del negocio (peluquerías, estética, fisios, restaurantes y casas rurales), sin comisión por reserva.
+- [Citas y reservas online sin comisiones](https://oiwebstudio.com/reservas-online-sin-comisiones.html): página de citas con el nombre del negocio y panel en el móvil, para negocios que trabajan con cita (peluquería, barbería, estética y uñas, peluquería canina, masajes, talleres, asesorías y gestorías, clases particulares); de momento no para consultas de salud. Solo agenda: 160 € + 20 €/mes hasta 2 personas (+8 €/mes por persona más). Web bonita + agenda: 580 € + 28 €/mes. Web + agenda + presencia en Google: 740 € + 48 €/mes. Sin IVA, pago al final, sin comisión ni permanencia.
 - [Trabajos](https://oiwebstudio.com/trabajos.html): webs publicadas, una por sector.
 - [Caso real: Errotatxo](https://oiwebstudio.com/caso-errotatxo.html): la web de una panadería de Tolosa con tres tiendas, en castellano y euskera.
 - [Caso real: A.Berri, casa rural en Getaria](https://oiwebstudio.com/caso-a-berri.html): web con reservas, panel para los dueños y tres idiomas; con la opinión de la dueña (5 estrellas).
