@@ -1,0 +1,86 @@
+{
+ "r-portada": {
+  "autor": "Nihar Reddy Jangam",
+  "fuente": "https://unsplash.com/photos/fresh-vegetables-served-on-a-white-plate-with-cutlery-GQoYAl2R7_E?utm_source=oi_studio&utm_medium=referral",
+  "licencia": "Unsplash License",
+  "tamano_original": "5643x4514",
+  "cambios": "Redimensionada (y en la fachada, recortada) y convertida a AVIF/WebP para esta muestra"
+ },
+ "r-navajas": {
+  "autor": "Milan Trninic",
+  "fuente": "https://unsplash.com/photos/razor-clams-with-orange-sauce-and-microgreens-on-a-plate-LX23Y4E6W4M?utm_source=oi_studio&utm_medium=referral",
+  "licencia": "Unsplash License",
+  "tamano_original": "5652x4000",
+  "cambios": "Redimensionada (y en la fachada, recortada) y convertida a AVIF/WebP para esta muestra"
+ },
+ "r-pescado": {
+  "autor": "HLS 44",
+  "fuente": "https://unsplash.com/photos/a-white-plate-topped-with-a-fish-next-to-a-salad-fRQiTG8kgPE?utm_source=oi_studio&utm_medium=referral",
+  "licencia": "Unsplash License",
+  "tamano_original": "5184x2912",
+  "cambios": "Redimensionada (y en la fachada, recortada) y convertida a AVIF/WebP para esta muestra"
+ },
+ "r-postre": {
+  "autor": "Alfonso Betancourt",
+  "fuente": "https://unsplash.com/photos/gourmet-dessert-with-ice-cream-nuts-and-orange-crisp-YcfEVIpGXx0?utm_source=oi_studio&utm_medium=referral",
+  "licencia": "Unsplash License",
+  "tamano_original": "6720x4480",
+  "cambios": "Redimensionada (y en la fachada, recortada) y convertida a AVIF/WebP para esta muestra"
+ },
+ "r-comedor": {
+  "autor": "Mathias Reding",
+  "fuente": "https://unsplash.com/photos/cozy-dining-room-with-large-windows-overlooking-trees-ZcnNVsu7Dpw?utm_source=oi_studio&utm_medium=referral",
+  "licencia": "Unsplash License",
+  "tamano_original": "6968x4645",
+  "cambios": "Redimensionada (y en la fachada, recortada) y convertida a AVIF/WebP para esta muestra"
+ },
+ "r-s-parrilla": {
+  "autor": "Emerson Vieira",
+  "fuente": "https://unsplash.com/photos/close-up-photo-of-person-grilling-meat-Mq1LDuswX2o?utm_source=oi_studio&utm_medium=referral",
+  "licencia": "Unsplash License",
+  "tamano_original": "5332x3000",
+  "cambios": "Redimensionada (y en la fachada, recortada) y convertida a AVIF/WebP para esta muestra"
+ },
+ "r-s-emplatar": {
+  "autor": "Sebastian Coman Photography",
+  "fuente": "https://unsplash.com/photos/person-putting-food-on-plate-cQbOSRpElxw?utm_source=oi_studio&utm_medium=referral",
+  "licencia": "Unsplash License",
+  "tamano_original": "4280x2855",
+  "cambios": "Redimensionada (y en la fachada, recortada) y convertida a AVIF/WebP para esta muestra"
+ },
+ "r-mesas": {
+  "autor": "Blake Wisz",
+  "fuente": "https://unsplash.com/photos/spacious-restaurant-interior-with-tables-and-chairs-fsnAB8-76IA?utm_source=oi_studio&utm_medium=referral",
+  "licencia": "Unsplash License",
+  "tamano_original": "7041x4699",
+  "cambios": "Redimensionada (y en la fachada, recortada) y convertida a AVIF/WebP para esta muestra"
+ },
+ "r-fachada": {
+  "autor": "Jakub Flis",
+  "fuente": "https://unsplash.com/photos/a-brown-door-with-a-sign-on-the-side-of-it-cxpJP-Nb2qQ?utm_source=oi_studio&utm_medium=referral",
+  "licencia": "Unsplash License",
+  "tamano_original": "3355x5033",
+  "cambios": "Redimensionada (y en la fachada, recortada) y convertida a AVIF/WebP para esta muestra"
+ },
+ "r-barra": {
+  "autor": "Ola Zarko",
+  "fuente": "https://unsplash.com/photos/empty-wine-glasses-hang-from-a-bar-rack-tPY3if0s9w8?utm_source=oi_studio&utm_medium=referral",
+  "licencia": "Unsplash License",
+  "tamano_original": "4500x3000",
+  "cambios": "Redimensionada (y en la fachada, recortada) y convertida a AVIF/WebP para esta muestra"
+ },
+ "r-plantas": {
+  "autor": "Turnando Alzaman",
+  "fuente": "https://unsplash.com/photos/set-dining-tables-and-yellow-chairs-in-a-modern-restaurant-zz3IfHZ-IGU?utm_source=oi_studio&utm_medium=referral",
+  "licencia": "Unsplash License",
+  "tamano_original": "6144x4096",
+  "cambios": "Redimensionada (y en la fachada, recortada) y convertida a AVIF/WebP para esta muestra"
+ },
+ "r-s-manos": {
+  "autor": "Enmanuel Abreu",
+  "fuente": "https://unsplash.com/photos/chef-carefully-prepares-plates-for-serving-jNH7zaOLLc8?utm_source=oi_studio&utm_medium=referral",
+  "licencia": "Unsplash License",
+  "tamano_original": "4000x5264",
+  "cambios": "Redimensionada (y en la fachada, recortada) y convertida a AVIF/WebP para esta muestra"
+ }
+}
