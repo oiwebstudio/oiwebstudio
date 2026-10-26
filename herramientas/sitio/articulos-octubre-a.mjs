@@ -64,7 +64,7 @@ ${figura("etxea-desk", "etxea · muestra", "Muestra de web de inmobiliaria con f
 </ol>
 
 <h2 id="precio">Cuánto cuesta una web profesional</h2>
-<p>En el mercado local verás desde unos cientos de euros hasta varios miles, según quién la haga y qué incluya. En OI Studio una landing cuesta 420 € + IVA y una web de negocio 540 € + IVA, con el <a href="precios.html">precio cerrado por escrito</a>. El desglose completo del mercado está en la <a href="precio-diseno-web-profesional.html">guía de precios</a>.</p>
+<p>En el mercado local verás desde unos cientos de euros hasta varios miles, según quién la haga y qué incluya. En OI Studio una web de una página cuesta 420 € + IVA y una web con secciones 540 € + IVA, con el <a href="precios.html">precio cerrado por escrito</a>. El desglose completo del mercado está en la <a href="precio-diseno-web-profesional.html">guía de precios</a>.</p>
 
 ${consejo("Una web profesional se nota en lo que no tiene: ni diez fuentes distintas, ni un carrusel que nadie mira, ni cuatro formas de contactar que se pisan. Lo bueno de verdad suele ser sencillo.")}
 
@@ -73,7 +73,7 @@ ${cta("¿Quieres ver cómo quedaría la tuya?", "Dime el nombre de tu negocio y 
   faq: [
     ["¿Qué es un diseño web profesional?", "Una web hecha para cumplir un objetivo concreto de tu negocio: que te encuentren, que se entienda qué haces y que sea fácil contactarte. Incluye diseño a medida, adaptación al móvil, velocidad, SEO básico, textos claros y los textos legales."],
     ["¿Una web hecha con plantilla puede ser profesional?", "Puede ser correcta, pero rara vez es a medida ni está optimizada. Si te la venden como diseño exclusivo, pide ver ejemplos distintos entre sí y comprueba su velocidad en el móvil."],
-    ["¿Cuánto cuesta una web profesional para un negocio local?", "Depende del alcance. En OI Studio, una landing desde 420 € + IVA y una web de negocio desde 540 € + IVA, con precio cerrado por escrito. En el mercado hay presupuestos desde unos cientos de euros hasta varios miles."],
+    ["¿Cuánto cuesta una web profesional para un negocio local?", "Depende del alcance. En OI Studio, una web de una página desde 420 € + IVA y una web con secciones desde 540 € + IVA, con precio cerrado por escrito. En el mercado hay presupuestos desde unos cientos de euros hasta varios miles."],
     ["¿Cómo sé si una web es profesional?", "Ábrela en el móvil: debe entenderse qué hace el negocio sin hacer scroll, cargar rápido y tener teléfono o WhatsApp a un toque. Después mira si tiene aviso legal, HTTPS y un título propio en cada página."],
   ],
   cierre: `Sigue leyendo: <a href="precio-diseno-web-profesional.html">cuánto cuesta un diseño web profesional</a> y <a href="que-debe-tener-web-negocio-local.html">qué debe tener la web de un negocio local</a>.`,
@@ -134,7 +134,7 @@ ${consejo("Compara siempre el coste a tres años, no el de hoy. Una web de 20 �
 ${cta("¿Cuánto costaría tu web?", "Cuéntame tu negocio y te doy el precio cerrado por escrito en menos de 48 horas.", "Pedir presupuesto")}
 `,
   faq: [
-    ["¿Cuánto cuesta una web barata?", "Las hay gratis (con condiciones), con cuota mensual de decenas de euros o de pago único desde unos cientos. En OI Studio una landing cuesta desde 420 € + IVA y una web de negocio desde 540 € + IVA, con precio cerrado."],
+    ["¿Cuánto cuesta una web barata?", "Las hay gratis (con condiciones), con cuota mensual de decenas de euros o de pago único desde unos cientos. En OI Studio una web de una página cuesta desde 420 € + IVA y una web con secciones desde 540 € + IVA, con precio cerrado."],
     ["¿Una web barata es peor?", "No necesariamente: el alcance es lo que cambia el precio. Es peor cuando es una plantilla vendida como a medida, cuando tiene cuotas escondidas o cuando el dominio no queda a tu nombre."],
     ["¿Qué debo comprobar en un presupuesto económico?", "Que el precio sea cerrado y con IVA aclarado, que el dominio vaya a tu nombre, que no haya permanencia, qué incluye y quién hace los cambios después."],
     ["¿Compensa una web de plataforma con cuota mensual?", "Puede servir para empezar, pero a tres años suele salir más cara que un pago único y la web no es tuya si dejas de pagar. Compara siempre el coste total."],
@@ -189,7 +189,7 @@ ${consejo("En una ciudad grande, piensa en tu barrio. Es más fácil ser el prim
 ${cta("¿Tienes un negocio en Donostia?", "Cuéntame qué haces y te preparo una propuesta con precio cerrado y una muestra con tu negocio, sin compromiso.", "Pedir presupuesto")}
 `,
   faq: [
-    ["¿Cuánto cuesta una página web en Donostia?", "Depende de quién la haga y del alcance: en agencia, entre 1.500 y 6.000 € una web completa; con un freelance o estudio pequeño, entre 300 y 1.500 €. En OI Studio, desde 420 € + IVA una landing y desde 540 € + IVA una web de negocio."],
+    ["¿Cuánto cuesta una página web en Donostia?", "Depende de quién la haga y del alcance: en agencia, entre 1.500 y 6.000 € una web completa; con un freelance o estudio pequeño, entre 300 y 1.500 €. En OI Studio, desde 420 € + IVA una web de una página y desde 540 € + IVA una web con secciones."],
     ["¿Agencia o freelance para un negocio pequeño?", "Para un comercio, un despacho o una consulta suele bastar un freelance o estudio pequeño: trato directo, plazos cortos y menos coste. La agencia compensa en proyectos grandes con varias disciplinas."],
     ["¿Tiene que estar el diseñador en Donostia?", "No. El trabajo se hace a distancia. Lo importante es que conozca cómo busca la gente de tu zona y que sea una persona con quien puedas hablar."],
     ["¿Trabajáis con negocios de Donostia?", "Sí. OI Studio trabaja con negocios de toda Gipuzkoa. Estoy en Tolosa, a 26 km, y me acerco a Donostia si prefieres la primera reunión en tu local."],

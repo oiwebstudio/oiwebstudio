@@ -1,6 +1,8 @@
 /* Calculadora de precio (precios.html, #calculadora). Rehecha el 23/10/2026 con la
-   oferta nueva; precios del 25/10/2026: presencia en Google 120, web bonita +
-   presencia 540, landing 420, tienda 880, packs con reservas 580/740/740;
+   oferta nueva; precios del 25/10/2026 y nombres del 26/10/2026: presencia en
+   Google 120, web de una página 420, web con secciones 540, tienda 880, packs con
+   reservas 580/740/740. La presencia va aparte: se puede añadir (+120) a
+   cualquiera de las dos webs; en los packs ya va incluida.
    cuotas: mantenimiento 28 €/mes (38 con tienda) o presencia 40 €/mes. Las reservas solo van en un pack, y en
    un pack la cuota es obligatoria. Todo + IVA, pago único al final.
    Los importes son EXACTAMENTE los de precios.html: si cambia uno en la página,
@@ -23,6 +25,7 @@
     pack_rural:       { precio: 740, web: true, reservas: true, secciones: true }
   };
   var CUOTA = { mant: 28, mantTienda: 38, presencia: 40 };
+  var PRESENCIA_EXTRA = 120;
 
   var $ = function (id) { return document.getElementById(id); };
   var txt = function (k) { var el = form.querySelector('[data-k="' + k + '"]'); return el ? el.textContent.trim() : ""; };
@@ -54,6 +57,7 @@
     var t = TIPOS[tipo];
 
     /* 1. extras que tienen sentido con lo elegido */
+    apagar(form.elements.presencia_x, !(tipo === "landing" || tipo === "negocio"));
     apagar(form.elements.productos, !t.tienda);
     apagar(form.elements.paginas, !t.secciones);
     apagar(form.elements.idiomas, !t.web);
@@ -83,6 +87,12 @@
       lineas.appendChild(fila(np, "+" + eur(unidades)));
       partes.push(np + " (+" + eur(unidades) + ")");
       suma += unidades;
+    }
+    if (form.elements.presencia_x.checked) {
+      var npz = txt("presencia");
+      lineas.appendChild(fila(npz, "+" + eur(PRESENCIA_EXTRA)));
+      partes.push(npz + " (+" + eur(PRESENCIA_EXTRA) + ")");
+      suma += PRESENCIA_EXTRA;
     }
     ["paginas", "idiomas"].forEach(function (k) {
       if (form.elements[k].checked) porPresupuestar.push(nombreDe(form.elements[k]).toLowerCase());
@@ -114,7 +124,8 @@
 
   /* ?plan=presencia|landing|negocio|tienda|pack_reservas… (también «web») para llegar con la opción ya elegida */
   var plan = new URLSearchParams(location.search).get("plan");
-  if (plan === "web") plan = "negocio";
+  if (plan === "web" || plan === "secciones") plan = "negocio";
+  if (plan === "una") plan = "landing";
   if (plan && TIPOS[plan]) { var r = form.querySelector('input[name="tipo"][value="' + plan + '"]'); if (r) r.checked = true; }
   calcular();
 })();

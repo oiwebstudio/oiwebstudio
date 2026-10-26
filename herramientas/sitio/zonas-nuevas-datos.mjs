@@ -51,8 +51,8 @@ export const NUEVAS = [
     lede: "Entre Donostia y Zarautz, con caseríos, sidrerías y mucha gente que vive aquí y trabaja fuera.",
     contexto: "Usurbil es de esos sitios donde convive el caserío con el residente que sale a trabajar a Donostia. El negocio local tiene que ser fácil de encontrar para los dos: el vecino que busca algo cerca de casa y el visitante que llega por la sidra o por el entorno del Oria. La web cubre ese hueco cuando el boca a boca no llega.",
     sectores: ["Sidrerías y hostelería", "Producto de caserío", "Comercio de proximidad", "Oficios y reformas", "Servicios profesionales"],
-    gancho: "Para negocios de caserío y de barrio, una landing de 420€ con ficha de Google bien hecha suele ser suficiente para empezar.",
-    faq: { q: "¿Qué web necesita un negocio pequeño de Usurbil?", a: "Casi siempre una landing: una página con quién eres, qué haces, horario, teléfono y mapa. Cuesta 420€ y se puede ampliar a Web bonita + presencia (540€) si luego necesitas más páginas." } },
+    gancho: "Para negocios de caserío y de barrio, una web de una página de 420€ con ficha de Google bien hecha suele ser suficiente para empezar.",
+    faq: { q: "¿Qué web necesita un negocio pequeño de Usurbil?", a: "Casi siempre una web de una página: quién eres, qué haces, horario, teléfono y mapa. Cuesta 420€ y se puede ampliar a una web con secciones (540€) si luego necesitas más páginas." } },
 
   { slug: "urnieta", name: "Urnieta", comarca: "Buruntzaldea", hero: "gym", mosaico: ["gym", "pelu", "cafe"],
     lede: "Pueblo de paso y residencial, a diez minutos de Donostia. Tu clientela te compara con lo que hay en Andoain y Hernani.",
@@ -114,8 +114,8 @@ export const NUEVAS = [
     lede: "Un pueblo de camino a Beasain y a Zumarraga, con historia propia en torno a Zumalakarregi.",
     contexto: "Ormaiztegi es más pequeño que sus vecinos, y la mayor parte de los negocios depende de vecinos y de gente de paso. Quien busca un servicio aquí suele elegir entre varios pueblos cercanos, así que cuenta que tu web diga cuál es tu zona y qué te diferencia. Con un negocio pequeño es más importante estar bien presente en el mapa que tener una web enorme.",
     sectores: ["Comercio de proximidad", "Hostelería", "Oficios y reformas", "Servicios profesionales"],
-    gancho: "Para negocios pequeños, una landing de 420€ y la ficha de Google bien hecha cubren casi todo lo necesario.",
-    faq: { q: "¿Compensa invertir en una web siendo un negocio pequeño?", a: "Sí, si es proporcionada. Una landing a 420€ con tus datos, fotos y botón de WhatsApp se amortiza con unos pocos clientes nuevos al año, y evita que pierdas al que busca antes de llamar." } },
+    gancho: "Para negocios pequeños, una web de una página de 420€ y la ficha de Google bien hecha cubren casi todo lo necesario.",
+    faq: { q: "¿Compensa invertir en una web siendo un negocio pequeño?", a: "Sí, si es proporcionada. Una web de una página a 420€ con tus datos, fotos y botón de WhatsApp se amortiza con unos pocos clientes nuevos al año, y evita que pierdas al que busca antes de llamar." } },
 
   { slug: "segura", name: "Segura", comarca: "Goierri", hero: "rest", mosaico: ["rest", "cafe", "flor"],
     lede: "Una villa medieval con un casco histórico muy cuidado. Los visitantes llegan buscando dónde comer y qué ver.",
@@ -230,7 +230,7 @@ export const NUEVAS = [
     contexto: "Mendaro está en el valle del Deba, entre Elgoibar, Deba y la costa. Sus negocios atienden a vecinos de la propia villa y de los pueblos cercanos. Aparecer cuando se busca algo en Debabarrena, no solo cuando se busca «Mendaro», multiplica el alcance sin cambiar tu negocio.",
     sectores: ["Comercio de proximidad", "Hostelería", "Oficios y reformas", "Servicios profesionales"],
     gancho: "La web se plantea para Debabarrena entera: Mendaro, Elgoibar, Deba y Mutriku.",
-    faq: { q: "¿Basta una web sencilla para un negocio de Mendaro?", a: "Para la mayoría sí. Una landing con servicios, horario, fotos y WhatsApp cuesta 420€ y cubre lo que buscan quienes te encuentran en Google." } },
+    faq: { q: "¿Basta una web sencilla para un negocio de Mendaro?", a: "Para la mayoría sí. Una web de una página con servicios, horario, fotos y WhatsApp cuesta 420€ y cubre lo que buscan quienes te encuentran en Google." } },
 
   { slug: "soraluze", name: "Soraluze", alt: "Placencia de las Armas", comarca: "Debabarrena", hero: "taller", mosaico: ["taller", "pan", "pelu"],
     lede: "Tradición armera y metalúrgica en un valle pequeño. Webs que explican el oficio con claridad.",
@@ -257,13 +257,13 @@ export const NUEVAS = [
     lede: "Un pueblo de unos 2.000 vecinos con industria pequeña. El negocio local compite con lo que hay en Bergara.",
     contexto: "Antzuola está entre Bergara, Elgeta y Azkoitia, y su clientela compra en varios sitios. El negocio local gana cuando se le encuentra cerca: ficha de Google al día, horario correcto y una web con servicios claros. La competencia por «Antzuola» es casi nula; la que hay es por lo que haces en Debagoiena.",
     sectores: ["Industria y servicios técnicos", "Comercio de proximidad", "Hostelería", "Oficios y reformas"],
-    gancho: "En pueblos pequeños, una landing a 420€ y una ficha de Google cuidada te ponen por delante del que no tiene nada.",
+    gancho: "En pueblos pequeños, una web de una página a 420€ y una ficha de Google cuidada te ponen por delante del que no tiene nada.",
     faq: { q: "¿Merece la pena el SEO en un pueblo de unos 2.000 habitantes?", a: "Precisamente ahí rinde más: hay pocos negocios peleando y muchos sin web, así que hacerlo bien te pone por delante con poco esfuerzo." } },
 
   { slug: "elgeta", name: "Elgeta", alt: "Elgueta", comarca: "Debagoiena", hero: "flor", mosaico: ["flor", "pan", "cafe"],
     lede: "Un pueblo pequeño del Alto Deba, rodeado de monte. Negocios que sirven a vecinos y a gente de paso.",
     contexto: "Elgeta es un municipio pequeño en el Alto Deba, con carácter rural y cerca de Bergara y Eibar. Los negocios locales viven del vecino y del visitante que llega por el monte y los caminos de la zona. Una web sencilla con horarios, ubicación y fotos reales, y una ficha de Google bien hecha, es proporcionada y suficiente.",
     sectores: ["Hostelería y casas de comida", "Producto local", "Oficios y servicios rurales", "Comercio de proximidad"],
-    gancho: "Landing de 420€: quién eres, qué haces y cómo llegar. Sin adornos que no necesitas.",
-    faq: { q: "¿Me hace falta algo más que una landing?", a: "Si ofreces pocos servicios y tu clientela viene por recomendación, no. Si quieres vender productos o tener varias secciones, pasarías a Web bonita + presencia (540€) o a tienda online (880€)." } },
+    gancho: "Web de una página de 420€: quién eres, qué haces y cómo llegar. Sin adornos que no necesitas.",
+    faq: { q: "¿Me hace falta algo más que una landing?", a: "Si ofreces pocos servicios y tu clientela viene por recomendación, no. Si quieres vender productos o tener varias secciones, pasarías a una web con secciones (540€) o a tienda online (880€)." } },
 ];
