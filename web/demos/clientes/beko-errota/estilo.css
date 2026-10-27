@@ -632,3 +632,4 @@ a,button,[role="button"],input,select,textarea,summary,label{-webkit-tap-highlig
 .legal p,.legal li{font-size:17px;line-height:1.7;color:#3a4650}
 .legal ul{margin:10px 0 0 20px}
 .legal a{color:var(--azul)}
+.curso p i{font:italic 400 1em Karla,sans-serif;opacity:.75;margin-right:4px}
