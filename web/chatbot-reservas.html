@@ -3,17 +3,18 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<!-- 24/10: el chatbot sale de la oferta (estrategia del 23/10): fuera del índice, del menú y del sitemap; la página sigue viva -->
+<!-- 24/10: el chatbot sale de la oferta (estrategia del 23/10): fuera del índice, del menú y del sitemap; la página sigue viva.
+     27/10: retirados la demo (el servidor del chat no responde) y el precio +190 € / 15 €/mes; queda un aviso que manda a las citas online. -->
 <meta name="robots" content="noindex, follow"/>
 <meta name="theme-color" content="#f6f3ea"/>
 <meta http-equiv="Content-Security-Policy" content="base-uri 'self'; form-action 'self' mailto: https://wa.me"/>
-<title>Chatbot de reservas para la web de tu negocio | OI Studio</title>
-<meta name="description" content="Chatbot para la web de tu negocio: contesta las preguntas de siempre y ayuda a reservar, a cualquier hora. +190 € y 15 €/mes (sin IVA), sin comisiones."/>
+<title>Chat de reservas: de momento no lo ofrezco | OI Studio</title>
+<meta name="description" content="El chat de reservas está retirado mientras lo rehago. Para que tus clientes pidan cita sin llamarte, mira las citas online sin comisiones."/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="OI Studio"/>
 <meta property="og:url" content="https://oiwebstudio.com/chatbot-reservas.html"/>
-<meta property="og:title" content="Chatbot de reservas para la web de tu negocio | OI Studio"/>
-<meta property="og:description" content="Un chatbot de reservas real para tu web: servicio, día y hora en menos de un minuto, sin llamadas ni mensajes cruzados."/>
+<meta property="og:title" content="Chat de reservas: de momento no lo ofrezco | OI Studio"/>
+<meta property="og:description" content="El chat de reservas está retirado mientras lo rehago. Para que tus clientes pidan cita sin llamarte, mira las citas online sin comisiones."/>
 <meta property="og:image" content="https://oiwebstudio.com/assets/og-chatbot.jpg"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
@@ -130,13 +131,15 @@
 <nav class="nav">
 <a href="index.html" class="nav__logo"><img src="assets/logo-nav-black.png" alt="OI Studio" class="nav__logo-img" width="320" height="86"/></a>
 <ul class="nav__links">
-<li><a href="trabajos.html" data-t="nav_trabajos">Trabajos</a></li>
+<li><a href="trabajos.html" data-t="nav_webs">Webs</a></li>
+<li><a href="index.html#automatizaciones" data-t="nav_auto">Automatizaciones con IA</a></li>
+<li><a href="index.html#branding" data-t="nav_branding">Branding</a></li>
 <li><a href="precios.html" data-t="nav_precios">Precios</a></li>
-<li><a href="reservas-online-sin-comisiones.html" data-t="nav_reservas">Reservas</a></li>
-<li><a href="sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
 <li><a href="contacto.html" data-t="nav_contacto">Contacto</a></li>
 <li class="nav__mas"><button type="button" class="nav__mas-btn" aria-expanded="false" aria-controls="nav-mas"><span data-t="nav_mas">Más</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
 <ul class="nav__drop" id="nav-mas">
+<li><a href="sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
+<li><a href="reservas-online-sin-comisiones.html" data-t="nav_reservas">Reservas</a></li>
 <li><a href="seo-posicionamiento-google.html" data-t="nav_seo">SEO</a></li>
 <li><a href="ayudas-subvenciones-pagina-web-gipuzkoa.html" data-t="nav_ayudas">Ayudas</a></li>
 <li><a href="zonas.html" data-t="nav_zonas">Zonas</a></li>
@@ -161,13 +164,15 @@
 </div>
 <div class="mobile-menu" id="menu-movil">
 <ul class="mobile-menu__main">
-<li><a href="trabajos.html" data-t="nav_trabajos">Trabajos</a></li>
+<li><a href="trabajos.html" data-t="nav_webs">Webs</a></li>
+<li><a href="index.html#automatizaciones" data-t="nav_auto">Automatizaciones con IA</a></li>
+<li><a href="index.html#branding" data-t="nav_branding">Branding</a></li>
 <li><a href="precios.html" data-t="nav_precios">Precios</a></li>
-<li><a href="reservas-online-sin-comisiones.html" data-t="nav_reservas">Reservas</a></li>
-<li><a href="sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
 <li><a href="contacto.html" data-t="nav_contacto">Contacto</a></li>
 </ul>
 <ul class="mobile-menu__sec">
+<li><a href="sobre-mi.html" data-t="nav_sobre">Sobre mí</a></li>
+<li><a href="reservas-online-sin-comisiones.html" data-t="nav_reservas">Reservas</a></li>
 <li><a href="seo-posicionamiento-google.html" data-t="nav_seo">SEO</a></li>
 <li><a href="ayudas-subvenciones-pagina-web-gipuzkoa.html" data-t="nav_ayudas">Ayudas</a></li>
 <li><a href="zonas.html" data-t="nav_zonas">Zonas</a></li>
@@ -180,221 +185,16 @@
 </div>
 </div>
 
-<header class="bot-hero">
-<div class="container">
-<div class="bot-hero__grid">
-
-<div class="bot-hero__copy">
-<span class="eyebrow reveal" data-t="bot_eyebrow">Chatbot para tu web</span>
-<h1 class="reveal" data-d="1" data-t="bot_h1">Un chatbot que <span class="grad">reserva por ti</span>, 24 horas al día.</h1>
-<p class="lede reveal" data-d="2" data-t="bot_lede">Tus clientes eligen el servicio, el día y la hora directamente en tu web — sin llamadas, sin mensajes cruzados, sin que se te olvide confirmar. Tú solo ves la cita ya cerrada.</p>
-<div class="siempre reveal" data-d="3">
-<span data-t="bot_s1">Reserva en menos de 1 minuto</span>
-<span data-t="bot_s2">Disponible 24/7</span>
-<span data-t="bot_s3">Sin doble reserva</span>
-<span data-t="bot_s4">En tu propia web</span>
-<span data-t="bot_s5">+190 € y 15 €/mes</span>
+<main class="section" id="retirado" style="padding-top:140px;padding-bottom:110px;">
+<div class="container" style="max-width:760px;">
+<h1 style="text-transform:uppercase;">El chat de reservas, de momento no lo ofrezco</h1>
+<p class="lede" style="margin-top:18px;">Lo he retirado mientras lo rehago. Si quieres que tus clientes pidan cita o mesa sin llamarte, mira las citas online sin comisiones o escríbeme y te digo qué te encaja.</p>
+<div style="display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center;margin-top:28px;">
+<a class="btn btn--accent btn--lg" href="reservas-online-sin-comisiones.html">Ver las citas online</a>
+<a class="link-terra" href="https://wa.me/34611497409" target="_blank" rel="noopener">Escribir por WhatsApp</a>
 </div>
 </div>
-
-<div class="bot-hero__demo reveal" data-d="2">
-<div class="phone" role="img" aria-label="Ejemplo de conversación: el cliente elige servicio, día y hora, y el chatbot confirma la cita">
-<div class="phone__screen">
-
-<div class="chat__head">
-<span class="chat__av"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="7" width="16" height="12" rx="3"/><path d="M12 3v4M9 13h.01M15 13h.01"/></svg></span>
-<div class="chat__who"><b data-t="bot_chat_name">Reservas · Tu negocio</b><span data-t="bot_chat_status">Responde al instante</span></div>
-</div>
-
-<div class="chat__body">
-<div class="bub bub--bot" style="--d:.35s" data-t="bot_chat_1">¡Hola! ¿Quieres pedir cita? Dime qué necesitas 👇</div>
-
-<div class="bub-chips" style="--d:.95s">
-<b class="on" data-t="bot_chat_chip1">Corte + color</b>
-<b data-t="bot_chat_chip2">Corte</b>
-<b data-t="bot_chat_chip3">Peinado</b>
-</div>
-
-<div class="bub bub--me" style="--d:1.55s" data-t="bot_chat_2">Corte + color</div>
-
-<div class="bub bub--bot" style="--d:2.1s" data-t="bot_chat_3">Perfecto, son 90 min. ¿Qué día te viene bien?</div>
-
-<div class="bub-chips" style="--d:2.65s">
-<b data-t="bot_chat_chip4">Jue 6</b>
-<b class="on" data-t="bot_chat_chip5">Vie 7</b>
-<b data-t="bot_chat_chip6">Sáb 8</b>
-</div>
-
-<div class="bub bub--me" style="--d:3.25s" data-t="bot_chat_4">El viernes a las 17:30</div>
-
-<div class="bub-card" style="--d:3.9s">
-<div class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span data-t="bot_chat_ok">Cita confirmada</span></div>
-<dl>
-<dt data-t="bot_chat_k1">Servicio</dt><dd data-t="bot_chat_v1">Corte + color</dd>
-<dt data-t="bot_chat_k2">Cuándo</dt><dd data-t="bot_chat_v2">Viernes 7 · 17:30</dd>
-<dt data-t="bot_chat_k3">Dónde</dt><dd data-t="bot_chat_v3">Tolosa, Gipuzkoa</dd>
-</dl>
-</div>
-</div>
-
-<div class="chat__bar">
-<span data-t="bot_chat_ph">Escribe tu mensaje…</span>
-<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></i>
-</div>
-
-</div>
-</div>
-</div>
-
-</div>
-</div>
-</header>
-
-<section class="section" id="como-funciona">
-<div class="container">
-<div class="section-head reveal">
-<span class="eyebrow" data-t="bot_steps_eyebrow">Cómo funciona</span>
-<h2 data-t="bot_steps_h2">Cuatro pasos, sin que tú tengas que hacer nada</h2>
-</div>
-<div class="steps reveal" data-d="1">
-<div class="step">
-<div class="step__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h10M4 18h7"/><circle cx="19" cy="16" r="3"/></svg></div>
-<h3 data-t="bot_step1_h">Elige servicio</h3><p data-t="bot_step1_p">Corte, mesa, revisión... el cliente ve tus servicios reales, con su duración y precio orientativo.</p></div>
-<div class="step">
-<div class="step__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/><path d="M12 14v3l2 1"/></svg></div>
-<h3 data-t="bot_step2_h">Elige día y hora</h3><p data-t="bot_step2_p">El bot solo ofrece huecos que existen de verdad, según tu horario y lo que ya está reservado.</p></div>
-<div class="step">
-<div class="step__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-<h3 data-t="bot_step3_h">Confirma sus datos</h3><p data-t="bot_step3_p">Nombre y teléfono de contacto, para que sepas quién viene y puedas avisarle si hace falta.</p></div>
-<div class="step">
-<div class="step__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg></div>
-<h3 data-t="bot_step4_h">Reserva cerrada</h3><p data-t="bot_step4_p">La cita queda guardada al instante — sin solapes, sin doble reserva del mismo hueco.</p></div>
-</div>
-</div>
-</section>
-
-<section class="section section--subtle" id="pruebalo">
-<div class="container">
-<div class="section-head reveal">
-<span class="eyebrow" data-t="bot_demo_eyebrow">Pruébalo tú mismo</span>
-<h2 data-t="bot_demo_h2">Así lo verían tus clientes</h2>
-<p data-t="bot_demo_p">Pulsa la burbuja de chat, abajo a la derecha, y completa una reserva de ejemplo.</p>
-</div>
-<p class="demo-note" data-t="bot_demo_note">Demo con datos de ejemplo — ninguna reserva real se envía a ningún negocio.</p>
-</div>
-</section>
-
-<section class="section" id="incluye">
-<div class="container">
-<div class="section-head reveal">
-<span class="eyebrow" data-t="bot_incl_eyebrow">Qué incluye</span>
-<h2 data-t="bot_incl_h2">Se añade a cualquier plan de web</h2>
-</div>
-<div class="cards">
-<article class="card reveal">
-<div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 20h8M12 18v2"/></svg></div>
-<h3 data-t="bot_c1_h">Widget en tu web</h3>
-<p data-t="bot_c1_p">Burbuja de chat en cualquier página, con tus servicios y horarios ya configurados.</p>
-</article>
-<article class="card reveal">
-<div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-4-1L3 20l1-5.5A8.5 8.5 0 1 1 21 11.5z"/></svg></div>
-<h3 data-t="bot_c2_h">Cuota fija, sin comisiones</h3>
-<p data-t="bot_c2_p">No cobro por cita ni por conversación: pagas la puesta en marcha y una cuota fija al mes.</p>
-</article>
-<article class="card reveal">
-<div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
-<h3 data-t="bot_c3_h">Horarios y servicios reales</h3>
-<p data-t="bot_c3_p">Configuramos juntos tus servicios, su duración y tu horario de apertura.</p>
-</article>
-<article class="card reveal">
-<div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
-<h3 data-t="bot_c4_h">Sin doble reserva</h3>
-<p data-t="bot_c4_p">Cada hueco se comprueba antes de confirmar, así que nunca se cruzan dos clientes en la misma hora.</p>
-</article>
-</div>
-</div>
-</section>
-
-<section class="section section--subtle" id="automatizar">
-<div class="container">
-<div class="section-head reveal">
-<span class="eyebrow" data-t="bot_auto_eyebrow">Más allá de las reservas</span>
-<h2 data-t="bot_auto_h2">Qué se puede automatizar en tu negocio</h2>
-<p data-t="bot_auto_p">Las reservas son el caso más pedido, pero no el único. Según las tareas que más tiempo te ocupen cada día, la automatización se plantea de una forma u otra.</p>
-</div>
-<ul class="auto-list reveal" data-d="1">
-<li>
-<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg></span>
-<span><b data-t="bot_a1_h">Citas y reservas</b><span data-t="bot_a1_p">Servicio, día y hora con huecos reales, sin solapes ni confirmaciones a mano.</span></span></li>
-<li>
-<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.5 8.5 0 0 1-4-1L3 20l1-5.5A8.5 8.5 0 1 1 21 11.5z"/><path d="M10 9.5a2 2 0 1 1 3 1.7c-.6.4-1 .8-1 1.6"/><path d="M12 16h.01"/></svg></span>
-<span><b data-t="bot_a2_h">Las preguntas de siempre</b><span data-t="bot_a2_p">Horarios, precios, dirección, aparcamiento, si hay que pedir cita. Respondidas al momento, también de madrugada.</span></span></li>
-<li>
-<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
-<span><b data-t="bot_a3_h">Captación de contactos</b><span data-t="bot_a3_p">El chat recoge nombre, teléfono y qué necesita cada persona, y te lo hace llegar ordenado.</span></span></li>
-<li>
-<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span>
-<span><b data-t="bot_a4_h">Avisos y recordatorios</b><span data-t="bot_a4_p">Recordar la cita del día siguiente reduce las ausencias sin aviso, que suponen ingresos perdidos.</span></span></li>
-<li>
-<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg></span>
-<span><b data-t="bot_a5_h">Pedidos y encargos</b><span data-t="bot_a5_p">Encargos sencillos recogidos por el chat y enviados a tu correo.</span></span></li>
-<li>
-<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></span>
-<span><b data-t="bot_a6_h">Conexión con tus herramientas</b><span data-t="bot_a6_p">Que la cita caiga en tu calendario o el contacto en tu hoja de siempre, sin copiar nada a mano.</span></span></li>
-</ul>
-</div>
-</section>
-
-<section class="section" id="precio">
-<div class="container">
-<div class="section-head reveal">
-<span class="eyebrow" data-t="bot_pre_eyebrow">Precio</span>
-<h2 data-t="bot_pre_h2">Precio cerrado</h2>
-</div>
-<div class="quote reveal" data-d="1">
-<p class="amount" data-t="bot_pre_amount">+190 € y 15 €/mes</p>
-<p class="sub" data-t="bot_pre_sub">El chatbot se añade a una web hecha por mí. Los 15 €/mes van sobre el mantenimiento de 28 €/mes, que es obligatorio mientras el chatbot funcione. Precios sin IVA. La puesta en marcha la pagas al final, cuando el chatbot ya funciona en tu web.</p>
-<div class="why">
-<div><b data-t="bot_pre_w1_h">Qué incluye</b><span data-t="bot_pre_w1_p">Configuro tus servicios, horarios, precios y preguntas frecuentes, y lo dejo funcionando en tu web.</span></div>
-<div><b data-t="bot_pre_w2_h">En tu web (y WhatsApp a medida)</b><span data-t="bot_pre_w2_p">Funciona en tu web. En WhatsApp, a medida: te digo el precio antes de empezar.</span></div>
-<div><b data-t="bot_pre_w3_h">Cuota fija</b><span data-t="bot_pre_w3_p">15 €/mes sobre el mantenimiento, sin comisión por cita ni por conversación.</span></div>
-<div><b data-t="bot_pre_w4_h">Si necesitas más</b><span data-t="bot_pre_w4_p">Si tiene que conectarse con un programa de citas u otra herramienta que ya uses, te lo digo antes, con precio cerrado.</span></div>
-</div>
-<p class="fine" data-t="bot_pre_fine">Propuesta en 48 h · Precio cerrado por escrito · Sin permanencia</p>
-<p class="sub"><a class="link-terra" href="reservas-online-sin-comisiones.html">¿Solo quieres reservas, sin chatbot? Mira las reservas online sin comisiones →</a></p>
-</div>
-</div>
-</section>
-
-<section class="section section--subtle">
-<div class="container">
-<div class="section-head reveal">
-<span class="eyebrow" data-t="bot_faq_eyebrow">Dudas frecuentes</span>
-<h2 data-t="bot_faq_h2">Antes de añadirlo a tu web</h2>
-</div>
-<div class="faq-pre reveal" data-d="1">
-<details><summary data-t="bf1_q">¿Necesito ya una web para tener el chatbot?</summary><p data-t="bf1_a">Sí: se añade a una web hecha por mí (+190 €). Si tu web es de otra persona, cuéntame cuál es y te digo antes si se puede.</p></details>
-<details><summary data-t="bf2_q">¿Puedo tenerlo también en WhatsApp?</summary><p data-t="bf2_a">Sí, a medida. De serie funciona en tu web; en WhatsApp cada mensaje tiene un coste, así que lo preparo para tu caso y te digo el precio antes de empezar.</p></details>
-<details><summary data-t="bf3_q">¿Qué pasa si dos clientes quieren la misma hora?</summary><p data-t="bf3_a">El sistema comprueba la disponibilidad justo al confirmar, así que solo uno se queda con el hueco y al otro se le ofrecen horas alternativas.</p></details>
-<details><summary data-t="bf4_q">¿Puedo cambiar mis servicios y horarios más adelante?</summary><p data-t="bf4_a">Sí. Me escribes con los cambios de servicios, duraciones u horarios y te lo dejo actualizado: entran en el mantenimiento, que incluye hasta 3 cambios al mes.</p></details>
-<details><summary data-t="bf5_q">¿Cuánto cuesta el chatbot?</summary><p data-t="bf5_a">190 € al añadirlo a tu web y 15 €/mes sobre el mantenimiento de 28 €/mes, todo sin IVA. La puesta en marcha la pagas al final, cuando ya funciona. Sin comisión por cita ni por conversación.</p></details>
-<details><summary data-t="bf6_q">¿Y si no sé si mi negocio lo necesita?</summary><p data-t="bf6_a">Te lo digo con honestidad. Si gestionas bien las citas por teléfono y WhatsApp y no se te escapa ninguna, probablemente no te compense todavía. Tiene sentido cuando pierdes reservas fuera de horario o pasas demasiado tiempo respondiendo siempre lo mismo.</p></details>
-</div>
-</div>
-</section>
-
-<section class="section dark-section cta">
-<div class="container">
-<div class="reveal">
-<h2 data-t="bot_cta_h">¿Le añadimos un chatbot de reservas a tu web?</h2>
-<p data-t="bot_cta_p">Cuéntame qué servicios ofreces, tu horario y qué te gustaría automatizar. Te preparo una demo con tus propios datos y una propuesta con precio cerrado en 48 horas.</p>
-<div class="hero__actions">
-<a href="contacto.html" class="btn btn--light btn--lg" data-t="btn_presupuesto">Solicitar presupuesto</a>
-<a href="https://wa.me/34611497409?text=Hola%2C%20me%20interesa%20el%20chatbot%20de%20reservas%20para%20mi%20negocio" target="_blank" rel="noopener" class="btn btn--dark-ghost btn--lg" data-t="btn_whatsapp">Escribir por WhatsApp</a>
-</div>
-</div>
-</div>
-</section>
+</main>
 
 <footer class="footer">
 <div class="container">
@@ -428,6 +228,8 @@
 <li><a href="seo-posicionamiento-google.html" data-t="ft_s6">SEO y presencia en Google ·&nbsp;120&nbsp;€</a></li>
 <li><a href="precios.html" data-t="ft_s3">Tienda online ·&nbsp;880&nbsp;€</a></li>
 <li><a href="reservas-online-sin-comisiones.html" data-t="ft_s5">Reservas online sin comisiones</a></li>
+<li><a href="index.html#automatizaciones" data-t="nav_auto">Automatizaciones con IA</a></li>
+<li><a href="index.html#branding" data-t="nav_branding">Branding</a></li>
 </ul>
 </details>
 <details class="foot-g">
@@ -469,38 +271,7 @@
 <div class="footer__mark" aria-hidden="true">OI STUDIO</div>
 </footer>
 
-<script src="assets/i18n.js?v=31"></script>
+<script src="assets/i18n.js?v=32"></script>
 <script src="assets/main.js?v=19"></script>
-<!-- Demo del widget de reservas: apunta al tenant "peluqueria" seedeado en booking-api. -->
-<script>
-/* Contexto extra que la IA usa al responder preguntas libres en esta página. */
-window.OIB_CONTEXT =
-  "Esta demo está en la web de OI Studio, estudio de diseño web en Tolosa (Gipuzkoa) para negocios locales. " +
-  "Precios de OI Studio (sin IVA, pago único al final, con la web publicada): web de una página 420€, web con secciones 540€, tienda online 880€. " +
-  "Reservas y citas online sin comisiones: 290€ solas o +190€ con una web de OI Studio. Packs: web + reservas 580€, restaurante 740€, casa rural 740€. " +
-  "Mantenimiento 28€/mes con hasta 3 cambios al mes (opcional con una web sola, obligatorio con reservas o chatbot); dominio y hosting incluidos el primer año (después, dentro del mantenimiento o 20 €/año). Plazos: landing 1 semana, web negocio 2-3 semanas. " +
-  "La web, dominio y hosting quedan a nombre del cliente. Este mismo chatbot de reservas se puede instalar " +
-  "en una web hecha por OI Studio por 190€ más 15€/mes sobre el mantenimiento. Funciona en la web; en WhatsApp no se ofrece todavía. " +
-  "Los avisos de reservas van por correo electrónico. Contacto: WhatsApp 611 49 74 09, contactoiwebstudio@gmail.com.";
-
-/* Respuestas del robot a preguntas sobre OI Studio (se suman a las genéricas del widget). */
-window.OIB_FAQ = [
-  { k: ["cuanto cuesta una web", "precio de la web", "precio web", "cuesta la web", "cuanto vale una web", "presupuesto"],
-    a: "Una web de una página cuesta 420€ y una web con secciones 540€, sin IVA: pago único al final, precio cerrado por escrito y propuesta en 48h. Tienes el detalle en la página de Precios." },
-  { k: ["chatbot", "este bot", "el robot", "asistente como este", "automatizar", "automatizacion"],
-    a: "Este mismo chatbot se puede añadir a una web hecha por OI Studio: 190€ y 15€/mes sobre el mantenimiento, sin IVA. Funciona en la web; en WhatsApp, a medida." },
-  { k: ["cuanto tarda", "plazo", "cuanto tiempo", "cuando estaria"],
-    a: "Una web de una página suele estar lista en una semana; una web con secciones, en dos o tres. El plazo exacto va por escrito en la propuesta." },
-  { k: ["mantenimiento", "cada mes", "mensual", "cuota"],
-    a: "El mantenimiento cuesta 28€/mes e incluye hasta 3 cambios al mes, copias de seguridad y soporte. Con una web sola es opcional; con reservas o chatbot es obligatorio. Sin permanencia." },
-  { k: ["dominio", "hosting", "sera mia", "a mi nombre"],
-    a: "La web, el dominio y el hosting quedan a tu nombre desde el primer día. No dependes de nadie para seguir usándola." },
-  { k: ["trabajos", "ejemplos", "portfolio", "otras webs"],
-    a: "En la sección Trabajos hay dos casos reales, entre ellos A.Berri, una casa rural con reservas desde su web, y nueve muestras navegables." },
-  { k: ["contacto", "hablar con oier", "presupuesto real", "contratar"],
-    a: "Escríbeme por WhatsApp al 611 49 74 09 o desde la página de Contacto: respondo en menos de 24 h." }
-];
-</script>
-<script src="https://oi-studio-booking-api-delta.vercel.app/widget.js" data-business="peluqueria" defer></script>
 </body>
 </html>

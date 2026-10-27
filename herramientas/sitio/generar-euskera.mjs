@@ -72,7 +72,7 @@ const META = {
   "seo-posicionamiento-google.html": {
     // 23/10/2026: «Presencia en Google y en las IAs», con Itzultzaile Neuronala.
     title: "Presentzia Googlen eta IAetan: SEO lokala Tolosan | OI Studio",
-    desc: "Google fitxa osoa, erreseinen QR, Bing eta Apple Maps, eta Google eta ChatGPT nola ikusten zaituzten: 120 € + BEZ. Presentzia-kuota, 40 € hilean. SEO lokala Tolosan eta Gipuzkoan.",
+    desc: "Google fitxa osoa, erreseinen QR, Bing eta Apple Maps, eta Google eta ChatGPT nola ikusten zaituzten: 120 € + BEZ. Presentzia-kuota, 28 € hilean. SEO lokala Tolosan eta Gipuzkoan.",
   },
 };
 
