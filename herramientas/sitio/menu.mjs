@@ -1,6 +1,7 @@
 /**
- * Menú de la cabecera (octubre 2026): TRABAJOS · PRECIOS · RESERVAS · SOBRE MÍ ·
- * CONTACTO + «Más» (SEO, Ayudas, Zonas, Artículos; SEO desde el 21/10; Chatbot fuera desde el 24/10 con la oferta nueva), y el menú del móvil a
+ * Menú de la cabecera (27/10/2026, oferta en tres líneas): WEBS · AUTOMATIZACIONES CON IA ·
+ * BRANDING · PRECIOS · CONTACTO + «Más» (Sobre mí, Reservas, SEO, Ayudas, Zonas, Artículos).
+ * Antes (octubre 2026): TRABAJOS · PRECIOS · RESERVAS · SOBRE MÍ · CONTACTO + «Más»; y el menú del móvil a
  * pantalla completa con tres accesos directos (Llamar, WhatsApp, Pedir presupuesto).
  *
  * El menú está copiado en todas las páginas (raíz, zonas/ y guías). Este script
@@ -19,13 +20,15 @@ const WEB = path.resolve("web");
 const SOLO_COMPROBAR = process.argv.includes("--check");
 
 const PRINCIPAL = [
-  ["trabajos", "trabajos.html", "nav_trabajos", "Trabajos"],
+  ["trabajos", "trabajos.html", "nav_webs", "Webs"],
+  ["auto", "index.html#automatizaciones", "nav_auto", "Automatizaciones con IA"],
+  ["branding", "index.html#branding", "nav_branding", "Branding"],
   ["precios", "precios.html", "nav_precios", "Precios"],
-  ["reservas", "reservas-online-sin-comisiones.html", "nav_reservas", "Reservas"],
-  ["sobre", "sobre-mi.html", "nav_sobre", "Sobre mí"],
   ["contacto", "contacto.html", "nav_contacto", "Contacto"],
 ];
 const MAS = [
+  ["sobre", "sobre-mi.html", "nav_sobre", "Sobre mí"],
+  ["reservas", "reservas-online-sin-comisiones.html", "nav_reservas", "Reservas"],
   ["seo", "seo-posicionamiento-google.html", "nav_seo", "SEO"],
   ["ayudas", "ayudas-subvenciones-pagina-web-gipuzkoa.html", "nav_ayudas", "Ayudas"],
   ["zonas", "zonas.html", "nav_zonas", "Zonas"],

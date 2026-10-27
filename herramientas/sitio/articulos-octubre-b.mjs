@@ -94,7 +94,7 @@ ${cta("¿No sabes cuál encaja contigo?", "Cuéntame tu negocio y te digo, aunqu
 <h2 id="imprescindible">Lo imprescindible</h2>
 <ul class="check">
 <li><strong>Qué tratas y para quién,</strong> en la primera pantalla: lesiones deportivas, dolor crónico, embarazo y posparto, rehabilitación tras una operación…</li>
-<li><strong>Cita a un toque:</strong> teléfono, WhatsApp y, si puedes, <a href="reservas-online-sin-comisiones.html">reserva online</a>. Desde el móvil, sin tener que buscar.</li>
+<li><strong>Cita a un toque:</strong> teléfono, WhatsApp con el mensaje ya escrito o un enlace al programa de citas que ya uses. Desde el móvil, sin tener que buscar.</li>
 <li><strong>Dónde estáis y cómo llegar:</strong> dirección, aparcamiento o transporte, y horario real.</li>
 <li><strong>El equipo, con nombre y cara,</strong> y el número de colegiado de cada profesional.</li>
 <li><strong>Qué pasa en la primera sesión:</strong> cuánto dura, qué se hace y qué ropa llevar. Quita miedo.</li>
@@ -112,7 +112,7 @@ ${figura("arin-desk", "arin · muestra", "Muestra de web de fisioterapia con map
 <ul class="check">
 <li><strong>Datos del titular y colegiación</strong> en el aviso legal: si es profesión regulada, el colegio y el número de colegiado.</li>
 <li><strong>Cuidado con la publicidad sanitaria:</strong> evita prometer curaciones o resultados garantizados y consulta a tu colegio profesional qué puedes decir. Mejor explicar que prometer.</li>
-<li><strong>Formularios mínimos:</strong> nombre, teléfono y motivo en pocas palabras. Los datos de salud son de categoría especial; no pidas historial clínico por la web.</li>
+<li><strong>Formularios mínimos:</strong> nombre, teléfono y cuándo te viene bien que te llamen; el motivo, mejor por teléfono. Los datos de salud son de categoría especial; no pidas historial clínico por la web.</li>
 <li><strong>Política de privacidad</strong> clara. Tienes la guía de <a href="aviso-legal-privacidad-cookies-web-negocio.html">textos legales</a>.</li>
 </ul>
 
@@ -126,7 +126,7 @@ ${cta("¿Tienes una clínica de fisioterapia?", "Te preparo una muestra con tu c
   faq: [
     ["¿Qué debe tener la web de una clínica de fisioterapia?", "Qué tratas y para quién, cita a un toque, ubicación y horario, equipo con colegiación, qué ocurre en la primera sesión, precios claros y los textos legales."],
     ["¿Puedo poner testimonios de pacientes?", "Con mucha cautela: son datos de salud y la publicidad sanitaria tiene límites. Lo más seguro son las reseñas públicas de Google, sin detalles clínicos. Confírmalo con tu colegio profesional."],
-    ["¿Hace falta reserva online?", "No es obligatoria, pero ayuda: muchos pacientes piden cita fuera de horario. Si no, un botón de WhatsApp con el mensaje ya escrito funciona muy bien."],
+    ["¿Hace falta reserva online?", "No es obligatoria. Un botón de WhatsApp con el mensaje ya escrito, o un enlace al programa de citas que ya usas, funciona muy bien. Una agenda online propia para consultas de salud no la ofrezco de momento: pide más medidas de protección de datos de las que hoy puedo garantizar."],
     ["¿Cuánto cuesta la web de una clínica de fisioterapia?", "Una web de negocio con las páginas de servicios, equipo y contacto parte de 540 € + IVA en OI Studio, con precio cerrado por escrito."],
   ],
   cierre: `Sigue leyendo: <a href="web-para-psicologo-consulta.html">la web de una consulta de psicología</a> y <a href="web-para-clinica-veterinaria.html">la web de una clínica veterinaria</a>.`,
@@ -154,7 +154,7 @@ ${cta("¿Tienes una clínica de fisioterapia?", "Te preparo una muestra con tu c
 <li><strong>Con qué ayudas, en palabras de la gente:</strong> ansiedad, duelo, relaciones, estrés, autoestima… no solo «psicología clínica».</li>
 <li><strong>Cómo trabajas:</strong> enfoque, duración de las sesiones, si son individuales, de pareja o familiares, presenciales u online.</li>
 <li><strong>Quién eres:</strong> formación, colegiación y una presentación humana, en primera persona.</li>
-<li><strong>Cómo es la primera sesión:</strong> qué ocurre, cuánto dura, qué compromiso supone. La pregunta que más frena. Si quieres que la pidan sin llamar, puedes añadir <a href="reservas-online-sin-comisiones.html">citas online</a> a la web.</li>
+<li><strong>Cómo es la primera sesión:</strong> qué ocurre, cuánto dura, qué compromiso supone. La pregunta que más frena. Si quieres que la pidan sin llamar, un botón de WhatsApp con el mensaje ya escrito o un enlace al programa de citas que ya uses lo resuelven; una agenda online propia para consultas de salud no la ofrezco de momento.</li>
 <li><strong>Precio de la sesión,</strong> bonos o condiciones. Esconderlo genera desconfianza.</li>
 <li><strong>Idiomas:</strong> en Euskadi, poder atender en euskera es un valor. Si lo haces, que se vea (y la web, <a href="web-bilingue-euskera-castellano.html">en los dos idiomas</a>).</li>
 <li><strong>Un contacto fácil y discreto:</strong> formulario corto, correo y WhatsApp. Sin obligar a llamar.</li>

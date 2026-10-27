@@ -3,7 +3,7 @@
    Google 120, web de una página 420, web con secciones 540, tienda 880, packs con
    reservas 580/740/740. La presencia va aparte: se puede añadir (+120) a
    cualquiera de las dos webs; en los packs ya va incluida.
-   cuotas: mantenimiento 28 €/mes (38 con tienda) o presencia 40 €/mes. Las reservas solo van en un pack, y en
+   cuotas: desde el 27/10/2026, una sola de 28 €/mes (también con tienda). Las reservas solo van en un pack, y en
    un pack la cuota es obligatoria. Todo + IVA, pago único al final.
    Los importes son EXACTAMENTE los de precios.html: si cambia uno en la página,
    hay que cambiarlo aquí también, y en el JSON-LD de index.html.
@@ -24,7 +24,7 @@
     pack_restaurante: { precio: 740, web: true, reservas: true, secciones: true },
     pack_rural:       { precio: 740, web: true, reservas: true, secciones: true }
   };
-  var CUOTA = { mant: 28, mantTienda: 38, presencia: 40 };
+  var CUOTA = { mant: 28, mantTienda: 28, presencia: 28 }; /* 27/10/2026: una sola cuota de 28 €/mes */
   var PRESENCIA_EXTRA = 120;
 
   var $ = function (id) { return document.getElementById(id); };
@@ -69,11 +69,11 @@
     var cNinguna = cuotaCaja("ninguna"), cMant = cuotaCaja("mant"), cPres = cuotaCaja("presencia");
     apagar(cNinguna, t.reservas);
     apagar(cMant, !t.web);
-    apagar(cPres, t.tienda);
+    if (cPres) apagar(cPres, t.tienda);
     if (!form.querySelector('input[name="cuota"]:checked')) (t.reservas ? cMant : cNinguna).checked = true;
     notas.ninguna.textContent = t.reservas ? txt("ninguna_obl") : txt("ninguna_opc");
     notas.mant.textContent = !t.web ? txt("mant_no") : t.reservas ? txt("mant_obl") : txt("mant_opc");
-    notas.presencia.textContent = t.tienda ? txt("pres_tienda") : txt("pres_opc");
+    if (notas.presencia) notas.presencia.textContent = t.tienda ? txt("pres_tienda") : txt("pres_opc");
     var precioMant = t.tienda ? CUOTA.mantTienda : CUOTA.mant;
     pMant.textContent = precioMant + " " + txt("pormes");
     var cuota = (form.querySelector('input[name="cuota"]:checked') || {}).value || "ninguna";
