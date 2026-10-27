@@ -624,3 +624,11 @@ html,body{overflow-x:clip}
 html{-webkit-tap-highlight-color:transparent}
 a,button,[role="button"],input,select,textarea,summary,label{-webkit-tap-highlight-color:transparent}
 :focus:not(:focus-visible){outline:none}
+.botellas:has(> a:only-child){grid-template-columns:minmax(0,280px);justify-content:center}
+/* protección de datos */
+.legal .wrap{max-width:780px}
+.legal h2.script{font-size:clamp(24px,2.4vw,32px);margin:34px 0 10px}
+.legal h2.script:first-child{margin-top:0}
+.legal p,.legal li{font-size:17px;line-height:1.7;color:#3a4650}
+.legal ul{margin:10px 0 0 20px}
+.legal a{color:var(--azul)}
