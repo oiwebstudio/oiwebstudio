@@ -689,7 +689,7 @@ const EU = {
   seo_promesa: "Ez dizut Googleko lehen postua aginduko: inork ezin du agindu. Egiten dudana: zure fitxa eta webgunea Googlek eskatzen dituen bezala utziko ditut, zer aldatu dudan azalduko dizut eta non egiaztatu esango dizut.",
   seo_pr_h: "Prezioa",
   seo_pr_cifra: "120 € + BEZ",
-  seo_pr_p1: "Presentzia Googlen, behin eta azkenean. Egiten dizun webgunera gehitu dezakezu, orri batekoa izan edo atalekin, eta erreserbak dituzten pack-etan sartuta dago.",
+  seo_pr_p1: "Googlen egotea behin eta azkenean ordaintzen da. Egiten dizun webguneari gehitu diezaiokezu, orri batekoa zein atalekoa izan, eta 740 €-ko packean sartuta dago.",
   seo_pr_p2: "Ondoren, presentzia-kuotak egunean mantentzen du zure fitxa. <a href=\"precios.html\">Ikusi prezio guztiak</a>",
   seo_q1: "Zurekin egin behar dut webgunea?",
   seo_a1: "Ez. Daukazun webgunearekin lan egiten dut, edozein dela ere webgunea egin zuena. Zure plataformak ez badu zerbait aldatzen uzten, berrikuspenean esango dizut. Eta webgunerik ez baduzu, Googleko zure fitxatik hasiko naiz.",
@@ -700,7 +700,7 @@ const EU = {
   seo_q4: "Zer behar duzu nigandik?",
   seo_a4: "Administratzailearen sarbidea behar dut Googleko zure fitxara (fitxak zurea izaten jarraitzen du) eta zure webgunerako sarbidea, edo hori eramaten dizun pertsonaren kontaktua. Gainerakoa nik prestatzen dut eta argitaratu aurretik erakusten dizut.",
   seo_q5: "Zenbat balio du?",
-  seo_a5: "120 € + BEZa, behin eta amaieran, eginda dagoenean. Webgunea egiten badizut, bietako edozeini gehitu diezaiokezu, eta erreserbak dituzten packetan sartuta dago. Gero, dena egunean eduki nahi baduzu, presentzia-kuotak 28 € balio du hilean eta ez du iraunkortasunik.",
+  seo_a5: "120 € + BEZ, behin eta amaieran, eginda dagoenean. Webgunea egiten badizut, bietako edozeini gehitu diezaiokezu, eta 740 €-ko packean sartuta dago. Gero, dena egunean eduki nahi baduzu, kuota bakarrak 28 € balio du hilean eta ez du iraunkortasunik.",
   seo_rel_h: "Lehenago irakurtzeko",
   seo_rel1: "Nola agertu Googlen Tolosan",
   seo_rel2: "Google Business Profileren gida",
@@ -774,7 +774,7 @@ const EU = {
   calc_c0_obl: "Erreserbekin kuota bat behar da.",
   calc_q_pres: "presentzia-kuota",
   pf12_q: "Zer da presentzia Googlen?",
-  pf12_a: "Zure negozioa jendeak bilatzen duen lekuan uztea da. Googleren fitxa osatzen utziko dizut, erreseinen QR bat prestatuko dizut, datu berberak jarriko ditut Bing Places eta Apple Mapsen, eta orri bat emango dizut Googlek eta ChatGPTk zutaz diotenarekin, aurretik eta ondoren. 120 € balio du: bi webguneetako edozeinetan gehitu dezakezu, eta packetan sartuta dago.",
+  pf12_a: "Zure negozioa jendeak bilatzen duen lekuan ondo jarrita uztea da. Googleren fitxa osatzen utziko dizut, erreseinen QR bat prestatuko dizut, datu berberak jarriko ditut Bing Places eta Apple Mapsen, eta orri bat emango dizut Googlek eta ChatGPTk zutaz diotenarekin, aurretik eta ondoren. 120 € balio du: bi webguneetako edozeinetan gehitu dezakezu, eta 740 €-ko packean sartuta dago.",
   pf13_q: "Zer alde dago mantentze-lanen eta presentzia-kuotaren artean?",
   pf13_a: "Mantentze-lanak (28 €/hileko) zure webgunea zaintzen du: segurtasuna, kopiak eta gehienez 3 aldaketa hilean. Presentzia-kuotak (40 €/hileko) hori guztia barne hartzen du, eta, gainera, Googleko fitxa eguneratuta edukitzen du, zure erreseinen erantzunak prestatzen dizkizu eta hiru hilean behin IAk nola izendatzen zaituzten berrikusten du. Biak epe-konpromisorik gabeak dira.",
   seo_p5_h: "Erreseinen QR",
@@ -976,6 +976,10 @@ const EU = {
   pr3_a_g_s: "Googleko presentzian",
   pr3_a_r_s: "Kuotan sartuta",
   seo_auto: "Adimen artifizialeko nire automatizazioetako bat da: adimen artifizialak bilatzen zaituenak nola izendatzen zaituen ikusten laguntzen dit, eta konponketak nik egiten ditut.",
+  ln_a_p: "Komisiorik gabeko erreserbak, Googleko zure fitxa eta zure bezeroen iritzien erantzunak: lana kentzen dizu astero. Zerbitzu bakoitzean esaten dizut zer zati egiten duen adimen artifizialak.",
+  br_niv1: "Logoa",
+  br_niv2: "Nortasuna",
+  br_niv3: "Marka osoa",
 };
 (function () {
   const KEY = 'oi_lang';
