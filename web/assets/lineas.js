@@ -155,6 +155,60 @@
     });
   });
 
+  /* Las tres líneas: cada vista cambia sola mientras se ve, y al tocarla */
+  function vistaWebs(b) {
+    var tels = [].slice.call(b.querySelectorAll('.lv__tel')), nom = b.querySelector('.lv__nom'), n = tels.length;
+    return function () {
+      tels.forEach(function (t) {
+        var p = (+t.style.getPropertyValue('--p') + n - 1) % n;
+        if (p === n - 1 && !quieto) { t.classList.remove('lv-sale'); void t.offsetWidth; t.classList.add('lv-sale'); }
+        t.style.setProperty('--p', p);
+        if (p === 0) nom.textContent = t.dataset.n;
+      });
+      salta(nom);
+    };
+  }
+  function vistaAvisos(b) {
+    var caja = b.querySelector('.lv__avisos'), entra = txt('ln_entra');
+    return function () {
+      var av = [].slice.call(caja.children), antes = av.map(function (a) { return a.getBoundingClientRect().top; });
+      var nuevo = caja.lastElementChild;
+      caja.insertBefore(nuevo, caja.firstElementChild);
+      if (quieto || !nuevo.animate) return;
+      av.forEach(function (a, i) {
+        if (a === nuevo) return;
+        var d = antes[i] - a.getBoundingClientRect().top;
+        if (d) a.animate([{ transform: 'translateY(' + d + 'px)' }, { transform: 'none' }], { duration: 500, easing: 'cubic-bezier(.16,1,.3,1)' });
+      });
+      nuevo.dataset.e = entra;
+      nuevo.classList.add('is-entra');
+      nuevo.animate([{ transform: 'translateY(-18px) scale(.96)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 500, easing: 'cubic-bezier(.16,1,.3,1)' });
+      espera(function () { nuevo.classList.remove('is-entra'); salta(nuevo); }, 700);
+    };
+  }
+  function vistaMarca(b) {
+    var sw = [].slice.call(b.querySelectorAll('.lv__pal span')), i = 0;
+    return function () {
+      i = (i + 1) % sw.length;
+      b.style.setProperty('--p', sw[i].style.getPropertyValue('--c'));
+      b.style.setProperty('--t', sw[i].dataset.t2);
+      sw.forEach(function (s, j) { s.classList.toggle('is-on', j === i); });
+      salta(b.querySelector('.lv__logo'));
+    };
+  }
+  [].slice.call(document.querySelectorAll('.lv')).forEach(function (b, k) {
+    var paso = b.classList.contains('lv--w') ? vistaWebs(b) : b.classList.contains('lv--a') ? vistaAvisos(b) : vistaMarca(b);
+    var cada = [2600, 2300, 2900][k % 3], reloj = null, vista = false;
+    function para() { clearInterval(reloj); reloj = null; }
+    function sigue() { para(); if (!quieto && vista && !document.hidden) reloj = setInterval(paso, cada); }
+    b.addEventListener('click', function () {
+      paso(); sigue();
+      if (!quieto) { b.classList.remove('is-gira'); void b.offsetWidth; b.classList.add('is-gira'); }
+    });
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { vista = e[0].isIntersecting; sigue(); }, { threshold: 0.5 }).observe(b);
+    document.addEventListener('visibilitychange', sigue);
+  });
+
   /* Branding: el nivel que se toca se marca y su precio salta */
   var bn = [].slice.call(document.querySelectorAll('.br__n'));
   bn.forEach(function (b) {
@@ -178,10 +232,14 @@ window.addEventListener('load', function () {
     gsap.utils.toArray('.au__lede, .br__lede, .pr__lede, .pr__gar').forEach(function (p) {
       gsap.from(p, { y: 20, opacity: 0, duration: 0.8, ease: 'expo.out', clearProps: 'transform,opacity', scrollTrigger: { trigger: p, start: 'top 92%', once: true } });
     });
-    gsap.utils.toArray('.ln__f').forEach(function (f) {
-      var tl = gsap.timeline({ scrollTrigger: { trigger: f, start: 'top 88%', once: true } });
-      tl.from(f.querySelector('.ln__marca'), { scaleX: 0, duration: 0.8, ease: 'expo.out' })
-        .from(f.querySelectorAll('.ln__n, .ln__p, .ln__pr, .l3-a'), { y: 22, opacity: 0, duration: 0.7, ease: 'expo.out', stagger: 0.06, clearProps: 'transform,opacity' }, '<0.1');
+    var enFila = matchMedia('(min-width: 981px)').matches;
+    gsap.utils.toArray('.ln__f').forEach(function (f, i) {
+      var tl = gsap.timeline({ delay: enFila ? i * 0.12 : 0, scrollTrigger: { trigger: enFila ? '.ln' : f, start: 'top 86%', once: true } });
+      tl.from(f, { y: 50, opacity: 0, duration: 0.9, ease: 'expo.out', clearProps: 'transform,opacity' })
+        .fromTo(f.querySelector('.lv'), { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1, ease: 'expo.out', clearProps: 'clipPath' }, '<')
+        .from(f.querySelectorAll('.lv__fan, .av, .lv__logo, .lv__pal, .lv__let, .lv__pie'), { y: 34, opacity: 0, duration: 0.8, ease: 'expo.out', stagger: 0.07, clearProps: 'transform,opacity' }, '<0.2')
+        .from(f.querySelector('.ln__marca'), { scaleX: 0, duration: 0.8, ease: 'expo.out' }, '<0.1')
+        .from(f.querySelectorAll('.ln__n, .ln__p, .ln__pie'), { y: 22, opacity: 0, duration: 0.7, ease: 'expo.out', stagger: 0.06, clearProps: 'transform,opacity' }, '<0.1');
     });
     gsap.from('.l3-au .ramas button', { y: 18, opacity: 0, duration: 0.6, ease: 'expo.out', stagger: 0.07, clearProps: 'transform,opacity', scrollTrigger: { trigger: '.l3-au .ramas', start: 'top 90%', once: true } });
     var vivo = document.querySelector('.l3-au .rm:not([hidden])');
