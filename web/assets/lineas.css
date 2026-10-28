@@ -307,3 +307,8 @@
 }
 .ap--txt .ap__n{overflow-wrap:anywhere;}
 @media(max-width:760px){.ap--txt .ap__n{font-size:13.5px;}}
+
+/* 28/10: automatizaciones.html y branding.html (antes en la portada): la primera sección deja sitio al menú */
+.l3-pag{padding-top:clamp(128px,15vw,168px);}
+.l3-pag h1.tt{font-size:clamp(34px,5vw,64px);line-height:1;margin:0;}
+.l3-br.l3-pag h1.tt{color:#fff;margin-bottom:18px;}

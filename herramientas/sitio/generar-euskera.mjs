@@ -25,7 +25,7 @@ const SOLO_COMPROBAR = process.argv.includes("--check");
    propósito: apenas tienen texto marcado como traducible y saldrían medio en
    castellano, que es peor que no tenerlas. Las de zona no usan data-t: las que
    tienen versión en euskera se traducen con los pares de euskera-zonas.mjs. */
-const PAGINAS = ["index.html", "precios.html", "contacto.html", "trabajos.html", "sobre-mi.html", "seo-posicionamiento-google.html"];
+const PAGINAS = ["index.html", "precios.html", "contacto.html", "trabajos.html", "sobre-mi.html", "seo-posicionamiento-google.html", "automatizaciones.html", "branding.html"];
 const ZONAS = Object.keys(ZONAS_EU);
 
 /* Todo lo que existe en /eu/: los enlaces internos que apunten aquí se
@@ -73,6 +73,15 @@ const META = {
     // 23/10/2026: «Presencia en Google y en las IAs», con Itzultzaile Neuronala.
     title: "Presentzia Googlen eta IAetan: SEO lokala Tolosan | OI Studio",
     desc: "Google fitxa osoa, erreseinen QR, Bing eta Apple Maps, eta Google eta ChatGPT nola ikusten zaituzten: 120 € + BEZ. Presentzia-kuota, 28 € hilean. SEO lokala Tolosan eta Gipuzkoan.",
+  },
+  // 28/10/2026: automatizaciones y branding salen de la portada a su página, con Itzultzaile Neuronala (solo espacios ante «€» y «erreseinak», como en el resto del sitio).
+  "automatizaciones.html": {
+    title: "Automatizazioak adimen artifizialarekin | OI Studio",
+    desc: "Erreserbak eta hitzorduak komisiorik gabe, Googleko zure fitxa eta zure erreseinak egunean. Zerbitzu bakoitzean esaten dizut zer zati egiten duen adimen artifizialak. 120 €-tik aurrera + BEZa.",
+  },
+  "branding.html": {
+    title: "Brandinga: logoa eta identitatea 220 €-tik aurrera | OI Studio",
+    desc: "Logotipoa 220 €, identitatea 440 € eta marka osoa 820 € + BEZ. Bi proposamen, bi aldaketa-erronda eta fitxategiak bektorean. Azkenean ordaintzen didazu.",
   },
 };
 
