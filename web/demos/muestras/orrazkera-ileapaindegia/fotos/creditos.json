@@ -1,0 +1,117 @@
+{
+ "_leeme": "Fotos de ejemplo de la muestra ORRAZKERA (OI Studio, 24/10/2026). Ninguna es de una peluquería real de Tolosa ni de las personas que se nombran: el equipo y los nombres son inventados. Todas de Pexels (licencia de Pexels: uso gratuito, también comercial, sin atribución obligatoria; se pueden modificar; no se pueden vender tal cual ni presentar a las personas de forma ofensiva). Pasadas a blanco y negro, recortadas a 4:5 (menos la portada) y convertidas a AVIF/WebP con herramientas/diseno/imagenes.mjs. Revisadas a tamaño grande: sin marcas de agua.",
+ "fotos": {
+  "portada-tijeras": {
+   "pexels": "https://www.pexels.com/photo/a-person-cutting-hair-8467965/",
+   "autor": "Nataliya Vaitkevich",
+   "perfil": "https://www.pexels.com/@n-voitkevich/",
+   "licencia": "Pexels License (https://www.pexels.com/license/)",
+   "uso": "Portada, mitad izquierda (manos y tijeras)."
+  },
+  "portada-melena": {
+   "pexels": "https://www.pexels.com/photo/grayscale-photo-of-a-woman-12683774/",
+   "autor": null,
+   "perfil": "https://www.pexels.com/@krivitskiy/",
+   "licencia": "Pexels License (https://www.pexels.com/license/)",
+   "uso": "Portada, mitad derecha (melena al viento)."
+  },
+  "servicio-corte": {
+   "pexels": "https://www.pexels.com/photo/person-holding-silver-and-black-pen-3993466/",
+   "autor": "cottonbro studio",
+   "perfil": "https://www.pexels.com/@cottonbro/",
+   "licencia": "Pexels License (https://www.pexels.com/license/)",
+   "uso": "Servicios: corte."
+  },
+  "servicio-color": {
+   "pexels": "https://www.pexels.com/photo/professional-hair-coloring-session-in-salon-29555677/",
+   "autor": null,
+   "perfil": "https://www.pexels.com/@izafi/",
+   "licencia": "Pexels License (https://www.pexels.com/license/)",
+   "uso": "Servicios: color (mechas con papel de aluminio)."
+  },
+  "servicio-peinado": {
+   "pexels": "https://www.pexels.com/photo/hairdresser-making-woman-hairstyle-14615061/",
+   "autor": null,
+   "perfil": "https://www.pexels.com/@konrads-photo/",
+   "licencia": "Pexels License (https://www.pexels.com/license/)",
+   "uso": "Servicios: peinados (cepillo y secador)."
+  },
+  "servicio-barberia": {
+   "pexels": "https://www.pexels.com/photo/hairdresser-doing-a-haircut-11262382/",
+   "autor": null,
+   "perfil": "https://www.pexels.com/@s-minh-151628940/",
+   "licencia": "Pexels License (https://www.pexels.com/license/)",
+   "uso": "Servicios: barbería (peine y navaja)."
+  },
+  "equipo-amaia": {
+   "pexels": "https://www.pexels.com/photo/professional-hair-stylist-in-new-orleans-studio-30270932/",
+   "autor": null,
+   "perfil": "https://www.pexels.com/@chadpopulisphotography/",
+   "licencia": "Pexels License (https://www.pexels.com/license/)",
+   "uso": "Equipo: «Amaia» (nombre inventado)."
+  },
+  "equipo-iker": {
+   "pexels": "https://www.pexels.com/photo/a-man-sitting-in-a-chair-with-a-beard-28209072/",
+   "autor": null,
+   "perfil": "https://www.pexels.com/@alaxmatias/",
+   "licencia": "Pexels License (https://www.pexels.com/license/)",
+   "uso": "Equipo: «Iker» (nombre inventado)."
+  },
+  "equipo-nerea": {
+   "pexels": "https://www.pexels.com/photo/a-woman-in-black-blouse-holding-hair-blowers-while-smiling-at-the-camera-8834019/",
+   "autor": "Kampus Production",
+   "perfil": "https://www.pexels.com/@kampus/",
+   "licencia": "Pexels License (https://www.pexels.com/license/)",
+   "uso": "Equipo: «Nerea» (nombre inventado)."
+  },
+  "lana-melena-corta": {
+   "pexels": "https://www.pexels.com/photo/black-and-white-portrait-of-a-woman-in-thought-34684996/",
+   "autor": null,
+   "perfil": "https://www.pexels.com/@724211268/",
+   "licencia": "Pexels License (https://www.pexels.com/license/)",
+   "uso": "Trabajos."
+  },
+  "lana-degradado": {
+   "pexels": "https://www.pexels.com/photo/tattooed-barber-trims-hair-with-clipper-32037672/",
+   "autor": "Vladislav Kurchanov",
+   "perfil": "https://www.pexels.com/@vladislav-kurchanov-2152124785/",
+   "licencia": "Pexels License (https://www.pexels.com/license/)",
+   "uso": "Trabajos."
+  },
+  "lana-melena-larga": {
+   "pexels": "https://www.pexels.com/photo/brunette-woman-posing-with-arms-crossed-17164030/",
+   "autor": null,
+   "perfil": "https://www.pexels.com/@toni-guy-pondicherry-404397363/",
+   "licencia": "Pexels License (https://www.pexels.com/license/)",
+   "uso": "Trabajos."
+  },
+  "lana-pixie": {
+   "pexels": "https://www.pexels.com/photo/grayscale-photo-of-woman-with-short-hair-and-an-earring-8092473/",
+   "autor": null,
+   "perfil": "https://www.pexels.com/@rizkysabriansyah/",
+   "licencia": "Pexels License (https://www.pexels.com/license/)",
+   "uso": "Trabajos."
+  },
+  "lana-rizos": {
+   "pexels": "https://www.pexels.com/photo/elegant-black-and-white-portrait-of-a-woman-36720012/",
+   "autor": null,
+   "perfil": "https://www.pexels.com/@travel-with-lenses-734723610/",
+   "licencia": "Pexels License (https://www.pexels.com/license/)",
+   "uso": "Trabajos."
+  },
+  "lana-barba": {
+   "pexels": "https://www.pexels.com/photo/a-bearded-man-in-a-barbershop-10024238/",
+   "autor": null,
+   "perfil": "https://www.pexels.com/@instasky/",
+   "licencia": "Pexels License (https://www.pexels.com/license/)",
+   "uso": "Trabajos (recortada para quitar la marca del secador)."
+  },
+  "lana-rizos-perfil": {
+   "pexels": "https://www.pexels.com/photo/grayscale-photo-of-curly-haired-woman-8315756/",
+   "autor": null,
+   "perfil": "https://www.pexels.com/@krivitskiy/",
+   "licencia": "Pexels License (https://www.pexels.com/license/)",
+   "uso": "Trabajos."
+  }
+ }
+}

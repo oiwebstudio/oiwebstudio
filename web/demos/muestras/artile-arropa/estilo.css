@@ -1,0 +1,322 @@
+/* ARTILE · muestra de OI Studio (tienda de ropa inventada en Tolosa).
+   Calco de la referencia «AEGEAN» (tablero tienda-moda, biblioteca del 2/10/2026, n.º 40): página de revista de moda
+   en crema, didona fina enorme que se cruza con las fotos, palabra vertical junto a la foto, titular a dos líneas con la
+   foto entre ellas, titular gigante con fotos montadas encima y tarjeta redondeada «Keep in touch» al final.
+   Letra: 27 Bodoni Moda (titulares) + 13 Satoshi (texto), autoalojadas en fuentes/.
+   Color: crema y arena + tinta tostada + un acento granate (el abrigo de la colección). */
+@font-face{font-family:"Bodoni Moda";font-style:normal;font-weight:500 800;font-display:swap;src:url("fuentes/bodoni-moda-500_800.woff2") format("woff2")}
+@font-face{font-family:"Satoshi";font-style:normal;font-weight:400;font-display:swap;src:url("fuentes/satoshi-400.woff2") format("woff2")}
+@font-face{font-family:"Satoshi";font-style:normal;font-weight:700;font-display:swap;src:url("fuentes/satoshi-700.woff2") format("woff2")}
+
+:root{
+  --papel:#F3EDE4; --arena:#E8DED0; --superficie:#FAF7F1; --tinta:#2A211D; --texto-2:#5F544C; --regla:#CFC2B1;
+  --marca:#6E1F2D; --marca-2:#561622; --oscura:#221915; --sobre-oscura:#EFE7DC; --suave-oscura:#BDB0A2; --marca-en-oscura:#DDA6AE;
+  --d:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif; --f:"Satoshi",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --ease-out:cubic-bezier(.23,1,.32,1); --ease-mov:cubic-bezier(.77,0,.175,1);
+  /* escala «cartel» (herramientas/diseno/escala.mjs) */
+  --paso-m1:clamp(0.8398rem,0.9041rem - 0.0829vw,0.8854rem);
+  --paso-0:clamp(1.0625rem,1.0114rem + 0.2273vw,1.1875rem);
+  --paso-1:clamp(1.275rem,1.1097rem + 0.7348vw,1.6791rem);
+  --paso-2:clamp(1.53rem,1.1846rem + 1.5351vw,2.3743rem);
+  --paso-3:clamp(1.836rem,1.2137rem + 2.7659vw,3.3572rem);
+  --paso-4:clamp(2.2032rem,1.1625rem + 4.6253vw,4.7471rem);
+  --paso-5:clamp(2.6438rem,0.9794rem + 7.3975vw,6.7124rem);
+  --esp-s:clamp(1.0625rem,1.0114rem + 0.2273vw,1.1875rem);
+  --esp-m:clamp(1.5938rem,1.517rem + 0.3409vw,1.7813rem);
+  --esp-l:clamp(2.125rem,2.0227rem + 0.4545vw,2.375rem);
+  --esp-xl:clamp(3.1875rem,3.0341rem + 0.6818vw,3.5625rem);
+  --esp-seccion:clamp(4rem,1.5767rem + 9vw,9rem);
+  --borde:clamp(18px,4vw,64px);
+  --cab:64px;
+}
+
+/* base: sin recuadro azul al tocar (Oier, 24/10) */
+html{-webkit-tap-highlight-color:transparent}
+a,button,[role="button"],input,select,textarea,summary,label{-webkit-tap-highlight-color:transparent}
+:focus:not(:focus-visible){outline:none}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--papel);color:var(--tinta);font:400 var(--paso-0)/1.6 var(--f);-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%;height:auto}
+picture{display:block}
+a{color:inherit}
+ul,ol{list-style:none}
+section[id],[id].ancla{scroll-margin-top:16px}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+.saltar{position:absolute;left:12px;top:-60px;z-index:50;background:var(--tinta);color:var(--papel);padding:10px 14px;text-decoration:none;font-weight:700}
+.saltar:focus{top:12px}
+
+/* titulares: todos en mayúsculas (Oier, 12/10), didona fina */
+h1,h2,h3,h4{font-family:var(--d);font-weight:500;text-transform:uppercase;letter-spacing:-.01em;line-height:.95;text-wrap:balance}
+.t2{font-size:var(--paso-4)}
+.linea{display:block;overflow:hidden;padding-bottom:.06em;margin-bottom:-.06em}
+.linea>span{display:block}
+
+/* botones rectangulares sencillos */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:52px;padding:0 1.5em;background:var(--marca);color:#fff;
+  font:700 .95rem/1 var(--f);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:0;border-radius:0;cursor:pointer;
+  transition:background-color .2s var(--ease-out),transform .16s var(--ease-out)}
+.btn svg{width:20px;height:20px;flex:none}
+.btn:active{transform:scale(.97)}
+.btn-tinta{background:var(--tinta);color:var(--papel)}
+@media (hover:hover) and (pointer:fine){.btn:hover{background:var(--marca-2)}.btn-tinta:hover{background:#000}}
+.enlace{display:inline-flex;align-items:center;gap:.5em;min-height:44px;font:700 .9rem/1 var(--f);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;position:relative}
+.enlace::after{content:"";position:absolute;left:0;right:0;bottom:8px;height:1.5px;background:currentColor;transform-origin:left;transition:transform .35s var(--ease-out)}
+.enlace .flecha{transition:transform .3s var(--ease-out)}
+.enlace:active{transform:scale(.97)}
+@media (hover:hover) and (pointer:fine){.enlace:hover::after{transform:scaleX(.35)}.enlace:hover .flecha{transform:translateX(4px)}}
+.nota{font-size:var(--paso-m1);color:var(--texto-2)}
+
+/* ---------- CABECERA ---------- */
+.cab{position:relative;z-index:5;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px;min-height:var(--cab);padding:0 var(--borde)}
+.logo{font:600 1.45rem/1 var(--d);letter-spacing:.12em;text-decoration:none;padding:10px 0}
+.menu{display:none}
+.menu ul{display:flex;gap:clamp(18px,2.4vw,40px);justify-content:flex-end}
+.menu a,.cab-tel,.idioma{font:700 .78rem/1 var(--f);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;position:relative;display:inline-flex;align-items:center;min-height:44px}
+.menu a::after{content:"";position:absolute;left:0;right:0;bottom:12px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease-out)}
+@media (hover:hover) and (pointer:fine){.menu a:hover::after{transform:scaleX(1)}}
+.cab-der{display:flex;align-items:center;gap:clamp(14px,2vw,28px);justify-self:end}
+.cab-tel{gap:8px;white-space:nowrap}
+.cab-tel svg{width:16px;height:16px}
+.cab-tel .num{display:none}
+.idioma{padding:0 10px;min-width:44px;justify-content:center;margin-right:-10px}
+.menu-movil{grid-column:1/-1;overflow-x:auto;scrollbar-width:none;margin:0 calc(var(--borde) * -1);padding:0 var(--borde);border-top:1px solid var(--regla)}
+.menu-movil::-webkit-scrollbar{display:none}
+.menu-movil ul{display:flex;gap:22px;white-space:nowrap}
+.menu-movil a{font:700 .74rem/1 var(--f);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
+@media (min-width:900px){
+  .menu{display:block}
+  .menu-movil{display:none}
+  .cab-tel .num{display:inline}
+}
+
+/* ---------- PORTADA (AEGEAN: foto arriba a la izquierda, el nombre cruza su borde) ---------- */
+.portada{position:relative;padding-bottom:var(--esp-xl)}
+.portada-foto{position:relative;overflow:hidden;aspect-ratio:4/5;max-height:74svh;width:100%;background-color:var(--arena)}
+.portada-foto img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.portada-txt{padding:0 var(--borde);position:relative;z-index:2}
+.nombre{font-size:clamp(5.2rem,24vw,15.5rem);font-weight:500;letter-spacing:.005em;line-height:.8;margin-top:-.42em;color:var(--tinta)}
+.lema{font:700 var(--paso-0)/1.35 var(--f);margin-top:var(--esp-m);max-width:30ch}
+.portada-p{margin-top:.6em;max-width:40ch;color:var(--texto-2)}
+.portada-acc{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;margin-top:var(--esp-m)}
+@media (min-width:900px){
+  .portada{display:grid;grid-template-columns:54% 1fr;min-height:calc(100svh - var(--cab));padding-bottom:0}
+  .portada-foto{aspect-ratio:auto;max-height:none;height:calc(100svh - var(--cab));min-height:560px;max-height:980px}
+  .portada-txt{align-self:center;padding:0 var(--borde) 0 0;margin-left:-15vw}
+  .nombre{font-size:min(15vw,15rem);margin-top:0}
+  .portada-txt .resto{margin-left:15vw;padding-left:clamp(16px,2.4vw,40px)}
+}
+
+/* ---------- NOVEDADES (AEGEAN 02: texto, palabra vertical y foto) ---------- */
+.nov{padding:var(--esp-seccion) var(--borde) var(--esp-l);display:grid;gap:var(--esp-l)}
+.nov-txt p{margin-top:var(--esp-s);max-width:42ch;color:var(--texto-2)}
+.nov-fig{position:relative;display:grid;grid-template-columns:auto 1fr;align-items:end;gap:clamp(8px,1.6vw,24px)}
+.vertical{font:500 clamp(4.2rem,15vw,10.5rem)/.8 var(--d);text-transform:uppercase;writing-mode:vertical-rl;transform:rotate(180deg);letter-spacing:.02em;color:var(--marca)}
+.vertical.largo{font-size:clamp(3.4rem,7.6vw,6.6rem)}
+.nov-fig .foto{aspect-ratio:4/5}
+.nov-peq{aspect-ratio:4/3;width:min(62%,380px);margin-top:var(--esp-l)}
+@media (min-width:900px){
+  .nov{grid-template-columns:repeat(12,1fr);align-items:start;column-gap:clamp(16px,2vw,32px)}
+  .nov-txt{grid-column:1/7;padding-top:clamp(40px,8vw,140px)}
+  .nov-fig{grid-column:7/13}
+}
+
+/* fotos: mismas proporciones por grupo */
+.foto{position:relative;overflow:hidden;background:var(--arena)}
+.foto img{width:100%;height:100%;object-fit:cover}
+
+/* ---------- PRENDAS (galería horizontal; en escritorio se fija y pasa de lado con el scroll) ---------- */
+.prendas{padding:var(--esp-m) 0 var(--esp-seccion);overflow:hidden}
+.prendas-pista{display:flex;gap:clamp(14px,2vw,32px);padding:0 var(--borde) 6px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 var(--borde);scrollbar-width:none;overscroll-behavior-x:contain}
+.prendas-pista::-webkit-scrollbar{display:none}
+.prenda{flex:0 0 clamp(250px,74vw,360px);scroll-snap-align:start;position:relative}
+.prenda .foto{aspect-ratio:3/4}
+.prenda h3{font-size:clamp(1.25rem,1.05rem + .8vw,1.6rem);margin-top:var(--esp-s);line-height:1.02}
+.prenda .tallas{font-size:var(--paso-m1);color:var(--texto-2);margin-top:.35em}
+.prenda .enlace{margin-top:2px;color:var(--marca)}
+.prendas-pie{display:flex;justify-content:space-between;gap:16px;padding:var(--esp-s) var(--borde) 0}
+.desliza{display:inline-flex;gap:8px;align-items:center}
+.desliza svg{width:22px;height:22px}
+@media (min-width:900px){
+  .prendas.fijada .prendas-pista{overflow:visible;scroll-snap-type:none}
+  .prenda{flex-basis:clamp(290px,27vw,420px)}
+  .desliza{display:none}
+}
+
+/* elemento firma: etiqueta de precio colgada de la prenda */
+.etiqueta{position:absolute;top:0;right:clamp(14px,2vw,22px);z-index:2;width:84px;transform-origin:50% 0;transform:rotate(3deg);pointer-events:none}
+.etiqueta::before{content:"";display:block;width:1.5px;height:26px;margin:0 auto;background:var(--tinta);opacity:.75}
+.etiqueta-papel{display:block;background:var(--superficie);color:var(--tinta);padding:20px 8px 12px;text-align:center;
+  clip-path:polygon(18% 0,82% 0,100% 14%,100% 100%,0 100%,0 14%);box-shadow:0 1px 0 rgba(0,0,0,.04);position:relative}
+.etiqueta-papel::before{content:"";position:absolute;top:8px;left:50%;width:9px;height:9px;margin-left:-4.5px;border-radius:50%;background:var(--tinta);opacity:.85}
+.etiqueta .precio{display:block;font:500 1.55rem/1 var(--d);margin-top:4px}
+.etiqueta .marca-e{display:block;font:700 .62rem/1.2 var(--f);letter-spacing:.14em;text-transform:uppercase;color:var(--texto-2);margin-top:6px}
+@media (hover:hover) and (pointer:fine){
+  .prenda:hover .etiqueta{animation:balanceo 1.2s var(--ease-out)}
+  .prenda .foto img{transition:transform .9s var(--ease-out)}
+  .prenda:hover .foto img{transform:scale(1.04)}
+}
+@keyframes balanceo{0%{transform:rotate(3deg)}25%{transform:rotate(-7deg)}50%{transform:rotate(5deg)}75%{transform:rotate(-2deg)}100%{transform:rotate(3deg)}}
+@media (prefers-reduced-motion:reduce){.prenda:hover .etiqueta{animation:none}.prenda:hover .foto img{transform:none}}
+
+/* ---------- COLECCIÓN (AEGEAN 03: dos líneas gigantes con la foto entre ellas) ---------- */
+.col{background:linear-gradient(180deg,var(--papel) 0%,var(--arena) 55%,var(--papel) 100%);padding:var(--esp-seccion) var(--borde)}
+.col-escena{--fs:clamp(3.4rem,14.5vw,11.5rem);--fw:min(64vw,380px);position:relative}
+.col h2{font-size:var(--fs);line-height:.82;text-align:center;position:relative;z-index:2;display:flex;flex-direction:column;align-items:center}
+.col .hueco{display:block;height:calc(var(--fw) * 4 / 3 - var(--fs) * .42)}
+.col-foto{position:absolute;z-index:1;left:50%;top:calc(var(--fs) * .6);width:var(--fw);aspect-ratio:3/4;transform:translateX(-50%)}
+.col-pie{display:grid;gap:var(--esp-m);margin-top:var(--esp-l)}
+.col-pie p{max-width:44ch;color:var(--texto-2)}
+@media (min-width:900px){
+  .col-escena{--fw:min(30vw,460px)}
+  .col-pie{grid-template-columns:1fr auto;align-items:end;max-width:1180px;margin:var(--esp-l) auto 0}
+}
+
+/* ---------- BANDA que corre de lado con el scroll ---------- */
+.banda{overflow:hidden;padding:var(--esp-l) 0;border-top:1px solid var(--regla);border-bottom:1px solid var(--regla)}
+.banda p{font:500 clamp(3.2rem,11vw,9.5rem)/1 var(--d);text-transform:uppercase;white-space:nowrap;letter-spacing:.01em;padding-left:var(--borde)}
+.banda .barra{color:var(--marca);padding:0 .25em}
+
+/* ---------- VEN A LA TIENDA (AEGEAN 04: titular gigante con dos fotos montadas) ---------- */
+.tienda{padding:var(--esp-seccion) var(--borde);display:grid;gap:var(--esp-l)}
+.tienda h2{font-size:clamp(3.6rem,15vw,12.5rem);line-height:.82}
+.tienda-fotos{position:relative;display:grid;grid-template-columns:repeat(12,1fr);margin-top:calc(var(--esp-l) * -1)}
+.tienda-fotos .f1{grid-column:1/11;grid-row:1;aspect-ratio:3/2}
+.tienda-fotos .f2{grid-column:7/13;grid-row:1;aspect-ratio:3/4;margin-top:42%;z-index:2;box-shadow:0 0 0 clamp(6px,.8vw,12px) var(--papel)}
+.tienda-txt p{max-width:38ch;font-size:var(--paso-1);line-height:1.45}
+.tienda-txt .enlace{margin-top:var(--esp-s)}
+@media (min-width:900px){
+  .tienda{grid-template-columns:repeat(12,1fr);column-gap:clamp(16px,2vw,32px);row-gap:0}
+  .tienda h2{grid-column:1/-1;position:relative;z-index:1}
+  .tienda-fotos{grid-column:1/8;margin-top:-.62em;font-size:clamp(3.6rem,15vw,12.5rem)}
+  .tienda-txt{grid-column:9/13;align-self:end;padding-bottom:4vw}
+}
+
+/* ---------- ARREGLOS Y SERVICIOS (lista de precios en tabla) ---------- */
+.serv{padding:var(--esp-seccion) var(--borde);display:grid;gap:var(--esp-l);background:var(--superficie)}
+.serv .foto{aspect-ratio:4/5;max-width:520px}
+.serv-txt>p{margin-top:var(--esp-s);max-width:44ch;color:var(--texto-2)}
+.tabla{width:100%;border-collapse:collapse;margin-top:var(--esp-l);font-variant-numeric:tabular-nums}
+.tabla caption{text-align:left;font-size:var(--paso-m1);color:var(--texto-2);padding-bottom:10px}
+.tabla th,.tabla td{text-align:left;padding:14px 10px 14px 0;border-bottom:1px solid var(--regla);vertical-align:baseline}
+.tabla thead th{font:700 .72rem/1 var(--f);letter-spacing:.14em;text-transform:uppercase;color:var(--texto-2);padding-bottom:10px;border-bottom:1.5px solid var(--tinta)}
+.tabla tbody th{font-weight:400}
+.tabla td{white-space:nowrap;color:var(--texto-2);font-size:.95em}
+.tabla td.precio{text-align:right;color:var(--tinta);font-weight:700;padding-right:0}
+.tabla thead th:last-child{text-align:right;padding-right:0}
+@media (max-width:420px){.tabla{font-size:.93rem}.tabla th,.tabla td{padding-right:6px}}
+@media (min-width:900px){
+  .serv{grid-template-columns:5fr 7fr;column-gap:clamp(32px,6vw,110px);align-items:center}
+  .serv .foto{max-width:none}
+}
+
+/* ---------- OPINIONES (una en grande, literal y firmada) ---------- */
+.op{padding:var(--esp-seccion) var(--borde)}
+.op-cab{display:grid;gap:var(--esp-s)}
+.op-cab p{max-width:52ch}
+.op-grande{margin-top:var(--esp-xl);max-width:24ch;font:500 clamp(1.9rem,1.2rem + 3vw,3.9rem)/1.08 var(--d);text-wrap:balance}
+.op-grande p::before{content:"«"}
+.op-grande p::after{content:"»"}
+.firma{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin-top:var(--esp-m);font:400 var(--paso-m1)/1.3 var(--f);color:var(--texto-2)}
+.mono{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--arena);color:var(--tinta);font:600 .9rem/1 var(--d);letter-spacing:.04em}
+.firma strong{color:var(--tinta);font-weight:700}
+.op-mas{display:grid;gap:var(--esp-l);margin-top:var(--esp-xl);border-top:1px solid var(--regla);padding-top:var(--esp-l)}
+.op-mas blockquote p{font:500 var(--paso-1)/1.25 var(--d);max-width:30ch}
+@media (min-width:900px){
+  .op-cab{grid-template-columns:1fr 1fr;align-items:end}
+  .op-grande{margin-left:8vw}
+  .op-mas{grid-template-columns:1fr 1fr;margin-left:8vw}
+}
+
+/* ---------- HORARIO (ticket) Y DÓNDE (croquis) ---------- */
+.visita{padding:var(--esp-seccion) var(--borde);display:grid;gap:var(--esp-xl);background:var(--arena)}
+.ticket{background:var(--superficie);padding:var(--esp-l) clamp(20px,3vw,40px) calc(var(--esp-l) + 10px);max-width:520px;width:100%;
+  -webkit-mask:radial-gradient(circle 8px at 50% 100%,#0000 98%,#000) 50% 100%/22px 100% repeat-x;mask:radial-gradient(circle 8px at 50% 100%,#0000 98%,#000) 50% 100%/22px 100% repeat-x}
+.ticket h2{font-size:var(--paso-3)}
+.estado{display:inline-flex;align-items:center;gap:8px;margin-top:var(--esp-s);font:700 .8rem/1 var(--f);letter-spacing:.12em;text-transform:uppercase}
+.estado::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--texto-2)}
+.estado.abierto{color:var(--marca)}
+.estado.abierto::before{background:var(--marca)}
+.dias{margin-top:var(--esp-m);border-top:1.5px dashed var(--regla)}
+.dias li{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;padding:12px 0;border-bottom:1.5px dashed var(--regla)}
+.dias .dia{font-weight:700}
+.dias .horas{display:flex;flex-wrap:wrap;gap:2px 14px;justify-content:flex-end;font-variant-numeric:tabular-nums}
+.dias .horas span{white-space:nowrap}
+.dias li[aria-current="date"]{background:var(--tinta);color:var(--papel);margin:0 calc(clamp(20px,3vw,40px) * -1);padding:12px clamp(20px,3vw,40px);border-bottom-color:transparent}
+.dias .hoy{font:700 .66rem/1 var(--f);letter-spacing:.14em;text-transform:uppercase;margin-left:8px;color:var(--marca-en-oscura)}
+.ticket .nota{margin-top:var(--esp-s)}
+.donde h2{font-size:var(--paso-4)}
+.dir{font:500 clamp(2rem,1.3rem + 3.2vw,4.2rem)/1 var(--d);text-transform:uppercase;margin-top:var(--esp-m)}
+.donde .nota{margin-top:.6em}
+.donde p.txt{margin-top:var(--esp-s);max-width:40ch}
+.croquis-caja{display:block;position:relative;margin-top:var(--esp-m);aspect-ratio:4/5;overflow:hidden;background:var(--superficie);text-decoration:none}
+.croquis{display:block;width:100%;height:100%}
+.croquis .cuad{stroke:#2A211D;stroke-opacity:.05}
+.croquis .agua path{fill:#D9DED8;stroke:none}
+.croquis .parque path{fill:#E2E2D2;stroke:none}
+.croquis .calle path{stroke:#C4B8A8;stroke-width:1.7}
+.croquis .principal path{stroke:#8F8273;stroke-width:3.4}
+.croquis .tren path{stroke:#A79A8B;stroke-width:1.4;stroke-dasharray:6 5}
+.croquis .rio-mancha path{stroke:#D3DAD5;stroke-width:18}
+.croquis .rio path{stroke:#7B8B86;stroke-width:2}
+.croquis .resaltada path{stroke:#6E1F2D;stroke-width:8}
+.croquis .e-barrio{font:700 18px "Satoshi",Arial,sans-serif;letter-spacing:4px;fill:#7A6E64}
+.croquis .e-rio{font:700 16px "Satoshi",Arial,sans-serif;letter-spacing:4px;fill:#6D7E79}
+.croquis .pin-punto{fill:#6E1F2D;stroke:#FAF7F1;stroke-width:4}
+.croquis .pin-onda{fill:none;stroke:#6E1F2D;stroke-width:2}
+.croquis .pin-etiqueta rect{fill:#2A211D}
+.croquis .pin-etiqueta text{font:600 25px "Bodoni Moda",Georgia,serif;letter-spacing:4px;fill:#FAF7F1}
+.osm{position:absolute;right:8px;bottom:6px;font-size:11px;font-weight:700;color:var(--texto-2);background:rgba(250,247,241,.85);padding:2px 6px}
+.donde .enlace{margin-top:var(--esp-s)}
+@media (min-width:900px){
+  .visita{grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:clamp(32px,6vw,110px);align-items:start}
+  .croquis-caja{aspect-ratio:1400/959}
+}
+
+/* ---------- CONTACTO (AEGEAN «Keep in touch»: tarjeta redondeada con foto) ---------- */
+.contacto{padding:var(--esp-seccion) var(--borde) var(--esp-xl)}
+.tarjeta{display:grid;gap:var(--esp-l);background:linear-gradient(120deg,#E5D8C7 0%,#EFE6DA 55%,#E3D4C2 100%);border-radius:22px;padding:clamp(22px,4vw,64px);overflow:hidden}
+.tarjeta h2{font-size:var(--paso-4)}
+.tarjeta p{margin-top:var(--esp-s);max-width:40ch}
+.tarjeta .btn{margin-top:var(--esp-m)}
+.tarjeta .tel{margin-top:var(--esp-s);font-size:var(--paso-m1);color:var(--texto-2)}
+.tarjeta .tel a{color:var(--tinta);font-weight:700;text-decoration-thickness:1px;text-underline-offset:3px}
+.tarjeta .foto{aspect-ratio:4/5;border-radius:14px;max-width:420px;width:100%;justify-self:end}
+@media (min-width:900px){.tarjeta{grid-template-columns:1.25fr 1fr;align-items:center}}
+
+/* ---------- INSTAGRAM ---------- */
+.ig{padding:var(--esp-l) var(--borde) var(--esp-seccion)}
+.ig-cab{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px}
+.ig h2{font-size:var(--paso-3)}
+.ig-cuenta{font-weight:700}
+.ig-cuenta small{font-weight:400;color:var(--texto-2);font-size:var(--paso-m1);margin-left:6px}
+.ig-rej{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(6px,1vw,14px);margin-top:var(--esp-m)}
+.ig-rej .foto{aspect-ratio:1}
+.ig p.nota{margin-top:6px}
+@media (min-width:900px){.ig-rej{grid-template-columns:repeat(6,1fr)}}
+@media (hover:hover) and (pointer:fine){.ig-rej:hover .foto img{opacity:.55}.ig-rej .foto img{transition:opacity .3s var(--ease-out)}.ig-rej .foto:hover img{opacity:1}}
+
+/* ---------- PIE ---------- */
+.pie{background:var(--oscura);color:var(--sobre-oscura);padding:var(--esp-xl) var(--borde) calc(var(--esp-l) + 84px)}
+.pie-nombre{font:500 clamp(4.4rem,21.5vw,19rem)/.8 var(--d);letter-spacing:.005em;text-transform:uppercase;margin-left:-.04em}
+.pie-cols{display:grid;gap:var(--esp-l);margin-top:var(--esp-xl);font-size:var(--paso-m1)}
+.pie-cols h3{font:700 .74rem/1 var(--f);letter-spacing:.14em;color:var(--suave-oscura);margin-bottom:12px}
+.pie-cols a{text-decoration-thickness:1px;text-underline-offset:3px}
+.pie-cols li{padding:3px 0}
+.pie-cols li a{display:inline-flex;min-height:32px;align-items:center}
+.pie-legal{margin-top:var(--esp-xl);padding-top:var(--esp-m);border-top:1px solid rgba(239,231,220,.18);display:grid;gap:10px;font-size:.8rem;color:var(--suave-oscura);max-width:110ch}
+.pie-legal .oi{font-size:.92rem;color:var(--sobre-oscura)}
+.pie-legal .oi a{color:var(--marca-en-oscura);font-weight:700}
+.pie-legal a{color:inherit}
+@media (min-width:900px){.pie{padding-bottom:var(--esp-l)}.pie-cols{grid-template-columns:repeat(4,1fr)}}
+
+/* ---------- BARRA FIJA DEL MÓVIL (sale cuando la portada ya no se ve) ---------- */
+.barra-movil{position:fixed;left:0;right:0;bottom:0;z-index:20;display:grid;grid-template-columns:1.6fr 1fr;gap:8px;padding:8px 10px calc(8px + env(safe-area-inset-bottom));
+  background:rgba(243,237,228,.97);border-top:1px solid var(--regla);transform:translateY(110%);visibility:hidden;transition:transform .45s var(--ease-out),visibility 0s .45s}
+.barra-movil.on{transform:none;visibility:visible;transition:transform .45s var(--ease-out),visibility 0s}
+.barra-movil .btn{min-height:50px;padding:0 1em}
+@media (min-width:900px){.barra-movil{display:none}}
+@media (prefers-reduced-motion:reduce){.barra-movil,.barra-movil.on{transition:none}}

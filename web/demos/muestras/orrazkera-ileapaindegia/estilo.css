@@ -1,0 +1,263 @@
+/* ORRAZKERA · muestra de peluquería de OI Studio (marca inventada, 24/10/2026).
+   Calco de la referencia «LYON STREET» (tablero peluqueria-estetica 2026-10-02, n.º 10; en gusto.md como «robar»):
+   cabecera de enlaces finos, nombre gigante espaciado de borde a borde, díptico de fotos en blanco y negro con el titular
+   y el botón oscuro centrados sobre la costura, «sobre nosotros» con mucho aire y texto justificado, servicios en cuatro
+   fotos iguales y botón rectangular centrado. Lo que la referencia no tiene (precios, trabajos, equipo, opiniones,
+   horario y mapa) sigue la misma retícula, el mismo papel y la misma tinta.
+   Letras del catálogo: 02 Cabinet Grotesk 500 (nombre) + 13 Satoshi 400/700 (titulares y texto), autoalojadas. */
+
+@font-face{font-family:"Cabinet Grotesk";font-style:normal;font-weight:500;font-display:swap;src:url("fuentes/cabinet-grotesk-500.woff2") format("woff2")}
+@font-face{font-family:"Satoshi";font-style:normal;font-weight:400;font-display:swap;src:url("fuentes/satoshi-400.woff2") format("woff2")}
+@font-face{font-family:"Satoshi";font-style:normal;font-weight:700;font-display:swap;src:url("fuentes/satoshi-700.woff2") format("woff2")}
+
+:root{
+  --papel:#f2efe9;
+  --papel-2:#e8e3da;
+  --ticket:#fbfaf7;
+  --tinta:#151413;
+  --texto-2:#5c5852;
+  --regla:#d6d0c6;
+  --marca:#3b2418;          /* marrón tostado del botón de la referencia */
+  --sobre-marca:#fbf8f4;
+  --oscura:#151413;
+  --sobre-oscura:#ece8e1;
+  --apagado-oscura:#a9a39a;
+  --e:cubic-bezier(.23,1,.32,1);
+  --lado:clamp(16px,2.6vw,36px);
+  --ancho:1360px;
+  --seccion:clamp(72px,9vw,150px);
+  --t-h2:clamp(2.1rem,1.2rem + 3.6vw,4.4rem);
+  --t-cuerpo:clamp(1rem,.96rem + .2vw,1.09rem);
+}
+
+/* sin recuadro azul al tocar (Oier, 24/10) */
+html{-webkit-tap-highlight-color:transparent}
+a,button,[role="button"],input,select,textarea,summary,label{-webkit-tap-highlight-color:transparent}
+:focus:not(:focus-visible){outline:none}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--papel);color:var(--tinta);font:400 var(--t-cuerpo)/1.6 "Satoshi",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%;height:auto}
+picture{display:contents}
+a{color:inherit}
+ul{padding:0;list-style:none}
+h1,h2,h3{font-weight:700;text-transform:uppercase;letter-spacing:-.012em;line-height:1}
+h2{font-size:var(--t-h2);text-wrap:balance}
+p{text-wrap:pretty}
+[id]{scroll-margin-top:24px}
+.vh{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.envoltorio{max-width:var(--ancho);margin-inline:auto;padding-inline:var(--lado)}
+.salta{position:absolute;left:-999px;top:10px;z-index:60;background:var(--tinta);color:var(--papel);padding:12px 16px;text-decoration:none;font-weight:700}
+.salta:focus{left:10px}
+
+/* ---------- botón (rectangular, como el de la referencia) ---------- */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:14px 46px;background:var(--marca);color:var(--sobre-marca);text-decoration:none;text-transform:uppercase;font-size:.84rem;font-weight:400;letter-spacing:.06em;transition:transform .14s var(--e);isolation:isolate}
+.btn::after{content:"";position:absolute;inset:0;background:#fff;opacity:0;transition:opacity .2s var(--e);z-index:-1;mix-blend-mode:soft-light}
+.btn:active{transform:scale(.97)}
+@media (hover:hover) and (pointer:fine){.btn:hover::after{opacity:.28}}
+.enlace-fuerte{font-weight:700;text-transform:uppercase;font-size:.9rem;letter-spacing:.01em;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px;display:inline-flex;align-items:center;min-height:44px;padding:8px 0;transition:transform .14s var(--e)}
+.enlace-fuerte:active{transform:scale(.97)}
+
+/* ---------- cabecera ---------- */
+.cab{position:relative;z-index:20;padding:20px var(--lado) 0}
+.cab-nav{display:flex;justify-content:space-between;align-items:center;gap:24px}
+.cab-nav ul{display:flex;gap:clamp(18px,2.6vw,40px)}
+.cab-nav a{position:relative;display:inline-block;padding:8px 0;font-size:.8rem;text-transform:uppercase;letter-spacing:.02em;text-decoration:none}
+.cab-nav a::after,.pie-nav a::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .25s var(--e)}
+.cab-nav a:focus-visible::after,.pie-nav a:focus-visible::after{transform:scaleX(1)}
+@media (hover:hover) and (pointer:fine){.cab-nav a:hover::after,.pie-nav a:hover::after{transform:scaleX(1)}}
+.cab-movil{display:none}
+.cab-menu{font:inherit;font-size:.8rem;text-transform:uppercase;letter-spacing:.02em;background:none;border:0;padding:12px 0;color:inherit;cursor:pointer;min-height:44px}
+@media (max-width:820px){
+  .cab{padding-top:8px}
+  .cab-movil{display:flex;justify-content:space-between;align-items:center}
+  .cab-movil a{font-size:.8rem;text-transform:uppercase;letter-spacing:.02em;text-decoration:none;padding:12px 0;min-height:44px;display:inline-flex;align-items:center}
+  .cab-nav{display:none;position:absolute;left:0;right:0;top:100%;background:var(--papel);padding:8px var(--lado) 20px;border-bottom:1px solid var(--regla);flex-direction:column;align-items:flex-start;gap:0}
+  .cab-nav.abierto{display:flex}
+  .cab-nav ul{flex-direction:column;gap:0}
+  .cab-nav a{font-size:1rem;padding:11px 0}
+  .cab-nav .solo-escritorio{display:none}
+}
+
+/* ---------- portada ---------- */
+.marca{font:500 calc((100vw - var(--lado) * 2) / 6.78)/0.86 "Cabinet Grotesk","Satoshi",sans-serif;letter-spacing:.1em;text-indent:.1em;text-transform:uppercase;white-space:nowrap;padding:clamp(10px,2.2vw,30px) var(--lado) clamp(10px,1.6vw,22px);text-align:center}
+.marca .marca-txt{display:block}
+.portada-fotos{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:2px;height:min(80svh,64vw);min-height:440px;background:var(--oscura)}
+.portada-fotos::after{content:"";position:absolute;top:0;bottom:0;left:calc(50% - 1px);width:2px;background:var(--papel);pointer-events:none}
+.pf{position:relative;overflow:hidden;background:#2a2826}
+.pf img{width:100%;height:100%;object-fit:cover}
+.pf-izq img{object-position:42% 55%}
+.pf-der img{object-position:50% 30%}
+.portada-txt{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;text-align:center;padding:24px var(--lado);color:#fff;background:radial-gradient(ellipse 46% 40% at 50% 52%,rgba(10,9,8,.5),rgba(10,9,8,0) 100%)}
+.portada-linea{font-size:clamp(1rem,.9rem + .6vw,1.45rem);font-weight:400;margin-bottom:.35em;text-shadow:0 1px 18px rgba(0,0,0,.35)}
+.portada-titulo{font-weight:700;text-transform:uppercase;font-size:clamp(2rem,1.1rem + 3.6vw,4.2rem);line-height:.98;letter-spacing:-.01em;text-shadow:0 1px 24px rgba(0,0,0,.35)}
+.portada-titulo span{display:block}
+.portada-txt .btn{margin-top:clamp(20px,2.4vw,34px)}
+@media (max-width:700px){
+  .portada-fotos{height:68svh;min-height:470px}
+  .pf-izq img{object-position:30% 50%}
+  .pf-der img{object-position:58% 30%}
+  .portada-txt{background:radial-gradient(ellipse 70% 42% at 50% 52%,rgba(10,9,8,.55),rgba(10,9,8,0) 100%)}
+  .portada-titulo{font-size:clamp(2rem,9.6vw,2.6rem)}
+  .portada-linea{max-width:22ch}
+}
+
+/* ---------- sobre nosotros ---------- */
+.sobre{padding-block:var(--seccion) calc(var(--seccion) * .8)}
+.sobre .envoltorio{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:start}
+.sobre h2{grid-column:1 / 7;font-size:clamp(2.1rem,1.4rem + 2.6vw,3.6rem)}
+.sobre-der{grid-column:8 / 13;display:grid;gap:clamp(48px,7vw,120px)}
+.sobre-der p{font-size:clamp(1rem,.95rem + .25vw,1.15rem);line-height:1.62;text-align:justify;hyphens:auto}
+.sobre-der .enlace-fuerte{justify-self:end}
+@media (max-width:860px){
+  .sobre h2,.sobre-der{grid-column:1 / -1}
+  .sobre-der{gap:28px}
+  .sobre-der p{text-align:left}
+}
+
+/* ---------- servicios ---------- */
+.servicios{padding-block:calc(var(--seccion) * .6) var(--seccion)}
+.linea-fina{font-size:clamp(1.15rem,1rem + .7vw,1.7rem);font-weight:400;line-height:1.2;margin-bottom:.2em}
+.servicios h2{margin-bottom:clamp(32px,4.4vw,64px)}
+.serv-rej{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.8vw,26px)}
+.serv figure{aspect-ratio:4/5;overflow:hidden;background:var(--papel-2)}
+.serv img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--e)}
+@media (hover:hover) and (pointer:fine){.serv:hover img{transform:scale(1.04)}}
+.serv h3{font-size:.95rem;letter-spacing:.01em;margin:18px 0 10px}
+.serv p{font-size:.9rem;line-height:1.55;color:var(--texto-2);max-width:34ch}
+.centro{display:flex;justify-content:center;margin-top:clamp(48px,6vw,96px)}
+@media (max-width:760px){.serv-rej{grid-template-columns:1fr 1fr;row-gap:34px}}
+
+/* ---------- precios (la carta de servicios de la casa) ---------- */
+.precios{padding-block:var(--seccion);border-top:1px solid var(--regla)}
+.precios .envoltorio{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:start}
+.precios-cab{grid-column:1 / 5;position:sticky;top:32px}
+.precios-cab p{margin-top:22px;color:var(--texto-2);max-width:32ch}
+.precios-rej{grid-column:6 / 13;display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,4vw,64px) clamp(28px,3.4vw,56px)}
+.tarifa{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.tarifa caption{text-align:left;font-weight:700;text-transform:uppercase;font-size:.95rem;letter-spacing:.01em;padding-bottom:12px;border-bottom:2px solid var(--tinta)}
+.tarifa th,.tarifa td{padding:13px 0;border-bottom:1px solid var(--regla);vertical-align:baseline;text-align:left}
+.tarifa tbody th{font-weight:400;text-transform:uppercase;font-size:.84rem;letter-spacing:.02em;padding-right:12px}
+.tarifa td.t{color:var(--texto-2);font-size:.84rem;white-space:nowrap;padding-right:14px}
+.tarifa td.p{text-align:right;font-weight:700;white-space:nowrap;font-size:.95rem}
+@media (max-width:1000px){.precios-cab{grid-column:1 / -1;position:static}.precios-rej{grid-column:1 / -1}}
+@media (max-width:640px){.precios-rej{grid-template-columns:1fr}}
+
+/* ---------- trabajos: tira de fotos que corre de lado con el scroll ---------- */
+.trabajos{padding-block:var(--seccion) calc(var(--seccion) * .9);background:var(--oscura);color:var(--sobre-oscura)}
+.trab-cab{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(32px,4vw,60px)}
+.trab-cab p{color:var(--apagado-oscura);max-width:36ch;font-size:.95rem}
+.tira-marco{overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-inline:var(--lado)}
+.tira-marco::-webkit-scrollbar{display:none}
+.tira-marco.viva{overflow:hidden;scroll-snap-type:none}
+.tira{display:flex;gap:clamp(10px,1.2vw,18px);width:max-content}
+.tira li{width:clamp(210px,24vw,370px);aspect-ratio:4/5;overflow:hidden;scroll-snap-align:start;background:#252321}
+.tira img{width:100%;height:100%;object-fit:cover;transition:opacity .35s var(--e)}
+@media (hover:hover) and (pointer:fine){.tira:hover li:not(:hover) img{opacity:.4}}
+
+/* ---------- equipo (retratos desfasados) ---------- */
+.equipo{padding-block:var(--seccion)}
+.equipo h2{margin-bottom:clamp(36px,5vw,72px)}
+.eq-rej{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,48px);align-items:start}
+.eq:nth-child(2){margin-top:clamp(40px,7vw,110px)}
+.eq:nth-child(3){margin-top:clamp(20px,3.5vw,55px)}
+.eq figure{aspect-ratio:4/5;overflow:hidden;background:var(--papel-2)}
+.eq img{width:100%;height:100%;object-fit:cover}
+.eq h3{font-size:clamp(1.3rem,1rem + 1vw,1.9rem);margin:18px 0 6px}
+.eq p{color:var(--texto-2);font-size:.95rem}
+@media (max-width:760px){
+  .eq-rej{grid-template-columns:1fr;gap:44px}
+  .eq{width:78%}
+  .eq:nth-child(2){margin:0 0 0 auto}
+  .eq:nth-child(3){margin:0}
+}
+
+/* ---------- opiniones ---------- */
+.opiniones{padding-block:calc(var(--seccion) * .4) var(--seccion)}
+.op-cab{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:16px 24px;margin-bottom:clamp(36px,5vw,72px)}
+.nota{font-size:.88rem;color:var(--texto-2)}
+.op-grande blockquote p{font-size:clamp(1.6rem,1rem + 2.4vw,3.1rem);line-height:1.14;letter-spacing:-.015em;max-width:24ch}
+.op-grande figcaption,.op-peq figcaption{margin-top:22px;font-weight:700;text-transform:uppercase;font-size:.85rem;letter-spacing:.02em}
+.op-peq{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);margin-top:clamp(56px,7vw,110px)}
+.op-peq figure{border-top:1px solid var(--tinta);padding-top:22px}
+.op-peq blockquote p{font-size:clamp(1.05rem,.95rem + .45vw,1.35rem);line-height:1.45;max-width:36ch}
+@media (max-width:700px){.op-peq{grid-template-columns:1fr}}
+
+/* ---------- horario (ticket) y cómo llegar ---------- */
+.visita{padding-block:var(--seccion);border-top:1px solid var(--regla)}
+.visita .envoltorio{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,88px);align-items:start}
+.ticket{background:var(--ticket);padding:clamp(30px,3vw,44px) clamp(22px,2.6vw,40px);--d:9px;-webkit-mask:radial-gradient(circle var(--d) at 50% 0,#0000 98%,#000) 50% 0/calc(var(--d) * 2.4) 51% repeat-x,radial-gradient(circle var(--d) at 50% 100%,#0000 98%,#000) 50% 100%/calc(var(--d) * 2.4) 51% repeat-x;mask:radial-gradient(circle var(--d) at 50% 0,#0000 98%,#000) 50% 0/calc(var(--d) * 2.4) 51% repeat-x,radial-gradient(circle var(--d) at 50% 100%,#0000 98%,#000) 50% 100%/calc(var(--d) * 2.4) 51% repeat-x}
+.ticket h2,.llegar h2{font-size:clamp(1.8rem,1.2rem + 2vw,3rem);margin-bottom:26px}
+.dias li{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:4px 16px;padding:12px 0;border-bottom:1px dashed var(--regla);font-variant-numeric:tabular-nums}
+.dias li:last-child{border-bottom:0}
+.dias .d{text-transform:uppercase;font-size:.85rem;letter-spacing:.02em}
+.dias .h{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:0 .4em;font-size:.95rem}
+.dias .h span{white-space:nowrap}
+.dias .cerrado{color:var(--texto-2)}
+.dias [aria-current="date"] .d,.dias [aria-current="date"] .h{font-weight:700}
+.dias .gaur{display:none;margin-left:.5em;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.dias [aria-current="date"] .gaur{display:inline}
+.ticket .nota{margin-top:20px}
+.dir{font-weight:700;text-transform:uppercase;font-size:clamp(1.15rem,1rem + .6vw,1.5rem);line-height:1.2}
+.dir small{display:block;font-weight:400;text-transform:none;font-size:.85rem;color:var(--texto-2);margin-top:6px}
+.llegar > p:not(.dir):not(.nota){margin-top:12px;color:var(--texto-2);max-width:44ch}
+.mapa{position:relative;margin-top:28px;border:1px solid var(--regla);background:var(--papel)}
+.mapa svg{display:block;width:100%;height:auto}
+.croquis .cuad{stroke:#e6e1d8;stroke-width:1}
+.croquis .calle path{stroke:#bab3a8;stroke-width:1.3}
+.croquis .principal path{stroke:#8d867c;stroke-width:2.4}
+.croquis .tren path{stroke:#9b948a;stroke-width:1.4;stroke-dasharray:.008 .006}
+.croquis .rio-mancha path{stroke:#e2ddd3;stroke-width:26}
+.croquis .rio path{stroke:#a39b90;stroke-width:8}
+.croquis .parque path{fill:#e7e2d8;stroke:none}
+.croquis .agua path{fill:#ddd7cc;stroke:none}
+.croquis .resaltada path{stroke:var(--tinta);stroke-width:6}
+.etq{position:absolute;transform:translate(-50%,-50%);font-size:clamp(.62rem,.55rem + .3vw,.78rem);text-transform:uppercase;letter-spacing:.06em;color:var(--texto-2);white-space:nowrap;pointer-events:none}
+.etq.calle-n{transform:translate(-50%,-50%) rotate(-90deg);color:var(--tinta);font-weight:700}
+.pin{position:absolute;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center;pointer-events:none}
+.pin b{background:var(--tinta);color:var(--papel);font-size:clamp(.66rem,.6rem + .3vw,.82rem);letter-spacing:.06em;padding:6px 10px;white-space:nowrap}
+.pin .pin-palo{width:2px;height:16px;background:var(--tinta)}
+.pin .pin-punto{width:10px;height:10px;border-radius:50%;background:var(--tinta);margin-top:-1px}
+.mapa figcaption{position:absolute;right:8px;bottom:6px;font-size:.68rem;color:var(--texto-2)}
+.contacto{display:flex;flex-wrap:wrap;align-items:center;gap:8px 28px;margin-top:28px}
+.contacto .enlace-fuerte{font-size:.86rem}
+.llegar .nota{margin-top:18px}
+@media (max-width:900px){.visita .envoltorio{grid-template-columns:1fr}}
+
+/* ---------- pie ---------- */
+.pie{background:var(--oscura);color:var(--sobre-oscura);padding:clamp(56px,7vw,110px) 0 calc(28px + env(safe-area-inset-bottom))}
+.pie-marca{font:500 calc((100vw - var(--lado) * 2) / 6.78)/0.86 "Cabinet Grotesk","Satoshi",sans-serif;letter-spacing:.1em;text-indent:.1em;text-transform:uppercase;white-space:nowrap;text-align:center;padding-inline:var(--lado);color:var(--sobre-oscura)}
+.pie-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:clamp(40px,5vw,80px);padding-top:28px;border-top:1px solid #3a3734}
+.pie h3{font-size:.8rem;letter-spacing:.04em;margin-bottom:14px;color:var(--apagado-oscura);font-weight:400}
+.pie li,.pie address{font-style:normal;font-size:.92rem;line-height:1.7}
+.pie-nav a,.pie-cols a{position:relative;display:inline-block;text-decoration:none;padding:3px 0;min-height:24px}
+.pie-nav a{text-transform:uppercase;font-size:.84rem;letter-spacing:.02em}
+.pie-cols a.sub{text-decoration:underline;text-underline-offset:3px}
+.pie-bajo{margin-top:clamp(40px,5vw,72px);display:grid;gap:10px;font-size:.8rem;color:var(--apagado-oscura);max-width:80ch}
+.pie-oi{margin-top:18px;font-size:.9rem;color:var(--sobre-oscura)}
+.pie-oi a{text-decoration:underline;text-underline-offset:3px}
+@media (max-width:820px){.pie-cols{grid-template-columns:1fr 1fr}}
+
+/* ---------- barra fija del móvil (aparece cuando la portada ya no se ve) ---------- */
+.barra-movil{display:none}
+@media (max-width:820px){
+  .barra-movil{display:grid;grid-template-columns:1fr 1fr 1.25fr;position:fixed;left:0;right:0;bottom:0;z-index:40;padding-bottom:env(safe-area-inset-bottom);background:var(--oscura);visibility:hidden;transform:translateY(100%);transition:transform .35s var(--e),visibility 0s .35s}
+  .barra-movil.on{visibility:visible;transform:none;transition:transform .35s var(--e),visibility 0s}
+  .barra-movil a{display:flex;align-items:center;justify-content:center;min-height:56px;color:var(--sobre-oscura);text-decoration:none;text-transform:uppercase;font-size:.8rem;letter-spacing:.05em;border-right:1px solid #3a3734}
+  .barra-movil a:last-child{background:var(--marca);border-right:0}
+  .barra-movil a:active{transform:scale(.97)}
+  .pie{padding-bottom:calc(84px + env(safe-area-inset-bottom))}
+}
+
+/* SplitText parte el nombre en letras (cajas en línea): que no hereden la sangría que centra el nombre */
+.marca-txt *,.pie-marca *{text-indent:0}
+.nw{white-space:nowrap}
+.pie-oi a{display:inline-block;padding:6px 0;min-height:24px}
+.pie-bajo a{display:inline-block;padding:3px 0;min-height:24px}
+.portada-fotos::after{z-index:1}
+.portada-txt{z-index:2}
+@media (max-width:820px){.pie-cols a{padding:9px 0}}

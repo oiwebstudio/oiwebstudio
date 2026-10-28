@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<!--
+  AHAMEN · taberna de pintxos — muestra de diseño de OI Studio (marca inventada; no existe en Gipuzkoa: comprobado en Google Maps y OpenStreetMap el 24/10/2026).
+  Calco de la referencia B · MUCHACHA (muchachamontpellier.fr), tablero _local/material/inspiracion/elegir/muestras-bar-cafeteria-2026-10-16:
+  portada teñida con el nombre gigante y miniaturas, bloque de color con párrafo centrado, banda de horario, capítulos con título enorme +
+  foto vertical + hoja de papel girada con hojas debajo, carta impresa en montón, fila de fotos tipo polaroid, tarjeta final y pie con horario de puntos y nombre gigante.
+  Letras: 26 Gloock (OFL) + 15 Supreme (Fontshare, licencia ITF), autoalojadas en fuentes/.
+  Fotos de ejemplo de Wikimedia Commons (CC BY / CC BY-SA): autor, archivo y licencia en fotos/creditos.json y en el pie.
+  Euskera pasado por Itzultzaile Neuronala (euskadi.eus/itzuli) el 24/10/2026; por revisar por un euskaldun.
+  Se construye con _local/demos/muestra-taberna/construir.mjs (no editar a mano).
+-->
+<html lang="eu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>AHAMEN · Pintxo taberna Tolosaldean. Diseinu-lagina</title>
+<meta name="description" content="Pintxoak barran, anoak, eguneko menua eta pintxo-potea ostegunetan. OI Studio-ren diseinu-lagina: izena eta datuak asmatuak dira.">
+<meta name="theme-color" content="#3a0a0f">
+<link rel="alternate" hreflang="eu" href="./">
+<link rel="alternate" hreflang="es" href="es/">
+<link rel="preload" href="fuentes/gloock-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fuentes/supreme-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" type="image/avif" imagesrcset="fotos/portada-barra-960.avif 960w, fotos/portada-barra-1600.avif 1600w, fotos/portada-barra-2400.avif 2400w" imagesizes="(orientation: portrait) 150vh, 100vw">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<a class="salta" href="#contenido">Edukira joan</a>
+
+<header class="cab" data-tono="claro">
+  <button class="cab-menu" type="button" aria-expanded="false" aria-controls="menu"><span class="hamb" aria-hidden="true"></span>Menua</button>
+  <a class="cab-marca" href="#top">AHAMEN</a>
+  <div class="cab-der"><nav class="idioma" aria-label="Hizkuntza"><a href="./" lang="eu" hreflang="eu" aria-current="page">EU</a><a href="es/" lang="es" hreflang="es">ES</a></nav><a class="cab-res" href="#erreserba">Mahaia erreserbatu</a></div>
+</header>
+
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menua" hidden>
+  <button class="menu-cerrar" type="button"><span aria-hidden="true">×</span>Itxi menua</button>
+  <nav aria-label="Menua"><a href="#pintxoak">Pintxoak</a><a href="#karta">Karta</a><a href="#pote">Pintxo-potea</a><a href="#partidak">Partidak eta jaiak</a><a href="#menua">Eguneko menua</a><a href="#ordutegia">Ordutegia</a><a href="#iritsi">Nola iritsi</a></nav>
+  <div class="menu-datos">
+    <a href="tel:+34943000000">Deitu · 943 000 000</a>
+    <a href="https://wa.me/34600000000" rel="noopener">WhatsApp</a>
+    <div class="idioma" role="group" aria-label="Hizkuntza"><a href="./" lang="eu" hreflang="eu" aria-current="page">EU</a><a href="es/" lang="es" hreflang="es">ES</a></div>
+    <small>Helbidea eta telefonoak adibide dira.</small>
+  </div>
+</div>
+
+<main id="contenido">
+<section class="portada" id="top" data-portada data-tono="claro" aria-labelledby="h1">
+  <div class="portada-marco">
+    <div class="portada-fotos">
+      <div class="pf on"><picture><source type="image/avif" srcset="fotos/portada-barra-960.avif 960w, fotos/portada-barra-1600.avif 1600w, fotos/portada-barra-2400.avif 2400w" sizes="(orientation: portrait) 150vh, 100vw"><img src="fotos/portada-barra-2400.webp" srcset="fotos/portada-barra-960.webp 960w, fotos/portada-barra-1600.webp 1600w, fotos/portada-barra-2400.webp 2400w" sizes="(orientation: portrait) 150vh, 100vw" width="4000" height="3000" alt="Egurrezko barra pintxoz betea" fetchpriority="high" decoding="async"></picture></div>
+      <div class="pf"><picture><source type="image/avif" data-srcset="fotos/portada-gente-960.avif 960w, fotos/portada-gente-1600.avif 1600w, fotos/portada-gente-2400.avif 2400w" sizes="(orientation: portrait) 150vh, 100vw"><img data-src="fotos/portada-gente-2400.webp" data-srcset="fotos/portada-gente-960.webp 960w, fotos/portada-gente-1600.webp 1600w, fotos/portada-gente-2400.webp 2400w" sizes="(orientation: portrait) 150vh, 100vw" width="4272" height="2848" alt="" decoding="async"></picture></div>
+      <div class="pf"><picture><source type="image/avif" data-srcset="fotos/portada-pizarra-960.avif 960w, fotos/portada-pizarra-1600.avif 1600w, fotos/portada-pizarra-2400.avif 2400w" sizes="(orientation: portrait) 150vh, 100vw"><img data-src="fotos/portada-pizarra-2400.webp" data-srcset="fotos/portada-pizarra-960.webp 960w, fotos/portada-pizarra-1600.webp 1600w, fotos/portada-pizarra-2400.webp 2400w" sizes="(orientation: portrait) 150vh, 100vw" width="3648" height="2736" alt="" decoding="async"></picture></div>
+      <div class="pf"><picture><source type="image/avif" data-srcset="fotos/portada-vino-960.avif 960w, fotos/portada-vino-1600.avif 1600w, fotos/portada-vino-2400.avif 2400w" sizes="(orientation: portrait) 150vh, 100vw"><img data-src="fotos/portada-vino-2400.webp" data-srcset="fotos/portada-vino-960.webp 960w, fotos/portada-vino-1600.webp 1600w, fotos/portada-vino-2400.webp 2400w" sizes="(orientation: portrait) 150vh, 100vw" width="5827" height="3500" alt="" decoding="async"></picture></div>
+      <div class="pf"><picture><source type="image/avif" data-srcset="fotos/portada-barra2-960.avif 960w, fotos/portada-barra2-1600.avif 1600w, fotos/portada-barra2-2400.avif 2400w" sizes="(orientation: portrait) 150vh, 100vw"><img data-src="fotos/portada-barra2-2400.webp" data-srcset="fotos/portada-barra2-960.webp 960w, fotos/portada-barra2-1600.webp 1600w, fotos/portada-barra2-2400.webp 2400w" sizes="(orientation: portrait) 150vh, 100vw" width="4000" height="3000" alt="" decoding="async"></picture></div>
+      <div class="pf"><picture><source type="image/avif" data-srcset="fotos/portada-barra3-960.avif 960w, fotos/portada-barra3-1600.avif 1600w, fotos/portada-barra3-2400.avif 2400w" sizes="(orientation: portrait) 150vh, 100vw"><img data-src="fotos/portada-barra3-2400.webp" data-srcset="fotos/portada-barra3-960.webp 960w, fotos/portada-barra3-1600.webp 1600w, fotos/portada-barra3-2400.webp 2400w" sizes="(orientation: portrait) 150vh, 100vw" width="4000" height="3000" alt="" decoding="async"></picture></div>
+      <div class="pf"><picture><source type="image/avif" data-srcset="fotos/portada-jamon-960.avif 960w, fotos/portada-jamon-1600.avif 1600w, fotos/portada-jamon-2400.avif 2400w" sizes="(orientation: portrait) 150vh, 100vw"><img data-src="fotos/portada-jamon-2400.webp" data-srcset="fotos/portada-jamon-960.webp 960w, fotos/portada-jamon-1600.webp 1600w, fotos/portada-jamon-2400.webp 2400w" sizes="(orientation: portrait) 150vh, 100vw" width="4272" height="2848" alt="" decoding="async"></picture></div>
+    </div>
+    <div class="tinte" aria-hidden="true"></div><div class="tinte2" aria-hidden="true"></div>
+    <div class="guias" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="portada-txt">
+      <h1 id="h1" data-letras>AHAMEN</h1>
+      <p class="lugar">Pintxo taberna · Tolosaldea</p>
+    </div>
+    <div class="minis" role="group" aria-label="Tabernako argazkiak">
+      <button class="mini on" type="button" aria-pressed="true" aria-label="Ikusi argazkia: Egurrezko barra pintxoz betea"><img src="fotos/mini-barra-260.webp" width="260" height="260" alt="" decoding="async"></button>
+      <button class="mini" type="button" aria-pressed="false" aria-label="Ikusi argazkia: Bezeroak barran pintxoak hartzen"><img src="fotos/mini-gente-260.webp" width="260" height="260" alt="" decoding="async"></button>
+      <button class="mini" type="button" aria-pressed="false" aria-label="Ikusi argazkia: Pintxo arbela eta barra, sukaldea atzean duela"><img src="fotos/mini-pizarra-260.webp" width="260" height="260" alt="" decoding="async"></button>
+      <button class="mini" type="button" aria-pressed="false" aria-label="Ikusi argazkia: Ardo beltza lau kopatan zerbitzatzen"><img src="fotos/mini-vino-260.webp" width="260" height="260" alt="" decoding="async"></button>
+      <button class="mini" type="button" aria-pressed="false" aria-label="Ikusi argazkia: Pintxoak zotzarekin plater zurietan"><img src="fotos/mini-barra2-260.webp" width="260" height="260" alt="" decoding="async"></button>
+      <button class="mini" type="button" aria-pressed="false" aria-label="Ikusi argazkia: Pintxo platerak barran eta jendea atzean"><img src="fotos/mini-barra3-260.webp" width="260" height="260" alt="" decoding="async"></button>
+      <button class="mini" type="button" aria-pressed="false" aria-label="Ikusi argazkia: Urdaiazpiko pintxoak zotzarekin"><img src="fotos/mini-jamon-260.webp" width="260" height="260" alt="" decoding="async"></button>
+    </div>
+  </div>
+</section>
+
+<section class="intro" data-tono="oscuro">
+  <div class="guias" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="reglas" aria-hidden="true"><div class="regla"><span><b>10h</b></span><span><b>12h</b></span><span><b>14h</b></span><span><b>16h</b></span><span><b>18h</b></span><span><b>20h</b></span><span><b>22h</b></span><span><b>0h</b></span></div><div class="regla"><span><b>10h</b></span><span><b>12h</b></span><span><b>14h</b></span><span><b>16h</b></span><span><b>18h</b></span><span><b>20h</b></span><span><b>22h</b></span><span><b>0h</b></span></div></div>
+  <p class="intro-p">Ahamen plazako taberna da: pintxo egin berriak barran, etxeko ardoa eta betiko jendea. <span class="sub">Jan</span>, <span class="sub">edan</span> eta <span class="marca">geratu</span>, goizeko kafetik azken zuritora.</p>
+  <a class="btn" href="#erreserba">Mahaia erreserbatu</a>
+  <a class="enl" href="#pote">Ostegunetako pintxo-potea</a>
+</section>
+
+<section class="horario" id="ordutegia" data-tono="oscuro" aria-labelledby="h-ordu">
+  <div class="banda" aria-hidden="true"><p data-pista="28"><span>Asteartetik igandera, 10:00etatik aurrera</span><span>Asteartetik igandera, 10:00etatik aurrera</span><span>Asteartetik igandera, 10:00etatik aurrera</span><span>Asteartetik igandera, 10:00etatik aurrera</span></p></div>
+  <h2 class="vh" id="h-ordu">Ordutegia</h2>
+  <p class="estado" data-estado hidden></p>
+  <dl class="horas" data-escalonado>
+    <div><dt>Asteartetik ostegunera</dt><dd>Barra <span class="t">10:00 — 23:00</span></dd></div>
+    <div><dt>Ostiral eta larunbatetan</dt><dd>Barra <span class="t">10:00 — 01:00</span></dd></div>
+    <div><dt>Igandea</dt><dd>Barra <span class="t">10:00 — 16:00</span></dd></div>
+    <div><dt>Sukaldea</dt><dd><span class="t">13:00 — 15:30</span> · <span class="t">20:00 — 22:30</span></dd></div>
+    <div><dt>Astelehena</dt><dd>Itxita</dd></div>
+  </dl>
+  <p class="nota">Adibide-ordutegia</p>
+  <a class="btn" href="#erreserba">Mahaia erreserbatu</a>
+</section>
+
+<section class="cap cap--botella" id="pintxoak" data-tono="claro" aria-labelledby="h-pintxoak">
+  <div class="guias" aria-hidden="true"><i></i><i></i><i></i></div>
+  <h2 class="cap-t" id="h-pintxoak" data-lineas><span>Pintxoak</span> <span>barran</span></h2>
+  <figure class="cap-foto"><picture><source type="image/avif" srcset="fotos/v-pintxoak-480.avif 480w, fotos/v-pintxoak-960.avif 960w" sizes="(min-width: 760px) 21vw, 212px"><img src="fotos/v-pintxoak-960.webp" srcset="fotos/v-pintxoak-480.webp 480w, fotos/v-pintxoak-960.webp 960w" sizes="(min-width: 760px) 21vw, 212px" width="2052" height="3648" alt="Egurrezko barra luzea, pintxoak eta zerbitzariak atzean dituela" loading="lazy" decoding="async"></picture></figure>
+  <div class="hojas"><div class="hoja hoja-atras izq" aria-hidden="true"></div><div class="hoja hoja-atras der" aria-hidden="true"></div><div class="hoja hoja-frente"><p class="hoja-p" data-enciende>Pintxo hotzak barran hamaiketatik, eta momentuan beroak: eskatu, egin eta atera egiten dizkizugu.</p><hr class="doble"><div class="hoja-cols"><p>Goizean, tortilla egin berria eta hamaiketakorako ogitartekoak. Eguerdian eta arratsaldean barra bete egiten da: gildak, antxoak, bakailaoa eta etxeko kroketak.</p><p>Beroa eskatzean egiten da: txanpiñoiak plantxan, otarrainxka-brotxeta edo txistorra. Barran ikusten ez baduzu, galdetu: ia beti dago zerbait pintxoen kartan ez dagoena.</p></div></div></div>
+</section>
+
+<section class="karta" id="karta" data-tono="claro" aria-labelledby="h-karta">
+  <div class="guias" aria-hidden="true"><i></i><i></i><i></i></div>
+  <h2 id="h-karta" data-lineas><span>Pintxoen</span> <span>karta</span></h2>
+  <div class="karta-zona">
+    <div class="karta-pila">
+      <div class="hoja-atras" aria-hidden="true"></div><div class="hoja-atras b" aria-hidden="true"></div>
+      <article class="karta-hoja">
+        <picture><source type="image/avif" srcset="fotos/karta-barra-600.avif 600w, fotos/karta-barra-1200.avif 1200w" sizes="(min-width: 700px) 630px, 90vw"><img src="fotos/karta-barra-1200.webp" srcset="fotos/karta-barra-600.webp 600w, fotos/karta-barra-1200.webp 1200w" sizes="(min-width: 700px) 630px, 90vw" width="4000" height="2500" alt="Pintxo-platerak barra gainean" loading="lazy" decoding="async"></picture>
+        <p class="karta-nombre">AHAMEN</p>
+        <p class="karta-sub">Pintxoak eta anoak</p>
+        <div class="karta-cols">
+          <section aria-label="Pintxo hotzak"><h3>Pintxo hotzak</h3><ul class="platos" data-escalonado><li data-id="gilda" data-pr="2.2"><span class="n">Gilda</span><span class="pt" aria-hidden="true"></span><span class="pr">2,20 €</span></li><li data-id="anchoa" data-pr="2.8"><span class="n">Antxoa piparekin</span><span class="pt" aria-hidden="true"></span><span class="pr">2,80 €</span></li><li data-id="tortilla" data-pr="2.5"><span class="n">Patata-tortilla</span><span class="pt" aria-hidden="true"></span><span class="pr">2,50 €</span></li><li data-id="ensaladilla" data-pr="2.5"><span class="n">Entsaladatxoa</span><span class="pt" aria-hidden="true"></span><span class="pr">2,50 €</span></li><li data-id="bacalao" data-pr="3.2"><span class="n">Bakailaoa piperrekin</span><span class="pt" aria-hidden="true"></span><span class="pr">3,20 €</span></li></ul></section>
+          <section aria-label="Pintxo beroak"><h3>Pintxo beroak</h3><ul class="platos" data-escalonado><li data-id="croqueta" data-pr="2"><span class="n">Urdaiazpiko kroketa</span><span class="pt" aria-hidden="true"></span><span class="pr">2,00 €</span></li><li data-id="champis" data-pr="3"><span class="n">Txanpiñoiak plantxan</span><span class="pt" aria-hidden="true"></span><span class="pr">3,00 €</span></li><li data-id="brocheta" data-pr="3.5"><span class="n">Otarrainxka-brotxeta</span><span class="pt" aria-hidden="true"></span><span class="pr">3,50 €</span></li><li data-id="txistorra" data-pr="2.5"><span class="n">Txistorra</span><span class="pt" aria-hidden="true"></span><span class="pr">2,50 €</span></li></ul></section>
+          <section aria-label="Anoak"><h3>Anoak</h3><ul class="platos" data-escalonado><li data-id="bravas" data-pr="6.5"><span class="n">Patatas bravas</span><span class="pt" aria-hidden="true"></span><span class="pr">6,50 €</span></li><li data-id="rabas" data-pr="9"><span class="n">Rabas</span><span class="pt" aria-hidden="true"></span><span class="pr">9,00 €</span></li><li data-id="padron" data-pr="7"><span class="n">Pimientos de Padrón</span><span class="pt" aria-hidden="true"></span><span class="pr">7,00 €</span></li><li data-id="croquetas6" data-pr="8"><span class="n">Kroketak, sei unitate</span><span class="pt" aria-hidden="true"></span><span class="pr">8,00 €</span></li><li data-id="chipirones" data-pr="12"><span class="n">Txipiroiak plantxan</span><span class="pt" aria-hidden="true"></span><span class="pr">12,00 €</span></li></ul></section>
+        </div>
+        <p class="karta-gran" aria-hidden="true">Karta</p>
+        <p class="karta-pie">Adibideko prezioak, BEZa barne · Kale Nagusia 1, Tolosaldea</p>
+      </article>
+    </div>
+    <aside class="panel" aria-labelledby="h-panel" hidden>
+      <div class="panel-pant">
+        <h3 id="h-panel">Pintxo karta mugikorretik aldatzen da</h3>
+        <p class="panel-p">Hau da jabeak mugikorrean ikusiko lukeena. Saiatu prezio bat igotzen edo pintxo bat markatzen agortuta bezala, eta begira nola aldatzen duen goiko pintxoen karta.</p>
+        <ul class="panel-filas">
+          <li><span class="n">Gilda</span><span class="p" data-p="gilda">2,20 €</span><div class="panel-ctl"><button type="button" data-paso="-0.1" data-id="gilda" aria-label="Prezioa jaistea: Gilda">−</button><button type="button" data-paso="0.1" data-id="gilda" aria-label="Prezioa igotzea: Gilda">+</button><label><input type="checkbox" data-agot="gilda">Agortuta</label></div></li>
+          <li><span class="n">Patata-tortilla</span><span class="p" data-p="tortilla">2,50 €</span><div class="panel-ctl"><button type="button" data-paso="-0.1" data-id="tortilla" aria-label="Prezioa jaistea: Patata-tortilla">−</button><button type="button" data-paso="0.1" data-id="tortilla" aria-label="Prezioa igotzea: Patata-tortilla">+</button><label><input type="checkbox" data-agot="tortilla">Agortuta</label></div></li>
+          <li><span class="n">Rabas</span><span class="p" data-p="rabas">9,00 €</span><div class="panel-ctl"><button type="button" data-paso="-0.1" data-id="rabas" aria-label="Prezioa jaistea: Rabas">−</button><button type="button" data-paso="0.1" data-id="rabas" aria-label="Prezioa igotzea: Rabas">+</button><label><input type="checkbox" data-agot="rabas">Agortuta</label></div></li>
+        </ul>
+        <p class="panel-estado" aria-live="polite"></p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="galeria" data-tono="oscuro" aria-label="Tabernako argazkiak">
+  <div class="banda2" aria-hidden="true"><p data-pista="22"><span>AHAMEN <em>barran</em></span><span>AHAMEN <em>barran</em></span><span>AHAMEN <em>barran</em></span><span>AHAMEN <em>barran</em></span><span>AHAMEN <em>barran</em></span></p></div>
+  <div class="gal-vista" tabindex="0" role="region" aria-label="Pintxoen argazkiak. Irristatu gehiago ikusteko">
+    <ul class="gal-fila">
+      <li class="polaroid"><picture><source type="image/avif" srcset="fotos/g-olagarroa-400.avif 400w, fotos/g-olagarroa-800.avif 800w" sizes="(min-width: 900px) 21vw, 236px"><img src="fotos/g-olagarroa-800.webp" srcset="fotos/g-olagarroa-400.webp 400w, fotos/g-olagarroa-800.webp 800w" sizes="(min-width: 900px) 21vw, 236px" width="2074" height="2592" alt="Olagarro pintxoa orburu eta ozpinarekin" loading="lazy" decoding="async"></picture></li>
+      <li class="polaroid"><picture><source type="image/avif" srcset="fotos/g-gildak-400.avif 400w, fotos/g-gildak-800.avif 800w" sizes="(min-width: 900px) 21vw, 236px"><img src="fotos/g-gildak-800.webp" srcset="fotos/g-gildak-400.webp 400w, fotos/g-gildak-800.webp 800w" sizes="(min-width: 900px) 21vw, 236px" width="1160" height="1450" alt="Pipermin, oliba eta antxoa gildak" loading="lazy" decoding="async"></picture></li>
+      <li class="polaroid"><picture><source type="image/avif" srcset="fotos/g-tortilla-400.avif 400w, fotos/g-tortilla-800.avif 800w" sizes="(min-width: 900px) 21vw, 236px"><img src="fotos/g-tortilla-800.webp" srcset="fotos/g-tortilla-400.webp 400w, fotos/g-tortilla-800.webp 800w" sizes="(min-width: 900px) 21vw, 236px" width="2571" height="3214" alt="Tortilla pintxoak piper gorriarekin" loading="lazy" decoding="async"></picture></li>
+      <li class="polaroid"><picture><source type="image/avif" srcset="fotos/g-brabak-400.avif 400w, fotos/g-brabak-800.avif 800w" sizes="(min-width: 900px) 21vw, 236px"><img src="fotos/g-brabak-800.webp" srcset="fotos/g-brabak-400.webp 400w, fotos/g-brabak-800.webp 800w" sizes="(min-width: 900px) 21vw, 236px" width="3110" height="3888" alt="Patata bizidunak piperrautsarekin" loading="lazy" decoding="async"></picture></li>
+      <li class="polaroid"><picture><source type="image/avif" srcset="fotos/g-pintxoa-400.avif 400w, fotos/g-pintxoa-800.avif 800w" sizes="(min-width: 900px) 21vw, 236px"><img src="fotos/g-pintxoa-800.webp" srcset="fotos/g-pintxoa-400.webp 400w, fotos/g-pintxoa-800.webp 800w" sizes="(min-width: 900px) 21vw, 236px" width="2758" height="3448" alt="Tostak kremarekin eta tipula karraskariarekin" loading="lazy" decoding="async"></picture></li>
+      <li class="polaroid"><picture><source type="image/avif" srcset="fotos/g-sardina-400.avif 400w, fotos/g-sardina-800.avif 800w" sizes="(min-width: 900px) 21vw, 236px"><img src="fotos/g-sardina-800.webp" srcset="fotos/g-sardina-400.webp 400w, fotos/g-sardina-800.webp 800w" sizes="(min-width: 900px) 21vw, 236px" width="2400" height="3000" alt="Sardina pintxo ketua" loading="lazy" decoding="async"></picture></li>
+      <li class="polaroid"><picture><source type="image/avif" srcset="fotos/g-ogitartekoak-400.avif 400w, fotos/g-ogitartekoak-800.avif 800w" sizes="(min-width: 900px) 21vw, 236px"><img src="fotos/g-ogitartekoak-800.webp" srcset="fotos/g-ogitartekoak-400.webp 400w, fotos/g-ogitartekoak-800.webp 800w" sizes="(min-width: 900px) 21vw, 236px" width="1229" height="1536" alt="Ogi pintxoak arrautza frijituarekin barran" loading="lazy" decoding="async"></picture></li>
+      <li class="polaroid"><picture><source type="image/avif" srcset="fotos/g-barra-400.avif 400w, fotos/g-barra-800.avif 800w" sizes="(min-width: 900px) 21vw, 236px"><img src="fotos/g-barra-800.webp" srcset="fotos/g-barra-400.webp 400w, fotos/g-barra-800.webp 800w" sizes="(min-width: 900px) 21vw, 236px" width="2736" height="3420" alt="Zerbitzariak pintxoz betetako barra baten atzean" loading="lazy" decoding="async"></picture></li>
+    </ul>
+  </div>
+</section>
+
+<section class="cap cap--madera" id="pote" data-tono="claro" aria-labelledby="h-pote">
+  <div class="guias" aria-hidden="true"><i></i><i></i><i></i></div>
+  <h2 class="cap-t" id="h-pote" data-lineas><span>Pintxo-</span><span>potea</span></h2>
+  <figure class="cap-foto"><picture><source type="image/avif" srcset="fotos/v-ardoa-480.avif 480w, fotos/v-ardoa-960.avif 960w" sizes="(min-width: 760px) 21vw, 212px"><img src="fotos/v-ardoa-960.webp" srcset="fotos/v-ardoa-480.webp 480w, fotos/v-ardoa-960.webp 960w" sizes="(min-width: 760px) 21vw, 212px" width="2268" height="4032" alt="Kopa bat ardo beltz mahai berde baten gainean" loading="lazy" decoding="async"></picture></figure>
+  <div class="hojas"><div class="hoja hoja-atras izq" aria-hidden="true"></div><div class="hoja hoja-atras der" aria-hidden="true"></div><div class="hoja hoja-frente"><p class="hoja-p" data-enciende>Ostegunetan, 19:00etatik 21:00etara, pintxo-potea: zurito bat edo ardo bat bere pintxoarekin 2,50 euroan.</p><hr class="doble"><div class="hoja-cols"><p>Barran etxeko ardoa, txakolina, sagardoa eta upeleko garagardoa daude. Bermuta, larunbat eguerdietan.</p><div class="bebidas"><h3>Edateko</h3><ul class="platos" data-escalonado><li><span class="n">Zuritoa</span><span class="pt" aria-hidden="true"></span><span class="pr">1,30 €</span></li><li><span class="n">Caña</span><span class="pt" aria-hidden="true"></span><span class="pr">2,20 €</span></li><li><span class="n">Etxeko ardoa</span><span class="pt" aria-hidden="true"></span><span class="pr">1,80 €</span></li><li><span class="n">Crianza</span><span class="pt" aria-hidden="true"></span><span class="pr">2,80 €</span></li><li><span class="n">Txakolina</span><span class="pt" aria-hidden="true"></span><span class="pr">2,50 €</span></li><li><span class="n">Sagardoa</span><span class="pt" aria-hidden="true"></span><span class="pr">2,20 €</span></li><li><span class="n">Bermuta</span><span class="pt" aria-hidden="true"></span><span class="pr">3,00 €</span></li></ul></div></div><p class="hoja-pie">Adibideko prezioak</p></div></div>
+</section>
+
+<section class="cap cap--vino" id="partidak" data-tono="claro" aria-labelledby="h-partidak">
+  <div class="guias" aria-hidden="true"><i></i><i></i><i></i></div>
+  <h2 class="cap-t" id="h-partidak" data-lineas><span>Partidak</span> <span>eta jaiak</span></h2>
+  <figure class="cap-foto"><picture><source type="image/avif" srcset="fotos/v-partida-480.avif 480w, fotos/v-partida-960.avif 960w" sizes="(min-width: 760px) 21vw, 212px"><img src="fotos/v-partida-960.webp" srcset="fotos/v-partida-480.webp 480w, fotos/v-partida-960.webp 960w" sizes="(min-width: 760px) 21vw, 212px" width="2174" height="3864" alt="Jendea taberna batean futbol partida bat ikusten telebistan" loading="lazy" decoding="async"></picture></figure>
+  <div class="hojas"><div class="hoja hoja-atras izq" aria-hidden="true"></div><div class="hoja hoja-atras der" aria-hidden="true"></div><div class="hoja hoja-frente"><p class="hoja-p" data-enciende>Partidak hemen ikusten dira: pantaila handia, soinu ona eta barra amaierara arte irekita.</p><hr class="doble"><div class="hoja-cols"><p>Futbola eta pilota pantaila handian. Herriko taldeak jokatzen duenean, hobe laster iristea.</p><p>Jaietan barra kalera ateratzen dugu, eta hilean larunbat batean zuzeneko musika izaten da. Datak hemen eta Instagramen ateratzen dira.</p></div></div></div>
+</section>
+
+<section class="menua" id="menua" data-tono="oscuro" aria-labelledby="h-menua">
+  <h2 id="h-menua" data-lineas><span>Eguneko</span> <span>menua</span></h2>
+  <figure class="cap-foto"><picture><source type="image/avif" srcset="fotos/v-menua-480.avif 480w, fotos/v-menua-960.avif 960w" sizes="(min-width: 760px) 21vw, 212px"><img src="fotos/v-menua-960.webp" srcset="fotos/v-menua-480.webp 480w, fotos/v-menua-960.webp 960w" sizes="(min-width: 760px) 21vw, 212px" width="2187" height="3888" alt="Solomo-platera plantxan patata frijituekin, piperra eta orburua" loading="lazy" decoding="async"></picture></figure>
+  <p class="menua-p" data-enciende>Asteartetik ostiralera, eguerdian: lehena, bigarrena eta postrea, ogi eta urarekin edo ardoarekin. 14 €.</p>
+  <div class="gaur" aria-label="Gaur">
+    <div><h3>Lehen platerak</h3><ul><li>Tolosako babarrunak</li><li>Entsalada mistoa</li><li>Makarroiak txorizoarekin</li></ul></div>
+    <div><h3>Bigarren platerak</h3><ul><li>Bakailaoa pil-pilean</li><li>Solomoa piperrekin</li><li>Legatza plantxan</li></ul></div>
+    <div><h3>Postreak</h3><ul><li>Gatzatua</li><li>Etxeko flana</li><li>Fruta</li></ul></div>
+  </div>
+  <p class="nota">Menua eta prezioa adibidezkoak dira</p>
+  <a class="btn" href="tel:+34943000000">Erreserba egiteko deitu</a>
+</section>
+
+<section class="iritziak" data-tono="oscuro" aria-labelledby="h-iritziak">
+  <h2 id="h-iritziak" data-lineas>Iritziak</h2>
+  <div class="iritzi-zona" aria-live="polite">
+    <blockquote class="iritzi"><p>«Kroketak, inguruko onenak, eta tortilla beti egin berria. Ostegunetan goraino betetzen da.»</p><footer>Miren · Googlen</footer></blockquote>
+    <blockquote class="iritzi"><p>«Partida ikustera joan ginen eta errazioak afaltzera geratu ginen. Bikain tratatu gintuzten.»</p><footer>Jon · Googlen</footer></blockquote>
+    <blockquote class="iritzi"><p>«Etxeko eguneko menua prezio onean. Babarrunak, etxean bezala.»</p><footer>Ane · Googlen</footer></blockquote>
+  </div>
+  <div class="iritzi-ctl" hidden><button type="button" data-ant>Aurrekoa</button><span data-cuenta>1 / 3</span><button type="button" data-sig>Hurrengoa</button></div>
+  <p class="nota">Adibide-iritziak</p>
+</section>
+
+<section class="erreserba" id="erreserba" data-tono="claro" aria-labelledby="h-erreserba">
+  <div class="guias" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="deia">
+    <picture><source type="image/avif" srcset="fotos/deia-jamon-960.avif 960w, fotos/deia-jamon-1600.avif 1600w, fotos/deia-jamon-2400.avif 2400w" sizes="(min-width: 1280px) 1240px, 96vw"><img src="fotos/deia-jamon-2400.webp" srcset="fotos/deia-jamon-960.webp 960w, fotos/deia-jamon-1600.webp 1600w, fotos/deia-jamon-2400.webp 2400w" sizes="(min-width: 1280px) 1240px, 96vw" width="4272" height="2848" alt="" loading="lazy" decoding="async"></picture>
+    <div class="deia-txt">
+      <h2 id="h-erreserba" data-lineas><span>Gaurko mahaia?</span><span>Gorde egingo dizugu.</span></h2>
+      <p class="deia-p">Deitu edo idatz iezaguzu WhatsApp bidez eta berehala esango dizugu lekurik dagoen.</p>
+      <div class="deia-bot"><a class="btn btn--claro" href="tel:+34943000000">Deitu · 943 000 000</a><a class="enl" href="https://wa.me/34600000000" rel="noopener">Idatzi WhatsApp bidez</a></div>
+      <small>Helbidea eta telefonoak adibide dira.</small>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="pie" data-tono="claro">
+  <div class="pie-rej">
+    <div id="iritsi">
+      <p class="pie-marca">AHAMEN</p>
+      <p class="pie-dir">Kale Nagusia 1, Tolosaldea</p>
+      <p class="pie-pp">Kale nagusian, plazatik eta geltokitik bi minutura.</p>
+      <div class="pie-tel"><a href="tel:+34943000000">943 000 000</a><a href="https://wa.me/34600000000" rel="noopener">WhatsApp</a></div>
+      <figure class="croquis">
+        <svg viewBox="0 0 420 230" role="img" aria-label="Krokisa: taberna kale nagusian dago, plazaren eta geltokiaren artean" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path data-traza pathLength="1" d="M-5 196 C 70 170, 120 214, 190 190 S 320 150, 425 176" stroke="#6d8f7a" stroke-width="10" opacity=".55"/>
+          <path data-traza pathLength="1" d="M10 120 L 410 104" stroke="#f4dfc8" stroke-width="3"/>
+          <path data-traza pathLength="1" d="M150 20 L 160 186" stroke="#f4dfc8" stroke-width="2" opacity=".7"/>
+          <path data-traza pathLength="1" d="M300 30 L 296 176" stroke="#f4dfc8" stroke-width="2" opacity=".7"/>
+          <path data-traza pathLength="1" d="M60 36 H 128 V 92 H 60 Z" stroke="#c98a56" stroke-width="2"/>
+          <path data-traza pathLength="1" d="M330 36 L 412 30" stroke="#f4dfc8" stroke-width="2" stroke-dasharray=".02 .02" opacity=".8"/>
+          <path data-traza pathLength="1" d="M328 48 H 410 V 78 H 328 Z" stroke="#f4dfc8" stroke-width="1.5" opacity=".8"/>
+          <g fill="#f4dfc8" stroke="none" font-family="Supreme, system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing=".5">
+            <text x="94" y="68" text-anchor="middle">PLAZA</text>
+            <text x="40" y="112" transform="rotate(-2.3 40 112)">KALE NAGUSIA</text>
+            <text x="369" y="68" text-anchor="middle">ESTAZIOA</text>
+            <text x="30" y="222" fill="#9fbcaa">IBAIA</text>
+          </g>
+          <g class="pin"><path d="M228 112 l -9 -18 a 12 12 0 1 1 18 0 z" fill="#c98a56" stroke="#24160f" stroke-width="1.5"/><text x="228" y="68" text-anchor="middle" fill="#f4dfc8" stroke="none" font-family="Gloock, Georgia, serif" font-size="15">AHAMEN</text></g>
+        </svg>
+        <figcaption>Adibide-mapa · Helbidea eta telefonoak adibide dira.</figcaption>
+      </figure>
+    </div>
+    <div>
+      <h3>Ordutegia</h3>
+      <ul class="pie-horas"><li data-dia="0"><span class="d">Astelehena</span><span class="l" aria-hidden="true"></span><span class="h">Itxita</span></li><li data-dia="1"><span class="d">Asteartea</span><span class="l" aria-hidden="true"></span><span class="h">10:00 — 23:00</span></li><li data-dia="2"><span class="d">Asteazkena</span><span class="l" aria-hidden="true"></span><span class="h">10:00 — 23:00</span></li><li data-dia="3"><span class="d">Osteguna</span><span class="l" aria-hidden="true"></span><span class="h">10:00 — 23:00</span></li><li data-dia="4"><span class="d">Ostirala</span><span class="l" aria-hidden="true"></span><span class="h">10:00 — 01:00</span></li><li data-dia="5"><span class="d">Larunbata</span><span class="l" aria-hidden="true"></span><span class="h">10:00 — 01:00</span></li><li data-dia="6"><span class="d">Igandea</span><span class="l" aria-hidden="true"></span><span class="h">10:00 — 16:00</span></li></ul>
+      <p class="nota" style="color:rgba(244,223,200,.7)">Adibide-ordutegia</p>
+    </div>
+    <div>
+      <h3>Menua</h3>
+      <nav class="pie-nav" aria-label="Menua"><a href="#pintxoak">Pintxoak</a><a href="#karta">Karta</a><a href="#pote">Pintxo-potea</a><a href="#partidak">Partidak eta jaiak</a><a href="#menua">Eguneko menua</a></nav><div class="idioma" role="group" aria-label="Hizkuntza"><a href="./" lang="eu" hreflang="eu" aria-current="page">EU</a><a href="es/" lang="es" hreflang="es">ES</a></div>
+    </div>
+  </div>
+  <div class="pie-abajo">
+    <a href="https://oiwebstudio.com" rel="noopener">OI Studio-ren diseinu-lagina · oiwebstudio.com</a>
+    <span>Instagramerako adibide-esteka</span>
+    <a class="der" href="#top">Itzuli gora</a>
+  </div>
+  <p class="pie-aviso">Webgune hau OI Studiok sortutako diseinuaren lagin bat da. Izena, helbidea, telefonoak, testuak, iritziak eta prezioak asmatuak dira. Argazkiak Wikimedia Commonsetik ateratako adibide argazkiak dira, bakoitza bere lizentziarekin.</p>
+  <details>
+    <summary>Argazkien kredituak</summary>
+    <ul><li>Basotxerri · <a href="https://commons.wikimedia.org/wiki/File:Barra_de_pintxos_Donosti_01.JPG" rel="noopener">Barra de pintxos Donosti 01.JPG</a> · CC BY-SA 4.0</li><li>Nicolas Vollmer from Munich [Allemagne] · <a href="https://commons.wikimedia.org/wiki/File:Bar_%C3%A0_pintxos_(8287063576).jpg" rel="noopener">Bar à pintxos (8287063576).jpg</a> · CC BY 2.0</li><li>Gordito1869 · <a href="https://commons.wikimedia.org/wiki/File:Pintxos_Donostia_2014.JPG" rel="noopener">Pintxos Donostia 2014.JPG</a> · CC BY 3.0</li><li>Maria Eklind · <a href="https://commons.wikimedia.org/wiki/File:Wine_glasses_in_the_bar_(Explored_2016-05-29)_-_Flickr_-_Maria_Eklind.jpg" rel="noopener">Wine glasses in the bar (Explored 2016-05-29) - Flickr - Maria Eklind.jpg</a> · CC BY-SA 2.0</li><li>Basotxerri · <a href="https://commons.wikimedia.org/wiki/File:Barra_de_pintxos_Donosti_07.JPG" rel="noopener">Barra de pintxos Donosti 07.JPG</a> · CC BY-SA 4.0</li><li>Basotxerri · <a href="https://commons.wikimedia.org/wiki/File:Barra_de_pintxos_Donosti_04.JPG" rel="noopener">Barra de pintxos Donosti 04.JPG</a> · CC BY-SA 4.0</li><li>Nicolas Vollmer from Munich [Allemagne] · <a href="https://commons.wikimedia.org/wiki/File:Pintxos_basques_(8287051912).jpg" rel="noopener">Pintxos basques (8287051912).jpg</a> · CC BY 2.0</li><li>Gordito1869 · <a href="https://commons.wikimedia.org/wiki/File:Pintxos_Donostia_2014_4.JPG" rel="noopener">Pintxos Donostia 2014 4.JPG</a> · CC BY 3.0</li><li>Missvain · <a href="https://commons.wikimedia.org/wiki/File:Parkside_Wine_Bar_-_November_2023_-_Sarah_Stierch_01.jpg" rel="noopener">Parkside Wine Bar - November 2023 - Sarah Stierch 01.jpg</a> · CC BY 4.0</li><li>Kolforn (Kolforn) I'd appreciate if you could mail me (Kolforn) if you want to use this picture out of the Wikimedia project scope. This file is licensed under the Creative Commons Attribution-Share Alike 4.0 International license. You are free: to share – to copy, distribute and transmit the work to remix – to adapt the work Under the following conditions: attribution – You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use. share alike – If you remix, transform, or build upon the material, you must distribute your contributions under the same or compatible license as the original.https://creativecommons.org/licenses/by-sa/4.0CC BY-SA 4.0 Creative Commons Attribution-Share Alike 4.0 truetrue · <a href="https://commons.wikimedia.org/wiki/File:2018-07-07_The_Crown_Sheringham,_FIFA_World_Cup_Match,_Sweden_v_England_(1).JPG" rel="noopener">2018-07-07 The Crown Sheringham, FIFA World Cup Match, Sweden v England (1).JPG</a> · CC BY-SA 4.0</li><li>Juan Emilio Prades Bel · <a href="https://commons.wikimedia.org/wiki/File:Segundo_plato_del_men%C3%BA_del_d%C3%ADa_(Espa%C3%B1a).jpg" rel="noopener">Segundo plato del menú del día (España).jpg</a> · CC BY-SA 4.0</li><li>Tamorlan · <a href="https://commons.wikimedia.org/wiki/File:Pintxo_de_pulpo_con_alcachofa.jpg" rel="noopener">Pintxo de pulpo con alcachofa.jpg</a> · CC BY 3.0</li><li>Biskuit from Atlanta, GA · <a href="https://commons.wikimedia.org/wiki/File:Gildas_en_Donostia.jpg" rel="noopener">Gildas en Donostia.jpg</a> · CC BY-SA 2.0</li><li>flydime · <a href="https://commons.wikimedia.org/wiki/File:Pinchos_de_tortilla_en_Barcelona.jpg" rel="noopener">Pinchos de tortilla en Barcelona.jpg</a> · CC BY-SA 2.0</li><li>Juan Emilio Prades Bel · <a href="https://commons.wikimedia.org/wiki/File:Patatas_bravas._Tapa_de_bar_(Espa%C3%B1a).jpg" rel="noopener">Patatas bravas. Tapa de bar (España).jpg</a> · CC BY 4.0</li><li>Basotxerri · <a href="https://commons.wikimedia.org/wiki/File:Pincho_Vitoria_16.jpg" rel="noopener">Pincho Vitoria 16.jpg</a> · CC BY-SA 4.0</li><li>Basotxerri · <a href="https://commons.wikimedia.org/wiki/File:Pincho_sardina_ahumada.JPG" rel="noopener">Pincho sardina ahumada.JPG</a> · CC BY-SA 4.0</li><li>Telle · <a href="https://commons.wikimedia.org/wiki/File:Pinchos_bermeo_2.JPG" rel="noopener">Pinchos bermeo 2.JPG</a> · CC BY-SA 3.0</li><li>Gordito1869 · <a href="https://commons.wikimedia.org/wiki/File:Pintxos_Donostia_2014_2.JPG" rel="noopener">Pintxos Donostia 2014 2.JPG</a> · CC BY 3.0</li><li>Basotxerri · <a href="https://commons.wikimedia.org/wiki/File:Barra_de_pintxos_Donosti_03.JPG" rel="noopener">Barra de pintxos Donosti 03.JPG</a> · CC BY-SA 4.0</li></ul>
+  </details>
+  <p class="pie-gigante" aria-hidden="true">AHAMEN</p>
+</footer>
+
+<nav class="barra-movil" data-barra-movil aria-label="Deitu"><a class="uno" href="tel:+34943000000">Deitu</a><a class="dos" href="https://wa.me/34600000000" rel="noopener">WhatsApp</a></nav>
+
+<script type="application/json" id="textos">{"estado_abierto_23":"Orain zabalik, 23:00ak arte","estado_abierto_01":"Orain zabalik, 1:00ak arte","estado_abierto_16":"Orain zabalik, 16:00ak arte","estado_cerrado_hoy":"Itxita orain. Gaur 10:00etan irekiko dugu","estado_cerrado_manana":"Itxita orain. Bihar 10:00etan irekiko dugu","estado_cerrado_martes":"Itxita orain. Asteartean 10:00etan irekiko dugu","agotado":"Agortuta","panel_hecho":"Pintxoen karta eguneratuta dago"}</script>
+<script src="js/gsap.min.js" defer></script>
+<script src="js/ScrollTrigger.min.js" defer></script>
+<script src="js/SplitText.min.js" defer></script>
+<script src="js/anim-texto.js" defer></script>
+<script src="js/pagina.js" defer></script>
+</body>
+</html>
