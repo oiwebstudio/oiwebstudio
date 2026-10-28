@@ -80,12 +80,14 @@ const AYUDAS = {
   pasaia: ["Pasaia convoca cada año su ayuda para webs en euskera", "Incluye la página web en euskera y el dominio .eus. La de 2026 aún no está publicada; aquí te cuento cuándo suele salir.", true],
 };
 const GENERICA = ["¿Hay ayudas para tu web?", "Muchos ayuntamientos de Gipuzkoa pagan parte de la web, sobre todo si está en euskera. Mira cuáles están abiertas ahora.", false];
+/* Ayuda para el euskera → enlace a la guía bilingüe («pagina en euskera», pos. 9 en Search Console, 28/10). */
+const LINEA_EUSKERA = `<p style="max-width:68ch;font-size:15px;line-height:1.6;color:var(--text-muted);margin-top:14px;">¿La quieres en euskera y castellano? Te cuento cómo se hace bien una <a href="../web-bilingue-euskera-castellano.html" class="link-terra">página web en euskera</a>: una página por idioma, qué traducir primero y los errores típicos.</p>`;
 const avisoAyuda = (slug) => {
   const [t, p, anual] = AYUDAS[slug] || GENERICA;
   const href = `../ayudas-subvenciones-pagina-web-gipuzkoa.html${AYUDAS[slug] ? "#" + slug : ""}`;
   return `<section class="zsec" style="padding-top:0;padding-bottom:44px;">
 <div class="container">
-<a class="ayuda-cta${anual ? " ayuda-cta--anual" : ""}" href="${href}"><span class="ayuda-cta__dot" aria-hidden="true"></span><span class="ayuda-cta__txt"><b>${esc(t)}</b><span>${esc(p)}</span></span><span class="ayuda-cta__go">${AYUDAS[slug] ? "Ver la ayuda →" : "Ver ayudas →"}</span></a>
+<a class="ayuda-cta${anual ? " ayuda-cta--anual" : ""}" href="${href}"><span class="ayuda-cta__dot" aria-hidden="true"></span><span class="ayuda-cta__txt"><b>${esc(t)}</b><span>${esc(p)}</span></span><span class="ayuda-cta__go">${AYUDAS[slug] ? "Ver la ayuda →" : "Ver ayudas →"}</span></a>${/euskera/i.test(t) ? `\n${LINEA_EUSKERA}` : ""}
 </div>
 </section>`;
 };
