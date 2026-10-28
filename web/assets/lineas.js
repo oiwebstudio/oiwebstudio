@@ -225,7 +225,7 @@ window.addEventListener('load', function () {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   gsap.registerPlugin(ScrollTrigger, SplitText);
   document.fonts.ready.then(function () {
-    document.querySelectorAll('.l3 h2.tt').forEach(function (h) {
+    document.querySelectorAll('.l3 h1.tt, .l3 h2.tt').forEach(function (h) {
       var s = SplitText.create(h, { type: 'lines', mask: 'lines', aria: 'auto' });
       gsap.from(s.lines, { yPercent: 105, duration: 0.9, ease: 'expo.out', stagger: 0.08, scrollTrigger: { trigger: h, start: 'top 90%', once: true } });
     });

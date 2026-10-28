@@ -21,8 +21,8 @@ const SOLO_COMPROBAR = process.argv.includes("--check");
 
 const PRINCIPAL = [
   ["trabajos", "trabajos.html", "nav_webs", "Webs"],
-  ["auto", "index.html#automatizaciones", "nav_auto", "Automatizaciones con IA"],
-  ["branding", "index.html#branding", "nav_branding", "Branding"],
+  ["auto", "automatizaciones.html", "nav_auto", "Automatizaciones con IA"],
+  ["branding", "branding.html", "nav_branding", "Branding"],
   ["precios", "precios.html", "nav_precios", "Precios"],
   ["contacto", "contacto.html", "nav_contacto", "Contacto"],
 ];
@@ -45,6 +45,7 @@ function seccionDe(rel, guias) {
     "contacto.html": "contacto", "ayudas-subvenciones-pagina-web-gipuzkoa.html": "ayudas",
     "articulos.html": "articulos", "chatbot-reservas.html": "chatbot",
     "seo-posicionamiento-google.html": "seo",
+    "automatizaciones.html": "auto", "branding.html": "branding",
   }[rel];
   if (fijo) return fijo;
   if (guias.has(rel)) return "articulos";
