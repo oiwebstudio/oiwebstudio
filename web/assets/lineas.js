@@ -190,8 +190,7 @@
     var sw = [].slice.call(b.querySelectorAll('.lv__pal span')), i = 0;
     return function () {
       i = (i + 1) % sw.length;
-      b.style.setProperty('--p', sw[i].style.getPropertyValue('--c'));
-      b.style.setProperty('--t', sw[i].dataset.t2);
+      b.style.setProperty('--t', sw[i].style.getPropertyValue('--c'));
       sw.forEach(function (s, j) { s.classList.toggle('is-on', j === i); });
       salta(b.querySelector('.lv__logo'));
     };
