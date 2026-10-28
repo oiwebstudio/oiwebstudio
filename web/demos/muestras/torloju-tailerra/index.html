@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>TORLOJU · Tailer mekanikoa Tolosaldean (erakusketa-webgunea)</title>
+<meta name="description" content="Asmatutako tailer mekaniko baterako OI Studio-ren erakusketa-webgunea: berrikuspenak, pre-IAT, pneumatikoak eta balaztak, minutu bateko aurrekontua eta hitzordua Internet bidez.">
+<meta name="theme-color" content="#0E1012">
+<meta property="og:title" content="TORLOJU · Tailer mekanikoa Tolosaldean (erakusketa-webgunea)">
+<meta property="og:description" content="Asmatutako tailer mekaniko baterako OI Studio-ren erakusketa-webgunea: berrikuspenak, pre-IAT, pneumatikoak eta balaztak, minutu bateko aurrekontua eta hitzordua Internet bidez.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="fotos/og-torloju.jpg">
+<link rel="alternate" hreflang="es" href="es/">
+<!--
+  MUESTRA «TORLOJU» (OI Studio, 25/10/2026): taller mecánico INVENTADO para enseñar en las visitas. «Torloju» = tornillo.
+  Nombre, dirección, teléfonos, precios, ventajas, horario y opiniones son de ejemplo. noindex.
+  Composición: portada «cartel de obra» (P01 + nombre gigante de P04) con el nombre en amarillo de señalización; banda amarilla con
+  bandas de peligro que corre con el scroll (B01, una frase, no una lista); texto que se enciende (B03); lista de precios con foto fija
+  que cambia con la fila (S01 + §9 bis); «orden de trabajo» en papel con la matrícula como una placa (elemento firma); cita con los
+  próximos días; casillas marcadas de la hoja de revisión; una opinión en grande (§9 bis); horario de la puerta + croquis dibujado;
+  teléfono gigante (K01).
+  Letras: 18 Big Shoulders Display (600/900) + 23 Schibsted Grotesk (500/800), autoalojadas en fuentes/.
+  Fotos: Pexels (licencia de Pexels): Jae Park, Azli Nawawi, Andrea Piacquadio, Enis Yavuz, Erik Mclean, Jose Ricardo Barraza Morachis, cottonbro studio. Detalle en fotos/creditos.json.
+  Movimiento: GSAP 3.13 + ScrollTrigger + SplitText (js/) + anim-texto.js + pagina.js. Con «reducir movimiento» o sin JS, todo quieto y visible.
+-->
+<link rel="preload" href="fuentes/big-shoulders-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<a class="saltar" href="#contenido">Edukira joan</a>
+
+<header class="cab">
+  <div class="envoltura cab-in">
+    <a class="logo" href="#contenido" aria-label="TORLOJU"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 1.5 28.6 8.75v14.5L16 30.5 3.4 23.25V8.75Z"/><circle cx="16" cy="16" r="6.2" fill="#0E1012"/></svg><b>Torloju</b></a>
+    <nav class="nav" aria-label="Menua"><ul><li><a href="#zerbitzuak">Zerbitzuak</a></li><li><a href="#aurrekontua">Aurrekontua</a></li><li><a href="#hitzordua">Hitzordua</a></li><li><a href="#nola-iritsi">Nola iritsi</a></li></ul></nav>
+    <a class="cab-tel" href="tel:+34943000000">943 00 00 00</a>
+    <a class="idioma" href="es/" lang="es" hreflang="es"><span aria-hidden="true">ES</span><span class="sr">Gaztelaniaz</span></a>
+    <a class="btn btn-amarillo" href="#aurrekontua">Aurrekontua</a>
+    <a class="cab-llamar" href="tel:+34943000000" aria-label="Deitu 943 00 00 00"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></svg></a>
+    <button class="hamb" type="button" aria-expanded="false" aria-controls="desplegable" aria-label="Menua"><span></span></button>
+  </div>
+  <div class="desplegable" id="desplegable"><ul><li><a href="#zerbitzuak">Zerbitzuak</a></li><li><a href="#aurrekontua">Aurrekontua</a></li><li><a href="#hitzordua">Hitzordua</a></li><li><a href="#nola-iritsi">Nola iritsi</a></li></ul></div>
+</header>
+
+<main id="contenido">
+<section class="portada" data-portada aria-labelledby="h1">
+  <picture class="portada-foto">
+    <source type="image/avif" srcset="fotos/portada-960.avif 960w, fotos/portada-1600.avif 1600w, fotos/portada-2400.avif 2400w, fotos/portada-2880.avif 2880w, fotos/portada-3840.avif 3840w" sizes="(max-width: 979px) 205vw, 100vw">
+    <img src="fotos/portada-1600.webp" srcset="fotos/portada-960.webp 960w, fotos/portada-1600.webp 1600w, fotos/portada-2400.webp 2400w, fotos/portada-2880.webp 2880w" sizes="(max-width: 979px) 205vw, 100vw" width="5649" height="3766" alt="Auto gris ilun bat tailerreko jasogailuan, argi zuriko hodiekin argiztatua." fetchpriority="high" decoding="async">
+  </picture>
+  <div class="envoltura portada-txt">
+    <p class="estado" data-estado hidden></p>
+    <p class="lema">Zure autoa prest. Prezioa, hasi aurretik.</p>
+    <div class="info"><p class="portada-p">Azterketak, IAT aurrekoa, pneumatikoak, balaztak eta diagnosia Tolosaldean. Zer gertatzen zaion kontatzen diguzu, eta egun berean emango dizugu prezioa.</p>
+    <div class="botones">
+      <a class="btn btn-amarillo" href="#aurrekontua">Aurrekontua minutu batean <svg class="fl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-chapa" href="tel:+34943000000"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></svg> Deitu 943 00 00 00</a>
+    </div><small class="nota-num">Adibide-zenbakia: 943 00 00 00 · WhatsApp</small></div>
+    <h1 class="marca-h1" id="h1"><span class="sr">Torloju, tailer mekanikoa Tolosaldean</span><span class="gigante" aria-hidden="true" data-letras>Torloju</span></h1>
+  </div>
+</section>
+
+<div class="banda" aria-hidden="true"><p data-pista="38">Ezer ukitu aurretik, prezioarekin deituko dizugu.</p></div>
+
+<section class="intro" aria-label="TORLOJU">
+  <div class="envoltura"><p data-enciende>Tolosaldeko lantegi txiki bat gara. Esaten dizugu zer gertatzen zaion autoari, zenbat kostatzen den konpontzea eta noiz egongo den prest. Fakturan ezustekorik ez.</p></div>
+</section>
+
+<section class="seccion servicios" id="zerbitzuak" aria-labelledby="h-serv">
+  <div class="envoltura">
+    <div class="cabeza"><h2 id="h-serv" data-lineas>Egiten duguna eta zenbat kostatzen den</h2><p>Turismo baten prezio orientagarriak, BEZa barne. Zure autoak beste zerbait behar badu, lehenago esango dizugu. <span class="aviso-ej">Adibide-prezioak.</span></p></div>
+    <div class="serv-rej">
+      <div class="serv-foto" aria-hidden="true"><picture><source type="image/avif" srcset="fotos/aceite-480.avif 480w, fotos/aceite-960.avif 960w, fotos/aceite-1400.avif 1400w" sizes="(min-width: 980px) 38vw, 1px"><img src="fotos/aceite-960.webp" srcset="fotos/aceite-480.webp 480w, fotos/aceite-960.webp 960w, fotos/aceite-1400.webp 1400w" sizes="(min-width: 980px) 38vw, 1px" width="3024" height="3780" alt="" loading="lazy" decoding="async"></picture><picture><source type="image/avif" srcset="fotos/pre-itv-480.avif 480w, fotos/pre-itv-960.avif 960w, fotos/pre-itv-1400.avif 1400w" sizes="(min-width: 980px) 38vw, 1px"><img src="fotos/pre-itv-960.webp" srcset="fotos/pre-itv-480.webp 480w, fotos/pre-itv-960.webp 960w, fotos/pre-itv-1400.webp 1400w" sizes="(min-width: 980px) 38vw, 1px" width="2678" height="3347" alt="" loading="lazy" decoding="async"></picture><picture><source type="image/avif" srcset="fotos/neumaticos-480.avif 480w, fotos/neumaticos-960.avif 960w, fotos/neumaticos-1400.avif 1400w" sizes="(min-width: 980px) 38vw, 1px"><img src="fotos/neumaticos-960.webp" srcset="fotos/neumaticos-480.webp 480w, fotos/neumaticos-960.webp 960w, fotos/neumaticos-1400.webp 1400w" sizes="(min-width: 980px) 38vw, 1px" width="3648" height="4560" alt="" loading="lazy" decoding="async"></picture><picture><source type="image/avif" srcset="fotos/frenos-480.avif 480w, fotos/frenos-960.avif 960w, fotos/frenos-1400.avif 1400w" sizes="(min-width: 980px) 38vw, 1px"><img src="fotos/frenos-960.webp" srcset="fotos/frenos-480.webp 480w, fotos/frenos-960.webp 960w, fotos/frenos-1400.webp 1400w" sizes="(min-width: 980px) 38vw, 1px" width="2266" height="2832" alt="" loading="lazy" decoding="async"></picture><picture><source type="image/avif" srcset="fotos/diagnosis-480.avif 480w, fotos/diagnosis-960.avif 960w, fotos/diagnosis-1400.avif 1400w" sizes="(min-width: 980px) 38vw, 1px"><img src="fotos/diagnosis-960.webp" srcset="fotos/diagnosis-480.webp 480w, fotos/diagnosis-960.webp 960w, fotos/diagnosis-1400.webp 1400w" sizes="(min-width: 980px) 38vw, 1px" width="3200" height="4000" alt="" loading="lazy" decoding="async"></picture><picture><source type="image/avif" srcset="fotos/embrague-480.avif 480w, fotos/embrague-960.avif 960w, fotos/embrague-1400.avif 1400w" sizes="(min-width: 980px) 38vw, 1px"><img src="fotos/embrague-960.webp" srcset="fotos/embrague-480.webp 480w, fotos/embrague-960.webp 960w, fotos/embrague-1400.webp 1400w" sizes="(min-width: 980px) 38vw, 1px" width="3142" height="3928" alt="" loading="lazy" decoding="async"></picture></div>
+      <ol class="serv-lista" data-escalonado>
+        <li class="serv">
+          <div class="serv-min"><picture><source type="image/avif" srcset="fotos/aceite-480.avif 480w, fotos/aceite-960.avif 960w, fotos/aceite-1400.avif 1400w" sizes="84px"><img src="fotos/aceite-960.webp" srcset="fotos/aceite-480.webp 480w, fotos/aceite-960.webp 960w, fotos/aceite-1400.webp 1400w" sizes="84px" width="3024" height="3780" alt="Mekanikari batek olioa aldatzen du auto baten azpian, jasogailura igota." loading="lazy" decoding="async"></picture></div>
+          <h3>Berrikuspena eta olioa</h3>
+          <p class="serv-desc">Olioa, iragazkiak eta 30 puntuko errepasoa, autoaren mantentze-liburuaren arabera.</p>
+          <div class="serv-pie"><span class="precio">89 €tik aurrera</span><span class="tiempo">Goizean</span><a class="serv-pedir" href="#aurrekontua" data-marca="op1" data-servicio="Berrikuspena eta olioa">Aurrekontua eskatu<span class="sr">: Berrikuspena eta olioa</span> <svg class="fl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></div>
+        </li>
+        <li class="serv">
+          <div class="serv-min"><picture><source type="image/avif" srcset="fotos/pre-itv-480.avif 480w, fotos/pre-itv-960.avif 960w, fotos/pre-itv-1400.avif 1400w" sizes="84px"><img src="fotos/pre-itv-960.webp" srcset="fotos/pre-itv-480.webp 480w, fotos/pre-itv-960.webp 960w, fotos/pre-itv-1400.webp 1400w" sizes="84px" width="2678" height="3347" alt="Mekanikari bat auto baten azpiak aztertzen ari da guraize-jasogailu batean." loading="lazy" decoding="async"></picture></div>
+          <h3>Pre-IAT</h3>
+          <p class="serv-desc">Argiak, balaztak, pneumatikoak, lasaierak eta keak aztertuko ditugu IATra joan aurretik.</p>
+          <div class="serv-pie"><span class="precio">35 €tik aurrera</span><span class="tiempo">Ordubete</span><a class="serv-pedir" href="#aurrekontua" data-marca="op2" data-servicio="Pre-IAT">Aurrekontua eskatu<span class="sr">: Pre-IAT</span> <svg class="fl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></div>
+        </li>
+        <li class="serv">
+          <div class="serv-min"><picture><source type="image/avif" srcset="fotos/neumaticos-480.avif 480w, fotos/neumaticos-960.avif 960w, fotos/neumaticos-1400.avif 1400w" sizes="84px"><img src="fotos/neumaticos-960.webp" srcset="fotos/neumaticos-480.webp 480w, fotos/neumaticos-960.webp 960w, fotos/neumaticos-1400.webp 1400w" sizes="84px" width="3648" height="4560" alt="Eskularruak dituzten eskuek pneumatiko bat muntatzen dute makinan." loading="lazy" decoding="async"></picture></div>
+          <h3>Pneumatikoak</h3>
+          <p class="serv-desc">Muntaketa, oreka eta balbula berria. Bizpahiru marka- eta prezio-aukera ematen dizkizugu.</p>
+          <div class="serv-pie"><span class="precio">Gurpileko 15 €-tik aurrera</span><span class="tiempo">45 minutu</span><a class="serv-pedir" href="#aurrekontua" data-marca="op5" data-servicio="Pneumatikoak">Aurrekontua eskatu<span class="sr">: Pneumatikoak</span> <svg class="fl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></div>
+        </li>
+        <li class="serv">
+          <div class="serv-min"><picture><source type="image/avif" srcset="fotos/frenos-480.avif 480w, fotos/frenos-960.avif 960w, fotos/frenos-1400.avif 1400w" sizes="84px"><img src="fotos/frenos-960.webp" srcset="fotos/frenos-480.webp 480w, fotos/frenos-960.webp 960w, fotos/frenos-1400.webp 1400w" sizes="84px" width="2266" height="2832" alt="Balazta zulatuko diskoa eta matxarda, hurbiletik ikusita." loading="lazy" decoding="async"></picture></div>
+          <h3>Balaztak</h3>
+          <p class="serv-desc">Balazta-pastillak eta diskoak. Frenatzean kirrinka egiten badu edo pedala bigun badago, ekar ezazu lehenbailehen.</p>
+          <div class="serv-pie"><span class="precio">79 €tik aurrera</span><span class="tiempo">2 ordu</span><a class="serv-pedir" href="#aurrekontua" data-marca="op3" data-servicio="Balaztak">Aurrekontua eskatu<span class="sr">: Balaztak</span> <svg class="fl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></div>
+        </li>
+        <li class="serv">
+          <div class="serv-min"><picture><source type="image/avif" srcset="fotos/diagnosis-480.avif 480w, fotos/diagnosis-960.avif 960w, fotos/diagnosis-1400.avif 1400w" sizes="84px"><img src="fotos/diagnosis-960.webp" srcset="fotos/diagnosis-480.webp 480w, fotos/diagnosis-960.webp 960w, fotos/diagnosis-1400.webp 1400w" sizes="84px" width="3200" height="4000" alt="Diagnostiko-ekipoa auto baten motorrean bermatuta." loading="lazy" decoding="async"></picture></div>
+          <h3>Diagnosia</h3>
+          <p class="serv-desc">Baduzu lekuko bat piztuta koadroan? Diagnostiko-makina konektatuko dugu, akatsa irakurriko dugu eta zer den azalduko dizugu.</p>
+          <div class="serv-pie"><span class="precio">39 €tik aurrera</span><span class="tiempo">30 minutu</span><a class="serv-pedir" href="#aurrekontua" data-marca="op4" data-servicio="Diagnosia">Aurrekontua eskatu<span class="sr">: Diagnosia</span> <svg class="fl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></div>
+        </li>
+        <li class="serv">
+          <div class="serv-min"><picture><source type="image/avif" srcset="fotos/embrague-480.avif 480w, fotos/embrague-960.avif 960w, fotos/embrague-1400.avif 1400w" sizes="84px"><img src="fotos/embrague-960.webp" srcset="fotos/embrague-480.webp 480w, fotos/embrague-960.webp 960w, fotos/embrague-1400.webp 1400w" sizes="84px" width="3142" height="3928" alt="Mekanikari batek auto baten esekidura argitzen du linterna batekin." loading="lazy" decoding="async"></picture></div>
+          <h3>Enbragea eta banaketa-uhala</h3>
+          <p class="serv-desc">Lan handiak, idatziz prezioa eta entrega-data itxita.</p>
+          <div class="serv-pie"><span class="precio">390 €-tik aurrera</span><span class="tiempo">egun 1 edo 2</span><a class="serv-pedir" href="#aurrekontua" data-marca="op6" data-servicio="Enbragea eta banaketa-uhala">Aurrekontua eskatu<span class="sr">: Enbragea eta banaketa-uhala</span> <svg class="fl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="seccion presupuesto" id="aurrekontua" aria-labelledby="h-pre">
+  <div class="envoltura rej">
+    <div class="cabeza"><h2 id="h-pre" data-lineas>Eskatu aurrekontua minutu batean</h2><p>Idatzi matrikula, modeloa eta zer gertatzen zaion. Prezioarekin deituko dizugu.</p></div>
+    <form class="orden" id="form-orden" novalidate>
+      <div class="campo"><label for="matrikula">Matrikula</label>
+        <div class="placa"><span class="placa-ue" aria-hidden="true"><svg viewBox="0 0 26 26" aria-hidden="true"><circle cx="22.00" cy="13.00" r="1.5" fill="#FFCC00"/><circle cx="20.79" cy="17.50" r="1.5" fill="#FFCC00"/><circle cx="17.50" cy="20.79" r="1.5" fill="#FFCC00"/><circle cx="13.00" cy="22.00" r="1.5" fill="#FFCC00"/><circle cx="8.50" cy="20.79" r="1.5" fill="#FFCC00"/><circle cx="5.21" cy="17.50" r="1.5" fill="#FFCC00"/><circle cx="4.00" cy="13.00" r="1.5" fill="#FFCC00"/><circle cx="5.21" cy="8.50" r="1.5" fill="#FFCC00"/><circle cx="8.50" cy="5.21" r="1.5" fill="#FFCC00"/><circle cx="13.00" cy="4.00" r="1.5" fill="#FFCC00"/><circle cx="17.50" cy="5.21" r="1.5" fill="#FFCC00"/><circle cx="20.79" cy="8.50" r="1.5" fill="#FFCC00"/></svg><span>E</span></span><input id="matrikula" name="matrikula" type="text" inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="9" placeholder="1234 BCD"></div>
+      </div>
+      <div class="campo"><label for="modeloa">Marka eta modeloa</label><input id="modeloa" name="modeloa" type="text" placeholder="Adibidez, Seat León de 2017"></div>
+      <fieldset><legend>Zer gertatzen zaio autoari?</legend>
+        <div class="marcas"><label class="marca"><input type="checkbox" name="que" id="op1" value="Berrikuspena dagokio">Berrikuspena dagokio</label><label class="marca"><input type="checkbox" name="que" id="op2" value="Laster IATa pasatzea tokatzen zaio">Laster IATa pasatzea tokatzen zaio</label><label class="marca"><input type="checkbox" name="que" id="op3" value="Zarata egiten du balaztatzean">Zarata egiten du balaztatzean</label><label class="marca"><input type="checkbox" name="que" id="op4" value="Lekuko bat piztu da">Lekuko bat piztu da</label><label class="marca"><input type="checkbox" name="que" id="op5" value="Pneumatikoak gastatuta daude">Pneumatikoak gastatuta daude</label><label class="marca"><input type="checkbox" name="que" id="op6" value="Beste gauza bat">Beste gauza bat</label></div>
+      </fieldset>
+      <div class="dos">
+        <div class="campo"><label for="nota">Kontaiguzu zerbait gehiago (nahi baduzu)</label><textarea id="nota" name="nota" rows="2"></textarea></div>
+        <div class="campo"><label for="telefonoa">Telefonoa</label><input id="telefonoa" name="telefonoa" type="tel" autocomplete="tel" inputmode="tel"></div>
+      </div>
+      <div class="enviar"><button class="btn btn-tinta" type="submit">Aurrekontua eskatu <svg class="fl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button><a class="enl-wa" href="https://wa.me/34600000000" rel="noopener">Edo bidali WhatsApp bidez</a></div>
+      <p class="respuesta" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<section class="seccion cita" id="hitzordua" aria-labelledby="h-cita">
+  <div class="envoltura rej">
+    <div class="cita-foto"><picture><source type="image/avif" srcset="fotos/cita-480.avif 480w, fotos/cita-960.avif 960w, fotos/cita-1400.avif 1400w" sizes="(min-width: 980px) 38vw, 100vw"><img src="fotos/cita-960.webp" srcset="fotos/cita-480.webp 480w, fotos/cita-960.webp 960w, fotos/cita-1400.webp 1400w" sizes="(min-width: 980px) 38vw, 100vw" width="3024" height="3780" alt="Kapota irekita zuen auto zuri bat tailerreko jasogailuan." loading="lazy" decoding="async"></picture></div>
+    <div>
+      <div class="cabeza"><h2 id="h-cita" data-lineas>Hitzordua eskatu berrikuspen edo pre-IAT baterako</h2><p>Aukeratu eguna eta tartea. WhatsApp bidez baieztatuko dizugu ordua.</p></div>
+      <form class="cita-form" id="form-cita" novalidate>
+        <fieldset><legend>Zertarako da hitzordua?</legend><div class="opciones"><label class="opcion"><input type="radio" name="mota" value="Berrikuspena" checked><span>Berrikuspena</span></label><label class="opcion"><input type="radio" name="mota" value="Pre-IAT"><span>Pre-IAT</span></label><label class="opcion"><input type="radio" name="mota" value="Pneumatikoak"><span>Pneumatikoak</span></label><label class="opcion"><input type="radio" name="mota" value="Beste gauza bat"><span>Beste gauza bat</span></label></div></fieldset>
+        <fieldset><legend>Eguna</legend><div class="dias" data-dias><p class="aviso-ej">Hitzordua eskatzeko, deitu edo idatzi WhatsApp bidez.</p></div></fieldset>
+        <fieldset><legend>Zer ordutan datorkizu ondo?</legend><div class="opciones">
+          <label class="opcion"><input type="radio" name="tartea" id="franja-1" value="1" checked><span>Goizean<small>8:00–13:00</small></span></label>
+          <label class="opcion"><input type="radio" name="tartea" id="franja-2" value="2"><span>Arratsaldean<small>15:00–19:00</small></span></label>
+        </div></fieldset>
+        <div class="dos">
+          <div class="campo"><label for="izena">Izena</label><input id="izena" name="izena" type="text" autocomplete="name"></div>
+          <div class="campo"><label for="tel-cita">Telefonoa</label><input id="tel-cita" name="tel" type="tel" autocomplete="tel" inputmode="tel"></div>
+        </div>
+        <div><button class="btn btn-amarillo" type="submit">Erreserbatu hitzordua <svg class="fl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button></div>
+        <p class="respuesta" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="seccion porque" aria-labelledby="h-por">
+  <div class="envoltura rej">
+    <div class="porque-foto"><picture><source type="image/avif" srcset="fotos/garantia-480.avif 480w, fotos/garantia-960.avif 960w, fotos/garantia-1400.avif 1400w" sizes="(min-width: 980px) 46vw, 100vw"><img src="fotos/garantia-960.webp" srcset="fotos/garantia-480.webp 480w, fotos/garantia-960.webp 960w, fotos/garantia-1400.webp 1400w" sizes="(min-width: 980px) 46vw, 100vw" width="2667" height="3334" alt="Mekanikari bat lanean ari da auto zuri baten azpian, jasogailura igota." loading="lazy" decoding="async"></picture></div>
+    <div>
+      <div class="cabeza"><h2 id="h-por" data-lineas>Zergatik ekarri autoa hona?</h2></div>
+      <ul class="checks"><li><span class="caja" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><h3>Prezioa hasi aurretik</h3><p>Aurrekontuarekin deituko dizugu eta ez dugu ezer ukituko baietz esan arte.</p></li><li><span class="caja" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><h3>Ordezko autoa</h3><p>Konponketak egun bat baino gehiago irauten badu, auto bat utziko dizugu.</p></li><li><span class="caja" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><h3>12 hilabeteko bermea</h3><p>Piezetan eta eskulanean, idatziz fakturan.</p></li><li><span class="caja" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><h3>Aldatutako piezak erakutsiko dizkizugu</h3><p>Pieza zaharrak gorde dizkizugu ikus ditzazun.</p></li><li><span class="caja" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><h3>WhatsApp bidezko abisua</h3><p>Autoa prest dagoenean, mezu bat bidaliko dizugu fakturarekin.</p></li></ul>
+      <p class="aviso-ej">Abantaila horiek adibidezkoak dira. Zuen webgunean zuenak jarriko genituzke.</p>
+    </div>
+  </div>
+</section>
+
+<section class="seccion opiniones" aria-labelledby="h-op">
+  <div class="envoltura">
+    <div class="cabeza"><h2 id="h-op" data-lineas>Bezeroek esaten dutena</h2><p class="aviso-ej">Adibide-iritziak. Zuen webgunean Googleren benetako aipamenak agertuko lirateke.</p></div>
+    <figure class="op-grande"><blockquote><p>«Prezioarekin deitu zidaten ezer ukitu aurretik, eta faktura horixe izan zen. Oso pozik nago.»</p></blockquote><figcaption class="firma"><b>M. A.</b><span>Adibide-iritzia</span></figcaption></figure>
+    <div class="op-pequenas">
+      <figure><blockquote><p>«Aldez aurreko berrikuspenaren ondoren, IATa lehenengora pasatu nuen. Presarik gabe azaldu zidaten dena.»</p></blockquote><figcaption class="firma"><b>J. L.</b><span>Adibide-iritzia</span></figcaption></figure>
+      <figure><blockquote><p>«Auto bat utzi zidaten enbragea aldatzen zuten bitartean. Ez nuen ezer eskatu behar izan.»</p></blockquote><figcaption class="firma"><b>A. E.</b><span>Adibide-iritzia</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="seccion donde" id="nola-iritsi" aria-label="Ordutegia · Nola iritsi">
+  <div class="envoltura rej">
+    <div>
+      <h2 data-lineas>Ordutegia</h2>
+      <ul class="horario" data-escalonado><li data-dia="1"><span class="dia">Astelehena</span><span class="horas"><span>8:00–13:00</span><span class="sr"> eta </span><span>15:00–19:00</span></span></li><li data-dia="2"><span class="dia">Asteartea</span><span class="horas"><span>8:00–13:00</span><span class="sr"> eta </span><span>15:00–19:00</span></span></li><li data-dia="3"><span class="dia">Asteazkena</span><span class="horas"><span>8:00–13:00</span><span class="sr"> eta </span><span>15:00–19:00</span></span></li><li data-dia="4"><span class="dia">Osteguna</span><span class="horas"><span>8:00–13:00</span><span class="sr"> eta </span><span>15:00–19:00</span></span></li><li data-dia="5"><span class="dia">Ostirala</span><span class="horas"><span>8:00–13:00</span><span class="sr"> eta </span><span>15:00–19:00</span></span></li><li data-dia="6"><span class="dia">Larunbata</span><span class="horas"><span>9:00–13:00</span></span></li><li data-dia="0"><span class="dia">Igandea</span><span class="horas">Itxita</span></li></ul>
+      <p class="aviso-ej" style="margin-top:12px">Adibide-ordutegia.</p>
+    </div>
+    <div>
+      <h2 data-lineas>Nola iritsi</h2>
+      <div class="mapa"><svg viewBox="0 0 800 520" role="img" aria-labelledby="mapa-tit"><title id="mapa-tit">Adibide planoa: tailerra poligonoan dago, N-1 errepideko biribilgunearen ondoan eta ibaitik gertu.</title>
+  <rect width="800" height="520" fill="#16191C"/>
+  <path d="M-10 292 C 140 250 290 232 420 186 S 640 66 810 42" fill="none" stroke="#1C2E3B" stroke-width="30" stroke-linecap="round"/>
+  <text x="120" y="236" fill="#6F8797" font-family="Schibsted Grotesk,sans-serif" font-size="17" font-weight="500" transform="rotate(-11 120 236)">Oria ibaia</text>
+  <g fill="#1F2327" stroke="#2C3136" stroke-width="2">
+    <rect x="548" y="440" width="76" height="52"/><rect x="664" y="444" width="118" height="62"/><rect x="560" y="352" width="70" height="46"/>
+    <rect x="120" y="110" width="90" height="60"/><rect x="240" y="80" width="60" height="70"/><rect x="40" y="120" width="56" height="44"/>
+  </g>
+  <path d="M-10 470 C 200 432 330 380 432 344 S 640 230 810 150" fill="none" stroke="#3A4147" stroke-width="18" stroke-linecap="round"/>
+  <path d="M-10 470 C 200 432 330 380 432 344 S 640 230 810 150" fill="none" stroke="#5A6168" stroke-width="1.5" stroke-dasharray="10 12"/>
+  <text x="250" y="436" fill="#A9AEB2" font-family="Big Shoulders Display,sans-serif" font-size="26" font-weight="900" transform="rotate(-15 250 436)">N-1</text>
+  <path d="M432 344 L 482 398" stroke="#2E3338" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="500" cy="420" r="24" fill="none" stroke="#2E3338" stroke-width="10"/>
+  <path d="M524 420 L 810 420 M 640 420 L 640 530" stroke="#2E3338" stroke-width="10"/>
+  <text x="552" y="518" fill="#7D848A" font-family="Schibsted Grotesk,sans-serif" font-size="16" font-weight="800">POLIGONOA</text>
+  <g class="ruta"><path d="M30 459 C 200 430 330 378 432 344 L 476 392 Q 500 406 524 420 L 700 420 L 700 404" fill="none" stroke="#F7B500" stroke-width="5" stroke-dasharray="12 9" stroke-linecap="round"/></g>
+  <g class="punto"><rect x="664" y="346" width="112" height="56" fill="#F7B500"/><text x="720" y="384" text-anchor="middle" fill="#0E1012" font-family="Big Shoulders Display,sans-serif" font-size="28" font-weight="900">TORLOJU</text></g>
+</svg></div>
+      <p class="dir">Industrialdea, 0 · Tolosaldea</p>
+      <p class="llegar-p">Poligonoan, N-1 errepideko biribilgunearen ondoan. Tailerraren aurrean aparkatzeko lekua dago.</p>
+      <p class="aviso-ej" style="margin-top:8px">Tailerraren planoa eta helbidea asmatuak dira.</p>
+    </div>
+  </div>
+</section>
+
+<section class="seccion llamar" aria-labelledby="h-con">
+  <div class="envoltura">
+    <h2 id="h-con" data-lineas>Deitu edo idatz iezaguzu</h2>
+    <p class="con-p">Telefonoz erantzungo dizugu tailerreko ordutegian. WhatsApp bidez, nahi duzunean.</p>
+    <a class="tel-gigante" href="tel:+34943000000" aria-label="Deitu 943 00 00 00 (Adibide-zenbakia)">943 00 00 00</a>
+    <span class="tel-nota">Adibide-zenbakia</span>
+    <div class="con-botones"><a class="btn btn-amarillo" href="https://wa.me/34600000000" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 20l1.3-3.8A8 8 0 1 1 8 19z"/><path d="M9 9.5c.3 2 2.2 4.2 4.6 5l1.2-1.2 1.9.9"/></svg> WhatsApp bidez idatzi</a><a class="mail" href="mailto:kaixo@torloju.example">kaixo@torloju.example</a></div>
+  </div>
+</section>
+</main>
+
+<footer class="pie">
+  <div class="envoltura">
+    <p class="pie-marca" aria-hidden="true">Torloju</p>
+    <div class="pie-rej">
+      <div>
+        <ul><li><a href="#zerbitzuak">Zerbitzuak</a></li><li><a href="#aurrekontua">Aurrekontua</a></li><li><a href="#hitzordua">Hitzordua</a></li><li><a href="#nola-iritsi">Nola iritsi</a></li></ul>
+        <p style="margin-top:12px">Industrialdea, 0 · Tolosaldea · <a href="tel:+34943000000">943 00 00 00</a> · <a href="https://wa.me/34600000000" rel="noopener">WhatsApp</a></p>
+      </div>
+      <div>
+        <p class="muestra">Hau OI Studioren lagin bat da · <a href="https://oiwebstudio.com/">oiwebstudio.com</a></p>
+        <p style="margin-top:8px">OI Studiok sortutako erakusketa-webgunea. Izena, datuak, testuak, prezioak eta iritziak asmatuak dira. Argazkiak adibide hutsak dira.</p>
+        <p style="margin-top:8px">Pexelsen adibideko argazkiak: Jae Park, Azli Nawawi, Andrea Piacquadio, Enis Yavuz, Erik Mclean, Jose Ricardo Barraza Morachis, cottonbro studio (<a href="https://www.pexels.com/license/" rel="noopener">Pexels</a>) · <a href="fotos/creditos.json">creditos.json</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<nav class="barra" data-barra-movil aria-label="Deitu · WhatsApp">
+  <a class="btn btn-amarillo" href="tel:+34943000000"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></svg> Deitu</a>
+  <a class="btn btn-chapa" href="https://wa.me/34600000000" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 20l1.3-3.8A8 8 0 1 1 8 19z"/><path d="M9 9.5c.3 2 2.2 4.2 4.6 5l1.2-1.2 1.9.9"/></svg> WhatsApp</a>
+  <a class="btn btn-chapa" href="#aurrekontua">Aurrekontua</a>
+</nav>
+
+<script type="application/json" id="textos">{"y":"eta","cerrado":"Itxita","abierto_ahora":"Irekita orain","cerrado_ahora":"Itxita orain","hoy":"Gaur","menu":"Menua","cerrar":"Itxi","lab_matricula":"Matrikula","lab_modelo":"Marka eta modeloa","lab_que":"Zer gertatzen zaio autoari?","falta_tel":"Idatzi telefono bat zuri deitzeko.","demo_resp":"Hau lagin bat da: ez da ezer bidali. Benetako webgunean, tailerrak prezioarekin deituko lizuke.","cita_resp":"Hau lagin bat da: ez duzu ezer erreserbatu.","falta_dia":"Aukeratu egun bat.","dias":["Igandea","Astelehena","Asteartea","Asteazkena","Osteguna","Ostirala","Larunbata"],"meses":["Urtarrila","Otsaila","Martxoa","Apirila","Maiatza","Ekaina","Uztaila","Abuztua","Iraila","Urria","Azaroa","Abendua"]}</script>
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/SplitText.min.js"></script>
+<script src="js/anim-texto.js"></script>
+<script src="js/pagina.js"></script>
+</body>
+</html>

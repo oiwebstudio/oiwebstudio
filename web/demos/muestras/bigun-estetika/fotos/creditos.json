@@ -1,0 +1,111 @@
+{
+ "_leeme": "Fotos de ejemplo de la muestra BIGUN (OI Studio, 24/10/2026). Ninguna es de un centro real. Todas de Unsplash con la Unsplash License (uso gratuito, también comercial; se cita al autor por cortesía). Bajadas por la API de Unsplash, notificando la descarga.",
+ "portada": {
+  "autor": "L S",
+  "licencia": "Unsplash License",
+  "origen": "https://unsplash.com/photos/beautiful-blue-eyes-stare-intently-at-the-viewer-sq10aRm-zis",
+  "uso": "Portada (y recorte para el móvil: portada-movil)"
+ },
+ "crema": {
+  "autor": "Kelsey Curtis",
+  "licencia": "Unsplash License",
+  "origen": "https://unsplash.com/photos/white-cream-smear-on-beige-surface-kD9qprR6HBI",
+  "uso": "Intro"
+ },
+ "unas-rosa": {
+  "autor": "Jodene Isakowitz",
+  "licencia": "Unsplash License",
+  "origen": "https://unsplash.com/photos/person-with-pink-manicure-on-white-textile-hvqHtZqNMeI",
+  "uso": "Manos, mirada y piel"
+ },
+ "mirada": {
+  "autor": "benti kaur",
+  "licencia": "Unsplash License",
+  "origen": "https://unsplash.com/photos/persons-eye-in-close-up-photography-K7yNzE6QdxE",
+  "uso": "Manos, mirada y piel"
+ },
+ "serum": {
+  "autor": "ibnu ihza",
+  "licencia": "Unsplash License",
+  "origen": "https://unsplash.com/photos/different-serums-or-lotions-are-arranged-artfully-2tcm5faS9ig",
+  "uso": "Manos, mirada y piel"
+ },
+ "unas-pintando": {
+  "autor": "Pablo Escobar",
+  "licencia": "Unsplash License",
+  "origen": "https://unsplash.com/photos/a-woman-is-doing-a-manicure-on-a-childs-hand-zRkla85Xe2o",
+  "uso": "Carta: uñas"
+ },
+ "ceja": {
+  "autor": "Veronika Veronikamaks",
+  "licencia": "Unsplash License",
+  "origen": "https://unsplash.com/photos/a-close-up-of-a-persons-eye-with-a-pair-of-scissors-FXdBwvIJWq4",
+  "uso": "Carta: cejas y pestañas"
+ },
+ "facial": {
+  "autor": "kimia kazemi",
+  "licencia": "Unsplash License",
+  "origen": "https://unsplash.com/photos/womans-face-with-cleansing-foam-during-facial-treatment-J6Hg_YH2tFk",
+  "uso": "Carta: facial (recortada: sin los frascos del fondo)"
+ },
+ "pierna": {
+  "autor": "莎莉 彭",
+  "licencia": "Unsplash License",
+  "origen": "https://unsplash.com/photos/human-leg-B2gcxsFqbnY",
+  "uso": "Carta: depilación"
+ },
+ "masaje": {
+  "autor": "Jakub Klucký",
+  "licencia": "Unsplash License",
+  "origen": "https://unsplash.com/photos/massage-therapist-giving-a-back-massage-7yeqemd-p90",
+  "uso": "Carta: masajes"
+ },
+ "tarro": {
+  "autor": "Andrzej Gdula",
+  "licencia": "Unsplash License",
+  "origen": "https://unsplash.com/photos/a-small-black-container-with-a-white-substance-on-a-wooden-surface-dYPo3uV-wNg",
+  "uso": "Bonos"
+ },
+ "algodon": {
+  "autor": "Reika Makes",
+  "licencia": "Unsplash License",
+  "origen": "https://unsplash.com/photos/a-branch-of-cotton-and-a-ribbon-on-a-bed-AUq1UQ8BgdA",
+  "uso": "Bonos (con la tarjeta regalo dibujada encima)"
+ },
+ "unas-nude": {
+  "autor": "Chelson Tamares",
+  "licencia": "Unsplash License",
+  "origen": "https://unsplash.com/photos/persons-hand-on-white-textile-SyCC0GQi5S4",
+  "uso": "De cerca"
+ },
+ "pestanas": {
+  "autor": "jamal naser habibi",
+  "licencia": "Unsplash License",
+  "origen": "https://unsplash.com/photos/a-close-up-of-a-person-with-long-eyelashes-yv2OAmvsjbE",
+  "uso": "De cerca (recortada)"
+ },
+ "manos-labios": {
+  "autor": "Kateryna Hliznitsova",
+  "licencia": "Unsplash License",
+  "origen": "https://unsplash.com/photos/a-woman-is-holding-a-pair-of-scissors-to-her-ear-eacfFFcU3v8",
+  "uso": "De cerca"
+ },
+ "unas-francesa": {
+  "autor": "Yosuke Ota",
+  "licencia": "Unsplash License",
+  "origen": "https://unsplash.com/photos/a-pair-of-hands-holding-a-white-mug-yiyzz1PedMs",
+  "uso": "De cerca (recortada: sin la planta)"
+ },
+ "crema-ola": {
+  "autor": "Pawel Czerwinski",
+  "licencia": "Unsplash License",
+  "origen": "https://unsplash.com/photos/a-close-up-of-a-white-substance-0c36Otpkk6k",
+  "uso": "De cerca"
+ },
+ "cabina": {
+  "autor": "Dmitry Zmiy",
+  "licencia": "Unsplash License",
+  "origen": "https://unsplash.com/photos/black-leather-chair-beside-brown-wooden-table-Foygj6yEZvo",
+  "uso": "Pide cita"
+ }
+}
