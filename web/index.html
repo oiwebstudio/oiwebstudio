@@ -147,7 +147,7 @@
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/geist-latin-04ce1a61.woff2" crossorigin/>
 <link rel="stylesheet" href="/assets/fuentes.css?v=1"/>
 <link rel="stylesheet" href="assets/styles.css?v=30"/>
-<link rel="stylesheet" href="assets/portada.css?v=26"/>
+<link rel="stylesheet" href="assets/portada.css?v=27"/>
 <link rel="stylesheet" href="assets/lineas.css?v=4"/>
 <script>if(location.protocol==='http:'&&/(^|\.)oiwebstudio\.com$/.test(location.hostname))location.replace('https://'+location.host+location.pathname+location.search+location.hash);document.documentElement.classList.add('js');</script>
 <link rel="preload" as="image" href="/assets/hero/mano-520.webp" imagesrcset="/assets/hero/mano-520.webp 520w, /assets/hero/mano-900.webp 900w" imagesizes="(max-width: 760px) 340px, 480px" fetchpriority="high"/>
@@ -382,6 +382,30 @@
 </div>
 </section>
 
+<!-- ANTES Y DESPUÉS (28/10/2026): arrastra la barra y mira el cambio (assets/interactivos.js) -->
+<section class="section ia-sec" id="antes-despues" aria-labelledby="ad-h">
+<div class="container">
+<div class="ia-cab reveal">
+<span class="ia-flag" data-t="ad_flag">Antes y después</span>
+<h2 class="ia-h" id="ad-h" data-t="ad_h">Arrastra y mira el cambio</h2>
+<p class="ia-p" data-t="ad_p">La misma inmobiliaria con la web de siempre y con una web bonita. Mueve la barra.</p>
+</div>
+<div class="ad reveal" style="--pos:50%">
+<img class="ad__img ad__img--despues" src="assets/antes-despues/despues.webp" alt="La web nueva de ETXEA: foto grande del salón con vistas al mar y el nombre en letras gigantes" width="1800" height="1125" loading="lazy" decoding="async"/>
+<div class="ad__antes"><img class="ad__img" src="assets/antes-despues/antes.webp" alt="La web antigua de ETXEA: cabecera azul, menú de enlaces subrayados y fotos pequeñas en una tabla" width="1800" height="1125" loading="lazy" decoding="async"/></div>
+<span class="ad__et ad__et--a" aria-hidden="true" data-t="ad_antes">Antes</span>
+<span class="ad__et ad__et--d" aria-hidden="true" data-t="ad_despues">Después</span>
+<button type="button" class="ad__mango" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-label="Mueve para comparar la web de antes y la de después"><span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span></button>
+</div>
+<ul class="ad__cambios reveal">
+<li data-pos="12"><b data-t="ad_c1t">Se lee en el móvil</b><span data-t="ad_c1">Sin zoom ni letra diminuta.</span></li>
+<li data-pos="12"><b data-t="ad_c2t">Llamar a un toque</b><span data-t="ad_c2">El teléfono y la tasación, siempre a la vista.</span></li>
+<li data-pos="12"><b data-t="ad_c3t">Fotos que venden</b><span data-t="ad_c3">Grandes y nítidas, no miniaturas en una tabla.</span></li>
+</ul>
+<p class="ia-nota reveal" data-t="ad_nota">ETXEA es una marca inventada para mis muestras: ninguna de las dos webs es de un negocio real.</p>
+</div>
+</section>
+
 <!-- OPINION -->
 <section class="section section--subtle" id="opinion">
 <div class="container">
@@ -529,6 +553,48 @@
 <div class="pi__txt"><span class="pi__n">5 / 5</span><h3 data-t="st5_h">Doy soporte</h3><p data-t="st5_p">30 días de ajustes gratis y, después, la cuota de 28 €/mes.</p></div>
 </li>
 </ol>
+</div>
+</section>
+
+<!-- TEST DE 30 SEGUNDOS (28/10/2026): ¿tu web te está costando clientes? (assets/interactivos.js) -->
+<section class="section ia-sec ia-sec--test" id="test" aria-labelledby="ts-h">
+<div class="container">
+<div class="ts reveal">
+<div class="ts__izq">
+<span class="ia-flag" data-t="ts_flag">Test de 30 segundos</span>
+<h2 class="ia-h" id="ts-h" data-t="ts_h">¿Tu web te está costando clientes?</h2>
+<p class="ia-p" data-t="ts_p">Responde con sinceridad. No se envía ni se guarda nada.</p>
+<ol class="ts__lista">
+<li class="ts__q" data-arreglo="ts_a1"><span class="ts__t" data-t="ts_q1">¿Se lee bien en el móvil, sin hacer zoom?</span><span class="ts__bs" role="group"><button type="button" data-v="1" data-t="ts_si">Sí</button><button type="button" data-v="0" data-t="ts_no">No</button></span></li>
+<li class="ts__q" data-arreglo="ts_a2"><span class="ts__t" data-t="ts_q2">¿Se puede llamar o escribir por WhatsApp con un toque?</span><span class="ts__bs" role="group"><button type="button" data-v="1" data-t="ts_si">Sí</button><button type="button" data-v="0" data-t="ts_no">No</button></span></li>
+<li class="ts__q" data-arreglo="ts_a3"><span class="ts__t" data-t="ts_q3">¿Sale en Google Maps con fotos y el horario al día?</span><span class="ts__bs" role="group"><button type="button" data-v="1" data-t="ts_si">Sí</button><button type="button" data-v="0" data-t="ts_no">No</button></span></li>
+<li class="ts__q" data-arreglo="ts_a4"><span class="ts__t" data-t="ts_q4">¿Las fotos son tuyas y se ven nítidas?</span><span class="ts__bs" role="group"><button type="button" data-v="1" data-t="ts_si">Sí</button><button type="button" data-v="0" data-t="ts_no">No</button></span></li>
+<li class="ts__q" data-arreglo="ts_a5"><span class="ts__t" data-t="ts_q5">¿Se puede reservar o pedir cita sin llamar?</span><span class="ts__bs" role="group"><button type="button" data-v="1" data-t="ts_si">Sí</button><button type="button" data-v="0" data-t="ts_no">No</button></span></li>
+<li class="ts__q" data-arreglo="ts_a6"><span class="ts__t" data-t="ts_q6">¿La has renovado en los últimos tres años?</span><span class="ts__bs" role="group"><button type="button" data-v="1" data-t="ts_si">Sí</button><button type="button" data-v="0" data-t="ts_no">No</button></span></li>
+</ol>
+</div>
+<div class="ts__res" aria-live="polite">
+<div class="ts__aro" aria-hidden="true"><svg viewBox="0 0 120 120"><circle class="ts__aro-f" cx="60" cy="60" r="52"/><circle class="ts__aro-v" cx="60" cy="60" r="52"/></svg><span class="ts__num"><b>0</b>/6</span></div>
+<p class="ts__ver" data-k="ts_r0" data-t="ts_r0">Responde y te digo cómo está.</p>
+<ul class="ts__arreglos"></ul>
+<div class="ts__btns">
+<a class="btn btn--accent btn--lg ts__wa" href="https://wa.me/34611497409" target="_blank" rel="noopener" data-t="ts_wa">Cuéntamelo por WhatsApp</a>
+<a class="ts__rev" href="revision-web-gratis.html" data-t="ts_rev">O pide una revisión gratis →</a>
+</div>
+</div>
+<div hidden>
+<span data-k="ts_r1" data-t="ts_r1">Tu web está en forma. Aun así, si quieres, la miro gratis.</span>
+<span data-k="ts_r2" data-t="ts_r2">Va bien, pero se te escapan clientes en estos puntos:</span>
+<span data-k="ts_r3" data-t="ts_r3">Tu web te está costando clientes. Se arregla con esto:</span>
+<span data-k="ts_a1" data-t="ts_a1">Una web que se lea bien en el móvil</span>
+<span data-k="ts_a2" data-t="ts_a2">Botones de llamar y de WhatsApp siempre a la vista</span>
+<span data-k="ts_a3" data-t="ts_a3">Tu ficha de Google al día, con fotos y horario</span>
+<span data-k="ts_a4" data-t="ts_a4">Fotos propias, grandes y nítidas</span>
+<span data-k="ts_a5" data-t="ts_a5">Reservas o citas desde la web, sin comisiones</span>
+<span data-k="ts_a6" data-t="ts_a6">Un diseño de ahora, que dé confianza</span>
+<span data-k="ts_msg" data-t="ts_msg">Hola Oier, he hecho el test de tu web y me salen {n} de 6. Lo que me falta:</span>
+</div>
+</div>
 </div>
 </section>
 
@@ -705,6 +771,7 @@
 <script src="assets/i18n.js?v=33"></script>
 <script src="assets/main.js?v=19"></script>
 <script src="assets/prueba.js?v=3"></script>
+<script src="assets/interactivos.js?v=1" defer></script>
 <script src="/assets/vendor/gsap.min.js" defer></script>
 <script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
 <script src="/assets/vendor/SplitText.min.js" defer></script>
