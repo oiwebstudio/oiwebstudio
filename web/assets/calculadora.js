@@ -64,14 +64,14 @@
     cant.hidden = !form.elements.productos.checked;
     var unidades = form.elements.productos.checked ? Math.max(0, Math.min(5000, Math.floor(Number(num.value) || 0))) : 0;
 
-    /* 2. cuota: con reservas, obligatoria; sin web mía, no hay mantenimiento;
+    /* 2. cuota: con web mía o con reservas, obligatoria (Oier, 28/10/2026); sin web mía, no hay mantenimiento;
           con tienda, la de presencia se prepara a medida */
     var cNinguna = cuotaCaja("ninguna"), cMant = cuotaCaja("mant"), cPres = cuotaCaja("presencia");
-    apagar(cNinguna, t.reservas);
+    apagar(cNinguna, t.reservas || t.web);
     apagar(cMant, !t.web);
     if (cPres) apagar(cPres, t.tienda);
-    if (!form.querySelector('input[name="cuota"]:checked')) (t.reservas ? cMant : cNinguna).checked = true;
-    notas.ninguna.textContent = t.reservas ? txt("ninguna_obl") : txt("ninguna_opc");
+    if (!form.querySelector('input[name="cuota"]:checked')) (t.reservas || t.web ? cMant : cNinguna).checked = true;
+    notas.ninguna.textContent = t.reservas || t.web ? txt("ninguna_obl") : txt("ninguna_opc");
     notas.mant.textContent = !t.web ? txt("mant_no") : t.reservas ? txt("mant_obl") : txt("mant_opc");
     if (notas.presencia) notas.presencia.textContent = t.tienda ? txt("pres_tienda") : txt("pres_opc");
     var precioMant = t.tienda ? CUOTA.mantTienda : CUOTA.mant;
