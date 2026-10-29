@@ -246,7 +246,7 @@ const EU = {
   pre_l1_h: "Webgunea",
   pre_l1_p: "Aurki zaitzaten, dei diezazuten edo erosi diezazuten. Lehen urteko domeinua eta ostatatzea barne.",
   p3_l4b: "Hilean 3 aldaketa arte",
-  p3_l7: "Nahitaezkoa erreserbekin bakarrik",
+  p3_l7: "Egiten dudan webgune bakoitzarekin doa",
   pre_l2_h: "Erreserbak eta gehigarriak",
   pre_l2_p: "Dagoeneko duzun webgunerako edo elkarrekin egingo dugunerako. Ez dut erreserba bakoitzeko komisiorik kobratzen.",
   pre_l2_ley: "«+» ikurrak webgune bati edo erreserbei gehitzen zaiela esan nahi du.",
@@ -349,7 +349,7 @@ const EU = {
   /* Sobre mí */
   sob_eyebrow: "Estudioa",
   sob_h1: 'Ingeniari-logika.<br/><span class="grad">Diseinatzaile-begia.</span>',
-  sob_lede: "Pertsona bakarreko estudioa, zure webgunea eraikitzen duenarekin beti hitz egiten duzun abantailarekin.",
+  sob_lede: "Oier Irastorza naiz eta OI Studio pertsona bakar baten estudioa da: beti hitz egiten duzu zure webgunea eraikitzen duenarekin.",
   sob_brand: "OI Studio",
   sob_rol: "Web diseinua eta garapena",
   sob_k_form: "Prestakuntza",
