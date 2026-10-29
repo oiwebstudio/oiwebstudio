@@ -514,6 +514,7 @@ a.hx__pie { color: inherit; display: block; -webkit-tap-highlight-color: transpa
 /* Mano con el móvil: el centro del teléfono está al 68,8 % del ancho de la foto */
 .hx__mano { --mw: calc(var(--pw) / .4132); position: absolute; left: 50%; top: 6px; z-index: 50; width: var(--mw); transform: translateX(-68.8%); display: block; animation: hxEntraM 1.1s .2s var(--ease) both; }
 .hx__foto { width: 100%; height: auto; display: block; -webkit-mask-image: linear-gradient(90deg, transparent 2%, #000 30%); mask-image: linear-gradient(90deg, transparent 2%, #000 30%); }
+.hx__flota > picture { display: block; }
 /* Hueco medido en la foto (píxel a píxel): x 697–1302, y 20–1334 de 1457×1868, esquinas de ~96 px */
 .hx__pantalla { position: absolute; left: 47.84%; top: 1.07%; width: 41.52%; height: 70.34%; border-radius: 16.2% / 7.45%; overflow: hidden; clip-path: inset(0 round 16.2% / 7.45%); background: linear-gradient(160deg, #1d1d1d, #040404 60%); }
 /* La web empieza bajo la isla: arriba queda la barra negra del teléfono */
