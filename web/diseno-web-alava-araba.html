@@ -35,27 +35,79 @@
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"ProfessionalService",
-  "parentOrganization":{"@id":"https://oiwebstudio.com/#estudio","name":"OI Studio","url":"https://oiwebstudio.com/"},
-  "name":"OI Studio — Diseño web en Álava (Araba)",
-  "url":"https://oiwebstudio.com/diseno-web-alava-araba.html",
-  "description":"Diseño web para negocios de Álava (Araba): Vitoria-Gasteiz, Rioja Alavesa, Llanada y Ayala. A distancia, desde 420 € y propuesta en 48 h.",
-  "email":"contactoiwebstudio@gmail.com",
-  "telephone":"+34611497409",
-  "priceRange":"420€ - 880€",
-  "address":{"@type":"PostalAddress","addressLocality":"Tolosa","addressRegion":"Gipuzkoa","addressCountry":"ES"},
-  "areaServed":{"@type":"AdministrativeArea","name":"Álava (Araba)"}
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Diseño web",
+  "name": "OI Studio — Diseño web en Álava (Araba)",
+  "url": "https://oiwebstudio.com/diseno-web-alava-araba.html",
+  "description": "Diseño web para negocios de Álava (Araba): Vitoria-Gasteiz, Rioja Alavesa, Llanada y Ayala. A distancia, desde 420 € y propuesta en 48 h.",
+  "provider": {
+    "@type": "ProfessionalService",
+    "@id": "https://oiwebstudio.com/#estudio",
+    "name": "OI Studio",
+    "url": "https://oiwebstudio.com/"
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Álava (Araba)"
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Web de una página",
+      "price": "420",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "420",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Web con secciones",
+      "price": "540",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "540",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    }
+  ]
 }
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"¿Haces webs para negocios de Álava?","acceptedAnswer":{"@type":"Answer","text":"Sí, a distancia. El estudio está en Tolosa, pero el proceso funciona igual por videollamada y WhatsApp, con un enlace privado para revisar la web."}},
-    {"@type":"Question","name":"¿Haces webs para bodegas y alojamientos de la Rioja Alavesa?","acceptedAnswer":{"@type":"Answer","text":"Sí. Es un tipo de negocio que vive del visitante: la web muestra las visitas, los horarios y la reserva con claridad, con fotos propias y en varios idiomas si hace falta."}},
-    {"@type":"Question","name":"¿Cuánto cuesta una web para un negocio de Álava?","acceptedAnswer":{"@type":"Answer","text":"Web de una página desde 420€, web con secciones desde 540€ y tienda online desde 880€ (+ IVA), con precio cerrado por escrito y 30 días de ajustes incluidos. El precio es el mismo que en Gipuzkoa."}}
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Haces webs para negocios de Álava?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, a distancia. El estudio está en Tolosa, pero el proceso funciona igual por videollamada y WhatsApp, con un enlace privado para revisar la web."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Haces webs para bodegas y alojamientos de la Rioja Alavesa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Es un tipo de negocio que vive del visitante: la web muestra las visitas, los horarios y la reserva con claridad, con fotos propias y en varios idiomas si hace falta."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta una web para un negocio de Álava?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Web de una página desde 420€, web con secciones desde 540€ y tienda online desde 880€ (+ IVA), con precio cerrado por escrito y 30 días de ajustes incluidos. El precio es el mismo que en Gipuzkoa."
+      }
+    }
   ]
 }
 </script>

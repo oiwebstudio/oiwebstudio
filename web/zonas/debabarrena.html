@@ -34,26 +34,93 @@
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"ProfessionalService",
-  "parentOrganization":{"@id":"https://oiwebstudio.com/#estudio","name":"OI Studio","url":"https://oiwebstudio.com/"},
-  "name":"OI Studio — Diseño web en Debabarrena",
-  "url":"https://oiwebstudio.com/zonas/debabarrena.html",
-  "description":"Diseño y páginas web para negocios de Debabarrena (6 municipios). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa.",
-  "email":"contactoiwebstudio@gmail.com",
-  "telephone":"+34611497409",
-  "priceRange":"420€ - 540€",
-  "address":{"@type":"PostalAddress","addressLocality":"Tolosa","addressRegion":"Gipuzkoa","addressCountry":"ES"},
-  "areaServed":[{"@type":"City","name":"Eibar"},{"@type":"City","name":"Elgoibar"},{"@type":"City","name":"Deba"},{"@type":"City","name":"Mutriku"},{"@type":"City","name":"Soraluze"},{"@type":"City","name":"Mendaro"}]
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Diseño web",
+  "name": "OI Studio — Diseño web en Debabarrena",
+  "url": "https://oiwebstudio.com/zonas/debabarrena.html",
+  "description": "Diseño y páginas web para negocios de Debabarrena (6 municipios). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa.",
+  "provider": {
+    "@type": "ProfessionalService",
+    "@id": "https://oiwebstudio.com/#estudio",
+    "name": "OI Studio",
+    "url": "https://oiwebstudio.com/"
+  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Eibar"
+    },
+    {
+      "@type": "City",
+      "name": "Elgoibar"
+    },
+    {
+      "@type": "City",
+      "name": "Deba"
+    },
+    {
+      "@type": "City",
+      "name": "Mutriku"
+    },
+    {
+      "@type": "City",
+      "name": "Soraluze"
+    },
+    {
+      "@type": "City",
+      "name": "Mendaro"
+    }
+  ],
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Web de una página",
+      "price": "420",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "420",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Web con secciones",
+      "price": "540",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "540",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    }
+  ]
 }
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"¿Qué web necesita una empresa industrial de Debabarrena?","acceptedAnswer":{"@type":"Answer","text":"Qué fabricas o mecanizas, con qué maquinaria y ejemplos de trabajos, y una forma rápida de pedir oferta. Lo bonito importa menos que lo creíble."}},
-    {"@type":"Question","name":"¿Cuánto cuesta una web en Debabarrena?","acceptedAnswer":{"@type":"Answer","text":"Web de una página desde 420€ y web con secciones desde 540€, precio cerrado por escrito y 30 días de ajustes incluidos, con propuesta en 48 horas. El precio es el mismo en todos los municipios."}}
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Qué web necesita una empresa industrial de Debabarrena?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Qué fabricas o mecanizas, con qué maquinaria y ejemplos de trabajos, y una forma rápida de pedir oferta. Lo bonito importa menos que lo creíble."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta una web en Debabarrena?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Web de una página desde 420€ y web con secciones desde 540€, precio cerrado por escrito y 30 días de ajustes incluidos, con propuesta en 48 horas. El precio es el mismo en todos los municipios."
+      }
+    }
   ]
 }
 </script>

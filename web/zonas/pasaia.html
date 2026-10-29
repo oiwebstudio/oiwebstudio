@@ -36,31 +36,100 @@
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"ProfessionalService",
-  "parentOrganization":{"@id":"https://oiwebstudio.com/#estudio","name":"OI Studio","url":"https://oiwebstudio.com/"},
-  "name":"OI Studio — Diseño web en Pasaia",
-  "url":"https://oiwebstudio.com/zonas/pasaia.html",
-  "image":"https://oiwebstudio.com/assets/stock/sec-rest-2.jpg",
-  "description":"Diseño y desarrollo de páginas web para negocios de Pasaia (Pasajes) (Oarsoaldea). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa, a 32 km.",
-  "email":"contactoiwebstudio@gmail.com",
-  "telephone":"+34611497409",
-  "priceRange":"420€ - 540€",
-  "address":{"@type":"PostalAddress","addressLocality":"Tolosa","addressRegion":"Gipuzkoa","addressCountry":"ES"},
-  "areaServed":{"@type":"City","name":"Pasaia","containedInPlace":{"@type":"AdministrativeArea","name":"Gipuzkoa"}},
-  "sameAs":["https://instagram.com/oi.webstudio"]
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Diseño web",
+  "name": "OI Studio — Diseño web en Pasaia",
+  "url": "https://oiwebstudio.com/zonas/pasaia.html",
+  "image": "https://oiwebstudio.com/assets/stock/sec-rest-2.jpg",
+  "description": "Diseño y desarrollo de páginas web para negocios de Pasaia (Pasajes) (Oarsoaldea). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa, a 32 km.",
+  "provider": {
+    "@type": "ProfessionalService",
+    "@id": "https://oiwebstudio.com/#estudio",
+    "name": "OI Studio",
+    "url": "https://oiwebstudio.com/"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Pasaia",
+    "containedInPlace": {
+      "@type": "AdministrativeArea",
+      "name": "Gipuzkoa"
+    }
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Web de una página",
+      "price": "420",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "420",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Web con secciones",
+      "price": "540",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "540",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    }
+  ]
 }
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"¿Te desplazas hasta Pasaia?","acceptedAnswer":{"@type":"Answer","text":"Sí. Pasaia está a unos 32 km de Tolosa. Quedamos en tu negocio para conocerlo y hacer las fotos si hace falta, y el resto lo llevamos por WhatsApp y videollamada para no hacerte perder tiempo."}},
-    {"@type":"Question","name":"¿Cuesta lo mismo que en Tolosa?","acceptedAnswer":{"@type":"Answer","text":"Exactamente lo mismo. Web de una página desde 420€ y web con secciones desde 540€, precio cerrado por escrito y 30 días de ajustes incluidos. Ir a Pasaia no lleva ningún recargo."}},
-    {"@type":"Question","name":"¿Merece la pena el SEO en un municipio de unos 16.000 habitantes?","acceptedAnswer":{"@type":"Answer","text":"Sí. En un municipio de este tamaño hay competencia real por las búsquedas de cada sector, y las primeras posiciones del mapa se llevan casi todos los clics. La web se orienta a Pasaia (Pasajes) y a Oarsoaldea, y se trabaja junto con tu ficha de Google Business, que repaso en esta guía."}},
-    {"@type":"Question","name":"¿Buscan «Pasajes» o «Pasaia»? ¿Con cuál sales?","acceptedAnswer":{"@type":"Answer","text":"Con los dos. La gente busca de ambas formas, así que la web y tu ficha de Google llevan el nombre en castellano y en euskera. Lo mismo con el barrio: Pasai Donibane, Trintxerpe o Antxo suelen buscarse con su nombre propio."}},
-    {"@type":"Question","name":"¿Puedo verlo antes de decidir?","acceptedAnswer":{"@type":"Answer","text":"Claro. No enseño capturas: las muestras del portfolio están publicadas y se pueden abrir y recorrer. Con ellas y la propuesta en 48 h tienes información suficiente para decidir sin compromiso."}}
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Te desplazas hasta Pasaia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Pasaia está a unos 32 km de Tolosa. Quedamos en tu negocio para conocerlo y hacer las fotos si hace falta, y el resto lo llevamos por WhatsApp y videollamada para no hacerte perder tiempo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuesta lo mismo que en Tolosa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Exactamente lo mismo. Web de una página desde 420€ y web con secciones desde 540€, precio cerrado por escrito y 30 días de ajustes incluidos. Ir a Pasaia no lleva ningún recargo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Merece la pena el SEO en un municipio de unos 16.000 habitantes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. En un municipio de este tamaño hay competencia real por las búsquedas de cada sector, y las primeras posiciones del mapa se llevan casi todos los clics. La web se orienta a Pasaia (Pasajes) y a Oarsoaldea, y se trabaja junto con tu ficha de Google Business, que repaso en esta guía."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Buscan «Pasajes» o «Pasaia»? ¿Con cuál sales?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Con los dos. La gente busca de ambas formas, así que la web y tu ficha de Google llevan el nombre en castellano y en euskera. Lo mismo con el barrio: Pasai Donibane, Trintxerpe o Antxo suelen buscarse con su nombre propio."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo verlo antes de decidir?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claro. No enseño capturas: las muestras del portfolio están publicadas y se pueden abrir y recorrer. Con ellas y la propuesta en 48 h tienes información suficiente para decidir sin compromiso."
+      }
+    }
   ]
 }
 </script>

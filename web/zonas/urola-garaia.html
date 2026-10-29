@@ -34,26 +34,85 @@
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"ProfessionalService",
-  "parentOrganization":{"@id":"https://oiwebstudio.com/#estudio","name":"OI Studio","url":"https://oiwebstudio.com/"},
-  "name":"OI Studio — Diseño web en Urola Garaia",
-  "url":"https://oiwebstudio.com/zonas/urola-garaia.html",
-  "description":"Diseño y páginas web para negocios de Urola Garaia (4 municipios). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa.",
-  "email":"contactoiwebstudio@gmail.com",
-  "telephone":"+34611497409",
-  "priceRange":"420€ - 540€",
-  "address":{"@type":"PostalAddress","addressLocality":"Tolosa","addressRegion":"Gipuzkoa","addressCountry":"ES"},
-  "areaServed":[{"@type":"City","name":"Zumarraga"},{"@type":"City","name":"Legazpi"},{"@type":"City","name":"Urretxu"},{"@type":"City","name":"Ezkio-Itsaso"}]
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Diseño web",
+  "name": "OI Studio — Diseño web en Urola Garaia",
+  "url": "https://oiwebstudio.com/zonas/urola-garaia.html",
+  "description": "Diseño y páginas web para negocios de Urola Garaia (4 municipios). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa.",
+  "provider": {
+    "@type": "ProfessionalService",
+    "@id": "https://oiwebstudio.com/#estudio",
+    "name": "OI Studio",
+    "url": "https://oiwebstudio.com/"
+  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Zumarraga"
+    },
+    {
+      "@type": "City",
+      "name": "Legazpi"
+    },
+    {
+      "@type": "City",
+      "name": "Urretxu"
+    },
+    {
+      "@type": "City",
+      "name": "Ezkio-Itsaso"
+    }
+  ],
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Web de una página",
+      "price": "420",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "420",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Web con secciones",
+      "price": "540",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "540",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    }
+  ]
 }
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"¿Hay ayudas para la web en el Alto Urola?","acceptedAnswer":{"@type":"Answer","text":"Hay ayudas municipales en Urretxu y Legazpi abiertas ahora y en Zumarraga cada año. Están todas en la página de ayudas, con plazos y bases."}},
-    {"@type":"Question","name":"¿Cuánto cuesta una web en Urola Garaia?","acceptedAnswer":{"@type":"Answer","text":"Web de una página desde 420€ y web con secciones desde 540€, precio cerrado por escrito y 30 días de ajustes incluidos, con propuesta en 48 horas. El precio es el mismo en todos los municipios."}}
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Hay ayudas para la web en el Alto Urola?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hay ayudas municipales en Urretxu y Legazpi abiertas ahora y en Zumarraga cada año. Están todas en la página de ayudas, con plazos y bases."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta una web en Urola Garaia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Web de una página desde 420€ y web con secciones desde 540€, precio cerrado por escrito y 30 días de ajustes incluidos, con propuesta en 48 horas. El precio es el mismo en todos los municipios."
+      }
+    }
   ]
 }
 </script>

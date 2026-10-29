@@ -35,30 +35,92 @@
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"ProfessionalService",
-  "parentOrganization":{"@id":"https://oiwebstudio.com/#estudio","name":"OI Studio","url":"https://oiwebstudio.com/"},
-  "name":"OI Studio — Diseño web en Hernani",
-  "url":"https://oiwebstudio.com/zonas/hernani.html",
-  "image":"https://oiwebstudio.com/assets/stock/sec-rest-1.jpg",
-  "description":"Diseño y desarrollo de páginas web para negocios de Hernani (Donostialdea). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa, a 22 km.",
-  "email":"contactoiwebstudio@gmail.com",
-  "telephone":"+34611497409",
-  "priceRange":"420€ - 540€",
-  "address":{"@type":"PostalAddress","addressLocality":"Tolosa","addressRegion":"Gipuzkoa","addressCountry":"ES"},
-  "areaServed":{"@type":"City","name":"Hernani","containedInPlace":{"@type":"AdministrativeArea","name":"Gipuzkoa"}},
-  "sameAs":["https://instagram.com/oi.webstudio"]
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Diseño web",
+  "name": "OI Studio — Diseño web en Hernani",
+  "url": "https://oiwebstudio.com/zonas/hernani.html",
+  "image": "https://oiwebstudio.com/assets/stock/sec-rest-1.jpg",
+  "description": "Diseño y desarrollo de páginas web para negocios de Hernani (Donostialdea). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa, a 22 km.",
+  "provider": {
+    "@type": "ProfessionalService",
+    "@id": "https://oiwebstudio.com/#estudio",
+    "name": "OI Studio",
+    "url": "https://oiwebstudio.com/"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Hernani",
+    "containedInPlace": {
+      "@type": "AdministrativeArea",
+      "name": "Gipuzkoa"
+    }
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Web de una página",
+      "price": "420",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "420",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Web con secciones",
+      "price": "540",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "540",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    }
+  ]
 }
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"¿Trabajas con negocios de Hernani?","acceptedAnswer":{"@type":"Answer","text":"Sí. Estoy a 22 km, así que lo normal es una primera visita presencial para ver el negocio y seguir por videollamada y WhatsApp. En Donostialdea trabajo así habitualmente."}},
-    {"@type":"Question","name":"¿Cuánto cuesta una web para un negocio de Hernani?","acceptedAnswer":{"@type":"Answer","text":"Lo mismo que para uno de Tolosa: 420€ una web de una página y 540€ una web con secciones, pago único y 30 días de ajustes gratis. Ni los 22 km ni la comarca cambian la cifra, y la recibes cerrada por escrito."}},
-    {"@type":"Question","name":"¿Puedo competir en Google en Hernani?","acceptedAnswer":{"@type":"Answer","text":"Sí, con expectativas realistas: 20.000 habitantes significan más negocios compitiendo por las mismas búsquedas, así que aquí el SEO local pesa más que en un pueblo. La web sale preparada para Hernani y el resto lo hace tu ficha de Google Business, que trabajo contigo siguiendo esta guía."}},
-    {"@type":"Question","name":"¿Puedo ver algo antes de decidir?","acceptedAnswer":{"@type":"Answer","text":"Sí, y es lo que recomiendo. Las muestras del portfolio están publicadas y se navegan enteras, no son capturas. Después te preparo la propuesta en 48h, gratis y sin compromiso."}}
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Trabajas con negocios de Hernani?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Estoy a 22 km, así que lo normal es una primera visita presencial para ver el negocio y seguir por videollamada y WhatsApp. En Donostialdea trabajo así habitualmente."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta una web para un negocio de Hernani?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Lo mismo que para uno de Tolosa: 420€ una web de una página y 540€ una web con secciones, pago único y 30 días de ajustes gratis. Ni los 22 km ni la comarca cambian la cifra, y la recibes cerrada por escrito."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo competir en Google en Hernani?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, con expectativas realistas: 20.000 habitantes significan más negocios compitiendo por las mismas búsquedas, así que aquí el SEO local pesa más que en un pueblo. La web sale preparada para Hernani y el resto lo hace tu ficha de Google Business, que trabajo contigo siguiendo esta guía."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo ver algo antes de decidir?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, y es lo que recomiendo. Las muestras del portfolio están publicadas y se navegan enteras, no son capturas. Después te preparo la propuesta en 48h, gratis y sin compromiso."
+      }
+    }
   ]
 }
 </script>

@@ -36,31 +36,100 @@
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"ProfessionalService",
-  "parentOrganization":{"@id":"https://oiwebstudio.com/#estudio","name":"OI Studio","url":"https://oiwebstudio.com/"},
-  "name":"OI Studio — Diseño web en Eskoriatza",
-  "url":"https://oiwebstudio.com/zonas/eskoriatza.html",
-  "image":"https://oiwebstudio.com/assets/stock/sec-gym-1.jpg",
-  "description":"Páginas web para negocios de Eskoriatza (Escoriaza) (Debagoiena). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa, a 51 km.",
-  "email":"contactoiwebstudio@gmail.com",
-  "telephone":"+34611497409",
-  "priceRange":"420€ - 540€",
-  "address":{"@type":"PostalAddress","addressLocality":"Tolosa","addressRegion":"Gipuzkoa","addressCountry":"ES"},
-  "areaServed":{"@type":"City","name":"Eskoriatza","containedInPlace":{"@type":"AdministrativeArea","name":"Gipuzkoa"}},
-  "sameAs":["https://instagram.com/oi.webstudio"]
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Diseño web",
+  "name": "OI Studio — Diseño web en Eskoriatza",
+  "url": "https://oiwebstudio.com/zonas/eskoriatza.html",
+  "image": "https://oiwebstudio.com/assets/stock/sec-gym-1.jpg",
+  "description": "Páginas web para negocios de Eskoriatza (Escoriaza) (Debagoiena). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa, a 51 km.",
+  "provider": {
+    "@type": "ProfessionalService",
+    "@id": "https://oiwebstudio.com/#estudio",
+    "name": "OI Studio",
+    "url": "https://oiwebstudio.com/"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Eskoriatza",
+    "containedInPlace": {
+      "@type": "AdministrativeArea",
+      "name": "Gipuzkoa"
+    }
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Web de una página",
+      "price": "420",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "420",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Web con secciones",
+      "price": "540",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "540",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    }
+  ]
 }
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"¿Te desplazas hasta Eskoriatza?","acceptedAnswer":{"@type":"Answer","text":"Sí, cuando compensa. Eskoriatza está a unos 51 km de Tolosa, así que lo habitual es empezar por videollamada o WhatsApp y quedar en persona para conocer el negocio y hacer las fotos. El precio es el mismo."}},
-    {"@type":"Question","name":"¿Cuesta lo mismo que en Tolosa?","acceptedAnswer":{"@type":"Answer","text":"Exactamente lo mismo. Web de una página desde 420€ y web con secciones desde 540€, precio cerrado por escrito y 30 días de ajustes incluidos. Ir a Eskoriatza no lleva ningún recargo."}},
-    {"@type":"Question","name":"¿Merece la pena el SEO en un pueblo de unos 4.200 habitantes?","acceptedAnswer":{"@type":"Answer","text":"Sí, y bastante: hay competencia moderada y todavía mucha gente que depende solo de las redes. La web se orienta a búsquedas de Eskoriatza (Escoriaza) y de Debagoiena, y se complementa con tu ficha de Google Business, que repaso en esta guía."}},
-    {"@type":"Question","name":"¿Puedo aparecer también en Arrasate o Bergara?","acceptedAnswer":{"@type":"Answer","text":"Sí, si se plantea. La web y la ficha de Google nombran los municipios a los que sirves, de modo que salgas en esas búsquedas aunque tu local esté en Eskoriatza."}},
-    {"@type":"Question","name":"¿Puedo verlo antes de decidir?","acceptedAnswer":{"@type":"Answer","text":"Claro. No enseño capturas: las muestras del portfolio están publicadas y se pueden abrir y recorrer. Con ellas y la propuesta en 48 h tienes información suficiente para decidir sin compromiso."}}
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Te desplazas hasta Eskoriatza?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, cuando compensa. Eskoriatza está a unos 51 km de Tolosa, así que lo habitual es empezar por videollamada o WhatsApp y quedar en persona para conocer el negocio y hacer las fotos. El precio es el mismo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuesta lo mismo que en Tolosa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Exactamente lo mismo. Web de una página desde 420€ y web con secciones desde 540€, precio cerrado por escrito y 30 días de ajustes incluidos. Ir a Eskoriatza no lleva ningún recargo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Merece la pena el SEO en un pueblo de unos 4.200 habitantes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, y bastante: hay competencia moderada y todavía mucha gente que depende solo de las redes. La web se orienta a búsquedas de Eskoriatza (Escoriaza) y de Debagoiena, y se complementa con tu ficha de Google Business, que repaso en esta guía."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo aparecer también en Arrasate o Bergara?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, si se plantea. La web y la ficha de Google nombran los municipios a los que sirves, de modo que salgas en esas búsquedas aunque tu local esté en Eskoriatza."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo verlo antes de decidir?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claro. No enseño capturas: las muestras del portfolio están publicadas y se pueden abrir y recorrer. Con ellas y la propuesta en 48 h tienes información suficiente para decidir sin compromiso."
+      }
+    }
   ]
 }
 </script>

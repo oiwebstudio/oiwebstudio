@@ -36,31 +36,100 @@
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"ProfessionalService",
-  "parentOrganization":{"@id":"https://oiwebstudio.com/#estudio","name":"OI Studio","url":"https://oiwebstudio.com/"},
-  "name":"OI Studio — Diseño web en Mutriku",
-  "url":"https://oiwebstudio.com/zonas/mutriku.html",
-  "image":"https://oiwebstudio.com/assets/stock/sec-rest-2.jpg",
-  "description":"Diseño y desarrollo de páginas web para negocios de Mutriku (Motrico) (Debabarrena). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa, a 41 km.",
-  "email":"contactoiwebstudio@gmail.com",
-  "telephone":"+34611497409",
-  "priceRange":"420€ - 540€",
-  "address":{"@type":"PostalAddress","addressLocality":"Tolosa","addressRegion":"Gipuzkoa","addressCountry":"ES"},
-  "areaServed":{"@type":"City","name":"Mutriku","containedInPlace":{"@type":"AdministrativeArea","name":"Gipuzkoa"}},
-  "sameAs":["https://instagram.com/oi.webstudio"]
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Diseño web",
+  "name": "OI Studio — Diseño web en Mutriku",
+  "url": "https://oiwebstudio.com/zonas/mutriku.html",
+  "image": "https://oiwebstudio.com/assets/stock/sec-rest-2.jpg",
+  "description": "Diseño y desarrollo de páginas web para negocios de Mutriku (Motrico) (Debabarrena). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa, a 41 km.",
+  "provider": {
+    "@type": "ProfessionalService",
+    "@id": "https://oiwebstudio.com/#estudio",
+    "name": "OI Studio",
+    "url": "https://oiwebstudio.com/"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Mutriku",
+    "containedInPlace": {
+      "@type": "AdministrativeArea",
+      "name": "Gipuzkoa"
+    }
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Web de una página",
+      "price": "420",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "420",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Web con secciones",
+      "price": "540",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "540",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    }
+  ]
 }
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"¿Te desplazas hasta Mutriku?","acceptedAnswer":{"@type":"Answer","text":"Sí, cuando compensa. Mutriku está a unos 41 km de Tolosa, así que lo habitual es empezar por videollamada o WhatsApp y quedar en persona para conocer el negocio y hacer las fotos. El precio es el mismo."}},
-    {"@type":"Question","name":"¿Cuesta lo mismo que en Tolosa?","acceptedAnswer":{"@type":"Answer","text":"Exactamente lo mismo. Web de una página desde 420€ y web con secciones desde 540€, precio cerrado por escrito y 30 días de ajustes incluidos. Ir a Mutriku no lleva ningún recargo."}},
-    {"@type":"Question","name":"¿Merece la pena el SEO en un pueblo de unos 5.200 habitantes?","acceptedAnswer":{"@type":"Answer","text":"Sí, y bastante: hay competencia moderada y todavía mucha gente que depende solo de las redes. La web se orienta a búsquedas de Mutriku (Motrico) y de Debabarrena, y se complementa con tu ficha de Google Business, que repaso en esta guía."}},
-    {"@type":"Question","name":"¿Compensa la web si tengo ya perfil en redes sociales?","acceptedAnswer":{"@type":"Answer","text":"Sí. Las redes sirven al que ya te sigue; la web y Google sirven al que no te conoce y busca «dónde comer en Mutriku». Son públicos distintos y la web es la que se encuentra."}},
-    {"@type":"Question","name":"¿Puedo verlo antes de decidir?","acceptedAnswer":{"@type":"Answer","text":"Claro. No enseño capturas: las muestras del portfolio están publicadas y se pueden abrir y recorrer. Con ellas y la propuesta en 48 h tienes información suficiente para decidir sin compromiso."}}
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Te desplazas hasta Mutriku?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, cuando compensa. Mutriku está a unos 41 km de Tolosa, así que lo habitual es empezar por videollamada o WhatsApp y quedar en persona para conocer el negocio y hacer las fotos. El precio es el mismo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuesta lo mismo que en Tolosa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Exactamente lo mismo. Web de una página desde 420€ y web con secciones desde 540€, precio cerrado por escrito y 30 días de ajustes incluidos. Ir a Mutriku no lleva ningún recargo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Merece la pena el SEO en un pueblo de unos 5.200 habitantes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, y bastante: hay competencia moderada y todavía mucha gente que depende solo de las redes. La web se orienta a búsquedas de Mutriku (Motrico) y de Debabarrena, y se complementa con tu ficha de Google Business, que repaso en esta guía."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Compensa la web si tengo ya perfil en redes sociales?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Las redes sirven al que ya te sigue; la web y Google sirven al que no te conoce y busca «dónde comer en Mutriku». Son públicos distintos y la web es la que se encuentra."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo verlo antes de decidir?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claro. No enseño capturas: las muestras del portfolio están publicadas y se pueden abrir y recorrer. Con ellas y la propuesta en 48 h tienes información suficiente para decidir sin compromiso."
+      }
+    }
   ]
 }
 </script>

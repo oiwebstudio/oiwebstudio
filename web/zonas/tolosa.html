@@ -36,31 +36,100 @@
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"ProfessionalService",
-  "parentOrganization":{"@id":"https://oiwebstudio.com/#estudio","name":"OI Studio","url":"https://oiwebstudio.com/"},
-  "name":"OI Studio — Diseño web en Tolosa",
-  "url":"https://oiwebstudio.com/zonas/tolosa.html",
-  "image":"https://oiwebstudio.com/assets/stock/sec-pan-1.jpg",
-  "description":"Diseño y desarrollo de páginas web para negocios de Tolosa (Tolosaldea). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa.",
-  "email":"contactoiwebstudio@gmail.com",
-  "telephone":"+34611497409",
-  "priceRange":"420€ - 540€",
-  "address":{"@type":"PostalAddress","addressLocality":"Tolosa","addressRegion":"Gipuzkoa","addressCountry":"ES"},
-  "areaServed":{"@type":"City","name":"Tolosa","containedInPlace":{"@type":"AdministrativeArea","name":"Gipuzkoa"}},
-  "sameAs":["https://instagram.com/oi.webstudio"]
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Diseño web",
+  "name": "OI Studio — Diseño web en Tolosa",
+  "url": "https://oiwebstudio.com/zonas/tolosa.html",
+  "image": "https://oiwebstudio.com/assets/stock/sec-pan-1.jpg",
+  "description": "Diseño y desarrollo de páginas web para negocios de Tolosa (Tolosaldea). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa.",
+  "provider": {
+    "@type": "ProfessionalService",
+    "@id": "https://oiwebstudio.com/#estudio",
+    "name": "OI Studio",
+    "url": "https://oiwebstudio.com/"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Tolosa",
+    "containedInPlace": {
+      "@type": "AdministrativeArea",
+      "name": "Gipuzkoa"
+    }
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Web de una página",
+      "price": "420",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "420",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Web con secciones",
+      "price": "540",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "540",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    }
+  ]
 }
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"¿Puedo verte en persona en Tolosa?","acceptedAnswer":{"@type":"Answer","text":"Sí: tengo el estudio aquí, así que me paso por tu negocio cuando haga falta, sin cita eterna ni papeleo. Lo del día a día lo resolvemos por WhatsApp."}},
-    {"@type":"Question","name":"¿Hay algún extra por desplazamiento?","acceptedAnswer":{"@type":"Answer","text":"Ninguno. Web de una página desde 420 € y web con secciones desde 540 €, más IVA, precio cerrado por escrito y 30 días de ajustes incluidos. El estudio está en el mismo pueblo."}},
-    {"@type":"Question","name":"¿Merece la pena el SEO en un municipio de unos 20.000 habitantes?","acceptedAnswer":{"@type":"Answer","text":"Sí. En un municipio de este tamaño hay competencia real por las búsquedas de cada sector, y las primeras posiciones del mapa se llevan casi todos los clics. La web se orienta a Tolosa y a Tolosaldea, y se trabaja junto con tu ficha de Google Business, que repaso en esta guía."}},
-    {"@type":"Question","name":"¿Trabajas con negocios de Tolosa de verdad o solo a distancia?","acceptedAnswer":{"@type":"Answer","text":"Con negocios de Tolosa trabajo en persona: el estudio está aquí. Quedamos en tu local, hago las fotos si hace falta y la propuesta te la enseño delante. Lo del día a día lo resolvemos por WhatsApp."}},
-    {"@type":"Question","name":"¿Puedo verlo antes de decidir?","acceptedAnswer":{"@type":"Answer","text":"Claro. No enseño capturas: las muestras del portfolio están publicadas y se pueden abrir y recorrer. Con ellas y la propuesta en 48 h tienes información suficiente para decidir sin compromiso."}}
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Puedo verte en persona en Tolosa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí: tengo el estudio aquí, así que me paso por tu negocio cuando haga falta, sin cita eterna ni papeleo. Lo del día a día lo resolvemos por WhatsApp."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Hay algún extra por desplazamiento?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ninguno. Web de una página desde 420 € y web con secciones desde 540 €, más IVA, precio cerrado por escrito y 30 días de ajustes incluidos. El estudio está en el mismo pueblo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Merece la pena el SEO en un municipio de unos 20.000 habitantes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. En un municipio de este tamaño hay competencia real por las búsquedas de cada sector, y las primeras posiciones del mapa se llevan casi todos los clics. La web se orienta a Tolosa y a Tolosaldea, y se trabaja junto con tu ficha de Google Business, que repaso en esta guía."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Trabajas con negocios de Tolosa de verdad o solo a distancia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Con negocios de Tolosa trabajo en persona: el estudio está aquí. Quedamos en tu local, hago las fotos si hace falta y la propuesta te la enseño delante. Lo del día a día lo resolvemos por WhatsApp."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo verlo antes de decidir?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claro. No enseño capturas: las muestras del portfolio están publicadas y se pueden abrir y recorrer. Con ellas y la propuesta en 48 h tienes información suficiente para decidir sin compromiso."
+      }
+    }
   ]
 }
 </script>

@@ -39,31 +39,100 @@
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"ProfessionalService",
-  "parentOrganization":{"@id":"https://oiwebstudio.com/#estudio","name":"OI Studio","url":"https://oiwebstudio.com/"},
-  "name":"OI Studio — Diseño web en Donostia-San Sebastián",
-  "url":"https://oiwebstudio.com/zonas/donostia-san-sebastian.html",
-  "image":"https://oiwebstudio.com/assets/stock/sec-cafe-2.jpg",
-  "description":"Páginas web para negocios de Donostia-San Sebastián. Precio cerrado desde 420€ y propuesta en 48h. Estudio en Tolosa, a 26 km.",
-  "email":"contactoiwebstudio@gmail.com",
-  "telephone":"+34611497409",
-  "priceRange":"420€ - 540€",
-  "address":{"@type":"PostalAddress","addressLocality":"Tolosa","addressRegion":"Gipuzkoa","addressCountry":"ES"},
-  "areaServed":{"@type":"City","name":"Donostia-San Sebastián","containedInPlace":{"@type":"AdministrativeArea","name":"Gipuzkoa"}},
-  "sameAs":["https://instagram.com/oi.webstudio"]
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Diseño web",
+  "name": "OI Studio — Diseño web en Donostia-San Sebastián",
+  "url": "https://oiwebstudio.com/zonas/donostia-san-sebastian.html",
+  "image": "https://oiwebstudio.com/assets/stock/sec-cafe-2.jpg",
+  "description": "Páginas web para negocios de Donostia-San Sebastián. Precio cerrado desde 420€ y propuesta en 48h. Estudio en Tolosa, a 26 km.",
+  "provider": {
+    "@type": "ProfessionalService",
+    "@id": "https://oiwebstudio.com/#estudio",
+    "name": "OI Studio",
+    "url": "https://oiwebstudio.com/"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Donostia-San Sebastián",
+    "containedInPlace": {
+      "@type": "AdministrativeArea",
+      "name": "Gipuzkoa"
+    }
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Web de una página",
+      "price": "420",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "420",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Web con secciones",
+      "price": "540",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "540",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    }
+  ]
 }
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"¿Trabajas con negocios de Donostia-San Sebastián?","acceptedAnswer":{"@type":"Answer","text":"Sí. Estoy a 26 km, así que lo normal es una primera visita presencial para ver el negocio y seguir por videollamada y WhatsApp. En Donostialdea trabajo así habitualmente."}},
-    {"@type":"Question","name":"¿Cuánto cuesta una web para un negocio de Donostia-San Sebastián?","acceptedAnswer":{"@type":"Answer","text":"Lo mismo que para uno de Tolosa: 420€ una web de una página y 540€ una web con secciones, pago único y 30 días de ajustes gratis. Ni los 26 km ni la comarca cambian la cifra, y la recibes cerrada por escrito."}},
-    {"@type":"Question","name":"¿Puedo competir en Google en Donostia-San Sebastián?","acceptedAnswer":{"@type":"Answer","text":"Sí, con expectativas realistas: 190.000 habitantes significan más negocios compitiendo por las mismas búsquedas, así que aquí el SEO local pesa más que en un pueblo. La web sale preparada para Donostia-San Sebastián y el resto lo hace tu ficha de Google Business, que trabajo contigo siguiendo esta guía."}},
-    {"@type":"Question","name":"¿Hay algún compromiso por pedir presupuesto?","acceptedAnswer":{"@type":"Answer","text":"Ninguno. Me cuentas el negocio, te devuelvo una propuesta con precio cerrado en 48h y decides. Mientras tanto puedes juzgar el trabajo por ti mismo: las muestras del portfolio son navegables."}},
-    {"@type":"Question","name":"¿Mejor una agencia de Donostia o un diseñador freelance?","acceptedAnswer":{"@type":"Answer","text":"Para el negocio de un barrio suele bastar un estudio pequeño: trato directo, plazos cortos y precio cerrado. Tienes los detalles en la guía de agencia o freelance en Donostia."}}
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Trabajas con negocios de Donostia-San Sebastián?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Estoy a 26 km, así que lo normal es una primera visita presencial para ver el negocio y seguir por videollamada y WhatsApp. En Donostialdea trabajo así habitualmente."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta una web para un negocio de Donostia-San Sebastián?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Lo mismo que para uno de Tolosa: 420€ una web de una página y 540€ una web con secciones, pago único y 30 días de ajustes gratis. Ni los 26 km ni la comarca cambian la cifra, y la recibes cerrada por escrito."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo competir en Google en Donostia-San Sebastián?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, con expectativas realistas: 190.000 habitantes significan más negocios compitiendo por las mismas búsquedas, así que aquí el SEO local pesa más que en un pueblo. La web sale preparada para Donostia-San Sebastián y el resto lo hace tu ficha de Google Business, que trabajo contigo siguiendo esta guía."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Hay algún compromiso por pedir presupuesto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ninguno. Me cuentas el negocio, te devuelvo una propuesta con precio cerrado en 48h y decides. Mientras tanto puedes juzgar el trabajo por ti mismo: las muestras del portfolio son navegables."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Mejor una agencia de Donostia o un diseñador freelance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Para el negocio de un barrio suele bastar un estudio pequeño: trato directo, plazos cortos y precio cerrado. Tienes los detalles en la guía de agencia o freelance en Donostia."
+      }
+    }
   ]
 }
 </script>

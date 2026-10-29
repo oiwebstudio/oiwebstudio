@@ -42,6 +42,10 @@ export const MARCO_EU = [
 
 /* Textos que se repiten en todas las páginas de zona. */
 export const COMUNES = [
+  // 29/10: nombres del schema Service de las zonas (los mismos términos que i18n.js, ya pasados por Itzultzaile).
+  [`Diseño web`, `Web diseinua`],
+  [`Web de una página`, `Orrialde baten webgunea`],
+  [`Web con secciones`, `Webgunea atalekin`],
   ...MARCO_EU,
   // Cabecera y migas
   [`Inicio`, `Hasiera`],
