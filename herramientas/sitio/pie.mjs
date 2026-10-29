@@ -59,7 +59,7 @@ ${cuerpo}
   return `<div class="footer__grid">
 <div class="footer__col footer__col--brand">
 <a href="${p}index.html" class="footer__logo"><img src="${p}assets/logo-nav-black.png" alt="OI Studio" class="footer__logo-img" width="320" height="86"/></a>
-<p class="footer__desc" data-t="foot_desc">Webs a medida para negocios locales.</p>
+<p class="footer__desc" data-t="foot_desc">Webs bonitas para negocios locales.</p>
 <ul class="foot-contacto">
 <li><a href="https://wa.me/34611497409" target="_blank" rel="noopener">${ICONO.wa}<span>WhatsApp</span></a></li>
 <li><a href="tel:+34611497409">${ICONO.tel}<span>611 49 74 09</span></a></li>
@@ -91,7 +91,7 @@ ${grupo("foot_guias", "Guías", GUIAS.map(([h, t]) => li(h, t)).join("\n"))}
 ${grupo("foot_zonas", "Dónde trabajo", [
   ...COMARCAS.map(([s, n]) => li(`zonas/${s}.html`, n)),
   li("diseno-web-negocios-espana.html", "Toda España", "ft_esp"),
-  li("zonas.html", "Los 88 municipios →", "ft_todas"),
+  li("zonas.html", "Los 88 municipios", "ft_todas"),
 ].join("\n"), "footer__zonas")}
 </div>
 <div class="footer__bottom">
