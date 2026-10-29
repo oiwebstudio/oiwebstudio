@@ -92,8 +92,22 @@
       "headline": "Google Business Profile: guía paso a paso para negocios locales",
       "description": "Cómo crear y optimizar tu ficha de Google Business paso a paso: categorías, fotos, horarios, reseñas y los errores que te dejan fuera del mapa.",
       "image": "https://oiwebstudio.com/assets/vet-desk.jpg",
-      "author": {"@type": "Organization", "name": "OI Studio", "url": "https://oiwebstudio.com/sobre-mi.html"},
-      "publisher": {"@type": "Organization", "name": "OI Studio", "logo": {"@type": "ImageObject", "url": "https://oiwebstudio.com/icon-512.png"}},
+      "author": {
+        "@type": "ProfessionalService",
+        "@id": "https://oiwebstudio.com/#estudio",
+        "name": "OI Studio",
+        "url": "https://oiwebstudio.com/"
+      },
+      "publisher": {
+        "@type": "ProfessionalService",
+        "@id": "https://oiwebstudio.com/#estudio",
+        "name": "OI Studio",
+        "url": "https://oiwebstudio.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://oiwebstudio.com/icon-512.png"
+        }
+      },
       "datePublished": "2026-07-26",
       "dateModified": "2026-10-12",
       "mainEntityOfPage": "https://oiwebstudio.com/google-business-profile-guia.html",
@@ -102,18 +116,61 @@
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://oiwebstudio.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Artículos", "item": "https://oiwebstudio.com/articulos.html"},
-        {"@type": "ListItem", "position": 3, "name": "Guía de Google Business", "item": "https://oiwebstudio.com/google-business-profile-guia.html"}
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://oiwebstudio.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Artículos",
+          "item": "https://oiwebstudio.com/articulos.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Guía de Google Business",
+          "item": "https://oiwebstudio.com/google-business-profile-guia.html"
+        }
       ]
     },
     {
       "@type": "FAQPage",
       "mainEntity": [
-        {"@type":"Question","name":"¿Google Business Profile es gratis?","acceptedAnswer":{"@type":"Answer","text":"Sí, crear y mantener la ficha es totalmente gratuito. Google no cobra por aparecer en el mapa ni por posicionar mejor — si alguien te dice lo contrario, desconfía."}},
-        {"@type":"Question","name":"¿Cuánto tarda en verificarse una ficha nueva?","acceptedAnswer":{"@type":"Answer","text":"Depende del método: la verificación por vídeo o llamada puede resolverse en días, y la postal tarda entre una y dos semanas en llegar. Hasta que no está verificada, la ficha no compite en el mapa."}},
-        {"@type":"Question","name":"¿Necesito local físico para tener ficha de Google?","acceptedAnswer":{"@type":"Answer","text":"No necesariamente. Si trabajas a domicilio o das servicio en una zona, puedes crear una ficha de \"área de servicio\" sin mostrar la dirección, indicando los municipios donde trabajas."}},
-        {"@type":"Question","name":"¿Puedo tener ficha de Google sin página web?","acceptedAnswer":{"@type":"Answer","text":"Sí, y es mejor que nada. Pero la ficha y la web se refuerzan: Google confía más en un negocio cuyos datos puede contrastar con una web propia, y la web es donde el cliente acaba de decidirse."}}
+        {
+          "@type": "Question",
+          "name": "¿Google Business Profile es gratis?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, crear y mantener la ficha es totalmente gratuito. Google no cobra por aparecer en el mapa ni por posicionar mejor — si alguien te dice lo contrario, desconfía."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto tarda en verificarse una ficha nueva?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depende del método: la verificación por vídeo o llamada puede resolverse en días, y la postal tarda entre una y dos semanas en llegar. Hasta que no está verificada, la ficha no compite en el mapa."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Necesito local físico para tener ficha de Google?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No necesariamente. Si trabajas a domicilio o das servicio en una zona, puedes crear una ficha de \"área de servicio\" sin mostrar la dirección, indicando los municipios donde trabajas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Puedo tener ficha de Google sin página web?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, y es mejor que nada. Pero la ficha y la web se refuerzan: Google confía más en un negocio cuyos datos puede contrastar con una web propia, y la web es donde el cliente acaba de decidirse."
+          }
+        }
       ]
     }
   ]
