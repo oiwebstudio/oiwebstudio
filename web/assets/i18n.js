@@ -116,7 +116,7 @@ const EU = {
 
   /* Hero index */
   hero_badge: "Proiektu berrietarako prest",
-  hero_h1: "<span class=\"hx__l1\">Negozioak digitalizatzen ditut</span> <em class=\"hx__l2\">webgune politekin, IArekin eta markarekin.</em>",
+  hero_h1: "<span class=\"hx__l1\">Negozioak digitalizatzen ditut</span> <em class=\"hx__l2\">webgune politekin, automatizazioekin eta markarekin.</em>",
   hx_sello: "TOLOSATIK ESKUZ EGINA · ",
   hx_c1t: "48&nbsp;ORDUKO PROPOSAMENA.",
   hx_c1s: "Diseinua eta prezio itxia, konpromisorik gabe.",
@@ -131,7 +131,7 @@ const EU = {
   hx_ver: "Ikus adibide-webgune hau zuzenean",
   hx_conf: "Errotatxok eta A.Berrik badute berea.",
   hx_lema: "Istilu gutxiago.<br/>Ikuspen handiagoa.",
-  hero_lede: "Zure negozioaren webgunea, automatizazioak eta marka, pertsona berak Tolosan eginak. Prezioa itxita eta ordainketa amaieran.",
+  hero_lede: "Dena neurrira eta pertsona berak egina, Tolosan. Prezioa itxita eta ordainketa amaieran.",
   hero_trust1: "Proposamena 48 ordutan",
   hero_trust2: "Epe-konpromisorik gabe",
   hero_trust3: "30 egun doako doikuntzekin",
