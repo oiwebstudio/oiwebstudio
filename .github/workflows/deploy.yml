@@ -40,6 +40,8 @@ jobs:
       url: ${{ steps.despliegue.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2     # para saber qué páginas cambian en este push (aviso a IndexNow)
 
       - name: Generar la versión en euskera
         # web/eu/ no se guarda en el repositorio: se reconstruye aquí desde las
@@ -89,3 +91,23 @@ jobs:
 
       - id: despliegue
         uses: actions/deploy-pages@v4
+
+      - name: Avisar a IndexNow de las páginas cambiadas
+        # 29/10/2026 (auditoría Claude SEO): antes se avisaba a mano. Los buscadores
+        # de IndexNow (Bing, Yandex…) reciben solo las páginas de este push que
+        # están en el sitemap. La clave es el nombre del .txt de 32 caracteres de
+        # web/ (ya es pública); aquí no se escribe. Si falla, no para el despliegue.
+        continue-on-error: true
+        run: |
+          cd web
+          clave=$(ls | grep -E '^[0-9a-f]{32}\.txt$' | head -1 | sed 's/\.txt$//')
+          [ -n "$clave" ] || { echo "Sin clave de IndexNow"; exit 0; }
+          urls=""
+          for p in $(git diff --name-only HEAD~1 HEAD -- . | sed 's|^web/||' | grep -E '\.html$'); do
+            u="https://oiwebstudio.com/${p%index.html}"
+            if grep -q "<loc>$u</loc>" sitemap.xml; then urls="$urls\"$u\","; fi
+          done
+          [ -n "$urls" ] || { echo "Ninguna página del sitemap ha cambiado"; exit 0; }
+          curl -s -o /dev/null -w "IndexNow: %{http_code}\n" -X POST https://api.indexnow.org/indexnow \
+            -H "Content-Type: application/json" \
+            -d "{\"host\":\"oiwebstudio.com\",\"key\":\"$clave\",\"keyLocation\":\"https://oiwebstudio.com/$clave.txt\",\"urlList\":[${urls%,}]}"
