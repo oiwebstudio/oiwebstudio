@@ -342,6 +342,43 @@ function ajustarCabecera(html, pagina) {
 }
 
 /**
+ * JSON-LD de las páginas principales (29/10/2026, auditoría Claude SEO): venía
+ * copiado del castellano, con la URL, el @id y inLanguage "es" de la otra página
+ * y una FAQ en castellano. La página propia pasa a ser la de /eu/ con su título
+ * y descripción, y la FAQ en castellano se quita (no coincide con lo que se ve).
+ */
+function ldEuskera(html, pagina) {
+  const meta = META[pagina];
+  const urlEu = `${BASE}/eu/${pagina}`;
+  const urlEs = `${BASE}/${pagina === "index.html" ? "" : pagina}`;
+  return html.replace(/(<script type="application\/ld\+json">)([\s\S]*?)(<\/script>)/g, (todo, a, json, c) => {
+    let j;
+    try { j = JSON.parse(json); } catch { return todo; }
+    const conGrafo = Array.isArray(j["@graph"]);
+    let nodos = conGrafo ? j["@graph"] : [j];
+    nodos = nodos.filter((n) => n["@type"] !== "FAQPage");
+    for (const n of nodos) {
+      const tipos = [].concat(n["@type"] || []);
+      if (tipos.some((t) => /Page$/.test(t)) && n.url === urlEs) {
+        n["@id"] = `${urlEu}#orria`;
+        n.url = urlEu;
+        n.inLanguage = "eu";
+        if (meta?.title) n.name = meta.title;
+        if (meta?.desc) n.description = meta.desc;
+      } else if (n.url === urlEs && !String(n["@id"] || "").startsWith(`${BASE}/#`)) {
+        n.url = urlEu;
+      }
+      if (n["@type"] === "BreadcrumbList") {
+        for (const it of n.itemListElement || []) if (it.item === urlEs) it.item = urlEu;
+      }
+    }
+    if (!nodos.length) return "";
+    const salida = conGrafo ? { ...j, "@graph": nodos } : nodos[0];
+    return `${a}\n${JSON.stringify(salida, null, 2)}\n${c}`;
+  });
+}
+
+/**
  * Da la vuelta al selector de idioma.
  *
  * La página de origen ya viene con ES marcado como activo y EU como enlace
@@ -400,6 +437,7 @@ for (const pagina of [...PAGINAS, ...ZONAS]) {
   html = html.replace(/[ \t]*<script[^>]*src="[^"]*i18n\.js[^"]*"[^>]*><\/script>\s*\n?/gi, "");
   html = absolutizarRutas(html, pagina);
   html = ajustarCabecera(html, pagina);
+  if (!esZona) html = ldEuskera(html, pagina);
   html = enlazarSelectorIdioma(html, pagina);
 
   // Sobre la página ya terminada: lo que se vaya a publicar es lo que se mira.
