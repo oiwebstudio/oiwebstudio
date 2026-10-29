@@ -56,7 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const y = window.scrollY;
       const down = y > lastY + 4;
       const up = y < lastY - 4;
-      // 29/10: la cabecera ya no es una isla que se contrae (criterio anti-IA); solo se aparta al bajar
+      if (down && y > 60) navWrap.classList.add('is-contracted');
+      else if (up || y < 60) navWrap.classList.remove('is-contracted');
 
       // Y además se aparta del todo al bajar: la píldora contraída queda
       // centrada sobre los títulos de sección (que también van centrados) y
