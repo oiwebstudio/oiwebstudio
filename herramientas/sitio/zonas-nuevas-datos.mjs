@@ -155,7 +155,7 @@ export const NUEVAS = [
 
   { slug: "urretxu", name: "Urretxu", alt: "Villarreal de Urrechua", comarca: "Urola Garaia", hero: "pelu", mosaico: ["pelu", "cafe", "flor"],
     lede: "Urretxu y Zumarraga forman un núcleo comercial compartido. Tu cliente da igual en cuál viva.",
-    contexto: "Urretxu y Zumarraga son dos municipios con una calle comercial que funciona como una sola. Plantear la web solo con el nombre de Urretxu deja fuera a media clientela. Lo razonable es presentarse como negocio del Alto Urola y que Google lo entienda así, en textos, ficha y enlaces.",
+    contexto: "Urretxu y Zumarraga son dos municipios con una calle comercial que funciona como una sola. Plantear la web solo con el nombre de Urretxu deja fuera a media clientela. Lo razonable es presentarse como negocio del Alto Urola y que Google lo entienda así, en textos, ficha y enlaces. En Google se busca tanto «diseño web Urretxu» como «diseño web Villarreal» (el nombre castellano, Villarreal de Urrechua), y la página tiene que salir con los dos nombres; por eso la web los usa en el título, en los textos y en la ficha, y nombra también Legazpi, Ormaiztegi y Ezkio para que te encuentren desde toda la comarca.",
     sectores: ["Comercio de proximidad", "Hostelería", "Salud y estética", "Servicios profesionales", "Oficios"],
     gancho: "Una sola web, preparada para que te encuentren desde Urretxu, Zumarraga, Legazpi y Ezkio.",
     ayuda: "urretxu",
