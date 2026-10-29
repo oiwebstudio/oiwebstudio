@@ -259,6 +259,13 @@ export const ZONAS_EU = {
       // 20/10, con Itzultzaile Neuronala («ere» añadido: «también en francés»). Oier ofrece webs en francés (20/10).
       [`Buena parte del visitante de verano llega de Francia. Si vives de él, tener la carta, los horarios y las reservas también en francés se nota. Lo hago con el mismo diseño que la versión en castellano y euskera.`,
        `Udako bisitariaren zati handi bat Frantziatik dator. Harengandik bizi bazara, karta, ordutegiak eta erreserbak frantsesez ere izatea nabaritu egiten da. Gaztelaniazko eta euskarazko bertsioen diseinu berarekin egiten dut.`],
+      // 29/10, con Itzultzaile Neuronala («Zarauz» corregido: el traductor lo cambió por «Zarautz»; «bajo petición» → «eskatuta»).
+      [`Se busca igual como Zarautz que como Zarauz, y la web tiene que salir con los dos nombres. El caso real más cercano está a 5 km: `,
+       `Zarautz eta Zarauz bezala bilatzen da, eta webguneak bi izenekin atera behar du. Benetako kasurik hurbilena 5 km-ra dago: `],
+      [`A.Berri, una casa rural de Getaria`,
+       `A.Berri, Getariako landetxe bat`],
+      [`, con reservas bajo petición y la web en castellano, euskera e inglés.`,
+       `, erreserbak eskatuta eta webgunea gaztelaniaz, euskaraz eta ingelesez.`],
       [`Para negocios de temporada, las reservas automáticas son lo que más se nota: en agosto responden solas.`,
        `Denboraldiko negozioetan, erreserba automatikoak dira gehien nabaritzen direnak: abuztuan beren kabuz erantzuten dute.`],
       [`Alojamiento y apartamentos`, `Ostatuak eta apartamentuak`],
