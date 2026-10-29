@@ -36,31 +36,100 @@
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"ProfessionalService",
-  "parentOrganization":{"@id":"https://oiwebstudio.com/#estudio","name":"OI Studio","url":"https://oiwebstudio.com/"},
-  "name":"OI Studio — Diseño web en Ataun",
-  "url":"https://oiwebstudio.com/zonas/ataun.html",
-  "image":"https://oiwebstudio.com/assets/stock/sec-cafe-3.jpg",
-  "description":"Diseño y desarrollo de páginas web para negocios de Ataun (Atáun) (Goierri). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa, a 26 km.",
-  "email":"contactoiwebstudio@gmail.com",
-  "telephone":"+34611497409",
-  "priceRange":"420€ - 540€",
-  "address":{"@type":"PostalAddress","addressLocality":"Tolosa","addressRegion":"Gipuzkoa","addressCountry":"ES"},
-  "areaServed":{"@type":"City","name":"Ataun","containedInPlace":{"@type":"AdministrativeArea","name":"Gipuzkoa"}},
-  "sameAs":["https://instagram.com/oi.webstudio"]
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Diseño web",
+  "name": "OI Studio — Diseño web en Ataun",
+  "url": "https://oiwebstudio.com/zonas/ataun.html",
+  "image": "https://oiwebstudio.com/assets/stock/sec-cafe-3.jpg",
+  "description": "Diseño y desarrollo de páginas web para negocios de Ataun (Atáun) (Goierri). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa, a 26 km.",
+  "provider": {
+    "@type": "ProfessionalService",
+    "@id": "https://oiwebstudio.com/#estudio",
+    "name": "OI Studio",
+    "url": "https://oiwebstudio.com/"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Ataun",
+    "containedInPlace": {
+      "@type": "AdministrativeArea",
+      "name": "Gipuzkoa"
+    }
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Web de una página",
+      "price": "420",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "420",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Web con secciones",
+      "price": "540",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "540",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    }
+  ]
 }
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"¿Te desplazas hasta Ataun?","acceptedAnswer":{"@type":"Answer","text":"Sí. Ataun está a unos 26 km de Tolosa. Quedamos en tu negocio para conocerlo y hacer las fotos si hace falta, y el resto lo llevamos por WhatsApp y videollamada para no hacerte perder tiempo."}},
-    {"@type":"Question","name":"¿Cuesta lo mismo que en Tolosa?","acceptedAnswer":{"@type":"Answer","text":"Exactamente lo mismo. Web de una página desde 420€ y web con secciones desde 540€, precio cerrado por escrito y 30 días de ajustes incluidos. Ir a Ataun no lleva ningún recargo."}},
-    {"@type":"Question","name":"¿Merece la pena el SEO en un pueblo de unos 1.700 habitantes?","acceptedAnswer":{"@type":"Answer","text":"Precisamente ahí es donde más rinde. Son poca competencia y muchos negocios sin web, así que una web bien hecha te sitúa por delante con poco esfuerzo. La web sale orientada a búsquedas de Ataun (Atáun) y de Goierri, y el complemento es tu ficha de Google Business, que repaso en esta guía."}},
-    {"@type":"Question","name":"¿Qué debe tener la web de un agroturismo o bar de montaña?","acceptedAnswer":{"@type":"Answer","text":"Fotos reales, horario y temporada, cómo llegar (con mapa), precios orientativos y una forma directa de reservar o preguntar, normalmente WhatsApp. Lo demás sobra."}},
-    {"@type":"Question","name":"¿Puedo verlo antes de decidir?","acceptedAnswer":{"@type":"Answer","text":"Claro. No enseño capturas: las muestras del portfolio están publicadas y se pueden abrir y recorrer. Con ellas y la propuesta en 48 h tienes información suficiente para decidir sin compromiso."}}
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Te desplazas hasta Ataun?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Ataun está a unos 26 km de Tolosa. Quedamos en tu negocio para conocerlo y hacer las fotos si hace falta, y el resto lo llevamos por WhatsApp y videollamada para no hacerte perder tiempo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuesta lo mismo que en Tolosa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Exactamente lo mismo. Web de una página desde 420€ y web con secciones desde 540€, precio cerrado por escrito y 30 días de ajustes incluidos. Ir a Ataun no lleva ningún recargo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Merece la pena el SEO en un pueblo de unos 1.700 habitantes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Precisamente ahí es donde más rinde. Son poca competencia y muchos negocios sin web, así que una web bien hecha te sitúa por delante con poco esfuerzo. La web sale orientada a búsquedas de Ataun (Atáun) y de Goierri, y el complemento es tu ficha de Google Business, que repaso en esta guía."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué debe tener la web de un agroturismo o bar de montaña?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Fotos reales, horario y temporada, cómo llegar (con mapa), precios orientativos y una forma directa de reservar o preguntar, normalmente WhatsApp. Lo demás sobra."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo verlo antes de decidir?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claro. No enseño capturas: las muestras del portfolio están publicadas y se pueden abrir y recorrer. Con ellas y la propuesta en 48 h tienes información suficiente para decidir sin compromiso."
+      }
+    }
   ]
 }
 </script>

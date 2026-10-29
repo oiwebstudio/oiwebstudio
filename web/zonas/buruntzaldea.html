@@ -34,26 +34,81 @@
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"ProfessionalService",
-  "parentOrganization":{"@id":"https://oiwebstudio.com/#estudio","name":"OI Studio","url":"https://oiwebstudio.com/"},
-  "name":"OI Studio — Diseño web en Buruntzaldea",
-  "url":"https://oiwebstudio.com/zonas/buruntzaldea.html",
-  "description":"Diseño y páginas web para negocios de Buruntzaldea (3 municipios). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa.",
-  "email":"contactoiwebstudio@gmail.com",
-  "telephone":"+34611497409",
-  "priceRange":"420€ - 540€",
-  "address":{"@type":"PostalAddress","addressLocality":"Tolosa","addressRegion":"Gipuzkoa","addressCountry":"ES"},
-  "areaServed":[{"@type":"City","name":"Lasarte-Oria"},{"@type":"City","name":"Andoain"},{"@type":"City","name":"Urnieta"}]
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Diseño web",
+  "name": "OI Studio — Diseño web en Buruntzaldea",
+  "url": "https://oiwebstudio.com/zonas/buruntzaldea.html",
+  "description": "Diseño y páginas web para negocios de Buruntzaldea (3 municipios). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa.",
+  "provider": {
+    "@type": "ProfessionalService",
+    "@id": "https://oiwebstudio.com/#estudio",
+    "name": "OI Studio",
+    "url": "https://oiwebstudio.com/"
+  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Lasarte-Oria"
+    },
+    {
+      "@type": "City",
+      "name": "Andoain"
+    },
+    {
+      "@type": "City",
+      "name": "Urnieta"
+    }
+  ],
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Web de una página",
+      "price": "420",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "420",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Web con secciones",
+      "price": "540",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "540",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    }
+  ]
 }
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"¿Qué municipios de Buruntzaldea cubres?","acceptedAnswer":{"@type":"Answer","text":"Andoain, Urnieta y Lasarte-Oria tienen página propia, y trabajo con negocios de los pueblos de alrededor. El criterio es el mismo en todos: una web proporcionada y una ficha de Google cuidada."}},
-    {"@type":"Question","name":"¿Cuánto cuesta una web en Buruntzaldea?","acceptedAnswer":{"@type":"Answer","text":"Web de una página desde 420€ y web con secciones desde 540€, precio cerrado por escrito y 30 días de ajustes incluidos, con propuesta en 48 horas. El precio es el mismo en todos los municipios."}}
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Qué municipios de Buruntzaldea cubres?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Andoain, Urnieta y Lasarte-Oria tienen página propia, y trabajo con negocios de los pueblos de alrededor. El criterio es el mismo en todos: una web proporcionada y una ficha de Google cuidada."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta una web en Buruntzaldea?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Web de una página desde 420€ y web con secciones desde 540€, precio cerrado por escrito y 30 días de ajustes incluidos, con propuesta en 48 horas. El precio es el mismo en todos los municipios."
+      }
+    }
   ]
 }
 </script>

@@ -35,27 +35,79 @@
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"ProfessionalService",
-  "parentOrganization":{"@id":"https://oiwebstudio.com/#estudio","name":"OI Studio","url":"https://oiwebstudio.com/"},
-  "name":"OI Studio — Diseño web en Navarra",
-  "url":"https://oiwebstudio.com/diseno-web-navarra.html",
-  "description":"Diseño y desarrollo de páginas web para negocios de Navarra: Pamplona, Ribera, Tierra Estella y Pirineo. A distancia, desde 420€ y con propuesta en 48h.",
-  "email":"contactoiwebstudio@gmail.com",
-  "telephone":"+34611497409",
-  "priceRange":"420€ - 880€",
-  "address":{"@type":"PostalAddress","addressLocality":"Tolosa","addressRegion":"Gipuzkoa","addressCountry":"ES"},
-  "areaServed":{"@type":"AdministrativeArea","name":"Navarra"}
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Diseño web",
+  "name": "OI Studio — Diseño web en Navarra",
+  "url": "https://oiwebstudio.com/diseno-web-navarra.html",
+  "description": "Diseño y desarrollo de páginas web para negocios de Navarra: Pamplona, Ribera, Tierra Estella y Pirineo. A distancia, desde 420€ y con propuesta en 48h.",
+  "provider": {
+    "@type": "ProfessionalService",
+    "@id": "https://oiwebstudio.com/#estudio",
+    "name": "OI Studio",
+    "url": "https://oiwebstudio.com/"
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Navarra"
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Web de una página",
+      "price": "420",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "420",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Web con secciones",
+      "price": "540",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "540",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    }
+  ]
 }
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"¿Haces webs para negocios de Navarra?","acceptedAnswer":{"@type":"Answer","text":"Sí, a distancia. El estudio está en Tolosa, a una hora de Pamplona, pero el proceso funciona igual por videollamada y WhatsApp, con un enlace privado para revisar la web."}},
-    {"@type":"Question","name":"¿Puedes hacer la web en euskera y castellano?","acceptedAnswer":{"@type":"Answer","text":"Sí: las dos lenguas con el mismo diseño, o solo una de ellas. Lo vemos en la propuesta."}},
-    {"@type":"Question","name":"¿Cuánto cuesta una web para un negocio de Navarra?","acceptedAnswer":{"@type":"Answer","text":"Web de una página desde 420€, web con secciones desde 540€ y tienda online desde 880€ (+ IVA), con precio cerrado por escrito y 30 días de ajustes incluidos. El precio es el mismo que en Gipuzkoa."}}
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Haces webs para negocios de Navarra?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, a distancia. El estudio está en Tolosa, a una hora de Pamplona, pero el proceso funciona igual por videollamada y WhatsApp, con un enlace privado para revisar la web."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedes hacer la web en euskera y castellano?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí: las dos lenguas con el mismo diseño, o solo una de ellas. Lo vemos en la propuesta."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta una web para un negocio de Navarra?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Web de una página desde 420€, web con secciones desde 540€ y tienda online desde 880€ (+ IVA), con precio cerrado por escrito y 30 días de ajustes incluidos. El precio es el mismo que en Gipuzkoa."
+      }
+    }
   ]
 }
 </script>

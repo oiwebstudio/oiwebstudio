@@ -36,31 +36,100 @@
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"ProfessionalService",
-  "parentOrganization":{"@id":"https://oiwebstudio.com/#estudio","name":"OI Studio","url":"https://oiwebstudio.com/"},
-  "name":"OI Studio — Diseño web en Elgoibar",
-  "url":"https://oiwebstudio.com/zonas/elgoibar.html",
-  "image":"https://oiwebstudio.com/assets/stock/sec-taller-3.jpg",
-  "description":"Diseño y desarrollo de páginas web para negocios de Elgoibar (Elgóibar) (Debabarrena). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa, a 38 km.",
-  "email":"contactoiwebstudio@gmail.com",
-  "telephone":"+34611497409",
-  "priceRange":"420€ - 540€",
-  "address":{"@type":"PostalAddress","addressLocality":"Tolosa","addressRegion":"Gipuzkoa","addressCountry":"ES"},
-  "areaServed":{"@type":"City","name":"Elgoibar","containedInPlace":{"@type":"AdministrativeArea","name":"Gipuzkoa"}},
-  "sameAs":["https://instagram.com/oi.webstudio"]
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Diseño web",
+  "name": "OI Studio — Diseño web en Elgoibar",
+  "url": "https://oiwebstudio.com/zonas/elgoibar.html",
+  "image": "https://oiwebstudio.com/assets/stock/sec-taller-3.jpg",
+  "description": "Diseño y desarrollo de páginas web para negocios de Elgoibar (Elgóibar) (Debabarrena). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa, a 38 km.",
+  "provider": {
+    "@type": "ProfessionalService",
+    "@id": "https://oiwebstudio.com/#estudio",
+    "name": "OI Studio",
+    "url": "https://oiwebstudio.com/"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Elgoibar",
+    "containedInPlace": {
+      "@type": "AdministrativeArea",
+      "name": "Gipuzkoa"
+    }
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Web de una página",
+      "price": "420",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "420",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Web con secciones",
+      "price": "540",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "540",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    }
+  ]
 }
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"¿Te desplazas hasta Elgoibar?","acceptedAnswer":{"@type":"Answer","text":"Sí, cuando compensa. Elgoibar está a unos 38 km de Tolosa, así que lo habitual es empezar por videollamada o WhatsApp y quedar en persona para conocer el negocio y hacer las fotos. El precio es el mismo."}},
-    {"@type":"Question","name":"¿Cuesta lo mismo que en Tolosa?","acceptedAnswer":{"@type":"Answer","text":"Exactamente lo mismo. Web de una página desde 420€ y web con secciones desde 540€, precio cerrado por escrito y 30 días de ajustes incluidos. Ir a Elgoibar no lleva ningún recargo."}},
-    {"@type":"Question","name":"¿Merece la pena el SEO en un municipio de unos 11.500 habitantes?","acceptedAnswer":{"@type":"Answer","text":"Sí. En un municipio de este tamaño hay competencia real por las búsquedas de cada sector, y las primeras posiciones del mapa se llevan casi todos los clics. La web se orienta a Elgoibar (Elgóibar) y a Debabarrena, y se trabaja junto con tu ficha de Google Business, que repaso en esta guía."}},
-    {"@type":"Question","name":"¿Qué debe tener la web de una empresa industrial?","acceptedAnswer":{"@type":"Answer","text":"Qué fabricas o mecanizas, con qué maquinaria y tolerancias, ejemplos de trabajos y una forma rápida de pedir oferta. Lo bonito importa menos que lo creíble."}},
-    {"@type":"Question","name":"¿Puedo verlo antes de decidir?","acceptedAnswer":{"@type":"Answer","text":"Claro. No enseño capturas: las muestras del portfolio están publicadas y se pueden abrir y recorrer. Con ellas y la propuesta en 48 h tienes información suficiente para decidir sin compromiso."}}
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Te desplazas hasta Elgoibar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, cuando compensa. Elgoibar está a unos 38 km de Tolosa, así que lo habitual es empezar por videollamada o WhatsApp y quedar en persona para conocer el negocio y hacer las fotos. El precio es el mismo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuesta lo mismo que en Tolosa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Exactamente lo mismo. Web de una página desde 420€ y web con secciones desde 540€, precio cerrado por escrito y 30 días de ajustes incluidos. Ir a Elgoibar no lleva ningún recargo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Merece la pena el SEO en un municipio de unos 11.500 habitantes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. En un municipio de este tamaño hay competencia real por las búsquedas de cada sector, y las primeras posiciones del mapa se llevan casi todos los clics. La web se orienta a Elgoibar (Elgóibar) y a Debabarrena, y se trabaja junto con tu ficha de Google Business, que repaso en esta guía."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué debe tener la web de una empresa industrial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Qué fabricas o mecanizas, con qué maquinaria y tolerancias, ejemplos de trabajos y una forma rápida de pedir oferta. Lo bonito importa menos que lo creíble."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo verlo antes de decidir?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claro. No enseño capturas: las muestras del portfolio están publicadas y se pueden abrir y recorrer. Con ellas y la propuesta en 48 h tienes información suficiente para decidir sin compromiso."
+      }
+    }
   ]
 }
 </script>

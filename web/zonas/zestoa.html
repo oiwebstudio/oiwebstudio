@@ -36,31 +36,100 @@
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"ProfessionalService",
-  "parentOrganization":{"@id":"https://oiwebstudio.com/#estudio","name":"OI Studio","url":"https://oiwebstudio.com/"},
-  "name":"OI Studio — Diseño web en Zestoa",
-  "url":"https://oiwebstudio.com/zonas/zestoa.html",
-  "image":"https://oiwebstudio.com/assets/stock/sec-cafe-2.jpg",
-  "description":"Diseño y desarrollo de páginas web para negocios de Zestoa (Cestona) (Urola Kosta). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa, a 25 km.",
-  "email":"contactoiwebstudio@gmail.com",
-  "telephone":"+34611497409",
-  "priceRange":"420€ - 540€",
-  "address":{"@type":"PostalAddress","addressLocality":"Tolosa","addressRegion":"Gipuzkoa","addressCountry":"ES"},
-  "areaServed":{"@type":"City","name":"Zestoa","containedInPlace":{"@type":"AdministrativeArea","name":"Gipuzkoa"}},
-  "sameAs":["https://instagram.com/oi.webstudio"]
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Diseño web",
+  "name": "OI Studio — Diseño web en Zestoa",
+  "url": "https://oiwebstudio.com/zonas/zestoa.html",
+  "image": "https://oiwebstudio.com/assets/stock/sec-cafe-2.jpg",
+  "description": "Diseño y desarrollo de páginas web para negocios de Zestoa (Cestona) (Urola Kosta). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa, a 25 km.",
+  "provider": {
+    "@type": "ProfessionalService",
+    "@id": "https://oiwebstudio.com/#estudio",
+    "name": "OI Studio",
+    "url": "https://oiwebstudio.com/"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Zestoa",
+    "containedInPlace": {
+      "@type": "AdministrativeArea",
+      "name": "Gipuzkoa"
+    }
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Web de una página",
+      "price": "420",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "420",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Web con secciones",
+      "price": "540",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "540",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    }
+  ]
 }
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"¿Te desplazas hasta Zestoa?","acceptedAnswer":{"@type":"Answer","text":"Sí. Zestoa está a unos 25 km de Tolosa. Quedamos en tu negocio para conocerlo y hacer las fotos si hace falta, y el resto lo llevamos por WhatsApp y videollamada para no hacerte perder tiempo."}},
-    {"@type":"Question","name":"¿Cuesta lo mismo que en Tolosa?","acceptedAnswer":{"@type":"Answer","text":"Exactamente lo mismo. Web de una página desde 420€ y web con secciones desde 540€, precio cerrado por escrito y 30 días de ajustes incluidos. Ir a Zestoa no lleva ningún recargo."}},
-    {"@type":"Question","name":"¿Merece la pena el SEO en un pueblo de unos 3.900 habitantes?","acceptedAnswer":{"@type":"Answer","text":"Sí, y bastante: hay competencia moderada y todavía mucha gente que depende solo de las redes. La web se orienta a búsquedas de Zestoa (Cestona) y de Urola Kosta, y se complementa con tu ficha de Google Business, que repaso en esta guía."}},
-    {"@type":"Question","name":"¿Qué ventaja tiene salir en Google Maps para un negocio turístico?","acceptedAnswer":{"@type":"Answer","text":"Mucha: el visitante decide sobre la marcha, con el móvil, entre las opciones que le aparecen cerca. Estar con fotos, horario y reseñas decide si te elige. Es parte del trabajo de la ficha de Google, además de la web."}},
-    {"@type":"Question","name":"¿Puedo verlo antes de decidir?","acceptedAnswer":{"@type":"Answer","text":"Claro. No enseño capturas: las muestras del portfolio están publicadas y se pueden abrir y recorrer. Con ellas y la propuesta en 48 h tienes información suficiente para decidir sin compromiso."}}
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Te desplazas hasta Zestoa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Zestoa está a unos 25 km de Tolosa. Quedamos en tu negocio para conocerlo y hacer las fotos si hace falta, y el resto lo llevamos por WhatsApp y videollamada para no hacerte perder tiempo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuesta lo mismo que en Tolosa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Exactamente lo mismo. Web de una página desde 420€ y web con secciones desde 540€, precio cerrado por escrito y 30 días de ajustes incluidos. Ir a Zestoa no lleva ningún recargo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Merece la pena el SEO en un pueblo de unos 3.900 habitantes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, y bastante: hay competencia moderada y todavía mucha gente que depende solo de las redes. La web se orienta a búsquedas de Zestoa (Cestona) y de Urola Kosta, y se complementa con tu ficha de Google Business, que repaso en esta guía."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué ventaja tiene salir en Google Maps para un negocio turístico?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mucha: el visitante decide sobre la marcha, con el móvil, entre las opciones que le aparecen cerca. Estar con fotos, horario y reseñas decide si te elige. Es parte del trabajo de la ficha de Google, además de la web."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo verlo antes de decidir?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claro. No enseño capturas: las muestras del portfolio están publicadas y se pueden abrir y recorrer. Con ellas y la propuesta en 48 h tienes información suficiente para decidir sin compromiso."
+      }
+    }
   ]
 }
 </script>

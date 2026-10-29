@@ -35,30 +35,103 @@
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"ProfessionalService",
-  "parentOrganization":{"@id":"https://oiwebstudio.com/#estudio","name":"OI Studio","url":"https://oiwebstudio.com/"},
-  "name":"OI Studio — Diseño web en toda España",
-  "url":"https://oiwebstudio.com/diseno-web-negocios-espana.html",
-  "description":"Diseño y desarrollo de páginas web para negocios de toda España, a distancia y con precio cerrado desde 420 €. Propuesta en 48 h. Estudio en Tolosa.",
-  "email":"contactoiwebstudio@gmail.com",
-  "telephone":"+34611497409",
-  "priceRange":"420€ - 880€",
-  "address":{"@type":"PostalAddress","addressLocality":"Tolosa","addressRegion":"Gipuzkoa","addressCountry":"ES"},
-  "areaServed":{"@type":"Country","name":"España"}
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Diseño web",
+  "name": "OI Studio — Diseño web en toda España",
+  "url": "https://oiwebstudio.com/diseno-web-negocios-espana.html",
+  "description": "Diseño y desarrollo de páginas web para negocios de toda España, a distancia y con precio cerrado desde 420 €. Propuesta en 48 h. Estudio en Tolosa.",
+  "provider": {
+    "@type": "ProfessionalService",
+    "@id": "https://oiwebstudio.com/#estudio",
+    "name": "OI Studio",
+    "url": "https://oiwebstudio.com/"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "España"
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Web de una página",
+      "price": "420",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "420",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Web con secciones",
+      "price": "540",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "540",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    }
+  ]
 }
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"¿Trabajas con negocios de fuera de Gipuzkoa?","acceptedAnswer":{"@type":"Answer","text":"Sí. El estudio está en Tolosa, pero una web se puede hacer a distancia sin perder nada: videollamada, WhatsApp y un enlace privado para revisar. El precio es el mismo que para un negocio de Tolosa."}},
-    {"@type":"Question","name":"¿Necesito reunirme en persona?","acceptedAnswer":{"@type":"Answer","text":"No. Si estás en Gipuzkoa y prefieres vernos, quedamos; si no, con una videollamada y las fotos y textos que ya tengas es suficiente. Si no tienes fotos buenas, te oriento sobre cómo hacerlas con el móvil o puedes contratar a un fotógrafo de tu zona."}},
-    {"@type":"Question","name":"¿Cómo se paga?","acceptedAnswer":{"@type":"Answer","text":"Pagas una sola vez, al final: cuando la web está terminada y publicada. Si te viene mejor otra forma de pago, lo hablamos. Los precios son sin IVA."}},
-    {"@type":"Question","name":"¿Qué pasa con el dominio y el hosting?","acceptedAnswer":{"@type":"Answer","text":"Van dentro de la cuota de 28 €/mes, que lleva cada web: registro el dominio a tu nombre y dejo la web publicada con https. La web es tuya, no queda atada a mí."}},
-    {"@type":"Question","name":"¿Puedo ver ejemplos antes de decidir?","acceptedAnswer":{"@type":"Answer","text":"Sí. Las muestras del portfolio están publicadas y se pueden abrir y recorrer, y además te preparo una muestra con tu negocio, gratis y sin compromiso. Solo si te convence, seguimos."}},
-    {"@type":"Question","name":"¿Hay ayudas para pagar la web fuera de Gipuzkoa?","acceptedAnswer":{"@type":"Answer","text":"Las ayudas que tengo recopiladas son de ayuntamientos y entidades de Gipuzkoa. Fuera, cada comunidad y cada ayuntamiento tiene lo suyo: conviene mirar en el tuyo o en tu cámara de comercio antes de empezar la web."}}
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Trabajas con negocios de fuera de Gipuzkoa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. El estudio está en Tolosa, pero una web se puede hacer a distancia sin perder nada: videollamada, WhatsApp y un enlace privado para revisar. El precio es el mismo que para un negocio de Tolosa."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Necesito reunirme en persona?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Si estás en Gipuzkoa y prefieres vernos, quedamos; si no, con una videollamada y las fotos y textos que ya tengas es suficiente. Si no tienes fotos buenas, te oriento sobre cómo hacerlas con el móvil o puedes contratar a un fotógrafo de tu zona."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo se paga?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pagas una sola vez, al final: cuando la web está terminada y publicada. Si te viene mejor otra forma de pago, lo hablamos. Los precios son sin IVA."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa con el dominio y el hosting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Van dentro de la cuota de 28 €/mes, que lleva cada web: registro el dominio a tu nombre y dejo la web publicada con https. La web es tuya, no queda atada a mí."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo ver ejemplos antes de decidir?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Las muestras del portfolio están publicadas y se pueden abrir y recorrer, y además te preparo una muestra con tu negocio, gratis y sin compromiso. Solo si te convence, seguimos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Hay ayudas para pagar la web fuera de Gipuzkoa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Las ayudas que tengo recopiladas son de ayuntamientos y entidades de Gipuzkoa. Fuera, cada comunidad y cada ayuntamiento tiene lo suyo: conviene mirar en el tuyo o en tu cámara de comercio antes de empezar la web."
+      }
+    }
   ]
 }
 </script>

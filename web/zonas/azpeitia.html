@@ -35,30 +35,92 @@
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"ProfessionalService",
-  "parentOrganization":{"@id":"https://oiwebstudio.com/#estudio","name":"OI Studio","url":"https://oiwebstudio.com/"},
-  "name":"OI Studio — Diseño web en Azpeitia",
-  "url":"https://oiwebstudio.com/zonas/azpeitia.html",
-  "image":"https://oiwebstudio.com/assets/stock/sec-cafe-1.jpg",
-  "description":"Diseño y desarrollo de páginas web para negocios de Azpeitia (Urola Erdia). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa, a 30 km.",
-  "email":"contactoiwebstudio@gmail.com",
-  "telephone":"+34611497409",
-  "priceRange":"420€ - 540€",
-  "address":{"@type":"PostalAddress","addressLocality":"Tolosa","addressRegion":"Gipuzkoa","addressCountry":"ES"},
-  "areaServed":{"@type":"City","name":"Azpeitia","containedInPlace":{"@type":"AdministrativeArea","name":"Gipuzkoa"}},
-  "sameAs":["https://instagram.com/oi.webstudio"]
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Diseño web",
+  "name": "OI Studio — Diseño web en Azpeitia",
+  "url": "https://oiwebstudio.com/zonas/azpeitia.html",
+  "image": "https://oiwebstudio.com/assets/stock/sec-cafe-1.jpg",
+  "description": "Diseño y desarrollo de páginas web para negocios de Azpeitia (Urola Erdia). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa, a 30 km.",
+  "provider": {
+    "@type": "ProfessionalService",
+    "@id": "https://oiwebstudio.com/#estudio",
+    "name": "OI Studio",
+    "url": "https://oiwebstudio.com/"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Azpeitia",
+    "containedInPlace": {
+      "@type": "AdministrativeArea",
+      "name": "Gipuzkoa"
+    }
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Web de una página",
+      "price": "420",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "420",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Web con secciones",
+      "price": "540",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "540",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    }
+  ]
 }
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"¿Trabajas con negocios de Azpeitia?","acceptedAnswer":{"@type":"Answer","text":"Sí. Estoy a 30 km, así que lo normal es una primera visita presencial para ver el negocio y seguir por videollamada y WhatsApp. En Urola trabajo así habitualmente."}},
-    {"@type":"Question","name":"¿Cuánto cuesta una web para un negocio de Azpeitia?","acceptedAnswer":{"@type":"Answer","text":"Lo mismo que para uno de Tolosa: 420€ una web de una página y 540€ una web con secciones, pago único y 30 días de ajustes gratis. Ni los 30 km ni la comarca cambian la cifra, y la recibes cerrada por escrito."}},
-    {"@type":"Question","name":"¿Me encontrarán en Google buscando en Azpeitia?","acceptedAnswer":{"@type":"Answer","text":"Todas las webs salen con el SEO local orientado a Azpeitia y a Urola: estructura, textos y velocidad. En un municipio de 15.000 habitantes la competencia es abarcable, pero la posición depende también de tu ficha de Google Business, que explico en esta guía."}},
-    {"@type":"Question","name":"¿Hay algún compromiso por pedir presupuesto?","acceptedAnswer":{"@type":"Answer","text":"Ninguno. Me cuentas el negocio, te devuelvo una propuesta con precio cerrado en 48h y decides. Mientras tanto puedes juzgar el trabajo por ti mismo: las muestras del portfolio son navegables."}}
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Trabajas con negocios de Azpeitia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Estoy a 30 km, así que lo normal es una primera visita presencial para ver el negocio y seguir por videollamada y WhatsApp. En Urola trabajo así habitualmente."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta una web para un negocio de Azpeitia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Lo mismo que para uno de Tolosa: 420€ una web de una página y 540€ una web con secciones, pago único y 30 días de ajustes gratis. Ni los 30 km ni la comarca cambian la cifra, y la recibes cerrada por escrito."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Me encontrarán en Google buscando en Azpeitia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Todas las webs salen con el SEO local orientado a Azpeitia y a Urola: estructura, textos y velocidad. En un municipio de 15.000 habitantes la competencia es abarcable, pero la posición depende también de tu ficha de Google Business, que explico en esta guía."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Hay algún compromiso por pedir presupuesto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ninguno. Me cuentas el negocio, te devuelvo una propuesta con precio cerrado en 48h y decides. Mientras tanto puedes juzgar el trabajo por ti mismo: las muestras del portfolio son navegables."
+      }
+    }
   ]
 }
 </script>

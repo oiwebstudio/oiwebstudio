@@ -182,18 +182,15 @@ ${CABECERA_COMUN}<title>${esc(titulo)}</title>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
-  "@type":"ProfessionalService",
-  "parentOrganization":{"@id":"${BASE}/#estudio","name":"OI Studio","url":"${BASE}/"},
+  "@type":"Service",
+  "serviceType":"Diseño web",
   "name":"OI Studio — Diseño web en ${jsn(nombre)}",
   "url":"${url}",
   "image":"${img}",
   "description":"${jsn(desc)}",
-  "email":"contactoiwebstudio@gmail.com",
-  "telephone":"+34611497409",
-  "priceRange":"420€ - 540€",
-  "address":{"@type":"PostalAddress","addressLocality":"Tolosa","addressRegion":"Gipuzkoa","addressCountry":"ES"},
+  "provider":{"@type":"ProfessionalService","@id":"${BASE}/#estudio","name":"OI Studio","url":"${BASE}/"},
   "areaServed":{"@type":"City","name":"${jsn(nombre)}","containedInPlace":{"@type":"AdministrativeArea","name":"Gipuzkoa"}},
-  "sameAs":["https://instagram.com/oi.webstudio"]
+  "offers":[{"@type":"Offer","name":"Web de una página","price":"420","priceCurrency":"EUR","priceSpecification":{"@type":"PriceSpecification","price":"420","priceCurrency":"EUR","valueAddedTaxIncluded":false}},{"@type":"Offer","name":"Web con secciones","price":"540","priceCurrency":"EUR","priceSpecification":{"@type":"PriceSpecification","price":"540","priceCurrency":"EUR","valueAddedTaxIncluded":false}}]
 }
 </script>
 <script type="application/ld+json">
@@ -403,16 +400,14 @@ ${CABECERA_COMUN}<title>${esc(titulo)}</title>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
-  "@type":"ProfessionalService",
-  "parentOrganization":{"@id":"${BASE}/#estudio","name":"OI Studio","url":"${BASE}/"},
+  "@type":"Service",
+  "serviceType":"Diseño web",
   "name":"OI Studio — Diseño web en ${jsn(nombreComarca)}",
   "url":"${url}",
   "description":"${jsn(desc)}",
-  "email":"contactoiwebstudio@gmail.com",
-  "telephone":"+34611497409",
-  "priceRange":"420€ - 540€",
-  "address":{"@type":"PostalAddress","addressLocality":"Tolosa","addressRegion":"Gipuzkoa","addressCountry":"ES"},
-  "areaServed":[${miembros.map((m) => `{"@type":"City","name":"${jsn(nombreVisible(m))}"}`).join(",")}]
+  "provider":{"@type":"ProfessionalService","@id":"${BASE}/#estudio","name":"OI Studio","url":"${BASE}/"},
+  "areaServed":[${miembros.map((m) => `{"@type":"City","name":"${jsn(nombreVisible(m))}"}`).join(",")}],
+  "offers":[{"@type":"Offer","name":"Web de una página","price":"420","priceCurrency":"EUR","priceSpecification":{"@type":"PriceSpecification","price":"420","priceCurrency":"EUR","valueAddedTaxIncluded":false}},{"@type":"Offer","name":"Web con secciones","price":"540","priceCurrency":"EUR","priceSpecification":{"@type":"PriceSpecification","price":"540","priceCurrency":"EUR","valueAddedTaxIncluded":false}}]
 }
 </script>
 <script type="application/ld+json">
@@ -596,16 +591,14 @@ ${CABECERA_COMUN}<title>${esc(d.titulo)}</title>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
-  "@type":"ProfessionalService",
-  "parentOrganization":{"@id":"${BASE}/#estudio","name":"OI Studio","url":"${BASE}/"},
+  "@type":"Service",
+  "serviceType":"Diseño web",
   "name":"OI Studio — Diseño web en ${jsn(d.nombre)}",
   "url":"${url}",
   "description":"${jsn(d.desc)}",
-  "email":"contactoiwebstudio@gmail.com",
-  "telephone":"+34611497409",
-  "priceRange":"420€ - 880€",
-  "address":{"@type":"PostalAddress","addressLocality":"Tolosa","addressRegion":"Gipuzkoa","addressCountry":"ES"},
-  "areaServed":${JSON.stringify(ambito)}
+  "provider":{"@type":"ProfessionalService","@id":"${BASE}/#estudio","name":"OI Studio","url":"${BASE}/"},
+  "areaServed":${JSON.stringify(ambito)},
+  "offers":[{"@type":"Offer","name":"Web de una página","price":"420","priceCurrency":"EUR","priceSpecification":{"@type":"PriceSpecification","price":"420","priceCurrency":"EUR","valueAddedTaxIncluded":false}},{"@type":"Offer","name":"Web con secciones","price":"540","priceCurrency":"EUR","priceSpecification":{"@type":"PriceSpecification","price":"540","priceCurrency":"EUR","valueAddedTaxIncluded":false}}]
 }
 </script>
 <script type="application/ld+json">

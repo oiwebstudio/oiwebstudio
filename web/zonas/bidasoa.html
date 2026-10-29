@@ -34,26 +34,77 @@
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"ProfessionalService",
-  "parentOrganization":{"@id":"https://oiwebstudio.com/#estudio","name":"OI Studio","url":"https://oiwebstudio.com/"},
-  "name":"OI Studio — Diseño web en Bidasoa",
-  "url":"https://oiwebstudio.com/zonas/bidasoa.html",
-  "description":"Diseño y páginas web para negocios de Bidasoa (2 municipios). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa.",
-  "email":"contactoiwebstudio@gmail.com",
-  "telephone":"+34611497409",
-  "priceRange":"420€ - 540€",
-  "address":{"@type":"PostalAddress","addressLocality":"Tolosa","addressRegion":"Gipuzkoa","addressCountry":"ES"},
-  "areaServed":[{"@type":"City","name":"Irun"},{"@type":"City","name":"Hondarribia"}]
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Diseño web",
+  "name": "OI Studio — Diseño web en Bidasoa",
+  "url": "https://oiwebstudio.com/zonas/bidasoa.html",
+  "description": "Diseño y páginas web para negocios de Bidasoa (2 municipios). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa.",
+  "provider": {
+    "@type": "ProfessionalService",
+    "@id": "https://oiwebstudio.com/#estudio",
+    "name": "OI Studio",
+    "url": "https://oiwebstudio.com/"
+  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Irun"
+    },
+    {
+      "@type": "City",
+      "name": "Hondarribia"
+    }
+  ],
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Web de una página",
+      "price": "420",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "420",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Web con secciones",
+      "price": "540",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "540",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    }
+  ]
 }
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"¿Haces webs en francés?","acceptedAnswer":{"@type":"Answer","text":"Sí: la misma web en castellano, euskera y francés si tu clientela lo pide, con el mismo diseño. Lo vemos en la propuesta."}},
-    {"@type":"Question","name":"¿Cuánto cuesta una web en Bidasoa?","acceptedAnswer":{"@type":"Answer","text":"Web de una página desde 420€ y web con secciones desde 540€, precio cerrado por escrito y 30 días de ajustes incluidos, con propuesta en 48 horas. El precio es el mismo en todos los municipios."}}
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Haces webs en francés?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí: la misma web en castellano, euskera y francés si tu clientela lo pide, con el mismo diseño. Lo vemos en la propuesta."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta una web en Bidasoa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Web de una página desde 420€ y web con secciones desde 540€, precio cerrado por escrito y 30 días de ajustes incluidos, con propuesta en 48 horas. El precio es el mismo en todos los municipios."
+      }
+    }
   ]
 }
 </script>

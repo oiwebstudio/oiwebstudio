@@ -35,28 +35,87 @@
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"ProfessionalService",
-  "parentOrganization":{"@id":"https://oiwebstudio.com/#estudio","name":"OI Studio","url":"https://oiwebstudio.com/"},
-  "name":"OI Studio — Diseño web en Bizkaia",
-  "url":"https://oiwebstudio.com/diseno-web-bizkaia.html",
-  "description":"Diseño y páginas web para negocios de Bizkaia (Vizcaya): Bilbao, Barakaldo, Getxo, Durango y Urdaibai. A distancia, desde 420 € y propuesta en 48 h.",
-  "email":"contactoiwebstudio@gmail.com",
-  "telephone":"+34611497409",
-  "priceRange":"420€ - 880€",
-  "address":{"@type":"PostalAddress","addressLocality":"Tolosa","addressRegion":"Gipuzkoa","addressCountry":"ES"},
-  "areaServed":{"@type":"AdministrativeArea","name":"Bizkaia"}
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Diseño web",
+  "name": "OI Studio — Diseño web en Bizkaia",
+  "url": "https://oiwebstudio.com/diseno-web-bizkaia.html",
+  "description": "Diseño y páginas web para negocios de Bizkaia (Vizcaya): Bilbao, Barakaldo, Getxo, Durango y Urdaibai. A distancia, desde 420 € y propuesta en 48 h.",
+  "provider": {
+    "@type": "ProfessionalService",
+    "@id": "https://oiwebstudio.com/#estudio",
+    "name": "OI Studio",
+    "url": "https://oiwebstudio.com/"
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Bizkaia"
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Web de una página",
+      "price": "420",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "420",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Web con secciones",
+      "price": "540",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "540",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    }
+  ]
 }
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"¿Trabajas en Bizkaia si el estudio está en Tolosa?","acceptedAnswer":{"@type":"Answer","text":"Sí. Una web se hace a distancia sin perder nada: videollamada, WhatsApp y un enlace privado para revisar. Si prefieres vernos en persona, lo hablamos y quedamos a medio camino."}},
-    {"@type":"Question","name":"¿Compites con las agencias de Bilbao?","acceptedAnswer":{"@type":"Answer","text":"No por las cuentas grandes. Trabajo con el comercio, la hostelería y los servicios que necesitan una web clara y bien posicionada en su zona, con precio cerrado y propuesta en 48 horas."}},
-    {"@type":"Question","name":"¿Cuánto cuesta una web para un negocio de Bizkaia?","acceptedAnswer":{"@type":"Answer","text":"Web de una página desde 420€, web con secciones desde 540€ y tienda online desde 880€ (+ IVA), con precio cerrado por escrito y 30 días de ajustes incluidos. El precio es el mismo que en Gipuzkoa."}},
-    {"@type":"Question","name":"¿Puedes hacerla en euskera?","acceptedAnswer":{"@type":"Answer","text":"Sí: en castellano, en euskera o en las dos lenguas con el mismo diseño. Lo vemos en la propuesta."}}
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Trabajas en Bizkaia si el estudio está en Tolosa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Una web se hace a distancia sin perder nada: videollamada, WhatsApp y un enlace privado para revisar. Si prefieres vernos en persona, lo hablamos y quedamos a medio camino."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Compites con las agencias de Bilbao?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No por las cuentas grandes. Trabajo con el comercio, la hostelería y los servicios que necesitan una web clara y bien posicionada en su zona, con precio cerrado y propuesta en 48 horas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta una web para un negocio de Bizkaia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Web de una página desde 420€, web con secciones desde 540€ y tienda online desde 880€ (+ IVA), con precio cerrado por escrito y 30 días de ajustes incluidos. El precio es el mismo que en Gipuzkoa."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedes hacerla en euskera?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí: en castellano, en euskera o en las dos lenguas con el mismo diseño. Lo vemos en la propuesta."
+      }
+    }
   ]
 }
 </script>

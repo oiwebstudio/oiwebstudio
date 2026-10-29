@@ -34,26 +34,85 @@
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"ProfessionalService",
-  "parentOrganization":{"@id":"https://oiwebstudio.com/#estudio","name":"OI Studio","url":"https://oiwebstudio.com/"},
-  "name":"OI Studio — Diseño web en Urola Erdia",
-  "url":"https://oiwebstudio.com/zonas/urola-erdia.html",
-  "description":"Diseño y páginas web para negocios de Urola Erdia (4 municipios). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa.",
-  "email":"contactoiwebstudio@gmail.com",
-  "telephone":"+34611497409",
-  "priceRange":"420€ - 540€",
-  "address":{"@type":"PostalAddress","addressLocality":"Tolosa","addressRegion":"Gipuzkoa","addressCountry":"ES"},
-  "areaServed":[{"@type":"City","name":"Azpeitia"},{"@type":"City","name":"Azkoitia"},{"@type":"City","name":"Errezil"},{"@type":"City","name":"Beizama"}]
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Diseño web",
+  "name": "OI Studio — Diseño web en Urola Erdia",
+  "url": "https://oiwebstudio.com/zonas/urola-erdia.html",
+  "description": "Diseño y páginas web para negocios de Urola Erdia (4 municipios). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa.",
+  "provider": {
+    "@type": "ProfessionalService",
+    "@id": "https://oiwebstudio.com/#estudio",
+    "name": "OI Studio",
+    "url": "https://oiwebstudio.com/"
+  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Azpeitia"
+    },
+    {
+      "@type": "City",
+      "name": "Azkoitia"
+    },
+    {
+      "@type": "City",
+      "name": "Errezil"
+    },
+    {
+      "@type": "City",
+      "name": "Beizama"
+    }
+  ],
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Web de una página",
+      "price": "420",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "420",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Web con secciones",
+      "price": "540",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "540",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    }
+  ]
 }
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"¿Cómo me diferencio de otros negocios de Azpeitia o Azkoitia?","acceptedAnswer":{"@type":"Answer","text":"Con una web clara y rápida, tus datos correctos en Google Maps y reseñas recientes. La mayoría de la competencia local no cuida ninguna de las tres."}},
-    {"@type":"Question","name":"¿Cuánto cuesta una web en Urola Erdia?","acceptedAnswer":{"@type":"Answer","text":"Web de una página desde 420€ y web con secciones desde 540€, precio cerrado por escrito y 30 días de ajustes incluidos, con propuesta en 48 horas. El precio es el mismo en todos los municipios."}}
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cómo me diferencio de otros negocios de Azpeitia o Azkoitia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Con una web clara y rápida, tus datos correctos en Google Maps y reseñas recientes. La mayoría de la competencia local no cuida ninguna de las tres."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta una web en Urola Erdia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Web de una página desde 420€ y web con secciones desde 540€, precio cerrado por escrito y 30 días de ajustes incluidos, con propuesta en 48 horas. El precio es el mismo en todos los municipios."
+      }
+    }
   ]
 }
 </script>

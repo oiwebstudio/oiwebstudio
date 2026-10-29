@@ -35,30 +35,92 @@
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"ProfessionalService",
-  "parentOrganization":{"@id":"https://oiwebstudio.com/#estudio","name":"OI Studio","url":"https://oiwebstudio.com/"},
-  "name":"OI Studio — Diseño web en Villabona",
-  "url":"https://oiwebstudio.com/zonas/villabona.html",
-  "image":"https://oiwebstudio.com/assets/stock/sec-taller-2.jpg",
-  "description":"Diseño y desarrollo de páginas web para negocios de Villabona (Tolosaldea). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa, a 9 km.",
-  "email":"contactoiwebstudio@gmail.com",
-  "telephone":"+34611497409",
-  "priceRange":"420€ - 540€",
-  "address":{"@type":"PostalAddress","addressLocality":"Tolosa","addressRegion":"Gipuzkoa","addressCountry":"ES"},
-  "areaServed":{"@type":"City","name":"Villabona","containedInPlace":{"@type":"AdministrativeArea","name":"Gipuzkoa"}},
-  "sameAs":["https://instagram.com/oi.webstudio"]
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Diseño web",
+  "name": "OI Studio — Diseño web en Villabona",
+  "url": "https://oiwebstudio.com/zonas/villabona.html",
+  "image": "https://oiwebstudio.com/assets/stock/sec-taller-2.jpg",
+  "description": "Diseño y desarrollo de páginas web para negocios de Villabona (Tolosaldea). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa, a 9 km.",
+  "provider": {
+    "@type": "ProfessionalService",
+    "@id": "https://oiwebstudio.com/#estudio",
+    "name": "OI Studio",
+    "url": "https://oiwebstudio.com/"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Villabona",
+    "containedInPlace": {
+      "@type": "AdministrativeArea",
+      "name": "Gipuzkoa"
+    }
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Web de una página",
+      "price": "420",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "420",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Web con secciones",
+      "price": "540",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "540",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    }
+  ]
 }
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"¿Atiendes a negocios de Villabona?","acceptedAnswer":{"@type":"Answer","text":"Sin problema. Son 9 km desde Tolosa, un trayecto corto, así que la primera reunión puede ser en tu local si lo prefieres. En Tolosaldea me desplazo a menudo."}},
-    {"@type":"Question","name":"¿El precio cambia por estar fuera de Tolosa?","acceptedAnswer":{"@type":"Answer","text":"No. Precio cerrado e idéntico en toda Gipuzkoa: 420€ la web de una página, 540€ la web con secciones, con 30 días de ajustes gratis. Los 9 km los pongo yo."}},
-    {"@type":"Question","name":"¿Qué hace falta para posicionar en Villabona?","acceptedAnswer":{"@type":"Answer","text":"Dos cosas que van juntas. Una es la web: la entrego con los textos y la estructura apuntando a Villabona, y cargando rápido, que Google lo mide. La otra es tu ficha de Google Business, y con 6.000 habitantes de mercado esa ficha decide más de lo que parece — la explico en detalle en esta guía."}},
-    {"@type":"Question","name":"¿Puedo verlo antes de decidir?","acceptedAnswer":{"@type":"Answer","text":"Claro. No enseño capturas: las muestras del portfolio están publicadas y se pueden abrir y recorrer. Con ellas y la propuesta en 48 h tienes información suficiente para decidir sin compromiso."}}
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Atiendes a negocios de Villabona?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sin problema. Son 9 km desde Tolosa, un trayecto corto, así que la primera reunión puede ser en tu local si lo prefieres. En Tolosaldea me desplazo a menudo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿El precio cambia por estar fuera de Tolosa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Precio cerrado e idéntico en toda Gipuzkoa: 420€ la web de una página, 540€ la web con secciones, con 30 días de ajustes gratis. Los 9 km los pongo yo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué hace falta para posicionar en Villabona?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dos cosas que van juntas. Una es la web: la entrego con los textos y la estructura apuntando a Villabona, y cargando rápido, que Google lo mide. La otra es tu ficha de Google Business, y con 6.000 habitantes de mercado esa ficha decide más de lo que parece — la explico en detalle en esta guía."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo verlo antes de decidir?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claro. No enseño capturas: las muestras del portfolio están publicadas y se pueden abrir y recorrer. Con ellas y la propuesta en 48 h tienes información suficiente para decidir sin compromiso."
+      }
+    }
   ]
 }
 </script>

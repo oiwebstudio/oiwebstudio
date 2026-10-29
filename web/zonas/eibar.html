@@ -35,30 +35,92 @@
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"ProfessionalService",
-  "parentOrganization":{"@id":"https://oiwebstudio.com/#estudio","name":"OI Studio","url":"https://oiwebstudio.com/"},
-  "name":"OI Studio — Diseño web en Eibar",
-  "url":"https://oiwebstudio.com/zonas/eibar.html",
-  "image":"https://oiwebstudio.com/assets/stock/sec-taller-2.jpg",
-  "description":"Diseño y desarrollo de páginas web para negocios de Eibar (Debabarrena). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa, a 55 km.",
-  "email":"contactoiwebstudio@gmail.com",
-  "telephone":"+34611497409",
-  "priceRange":"420€ - 540€",
-  "address":{"@type":"PostalAddress","addressLocality":"Tolosa","addressRegion":"Gipuzkoa","addressCountry":"ES"},
-  "areaServed":{"@type":"City","name":"Eibar","containedInPlace":{"@type":"AdministrativeArea","name":"Gipuzkoa"}},
-  "sameAs":["https://instagram.com/oi.webstudio"]
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Diseño web",
+  "name": "OI Studio — Diseño web en Eibar",
+  "url": "https://oiwebstudio.com/zonas/eibar.html",
+  "image": "https://oiwebstudio.com/assets/stock/sec-taller-2.jpg",
+  "description": "Diseño y desarrollo de páginas web para negocios de Eibar (Debabarrena). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa, a 55 km.",
+  "provider": {
+    "@type": "ProfessionalService",
+    "@id": "https://oiwebstudio.com/#estudio",
+    "name": "OI Studio",
+    "url": "https://oiwebstudio.com/"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Eibar",
+    "containedInPlace": {
+      "@type": "AdministrativeArea",
+      "name": "Gipuzkoa"
+    }
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Web de una página",
+      "price": "420",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "420",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Web con secciones",
+      "price": "540",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "540",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    }
+  ]
 }
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"¿Cubres Eibar desde Tolosa?","acceptedAnswer":{"@type":"Answer","text":"Sí. A 55 km lo práctico es empezar por videollamada y reservar el desplazamiento para cuando aporte valor: ver el local o hacer las fotos. El seguimiento se hace por WhatsApp o por correo, que es lo más ágil."}},
-    {"@type":"Question","name":"¿Los 55 km se pagan aparte?","acceptedAnswer":{"@type":"Answer","text":"No se pagan. El precio es cerrado y único en toda Gipuzkoa — 420€ la web de una página, 540€ la web con secciones, 30 días de ajustes incluidos — y los viajes corren de mi cuenta. El precio firmado es el definitivo."}},
-    {"@type":"Question","name":"¿Puedo competir en Google en Eibar?","acceptedAnswer":{"@type":"Answer","text":"Sí, con expectativas realistas: 27.000 habitantes significan más negocios compitiendo por las mismas búsquedas, así que aquí el SEO local pesa más que en un pueblo. La web sale preparada para Eibar y el resto lo hace tu ficha de Google Business, que trabajo contigo siguiendo esta guía."}},
-    {"@type":"Question","name":"¿Hay algún compromiso por pedir presupuesto?","acceptedAnswer":{"@type":"Answer","text":"Ninguno. Me cuentas el negocio, te devuelvo una propuesta con precio cerrado en 48h y decides. Mientras tanto puedes juzgar el trabajo por ti mismo: las muestras del portfolio son navegables."}}
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cubres Eibar desde Tolosa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. A 55 km lo práctico es empezar por videollamada y reservar el desplazamiento para cuando aporte valor: ver el local o hacer las fotos. El seguimiento se hace por WhatsApp o por correo, que es lo más ágil."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Los 55 km se pagan aparte?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No se pagan. El precio es cerrado y único en toda Gipuzkoa — 420€ la web de una página, 540€ la web con secciones, 30 días de ajustes incluidos — y los viajes corren de mi cuenta. El precio firmado es el definitivo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo competir en Google en Eibar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, con expectativas realistas: 27.000 habitantes significan más negocios compitiendo por las mismas búsquedas, así que aquí el SEO local pesa más que en un pueblo. La web sale preparada para Eibar y el resto lo hace tu ficha de Google Business, que trabajo contigo siguiendo esta guía."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Hay algún compromiso por pedir presupuesto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ninguno. Me cuentas el negocio, te devuelvo una propuesta con precio cerrado en 48h y decides. Mientras tanto puedes juzgar el trabajo por ti mismo: las muestras del portfolio son navegables."
+      }
+    }
   ]
 }
 </script>

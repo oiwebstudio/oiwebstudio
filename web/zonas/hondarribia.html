@@ -35,30 +35,92 @@
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"ProfessionalService",
-  "parentOrganization":{"@id":"https://oiwebstudio.com/#estudio","name":"OI Studio","url":"https://oiwebstudio.com/"},
-  "name":"OI Studio — Diseño web en Hondarribia",
-  "url":"https://oiwebstudio.com/zonas/hondarribia.html",
-  "image":"https://oiwebstudio.com/assets/stock/sec-rest-2.jpg",
-  "description":"Diseño y desarrollo de páginas web para negocios de Hondarribia (Bidasoa). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa, a 48 km.",
-  "email":"contactoiwebstudio@gmail.com",
-  "telephone":"+34611497409",
-  "priceRange":"420€ - 540€",
-  "address":{"@type":"PostalAddress","addressLocality":"Tolosa","addressRegion":"Gipuzkoa","addressCountry":"ES"},
-  "areaServed":{"@type":"City","name":"Hondarribia","containedInPlace":{"@type":"AdministrativeArea","name":"Gipuzkoa"}},
-  "sameAs":["https://instagram.com/oi.webstudio"]
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Diseño web",
+  "name": "OI Studio — Diseño web en Hondarribia",
+  "url": "https://oiwebstudio.com/zonas/hondarribia.html",
+  "image": "https://oiwebstudio.com/assets/stock/sec-rest-2.jpg",
+  "description": "Diseño y desarrollo de páginas web para negocios de Hondarribia (Bidasoa). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa, a 48 km.",
+  "provider": {
+    "@type": "ProfessionalService",
+    "@id": "https://oiwebstudio.com/#estudio",
+    "name": "OI Studio",
+    "url": "https://oiwebstudio.com/"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Hondarribia",
+    "containedInPlace": {
+      "@type": "AdministrativeArea",
+      "name": "Gipuzkoa"
+    }
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Web de una página",
+      "price": "420",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "420",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Web con secciones",
+      "price": "540",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "540",
+        "priceCurrency": "EUR",
+        "valueAddedTaxIncluded": false
+      }
+    }
+  ]
 }
 </script>
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"¿Cubres Hondarribia desde Tolosa?","acceptedAnswer":{"@type":"Answer","text":"Sí. A 48 km lo práctico es empezar por videollamada y reservar el desplazamiento para cuando aporte valor: ver el local o hacer las fotos. El seguimiento se hace por WhatsApp o por correo, que es lo más ágil."}},
-    {"@type":"Question","name":"¿Los 48 km se pagan aparte?","acceptedAnswer":{"@type":"Answer","text":"No se pagan. El precio es cerrado y único en toda Gipuzkoa — 420€ la web de una página, 540€ la web con secciones, 30 días de ajustes incluidos — y los viajes corren de mi cuenta. El precio firmado es el definitivo."}},
-    {"@type":"Question","name":"¿Me encontrarán en Google buscando en Hondarribia?","acceptedAnswer":{"@type":"Answer","text":"Todas las webs salen con el SEO local orientado a Hondarribia y a Bidasoa: estructura, textos y velocidad. En un municipio de 17.000 habitantes la competencia es abarcable, pero la posición depende también de tu ficha de Google Business, que explico en esta guía."}},
-    {"@type":"Question","name":"¿Hay algún compromiso por pedir presupuesto?","acceptedAnswer":{"@type":"Answer","text":"Ninguno. Me cuentas el negocio, te devuelvo una propuesta con precio cerrado en 48h y decides. Mientras tanto puedes juzgar el trabajo por ti mismo: las muestras del portfolio son navegables."}}
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cubres Hondarribia desde Tolosa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. A 48 km lo práctico es empezar por videollamada y reservar el desplazamiento para cuando aporte valor: ver el local o hacer las fotos. El seguimiento se hace por WhatsApp o por correo, que es lo más ágil."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Los 48 km se pagan aparte?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No se pagan. El precio es cerrado y único en toda Gipuzkoa — 420€ la web de una página, 540€ la web con secciones, 30 días de ajustes incluidos — y los viajes corren de mi cuenta. El precio firmado es el definitivo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Me encontrarán en Google buscando en Hondarribia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Todas las webs salen con el SEO local orientado a Hondarribia y a Bidasoa: estructura, textos y velocidad. En un municipio de 17.000 habitantes la competencia es abarcable, pero la posición depende también de tu ficha de Google Business, que explico en esta guía."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Hay algún compromiso por pedir presupuesto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ninguno. Me cuentas el negocio, te devuelvo una propuesta con precio cerrado en 48h y decides. Mientras tanto puedes juzgar el trabajo por ti mismo: las muestras del portfolio son navegables."
+      }
+    }
   ]
 }
 </script>
