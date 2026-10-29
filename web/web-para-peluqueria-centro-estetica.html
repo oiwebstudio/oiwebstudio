@@ -92,8 +92,22 @@
       "headline": "La web de una peluquería: qué llena la agenda y qué sobra",
       "description": "Qué necesita de verdad la web de una peluquería o centro de estética: precios visibles, reservas fáciles y fotos reales de tu trabajo.",
       "image": "https://oiwebstudio.com/assets/pelu-desk.jpg",
-      "author": {"@type": "Organization", "name": "OI Studio", "url": "https://oiwebstudio.com/sobre-mi.html"},
-      "publisher": {"@type": "Organization", "name": "OI Studio", "logo": {"@type": "ImageObject", "url": "https://oiwebstudio.com/icon-512.png"}},
+      "author": {
+        "@type": "ProfessionalService",
+        "@id": "https://oiwebstudio.com/#estudio",
+        "name": "OI Studio",
+        "url": "https://oiwebstudio.com/"
+      },
+      "publisher": {
+        "@type": "ProfessionalService",
+        "@id": "https://oiwebstudio.com/#estudio",
+        "name": "OI Studio",
+        "url": "https://oiwebstudio.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://oiwebstudio.com/icon-512.png"
+        }
+      },
       "datePublished": "2026-08-04",
       "dateModified": "2026-10-12",
       "mainEntityOfPage": "https://oiwebstudio.com/web-para-peluqueria-centro-estetica.html",
@@ -102,18 +116,61 @@
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://oiwebstudio.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Artículos", "item": "https://oiwebstudio.com/articulos.html"},
-        {"@type": "ListItem", "position": 3, "name": "Web para peluquería", "item": "https://oiwebstudio.com/web-para-peluqueria-centro-estetica.html"}
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://oiwebstudio.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Artículos",
+          "item": "https://oiwebstudio.com/articulos.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Web para peluquería",
+          "item": "https://oiwebstudio.com/web-para-peluqueria-centro-estetica.html"
+        }
       ]
     },
     {
       "@type": "FAQPage",
       "mainEntity": [
-        {"@type":"Question","name":"¿Debo poner los precios en la web de mi peluquería?","acceptedAnswer":{"@type":"Answer","text":"Sí, o al menos una horquilla clara. Quien no encuentra precios asume que son caros y sigue buscando. Si el precio depende del largo o del tipo de melena, se indica desde qué importe empieza cada servicio y se explica de qué depende."}},
-        {"@type":"Question","name":"¿Necesito un sistema de reservas online?","acceptedAnswer":{"@type":"Answer","text":"Depende del volumen. Si gestionas bien la agenda por WhatsApp y teléfono, un botón directo al chat convierte igual de bien y no añade coste. Si recibes muchas peticiones fuera de horario, entonces sí compensa una reserva online."}},
-        {"@type":"Question","name":"¿Valen las fotos hechas con el móvil?","acceptedAnswer":{"@type":"Answer","text":"Valen si están bien iluminadas y son de trabajos tuyos reales. Lo que no funciona son las fotos de banco de imágenes: el cliente las reconoce y pierde la confianza justo cuando estaba a punto de escribirte."}},
-        {"@type":"Question","name":"¿Cuánto cuesta la web de una peluquería?","acceptedAnswer":{"@type":"Answer","text":"Precio cerrado: desde 420€ una web de una página con servicios, precios y contacto directo, y desde 540€ una web con secciones, con galería de trabajos, equipo y SEO local. Sin cuotas escondidas."}}
+        {
+          "@type": "Question",
+          "name": "¿Debo poner los precios en la web de mi peluquería?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, o al menos una horquilla clara. Quien no encuentra precios asume que son caros y sigue buscando. Si el precio depende del largo o del tipo de melena, se indica desde qué importe empieza cada servicio y se explica de qué depende."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Necesito un sistema de reservas online?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depende del volumen. Si gestionas bien la agenda por WhatsApp y teléfono, un botón directo al chat convierte igual de bien y no añade coste. Si recibes muchas peticiones fuera de horario, entonces sí compensa una reserva online."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Valen las fotos hechas con el móvil?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Valen si están bien iluminadas y son de trabajos tuyos reales. Lo que no funciona son las fotos de banco de imágenes: el cliente las reconoce y pierde la confianza justo cuando estaba a punto de escribirte."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto cuesta la web de una peluquería?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Precio cerrado: desde 420€ una web de una página con servicios, precios y contacto directo, y desde 540€ una web con secciones, con galería de trabajos, equipo y SEO local. Sin cuotas escondidas."
+          }
+        }
       ]
     }
   ]

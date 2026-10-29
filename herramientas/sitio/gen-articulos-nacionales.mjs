@@ -61,8 +61,8 @@ export function pagina(a) {
     "@context": "https://schema.org",
     "@graph": [
       { "@type": "Article", headline: a.headline, description: a.desc, image: imgAbs,
-        author: { "@type": "Organization", name: "OI Studio", url: "https://oiwebstudio.com/sobre-mi.html" },
-        publisher: { "@type": "Organization", name: "OI Studio", logo: { "@type": "ImageObject", url: "https://oiwebstudio.com/icon-512.png" } },
+        author: { "@type": "ProfessionalService", "@id": "https://oiwebstudio.com/#estudio", name: "OI Studio", url: "https://oiwebstudio.com/" },
+        publisher: { "@type": "ProfessionalService", "@id": "https://oiwebstudio.com/#estudio", name: "OI Studio", url: "https://oiwebstudio.com/", logo: { "@type": "ImageObject", url: "https://oiwebstudio.com/icon-512.png" } },
         datePublished: a.fecha || HOY, dateModified: a.fecha || HOY, mainEntityOfPage: url, inLanguage: "es" },
       { "@type": "BreadcrumbList", itemListElement: [
         { "@type": "ListItem", position: 1, name: "Inicio", item: "https://oiwebstudio.com/" },
