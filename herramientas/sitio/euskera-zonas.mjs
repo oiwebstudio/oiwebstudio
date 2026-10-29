@@ -137,6 +137,9 @@ export const ZONAS_EU = {
     title: "Donostia web diseinua: negozioetarako webguneak | OI Studio",
     desc: "Web diseinua eta webguneak Donostiako negozioentzat. Prezio itxia 420€-tik eta proposamena 48 ordutan. Estudioa Tolosan, 26 km-ra.",
     pares: [
+      // 29/10, con Itzultzaile Neuronala («San Sebastian» y el espacio de «420 € + BEZ» corregidos).
+      [`Se busca como Donostia, como San Sebastián y como Donosti: hago páginas web para negocios de toda la ciudad, en castellano y en euskera, con precio cerrado desde 420 € + IVA.`,
+       `Donostia, San Sebastian eta Donosti bezala bilatzen da: hiri osoko negozioetarako webguneak egiten ditut, gaztelaniaz eta euskaraz, 420 € + BEZetik gorako prezio itxiarekin.`],
       [`¿Mejor una agencia de Donostia o un diseñador freelance?`, `Donostiako agentzia bat ala diseinatzaile autonomo bat hobe?`],
       [`Para el negocio de un barrio suele bastar un estudio pequeño: trato directo, plazos cortos y precio cerrado. Tienes los detalles en la guía de agencia o freelance en Donostia.`, `Auzo bateko negozio baterako estudio txiki batek askotan nahikoa da: zuzeneko tratua, epe laburrak eta prezio itxia. Xehetasunak Donostiako agentzia ala autonomoa gidan dituzu.`],
       [`Para el negocio de un barrio suele bastar un estudio pequeño: trato directo, plazos cortos y precio cerrado. Tienes los detalles en la guía de <a href="../diseno-web-donostia-agencia-o-freelance.html">agencia o freelance en Donostia</a>.`, `Auzo bateko negozio baterako estudio txiki batek askotan nahikoa da: zuzeneko tratua, epe laburrak eta prezio itxia. Xehetasunak <a href="../diseno-web-donostia-agencia-o-freelance.html">Donostiako agentzia ala autonomoa</a> gidan dituzu.`],

@@ -146,8 +146,8 @@ ${cta("¿Cuánto costaría tu web?", "Cuéntame tu negocio y te doy el precio ce
 {
   slug: "diseno-web-donostia-agencia-o-freelance",
   fecha: FECHA,
-  title: "Diseño web en Donostia: agencia o freelance, cómo elegir",
-  headline: "Diseño web en Donostia: agencia o freelance, cómo elegir y qué preguntar",
+  title: "Agencia o freelance en Donostia: cómo elegir quién hace tu web",
+  headline: "Agencia o freelance en Donostia: cómo elegir quién hace tu web y qué preguntar",
   desc: "Agencia, freelance o estudio pequeño para la web de tu negocio en Donostia-San Sebastián: diferencias, precios orientativos y qué preguntar.",
   ogdesc: "Agencia o freelance en Donostia: qué cambia en precio, trato y resultado, y cómo elegir.",
   keywords: "diseño web Donostia, diseño web San Sebastián, diseñador web freelance Donostia, agencia diseño web San Sebastián, páginas web Donostia, crear página web Donosti",
