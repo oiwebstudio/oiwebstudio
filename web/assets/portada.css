@@ -748,3 +748,6 @@ a.hx__pie { color: inherit; display: block; -webkit-tap-highlight-color: transpa
 }
 /* Hasta tener el euskera de Itzultzaile (caído el 28/10), estas dos secciones no salen en /eu/ */
 html[lang="eu"] #antes-despues, html[lang="eu"] #test { display: none; }
+/* El anillo se gira arrastrando (30/10): el gesto vertical sigue siendo scroll de la página */
+.hx__3d { touch-action: pan-y; -webkit-user-select: none; user-select: none; }
+@media (hover: hover) and (pointer: fine) { .hx__3d { cursor: grab; } .hx__3d.is-girando, .hx__3d.is-girando * { cursor: grabbing; } }

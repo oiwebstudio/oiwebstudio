@@ -149,8 +149,8 @@
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/geist-latin-04ce1a61.woff2" crossorigin/>
 <link rel="stylesheet" href="/assets/fuentes.css?v=1"/>
 <link rel="stylesheet" href="assets/styles.css?v=30"/>
-<link rel="stylesheet" href="assets/portada.css?v=28"/>
-<link rel="stylesheet" href="assets/lineas.css?v=4"/>
+<link rel="stylesheet" href="assets/portada.css?v=29"/>
+<link rel="stylesheet" href="assets/lineas.css?v=5"/>
 <script>if(location.protocol==='http:'&&/(^|\.)oiwebstudio\.com$/.test(location.hostname))location.replace('https://'+location.host+location.pathname+location.search+location.hash);document.documentElement.classList.add('js');</script>
 <link rel="preload" as="image" type="image/avif" href="/assets/hero/mano-520.avif" imagesrcset="/assets/hero/mano-520.avif 520w, /assets/hero/mano-900.avif 900w" imagesizes="(max-width: 760px) 340px, 480px" fetchpriority="high"/>
 </head>
@@ -882,7 +882,7 @@
           kfs.push({ offset: k / PASOS, transform: proyecta(th).t, opacity: +lejosDe(th).toFixed(3) });
         }
         var a = p.animate(kfs, { duration: VUELTA, iterations: Infinity, easing: 'linear' });
-        a.currentTime = f0 * VUELTA;
+        a.currentTime = (f0 + 1000) * VUELTA;   /* margen de 1000 vueltas: al girar hacia atrás nunca llega a 0 */
         a.playbackRate = vel;
         anims.push(a);
       });
@@ -904,11 +904,12 @@
       if (mejor) ponerEnMovil(mejor.dataset.k, mejor.getAttribute('href'));
     };
     /* Con el ratón encima de una muestra el anillo casi se para (frenando suave), para poder pulsarla */
-    var frena = function(obj){
-      velObj = obj;
+    var kFreno = .25;
+    var frena = function(obj, k){
+      velObj = obj; kFreno = k || .25;
       if (rampa) return;
       rampa = setInterval(function(){
-        vel += (velObj - vel) * .25;
+        vel += (velObj - vel) * kFreno;
         if (Math.abs(velObj - vel) < .01) { vel = velObj; clearInterval(rampa); rampa = null; }
         anims.forEach(function(a){ a.playbackRate = vel; });
       }, 40);
@@ -916,6 +917,51 @@
     anillo.addEventListener('pointerover', function(e){ if (e.pointerType === 'mouse' && e.target.closest('.hx__p')) frena(.08); });
     anillo.addEventListener('pointerout', function(e){ if (e.pointerType === 'mouse') frena(1); });
     anillo.classList.add('is-js');
+    /* Girar con el dedo o el ratón: se arrastra de lado y el anillo sigue al dedo; al soltar
+       sigue con la inercia del gesto y vuelve poco a poco a su ritmo. Bajar por la página
+       (gesto vertical) no lo toca, y si se ha arrastrado no se abre la muestra al soltar. */
+    var zona = anillo.parentNode;
+    if (!quieto && zona) {
+      var gx = 0, gy = 0, ultX = 0, ultT = 0, velPx = 0, girando = false, arrastrado = false, pendRev = false, idPuntero = null;
+      var pxPorMs = function(){ return 2 * Math.PI * Rr / VUELTA; };
+      var tiempo = function(){ return anims[0] ? anims[0].currentTime : 0; };
+      zona.addEventListener('pointerdown', function(e){
+        if (e.pointerType === 'mouse' && e.button !== 0) return;
+        gx = ultX = e.clientX; gy = e.clientY; ultT = e.timeStamp; velPx = 0; girando = false; arrastrado = false; idPuntero = e.pointerId;
+      });
+      zona.addEventListener('pointermove', function(e){
+        if (idPuntero !== e.pointerId) return;
+        if (!girando) {
+          if (Math.abs(e.clientX - gx) < 8 || Math.abs(e.clientX - gx) < Math.abs(e.clientY - gy)) return;
+          girando = arrastrado = true;
+          zona.classList.add('is-girando');
+          if (e.pointerType === 'mouse') { try { zona.setPointerCapture(e.pointerId); } catch (_) {} }
+          if (rampa) { clearInterval(rampa); rampa = null; }
+          anims.forEach(function(a){ a.pause(); });
+        }
+        var dx = e.clientX - ultX, dt = Math.max(1, e.timeStamp - ultT);
+        velPx = velPx * .6 + (dx / dt) * .4;
+        ultX = e.clientX; ultT = e.timeStamp;
+        var t = Math.max(VUELTA * 10, tiempo() - dx / pxPorMs());
+        anims.forEach(function(a){ a.currentTime = t; });
+        if (!pendRev) { pendRev = true; requestAnimationFrame(function(){ pendRev = false; revisa(); }); }
+      });
+      var suelta = function(e){
+        if (idPuntero !== e.pointerId) return;
+        idPuntero = null;
+        if (!girando) return;
+        girando = false;
+        zona.classList.remove('is-girando');
+        /* inercia: la velocidad del gesto pasa a velocidad del anillo y frena despacio hasta su ritmo */
+        vel = Math.max(-30, Math.min(30, -velPx / pxPorMs()));
+        anims.forEach(function(a){ a.playbackRate = vel; a.play(); });
+        frena(1, .06);
+      };
+      zona.addEventListener('pointerup', suelta);
+      zona.addEventListener('pointercancel', suelta);
+      /* si se ha arrastrado, el clic final no abre la muestra */
+      zona.addEventListener('click', function(e){ if (arrastrado) { e.preventDefault(); e.stopPropagation(); arrastrado = false; } }, true);
+    }
     var tRes = null;
     addEventListener('resize', function(){ clearTimeout(tRes); tRes = setTimeout(function(){ var r = radio(); if (r !== Rr) { Rr = r; montar(); } }, 200); });
     montar();
