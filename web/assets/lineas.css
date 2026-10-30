@@ -328,3 +328,52 @@
 .hoja__marca{display:block;width:78%;aspect-ratio:585/262;background:var(--terra);-webkit-mask:url(/demos/muestras/hauspo-jatetxea/marca/hauspo-logo.svg) center/contain no-repeat;mask:url(/demos/muestras/hauspo-jatetxea/marca/hauspo-logo.svg) center/contain no-repeat;}
 .hoja__pal span:nth-child(2){outline:1px solid var(--border-strong);}
 @media (hover:hover) and (pointer:fine){.l3-br .l3-btn:hover{background:#000;}}
+
+/* ==== Portada: las tres líneas más visuales (30/10) =========================
+   Tarjetas redondeadas con un panel de color grande para cada servicio (tinta para
+   webs, terracota cálido para automatizaciones, crema para branding), precio en
+   grande y menos texto a la vista. Solo en la portada (#lineas). */
+#lineas .ln { gap: 18px; }
+#lineas .ln__f { overflow: hidden; border: 1px solid rgba(25,23,18,.07); border-radius: 28px; background: #fff; box-shadow: 0 1px 0 rgba(25,23,18,.04), 0 26px 54px -34px rgba(60,45,20,.38); }
+#lineas .ln__marca { display: none; }
+#lineas .lv { aspect-ratio: 1 / .92; }
+@media (max-width: 980px) { #lineas .lv { aspect-ratio: 16 / 12; } }
+#lineas .lv__pie { left: 14px; right: 14px; bottom: 14px; }
+#lineas .lv__cap, #lineas .lv__toca { padding: 9px 13px; border-radius: 999px; }
+#lineas .lv__cap { box-shadow: 0 6px 16px -10px rgba(0,0,0,.45); }
+#lineas .lv__toca { box-shadow: 0 8px 18px -10px rgba(0,0,0,.6); }
+
+/* Webs: los móviles sobre tinta, con brillo cálido detrás */
+#lineas .lv--w { background: radial-gradient(70% 60% at 50% 105%, rgba(192,122,53,.42), transparent 70%), radial-gradient(120% 90% at 50% 0%, #2c2620, #15130f 72%); }
+#lineas .lv--w .lv__tel { border-color: #0b0a08; box-shadow: 0 0 0 1px rgba(255,255,255,.14), 0 26px 50px -14px rgba(0,0,0,.65); }
+#lineas .lv--w .lv__toca { background: #fff; color: var(--ink); }
+
+/* Automatizaciones: avisos blancos sobre terracota cálido */
+#lineas .lv--a { background: radial-gradient(90% 80% at 85% 0%, #f6dcc4, transparent 70%), linear-gradient(160deg, #eec4a0, #d9935f); }
+#lineas .lv__avisos { inset: 22px 20px 70px; gap: 10px; }
+#lineas .av { padding: 13px 14px; border-radius: 16px; box-shadow: 0 12px 26px -16px rgba(80,40,10,.55); }
+#lineas .av:first-child { box-shadow: 0 16px 34px -14px rgba(80,40,10,.6); transform: scale(1.02); transform-origin: top center; }
+#lineas .av:nth-child(n+3) { opacity: .78; }
+
+/* Branding: la marca grande sobre crema */
+#lineas .lv--b { background: radial-gradient(80% 70% at 50% 30%, #fbf7f0, #eee5d6 80%); }
+
+/* Contenido: título sin partir palabras, precio grande y en letra del titular */
+#lineas .ln__cu { gap: 8px; padding: 22px 24px 22px; }
+#lineas .ln__n { overflow-wrap: normal; word-break: normal; hyphens: none; font-size: clamp(22px, 1.95vw, 28px); }
+#lineas .ln__p { font-size: 15px; line-height: 1.55; color: var(--text-muted); }
+#lineas .ln__pie { align-items: center; padding-top: 14px; }
+#lineas .ln__pr { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; font-family: var(--font-mono); }
+#lineas .ln__pr b { margin-top: 2px; font-family: var(--font-serif); font-size: 36px; font-weight: 500; letter-spacing: -.02em; text-transform: none; }
+#lineas .l3-a { display: inline-flex; align-items: center; padding: 10px 16px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 14px; font-weight: 600; text-decoration: none; border: 0; transition: transform .25s var(--ease), background-color .2s ease; }
+#lineas .l3-a::after { content: " →"; white-space: pre; }
+@media (hover: hover) and (pointer: fine) {
+  #lineas .ln__f:hover { transform: translateY(-6px); box-shadow: 0 1px 0 rgba(25,23,18,.04), 0 34px 64px -34px rgba(60,45,20,.5); }
+  #lineas .l3-a:hover { background: #000; transform: translateX(2px); }
+}
+#lineas .l3-a:active { transform: scale(.97); }
+#lineas .ln__pie { flex-wrap: nowrap; }
+#lineas .l3-a { flex: none; white-space: nowrap; padding: 9px 14px; font-size: 13.5px; }
+#lineas .ln__pr b { font-size: 32px; }
+#lineas .ln__pr b { white-space: nowrap; }
+@media (max-width: 420px) { #lineas .ln__pr b { font-size: 28px; } #lineas .l3-a { padding: 9px 12px; font-size: 13px; } }
