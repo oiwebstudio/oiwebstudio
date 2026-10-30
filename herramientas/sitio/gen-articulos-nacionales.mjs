@@ -179,7 +179,7 @@ ${figura("taller-desk", "taller · web de ejemplo", "Web de ejemplo de un negoci
 
 <h2 id="coste">Cuánto cuesta y qué más se paga</h2>
 <ul class="check">
-<li><strong>La web.</strong> Un pago único: desde 420 € una web de una página y desde 540 € una web con secciones, más IVA, con el <a href="precios.html">precio cerrado por escrito</a>.</li>
+<li><strong>La web.</strong> Un pago único: desde 420 € una web de una página y desde 540 € una web con secciones, más IVA, con el <a href="precios.html">precio cerrado por escrito</a>. Aparte va la cuota de 28 €/mes del alojamiento y el mantenimiento, que es obligatoria con cualquier web.</li>
 <li><strong>Dominio y alojamiento.</strong> El primer año van incluidos; después son unos 20 € al año si solo quieres mantenerlos.</li>
 <li><strong>Mantenimiento.</strong> Opcional: 28 € al mes, con hasta tres cambios al mes, si prefieres que te encargues de cambios y actualizaciones a otra persona.</li>
 <li><strong>Tu tiempo.</strong> Reunir fotos y contar qué haces. Es lo que más se subestima y lo que más se nota en el resultado.</li>
