@@ -54,21 +54,21 @@ ${figura("pedala-desk", "pedala · muestra", "Muestra de web a medida para una t
 <ul class="check">
 <li><strong>¿Cambiarás cosas a menudo y quieres hacerlo tú?</strong> Wix, Squarespace o WordPress.</li>
 <li><strong>¿Vas a tener un blog o muchas páginas que crecen?</strong> WordPress.</li>
-<li><strong>¿Tu web cambia poco y quieres que sea rápida, ligera y tuya sin cuotas?</strong> A medida.</li>
+<li><strong>¿Tu web cambia poco y quieres que sea rápida, ligera y tuya, sin pagar por una herramienta de edición?</strong> A medida.</li>
 <li><strong>¿Es un proyecto de prueba o para algo muy puntual?</strong> Una plataforma, sin gastar de más.</li>
 </ul>
 
 ${consejo("Elige por cómo vas a usar la web durante tres años, no por cómo se ve hoy. Si no vas a tocarla, no pagues una herramienta para editarla; si vas a editarla cada semana, no encargues una a medida.")}
 
 <h2 id="precio">Y el coste total</h2>
-<p>Mira siempre el coste a tres años: plataforma (cuota por tres años), WordPress (alojamiento, tema, plugins y mantenimiento) o a medida (pago único más dominio y alojamiento). Tienes el desglose del mercado en la <a href="precio-diseno-web-profesional.html">guía de precios</a> y el de mantener una web en <a href="cuanto-cuesta-mantener-una-web-al-ano.html">esta otra</a>.</p>
+<p>Mira siempre el coste a tres años: plataforma (cuota por tres años), WordPress (alojamiento, tema, plugins y mantenimiento) o a medida (pago único y una cuota de alojamiento; en OI Studio, 28 €/mes con el dominio, las copias de seguridad y hasta 3 cambios al mes). Tienes el desglose del mercado en la <a href="precio-diseno-web-profesional.html">guía de precios</a> y el de mantener una web en <a href="cuanto-cuesta-mantener-una-web-al-ano.html">esta otra</a>.</p>
 
 ${cta("¿No sabes cuál encaja contigo?", "Cuéntame tu negocio y te digo, aunque no sea una web a medida, qué opción te conviene.", "Pedir consejo")}
 `,
   faq: [
     ["¿Es mejor WordPress o Wix?", "Depende. Wix es más sencillo y todo está incluido pero pagas mientras la uses; WordPress es más flexible y puedes llevártelo, pero necesita mantenimiento constante. Para una web sencilla ninguna de las dos es imprescindible."],
     ["¿Una web a medida es más rápida que WordPress?", "Normalmente sí, porque solo lleva el código necesario. Una WordPress bien optimizada puede ser rápida, pero requiere más cuidado."],
-    ["¿Puedo cambiar mi web a medida yo mismo?", "No hay panel de edición: los cambios los hace quien la construyó. En OI Studio los pides por WhatsApp; los primeros 30 días son gratis y después con mantenimiento (28 €/mes + IVA) o con presupuesto por adelantado."],
+    ["¿Puedo cambiar mi web a medida yo mismo?", "No hay panel de edición: los cambios los hace quien la construyó. En OI Studio los pides por WhatsApp; los primeros 30 días van incluidos y después entran en la cuota de 28 €/mes + IVA que lleva cada web (hasta 3 cambios al mes); si necesitas más, con presupuesto por adelantado."],
     ["¿Qué pasa con mi web si dejo de pagar Wix?", "La pierdes: el diseño y el contenido viven en la plataforma. Con una web a medida o una WordPress alojada por ti, la web sigue siendo tuya."],
   ],
   cierre: `Sigue leyendo: <a href="landing-page-o-web-completa.html">landing o web completa</a> y <a href="cuanto-cuesta-mantener-una-web-al-ano.html">cuánto cuesta mantener una web al año</a>.`,
