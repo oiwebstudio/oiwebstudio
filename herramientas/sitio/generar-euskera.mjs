@@ -76,7 +76,7 @@ const META = {
   },
   // 28/10/2026: automatizaciones y branding salen de la portada a su página, con Itzultzaile Neuronala (solo espacios ante «€» y «erreseinak», como en el resto del sitio).
   "automatizaciones.html": {
-    title: "Automatizazioak adimen artifizialarekin | OI Studio",
+    title: "Automatizazioak | OI Studio",
     desc: "Erreserbak eta hitzorduak komisiorik gabe, Googleko zure fitxa eta zure erreseinak egunean. Zerbitzu bakoitzean esaten dizut zer zati egiten duen adimen artifizialak. 120 €-tik aurrera + BEZa.",
   },
   "branding.html": {

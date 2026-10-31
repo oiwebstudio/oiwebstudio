@@ -1,5 +1,5 @@
 /**
- * Menú de la cabecera (27/10/2026, oferta en tres líneas): WEBS · AUTOMATIZACIONES CON IA ·
+ * Menú de la cabecera (27/10/2026, oferta en tres líneas): WEBS · AUTOMATIZACIONES ·
  * BRANDING · PRECIOS · CONTACTO + «Más» (Sobre mí, Reservas, SEO, Ayudas, Zonas, Artículos).
  * Antes (octubre 2026): TRABAJOS · PRECIOS · RESERVAS · SOBRE MÍ · CONTACTO + «Más»; y el menú del móvil a
  * pantalla completa con tres accesos directos (Llamar, WhatsApp, Pedir presupuesto).
@@ -21,7 +21,7 @@ const SOLO_COMPROBAR = process.argv.includes("--check");
 
 const PRINCIPAL = [
   ["trabajos", "trabajos.html", "nav_webs", "Webs"],
-  ["auto", "automatizaciones.html", "nav_auto", "Automatizaciones con IA"],
+  ["auto", "automatizaciones.html", "nav_auto", "Automatizaciones"],
   ["branding", "branding.html", "nav_branding", "Branding"],
   ["precios", "precios.html", "nav_precios", "Precios"],
   ["contacto", "contacto.html", "nav_contacto", "Contacto"],
