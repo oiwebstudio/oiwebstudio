@@ -84,7 +84,7 @@ ${grupo("foot_servicios", "Servicios", [
   li("precios.html", "Tienda online ·&nbsp;880&nbsp;€", "ft_s3"),
   li("reservas-online-sin-comisiones.html", "Reservas online sin comisiones", "ft_s5"),
   // 27/10/2026: oferta en tres líneas (webs · automatizaciones con IA · branding).
-  li("automatizaciones.html", "Automatizaciones con IA", "nav_auto"),
+  li("automatizaciones.html", "Automatizaciones", "nav_auto"),
   li("branding.html", "Branding", "nav_branding"),
 ].join("\n"))}
 ${grupo("foot_guias", "Guías", GUIAS.map(([h, t]) => li(h, t)).join("\n"))}

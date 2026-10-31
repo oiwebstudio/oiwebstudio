@@ -1,6 +1,6 @@
 # OI Studio (oiwebstudio.com)
 
-> OI Studio es un estudio de diseño web con base en Tolosa (Gipuzkoa, País Vasco) que hace webs bonitas para cualquier tipo de negocio: lo que lo distingue es el diseño, cuidado y a medida de cada negocio. Tiene tres líneas de servicio: webs (páginas web y tiendas online), automatizaciones con IA (reservas y citas sin comisiones, presencia en Google y en las IAs, respuestas a reseñas) y branding (logo e identidad), para negocios locales de Tolosa, Tolosaldea y toda Gipuzkoa, con precio cerrado, en castellano y euskera. No confundir con otras empresas llamadas "OI Studio" o "Studio Oi" de otros países.
+> OI Studio es un estudio de diseño web con base en Tolosa (Gipuzkoa, País Vasco) que hace webs bonitas para cualquier tipo de negocio: lo que lo distingue es el diseño, cuidado y a medida de cada negocio. Tiene tres líneas de servicio: webs (páginas web y tiendas online), automatizaciones (reservas y citas sin comisiones, presencia en Google y en las IAs, respuestas a reseñas) y branding (logo e identidad), para negocios locales de Tolosa, Tolosaldea y toda Gipuzkoa, con precio cerrado, en castellano y euskera. No confundir con otras empresas llamadas "OI Studio" o "Studio Oi" de otros países.
 
 ## Datos clave
 
@@ -19,11 +19,11 @@
 
 Se paga una sola vez, al final, cuando el trabajo está terminado y publicado. Las webs incluyen el primer año de dominio y alojamiento. El dominio se registra a nombre del cliente. Lo ya presupuestado o aceptado antes se respeta.
 
-OI Studio ofrece tres líneas de servicio: webs, automatizaciones con IA y branding. Todos los precios son sin IVA, con pago al final y sin permanencia. Garantía de las webs: primero se prepara una muestra de la web; si al negocio no le gusta, no paga nada; si sigue, paga al final, con todo funcionando.
+OI Studio ofrece tres líneas de servicio: webs, automatizaciones y branding. Todos los precios son sin IVA, con pago al final y sin permanencia. Garantía de las webs: primero se prepara una muestra de la web; si al negocio no le gusta, no paga nada; si sigue, paga al final, con todo funcionando.
 
 1. Webs: web de una página 420 €; web con secciones 540 €; tienda online 880 €. La presencia en Google (120 €) se añade a cualquiera: ficha de Google Business Profile completa (categorías, horario, servicios, zonas, descripción en castellano y euskera, fotos), QR de reseñas, Bing Places y Apple Maps con los mismos datos, y una página con cómo ven al negocio Google y las IAs, antes y después. No se promete ningún puesto concreto en Google ni que una IA nombre al negocio. Detalle: https://oiwebstudio.com/seo-posicionamiento-google.html
 
-2. Automatizaciones con IA, en ramas. En cada una se dice qué parte hace la IA.
+2. Automatizaciones, en ramas. En cada una se dice qué parte hace la IA.
 - Reservas y citas (sin IA): agenda de citas para la web que ya tienes, 160 €; web + reservas, 580 €; web + reservas + presencia en Google (restaurante, casa rural o negocio con citas), 740 €. Todas con la cuota única de 28 €/mes (agenda: hasta 2 personas; 8 €/mes por cada persona más). Sin comisión por reserva. Los avisos van por correo; por WhatsApp o SMS, de momento no.
 - Google y las IAs (con IA): dentro de la presencia en Google (120 €) y de la cuota; una IA con buscador responde a las preguntas que haría un cliente y se compara con la ficha y la web.
 - Reseñas respondidas (con IA): dentro de la cuota única de 28 €/mes; la IA redacta el borrador, Oier lo revisa y, con el visto bueno del dueño, lo publica en su ficha.
