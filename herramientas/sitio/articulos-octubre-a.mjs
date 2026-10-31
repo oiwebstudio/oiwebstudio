@@ -126,7 +126,7 @@ ${tabla(["Qué compras", "Orden de precio", "Qué suele pasar"], [
 <li>¿Puedo ver ejemplos online abiertos en mi móvil?</li>
 </ol>
 
-${consejo("Compara siempre el coste a tres años, no el de hoy. Una web de 20 € al mes sale por 720 €; una de pago único de 540 € + IVA con dominio y alojamiento el primer año, incluso sumando el alojamiento después, queda por debajo.")}
+${consejo("Compara siempre el coste a tres años, no el de hoy, y mira qué paga cada cuota. Una plataforma de 20 € al mes sale por 720 € y la web nunca es tuya; la mía de 540 € + IVA lleva una cuota de 28 €/mes con dominio, alojamiento, copias de seguridad y hasta 3 cambios al mes, y la web queda a tu nombre.")}
 
 <h2 id="ayudas">Y si lo que quieres es pagar menos</h2>
 <p>Algunos ayuntamientos de Gipuzkoa subvencionan parte de la web de un negocio. Tienes el mapa y los plazos en la <a href="ayudas-subvenciones-pagina-web-gipuzkoa.html">guía de ayudas</a>: a veces cubren una parte importante del coste.</p>
@@ -134,10 +134,10 @@ ${consejo("Compara siempre el coste a tres años, no el de hoy. Una web de 20 �
 ${cta("¿Cuánto costaría tu web?", "Cuéntame tu negocio y te doy el precio cerrado por escrito en menos de 48 horas.", "Pedir presupuesto")}
 `,
   faq: [
-    ["¿Cuánto cuesta una web barata?", "Las hay gratis (con condiciones), con cuota mensual de decenas de euros o de pago único desde unos cientos. En OI Studio una web de una página cuesta desde 420 € + IVA y una web con secciones desde 540 € + IVA, con precio cerrado."],
+    ["¿Cuánto cuesta una web barata?", "Las hay gratis (con condiciones), con cuota mensual de decenas de euros o de pago único desde unos cientos. En OI Studio una web de una página cuesta desde 420 € + IVA y una web con secciones desde 540 € + IVA, con precio cerrado, más la cuota de 28 €/mes que incluye dominio, alojamiento, copias de seguridad y hasta 3 cambios al mes."],
     ["¿Una web barata es peor?", "No necesariamente: el alcance es lo que cambia el precio. Es peor cuando es una plantilla vendida como a medida, cuando tiene cuotas escondidas o cuando el dominio no queda a tu nombre."],
     ["¿Qué debo comprobar en un presupuesto económico?", "Que el precio sea cerrado y con IVA aclarado, que el dominio vaya a tu nombre, que no haya permanencia, qué incluye y quién hace los cambios después."],
-    ["¿Compensa una web de plataforma con cuota mensual?", "Puede servir para empezar, pero a tres años suele salir más cara que un pago único y la web no es tuya si dejas de pagar. Compara siempre el coste total."],
+    ["¿Compensa una web de plataforma con cuota mensual?", "Puede servir para empezar, pero si dejas de pagar te quedas sin web y no te la puedes llevar. Compara siempre el coste total a tres años, con las cuotas incluidas, y quién es el dueño del dominio."],
   ],
   cierre: `Sigue leyendo: <a href="precio-diseno-web-profesional.html">cuánto cuesta una web profesional</a> y <a href="cuanto-cuesta-mantener-una-web-al-ano.html">cuánto cuesta mantenerla al año</a>.`,
 },
