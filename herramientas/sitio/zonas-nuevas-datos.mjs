@@ -151,7 +151,7 @@ export const NUEVAS = [
     sectores: ["Industria y metal", "Servicios técnicos", "Comercio de proximidad", "Hostelería", "Oficios"],
     gancho: "Trabajo el SEO para el Alto Urola completo: Legazpi, Urretxu y Zumarraga funcionan como una sola zona comercial.",
     ayuda: "legazpi",
-    faq: { q: "¿Hay ayudas del ayuntamiento para hacer la web en Legazpi?", a: "Sí: el ayuntamiento tiene una ayuda para negocios que usen el euskera en su imagen, sus rótulos o su página web. Los importes están en las bases municipales y cambian cada convocatoria; en la página de ayudas está lo que hay abierto y cómo se pide." } },
+    faq: { q: "¿Hay ayudas del ayuntamiento para hacer la web en Legazpi?", a: "Sí: el ayuntamiento convoca cada año una ayuda para negocios que usen el euskera en su imagen, sus rótulos o su página web (en 2026 cerró el 31 de octubre). Los importes están en las bases municipales y cambian cada convocatoria; en la página de ayudas está lo que hay abierto y cómo se pide." } },
 
   { slug: "urretxu", name: "Urretxu", alt: "Villarreal de Urrechua", comarca: "Urola Garaia", hero: "pelu", mosaico: ["pelu", "cafe", "flor"],
     lede: "Urretxu y Zumarraga forman un núcleo comercial compartido. Tu cliente da igual en cuál viva.",

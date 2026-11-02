@@ -201,7 +201,7 @@ export const ZONAS_EU = {
       [`Sí, SEO local básico en todas las webs: títulos y descripciones con Irun, estructura, velocidad y ficha de Google Business. El SEO avanzado, con campañas continuas, se contrata aparte.`, `Bai, tokiko oinarrizko SEOa webgune guztietan: Irun duten izenburuak eta azalpenak, egitura, abiadura eta Google Business fitxa. SEO aurreratua, etengabeko kanpainekin, bereiz kontratatzen da.`],
       [`toda Bidasoa`, `Bidasoa osoa`],
       [`Irun paga parte de poner tu web en euskera`, `Irunek zure webgunea euskaratzearen zati bat ordaintzen du`],
-      [`Abierta hasta el 30 de octubre de 2026: hasta el 75 % si la web queda solo en euskera (máximo 1.000 €) y el 50 % si es bilingüe (máximo 600 €).`, `2026ko urriaren 30era arte zabalik: % 75 arte webgunea euskara hutsean geratzen bada (gehienez 1.000 €) eta % 50 elebiduna bada (gehienez 600 €).`],
+      [`Se convoca cada año (en 2026, hasta el 30 de octubre): hasta el 75 % si la web queda solo en euskera (máximo 1.000 €) y el 50 % si es bilingüe (máximo 600 €).`, `Urtero deitzen da (2026an, urriaren 30era arte): % 75 arte webgunea euskara hutsean geratzen bada (gehienez 1.000 €) eta % 50 elebiduna bada (gehienez 600 €).`],
       [`Diseño y desarrollo de páginas web para negocios de Irun (Bidasoa). Precio cerrado desde 420€, propuesta en 48h. Estudio en Tolosa, a 45 km.`,
        `Web diseinua eta webguneak Irungo negozioentzat (Bidasoa). Prezio itxia 420€-tik eta proposamena 48 ordutan. Estudioa Tolosan, 45 km-ra.`],
       [`OI Studio — Diseño web en Irun`, `OI Studio — Web diseinua Irunen`],
