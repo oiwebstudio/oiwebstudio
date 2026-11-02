@@ -74,9 +74,9 @@ function cercanos(m, n = 8) {
 
 /* --------------------------------------------------------- avisos ayudas */
 const AYUDAS = {
-  tolosa: ["Tolosa paga parte de tu web en euskera", "El ayuntamiento tiene una ayuda para pasar la web, los rótulos o la imagen al euskera (bolsa total de 4.000 €). Mira las condiciones y el plazo.", false],
-  urretxu: ["Urretxu ayuda a poner la web en euskera", "El ayuntamiento subvenciona la rotulación, la web o la imagen corporativa en euskera. Se pide por su sede electrónica.", false],
-  legazpi: ["Legazpi ayuda a usar el euskera en tu web", "El ayuntamiento tiene una ayuda para negocios que usen el euskera en su imagen, sus rótulos o su página web.", false],
+  tolosa: ["Tolosa paga parte de tu web en euskera", "El ayuntamiento la convoca cada año (en 2026, hasta el 31 de octubre) para pasar la web, los rótulos o la imagen al euskera, con una bolsa total de 4.000 €.", true],
+  urretxu: ["Urretxu ayuda a poner la web en euskera", "El ayuntamiento convoca la ayuda cada año (en 2026, hasta el 31 de octubre) para la rotulación, la web o la imagen corporativa en euskera. Se pide por su sede electrónica.", true],
+  legazpi: ["Legazpi ayuda a usar el euskera en tu web", "El ayuntamiento la convoca cada año (en 2026, hasta el 31 de octubre) para negocios que usen el euskera en su imagen, sus rótulos o su página web.", true],
   pasaia: ["Pasaia convoca cada año su ayuda para webs en euskera", "Incluye la página web en euskera y el dominio .eus. La de 2026 aún no está publicada; aquí te cuento cuándo suele salir.", true],
 };
 const GENERICA = ["¿Hay ayudas para tu web?", "Muchos ayuntamientos de Gipuzkoa pagan parte de la web, sobre todo si está en euskera. Mira cuáles están abiertas ahora.", false];
