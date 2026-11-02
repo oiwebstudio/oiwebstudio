@@ -44,6 +44,8 @@ Fuera de Gipuzkoa trabaja a distancia, con el mismo precio: [toda España](https
 
 - [Inicio](https://oiwebstudio.com/): qué hace el estudio y cómo trabaja.
 - [Precios](https://oiwebstudio.com/precios.html): planes y qué incluye cada uno.
+- [Automatizaciones para negocios en Gipuzkoa](https://oiwebstudio.com/automatizaciones.html): reservas y citas sin comisiones, presencia en Google y en las IAs, respuestas a reseñas y conexión con otras apps; en cada servicio se dice qué parte hace la IA y qué no se ofrece todavía.
+- [Branding y diseño de logos en Gipuzkoa](https://oiwebstudio.com/branding.html): logo 220 €, identidad 440 € y marca completa 820 € (+ IVA), con qué incluye cada nivel y cómo se trabaja.
 - [Citas y reservas online sin comisiones](https://oiwebstudio.com/reservas-online-sin-comisiones.html): página de citas con el nombre del negocio y panel en el móvil, para negocios que trabajan con cita (peluquería, barbería, estética y uñas, peluquería canina, masajes, talleres, asesorías y gestorías, clases particulares); de momento no para consultas de salud. Solo agenda: 160 € + 28 €/mes hasta 2 personas (+8 €/mes por persona más). Web bonita + agenda: 580 € + 28 €/mes. Web + agenda + presencia en Google: 740 € + 28 €/mes. Sin IVA, pago al final, sin comisión ni permanencia.
 - [Trabajos](https://oiwebstudio.com/trabajos.html): webs publicadas, una por sector.
 - [Caso real: Errotatxo](https://oiwebstudio.com/caso-errotatxo.html): la web de una panadería de Tolosa con tres tiendas, en castellano y euskera.
@@ -67,6 +69,10 @@ Fuera de Gipuzkoa trabaja a distancia, con el mismo precio: [toda España](https
 - [Web para inmobiliaria](https://oiwebstudio.com/web-para-inmobiliaria.html): La web de una inmobiliaria local compite con los portales: tiene que captar al propietario, no solo al comprador.
 - [Cuánto cobra un diseñador web](https://oiwebstudio.com/cuanto-cobra-disenador-web-freelance.html): Lo que cobra un diseñador web freelance, qué incluye y cómo comparar presupuestos sin perderte.
 - [Diseño web en Euskadi](https://oiwebstudio.com/diseno-web-euskadi-pais-vasco.html): Web para tu negocio en Euskadi: precio cerrado, castellano y euskera, y propuesta en 48 horas.
+- [Cuánto cuesta un logo](https://oiwebstudio.com/cuanto-cuesta-un-logo.html): Lo que cuesta un logo según quién lo haga, qué debe incluir y qué preguntar antes de encargarlo.
+- [Branding para un negocio pequeño](https://oiwebstudio.com/branding-para-negocio-pequeno.html): Cuándo basta con un logo, cuándo necesitas identidad y qué puedes dejar para más tarde.
+- [Qué automatizar en un negocio](https://oiwebstudio.com/que-automatizar-negocio-pequeno.html): Qué tareas merece la pena automatizar en un negocio pequeño, cuáles no y por dónde empezar.
+- [IA para un negocio pequeño](https://oiwebstudio.com/inteligencia-artificial-negocio-pequeno.html): Para qué sirve hoy la IA en un negocio pequeño, para qué no y qué exige la ley.
 
 - [Cómo crear la web de tu negocio paso a paso](https://oiwebstudio.com/como-crear-pagina-web-negocio-paso-a-paso.html): Guía práctica para crear la página web de un negocio local: qué preparar, dominio, alojamiento, estructura, publicar y que Google la encuentre.
 - [Landing page o web completa: cuál necesita tu negocio](https://oiwebstudio.com/landing-page-o-web-completa.html): Diferencias entre una landing page y una web completa, cuándo basta una página, cuándo hacen falta varias y cómo decidirlo sin pagar de más.

@@ -110,7 +110,7 @@ ${nav}<div class="container">
 <h1>${a.h1}</h1>
 <p class="lede">${a.lede}</p>
 <div class="art-meta">
-<span>Actualizado · Octubre 2026</span>
+<span>Actualizado · ${(a.fecha || "") >= "2026-11" ? "Noviembre" : "Octubre"} 2026</span>
 <span>Lectura · ${a.min} min</span>
 <span>Por OI Studio, Tolosa</span>
 </div>
@@ -129,7 +129,7 @@ ${a.faq.map(([q, r]) => `<details>\n<summary>${q}</summary>\n<p>${r}</p>\n</deta
 </article>
 </div>
 
-${pie}<script src="assets/i18n.js?v=33"></script>
+${pie}<script src="assets/i18n.js?v=34"></script>
 <script src="assets/main.js?v=20"></script>
 ${wa}</body>
 </html>
