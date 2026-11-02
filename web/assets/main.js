@@ -12,6 +12,17 @@ var OI_TARDE = function (fn) {
   if (document.readyState === 'complete') ir(); else window.addEventListener('load', ir, { once: true });
 };
 
+/* Contador de visitas (Cloudflare Web Analytics, 2/11/2026): sin cookies ni datos personales.
+   Va aquí para estar en todas las páginas, y después de la carga para no frenar nada.
+   El token es público: viaja en la página de cualquier web que lo usa. */
+if (location.hostname === 'oiwebstudio.com') OI_TARDE(function () {
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+  s.setAttribute('data-cf-beacon', '{"token": "e95a3bcac5a544a2b6b28189dbf89c5b"}');
+  document.head.appendChild(s);
+});
+
 var OI_ASSETS = (function () {
   var s = document.currentScript && document.currentScript.src;
   return s ? s.replace(/main\.js(\?.*)?$/, '') : '/assets/';
