@@ -16,9 +16,10 @@ import { pagina, conservarRelacionados } from "./gen-articulos-nacionales.mjs";
 import { ARTICULOS_A } from "./articulos-octubre-a.mjs";
 import { ARTICULOS_B } from "./articulos-octubre-b.mjs";
 import { ARTICULOS_C } from "./articulos-octubre-c.mjs";
+import { ARTICULOS_NOV } from "./articulos-noviembre.mjs";
 
 const WEB = path.resolve("web");
-const TODOS = [...ARTICULOS_A, ...ARTICULOS_B, ...ARTICULOS_C];
+const TODOS = [...ARTICULOS_A, ...ARTICULOS_B, ...ARTICULOS_C, ...ARTICULOS_NOV];
 const REHACER = process.argv.includes("--rehacer");
 const NUEVAS = TODOS.filter((a) => REHACER || !fs.existsSync(path.join(WEB, `${a.slug}.html`)));
 const rd = (f) => fs.readFileSync(path.join(WEB, f), "utf8");
@@ -26,6 +27,10 @@ const wr = (f, t) => fs.writeFileSync(path.join(WEB, f), t);
 
 /* Ficha de cada guía en la portada de artículos. */
 const HUB = {
+  "cuanto-cuesta-un-logo": { cat: "Branding", tag: "Precios", img: "stock/art-precio-web", alt: "Persona trabajando con un ordenador portátil", h2: "Cuánto cuesta un logo para tu negocio en 2026", p: "Lo que cuesta según quién lo haga, qué debe incluir cobre lo que cobre y qué preguntar antes de encargarlo." },
+  "branding-para-negocio-pequeno": { cat: "Branding", tag: "Marca", img: "stock/art-redes-sociales", alt: "Pantalla con redes sociales de un negocio", h2: "Branding para un negocio pequeño: qué necesitas y qué no", p: "Cuándo basta con un logo, cuándo necesitas identidad y qué puedes dejar para más tarde." },
+  "que-automatizar-negocio-pequeno": { cat: "Automatizaciones", tag: "Empezar", img: "stock/sec-pelu-1", alt: "Interior de una peluquería", h2: "Qué automatizar en un negocio pequeño y por dónde empezar", p: "Qué tareas merece la pena automatizar, cuáles no y cómo saber si te compensa." },
+  "inteligencia-artificial-negocio-pequeno": { cat: "Automatizaciones", tag: "IA", img: "stock/art-seo-local", alt: "Persona buscando un negocio en el móvil", h2: "Inteligencia artificial para un negocio pequeño: qué funciona hoy", p: "Para qué sirve hoy la IA, dónde no la dejaría sola y qué exige la ley si hablas con clientes." },
   "diseno-web-profesional-que-incluye": { cat: "Empezar", tag: "Guías", h2: "Diseño web profesional: qué incluye y en qué se nota", p: "Qué debe llevar una web para llamarse profesional, en qué se diferencia de una plantilla y cómo comprobarlo antes de pagar.", img: "etxea-desk", alt: "Muestra de web de inmobiliaria, ejemplo de diseño web profesional" },
   "diseno-web-barato-merece-la-pena": { cat: "Precios y plazos", tag: "Precios", h2: "Diseño web barato: cuándo merece la pena y cuándo no", p: "Qué esperar de una web económica, las trampas del presupuesto (cuotas, permanencias, dominio ajeno) y seis preguntas antes de pagar.", img: "stock/art-precio-web", alt: "Escritorio de trabajo con portátil, representando el precio de una web" },
   "diseno-web-donostia-agencia-o-freelance": { cat: "Empezar", tag: "Donostia", h2: "Agencia o freelance en Donostia: cómo elegir quién hace tu web", p: "Diferencias reales en precio, trato y plazos, qué preguntar y por qué en una ciudad grande conviene pensar en tu barrio.", img: "pedala-desk", alt: "Muestra de web de tienda de bicis, ejemplo de web para un negocio de barrio" },
@@ -41,6 +46,10 @@ const HUB = {
 
 /* Enlaces «Sigue leyendo» de cada guía nueva. */
 const REL = {
+  "cuanto-cuesta-un-logo": ["branding-para-negocio-pequeno", "precio-diseno-web-profesional", "como-elegir-disenador-web-gipuzkoa"],
+  "branding-para-negocio-pequeno": ["cuanto-cuesta-un-logo", "que-debe-tener-web-negocio-local", "conseguir-resenas-google-negocio-local"],
+  "que-automatizar-negocio-pequeno": ["inteligencia-artificial-negocio-pequeno", "conseguir-resenas-google-negocio-local", "google-business-profile-guia"],
+  "inteligencia-artificial-negocio-pequeno": ["que-automatizar-negocio-pequeno", "conseguir-resenas-google-negocio-local", "aviso-legal-privacidad-cookies-web-negocio"],
   "diseno-web-profesional-que-incluye": ["precio-diseno-web-profesional", "que-debe-tener-web-negocio-local", "aviso-legal-privacidad-cookies-web-negocio"],
   "diseno-web-barato-merece-la-pena": ["precio-diseno-web-profesional", "cuanto-cuesta-mantener-una-web-al-ano", "ayudas-subvenciones-pagina-web-gipuzkoa"],
   "diseno-web-donostia-agencia-o-freelance": ["como-elegir-disenador-web-gipuzkoa", "google-business-profile-guia", "precio-diseno-web-profesional"],
@@ -56,6 +65,11 @@ const REL = {
 
 /* Y las guías ya publicadas que enlazan hacia las nuevas (se añade una tarjeta al final). */
 const RECIPROCO = {
+  "conseguir-resenas-google-negocio-local": ["inteligencia-artificial-negocio-pequeno", "que-automatizar-negocio-pequeno"],
+  "web-para-peluqueria-centro-estetica": ["que-automatizar-negocio-pequeno"],
+  "web-para-restaurante-hosteleria": ["que-automatizar-negocio-pequeno"],
+  "pagina-web-para-autonomos": ["cuanto-cuesta-un-logo", "branding-para-negocio-pequeno"],
+  "que-debe-tener-web-negocio-local": ["branding-para-negocio-pequeno"],
   "precio-diseno-web-profesional": ["diseno-web-barato-merece-la-pena", "diseno-web-profesional-que-incluye", "cuanto-cobra-disenador-web-freelance"],
   "cuanto-cuesta-mantener-una-web-al-ano": ["wordpress-wix-o-web-a-medida"],
   "landing-page-o-web-completa": ["wordpress-wix-o-web-a-medida"],
@@ -123,7 +137,7 @@ console.log("páginas escritas:", escritas, NUEVAS.map((a) => a.slug).join(", ")
 <span class="tag">${c.tag}</span>
 <h2>${c.h2}</h2>
 <p>${c.p}</p>
-<div class="meta"><span>Octubre 2026</span><span class="rd">Leer · ${a.min} min →</span></div>
+<div class="meta"><span>${a.fecha >= "2026-11" ? "Noviembre" : "Octubre"} 2026</span><span class="rd">Leer · ${a.min} min →</span></div>
 </div>
 </a>
 

@@ -46,7 +46,7 @@ const META = {
   // 22/10/2026, identidad «webs bonitas», con Itzultzaile Neuronala tal cual.
   "index.html": {
     title: "Web politak: web diseinua Tolosan eta Gipuzkoan | OI Studio",
-    desc: "Web politak eta neurrira egindakoak Tolosa eta Gipuzkoako negozioetarako. Prezioa 420 €-tik aurrera itxita + BEZa, 48 orduko proposamena eta ordainketa amaieran.",
+    desc: "Web politak 420 €-tik aurrera + BEZa, automatizazioak eta brandinga Tolosa eta Gipuzkoako negozioetarako. Prezioa itxita, proposamena 48 ordutan eta ordainketa amaieran.",
     // 24/10/2026, con Itzultzaile Neuronala tal cual: el alt de la imagen al compartir.
     imgAlt: "OI Studio: Tolosa eta Gipuzkoako negozioetarako neurrira egindako webguneak, ordenagailuan, tabletean eta mugikorrean erakutsiak",
   },
@@ -76,12 +76,12 @@ const META = {
   },
   // 28/10/2026: automatizaciones y branding salen de la portada a su página, con Itzultzaile Neuronala (solo espacios ante «€» y «erreseinak», como en el resto del sitio).
   "automatizaciones.html": {
-    title: "Automatizazioak | OI Studio",
-    desc: "Erreserbak eta hitzorduak komisiorik gabe, Googleko zure fitxa eta zure erreseinak egunean. Zerbitzu bakoitzean esaten dizut zer zati egiten duen adimen artifizialak. 120 €-tik aurrera + BEZa.",
+    title: "Gipuzkoako negozioetarako automatizazioak | OI Studio",
+    desc: "Gipuzkoako negozioetarako automatizazioak: erreserbak eta hitzorduak komisiorik gabe, Googleko zure fitxa eta zure erreseinak egunean. Adimen artifizialak zer zati egiten duen esango dizut. 120 €-tik aurrera + BEZa.",
   },
   "branding.html": {
-    title: "Brandinga: logoa eta identitatea 220 €-tik aurrera | OI Studio",
-    desc: "Logotipoa 220 €, identitatea 440 € eta marka osoa 820 € + BEZ. Bi proposamen, bi aldaketa-erronda eta fitxategiak bektorean. Azkenean ordaintzen didazu.",
+    title: "Branding eta logoen diseinua Gipuzkoan, 220 €-tik aurrera | OI Studio",
+    desc: "Logotipoa eta nortasun korporatiboa diseinatzea Gipuzkoako negozioetarako: logoa 220 €, identitatea 440 € eta marka osoa 820 € + BEZ. Bi proposamen, bi txanda eta ordainketa amaieran.",
   },
 };
 

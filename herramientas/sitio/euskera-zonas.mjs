@@ -25,6 +25,8 @@
    esto, el pie de /eu/index.html, /eu/precios.html… salía con las guías en
    castellano. 24/10/2026, con Itzultzaile Neuronala tal cual. */
 export const MARCO_EU = [
+  [`Automatizaciones para negocios`, `Negozioetarako automatizazioak`],
+  [`Branding y diseño de logos`, `Brandinga eta logoen diseinua`],
   [`Llamar al 611 49 74 09`, `Deitu 611 49 74 09 zenbakira`],
   [`Abrir menú`, `Ireki menua`],
   [`Escribir por WhatsApp`, `Idatzi WhatsApp bidez`],
@@ -42,6 +44,12 @@ export const MARCO_EU = [
 
 /* Textos que se repiten en todas las páginas de zona. */
 export const COMUNES = [
+  // 2/11/2026: enlaces a branding y automatizaciones en cada zona (Itzultzaile Neuronala).
+  [`Además de la web, diseño tu `, `Webguneaz gain, `],
+  [`logo e identidad de marca`, `zure logoa eta marka-identitatea`],
+  [` y te monto `, ` diseinatu eta `],
+  [`automatizaciones para tu negocio`, `zure negoziorako automatizazioak`],
+  [`, como las reservas y las citas.`, ` muntatzen dizkizut, hala nola erreserbak eta hitzorduak.`],
   // 29/10: nombres del schema Service de las zonas (los mismos términos que i18n.js, ya pasados por Itzultzaile).
   [`Diseño web`, `Web diseinua`],
   [`Web de una página`, `Orrialde baten webgunea`],

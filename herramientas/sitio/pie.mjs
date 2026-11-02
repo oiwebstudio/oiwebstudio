@@ -84,8 +84,8 @@ ${grupo("foot_servicios", "Servicios", [
   li("precios.html", "Tienda online ·&nbsp;880&nbsp;€", "ft_s3"),
   li("reservas-online-sin-comisiones.html", "Reservas online sin comisiones", "ft_s5"),
   // 27/10/2026: oferta en tres líneas (webs · automatizaciones con IA · branding).
-  li("automatizaciones.html", "Automatizaciones", "nav_auto"),
-  li("branding.html", "Branding", "nav_branding"),
+  li("automatizaciones.html", "Automatizaciones para negocios", "ft_auto"),
+  li("branding.html", "Branding y diseño de logos", "ft_brand"),
 ].join("\n"))}
 ${grupo("foot_guias", "Guías", GUIAS.map(([h, t]) => li(h, t)).join("\n"))}
 ${grupo("foot_zonas", "Dónde trabajo", [

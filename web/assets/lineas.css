@@ -380,3 +380,59 @@
 
 /* Mientras GSAP mete la tarjeta, sus transiciones de CSS callan (si no, se pelean) */
 .l3-entrando, .l3-entrando * { transition: none !important; }
+
+/* 2/11 (Oier: posicionar branding y automatizaciones): secciones con el texto que Google y la gente necesitan */
+.rm__marca{font:inherit;}
+.sv{padding:clamp(56px,8vw,92px) 0;background:var(--bg);}
+.sv--suave{background:var(--bg-subtle);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.sv h2.tt{font-size:clamp(28px,3.6vw,46px);line-height:1.04;margin:0 0 28px;}
+.sv-vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}
+.sv-tabla{background:var(--surface);border:1px solid var(--border-strong);border-radius:20px;overflow:hidden;}
+.sv-tabla table{width:100%;border-collapse:collapse;}
+.sv-tabla th,.sv-tabla td{padding:15px 18px;border-bottom:1px solid var(--border);text-align:center;font-size:15.5px;line-height:1.4;color:var(--text);}
+.sv-tabla tbody th{text-align:left;font-weight:400;width:46%;}
+.sv-tabla thead th{font-family:var(--font-serif);font-weight:500;text-transform:uppercase;font-size:clamp(13px,1.7vw,19px);color:var(--ink);line-height:1.1;}
+.sv-tabla tbody td{color:var(--terra);}
+.sv-tabla svg{display:inline-block;vertical-align:middle;}
+.sv-no{color:var(--border-strong);}
+.sv-tabla tfoot td{border-bottom:0;background:var(--bg-subtle);font-family:var(--font-serif);font-weight:500;font-size:clamp(16px,2.2vw,26px);color:var(--ink);white-space:nowrap;}
+.sv-nota{margin:16px 0 0;font-size:14.5px;line-height:1.55;color:var(--text-muted);}
+.sv-pasos{list-style:none;margin:0;padding:0;display:grid;gap:14px;grid-template-columns:repeat(4,minmax(0,1fr));}
+.sv-pasos--3{grid-template-columns:repeat(3,minmax(0,1fr));}
+.sv-pasos li{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:24px 22px 26px;}
+.sv-pasos__n{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--ink);color:#fff;font-weight:600;font-size:15px;margin-bottom:18px;}
+.sv-pasos h3.tt{font-size:19px;line-height:1.15;margin:0 0 8px;}
+.sv-pasos p{margin:0;font-size:15px;line-height:1.55;color:var(--text);}
+.sv-dos{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:start;}
+.sv-lista{list-style:none;margin:0 0 18px;padding:0;border-top:1px solid var(--border-strong);}
+.sv-lista li{position:relative;padding:14px 0 14px 26px;border-bottom:1px solid var(--border);font-size:16px;line-height:1.5;color:var(--text);}
+.sv-lista li::before{content:"";position:absolute;left:2px;top:22px;width:10px;height:10px;border-radius:50%;background:var(--terra);}
+.sv-lista--no li::before{background:var(--border-strong);}
+.sv-p{margin:0;font-size:16px;line-height:1.6;color:var(--text);}
+.sv-zona{background:var(--ink);color:#fff;border-radius:24px;padding:clamp(24px,3.4vw,38px);}
+.l3 .sv-zona h2.tt{color:#fff;font-size:clamp(23px,2.6vw,32px);margin-bottom:14px;}
+.sv-zona p{margin:0;font-size:16px;line-height:1.6;color:rgba(255,255,255,.82);}
+.sv-cambio{background:var(--surface);border:1px solid var(--border-strong);border-radius:20px;overflow:hidden;}
+.sv-cambio__cab{display:grid;grid-template-columns:minmax(0,1fr) 24px minmax(0,1fr);gap:18px;padding:14px 22px;background:var(--bg-subtle);border-bottom:1px solid var(--border);font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted);}
+.sv-cambio__cab span:last-child{grid-column:3;}
+.sv-cambio ul{list-style:none;margin:0;padding:0;}
+.sv-cambio li{display:grid;grid-template-columns:minmax(0,1fr) 24px minmax(0,1fr);gap:18px;align-items:center;padding:17px 22px;border-bottom:1px solid var(--border);}
+.sv-cambio li:last-child{border-bottom:0;}
+.sv-cambio__a{font-size:15.5px;line-height:1.5;color:var(--text-muted);}
+.sv-cambio__b{font-size:15.5px;line-height:1.5;color:var(--ink);font-weight:500;}
+.sv-cambio__f{width:22px;height:22px;color:var(--terra);}
+.sv-lee{display:grid;gap:8px;justify-items:start;}
+.sv-lee__k{margin:0;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted);}
+.sv-lee a{font-size:15.5px;line-height:1.45;font-weight:500;color:var(--ink);text-decoration:underline;text-decoration-color:var(--terra);text-underline-offset:3px;}
+@media(max-width:900px){.sv-pasos,.sv-pasos--3{grid-template-columns:repeat(2,minmax(0,1fr));}.sv-dos{grid-template-columns:1fr;}}
+@media(max-width:600px){
+  .sv-pasos,.sv-pasos--3{grid-template-columns:1fr;}
+  .sv-tabla th,.sv-tabla td{padding:12px 8px;font-size:14px;}
+  .sv-tabla tbody th{padding-left:14px;width:44%;}
+  .sv-cambio__cab{display:none;}
+  .sv-cambio li{grid-template-columns:1fr;gap:6px;padding:15px 18px;}
+  .sv-cambio__f{display:none;}
+}
+#preguntas h2{text-transform:uppercase;}
+@media(max-width:899px){.hfaq .sv-lee{order:3;}}
+@media(max-width:600px){#au-h{font-size:clamp(25px,8.1vw,34px);}}
