@@ -392,8 +392,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
-    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        observer.unobserve(el);
+        el.classList.add('is-visible');
+        /* Al acabar deja de ser .reveal: la transición lenta de entrada no debe frenar
+           luego los efectos propios del bloque (pasar el ratón, tocar...) */
+        if (!el.closest('.hero')) setTimeout(() => el.classList.remove('reveal', 'reveal--left', 'reveal--right'), 1900);
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -7% 0px' });
     revealEls.forEach(el => observer.observe(el));
   }
 
@@ -841,7 +849,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (hecho) return;
     hecho = true;
     var s = document.createElement('script');
-    s.src = OI_ASSETS + 'movimiento.js?v=2';
+    s.src = OI_ASSETS + 'movimiento.js?v=3';
     s.async = true;
     document.head.appendChild(s);
   };
