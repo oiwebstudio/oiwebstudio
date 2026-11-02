@@ -178,12 +178,12 @@
       av.forEach(function (a, i) {
         if (a === nuevo) return;
         var d = antes[i] - a.getBoundingClientRect().top;
-        if (d) a.animate([{ transform: 'translateY(' + d + 'px)' }, { transform: 'none' }], { duration: 500, easing: 'cubic-bezier(.16,1,.3,1)' });
+        if (d) a.animate([{ transform: 'translateY(' + d + 'px)' }, { transform: 'none' }], { duration: 850, easing: 'cubic-bezier(.2,.75,.25,1)' });
       });
       nuevo.dataset.e = entra;
       nuevo.classList.add('is-entra');
-      nuevo.animate([{ transform: 'translateY(-18px) scale(.96)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 500, easing: 'cubic-bezier(.16,1,.3,1)' });
-      espera(function () { nuevo.classList.remove('is-entra'); salta(nuevo); }, 700);
+      nuevo.animate([{ transform: 'translateY(-18px) scale(.96)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 850, easing: 'cubic-bezier(.2,.75,.25,1)' });
+      espera(function () { nuevo.classList.remove('is-entra'); salta(nuevo); }, 1000);
     };
   }
   function vistaMarca(b) {
@@ -197,7 +197,7 @@
   }
   [].slice.call(document.querySelectorAll('.lv')).forEach(function (b, k) {
     var paso = b.classList.contains('lv--w') ? vistaWebs(b) : b.classList.contains('lv--a') ? vistaAvisos(b) : vistaMarca(b);
-    var cada = [2600, 2300, 2900][k % 3], reloj = null, vista = false;
+    var cada = [3600, 3200, 4000][k % 3], reloj = null, vista = false;
     function para() { clearInterval(reloj); reloj = null; }
     function sigue() { para(); if (!quieto && vista && !document.hidden) reloj = setInterval(paso, cada); }
     b.addEventListener('click', function () {
@@ -226,45 +226,54 @@ window.addEventListener('load', function () {
   document.fonts.ready.then(function () {
     document.querySelectorAll('.l3 h1.tt, .l3 h2.tt').forEach(function (h) {
       var s = SplitText.create(h, { type: 'lines', mask: 'lines', aria: 'auto' });
-      gsap.from(s.lines, { yPercent: 105, duration: 0.9, ease: 'expo.out', stagger: 0.08, scrollTrigger: { trigger: h, start: 'top 90%', once: true } });
+      gsap.from(s.lines, { yPercent: 105, duration: 1.22, ease: 'power3.out', stagger: 0.096, scrollTrigger: { trigger: h, start: 'top 90%', once: true } });
     });
     gsap.utils.toArray('.au__lede, .br__lede, .pr__lede, .pr__gar').forEach(function (p) {
-      gsap.from(p, { y: 20, opacity: 0, duration: 0.8, ease: 'expo.out', clearProps: 'transform,opacity', scrollTrigger: { trigger: p, start: 'top 92%', once: true } });
+      gsap.from(p, { y: 20, opacity: 0, duration: 1.08, ease: 'power3.out', clearProps: 'transform,opacity', scrollTrigger: { trigger: p, start: 'top 92%', once: true } });
     });
     var enFila = matchMedia('(min-width: 981px)').matches;
     gsap.utils.toArray('.ln__f').forEach(function (f, i) {
-      var tl = gsap.timeline({ delay: enFila ? i * 0.12 : 0, scrollTrigger: { trigger: enFila ? '.ln' : f, start: 'top 86%', once: true } });
-      tl.from(f, { y: 50, opacity: 0, duration: 0.9, ease: 'expo.out', clearProps: 'transform,opacity' })
-        .fromTo(f.querySelector('.lv'), { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1, ease: 'expo.out', clearProps: 'clipPath' }, '<')
-        .from(f.querySelectorAll('.lv__fan, .av, .lv__logo, .lv__pal, .lv__let, .lv__pie'), { y: 34, opacity: 0, duration: 0.8, ease: 'expo.out', stagger: 0.07, clearProps: 'transform,opacity' }, '<0.2')
-        .from(f.querySelector('.ln__marca'), { scaleX: 0, duration: 0.8, ease: 'expo.out' }, '<0.1')
-        .from(f.querySelectorAll('.ln__n, .ln__p, .ln__pie'), { y: 22, opacity: 0, duration: 0.7, ease: 'expo.out', stagger: 0.06, clearProps: 'transform,opacity' }, '<0.1');
+      /* Mientras entra, sin transiciones de CSS: la tarjeta y los avisos tienen las suyas y, si
+         pelean con GSAP, la entrada va a tirones y llega tarde (panel vacío más de un segundo) */
+      f.classList.add('l3-entrando');
+      var tl = gsap.timeline({ delay: enFila ? i * 0.14 : 0, onComplete: function () { f.classList.remove('l3-entrando'); }, scrollTrigger: { trigger: enFila ? '.ln' : f, start: 'top 90%', once: true } });
+      tl.from(f, { y: 44, opacity: 0, duration: 1.3, ease: 'power3.out', clearProps: 'transform,opacity' })
+        .from(f.querySelectorAll('.lv__fan, .av, .lv__logo, .lv__pal, .lv__let, .lv__pie'), { y: 20, opacity: 0, duration: 1.1, ease: 'power3.out', stagger: 0.06, clearProps: 'transform,opacity' }, '<0.1')
+        .from(f.querySelector('.ln__marca'), { scaleX: 0, duration: 1.1, ease: 'power3.out' }, '<0.1')
+        .from(f.querySelectorAll('.ln__n, .ln__p, .ln__pie'), { y: 16, opacity: 0, duration: 1, ease: 'power3.out', stagger: 0.07, clearProps: 'transform,opacity' }, '<0.05');
     });
-    gsap.from('.l3-au .ramas button', { y: 18, opacity: 0, duration: 0.6, ease: 'expo.out', stagger: 0.07, clearProps: 'transform,opacity', scrollTrigger: { trigger: '.l3-au .ramas', start: 'top 90%', once: true } });
+    gsap.from('.l3-au .ramas button', { y: 18, opacity: 0, duration: 0.81, ease: 'power3.out', stagger: 0.084, clearProps: 'transform,opacity', scrollTrigger: { trigger: '.l3-au .ramas', start: 'top 90%', once: true } });
     var vivo = document.querySelector('.l3-au .rm:not([hidden])');
     if (vivo) {
-      gsap.fromTo(vivo.querySelector('.rm__vista'), { clipPath: 'inset(14% 0% 0% 0%)', y: 40 }, { clipPath: 'inset(0% 0% 0% 0%)', y: 0, duration: 1, ease: 'expo.out', clearProps: 'clipPath,transform', scrollTrigger: { trigger: vivo, start: 'top 85%', once: true } });
+      gsap.fromTo(vivo.querySelector('.rm__vista'), { clipPath: 'inset(14% 0% 0% 0%)', y: 40 }, { clipPath: 'inset(0% 0% 0% 0%)', y: 0, duration: 1.35, ease: 'power3.out', clearProps: 'clipPath,transform', scrollTrigger: { trigger: vivo, start: 'top 85%', once: true } });
       var im = vivo.querySelector('.rmtel img');
-      if (im) gsap.from(im, { scale: 1.12, duration: 1.4, ease: 'expo.out', clearProps: 'transform', scrollTrigger: { trigger: vivo, start: 'top 85%', once: true } });
+      if (im) gsap.from(im, { scale: 1.12, duration: 1.89, ease: 'power3.out', clearProps: 'transform', scrollTrigger: { trigger: vivo, start: 'top 85%', once: true } });
     }
     var fin = document.getElementById('au-fin');
     if (fin) {
       var w = SplitText.create(fin, { type: 'words', aria: 'none' });
-      gsap.fromTo(w.words, { opacity: 0.18 }, { opacity: 1, stagger: 0.05, ease: 'none', scrollTrigger: { trigger: fin, start: 'top 85%', end: 'bottom 55%', scrub: true } });
+      gsap.fromTo(w.words, { opacity: 0.18 }, { opacity: 1, stagger: 0.06, ease: 'none', scrollTrigger: { trigger: fin, start: 'top 85%', end: 'bottom 55%', scrub: true } });
     }
-    ScrollTrigger.batch('.l3-apps .ag', { start: 'top 92%', once: true, onEnter: function (b) { b.forEach(function (g, k) { gsap.from(g.querySelector('.ag__n'), { x: -14, opacity: 0, duration: 0.5, delay: k * 0.06, ease: 'expo.out', clearProps: 'transform,opacity' }); gsap.from(g.querySelectorAll('.ap'), { y: 16, scale: 0.92, opacity: 0, duration: 0.5, delay: 0.08 + k * 0.06, ease: 'back.out(1.6)', stagger: 0.04, clearProps: 'transform,opacity' }); }); } });
-    gsap.from('.br__niv li', { x: -20, opacity: 0, duration: 0.6, ease: 'expo.out', stagger: 0.08, clearProps: 'transform,opacity', scrollTrigger: { trigger: '.br__niv', start: 'top 90%', once: true } });
+    ScrollTrigger.batch('.l3-apps .ag', { start: 'top 92%', once: true, onEnter: function (b) { b.forEach(function (g, k) { gsap.from(g.querySelector('.ag__n'), { x: -14, opacity: 0, duration: 0.68, delay: k * 0.06, ease: 'power3.out', clearProps: 'transform,opacity' }); gsap.from(g.querySelectorAll('.ap'), { y: 16, scale: 0.92, opacity: 0, duration: 0.68, delay: 0.08 + k * 0.06, ease: 'back.out(1.6)', stagger: 0.048, clearProps: 'transform,opacity' }); }); } });
+    gsap.from('.br__niv li', { x: -20, opacity: 0, duration: 0.81, ease: 'power3.out', stagger: 0.096, clearProps: 'transform,opacity', scrollTrigger: { trigger: '.br__niv', start: 'top 90%', once: true } });
     var hoja = document.querySelector('.l3-br .hoja');
-    if (hoja) gsap.fromTo(hoja, { clipPath: 'inset(0% 0% 100% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.1, ease: 'expo.out', clearProps: 'clipPath', scrollTrigger: { trigger: hoja, start: 'top 88%', once: true } });
+    if (hoja) gsap.fromTo(hoja, { clipPath: 'inset(0% 0% 100% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.49, ease: 'power3.out', clearProps: 'clipPath', scrollTrigger: { trigger: hoja, start: 'top 88%', once: true } });
     gsap.utils.toArray('.l3-pr .pr__col').forEach(function (c, i) {
-      gsap.from(c, { y: 34, opacity: 0, duration: 0.8, delay: i * 0.08, ease: 'expo.out', clearProps: 'transform,opacity', scrollTrigger: { trigger: '.l3-pr .pr__tres', start: 'top 88%', once: true } });
+      gsap.from(c, { y: 34, opacity: 0, duration: 1.08, delay: i * 0.08, ease: 'power3.out', clearProps: 'transform,opacity', scrollTrigger: { trigger: '.l3-pr .pr__tres', start: 'top 88%', once: true } });
     });
     var cu = document.getElementById('cuota');
-    if (cu) gsap.fromTo(cu, { clipPath: 'inset(0% 100% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1, ease: 'expo.out', clearProps: 'clipPath', scrollTrigger: { trigger: cu, start: 'top 90%', once: true } });
+    if (cu) gsap.fromTo(cu, { clipPath: 'inset(0% 100% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.35, ease: 'power3.out', clearProps: 'clipPath', scrollTrigger: { trigger: cu, start: 'top 90%', once: true } });
+    /* Precios que cuentan: el número espera transparente (el texto real sigue en la página para
+       Google) y sube desde el 70 % al llegar; antes se veía el precio, caía a 0 y volvía a contar */
     gsap.utils.toArray('.l3 .l3-num').forEach(function (el) {
       if (el.closest('.pz-res')) return;
-      var fin = +el.dataset.n, o = { v: 0 };
-      ScrollTrigger.create({ trigger: el, start: 'top 95%', once: true, onEnter: function () { gsap.to(o, { v: fin, duration: 0.9, ease: 'power3.out', onUpdate: function () { el.textContent = Math.round(o.v); } }); } });
+      var fin = +el.dataset.n, o = { v: Math.round(fin * 0.7) };
+      gsap.set(el, { opacity: 0 });
+      ScrollTrigger.create({ trigger: el, start: 'top 95%', once: true, onEnter: function () {
+        el.textContent = o.v;
+        gsap.to(el, { opacity: 1, duration: 0.7, ease: 'power2.out', clearProps: 'opacity' });
+        gsap.to(o, { v: fin, duration: 1.3, ease: 'power3.out', onUpdate: function () { el.textContent = Math.round(o.v); }, onComplete: function () { el.textContent = fin; } });
+      } });
     });
     ScrollTrigger.refresh();
   });

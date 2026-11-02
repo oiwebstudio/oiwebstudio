@@ -103,7 +103,7 @@
       if (!ents[0].isIntersecting) return;
       io.disconnect();
       fn();
-    }, { threshold: 0, rootMargin: margen || '0px 0px -12% 0px' });
+    }, { threshold: 0, rootMargin: margen || '0px 0px -7% 0px' });
     io.observe(el);
   };
 
@@ -132,7 +132,7 @@
       setTimeout(() => {
         l.classList.remove('mv-cascada', 'is-in');
         Array.from(l.children).forEach(li => li.style.removeProperty('--mv-i'));
-      }, 700 + 8 * 60 + 200);
+      }, 1050 + 8 * 80 + 250);
     });
   });
 
@@ -154,7 +154,7 @@
     el.classList.add('mv-cuenta');
     una(el, () => {
       el.classList.add('is-in');
-      const t0 = performance.now(), dur = 1100;
+      const t0 = performance.now(), dur = 1500;
       const paso = (t) => {
         const p = Math.min((t - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3);
         nodo.data = p < 1 ? m[1] + Math.round(ini + (fin - ini) * e) + m[3] : original;
@@ -163,7 +163,7 @@
       };
       nodo.data = m[1] + ini + m[3];
       requestAnimationFrame(paso);
-    }, '0px 0px -15% 0px');
+    }, '0px 0px -8% 0px');
   });
 
   const TITULARES = 'main h2, .section h2, .cs-cta h2, .lin__h, .zsec h2, .art h2';
@@ -206,7 +206,7 @@
         io.unobserve(en.target);
         if (en.target._mv) en.target._mv();
       });
-    }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
+    }, { threshold: 0, rootMargin: '0px 0px -6% 0px' });
 
     // Titulares: cada palabra sube desde detrás de su máscara.
     document.querySelectorAll(TITULARES).forEach(h => {
@@ -215,7 +215,7 @@
       const n = s.words.length;
       if (!n) { s.revert(); return; }
       calmar(h);
-      const paso = Math.min(60, Math.round(480 / n));
+      const paso = Math.min(85, Math.round(680 / n));
       h.style.setProperty('--mv-paso', paso + 'ms');
       h.classList.add('mv-listo');
       h._mv = () => {
@@ -230,7 +230,7 @@
           h.querySelectorAll('.grad').forEach(g => g.classList.add('is-marked'));
         };
         s.words[n - 1].addEventListener('animationend', recomponer, { once: true });
-        setTimeout(recomponer, 800 + paso * n + 400);
+        setTimeout(recomponer, 1150 + paso * n + 400);
       };
       io.observe(h);
     });
@@ -242,7 +242,7 @@
       p.classList.add('mv-listo-p');
       p._mv = () => {
         p.classList.add('mv-sube-p');
-        setTimeout(() => p.classList.remove('mv-listo-p', 'mv-sube-p'), 1200);
+        setTimeout(() => p.classList.remove('mv-listo-p', 'mv-sube-p'), 1600);
       };
       io.observe(p);
     });
@@ -266,7 +266,7 @@
           p.classList.remove('mv-lineas');
         };
         s.lines[n - 1].addEventListener('animationend', recomponer, { once: true });
-        setTimeout(recomponer, 750 + 70 * n + 400);
+        setTimeout(recomponer, 1050 + 95 * n + 400);
       };
       io.observe(p);
     });

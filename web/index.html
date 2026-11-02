@@ -148,9 +148,9 @@
 </script>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/geist-latin-04ce1a61.woff2" crossorigin/>
 <link rel="stylesheet" href="/assets/fuentes.css?v=1"/>
-<link rel="stylesheet" href="assets/styles.css?v=30"/>
-<link rel="stylesheet" href="assets/portada.css?v=29"/>
-<link rel="stylesheet" href="assets/lineas.css?v=5"/>
+<link rel="stylesheet" href="assets/styles.css?v=31"/>
+<link rel="stylesheet" href="assets/portada.css?v=30"/>
+<link rel="stylesheet" href="assets/lineas.css?v=6"/>
 <script>if(location.protocol==='http:'&&/(^|\.)oiwebstudio\.com$/.test(location.hostname))location.replace('https://'+location.host+location.pathname+location.search+location.hash);document.documentElement.classList.add('js');</script>
 <link rel="preload" as="image" type="image/avif" href="/assets/hero/mano-520.avif" imagesrcset="/assets/hero/mano-520.avif 520w, /assets/hero/mano-900.avif 900w" imagesizes="(max-width: 760px) 340px, 480px" fetchpriority="high"/>
 </head>
@@ -772,13 +772,13 @@
 </footer>
 
 <script src="assets/i18n.js?v=33"></script>
-<script src="assets/main.js?v=19"></script>
+<script src="assets/main.js?v=20"></script>
 <script src="assets/prueba.js?v=3"></script>
 <script src="assets/interactivos.js?v=1" defer></script>
 <script src="/assets/vendor/gsap.min.js" defer></script>
 <script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
 <script src="/assets/vendor/SplitText.min.js" defer></script>
-<script src="assets/lineas.js?v=4" defer></script>
+<script src="assets/lineas.js?v=5" defer></script>
 <script>
 (function(){
   /* Hero: el titular entra palabra a palabra y el móvil va enseñando las muestras */
@@ -833,11 +833,11 @@
   if (pant) {
     if (quieto) pant.classList.add('is-on');
     else {
-      setTimeout(function(){ pant.classList.add('is-encendiendo'); }, 1250);
+      setTimeout(function(){ pant.classList.add('is-encendiendo'); }, 1600);
       setTimeout(function(){
         pant.classList.add('is-on');
         if (pendiente) setTimeout(function(){ ponerEnMovil(pendiente[0], pendiente[1]); }, 900);
-      }, 2550);
+      }, 3100);
     }
   }
 
@@ -850,7 +850,7 @@
   var anillo = document.getElementById('hxAnillo');
   if (anillo) {
     var piezas = anillo.querySelectorAll('.hx__p'), n = piezas.length;
-    var VUELTA = 42000, BASE = 200, PASOS = 72;
+    var VUELTA = 52000, BASE = 200, PASOS = 72;
     var radio = function(){ return innerWidth <= 760 ? Math.min(135, innerWidth * .31) : Math.min(270, Math.max(150, innerWidth * .21)); };
     var Rr = radio(), anims = [], visible = true, vel = 1, velObj = 1, rampa = null;
     var suave = function(x){ x = Math.min(1, Math.max(0, x)); return x * x * (3 - 2 * x); };
