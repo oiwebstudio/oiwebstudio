@@ -29,7 +29,7 @@
 <link rel="manifest" href="/site.webmanifest"/>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/geist-latin-04ce1a61.woff2" crossorigin/>
 <link rel="stylesheet" href="/assets/fuentes.css?v=1"/>
-<link rel="stylesheet" href="assets/styles.css?v=31"/>
+<link rel="stylesheet" href="assets/styles.css?v=32"/>
 <script>if(location.protocol==='http:'&&/(^|\.)oiwebstudio\.com$/.test(location.hostname))location.replace('https://'+location.host+location.pathname+location.search+location.hash);document.documentElement.classList.add('js');</script>
 <style>
   /* Página de servicio: SEO y posicionamiento en Google (21/10/2026); desde el 23/10,
@@ -278,6 +278,7 @@
 <div>
 <p class="sp-crumbs"><a href="index.html" data-t="nav_inicio">Inicio</a> / <span data-t="seo_miga">Presencia en Google</span></p>
 <h1 class="sp-titulo" data-t="seo_h1">Presencia en Google y en las IAs: <span class="sp-mk">que te encuentren</span></h1>
+<script>/* El titular se trocea aquí, antes de pintarse: si no, se ve entero, desaparece y vuelve a entrar */(function(h){var n=0;(function t(e){[].slice.call(e.childNodes).forEach(function(c){if(c.nodeType===1)return t(c);if(c.nodeType!==3)return;var f=document.createDocumentFragment();c.textContent.split(/(\s+)/).forEach(function(p){if(!p)return;if(!p.trim())return f.appendChild(document.createTextNode(' '));var s=document.createElement('span');s.className='oi-w';s.style.setProperty('--i',n++);s.textContent=p;f.appendChild(s)});e.replaceChild(f,c)})})(h)})(document.currentScript.previousElementSibling)</script>
 <p class="sp-lede" data-t="seo_lede">Me ocupo de que te encuentren en Google, en el mapa y en ChatGPT cuando alguien de tu zona busca lo que haces. También si tu web la hizo otra persona, o si todavía no tienes web.</p>
 <div class="sp-acciones">
 <a href="revision-web-gratis.html#pedir" class="btn btn--accent btn--lg" data-t="seo_btn_rev">Pedir la revisión gratis</a>
@@ -553,8 +554,8 @@
 <div class="footer__mark" aria-hidden="true">OI STUDIO</div>
 </footer>
 
-<script src="assets/i18n.js?v=34"></script>
-<script src="assets/main.js?v=20"></script>
+<script src="assets/i18n.js?v=35"></script>
+<script src="assets/main.js?v=21"></script>
 <script src="/assets/vendor/gsap.min.js" defer></script>
 <script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
 <script src="/assets/vendor/SplitText.min.js" defer></script>
@@ -567,19 +568,10 @@ window.addEventListener('load', function () {
   if (!window.gsap || !window.SplitText || !window.ScrollTrigger) return;
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   gsap.registerPlugin(ScrollTrigger, SplitText);
-  document.fonts.ready.then(function () {
-    var h1 = document.querySelector('.sp-titulo');
-    if (h1) {
-      var s = SplitText.create(h1, { type: 'words,chars', mask: 'chars', aria: 'auto' });
-      gsap.from(s.chars, { yPercent: 110, duration: 0.8, ease: 'expo.out', stagger: 0.014 });
-    }
+  document.fonts.ready.then(OI_SOLO_ABAJO(function () {
     gsap.from('.sp-ficha__lista i', { scale: 0, duration: 0.5, ease: 'back.out(2.2)', stagger: 0.12, delay: 0.5 });
     gsap.from('.sp-ficha__ok', { opacity: 0, y: 6, duration: 0.5, ease: 'expo.out', delay: 1.3 });
-    gsap.utils.toArray('.sp-h2, .sp-caso h3, .sp-cuota h3').forEach(function (h) {
-      var l = SplitText.create(h, { type: 'lines', mask: 'lines', aria: 'auto' });
-      gsap.from(l.lines, { yPercent: 105, duration: 0.8, ease: 'expo.out', stagger: 0.08,
-        scrollTrigger: { trigger: h, start: 'top 88%', once: true } });
-    });
+    gsap.utils.toArray('.sp-h2, .sp-caso h3, .sp-cuota h3').forEach(OI_TITULO);
     var p = document.querySelector('.sp-enciende');
     if (p) {
       var w = SplitText.create(p, { type: 'words', aria: 'none' });
@@ -593,7 +585,7 @@ window.addEventListener('load', function () {
     var banda = document.querySelector('.sp-banda');
     if (banda) gsap.fromTo(banda, { xPercent: 0 }, { xPercent: -35, ease: 'none',
       scrollTrigger: { trigger: banda, start: 'top bottom', end: 'bottom top', scrub: true } });
-  });
+  }));
 });
 </script>
 <a class="wa-float" href="https://wa.me/34611497409?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20presencia%20en%20Google%20de%20mi%20negocio." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">

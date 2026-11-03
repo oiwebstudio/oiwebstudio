@@ -1111,13 +1111,17 @@ const EU = {
   nodes.forEach(el => { el.dataset._es = el.innerHTML; });
   phNodes.forEach(el => { el.dataset._esp = el.getAttribute('placeholder') || ''; });
 
+  // Un titular ya troceado en palabras tiene otro HTML pero el mismo texto: no se reescribe (3/11/2026)
+  const plano = s => s.replace(/s+/g, ' ').trim();
+  const mismoTexto = (el, html) => { const t = document.createElement('template'); t.innerHTML = html; return plano(el.textContent) === plano(t.content.textContent); };
+
   function apply(lang) {
     const eu = lang === 'eu';
     nodes.forEach(el => {
       const k = el.dataset.t;
       // Si no cambia nada no se reescribe: reescribir rehace los elementos y reinicia sus animaciones (2/11/2026)
       const texto = eu && EU[k] != null ? EU[k] : el.dataset._es;
-      if (el.innerHTML !== texto) el.innerHTML = texto;
+      if (el.innerHTML !== texto && !mismoTexto(el, texto)) el.innerHTML = texto;
     });
     phNodes.forEach(el => {
       const k = el.dataset.tp;
