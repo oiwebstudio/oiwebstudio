@@ -221,6 +221,7 @@ export const NUEVAS = [
   { slug: "elgoibar", name: "Elgoibar", alt: "Elgóibar", comarca: "Debabarrena", hero: "taller", mosaico: ["taller", "gym", "cafe"],
     lede: "Capital de la máquina-herramienta. Webs para el proveedor y el comercio que giran en torno a esa industria.",
     contexto: "Elgoibar tiene una tradición industrial muy marcada, con la máquina-herramienta como seña de identidad, y alrededor un tejido de servicios y comercio. Para la empresa industrial, la web es credibilidad ante un responsable de compras; para el comercio de calle, es aparecer cuando alguien busca algo cerca. Son dos trabajos distintos y se plantean distinto.",
+    contextoHtml: "Para el primero tengo una guía de <a href=\"../web-para-empresa-industrial-gipuzkoa.html\" class=\"link-terra\">web para empresa industrial</a>.",
     sectores: ["Industria y máquina-herramienta", "Ingeniería y servicios técnicos", "Comercio de proximidad", "Hostelería", "Oficios"],
     gancho: "Para industria priorizo ficha técnica clara y pruebas de capacidad por encima de efectos.",
     faq: { q: "¿Qué debe tener la web de una empresa industrial?", a: "Qué fabricas o mecanizas, con qué maquinaria y tolerancias, ejemplos de trabajos y una forma rápida de pedir oferta. Lo bonito importa menos que lo creíble." } },

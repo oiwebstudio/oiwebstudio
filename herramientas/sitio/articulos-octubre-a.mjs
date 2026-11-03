@@ -207,7 +207,7 @@ ${cta("¿Tienes un negocio en Donostia?", "Cuéntame qué haces y te preparo una
   ogdesc: "La web de una empresa industrial no vende al público: tiene que convencer a un comprador técnico. Qué incluir.",
   keywords: "web industrial Gipuzkoa, página web empresa industrial, web mecanizado, web para pyme industrial, diseño web industria País Vasco, web B2B",
   crumb: "Web para empresa industrial",
-  h1: "Web para una empresa industrial: <em>qué necesita de verdad</em>",
+  h1: "Web para una empresa industrial en Gipuzkoa: <em>qué necesita de verdad</em>",
   lede: "Gipuzkoa es tierra de industria, pero muchas webs industriales parecen un folleto de hace veinte años: no dicen qué fabrican, ni con qué capacidad, ni cómo pedir presupuesto. El cliente es un comprador técnico con poco tiempo; la web tiene que ponérselo fácil.",
   img: "taller-desk", min: 7,
   cuerpo: `
@@ -237,6 +237,9 @@ ${cta("¿Tienes un negocio en Donostia?", "Cuéntame qué haces y te preparo una
 <h2 id="idiomas">Idiomas</h2>
 <p>Si exportas o trabajas con clientes de otros países, una versión en inglés (y a veces francés o alemán) marca la diferencia. Dentro de Euskadi, castellano y euskera: ten en cuenta que <a href="web-bilingue-euskera-castellano.html">las dos versiones tienen que ser páginas reales,</a> no un traductor encima.</p>
 
+<h2 id="gipuzkoa">Una web industrial en Gipuzkoa</h2>
+<p>Aquí la industria va por valles, y cada uno tiene su fama: la máquina-herramienta y el mecanizado en <a href="zonas/elgoibar.html">Elgoibar</a> y <a href="zonas/eibar.html">Eibar</a>, el ferrocarril y sus proveedores en <a href="zonas/beasain.html">Beasain</a>, las cooperativas en <a href="zonas/arrasate-mondragon.html">Arrasate</a> y Debagoiena. Si tu nave está en uno de ellos, dilo en la web con el nombre del pueblo y del valle: a quien compra le sitúa y le dice que conoces el sector. Y si vendes fuera de Gipuzkoa, que se vea también: hasta dónde sirves, si exportas y en qué idiomas atiendes.</p>
+
 <h2 id="seo">Cómo captar clientes industriales con la web</h2>
 <ul class="check">
 <li><strong>Una página por servicio o proceso,</strong> con la zona nombrada: «mecanizado CNC en Eibar», «calderería en Goierri».</li>
@@ -248,7 +251,7 @@ ${cta("¿Tienes un negocio en Donostia?", "Cuéntame qué haces y te preparo una
 ${consejo("Pon en la web lo que le dirías a un comprador por teléfono en los primeros dos minutos: qué fabricas, qué materiales, qué cantidades y cuánto tardas. Si eso no está, no hay web que lo arregle.")}
 
 <h2 id="cuanto">Cuánto cuesta</h2>
-<p>Una web de negocio de varias páginas, con las capacidades, los procesos y el contacto bien explicados, parte de 540 € + IVA en OI Studio, con precio cerrado por escrito. Si necesitas catálogo grande, área de clientes o varios idiomas, se presupuesta aparte antes de empezar. Más información en la <a href="precios.html">página de precios</a>.</p>
+<p>Una web de negocio de varias páginas, con las capacidades, los procesos y el contacto bien explicados, parte de 540 € + IVA en OI Studio, con precio cerrado por escrito, y lleva una cuota de 28 €/mes con el dominio, el alojamiento, las copias de seguridad y hasta 3 cambios al mes. Si necesitas catálogo grande, área de clientes o varios idiomas, se presupuesta aparte antes de empezar. Más información en la <a href="precios.html">página de precios</a>.</p>
 
 ${cta("¿Tienes una empresa o taller en Gipuzkoa?", "Cuéntame qué fabricas o qué servicio ofreces y te preparo una propuesta con precio cerrado en menos de 48 horas.", "Pedir presupuesto")}
 `,
@@ -256,7 +259,7 @@ ${cta("¿Tienes una empresa o taller en Gipuzkoa?", "Cuéntame qué fabricas o q
     ["¿Necesita web una empresa industrial pequeña?", "Sí: los compradores comparan proveedores en internet antes de pedir presupuesto. Una web sencilla con capacidades, certificaciones y contacto claro ya te pone en la lista de candidatos."],
     ["¿Qué debe incluir la web de una empresa de mecanizado?", "Procesos y maquinaria, materiales y tolerancias, certificaciones vigentes, sectores a los que sirves, fotos reales de la nave y las piezas, y un botón claro para pedir presupuesto."],
     ["¿Es útil tener la web en inglés?", "Si exportas o trabajas con clientes extranjeros, sí. Dentro de Euskadi conviene tener también castellano y euskera como páginas reales."],
-    ["¿Cuánto cuesta una web industrial?", "Una web de negocio de varias páginas parte de 540 € + IVA en OI Studio, con precio cerrado. Si hace falta catálogo grande, área privada o varios idiomas, se presupuesta aparte."],
+    ["¿Cuánto cuesta una web industrial?", "Una web de negocio de varias páginas parte de 540 € + IVA en OI Studio, con precio cerrado, y lleva una cuota de 28 €/mes con dominio, alojamiento, copias y hasta 3 cambios al mes. Si hace falta catálogo grande, área privada o varios idiomas, se presupuesta aparte."],
   ],
   cierre: `Sigue leyendo: <a href="web-para-taller-mecanico.html">la web de un taller mecánico</a> y <a href="landing-page-o-web-completa.html">landing o web completa</a>.`,
 },
