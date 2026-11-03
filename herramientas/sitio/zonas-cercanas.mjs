@@ -30,7 +30,7 @@ const VECINOS = {
   ordizia: ["beasain", "zumarraga", "alegia"],
   zumarraga: ["beasain", "ordizia", "azpeitia"],
   azpeitia: ["zarautz", "zumarraga", "ordizia"],
-  zarautz: ["azpeitia", "donostia-san-sebastian", "zumarraga"],
+  zarautz: ["getaria", "orio", "zumaia", "donostia-san-sebastian"],
   "arrasate-mondragon": ["bergara", "onati", "eibar"],
   bergara: ["arrasate-mondragon", "onati", "eibar"],
   onati: ["arrasate-mondragon", "bergara", "zumarraga"],
