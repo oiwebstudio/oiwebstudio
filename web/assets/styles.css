@@ -928,6 +928,21 @@ a.work:hover .work__link { gap: 11px; color: var(--accent-hover); }
 .js .hero .reveal[data-d="4"], .js .pre-hero .reveal[data-d="4"], .js .bot-hero .reveal[data-d="4"], .js .contact-grid >.reveal[data-d="4"] { animation-delay: 0.24s; }
 @keyframes hero-in { from { opacity: 0; transform: translateY(22px); } }
 
+/* Primera pantalla (2/11/2026, Oier: «se ve la página y luego empieza la animación»): lo que se ve
+   nada más llegar entra por CSS desde el primer pintado. Si esperase a GSAP o a main.js, se vería
+   quieto, desaparecería y volvería a entrar. Los titulares que van palabra a palabra se trocean
+   con un script pegado al <h1>, antes de pintarse. */
+.js .art-hero > *, .js .art > p:nth-of-type(-n+2), .js .au__lede, .js .br__lede, .js .rs-tel, .js .sp-ficha { animation: hero-in 1.05s cubic-bezier(.2,.75,.25,1) .12s both; }
+/* Primero el titular y luego lo demás */
+.js .au__lede, .js .br__lede { animation-delay: .55s; }
+.oi-w { display: inline-block; }
+.js .oi-w { animation: oiPalabra 1.35s cubic-bezier(.2,.75,.25,1) both; animation-delay: calc(var(--i) * 95ms + .1s); }
+/* Sin blur: con filtro la animación no puede ir por la tarjeta gráfica y se atasca mientras carga la página (3/11/2026) */
+@keyframes oiPalabra { from { opacity: 0; transform: translateY(.3em); } }
+@media (prefers-reduced-motion: reduce) {
+  .js .art-hero > *, .js .art > p:nth-of-type(-n+2), .js .au__lede, .js .br__lede, .js .rs-tel, .js .sp-ficha, .js .oi-w { animation: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .js .reveal, .reveal { opacity: 1; transform: none; transition: none; }
   .js .hero .reveal, .js .pre-hero .reveal, .js .bot-hero .reveal, .js .contact-grid >.reveal { animation: none; }

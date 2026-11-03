@@ -223,16 +223,14 @@ window.addEventListener('load', function () {
   if (!window.gsap || !window.SplitText || !window.ScrollTrigger) return;
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   gsap.registerPlugin(ScrollTrigger, SplitText);
-  document.fonts.ready.then(function () {
-    document.querySelectorAll('.l3 h1.tt, .l3 h2.tt').forEach(function (h) {
-      var s = SplitText.create(h, { type: 'lines', mask: 'lines', aria: 'auto' });
-      gsap.from(s.lines, { yPercent: 105, duration: 1.22, ease: 'power3.out', stagger: 0.096, scrollTrigger: { trigger: h, start: 'top 90%', once: true } });
-    });
+  document.fonts.ready.then(OI_SOLO_ABAJO(function () {
+    document.querySelectorAll('.l3 h2.tt').forEach(OI_TITULO);
     gsap.utils.toArray('.au__lede, .br__lede, .pr__lede, .pr__gar').forEach(function (p) {
       gsap.from(p, { y: 20, opacity: 0, duration: 1.08, ease: 'power3.out', clearProps: 'transform,opacity', scrollTrigger: { trigger: p, start: 'top 92%', once: true } });
     });
     var enFila = matchMedia('(min-width: 981px)').matches;
     gsap.utils.toArray('.ln__f').forEach(function (f, i) {
+      if (!OI_ABAJO(f)) return;
       /* Mientras entra, sin transiciones de CSS: la tarjeta y los avisos tienen las suyas y, si
          pelean con GSAP, la entrada va a tirones y llega tarde (panel vacío más de un segundo) */
       f.classList.add('l3-entrando');
@@ -266,7 +264,7 @@ window.addEventListener('load', function () {
     /* Precios que cuentan: el número espera transparente (el texto real sigue en la página para
        Google) y sube desde el 70 % al llegar; antes se veía el precio, caía a 0 y volvía a contar */
     gsap.utils.toArray('.l3 .l3-num').forEach(function (el) {
-      if (el.closest('.pz-res')) return;
+      if (el.closest('.pz-res') || !OI_ABAJO(el)) return;
       var fin = +el.dataset.n, o = { v: Math.round(fin * 0.7) };
       gsap.set(el, { opacity: 0 });
       ScrollTrigger.create({ trigger: el, start: 'top 95%', once: true, onEnter: function () {
@@ -276,5 +274,5 @@ window.addEventListener('load', function () {
       } });
     });
     ScrollTrigger.refresh();
-  });
+  }));
 });

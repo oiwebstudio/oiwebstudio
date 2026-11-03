@@ -105,6 +105,9 @@
 .ramas{display:flex;border-bottom:1px solid var(--border-strong);overflow-x:auto;scrollbar-width:none;}
 .ramas::-webkit-scrollbar{display:none;}
 .ramas[hidden]{display:none;}
+/* Antes de que llegue lineas.js ya se pinta como quedará: pestañas y un solo panel, sin salto (2/11/2026) */
+html.js:not(.js-l3) .ramas[hidden]{display:flex;}
+html.js:not(.js-l3) .rm ~ .rm{display:none;}
 .ramas button{all:unset;cursor:pointer;flex:1 0 auto;padding:16px 22px 18px 0;margin-right:22px;font-family:var(--font-serif);font-weight:500;text-transform:uppercase;font-size:clamp(17px,1.7vw,21px);line-height:1.15;color:var(--text-faint);white-space:nowrap;position:relative;transition:color .2s;}
 .ramas button .l3-f{display:block;margin-bottom:10px;transition:transform .4s var(--ease);}
 .ramas button::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:4px;background:var(--terra);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease);}

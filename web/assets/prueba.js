@@ -95,7 +95,7 @@
     if (escena) escena.setAttribute("aria-label", rellenar(txt("alt"), { negocio: nombre, sector: sector, pueblo: pueblo }));
 
     /* un pequeño golpe en el nombre cuando cambia (no a cada letra seguida) */
-    if (!reduce && nombre !== ultimoNombre) {
+    if (!reduce && ultimoNombre && nombre !== ultimoNombre) {
       raiz.classList.remove("prueba--cambia");
       void raiz.offsetWidth;
       raiz.classList.add("prueba--cambia");

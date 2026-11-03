@@ -444,7 +444,8 @@ html.menu-abierto .hx__tarjeta, html.menu-abierto .hx__sello, html.menu-abierto 
 .hx__l2 { display: inline; -webkit-box-decoration-break: clone; box-decoration-break: clone; background-image: linear-gradient(120deg, var(--terra-soft), var(--terra-soft)); background-repeat: no-repeat; background-position: 0 88%; background-size: 100% 34%; animation: marcaH1 1s cubic-bezier(.6, 0, .2, 1) 1.1s both; }
 .hx__w { display: inline-block; }
 .js .hx__w { animation: hxPalabra 1.35s cubic-bezier(.2,.75,.25,1) both; animation-delay: calc(var(--i) * 95ms + .1s); }
-@keyframes hxPalabra { from { opacity: 0; transform: translateY(.3em); filter: blur(8px); } }
+/* Sin blur: con filtro la animación no puede ir por la tarjeta gráfica y se atasca mientras carga la página (3/11/2026) */
+@keyframes hxPalabra { from { opacity: 0; transform: translateY(.3em); } }
 /* La entradilla y los botones entran DESPUÉS del titular, no antes */
 .js .hx__lede { animation: hxSube 1.2s cubic-bezier(.2,.75,.25,1) .6s both; }
 .js .hx__acc { animation: hxSube 1.2s cubic-bezier(.2,.75,.25,1) .78s both; }

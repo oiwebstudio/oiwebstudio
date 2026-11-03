@@ -23,6 +23,41 @@ if (location.hostname === 'oiwebstudio.com') OI_TARDE(function () {
   document.head.appendChild(s);
 });
 
+/* Entradas con GSAP (2/11/2026): se preparan al terminar la carga y para entonces lo de arriba ya
+   se ha visto; esconderlo para animarlo parece un fallo. Mientras corre fn, gsap.from y los fromTo
+   que ocultan solo tocan lo que sigue por debajo de la pantalla. */
+var OI_ABAJO = function (el) { return el.getBoundingClientRect().top > window.innerHeight; };
+var OI_SOLO_ABAJO = function (fn) {
+  return function () {
+    var g = window.gsap, from = g.from, fromTo = g.fromTo;
+    var abajo = function (x) { return g.utils.toArray(x).filter(function (e) { return !e.getBoundingClientRect || OI_ABAJO(e); }); };
+    g.from = function (x, v) { var a = abajo(x); return a.length ? from.call(g, a, v) : null; };
+    g.fromTo = function (x, d, v) {
+      if (!('opacity' in d) && !('clipPath' in d)) return fromTo.call(g, x, d, v);
+      var a = abajo(x);
+      return a.length ? fromTo.call(g, a, d, v) : null;
+    };
+    try { fn(); } finally { g.from = from; g.fromTo = fromTo; }
+  };
+};
+
+/* Título que sube línea a línea al asomar. Con animate() lo mueve la tarjeta gráfica; con GSAP iba
+   por el procesador y se atascaba si la página estaba ocupada (3/11/2026). Lo que ya se ve no se toca. */
+var OI_TITULO = function (h) {
+  if (!OI_ABAJO(h)) return;
+  var lineas = SplitText.create(h, { type: 'lines', mask: 'lines', aria: 'auto' }).lines;
+  lineas.forEach(function (l) { l.style.transform = 'translateY(105%)'; });
+  var io = new IntersectionObserver(function (es) {
+    if (!es[0].isIntersecting) return;
+    io.disconnect();
+    lineas.forEach(function (l, i) {
+      l.animate([{ transform: 'translateY(105%)' }, { transform: 'none' }], { duration: 1150, delay: i * 90, easing: 'cubic-bezier(.2,.75,.25,1)', fill: 'backwards' });
+      l.style.transform = '';
+    });
+  }, { rootMargin: '0px 0px -10% 0px' });
+  io.observe(h);
+};
+
 var OI_ASSETS = (function () {
   var s = document.currentScript && document.currentScript.src;
   return s ? s.replace(/main\.js(\?.*)?$/, '') : '/assets/';
@@ -428,7 +463,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // En páginas de artículo, cascadea todos los párrafos del cuerpo del texto.
   document.querySelectorAll('.art p').forEach(p => p.classList.add('par-cascade'));
 
-  const cascadeEls = document.querySelectorAll('.par-cascade');
+  // Lo que ya se ve no se trocea: se escondería de golpe para volver a entrar (2/11/2026)
+  const cascadeEls = Array.from(document.querySelectorAll('.par-cascade')).filter(el => reduceMotion || OI_ABAJO(el));
   if (cascadeEls.length) {
     cascadeEls.forEach(el => {
       // Recorre los nodos hijos en vez de usar textContent, para no perder
