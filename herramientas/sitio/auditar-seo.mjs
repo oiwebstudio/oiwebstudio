@@ -58,6 +58,7 @@ for (const f of ficheros) {
     let j;
     try { j = JSON.parse(m[1]); } catch (e) { avisa("JSON-LD roto", f, e.message); continue; }
     for (const nodo of j["@graph"] || [j]) {
+      if (nodo["@type"] === "Question") avisa("FAQ: pregunta suelta en el JSON-LD, fuera de FAQPage", f, String(nodo.name).slice(0, 70));
       if (nodo["@type"] !== "FAQPage") continue;
       for (const q of nodo.mainEntity || []) {
         const pregunta = limpia(q.name || "");

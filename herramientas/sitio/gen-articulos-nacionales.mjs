@@ -297,6 +297,8 @@ ${cta("¿No sabes cuál te conviene?", "Cuéntame tu negocio y te digo, sin comp
 <li><strong>Datos fijos.</strong> Dirección, teléfono, horario, redes y los datos legales del titular.</li>
 </ul>
 
+<p>Este es el paso que más alarga el calendario: mira <a href="cuanto-tarda-hacer-pagina-web.html">cuánto se tarda en hacer una página web</a>, fase por fase.</p>
+
 <h2 id="dominio">3. Elige el dominio</h2>
 <p>El dominio es la dirección (por ejemplo <code>minegocio.com</code>). Mejor corto, fácil de decir por teléfono y <strong>registrado a tu nombre</strong>, no al de quien te hace la web: así la web es tuya si algún día cambias de proveedor. Si tu negocio es local, un .com o un .es funcionan igual de bien.</p>
 
