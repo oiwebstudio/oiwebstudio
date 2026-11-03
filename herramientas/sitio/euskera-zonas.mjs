@@ -281,6 +281,11 @@ export const ZONAS_EU = {
        `A.Berri, Getariako landetxe bat`],
       [`, con reservas bajo petición y la web en castellano, euskera e inglés.`,
        `, erreserbak eskatuta eta webgunea gaztelaniaz, euskaraz eta ingelesez.`],
+      // 3/11, con Itzultzaile Neuronala («Zarauzko» → «Zarautzko»; «menua» → «karta»).
+      [`No todos los negocios de Zarautz necesitan la misma web. A un bar o un restaurante del Malecón lo busca desde el móvil quien ya está en la playa, así que la carta, el horario y el botón de reservar tienen que verse a la primera. Una escuela de surf necesita mostrar cursos, niveles y precios. Un alquiler de apartamentos necesita mostrar fotos y fechas libres. A una tienda del centro tienen que encontrarla también en invierno, cuando la clientela es la de aquí. En hostelería, empieza por esta guía: `,
+       `Zarautzko negozio guztiek ez dute webgune bera behar. Malekoiko taberna edo jatetxe bat mugikorretik bilatzen du hondartzan dagoenak; beraz, karta, ordutegia eta erreserbatzeko botoia lehenengoan ikusi behar dira. Surf eskola batek ikastaroak, mailak eta prezioak erakutsi behar ditu. Apartamentuen alokairuak argazkiak eta data libreak erakutsi behar ditu. Zentroko denda bat neguan ere aurkitu behar dute, bezeroak hemengoak direnean. Ostalaritzan, hasi gida honekin: `],
+      [`qué debe tener la web de un restaurante`,
+       `jatetxe baten webguneak zer eduki behar duen`],
       [`Para negocios de temporada, las reservas automáticas son lo que más se nota: en agosto responden solas.`,
        `Denboraldiko negozioetan, erreserba automatikoak dira gehien nabaritzen direnak: abuztuan beren kabuz erantzuten dute.`],
       [`Alojamiento y apartamentos`, `Ostatuak eta apartamentuak`],
@@ -294,8 +299,9 @@ export const ZONAS_EU = {
       [`Sí. A 35 km lo práctico es empezar por videollamada y reservar el desplazamiento para cuando aporte valor: ver el local o hacer las fotos. El seguimiento se hace por WhatsApp o por correo, que es lo más ágil.`,
        `Bai. 35 km-ra, praktikoena bideodeiz hastea da, eta bidaia benetan zerbait ekartzen duenerako gordetzea: lokala ikusteko edo argazkiak egiteko. Jarraipena WhatsApp edo posta bidez egiten da, eta hori da arinena.`],
       [`¿Los 35 km se pagan aparte?`, `35 km-ak aparte ordaintzen dira?`],
-      [`No se pagan. El precio es cerrado y único en toda Gipuzkoa — 420€ la web de una página, 540€ la web con secciones, 30 días de ajustes incluidos — y los viajes corren de mi cuenta. El precio firmado es el definitivo.`,
-       `Ez dira ordaintzen. Prezioa itxia eta bakarra da Gipuzkoa osoan — 420 € orrialde bateko webgunea, 540 € sekzioak dituen webgunea, 30 eguneko doikuntzak barne — eta bidaiak nire kontura doaz. Sinatutako prezioa behin betikoa da.`],
+      // 3/11, con Itzultzaile Neuronala («egonaldirik gabe» → «iraunkortasunik gabe», como en Donostia).
+      [`No se pagan. El precio es cerrado y único en toda Gipuzkoa — 420€ la web de una página, 540€ la web con secciones, más IVA, con 30 días de ajustes incluidos y, después, la cuota de 28 €/mes que lleva cada web (alojamiento, dominio, copias y hasta 3 cambios al mes, sin permanencia) — y los viajes corren de mi cuenta. El precio firmado es el definitivo.`,
+       `Ez dira ordaintzen. Prezioa itxia eta bakarra da Gipuzkoa osoan — 420 € orrialde baten webgunea, 540 € atalak dituen webgunea, gehi BEZa, 30 eguneko doikuntzak barne, eta, ondoren, webgune bakoitzak hilean daraman 28 €-ko kuota (ostatua, domeinua, kopiak eta gehienez 3 aldaketa hilean, iraunkortasunik gabe) — eta bidaiak nire kontura doaz. Sinatutako prezioa behin betikoa da.`],
       [`¿Puedo competir en Google en Zarautz?`, `Lehiatu naiteke Googlen Zarautzen?`],
       [`Sí, con expectativas realistas: 23.000 habitantes significan más negocios compitiendo por las mismas búsquedas, así que aquí el SEO local pesa más que en un pueblo. La web sale preparada para Zarautz y el resto lo hace tu ficha de Google Business, que trabajo contigo siguiendo <a href="../google-business-profile-guia.html">esta guía</a>.`,
        `Bai, baina oinak lurrean: 23.000 biztanlek esan nahi du negozio gehiago daudela bilaketa berberak lortzeko lehian; beraz, hemen tokiko SEOak herri txiki batean baino pisu handiagoa du. Webgunea Zarautzerako prestatuta ateratzen da, eta gainerakoa zure Google Business fitxak egiten du: zurekin lantzen dut, <a href="../google-business-profile-guia.html">gida honi</a> jarraituz.`],
@@ -321,7 +327,7 @@ export const NEUTRAS = [
   // Etiquetas del selector de idioma: cada una va en la lengua a la que lleva.
   "Ver en castellano", "Euskaraz ikusi",
   "Tolosa", "Tolosaldea", "Gipuzkoa", "Donostialdea", "Bidasoa", "Urola Kosta", "Goierri",
-  "Donostia-San Sebastián", "Donostia", "Irun", "Zarautz", "Hondarribia", "Errenteria", "Hernani",
+  "Donostia-San Sebastián", "Donostia", "Irun", "Zarautz", "Orio", "Zumaia", "Hondarribia", "Errenteria", "Hernani",
   "Lasarte-Oria", "Ibarra", "Villabona", "Anoeta", "Alegia", "Andoain", "Beasain", "Azpeitia",
   "Zumarraga", "Ordizia", "Eibar", "Bergara", "Oñati", "Arrasate-Mondragón",
 ];
