@@ -1112,7 +1112,7 @@ const EU = {
   phNodes.forEach(el => { el.dataset._esp = el.getAttribute('placeholder') || ''; });
 
   // Un titular ya troceado en palabras tiene otro HTML pero el mismo texto: no se reescribe (3/11/2026)
-  const plano = s => s.replace(/s+/g, ' ').trim();
+  const plano = s => s.split(/\s+/).join(' ').trim();
   const mismoTexto = (el, html) => { const t = document.createElement('template'); t.innerHTML = html; return plano(el.textContent) === plano(t.content.textContent); };
 
   function apply(lang) {
