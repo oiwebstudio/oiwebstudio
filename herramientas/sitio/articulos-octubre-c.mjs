@@ -72,7 +72,7 @@ ${pedala("Muestra de web a medida para una tienda de bicis", "Una de mis muestra
 ${consejo("Un diseñador freelance barato que no responde sale más caro que uno que cobra algo más y contesta el mismo día. Pregunta por el plazo de respuesta a un cambio antes de mirar el precio.")}
 
 <h2 id="donostia">¿Y si busco diseñador web en Donostia, Irun o Zarautz?</h2>
-<p>Trabajo desde Tolosa con negocios de toda Gipuzkoa: la primera charla es por teléfono o videollamada, la propuesta llega en 48 horas y la web se revisa por WhatsApp. Si prefieres que nos veamos, en Tolosaldea y Donostialdea me acerco. Tienes una comparativa de <a href="diseno-web-donostia-agencia-o-freelance.html">agencia o freelance en Donostia</a> y las páginas de <a href="zonas/donostia-san-sebastian.html">Donostia</a>, <a href="zonas/irun.html">Irun</a> y <a href="zonas/zarautz.html">Zarautz</a>.</p>
+<p>Trabajo desde Tolosa con negocios de toda Gipuzkoa: la primera charla es por teléfono o videollamada, la propuesta llega en 48 horas y la web se revisa por WhatsApp. Si prefieres que nos veamos, en Tolosaldea y Donostialdea me acerco. Tienes una comparativa de <a href="diseno-web-donostia-agencia-o-freelance.html">diseñador web freelance o agencia en Donostia</a> y las páginas de <a href="zonas/donostia-san-sebastian.html">Donostia</a>, <a href="zonas/irun.html">Irun</a> y <a href="zonas/zarautz.html">Zarautz</a>.</p>
 
 ${cta("¿Quieres un precio cerrado para tu web?", "Cuéntame tu negocio y en 48 horas tienes una propuesta por escrito, sin compromiso.", "Pedir propuesta")}
 `,
