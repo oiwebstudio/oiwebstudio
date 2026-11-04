@@ -146,17 +146,17 @@ ${cta("¿Cuánto costaría tu web?", "Cuéntame tu negocio y te doy el precio ce
 {
   slug: "diseno-web-donostia-agencia-o-freelance",
   fecha: FECHA,
-  title: "Agencia o freelance en Donostia: cómo elegir quién hace tu web",
-  headline: "Agencia o freelance en Donostia: cómo elegir quién hace tu web y qué preguntar",
-  desc: "Agencia, freelance o estudio pequeño para la web de tu negocio en Donostia-San Sebastián: diferencias, precios orientativos y qué preguntar.",
-  ogdesc: "Agencia o freelance en Donostia: qué cambia en precio, trato y resultado, y cómo elegir.",
+  title: "Diseñador web freelance en Donostia o agencia: cuál elegir",
+  headline: "Diseñador web freelance en Donostia o agencia: cuál elegir",
+  desc: "Diseñador web freelance, estudio pequeño o agencia en Donostia-San Sebastián: qué cambia en precio, trato y plazos, y qué preguntar antes de elegir.",
+  ogdesc: "Diseñador web freelance o agencia en Donostia: qué cambia en precio, trato y resultado, y cómo elegir.",
   keywords: "diseño web Donostia, diseño web San Sebastián, diseñador web freelance Donostia, agencia diseño web San Sebastián, páginas web Donostia, crear página web Donosti",
   crumb: "Diseño web en Donostia",
-  h1: "Diseño web en Donostia: <em>agencia o freelance</em>",
-  lede: "En Donostia hay desde grandes agencias hasta diseñadores que trabajan solos desde casa. Para el negocio de un barrio la mejor opción no es siempre la más grande: depende de qué necesitas, cuánto quieres gastar y con quién prefieres hablar.",
+  h1: "Diseñador web freelance en Donostia <em>o agencia</em>",
+  lede: "En Donostia hay desde grandes agencias hasta diseñadores web freelance que trabajan solos desde casa. Para el negocio de un barrio la mejor opción no es siempre la más grande: depende de qué necesitas, cuánto quieres gastar y con quién prefieres hablar.",
   img: "pedala-desk", min: 7,
   cuerpo: `
-<h2 id="opciones">Tres opciones, tres maneras de trabajar</h2>
+<h2 id="opciones">Agencia, freelance o estudio pequeño: qué cambia</h2>
 ${tabla(["", "Agencia", "Freelance / estudio pequeño"], [
   ["Trato", "Un comercial y un equipo que no ves", "Hablas con quien hace la web"],
   ["Plazos", "Más largos, por procesos", "Más cortos y flexibles"],
@@ -165,6 +165,16 @@ ${tabla(["", "Agencia", "Freelance / estudio pequeño"], [
   ["Riesgo", "Cuotas y permanencias en algunas", "Depende de una sola persona"],
 ])}
 <p>Son rangos del mercado español para negocios locales (hay más detalle en la <a href="precio-diseno-web-profesional.html">guía de precios</a>). Una agencia tiene sentido si necesitas marca, campañas, tienda compleja o varias personas trabajando a la vez. Para la web de un comercio, un despacho o una consulta, lo habitual es que un freelance o un estudio pequeño te dé justo lo que necesitas por menos.</p>
+
+<h2 id="freelance">Cuándo te conviene un diseñador web freelance</h2>
+<p>Un diseñador web freelance te conviene si tu negocio necesita una web clara, quieres hablar siempre con la misma persona y prefieres un precio cerrado a un proyecto por fases. Te conviene menos si necesitas a la vez marca, campañas y una tienda complicada, o si no puedes esperar a que esa persona vuelva de unas vacaciones.</p>
+<p>El riesgo de depender de una sola persona se reduce con tres cosas que puedes pedir desde el principio:</p>
+<ul class="check">
+<li><strong>El dominio a tu nombre,</strong> para que la dirección de tu web siga siendo tuya pase lo que pase.</li>
+<li><strong>Copias de seguridad,</strong> y saber quién las guarda y cómo se recuperan.</li>
+<li><strong>Por escrito, qué pasa si lo dejáis:</strong> cómo te llevas la web y si eso tiene coste.</li>
+</ul>
+<p>Para saber si un presupuesto es razonable, tienes los rangos en <a href="cuanto-cobra-disenador-web-freelance.html">cuánto cobra un diseñador web freelance</a>.</p>
 
 <h2 id="elegir">Qué preguntar a cualquiera de los dos</h2>
 <ul class="check">
@@ -189,8 +199,9 @@ ${consejo("En una ciudad grande, piensa en tu barrio. Es más fácil ser el prim
 ${cta("¿Tienes un negocio en Donostia?", "Cuéntame qué haces y te preparo una propuesta con precio cerrado y una muestra con tu negocio, sin compromiso.", "Pedir presupuesto")}
 `,
   faq: [
-    ["¿Cuánto cuesta una página web en Donostia?", "Depende de quién la haga y del alcance: en agencia, entre 1.500 y 6.000 € una web completa; con un freelance o estudio pequeño, entre 300 y 1.500 €. En OI Studio, desde 420 € + IVA una web de una página y desde 540 € + IVA una web con secciones."],
+    ["¿Cuánto cuesta una página web en Donostia?", "Depende de quién la haga y del alcance: en agencia, entre 1.500 y 6.000 € una web completa; con un freelance o estudio pequeño, entre 300 y 1.500 €. En OI Studio, 420 € + IVA una web de una página y 540 € + IVA una web con secciones, y cada web lleva una cuota de 28 €/mes con dominio, alojamiento, copias y hasta 3 cambios al mes."],
     ["¿Agencia o freelance para un negocio pequeño?", "Para un comercio, un despacho o una consulta suele bastar un freelance o estudio pequeño: trato directo, plazos cortos y menos coste. La agencia compensa en proyectos grandes con varias disciplinas."],
+    ["¿Cuándo conviene un diseñador web freelance en Donostia?", "Cuando necesitas una web clara para un negocio, quieres hablar siempre con la misma persona y prefieres un precio cerrado. Pide el dominio a tu nombre, copias de seguridad y por escrito qué pasa si lo dejáis, para no depender de una sola persona."],
     ["¿Tiene que estar el diseñador en Donostia?", "No. El trabajo se hace a distancia. Lo importante es que conozca cómo busca la gente de tu zona y que sea una persona con quien puedas hablar."],
     ["¿Trabajáis con negocios de Donostia?", "Sí. OI Studio trabaja con negocios de toda Gipuzkoa. Estoy en Tolosa, a 26 km, y me acerco a Donostia si prefieres la primera reunión en tu local."],
   ],
