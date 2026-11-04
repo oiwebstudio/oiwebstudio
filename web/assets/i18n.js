@@ -6,6 +6,9 @@
    ========================================================================== */
 
 const EU = {
+  vt_t: "Aukeratu portada bat ikusteko",
+  vt_e: "Okindegia Tolosan",
+  vt_a: "Landetxea Getarian",
   // 2/11/2026: branding.html y automatizaciones.html con texto para posicionar (Itzultzaile Neuronala).
   bp_h: "Branding eta logoen diseinua Gipuzkoan",
   bp_lede: "Nik zure negozioaren logoa, koloreak eta letrak diseinatzen ditut, elkarrekin eta webgunearekin pentsatuta, eta nola aplikatzen diren zure bezeroak ikusten duen horretan. Tolosatik lan egiten dut Gipuzkoa osoko negozioetarako.",

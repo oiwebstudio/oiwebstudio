@@ -115,21 +115,49 @@
   .tc__b--2 b{background:#191712;color:#fff}
   .tc__b:active{transform:scale(.97)}
   .tc__nota{margin:22px 0 0;font-size:14px;line-height:1.45;max-width:36em;color:#6b655a}
-  .tc__abanico{position:relative;height:clamp(290px,38vw,520px)}
-  .tc__abanico span{position:absolute;left:0;top:0;display:block;width:68%;aspect-ratio:4/3;border-radius:24px;overflow:hidden;box-shadow:0 24px 50px -24px rgba(60,45,20,.45);transform:translate(var(--x),var(--y)) rotate(var(--r));transition:transform .7s var(--c)}
-  .tc__abanico img{width:100%;height:100%;object-fit:cover;display:block}
-  .tc__abanico span:nth-child(1){--x:0%;--y:30%;--r:-7deg;z-index:1}
-  .tc__abanico span:nth-child(2){--x:48%;--y:40%;--r:6deg;z-index:2}
-  .tc__abanico span:nth-child(3){--x:22%;--y:0%;--r:-1deg;z-index:3}
+  /* Portadas de las webs (Oier 4/11: «muestra la portada de la web, no del negocio, y más pro e interactiva»): ventanas que se cambian solas, al tocarlas o deslizando */
+  .vt{min-width:0}
+  .vt__mesa{position:relative;aspect-ratio:1/.8;touch-action:pan-y;transform:perspective(1700px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg))}
+  .vt__v{position:absolute;left:0;top:0;width:86%;display:block;color:inherit;text-decoration:none;transform:translate(var(--x),var(--y)) scale(var(--s));transition:transform .85s var(--c),z-index .85s linear;-webkit-user-drag:none;user-select:none}
+  .vt__v.p0{--x:7.5%;--y:27%;--s:1;z-index:3}
+  .vt__v.p1{--x:-3%;--y:2%;--s:.86;z-index:1}
+  .vt__v.p2{--x:19.5%;--y:0%;--s:.86;z-index:2}
+  .vt__marco{position:relative;display:block;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 0 0 1px rgba(40,30,15,.1),0 34px 60px -30px rgba(60,45,20,.55)}
+  .vt__marco::after{content:"";position:absolute;inset:0;background:#fbf8f2;opacity:0;pointer-events:none;transition:opacity .6s var(--c)}
+  .vt__v:not(.p0) .vt__marco::after{opacity:.38}
+  .vt__bar{display:flex;align-items:center;gap:8px;height:38px;padding:0 8px 0 12px;background:#fff;border-bottom:1px solid #efe9dd;font-size:12.5px;color:#5c574d}
+  .vt__bar svg{flex:none;width:12px;height:12px}
+  .vt__url{flex:1;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+  .vt__ir{flex:none;padding:5px 11px;border-radius:999px;background:#191712;color:#fff;font-size:12px;font-weight:600;white-space:nowrap;opacity:0;transition:opacity .4s var(--c),transform .25s var(--c)}
+  .vt__v.p0 .vt__ir{opacity:1}
+  .vt__foto{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top}
+  .vt__tel{position:absolute;right:-5%;bottom:-11%;width:21%;padding:3px;border-radius:15px;background:#191712;box-shadow:0 20px 34px -14px rgba(40,30,15,.6);translate:var(--px,0) var(--py,0);opacity:0;transform:translateY(14%) scale(.94);transition:opacity .45s var(--c),transform .7s var(--c)}
+  .vt__v.p0 .vt__tel{opacity:1;transform:none;transition-delay:.25s}
+  .vt__tel img{display:block;width:100%;height:auto;aspect-ratio:390/844;object-fit:cover;object-position:top;border-radius:12px}
+  .vt__tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:clamp(30px,3.6vw,46px)}
+  .vt__t{position:relative;display:block;width:100%;padding:12px 0 0;margin:0;border:0;background:none;text-align:left;font:inherit;color:#6b655a;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .vt__t::before,.vt__t i{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:#e4dccd}
+  .vt__t i{background:#191712;transform:scaleX(0);transform-origin:left}
+  .vt__t.is-on i{animation:vtBarra 5.5s linear both}
+  .vt--quieta .vt__t.is-on i{animation-play-state:paused}
+  .vt__t b{display:block;font-size:13px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:#191712;transition:color .3s}
+  .vt__t>span{display:block;margin-top:3px;font-size:13px;line-height:1.35;transition:color .3s}
+  .vt__t:not(.is-on) b{color:#8a8476}
+  .vt__t:focus-visible,.vt__v:focus-visible{outline:2px solid #191712;outline-offset:3px;border-radius:6px}
+  @keyframes vtBarra{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  .js .vt__v{animation:tcFoto 1.25s var(--c) backwards}
+  .js .vt__v.p1{animation-delay:.3s}.js .vt__v.p2{animation-delay:.42s}.js .vt__v.p0{animation-delay:.54s}
+  .js .vt__tabs{animation:tcSube 1.1s var(--c) .8s backwards}
   .js .tc__lede,.js .tc__acc,.js .tc__nota{animation:tcSube 1.1s var(--c) both}
   .js .tc__lede{animation-delay:.55s}.js .tc__acc{animation-delay:.7s}.js .tc__nota{animation-delay:.85s}
   .js .tc__abanico span{animation:tcFoto 1.25s var(--c) both}
   .js .tc__abanico span:nth-child(1){animation-delay:.3s}.js .tc__abanico span:nth-child(2){animation-delay:.42s}.js .tc__abanico span:nth-child(3){animation-delay:.54s}
   @keyframes tcSube{from{opacity:0;transform:translateY(16px)}}
-  @keyframes tcFoto{from{opacity:0;transform:translate(22%,40%) rotate(0) scale(.92)}}
-  @media(hover:hover) and (pointer:fine){.tc__b:hover{transform:translateY(-2px)}.tc__abanico:hover span:nth-child(1){--x:-5%;--r:-11deg}.tc__abanico:hover span:nth-child(2){--x:54%;--r:10deg}}
+  @keyframes tcFoto{from{opacity:0;transform:translate(7.5%,32%) scale(.92)}}
+  @media(hover:hover) and (pointer:fine){.tc__b:hover{transform:translateY(-2px)}.vt__v.p1:hover{--x:-5.5%;--y:0%}.vt__v.p2:hover{--x:22%;--y:-2%}.vt__v.p0:hover .vt__ir{transform:translateX(-2px)}.vt__t:hover b{color:#191712}}
   @media(min-width:900px){.tc__in{grid-template-columns:1.08fr 1fr}}
-  @media(prefers-reduced-motion:reduce){.js .tc *{animation:none!important}.tc__abanico span,.tc__b{transition:none}}
+  @media(max-width:600px){.vt__bar{height:32px;padding:0 6px 0 10px;font-size:11.5px}.vt__ir{padding:4px 9px;font-size:11px}.vt__marco{border-radius:12px}.vt__tel{border-radius:11px;padding:2px}.vt__tel img{border-radius:9px}.vt__t b{font-size:12px}.vt__t>span{font-size:12px}}
+  @media(prefers-reduced-motion:reduce){.js .tc *{animation:none!important}.vt__v,.vt__tel,.vt__marco::after,.tc__b{transition:none}.vt__t.is-on i{transform:none}}
 </style>
 </head>
 <body>
@@ -204,11 +232,82 @@
 </div>
 <p class="tc__nota" data-t="tra_honesty">Las muestras llevan nombre y datos inventados: no son clientes. Los casos reales son Errotatxo y A.Berri.</p>
 </div>
-<div class="tc__abanico" aria-hidden="true">
-<span><img src="assets/aberri/foto-atardecer.webp" alt="" width="1457" height="820"/></span>
-<span><img src="assets/etxea-desk.webp" alt="" width="900" height="562"/></span>
-<span><img src="assets/errotatxo/foto-fachada.webp" alt="" width="1400" height="1050"/></span>
+<div class="vt" id="vt">
+<div class="vt__mesa">
+<a class="vt__v p0" href="caso-errotatxo.html" draggable="false">
+<span class="vt__marco"><span class="vt__bar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="vt__url">errotatxo.com</span><span class="vt__ir" data-t="caso_go">Ver el caso completo →</span></span><img class="vt__foto" src="assets/trabajos/errotatxo-1600.webp" srcset="assets/trabajos/errotatxo-900.webp 900w, assets/trabajos/errotatxo-1600.webp 1600w" sizes="(min-width:900px) 42vw, 86vw" alt="Portada de Errotatxo" width="1600" height="1000" draggable="false" fetchpriority="high"/></span>
+<span class="vt__tel"><img src="assets/trabajos/errotatxo-movil.webp" alt="" width="480" height="1038" draggable="false" decoding="async"/></span>
+</a>
+<a class="vt__v p1" href="caso-a-berri.html" draggable="false" tabindex="-1" aria-hidden="true">
+<span class="vt__marco"><span class="vt__bar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="vt__url">aberricasarural.com</span><span class="vt__ir" data-t="caso_go">Ver el caso completo →</span></span><img class="vt__foto" src="assets/trabajos/aberri-1600.webp" srcset="assets/trabajos/aberri-900.webp 900w, assets/trabajos/aberri-1600.webp 1600w" sizes="(min-width:900px) 42vw, 86vw" alt="Portada de A.Berri" width="1600" height="1000" draggable="false" decoding="async"/></span>
+<span class="vt__tel"><img src="assets/trabajos/aberri-movil.webp" alt="" width="480" height="1038" draggable="false" decoding="async"/></span>
+</a>
+<a class="vt__v p2" href="/demos/muestras/etxea-inmobiliaria/" target="_blank" rel="noopener" draggable="false" tabindex="-1" aria-hidden="true">
+<span class="vt__marco"><span class="vt__bar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="vt__url">etxea · muestra</span><span class="vt__ir" data-t="mu_go">Abrir la muestra →</span></span><img class="vt__foto" src="assets/trabajos/etxea-1600.webp" srcset="assets/trabajos/etxea-900.webp 900w, assets/trabajos/etxea-1600.webp 1600w" sizes="(min-width:900px) 42vw, 86vw" alt="Portada de Etxea" width="1600" height="1000" draggable="false" decoding="async"/></span>
+<span class="vt__tel"><img src="assets/trabajos/etxea-movil.webp" alt="" width="480" height="1038" draggable="false" decoding="async"/></span>
+</a>
 </div>
+<div class="vt__tabs" role="group" aria-labelledby="vt-t">
+<span id="vt-t" class="sr-only" data-t="vt_t">Elige una portada para verla</span>
+<button type="button" class="vt__t is-on" data-i="0" aria-pressed="true"><i aria-hidden="true"></i><b>Errotatxo</b><span data-t="vt_e">Panadería en Tolosa</span></button>
+<button type="button" class="vt__t" data-i="1" aria-pressed="false"><i aria-hidden="true"></i><b>A.Berri</b><span data-t="vt_a">Casa rural en Getaria</span></button>
+<button type="button" class="vt__t" data-i="2" aria-pressed="false"><i aria-hidden="true"></i><b>Etxea</b><span><span data-t="tag_inm">Inmobiliaria</span> · <span data-t="badge_live">Muestra</span></span></button>
+</div>
+</div>
+<script>
+/* Portadas de Trabajos: la de delante se abre; las de detrás pasan delante al tocarlas; se cambian solas con la barra de la pestaña, y deslizando */
+(function(){
+  var raiz=document.getElementById('vt');if(!raiz)return;
+  var mesa=raiz.querySelector('.vt__mesa'),vs=[].slice.call(raiz.querySelectorAll('.vt__v')),ts=[].slice.call(raiz.querySelectorAll('.vt__t'));
+  var act=0,n=vs.length;
+  function poner(i){
+    act=(i+n)%n;
+    vs.forEach(function(v,k){
+      var pos=(k-act+n)%n;
+      v.classList.remove('p0','p1','p2');v.classList.add('p'+pos);
+      if(pos){v.setAttribute('tabindex','-1');v.setAttribute('aria-hidden','true');}else{v.removeAttribute('tabindex');v.removeAttribute('aria-hidden');}
+    });
+    ts.forEach(function(t,k){var on=k===act;t.classList.toggle('is-on',on);t.setAttribute('aria-pressed',on?'true':'false');});
+  }
+  ts.forEach(function(t,k){
+    t.addEventListener('click',function(){poner(k);});
+    t.querySelector('i').addEventListener('animationend',function(e){if(e.animationName==='vtBarra'&&t.classList.contains('is-on'))poner(act+1);});
+  });
+  /* Deslizar (dedo o ratón). Si se ha deslizado, ese toque no abre nada */
+  var x0=null,arrastre=false;
+  mesa.addEventListener('pointerdown',function(e){x0=e.clientX;arrastre=false;});
+  mesa.addEventListener('pointerup',function(e){if(x0===null)return;var dx=e.clientX-x0;x0=null;if(Math.abs(dx)>36){arrastre=true;poner(act+(dx<0?1:-1));}});
+  mesa.addEventListener('pointercancel',function(){x0=null;});
+  vs.forEach(function(v,k){
+    v.addEventListener('dragstart',function(e){e.preventDefault();});
+    v.addEventListener('click',function(e){
+      if(arrastre){e.preventDefault();arrastre=false;return;}
+      if(k!==act){e.preventDefault();poner(k);}
+    });
+  });
+  /* Quieta si el ratón está encima, si tiene el foco o si no se ve */
+  var encima=false,foco=false,visible=true;
+  function quieta(){raiz.classList.toggle('vt--quieta',encima||foco||!visible);}
+  mesa.addEventListener('pointerenter',function(e){if(e.pointerType==='mouse'){encima=true;quieta();}});
+  mesa.addEventListener('pointerleave',function(e){if(e.pointerType==='mouse'){encima=false;quieta();}});
+  raiz.addEventListener('focusin',function(e){if(e.target.matches(':focus-visible')){foco=true;quieta();}});
+  raiz.addEventListener('focusout',function(){foco=false;quieta();});
+  if('IntersectionObserver' in window)new IntersectionObserver(function(es){visible=es[0].isIntersecting;quieta();}).observe(raiz);
+  /* Con ratón: la mesa se inclina hacia el puntero y el móvil flota un poco */
+  if(matchMedia('(hover:hover) and (pointer:fine)').matches&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
+    var ox=0,oy=0,cx=0,cy=0,raf=0;
+    function paso(){
+      cx+=(ox-cx)*.09;cy+=(oy-cy)*.09;
+      mesa.style.setProperty('--ry',(cx*4.5).toFixed(2)+'deg');mesa.style.setProperty('--rx',(-cy*3.5).toFixed(2)+'deg');
+      raiz.style.setProperty('--px',(cx*-9).toFixed(1)+'px');raiz.style.setProperty('--py',(cy*-9).toFixed(1)+'px');
+      raf=(Math.abs(ox-cx)+Math.abs(oy-cy)>.002)?requestAnimationFrame(paso):0;
+    }
+    function mover(){if(!raf)raf=requestAnimationFrame(paso);}
+    mesa.addEventListener('pointermove',function(e){if(e.pointerType!=='mouse')return;var r=mesa.getBoundingClientRect();ox=(e.clientX-r.left)/r.width*2-1;oy=(e.clientY-r.top)/r.height*2-1;mover();});
+    mesa.addEventListener('pointerleave',function(){ox=0;oy=0;mover();});
+  }
+})();
+</script>
 </div>
 </header>
 
@@ -610,7 +709,7 @@
 <div class="footer__mark" aria-hidden="true">OI STUDIO</div>
 </footer>
 
-<script src="assets/i18n.js?v=35"></script>
+<script src="assets/i18n.js?v=36"></script>
 <script src="assets/main.js?v=21"></script>
 <script src="assets/vivas.js?v=1"></script>
 <script>
