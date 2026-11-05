@@ -197,7 +197,7 @@ ${consejo("Antes de pagar por una web, escribe en un papel qué le preguntan sie
 ${cta("¿Tienes un servicio y quieres que te encuentren?", "Cuéntame qué haces y dónde, y en 48 horas tienes una propuesta con el precio cerrado. Funciona igual a distancia que en persona.", "Solicitar presupuesto")}
 `,
   faq: [
-    ["¿Cuánto cuesta una página web para un autónomo?", "Una web de una página cuesta desde 420 € + IVA y una web con secciones, de varias páginas, desde 540 € + IVA, con el precio cerrado por escrito. El primer año incluye dominio y alojamiento."],
+    ["¿Cuánto cuesta una página web para un autónomo?", "Una web de una página cuesta desde 420 € + IVA y una web con secciones, de varias páginas, desde 540 € + IVA, con el precio cerrado por escrito; después, la cuota de 28 €/mes que lleva cada web (alojamiento, dominio, copias y hasta 3 cambios al mes, sin permanencia)."],
     ["¿Puedo hacerla yo mismo?", "Sí, con un constructor de webs se puede. Cuesta tiempo, y lo habitual es que quede genérica, lenta en el móvil y sin planteamiento para aparecer en Google. Si tu hora vale dinero, suele compensar encargarla."],
     ["¿Qué datos legales tiene que llevar?", "Datos identificativos del titular (nombre, domicilio, NIF, contacto), política de privacidad si hay formularios y aviso de cookies si usas analítica o publicidad. Lo concreto conviene validarlo con tu gestor."],
     ["¿Trabajas con autónomos de fuera de Gipuzkoa?", "Sí. El estudio está en Tolosa, pero el proceso funciona a distancia, con videollamada, WhatsApp y un enlace privado para revisar la web. El precio es el mismo."],
@@ -265,7 +265,7 @@ ${consejo("Si dudas, empieza por la landing. Es más fácil ampliar una página 
 ${cta("¿No sabes cuál te conviene?", "Cuéntame tu negocio y te digo, sin compromiso, cuál de las dos encaja y por qué.", "Solicitar presupuesto")}
 `,
   faq: [
-    ["¿Cuánto cuesta una landing page?", "Desde 420 € + IVA en OI Studio, con dominio y alojamiento el primer año, adaptación a móvil, formulario de contacto y botón de WhatsApp."],
+    ["¿Cuánto cuesta una landing page?", "Desde 420 € + IVA en OI Studio, con adaptación a móvil, formulario de contacto y botón de WhatsApp; después, la cuota de 28 €/mes que lleva cada web (alojamiento, dominio, copias y hasta 3 cambios al mes, sin permanencia)."],
     ["¿Puedo ampliar una landing a web completa más adelante?", "Sí. Se empieza por la landing y, cuando hay más que contar, se añaden páginas. Lo importante es planteársela desde el principio con ese margen."],
     ["¿Una landing sale en Google?", "Sí, sobre todo para búsquedas locales concretas y si la ficha de Google Business está bien cuidada. Para muchas búsquedas distintas conviene una web con varias páginas."],
     ["¿Cuál es mejor para un negocio local?", "Depende de cuántos servicios ofrezcas y de cómo te busque el cliente. Con uno o dos servicios claros suele bastar una landing; con varios, una web de negocio."],
