@@ -77,6 +77,8 @@ for (const f of ficheros) {
   }
 
   if (!SIN_OFERTA.has(f) && !noindex) for (const [re, que] of VIEJO) if (re.test(visible)) avisa("oferta vieja", f, que);
+  // Toda web lleva cuota (Oier 28/10): una FAQ con precio no puede callársela.
+  for (const m of t.matchAll(/<details>[\s\S]*?<\/details>/g)) if (/(^|[^\d])(420|540) ?€/.test(m[0]) && !/28 ?€\/mes/.test(m[0])) avisa("precio sin cuota en FAQ", f, limpia(m[0]).slice(0, 70));
 
   if (noindex) {
     if (sitemap.has(f) || sitemap.has(f.replace(/index\.html$/, ""))) avisa("noindex o redirección dentro del sitemap", f);

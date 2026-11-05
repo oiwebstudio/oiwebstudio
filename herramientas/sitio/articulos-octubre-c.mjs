@@ -77,7 +77,7 @@ ${consejo("Un diseñador freelance barato que no responde sale más caro que uno
 ${cta("¿Quieres un precio cerrado para tu web?", "Cuéntame tu negocio y en 48 horas tienes una propuesta por escrito, sin compromiso.", "Pedir propuesta")}
 `,
   faq: [
-    ["¿Cuánto cobra un diseñador web freelance por una web de negocio?", "Como orientación del mercado, entre 300 y 1.500 € según el alcance; una agencia, entre 1.500 y 6.000 €. En OI Studio, una web de una página cuesta 420 € y una web con secciones 540 €, más IVA, con precio cerrado por escrito."],
+    ["¿Cuánto cobra un diseñador web freelance por una web de negocio?", "Como orientación del mercado, entre 300 y 1.500 € según el alcance; una agencia, entre 1.500 y 6.000 €. En OI Studio, una web de una página cuesta 420 € y una web con secciones 540 €, más IVA, con precio cerrado por escrito; después, la cuota de 28 €/mes que lleva cada web (alojamiento, dominio, copias y hasta 3 cambios al mes, sin permanencia)."],
     ["¿Es mejor pagar por horas o por proyecto?", "Por proyecto. Con un precio cerrado sabes lo que pagas antes de empezar; por horas sin tope, no. Si te ofrecen horas, pide que lo conviertan en un precio fijo con alcance escrito."],
     ["¿Qué incluye el precio de un diseñador web?", "Diseño a medida, versión móvil, dominio y alojamiento el primer año, lo básico de SEO, textos legales y un periodo de ajustes. Si algo de esto no está, pregúntalo antes de firmar."],
     ["¿Cuánto cuesta un cambio después de publicar la web?", "Depende de quién la haga. En OI Studio el primer mes va incluido; después, con mantenimiento de 28 €/mes (tres cambios al mes) o con un presupuesto antes de hacerlo."],
