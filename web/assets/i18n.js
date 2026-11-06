@@ -58,6 +58,7 @@ const EU = {
   ch_nota: "Adibidea erantzun prestatuekin: hemen ez du erantzuten benetako adimen artifizial batek. Benetako laguntzaile batek adimen artifiziala dela esango luke beti.",
   ch_cta: "Enpresa bakoitzari egokitutako adimen artifizialeko soluzioak eskaintzen ditugu. Esango dizut zer balioko dizun.",
   ch_btn: "Hitz egin dezagun",
+  ch_ia_ir: "Negozioetarako adimen artifiziala Gipuzkoan",
   ch_top: "HAUSPO · laguntzailea",
   ch_ia: "Adimen artifiziala naiz",
   ch_conv: "Adibideko elkarrizketa",

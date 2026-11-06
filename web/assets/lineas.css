@@ -620,3 +620,6 @@ html.js:not(.js-l3) .rm ~ .rm{display:none;}
   .lg__post small{font-size:2.5cqw;}
   .lg__tarj small{font-size:2.4cqw;}
 }
+
+.ch__mas{margin:18px 0 0;}
+@media(max-width:860px){.ch__mas{order:7;}}
