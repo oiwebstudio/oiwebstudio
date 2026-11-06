@@ -91,6 +91,9 @@ jobs:
 
       - id: despliegue
         uses: actions/deploy-pages@v4
+        with:
+          # 6/11/2026: GitHub Pages tardó más de 10 min (el límite por defecto) y el despliegue falló dos veces
+          timeout: 1800000
 
       - name: Avisar a IndexNow de las páginas cambiadas
         # 29/10/2026 (auditoría Claude SEO): antes se avisaba a mano. Los buscadores
