@@ -220,7 +220,7 @@ ${cta("¿Tienes un negocio en Donostia?", "Cuéntame qué haces y te preparo una
   crumb: "Web para empresa industrial",
   h1: "Web para una empresa industrial en Gipuzkoa: <em>qué necesita de verdad</em>",
   lede: "Gipuzkoa es tierra de industria, pero muchas webs industriales parecen un folleto de hace veinte años: no dicen qué fabrican, ni con qué capacidad, ni cómo pedir presupuesto. El cliente es un comprador técnico con poco tiempo; la web tiene que ponérselo fácil.",
-  img: "taller-desk", min: 7,
+  img: "torloju-desk", min: 7,
   cuerpo: `
 <h2 id="cliente">A quién le hablas</h2>
 <p>En una web industrial no vendes al público: hablas con un <strong>comprador, un ingeniero o un responsable de compras</strong> que está comparando proveedores. Quiere saber en un minuto si puedes fabricar lo que necesita, con qué calidad y en qué plazos. Si no lo encuentra, pasa al siguiente.</p>
