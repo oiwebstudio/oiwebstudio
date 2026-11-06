@@ -63,6 +63,20 @@
         if (j !== null) { e.preventDefault(); precarga(j); elegir(j, true); }
       });
     });
+    // En el móvil, deslizar la muestra a un lado pasa al sector de al lado
+    var caja = raiz.querySelector('.sx__caja'), x0 = null, y0 = 0;
+    caja.addEventListener('touchstart', function (e) {
+      x0 = e.touches[0].clientX; y0 = e.touches[0].clientY;
+      precarga((actual + 1) % tabs.length); precarga((actual - 1 + tabs.length) % tabs.length);
+    }, { passive: true });
+    caja.addEventListener('touchend', function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+      x0 = null;
+      if (Math.abs(dx) < 45 || Math.abs(dx) < Math.abs(dy) * 1.4) return;
+      var n = tabs.length;
+      elegir(dx < 0 ? (actual + 1) % n : (actual - 1 + n) % n, false);
+    }, { passive: true });
   })();
 
   /* ---------------------------------------------------------------- A1 · Chat de ejemplo */

@@ -566,3 +566,57 @@ html.js:not(.js-l3) .rm ~ .rm{display:none;}
 .lg__ig-pie{display:flex;gap:1.6cqw;margin-top:1.6cqw;}
 .lg__ig-pie i{width:2.6cqw;height:2.6cqw;border-radius:50%;box-shadow:inset 0 0 0 .35cqw #191712;}
 @media(max-width:860px){.lg__g{grid-template-columns:1fr;}.lg__esc{aspect-ratio:10/9;}}
+
+/* Piezas en el móvil (6/11/2026, Oier: «para móvil no están optimizados») */
+@media(max-width:860px){
+  /* W2: el móvil manda, el ordenador detrás; texto corto */
+  .sx__lede{font-size:16.5px;margin-bottom:18px;}
+  .sx__chips{margin-bottom:16px;}
+  .sx__chips button{padding:10px 14px;font-size:14.5px;}
+  .sx__p{gap:18px;}
+  .sx__esc{margin:0;padding:0;aspect-ratio:10/9;touch-action:pan-y;}
+  .sx__win{position:absolute;left:0;top:7%;width:80%;border-radius:10px;}
+  .sx__bar{padding:7px 10px;gap:5px;}
+  .sx__bar i{width:7px;height:7px;}
+  .sx__bar span{font-size:10.5px;padding:4px 8px;}
+  .sx__tel{left:auto;right:3%;top:0;bottom:auto;width:41%;border-radius:20px;padding:4px;}
+  .sx__tel img{border-radius:16px;}
+  .sx__k{font-size:12px;margin-bottom:4px;}
+  .sx__n{font-size:32px;margin-bottom:12px;}
+  .sx__inc{display:none;}
+  .sx__l{margin-bottom:18px;}
+  .sx__l li{padding:8px 0 8px 22px;font-size:15.5px;}
+  .sx__l li::before{top:14px;width:9px;height:9px;}
+  .sx__acc{gap:12px 20px;margin-bottom:10px;}
+
+  /* A1: el chat justo después del título; la explicación, debajo */
+  .ch__g{display:flex;flex-direction:column;align-items:stretch;gap:0;}
+  .ch__g > div:first-child{display:contents;}
+  .ch__g h2.tt{order:1;}
+  .ch__lede{order:2;font-size:16.5px;margin-bottom:16px;}
+  .ch__g > div:last-child{order:3;margin:0 0 26px;}
+  .ch__nota{order:4;}
+  .ch__cta{order:5;}
+  .ch__g > div:first-child > .l3-btn{order:6;align-self:flex-start;}
+  .ch__app{border-radius:18px;}
+  .ch__top{padding:12px 14px;}
+  .ch__log{height:220px;padding:14px 12px;}
+  .ch__chips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible;padding:10px 10px 2px;}
+  .ch__chips button{padding:9px 11px;font-size:13.5px;line-height:1.25;text-align:left;border-radius:14px;}
+  .ch__form{padding:8px 10px 10px;}
+
+  /* B1: lo que escribes se ve encima, mientras escribes */
+  .lg__g{display:flex;flex-direction:column;align-items:stretch;gap:0;}
+  .lg__g > div:first-child{display:contents;}
+  .lg__g h2.tt{order:1;}
+  .lg__lede{order:2;font-size:16.5px;margin-bottom:18px;}
+  .lg__esc{order:3;margin:0 0 20px;aspect-ratio:10/9;}
+  .lg__g > div:first-child > div{order:4;}
+  .lg__in{margin-bottom:12px;font-size:18px;}
+  .lg__est{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-bottom:18px;}
+  .lg__est button{padding:11px 2px;font-size:14.5px;}
+  .lg__est [data-est="redonda"]{font-size:11.5px;}
+  .lg__ig-cab{font-size:2.5cqw;}
+  .lg__post small{font-size:2.5cqw;}
+  .lg__tarj small{font-size:2.4cqw;}
+}
