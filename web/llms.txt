@@ -89,3 +89,9 @@ Fuera de Gipuzkoa trabaja a distancia, con el mismo precio: [toda España](https
 - [Web para taller mecánico](https://oiwebstudio.com/web-para-taller-mecanico.html)
 - [Web para clínica veterinaria](https://oiwebstudio.com/web-para-clinica-veterinaria.html)
 - [Todas las guías](https://oiwebstudio.com/articulos.html)
+- [IA para negocios en Gipuzkoa](https://oiwebstudio.com/ia-para-negocios-gipuzkoa.html) ([euskaraz](https://oiwebstudio.com/adimen-artifiziala-negozioentzat-gipuzkoa.html)): Soluciones de IA adaptadas a cada negocio de Gipuzkoa: Google y las IAs, reseñas respondidas y reservas, con precio cerrado.
+- [IA para negocios en Tolosa](https://oiwebstudio.com/ia-para-negocios-tolosa.html): Paso por tu negocio en Tolosaldea, te enseño lo que dicen Google y una IA de ti y te digo qué te ahorraría tiempo.
+- [IA para negocios en Donostia](https://oiwebstudio.com/ia-para-negocios-donostia.html): Para el bar, la tienda o el alojamiento de Donostia: reseñas en el idioma del cliente, Google y las IAs, y reservas, con precio cerrado.
+- [IA para restaurantes](https://oiwebstudio.com/ia-para-restaurantes-gipuzkoa.html): Reseñas contestadas, carta en cuatro idiomas, Google y las IAs y reservas de mesa sin comisión, para restaurantes de Gipuzkoa.
+- [IA para peluquerías](https://oiwebstudio.com/ia-para-peluquerias-estetica-gipuzkoa.html): Citas online sin comisión, reseñas contestadas con tu tono y Google y las IAs, para peluquerías y centros de estética de Gipuzkoa.
+- [IA para casas rurales](https://oiwebstudio.com/ia-para-casas-rurales-gipuzkoa.html): Reservas propias sin comisión, reseñas en el idioma del huésped y Google y las IAs, para casas rurales de Gipuzkoa.

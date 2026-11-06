@@ -17,9 +17,10 @@ import { ARTICULOS_A } from "./articulos-octubre-a.mjs";
 import { ARTICULOS_B } from "./articulos-octubre-b.mjs";
 import { ARTICULOS_C } from "./articulos-octubre-c.mjs";
 import { ARTICULOS_NOV } from "./articulos-noviembre.mjs";
+import { ARTICULOS_IA, ldServicio } from "./articulos-ia.mjs";
 
 const WEB = path.resolve("web");
-const TODOS = [...ARTICULOS_A, ...ARTICULOS_B, ...ARTICULOS_C, ...ARTICULOS_NOV];
+const TODOS = [...ARTICULOS_A, ...ARTICULOS_B, ...ARTICULOS_C, ...ARTICULOS_NOV, ...ARTICULOS_IA];
 const REHACER = process.argv.includes("--rehacer");
 const NUEVAS = TODOS.filter((a) => REHACER || !fs.existsSync(path.join(WEB, `${a.slug}.html`)));
 const rd = (f) => fs.readFileSync(path.join(WEB, f), "utf8");
@@ -42,6 +43,13 @@ const HUB = {
   "web-para-inmobiliaria": { cat: "Por sector", tag: "Inmobiliaria", h2: "Web para inmobiliaria: qué necesita para captar vendedores", p: "Tasación gratuita, fichas, zonas y confianza: cómo captar propietarios sin depender de los portales.", img: "etxea-desk", alt: "Muestra de web de inmobiliaria con tasación gratuita" },
   "cuanto-cobra-disenador-web-freelance": { cat: "Precios y plazos", tag: "Precios", h2: "Cuánto cobra un diseñador web freelance en 2026", p: "Por proyecto o por horas, qué entra en el precio, en qué se diferencia de una agencia y seis preguntas antes de aceptar un presupuesto.", img: "stock/art-precio-web", alt: "Escritorio de trabajo con portátil, representando lo que cobra un diseñador web" },
   "diseno-web-euskadi-pais-vasco": { cat: "Empezar", tag: "Euskadi", h2: "Diseño web en Euskadi: precios y cómo elegir", p: "Qué cuesta una web en Gipuzkoa, Bizkaia y Álava, qué debe incluir, el euskera bien hecho y cómo trabajo a distancia desde Tolosa.", img: "errotatxo-desk", alt: "Web de la panadería Errotatxo de Tolosa, en castellano y euskera" },
+  /* IA para negocios (6/11/2026) */
+  "ia-para-negocios-gipuzkoa": { cat: "Automatizaciones", tag: "IA", img: "stock/art-seo-local", alt: "Persona buscando un negocio en el móvil", h2: "IA para negocios en Gipuzkoa: soluciones adaptadas a cada empresa", p: "Qué funciona hoy (Google y las IAs, reseñas respondidas, reservas), qué hace la IA y qué hago yo, con precio cerrado." },
+  "ia-para-negocios-tolosa": { cat: "Automatizaciones", tag: "Tolosa", img: "stock/art-seo-local", alt: "Comercio de calle de un pueblo", h2: "IA para negocios en Tolosa y Tolosaldea", p: "Paso por tu negocio, te enseño en tu móvil lo que dicen Google y una IA de ti y te digo qué te ahorraría tiempo." },
+  "ia-para-negocios-donostia": { cat: "Automatizaciones", tag: "Donostia", img: "hauspo-desk", alt: "Muestra de web de restaurante HAUSPO", h2: "IA para negocios en Donostia: para el negocio pequeño", p: "Reseñas en el idioma del cliente, carta en idiomas, Google y las IAs y reservas, para el bar, la tienda o el alojamiento." },
+  "ia-para-restaurantes-gipuzkoa": { cat: "Por sector", tag: "Restaurantes", img: "hauspo-desk", alt: "Muestra de web de restaurante HAUSPO con reservas", h2: "IA para restaurantes y bares: reseñas, carta y reservas", p: "Reseñas contestadas con tu tono, carta en cuatro idiomas, Google y las IAs y reservas de mesa sin comisión." },
+  "ia-para-peluquerias-estetica-gipuzkoa": { cat: "Por sector", tag: "Peluquerías", img: "stock/sec-pelu-1", alt: "Interior de una peluquería", h2: "IA para peluquerías y centros de estética", p: "Citas online sin IA y sin comisión, reseñas contestadas y lo que dice de ti una IA." },
+  "ia-para-casas-rurales-gipuzkoa": { cat: "Por sector", tag: "Casas rurales", img: "aberri-desk", alt: "Web de la casa rural A.Berri de Getaria", h2: "IA para casas rurales: reservas propias y reseñas", p: "Reservas sin comisión con calendario, reseñas en el idioma del huésped y cómo te ven Google y las IAs." },
 };
 
 /* Enlaces «Sigue leyendo» de cada guía nueva. */
@@ -61,6 +69,12 @@ const REL = {
   "web-para-inmobiliaria": ["google-business-profile-guia", "conseguir-resenas-google-negocio-local", "precio-diseno-web-profesional"],
   "cuanto-cobra-disenador-web-freelance": ["precio-diseno-web-profesional", "diseno-web-barato-merece-la-pena", "diseno-web-donostia-agencia-o-freelance"],
   "diseno-web-euskadi-pais-vasco": ["web-bilingue-euskera-castellano", "ayudas-subvenciones-pagina-web-gipuzkoa", "como-elegir-disenador-web-gipuzkoa"],
+  "ia-para-negocios-gipuzkoa": ["ia-para-negocios-tolosa", "ia-para-restaurantes-gipuzkoa", "inteligencia-artificial-negocio-pequeno"],
+  "ia-para-negocios-tolosa": ["ia-para-negocios-gipuzkoa", "seo-local-tolosa-google-maps", "conseguir-resenas-google-negocio-local"],
+  "ia-para-negocios-donostia": ["ia-para-negocios-gipuzkoa", "ia-para-restaurantes-gipuzkoa", "diseno-web-donostia-agencia-o-freelance"],
+  "ia-para-restaurantes-gipuzkoa": ["ia-para-negocios-gipuzkoa", "web-para-restaurante-hosteleria", "conseguir-resenas-google-negocio-local"],
+  "ia-para-peluquerias-estetica-gipuzkoa": ["ia-para-negocios-gipuzkoa", "web-para-peluqueria-centro-estetica", "conseguir-resenas-google-negocio-local"],
+  "ia-para-casas-rurales-gipuzkoa": ["ia-para-negocios-gipuzkoa", "google-business-profile-guia", "conseguir-resenas-google-negocio-local"],
 };
 
 /* Y las guías ya publicadas que enlazan hacia las nuevas (se añade una tarjeta al final). */
@@ -88,6 +102,13 @@ const RECIPROCO = {
   "diseno-web-donostia-agencia-o-freelance": ["cuanto-cobra-disenador-web-freelance"],
   "diseno-web-profesional-que-incluye": ["cuanto-cobra-disenador-web-freelance"],
   "ayudas-subvenciones-pagina-web-gipuzkoa": ["diseno-web-euskadi-pais-vasco"],
+  /* IA para negocios (6/11/2026). Van al final: las claves repetidas de arriba se pisarían. */
+  "inteligencia-artificial-negocio-pequeno": ["ia-para-negocios-gipuzkoa"],
+  "que-automatizar-negocio-pequeno": ["ia-para-negocios-gipuzkoa"],
+  "web-para-restaurante-hosteleria": ["ia-para-restaurantes-gipuzkoa"],
+  "web-para-peluqueria-centro-estetica": ["ia-para-peluquerias-estetica-gipuzkoa"],
+  "seo-local-tolosa-google-maps": ["ia-para-negocios-tolosa"],
+  "diseno-web-donostia-agencia-o-freelance": ["ia-para-negocios-donostia"],
 };
 
 const INI = "<!-- RELACIONADOS:inicio -->", FIN = "<!-- RELACIONADOS:fin -->";
@@ -111,6 +132,12 @@ let escritas = 0;
 for (const a of NUEVAS) {
   const ruta = path.join(WEB, `${a.slug}.html`);
   let h = pagina(a).replace(/\r?\n/g, "\n");
+  if (a.bodyClass) {
+    /* Páginas de IA: títulos en mayúsculas y nodo Service en el JSON-LD. */
+    h = h.replace("<body>", `<body class="${a.bodyClass}">`);
+    h = h.replace("</head>", "<style>.ia-pg .art-hero h1,.ia-pg .art h2,.ia-pg .cta-band h3{text-transform:uppercase;letter-spacing:0;}</style>\n</head>");
+    h = h.replace('"@graph": [', '"@graph": [\n    ' + JSON.stringify(ldServicio(a)) + ",");
+  }
   h = conservarRelacionados(ruta, h);
   fs.writeFileSync(ruta, h);
   escritas++;
