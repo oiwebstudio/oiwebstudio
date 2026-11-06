@@ -148,7 +148,7 @@ export const ARTICULOS = [
   crumb: "Web para autónomos",
   h1: "Página web para autónomos: <em>qué necesitas de verdad</em>",
   lede: "Quien trabaja por cuenta propia vive de que lo encuentren y de que se fíen de él. La web hace las dos cosas a la vez, pero solo si está bien planteada: no necesitas diez páginas, necesitas las cuatro o cinco cosas que busca tu cliente.",
-  img: "taller-desk", min: 7,
+  img: "maila-desk", min: 7,
   cuerpo: `
 <h2 id="necesita">¿Necesita web un autónomo?</h2>
 <p>Depende de cómo te llegan los clientes. Si todo lo que haces te viene por recomendación y no quieres crecer, puedes funcionar sin web. Pero hasta el cliente recomendado <strong>te busca en Google antes de llamarte</strong>: quiere ver que existes, que el teléfono es el tuyo y que hay trabajos o reseñas que lo respalden.</p>
@@ -175,7 +175,7 @@ ${tabla(["Opción", "Cuándo encaja", "Desde"], [
 ])}
 <p>Para la mayoría de autónomos que empiezan, una landing bien hecha es suficiente. Se puede ampliar más adelante cuando haya algo que contar. Hay una guía entera sobre <a href="landing-page-o-web-completa.html">cuándo elegir cada una</a>.</p>
 
-${figura("taller-desk", "taller · web de ejemplo", "Web de ejemplo de un negocio de oficios", "Un oficio o servicio local: lo que haces, dónde, cómo contactar y trabajos reales a la vista.")}
+${figura("maila-desk", "maila · muestra", "Muestra de web de un carpintero de escaleras a medida", "Un oficio o servicio local: lo que haces, dónde, cómo contactar y trabajos reales a la vista.")}
 
 <h2 id="coste">Cuánto cuesta y qué más se paga</h2>
 <ul class="check">
@@ -216,7 +216,7 @@ ${cta("¿Tienes un servicio y quieres que te encuentren?", "Cuéntame qué haces
   crumb: "Landing o web completa",
   h1: "Landing page o web completa: <em>cuál necesita tu negocio</em>",
   lede: "Es la primera duda de casi todos los negocios que piden presupuesto: una sola página o una web con varias secciones. La respuesta no depende del tamaño de tu negocio, sino de cuántas cosas tienes que contar y de cómo te busca tu cliente.",
-  img: "cafe-desk", min: 6,
+  img: "ahamen-desk", min: 6,
   cuerpo: `
 <h2 id="diferencia">La diferencia, en una frase</h2>
 <p>Una <strong>landing page</strong> es una sola página larga que cuenta todo lo esencial de arriba abajo y termina en una acción: llamar, escribir por WhatsApp, reservar. Una <strong>web completa</strong> reparte la información en varias páginas (servicios, equipo, precios, contacto…) con un menú.</p>
@@ -239,7 +239,7 @@ ${tabla(["Tu situación", "Lo que suele funcionar", "Por qué"], [
 </ul>
 <p>Una landing bien hecha tiene lo esencial: qué haces y dónde, fotos reales, reseñas, precios orientativos si se pueden dar, horario, mapa y un botón de contacto visible en el móvil.</p>
 
-${figura("cafe-desk", "cafetería · web de ejemplo", "Web de ejemplo de una cafetería", "Un negocio de local con carta, horario y ubicación puede funcionar con una página o con pocas.")}
+${figura("ahamen-desk", "ahamen · muestra", "Muestra de web de taberna de pintxos en Tolosaldea, con carta, horario y ubicación", "Un negocio de local con carta, horario y ubicación puede funcionar con una página o con pocas.")}
 
 <h2 id="completa">Cuándo hace falta una web completa</h2>
 <ul class="check">
@@ -284,7 +284,7 @@ ${cta("¿No sabes cuál te conviene?", "Cuéntame tu negocio y te digo, sin comp
   crumb: "Crear la web de tu negocio",
   h1: "Cómo crear la web de tu negocio <em>paso a paso</em>",
   lede: "Crear una web no es tan difícil como parece, pero tiene un orden. Estos son los pasos, qué prepara cada uno y en cuáles conviene pedir ayuda, tanto si la haces tú como si se la encargas a alguien.",
-  img: "pan-desk", min: 8,
+  img: "errotatxo-desk", min: 8,
   cuerpo: `
 <h2 id="objetivo">1. Decide para qué la quieres</h2>
 <p>Antes de tocar nada, responde a una pregunta: <strong>¿qué quieres que haga quien entre?</strong> Que te llame, que reserve, que compre, que pida presupuesto. Una web que intenta hacerlo todo no consigue nada. Elige una acción principal y haz que todo lleve a ella.</p>
@@ -308,7 +308,7 @@ ${cta("¿No sabes cuál te conviene?", "Cuéntame tu negocio y te digo, sin comp
 <h2 id="estructura">5. Decide la estructura</h2>
 <p>Una landing de una página o una web con varias, según lo que tengas que contar. Hay una guía sobre <a href="landing-page-o-web-completa.html">cuándo elegir cada una</a>. Si dudas, empieza por lo mínimo: portada con lo esencial, servicios, quién eres, contacto y mapa.</p>
 
-${figura("pan-desk", "panadería · web de ejemplo", "Web de ejemplo de una panadería", "Lo primero que se ve: qué es, dónde está y cómo contactar. El resto, debajo.")}
+${figura("errotatxo-desk", "errotatxo.com · caso real", "Web de la panadería Errotatxo de Tolosa, un caso real de OI Studio", "Lo primero que se ve: qué es, dónde está y cómo contactar. El resto, debajo.")}
 
 <h2 id="diseno">6. Diseña y construye</h2>
 <p>Aquí está el gran dilema: hacerlo tú con un constructor o encargarlo. Compara con honestidad:</p>
