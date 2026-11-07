@@ -193,7 +193,7 @@ ${consejo("Prueba siempre la automatización haciéndote pasar por tu cliente, d
 <p>La cuenta es sencilla: cuántas horas al mes te quita esa tarea, por lo que vale tu hora, frente a lo que cuesta la herramienta. Suma también lo que no se ve: las llamadas que no puedes coger en pleno servicio y las comisiones que pagas por reserva si usas una plataforma.</p>
 <p>Lo que cobro yo, sin comisión por reserva:</p>
 ${tabla(["Qué", "Precio (+ IVA)"], [
-  ["Agenda de citas para la web que ya tienes (hasta 2 personas)", "160 € + 28 €/mes"],
+  ["Agenda de citas para la web que ya tienes (un profesional)", "160 € + 20 €/mes, +8 € por profesional más"],
   ["Web de una página con reservas o citas", "580 € + 28 €/mes"],
   ["Restaurante o casa rural: web, reservas y presencia en Google", "740 € + 28 €/mes"],
   ["Presencia en Google: ficha, reseñas, Bing y Apple Maps", "120 €"],
@@ -212,7 +212,7 @@ ${cta("¿Qué te quita más tiempo cada semana?", "Cuéntamelo y te digo qué au
   faq: [
     ["¿Qué se puede automatizar en un negocio pequeño?", "Lo que se repite y sigue siempre las mismas reglas: reservas y citas, avisos por correo, calendarios y el borrador de las respuestas a reseñas. Lo que necesita tu criterio, como una queja, es mejor que lo sigas decidiendo tú."],
     ["¿Por dónde empiezo a automatizar mi negocio?", "Por lo que más se repite. Apunta durante una semana cada llamada o mensaje para lo mismo. En los negocios con clientes que reservan, suele ser la cita o la mesa."],
-    ["¿Cuánto cuesta automatizar las citas?", "Con mi agenda, 160 € + 28 €/mes para la web que ya tienes, hasta 2 personas y sin comisión por reserva. Todo + IVA."],
+    ["¿Cuánto cuesta automatizar las citas?", "Con mi agenda, 160 € + 20 €/mes para la web que ya tienes, con un profesional (8 € más al mes por cada profesional más) y sin comisión por reserva. Todo + IVA."],
     ["¿Necesito saber de informática?", "No. Lo monto yo y tú solo miras tus citas o reservas en el móvil."],
   ],
   cierre: `Sigue leyendo: <a href="automatizaciones.html">automatizaciones para negocios en Gipuzkoa</a>, <a href="reservas-online-sin-comisiones.html">reservas online sin comisiones</a> e <a href="inteligencia-artificial-negocio-pequeno.html">inteligencia artificial para un negocio pequeño</a>.`,

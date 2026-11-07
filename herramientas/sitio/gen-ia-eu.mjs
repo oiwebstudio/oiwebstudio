@@ -51,7 +51,7 @@ const a = {
 <h3>Erantzundako erreseinak</h3>
 <p>Adimen artifizialak bezeroaren hizkuntzan idazten du erantzunaren zirriborroa, nik berrikusten dut eta zuk oniritzia ematen duzu argitaratu aurretik. <strong>Zure webgunearen hileko 28 euroko kuotaren barruan doa.</strong></p>
 <h3>Erreserbak eta hitzorduak, adimen artifizialik gabe</h3>
-<p>Zure bezeroek edozein ordutan erreserbatzen dute zure webgunetik, eta zuk mugikorrean ikusten duzu, erreserbarako komisiorik gabe. Inork ez du zure ordez erabakitzen. <strong>Web orrirako agenda: 160 euro (gehi BEZa) eta 28 euro hilean.</strong></p>
+<p>Zure bezeroek edozein ordutan erreserbatzen dute zure webgunetik, eta zuk mugikorrean ikusten duzu, erreserbarako komisiorik gabe. Inork ez du zure ordez erabakitzen. <strong>Web orrirako agenda: 160 euro (gehi BEZa) eta 20 euro hilean profesional batekin (8 euro gehiago hilean profesional bakoitzeko).</strong></p>
 
 <h2 id="erreseinak">Zergatik axola du erreseinei erantzutea</h2>
 <ul class="check">
