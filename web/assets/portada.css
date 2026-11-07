@@ -361,17 +361,14 @@
    Portada más visual (17/10/2026): accesos bajo el héroe e imágenes reales
    en «Una web que trabaja por tu negocio»
    ========================================================================== */
-.atajos { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--surface); }
-.atajos__in { display: flex; justify-content: center; gap: 4px 0; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-.atajos__in::-webkit-scrollbar { display: none; }
-.atajos a { flex: none; display: inline-flex; align-items: center; gap: 8px; padding: 15px 22px; font-size: 14px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--text-muted); white-space: nowrap; }
-.atajos a + a { border-left: 1px solid var(--border); }
-.atajos a::after { content: "↓"; font-size: 13px; color: var(--text-faint); transition: transform .2s var(--ease); }
-.atajos a:hover { color: var(--ink); }
-.atajos a:hover span { background-image: linear-gradient(var(--terra-soft), var(--terra-soft)); background-repeat: no-repeat; background-size: 100% 40%; background-position: 0 85%; }
-.atajos a:hover::after { transform: translateY(2px); color: var(--ink); }
-@media (max-width: 760px) { .atajos__in { justify-content: flex-start; padding: 0 8px; } .atajos a { padding: 14px 16px; font-size: 13px; } }
-@media (prefers-reduced-motion: reduce) { .atajos a::after { transition: none; } }
+/* Accesos de la portada (Oier 7/11: la barra con celdas y flechas «así no me gusta»): píldoras redondeadas, sin flechas */
+.atajos { padding: 18px 0 6px; background: var(--bg); }
+.atajos__in { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
+.atajos a { flex: none; display: inline-flex; align-items: center; padding: 10px 18px; border: 1px solid var(--border-strong); border-radius: 999px; background: var(--surface); font-size: 13.5px; font-weight: 600; text-transform: uppercase; color: var(--ink); white-space: nowrap; transition: background-color .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease), transform .2s var(--ease); }
+.atajos a:hover { background: var(--ink); border-color: var(--ink); color: #fff; }
+.atajos a:active { transform: scale(.97); }
+@media (max-width: 760px) { .atajos__in { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; scrollbar-width: none; padding: 2px 0; -webkit-overflow-scrolling: touch; } .atajos__in::-webkit-scrollbar { display: none; } .atajos a { padding: 9px 15px; font-size: 13px; } }
+@media (prefers-reduced-motion: reduce) { .atajos a { transition: none; } }
 
 /* Google: la ficha del negocio con sus fotos */
 .serp__res--top { display: grid; gap: 10px; }
@@ -598,7 +595,7 @@ a.hx__pie { color: inherit; display: block; -webkit-tap-highlight-color: transpa
 .prueba h3 { font-size: clamp(30px, 3.6vw, 46px); font-weight: 500; line-height: 1.02; letter-spacing: -.03em; margin-bottom: 14px; text-wrap: balance; }
 .prueba .prueba__txt > p:not(.prueba__intro) { font-size: 16.5px; line-height: 1.6; }
 .prueba .prueba__intro { display: flex; gap: 12px; align-items: flex-start; margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(25,23,18,.09); font-size: 15px; line-height: 1.55; color: var(--ink); max-width: 46ch; }
-.prueba .prueba__intro::before { content: "↓"; flex: none; display: grid; place-items: center; width: 26px; height: 26px; margin-top: -1px; border-radius: 50%; background: var(--ink); color: #fff; font-size: 14px; line-height: 1; }
+.prueba .prueba__intro::before { content: none; }
 /* formulario en tarjeta blanca */
 .prueba__form { gap: 10px; padding: 14px; background: #fff; border: 1px solid rgba(25,23,18,.06); border-radius: 22px; box-shadow: 0 1px 0 rgba(25,23,18,.04), 0 18px 40px -26px rgba(60,45,20,.35); }
 .prueba__campo > span { padding-left: 4px; font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); }
