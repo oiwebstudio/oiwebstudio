@@ -27,6 +27,8 @@ const PRINCIPAL = [
   ["contacto", "contacto.html", "nav_contacto", "Contacto"],
 ];
 const MAS = [
+  // 7/11/2026: índice de servicios (diseño gráfico, imprenta, rotulación, dominio y correo…).
+  ["servicios", "servicios.html", "nav_servicios", "Servicios"],
   ["sobre", "sobre-mi.html", "nav_sobre", "Sobre mí"],
   ["reservas", "reservas-online-sin-comisiones.html", "nav_reservas", "Reservas"],
   ["seo", "seo-posicionamiento-google.html", "nav_seo", "SEO"],
@@ -46,6 +48,9 @@ function seccionDe(rel, guias) {
     "articulos.html": "articulos", "chatbot-reservas.html": "chatbot",
     "seo-posicionamiento-google.html": "seo",
     "automatizaciones.html": "auto", "branding.html": "branding",
+    "servicios.html": "servicios", "diseno-grafico-gipuzkoa.html": "servicios", "catalogos-diseno-gipuzkoa.html": "servicios",
+    "carteleria-rotulacion-gipuzkoa.html": "servicios", "gestion-imprenta-gipuzkoa.html": "servicios",
+    "dominio-alojamiento-correo-profesional.html": "servicios", "programacion-web-a-medida-gipuzkoa.html": "servicios",
   }[rel];
   if (fijo) return fijo;
   if (guias.has(rel)) return "articulos";

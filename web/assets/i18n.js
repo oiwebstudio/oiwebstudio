@@ -182,11 +182,17 @@ const EU = {
   ap_g2: "Adimen artifiziala negozio txiki baterako: zer dabil gaur egun?",
   ft_auto: "Negozioetarako automatizazioak",
   ft_brand: "Brandinga eta logoen diseinua",
+  // 7/11/2026, servicios nuevos, con Itzultzaile Neuronala tal cual.
+  ft_graf: "Diseinu grafikoa eta katalogoak",
+  ft_rotu: "Kartelak eta errotulazioa",
+  ft_dom: "Domeinua, ostatua eta posta",
+  ft_todos: "Zerbitzu guztiak",
   sv_si: "Barne",
   sv_no: "Sartu gabe",
   /* Navegación / global */
   nav_inicio: "Hasiera",
   nav_sobre: "Niri buruz",
+  nav_servicios: "Zerbitzuak",
   nav_trabajos: "Lanak",
   nav_precios: "Prezioak",
   nav_zonas: "Eremuak",

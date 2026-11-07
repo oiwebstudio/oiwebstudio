@@ -86,6 +86,11 @@ ${grupo("foot_servicios", "Servicios", [
   // 27/10/2026: oferta en tres líneas (webs · automatizaciones con IA · branding).
   li("automatizaciones.html", "Automatizaciones para negocios", "ft_auto"),
   li("branding.html", "Branding y diseño de logos", "ft_brand"),
+  // 7/11/2026: servicios nuevos (encargo de Dirección, como 375estudio sin vídeo, foto ni apps).
+  li("diseno-grafico-gipuzkoa.html", "Diseño gráfico y catálogos", "ft_graf"),
+  li("carteleria-rotulacion-gipuzkoa.html", "Cartelería y rotulación", "ft_rotu"),
+  li("dominio-alojamiento-correo-profesional.html", "Dominio, alojamiento y correo", "ft_dom"),
+  li("servicios.html", "Todos los servicios", "ft_todos"),
 ].join("\n"))}
 ${grupo("foot_guias", "Guías", GUIAS.map(([h, t]) => li(h, t)).join("\n"))}
 ${grupo("foot_zonas", "Dónde trabajo", [
