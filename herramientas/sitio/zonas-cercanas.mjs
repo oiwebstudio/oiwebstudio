@@ -84,7 +84,7 @@ for (const [slug, vecinos] of Object.entries(VECINOS)) {
   const items = vecinos
     .map(
       (v) =>
-        `<li><a href="${v}.html"><b>${nombres[v]}</b><i>&rarr;</i></a></li>`
+        `<li><a href="${v}.html"><b>${nombres[v]}</b></a></li>`
     )
     .join("\n");
 
