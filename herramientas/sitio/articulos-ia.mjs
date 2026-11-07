@@ -23,7 +23,7 @@ const avisoIA = `<p><strong>Qué parte hace la IA.</strong> En cada solución te
 const tablaSoluciones = (extra = []) => tabla(["Solución", "Qué ganas", "Qué hace la IA y qué hago yo", "Precio (+ IVA)"], [
   ["<strong>Cómo te ven Google y las IAs</strong>", "Que quien te busca en Google o se lo pregunta a una IA encuentre tu horario, tu web y tus datos buenos", "La IA hace las preguntas que haría un cliente y yo comparo lo que contesta con tu ficha. Los arreglos los hago yo", "120 €, una vez (presencia en Google: ficha completa, QR de reseñas, Bing y Apple Maps)"],
   ["<strong>Reseñas respondidas</strong>", "Cada opinión de Google contestada en su idioma y con tu tono, sin buscar el rato", "La IA redacta el borrador, yo lo reviso y tú dices «vale». En euskera, pasa por Itzultzaile", "Dentro de la cuota de 28 €/mes de tu web"],
-  ["<strong>Reservas y citas</strong>", "Dejas de coger el teléfono para todo y no pagas comisión por reserva", "<strong>Sin IA</strong>: entran tal como las pide tu cliente y nadie decide por ti", "Agenda para tu web: 160 € + 28 €/mes. Web con reservas: 580 € + 28 €/mes"],
+  ["<strong>Reservas y citas</strong>", "Dejas de coger el teléfono para todo y no pagas comisión por reserva", "<strong>Sin IA</strong>: entran tal como las pide tu cliente y nadie decide por ti", "Agenda para tu web: 160 € + 20 €/mes (+8 € por profesional más). Web con reservas: 580 € + 28 €/mes"],
   ...extra,
 ]);
 
@@ -121,7 +121,7 @@ ${zonasYSectores}
 `,
   faq: [
     ["¿Qué es una solución de IA adaptada a cada empresa?", "Que no te vendo un programa igual para todos: miro qué te quita tiempo a ti y monto la IA solo para eso. Si una tarea sale bien con reglas fijas, como las reservas, la hago sin IA."],
-    ["¿Cuánto cuesta?", "Lo que ya funciona tiene precio cerrado: la presencia en Google y en las IAs, 120 € + IVA una vez; las reseñas respondidas van en la cuota de 28 €/mes de tu web; una agenda de citas para tu web, 160 € + 28 €/mes. Si necesitas algo a medida, te digo el precio en 24 horas."],
+    ["¿Cuánto cuesta?", "Lo que ya funciona tiene precio cerrado: la presencia en Google y en las IAs, 120 € + IVA una vez; las reseñas respondidas van en la cuota de 28 €/mes de tu web; una agenda de citas para tu web, 160 € + 20 €/mes con un profesional (8 € más al mes por cada profesional más). Si necesitas algo a medida, te digo el precio en 24 horas."],
     ["¿La IA contesta sola a mis clientes?", "No. En lo que monto, la IA prepara borradores y los reviso yo; no se publica nada sin tu visto bueno. Si algún día pones un asistente que contesta solo, tiene que avisar de que es una IA."],
     ["¿Trabajas en euskera?", "Sí. Atiendo en euskera y en castellano, y los textos en euskera los paso siempre por Itzultzaile, el traductor neuronal del Gobierno Vasco, antes de revisarlos."],
     ["¿Me sirve si mi web no la has hecho tú?", "Sí. La presencia en Google y en las IAs se hace sobre cualquier web. Para las reseñas respondidas sin una web mía, te digo el precio en 24 horas."],
@@ -161,7 +161,7 @@ ${cta("¿Paso por tu negocio?", "Dime cuándo te va bien y te enseño en tu móv
 `,
   faq: [
     ["¿Vienes en persona al negocio?", "Sí, en Tolosa y Tolosaldea paso por tu negocio por la tarde, a la hora que te venga bien. Si estás más lejos, lo vemos por videollamada o por WhatsApp."],
-    ["¿Cuánto cuesta?", "La presencia en Google y en las IAs, 120 € + IVA una vez; las reseñas respondidas, dentro de la cuota de 28 €/mes de tu web; la agenda de citas para tu web, 160 € + 28 €/mes. Lo enseño gratis y se paga al final."],
+    ["¿Cuánto cuesta?", "La presencia en Google y en las IAs, 120 € + IVA una vez; las reseñas respondidas, dentro de la cuota de 28 €/mes de tu web; la agenda de citas para tu web, 160 € + 20 €/mes con un profesional (8 € más al mes por cada profesional más). Lo enseño gratis y se paga al final."],
     ["¿Tengo que saber de IA?", "No. Tú me cuentas qué te quita tiempo y yo me encargo. Lo único que harás es decir «vale» a las respuestas antes de que se publiquen."],
     ["¿Me atiendes en euskera?", "Sí, en euskera o en castellano, como prefieras."],
   ],
@@ -269,7 +269,7 @@ ${cta("Te enseño gratis qué dice una IA de tu restaurante", "Y cuántas reseñ
   cuerpo: `
 <h2 id="citas">Citas online, sin IA y sin comisión</h2>
 <p>Tu cliente elige servicio, persona y hora libre desde tu web o desde tu ficha de Google, y tú ves el día entero en el móvil. No hay IA: la agenda sigue tus reglas (duración de cada servicio, descansos, festivos) y no se equivoca de hora. Sin comisión por cita.</p>
-${tabla(["Si ya tienes web", "Si no tienes web"], [["Agenda de citas para tu web: <strong>160 € + 28 €/mes</strong>", "Web con citas: <strong>580 € + 28 €/mes</strong>"]])}
+${tabla(["Si ya tienes web", "Si no tienes web"], [["Agenda de citas para tu web: <strong>160 € + 20 €/mes</strong> (+8 € por profesional más)", "Web con citas: <strong>580 € + 28 €/mes</strong>"]])}
 <p><a href="https://agenda-oi-demo.oi-studio-web.workers.dev/s/salon-demo" rel="noopener">Prueba la demo de citas</a> (salón inventado, con datos de ejemplo). Si ya reservas con una aplicación y te va bien, no hace falta cambiarla: te ayudo con Google y con las reseñas.</p>
 
 <h2 id="resenas">Reseñas contestadas, con tu tono</h2>
@@ -285,7 +285,7 @@ ${cta("Te enseño gratis qué dice una IA de tu peluquería", "Y si tu horario d
 `,
   faq: [
     ["¿La agenda de citas usa IA?", "No. Funciona con tus reglas: servicios, duración, personas y horarios. Así no se equivoca de hora ni da una cita que no puedes atender."],
-    ["¿Cuánto cuesta la agenda de citas?", "Para la web que ya tienes, 160 € + IVA y 28 €/mes. Con web nueva, 580 € + IVA y 28 €/mes. Sin comisión por cita."],
+    ["¿Cuánto cuesta la agenda de citas?", "Para la web que ya tienes, 160 € + IVA y 20 €/mes con un profesional (8 € más al mes por cada profesional más). Con web nueva, 580 € + IVA y 28 €/mes. Sin comisión por cita."],
     ["¿Puedo seguir con mi aplicación de reservas?", "Sí. Si te funciona, no la cambies: te ayudo con la ficha de Google, las reseñas y lo que dice de ti una IA."],
     ["¿Quién contesta las reseñas?", "La IA prepara el borrador, yo lo reviso y tú dices «vale» antes de que se publique."],
   ],
