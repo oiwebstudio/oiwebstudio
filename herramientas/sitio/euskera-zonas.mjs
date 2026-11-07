@@ -59,7 +59,7 @@ export const COMUNES = [
   [`Inicio`, `Hasiera`],
   [`Zonas`, `Eremuak`],
   [`Ayudas`, `Laguntzak`],
-  [`Ver la ayuda →`, `Laguntza ikusi →`],
+  [`Ver la ayuda`, `Laguntza ikusi`],
   [`Solicitar presupuesto`, `Aurrekontua eskatu`],
   [`Ver trabajos`, `Lanak ikusi`],
 

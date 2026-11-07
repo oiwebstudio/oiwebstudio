@@ -91,7 +91,7 @@ ${grupo("foot_guias", "Guías", GUIAS.map(([h, t]) => li(h, t)).join("\n"))}
 ${grupo("foot_zonas", "Dónde trabajo", [
   ...COMARCAS.map(([s, n]) => li(`zonas/${s}.html`, n)),
   li("diseno-web-negocios-espana.html", "Toda España", "ft_esp"),
-  li("zonas.html", "Los 88 municipios →", "ft_todas"),
+  li("zonas.html", "Los 88 municipios", "ft_todas"),
 ].join("\n"), "footer__zonas")}
 </div>
 <div class="footer__bottom">

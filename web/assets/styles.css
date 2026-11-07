@@ -2334,3 +2334,32 @@ html.flotante-cta .wa-float, html.flotante-cta .fmenu, html.flotante-cta .subir 
 /* Animaciones en bucle que no se ven: quietas. main.js marca con .is-fuera lo que
    ha salido de la pantalla (el hero, los pulsos del teléfono y del WhatsApp…). */
 .is-fuera, .is-fuera *, .is-fuera::before, .is-fuera::after, .is-fuera *::before, .is-fuera *::after { animation-play-state: paused !important; }
+
+/* ── Sin señales de «hecho con IA» (Oier 7/11: «que no parezca IA en ninguna sección») ──────────
+   Se quedan los redondeos y el menú redondeado (Oier 29/10: «antes estaba mejor, con redondeos»)
+   y la portada calcada de su referencia (.hx). Fuera: etiquetas pequeñas encima de los títulos,
+   letra mono de adorno, titulares a dos tonos o con marcador, títulos en minúscula con punto,
+   cabeceras centradas en todas las secciones, estrellas, «1 / 5», iconos en tarjetas iguales,
+   bordes de color a la izquierda y el «OI STUDIO» gigante y desvaído del pie. */
+:root { --font-mono: var(--font-sans); }
+.eyebrow, .eyebrow--light { display: none !important; }
+.footer__mark { display: none !important; }
+h1, h2 { text-transform: uppercase; letter-spacing: -0.01em; }
+.hx__h1, .hx__h1 * { text-transform: none; }
+h1 .grad, h2 .grad, h1 .grad.is-marked, h2 .grad.is-marked {
+  background: none !important; color: inherit !important; font: inherit; font-style: normal;
+  animation: none !important; white-space: normal;
+}
+.section-head { margin-left: 0; text-align: left; max-width: 760px; }
+.section-head h2 { font-size: clamp(28px, 4vw, 46px); letter-spacing: -0.01em; line-height: 1.04; }
+.opi__estrellas, .pi__n, .pillar__num, .pillar__ico, .ia-flag, .sw-oferta__flag { display: none !important; }
+.work__tag, .mu__tag, .caso-dest__tag, .work__badge, .marquee-label, .stat > span, .mbp .cap {
+  letter-spacing: 0; text-transform: none;
+}
+.footer h4, .footer .foot-h { letter-spacing: 0; text-transform: none; font-size: 14px; font-weight: 600; }
+.footer__bottom { font-family: var(--font-sans); }
+.carta-nota, .sp-precio { border-left: 0 !important; border-radius: 18px !important; }
+h1:not(.hx__h1) em, h2 em, h1 .ac, h1 .sp-mk {
+  background: none !important; color: inherit !important; font-style: normal !important; font-family: inherit !important;
+}
+.lin__num { display: none !important; }

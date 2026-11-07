@@ -87,7 +87,7 @@ const avisoAyuda = (slug) => {
   const href = `../ayudas-subvenciones-pagina-web-gipuzkoa.html${AYUDAS[slug] ? "#" + slug : ""}`;
   return `<section class="zsec" style="padding-top:0;padding-bottom:44px;">
 <div class="container">
-<a class="ayuda-cta${anual ? " ayuda-cta--anual" : ""}" href="${href}"><span class="ayuda-cta__dot" aria-hidden="true"></span><span class="ayuda-cta__txt"><b>${esc(t)}</b><span>${esc(p)}</span></span><span class="ayuda-cta__go">${AYUDAS[slug] ? "Ver la ayuda →" : "Ver ayudas →"}</span></a>${/euskera/i.test(t) ? `\n${LINEA_EUSKERA}` : ""}
+<a class="ayuda-cta${anual ? " ayuda-cta--anual" : ""}" href="${href}"><span class="ayuda-cta__dot" aria-hidden="true"></span><span class="ayuda-cta__txt"><b>${esc(t)}</b><span>${esc(p)}</span></span><span class="ayuda-cta__go">${AYUDAS[slug] ? "Ver la ayuda" : "Ver ayudas"}</span></a>${/euskera/i.test(t) ? `\n${LINEA_EUSKERA}` : ""}
 </div>
 </section>`;
 };
@@ -281,7 +281,7 @@ ${trioMosaico(idx)}
 <div class="container">
 <div class="zhead"><span class="k">Cerca de ${esc(nombre)}</span><h2>También trabajo en estos municipios</h2></div>
 <ul class="zcerca" data-anim="up">
-${tres.map((x) => `<li><a href="${x.slug}.html"><b>${esc(nombreVisible(x))}</b><i>&rarr;</i></a></li>`).join("\n")}
+${tres.map((x) => `<li><a href="${x.slug}.html"><b>${esc(nombreVisible(x))}</b></a></li>`).join("\n")}
 </ul>
 </div>
 </section>
@@ -512,7 +512,7 @@ function bloqueComarcas() {
 .zcom__c{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:22px 24px;}
 .zcom__c h3{font-size:20px;letter-spacing:-.02em;margin:0;}
 .zcom__c h3 a:hover{color:var(--terra-link);}
-.zcom__n{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--terra-link);margin:6px 0 12px;}
+.zcom__n{font-size:12.5px;color:var(--terra-link);margin:6px 0 12px;}
 .zcom__l{font-size:14.5px;line-height:1.75;color:var(--text-muted);margin:0;}
 .zcom__l a{color:var(--ink);border-bottom:1px solid var(--border-strong);}
 .zcom__l a:hover{color:var(--terra-link);}
@@ -666,8 +666,8 @@ ${pasos.map(([h, p], i) => `<div class="zstep"><i>0${i + 1}</i><h3>${esc(h)}</h3
 <div class="container">
 <div class="zhead"><span class="k">Más zonas</span><h2>Dónde trabajo</h2></div>
 <ul class="zcerca" data-anim="up">
-<li><a href="../zonas.html"><b>Gipuzkoa · 88 municipios</b><i>&rarr;</i></a></li>
-${otras.map((x) => `<li><a href="${x.slug}.html"><b>${esc(x.ambito === "España" ? "Toda España, a distancia" : x.nombre)}</b><i>&rarr;</i></a></li>`).join("\n")}
+<li><a href="../zonas.html"><b>Gipuzkoa · 88 municipios</b></a></li>
+${otras.map((x) => `<li><a href="${x.slug}.html"><b>${esc(x.ambito === "España" ? "Toda España, a distancia" : x.nombre)}</b></a></li>`).join("\n")}
 </ul>
 </div>
 </section>

@@ -164,7 +164,7 @@ console.log("páginas escritas:", escritas, NUEVAS.map((a) => a.slug).join(", ")
 <span class="tag">${c.tag}</span>
 <h2>${c.h2}</h2>
 <p>${c.p}</p>
-<div class="meta"><span>${a.fecha >= "2026-11" ? "Noviembre" : "Octubre"} 2026</span><span class="rd">Leer · ${a.min} min →</span></div>
+<div class="meta"><span>${a.fecha >= "2026-11" ? "Noviembre" : "Octubre"} 2026</span><span class="rd">Leer · ${a.min} min</span></div>
 </div>
 </a>
 

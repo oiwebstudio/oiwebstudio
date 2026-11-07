@@ -39,7 +39,7 @@
 <link rel="manifest" href="/site.webmanifest"/>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/geist-latin-04ce1a61.woff2" crossorigin/>
 <link rel="stylesheet" href="/assets/fuentes.css?v=1"/>
-<link rel="stylesheet" href="assets/styles.css?v=32"/>
+<link rel="stylesheet" href="assets/styles.css?v=33"/>
 <script>if(location.protocol==='http:'&&/(^|\.)oiwebstudio\.com$/.test(location.hostname))location.replace('https://'+location.host+location.pathname+location.search+location.hash);document.documentElement.classList.add('js');</script>
 <style>
   .pre-hero{padding:118px 0 18px;text-align:center;}
@@ -47,7 +47,7 @@
   .pre-hero .lede{font-size:19px;color:var(--text-muted);margin:18px auto 0;max-width:52ch;}
   .pre-iva{font-size:13px;color:var(--text-faint);margin-top:10px;}
   .siempre{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:30px;}
-  .siempre span{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-pill);padding:9px 16px;color:var(--text);}
+  .siempre span{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-pill);padding:9px 16px;color:var(--text);}
   .siempre span::before{content:"✓";color:var(--ok);font-weight:700;}
   .faq-pre{max-width:720px;margin:0 auto;display:grid;gap:12px;}
   .faq-pre details{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:4px 22px;}
@@ -226,7 +226,7 @@
 <header class="pre-hero">
 <div class="container">
 <span class="eyebrow reveal" data-t="pre_eyebrow">Precios</span>
-<h1 class="reveal pre-tit" data-d="1" data-t="pre_h1">Precio de una página web: <span class="grad">claro y sin letra pequeña</span>.</h1>
+<h1 class="reveal pre-tit" data-d="1" data-t="pre_h1">Precio de una página web, cerrado antes de empezar</h1>
 <p class="lede reveal" data-d="2" data-t="pre_p3">La web, tu presencia en Google o las dos cosas juntas. Pagas una vez, al final, con todo publicado.</p>
 <p class="pre-iva reveal" data-d="2" data-t="pre_iva">Precios sin IVA.</p>
 <div class="siempre reveal" data-d="3">
@@ -270,7 +270,7 @@
 .is-pick{outline:3px solid var(--terra);outline-offset:4px;transition:outline-color .3s;}
 .lin{scroll-margin-top:110px;}
 #web.lin{padding-top:30px;}
-.lin__cab{max-width:760px;margin:0 auto 30px;text-align:center;}
+.lin__cab{max-width:760px;margin:0 0 30px;text-align:left;}
 .lin__num{display:block;font-size:15px;font-weight:600;color:var(--terra-link);margin-bottom:6px;}
 .lin__h{font-size:clamp(28px,3.6vw,40px);letter-spacing:-.01em;margin:0 0 10px;}
 .lin__cab p{color:var(--text-muted);font-size:16.5px;margin:0;}
@@ -328,7 +328,7 @@
 .pre-mu__c{display:block;border-radius:var(--r-md);overflow:hidden;border:1px solid var(--border);background:var(--surface);transition:transform .3s var(--ease),box-shadow .3s var(--ease);}
 @media(hover:hover) and (pointer:fine){.pre-mu__c:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}}
 .pre-mu__c img{width:100%;height:auto;display:block;}
-.pre-mu__c span{display:block;padding:14px 18px;font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);}
+.pre-mu__c span{display:block;padding:14px 18px;font-size:13px;color:var(--text-muted);}
 @media(prefers-reduced-motion:reduce){.pre-mu__c,.eleg__op{transition:none;}}
 </style>
 <div class="eleg reveal">
@@ -357,11 +357,11 @@
 <article class="price price--featured reveal" id="plan-una">
 <span class="price__halo" aria-hidden="true"></span>
 <div class="price__name" data-t="w1_name">Web de una página</div>
-<p class="price__desc" data-t="w1_desc">Todo tu negocio en una sola página, diseñada a medida.</p>
+<p class="price__desc" data-t="w1_desc">Todo tu negocio en una sola página.</p>
 <div class="price__amount"><b>420€</b><span data-t="pre_pago">pago único</span></div>
 <a href="contacto.html" class="btn btn--accent btn--full btn-spark" data-t="p2_btn">Elegir esta web</a>
 <ul class="price__list">
-<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p1_l1">Diseño a medida (1 página)</span></li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p1_l1">Diseño propio (1 página)</span></li>
 <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p1_l2">Adaptación completa al móvil</span></li>
 <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="wb_l2">Formulario de contacto y botón de WhatsApp</span></li>
 <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p1_l5">Dominio y hosting el primer año</span></li>
@@ -370,11 +370,11 @@
 <article class="price price--featured reveal" data-d="1" id="plan-web">
 <span class="price__halo" aria-hidden="true"></span>
 <div class="price__name" data-t="p2_name">Web con secciones</div>
-<p class="price__desc" data-t="p2_desc">Varias secciones o páginas, diseñadas a medida para tu negocio.</p>
+<p class="price__desc" data-t="p2_desc">Varias secciones o páginas, pensadas para tu negocio.</p>
 <div class="price__amount"><b>540€</b><span data-t="pre_pago">pago único</span></div>
 <a href="contacto.html" class="btn btn--accent btn--full btn-spark" data-t="p2_btn">Elegir esta web</a>
 <ul class="price__list">
-<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p2_l1">Diseño a medida (hasta 5 páginas)</span></li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p2_l1">Diseño propio (hasta 5 páginas)</span></li>
 <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="p1_l2">Adaptación completa al móvil</span></li>
 <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="wb_l2">Formulario de contacto y botón de WhatsApp</span></li>
 <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span data-t="wb_l3">SEO básico y Google Maps en la web</span></li>
@@ -393,7 +393,7 @@
 <div class="lan__pr">880€<small data-t="pre_pago">pago único</small></div>
 <a href="contacto.html" class="btn btn--ghost" data-t="p4_btn">Pedir tienda online</a>
 </article>
-<a class="ayuda-cta" href="ayudas-subvenciones-pagina-web-gipuzkoa.html"><span class="ayuda-cta__dot" aria-hidden="true"></span><span class="ayuda-cta__txt"><b data-t="ayc_t">Tu ayuntamiento puede pagarte parte de la web</b><span data-t="ayc_p">Hay ayudas abiertas en Andoain (hasta el 100 %), Irun, Tolosa y otros pueblos de Gipuzkoa. Te digo si puedes pedirlas.</span></span><span class="ayuda-cta__go" data-t="ayc_go">Ver ayudas →</span></a>
+<a class="ayuda-cta" href="ayudas-subvenciones-pagina-web-gipuzkoa.html"><span class="ayuda-cta__dot" aria-hidden="true"></span><span class="ayuda-cta__txt"><b data-t="ayc_t">Tu ayuntamiento puede pagarte parte de la web</b><span data-t="ayc_p">Hay ayudas abiertas en Andoain (hasta el 100 %), Irun, Tolosa y otros pueblos de Gipuzkoa. Te digo si puedes pedirlas.</span></span><span class="ayuda-cta__go" data-t="ayc_go">Ver ayudas</span></a>
 </div>
 </section>
 
@@ -410,7 +410,7 @@
 <p class="pz__desc" data-t="pz_desc2">Dejo tu negocio bien puesto donde te buscan, y te enseño el antes y el después.</p>
 <div class="price__amount"><b>120€</b><span data-t="pre_pago">pago único</span></div>
 <a href="contacto.html" class="btn btn--accent btn--full" data-t="pz_btn">Quiero la presencia en Google</a>
-<a class="pz__ver" href="seo-posicionamiento-google.html" data-t="pz_ver">Qué incluye, en detalle →</a>
+<a class="pz__ver" href="seo-posicionamiento-google.html" data-t="pz_ver">Qué incluye, en detalle</a>
 </div>
 <div>
 <ul class="pz__lista">
@@ -451,7 +451,7 @@
 <p class="pk__pr">740€</p>
 <p class="pk__mes" data-t="k_mes">+ 28 €/mes de mantenimiento</p>
 <ul>
-<li data-t="k2_l1">Web a medida con secciones</li>
+<li data-t="k2_l1">Web con secciones</li>
 <li data-t="k2_l3">Carta y menú del día editables</li>
 <li data-t="k_pz">Presencia en Google incluida</li>
 </ul>
@@ -463,7 +463,7 @@
 <p class="pk__pr">740€</p>
 <p class="pk__mes" data-t="k_mes">+ 28 €/mes de mantenimiento</p>
 <ul>
-<li data-t="k2_l1">Web a medida con secciones</li>
+<li data-t="k2_l1">Web con secciones</li>
 <li data-t="k3_l2">Reservas con calendario</li>
 <li data-t="k3_l3">Panel para aceptar o rechazar cada solicitud</li>
 <li data-t="k_pz">Presencia en Google incluida</li>
@@ -471,7 +471,7 @@
 <a href="contacto.html" class="btn btn--ghost btn--full" data-t="k_btn">Pedir este pack</a>
 </article>
 </div>
-<p class="carta-nota reveal" data-t="pre_l3_nota">El aviso de cada reserva y el recordatorio del día antes van por correo. Por WhatsApp o SMS, de momento no.<br/><a href="reservas-online-sin-comisiones.html">Cómo funcionan las reservas online →</a></p>
+<p class="carta-nota reveal" data-t="pre_l3_nota">El aviso de cada reserva y el recordatorio del día antes van por correo. Por WhatsApp o SMS, de momento no.<br/><a href="reservas-online-sin-comisiones.html">Cómo funcionan las reservas online</a></p>
 </div>
 </section>
 
@@ -596,7 +596,7 @@
 <legend data-t="calc_g1">1 · Qué necesitas</legend>
 <div class="calc__tipos">
 <label class="calc__op"><input type="radio" name="tipo" value="presencia"/><span class="calc__n" data-t="pz_name">Presencia en Google</span><b class="calc__p">120 €</b><span class="calc__d" data-t="pz_desc">Ficha de Google completa, QR de reseñas, Bing y Apple Maps.</span></label>
-<label class="calc__op"><input type="radio" name="tipo" value="landing"/><span class="calc__n" data-t="w1_name">Web de una página</span><b class="calc__p">420 €</b><span class="calc__d" data-t="calc_t1">Todo en una página, diseñada a medida</span></label>
+<label class="calc__op"><input type="radio" name="tipo" value="landing"/><span class="calc__n" data-t="w1_name">Web de una página</span><b class="calc__p">420 €</b><span class="calc__d" data-t="calc_t1">Todo en una página</span></label>
 <label class="calc__op"><input type="radio" name="tipo" value="negocio" checked/><span class="calc__n" data-t="p2_name">Web con secciones</span><b class="calc__p">540 €</b><span class="calc__d" data-t="calc_t2">Hasta 5 páginas</span></label>
 <label class="calc__op"><input type="radio" name="tipo" value="tienda"/><span class="calc__n" data-t="p4_name">Tienda Online</span><b class="calc__p">880 €</b><span class="calc__d" data-t="calc_t3">Con hasta 50 productos cargados</span></label>
 <label class="calc__op"><input type="radio" name="tipo" value="pack_reservas"/><span class="calc__n" data-t="calc_n_pk1">Pack web + reservas</span><b class="calc__p">580 €</b><span class="calc__d" data-t="calc_tk1">Una página con reservas o citas</span></label>
@@ -668,7 +668,7 @@
 <section class="section pre-mu">
 <div class="container">
 <div class="pre-mu__h reveal">
-<h2 data-t="pre_mu_h">Así queda una web hecha a medida</h2>
+<h2 data-t="pre_mu_h">Así quedan mis webs</h2>
 <p data-t="pre_mu_p">Tres muestras para abrir en el móvil o en el ordenador.</p>
 </div>
 <div class="pre-mu__g desliza">
@@ -720,7 +720,7 @@
 <section class="section dark-section cta">
 <div class="container">
 <div class="reveal">
-<h2 data-t="cta_index_h">¿Hablamos de la web de tu negocio?</h2>
+<h2 data-t="cta_index_h">Escríbeme y te digo el precio</h2>
 <p data-t="cta_index_p">Cuéntame qué haces y en menos de 48 horas tienes una propuesta con precio cerrado.</p>
 <div class="hero__actions">
 <a href="contacto.html" class="btn btn--light btn--lg" data-t="btn_presupuesto">Solicitar presupuesto</a>
@@ -793,7 +793,7 @@
 <li><a href="zonas/debabarrena.html">Debabarrena</a></li>
 <li><a href="zonas/debagoiena.html">Debagoiena</a></li>
 <li><a href="diseno-web-negocios-espana.html" data-t="ft_esp">Toda España</a></li>
-<li><a href="zonas.html" data-t="ft_todas">Los 88 municipios →</a></li>
+<li><a href="zonas.html" data-t="ft_todas">Los 88 municipios</a></li>
 </ul>
 </details>
 </div>
@@ -805,7 +805,7 @@
 <div class="footer__mark" aria-hidden="true">OI STUDIO</div>
 </footer>
 
-<script src="assets/i18n.js?v=35"></script>
+<script src="assets/i18n.js?v=40"></script>
 <script src="assets/main.js?v=21"></script>
 <script src="assets/calculadora.js?v=6"></script>
 
