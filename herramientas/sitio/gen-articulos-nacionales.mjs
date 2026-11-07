@@ -276,13 +276,13 @@ ${cta("¿No sabes cuál te conviene?", "Cuéntame tu negocio y te digo, sin comp
 /* ------------------------------------------------------------------ 3 */
 {
   slug: "como-crear-pagina-web-negocio-paso-a-paso",
-  title: "Cómo crear la web de tu negocio paso a paso (2026)",
-  headline: "Cómo crear la web de tu negocio paso a paso",
-  desc: "Guía práctica para crear la página web de un negocio local: qué preparar, dominio, alojamiento, estructura, publicar y que Google la encuentre.",
+  title: "Cómo crear una página web para tu negocio paso a paso (2026)",
+  headline: "Cómo crear una página web para tu negocio paso a paso",
+  desc: "Cómo crear una página web o sitio web para tu negocio local paso a paso: qué preparar, dominio, alojamiento, estructura, publicar y salir en Google.",
   ogdesc: "Los pasos para tener la web de tu negocio publicada y encontrable en Google, con lo que se hace por tu cuenta y lo que conviene encargar.",
   keywords: "cómo crear una página web para mi negocio, crear web negocio paso a paso, crear página web negocio local, dominio y hosting, publicar una web",
   crumb: "Crear la web de tu negocio",
-  h1: "Cómo crear la web de tu negocio <em>paso a paso</em>",
+  h1: "Cómo crear una página web para tu negocio <em>paso a paso</em>",
   lede: "Crear una web no es tan difícil como parece, pero tiene un orden. Estos son los pasos, qué prepara cada uno y en cuáles conviene pedir ayuda, tanto si la haces tú como si se la encargas a alguien.",
   img: "errotatxo-desk", min: 8,
   cuerpo: `
@@ -339,6 +339,7 @@ ${cta("¿Prefieres que te la haga yo?", "Cuéntame tu negocio y en 48 horas tien
     ["¿Cuánto tarda en crearse una web?", "Una landing suele estar en una semana y una web de negocio en dos o tres. Lo que más tarda es reunir fotos y textos, no construirla."],
     ["¿Qué necesito para empezar?", "Saber qué quieres que haga quien entre, unas cuantas fotos reales, los textos básicos de qué haces y dónde, y tus datos de contacto y legales."],
     ["¿El dominio tiene que estar a mi nombre?", "Sí, conviene. Si lo registra otra persona a su nombre, la web depende de ella. A tu nombre, la web es tuya y la puedes llevar a otro proveedor cuando quieras."],
+    ["¿Cómo abro una página web para mi negocio si nunca he hecho una?", "Siguiendo este orden: decide qué quieres que haga quien entre, reúne textos y fotos, registra el dominio a tu nombre, elige el alojamiento, construye la web y publícala con tu ficha de Google. Si no quieres hacerlo tú, puedes encargar solo la parte técnica y aportar tú el material."],
     ["¿Cómo consigo que aparezca en Google?", "Con una web rápida, con tu zona y tus servicios bien escritos, una ficha de Google Business cuidada, reseñas y enlaces de tus redes. No hay atajos: es constancia y datos correctos."],
   ],
   cierre: `Sigue leyendo: <a href="pagina-web-para-autonomos.html">página web para autónomos</a> y <a href="que-debe-tener-web-negocio-local.html">qué debe tener la web de un negocio local</a>.`,
