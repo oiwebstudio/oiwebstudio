@@ -1,0 +1,80 @@
+[
+ {
+  "id": "malda",
+  "nombre": "MALDA",
+  "carpeta": "malda-sagardotegia",
+  "slug": "sidreria",
+  "chip": "Sidrería",
+  "k": "Sidrería y asador",
+  "lleva": [
+   "Reservar mesa sin llamar",
+   "El menú sidrería y la carta, al día",
+   "Los días que faltan para el txotx"
+  ]
+ },
+ {
+  "id": "lauza",
+  "nombre": "LAUZA",
+  "carpeta": "lauza-eraikuntzak",
+  "slug": "reformas",
+  "chip": "Construcción",
+  "k": "Reformas y casas nuevas",
+  "lleva": [
+   "Precio orientativo de tu reforma en un minuto",
+   "Obras terminadas, con foto y plazo",
+   "El presupuesto, por WhatsApp"
+  ]
+ },
+ {
+  "id": "hari",
+  "nombre": "HARI",
+  "carpeta": "hari-instalazioak",
+  "slug": "instalador",
+  "chip": "Instalador",
+  "k": "Luz, agua y calefacción",
+  "lleva": [
+   "Avisar de una avería con un toque",
+   "A qué hora llegan a tu pueblo",
+   "Revisiones y boletines por WhatsApp"
+  ]
+ },
+ {
+  "id": "zidor",
+  "nombre": "ZIDOR",
+  "carpeta": "zidor-landetxea",
+  "slug": "casarural",
+  "chip": "Casa rural",
+  "k": "Casa rural al pie del Txindoki",
+  "lleva": [
+   "Las noches libres, en el calendario",
+   "Reserva directa, sin comisiones",
+   "Qué hacer cerca"
+  ]
+ },
+ {
+  "id": "gantxo",
+  "nombre": "GANTXO",
+  "carpeta": "gantxo-harategia",
+  "slug": "carniceria",
+  "chip": "Carnicería",
+  "k": "Carnicería de Tolosa",
+  "lleva": [
+   "Tu pedido se suma pieza a pieza",
+   "Recogerlo a la hora que elijas",
+   "Abierto o cerrado, según la hora"
+  ]
+ },
+ {
+  "id": "behako",
+  "nombre": "BEHAKO",
+  "carpeta": "behako-optika",
+  "slug": "optica",
+  "chip": "Óptica",
+  "k": "Óptica de Tolosa",
+  "lleva": [
+   "Cita para graduarte la vista sin llamar",
+   "Si ya te toca la revisión",
+   "Gafas de ejemplo con su precio"
+  ]
+ }
+]

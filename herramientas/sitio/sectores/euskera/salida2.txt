@@ -1,0 +1,8 @@
+sx_sidreria_c	Txotx egiteko falta diren egunak
+sx_c_reformas	Eraikuntza
+sx_k_reformas	Eraberritzeak eta etxe berriak
+sx_instalador_b	Zer ordutan iristen dira zure herrira?
+sx_k_carniceria	Tolosako harategia
+sx_carniceria_a	Zure eskaera piezaz pieza gehitzen da
+sx_k_optica	Tolosako optika
+sx_optica_c	Ereduzko betaurrekoak eta prezioa

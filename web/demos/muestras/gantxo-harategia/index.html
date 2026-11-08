@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Gantxo · Harategia Tolosan (erakusketa-webgunea)</title>
+<meta name="description" content="Tolosako harategi bat erakusteko webgunea: egin enkargua WhatsApp bidez, eta jaso ezazu aukeratzen duzunean.">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:title" content="Gantxo · Harategia Tolosan (erakusketa-webgunea)">
+<meta property="og:description" content="Tolosako harategi bat erakusteko webgunea: egin enkargua WhatsApp bidez, eta jaso ezazu aukeratzen duzunean.">
+<meta property="og:type" content="website">
+<link rel="alternate" hreflang="es" href="es/">
+<!--
+  MUESTRA «GANTXO» (OI Studio, 8/11/2026): carnicería INVENTADA en Tolosa para la pieza «¿Qué negocio tienes?» de oiwebstudio.com.
+  «Gantxo» = gancho. Son de ejemplo: nombre, dirección (Errekalde 7), teléfono 943 00 00 00, WhatsApp 600 00 00 00, horario,
+  piezas, precios, que la carne venga de caseríos de Tolosaldea y que se corte en la tienda (lo dice la nota bajo el
+  mostrador). noindex.
+  Calco de la referencia que eligió Oier el 8/11: n.º 06, THE MEAT HOOK (the-meathook.com) — cabecera blanca con el menú
+  en mayúsculas a la izquierda, el logo rojo en el centro y un botón rojo rectangular a la derecha; foto a sangre, clara, de
+  una pieza grande (aquí un lomo alto con hueso) con el logo en blanco encima (nombre, gancho dibujado, lo que venden y el pueblo) y la dirección
+  y el horario en una franja de condensada blanca (dos líneas cortas y el abierto/cerrado en pequeño); bloque rojo con el texto centrado en mayúsculas y dos botones; banda con
+  las piezas un poco torcidas (aquí corre con el scroll, no en bucle); bloque blanco con el sello redondo a la izquierda;
+  sección de papel con el título rojo y cinco fotos cuadradas de borde a borde; pie rojo en tres columnas con el sello.
+  Lo que hace: encargo por WhatsApp (tocas piezas, se suman de medio en medio kilo, eliges la hora de recogida entre las
+  horas reales de apertura y sale el mensaje escrito), abierto o cerrado según la hora real de Tolosa, y la fecha de hoy
+  en el mostrador. No se envía nada a ningún sitio: el botón abre WhatsApp con el texto.
+  Letra: 17 Archivo (variable en peso y anchura), autoalojada en fuentes/. Una sola familia, como la referencia; en la
+  portada, estrechada al 64–66 % para acercarse a la condensada pesada de la referencia.
+  Fotos: Pexels (licencia de Pexels): Pits Riccardo (portada), Luis Merlos Vega, Mark Stebnicki, Karyna Panchenko, Noemí Jiménez.
+  Detalle en fotos/creditos.json.
+  Movimiento: la cabecera, el logo de la portada y las líneas entran con CSS desde el primer pintado; lo de abajo, con
+  GSAP 3.13 + ScrollTrigger + SplitText (js/) + anim-texto.js + pagina.js. Con «reducir movimiento» o sin JS, todo quieto y visible.
+-->
+<link rel="preload" href="fuentes/archivo.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="estilo.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="saltar" href="#contenido">Edukira joan</a>
+
+<header class="cab">
+  <nav class="cab-nav" aria-label="Menua"><a href="#mostradorea">Erakusmahaia</a><a href="#enkargua">Enkargua</a><a href="#non">Denda</a><a href="tel:+34943000000">943 00 00 00</a><a class="idioma" href="es/" lang="es" hreflang="es">Gaztelaniaz</a></nav>
+  <a class="cab-logo" href="#contenido" aria-label="Gantxo"><span class="cl-top">HARATEGIA</span><span class="cl-nom">GANTXO</span></a>
+  <a class="btn btn-rojo cab-btn" href="#mostradorea">Egin enkargua</a>
+  <button type="button" class="menu-btn" data-menu-btn aria-expanded="false" aria-controls="menu-movil"><span class="sr" data-menu-txt>Ireki menua</span><i></i><i></i><i></i></button>
+</header>
+<div class="menu-movil" id="menu-movil" data-menu hidden>
+  <nav aria-label="Menua"><a href="#mostradorea">Erakusmahaia</a><a href="#enkargua">Enkargua</a><a href="#non">Denda</a><a href="tel:+34943000000">943 00 00 00</a><a class="idioma" href="es/" lang="es" hreflang="es">Gaztelaniaz</a></nav>
+  <a class="btn btn-rojo" href="#mostradorea">Egin enkargua</a>
+</div>
+
+<main id="contenido">
+<section class="portada" data-portada aria-labelledby="h1">
+  <picture class="portada-foto">
+    <source media="(max-width: 699px)" type="image/avif" srcset="fotos/portada-m-480.avif 480w, fotos/portada-m-800.avif 800w, fotos/portada-m-1200.avif 1200w" sizes="100vw">
+    <source media="(max-width: 699px)" type="image/webp" srcset="fotos/portada-m-480.webp 480w, fotos/portada-m-800.webp 800w, fotos/portada-m-1200.webp 1200w" sizes="100vw">
+    <source type="image/avif" srcset="fotos/portada-800.avif 800w, fotos/portada-1400.avif 1400w, fotos/portada-2000.avif 2000w, fotos/portada-2880.avif 2880w" sizes="100vw">
+    <img src="fotos/portada-1400.webp" srcset="fotos/portada-800.webp 800w, fotos/portada-1400.webp 1400w, fotos/portada-2000.webp 2000w, fotos/portada-2880.webp 2880w" sizes="100vw" width="3623" height="2499" alt="Hezurra duen behi-solomo altua, gordinik, egurrezko taula baten gainean" fetchpriority="high" decoding="async">
+  </picture>
+  <h1 class="logo-grande" id="h1"><span class="sr">Gantxo, harategia Tolosan</span><span class="lg" aria-hidden="true">
+    <span class="lg-top">HARATEGIA</span> 
+    <span class="lg-nom"><span style="--i:0">G</span><span style="--i:1">A</span><span style="--i:2">N</span><span style="--i:3">T</span><span style="--i:4">X</span><span style="--i:5">O</span></span> 
+    <span class="lg-fila">
+      <span class="lg-lado"> <span>TXAHALA<br> TXERRIA</span> <span class="lg-lugar">TOLOSA</span></span>
+      <svg class="lg-gancho" viewBox="0 0 120 150" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"><path d="M60 47 C 43 47 41 6 60 6 C 79 6 77 47 60 47 Z"/><path d="M60 47 V 120"/><path d="M60 120 C 60 146 26 150 12 118 L 20 116"/><path d="M60 120 C 60 146 94 150 108 118 L 100 116"/></g></svg>
+      <span class="lg-lado"> <span>ARKUMEA<br> OILASKOA</span> <span class="lg-lugar">GIPUZKOA</span></span>
+    </span>
+  </span></h1>
+  <div class="portada-lineas">
+    <p style="--i:0"><a href="#non">Errekalde 7 — Tolosa</a> — <a href="tel:+34943000000">943 00 00 00</a></p>
+    <p style="--i:1">Astelehenetik ostiralera 9:00–13:30 / 17:00–20:00</p>
+    <p style="--i:2" class="estado" data-estado aria-live="polite" hidden></p>
+  </div>
+</section>
+
+<section class="rojo" aria-label="Gantxo">
+  <p class="rojo-txt" data-enciende>Tolosaldeko baserrietako haragia ekarri eta hementxe mozten dugu, zure aurrean. Egin enkargua WhatsApp bidez, eta aukeratzen duzunean prest izango duzu.</p>
+  <p class="rojo-btns" data-escalonado><a class="btn btn-linea" href="#mostradorea">Egin enkargua</a><a class="btn btn-linea" href="#non">Ordutegia eta helbidea</a></p>
+</section>
+
+<div class="banda" aria-label="Erakusmahaia"><ul class="banda-pista" data-pista="28"><li style="--r:-2.5deg">Txuleta</li><li style="--r:1.5deg">Txahal-xerrak</li><li style="--r:-1deg">Txerri-saiheskia</li><li style="--r:2.5deg">Baserriko oilaskoa</li><li style="--r:-2deg">Txorizo freskoa</li><li style="--r:1deg">Esneko arkumea</li><li style="--r:-1.5deg">Odolkia</li><li style="--r:2deg">Hanburgesak</li><li style="--r:-2.5deg" aria-hidden="true">Txuleta</li><li style="--r:1.5deg" aria-hidden="true">Txahal-xerrak</li><li style="--r:-1deg" aria-hidden="true">Txerri-saiheskia</li><li style="--r:2.5deg" aria-hidden="true">Baserriko oilaskoa</li><li style="--r:-2deg" aria-hidden="true">Txorizo freskoa</li><li style="--r:1deg" aria-hidden="true">Esneko arkumea</li><li style="--r:-1.5deg" aria-hidden="true">Odolkia</li><li style="--r:2deg" aria-hidden="true">Hanburgesak</li></ul></div>
+
+<section class="papel" id="mostradorea" aria-labelledby="h-mos">
+  <h2 id="h-mos" data-lineas>Gaur mostradorean</h2>
+  <p class="papel-p" id="mos-p"><span class="fecha" data-fecha hidden></span>Sakatu pieza bat eta gehitu kilo erdia enkarguari.</p>
+  <ul class="piezas" data-escalonado>
+      <li><button type="button" class="pieza" data-pieza="txuleta" data-precio="32" data-nombre="Txuleta" aria-describedby="mos-p">
+        <span class="pieza-foto"><picture><source type="image/avif" srcset="fotos/txuleta-400.avif 400w, fotos/txuleta-800.avif 800w" sizes="(min-width: 700px) 19vw, 44vw"><img src="fotos/txuleta-800.webp" srcset="fotos/txuleta-400.webp 400w, fotos/txuleta-800.webp 800w" sizes="(min-width: 700px) 19vw, 44vw" width="800" height="800" alt="Txuleta gordina egurrezko ohol baten gainean" loading="lazy" decoding="async"></picture><span class="pieza-kg" data-kg aria-hidden="true"></span></span>
+        <span class="pieza-nom">Txuleta</span>
+        <span class="pieza-pr">32 €/kg</span>
+      </button></li>
+      <li><button type="button" class="pieza" data-pieza="xerra" data-precio="19" data-nombre="Txahal-xerrak" aria-describedby="mos-p">
+        <span class="pieza-foto"><picture><source type="image/avif" srcset="fotos/xerra-400.avif 400w, fotos/xerra-800.avif 800w" sizes="(min-width: 700px) 19vw, 44vw"><img src="fotos/xerra-800.webp" srcset="fotos/xerra-400.webp 400w, fotos/xerra-800.webp 800w" sizes="(min-width: 700px) 19vw, 44vw" width="800" height="800" alt="Txahal-xerra gordinak taula baten gainean" loading="lazy" decoding="async"></picture><span class="pieza-kg" data-kg aria-hidden="true"></span></span>
+        <span class="pieza-nom">Txahal-xerrak</span>
+        <span class="pieza-pr">19 €/kg</span>
+      </button></li>
+      <li><button type="button" class="pieza" data-pieza="saihetsak" data-precio="9.5" data-nombre="Txerri-saiheskia" aria-describedby="mos-p">
+        <span class="pieza-foto"><picture><source type="image/avif" srcset="fotos/saihetsak-400.avif 400w, fotos/saihetsak-800.avif 800w" sizes="(min-width: 700px) 19vw, 44vw"><img src="fotos/saihetsak-800.webp" srcset="fotos/saihetsak-400.webp 400w, fotos/saihetsak-800.webp 800w" sizes="(min-width: 700px) 19vw, 44vw" width="800" height="800" alt="Txerri-saihets gordinak" loading="lazy" decoding="async"></picture><span class="pieza-kg" data-kg aria-hidden="true"></span></span>
+        <span class="pieza-nom">Txerri-saiheskia</span>
+        <span class="pieza-pr">9,50 €/kg</span>
+      </button></li>
+      <li><button type="button" class="pieza" data-pieza="oilaskoa" data-precio="8.9" data-nombre="Baserriko oilaskoa" aria-describedby="mos-p">
+        <span class="pieza-foto"><picture><source type="image/avif" srcset="fotos/oilaskoa-400.avif 400w, fotos/oilaskoa-800.avif 800w" sizes="(min-width: 700px) 19vw, 44vw"><img src="fotos/oilaskoa-800.webp" srcset="fotos/oilaskoa-400.webp 400w, fotos/oilaskoa-800.webp 800w" sizes="(min-width: 700px) 19vw, 44vw" width="800" height="800" alt="Oilasko oso gordina taula baten gainean" loading="lazy" decoding="async"></picture><span class="pieza-kg" data-kg aria-hidden="true"></span></span>
+        <span class="pieza-nom">Baserriko oilaskoa</span>
+        <span class="pieza-pr">8,90 €/kg</span>
+      </button></li>
+      <li><button type="button" class="pieza" data-pieza="txorizoa" data-precio="11" data-nombre="Txorizo freskoa" aria-describedby="mos-p">
+        <span class="pieza-foto"><picture><source media="(max-width: 699px)" type="image/avif" srcset="fotos/txorizoa-ancha-800.avif 800w, fotos/txorizoa-ancha-1600.avif 1600w" sizes="calc(100vw - 40px)"><source media="(max-width: 699px)" type="image/webp" srcset="fotos/txorizoa-ancha-800.webp 800w, fotos/txorizoa-ancha-1600.webp 1600w" sizes="calc(100vw - 40px)"><source type="image/avif" srcset="fotos/txorizoa-400.avif 400w, fotos/txorizoa-800.avif 800w" sizes="(min-width: 700px) 19vw, 44vw"><img src="fotos/txorizoa-800.webp" srcset="fotos/txorizoa-400.webp 400w, fotos/txorizoa-800.webp 800w" sizes="(min-width: 700px) 19vw, 44vw" width="800" height="800" alt="Txorizo freskoaren errondak zintzilik" loading="lazy" decoding="async"></picture><span class="pieza-kg" data-kg aria-hidden="true"></span></span>
+        <span class="pieza-nom">Txorizo freskoa</span>
+        <span class="pieza-pr">11 €/kg</span>
+      </button></li>
+  </ul>
+  <p class="nota-datos">Adibide datuak: Gantxo ez da existitzen. Izena, helbidea, telefonoak, ordutegia, piezak, prezioak, okela Tolosaldeko baserrietatik etortzea eta dendan moztea asmatuak dira.</p>
+  <p class="sr" data-anuncio aria-live="polite"></p>
+</section>
+
+<section class="encargo" id="enkargua" aria-labelledby="h-enc">
+  <svg class="sello sello-enc" viewBox="0 0 220 220" aria-hidden="true" focusable="false">
+      <defs><path id="anillo-1" d="M110 110 m -86 0 a 86 86 0 1 1 172 0 a 86 86 0 1 1 -172 0"/></defs>
+      <circle cx="110" cy="110" r="104" fill="none" stroke="currentColor" stroke-width="3.5"/>
+      <text class="sello-anillo"><textPath href="#anillo-1" startOffset="0" textLength="530">GANTXO HARATEGIA · TOLOSA · GIPUZKOA ·</textPath></text>
+      <text class="sello-nom" x="110" y="116" text-anchor="middle">GANTXO</text>
+      <g transform="translate(93 124) scale(.28)" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"><path d="M60 47 C 43 47 41 6 60 6 C 79 6 77 47 60 47 Z"/><path d="M60 47 V 120"/><path d="M60 120 C 60 146 26 150 12 118 L 20 116"/><path d="M60 120 C 60 146 94 150 108 118 L 100 116"/></g>
+    </svg>
+  <div class="enc-col">
+    <h2 id="h-enc" data-lineas>Zure enkargua</h2>
+    <p class="enc-p">Aukeratu jasotzeko ordua eta bidali WhatsApp bidez. Moztuta eta prest utziko dizugu.</p>
+    <div class="enc-lista" data-panel>
+      <p class="vacio" data-vacio>Oraindik ez dago ezer. Sakatu goiko piezaren bat.</p>
+      <ul class="lineas" data-lineas-enc></ul>
+      <p class="total" data-total hidden><span>Guztira, gutxi gorabehera</span><b data-total-n>0 €</b></p>
+      <p class="peso-nota" data-peso hidden>Moztean pisatu egiten da, beraz, azken prezioa pixka bat alda daiteke.</p>
+    </div>
+    <div class="enc-fila">
+      <label class="campo" data-campo hidden><span class="campo-et">Jasotzeko ordua</span><select data-hora></select></label>
+      <a class="btn btn-rojo btn-wa" href="https://wa.me/34600000000" rel="noopener" data-wa>Bidali WhatsApp bidez</a>
+    </div>
+    <p class="aviso" data-aviso aria-live="polite"></p>
+    <div class="mensaje" data-mensaje-caja hidden>
+      <h3>Bidaliko den mezua</h3>
+      <p class="escribiendo" data-escribiendo aria-hidden="true">Idazten...</p>
+      <p class="texto" data-mensaje aria-live="polite"></p>
+    </div>
+    <p class="o-llama">Edo deitu <a href="tel:+34943000000">943 00 00 00</a> telefonora.</p>
+  </div>
+</section>
+</main>
+
+<footer class="pie" id="non">
+  <div class="pie-izq" data-escalonado>
+    <h2 class="pie-h">Denda</h2>
+    <p>ERREKALDE 7, TOLOSA<br><a href="tel:+34943000000">943 00 00 00</a></p>
+    <p>Astelehenetik ostiralera: 9:00 – 13:30 eta 17:00 – 20:00<br>Larunbata: 9:00 – 14:00<br>Igandea: itxita</p>
+  </div>
+  <div class="pie-centro">
+    <svg class="sello sello-pie" viewBox="0 0 220 220" aria-hidden="true" focusable="false">
+      <defs><path id="anillo-2" d="M110 110 m -86 0 a 86 86 0 1 1 172 0 a 86 86 0 1 1 -172 0"/></defs>
+      <circle cx="110" cy="110" r="104" fill="none" stroke="currentColor" stroke-width="3.5"/>
+      <text class="sello-anillo"><textPath href="#anillo-2" startOffset="0" textLength="530">GANTXO HARATEGIA · TOLOSA · GIPUZKOA ·</textPath></text>
+      <text class="sello-nom" x="110" y="116" text-anchor="middle">GANTXO</text>
+      <g transform="translate(93 124) scale(.28)" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"><path d="M60 47 C 43 47 41 6 60 6 C 79 6 77 47 60 47 Z"/><path d="M60 47 V 120"/><path d="M60 120 C 60 146 26 150 12 118 L 20 116"/><path d="M60 120 C 60 146 94 150 108 118 L 100 116"/></g>
+    </svg>
+    <p class="pie-redes"><a href="https://wa.me/34600000000" rel="noopener">WhatsApp</a> — <a href="tel:+34943000000">Deitu</a></p>
+  </div>
+  <div class="pie-der">
+    <a href="#mostradorea">Erakusmahaia</a><a href="#enkargua">Enkargua</a><a href="#non">Denda</a><a class="idioma" href="es/" lang="es" hreflang="es">Gaztelaniaz</a>
+  </div>
+  <div class="pie-bajo">
+    <p>Pexelsen adibide diren argazkiak: Pits Riccardo, Luis Merlos Vega, Mark Stebnicki, Karyna Panchenko eta Noemí Jiménez.<br><a href="fotos/creditos.json">creditos.json</a></p>
+    <p>Diseinatzailea: <a class="firma" href="https://oiwebstudio.com/?utm_source=muestra-gantxo&amp;utm_medium=pie" target="_blank" rel="noopener">OI Studio</a></p>
+  </div>
+</footer>
+
+<a class="barra-enc" href="#enkargua" data-barra hidden><span class="be-txt"><b>Zure enkargua</b> <span data-barra-n></span></span><span class="be-ver">Ikusi enkargua</span></a>
+
+<script type="application/json" id="textos">{"lang":"eu","hoy":"gaur","manana":"bihar","dias":["igandea","astelehena","asteartea","asteazkena","osteguna","ostirala","larunbata"],"est":{"a810":"Orain irekita, 13:30ak arte","a1200":"Orain irekita, 20:00ak arte","a840":"Orain irekita, 14:00ak arte","h1020":"Orain itxita, gaur 17:00etan irekiko dugu","h540":"Orain itxita, gaur 09:00etan irekiko dugu","m540":"Orain itxita, bihar 09:00etan irekiko dugu","l540":"Orain itxita, astelehenean 09:00etan irekiko dugu"},"wa":"https://wa.me/34600000000","wa_hola":"Kaixo, Gantxo. Enkargu hau egin nahi dut:","wa_hora":"Jasotzeko ordua:","wa_gracias":"Mila esker.","aviso_vacio":"Lehenbizi, aukeratu piezaren bat.","menos":"Kilo erdi kendu","mas":"Gehitu kilo erdi","abrir":"Ireki menua","cerrar":"Itxi menua"}</script>
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/SplitText.min.js"></script>
+<script src="js/anim-texto.js"></script>
+<script src="js/pagina.js"></script>
+</body>
+</html>

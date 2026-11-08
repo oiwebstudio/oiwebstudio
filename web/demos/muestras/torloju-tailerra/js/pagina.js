@@ -1,38 +1,56 @@
-/* TORLOJU · muestra de taller (OI Studio). Comportamiento y animaciones de paneles.
-   Sin JS o con «reducir movimiento»: todo se ve quieto y completo; los formularios no envían nada (es una muestra). */
+/* TORLOJU v2 · muestra de taller (OI Studio, 7/11/2026). Persiana según la hora, presupuesto al momento, menú y paneles.
+   Sin JS o con «reducir movimiento»: todo se ve quieto y completo. Es una muestra: no se envía nada a ningún sitio. */
 (function () {
   var T = JSON.parse(document.getElementById("textos").textContent);
-  var lang = document.documentElement.lang === "eu" ? "eu" : "es";
-
-  /* ---- hora de Tolosaldea (Europe/Madrid) ---- */
-  function ahora() {
-    try {
-      var p = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Madrid", weekday: "short", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date());
-      var o = {}; p.forEach(function (x) { o[x.type] = x.value; });
-      var d = { Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6, Sun: 0 }[o.weekday];
-      return { dia: d, min: (+o.hour) * 60 + (+o.minute) };
-    } catch (e) { var n = new Date(); return { dia: n.getDay(), min: n.getHours() * 60 + n.getMinutes() }; }
-  }
-  /* horario de ejemplo: L–V 8–13 y 15–19, S 9–13, D cerrado */
-  var H = { 0: [], 1: [[480, 780], [900, 1140]], 2: [[480, 780], [900, 1140]], 3: [[480, 780], [900, 1140]], 4: [[480, 780], [900, 1140]], 5: [[480, 780], [900, 1140]], 6: [[540, 780]] };
+  var R = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var TOR = window.TORLOJU;
   var hm = function (m) { return Math.floor(m / 60) + ":" + ("0" + (m % 60)).slice(-2); };
-  var franjas = function (d) { return H[d].length ? H[d].map(function (f) { return hm(f[0]) + "–" + hm(f[1]); }).join(" " + T.y + " ") : T.cerrado; };
-  var a = ahora();
-  var abierto = H[a.dia].some(function (f) { return a.min >= f[0] && a.min < f[1]; });
-  var est = document.querySelector("[data-estado]");
-  if (est) {
-    est.innerHTML = "<b>" + (abierto ? T.abierto_ahora : T.cerrado_ahora) + "</b><span>" + T.hoy + ": " + franjas(a.dia) + "</span>";
-    est.classList.toggle("cerrado", !abierto);
-    est.hidden = false;
-  }
-  var hoyLi = document.querySelector('.horario li[data-dia="' + a.dia + '"]');
-  if (hoyLi) {
-    hoyLi.setAttribute("aria-current", "date");
-    var s = document.createElement("span"); s.className = "hoy"; s.textContent = T.hoy;
-    hoyLi.querySelector(".dia").appendChild(s);
-  }
 
-  /* ---- menú del móvil ---- */
+  /* ---------- abierto o cerrado, según la hora de Tolosaldea ---------- */
+  function proxima(a) {
+    /* siguiente apertura desde ahora: {dia, min, cuantos días faltan} */
+    for (var k = 0; k < 8; k++) {
+      var d = (a.dia + k) % 7, f = TOR.H[d];
+      for (var i = 0; i < f.length; i++) if (k > 0 || f[i][0] > a.min) return { dia: d, min: f[i][0], k: k };
+    }
+    return null;
+  }
+  function textos(a) {
+    var e = TOR.estado(a), f = TOR.H[a.dia], r = { e: e };
+    if (e === "abierto") {
+      var fin = f.filter(function (x) { return a.min >= x[0] && a.min < x[1]; })[0][1];
+      r.corto = T.estado_abierto; r.largo = T.estado_cierra.replace("{h}", hm(fin));
+    } else {
+      var p = proxima(a), h = hm(p.min);
+      var cuando = (p.k === 0 ? T.estado_abre_hoy : p.k === 1 ? T.estado_abre_manana : T.estado_abre_dia.replace("{dia}", T.dias_cuando[p.dia])).replace("{h}", h);
+      if (e === "comida") { r.corto = T.estado_comida; r.largo = T.estado_vuelve.replace("{h}", h); r.pint = T.pintado_vuelve.replace("{h}", h); }
+      else { r.corto = T.estado_cerrado; r.largo = cuando; r.pint = cuando.charAt(0).toUpperCase() + cuando.slice(1); }
+    }
+    return r;
+  }
+  var fachada = document.querySelector("[data-fachada]");
+  function pinta(primera) {
+    var a = TOR.ahora(), t = textos(a);
+    var est = document.querySelector("[data-estado-txt]");
+    if (est) { est.setAttribute("data-estado", t.e); est.innerHTML = "<b>" + t.corto + "</b><span>" + t.largo + "</span>"; }
+    var ah = document.querySelector("[data-ahora]");
+    if (ah) ah.innerHTML = t.corto + "<span>" + t.largo + "</span>";
+    var ps = document.querySelector("[data-pintado-s]");
+    if (ps) ps.textContent = t.pint || "";
+    if (fachada && fachada.getAttribute("data-estado") !== t.e) {
+      if (!primera) fachada.classList.add("cambia");
+      fachada.setAttribute("data-estado", t.e);
+    }
+    document.querySelectorAll(".horario li").forEach(function (li) {
+      var hoy = +li.getAttribute("data-dia") === a.dia;
+      var s = li.querySelector(".hoy");
+      if (hoy) { li.setAttribute("aria-current", "date"); if (!s) { s = document.createElement("span"); s.className = "hoy"; s.textContent = T.hoy; li.querySelector(".dia").appendChild(s); } }
+      else { li.removeAttribute("aria-current"); if (s) s.remove(); }
+    });
+  }
+  if (TOR) { pinta(true); setInterval(function () { pinta(false); }, 30000); }
+
+  /* ---------- menú del móvil ---------- */
   var hb = document.querySelector(".hamb"), m = document.getElementById("desplegable");
   if (hb && m) {
     var cierra = function () { m.classList.remove("abierto"); hb.setAttribute("aria-expanded", "false"); hb.setAttribute("aria-label", T.menu); };
@@ -41,156 +59,113 @@
     document.addEventListener("keydown", function (e) { if (e.key === "Escape" && m.classList.contains("abierto")) { cierra(); hb.focus(); } });
   }
 
-  /* ---- servicios: la foto fija cambia con la fila (ratón o foco) ---- */
-  var filas = document.querySelectorAll(".serv"), fotos = document.querySelectorAll(".serv-foto picture");
-  function activa(i) {
-    filas.forEach(function (f, j) { f.classList.toggle("activa", j === i); });
-    fotos.forEach(function (f, j) { f.classList.toggle("activa", j === i); });
+  /* ---------- presupuesto al momento ---------- */
+  var calc = document.querySelector("[data-calc]");
+  var euros = function (n) { return n.toLocaleString(T.lang === "eu" ? "eu" : "es-ES") + " €"; };
+  function gira(el, desde, hasta) {
+    /* el número sube o baja contando, en ~450 ms */
+    if (R || desde === hasta) { el.textContent = euros(hasta); return; }
+    var t0 = performance.now(), dur = 450;
+    cancelAnimationFrame(el._raf);
+    (function paso(t) {
+      var k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+      el.textContent = euros(Math.round(desde + (hasta - desde) * e));
+      if (k < 1) el._raf = requestAnimationFrame(paso);
+    })(t0);
   }
-  filas.forEach(function (f, i) {
-    f.addEventListener("mouseenter", function () { activa(i); });
-    f.addEventListener("focusin", function () { activa(i); });
-  });
-  if (filas.length) activa(0);
-
-  /* ---- «Pedir presupuesto» desde un servicio: marca lo que corresponde ---- */
-  document.querySelectorAll("[data-marca]").forEach(function (l) {
-    l.addEventListener("click", function () {
-      var c = document.getElementById(l.dataset.marca);
-      if (c) c.checked = true;
-      var nota = document.getElementById("nota");
-      if (nota && l.dataset.servicio && !nota.value) nota.value = l.dataset.servicio;
-    });
-  });
-
-  /* ---- presupuesto (muestra: no envía nada) ---- */
-  var fo = document.getElementById("form-orden");
-  if (fo) {
-    var r = fo.querySelector(".respuesta");
-    var mensaje = function () {
-      var q = [].slice.call(fo.querySelectorAll('input[name="que"]:checked')).map(function (c) { return c.nextElementSibling ? c.parentElement.textContent.trim() : c.value; });
-      var l = [T.lab_matricula + ": " + (fo.matrikula.value || "—"), T.lab_modelo + ": " + (fo.modeloa.value || "—"), T.lab_que + " " + (q.join(", ") || "—")];
-      if (fo.nota.value) l.push(fo.nota.value);
-      return l.join("\n");
-    };
-    var wa = fo.querySelector(".enl-wa");
-    if (wa) wa.addEventListener("click", function () { wa.href = "https://wa.me/34600000000?text=" + encodeURIComponent(mensaje()); });
-    fo.addEventListener("submit", function (e) {
-      e.preventDefault();
-      if (!fo.telefonoa.value.trim()) { r.textContent = T.falta_tel; fo.telefonoa.focus(); return; }
-      r.textContent = T.demo_resp;
-    });
-  }
-
-  /* ---- cita: los próximos días de taller ---- */
-  var cd = document.querySelector("[data-dias]");
-  if (cd) {
-    var html = "", base = new Date(), n = 0, i = 1;
-    while (n < 12 && i < 30) {
-      var d = new Date(base.getFullYear(), base.getMonth(), base.getDate() + i); i++;
-      if (d.getDay() === 0) continue;
-      var id = "dia-" + n;
-      var wd = T.dias[d.getDay()];
-      var mo = T.meses[d.getMonth()];
-      html += '<label class="opcion" for="' + id + '"><input type="radio" name="eguna" id="' + id + '" value="' + d.toISOString().slice(0, 10) + '" data-sabado="' + (d.getDay() === 6 ? 1 : 0) + '"><span><small>' + wd + '</small><b>' + d.getDate() + '</b><small>' + mo + '</small></span></label>';
-      n++;
+  if (calc) {
+    var lista = calc.querySelector("[data-lineas-tk]"), totalEl = calc.querySelector("[data-total]"), plazoEl = calc.querySelector("[data-plazo]");
+    var cocheEl = calc.querySelector("[data-coche-tk]"), mat = calc.querySelector("[data-matricula]");
+    var barraTot = document.querySelector("[data-total-barra]"), was = document.querySelectorAll("[data-wa]"), srTot = calc.querySelector("[data-total-sr]");
+    var total = 0, estado = { tam: "", nombres: [], suma: 0 };
+    var factor = function () { var r = calc.querySelector('input[name="tamano"]:checked'); return r ? +r.dataset.factor : 1; };
+    var precio = function (base) { return Math.round(base * factor()); };
+    function mensaje() {
+      /* el mensaje de WhatsApp queda escrito con lo elegido */
+      var msg = [T.wa_hola, T.wa_coche + ": " + estado.tam];
+      if (mat && mat.value.trim()) msg.push(T.wa_matricula + ": " + mat.value.trim().toUpperCase());
+      if (estado.nombres.length) msg.push(T.wa_trabajos + ": " + estado.nombres.join(", "));
+      if (estado.suma) msg.push(T.wa_total.replace("{n}", estado.suma));
+      var href = "https://wa.me/34600000000?text=" + encodeURIComponent(msg.join("\n"));
+      was.forEach(function (a) { a.href = href; });
     }
-    cd.innerHTML = html;
-    cd.removeAttribute("aria-describedby");
-    var tarde = document.getElementById("franja-2");
-    cd.addEventListener("change", function (e) {
-      var sab = e.target.dataset.sabado === "1";
-      if (tarde) { tarde.disabled = sab; if (sab && tarde.checked) { tarde.checked = false; document.getElementById("franja-1").checked = true; } }
-    });
-  }
-  var fc = document.getElementById("form-cita");
-  if (fc) {
-    var rc = fc.querySelector(".respuesta");
-    fc.addEventListener("submit", function (e) {
-      e.preventDefault();
-      if (cd && !fc.querySelector('input[name="eguna"]:checked')) { rc.textContent = T.falta_dia; return; }
-      if (!fc.querySelector("#tel-cita").value.trim()) { rc.textContent = T.falta_tel; fc.querySelector("#tel-cita").focus(); return; }
-      rc.textContent = T.cita_resp;
-    });
+    function actualiza(cambioCoche, avisar) {
+      var f = factor(), r = calc.querySelector('input[name="tamano"]:checked');
+      cocheEl.textContent = r.dataset.coche;
+      /* precios de la lista según el coche */
+      calc.querySelectorAll(".precio .n").forEach(function (n) {
+        var v = precio(+n.dataset.base);
+        if (n.textContent !== String(v)) {
+          n.textContent = v;
+          if (cambioCoche && !R && n.animate) n.animate([{ transform: "translateY(-40%)", opacity: 0 }, { transform: "none", opacity: 1 }], { duration: 320, easing: "cubic-bezier(.2,.75,.25,1)" });
+        }
+      });
+      var marcados = [].slice.call(calc.querySelectorAll('input[name="trabajo"]:checked'));
+      var suma = 0, horas = 0, otra = false, nombres = [];
+      /* líneas del ticket: se añaden y se quitan con su animación */
+      var actuales = {};
+      lista.querySelectorAll("li[data-k]").forEach(function (li) { actuales[li.dataset.k] = li; });
+      var vacio = lista.querySelector(".vacio");
+      marcados.forEach(function (c) {
+        var p = +c.dataset.precio, v = p ? precio(p) : 0;
+        suma += v; horas += +c.dataset.horas; if (!p) otra = true;
+        nombres.push(c.dataset.nombre + (p ? " (" + T.linea_tpl.replace("{n}", v) + ")" : ""));
+        var li = actuales[c.value];
+        var txt = p ? T.linea_tpl.replace("{n}", v) : T.te_llamamos;
+        if (li) { li.querySelector("b").textContent = txt; delete actuales[c.value]; lista.appendChild(li); }
+        else {
+          li = document.createElement("li"); li.dataset.k = c.value;
+          var s = document.createElement("span"); s.textContent = c.dataset.nombre;
+          var b = document.createElement("b"); b.textContent = txt;
+          li.appendChild(s); li.appendChild(b); lista.appendChild(li);
+          if (!R && li.animate) li.animate([{ opacity: 0, transform: "translateX(14px)" }, { opacity: 1, transform: "none" }], { duration: 380, easing: "cubic-bezier(.2,.75,.25,1)" });
+        }
+      });
+      Object.keys(actuales).forEach(function (k) {
+        var li = actuales[k];
+        delete li.dataset.k;
+        if (!R && li.animate) { var an = li.animate([{ opacity: 1 }, { opacity: 0, transform: "translateX(14px)" }], { duration: 220, easing: "ease-in" }); an.onfinish = function () { li.remove(); }; }
+        else li.remove();
+      });
+      if (vacio) vacio.hidden = marcados.length > 0;
+      gira(totalEl, total, suma); if (barraTot) gira(barraTot, total, suma);
+      total = suma;
+      plazoEl.textContent = !marcados.length ? T.plazo_nada : (suma === 0 ? T.plazo_otra : (horas <= 2.5 ? T.plazo_manana : horas <= 6 ? T.plazo_dia : T.plazo_dias) + (otra ? "; " + T.plazo_otra : ""));
+      if (avisar && !R && marcados.length && plazoEl.animate) plazoEl.animate([{ opacity: .3 }, { opacity: 1 }], { duration: 300 });
+      /* lectores de pantalla: el total se dice una vez, no mientras el número cuenta */
+      if (avisar && srTot) srTot.textContent = marcados.length ? T.tk_total + ": " + euros(suma) : "";
+      estado = { tam: r.dataset.tam.toLowerCase(), nombres: nombres, suma: suma };
+      mensaje();
+    }
+    calc.addEventListener("change", function (e) { if (e.target === mat) return; actualiza(e.target.name === "tamano", true); });
+    if (mat) mat.addEventListener("input", mensaje);
+    actualiza(false, false);
+    /* el total «salta» un poco cuando cambia */
+    calc.addEventListener("change", function (e) { if (e.target !== mat && !R && totalEl.animate) totalEl.animate([{ transform: "scale(1)" }, { transform: "scale(1.06)" }, { transform: "scale(1)" }], { duration: 320, easing: "cubic-bezier(.2,.75,.25,1)" }); });
   }
 
-  /* ---- barra del móvil: aparece cuando la portada ya no se ve ---- */
-  var barra = document.querySelector("[data-barra-movil]"), portada = document.querySelector("[data-portada]");
-  if (barra && portada && "IntersectionObserver" in window) {
-    new IntersectionObserver(function (e) { barra.classList.toggle("on", !e[0].isIntersecting); }, { rootMargin: "0px 0px -40% 0px" }).observe(portada);
-  } else if (barra) barra.classList.add("on");
+  /* ---------- barra del móvil: dentro de «precios» enseña el total ---------- */
+  var barra = document.querySelector("[data-barra-movil]"), sec = document.getElementById("precios");
+  if (barra && sec && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (e) { barra.classList.toggle("total", e[0].isIntersecting); }, { rootMargin: "-30% 0px -40% 0px" }).observe(sec);
+  }
 
-  /* ---- animaciones de paneles (24/10 Oier: siempre) ---- */
-  if (!window.gsap || !window.ScrollTrigger || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  /* ---------- paneles que entran al asomar (por tiempo, no atados al scroll) ---------- */
+  if (R || !window.gsap || !window.ScrollTrigger) return;
   gsap.registerPlugin(ScrollTrigger);
-  var ease = "expo.out";
-  document.fonts.ready.then(function () {
-    /* portada: la foto se asienta y el texto sube */
-    var pf = document.querySelector(".portada-foto img");
-    if (pf) {
-      gsap.fromTo(pf, { scale: 1.14 }, { scale: 1, duration: 1.8, ease: ease });
-      gsap.to(pf, { yPercent: 8, ease: "none", scrollTrigger: { trigger: ".portada", start: "top top", end: "bottom top", scrub: true } });
-    }
-    gsap.from(".portada-txt .estado, .portada-txt .lema, .portada-txt .info", { y: 26, opacity: 0, duration: 1, ease: ease, stagger: 0.08, delay: 0.35 });
-
-    /* servicios: la foto fija se destapa; las miniaturas se asientan */
-    var sf = document.querySelector(".serv-foto");
-    if (sf && getComputedStyle(sf).display !== "none") {
-      gsap.fromTo(sf, { clipPath: "inset(0% 0% 100% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.3, ease: "expo.inOut", clearProps: "clipPath", scrollTrigger: { trigger: ".serv-rej", start: "top 80%" } });
-    }
-    ScrollTrigger.batch(".serv-min", { start: "top 92%", once: true, onEnter: function (els) {
-      gsap.fromTo(els, { clipPath: "inset(0% 0% 100% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.9, ease: "expo.inOut", stagger: 0.07, clearProps: "clipPath" });
-      els.forEach(function (e) { var im = e.querySelector("img"); if (im) gsap.fromTo(im, { scale: 1.2 }, { scale: 1, duration: 1.4, ease: ease }); });
-    } });
-
-    /* la orden de trabajo se abre desde un recorte */
-    var orden = document.querySelector(".orden");
-    if (orden) {
-      gsap.fromTo(orden, { clipPath: "inset(12% 5% 0% 5%)", y: 50, opacity: 0 }, { clipPath: "inset(0% 0% 0% 0%)", y: 0, opacity: 1, duration: 1.1, ease: ease, clearProps: "clipPath", scrollTrigger: { trigger: orden, start: "top 88%" } });
-      gsap.from(".placa", { x: -40, opacity: 0, duration: 1, ease: ease, delay: 0.25, scrollTrigger: { trigger: orden, start: "top 88%" } });
-      gsap.from(".marcas .marca", { y: 16, opacity: 0, duration: 0.7, ease: ease, stagger: 0.05, scrollTrigger: { trigger: ".marcas", start: "top 90%" } });
-    }
-
-    /* cita: la foto entra desde la derecha y los días uno detrás de otro */
-    var cf = document.querySelector(".cita-foto");
-    if (cf) {
-      gsap.fromTo(cf, { clipPath: "inset(0% 0% 0% 100%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.3, ease: "expo.inOut", clearProps: "clipPath", scrollTrigger: { trigger: ".cita .rej", start: "top 82%" } });
-      gsap.fromTo(cf.querySelector("img"), { scale: 1.18 }, { scale: 1, duration: 1.8, ease: ease, scrollTrigger: { trigger: ".cita .rej", start: "top 82%" } });
-    }
-    gsap.from(".dias .opcion", { y: 20, opacity: 0, duration: 0.7, ease: ease, stagger: 0.04, scrollTrigger: { trigger: ".dias", start: "top 92%" } });
-
-    /* por qué: foto que se destapa y casillas que se marcan */
-    var pq = document.querySelector(".porque-foto");
-    if (pq) {
-      gsap.fromTo(pq, { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.3, ease: "expo.inOut", clearProps: "clipPath", scrollTrigger: { trigger: ".porque .rej", start: "top 80%" } });
-      gsap.fromTo(pq.querySelector("img"), { scale: 1.16 }, { scale: 1, duration: 1.8, ease: ease, scrollTrigger: { trigger: ".porque .rej", start: "top 80%" } });
-    }
-    ScrollTrigger.batch(".checks li", { start: "top 90%", once: true, onEnter: function (els) {
-      gsap.from(els, { x: 30, opacity: 0, duration: 0.9, ease: ease, stagger: 0.08 });
-      els.forEach(function (li, k) { var c = li.querySelector(".caja svg"); if (c) gsap.fromTo(c, { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.6, ease: "power2.out", delay: 0.35 + k * 0.08, clearProps: "clipPath" }); });
-    } });
-
-    /* opiniones: la grande sube y las pequeñas entran detrás */
-    gsap.from(".op-grande", { y: 40, opacity: 0, duration: 1.1, ease: ease, scrollTrigger: { trigger: ".op-grande", start: "top 88%" } });
-    gsap.from(".op-pequenas blockquote", { y: 30, opacity: 0, duration: 1, ease: ease, stagger: 0.12, scrollTrigger: { trigger: ".op-pequenas", start: "top 88%" } });
-
-    /* plano: la ruta se dibuja con el scroll y el punto aparece */
-    var ruta = document.querySelector(".mapa .ruta");
-    if (ruta) gsap.fromTo(ruta, { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", ease: "none", scrollTrigger: { trigger: ".mapa", start: "top 85%", end: "center 45%", scrub: 0.6 } });
-    var punto = document.querySelector(".mapa .punto");
-    if (punto) gsap.from(punto, { scale: 0.6, opacity: 0, transformOrigin: "50% 100%", duration: 0.8, ease: "back.out(2)", scrollTrigger: { trigger: ".mapa", start: "center 60%" } });
-    gsap.from(".mapa", { y: 40, opacity: 0, duration: 1, ease: ease, scrollTrigger: { trigger: ".donde .rej", start: "top 85%" } });
-
-    /* teléfono gigante: sube cifra a cifra */
-    var tg = document.querySelector(".tel-gigante");
-    if (tg && window.SplitText) {
-      var st = SplitText.create(tg, { type: "chars", mask: "chars" });
-      gsap.from(st.chars, { yPercent: 110, duration: 1, ease: ease, stagger: 0.03, scrollTrigger: { trigger: tg, start: "top 90%" } });
-    }
-    gsap.from(".con-botones", { y: 20, opacity: 0, duration: 0.8, ease: ease, scrollTrigger: { trigger: ".con-botones", start: "top 98%" } });
-
-    /* pie: el nombre se descubre de izquierda a derecha */
-    var pm = document.querySelector(".pie-marca");
-    if (pm) gsap.fromTo(pm, { clipPath: "inset(-10% 100% -10% 0%)" }, { clipPath: "inset(-10% 0% -10% 0%)", duration: 1.4, ease: "power3.inOut", scrollTrigger: { trigger: pm, start: "top 95%" } });
+  document.documentElement.classList.add("js-anim");
+  document.querySelectorAll('[data-panel="foto"]').forEach(function (el) {
+    var img = el.querySelector("img, svg");
+    var tl = gsap.timeline({ scrollTrigger: { trigger: el, start: "top 88%", once: true } });
+    tl.fromTo(el, { clipPath: "inset(12% 0% 12% 0%)", opacity: 0 }, { clipPath: "inset(0% 0% 0% 0%)", opacity: 1, duration: 1.3, ease: "power3.out", clearProps: "clipPath,opacity" });
+    if (img) tl.fromTo(img, { scale: 1.12 }, { scale: 1, duration: 1.6, ease: "power3.out", clearProps: "transform" }, 0);
   });
+  document.querySelectorAll('[data-panel="lado"]').forEach(function (el) {
+    gsap.from(el, { x: 40, opacity: 0, duration: 1.2, ease: "power3.out", clearProps: "transform,opacity", scrollTrigger: { trigger: el, start: "top 85%", once: true } });
+  });
+  document.querySelectorAll('[data-panel="sube"]').forEach(function (el) {
+    gsap.from(el, { y: 40, opacity: 0, duration: 1.2, ease: "power3.out", clearProps: "transform,opacity", scrollTrigger: { trigger: el, start: "top 86%", once: true } });
+  });
+  var ruta = document.querySelector(".mapa .ruta");
+  if (ruta) gsap.from(ruta, { opacity: 0, duration: 1.2, delay: 0.5, ease: "power2.out", scrollTrigger: { trigger: ruta.closest(".mapa"), start: "top 80%", once: true } });
 })();

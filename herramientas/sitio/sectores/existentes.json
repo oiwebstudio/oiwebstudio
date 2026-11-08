@@ -1,0 +1,266 @@
+[
+ {
+  "id": "hauspo",
+  "nombre": "HAUSPO",
+  "carpeta": "hauspo-jatetxea",
+  "enlace": "demos/muestras/hauspo-jatetxea/es/",
+  "chip": {
+   "key": "sx_c1",
+   "es": "Restaurante",
+   "eu": "Jatetxea"
+  },
+  "k": {
+   "key": "sx_k1",
+   "es": "Restaurante en Tolosaldea",
+   "eu": "Tolosaldeko jatetxea"
+  },
+  "lleva": [
+   {
+    "key": "sx_1a",
+    "es": "La carta con precios y alérgenos",
+    "eu": "Karta prezioekin eta alergenoekin"
+   },
+   {
+    "key": "sx_1b",
+    "es": "Menús de grupo y reservas",
+    "eu": "Talde-menuak eta erreserbak"
+   },
+   {
+    "key": "sx_1c",
+    "es": "Un aviso de abierto ahora, según la hora",
+    "eu": "Orain zabalik dagoen abisua, orduaren arabera"
+   }
+  ]
+ },
+ {
+  "id": "ahamen",
+  "nombre": "AHAMEN",
+  "carpeta": "ahamen-taberna",
+  "enlace": "demos/muestras/ahamen-taberna/es/",
+  "chip": {
+   "key": "sx_c2",
+   "es": "Bar",
+   "eu": "Taberna"
+  },
+  "k": {
+   "key": "sx_k2",
+   "es": "Taberna de pintxos",
+   "eu": "Pintxo taberna"
+  },
+  "lleva": [
+   {
+    "key": "sx_2a",
+    "es": "Los pintxos, con fotos",
+    "eu": "Pintxoak, argazkiekin"
+   },
+   {
+    "key": "sx_2b",
+    "es": "Reservar mesa desde el móvil",
+    "eu": "Mugikorretik mahaia erreserbatzea"
+   },
+   {
+    "key": "sx_2c",
+    "es": "En euskera y en castellano",
+    "eu": "Euskaraz eta gaztelaniaz"
+   }
+  ]
+ },
+ {
+  "id": "orrazkera",
+  "nombre": "ORRAZKERA",
+  "carpeta": "orrazkera-ileapaindegia",
+  "enlace": "demos/muestras/orrazkera-ileapaindegia/es/",
+  "chip": {
+   "key": "sx_c3",
+   "es": "Peluquería",
+   "eu": "Ile-apaindegia"
+  },
+  "k": {
+   "key": "sx_k3",
+   "es": "Peluquería en Tolosa",
+   "eu": "Ile-apaindegia Tolosan"
+  },
+  "lleva": [
+   {
+    "key": "sx_3a",
+    "es": "Servicios y precios claros",
+    "eu": "Zerbitzu eta prezio argiak"
+   },
+   {
+    "key": "sx_3b",
+    "es": "Las peluqueras y sus trabajos",
+    "eu": "Ile-apaintzaileak eta beren lanak"
+   },
+   {
+    "key": "sx_cita",
+    "es": "Pedir cita con un solo toque",
+    "eu": "Hitzordua eskatu ukitu bakar batekin"
+   }
+  ]
+ },
+ {
+  "id": "bigun",
+  "nombre": "BIGUN",
+  "carpeta": "bigun-estetika",
+  "enlace": "demos/muestras/bigun-estetika/es/",
+  "chip": {
+   "key": "sx_c4",
+   "es": "Estética",
+   "eu": "Estetika"
+  },
+  "k": {
+   "key": "sx_k4",
+   "es": "Centro de estética",
+   "eu": "Estetika-zentroa"
+  },
+  "lleva": [
+   {
+    "key": "sx_4a",
+    "es": "Tratamientos y bonos",
+    "eu": "Tratamenduak eta bonuak"
+   },
+   {
+    "key": "sx_4b",
+    "es": "El horario siempre al día",
+    "eu": "Ordutegia beti egunean"
+   },
+   {
+    "key": "sx_4c",
+    "es": "Cita sin tener que llamar",
+    "eu": "Hitzordua deitu beharrik gabe"
+   }
+  ]
+ },
+ {
+  "id": "torloju",
+  "nombre": "TORLOJU",
+  "carpeta": "torloju-tailerra",
+  "enlace": "demos/muestras/torloju-tailerra/es/",
+  "chip": {
+   "key": "sx_c5",
+   "es": "Taller",
+   "eu": "Tailerra"
+  },
+  "k": {
+   "key": "sx_k5",
+   "es": "Taller mecánico",
+   "eu": "Tailer mekanikoa"
+  },
+  "lleva": [
+   {
+    "key": "sx_5a",
+    "es": "Presupuesto en un minuto",
+    "eu": "Aurrekontua minutu batean"
+   },
+   {
+    "key": "sx_5b",
+    "es": "Abierto o cerrado, según la hora",
+    "eu": "Irekia edo itxia, orduaren arabera"
+   },
+   {
+    "key": "sx_5c",
+    "es": "Llamar o escribir por WhatsApp con un solo toque",
+    "eu": "Deitu edo idatzi WhatsApp bidez ukitu bakar batekin"
+   }
+  ]
+ },
+ {
+  "id": "urdin",
+  "nombre": "URDIN",
+  "carpeta": "urdin-hortz-klinika",
+  "enlace": "demos/muestras/urdin-hortz-klinika/es/",
+  "chip": {
+   "key": "sx_c6",
+   "es": "Dentista",
+   "eu": "Dentista"
+  },
+  "k": {
+   "key": "sx_k6",
+   "es": "Clínica dental",
+   "eu": "Hortz-klinika"
+  },
+  "lleva": [
+   {
+    "key": "sx_6a",
+    "es": "La primera visita y las urgencias, a la vista",
+    "eu": "Lehen bisita eta larrialdiak, bistan"
+   },
+   {
+    "key": "sx_6b",
+    "es": "Tratamientos explicados con claridad",
+    "eu": "Argi azaldutako tratamenduak"
+   },
+   {
+    "key": "sx_6c",
+    "es": "Pedir cita o escribir por WhatsApp",
+    "eu": "Hitzordua eskatu edo WhatsApp bidez idatzi"
+   }
+  ]
+ },
+ {
+  "id": "arin",
+  "nombre": "ARIN",
+  "carpeta": "arin-fisioterapia",
+  "enlace": "demos/muestras/arin-fisioterapia/",
+  "chip": {
+   "key": "sx_c7",
+   "es": "Fisioterapia",
+   "eu": "Fisioterapia"
+  },
+  "k": {
+   "key": "sx_k7",
+   "es": "Fisioterapia",
+   "eu": "Fisioterapia"
+  },
+  "lleva": [
+   {
+    "key": "sx_7a",
+    "es": "Un mapa del cuerpo para elegir dónde duele",
+    "eu": "Gorputzaren mapa bat, mina non ematen duen aukeratzeko"
+   },
+   {
+    "key": "sx_7b",
+    "es": "Técnicas y fisioterapeutas",
+    "eu": "Teknikak eta fisioterapeutak"
+   },
+   {
+    "key": "sx_cita",
+    "es": "Pedir cita con un solo toque",
+    "eu": "Hitzordua eskatu ukitu bakar batekin"
+   }
+  ]
+ },
+ {
+  "id": "artile",
+  "nombre": "ARTILE",
+  "carpeta": "artile-arropa",
+  "enlace": "demos/muestras/artile-arropa/es/",
+  "chip": {
+   "key": "sx_c8",
+   "es": "Tienda",
+   "eu": "Denda"
+  },
+  "k": {
+   "key": "sx_k8",
+   "es": "Tienda de ropa",
+   "eu": "Arropa denda"
+  },
+  "lleva": [
+   {
+    "key": "sx_8a",
+    "es": "Las novedades de la temporada",
+    "eu": "Denboraldiko nobedadeak"
+   },
+   {
+    "key": "sx_8b",
+    "es": "Arreglos y horario",
+    "eu": "Konponketak eta ordutegia"
+   },
+   {
+    "key": "sx_8c",
+    "es": "Preguntar por una prenda por WhatsApp",
+    "eu": "WhatsApp bidez jantzi bati buruz galdetu"
+   }
+  ]
+ }
+]

@@ -1,0 +1,30 @@
+sx_c_sidreria	Sidrería
+sx_k_sidreria	Sidrería y asador
+sx_sidreria_a	Reservar mesa sin llamar
+sx_sidreria_b	El menú sidrería y la carta, al día
+sx_sidreria_c	Cuántos días faltan para el txotx
+sx_c_reformas	Reformas
+sx_k_reformas	Construcción y reformas
+sx_reformas_a	Precio orientativo de tu reforma en un minuto
+sx_reformas_b	Obras terminadas, con foto y plazo
+sx_reformas_c	El presupuesto, por WhatsApp
+sx_c_instalador	Instalador
+sx_k_instalador	Luz, agua y calefacción
+sx_instalador_a	Avisar de una avería con un toque
+sx_instalador_b	Si llegan hoy a tu pueblo
+sx_instalador_c	Revisiones y boletines por WhatsApp
+sx_c_casarural	Casa rural
+sx_k_casarural	Casa rural al pie del Txindoki
+sx_casarural_a	Las noches libres, en el calendario
+sx_casarural_b	Reserva directa, sin comisiones
+sx_casarural_c	Qué hacer cerca
+sx_c_carniceria	Carnicería
+sx_k_carniceria	Carnicería en Tolosa
+sx_carniceria_a	El encargo se va sumando al tocar
+sx_carniceria_b	Recogerlo a la hora que elijas
+sx_carniceria_c	Abierto o cerrado, según la hora
+sx_c_optica	Óptica
+sx_k_optica	Óptica en Tolosa
+sx_optica_a	Cita para graduarte la vista sin llamar
+sx_optica_b	Si ya te toca la revisión
+sx_optica_c	Monturas de ejemplo con su precio

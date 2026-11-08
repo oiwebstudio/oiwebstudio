@@ -1,0 +1,129 @@
+{
+ "_leeme": "Fotos de la muestra LAUZA (8/11/2026). Todas son fotos de ejemplo de Unsplash (licencia de Unsplash): no son obras de ninguna empresa. Recortadas, redimensionadas y convertidas a AVIF y WebP.",
+ "portada": {
+  "autor": "RETRATO INMOBILIARIO",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/modern-white-house-with-illuminated-pathway-at-dusk-eLG6MsOeupk",
+  "uso": "Portada: casa terminada al anochecer (en lugar de la casa de la referencia)",
+  "cambios": "Recortada a 1.5, redimensionada y convertida a AVIF y WebP"
+ },
+ "portada-m": {
+  "autor": "RETRATO INMOBILIARIO",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/modern-white-house-with-illuminated-pathway-at-dusk-eLG6MsOeupk",
+  "uso": "Portada en el móvil: recorte vertical de la misma foto",
+  "cambios": "Recortada a 0.563, redimensionada y convertida a AVIF y WebP"
+ },
+ "estudio": {
+  "autor": "Clay Banks",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/modern-living-room-with-hanging-fireplace-and-large-windows-CqAkN-dg_-s",
+  "uso": "Cómo trabajamos: salón reformado",
+  "cambios": "Recortada a 0.8, redimensionada y convertida a AVIF y WebP"
+ },
+ "marron": {
+  "autor": "George Barros",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/modern-house-with-white-walls-t4FMbSdmeR0",
+  "uso": "Bloque marrón: foto pequeña de una casa",
+  "cambios": "Recortada a 0.75, redimensionada y convertida a AVIF y WebP"
+ },
+ "obra1": {
+  "autor": "Julia",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/brown-wooden-desk-with-chair-K-ndOjMfxKs",
+  "uso": "Obra de ejemplo: cocina de un piso",
+  "cambios": "Recortada a 0.742, redimensionada y convertida a AVIF y WebP"
+ },
+ "obra2": {
+  "autor": "Alexander Fife",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/white-bathtub-with-shower-curtain-rDSwQ_6XFUs",
+  "uso": "Obra de ejemplo: baño con ducha de obra",
+  "cambios": "Recortada a 0.742, redimensionada y convertida a AVIF y WebP"
+ },
+ "obra3": {
+  "autor": "Vanessa Zhu",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/ornate-building-facade-against-a-clear-blue-sky-ycpVU-UnS_A",
+  "uso": "Obra de ejemplo: fachada de un bloque",
+  "cambios": "Recortada a 0.742, redimensionada y convertida a AVIF y WebP"
+ },
+ "obra4": {
+  "autor": "Jan Antonin Kolar",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/red-brick-roof-0AadJgqvLw8",
+  "uso": "Obra de ejemplo: tejado",
+  "cambios": "Recortada a 0.742, redimensionada y convertida a AVIF y WebP"
+ },
+ "obra5": {
+  "autor": "Nicolas Görmer",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-white-house-with-a-red-roof-and-shutters-MVL3Gldkg64",
+  "uso": "Obra de ejemplo: casa de dos plantas",
+  "cambios": "Recortada a 0.742, redimensionada y convertida a AVIF y WebP"
+ },
+ "obra6": {
+  "autor": "Caroline Badran",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/modern-interior-with-wooden-walls-and-industrial-staircase-n4fHj9zCW6g",
+  "uso": "Obra de ejemplo: bajo convertido en casa",
+  "cambios": "Recortada a 0.742, redimensionada y convertida a AVIF y WebP"
+ },
+ "tipo-cocina": {
+  "autor": "Simona Sergi",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/white-wooden-kitchen-cabinet-over-white-kitchen-counter-gijwI4X-7ig",
+  "uso": "Presupuesto: cocina",
+  "cambios": "Recortada a 1.333, redimensionada y convertida a AVIF y WebP"
+ },
+ "tipo-bano": {
+  "autor": "Hemant Kanojiya",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-bathroom-with-a-toilet-sink-and-shower-LSKfjiXsbUU",
+  "uso": "Presupuesto: baño",
+  "cambios": "Recortada a 1.333, redimensionada y convertida a AVIF y WebP"
+ },
+ "tipo-fachada": {
+  "autor": "Tita",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-large-white-building-with-balconies-and-windows-Vqb3q67AnNs",
+  "uso": "Presupuesto: fachada",
+  "cambios": "Recortada a 1.333, redimensionada y convertida a AVIF y WebP"
+ },
+ "tipo-tejado": {
+  "autor": "John Kinnander",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/black-rectangular-device-on-brown-roof-Xax5c84vb0U",
+  "uso": "Presupuesto: tejado",
+  "cambios": "Recortada a 1.333, redimensionada y convertida a AVIF y WebP"
+ },
+ "tipo-casa": {
+  "autor": "Margo Evardson",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/white-building-with-red-tiled-roof-and-satellite-dish-bgCTuPdCRGU",
+  "uso": "Presupuesto: casa entera",
+  "cambios": "Recortada a 1.333, redimensionada y convertida a AVIF y WebP"
+ },
+ "op1": {
+  "autor": "Callum Hill",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/purple-flowers-in-clear-glass-vase-on-white-wooden-table-zILpNroX12o",
+  "uso": "Opinión 1 (cocina): foto grande",
+  "cambios": "Recortada a 0.723, redimensionada y convertida a AVIF y WebP"
+ },
+ "op2": {
+  "autor": "Olha",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-clock-on-the-side-of-a-brick-building-PD2x4ZDQKBU",
+  "uso": "Opinión 2 (tejado): foto grande. Cambiada el 8/11: la anterior era de una empresa de tejados real (Southeastern Premier Roofing)",
+  "cambios": "Recortada a 0.723, redimensionada y convertida a AVIF y WebP"
+ },
+ "og-lauza": {
+  "autor": "RETRATO INMOBILIARIO",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/modern-white-house-with-illuminated-pathway-at-dusk-eLG6MsOeupk",
+  "uso": "Imagen para compartir el enlace (og:image)",
+  "cambios": "Recorte 1200x630 de la foto de portada"
+ }
+}

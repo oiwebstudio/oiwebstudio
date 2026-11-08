@@ -1,30 +1,22 @@
-# URDIN Hortz Klinika · fuentes y licencias
+# URDIN · fuentes y licencias
 
-Muestra de diseño de OI Studio (oiwebstudio.com). La clínica, las personas, los precios, el horario, la dirección,
-el teléfono y las opiniones son inventados. Las fotos son de ejemplo: no son de ninguna clínica real de Tolosaldea.
+Muestra de diseño de OI Studio (oiwebstudio.com), versión 2 (7/11/2026). La clínica, los precios, el horario,
+los huecos de cita, la dirección y los teléfonos son inventados. Las fotos son de ejemplo: no son de ninguna clínica de Tolosaldea.
 
-## Fotos (Unsplash License: uso libre, también comercial; no hace falta atribución, pero la damos)
+## Fotos
 
-| Archivo | Autor | Enlace | Nota |
-|---|---|---|---|
-| portada | Harold Hisona | https://unsplash.com/photos/Bg81yWKZlMg | recortada en vertical |
-| primera-visita | Sum Sum | https://unsplash.com/photos/Vx71zsOqtSU | |
-| revision | Caroline LM | https://unsplash.com/photos/-m-4tYmtLlI | |
-| ortodoncia | Harold Hisona | https://unsplash.com/photos/uTUsnv_UCSQ | |
-| implantes | Katarzyna Zygnerska | https://unsplash.com/photos/eHwRLpfHSKY | recortada 4:3 |
-| estetica | Laurent Yasiel | https://unsplash.com/photos/47fKvu4niMk | recortada 4:3 |
-| infantil | Nate Johnston | https://unsplash.com/photos/UhVxAkKw8gQ | recortada 4:3 |
-| equipo-dentista | Caroline LM | https://unsplash.com/photos/QA9fRIi6sFw | recortada 3:2 |
-| equipo-higienista | D Dental Office | https://unsplash.com/photos/BiknMFl7iOw | recortada 3:2; placa con nombre y logo desenfocada |
-| sala-espera | Caroline Badran | https://unsplash.com/photos/jH05wxjmAWE | recortada 4:5 |
+| Archivo | Qué es | Autor | Licencia | Enlace | Cambios |
+|---|---|---|---|---|---|
+| radiografia | Radiografía panorámica | Coronation Dental Specialty Group | [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/) | https://commons.wikimedia.org/wiki/File:Basic_panoramic_radiograph.jpg | Pasada a dos tintas (azul y papel) |
+| visita-pantalla | Dentista que enseña la radiografía en la pantalla | Caroline LM | [Unsplash License](https://unsplash.com/license) | https://unsplash.com/photos/-m-4tYmtLlI | Ninguno |
+| consulta | Consulta dental con el sillón | Thedentalguy | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | https://commons.wikimedia.org/wiki/File:Kneebreak_dental_chair.jpg | Ninguno |
 
-Licencia: https://unsplash.com/license
+## Letras (autoalojadas en fuentes/)
 
-## Letras (autoalojadas)
-
-- Petrona (titulares) — Ringo R. Seeber, SIL Open Font License 1.1 (Google Fonts).
-- Ranade (texto) — Indian Type Foundry, licencia ITF Free Font (Fontshare): uso comercial permitido, no se puede revender la fuente.
+- Unbounded (títulos), de NORD ID, SIL Open Font License 1.1 (Google Fonts). Catálogo de OI Studio n.º 20.
+- Supreme (texto), de Indian Type Foundry, licencia ITF Free Font (Fontshare): uso comercial permitido; no se puede revender la fuente. Catálogo n.º 15.
 
 ## Movimiento
 
-GSAP 3 + ScrollTrigger + SplitText (licencia estándar de GSAP, gratis también para uso comercial).
+GSAP 3 + ScrollTrigger (licencia estándar de GSAP, gratis también para uso comercial), solo para la banda que corre de lado
+y el párrafo que se enciende. El resto, con CSS y la API de animaciones del navegador.

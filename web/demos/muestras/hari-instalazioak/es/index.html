@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>HARI · Luz, agua y calefacción en Tolosaldea (web de muestra)</title>
+<meta name="description" content="Web de muestra de OI Studio para un instalador inventado: avisas de una avería con un toque, ves si llegan hoy a tu pueblo y pides la revisión o el boletín por WhatsApp.">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="HARI · Luz, agua y calefacción en Tolosaldea (web de muestra)">
+<meta property="og:description" content="Web de muestra de OI Studio para un instalador inventado: avisas de una avería con un toque, ves si llegan hoy a tu pueblo y pides la revisión o el boletín por WhatsApp.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="../fotos/portada-1600.webp">
+<link rel="alternate" hreflang="eu" href="../">
+<!--
+  MUESTRA «HARI» (OI Studio, 8/11/2026): instalador de luz, agua y calefacción INVENTADO, para la pieza «¿Qué negocio tienes?» de oiwebstudio.com.
+  «Hari» = hilo (el logo es una H cuyo travesaño es el hilo). Nombre, teléfono, dirección, horario, pueblos y trabajos son de ejemplo. noindex.
+  Referencia elegida por Oier el 8/11: n.º 10 del tablero muestras-instaladores-2026-11-07, NC Electrical & Communications (ncec.net.au).
+  Calcado: vídeo lento y algo desenfocado a sangre en la portada (material real: techo con pantallas fluorescentes, tubo y cable, en azul con
+  los brillos naranja), titular en grotesca ancha en mayúsculas abajo a la izquierda, botón blanco redondeado
+  pequeño y raya fina que cierra la portada; logo mínimo con hilo y menú de cuatro palabras arriba a la derecha; banda oscura con titular a la
+  izquierda y texto a la derecha + enlace con raya; en el ordenador, la sección se queda fija y las tarjetas de color pasan de lado por delante
+  de la palabra gigante (en el móvil, la palabra corre de lado y las tarjetas se deslizan con el dedo); tarjetas con palabra enorme y panel de cristal
+  con el aro de rayas; dos tarjetas pastel «pulsa para ver»; lista oscura con rayas; filas con foto, título, texto y botón gris; pie negro que
+  se destapa. Fuera (su «que_no_copiar»): la etiqueta espaciada encima del titular y la frase-lema; también los 01/03 y «OUR PROCESS».
+  Lo que hace: «¿Qué te pasa?» deja el WhatsApp escrito con la avería, la dirección y la foto que hay que mandar; «¿Llegáis hoy?» dice por
+  pueblo, con la hora real, si van hoy o mañana; revisiones y boletines: el año de la última revisión dice cuándo toca y se piden por WhatsApp.
+  Letras: n.º 17 Archivo (ancha, 400) en títulos + n.º 13 Satoshi 400/700 en el texto, autoalojadas en fuentes/.
+  Vídeo y fotos: Pexels (licencia de Pexels): KoolShooters (vídeo, pexels.com/video/9945020; color y desenfoque nuestros), Ksenia Chernaya,
+  Yudi Ding, BOOM Photography. Detalle en fotos/creditos.json. og:image = primer fotograma del vídeo (fotos/portada-1600.webp).
+  Movimiento: titular, botón y raya de la portada entran con CSS desde el primer pintado; lo de abajo con GSAP 3.13 + ScrollTrigger + SplitText
+  (js/) + anim-texto.js + pagina.js. Con «reducir movimiento» o sin JS: vídeo parado (se ve su primer fotograma) y todo quieto y visible.
+-->
+<link rel="preload" href="../fuentes/archivo-400_900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fuentes/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../estilo.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="cab" data-cab>
+  <div class="cab-in">
+    <a class="logo" href="#contenido" aria-label="HARI"><svg class="logo-svg" viewBox="0 0 76 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10.6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M7.6 6.2v11.6M16.4 6.2v11.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M0 12h76" stroke="currentColor" stroke-width="1.2"/></svg><b>HARI</b></a>
+    <nav class="nav" aria-label="Menú"><ul><li><a href="#averias">Averías</a></li><li><a href="#revisiones">Revisiones</a></li><li><a href="#hoy">¿Llegáis hoy?</a></li><li><a href="#trabajos">Trabajos</a></li><li><a href="tel:+34943000000">943 00 00 00</a></li><li><a href="../" lang="eu" hreflang="eu"><span aria-hidden="true">EU</span><span class="sr">Euskaraz</span></a></li></ul></nav>
+    <button class="hamb" type="button" aria-expanded="false" aria-controls="desplegable" aria-label="Menú"><span></span></button>
+  </div>
+  <div class="desplegable" id="desplegable"><ul><li><a href="#averias">Averías</a></li><li><a href="#revisiones">Revisiones</a></li><li><a href="#hoy">¿Llegáis hoy?</a></li><li><a href="#trabajos">Trabajos</a></li><li><a href="tel:+34943000000">943 00 00 00</a></li><li><a href="../" lang="eu" hreflang="eu"><span aria-hidden="true">EU</span><span class="sr">Euskaraz</span></a></li></ul></div>
+</header>
+
+<main id="contenido">
+<section class="portada" data-portada data-tono="oscuro" aria-labelledby="h1">
+  <div class="fondo" aria-hidden="true">
+    <picture><source type="image/avif" srcset="../fotos/portada-800.avif 800w, ../fotos/portada-1600.avif 1600w" sizes="100vw"><img src="../fotos/portada-1600.webp" srcset="../fotos/portada-800.webp 800w, ../fotos/portada-1600.webp 1600w" sizes="100vw" width="1600" height="900" alt="" fetchpriority="high" decoding="async"></picture>
+    <video class="video" muted loop playsinline preload="none" disablepictureinpicture data-video>
+      <source src="../fotos/portada-960.webm" type="video/webm" media="(max-width: 760px)">
+      <source src="../fotos/portada-960.mp4" type="video/mp4" media="(max-width: 760px)">
+      <source src="../fotos/portada-1600.webm" type="video/webm">
+      <source src="../fotos/portada-1600.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="portada-in">
+    <h1 id="h1"><span class="p"><span style="--i:0">Luz,</span></span> <span class="p"><span style="--i:1">agua</span></span> <span class="p"><span style="--i:2">y</span></span> <span class="p"><span style="--i:3">calefacción</span></span> <span class="p"><span style="--i:4">en</span></span> <span class="p"><span style="--i:5">Tolosaldea</span></span></h1>
+    <a class="btn btn-blanco entra" href="#averias" style="--d:.85s">Avisar de una avería</a>
+    <span class="raya" aria-hidden="true"></span>
+  </div>
+</section>
+
+<section class="intro" data-tono="oscuro" aria-labelledby="h-int">
+  <div class="env intro-rej">
+    <h2 id="h-int" data-lineas>Avisas y te decimos a qué hora llegamos</h2>
+    <div class="intro-txt">
+      <p data-enciende>Arreglamos averías de luz, agua y calefacción en casas y locales de Tolosaldea. También hacemos instalaciones nuevas, revisiones y boletines.</p>
+      <a class="enl-raya" href="#hoy"><span>¿Llegáis hoy a mi pueblo?</span><i aria-hidden="true"></i></a>
+    </div>
+  </div>
+</section>
+
+<div class="claro">
+<section class="averias" id="averias" data-tono="claro" aria-labelledby="h-av">
+  <h2 id="h-av" class="gigante" style="--n:13"><span data-pista="fin" data-pista-media="(max-width: 899px), (max-height: 639px)">¿Qué te pasa?</span></h2>
+  <div class="env av-controles">
+    <div class="pestanas" role="group" aria-label="Elige lo que te pasa"><button type="button" class="pest" data-k="luz" aria-controls="av-luz" aria-pressed="true">No hay luz</button><button type="button" class="pest" data-k="dif" aria-controls="av-dif" aria-pressed="false">Salta el diferencial</button><button type="button" class="pest" data-k="agua" aria-controls="av-agua" aria-pressed="false">Fuga de agua</button><button type="button" class="pest" data-k="cal" aria-controls="av-cal" aria-pressed="false">La caldera no va</button></div>
+    <label class="dir"><span>Tu calle y tu pueblo</span><input type="text" name="direccion" autocomplete="street-address" placeholder="Kale Nagusia 3, Tolosa" data-dir></label>
+  </div>
+  <div class="pista-av" data-pista-av tabindex="0" role="region" aria-label="Consejos para la avería">
+      <article class="av" id="av-luz" data-k="luz" style="--c:#5566C8;--t:#FFFFFF" aria-labelledby="av-luz-t" data-activa="">
+        <h3 class="palabra" id="av-luz-t" style="--n:7;--nl:3">Sin luz</h3>
+        <p class="consejo">Mira si los vecinos tienen luz. Si ellos tampoco, es un corte de la compañía.</p>
+        <div class="panel">
+          <p class="panel-t">Tu mensaje</p>
+          <p class="msg" data-msg><span class="msg-txt" data-msg-txt>Hola, me he quedado sin luz en casa. Os mando una foto del cuadro eléctrico.</span> <span class="msg-dir">Mi dirección: <b data-msg-dir>(escribe tu calle arriba)</b></span></p>
+          <div class="panel-pie">
+            <span class="aro" data-aro><svg class="aro-svg" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="5" stroke-dasharray="7.2 5.4"/></svg><span class="aro-txt">Escribiendo…</span></span>
+            <a class="btn btn-blanco" href="https://wa.me/34600000000?text=Hola%2C%20me%20he%20quedado%20sin%20luz%20en%20casa.%20Os%20mando%20una%20foto%20del%20cuadro%20el%C3%A9ctrico." rel="noopener" data-wa-av>Mándalo por WhatsApp</a>
+          </div>
+          <p class="panel-foto">Al abrir WhatsApp, añade la foto.</p>
+        </div>
+      </article>
+      <article class="av" id="av-dif" data-k="dif" style="--c:#FA7C7F;--t:#1D1D1D" aria-labelledby="av-dif-t">
+        <h3 class="palabra" id="av-dif-t" style="--n:11;--nl:11">Diferencial</h3>
+        <p class="consejo">Baja los automáticos, sube el diferencial y súbelos uno a uno. Si salta al subir uno, esa línea tiene la avería.</p>
+        <div class="panel">
+          <p class="panel-t">Tu mensaje</p>
+          <p class="msg" data-msg><span class="msg-txt" data-msg-txt>Hola, me salta el diferencial y no se queda arriba. Os mando una foto del cuadro eléctrico.</span> <span class="msg-dir">Mi dirección: <b data-msg-dir>(escribe tu calle arriba)</b></span></p>
+          <div class="panel-pie">
+            <span class="aro" data-aro><svg class="aro-svg" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="5" stroke-dasharray="7.2 5.4"/></svg><span class="aro-txt">Escribiendo…</span></span>
+            <a class="btn btn-blanco" href="https://wa.me/34600000000?text=Hola%2C%20me%20salta%20el%20diferencial%20y%20no%20se%20queda%20arriba.%20Os%20mando%20una%20foto%20del%20cuadro%20el%C3%A9ctrico." rel="noopener" data-wa-av>Mándalo por WhatsApp</a>
+          </div>
+          <p class="panel-foto">Al abrir WhatsApp, añade la foto.</p>
+        </div>
+      </article>
+      <article class="av" id="av-agua" data-k="agua" style="--c:#4F6BDB;--t:#FFFFFF" aria-labelledby="av-agua-t">
+        <h3 class="palabra" id="av-agua-t" style="--n:12;--nl:4">Fuga de agua</h3>
+        <p class="consejo">Cierra la llave de paso. Si el agua llega a un enchufe, apaga el general de la luz.</p>
+        <div class="panel">
+          <p class="panel-t">Tu mensaje</p>
+          <p class="msg" data-msg><span class="msg-txt" data-msg-txt>Hola, tengo una fuga de agua en casa. Os mando una foto de dónde sale el agua.</span> <span class="msg-dir">Mi dirección: <b data-msg-dir>(escribe tu calle arriba)</b></span></p>
+          <div class="panel-pie">
+            <span class="aro" data-aro><svg class="aro-svg" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="5" stroke-dasharray="7.2 5.4"/></svg><span class="aro-txt">Escribiendo…</span></span>
+            <a class="btn btn-blanco" href="https://wa.me/34600000000?text=Hola%2C%20tengo%20una%20fuga%20de%20agua%20en%20casa.%20Os%20mando%20una%20foto%20de%20d%C3%B3nde%20sale%20el%20agua." rel="noopener" data-wa-av>Mándalo por WhatsApp</a>
+          </div>
+          <p class="panel-foto">Al abrir WhatsApp, añade la foto.</p>
+        </div>
+      </article>
+      <article class="av" id="av-cal" data-k="cal" style="--c:#F7A35C;--t:#1D1D1D" aria-labelledby="av-cal-t">
+        <h3 class="palabra" id="av-cal-t" style="--n:7;--nl:7">Caldera</h3>
+        <p class="consejo">Mira la presión: suele estar entre 1 y 1,5 bar. Si huele a gas, abre las ventanas y llama al 112.</p>
+        <div class="panel">
+          <p class="panel-t">Tu mensaje</p>
+          <p class="msg" data-msg><span class="msg-txt" data-msg-txt>Hola, la caldera no funciona. Os mando una foto de la pantalla con el código que sale.</span> <span class="msg-dir">Mi dirección: <b data-msg-dir>(escribe tu calle arriba)</b></span></p>
+          <div class="panel-pie">
+            <span class="aro" data-aro><svg class="aro-svg" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="5" stroke-dasharray="7.2 5.4"/></svg><span class="aro-txt">Escribiendo…</span></span>
+            <a class="btn btn-blanco" href="https://wa.me/34600000000?text=Hola%2C%20la%20caldera%20no%20funciona.%20Os%20mando%20una%20foto%20de%20la%20pantalla%20con%20el%20c%C3%B3digo%20que%20sale." rel="noopener" data-wa-av>Mándalo por WhatsApp</a>
+          </div>
+          <p class="panel-foto">Al abrir WhatsApp, añade la foto.</p>
+        </div>
+      </article>
+  </div>
+</section>
+
+<section class="servicios" id="revisiones" data-tono="claro" aria-labelledby="h-rev">
+  <div class="env">
+    <h2 id="h-rev" data-lineas>Revisiones y boletines</h2>
+    <div class="srv-rej" data-escalonado>
+      <article class="srv" data-srv style="--c:#ADEEFC">
+        <h3><button type="button" class="srv-boton" aria-expanded="false" aria-controls="srv-rev">Revisiones<span class="toca">Pulsa para ver</span></button></h3>
+        <div class="srv-dorso" id="srv-rev">
+          <ul class="srv-lista"><li>Caldera de gas: cada dos años</li><li>Cuadro eléctrico y diferencial</li><li>Termo y calentador</li></ul>
+          <label class="srv-sel"><span>Última revisión de la caldera</span><select data-ultima><option value="">—</option><option value="2026">2026</option><option value="2025">2025</option><option value="2024">2024</option><option value="2023">2023</option><option value="2022">2022</option><option value="2021">2021</option><option value="2020">2020</option><option value="2019">2019</option><option value="x">No lo sé</option></select></label>
+          <p class="srv-res" data-res aria-live="polite"></p>
+          <a class="btn btn-negro" href="https://wa.me/34600000000?text=Hola%2C%20quiero%20pedir%20la%20revisi%C3%B3n%20de%20la%20caldera." rel="noopener" data-wa-rev>Pedir la revisión</a>
+        </div>
+      </article>
+      <article class="srv" data-srv style="--c:#DFFFAA">
+        <h3><button type="button" class="srv-boton" aria-expanded="false" aria-controls="srv-bol">Boletines<span class="toca">Pulsa para ver</span></button></h3>
+        <div class="srv-dorso" id="srv-bol">
+          <ul class="srv-lista"><li>Boletín de luz: para dar de alta la luz o subir la potencia</li><li>Certificado de gas: para dar de alta el gas</li></ul>
+          <fieldset class="srv-opc"><legend>Lo necesito para</legend>
+            <label><input type="radio" name="bol" value="Dar de alta la luz" checked><span>Dar de alta la luz</span></label>
+            <label><input type="radio" name="bol" value="Subir la potencia"><span>Subir la potencia</span></label>
+            <label><input type="radio" name="bol" value="Dar de alta el gas"><span>Dar de alta el gas</span></label>
+          </fieldset>
+          <a class="btn btn-negro" href="https://wa.me/34600000000?text=Hola%2C%20necesito%20un%20bolet%C3%ADn%20para%20esto%3A%20Dar%20de%20alta%20la%20luz." rel="noopener" data-wa-bol>Pedir el boletín</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+</div>
+
+<section class="hoy" id="hoy" data-tono="oscuro" aria-labelledby="h-hoy">
+  <div class="env">
+    <div class="hoy-cab">
+      <h2 id="h-hoy" data-lineas>¿Llegáis hoy?</h2>
+      <p class="hoy-ahora"><span data-son></span> Vamos de lunes a viernes, de 8:00 a 19:00.</p>
+    </div>
+    <ul class="pueblos" data-pueblos>
+        <li><a class="pueblo" href="https://wa.me/34600000000?text=Hola%2C%20%C2%BFcu%C3%A1ndo%20pod%C3%A9is%20venir%3F%0APueblo%3A%20Tolosa" rel="noopener" data-pueblo="Tolosa" data-corte="1100"><i class="linea" aria-hidden="true"></i><span class="p-nom">Tolosa</span><span class="p-min">a 5 minutos</span><span class="p-est" data-est></span><span class="p-pedir" aria-hidden="true">Pedir</span></a></li>
+        <li><a class="pueblo" href="https://wa.me/34600000000?text=Hola%2C%20%C2%BFcu%C3%A1ndo%20pod%C3%A9is%20venir%3F%0APueblo%3A%20Ibarra" rel="noopener" data-pueblo="Ibarra" data-corte="1100"><i class="linea" aria-hidden="true"></i><span class="p-nom">Ibarra</span><span class="p-min">a 5 minutos</span><span class="p-est" data-est></span><span class="p-pedir" aria-hidden="true">Pedir</span></a></li>
+        <li><a class="pueblo" href="https://wa.me/34600000000?text=Hola%2C%20%C2%BFcu%C3%A1ndo%20pod%C3%A9is%20venir%3F%0APueblo%3A%20Anoeta" rel="noopener" data-pueblo="Anoeta" data-corte="1090"><i class="linea" aria-hidden="true"></i><span class="p-nom">Anoeta</span><span class="p-min">a 10 minutos</span><span class="p-est" data-est></span><span class="p-pedir" aria-hidden="true">Pedir</span></a></li>
+        <li><a class="pueblo" href="https://wa.me/34600000000?text=Hola%2C%20%C2%BFcu%C3%A1ndo%20pod%C3%A9is%20venir%3F%0APueblo%3A%20Alegia" rel="noopener" data-pueblo="Alegia" data-corte="1080"><i class="linea" aria-hidden="true"></i><span class="p-nom">Alegia</span><span class="p-min">a 15 minutos</span><span class="p-est" data-est></span><span class="p-pedir" aria-hidden="true">Pedir</span></a></li>
+        <li><a class="pueblo" href="https://wa.me/34600000000?text=Hola%2C%20%C2%BFcu%C3%A1ndo%20pod%C3%A9is%20venir%3F%0APueblo%3A%20Villabona" rel="noopener" data-pueblo="Villabona" data-corte="1080"><i class="linea" aria-hidden="true"></i><span class="p-nom">Villabona</span><span class="p-min">a 15 minutos</span><span class="p-est" data-est></span><span class="p-pedir" aria-hidden="true">Pedir</span></a></li>
+        <li><a class="pueblo" href="https://wa.me/34600000000?text=Hola%2C%20%C2%BFcu%C3%A1ndo%20pod%C3%A9is%20venir%3F%0APueblo%3A%20Andoain" rel="noopener" data-pueblo="Andoain" data-corte="1070"><i class="linea" aria-hidden="true"></i><span class="p-nom">Andoain</span><span class="p-min">a 20 minutos</span><span class="p-est" data-est></span><span class="p-pedir" aria-hidden="true">Pedir</span></a></li>
+        <li><a class="pueblo" href="https://wa.me/34600000000?text=Hola%2C%20%C2%BFcu%C3%A1ndo%20pod%C3%A9is%20venir%3F%0APueblo%3A%20Lizartza" rel="noopener" data-pueblo="Lizartza" data-corte="1060"><i class="linea" aria-hidden="true"></i><span class="p-nom">Lizartza</span><span class="p-min">a 25 minutos</span><span class="p-est" data-est></span><span class="p-pedir" aria-hidden="true">Pedir</span></a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="trabajos" id="trabajos" data-tono="claro" aria-labelledby="h-trab">
+  <div class="env">
+    <h2 id="h-trab" data-lineas>Últimos trabajos</h2>
+    <ul class="filas">
+        <li class="fila">
+          <i class="linea" aria-hidden="true"></i>
+          <div class="f-foto" data-foto><picture><source type="image/avif" srcset="../fotos/cuadro-480.avif 480w, ../fotos/cuadro-800.avif 800w, ../fotos/cuadro-1200.avif 1200w" sizes="(min-width: 900px) 26vw, 92vw"><img src="../fotos/cuadro-800.webp" srcset="../fotos/cuadro-480.webp 480w, ../fotos/cuadro-800.webp 800w, ../fotos/cuadro-1200.webp 1200w" sizes="(min-width: 900px) 26vw, 92vw" width="1200" height="800" alt="Cuadro eléctrico abierto en una pared blanca, con los automáticos y los cables a la vista." loading="lazy" decoding="async"></picture></div>
+          <h3>Cuadro nuevo en un piso de Tolosa</h3>
+          <div class="f-txt"><p>Diferenciales nuevos y una línea aparte para la cocina.</p><a class="btn btn-gris" href="https://wa.me/34600000000?text=Hola%2C%20quiero%20un%20presupuesto%20para%20algo%20parecido%20a%20esto%3A%20Cuadro%20nuevo%20en%20un%20piso%20de%20Tolosa." rel="noopener">Pedir algo así</a></div>
+        </li>
+        <li class="fila">
+          <i class="linea" aria-hidden="true"></i>
+          <div class="f-foto" data-foto><picture><source type="image/avif" srcset="../fotos/cobre-480.avif 480w, ../fotos/cobre-800.avif 800w, ../fotos/cobre-1200.avif 1200w" sizes="(min-width: 900px) 26vw, 92vw"><img src="../fotos/cobre-800.webp" srcset="../fotos/cobre-480.webp 480w, ../fotos/cobre-800.webp 800w, ../fotos/cobre-1200.webp 1200w" sizes="(min-width: 900px) 26vw, 92vw" width="1200" height="800" alt="Un fontanero sujeta un tubo de cobre en el tornillo de banco." loading="lazy" decoding="async"></picture></div>
+          <h3>Tuberías de cobre en Ibarra</h3>
+          <div class="f-txt"><p>Quitamos el hierro viejo del baño y pusimos cobre en una mañana.</p><a class="btn btn-gris" href="https://wa.me/34600000000?text=Hola%2C%20quiero%20un%20presupuesto%20para%20algo%20parecido%20a%20esto%3A%20Tuber%C3%ADas%20de%20cobre%20en%20Ibarra." rel="noopener">Pedir algo así</a></div>
+        </li>
+        <li class="fila">
+          <i class="linea" aria-hidden="true"></i>
+          <div class="f-foto" data-foto><picture><source type="image/avif" srcset="../fotos/radiador-480.avif 480w, ../fotos/radiador-800.avif 800w, ../fotos/radiador-1200.avif 1200w" sizes="(min-width: 900px) 26vw, 92vw"><img src="../fotos/radiador-800.webp" srcset="../fotos/radiador-480.webp 480w, ../fotos/radiador-800.webp 800w, ../fotos/radiador-1200.webp 1200w" sizes="(min-width: 900px) 26vw, 92vw" width="1200" height="800" alt="Una mano gira la válvula de un radiador blanco." loading="lazy" decoding="async"></picture></div>
+          <h3>Válvulas en los radiadores de Villabona</h3>
+          <div class="f-txt"><p>Cada habitación a su temperatura, sin tocar la caldera.</p><a class="btn btn-gris" href="https://wa.me/34600000000?text=Hola%2C%20quiero%20un%20presupuesto%20para%20algo%20parecido%20a%20esto%3A%20V%C3%A1lvulas%20en%20los%20radiadores%20de%20Villabona." rel="noopener">Pedir algo así</a></div>
+        </li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer class="pie" data-tono="oscuro">
+  <div class="env pie-rej">
+    <div class="pie-marca">
+      <a class="logo logo-pie" href="#contenido" aria-label="HARI"><svg class="logo-svg" viewBox="0 0 180 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10.6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M7.6 6.2v11.6M16.4 6.2v11.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M0 12h180" stroke="currentColor" stroke-width="1.2"/></svg><b>HARI</b></a>
+      <p>Para una avería, llama al 943 00 00 00. Para lo demás, mejor por WhatsApp.</p>
+    </div>
+    <p class="pie-estado" data-estado><span class="aro"><svg class="aro-svg" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="5" stroke-dasharray="7.2 5.4"/></svg></span><span data-estado-txt></span></p>
+    <div class="pie-legal">
+      <p>Kale Nagusia 0, Tolosa</p>
+      <p>Web de muestra hecha por OI Studio. El nombre, el teléfono, la dirección, el horario, los pueblos y los trabajos son inventados.</p>
+      <p>El vídeo y las fotos son de ejemplo, de Pexels (licencia de Pexels): KoolShooters, Ksenia Chernaya, Yudi Ding y BOOM Photography. <a href="../fotos/creditos.json">creditos.json</a></p>
+      <p><a class="firma" href="https://oiwebstudio.com/?utm_source=muestra-hari&amp;utm_medium=pie" target="_blank" rel="noopener">Diseñado por <b>OI Studio</b></a></p>
+    </div>
+    <ul class="pie-enl">
+      <li><a href="tel:+34943000000">943 00 00 00</a></li>
+      <li><a href="https://wa.me/34600000000?text=Hola%2C%20%C2%BFcu%C3%A1ndo%20pod%C3%A9is%20venir%3F" rel="noopener">WhatsApp</a></li>
+      <li><a href="../" lang="eu" hreflang="eu">Euskaraz</a></li>
+    </ul>
+  </div>
+</footer>
+
+<nav class="barra" data-barra-movil aria-label="Llamar · WhatsApp">
+  <a class="btn btn-blanco" href="tel:+34943000000"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></svg>Llamar</a>
+  <a class="btn btn-negro" href="https://wa.me/34600000000?text=Hola%2C%20%C2%BFcu%C3%A1ndo%20pod%C3%A9is%20venir%3F" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M4 20l1.3-3.8A8 8 0 1 1 8 19z"/><path d="M9 9.5c.3 2 2.2 4.2 4.6 5l1.2-1.2 1.9.9"/></svg>WhatsApp</a>
+</nav>
+
+<script type="application/json" id="textos">{"lang":"es","wa":"34600000000","wa_dir":"Mi dirección: {dir}","wa_sin_dir":"(escribe tu calle arriba)","menu":"Menú","cerrar":"Cerrar","av":{"luz":"Hola, me he quedado sin luz en casa. Os mando una foto del cuadro eléctrico.","dif":"Hola, me salta el diferencial y no se queda arriba. Os mando una foto del cuadro eléctrico.","agua":"Hola, tengo una fuga de agua en casa. Os mando una foto de dónde sale el agua.","cal":"Hola, la caldera no funciona. Os mando una foto de la pantalla con el código que sale."},"rev_toca_ya":"Ya toca hacerla.","rev_toca_en":"Próxima revisión: {a}","rev_no_se_r":"Mejor hacerla ya.","rev_wa":"Hola, quiero pedir la revisión de la caldera.","rev_wa_ultima":"Última revisión: {a}.","rev_no_se":"No lo sé","bol_wa":"Hola, necesito un boletín para esto: {para}.","hoy_son":"Ahora son las {h}.","hoy_hoy":"Hoy","hoy_antes":"avisando antes de las {h}","hoy_manana":"Mañana a primera hora","hoy_lunes":"El lunes a primera hora","hoy_wa_hoy":"Hola, ¿podéis venir hoy?","hoy_wa_otro":"Hola, ¿cuándo podéis venir?","hoy_wa_pueblo":"Pueblo: {pueblo}","pie_abierto":"Abierto ahora","pie_cerrado":"Cerrado ahora"}</script>
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/SplitText.min.js"></script>
+<script src="../js/anim-texto.js"></script>
+<script src="../js/pagina.js"></script>
+</body>
+</html>

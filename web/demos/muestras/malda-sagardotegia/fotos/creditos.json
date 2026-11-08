@@ -1,0 +1,27 @@
+{
+ "_leeme": "Fotos de la muestra MALDA (sidrería y asador inventado, 8/11/2026). Todas son fotos de ejemplo de un banco libre: no son de ninguna sidrería real. Originales mirados a tamaño completo: sin marca de agua.",
+ "fuego": {
+  "autor": "Emerson Vieira",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/person-barbecuing-meat-_aR4l6fj6wQ",
+  "original": "5332 × 3000",
+  "uso": "primera foto grande, debajo del nombre (como el horno de la referencia)",
+  "cambios": "Recortada a 3:2, redimensionada (800–3000 px) y convertida a AVIF y WebP, sin datos de ubicación"
+ },
+ "manzanas": {
+  "autor": "Spencer DeMera",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-large-pile-of-red-and-yellow-apples-j4JraUpmzRw",
+  "original": "6048 × 8064",
+  "uso": "segunda foto, montada a la derecha sobre el trazo gris",
+  "cambios": "Recortada a 4:5, redimensionada (480–1800 px) y convertida a AVIF y WebP, sin datos de ubicación"
+ },
+ "huerto": {
+  "autor": "Jörg Bauer",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/red-and-yellow-round-fruits-on-green-grass-field-during-daytime-HZx1_R5ke50",
+  "original": "5976 × 3992",
+  "uso": "foto que pisa el borde de la sección verde (cómo llegar)",
+  "cambios": "Sin recortar (ya es 3:2), redimensionada (800–3000 px) y convertida a AVIF y WebP, sin datos de ubicación"
+ }
+}

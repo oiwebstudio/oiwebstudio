@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>ZIDOR · Casa rural en Abaltzisketa, al pie del Txindoki (web de muestra)</title>
+<meta name="description" content="Web de muestra de OI Studio para una casa rural inventada: ver qué noches hay libres, reservar directamente por WhatsApp con el precio orientativo y qué hacer cerca.">
+<meta name="theme-color" content="#FFFFFF">
+<meta property="og:title" content="ZIDOR · Casa rural en Abaltzisketa, al pie del Txindoki (web de muestra)">
+<meta property="og:description" content="Web de muestra de OI Studio para una casa rural inventada: ver qué noches hay libres, reservar directamente por WhatsApp con el precio orientativo y qué hacer cerca.">
+<meta property="og:type" content="website">
+<link rel="alternate" hreflang="eu" href="../">
+<!--
+  MUESTRA «ZIDOR» (OI Studio, 8/11/2026): casa rural INVENTADA para la pieza «¿Qué negocio tienes?» de oiwebstudio.com.
+  «Zidor» = senda, camino estrecho. Son de ejemplo (lo dicen la nota junto a la reserva y el pie): nombre, dirección (Zidor baserria,
+  Abaltzisketa), teléfono, WhatsApp, precios, noches reservadas del calendario, tres habitaciones dobles, la cocina para
+  compartir, alquilar por habitaciones o entera, horas de llegada y salida y lo de venir con perro. noindex.
+  Lo de «Cerca de casa» es real y sin cifras: la subida al Txindoki desde Larraitz, la vía verde del Plazaola junto al
+  Leitzaran, el txotx de enero a abril y el mercado de Tolosa los sábados.
+  Calco de la referencia que eligió Oier el 8/11: n.º 05, LE BARN (lebarnhotel.com/fr/) — foto a sangre del camino que
+  lleva a la casa, algo oscurecida, con el nombre en grotesca muy condensada, blanca y centrada; MENÚ arriba a la izquierda y
+  enlaces en mayúsculas a la derecha; al bajar, cabecera blanca opaca con el nombre pequeño en el centro (no pisa el texto:
+  el texto pasa por debajo); titular pequeño centrado, frase grande en serif color tierra, foto apaisada grande y frase en
+  condensada; bloques crema con collage de cuatro fotos solapadas (una con marco blanco) a un lado y titular + texto + enlace con raya al otro;
+  banda color tierra centrada; pie crema con columnas y enlaces con raya; en el móvil, barra fija abajo con cuatro botones
+  rectangulares en rojo (aquí el rojo de las vigas y contraventanas de los caseríos). Fuera el lazo rojo dibujado (adorno,
+  «que_no_copiar») y la cursiva de la frase grande (regla de la casa: sin cursiva de acento).
+  Lo que hace: calendario con las noches libres (ocupación de ejemplo, desde el día de hoy), llegada + noches + personas →
+  precio orientativo por noche y total y el mensaje de WhatsApp ya escrito; la barra del móvil llama, abre WhatsApp, lleva
+  a las fechas y a lo de cerca. No se envía nada a ningún sitio.
+  Letras del catálogo (_local/material/letras): 18 Big Shoulders Display (900 y 600) para nombre, menú y títulos, y
+  32 Petrona (400) para el texto, autoalojadas en fuentes/. Sin cursiva en ninguna parte.
+  Fotos: ver fotos/creditos.json (Unsplash y Wikimedia Commons, con autor y licencia).
+  Movimiento: el nombre, la foto y la cabecera de la portada entran con CSS desde el primer pintado; lo de abajo, con
+  GSAP 3.13 + ScrollTrigger + SplitText (js/) + anim-texto.js + pagina.js. Con «reducir movimiento» o sin JS, todo quieto y visible.
+-->
+<link rel="preload" href="../fuentes/big-shoulders-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../fuentes/big-shoulders.css">
+<link rel="stylesheet" href="../fuentes/petrona.css">
+<link rel="stylesheet" href="../estilo.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="cab" data-cab>
+  <a class="menu-btn" href="#harremana" aria-controls="panel" aria-expanded="false" data-menu-abrir><span class="hamb" aria-hidden="true"><i></i><i></i><i></i></span><span>Menú</span></a>
+  <a class="cab-nombre" href="#arriba" aria-label="ZIDOR" tabindex="-1">ZIDOR</a>
+  <nav class="cab-nav" aria-label="Menú de la web">
+    <a href="#etxea">La casa</a><a href="#erreserbak">Reservar</a><a href="#ingurua">Cerca</a><a class="tel" href="tel:+34943000000">943 00 00 00</a><a class="idioma " href="../" lang="eu" hreflang="eu"><span aria-hidden="true">EU</span><span class="sr">Euskaraz</span></a>
+  </nav>
+</header>
+
+<div class="panel" id="panel" role="dialog" aria-modal="true" aria-label="Menú de la web" hidden data-panel-menu>
+  <div class="panel-cab">
+    <button class="menu-btn" type="button" data-menu-cerrar><span class="aspa" aria-hidden="true"><i></i><i></i></span><span>Cerrar</span></button>
+    <a class="idioma panel-idioma" href="../" lang="eu" hreflang="eu"><span aria-hidden="true">EU</span><span class="sr">Euskaraz</span></a>
+  </div>
+  <ul class="panel-lista">
+    <li><a href="#etxea">La casa</a></li>
+    <li><a href="#erreserbak">Fechas libres</a></li>
+    <li><a href="#ingurua">Cerca de casa</a></li>
+    <li><a href="#harremana">Contacto</a></li>
+  </ul>
+  <p class="panel-tel"><a href="tel:+34943000000">943 00 00 00</a><a href="https://wa.me/34600000000" rel="noopener" data-wa>WhatsApp</a></p>
+</div>
+
+<main>
+<section class="portada" id="arriba" data-portada aria-label="ZIDOR">
+  <div class="portada-foto" data-portada-foto><picture><source type="image/avif" srcset="../fotos/portada-800.avif 800w, ../fotos/portada-1400.avif 1400w, ../fotos/portada-2000.avif 2000w, ../fotos/portada-2800.avif 2800w, ../fotos/portada-3600.avif 3600w" sizes="100vw"><img src="../fotos/portada-1400.webp" srcset="../fotos/portada-800.webp 800w, ../fotos/portada-1400.webp 1400w, ../fotos/portada-2000.webp 2000w, ../fotos/portada-2800.webp 2800w, ../fotos/portada-3600.webp 3600w" sizes="100vw" width="7974" height="5316" alt="Un camino entre árboles que lleva hasta la casa." fetchpriority="high" decoding="async"></picture></div>
+  <p class="nombre"><span class="sr">ZIDOR</span><span class="letras" aria-hidden="true"><span class="l" style="--i:0">Z</span><span class="l" style="--i:1">I</span><span class="l" style="--i:2">D</span><span class="l" style="--i:3">O</span><span class="l" style="--i:4">R</span></span></p>
+  <a class="bajar" href="#contenido"><span>Ver la casa</span><i aria-hidden="true"></i></a>
+</section>
+
+<section class="intro" id="contenido" aria-labelledby="h1">
+  <h1 id="h1">Casa rural en Abaltzisketa, al pie del Txindoki</h1>
+  <p class="intro-p" data-enciende>Una casa al final del camino, con el Txindoki delante.<br>Abajo queda el pueblo. Tolosa está a un rato en coche.</p>
+  <figure class="ancha" data-panel="foto"><div class="ancha-in" data-pista="9"><picture><source type="image/avif" srcset="../fotos/monte-800.avif 800w, ../fotos/monte-1400.avif 1400w, ../fotos/monte-2000.avif 2000w, ../fotos/monte-2800.avif 2800w" sizes="(min-width: 900px) 92vw, 100vw"><img src="../fotos/monte-1400.webp" srcset="../fotos/monte-800.webp 800w, ../fotos/monte-1400.webp 1400w, ../fotos/monte-2000.webp 2000w, ../fotos/monte-2800.webp 2800w" sizes="(min-width: 900px) 92vw, 100vw" width="4608" height="2304" alt="El Txindoki, con prados y bosque en la ladera." loading="lazy" decoding="async"></picture></div></figure>
+  <p class="frase" data-lineas>Se llega desde las cuatro de la tarde y se sale antes de las doce. Si venís con perro, preguntadnos.</p>
+</section>
+
+<section class="bloque casa" id="etxea" aria-labelledby="h-casa">
+  <div class="collage" data-collage>
+    <figure class="c c1"><picture><source type="image/avif" srcset="../fotos/fachada-480.avif 480w, ../fotos/fachada-800.avif 800w, ../fotos/fachada-1200.avif 1200w, ../fotos/fachada-1600.avif 1600w" sizes="(min-width: 900px) 35vw, 70vw"><img src="../fotos/fachada-1200.webp" srcset="../fotos/fachada-480.webp 480w, ../fotos/fachada-800.webp 800w, ../fotos/fachada-1200.webp 1200w, ../fotos/fachada-1600.webp 1600w" sizes="(min-width: 900px) 35vw, 70vw" width="6192" height="4128" alt="La puerta de madera de la casa y una ventana con contraventanas, con un banco junto a la pared." loading="lazy" decoding="async"></picture></figure>
+    <figure class="c c2"><picture><source type="image/avif" srcset="../fotos/habitacion-480.avif 480w, ../fotos/habitacion-800.avif 800w, ../fotos/habitacion-1200.avif 1200w" sizes="(min-width: 900px) 17vw, 34vw"><img src="../fotos/habitacion-1200.webp" srcset="../fotos/habitacion-480.webp 480w, ../fotos/habitacion-800.webp 800w, ../fotos/habitacion-1200.webp 1200w" sizes="(min-width: 900px) 17vw, 34vw" width="3998" height="5454" alt="Una habitación bajo el tejado, con vigas de madera y una ventana que da a los árboles." loading="lazy" decoding="async"></picture></figure>
+    <figure class="c c4"><picture><source type="image/avif" srcset="../fotos/lena-480.avif 480w, ../fotos/lena-800.avif 800w, ../fotos/lena-1200.avif 1200w" sizes="(min-width: 900px) 20vw, 40vw"><img src="../fotos/lena-1200.webp" srcset="../fotos/lena-480.webp 480w, ../fotos/lena-800.webp 800w, ../fotos/lena-1200.webp 1200w" sizes="(min-width: 900px) 20vw, 40vw" width="3143" height="3613" alt="Leña apilada junto a una chimenea de piedra." loading="lazy" decoding="async"></picture></figure>
+    <figure class="c c3 marco"><picture><source type="image/avif" srcset="../fotos/mesa-480.avif 480w, ../fotos/mesa-800.avif 800w, ../fotos/mesa-1200.avif 1200w" sizes="(min-width: 900px) 17vw, 34vw"><img src="../fotos/mesa-1200.webp" srcset="../fotos/mesa-480.webp 480w, ../fotos/mesa-800.webp 800w, ../fotos/mesa-1200.webp 1200w" sizes="(min-width: 900px) 17vw, 34vw" width="2912" height="2912" alt="Desayuno en una mesa redonda de madera: pan, huevos y café." loading="lazy" decoding="async"></picture></figure>
+  </div>
+  <div class="texto">
+    <h2 id="h-casa" data-lineas>La casa</h2>
+    <p>Tres habitaciones dobles, una cocina grande para compartir y el prado delante. Se alquila por habitaciones o entera.</p>
+    <a class="raya" href="#erreserbak"><i aria-hidden="true"></i><span>Fechas libres</span></a>
+  </div>
+</section>
+
+<section class="banda" aria-labelledby="h-banda">
+  <h2 id="h-banda" data-lineas>Reserva directa<br>sin comisiones</h2>
+  <p data-enciende>Eliges llegada, noches y personas. Ves el precio orientativo y el mensaje sale escrito para enviarlo por WhatsApp.</p>
+  <a class="raya" href="#erreserbak"><i aria-hidden="true"></i><span>Reservar</span></a>
+</section>
+
+<section class="reserva" id="erreserbak" aria-labelledby="h-res">
+  <div class="res-cal">
+    <h2 id="h-res" data-lineas>¿Hay sitio esas fechas?</h2>
+    <p class="res-p">Elige en el calendario el día en que llegáis.</p>
+    <p class="cal-sinjs" data-cal-sinjs>Escríbenos las fechas por <a href="https://wa.me/34600000000" rel="noopener">WhatsApp</a>.</p>
+    <div class="cal" data-cal hidden>
+      <div class="cal-nav">
+        <button type="button" class="cal-flecha" data-mes-ant aria-label="Mes anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button type="button" class="cal-flecha" data-mes-sig aria-label="Mes siguiente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+      <div class="meses" data-meses></div>
+      <ul class="leyenda">
+        <li><i class="sw sw-libre" aria-hidden="true"></i>Noche libre</li>
+        <li><i class="sw sw-ocupada" aria-hidden="true"></i>Noche reservada</li>
+        <li><i class="sw sw-tuya" aria-hidden="true"></i>Tus noches</li>
+      </ul>
+    </div>
+  </div>
+  <form class="res-elige" data-reserva onsubmit="return false">
+    <div class="fila fila-llegada"><span class="et" id="et-llegada">Llegada</span><output class="llegada" data-llegada aria-labelledby="et-llegada" aria-live="polite">Elige un día en el calendario.</output></div>
+    <fieldset class="fila">
+      <legend class="sr">Noches</legend><span class="et" aria-hidden="true">Noches</span>
+      <div class="paso"><button type="button" data-menos-n aria-label="Una noche menos">−</button><output class="num" data-noches aria-live="polite">2</output><button type="button" data-mas-n aria-label="Una noche más">+</button></div>
+    </fieldset>
+    <fieldset class="fila">
+      <legend class="sr">Personas</legend><span class="et" aria-hidden="true">Personas</span>
+      <div class="paso"><button type="button" data-menos-p aria-label="Una persona menos">−</button><output class="num" data-personas aria-live="polite">2</output><button type="button" data-mas-p aria-label="Una persona más">+</button></div>
+    </fieldset>
+    <div class="precio">
+      <h3>Precio orientativo</h3>
+      <p class="precio-noche" data-precio-noche></p>
+      <p class="precio-total" data-precio-total></p>
+    </div>
+    <p class="aviso" data-aviso aria-live="polite"></p>
+    <div class="mensaje">
+      <h3>Tu mensaje</h3>
+      <p class="escribiendo" data-escribiendo aria-hidden="true">Escribiendo…</p>
+      <p class="texto" data-mensaje aria-live="polite"></p>
+    </div>
+    <p class="enviar"><a class="btn" href="https://wa.me/34600000000" rel="noopener" data-wa data-wa-res>Enviar por WhatsApp</a></p>
+    <p class="o-llama">o llama al <a href="tel:+34943000000">943 00 00 00</a></p>
+    <p class="nota">Datos de ejemplo: teléfono, WhatsApp, precios y reservas.</p>
+  </form>
+</section>
+
+<section class="bloque cerca" id="ingurua" aria-labelledby="h-cerca">
+  <div class="collage" data-collage>
+    <figure class="c c1"><picture><source type="image/avif" srcset="../fotos/cabras-480.avif 480w, ../fotos/cabras-800.avif 800w, ../fotos/cabras-1200.avif 1200w, ../fotos/cabras-1600.avif 1600w" sizes="(min-width: 900px) 35vw, 70vw"><img src="../fotos/cabras-1200.webp" srcset="../fotos/cabras-480.webp 480w, ../fotos/cabras-800.webp 800w, ../fotos/cabras-1200.webp 1200w, ../fotos/cabras-1600.webp 1600w" sizes="(min-width: 900px) 35vw, 70vw" width="4608" height="3072" alt="Cabras en las rocas del Txindoki." loading="lazy" decoding="async"></picture></figure>
+    <figure class="c c2"><picture><source type="image/avif" srcset="../fotos/plazaola-480.avif 480w, ../fotos/plazaola-800.avif 800w, ../fotos/plazaola-1200.avif 1200w" sizes="(min-width: 900px) 17vw, 34vw"><img src="../fotos/plazaola-1200.webp" srcset="../fotos/plazaola-480.webp 480w, ../fotos/plazaola-800.webp 800w, ../fotos/plazaola-1200.webp 1200w" sizes="(min-width: 900px) 17vw, 34vw" width="2005" height="2736" alt="La vía verde del Plazaola, un camino bajo los árboles." loading="lazy" decoding="async"></picture></figure>
+    <figure class="c c4"><picture><source type="image/avif" srcset="../fotos/tolosa-480.avif 480w, ../fotos/tolosa-800.avif 800w, ../fotos/tolosa-1200.avif 1200w" sizes="(min-width: 900px) 20vw, 40vw"><img src="../fotos/tolosa-1200.webp" srcset="../fotos/tolosa-480.webp 480w, ../fotos/tolosa-800.webp 800w, ../fotos/tolosa-1200.webp 1200w" sizes="(min-width: 900px) 20vw, 40vw" width="1536" height="1766" alt="El mercado del Tinglado de Tolosa, sobre el río Oria." loading="lazy" decoding="async"></picture></figure>
+    <figure class="c c3 marco"><picture><source type="image/avif" srcset="../fotos/kupela-480.avif 480w, ../fotos/kupela-800.avif 800w, ../fotos/kupela-1200.avif 1200w" sizes="(min-width: 900px) 17vw, 34vw"><img src="../fotos/kupela-1200.webp" srcset="../fotos/kupela-480.webp 480w, ../fotos/kupela-800.webp 800w, ../fotos/kupela-1200.webp 1200w" sizes="(min-width: 900px) 17vw, 34vw" width="5304" height="5304" alt="Barricas grandes de madera, tumbadas." loading="lazy" decoding="async"></picture></figure>
+  </div>
+  <div class="texto">
+    <h2 id="h-cerca" data-lineas>Cerca de casa</h2>
+    <ul class="lista-cerca" data-escalonado><li><h3>Txindoki</h3><p>La subida más conocida sale de Larraitz.</p></li><li><h3>Vía verde del Plazaola</h3><p>Andando o en bici, por túneles y junto al río Leitzaran.</p></li><li><h3>Sidrerías</h3><p>De enero a abril, temporada de txotx.</p></li><li><h3>Mercado de Tolosa</h3><p>Los sábados por la mañana.</p></li></ul>
+  </div>
+</section>
+</main>
+
+<footer class="pie" id="harremana">
+  <div class="pie-cols">
+    <div class="pie-col">
+      <h2 class="pie-h">Dirección</h2>
+      <p>Zidor baserria<br>Abaltzisketa, Gipuzkoa</p>
+      <h2 class="pie-h">Contacto</h2>
+      <p class="pie-enl"><a href="tel:+34943000000">943 00 00 00</a><a href="https://wa.me/34600000000" rel="noopener" data-wa>WhatsApp</a></p>
+    </div>
+    <div class="pie-col">
+      <h2 class="pie-h">Reservar</h2>
+      <ul class="pie-rayas" data-escalonado>
+        <li><a class="raya" href="#erreserbak"><i aria-hidden="true"></i><span>Fechas libres</span></a></li>
+        <li><a class="raya" href="#etxea"><i aria-hidden="true"></i><span>La casa</span></a></li>
+        <li><a class="raya" href="#ingurua"><i aria-hidden="true"></i><span>Cerca de casa</span></a></li>
+      </ul>
+    </div>
+    <p class="pie-marca" aria-hidden="true">ZIDOR</p>
+  </div>
+  <div class="pie-legal">
+    <p>ZIDOR no existe: esta web es una muestra de OI Studio.</p>
+    <p><a href="../fotos/creditos.json">Fotos de ejemplo: autores y licencias</a></p>
+    <p>Diseñado por <a class="firma" href="https://oiwebstudio.com/?utm_source=muestra-zidor&amp;utm_medium=pie" target="_blank" rel="noopener">OI Studio</a></p>
+    <p><a href="../" lang="eu" hreflang="eu">Euskaraz</a></p>
+  </div>
+</footer>
+
+<nav class="barra" aria-label="Menú de la web">
+  <a href="#erreserbak">Fechas libres</a><a href="https://wa.me/34600000000" rel="noopener" data-wa>WhatsApp</a><a href="tel:+34943000000">Llamar</a><a href="#ingurua">Cerca</a>
+</nav>
+
+<script type="application/json" id="textos">{"lang":"es","meses":["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"],"dias":["lunes","martes","miércoles","jueves","viernes","sábado","domingo"],"cortos":["LUN","MAR","MIÉ","JUE","VIE","SÁB","DOM"],"sin_llegada":"Elige un día en el calendario.","precio_noche":"Cada noche, unos {p} euros.","precio_total":"En total, unos {t} euros.","aviso_ocupada":"Alguna de esas noches ya está reservada. Prueba con otro día o con menos noches.","aviso_muchos":"Para más de seis personas, mejor llámanos.","mes_ant":"Mes anterior","mes_sig":"Mes siguiente","ley_libre":"Noche libre","ley_ocupada":"Noche reservada","ley_tuya":"Tus noches","leg_llegada":"Llegada","wa":"https://wa.me/34600000000","wa_hola":"Hola, queremos dormir en Zidor.","wa_llegada":"Llegada","wa_salida":"Salida","wa_noches":"Noches","wa_personas":"Personas","wa_precio":"Precio orientativo","wa_pregunta":"¿Tenéis sitio?"}</script>
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/SplitText.min.js"></script>
+<script src="../js/anim-texto.js"></script>
+<script src="../js/pagina.js"></script>
+</body>
+</html>
