@@ -1,56 +1,94 @@
 {
- "portada": {
-  "autor": "Jae Park",
-  "licencia": "Licencia de Pexels (uso libre, sin atribución obligatoria)",
-  "fuente": "https://www.pexels.com/photo/cars-in-car-repair-shop-4756887/",
-  "cambios": "Recortada a 4:5 (salvo la portada), redimensionada y convertida a AVIF y WebP para esta muestra"
+ "_leeme": "Fotos de la muestra TORLOJU v2 (7/11/2026). Todas son fotos de ejemplo de un banco libre: no son de ningún taller real. Las que están en «sin_uso_desde_v2» son de la primera versión y ya no salen en la página.",
+ "taller": {
+  "autor": "Kato Blackmore",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-man-working-on-a-machine-in-a-garage-KhF58h0hTbc",
+  "uso": "portada (la puerta de la nave)",
+  "cambios": "Redimensionada y convertida a AVIF y WebP"
  },
- "aceite": {
-  "autor": "Azli Nawawi",
-  "licencia": "Licencia de Pexels (uso libre, sin atribución obligatoria)",
-  "fuente": "https://www.pexels.com/photo/mechanic-working-under-car-in-repair-shop-32152037/",
-  "cambios": "Recortada a 4:5 (salvo la portada), redimensionada y convertida a AVIF y WebP para esta muestra"
- },
- "pre-itv": {
-  "autor": "Andrea Piacquadio",
-  "licencia": "Licencia de Pexels (uso libre, sin atribución obligatoria)",
-  "fuente": "https://www.pexels.com/photo/man-in-black-jacket-and-black-pants-standing-under-vehicle-3807811/",
-  "cambios": "Recortada a 4:5 (salvo la portada), redimensionada y convertida a AVIF y WebP para esta muestra"
- },
- "neumaticos": {
+ "llanta": {
   "autor": "Enis Yavuz",
-  "licencia": "Licencia de Pexels (uso libre, sin atribución obligatoria)",
-  "fuente": "https://www.pexels.com/photo/person-holding-a-tire-5260115/",
-  "cambios": "Recortada a 4:5 (salvo la portada), redimensionada y convertida a AVIF y WebP para esta muestra"
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/person-holding-black-and-gray-metal-tool-CsYaNzll_rA",
+  "uso": "«Antes de tocar nada, te llamamos»",
+  "cambios": "Recortada a 4:5, redimensionada y convertida a AVIF y WebP"
  },
- "frenos": {
-  "autor": "Erik Mclean",
-  "licencia": "Licencia de Pexels (uso libre, sin atribución obligatoria)",
-  "fuente": "https://www.pexels.com/photo/close-up-of-car-brake-caliper-and-disc-34277926/",
-  "cambios": "Recortada a 4:5 (salvo la portada), redimensionada y convertida a AVIF y WebP para esta muestra"
+ "nave": {
+  "autor": "Mustafa Sheikhmouss",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/tires-and-balancing-machine-in-workshop--ApM9rASMbA",
+  "uso": "«La nave, por dentro» (1)",
+  "cambios": "Recortada a 4:5, redimensionada y convertida a AVIF y WebP"
  },
- "diagnosis": {
-  "autor": "Jose Ricardo Barraza Morachis",
-  "licencia": "Licencia de Pexels (uso libre, sin atribución obligatoria)",
-  "fuente": "https://www.pexels.com/photo/black-and-orange-power-tool-4116191/",
-  "cambios": "Recortada a 4:5 (salvo la portada), redimensionada y convertida a AVIF y WebP para esta muestra"
+ "disco": {
+  "autor": "Eduardo Taulois",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-close-up-of-a-brake-on-a-vehicle-OxMrOY4x4MI",
+  "uso": "«La nave, por dentro» (2)",
+  "cambios": "Recortada a 4:5 (fuera queda una pegatina de tarjeta del fondo), redimensionada y convertida a AVIF y WebP"
  },
- "embrague": {
-  "autor": "cottonbro studio",
-  "licencia": "Licencia de Pexels (uso libre, sin atribución obligatoria)",
-  "fuente": "https://www.pexels.com/photo/man-in-blue-dress-shirt-holding-red-and-black-power-tool-4489749/",
-  "cambios": "Recortada a 4:5 (salvo la portada), redimensionada y convertida a AVIF y WebP para esta muestra"
+ "llave": {
+  "autor": "Christian Buehner",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/hands-working-on-car-engine-Fd6osyVbtG4",
+  "uso": "«La nave, por dentro» (3)",
+  "cambios": "Recortada a 4:5, redimensionada y convertida a AVIF y WebP"
  },
- "garantia": {
-  "autor": "Jae Park",
-  "licencia": "Licencia de Pexels (uso libre, sin atribución obligatoria)",
-  "fuente": "https://www.pexels.com/photo/car-in-an-auto-repair-garage-15489246/",
-  "cambios": "Recortada a 4:5 (salvo la portada), redimensionada y convertida a AVIF y WebP para esta muestra"
- },
- "cita": {
-  "autor": "Azli Nawawi",
-  "licencia": "Licencia de Pexels (uso libre, sin atribución obligatoria)",
-  "fuente": "https://www.pexels.com/photo/car-maintenance-in-a-modern-auto-repair-shop-32152039/",
-  "cambios": "Recortada a 4:5 (salvo la portada), redimensionada y convertida a AVIF y WebP para esta muestra"
+ "sin_uso_desde_v2": {
+  "portada": {
+   "autor": "Jae Park",
+   "licencia": "Licencia de Pexels (uso libre, sin atribución obligatoria)",
+   "fuente": "https://www.pexels.com/photo/cars-in-car-repair-shop-4756887/",
+   "cambios": "Recortada a 4:5 (salvo la portada), redimensionada y convertida a AVIF y WebP para esta muestra"
+  },
+  "aceite": {
+   "autor": "Azli Nawawi",
+   "licencia": "Licencia de Pexels (uso libre, sin atribución obligatoria)",
+   "fuente": "https://www.pexels.com/photo/mechanic-working-under-car-in-repair-shop-32152037/",
+   "cambios": "Recortada a 4:5 (salvo la portada), redimensionada y convertida a AVIF y WebP para esta muestra"
+  },
+  "pre-itv": {
+   "autor": "Andrea Piacquadio",
+   "licencia": "Licencia de Pexels (uso libre, sin atribución obligatoria)",
+   "fuente": "https://www.pexels.com/photo/man-in-black-jacket-and-black-pants-standing-under-vehicle-3807811/",
+   "cambios": "Recortada a 4:5 (salvo la portada), redimensionada y convertida a AVIF y WebP para esta muestra"
+  },
+  "neumaticos": {
+   "autor": "Enis Yavuz",
+   "licencia": "Licencia de Pexels (uso libre, sin atribución obligatoria)",
+   "fuente": "https://www.pexels.com/photo/person-holding-a-tire-5260115/",
+   "cambios": "Recortada a 4:5 (salvo la portada), redimensionada y convertida a AVIF y WebP para esta muestra"
+  },
+  "frenos": {
+   "autor": "Erik Mclean",
+   "licencia": "Licencia de Pexels (uso libre, sin atribución obligatoria)",
+   "fuente": "https://www.pexels.com/photo/close-up-of-car-brake-caliper-and-disc-34277926/",
+   "cambios": "Recortada a 4:5 (salvo la portada), redimensionada y convertida a AVIF y WebP para esta muestra"
+  },
+  "diagnosis": {
+   "autor": "Jose Ricardo Barraza Morachis",
+   "licencia": "Licencia de Pexels (uso libre, sin atribución obligatoria)",
+   "fuente": "https://www.pexels.com/photo/black-and-orange-power-tool-4116191/",
+   "cambios": "Recortada a 4:5 (salvo la portada), redimensionada y convertida a AVIF y WebP para esta muestra"
+  },
+  "embrague": {
+   "autor": "cottonbro studio",
+   "licencia": "Licencia de Pexels (uso libre, sin atribución obligatoria)",
+   "fuente": "https://www.pexels.com/photo/man-in-blue-dress-shirt-holding-red-and-black-power-tool-4489749/",
+   "cambios": "Recortada a 4:5 (salvo la portada), redimensionada y convertida a AVIF y WebP para esta muestra"
+  },
+  "garantia": {
+   "autor": "Jae Park",
+   "licencia": "Licencia de Pexels (uso libre, sin atribución obligatoria)",
+   "fuente": "https://www.pexels.com/photo/car-in-an-auto-repair-garage-15489246/",
+   "cambios": "Recortada a 4:5 (salvo la portada), redimensionada y convertida a AVIF y WebP para esta muestra"
+  },
+  "cita": {
+   "autor": "Azli Nawawi",
+   "licencia": "Licencia de Pexels (uso libre, sin atribución obligatoria)",
+   "fuente": "https://www.pexels.com/photo/car-maintenance-in-a-modern-auto-repair-shop-32152039/",
+   "cambios": "Recortada a 4:5 (salvo la portada), redimensionada y convertida a AVIF y WebP para esta muestra"
+  }
  }
 }

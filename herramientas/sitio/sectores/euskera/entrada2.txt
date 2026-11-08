@@ -1,0 +1,8 @@
+sx_sidreria_c	Los días que faltan para el txotx
+sx_c_reformas	Construcción
+sx_k_reformas	Reformas y casas nuevas
+sx_instalador_b	A qué hora llegan a tu pueblo
+sx_k_carniceria	Carnicería de Tolosa
+sx_carniceria_a	Tu pedido se suma pieza a pieza
+sx_k_optica	Óptica de Tolosa
+sx_optica_c	Gafas de ejemplo con su precio

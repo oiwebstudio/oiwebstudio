@@ -1,0 +1,33 @@
+{
+ "_leeme": "Vídeo y fotos de la muestra HARI (8/11/2026). Todo es de ejemplo, de un banco libre (Pexels): no son de ningún instalador real. Licencia de Pexels: uso libre, también comercial, sin atribución obligatoria (se cita igualmente); no se puede vender la foto tal cual ni dar a entender que las personas o marcas que salen respaldan el negocio.",
+ "portada": {
+  "autor": "KoolShooters",
+  "licencia": "Licencia de Pexels",
+  "fuente": "https://www.pexels.com/video/video-of-a-fluorescent-lights-9945020/",
+  "uso": "vídeo de la portada (portada-1600 y portada-960, .webm y .mp4) y su primer fotograma como imagen (portada-1600 y portada-800, .avif y .webp; también og:image)",
+  "contenido": "techo de una nave o garaje: pantallas de tubo fluorescente encendidas, un foco colgado, tubo y cable grapado a la viga",
+  "cambios": "Tramo de 9 s con fundido de 1 s para que el bucle no salte, reducido a 1600×900 y 960×540, color pasado a azul con los brillos de las luces en naranja (curves + colorbalance), la mitad de abajo oscurecida poco a poco (hasta un 50 %) para que el titular se lea encima, desenfoque suave (gblur 5 a 1600 px y 2 a 960 px, para que se reconozca el material) y sin sonido",
+  "sustituye": "vídeo «Blue colored cables» de Dima Krivoy (pexels.com/video/1085656), quitado el 8/11 por el revisor: desenfocado parecía un degradado y era material de red, no de instalador"
+ },
+ "cuadro": {
+  "autor": "Ksenia Chernaya",
+  "licencia": "Licencia de Pexels",
+  "fuente": "https://www.pexels.com/photo/an-opened-switchbox-5767595/",
+  "uso": "«Últimos trabajos» (1): cuadro eléctrico",
+  "cambios": "Recortada a 3:2, redimensionada y convertida a AVIF y WebP"
+ },
+ "cobre": {
+  "autor": "Yudi Ding",
+  "licencia": "Licencia de Pexels",
+  "fuente": "https://www.pexels.com/photo/close-up-of-plumber-working-with-copper-pipe-39885416/",
+  "uso": "«Últimos trabajos» (2): tubo de cobre",
+  "cambios": "Recortada a 3:2, redimensionada y convertida a AVIF y WebP"
+ },
+ "radiador": {
+  "autor": "BOOM 💥 Photography",
+  "licencia": "Licencia de Pexels",
+  "fuente": "https://www.pexels.com/photo/hand-of-a-person-turning-the-radiator-valve-12644994/",
+  "uso": "«Últimos trabajos» (3): válvula de radiador",
+  "cambios": "Recortada a 3:2, redimensionada y convertida a AVIF y WebP"
+ }
+}

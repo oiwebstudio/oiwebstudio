@@ -1,0 +1,87 @@
+{
+ "_leeme": "Fotos de la muestra ZIDOR (casa rural inventada, 8/11/2026). Todas son fotos de ejemplo de bancos libres: no son de ninguna casa rural real. Originales mirados enteros: sin marca de agua. Recortadas, redimensionadas y pasadas a AVIF y WebP sin datos de ubicación (herramientas/diseno/imagenes.mjs).",
+ "portada": {
+  "autor": "Annie Spratt",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/green-grass-and-trees-during-daytime-DB0fxRevW78",
+  "original": "7974 × 5981",
+  "uso": "portada a sangre con el nombre encima",
+  "cambios": "recortada a 7974 × 5316, redimensionada y pasada a AVIF y WebP"
+ },
+ "monte": {
+  "autor": "Euskaldunaa",
+  "licencia": "CC BY-SA 3.0 (atribución obligatoria; la versión recortada se comparte con la misma licencia)",
+  "fuente": "https://commons.wikimedia.org/wiki/File:Txindoki_Zaldibitik,_Euskal_Herria.jpg",
+  "titulo": "Txindoki Zaldibitik, Euskal Herria.jpg",
+  "original": "4608 × 3072",
+  "uso": "foto apaisada grande bajo la frase (se desliza de lado al bajar)",
+  "cambios": "recortada a 4608 × 2304, saturación rebajada al 80 %, redimensionada y pasada a AVIF y WebP"
+ },
+ "fachada": {
+  "autor": "Roman D",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/white-stucco-wall-with-potted-plants-m6fFGQFdmCM",
+  "original": "6192 × 4128",
+  "uso": "collage de la casa, foto grande de arriba",
+  "cambios": "recortada a 6192 × 4128, redimensionada y pasada a AVIF y WebP"
+ },
+ "habitacion": {
+  "autor": "Grant Durr",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-bedroom-with-a-bed-and-a-chair-Lsxox347mdg",
+  "original": "3998 × 5997",
+  "uso": "collage de la casa, foto vertical de la izquierda",
+  "cambios": "recortada a 3998 × 5454, redimensionada y pasada a AVIF y WebP"
+ },
+ "lena": {
+  "autor": "andre govia",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/firewood-lot-near-fireplace-y5DxLQ5yyao",
+  "original": "5420 × 3613",
+  "uso": "collage de la casa, foto vertical de abajo",
+  "cambios": "recortada a 3143 × 3613, redimensionada y pasada a AVIF y WebP"
+ },
+ "mesa": {
+  "autor": "Gabrielle Cepella",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/cooked-egg-with-toasted-bread-xdxN7p-aniI",
+  "original": "4368 × 2912",
+  "uso": "collage de la casa, foto con marco blanco",
+  "cambios": "recortada a 2912 × 2912, redimensionada y pasada a AVIF y WebP"
+ },
+ "cabras": {
+  "autor": "Joxemai",
+  "licencia": "CC BY-SA 4.0 (atribución obligatoria; la versión recortada se comparte con la misma licencia)",
+  "fuente": "https://commons.wikimedia.org/wiki/File:2016_txindoki_ekaina_001.jpg",
+  "titulo": "2016 txindoki ekaina 001.jpg",
+  "original": "4608 × 3456",
+  "uso": "collage de lo de cerca, foto grande de arriba",
+  "cambios": "recortada a 4608 × 3072, redimensionada y pasada a AVIF y WebP"
+ },
+ "plazaola": {
+  "autor": "Cherubino",
+  "licencia": "CC BY-SA 3.0 (atribución obligatoria; la versión recortada se comparte con la misma licencia)",
+  "fuente": "https://commons.wikimedia.org/wiki/File:A_la_V%C3%ADa_Verde_del_Plazaola_06.JPG",
+  "titulo": "A la Vía Verde del Plazaola 06.JPG",
+  "original": "3648 × 2736",
+  "uso": "collage de lo de cerca, foto vertical de la izquierda",
+  "cambios": "recortada a 2005 × 2736, redimensionada y pasada a AVIF y WebP"
+ },
+ "tolosa": {
+  "autor": "Zarateman",
+  "licencia": "CC0 (dominio público; se cita igualmente)",
+  "fuente": "https://commons.wikimedia.org/wiki/File:Tolosa_-_Mercado_del_Tinglado_(Zerkausia)_01.JPG",
+  "titulo": "Tolosa - Mercado del Tinglado (Zerkausia) 01.JPG",
+  "original": "1536 × 2048",
+  "uso": "collage de lo de cerca, foto vertical de abajo",
+  "cambios": "recortada a 1536 × 1766, redimensionada y pasada a AVIF y WebP"
+ },
+ "kupela": {
+  "autor": "Elevate",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/brown-wooden-barrel-FiL5R1_qYiw",
+  "original": "7952 × 5304",
+  "uso": "collage de lo de cerca, foto con marco blanco",
+  "cambios": "recortada a 5304 × 5304, redimensionada y pasada a AVIF y WebP"
+ }
+}

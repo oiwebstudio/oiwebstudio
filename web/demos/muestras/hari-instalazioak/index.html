@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>HARI · Argia, ura eta berogailua Tolosaldean (laginaren webgunea)</title>
+<meta name="description" content="Asmatutako instalatzaile batentzako OI Studioko lagin-webgunea: matxura baten berri ematen duzu ukitu batekin, gaur herrira iristen diren ikusten duzu eta WhatsApp bidezko berrikuspena edo buletina eskatzen duzu.">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="HARI · Argia, ura eta berogailua Tolosaldean (laginaren webgunea)">
+<meta property="og:description" content="Asmatutako instalatzaile batentzako OI Studioko lagin-webgunea: matxura baten berri ematen duzu ukitu batekin, gaur herrira iristen diren ikusten duzu eta WhatsApp bidezko berrikuspena edo buletina eskatzen duzu.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="fotos/portada-1600.webp">
+<link rel="alternate" hreflang="es" href="es/">
+<!--
+  MUESTRA «HARI» (OI Studio, 8/11/2026): instalador de luz, agua y calefacción INVENTADO, para la pieza «¿Qué negocio tienes?» de oiwebstudio.com.
+  «Hari» = hilo (el logo es una H cuyo travesaño es el hilo). Nombre, teléfono, dirección, horario, pueblos y trabajos son de ejemplo. noindex.
+  Referencia elegida por Oier el 8/11: n.º 10 del tablero muestras-instaladores-2026-11-07, NC Electrical & Communications (ncec.net.au).
+  Calcado: vídeo lento y algo desenfocado a sangre en la portada (material real: techo con pantallas fluorescentes, tubo y cable, en azul con
+  los brillos naranja), titular en grotesca ancha en mayúsculas abajo a la izquierda, botón blanco redondeado
+  pequeño y raya fina que cierra la portada; logo mínimo con hilo y menú de cuatro palabras arriba a la derecha; banda oscura con titular a la
+  izquierda y texto a la derecha + enlace con raya; en el ordenador, la sección se queda fija y las tarjetas de color pasan de lado por delante
+  de la palabra gigante (en el móvil, la palabra corre de lado y las tarjetas se deslizan con el dedo); tarjetas con palabra enorme y panel de cristal
+  con el aro de rayas; dos tarjetas pastel «pulsa para ver»; lista oscura con rayas; filas con foto, título, texto y botón gris; pie negro que
+  se destapa. Fuera (su «que_no_copiar»): la etiqueta espaciada encima del titular y la frase-lema; también los 01/03 y «OUR PROCESS».
+  Lo que hace: «¿Qué te pasa?» deja el WhatsApp escrito con la avería, la dirección y la foto que hay que mandar; «¿Llegáis hoy?» dice por
+  pueblo, con la hora real, si van hoy o mañana; revisiones y boletines: el año de la última revisión dice cuándo toca y se piden por WhatsApp.
+  Letras: n.º 17 Archivo (ancha, 400) en títulos + n.º 13 Satoshi 400/700 en el texto, autoalojadas en fuentes/.
+  Vídeo y fotos: Pexels (licencia de Pexels): KoolShooters (vídeo, pexels.com/video/9945020; color y desenfoque nuestros), Ksenia Chernaya,
+  Yudi Ding, BOOM Photography. Detalle en fotos/creditos.json. og:image = primer fotograma del vídeo (fotos/portada-1600.webp).
+  Movimiento: titular, botón y raya de la portada entran con CSS desde el primer pintado; lo de abajo con GSAP 3.13 + ScrollTrigger + SplitText
+  (js/) + anim-texto.js + pagina.js. Con «reducir movimiento» o sin JS: vídeo parado (se ve su primer fotograma) y todo quieto y visible.
+-->
+<link rel="preload" href="fuentes/archivo-400_900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fuentes/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="estilo.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="saltar" href="#contenido">Edukira joan</a>
+
+<header class="cab" data-cab>
+  <div class="cab-in">
+    <a class="logo" href="#contenido" aria-label="HARI"><svg class="logo-svg" viewBox="0 0 76 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10.6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M7.6 6.2v11.6M16.4 6.2v11.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M0 12h76" stroke="currentColor" stroke-width="1.2"/></svg><b>HARI</b></a>
+    <nav class="nav" aria-label="Menua"><ul><li><a href="#averias">Matxurak</a></li><li><a href="#revisiones">Berrikuspenak</a></li><li><a href="#hoy">Gaur zatozte?</a></li><li><a href="#trabajos">Lanak</a></li><li><a href="tel:+34943000000">943 00 00 00</a></li><li><a href="es/" lang="es" hreflang="es"><span aria-hidden="true">ES</span><span class="sr">Gaztelaniaz</span></a></li></ul></nav>
+    <button class="hamb" type="button" aria-expanded="false" aria-controls="desplegable" aria-label="Menua"><span></span></button>
+  </div>
+  <div class="desplegable" id="desplegable"><ul><li><a href="#averias">Matxurak</a></li><li><a href="#revisiones">Berrikuspenak</a></li><li><a href="#hoy">Gaur zatozte?</a></li><li><a href="#trabajos">Lanak</a></li><li><a href="tel:+34943000000">943 00 00 00</a></li><li><a href="es/" lang="es" hreflang="es"><span aria-hidden="true">ES</span><span class="sr">Gaztelaniaz</span></a></li></ul></div>
+</header>
+
+<main id="contenido">
+<section class="portada" data-portada data-tono="oscuro" aria-labelledby="h1">
+  <div class="fondo" aria-hidden="true">
+    <picture><source type="image/avif" srcset="fotos/portada-800.avif 800w, fotos/portada-1600.avif 1600w" sizes="100vw"><img src="fotos/portada-1600.webp" srcset="fotos/portada-800.webp 800w, fotos/portada-1600.webp 1600w" sizes="100vw" width="1600" height="900" alt="" fetchpriority="high" decoding="async"></picture>
+    <video class="video" muted loop playsinline preload="none" disablepictureinpicture data-video>
+      <source src="fotos/portada-960.webm" type="video/webm" media="(max-width: 760px)">
+      <source src="fotos/portada-960.mp4" type="video/mp4" media="(max-width: 760px)">
+      <source src="fotos/portada-1600.webm" type="video/webm">
+      <source src="fotos/portada-1600.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="portada-in">
+    <h1 id="h1"><span class="p"><span style="--i:0">Argia,</span></span> <span class="p"><span style="--i:1">ura</span></span> <span class="p"><span style="--i:2">eta</span></span> <span class="p"><span style="--i:3">berogailua</span></span> <span class="p"><span style="--i:4">Tolosaldean</span></span></h1>
+    <a class="btn btn-blanco entra" href="#averias" style="--d:.85s">Matxura baten berri eman</a>
+    <span class="raya" aria-hidden="true"></span>
+  </div>
+</section>
+
+<section class="intro" data-tono="oscuro" aria-labelledby="h-int">
+  <div class="env intro-rej">
+    <h2 id="h-int" data-lineas>Abisatu eta esango dizugu zer ordutan iritsiko garen</h2>
+    <div class="intro-txt">
+      <p data-enciende>Argi, ur eta berogailu matxurak konpontzen ditugu Tolosaldeko etxe eta lokaletan. Instalazio berriak, berrikuspenak eta buletinak ere egiten ditugu.</p>
+      <a class="enl-raya" href="#hoy"><span>Gaur iritsiko zarete nire herrira?</span><i aria-hidden="true"></i></a>
+    </div>
+  </div>
+</section>
+
+<div class="claro">
+<section class="averias" id="averias" data-tono="claro" aria-labelledby="h-av">
+  <h2 id="h-av" class="gigante" style="--n:20"><span data-pista="fin" data-pista-media="(max-width: 899px), (max-height: 639px)">Zer gertatzen zaizu?</span></h2>
+  <div class="env av-controles">
+    <div class="pestanas" role="group" aria-label="Aukeratu zer gertatzen zaizun"><button type="button" class="pest" data-k="luz" aria-controls="av-luz" aria-pressed="true">Ez dago argirik</button><button type="button" class="pest" data-k="dif" aria-controls="av-dif" aria-pressed="false">Diferentzialak jauzi egiten du</button><button type="button" class="pest" data-k="agua" aria-controls="av-agua" aria-pressed="false">Ur-ihesa</button><button type="button" class="pest" data-k="cal" aria-controls="av-cal" aria-pressed="false">Galdara ez doa</button></div>
+    <label class="dir"><span>Zure kalea eta herria</span><input type="text" name="direccion" autocomplete="street-address" placeholder="Kale Nagusia 3, Tolosa" data-dir></label>
+  </div>
+  <div class="pista-av" data-pista-av tabindex="0" role="region" aria-label="Matxuren aholkuak">
+      <article class="av" id="av-luz" data-k="luz" style="--c:#5566C8;--t:#FFFFFF" aria-labelledby="av-luz-t" data-activa="">
+        <h3 class="palabra" id="av-luz-t" style="--n:12;--nl:7">Argirik gabe</h3>
+        <p class="consejo">Ea bizilagunek argirik duten. Haiek ere ez bada, konpainiaren mozketa bat da.</p>
+        <div class="panel">
+          <p class="panel-t">Zure mezua</p>
+          <p class="msg" data-msg><span class="msg-txt" data-msg-txt>Kaixo, argirik gabe geratu naiz etxean. Koadro elektrikoaren argazki bat bidaliko dizuet.</span> <span class="msg-dir">Nire helbidea: <b data-msg-dir>(idatzi zure kalea goian)</b></span></p>
+          <div class="panel-pie">
+            <span class="aro" data-aro><svg class="aro-svg" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="5" stroke-dasharray="7.2 5.4"/></svg><span class="aro-txt">Idazten...</span></span>
+            <a class="btn btn-blanco" href="https://wa.me/34600000000?text=Kaixo%2C%20argirik%20gabe%20geratu%20naiz%20etxean.%20Koadro%20elektrikoaren%20argazki%20bat%20bidaliko%20dizuet." rel="noopener" data-wa-av>Bidali WhatsApp bidez</a>
+          </div>
+          <p class="panel-foto">WhatsApp irekitzean, gehitu argazkia.</p>
+        </div>
+      </article>
+      <article class="av" id="av-dif" data-k="dif" style="--c:#FA7C7F;--t:#1D1D1D" aria-labelledby="av-dif-t">
+        <h3 class="palabra" id="av-dif-t" style="--n:13;--nl:13">Diferentziala</h3>
+        <p class="consejo">Jaitsi automatikoak, igo diferentziala eta igo banan-banan. Bat igotzean salto egiten badu, linea horrek du matxura.</p>
+        <div class="panel">
+          <p class="panel-t">Zure mezua</p>
+          <p class="msg" data-msg><span class="msg-txt" data-msg-txt>Kaixo, diferentzialak salto egiten dit eta ez da goian geratzen. Koadro elektrikoaren argazki bat bidaliko dizuet.</span> <span class="msg-dir">Nire helbidea: <b data-msg-dir>(idatzi zure kalea goian)</b></span></p>
+          <div class="panel-pie">
+            <span class="aro" data-aro><svg class="aro-svg" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="5" stroke-dasharray="7.2 5.4"/></svg><span class="aro-txt">Idazten...</span></span>
+            <a class="btn btn-blanco" href="https://wa.me/34600000000?text=Kaixo%2C%20diferentzialak%20salto%20egiten%20dit%20eta%20ez%20da%20goian%20geratzen.%20Koadro%20elektrikoaren%20argazki%20bat%20bidaliko%20dizuet." rel="noopener" data-wa-av>Bidali WhatsApp bidez</a>
+          </div>
+          <p class="panel-foto">WhatsApp irekitzean, gehitu argazkia.</p>
+        </div>
+      </article>
+      <article class="av" id="av-agua" data-k="agua" style="--c:#4F6BDB;--t:#FFFFFF" aria-labelledby="av-agua-t">
+        <h3 class="palabra" id="av-agua-t" style="--n:8;--nl:8">Ur-ihesa</h3>
+        <p class="consejo">Itxi ixteko giltza. Ura entxufe batera iristen bada, itzali argiaren jenerala.</p>
+        <div class="panel">
+          <p class="panel-t">Zure mezua</p>
+          <p class="msg" data-msg><span class="msg-txt" data-msg-txt>Kaixo, ur ihesa daukat etxean. Argazki bat bidaltzen dizuet ura nondik ateratzen den ikusteko.</span> <span class="msg-dir">Nire helbidea: <b data-msg-dir>(idatzi zure kalea goian)</b></span></p>
+          <div class="panel-pie">
+            <span class="aro" data-aro><svg class="aro-svg" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="5" stroke-dasharray="7.2 5.4"/></svg><span class="aro-txt">Idazten...</span></span>
+            <a class="btn btn-blanco" href="https://wa.me/34600000000?text=Kaixo%2C%20ur%20ihesa%20daukat%20etxean.%20Argazki%20bat%20bidaltzen%20dizuet%20ura%20nondik%20ateratzen%20den%20ikusteko." rel="noopener" data-wa-av>Bidali WhatsApp bidez</a>
+          </div>
+          <p class="panel-foto">WhatsApp irekitzean, gehitu argazkia.</p>
+        </div>
+      </article>
+      <article class="av" id="av-cal" data-k="cal" style="--c:#F7A35C;--t:#1D1D1D" aria-labelledby="av-cal-t">
+        <h3 class="palabra" id="av-cal-t" style="--n:7;--nl:7">Galdara</h3>
+        <p class="consejo">Begiratu presioari: 1 eta 1,5 bar artean egoten da. Gas usaina badu, ireki leihoak eta deitu 112ra.</p>
+        <div class="panel">
+          <p class="panel-t">Zure mezua</p>
+          <p class="msg" data-msg><span class="msg-txt" data-msg-txt>Kaixo, galdara ez dabil. Pantailako argazki bat bidaltzen dizuet, ateratzen den kodearekin.</span> <span class="msg-dir">Nire helbidea: <b data-msg-dir>(idatzi zure kalea goian)</b></span></p>
+          <div class="panel-pie">
+            <span class="aro" data-aro><svg class="aro-svg" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="5" stroke-dasharray="7.2 5.4"/></svg><span class="aro-txt">Idazten...</span></span>
+            <a class="btn btn-blanco" href="https://wa.me/34600000000?text=Kaixo%2C%20galdara%20ez%20dabil.%20Pantailako%20argazki%20bat%20bidaltzen%20dizuet%2C%20ateratzen%20den%20kodearekin." rel="noopener" data-wa-av>Bidali WhatsApp bidez</a>
+          </div>
+          <p class="panel-foto">WhatsApp irekitzean, gehitu argazkia.</p>
+        </div>
+      </article>
+  </div>
+</section>
+
+<section class="servicios" id="revisiones" data-tono="claro" aria-labelledby="h-rev">
+  <div class="env">
+    <h2 id="h-rev" data-lineas>Berrikuspenak eta buletinak</h2>
+    <div class="srv-rej" data-escalonado>
+      <article class="srv" data-srv style="--c:#ADEEFC">
+        <h3><button type="button" class="srv-boton" aria-expanded="false" aria-controls="srv-rev">Berrikuspenak<span class="toca">Sakatu ikusteko</span></button></h3>
+        <div class="srv-dorso" id="srv-rev">
+          <ul class="srv-lista"><li>Gas-galdara: bi urtean behin</li><li>Koadro elektrikoa eta diferentziala</li><li>Termoa eta berogailua</li></ul>
+          <label class="srv-sel"><span>Galdararen azken berrikuspena</span><select data-ultima><option value="">—</option><option value="2026">2026</option><option value="2025">2025</option><option value="2024">2024</option><option value="2023">2023</option><option value="2022">2022</option><option value="2021">2021</option><option value="2020">2020</option><option value="2019">2019</option><option value="x">Ez dakit</option></select></label>
+          <p class="srv-res" data-res aria-live="polite"></p>
+          <a class="btn btn-negro" href="https://wa.me/34600000000?text=Kaixo%2C%20galdararen%20azterketa%20eskatu%20nahi%20dut." rel="noopener" data-wa-rev>Eskatu berrikuspena</a>
+        </div>
+      </article>
+      <article class="srv" data-srv style="--c:#DFFFAA">
+        <h3><button type="button" class="srv-boton" aria-expanded="false" aria-controls="srv-bol">Buletinak<span class="toca">Sakatu ikusteko</span></button></h3>
+        <div class="srv-dorso" id="srv-bol">
+          <ul class="srv-lista"><li>Argi-buletina: argiari alta emateko edo potentzia igotzeko</li><li>Gas-ziurtagiria: gasari alta emateko</li></ul>
+          <fieldset class="srv-opc"><legend>Zertarako behar dut?</legend>
+            <label><input type="radio" name="bol" value="Argiari alta ematea" checked><span>Argiari alta ematea</span></label>
+            <label><input type="radio" name="bol" value="Potentzia igotzea"><span>Potentzia igotzea</span></label>
+            <label><input type="radio" name="bol" value="Gasari alta ematea"><span>Gasari alta ematea</span></label>
+          </fieldset>
+          <a class="btn btn-negro" href="https://wa.me/34600000000?text=Kaixo%2C%20buletin%20bat%20behar%20dut%20honetarako%3A%20Argiari%20alta%20ematea." rel="noopener" data-wa-bol>Eskatu buletina</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+</div>
+
+<section class="hoy" id="hoy" data-tono="oscuro" aria-labelledby="h-hoy">
+  <div class="env">
+    <div class="hoy-cab">
+      <h2 id="h-hoy" data-lineas>Gaur zatozte?</h2>
+      <p class="hoy-ahora"><span data-son></span> Astelehenetik ostiralera, 8:00etatik 19:00etara.</p>
+    </div>
+    <ul class="pueblos" data-pueblos>
+        <li><a class="pueblo" href="https://wa.me/34600000000?text=Kaixo%2C%20noiz%20etor%20zaitezkete%3F%0AHerria%3A%20Tolosa" rel="noopener" data-pueblo="Tolosa" data-corte="1100"><i class="linea" aria-hidden="true"></i><span class="p-nom">Tolosa</span><span class="p-min">5 minutura</span><span class="p-est" data-est></span><span class="p-pedir" aria-hidden="true">Eskatu</span></a></li>
+        <li><a class="pueblo" href="https://wa.me/34600000000?text=Kaixo%2C%20noiz%20etor%20zaitezkete%3F%0AHerria%3A%20Ibarra" rel="noopener" data-pueblo="Ibarra" data-corte="1100"><i class="linea" aria-hidden="true"></i><span class="p-nom">Ibarra</span><span class="p-min">5 minutura</span><span class="p-est" data-est></span><span class="p-pedir" aria-hidden="true">Eskatu</span></a></li>
+        <li><a class="pueblo" href="https://wa.me/34600000000?text=Kaixo%2C%20noiz%20etor%20zaitezkete%3F%0AHerria%3A%20Anoeta" rel="noopener" data-pueblo="Anoeta" data-corte="1090"><i class="linea" aria-hidden="true"></i><span class="p-nom">Anoeta</span><span class="p-min">10 minutura</span><span class="p-est" data-est></span><span class="p-pedir" aria-hidden="true">Eskatu</span></a></li>
+        <li><a class="pueblo" href="https://wa.me/34600000000?text=Kaixo%2C%20noiz%20etor%20zaitezkete%3F%0AHerria%3A%20Alegia" rel="noopener" data-pueblo="Alegia" data-corte="1080"><i class="linea" aria-hidden="true"></i><span class="p-nom">Alegia</span><span class="p-min">15 minutura</span><span class="p-est" data-est></span><span class="p-pedir" aria-hidden="true">Eskatu</span></a></li>
+        <li><a class="pueblo" href="https://wa.me/34600000000?text=Kaixo%2C%20noiz%20etor%20zaitezkete%3F%0AHerria%3A%20Villabona" rel="noopener" data-pueblo="Villabona" data-corte="1080"><i class="linea" aria-hidden="true"></i><span class="p-nom">Villabona</span><span class="p-min">15 minutura</span><span class="p-est" data-est></span><span class="p-pedir" aria-hidden="true">Eskatu</span></a></li>
+        <li><a class="pueblo" href="https://wa.me/34600000000?text=Kaixo%2C%20noiz%20etor%20zaitezkete%3F%0AHerria%3A%20Andoain" rel="noopener" data-pueblo="Andoain" data-corte="1070"><i class="linea" aria-hidden="true"></i><span class="p-nom">Andoain</span><span class="p-min">20 minutura</span><span class="p-est" data-est></span><span class="p-pedir" aria-hidden="true">Eskatu</span></a></li>
+        <li><a class="pueblo" href="https://wa.me/34600000000?text=Kaixo%2C%20noiz%20etor%20zaitezkete%3F%0AHerria%3A%20Lizartza" rel="noopener" data-pueblo="Lizartza" data-corte="1060"><i class="linea" aria-hidden="true"></i><span class="p-nom">Lizartza</span><span class="p-min">25 minutura</span><span class="p-est" data-est></span><span class="p-pedir" aria-hidden="true">Eskatu</span></a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="trabajos" id="trabajos" data-tono="claro" aria-labelledby="h-trab">
+  <div class="env">
+    <h2 id="h-trab" data-lineas>Azken lanak</h2>
+    <ul class="filas">
+        <li class="fila">
+          <i class="linea" aria-hidden="true"></i>
+          <div class="f-foto" data-foto><picture><source type="image/avif" srcset="fotos/cuadro-480.avif 480w, fotos/cuadro-800.avif 800w, fotos/cuadro-1200.avif 1200w" sizes="(min-width: 900px) 26vw, 92vw"><img src="fotos/cuadro-800.webp" srcset="fotos/cuadro-480.webp 480w, fotos/cuadro-800.webp 800w, fotos/cuadro-1200.webp 1200w" sizes="(min-width: 900px) 26vw, 92vw" width="1200" height="800" alt="Horma zuri batean irekitako koadro elektrikoa, automatikoak eta kableak bistan dituena." loading="lazy" decoding="async"></picture></div>
+          <h3>Koadro berria Tolosako pisu batean</h3>
+          <div class="f-txt"><p>Diferentzial berriak eta sukalderako aparteko lerro bat.</p><a class="btn btn-gris" href="https://wa.me/34600000000?text=Kaixo%2C%20aurrekontu%20bat%20nahi%20dut%20honen%20antzeko%20zerbaitetarako%3A%20Koadro%20berria%20Tolosako%20pisu%20batean." rel="noopener">Eskatu horrelako zerbait</a></div>
+        </li>
+        <li class="fila">
+          <i class="linea" aria-hidden="true"></i>
+          <div class="f-foto" data-foto><picture><source type="image/avif" srcset="fotos/cobre-480.avif 480w, fotos/cobre-800.avif 800w, fotos/cobre-1200.avif 1200w" sizes="(min-width: 900px) 26vw, 92vw"><img src="fotos/cobre-800.webp" srcset="fotos/cobre-480.webp 480w, fotos/cobre-800.webp 800w, fotos/cobre-1200.webp 1200w" sizes="(min-width: 900px) 26vw, 92vw" width="1200" height="800" alt="Iturgin batek kobrezko hodi bat eusten du bankuko torlojuaren gainean." loading="lazy" decoding="async"></picture></div>
+          <h3>Kobrezko hodiak Ibarran</h3>
+          <div class="f-txt"><p>Komunetik burdina zaharra kendu eta goiz batean kobrea jarri genuen.</p><a class="btn btn-gris" href="https://wa.me/34600000000?text=Kaixo%2C%20aurrekontu%20bat%20nahi%20dut%20honen%20antzeko%20zerbaitetarako%3A%20Kobrezko%20hodiak%20Ibarran." rel="noopener">Eskatu horrelako zerbait</a></div>
+        </li>
+        <li class="fila">
+          <i class="linea" aria-hidden="true"></i>
+          <div class="f-foto" data-foto><picture><source type="image/avif" srcset="fotos/radiador-480.avif 480w, fotos/radiador-800.avif 800w, fotos/radiador-1200.avif 1200w" sizes="(min-width: 900px) 26vw, 92vw"><img src="fotos/radiador-800.webp" srcset="fotos/radiador-480.webp 480w, fotos/radiador-800.webp 800w, fotos/radiador-1200.webp 1200w" sizes="(min-width: 900px) 26vw, 92vw" width="1200" height="800" alt="Esku batek erradiadore zuri baten balbula biratzen du." loading="lazy" decoding="async"></picture></div>
+          <h3>Balbulak Villabonako erradiadoreetan</h3>
+          <div class="f-txt"><p>Gela bakoitza bere tenperaturan, galdara ukitu gabe.</p><a class="btn btn-gris" href="https://wa.me/34600000000?text=Kaixo%2C%20aurrekontu%20bat%20nahi%20dut%20honen%20antzeko%20zerbaitetarako%3A%20Balbulak%20Villabonako%20erradiadoreetan." rel="noopener">Eskatu horrelako zerbait</a></div>
+        </li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer class="pie" data-tono="oscuro">
+  <div class="env pie-rej">
+    <div class="pie-marca">
+      <a class="logo logo-pie" href="#contenido" aria-label="HARI"><svg class="logo-svg" viewBox="0 0 180 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10.6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M7.6 6.2v11.6M16.4 6.2v11.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M0 12h180" stroke="currentColor" stroke-width="1.2"/></svg><b>HARI</b></a>
+      <p>Matxura baterako, deitu 943 00 00 00 telefonora. Bestela, hobe WhatsApp bidez.</p>
+    </div>
+    <p class="pie-estado" data-estado><span class="aro"><svg class="aro-svg" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="5" stroke-dasharray="7.2 5.4"/></svg></span><span data-estado-txt></span></p>
+    <div class="pie-legal">
+      <p>Kale Nagusia 0, Tolosa</p>
+      <p>OI Studiok egindako erakusketa-webgunea. Izena, telefonoa, helbidea, ordutegia, herriak eta lanak asmatuak dira.</p>
+      <p>Bideoa eta argazkiak adibide dira, Pexels (Pexels lizentzia): KoolShooters, Ksenia Chernaya, Yudi Ding eta BOOM Photography. <a href="fotos/creditos.json">creditos.json</a></p>
+      <p><a class="firma" href="https://oiwebstudio.com/?utm_source=muestra-hari&amp;utm_medium=pie" target="_blank" rel="noopener">Diseinatzailea: <b>OI Studio</b></a></p>
+    </div>
+    <ul class="pie-enl">
+      <li><a href="tel:+34943000000">943 00 00 00</a></li>
+      <li><a href="https://wa.me/34600000000?text=Kaixo%2C%20noiz%20etor%20zaitezkete%3F" rel="noopener">WhatsApp</a></li>
+      <li><a href="es/" lang="es" hreflang="es">Gaztelaniaz</a></li>
+    </ul>
+  </div>
+</footer>
+
+<nav class="barra" data-barra-movil aria-label="Deitu · WhatsApp">
+  <a class="btn btn-blanco" href="tel:+34943000000"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></svg>Deitu</a>
+  <a class="btn btn-negro" href="https://wa.me/34600000000?text=Kaixo%2C%20noiz%20etor%20zaitezkete%3F" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M4 20l1.3-3.8A8 8 0 1 1 8 19z"/><path d="M9 9.5c.3 2 2.2 4.2 4.6 5l1.2-1.2 1.9.9"/></svg>WhatsApp</a>
+</nav>
+
+<script type="application/json" id="textos">{"lang":"eu","wa":"34600000000","wa_dir":"Nire helbidea: {dir}","wa_sin_dir":"(idatzi zure kalea goian)","menu":"Menua","cerrar":"Itxi","av":{"luz":"Kaixo, argirik gabe geratu naiz etxean. Koadro elektrikoaren argazki bat bidaliko dizuet.","dif":"Kaixo, diferentzialak salto egiten dit eta ez da goian geratzen. Koadro elektrikoaren argazki bat bidaliko dizuet.","agua":"Kaixo, ur ihesa daukat etxean. Argazki bat bidaltzen dizuet ura nondik ateratzen den ikusteko.","cal":"Kaixo, galdara ez dabil. Pantailako argazki bat bidaltzen dizuet, ateratzen den kodearekin."},"rev_toca_ya":"Egin beharra dago.","rev_toca_en":"Hurrengo berrikuspena: {a}","rev_no_se_r":"Hobe orain egitea.","rev_wa":"Kaixo, galdararen azterketa eskatu nahi dut.","rev_wa_ultima":"Azken berrikuspena: {a}.","rev_no_se":"Ez dakit","bol_wa":"Kaixo, buletin bat behar dut honetarako: {para}.","hoy_son":"Orain {h} dira.","hoy_hoy":"Gaur","hoy_antes":"{h} baino lehen abisatuz","hoy_manana":"Bihar goizean goiz","hoy_lunes":"Astelehenean lehen orduan","hoy_wa_hoy":"Kaixo, gaur etor zaitezkete?","hoy_wa_otro":"Kaixo, noiz etor zaitezkete?","hoy_wa_pueblo":"Herria: {pueblo}","pie_abierto":"Irekita orain","pie_cerrado":"Itxita orain"}</script>
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/SplitText.min.js"></script>
+<script src="js/anim-texto.js"></script>
+<script src="js/pagina.js"></script>
+</body>
+</html>

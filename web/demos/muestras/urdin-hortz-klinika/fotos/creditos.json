@@ -1,12 +1,5 @@
 [
- {"archivo":"portada","autor":"Harold Hisona","enlace":"https://unsplash.com/photos/Bg81yWKZlMg","licencia":"Unsplash License","nota":"recortada en vertical"},
- {"archivo":"primera-visita","autor":"Sum Sum","enlace":"https://unsplash.com/photos/Vx71zsOqtSU","licencia":"Unsplash License"},
- {"archivo":"revision","autor":"Caroline LM","enlace":"https://unsplash.com/photos/-m-4tYmtLlI","licencia":"Unsplash License"},
- {"archivo":"ortodoncia","autor":"Harold Hisona","enlace":"https://unsplash.com/photos/uTUsnv_UCSQ","licencia":"Unsplash License"},
- {"archivo":"implantes","autor":"Katarzyna Zygnerska","enlace":"https://unsplash.com/photos/eHwRLpfHSKY","licencia":"Unsplash License","nota":"recortada 4:3"},
- {"archivo":"estetica","autor":"Laurent Yasiel","enlace":"https://unsplash.com/photos/47fKvu4niMk","licencia":"Unsplash License","nota":"recortada 4:3"},
- {"archivo":"infantil","autor":"Nate Johnston","enlace":"https://unsplash.com/photos/UhVxAkKw8gQ","licencia":"Unsplash License","nota":"recortada 4:3"},
- {"archivo":"equipo-dentista","autor":"Caroline LM","enlace":"https://unsplash.com/photos/QA9fRIi6sFw","licencia":"Unsplash License","nota":"recortada 3:2"},
- {"archivo":"equipo-higienista","autor":"D Dental Office","enlace":"https://unsplash.com/photos/BiknMFl7iOw","licencia":"Unsplash License","nota":"recortada 3:2; desenfocada la placa con el nombre y el logo de su clínica"},
- {"archivo":"sala-espera","autor":"Caroline Badran","enlace":"https://unsplash.com/photos/jH05wxjmAWE","licencia":"Unsplash License","nota":"recortada 4:5"}
+ {"archivo":"radiografia","titulo":"Basic panoramic radiograph","autor":"Coronation Dental Specialty Group","enlace":"https://commons.wikimedia.org/wiki/File:Basic_panoramic_radiograph.jpg","licencia":"CC BY 3.0","licencia_url":"https://creativecommons.org/licenses/by/3.0/","nota":"pasada a dos tintas (azul y papel) por OI Studio; sin ampliar (2843 px de ancho)"},
+ {"archivo":"visita-pantalla","titulo":"Dentista enseñando una radiografía en la pantalla","autor":"Caroline LM","enlace":"https://unsplash.com/photos/-m-4tYmtLlI","licencia":"Unsplash License","licencia_url":"https://unsplash.com/license","nota":"sin cambios (3600 px de ancho)"},
+ {"archivo":"consulta","titulo":"Kneebreak dental chair","autor":"Thedentalguy","enlace":"https://commons.wikimedia.org/wiki/File:Kneebreak_dental_chair.jpg","licencia":"CC BY-SA 4.0","licencia_url":"https://creativecommons.org/licenses/by-sa/4.0/","nota":"sin cambios (2850 px de ancho)"}
 ]

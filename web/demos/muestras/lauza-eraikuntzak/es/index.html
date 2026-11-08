@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>LAUZA · Reformas y casas nuevas en Tolosaldea (web de muestra)</title>
+<meta name="description" content="Web de muestra de OI Studio para una empresa de reformas inventada: presupuesto orientativo en un minuto, obras terminadas con foto y plazo antes de llamar.">
+<meta name="theme-color" content="#3A3028">
+<meta property="og:title" content="LAUZA · Reformas y casas nuevas en Tolosaldea (web de muestra)">
+<meta property="og:description" content="Web de muestra de OI Studio para una empresa de reformas inventada: presupuesto orientativo en un minuto, obras terminadas con foto y plazo antes de llamar.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="../fotos/og-lauza.jpg">
+<link rel="alternate" hreflang="eu" href="../">
+<!--
+  MUESTRA «LAUZA» (OI Studio, 8/11/2026): empresa de reformas y obra nueva INVENTADA para la pieza «¿Qué negocio tienes?» de oiwebstudio.com.
+  «Lauza» = losa de piedra. Nombre, teléfono, precios, plazos, obras y opiniones son de ejemplo. noindex.
+  Calco de la portada elegida por Oier el 8/11 (n.º 07 del tablero muestras-construccion-reformas-2026-11-07): BCG Building Design
+  (bcgbuildingdesign.com.au). Se calca: barra de una línea con la hora en directo del pueblo, foto a sangre con el titular abajo a la
+  izquierda, telón marrón con el nombre gigante al entrar, sección partida crema/foto que corre de lado con el scroll, bloque marrón con
+  foto pequeña, texto y el nombre gigante al pie, lista de obras con la foto en el centro, foto grande + columna, opinión entre dos fotos y
+  pie a tres columnas. Lo que no se copia: el ® junto al nombre. La columna de la foto grande es aquí el presupuesto (cambia la foto según
+  lo que se elige) y las obras llevan el pueblo en lugar de 01/02/03.
+  Letra: 14 Switzer 400/600 (catálogo de letras), autoalojada en fuentes/. Color: crema #F3EFE8, marrón #3A3028 y blanco #FFFDF8.
+  Fotos: Unsplash (licencia de Unsplash), autores en fotos/creditos.json. Son fotos de ejemplo: no son obras de nadie de aquí.
+  Movimiento: el telón, la foto y el titular entran con CSS desde el primer pintado; lo de abajo, con GSAP 3.13 + ScrollTrigger +
+  SplitText (js/) + anim-texto.js + pagina.js. Con «reducir movimiento» o sin JS, todo quieto y visible.
+  Generada con _local/demos/lauza-generador/gen.mjs (no editar este HTML a mano).
+-->
+<link rel="preload" href="../fuentes/switzer-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../estilo.css">
+<script>document.documentElement.classList.add("js");try{if(sessionStorage.getItem("lauza-telon"))document.documentElement.classList.add("sin-telon");sessionStorage.setItem("lauza-telon","1")}catch(e){}</script>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+<div class="telon" aria-hidden="true"><p class="telon-nom"><span style="--i:0">L</span><span style="--i:1">A</span><span style="--i:2">U</span><span style="--i:3">Z</span><span style="--i:4">A</span></p></div>
+
+<header class="cab" data-cab>
+  <a class="logo" href="#contenido" aria-label="LAUZA">LAUZA</a>
+  <p class="reloj"><time data-reloj aria-label="Hora en Tolosa">00:00:00</time> <span>Tolosa, Gipuzkoa</span></p>
+  <script>(function(){var t=document.querySelector("[data-reloj]");function f(){try{t.textContent=new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Madrid",hour:"2-digit",minute:"2-digit",second:"2-digit",hourCycle:"h23"}).format(new Date())}catch(e){var d=new Date();t.textContent=[d.getHours(),d.getMinutes(),d.getSeconds()].map(function(n){return("0"+n).slice(-2)}).join(":")}}f();setInterval(f,1000)})();</script>
+  <nav class="nav" aria-label="Menú"><ul><li><a href="#obras">Obras</a></li><li><a href="#presupuesto">Presupuesto</a></li><li><a href="#contacto">Contacto</a></li></ul></nav>
+  <div class="cab-der">
+    <a class="cab-tel" href="tel:+34943000000">943 00 00 00</a>
+    <a class="idioma" href="../" lang="eu" hreflang="eu"><span aria-hidden="true">EU</span><span class="sr">Euskaraz</span></a>
+    <a class="cab-cta" href="#presupuesto">Pedir presupuesto</a>
+  </div>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-movil">Menú</button>
+</header>
+<div class="menu-movil" id="menu-movil">
+  <nav aria-label="Menú"><ul><li><a href="#obras">Obras</a></li><li><a href="#presupuesto">Presupuesto</a></li><li><a href="#contacto">Contacto</a></li></ul></nav>
+  <p><a href="tel:+34943000000">943 00 00 00</a><br><a href="https://wa.me/34600000000" rel="noopener">WhatsApp</a></p>
+  <p><a href="../" lang="eu" hreflang="eu">Euskaraz</a></p>
+</div>
+
+<main id="contenido">
+<section class="portada" data-tono="oscuro" aria-labelledby="h1">
+  <div class="portada-foto"><picture><source media="(max-width: 899px)" type="image/avif" srcset="../fotos/portada-m-600.avif 600w, ../fotos/portada-m-900.avif 900w, ../fotos/portada-m-1200.avif 1200w" sizes="100vw"><source media="(max-width: 899px)" type="image/webp" srcset="../fotos/portada-m-600.webp 600w, ../fotos/portada-m-900.webp 900w, ../fotos/portada-m-1200.webp 1200w" sizes="100vw"><source type="image/avif" srcset="../fotos/portada-1400.avif 1400w, ../fotos/portada-2000.avif 2000w, ../fotos/portada-2800.avif 2800w, ../fotos/portada-4000.avif 4000w" sizes="100vw"><img src="../fotos/portada-2000.webp" srcset="../fotos/portada-1400.webp 1400w, ../fotos/portada-2000.webp 2000w, ../fotos/portada-2800.webp 2800w, ../fotos/portada-4000.webp 4000w" sizes="100vw" width="4000" height="2667" alt="Casa blanca de obra nueva al anochecer, con las luces encendidas y un camino de losas hasta la puerta" fetchpriority="high" decoding="async"></picture></div>
+  <h1 id="h1"><span class="p"><span style="--i:0">Reformas</span></span> <span class="p"><span style="--i:1">y</span></span> <span class="p"><span style="--i:2">casas</span></span> <span class="p"><span style="--i:3">nuevas</span></span> <span class="p"><span style="--i:4">en</span></span> <span class="p"><span style="--i:5">Tolosaldea.</span></span></h1>
+</section>
+
+<section class="estudio" data-tono="claro" aria-labelledby="h-est" data-estudio>
+  <div class="est-fijo">
+    <p class="esq est-izq">Cómo trabajamos</p>
+    <p class="esq est-der" aria-hidden="true">LAUZA</p>
+    <div class="est-pista" data-est-pista>
+      <div class="est-a"><h2 id="h-est" data-lineas>Antes de empezar, precio por escrito y fecha de entrega.</h2></div>
+      <div class="est-b" data-panel="foto"><picture><source type="image/avif" srcset="../fotos/estudio-600.avif 600w, ../fotos/estudio-1000.avif 1000w, ../fotos/estudio-1440.avif 1440w, ../fotos/estudio-1800.avif 1800w" sizes="(min-width: 900px) 50vw, 100vw"><img src="../fotos/estudio-1000.webp" srcset="../fotos/estudio-600.webp 600w, ../fotos/estudio-1000.webp 1000w, ../fotos/estudio-1440.webp 1440w, ../fotos/estudio-1800.webp 1800w" sizes="(min-width: 900px) 50vw, 100vw" width="2267" height="2834" alt="Salón blanco con una viga de madera vista, dos ventanas y una chimenea colgada" loading="lazy" decoding="async"></picture></div>
+      <div class="est-c"><p data-enciende-h>El encargado que viene a medir es el mismo que lleva la obra. Sabes quién entra en casa cada día y qué se hace esa semana.</p></div>
+    </div>
+    <div class="est-velo" aria-hidden="true" data-est-velo></div>
+  </div>
+</section>
+
+<section class="marron" data-tono="oscuro" aria-label="LAUZA" data-marron>
+  <div class="mar-foto" data-panel="foto"><picture><source type="image/avif" srcset="../fotos/marron-480.avif 480w, ../fotos/marron-800.avif 800w, ../fotos/marron-1200.avif 1200w" sizes="(min-width: 900px) 25vw, 64vw"><img src="../fotos/marron-800.webp" srcset="../fotos/marron-480.webp 480w, ../fotos/marron-800.webp 800w, ../fotos/marron-1200.webp 1200w" sizes="(min-width: 900px) 25vw, 64vw" width="4000" height="5333" alt="Casa blanca de tres plantas con terrazas, al atardecer" loading="lazy" decoding="async"></picture></div>
+  <div class="mar-txt">
+    <p data-enciende>Cocinas, baños, fachadas, tejados y casas enteras en Tolosa y los pueblos de alrededor. La obra la hace nuestra cuadrilla.</p>
+    <a class="enl-linea" href="#presupuesto"><span>Pedir presupuesto</span><svg class="fl" viewBox="0 0 18 12" aria-hidden="true"><path d="M0 6h16.5M11.5 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a>
+  </div>
+  <p class="gigante" aria-hidden="true" data-gigante><span><span style="--i:0">L</span><span style="--i:1">A</span><span style="--i:2">U</span><span style="--i:3">Z</span><span style="--i:4">A</span></span></p>
+</section>
+
+<section class="obras" id="obras" data-tono="claro" aria-labelledby="h-obras">
+  <div class="obras-cab">
+    <h2 id="h-obras" class="esq">Obras terminadas</h2>
+    <p class="obras-ej">Fotos de ejemplo</p>
+  </div>
+  <div class="obras-in" data-obras>
+    <ul class="obras-lista">
+        <li class="obra on" data-obra="0">
+          <div class="obra-foto"><picture><source type="image/avif" srcset="../fotos/obra1-480.avif 480w, ../fotos/obra1-800.avif 800w, ../fotos/obra1-1200.avif 1200w" sizes="(min-width: 900px) 41vw, 92vw"><img src="../fotos/obra1-800.webp" srcset="../fotos/obra1-480.webp 480w, ../fotos/obra1-800.webp 800w, ../fotos/obra1-1200.webp 1200w" sizes="(min-width: 900px) 41vw, 92vw" width="2279" height="3072" alt="Cocina de madera y blanco junto a dos ventanas, con suelo de tarima" loading="lazy" decoding="async"></picture></div>
+          <button class="obra-fila" type="button" aria-pressed="true" aria-label="Cocina de un piso · Tolosa · Reforma"><span class="o-pue">Tolosa</span><span class="o-nom">Cocina de un piso</span><span class="o-tip">Reforma</span></button>
+        </li>
+        <li class="obra" data-obra="1">
+          <div class="obra-foto"><picture><source type="image/avif" srcset="../fotos/obra2-480.avif 480w, ../fotos/obra2-800.avif 800w, ../fotos/obra2-1200.avif 1200w" sizes="(min-width: 900px) 41vw, 92vw"><img src="../fotos/obra2-800.webp" srcset="../fotos/obra2-480.webp 480w, ../fotos/obra2-800.webp 800w, ../fotos/obra2-1200.webp 1200w" sizes="(min-width: 900px) 41vw, 92vw" width="3376" height="4551" alt="Ducha de obra con mampara de cristal, grifería dorada y una hornacina en la pared" loading="lazy" decoding="async"></picture></div>
+          <button class="obra-fila" type="button" aria-pressed="false" aria-label="Baño con ducha de obra · Ibarra · Reforma"><span class="o-pue">Ibarra</span><span class="o-nom">Baño con ducha de obra</span><span class="o-tip">Reforma</span></button>
+        </li>
+        <li class="obra" data-obra="2">
+          <div class="obra-foto"><picture><source type="image/avif" srcset="../fotos/obra3-480.avif 480w, ../fotos/obra3-800.avif 800w, ../fotos/obra3-1200.avif 1200w" sizes="(min-width: 900px) 41vw, 92vw"><img src="../fotos/obra3-800.webp" srcset="../fotos/obra3-480.webp 480w, ../fotos/obra3-800.webp 800w, ../fotos/obra3-1200.webp 1200w" sizes="(min-width: 900px) 41vw, 92vw" width="2849" height="3841" alt="Fachada de un bloque de pisos de color crema con balcones de hierro" loading="lazy" decoding="async"></picture></div>
+          <button class="obra-fila" type="button" aria-pressed="false" aria-label="Fachada de un bloque · Alegia · Rehabilitación"><span class="o-pue">Alegia</span><span class="o-nom">Fachada de un bloque</span><span class="o-tip">Rehabilitación</span></button>
+        </li>
+        <li class="obra" data-obra="3">
+          <div class="obra-foto"><picture><source type="image/avif" srcset="../fotos/obra4-480.avif 480w, ../fotos/obra4-800.avif 800w, ../fotos/obra4-1200.avif 1200w" sizes="(min-width: 900px) 41vw, 92vw"><img src="../fotos/obra4-800.webp" srcset="../fotos/obra4-480.webp 480w, ../fotos/obra4-800.webp 800w, ../fotos/obra4-1200.webp 1200w" sizes="(min-width: 900px) 41vw, 92vw" width="1494" height="2014" alt="Tejado de teja roja con dos ventanas y una chimenea" loading="lazy" decoding="async"></picture></div>
+          <button class="obra-fila" type="button" aria-pressed="false" aria-label="Tejado de un caserío · Anoeta · Rehabilitación"><span class="o-pue">Anoeta</span><span class="o-nom">Tejado de un caserío</span><span class="o-tip">Rehabilitación</span></button>
+        </li>
+        <li class="obra" data-obra="4">
+          <div class="obra-foto"><picture><source type="image/avif" srcset="../fotos/obra5-480.avif 480w, ../fotos/obra5-800.avif 800w, ../fotos/obra5-1200.avif 1200w" sizes="(min-width: 900px) 41vw, 92vw"><img src="../fotos/obra5-800.webp" srcset="../fotos/obra5-480.webp 480w, ../fotos/obra5-800.webp 800w, ../fotos/obra5-1200.webp 1200w" sizes="(min-width: 900px) 41vw, 92vw" width="4000" height="5392" alt="Casa blanca de dos plantas con tejado rojo y contraventanas de madera" loading="lazy" decoding="async"></picture></div>
+          <button class="obra-fila" type="button" aria-pressed="false" aria-label="Casa de dos plantas · Villabona · Obra nueva"><span class="o-pue">Villabona</span><span class="o-nom">Casa de dos plantas</span><span class="o-tip">Obra nueva</span></button>
+        </li>
+        <li class="obra" data-obra="5">
+          <div class="obra-foto"><picture><source type="image/avif" srcset="../fotos/obra6-480.avif 480w, ../fotos/obra6-800.avif 800w, ../fotos/obra6-1200.avif 1200w" sizes="(min-width: 900px) 41vw, 92vw"><img src="../fotos/obra6-800.webp" srcset="../fotos/obra6-480.webp 480w, ../fotos/obra6-800.webp 800w, ../fotos/obra6-1200.webp 1200w" sizes="(min-width: 900px) 41vw, 92vw" width="4000" height="5392" alt="Bajo con techo de madera, escalera de hierro a una entreplanta y cocina abierta" loading="lazy" decoding="async"></picture></div>
+          <button class="obra-fila" type="button" aria-pressed="false" aria-label="Bajo convertido en casa · Andoain · Reforma"><span class="o-pue">Andoain</span><span class="o-nom">Bajo convertido en casa</span><span class="o-tip">Reforma</span></button>
+        </li>
+    </ul>
+  </div>
+</section>
+
+<section class="presu" id="presupuesto" data-tono="claro" aria-labelledby="h-pre">
+  <h2 id="h-pre" data-lineas>Presupuesto de tu reforma en un minuto</h2>
+  <div class="presu-rej">
+    <div class="presu-foto" data-panel="foto"><div class="pf on" data-tipo-foto="cocina"><picture><source type="image/avif" srcset="../fotos/tipo-cocina-800.avif 800w, ../fotos/tipo-cocina-1400.avif 1400w, ../fotos/tipo-cocina-1900.avif 1900w" sizes="(min-width: 900px) 66vw, 96vw"><img src="../fotos/tipo-cocina-1400.webp" srcset="../fotos/tipo-cocina-800.webp 800w, ../fotos/tipo-cocina-1400.webp 1400w, ../fotos/tipo-cocina-1900.webp 1900w" sizes="(min-width: 900px) 66vw, 96vw" width="3556" height="2667" alt="Cocina blanca con encimera de piedra y suelo de madera" loading="lazy" decoding="async"></picture></div><div class="pf" data-tipo-foto="bano"><picture><source type="image/avif" srcset="../fotos/tipo-bano-800.avif 800w, ../fotos/tipo-bano-1400.avif 1400w, ../fotos/tipo-bano-1900.avif 1900w" sizes="(min-width: 900px) 66vw, 96vw"><img src="../fotos/tipo-bano-1400.webp" srcset="../fotos/tipo-bano-800.webp 800w, ../fotos/tipo-bano-1400.webp 1400w, ../fotos/tipo-bano-1900.webp 1900w" sizes="(min-width: 900px) 66vw, 96vw" width="2500" height="1875" alt="Baño con azulejo blanco, ducha con mampara negra y suelo de baldosa" loading="lazy" decoding="async"></picture></div><div class="pf" data-tipo-foto="fachada"><picture><source type="image/avif" srcset="../fotos/tipo-fachada-800.avif 800w, ../fotos/tipo-fachada-1400.avif 1400w, ../fotos/tipo-fachada-1900.avif 1900w" sizes="(min-width: 900px) 66vw, 96vw"><img src="../fotos/tipo-fachada-1400.webp" srcset="../fotos/tipo-fachada-800.webp 800w, ../fotos/tipo-fachada-1400.webp 1400w, ../fotos/tipo-fachada-1900.webp 1900w" sizes="(min-width: 900px) 66vw, 96vw" width="3547" height="2660" alt="Fachada blanca de un edificio antiguo con balcones" loading="lazy" decoding="async"></picture></div><div class="pf" data-tipo-foto="tejado"><picture><source type="image/avif" srcset="../fotos/tipo-tejado-800.avif 800w, ../fotos/tipo-tejado-1400.avif 1400w, ../fotos/tipo-tejado-1900.avif 1900w" sizes="(min-width: 900px) 66vw, 96vw"><img src="../fotos/tipo-tejado-1400.webp" srcset="../fotos/tipo-tejado-800.webp 800w, ../fotos/tipo-tejado-1400.webp 1400w, ../fotos/tipo-tejado-1900.webp 1900w" sizes="(min-width: 900px) 66vw, 96vw" width="3556" height="2667" alt="Tejado nuevo de teja con una ventana de tejado" loading="lazy" decoding="async"></picture></div><div class="pf" data-tipo-foto="casa"><picture><source type="image/avif" srcset="../fotos/tipo-casa-800.avif 800w, ../fotos/tipo-casa-1400.avif 1400w, ../fotos/tipo-casa-1900.avif 1900w" sizes="(min-width: 900px) 66vw, 96vw"><img src="../fotos/tipo-casa-1400.webp" srcset="../fotos/tipo-casa-800.webp 800w, ../fotos/tipo-casa-1400.webp 1400w, ../fotos/tipo-casa-1900.webp 1900w" sizes="(min-width: 900px) 66vw, 96vw" width="3556" height="2667" alt="Casa blanca de dos plantas con tejado de teja y un patio delante" loading="lazy" decoding="async"></picture></div></div>
+    <form class="presu-form" data-calc onsubmit="return false">
+      <fieldset class="tipos-f"><legend class="esq">Qué hay que hacer</legend>
+        <div class="tipos" data-escalonado><label class="tipo"><input type="radio" name="tipo" value="cocina" data-min="4" data-max="40" data-paso="1" data-def="12" data-eur="650,950" data-sem="2,15" data-nombre="Cocina" checked><span>Cocina</span></label><label class="tipo"><input type="radio" name="tipo" value="bano" data-min="2" data-max="16" data-paso="1" data-def="5" data-eur="850,1250" data-sem="1,8" data-nombre="Baño"><span>Baño</span></label><label class="tipo"><input type="radio" name="tipo" value="fachada" data-min="30" data-max="600" data-paso="10" data-def="140" data-eur="55,95" data-sem="2,80" data-nombre="Fachada"><span>Fachada</span></label><label class="tipo"><input type="radio" name="tipo" value="tejado" data-min="30" data-max="400" data-paso="10" data-def="110" data-eur="85,140" data-sem="1.5,60" data-nombre="Tejado"><span>Tejado</span></label><label class="tipo"><input type="radio" name="tipo" value="casa" data-min="40" data-max="300" data-paso="5" data-def="90" data-eur="550,850" data-sem="6,6" data-nombre="Casa entera"><span>Casa entera</span></label></div>
+      </fieldset>
+      <div class="campos">
+        <div class="campo metros"><label for="metros">Metros</label><output for="metros" data-metros-v>12 m²</output>
+          <input type="range" id="metros" name="metros" min="4" max="40" step="1" value="12" data-metros></div>
+        <div class="campo"><label for="pueblo">Pueblo</label><select id="pueblo" name="pueblo" data-pueblo><option>Tolosa</option><option>Ibarra</option><option>Villabona</option><option>Alegia</option><option>Anoeta</option><option>Andoain</option><option>Irura</option><option>Asteasu</option><option value="Otro pueblo">Otro pueblo</option></select></div>
+      </div>
+      <div class="resul">
+        <p><span>Precio orientativo</span><b data-precio>7.800–11.400 €</b><small class="iva">IVA aparte</small></p>
+        <p><span>Plazo</span><b data-plazo>unas 3 semanas</b></p>
+      </div>
+      <p class="sr" data-resul-sr aria-live="polite"></p>
+      <div class="msg"><span>Tu mensaje</span><p data-msg>Hola, quería un presupuesto para una reforma.<br>Qué: Cocina<br>Metros: 12 m²<br>Pueblo: Tolosa<br>Precio orientativo en la web: 7.800–11.400 €<br>¿Cuándo podéis venir a medir?</p></div>
+      <div class="acc">
+        <a class="btn" href="https://wa.me/34600000000?text=Hola%2C%20quer%C3%ADa%20un%20presupuesto%20para%20una%20reforma.%0AQu%C3%A9%3A%20Cocina%0AMetros%3A%2012%20m%C2%B2%0APueblo%3A%20Tolosa%0APrecio%20orientativo%20en%20la%20web%3A%207.800%E2%80%9311.400%20%E2%82%AC%0A%C2%BFCu%C3%A1ndo%20pod%C3%A9is%20venir%20a%20medir%3F" rel="noopener" target="_blank" data-wa>Enviar por WhatsApp</a>
+        <p class="o">o llama al <a href="tel:+34943000000">943 00 00 00</a></p>
+      </div>
+      <p class="ej">Datos de ejemplo: teléfono, precios, plazos, obras y opiniones.</p>
+    </form>
+  </div>
+</section>
+
+<section class="opin" data-tono="claro" aria-labelledby="h-op" data-opin>
+  <div class="op-izq">
+    <div class="op-foto-p" data-panel="foto"><div class="pf on" data-op-foto="0"><picture><source type="image/avif" srcset="../fotos/obra1-480.avif 480w, ../fotos/obra1-800.avif 800w, ../fotos/obra1-1200.avif 1200w" sizes="(min-width: 900px) 25vw, 60vw"><img src="../fotos/obra1-800.webp" srcset="../fotos/obra1-480.webp 480w, ../fotos/obra1-800.webp 800w, ../fotos/obra1-1200.webp 1200w" sizes="(min-width: 900px) 25vw, 60vw" width="2279" height="3072" alt="Cocina de madera y blanco junto a dos ventanas, con suelo de tarima" loading="lazy" decoding="async"></picture></div><div class="pf" data-op-foto="1"><picture><source type="image/avif" srcset="../fotos/obra4-480.avif 480w, ../fotos/obra4-800.avif 800w, ../fotos/obra4-1200.avif 1200w" sizes="(min-width: 900px) 25vw, 60vw"><img src="../fotos/obra4-800.webp" srcset="../fotos/obra4-480.webp 480w, ../fotos/obra4-800.webp 800w, ../fotos/obra4-1200.webp 1200w" sizes="(min-width: 900px) 25vw, 60vw" width="1494" height="2014" alt="Tejado de teja roja con dos ventanas y una chimenea" loading="lazy" decoding="async"></picture></div></div>
+    <a class="enl-linea" href="#obras" data-ver-obra><span>Ver la obra</span><svg class="fl" viewBox="0 0 18 12" aria-hidden="true"><path d="M0 6h16.5M11.5 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a>
+  </div>
+  <div class="op-centro">
+    <h2 id="h-op" class="esq">Después de la obra</h2>
+    <div class="op-citas">
+        <figure class="op-cita on" data-op="0" data-obra="0">
+          <blockquote><p>«Nos dijeron tres semanas y fueron tres semanas. Cada tarde dejaban la cocina barrida.»</p></blockquote>
+          <figcaption><b>Miren</b><span>Tolosa · Cocina de un piso</span><span class="op-ej">Opinión de ejemplo</span></figcaption>
+        </figure>
+        <figure class="op-cita" data-op="1" data-obra="3">
+          <blockquote><p>«Cambiaron el tejado en dos semanas y lo dejaron todo limpio.»</p></blockquote>
+          <figcaption><b>Joxe</b><span>Anoeta · Tejado de un caserío</span><span class="op-ej">Opinión de ejemplo</span></figcaption>
+        </figure>
+    </div>
+    <div class="op-nav"><button type="button" data-op-mover="-1">Anterior</button><button type="button" data-op-mover="1">Siguiente</button></div>
+  </div>
+  <div class="op-der" data-panel="foto"><div class="pf on" data-op-foto="0"><picture><source type="image/avif" srcset="../fotos/op1-480.avif 480w, ../fotos/op1-800.avif 800w, ../fotos/op1-1200.avif 1200w" sizes="(min-width: 900px) 41vw, 92vw"><img src="../fotos/op1-800.webp" srcset="../fotos/op1-480.webp 480w, ../fotos/op1-800.webp 800w, ../fotos/op1-1200.webp 1200w" sizes="(min-width: 900px) 41vw, 92vw" width="4000" height="5529" alt="Esquina de una cocina con estantes de madera y flores en un jarrón" loading="lazy" decoding="async"></picture></div><div class="pf" data-op-foto="1"><picture><source type="image/avif" srcset="../fotos/op2-480.avif 480w, ../fotos/op2-800.avif 800w, ../fotos/op2-1200.avif 1200w" sizes="(min-width: 900px) 41vw, 92vw"><img src="../fotos/op2-800.webp" srcset="../fotos/op2-480.webp 480w, ../fotos/op2-800.webp 800w, ../fotos/op2-1200.webp 1200w" sizes="(min-width: 900px) 41vw, 92vw" width="2252" height="3113" alt="Tejado de teja con varias buhardillas" loading="lazy" decoding="async"></picture></div></div>
+</section>
+</main>
+
+<footer class="pie" id="contacto" data-tono="claro">
+  <div class="pie-rej">
+    <ul class="pie-c1"><li><a href="https://wa.me/34600000000" rel="noopener">WhatsApp</a></li><li><a href="tel:+34943000000">Llamar</a></li></ul>
+    <p class="pie-c2"><a href="tel:+34943000000">943 00 00 00</a><br><a href="https://wa.me/34600000000" rel="noopener">600 00 00 00</a></p>
+    <div class="pie-c3">
+      <h2 data-lineas>Cuéntanos tu obra</h2>
+      <a class="enl-linea" href="https://wa.me/34600000000" rel="noopener"><span>Pedir presupuesto por WhatsApp</span><svg class="fl" viewBox="0 0 18 12" aria-hidden="true"><path d="M0 6h16.5M11.5 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a>
+    </div>
+  </div>
+  <div class="pie-rej2">
+    <p class="gigante pie-gig" aria-hidden="true" data-gigante><span><span style="--i:0">L</span><span style="--i:1">A</span><span style="--i:2">U</span><span style="--i:3">Z</span><span style="--i:4">A</span></span></p>
+    <nav class="pie-nav" aria-label="LAUZA"><ul><li><a href="#obras">Obras</a></li><li><a href="#presupuesto">Presupuesto</a></li><li><a href="#contacto">Contacto</a></li></ul></nav>
+    <p class="pie-pue">Tolosa, Gipuzkoa</p>
+    <div class="pie-fin">
+      <p>Muestra de diseño de OI Studio. LAUZA no existe: el nombre, el teléfono, los precios, las obras y las opiniones son inventados. Fotos de ejemplo de Unsplash, con sus autores en <a href="../fotos/creditos.json">creditos.json</a>.</p>
+      <p><a href="../" lang="eu" hreflang="eu">Euskaraz</a> · Diseñado por <a class="firma" href="https://oiwebstudio.com/">OI Studio</a></p>
+    </div>
+  </div>
+</footer>
+
+<script type="application/json" id="textos">{"lang":"es","menu":"Menú","cerrar":"Cerrar","plazo_semana":"una semana","plazo_semanas":"unas {n} semanas","plazo_meses":"unos {n} meses","wa_hola":"Hola, quería un presupuesto para una reforma.","wa_que":"Qué","wa_metros":"Metros","wa_pueblo":"Pueblo","wa_precio":"Precio orientativo en la web","wa_fin":"¿Cuándo podéis venir a medir?"}</script>
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/SplitText.min.js"></script>
+<script src="../js/anim-texto.js"></script>
+<script src="../js/pagina.js"></script>
+</body>
+</html>

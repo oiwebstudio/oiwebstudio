@@ -1,0 +1,87 @@
+{
+ "_leeme": "Fotos de la muestra BEHAKO (óptica inventada, 8/11/2026). Todas son fotos de ejemplo de Unsplash (licencia de Unsplash: uso libre, sin atribución obligatoria; se cita igualmente). No son de BEHAKO ni de ninguna óptica real conocida; la de «Ane» es de banco y de ejemplo. Originales mirados a tamaño completo: sin marca de agua. Las de las fichas se llevaron a fondo blanco y se fundieron sobre el gris de la ficha (#e9e9e9, como la referencia). Sin datos de ubicación (sharp no copia el EXIF). Las genera _local/demos/behako-generador/fotos.mjs.",
+ "vista": {
+  "autor": "João Melo",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/a-close-up-of-a-pair-of-medical-equipment--OpWKFHA_yQ",
+  "original": "3967 × 3967",
+  "uso": "portada, mitad izquierda (foróptero; recortado, con una curva que aclara el fondo gris a beige claro liso, teñido a beige cálido y enfocado, como la pared beige de la referencia; 8/11 tras el revisor)"
+ },
+ "monturas": {
+  "autor": "Marcin Sajur",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/elegant-woman-with-large-glasses-looks-directly-at-the-camera-R0e2taoidq8",
+  "original": "3905 × 5858",
+  "uso": "portada, mitad derecha (retrato que mira a cámara con gafas gruesas negras; recortado a 4:5, fondo llevado a beige y algo más de luz para que case con la mitad izquierda). Sustituye desde el 8/11 a la de Apostolos Vamvouras, que miraba hacia abajo"
+ },
+ "ane": {
+  "autor": "Beatriz Cattel",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/young-woman-with-long-brown-hair-wearing-a-black-shirt-UZmSn5GaSWY",
+  "original": "4160 × 6240",
+  "uso": "foto redonda de «Ane» junto a «Las elegidas de Ane» (DE EJEMPLO: foto de banco, no es nadie de la óptica; lo dice el pie). Recortada cuadrada a la cara, a la misma luz cálida"
+ },
+ "tienda1": {
+  "autor": "Scott Van Daalen",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/arranged-assorted-color-eyeglasses-on-rack-UsALNdok2m4",
+  "original": "4096 × 2730",
+  "uso": "primera de las dos fotos bajo «Tus ojos y tus gafas» (recortada a 5:4)"
+ },
+ "tienda2": {
+  "autor": "Harpreet Singh",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/silver-framed-eyeglasses-on-clear-glass-XbPhaw-x0i0",
+  "original": "5472 × 3648",
+  "uso": "segunda de las dos fotos (recortada a 5:4)"
+ },
+ "gabinete": {
+  "autor": "Hush Naidoo Jade Photography",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/person-wearing-loupe-glasses-rcP7T6MPEIc",
+  "original": "3264 × 4896",
+  "uso": "foto cuadrada junto al acordeón del gabinete (recortada desde arriba: queda fuera la camiseta con letras; teñida a beige cálido como el foróptero, sin el azul de la camisa ni el magenta de la gorra; 8/11 tras el revisor)"
+ },
+ "carta": {
+  "autor": "Wesley Tingey",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/medical-eye-test-0are122T4ho",
+  "original": "3581 × 5371",
+  "uso": "banda negra de la cita (recortada a 4:5 y algo cálida)"
+ },
+ "p-izar": {
+  "autor": "Bartosz Sujkowski",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/a-pair-of-glasses-sitting-on-top-of-a-white-surface-0zA84TFRjI8",
+  "original": "4794 × 4000",
+  "uso": "ficha IZAR"
+ },
+ "p-orein": {
+  "autor": "Sincerely Media",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/clear-eyeglasses-on-book-d05w6_7FaPM",
+  "original": "5184 × 3456",
+  "uso": "ficha OREIN"
+ },
+ "p-elur": {
+  "autor": "Jocelyn Morales",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/silver-framed-eyeglasses-on-white-table-Mv7kokwzIMw",
+  "original": "2832 × 4240",
+  "uso": "ficha ELUR"
+ },
+ "p-miru": {
+  "autor": "Vooglam Eyewear",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/a-pair-of-black-and-clear-eyeglasses-floating-UFIFO7CBg68",
+  "original": "4672 × 5840",
+  "uso": "ficha MIRU"
+ },
+ "p-beltz": {
+  "autor": "blocks",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/eyeglasses-with-black-frames-0R1ci4Rb9jU",
+  "original": "4912 × 3264",
+  "uso": "ficha BELTZ"
+ }
+}

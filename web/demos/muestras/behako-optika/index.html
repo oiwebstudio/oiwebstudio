@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>BEHAKO, optika Tolosan. Diseinu-lagina</title>
+<meta name="description" content="OI Studioko diseinu-lagina: Tolosan asmatutako optika. Bertan, ikusmena graduatzeko hitzordua eskatzen da, berrikuspena tokatzen den jakiten da eta adibide-betaurrekoak ikusten dira.">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="BEHAKO, optika Tolosan. Diseinu-lagina">
+<meta property="og:description" content="OI Studioko diseinu-lagina: Tolosan asmatutako optika. Bertan, ikusmena graduatzeko hitzordua eskatzen da, berrikuspena tokatzen den jakiten da eta adibide-betaurrekoak ikusten dira.">
+<meta property="og:type" content="website">
+<link rel="alternate" hreflang="es" href="es/">
+<!--
+  MUESTRA «BEHAKO» (OI Studio, 8/11/2026): óptica INVENTADA en Tolosa para la pieza «¿Qué negocio tienes?» de oiwebstudio.com.
+  «Behako» = vistazo, mirada rápida. Comprobado el 8/11 que no hay ninguna óptica con ese nombre en Gipuzkoa (OpenStreetMap)
+  ni en los buscadores. Son de ejemplo: el nombre, la dirección (Korreo kalea 0, Tolosa), los teléfonos, el horario, los precios
+  y los modelos de las gafas, Ane (y su foto, de banco) y lo que se cuenta de los servicios (lo dice también la nota del pie). noindex.
+  Calco de la referencia que eligió Oier el 8/11: n.º 07, VU (vu.ca) — portada partida al 50 % a sangre con el aparato del
+  gabinete a la izquierda y un retrato con gafas a la derecha, cada mitad con su palabra abajo a la izquierda; al pasar el
+  ratón la mitad se agranda, la otra se apaga y sale el botón blanco. Menú doble (enlaces pequeños arriba, filete fino, logo,
+  tres secciones con desplegable y «Pedir cita» con contorno blanco). Debajo, el mismo ritmo que la referencia: texto con
+  etiqueta enmarcada y dos fotos; «las elegidas de…» con la foto redonda de quien las elige y la fila de monturas sobre gris; foto + acordeón numerado con botón
+  negro; sección centrada; banda negra con foto a sangre; tres columnas; pie beige.
+  Lo que hace: pedir cita sin llamar (qué necesitas, día y franja → mensaje de WhatsApp escrito, con «escribiendo…»), saber si
+  toca la revisión (eliges el año de la última y te lo dice con la fecha real; sin JS o mientras carga, se ve el texto de
+  reserva «Elige el año de tu última revisión»), y monturas de ejemplo con precio que se pueden
+  apartar para probarlas (pasan a la cita). Horario con el estado según la hora real de Tolosa.
+  Letras: 13 Satoshi (títulos, menú, botones; en lugar de la Work Sans de la referencia) y 32 Petrona (texto; en lugar de su
+  Source Serif), autoalojadas en fuentes/. Sin cursivas.
+  Fotos: Unsplash (licencia de Unsplash), detalle en fotos/creditos.json. Ninguna es de una óptica real conocida ni lleva marca de agua.
+  El foróptero, el gabinete y la carta van teñidos a beige cálido; los dos retratos (portada y Ane), a la misma luz cálida.
+  Movimiento: logo, menú y portada entran con CSS desde el primer pintado; lo de abajo, con GSAP 3.13 + ScrollTrigger + SplitText
+  (js/) + anim-texto.js + pagina.js, por tiempo al asomar; la fila de monturas corre de lado con el scroll. Con «reducir
+  movimiento» o sin JS, todo quieto y visible.
+  Generada con _local/demos/behako-generador/gen.mjs (no editar este HTML a mano).
+-->
+<link rel="preload" href="fuentes/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fuentes/petrona-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="estilo.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="saltar" href="#contenido">Edukira joan</a>
+
+<header class="cab">
+  <nav class="cab-sup" aria-label="Kontaktua">
+    <a href="#revision">Berrikuspena</a><a href="#horario">Ordutegia</a><a href="#contacto">Kontaktua</a><a class="idioma" href="es/" lang="es" hreflang="es"><span aria-hidden="true">ES</span><span class="sr">Castellano</span></a>
+  </nav>
+  <div class="cab-inf">
+    <h1 class="logo"><a href="#contenido"><svg class="marca" viewBox="0 0 40 22" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.25"><circle cx="10" cy="12" r="8"/><circle cx="30" cy="12" r="8"/><path d="M18 10.5c1.2-1.6 2.8-1.6 4 0"/><path d="M2 9.5 .6 6.5M38 9.5l1.4-3"/></g></svg><span class="logo-t" aria-hidden="true"><span class="pal"><span class="le"><span style="--i:0">B</span></span><span class="le"><span style="--i:1">E</span></span><span class="le"><span style="--i:2">H</span></span><span class="le"><span style="--i:3">A</span></span><span class="le"><span style="--i:4">K</span></span><span class="le"><span style="--i:5">O</span></span></span></span><span class="sr">BEHAKO, optika Tolosan</span></a></h1>
+    <nav class="cab-nav" aria-label="Menua">
+      <ul>
+        <li class="desp"><button type="button" aria-expanded="false" aria-controls="sub-vista">Ikusmena zaintzea<svg class="chev" viewBox="0 0 12 8" aria-hidden="true" focusable="false"><path d="m1.5 1.8 4.5 4.4 4.5-4.4" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></button>
+          <ul class="sub" id="sub-vista"><li><a href="#graduacion">Graduazioa</a></li><li><a href="#revision">Azterketa tokatzen zaizu?</a></li><li><a href="#cita">Hitzordua eskatu</a></li></ul></li>
+        <li class="desp"><button type="button" aria-expanded="false" aria-controls="sub-monturas">Armazoiak<svg class="chev" viewBox="0 0 12 8" aria-hidden="true" focusable="false"><path d="m1.5 1.8 4.5 4.4 4.5-4.4" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></button>
+          <ul class="sub" id="sub-monturas"><li><a href="#monturas">Gehien frogatutakoak</a></li><li><a href="#arreglos">Konponketak eta doikuntzak</a></li></ul></li>
+        <li><a href="#lentillas">Lentillak</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-borde cab-cita" href="#cita">Hitzordua eskatu<svg class="fl" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><path d="M1 6h13M9.5 1.5 14 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a>
+    <a class="idioma-m" href="es/" lang="es" hreflang="es"><span aria-hidden="true">ES</span><span class="sr">Castellano</span></a>
+    <button class="hamb" type="button" aria-expanded="false" aria-controls="menu-movil"><span class="sr">Menua</span><i></i><i></i></button>
+  </div>
+</header>
+
+<div class="menu-movil" id="menu-movil" hidden>
+  <ul>
+    <li><a href="#gabinete">Ikusmena zaintzea</a></li>
+    <li><a href="#monturas">Armazoiak</a></li>
+    <li><a href="#lentillas">Lentillak</a></li>
+    <li><a href="#revision">Berrikuspena</a></li>
+    <li><a href="#horario">Ordutegia</a></li>
+    <li><a href="#contacto">Kontaktua</a></li>
+  </ul>
+  <a class="btn btn-negro" href="#cita">Hitzordua eskatu<svg class="fl" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><path d="M1 6h13M9.5 1.5 14 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a>
+  <p><a href="tel:+34943000000">943 00 00 00</a> · <a href="es/" lang="es" hreflang="es">Castellano</a></p>
+</div>
+
+<main id="contenido">
+<section class="portada" data-portada aria-label="BEHAKO, optika Tolosan">
+  <a class="mitad mitad-izq" href="#gabinete">
+    <span class="mitad-foto"><picture><source type="image/avif" srcset="fotos/vista-800.avif 800w, fotos/vista-1200.avif 1200w, fotos/vista-1800.avif 1800w, fotos/vista-2600.avif 2600w" sizes="(min-width: 760px) 57vw, 100vw"><img src="fotos/vista-1200.webp" srcset="fotos/vista-800.webp 800w, fotos/vista-1200.webp 1200w, fotos/vista-1800.webp 1800w, fotos/vista-2600.webp 2600w" sizes="(min-width: 760px) 57vw, 100vw" width="1200" height="1380" alt="Foroptero, bista graduatzeko erabiltzen den aparatua." fetchpriority="high" decoding="async"></picture></span>
+    <span class="mitad-txt"><h2 class="mitad-h"><span class="sr">Ikusmena zaintzea</span><span aria-hidden="true"><span class="pal"><span class="le"><span style="--i:0">I</span></span><span class="le"><span style="--i:1">k</span></span><span class="le"><span style="--i:2">u</span></span><span class="le"><span style="--i:3">s</span></span><span class="le"><span style="--i:4">m</span></span><span class="le"><span style="--i:5">e</span></span><span class="le"><span style="--i:6">n</span></span><span class="le"><span style="--i:7">a</span></span></span> <span class="pal"><span class="le"><span style="--i:0">z</span></span><span class="le"><span style="--i:1">a</span></span><span class="le"><span style="--i:2">i</span></span><span class="le"><span style="--i:3">n</span></span><span class="le"><span style="--i:4">t</span></span><span class="le"><span style="--i:5">z</span></span><span class="le"><span style="--i:6">e</span></span><span class="le"><span style="--i:7">a</span></span></span></span></h2><span class="btn btn-blanco" aria-hidden="true">Kabinetea ikusi<svg class="fl" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><path d="M1 6h13M9.5 1.5 14 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></span></span>
+  </a>
+  <a class="mitad mitad-der" href="#monturas">
+    <span class="mitad-foto"><picture><source type="image/avif" srcset="fotos/monturas-800.avif 800w, fotos/monturas-1200.avif 1200w, fotos/monturas-1800.avif 1800w, fotos/monturas-2600.avif 2600w" sizes="(min-width: 760px) 57vw, 100vw"><img src="fotos/monturas-1200.webp" srcset="fotos/monturas-800.webp 800w, fotos/monturas-1200.webp 1200w, fotos/monturas-1800.webp 1800w, fotos/monturas-2600.webp 2600w" sizes="(min-width: 760px) 57vw, 100vw" width="1200" height="1500" alt="Azetato beltzezko betaurreko handiekin kamerari begira dagoen emakumea." fetchpriority="high" decoding="async"></picture></span>
+    <span class="mitad-txt"><h2 class="mitad-h"><span class="sr">Armazoiak</span><span aria-hidden="true"><span class="pal"><span class="le"><span style="--i:0">A</span></span><span class="le"><span style="--i:1">r</span></span><span class="le"><span style="--i:2">m</span></span><span class="le"><span style="--i:3">a</span></span><span class="le"><span style="--i:4">z</span></span><span class="le"><span style="--i:5">o</span></span><span class="le"><span style="--i:6">i</span></span><span class="le"><span style="--i:7">a</span></span><span class="le"><span style="--i:8">k</span></span></span></span></h2><span class="btn btn-blanco" aria-hidden="true">Armazoiak ikusi<svg class="fl" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><path d="M1 6h13M9.5 1.5 14 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></span></span>
+  </a>
+</section>
+
+<section class="intro" aria-labelledby="h-intro">
+  <div class="intro-txt">
+    <p class="etiqueta">Tolosan</p>
+    <h2 id="h-intro" data-lineas>Zure begiak eta betaurrekoak, leku berean</h2>
+    <p class="serif" data-enciende>Kabinetean graduatzen zaitugu, eta irtetean, armazoia aukeratzen duzu, graduazioa eginda. Betaurrekoak puskatzen bazaizkizu, hemengoak ez badira ere, ekarri eta begiratu egingo dizkizugu.</p>
+    <a class="enl" href="#donde">Nola iritsi<svg class="fl" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><path d="M1 6h13M9.5 1.5 14 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a>
+  </div>
+  <div class="intro-fotos">
+    <figure data-panel="foto"><picture><source type="image/avif" srcset="fotos/tienda1-700.avif 700w, fotos/tienda1-1000.avif 1000w, fotos/tienda1-1400.avif 1400w" sizes="(min-width: 760px) 45vw, 100vw"><img src="fotos/tienda1-1000.webp" srcset="fotos/tienda1-700.webp 700w, fotos/tienda1-1000.webp 1000w, fotos/tienda1-1400.webp 1400w" sizes="(min-width: 760px) 45vw, 100vw" width="1000" height="800" alt="Koloretako armazoien horma euskarrietan." loading="lazy" decoding="async"></picture></figure>
+    <figure data-panel="foto"><picture><source type="image/avif" srcset="fotos/tienda2-700.avif 700w, fotos/tienda2-1000.avif 1000w, fotos/tienda2-1400.avif 1400w" sizes="(min-width: 760px) 45vw, 100vw"><img src="fotos/tienda2-1000.webp" srcset="fotos/tienda2-700.webp 700w, fotos/tienda2-1000.webp 1000w, fotos/tienda2-1400.webp 1400w" sizes="(min-width: 760px) 45vw, 100vw" width="1000" height="800" alt="Azetatozko eta metalezko armazoiak erakustoki batean." loading="lazy" decoding="async"></picture></figure>
+  </div>
+</section>
+
+<section class="mon" id="monturas" aria-labelledby="h-mon">
+  <div class="mon-txt">
+    <p class="etiqueta">Armazoiak</p>
+    <div class="mon-quien"><span class="mono"><picture><source type="image/avif" srcset="fotos/ane-200.avif 200w, fotos/ane-300.avif 300w" sizes="100px"><img src="fotos/ane-300.webp" srcset="fotos/ane-200.webp 200w, fotos/ane-300.webp 300w" sizes="100px" width="300" height="300" alt="" loading="lazy" decoding="async"></picture></span><h2 id="h-mon" data-lineas>Aneren hautatuak</h2></div>
+    <p class="serif cita-ane">«Metaliko biribilak eta kareya asko eskatzen dira. Etorri zure betaurreko zaharrekin eta antzeko zerbaiten bila gabiltza.»</p>
+    <p class="mon-toca">Sakatu betaurrekoak eta probatzeko gordeko dizkizugu.</p>
+    <a class="enl" href="#cita" data-motivo="gafas">Bat eskatu probatzeko<svg class="fl" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><path d="M1 6h13M9.5 1.5 14 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a>
+  </div>
+  <div class="mon-fila" data-fila>
+    <ul class="fichas" data-pista-fila>
+      <li class="ficha" style="--i:0">
+        <button type="button" class="ficha-b" data-montura="IZAR" aria-pressed="false" aria-label="IZAR, 165 €, metala: Probatu">
+          <span class="ficha-img"><picture><source type="image/avif" srcset="fotos/p-izar-400.avif 400w, fotos/p-izar-700.avif 700w, fotos/p-izar-1000.avif 1000w" sizes="(min-width: 900px) 322px, 62vw"><img src="fotos/p-izar-700.webp" srcset="fotos/p-izar-400.webp 400w, fotos/p-izar-700.webp 700w, fotos/p-izar-1000.webp 1000w" sizes="(min-width: 900px) 322px, 62vw" width="700" height="826" alt="" loading="lazy" decoding="async"></picture></span>
+          <span class="ficha-n">IZAR</span>
+          <span class="ficha-p"><span class="pr">165 €</span><span class="pt" aria-hidden="true"></span><span class="mat">Metala</span></span>
+          <span class="ficha-probar" data-probar-t>Probatu</span>
+        </button>
+      </li>
+      <li class="ficha" style="--i:1">
+        <button type="button" class="ficha-b" data-montura="OREIN" aria-pressed="false" aria-label="OREIN, 139 €, azetatoa eta metala: Probatu">
+          <span class="ficha-img"><picture><source type="image/avif" srcset="fotos/p-orein-400.avif 400w, fotos/p-orein-700.avif 700w, fotos/p-orein-1000.avif 1000w" sizes="(min-width: 900px) 322px, 62vw"><img src="fotos/p-orein-700.webp" srcset="fotos/p-orein-400.webp 400w, fotos/p-orein-700.webp 700w, fotos/p-orein-1000.webp 1000w" sizes="(min-width: 900px) 322px, 62vw" width="700" height="826" alt="" loading="lazy" decoding="async"></picture></span>
+          <span class="ficha-n">OREIN</span>
+          <span class="ficha-p"><span class="pr">139 €</span><span class="pt" aria-hidden="true"></span><span class="mat">Azetatoa eta metala</span></span>
+          <span class="ficha-probar" data-probar-t>Probatu</span>
+        </button>
+      </li>
+      <li class="ficha" style="--i:2">
+        <button type="button" class="ficha-b" data-montura="ELUR" aria-pressed="false" aria-label="ELUR, 119 €, metala: Probatu">
+          <span class="ficha-img"><picture><source type="image/avif" srcset="fotos/p-elur-400.avif 400w, fotos/p-elur-700.avif 700w, fotos/p-elur-1000.avif 1000w" sizes="(min-width: 900px) 322px, 62vw"><img src="fotos/p-elur-700.webp" srcset="fotos/p-elur-400.webp 400w, fotos/p-elur-700.webp 700w, fotos/p-elur-1000.webp 1000w" sizes="(min-width: 900px) 322px, 62vw" width="700" height="826" alt="" loading="lazy" decoding="async"></picture></span>
+          <span class="ficha-n">ELUR</span>
+          <span class="ficha-p"><span class="pr">119 €</span><span class="pt" aria-hidden="true"></span><span class="mat">Metala</span></span>
+          <span class="ficha-probar" data-probar-t>Probatu</span>
+        </button>
+      </li>
+      <li class="ficha" style="--i:3">
+        <button type="button" class="ficha-b" data-montura="MIRU" aria-pressed="false" aria-label="MIRU, 129 €, azetatoa: Probatu">
+          <span class="ficha-img"><picture><source type="image/avif" srcset="fotos/p-miru-400.avif 400w, fotos/p-miru-700.avif 700w, fotos/p-miru-1000.avif 1000w" sizes="(min-width: 900px) 322px, 62vw"><img src="fotos/p-miru-700.webp" srcset="fotos/p-miru-400.webp 400w, fotos/p-miru-700.webp 700w, fotos/p-miru-1000.webp 1000w" sizes="(min-width: 900px) 322px, 62vw" width="700" height="826" alt="" loading="lazy" decoding="async"></picture></span>
+          <span class="ficha-n">MIRU</span>
+          <span class="ficha-p"><span class="pr">129 €</span><span class="pt" aria-hidden="true"></span><span class="mat">Azetatoa</span></span>
+          <span class="ficha-probar" data-probar-t>Probatu</span>
+        </button>
+      </li>
+      <li class="ficha" style="--i:4">
+        <button type="button" class="ficha-b" data-montura="BELTZ" aria-pressed="false" aria-label="BELTZ, 98 €, azetatoa: Probatu">
+          <span class="ficha-img"><picture><source type="image/avif" srcset="fotos/p-beltz-400.avif 400w, fotos/p-beltz-700.avif 700w, fotos/p-beltz-1000.avif 1000w" sizes="(min-width: 900px) 322px, 62vw"><img src="fotos/p-beltz-700.webp" srcset="fotos/p-beltz-400.webp 400w, fotos/p-beltz-700.webp 700w, fotos/p-beltz-1000.webp 1000w" sizes="(min-width: 900px) 322px, 62vw" width="700" height="826" alt="" loading="lazy" decoding="async"></picture></span>
+          <span class="ficha-n">BELTZ</span>
+          <span class="ficha-p"><span class="pr">98 €</span><span class="pt" aria-hidden="true"></span><span class="mat">Azetatoa</span></span>
+          <span class="ficha-probar" data-probar-t>Probatu</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="gab" id="gabinete" aria-labelledby="h-gab">
+  <figure class="gab-foto" data-panel="lado"><picture><source type="image/avif" srcset="fotos/gabinete-600.avif 600w, fotos/gabinete-900.avif 900w, fotos/gabinete-1300.avif 1300w" sizes="(min-width: 760px) 38vw, 100vw"><img src="fotos/gabinete-900.webp" srcset="fotos/gabinete-600.webp 600w, fotos/gabinete-900.webp 900w, fotos/gabinete-1300.webp 1300w" sizes="(min-width: 760px) 38vw, 100vw" width="900" height="900" alt="Optikoa, paziente baten aurpegian probako betaurrekoak doitzen." loading="lazy" decoding="async"></picture></figure>
+  <div class="gab-txt">
+    <p class="etiqueta">Kabinetean</p>
+    <h2 id="h-gab" data-lineas>Zer egiten dugu kabinetean?</h2>
+    <a class="btn btn-negro" href="#cita">Hitzordua eskatu<svg class="fl" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><path d="M1 6h13M9.5 1.5 14 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a>
+    <div class="acordeon" data-escalonado>
+        <details class="acor" id="graduacion" open>
+          <summary><span class="acor-n">01</span><h3>Ikusmenaren graduazioa</h3><span class="mas" aria-hidden="true"></span></summary>
+          <div class="acor-c"><p class="serif">Oftalmologo batek begiratu behar duen zerbait ikusten badugu, esango dizugu.</p></div>
+        </details>
+        <details class="acor" id="lentillas">
+          <summary><span class="acor-n">02</span><h3>Lentillak</h3><span class="mas" aria-hidden="true"></span></summary>
+          <div class="acor-c"><p class="serif">Lentillak jartzen eta kentzen erakutsiko dizugu, eta nola doazkizun ikusteko hitzordua emango dizugu.</p></div>
+        </details>
+        <details class="acor" id="arreglos">
+          <summary><span class="acor-n">03</span><h3>Konponketak eta doikuntzak</h3><span class="mas" aria-hidden="true"></span></summary>
+          <div class="acor-c"><p class="serif">Torlojuak eta plaketak aldatuko ditugu, eta estutzen dituzten betaurrekoak doituko ditugu. Ekarri betaurrekoak, hemengoak ez badira ere.</p></div>
+        </details>
+    </div>
+  </div>
+</section>
+
+<section class="rev" id="revision" aria-labelledby="h-rev">
+  <p class="etiqueta">Berrikuspena</p>
+  <h2 id="h-rev" data-lineas>Noiz izan zen zure azken azterketa?</h2>
+  <p class="serif rev-p">Aukeratu urtea eta esango dizugu ea tokatzen zaizun.</p>
+  <p class="rev-reserva" data-rev-reserva>Aukeratu zure azken berrikuspenaren urtea</p>
+  <div class="rev-herr" data-rev hidden>
+    <fieldset class="anios"><legend class="sr">Azken berrikuspenaren urtea</legend><div class="anios-l" data-anios></div></fieldset>
+    <div class="linea" data-linea aria-hidden="true"></div>
+    <p class="rev-r" data-rev-r aria-live="polite"></p>
+  </div>
+  <p class="serif rev-nota">Bista urtean behin berrikustea gomendatzen dugu.</p>
+  <a class="enl" href="#cita" data-motivo="graduacion">Hitzordua eskatu berrikuspenerako<svg class="fl" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><path d="M1 6h13M9.5 1.5 14 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a>
+</section>
+
+<section class="cita" id="cita" aria-labelledby="h-cita">
+  <figure class="cita-foto" data-panel="foto"><picture><source type="image/avif" srcset="fotos/carta-700.avif 700w, fotos/carta-1100.avif 1100w, fotos/carta-1600.avif 1600w" sizes="(min-width: 760px) 50vw, 100vw"><img src="fotos/carta-1100.webp" srcset="fotos/carta-700.webp 700w, fotos/carta-1100.webp 1100w, fotos/carta-1600.webp 1600w" sizes="(min-width: 760px) 50vw, 100vw" width="1100" height="1375" alt="Bista neurtzeko letren taula, horma argi batean zintzilik." loading="lazy" decoding="async"></picture></figure>
+  <div class="cita-txt">
+    <h2 id="h-cita" data-lineas>Hitzordua eskatu deitu gabe</h2>
+    <p class="serif">Aukeratu zer behar duzun eta zein egun ondo doakizun. WhatsApp bidez bidaltzeko idatzitako mezua aterako zaizu, eta orduarekin erantzungo dizugu.</p>
+    <form class="elige" data-cita onsubmit="return false">
+      <fieldset>
+        <legend>Zer behar duzu</legend>
+        <div class="ops ops-4"><label class="op"><input type="radio" name="motivo" value="graduacion" checked><span>Ikusmena graduatzea</span></label><label class="op"><input type="radio" name="motivo" value="lentillas"><span>Lentillak</span></label><label class="op"><input type="radio" name="motivo" value="gafas"><span>Betaurreko berriak</span></label><label class="op"><input type="radio" name="motivo" value="arreglo"><span>Konponketa bat</span></label></div>
+      </fieldset>
+      <fieldset>
+        <legend>Ze egun</legend>
+        <div class="dias" data-dias></div>
+        <label class="otro" data-otro><span class="sr">Beste egun bat</span><input type="date" data-fecha></label>
+      </fieldset>
+      <fieldset>
+        <legend>Zer ordutan</legend>
+        <div class="ops">
+          <label class="op"><input type="radio" name="franja" value="manana" checked><span>Goizean</span></label>
+          <label class="op"><input type="radio" name="franja" value="tarde"><span>Arratsaldean</span></label>
+        </div>
+      </fieldset>
+      <p class="aviso" data-aviso aria-live="polite"></p>
+      <p class="elegida" data-elegida hidden>Aukeratutako betaurrekoak: <b data-elegida-n></b> <button type="button" class="quitar" data-quitar>Kendu</button></p>
+      <div class="mensaje">
+        <h3>Zure mezua</h3>
+        <p class="escribiendo" data-escribiendo aria-hidden="true">Idazten...</p>
+        <p class="texto" data-mensaje aria-live="polite">Kaixo, hitzordua eskatu nahi dut BEHAKOn.</p>
+      </div>
+      <a class="btn btn-blanco" href="https://wa.me/34600000000?text=Kaixo%2C%20hitzordua%20eskatu%20nahi%20dut%20BEHAKOn." rel="noopener" data-wa>Bidali WhatsApp bidez<svg class="fl" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><path d="M1 6h13M9.5 1.5 14 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a>
+      <p class="o-llama">Edo deitu <a href="tel:+34943000000">943 00 00 00</a> telefonora.</p>
+    </form>
+  </div>
+</section>
+
+<section class="datos" id="horario" aria-label="Ordutegia">
+  <div data-col>
+    <h2>Ordutegia</h2>
+    <p class="serif">Astelehenetik ostiralera, 9:30etik 13:30era eta 16:30etik 20:00etara.<br>Larunbatetan, 10:00etatik 13:30era.</p>
+    <p class="estado" data-estado aria-live="polite"></p>
+  </div>
+  <div id="donde" data-col>
+    <h2>Non gauden</h2>
+    <p class="serif">Korreo kalea 0<br>20400 Tolosa</p>
+  </div>
+  <div id="contacto" data-col>
+    <h2>Deitu edo idatzi</h2>
+    <p class="serif"><a href="tel:+34943000000">943 00 00 00</a> · <a href="https://wa.me/34600000000" rel="noopener">WhatsApp 600 00 00 00</a><br>Telefonoa eta WhatsAppa, denda ordutegian.</p>
+  </div>
+</section>
+</main>
+
+<footer class="pie">
+  <div class="pie-grid">
+    <div class="pie-cita">
+      <h2>Hitzordua eskatu</h2>
+      <p class="serif">WhatsApp bidez, deitu gabe.</p>
+      <a class="btn btn-negro" href="#cita">Hitzordua eskatu</a>
+    </div>
+    <ul class="pie-enl">
+      <li><a href="#gabinete">Ikusmena zaintzea</a></li>
+      <li><a href="#monturas">Armazoiak</a></li>
+      <li><a href="#revision">Berrikuspena</a></li>
+      <li><a href="#lentillas">Lentillak</a></li>
+      <li><a href="#horario">Ordutegia</a></li>
+      <li><a href="#contacto">Kontaktua</a></li>
+    </ul>
+    <p class="serif pie-dir">Korreo kalea 0<br>20400 Tolosa<br><a href="tel:+34943000000">943 00 00 00</a></p>
+  </div>
+  <div class="pie-fin">
+    <svg class="marca" viewBox="0 0 40 22" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.25"><circle cx="10" cy="12" r="8"/><circle cx="30" cy="12" r="8"/><path d="M18 10.5c1.2-1.6 2.8-1.6 4 0"/><path d="M2 9.5 .6 6.5M38 9.5l1.4-3"/></g></svg>
+    <p class="pie-aviso">BEHAKO asmatutako optika bat da: OI Studioren diseinuaren lagin bat da. Adibide datuak: izena, helbidea, telefonoak, ordutegia, prezioak, betaurrekoen modeloak, Ane eta bere argazkia, eta zerbitzuei buruz kontatzen dena. Argazkiak Unsplashenak dira.</p>
+    <p><a href="es/" lang="es" hreflang="es">Castellano</a></p>
+    <p class="pie-firma">Diseinatzailea: <a class="firma" href="https://oiwebstudio.com/?utm_source=muestra-behako&amp;utm_medium=pie" target="_blank" rel="noopener">OI Studio</a></p>
+  </div>
+</footer>
+
+<script type="application/json" id="textos">{"lang":"eu","hoy":"Gaur","dias":["igandea","astelehena","asteartea","asteazkena","osteguna","ostirala","larunbata"],"cortos":["igandea","astelehena","asteartea","asteazkena","osteguna","ostirala","larunbata"],"est":{"a1330":"Irekita orain. 13:30ean itxiko dugu.","a2000":"Irekita orain. 20:00etan itxiko dugu.","h0930":"Itxita. Gaur 9:30etan irekiko dugu.","h1000":"Itxita. Gaur 10:00etan irekiko dugu.","h1630":"Itxita. Gaur 16:30ean irekiko dugu.","m0930":"Itxita. Bihar goizeko 9:30etan irekiko dugu.","m1000":"Itxita. Bihar 10:00etan irekiko dugu.","l0930":"Itxita. Astelehenean 9:30etan irekiko dugu."},"rev":{"ok":"Egunean zaude. Hurrengo berrikuspena: {y}.","toca":"Aurten tokatzen zaizu. Eskatu hitzordua ondo datorkizunean.","tarde":"Tokatzen zaizu: urtebete baino gehiago igaro da azkenekotik.","nose":"Ez baduzu gogoratzen, hobe da orain berrikustea.","antes":"Lehen","nose_b":"Ez dut gogoratzen","ultima":"Azkena","proxima":"Hurrengo berrikuspena"},"otro_dia":"Beste egun bat","escribiendo":"Idazten...","sabado":"Larunbatean goizez bakarrik irekitzen dugu.","domingo":"Igandean itxita dago. Aukeratu beste egun bat.","wa":"https://wa.me/34600000000","wa_hola":"Kaixo, hitzordua eskatu nahi dut BEHAKOn.","wa_motivo":"Arrazoia","wa_dia":"Eguna","wa_franja":"Ordua","wa_montura":"{m} betaurrekoak probatu nahi ditut.","motivos":{"graduacion":"Ikusmena graduatzea","lentillas":"Lentillak","gafas":"Betaurreko berriak","arreglo":"Konponketa bat"},"manana":"Goizean","tarde":"Arratsaldean","probar":"Probatu","apartada":"Zuretzat gordeta"}</script>
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/SplitText.min.js"></script>
+<script src="js/anim-texto.js"></script>
+<script src="js/pagina.js"></script>
+</body>
+</html>

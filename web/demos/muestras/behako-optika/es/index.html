@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>BEHAKO, óptica en Tolosa. Muestra de diseño</title>
+<meta name="description" content="Muestra de diseño de OI Studio: una óptica inventada en Tolosa donde se pide cita para graduarse la vista, se sabe si toca revisión y se ven gafas de ejemplo.">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="BEHAKO, óptica en Tolosa. Muestra de diseño">
+<meta property="og:description" content="Muestra de diseño de OI Studio: una óptica inventada en Tolosa donde se pide cita para graduarse la vista, se sabe si toca revisión y se ven gafas de ejemplo.">
+<meta property="og:type" content="website">
+<link rel="alternate" hreflang="eu" href="../">
+<!--
+  MUESTRA «BEHAKO» (OI Studio, 8/11/2026): óptica INVENTADA en Tolosa para la pieza «¿Qué negocio tienes?» de oiwebstudio.com.
+  «Behako» = vistazo, mirada rápida. Comprobado el 8/11 que no hay ninguna óptica con ese nombre en Gipuzkoa (OpenStreetMap)
+  ni en los buscadores. Son de ejemplo: el nombre, la dirección (Korreo kalea 0, Tolosa), los teléfonos, el horario, los precios
+  y los modelos de las gafas, Ane (y su foto, de banco) y lo que se cuenta de los servicios (lo dice también la nota del pie). noindex.
+  Calco de la referencia que eligió Oier el 8/11: n.º 07, VU (vu.ca) — portada partida al 50 % a sangre con el aparato del
+  gabinete a la izquierda y un retrato con gafas a la derecha, cada mitad con su palabra abajo a la izquierda; al pasar el
+  ratón la mitad se agranda, la otra se apaga y sale el botón blanco. Menú doble (enlaces pequeños arriba, filete fino, logo,
+  tres secciones con desplegable y «Pedir cita» con contorno blanco). Debajo, el mismo ritmo que la referencia: texto con
+  etiqueta enmarcada y dos fotos; «las elegidas de…» con la foto redonda de quien las elige y la fila de monturas sobre gris; foto + acordeón numerado con botón
+  negro; sección centrada; banda negra con foto a sangre; tres columnas; pie beige.
+  Lo que hace: pedir cita sin llamar (qué necesitas, día y franja → mensaje de WhatsApp escrito, con «escribiendo…»), saber si
+  toca la revisión (eliges el año de la última y te lo dice con la fecha real; sin JS o mientras carga, se ve el texto de
+  reserva «Elige el año de tu última revisión»), y monturas de ejemplo con precio que se pueden
+  apartar para probarlas (pasan a la cita). Horario con el estado según la hora real de Tolosa.
+  Letras: 13 Satoshi (títulos, menú, botones; en lugar de la Work Sans de la referencia) y 32 Petrona (texto; en lugar de su
+  Source Serif), autoalojadas en fuentes/. Sin cursivas.
+  Fotos: Unsplash (licencia de Unsplash), detalle en fotos/creditos.json. Ninguna es de una óptica real conocida ni lleva marca de agua.
+  El foróptero, el gabinete y la carta van teñidos a beige cálido; los dos retratos (portada y Ane), a la misma luz cálida.
+  Movimiento: logo, menú y portada entran con CSS desde el primer pintado; lo de abajo, con GSAP 3.13 + ScrollTrigger + SplitText
+  (js/) + anim-texto.js + pagina.js, por tiempo al asomar; la fila de monturas corre de lado con el scroll. Con «reducir
+  movimiento» o sin JS, todo quieto y visible.
+  Generada con _local/demos/behako-generador/gen.mjs (no editar este HTML a mano).
+-->
+<link rel="preload" href="../fuentes/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fuentes/petrona-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../estilo.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="cab">
+  <nav class="cab-sup" aria-label="Contacto">
+    <a href="#revision">Revisión</a><a href="#horario">Horario</a><a href="#contacto">Contacto</a><a class="idioma" href="../" lang="eu" hreflang="eu"><span aria-hidden="true">EU</span><span class="sr">Euskaraz</span></a>
+  </nav>
+  <div class="cab-inf">
+    <h1 class="logo"><a href="#contenido"><svg class="marca" viewBox="0 0 40 22" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.25"><circle cx="10" cy="12" r="8"/><circle cx="30" cy="12" r="8"/><path d="M18 10.5c1.2-1.6 2.8-1.6 4 0"/><path d="M2 9.5 .6 6.5M38 9.5l1.4-3"/></g></svg><span class="logo-t" aria-hidden="true"><span class="pal"><span class="le"><span style="--i:0">B</span></span><span class="le"><span style="--i:1">E</span></span><span class="le"><span style="--i:2">H</span></span><span class="le"><span style="--i:3">A</span></span><span class="le"><span style="--i:4">K</span></span><span class="le"><span style="--i:5">O</span></span></span></span><span class="sr">BEHAKO, óptica en Tolosa</span></a></h1>
+    <nav class="cab-nav" aria-label="Menú">
+      <ul>
+        <li class="desp"><button type="button" aria-expanded="false" aria-controls="sub-vista">Cuidado de la vista<svg class="chev" viewBox="0 0 12 8" aria-hidden="true" focusable="false"><path d="m1.5 1.8 4.5 4.4 4.5-4.4" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></button>
+          <ul class="sub" id="sub-vista"><li><a href="#graduacion">Graduación</a></li><li><a href="#revision">¿Te toca la revisión?</a></li><li><a href="#cita">Pedir cita</a></li></ul></li>
+        <li class="desp"><button type="button" aria-expanded="false" aria-controls="sub-monturas">Monturas<svg class="chev" viewBox="0 0 12 8" aria-hidden="true" focusable="false"><path d="m1.5 1.8 4.5 4.4 4.5-4.4" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></button>
+          <ul class="sub" id="sub-monturas"><li><a href="#monturas">Las más probadas</a></li><li><a href="#arreglos">Arreglos y ajustes</a></li></ul></li>
+        <li><a href="#lentillas">Lentillas</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-borde cab-cita" href="#cita">Pedir cita<svg class="fl" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><path d="M1 6h13M9.5 1.5 14 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a>
+    <a class="idioma-m" href="../" lang="eu" hreflang="eu"><span aria-hidden="true">EU</span><span class="sr">Euskaraz</span></a>
+    <button class="hamb" type="button" aria-expanded="false" aria-controls="menu-movil"><span class="sr">Menú</span><i></i><i></i></button>
+  </div>
+</header>
+
+<div class="menu-movil" id="menu-movil" hidden>
+  <ul>
+    <li><a href="#gabinete">Cuidado de la vista</a></li>
+    <li><a href="#monturas">Monturas</a></li>
+    <li><a href="#lentillas">Lentillas</a></li>
+    <li><a href="#revision">Revisión</a></li>
+    <li><a href="#horario">Horario</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a class="btn btn-negro" href="#cita">Pedir cita<svg class="fl" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><path d="M1 6h13M9.5 1.5 14 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a>
+  <p><a href="tel:+34943000000">943 00 00 00</a> · <a href="../" lang="eu" hreflang="eu">Euskaraz</a></p>
+</div>
+
+<main id="contenido">
+<section class="portada" data-portada aria-label="BEHAKO, óptica en Tolosa">
+  <a class="mitad mitad-izq" href="#gabinete">
+    <span class="mitad-foto"><picture><source type="image/avif" srcset="../fotos/vista-800.avif 800w, ../fotos/vista-1200.avif 1200w, ../fotos/vista-1800.avif 1800w, ../fotos/vista-2600.avif 2600w" sizes="(min-width: 760px) 57vw, 100vw"><img src="../fotos/vista-1200.webp" srcset="../fotos/vista-800.webp 800w, ../fotos/vista-1200.webp 1200w, ../fotos/vista-1800.webp 1800w, ../fotos/vista-2600.webp 2600w" sizes="(min-width: 760px) 57vw, 100vw" width="1200" height="1380" alt="Foróptero, el aparato con el que se gradúa la vista." fetchpriority="high" decoding="async"></picture></span>
+    <span class="mitad-txt"><h2 class="mitad-h"><span class="sr">Cuidado de la vista</span><span aria-hidden="true"><span class="pal"><span class="le"><span style="--i:0">C</span></span><span class="le"><span style="--i:1">u</span></span><span class="le"><span style="--i:2">i</span></span><span class="le"><span style="--i:3">d</span></span><span class="le"><span style="--i:4">a</span></span><span class="le"><span style="--i:5">d</span></span><span class="le"><span style="--i:6">o</span></span></span> <span class="pal"><span class="le"><span style="--i:0">d</span></span><span class="le"><span style="--i:1">e</span></span></span> <span class="pal"><span class="le"><span style="--i:0">l</span></span><span class="le"><span style="--i:1">a</span></span></span> <span class="pal"><span class="le"><span style="--i:0">v</span></span><span class="le"><span style="--i:1">i</span></span><span class="le"><span style="--i:2">s</span></span><span class="le"><span style="--i:3">t</span></span><span class="le"><span style="--i:4">a</span></span></span></span></h2><span class="btn btn-blanco" aria-hidden="true">Ver el gabinete<svg class="fl" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><path d="M1 6h13M9.5 1.5 14 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></span></span>
+  </a>
+  <a class="mitad mitad-der" href="#monturas">
+    <span class="mitad-foto"><picture><source type="image/avif" srcset="../fotos/monturas-800.avif 800w, ../fotos/monturas-1200.avif 1200w, ../fotos/monturas-1800.avif 1800w, ../fotos/monturas-2600.avif 2600w" sizes="(min-width: 760px) 57vw, 100vw"><img src="../fotos/monturas-1200.webp" srcset="../fotos/monturas-800.webp 800w, ../fotos/monturas-1200.webp 1200w, ../fotos/monturas-1800.webp 1800w, ../fotos/monturas-2600.webp 2600w" sizes="(min-width: 760px) 57vw, 100vw" width="1200" height="1500" alt="Mujer que mira a cámara con unas gafas grandes de acetato negro." fetchpriority="high" decoding="async"></picture></span>
+    <span class="mitad-txt"><h2 class="mitad-h"><span class="sr">Monturas</span><span aria-hidden="true"><span class="pal"><span class="le"><span style="--i:0">M</span></span><span class="le"><span style="--i:1">o</span></span><span class="le"><span style="--i:2">n</span></span><span class="le"><span style="--i:3">t</span></span><span class="le"><span style="--i:4">u</span></span><span class="le"><span style="--i:5">r</span></span><span class="le"><span style="--i:6">a</span></span><span class="le"><span style="--i:7">s</span></span></span></span></h2><span class="btn btn-blanco" aria-hidden="true">Ver monturas<svg class="fl" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><path d="M1 6h13M9.5 1.5 14 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></span></span>
+  </a>
+</section>
+
+<section class="intro" aria-labelledby="h-intro">
+  <div class="intro-txt">
+    <p class="etiqueta">En Tolosa</p>
+    <h2 id="h-intro" data-lineas>Tus ojos y tus gafas, en el mismo sitio</h2>
+    <p class="serif" data-enciende>Te graduamos en el gabinete y al salir eliges la montura con la graduación ya hecha. Si se te rompen las gafas, aunque no sean de aquí, tráelas y te las miramos.</p>
+    <a class="enl" href="#donde">Cómo llegar<svg class="fl" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><path d="M1 6h13M9.5 1.5 14 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a>
+  </div>
+  <div class="intro-fotos">
+    <figure data-panel="foto"><picture><source type="image/avif" srcset="../fotos/tienda1-700.avif 700w, ../fotos/tienda1-1000.avif 1000w, ../fotos/tienda1-1400.avif 1400w" sizes="(min-width: 760px) 45vw, 100vw"><img src="../fotos/tienda1-1000.webp" srcset="../fotos/tienda1-700.webp 700w, ../fotos/tienda1-1000.webp 1000w, ../fotos/tienda1-1400.webp 1400w" sizes="(min-width: 760px) 45vw, 100vw" width="1000" height="800" alt="Pared de monturas de colores en sus soportes." loading="lazy" decoding="async"></picture></figure>
+    <figure data-panel="foto"><picture><source type="image/avif" srcset="../fotos/tienda2-700.avif 700w, ../fotos/tienda2-1000.avif 1000w, ../fotos/tienda2-1400.avif 1400w" sizes="(min-width: 760px) 45vw, 100vw"><img src="../fotos/tienda2-1000.webp" srcset="../fotos/tienda2-700.webp 700w, ../fotos/tienda2-1000.webp 1000w, ../fotos/tienda2-1400.webp 1400w" sizes="(min-width: 760px) 45vw, 100vw" width="1000" height="800" alt="Monturas de acetato y de metal en un expositor." loading="lazy" decoding="async"></picture></figure>
+  </div>
+</section>
+
+<section class="mon" id="monturas" aria-labelledby="h-mon">
+  <div class="mon-txt">
+    <p class="etiqueta">Monturas</p>
+    <div class="mon-quien"><span class="mono"><picture><source type="image/avif" srcset="../fotos/ane-200.avif 200w, ../fotos/ane-300.avif 300w" sizes="100px"><img src="../fotos/ane-300.webp" srcset="../fotos/ane-200.webp 200w, ../fotos/ane-300.webp 300w" sizes="100px" width="300" height="300" alt="" loading="lazy" decoding="async"></picture></span><h2 id="h-mon" data-lineas>Las elegidas de Ane</h2></div>
+    <p class="serif cita-ane">«Se piden mucho las metálicas redondas y el carey. Ven con tus gafas viejas y buscamos algo parecido.»</p>
+    <p class="mon-toca">Pulsa unas gafas y te las reservamos para probártelas.</p>
+    <a class="enl" href="#cita" data-motivo="gafas">Pedir una para probártela<svg class="fl" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><path d="M1 6h13M9.5 1.5 14 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a>
+  </div>
+  <div class="mon-fila" data-fila>
+    <ul class="fichas" data-pista-fila>
+      <li class="ficha" style="--i:0">
+        <button type="button" class="ficha-b" data-montura="IZAR" aria-pressed="false" aria-label="IZAR, 165 €, metal: Probármela">
+          <span class="ficha-img"><picture><source type="image/avif" srcset="../fotos/p-izar-400.avif 400w, ../fotos/p-izar-700.avif 700w, ../fotos/p-izar-1000.avif 1000w" sizes="(min-width: 900px) 322px, 62vw"><img src="../fotos/p-izar-700.webp" srcset="../fotos/p-izar-400.webp 400w, ../fotos/p-izar-700.webp 700w, ../fotos/p-izar-1000.webp 1000w" sizes="(min-width: 900px) 322px, 62vw" width="700" height="826" alt="" loading="lazy" decoding="async"></picture></span>
+          <span class="ficha-n">IZAR</span>
+          <span class="ficha-p"><span class="pr">165 €</span><span class="pt" aria-hidden="true"></span><span class="mat">Metal</span></span>
+          <span class="ficha-probar" data-probar-t>Probármela</span>
+        </button>
+      </li>
+      <li class="ficha" style="--i:1">
+        <button type="button" class="ficha-b" data-montura="OREIN" aria-pressed="false" aria-label="OREIN, 139 €, acetato y metal: Probármela">
+          <span class="ficha-img"><picture><source type="image/avif" srcset="../fotos/p-orein-400.avif 400w, ../fotos/p-orein-700.avif 700w, ../fotos/p-orein-1000.avif 1000w" sizes="(min-width: 900px) 322px, 62vw"><img src="../fotos/p-orein-700.webp" srcset="../fotos/p-orein-400.webp 400w, ../fotos/p-orein-700.webp 700w, ../fotos/p-orein-1000.webp 1000w" sizes="(min-width: 900px) 322px, 62vw" width="700" height="826" alt="" loading="lazy" decoding="async"></picture></span>
+          <span class="ficha-n">OREIN</span>
+          <span class="ficha-p"><span class="pr">139 €</span><span class="pt" aria-hidden="true"></span><span class="mat">Acetato y metal</span></span>
+          <span class="ficha-probar" data-probar-t>Probármela</span>
+        </button>
+      </li>
+      <li class="ficha" style="--i:2">
+        <button type="button" class="ficha-b" data-montura="ELUR" aria-pressed="false" aria-label="ELUR, 119 €, metal: Probármela">
+          <span class="ficha-img"><picture><source type="image/avif" srcset="../fotos/p-elur-400.avif 400w, ../fotos/p-elur-700.avif 700w, ../fotos/p-elur-1000.avif 1000w" sizes="(min-width: 900px) 322px, 62vw"><img src="../fotos/p-elur-700.webp" srcset="../fotos/p-elur-400.webp 400w, ../fotos/p-elur-700.webp 700w, ../fotos/p-elur-1000.webp 1000w" sizes="(min-width: 900px) 322px, 62vw" width="700" height="826" alt="" loading="lazy" decoding="async"></picture></span>
+          <span class="ficha-n">ELUR</span>
+          <span class="ficha-p"><span class="pr">119 €</span><span class="pt" aria-hidden="true"></span><span class="mat">Metal</span></span>
+          <span class="ficha-probar" data-probar-t>Probármela</span>
+        </button>
+      </li>
+      <li class="ficha" style="--i:3">
+        <button type="button" class="ficha-b" data-montura="MIRU" aria-pressed="false" aria-label="MIRU, 129 €, acetato: Probármela">
+          <span class="ficha-img"><picture><source type="image/avif" srcset="../fotos/p-miru-400.avif 400w, ../fotos/p-miru-700.avif 700w, ../fotos/p-miru-1000.avif 1000w" sizes="(min-width: 900px) 322px, 62vw"><img src="../fotos/p-miru-700.webp" srcset="../fotos/p-miru-400.webp 400w, ../fotos/p-miru-700.webp 700w, ../fotos/p-miru-1000.webp 1000w" sizes="(min-width: 900px) 322px, 62vw" width="700" height="826" alt="" loading="lazy" decoding="async"></picture></span>
+          <span class="ficha-n">MIRU</span>
+          <span class="ficha-p"><span class="pr">129 €</span><span class="pt" aria-hidden="true"></span><span class="mat">Acetato</span></span>
+          <span class="ficha-probar" data-probar-t>Probármela</span>
+        </button>
+      </li>
+      <li class="ficha" style="--i:4">
+        <button type="button" class="ficha-b" data-montura="BELTZ" aria-pressed="false" aria-label="BELTZ, 98 €, acetato: Probármela">
+          <span class="ficha-img"><picture><source type="image/avif" srcset="../fotos/p-beltz-400.avif 400w, ../fotos/p-beltz-700.avif 700w, ../fotos/p-beltz-1000.avif 1000w" sizes="(min-width: 900px) 322px, 62vw"><img src="../fotos/p-beltz-700.webp" srcset="../fotos/p-beltz-400.webp 400w, ../fotos/p-beltz-700.webp 700w, ../fotos/p-beltz-1000.webp 1000w" sizes="(min-width: 900px) 322px, 62vw" width="700" height="826" alt="" loading="lazy" decoding="async"></picture></span>
+          <span class="ficha-n">BELTZ</span>
+          <span class="ficha-p"><span class="pr">98 €</span><span class="pt" aria-hidden="true"></span><span class="mat">Acetato</span></span>
+          <span class="ficha-probar" data-probar-t>Probármela</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="gab" id="gabinete" aria-labelledby="h-gab">
+  <figure class="gab-foto" data-panel="lado"><picture><source type="image/avif" srcset="../fotos/gabinete-600.avif 600w, ../fotos/gabinete-900.avif 900w, ../fotos/gabinete-1300.avif 1300w" sizes="(min-width: 760px) 38vw, 100vw"><img src="../fotos/gabinete-900.webp" srcset="../fotos/gabinete-600.webp 600w, ../fotos/gabinete-900.webp 900w, ../fotos/gabinete-1300.webp 1300w" sizes="(min-width: 760px) 38vw, 100vw" width="900" height="900" alt="Óptico ajustando unas gafas de prueba en la cara de una paciente." loading="lazy" decoding="async"></picture></figure>
+  <div class="gab-txt">
+    <p class="etiqueta">En el gabinete</p>
+    <h2 id="h-gab" data-lineas>Qué hacemos en el gabinete</h2>
+    <a class="btn btn-negro" href="#cita">Pedir cita<svg class="fl" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><path d="M1 6h13M9.5 1.5 14 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a>
+    <div class="acordeon" data-escalonado>
+        <details class="acor" id="graduacion" open>
+          <summary><span class="acor-n">01</span><h3>Graduación de la vista</h3><span class="mas" aria-hidden="true"></span></summary>
+          <div class="acor-c"><p class="serif">Si vemos algo que debe mirar un oftalmólogo, te lo decimos.</p></div>
+        </details>
+        <details class="acor" id="lentillas">
+          <summary><span class="acor-n">02</span><h3>Lentillas</h3><span class="mas" aria-hidden="true"></span></summary>
+          <div class="acor-c"><p class="serif">Te enseñamos a poner y quitar las lentillas, y te damos cita para ver cómo te van.</p></div>
+        </details>
+        <details class="acor" id="arreglos">
+          <summary><span class="acor-n">03</span><h3>Arreglos y ajustes</h3><span class="mas" aria-hidden="true"></span></summary>
+          <div class="acor-c"><p class="serif">Cambiamos tornillos y plaquetas, y ajustamos las gafas que aprietan. Trae las gafas aunque no sean de aquí.</p></div>
+        </details>
+    </div>
+  </div>
+</section>
+
+<section class="rev" id="revision" aria-labelledby="h-rev">
+  <p class="etiqueta">Revisión</p>
+  <h2 id="h-rev" data-lineas>¿Cuándo fue tu última revisión?</h2>
+  <p class="serif rev-p">Elige el año y te decimos si ya te toca.</p>
+  <p class="rev-reserva" data-rev-reserva>Elige el año de tu última revisión</p>
+  <div class="rev-herr" data-rev hidden>
+    <fieldset class="anios"><legend class="sr">Año de la última revisión</legend><div class="anios-l" data-anios></div></fieldset>
+    <div class="linea" data-linea aria-hidden="true"></div>
+    <p class="rev-r" data-rev-r aria-live="polite"></p>
+  </div>
+  <p class="serif rev-nota">Recomendamos revisar la vista una vez al año.</p>
+  <a class="enl" href="#cita" data-motivo="graduacion">Pedir cita para la revisión<svg class="fl" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><path d="M1 6h13M9.5 1.5 14 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a>
+</section>
+
+<section class="cita" id="cita" aria-labelledby="h-cita">
+  <figure class="cita-foto" data-panel="foto"><picture><source type="image/avif" srcset="../fotos/carta-700.avif 700w, ../fotos/carta-1100.avif 1100w, ../fotos/carta-1600.avif 1600w" sizes="(min-width: 760px) 50vw, 100vw"><img src="../fotos/carta-1100.webp" srcset="../fotos/carta-700.webp 700w, ../fotos/carta-1100.webp 1100w, ../fotos/carta-1600.webp 1600w" sizes="(min-width: 760px) 50vw, 100vw" width="1100" height="1375" alt="Tabla de letras para medir la vista, colgada en una pared clara." loading="lazy" decoding="async"></picture></figure>
+  <div class="cita-txt">
+    <h2 id="h-cita" data-lineas>Pide cita sin llamar</h2>
+    <p class="serif">Elige qué necesitas y qué día te va bien. Te sale el mensaje escrito para mandarlo por WhatsApp y te contestamos con la hora.</p>
+    <form class="elige" data-cita onsubmit="return false">
+      <fieldset>
+        <legend>Qué necesitas</legend>
+        <div class="ops ops-4"><label class="op"><input type="radio" name="motivo" value="graduacion" checked><span>Graduarme la vista</span></label><label class="op"><input type="radio" name="motivo" value="lentillas"><span>Lentillas</span></label><label class="op"><input type="radio" name="motivo" value="gafas"><span>Gafas nuevas</span></label><label class="op"><input type="radio" name="motivo" value="arreglo"><span>Un arreglo</span></label></div>
+      </fieldset>
+      <fieldset>
+        <legend>Qué día</legend>
+        <div class="dias" data-dias></div>
+        <label class="otro" data-otro><span class="sr">Otro día</span><input type="date" data-fecha></label>
+      </fieldset>
+      <fieldset>
+        <legend>A qué hora</legend>
+        <div class="ops">
+          <label class="op"><input type="radio" name="franja" value="manana" checked><span>Por la mañana</span></label>
+          <label class="op"><input type="radio" name="franja" value="tarde"><span>Por la tarde</span></label>
+        </div>
+      </fieldset>
+      <p class="aviso" data-aviso aria-live="polite"></p>
+      <p class="elegida" data-elegida hidden>Gafas elegidas: <b data-elegida-n></b> <button type="button" class="quitar" data-quitar>Quitar</button></p>
+      <div class="mensaje">
+        <h3>Tu mensaje</h3>
+        <p class="escribiendo" data-escribiendo aria-hidden="true">Escribiendo…</p>
+        <p class="texto" data-mensaje aria-live="polite">Hola, quiero pedir cita en BEHAKO.</p>
+      </div>
+      <a class="btn btn-blanco" href="https://wa.me/34600000000?text=Hola%2C%20quiero%20pedir%20cita%20en%20BEHAKO." rel="noopener" data-wa>Enviar por WhatsApp<svg class="fl" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><path d="M1 6h13M9.5 1.5 14 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a>
+      <p class="o-llama">O llama al <a href="tel:+34943000000">943 00 00 00</a>.</p>
+    </form>
+  </div>
+</section>
+
+<section class="datos" id="horario" aria-label="Horario">
+  <div data-col>
+    <h2>Horario</h2>
+    <p class="serif">De lunes a viernes, de 9:30 a 13:30 y de 16:30 a 20:00.<br>Sábados, de 10:00 a 13:30.</p>
+    <p class="estado" data-estado aria-live="polite"></p>
+  </div>
+  <div id="donde" data-col>
+    <h2>Dónde estamos</h2>
+    <p class="serif">Korreo kalea 0<br>20400 Tolosa</p>
+  </div>
+  <div id="contacto" data-col>
+    <h2>Llamar o escribir</h2>
+    <p class="serif"><a href="tel:+34943000000">943 00 00 00</a> · <a href="https://wa.me/34600000000" rel="noopener">WhatsApp 600 00 00 00</a><br>Teléfono y WhatsApp, en horario de tienda.</p>
+  </div>
+</section>
+</main>
+
+<footer class="pie">
+  <div class="pie-grid">
+    <div class="pie-cita">
+      <h2>Pide cita</h2>
+      <p class="serif">Por WhatsApp, sin llamar.</p>
+      <a class="btn btn-negro" href="#cita">Pedir cita</a>
+    </div>
+    <ul class="pie-enl">
+      <li><a href="#gabinete">Cuidado de la vista</a></li>
+      <li><a href="#monturas">Monturas</a></li>
+      <li><a href="#revision">Revisión</a></li>
+      <li><a href="#lentillas">Lentillas</a></li>
+      <li><a href="#horario">Horario</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <p class="serif pie-dir">Korreo kalea 0<br>20400 Tolosa<br><a href="tel:+34943000000">943 00 00 00</a></p>
+  </div>
+  <div class="pie-fin">
+    <svg class="marca" viewBox="0 0 40 22" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.25"><circle cx="10" cy="12" r="8"/><circle cx="30" cy="12" r="8"/><path d="M18 10.5c1.2-1.6 2.8-1.6 4 0"/><path d="M2 9.5 .6 6.5M38 9.5l1.4-3"/></g></svg>
+    <p class="pie-aviso">BEHAKO es una óptica inventada: es una muestra de diseño de OI Studio. Datos de ejemplo: el nombre, la dirección, los teléfonos, el horario, los precios, los modelos de gafas, Ane y su foto, y lo que se cuenta de los servicios. Las fotos son de Unsplash.</p>
+    <p><a href="../" lang="eu" hreflang="eu">Euskaraz</a></p>
+    <p class="pie-firma">Diseñado por <a class="firma" href="https://oiwebstudio.com/?utm_source=muestra-behako&amp;utm_medium=pie" target="_blank" rel="noopener">OI Studio</a></p>
+  </div>
+</footer>
+
+<script type="application/json" id="textos">{"lang":"es","hoy":"Hoy","dias":["domingo","lunes","martes","miércoles","jueves","viernes","sábado"],"cortos":["dom","lun","mar","mié","jue","vie","sáb"],"est":{"a1330":"Abierto ahora. Cerramos a las 13:30.","a2000":"Abierto ahora. Cerramos a las 20:00.","h0930":"Cerrado. Abrimos hoy a las 9:30.","h1000":"Cerrado. Abrimos hoy a las 10:00.","h1630":"Cerrado. Abrimos hoy a las 16:30.","m0930":"Cerrado. Abrimos mañana a las 9:30.","m1000":"Cerrado. Abrimos mañana a las 10:00.","l0930":"Cerrado. Abrimos el lunes a las 9:30."},"rev":{"ok":"Estás al día. Próxima revisión: {y}.","toca":"Te toca este año. Pide cita cuando te venga bien.","tarde":"Ya te toca: ha pasado más de un año desde la última.","nose":"Si no lo recuerdas, mejor revisarla ya.","antes":"Antes","nose_b":"No me acuerdo","ultima":"Última","proxima":"Próxima revisión"},"otro_dia":"Otro día","escribiendo":"Escribiendo…","sabado":"El sábado solo abrimos por la mañana.","domingo":"El domingo está cerrado. Elige otro día.","wa":"https://wa.me/34600000000","wa_hola":"Hola, quiero pedir cita en BEHAKO.","wa_motivo":"Motivo","wa_dia":"Día","wa_franja":"Hora","wa_montura":"Quiero probarme las gafas {m}.","motivos":{"graduacion":"Graduarme la vista","lentillas":"Lentillas","gafas":"Gafas nuevas","arreglo":"Un arreglo"},"manana":"Por la mañana","tarde":"Por la tarde","probar":"Probármela","apartada":"Guardadas para ti"}</script>
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/SplitText.min.js"></script>
+<script src="../js/anim-texto.js"></script>
+<script src="../js/pagina.js"></script>
+</body>
+</html>
