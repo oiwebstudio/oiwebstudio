@@ -52,47 +52,40 @@ const lista = ORDEN.filter((k) => sectores[k]).map((k) => sectores[k]);
 for (const k of Object.keys(sectores)) if (!ORDEN.includes(k)) avisos.push(`${k}: no está en ORDEN`);
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-const chips = lista.map((s, i) => {
-  const n = i + 1;
-  return `<button type="button" role="tab" id="sx-t${n}" aria-controls="sx-p${n}" aria-selected="${i ? "false" : "true"}"${i ? ' tabindex="-1"' : ' class="is-on"'}><span data-t="${s.chip.key}">${esc(s.chip.es)}</span></button>`;
-}).join("\n");
-const paneles = lista.map((s, i) => {
-  const n = i + 1;
-  return `<div class="sx__p" id="sx-p${n}" role="tabpanel" aria-labelledby="sx-t${n}"${i ? " hidden" : ""}>
-<div class="sx__esc">
-<div class="sx__win"><div class="sx__bar"><i></i><i></i><i></i><span>${s.carpeta}</span></div><picture><source srcset="assets/${s.id}-desk.webp" type="image/webp"/><img src="assets/${s.id}-desk.jpg" alt="${esc(s.nombre)}" width="900" height="562" loading="lazy" decoding="async"/></picture></div>
-<div class="sx__tel"><img src="assets/hero/${s.id}-m.webp" alt="" width="480" height="1013" loading="lazy" decoding="async"/></div>
-</div>
-<div class="sx__txt">
-<p class="sx__k" data-t="${s.k.key}">${esc(s.k.es)}</p>
-<h3 class="sx__n">${esc(s.nombre)}</h3>
-<p class="sx__inc" data-t="sx_inc">Qué lleva</p>
-<ul class="sx__l">${s.lleva.map((l) => `<li data-t="${l.key}">${esc(l.es)}</li>`).join("")}</ul>
-<div class="sx__acc"><a class="l3-btn" href="${s.enlace}" target="_blank" rel="noopener" data-t="sx_ver">Ver la muestra</a><a class="l3-a" href="contacto.html" data-t="sx_pedir">Quiero una así</a></div>
-<p class="sx__nota" data-t="sx_nota">Marcas inventadas: son muestras mías.</p>
-</div>
-</div>`;
-}).join("\n");
 
-// Galería «todas las muestras» (9/11/2026): cada tarjeta abre la muestra de un toque. Orden variado: uno de cada grupo por turnos.
-const GRUPOS = [ORDEN.slice(0, 6), ORDEN.slice(6, 15), ORDEN.slice(15, 19), ORDEN.slice(19, 23), ORDEN.slice(23, 25), ORDEN.slice(25)];
+// 9/11/2026 noche (Oier: «muéstralos mejor, están muy abajo»): la pieza entera es la galería de muestras, con filtros
+// por tipo de negocio; va justo debajo de la portada. Orden variado: uno de cada grupo por turnos.
+const GRUPOS = [
+  { g: "comer", k: "sx_g_comer", slugs: ORDEN.slice(0, 6) },
+  { g: "cuidado", k: "sx_g_cuidado", slugs: ORDEN.slice(6, 15) },
+  { g: "tiendas", k: "sx_g_tiendas", slugs: ORDEN.slice(15, 19) },
+  { g: "casa", k: "sx_g_casa", slugs: ORDEN.slice(19, 23) },
+  { g: "dormir", k: "sx_g_dormir", slugs: ORDEN.slice(23, 25) },
+  { g: "despachos", k: "sx_g_despachos", slugs: ORDEN.slice(25) },
+];
+const grupoDe = {};
+for (const G of GRUPOS) for (const k of G.slugs) grupoDe[k] = G.g;
 const galeria = [];
-for (let r = 0; GRUPOS.some((g) => g.length > r); r++) for (const g of GRUPOS) if (g[r] && sectores[g[r]]) galeria.push(sectores[g[r]]);
+for (let r = 0; GRUPOS.some((G) => G.slugs.length > r); r++) for (const G of GRUPOS) if (G.slugs[r] && sectores[G.slugs[r]]) galeria.push(sectores[G.slugs[r]]);
 const uiES = (k) => esc(UI[k]);
 for (const k of Object.keys(UI)) if (!EU_NUEVOS[k]) avisos.push("euskera " + k);
 const tarjetas = galeria.map((s) => {
   const card = fs.existsSync(path.join(WEB, `assets/sx/${s.id}-c.webp`)) ? `assets/sx/${s.id}-c.webp` : (avisos.push(`${s.nombre}: sin tarjeta (pasa miniaturas.cjs)`), `assets/${s.id}-desk.webp`);
-  return `<li class="sx-t__i"><a class="sx-c" href="${s.enlace}" target="_blank" rel="noopener"><span class="sx-c__img"><img src="${card}" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">${esc(s.nombre)}</span><span class="sx-c__s" data-t="${s.chip.key}">${esc(s.chip.es)}</span></span></a></li>`;
+  return `<li class="sx-t__i" data-g="${grupoDe[s.slug]}"><a class="sx-c" href="${s.enlace}" target="_blank" rel="noopener"><span class="sx-c__img"><img src="${card}" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">${esc(s.nombre)}</span><span class="sx-c__s" data-t="${s.chip.key}">${esc(s.chip.es)}</span></span></a></li>`;
 }).join("\n");
-const galeriaHTML = (abierta) => `<div class="sx-t${abierta ? " is-abierta" : ""}">
-<div class="sx-t__cab reveal">
-<h3 class="sx-t__h"><span data-t="sx_todas_h">${uiES("sx_todas_h")}</span><span class="sx-t__num">${galeria.length}</span></h3>
-<p class="sx-t__p" data-t="sx_todas_p">${uiES("sx_todas_p")}</p>
+const filtros = [`<button type="button" data-g="*" aria-pressed="true"><span data-t="sx_g_todos">${uiES("sx_g_todos")}</span><b>${galeria.length}</b></button>`,
+  ...GRUPOS.filter((G) => G.slugs.some((k) => sectores[k])).map((G) => `<button type="button" data-g="${G.g}" aria-pressed="false"><span data-t="${G.k}">${uiES(G.k)}</span><b>${G.slugs.filter((k) => sectores[k]).length}</b></button>`)].join("\n");
+const galeriaHTML = (abierta) => `<span class="sv-vh" id="sx-elige" data-t="sx_elige">Elige tu sector</span>
+<div class="sx-t${abierta ? " is-abierta" : ""}">
+<div class="sx-f reveal" role="group" aria-labelledby="sx-elige" hidden>
+${filtros}
 </div>
 <ul class="sx-t__g" id="sx-todas">
 ${tarjetas}
 </ul>
-${abierta ? "" : `<button type="button" class="sx-t__mas" aria-controls="sx-todas" aria-expanded="false" hidden><span data-t="sx_todas_mas">${uiES("sx_todas_mas")}</span><span data-t="sx_todas_menos" hidden>${uiES("sx_todas_menos")}</span></button>`}
+${abierta ? "" : `<button type="button" class="sx-t__mas" aria-controls="sx-todas" aria-expanded="false" hidden><span data-t="sx_todas_mas">${uiES("sx_todas_mas")}</span><b>${galeria.length}</b><span data-t="sx_todas_menos" hidden>${uiES("sx_todas_menos")}</span></button>`}
+</div>
+<p class="sx__nota" data-t="sx_nota">Marcas inventadas: son muestras mías.</p>
 </div>
 `;
 
@@ -104,12 +97,9 @@ for (const pag of PAGINAS) {
   if (a < 0) { avisos.push(`${pag}: sin #tu-sector`); continue; }
   const b = h.indexOf("</section>", a);
   const sec = h.slice(a, b);
-  const c0 = sec.indexOf('<div class="sx__chips reveal"');
-  const c1 = sec.indexOf(">", c0) + 1;
-  const cFin = sec.indexOf("</div>", c1);
-  const p0 = sec.indexOf('<div class="sx__caja reveal">');
-  if (c0 < 0 || p0 < 0) { avisos.push(`${pag}: estructura de #tu-sector distinta`); continue; }
-  const nueva = sec.slice(0, c1) + "\n" + chips + "\n" + sec.slice(cFin, p0) + '<div class="sx__caja reveal">\n' + paneles + "\n</div>\n" + galeriaHTML(pag === "trabajos.html") + "</div>\n";
+  const c0 = sec.indexOf('<span class="sv-vh" id="sx-elige"');
+  if (c0 < 0) { avisos.push(`${pag}: estructura de #tu-sector distinta`); continue; }
+  const nueva = sec.slice(0, c0) + galeriaHTML(pag === "trabajos.html");
   if (nueva !== sec) {
     cambios++;
     if (!CHECK) fs.writeFileSync(f, h.slice(0, a) + nueva + h.slice(b));

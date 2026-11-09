@@ -87,5 +87,13 @@
  "sx_joyeria_b": "Zure ezkontza-eraztuna, bere tailarekin eta grabatuarekin",
  "sx_joyeria_c": "Konponketak eta garbiketa, bere prezioarekin",
  "sx_gimnasio_c": "Klase bakoitzaren prezioa, zenbat egunetan entrenatzen duzun",
- "sx_veterinaria_c": "Hurrengo txertoaren data"
+ "sx_veterinaria_c": "Hurrengo txertoaren data",
+ "sx_g_todos": "Guztiak",
+ "sx_g_comer": "Jan eta edan",
+ "sx_g_cuidado": "Zaintza eta osasuna",
+ "sx_g_tiendas": "Dendak",
+ "sx_g_casa": "Etxea eta lanbideak",
+ "sx_g_dormir": "Ostatua",
+ "sx_g_despachos": "Bulegoak eta klaseak",
+ "at_muestras": "Laginak"
 }

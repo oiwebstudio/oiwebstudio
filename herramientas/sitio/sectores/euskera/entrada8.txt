@@ -1,0 +1,8 @@
+sx_g_todos	Todos
+sx_g_comer	Comer y beber
+sx_g_cuidado	Cuidado y salud
+sx_g_tiendas	Tiendas
+sx_g_casa	Casa y oficios
+sx_g_dormir	Alojamiento
+sx_g_despachos	Despachos y clases
+at_muestras	Muestras

@@ -9,6 +9,15 @@ const UI = {
   sx_todas_p: "Toca una y se abre entera, lista para probar.",
   sx_todas_mas: "Ver todas",
   sx_todas_menos: "Ver menos",
+  // 9/11 noche (Oier: «están muy abajo»): la pieza entera es la galería, justo debajo de la portada, con filtros por tipo de negocio
+  sx_g_todos: "Todos",
+  sx_g_comer: "Comer y beber",
+  sx_g_cuidado: "Cuidado y salud",
+  sx_g_tiendas: "Tiendas",
+  sx_g_casa: "Casa y oficios",
+  sx_g_dormir: "Alojamiento",
+  sx_g_despachos: "Despachos y clases",
+  at_muestras: "Muestras",
 };
 function nuevos() { return JSON.parse(fs.readFileSync(path.join(__dirname, "nuevos.json"), "utf8")); }
 function textosES() {

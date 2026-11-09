@@ -1,5 +1,5 @@
 /* Piezas que se tocan (6/11/2026, aprobadas por Oier: W2, A1 y B1).
-   · #tu-sector (portada): eliges tu negocio y cambia la muestra, en ordenador y en móvil.
+   · #tu-sector (portada y Trabajos): todas las muestras de sector, con filtros por tipo de negocio.
    · #prueba-el-asistente (automatizaciones): chat de ejemplo con respuestas preparadas.
    · #prueba-tu-nombre (branding): escribes el nombre y lo ves con cuatro letras.
    Sin JS se ve el primer sector, el saludo del chat y el nombre de ejemplo. Los textos que pone el JS
@@ -14,81 +14,24 @@
     el.animate([desde, { transform: 'none', opacity: 1 }], { duration: ms || 520, delay: retraso || 0, easing: SUAVE, fill: 'backwards' });
   }
 
-  /* ---------------------------------------------------------------- W2 · ¿Qué negocio tienes? */
-  (function () {
-    var raiz = document.getElementById('tu-sector');
-    if (!raiz) return;
-    var tabs = [].slice.call(raiz.querySelectorAll('[role="tab"]'));
-    var paneles = tabs.map(function (t) { return document.getElementById(t.getAttribute('aria-controls')); });
-    var actual = 0;
-    function elegir(i, foco) {
-      if (i === actual) return;
-      var antes = paneles[actual], p = paneles[i];
-      tabs.forEach(function (t, j) {
-        var on = j === i;
-        t.setAttribute('aria-selected', on ? 'true' : 'false');
-        t.tabIndex = on ? 0 : -1;
-        t.classList.toggle('is-on', on);
-      });
-      if (foco) tabs[i].focus();
-      antes.hidden = true;
-      p.hidden = false;
-      actual = i;
-      entra(p.querySelector('.sx__win'), { transform: 'translateX(28px)', opacity: 0 }, 620);
-      entra(p.querySelector('.sx__tel'), { transform: 'translateY(36px)', opacity: 0 }, 680, 90);
-      [].slice.call(p.querySelectorAll('.sx__txt > *')).forEach(function (el, j) {
-        entra(el, { transform: 'translateY(14px)', opacity: 0 }, 480, 60 + j * 55);
-      });
-      // Que el botón elegido se vea entero en la fila del móvil, sin mover la página
-      var fila = tabs[i].parentNode, b = tabs[i];
-      if (fila.scrollWidth > fila.clientWidth) {
-        var x = b.offsetLeft - (fila.clientWidth - b.offsetWidth) / 2;
-        fila.scrollTo({ left: x, behavior: quieto ? 'auto' : 'smooth' });
-      }
-    }
-    // Precarga la muestra al acercar el dedo o el ratón: así entra con la imagen ya puesta
-    function precarga(i) {
-      [].slice.call(paneles[i].querySelectorAll('img')).forEach(function (im) { im.loading = 'eager'; });
-    }
-    tabs.forEach(function (t, i) {
-      t.addEventListener('click', function () { elegir(i, false); });
-      t.addEventListener('pointerenter', function () { precarga(i); });
-      t.addEventListener('touchstart', function () { precarga(i); }, { passive: true });
-      t.addEventListener('keydown', function (e) {
-        var n = tabs.length, j = null;
-        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') j = (i + 1) % n;
-        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') j = (i - 1 + n) % n;
-        else if (e.key === 'Home') j = 0;
-        else if (e.key === 'End') j = n - 1;
-        if (j !== null) { e.preventDefault(); precarga(j); elegir(j, true); }
-      });
-    });
-    // En el móvil, deslizar la muestra a un lado pasa al sector de al lado
-    var caja = raiz.querySelector('.sx__caja'), x0 = null, y0 = 0;
-    caja.addEventListener('touchstart', function (e) {
-      x0 = e.touches[0].clientX; y0 = e.touches[0].clientY;
-      precarga((actual + 1) % tabs.length); precarga((actual - 1 + tabs.length) % tabs.length);
-    }, { passive: true });
-    caja.addEventListener('touchend', function (e) {
-      if (x0 === null) return;
-      var dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
-      x0 = null;
-      if (Math.abs(dx) < 45 || Math.abs(dx) < Math.abs(dy) * 1.4) return;
-      var n = tabs.length;
-      elegir(dx < 0 ? (actual + 1) % n : (actual - 1 + n) % n, false);
-    }, { passive: true });
-  })();
-
-  /* ---------------------------------------------------------------- W2b · Todas las muestras (9/11/2026)
-     Las tarjetas entran fila a fila al asomar (solo transform y opacity, por CSS); «Ver todas» abre el resto.
-     Sin JS o con movimiento reducido se ven todas, quietas. */
+  /* ---------------------------------------------------------------- W2 · ¿Qué negocio tienes? (9/11/2026 noche)
+     Todas las muestras de sector en una galería justo debajo de la portada. Filtros por tipo de negocio y, en la
+     portada, «Ver todas» (8 a la vista, 6 por debajo de 1000 px). Las tarjetas entran fila a fila al asomar (CSS, por
+     tiempo); al filtrar, las que quedan entran con animate(). Solo transform y opacity. Sin JS se ven todas, quietas. */
   (function () {
     var raiz = document.querySelector('#tu-sector .sx-t');
     if (!raiz) return;
     var rejilla = raiz.querySelector('.sx-t__g');
     var items = [].slice.call(raiz.querySelectorAll('.sx-t__i'));
     var boton = raiz.querySelector('.sx-t__mas');
+    var fil = raiz.querySelector('.sx-f');
+    var botones = fil ? [].slice.call(fil.querySelectorAll('button')) : [];
+    var grupo = '*';
+    var abierta = raiz.classList.contains('is-abierta');
+    var estrecho = matchMedia('(max-width:1000px)');
     function columnas() { return getComputedStyle(rejilla).gridTemplateColumns.split(' ').length || 1; }
+
+    // Entrada al asomar (la primera vez)
     var io = null;
     if (!quieto && 'IntersectionObserver' in window) {
       rejilla.classList.add('mv');
@@ -96,23 +39,70 @@
         var n = columnas();
         es.forEach(function (e) {
           if (!e.isIntersecting) return;
-          var li = e.target, j = items.indexOf(li);
-          li.style.setProperty('--d', ((j % n) * 75) + 'ms');
+          var li = e.target, j = items.filter(function (x) { return !x.hidden; }).indexOf(li);
+          li.style.setProperty('--d', ((Math.max(j, 0) % n) * 75) + 'ms');
           li.classList.add('is-in');
           io.unobserve(li);
         });
       }, { rootMargin: '0px 0px -6% 0px' });
       items.forEach(function (li) { io.observe(li); });
     }
+    // Tras el primer toque, la entrada por CSS se apaga y manda animate()
+    function soltarEntrada() {
+      if (io) { io.disconnect(); io = null; }
+      rejilla.classList.remove('mv');
+    }
+
+    function pintar(animar) {
+      var limite = (grupo === '*' && !abierta && boton) ? (estrecho.matches ? 6 : 8) : Infinity;
+      var nuevos = [], n = 0;
+      items.forEach(function (li) {
+        var dentro = grupo === '*' || li.dataset.g === grupo;
+        var ver = dentro && n < limite;
+        if (dentro) n++;
+        var estaba = !li.hidden;
+        li.hidden = !ver;
+        if (ver && (animar === 'todo' || (animar === 'nuevos' && !estaba))) nuevos.push(li);
+      });
+      if (boton) boton.hidden = grupo !== '*';
+      if (quieto || !nuevos.length) return;
+      nuevos.forEach(function (li, j) {
+        li.animate([{ transform: 'translateY(16px)', opacity: 0 }, { transform: 'none', opacity: 1 }],
+          { duration: 460, delay: Math.min(j, 8) * 45, easing: SUAVE, fill: 'backwards' });
+      });
+    }
+
+    raiz.classList.add('is-vivo');
+    pintar();
+    estrecho.addEventListener && estrecho.addEventListener('change', function () { pintar(); });
+
+    if (fil) {
+      fil.hidden = false;
+      botones.forEach(function (b) {
+        b.addEventListener('click', function () {
+          if (b.getAttribute('aria-pressed') === 'true') return;
+          botones.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+          grupo = b.dataset.g;
+          soltarEntrada();
+          pintar('todo');
+          // Que el filtro elegido se vea entero en la fila del móvil, sin mover la página
+          if (fil.scrollWidth > fil.clientWidth) {
+            fil.scrollTo({ left: b.offsetLeft - (fil.clientWidth - b.offsetWidth) / 2, behavior: quieto ? 'auto' : 'smooth' });
+          }
+        });
+      });
+    }
+
     if (!boton) return;
-    var mas = boton.children[0], menos = boton.children[1];
-    boton.hidden = false;
+    var mas = boton.querySelector('[data-t="sx_todas_mas"]'), menos = boton.querySelector('[data-t="sx_todas_menos"]');
     boton.addEventListener('click', function () {
-      var abrir = !raiz.classList.contains('is-abierta');
-      raiz.classList.toggle('is-abierta', abrir);
-      boton.setAttribute('aria-expanded', abrir ? 'true' : 'false');
-      mas.hidden = abrir; menos.hidden = !abrir;
-      if (!abrir) {
+      abierta = !abierta;
+      raiz.classList.toggle('is-abierta', abierta);
+      boton.setAttribute('aria-expanded', abierta ? 'true' : 'false');
+      mas.hidden = abierta; menos.hidden = !abierta;
+      soltarEntrada();
+      pintar('nuevos');
+      if (!abierta) {
         var r = raiz.getBoundingClientRect();
         if (r.top < 0) raiz.scrollIntoView({ block: 'start', behavior: quieto ? 'auto' : 'smooth' });
       }
