@@ -1,0 +1,2 @@
+sx_podologia_c	Estudio de cómo pisas y soportes plantares a medida
+sx_musica_b	Una clase para probar, por WhatsApp y sin llamar

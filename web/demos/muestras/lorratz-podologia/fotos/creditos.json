@@ -1,0 +1,75 @@
+{
+ "_leeme": "Fotos de la muestra LORRATZ (podología inventada, 9/11/2026). Son fotos libres de Unsplash puestas de ejemplo: ninguna es de una clínica real ni de sus pacientes. Originales mirados enteros: sin marca de agua. Recortadas, pasadas a blanco y negro, redimensionadas y guardadas en AVIF y WebP sin datos de ubicación (herramientas/diseno/imagenes.mjs).",
+ "portada": {
+  "autor": "Mariia Horobets",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-bare-foot-is-posing-on-black-OF3cA4s60ME",
+  "original": "4370 × 2913",
+  "uso": "portada a sangre en el ordenador: tobillo y empeine en primerísimo plano sobre negro (como la piel de la referencia)",
+  "cambios": "recortada a 2800 × 1750, en blanco y negro (curva en S, negros a negro puro), redimensionada y guardada en AVIF y WebP"
+ },
+ "portada-m": {
+  "autor": "Mariia Horobets",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-bare-foot-is-posing-on-black-OF3cA4s60ME",
+  "original": "4370 × 2913",
+  "uso": "portada en el móvil (recorte vertical de la misma foto)",
+  "cambios": "recortada a 1000 × 2500, en blanco y negro (curva en S, negros a negro puro), redimensionada y guardada en AVIF y WebP"
+ },
+ "azazkala": {
+  "autor": "Nowbelov",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/human-foot-with-small-toe-mole-ZdAwY6fu4s0",
+  "original": "4128 × 6192",
+  "uso": "mosaico: UÑA ENCARNADA (pieza grande)",
+  "cambios": "recortada a 4000 × 2667, en blanco y negro (con más contraste), redimensionada y guardada en AVIF y WebP"
+ },
+ "oin-zolak": {
+  "autor": "Danie Franco",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/grayscale-photo-of-human-feet-jyyNiSEcCl4",
+  "original": "3573 × 5374",
+  "uso": "mosaico: DUREZAS Y CALLOS (pieza grande): dos plantas del pie con los talones; antes tierra agrietada (revisor 9/11)",
+  "cambios": "recortada a 3573 × 2366, en blanco y negro (con más contraste), redimensionada y guardada en AVIF y WebP"
+ },
+ "lorratza-hondarrean": {
+  "autor": "Jeremy Bishop",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/brown-sand-with-heart-shaped-stones--mMEEkgj5fU",
+  "original": "4896 × 3264",
+  "uso": "mosaico: PLANTILLAS (huella en la arena)",
+  "cambios": "recortada a 3254 × 2667, en blanco y negro (con más contraste), redimensionada y guardada en AVIF y WebP"
+ },
+ "oinez-kalean": {
+  "autor": "alexey mansvetov",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-persons-foot-with-one-shoe-on-another-off-wJkO2EFRzxQ",
+  "original": "6000 × 4000",
+  "uso": "mosaico: DOLOR AL ANDAR",
+  "cambios": "recortada a 3254 × 2667, en blanco y negro (con más contraste), redimensionada y guardada en AVIF y WebP"
+ },
+ "oin-zola": {
+  "autor": "Philippe Murray-Pietsch",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-close-up-of-a-persons-bare-feet-UrFkjQkLs6I",
+  "original": "5030 × 4024",
+  "uso": "mosaico: PIE DIABÉTICO",
+  "cambios": "recortada a 3904 × 3200, en blanco y negro (con más contraste), redimensionada y guardada en AVIF y WebP"
+ },
+ "aparra": {
+  "autor": "Kier in Sight Archives",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-group-of-footprints-in-the-sand-on-the-beach-6abRClUoLxA",
+  "original": "3869 × 2900",
+  "uso": "franja pálida detrás de la presentación (donde la referencia pone el agua)",
+  "cambios": "recortada a 3869 × 1759, en blanco y negro (lavada, casi blanca), redimensionada y guardada en AVIF y WebP"
+ },
+ "lorratzak": {
+  "autor": "Angela Buttafoco",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/footprints-on-brown-sand-3ybjCPXEaSw",
+  "original": "2643 × 3105",
+  "uso": "fondo pálido del pie (donde la referencia pone la ciudad): huellas en la arena",
+  "cambios": "recortada a 2643 × 1101, en blanco y negro (lavada, casi blanca), redimensionada y guardada en AVIF y WebP"
+ }
+}

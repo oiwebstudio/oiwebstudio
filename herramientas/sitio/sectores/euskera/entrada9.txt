@@ -1,0 +1,20 @@
+sx_c_podologia	Podología
+sx_k_podologia	Podología en Tolosa
+sx_podologia_a	Dinos qué te pasa y verás tu tratamiento
+sx_podologia_b	Pide cita por WhatsApp sin llamar
+sx_podologia_c	Estudio de la pisada y plantillas a medida
+sx_c_peluqueriacanina	Peluquería canina
+sx_k_peluqueriacanina	Peluquería canina en Tolosa
+sx_peluqueriacanina_a	Elige tamaño y pelo y verás precio y tiempo
+sx_peluqueriacanina_b	Te avisamos por WhatsApp cuando esté listo
+sx_peluqueriacanina_c	Baño, corte y quitar pelo muerto, con su precio
+sx_c_ferreteria	Ferretería
+sx_k_ferreteria	Ferretería en Villabona
+sx_ferreteria_a	Pregunta por WhatsApp si tienen la pieza
+sx_ferreteria_b	Copias de llaves y afilado, con su precio
+sx_ferreteria_c	Abierto o cerrado, según la hora
+sx_c_musica	Escuela de danza
+sx_k_musica	Escuela de danza en Tolosa
+sx_musica_a	Clases por edad, con horario y plazas libres
+sx_musica_b	Clase de prueba sin llamar, por WhatsApp
+sx_musica_c	Cuánto falta para el festival de fin de curso

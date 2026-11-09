@@ -219,5 +219,57 @@
    "Urgencias a un toque",
    "La fecha de la próxima vacuna"
   ]
+ },
+ {
+  "id": "lorratz",
+  "nombre": "LORRATZ",
+  "carpeta": "lorratz-podologia",
+  "slug": "podologia",
+  "chip": "Podología",
+  "k": "Podología en Tolosa",
+  "lleva": [
+   "Dinos qué te pasa y verás tu tratamiento",
+   "Pide cita por WhatsApp sin llamar",
+   "Soportes plantares hechos a la medida de tu pie"
+  ]
+ },
+ {
+  "id": "uhal",
+  "nombre": "UHAL",
+  "carpeta": "uhal-txakur-ileapaindegia",
+  "slug": "peluqueriacanina",
+  "chip": "Peluquería canina",
+  "k": "Peluquería canina en Tolosa",
+  "lleva": [
+   "Elige tamaño y pelo y verás precio y tiempo",
+   "Te avisamos por WhatsApp cuando esté listo",
+   "Baño, corte y quitar pelo muerto, con su precio"
+  ]
+ },
+ {
+  "id": "iltze",
+  "nombre": "ILTZE",
+  "carpeta": "iltze-burdindegia",
+  "slug": "ferreteria",
+  "chip": "Ferretería",
+  "k": "Ferretería en Villabona",
+  "lleva": [
+   "Pregunta por WhatsApp si tienen la pieza",
+   "Copias de llaves y afilado, con su precio",
+   "Abierto o cerrado, según la hora"
+  ]
+ },
+ {
+  "id": "zirkin",
+  "nombre": "ZIRKIN",
+  "carpeta": "zirkin-dantza-eskola",
+  "slug": "musica",
+  "chip": "Escuela de danza",
+  "k": "Escuela de danza en Tolosa",
+  "lleva": [
+   "Clases por edad, con horario y plazas libres",
+   "Una clase para probar, por WhatsApp y sin llamar",
+   "Cuánto falta para el festival de fin de curso"
+  ]
  }
 ]
