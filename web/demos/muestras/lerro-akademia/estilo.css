@@ -1,0 +1,288 @@
+/* LERRO · muestra de academia y autoescuela (OI Studio, 8/11/2026). Calco de SHILLINGTON (shillingtoneducation.com), referencia n.º 13 que eligió Oier.
+   Letra: 13 Satoshi (400 y 700) del catálogo, autoalojada en fuentes/ (la más parecida a su Universal Sans Display). Sin cursiva.
+   Color: el de la referencia, medido en su web: blanco y negro, lila #CD9FF5 (botón y primera banda), rosa #FF97AF, marino #09224E,
+   fucsia #FA2BA1 en el cartel y gris #EAEAEA en la tira. */
+:root {
+  --tinta: #000;
+  --gris: #eaeaea;
+  --gris-t: #5c5c5c;        /* 6,7 sobre blanco */
+  --lila: #cd9ff5;
+  --lila-t: #360b67;        /* 10,3 sobre lila */
+  --lila-t2: #4a1d82;
+  --rosa: #ff97af;
+  --rosa-t: #560418;        /* 9,6 sobre rosa */
+  --rosa-t2: #761a30;
+  --marino: #09224e;
+  --marino-t2: #c5cde3;     /* 9,9 sobre marino */
+  --fucsia: #fa2ba1;
+  --menta: #4af7da;
+  --amarillo: #efff00;
+  --font: "Satoshi", "Helvetica Neue", Arial, sans-serif;
+  --ease: cubic-bezier(.2, .75, .25, 1);
+  --lado: clamp(20px, 6.9vw, 100px);
+  --ind: 22vw;
+  --gigante: clamp(2.75rem, 9vw, 8.125rem);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+a, button, [role="button"], input, select, textarea, summary, label { -webkit-tap-highlight-color: transparent; }
+:focus:not(:focus-visible) { outline: none; }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body { margin: 0; background: #fff; color: var(--tinta); font: 400 1rem/1.5 var(--font); }
+img { display: block; max-width: 100%; height: auto; }
+figure, blockquote { margin: 0; }
+p { margin: 0; }
+h1, h2, h3 { margin: 0; font-weight: 400; text-transform: uppercase; }
+ul { margin: 0; padding: 0; list-style: none; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+.sr { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+.saltar { position: fixed; left: 12px; top: -80px; z-index: 100; background: #000; color: #fff; padding: 12px 16px; text-decoration: none; }
+.saltar:focus { top: 12px; }
+
+/* ---------- botones ---------- */
+.btn, .pildora { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 1.3em; border-radius: 30px; text-decoration: none; font: 400 .875rem/1 var(--font); text-transform: uppercase; letter-spacing: .01em; }
+.btn { background: #000; color: #fff; }
+.pildora { background: var(--lila); color: #000; font-size: .9375rem; }
+.btn:active, .pildora:active, .circ:active, .flecha:active { transform: scale(.97); }
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover { background: #2a2a2a; }
+  .pildora:hover { background: #bd86ef; }
+}
+
+/* ---------- arriba a la derecha: idioma, teléfono, «Apúntate» y menú (como la referencia). Al bajar se esconde; al subir, vuelve ---------- */
+.ctrl { position: fixed; top: 16px; right: var(--lado); z-index: 60; display: flex; align-items: center; gap: 10px; transform: translateY(var(--dy, 0px)); transition: transform .5s var(--ease); }
+.ctrl.alto { --dy: max(0px, calc(6.1vw - 38px)); }
+.ctrl.oculto { transform: translateY(-160%); }
+.ctrl-txt { display: inline-flex; align-items: center; min-height: 44px; padding: 0 10px; text-decoration: none; font-size: .9375rem; transition: opacity .3s var(--ease), visibility .3s; }
+.js .ctrl:not(.alto) .ctrl-txt { opacity: 0; visibility: hidden; }
+.circ { display: inline-grid; place-items: center; width: 46px; height: 46px; padding: 0; border: 1px solid #d6d6d6; border-radius: 50%; background: #fff; color: #000; cursor: pointer; text-decoration: none; }
+.hamb { display: grid; gap: 4px; width: 16px; }
+.hamb i { display: block; height: 1.5px; background: currentColor; }
+.aspa { position: relative; width: 16px; height: 16px; }
+.aspa i { position: absolute; left: 0; top: 7px; width: 16px; height: 1.5px; background: currentColor; transform: rotate(45deg); }
+.aspa i + i { transform: rotate(-45deg); }
+@media (hover: hover) and (pointer: fine) {
+  .ctrl-txt:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .circ:hover { border-color: #000; }
+}
+
+/* ---------- menú a pantalla completa ---------- */
+.panel { position: fixed; inset: 0; z-index: 80; display: flex; flex-direction: column; padding: 16px var(--lado) 36px; background: #fff; overflow: auto; }
+.panel[hidden] { display: none; }
+.panel-cab { display: flex; align-items: center; justify-content: space-between; }
+.logo-p { width: 64px; font-size: .75rem; }
+.panel-lista { margin: auto 0; padding: 32px 0; }
+.panel-lista a { display: block; padding: 4px 0; text-decoration: none; font: 400 clamp(2.5rem, 7vw, 6rem)/1.02 var(--font); text-transform: uppercase; }
+.panel-pie { display: flex; flex-wrap: wrap; gap: 4px 32px; font-size: 1.125rem; }
+.panel-pie a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
+@media (hover: hover) and (pointer: fine) { .panel-lista a:hover { color: var(--lila-t2); } .panel-pie a:hover { text-decoration: underline; text-underline-offset: 4px; } }
+
+/* ---------- portada: logo redondo + titular de tres renglones ---------- */
+.portada { padding: clamp(24px, 4.5vw, 65px) 0 0; overflow: hidden; }
+.portada-tit { --h1: min(9vw, 146px); position: relative; padding: 0 var(--lado); }
+html[lang="eu"] .portada-tit { --h1: min(8.6vw, 139px); }
+.logo { display: grid; place-items: center; aspect-ratio: 1; border-radius: 50%; background: #1b1b1b; color: #fff; text-decoration: none; font-weight: 700; letter-spacing: .02em; }
+/* el logo, del alto del primer renglón (va con el tamaño del titular para no tocar el segundo) */
+.portada .logo { position: absolute; left: var(--lado); top: calc(var(--h1) * .02); width: calc(var(--h1) * .84); font-size: calc(var(--h1) * .15); }
+/* titular en Satoshi 700 (de trazo firme, como la grotesca de la referencia) y algo más pequeño que a 400 para que quepa igual */
+h1 { font-size: var(--h1); font-weight: 700; line-height: .9; letter-spacing: -.02em; }
+.ln { display: block; }
+.ln1 { padding-left: calc(var(--h1) * .84 + 3.5vw); }
+.pw { display: inline-block; overflow: hidden; padding-top: .07em; margin-top: -.07em; vertical-align: top; white-space: nowrap; }
+.ch { display: inline-block; }
+
+/* collage de piezas sueltas y solapadas (trabajos y materiales de ejemplo), como el de la referencia */
+.collage { position: relative; height: 46.9vw; max-height: 760px; margin-top: clamp(30px, 4.6vw, 70px); }
+.pz { position: absolute; left: var(--x); top: var(--y); width: var(--w); margin: 0; }
+.pz img { width: 100%; height: auto; }
+.pz-apuntes { --x: 2.4%; --y: 0%; --w: 23.5%; }
+.pz-cartel { --x: 31.6%; --y: 0%; --w: 36.6%; height: 92%; overflow: hidden; background: var(--fucsia); color: #000; }
+.pz-senal { --x: 71.6%; --y: 0%; --w: 26%; }
+.pz-estudiante { --x: 60.7%; --y: 30%; --w: 15.3%; z-index: 2; }
+.pz-profesora { --x: 79.5%; --y: 39%; --w: 14.5%; z-index: 2; }
+.pz-ejercicios { --x: 7%; --y: 41%; --w: 16.5%; }
+.pz-estudiante picture { display: block; }
+.pz-estudiante picture + picture { position: absolute; inset: 0; }
+.pz-estudiante picture + picture img { height: 100%; object-fit: cover; }
+.cap { position: absolute; inset: 0; opacity: 0; }
+.cap-1 { background: var(--fucsia); opacity: 1; }
+.cap-2 { background: #9b3cf2; }
+.cap-3 { background: #2b86f0; }
+.cartel-t, .cartel-s { z-index: 2; }
+.cartel-t { position: absolute; left: 7%; top: 6%; font: 700 6.1vw/.8 var(--font); letter-spacing: -.045em; }
+.cartel-s { position: absolute; left: 7%; bottom: 6%; font: 700 1.05vw/1.15 var(--font); letter-spacing: .02em; }
+.tag { position: absolute; left: var(--x); top: var(--y); z-index: 3; padding: .38em .9em .42em; border-radius: 999px; font-size: clamp(.75rem, 1.25vw, 1.125rem); line-height: 1; white-space: nowrap; }
+.tag-1 { --x: 34.5%; --y: 75%; background: var(--lila); color: var(--lila-t); }
+.tag-2 { --x: 75%; --y: 27%; background: var(--menta); color: #002f33; }
+.tag-3 { --x: 13%; --y: 33%; background: var(--lila); color: var(--lila-t); }
+.lazo { position: absolute; left: 33%; top: 70.5%; z-index: 3; width: 11.5%; height: auto; overflow: visible; fill: none; stroke: #b47cf0; stroke-width: 3; stroke-linecap: round; }
+
+/* ---------- tira gris con el texto pequeño (corre de lado con el scroll; no es una cinta en bucle) ---------- */
+.tira { display: block; overflow: hidden; background: var(--gris); text-decoration: none; }
+.tira-in { display: flex; width: max-content; }
+.tira-in span { display: inline-flex; align-items: center; min-height: 44px; padding: 0 5.5vw; font-size: .75rem; letter-spacing: .02em; white-space: nowrap; }
+.tira-sub { text-decoration: underline; text-underline-offset: 3px; }
+@media (hover: hover) and (pointer: fine) { .tira:hover .tira-sub { text-decoration-thickness: 2px; } }
+
+/* ---------- la palabra gigante que se escribe sola ---------- */
+.teclea { display: flex; align-items: center; min-height: calc(var(--gigante) * 1.8 + 100px); padding: clamp(35px, 3.5vw, 50px) var(--lado); }
+.teclea-p { font-size: var(--gigante); line-height: .9; text-transform: uppercase; letter-spacing: -.012em; }
+.cursor { display: inline-block; width: 2px; height: .82em; margin-left: .06em; vertical-align: -.04em; background: #000; }
+@media (prefers-reduced-motion: no-preference) { .js .cursor { animation: parpadeo 1.05s steps(1) infinite; } }
+@keyframes parpadeo { 50% { opacity: 0; } }
+
+/* ---------- bandas de curso a todo el ancho ---------- */
+.curso { --c: var(--lila); --t: var(--lila-t); --t2: var(--lila-t2); padding-top: clamp(40px, 6vw, 90px); background: var(--c); color: var(--t); }
+.c-rosa { --c: var(--rosa); --t: var(--rosa-t); --t2: var(--rosa-t2); }
+.c-marino { --c: var(--marino); --t: #fff; --t2: var(--marino-t2); }
+.curso-h { padding: 0 var(--lado); font-size: clamp(2.5rem, 5.6vw, 5.4rem); line-height: .95; letter-spacing: -.01em; }
+.curso-cuerpo { display: grid; grid-template-columns: minmax(0, 1fr) 55.3vw; align-items: end; margin-top: clamp(20px, 2.6vw, 40px); }
+.curso-txt { align-self: start; padding: 0 4vw clamp(40px, 4vw, 60px) var(--lado); }
+.curso-p { max-width: 24em; font-size: clamp(1.0625rem, 1.3vw, 1.1875rem); line-height: 1.42; }
+.curso-det { display: grid; margin-top: 18px; font-size: .8125rem; line-height: 1.5; }
+.curso-prox { color: var(--t2); }
+.curso-btn { margin-top: 22px; }
+.c-marino .btn { background: #fff; color: #000; }
+.curso-foto { overflow: hidden; aspect-ratio: 1.8; }
+.curso-foto picture, .curso-foto img { width: 100%; height: 100%; }
+.curso-foto img { object-fit: cover; }
+@media (hover: hover) and (pointer: fine) { .c-marino .btn:hover { background: #e6e6e6; } }
+
+/* ---------- titulares gigantes de sección ---------- */
+.gigante { font-size: calc(var(--gigante) * .87); font-weight: 700; line-height: .9; letter-spacing: -.02em; }
+.pie .gigante { max-width: 7em; }
+
+/* ---------- opiniones: titular gigante + carrusel con flechas redondas ---------- */
+.opis { padding: clamp(60px, 6vw, 90px) 0 clamp(50px, 5vw, 80px); }
+.opis-cab { padding: 0 var(--lado); }
+.opis .gigante { max-width: 9.5em; }
+.carr { display: grid; grid-template-columns: var(--ind) minmax(0, 1fr); margin-top: clamp(40px, 5vw, 70px); }
+.carr-nav { display: flex; align-items: flex-start; gap: 8px; padding-left: var(--lado); }
+.flecha { display: inline-grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: #000; color: #fff; cursor: pointer; }
+.flecha svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; }
+.flecha:disabled { opacity: .3; cursor: default; }
+.carr-pista { display: flex; gap: clamp(16px, 2.2vw, 32px); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-right: var(--lado); scroll-padding-left: 0; }
+.carr-pista::-webkit-scrollbar { display: none; }
+.op { flex: 0 0 clamp(250px, 23vw, 330px); scroll-snap-align: start; }
+.op-n { font-size: .9375rem; line-height: 1.4; }
+.op-c { color: var(--gris-t); font-size: .875rem; }
+.op-q { display: flex; align-items: flex-end; aspect-ratio: 1; margin-top: 14px; padding: clamp(18px, 1.8vw, 26px); }
+.op-q p { font-size: clamp(1.1875rem, 1.65vw, 1.5rem); line-height: 1.24; }
+.op-lila { background: var(--lila); color: var(--lila-t); }
+.op-rosa { background: var(--rosa); color: var(--rosa-t); }
+.op-marino { background: var(--marino); color: #fff; }
+.op-amarillo { background: var(--amarillo); color: #000; }
+
+/* ---------- ¿cuándo empiezas? (el «Want to chat?» de la referencia): curso + horario → próximo grupo y mensaje ---------- */
+.emp { padding: clamp(60px, 6vw, 90px) var(--lado) clamp(60px, 6vw, 100px); }
+.emp-col { max-width: 640px; margin: clamp(36px, 4.5vw, 64px) 0 0 calc(var(--ind) - var(--lado)); }
+.emp-p { font-size: clamp(1.25rem, 1.6vw, 1.5rem); line-height: 1.3; }
+.elige { margin-top: 34px; }
+.grupo { margin: 0; padding: 0; border: 0; }
+.grupo + .grupo { margin-top: 20px; }
+.grupo legend { margin-bottom: 10px; padding: 0; color: var(--gris-t); font-size: .8125rem; }
+.opcs { display: flex; flex-wrap: wrap; gap: 8px; }
+.opc { position: relative; display: inline-flex; cursor: pointer; }
+/* la píldora es el propio botón de opción (sin su aspecto de serie); el texto va encima */
+.opc input { -webkit-appearance: none; appearance: none; position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; border: 1px solid #000; border-radius: 30px; background: #fff; cursor: pointer; transition: background-color .2s var(--ease); }
+.opc input:checked { background: #000; }
+.opc input:focus-visible { outline: 2px solid #000; outline-offset: 3px; }
+.opc span { position: relative; display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; font-size: .875rem; line-height: 1; pointer-events: none; transition: color .2s var(--ease), background-color .2s var(--ease); }
+.opc input:checked + span { border-radius: 30px; background: #000; color: #fff; }
+.opc:active { transform: scale(.97); }
+@media (hover: hover) and (pointer: fine) { .opc:hover input:not(:checked) { background: var(--gris); } }
+.res { margin-top: 30px; }
+.res-sinjs a { text-underline-offset: 3px; }
+.res-fecha { font-size: clamp(1.375rem, 2vw, 1.75rem); line-height: 1.25; }
+.res-fecha strong { display: inline-block; font-weight: 700; }
+.res-hora { margin-top: 6px; font-size: 1.0625rem; }
+.res-plazas { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-top: 14px; font-size: 1.0625rem; }
+.res-ej { flex-basis: 100%; color: var(--gris-t); font-size: .875rem; }
+.cuadros { display: inline-flex; gap: 4px; }
+.cuadros i { display: block; width: 15px; height: 15px; border: 1.5px solid #000; border-radius: 3px; }
+.cuadros i.ocupada { background: #000; }
+.cuadros i.libre { background: var(--lila); }
+.msg { margin-top: 26px; padding: 20px 22px; border-radius: 18px; background: #f2f2f2; }
+.msg-h { color: var(--gris-t); font-size: .8125rem; }
+.escribiendo { margin-top: 8px; color: var(--gris-t); }
+.msg-txt { margin-top: 8px; font-size: 1.0625rem; line-height: 1.5; white-space: pre-line; }
+.enviar { margin-top: 22px; }
+.o-llama { margin-top: 12px; font-size: .9375rem; }
+.o-llama a { display: inline-block; padding: 12px 0; text-underline-offset: 3px; }
+.nota { margin-top: 26px; padding-top: 14px; border-top: 1px solid #dcdcdc; color: var(--gris-t); font-size: .875rem; line-height: 1.5; }
+
+/* ---------- pie: titular gigante, teléfono y WhatsApp grandes y enlaces en tres columnas ---------- */
+.pie { padding: clamp(60px, 5vw, 80px) var(--lado) clamp(60px, 6vw, 90px); border-top: 1px solid #ededed; }
+.pie-col { margin: clamp(30px, 3.5vw, 50px) 0 0 calc(var(--ind) - var(--lado)); }
+.pie-grande { display: flex; flex-wrap: wrap; gap: 0 36px; font-size: clamp(1.375rem, 2vw, 1.75rem); }
+.pie-grande a { display: inline-flex; align-items: center; min-height: 48px; text-decoration: none; }
+.pie-enl { display: grid; grid-template-columns: repeat(3, minmax(0, 220px)); gap: 0 clamp(20px, 4vw, 60px); margin-top: clamp(30px, 3.5vw, 50px); }
+.pie-enl li { font-size: .875rem; }
+.pie-enl a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
+.pie-enl li > span { display: inline-flex; align-items: center; flex-wrap: wrap; column-gap: .3em; min-height: 44px; }
+.pie-enl .firma { text-decoration: underline; text-underline-offset: 3px; }
+@media (hover: hover) and (pointer: fine) {
+  .pie-grande a:hover, .pie-enl a:hover { text-decoration: underline; text-underline-offset: 4px; }
+}
+
+.pildora-movil { display: none; }
+
+/* ---------- móvil ---------- */
+@media (max-width: 759px) {
+  :root { --ind: 0px; }
+  .ctrl { top: 14px; right: 14px; }
+  .ctrl .ctrl-txt, .ctrl .pildora { display: none; }
+  .ctrl.alto { --dy: 0px; }
+  .portada { padding-top: 20px; }
+  .portada .logo { position: static; width: 74px; font-size: .78rem; margin-bottom: 30px; }
+  .portada-tit { --h1: 10.2vw; }
+  html[lang="eu"] .portada-tit { --h1: 9.6vw; }
+  .ln { display: inline; }
+  .ln1 { padding-left: 0; }
+  /* como la referencia en el móvil: un collage bajo y apretado, con piezas pequeñas alrededor del cartel */
+  .collage { height: 62vw; margin-top: 30px; }
+  .pz-apuntes { --x: 2%; --y: 2%; --w: 25%; }
+  .pz-cartel { --x: 30%; --y: 0%; --w: 38%; height: 96%; }
+  .pz-senal { --x: 71%; --y: 0%; --w: 27%; }
+  .pz-estudiante { --x: 57%; --y: 36%; --w: 19%; }
+  .pz-profesora { --x: 79%; --y: 40%; --w: 18%; }
+  .pz-ejercicios { --x: 7%; --y: 47%; --w: 16%; }
+  .cartel-t { font-size: 5.6vw; line-height: .97; } /* a .8, en el móvil SPEAKING y CLUB se montan */
+  .cartel-s { font-size: 1.9vw; }
+  .tag { font-size: 2.7vw; }
+  .tag-1 { --x: 33%; --y: 83%; }
+  .tag-2 { --x: 74%; --y: 24%; }
+  .tag-3 { display: none; }
+  .lazo { left: 31%; top: 78%; width: 22%; }
+  .pz-cartel .cartel-s { top: auto; bottom: 22%; }
+  .teclea { min-height: calc(var(--gigante) * 1.8 + 70px); }
+  .curso-cuerpo { grid-template-columns: 1fr; }
+  .curso-txt { padding: 0 var(--lado) 32px; }
+  .curso-foto { aspect-ratio: 3 / 2; }
+  .carr { grid-template-columns: 1fr; }
+  .carr-nav { order: 2; padding: 20px var(--lado) 0; }
+  .carr-pista { padding: 0 var(--lado); scroll-padding-left: var(--lado); }
+  .op { flex-basis: 76vw; }
+  .emp-col { margin-left: 0; }
+  .pie { padding-bottom: calc(110px + env(safe-area-inset-bottom)); }
+  .pie-col { margin-left: 0; }
+  .pie-enl { grid-template-columns: 1fr; gap: 22px; }
+  .pildora-movil { position: fixed; left: 50%; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 55; display: inline-flex; min-height: 46px; padding: 0 26px; transform: translate(-50%, 0); transition: transform .45s var(--ease), opacity .3s var(--ease), background-color .3s var(--ease), color .3s var(--ease); }
+  .pildora-movil.sobre-lila { background: #000; color: #fff; } /* sobre la banda lila no se vería: pasa a negro */
+  .pildora-movil.fuera { visibility: hidden; opacity: 0; transform: translate(-50%, 140%); pointer-events: none; transition: transform .45s var(--ease), opacity .3s var(--ease), visibility 0s .45s; }
+}
+
+/* ---------- lo de la primera pantalla entra con CSS desde el primer pintado (nunca se ve quieto antes de moverse) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .ch { animation: sube 1.15s var(--ease) backwards; animation-delay: calc(80ms + var(--i) * 26ms); }
+  .portada .logo { animation: aparece .9s var(--ease) backwards .05s; }
+  .pz, .tag { animation: pieza 1s var(--ease) backwards; animation-delay: calc(.75s + var(--d) * 90ms); }
+  .lazo path { stroke-dasharray: 1; stroke-dashoffset: 0; animation: lazo 1.1s var(--ease) 1.75s backwards; }
+  .ctrl { animation: aparece .8s var(--ease) backwards .5s; }
+}
+@keyframes sube { from { transform: translateY(108%); } }
+@keyframes aparece { from { opacity: 0; transform: scale(.86); } }
+@keyframes pieza { from { opacity: 0; transform: translateY(26px) scale(.94); } }
+@keyframes lazo { from { stroke-dashoffset: 1; } }

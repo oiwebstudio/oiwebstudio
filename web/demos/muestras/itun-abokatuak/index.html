@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>ITUN · Abokatuak Tolosan (erakusketa-webgunea)</title>
+<meta name="description" content="Asmatutako abokatu-bulego baterako OI Studioko erakusketa-webgunea: gaia aukeratzen duzu, zer paper ekarri behar dituzun esaten dizu eta WhatsApp edo postarako kontsulta-eskaera idatzita uzten dizu.">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="ITUN · Abokatuak Tolosan (erakusketa-webgunea)">
+<meta property="og:description" content="Asmatutako abokatu-bulego baterako OI Studioko erakusketa-webgunea: gaia aukeratzen duzu, zer paper ekarri behar dituzun esaten dizu eta WhatsApp edo postarako kontsulta-eskaera idatzita uzten dizu.">
+<meta property="og:type" content="website">
+<link rel="alternate" hreflang="es" href="es/">
+<!--
+  MUESTRA «ITUN» (OI Studio, 8/11/2026): despacho de abogados INVENTADO en Tolosa para la pieza «¿Qué negocio tienes?» de oiwebstudio.com.
+  «Itun» = pacto, acuerdo. Buscado el 8/11 (buscadores, OpenStreetMap: despachos y notarías de Gipuzkoa): ningún despacho con ese nombre.
+  Son de ejemplo (lo dice también la nota del pie): el nombre, la dirección (Rondilla kalea 0, Tolosa), los teléfonos, el correo,
+  el horario y lo que se cuenta del despacho. La lista de papeles es orientativa. noindex.
+  Calco de la referencia que eligió Oier el 8/11: n.º 08, LEX POLITICA (lexpolitica.com). Portada: edificio con peso en blanco y negro,
+  a sangre y con velo negro (aquí el Palacio de Justicia de Donostia), titular de dos líneas en grotesca blanca enorme a media altura,
+  a la derecha un filete y un párrafo corto en serif, abajo una línea, un único botón de borde fino, otro filete a todo el ancho y una
+  frase normal (sin la tríada ni la etiqueta de la referencia). Debajo, el mismo ritmo: tres columnas blancas con foto alta; bloque negro
+  con el titular gigante y los asuntos que se apilan al bajar (el que se lee, encendido); rejilla blanca de 3 × 2 con títulos que caen
+  en ola (allí «resultados»; aquí qué traer); foto a sangre con agua (el Tinglado de Tolosa en el Oria) y titular gigante; franja negra
+  con la marca en el centro y dos frases que se separan con el scroll; foto a sangre; tres columnas con la lista numerada (aquí la
+  consulta); foto de arcos con la última llamada; pie negro en cuatro columnas.
+  Lo que hace: primera consulta sin llamar (eliges el asunto, marcas los papeles que ya tienes, idioma y mañana o tarde → el mensaje
+  sale escrito para WhatsApp o correo); qué papeles traer según el asunto; los asuntos en castellano y en euskera; abierto o cerrado
+  según la hora real de Tolosa.
+  Letras: 14 Switzer (titulares, en lugar de la Helvetica Neue de la referencia) y 11 Erode (texto, en lugar de su Heldane Text),
+  autoalojadas en fuentes/. Sin cursivas.
+  Fotos: Wikimedia Commons (CC BY-SA: Sami Mlouhi, Joxemai, Krzysztof Golik, Basotxerri) y Unsplash (Romain Dancre, Andres Vera),
+  todas en blanco y negro; detalle en fotos/creditos.json. Ninguna es de un despacho real ni lleva marca de agua.
+  Movimiento: cabecera, foto y titular de la portada entran con CSS desde el primer pintado; lo de abajo, con GSAP 3.13 + ScrollTrigger
+  + SplitText (js/) + anim-texto.js + pagina.js, por tiempo al asomar; los títulos de la rejilla caen en ola con animate(); las dos frases
+  de la franja negra corren de lado con el scroll. Con «reducir movimiento» o sin JS, todo quieto y visible.
+  Generada con _local/demos/itun-generador/gen.mjs (no editar este HTML a mano).
+-->
+<link rel="preload" href="fuentes/switzer-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fuentes/erode-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="estilo.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="saltar" href="#contenido">Edukira joan</a>
+
+<header class="cab">
+  <a class="logo" href="#contenido"><svg class="marca" viewBox="0 0 48 30" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="3.6"><path d="M26.17 8.93A11 11 0 1 1 21.21 4.84"/><path d="M21.83 21.07A11 11 0 1 1 26.79 25.16"/></g></svg><span class="logo-t">ITUN ABOKATUAK</span><span class="sr">Itun Abokatuak, hasiera</span></a>
+  <nav class="cab-nav" aria-label="Menua">
+    <ul><li><a href="#despacho">Bulegoa</a></li><li><a href="#asuntos">Gaiak</a></li><li><a href="#traer">Zer ekarri</a></li><li><a href="#consulta">Kontsulta</a></li><li><a href="#contacto">Kontaktua</a></li><li><a class="idioma" href="es/" lang="es" hreflang="es"><span aria-hidden="true">ES</span><span class="sr">Castellano</span></a></li></ul>
+  </nav>
+  <button class="hamb" type="button" aria-expanded="false" aria-controls="menu-movil" aria-label="Ireki menua"><svg viewBox="0 0 28 12" aria-hidden="true" focusable="false"><path class="l1" d="M0 1h28"/><path class="l2" d="M0 11h28"/></svg></button>
+</header>
+
+<div class="menu-movil" id="menu-movil" hidden>
+  <ul><li><a href="#despacho">Bulegoa</a></li><li><a href="#asuntos">Gaiak</a></li><li><a href="#traer">Zer ekarri</a></li><li><a href="#consulta">Kontsulta</a></li><li><a href="#contacto">Kontaktua</a></li></ul>
+  <p><a href="tel:+34943000000">943 00 00 00</a></p>
+  <p><a href="es/" lang="es" hreflang="es">Castellano</a></p>
+</div>
+
+<main id="contenido">
+<section class="portada" data-portada aria-labelledby="h-portada">
+  <div class="portada-foto"><picture><source media="(max-width: 759px)" type="image/avif" srcset="fotos/portada-m-600.avif 600w, fotos/portada-m-900.avif 900w, fotos/portada-m-1300.avif 1300w" sizes="100vw"><source media="(max-width: 759px)" type="image/webp" srcset="fotos/portada-m-600.webp 600w, fotos/portada-m-900.webp 900w, fotos/portada-m-1300.webp 1300w" sizes="100vw"><source type="image/avif" srcset="fotos/portada-1280.avif 1280w, fotos/portada-1920.avif 1920w, fotos/portada-2560.avif 2560w" sizes="100vw"><img src="fotos/portada-1920.webp" srcset="fotos/portada-1280.webp 1280w, fotos/portada-1920.webp 1920w, fotos/portada-2560.webp 2560w" sizes="100vw" width="3024" height="1890" alt="Donostiako Justizia Jauregiaren fatxada gauez, zuri-beltzean: frontoia, zutabeak eta banderak." fetchpriority="high" decoding="async"></picture></div>
+  <h1 class="portada-h" id="h-portada" style="--largo:9"><span class="sr">Abokatuak Tolosan</span><span aria-hidden="true"><span class="pal"><span class="le"><span style="--i:0">A</span></span><span class="le"><span style="--i:1">b</span></span><span class="le"><span style="--i:2">o</span></span><span class="le"><span style="--i:3">k</span></span><span class="le"><span style="--i:4">a</span></span><span class="le"><span style="--i:5">t</span></span><span class="le"><span style="--i:6">u</span></span><span class="le"><span style="--i:7">a</span></span><span class="le"><span style="--i:8">k</span></span></span><br><span class="pal"><span class="le"><span style="--i:9">T</span></span><span class="le"><span style="--i:10">o</span></span><span class="le"><span style="--i:11">l</span></span><span class="le"><span style="--i:12">o</span></span><span class="le"><span style="--i:13">s</span></span><span class="le"><span style="--i:14">a</span></span><span class="le"><span style="--i:15">n</span></span></span></span></h1>
+  <div class="portada-der">
+    <a class="portada-tel" href="tel:+34943000000">Deitu <span class="pal">943 00 00 00</span> telefonora</a>
+    <p class="serif">Jaraunspenak, banantzeak, kaleratzeak, kontratuak eta isunak. Hasi aurretik esango dizugu zer aukera dituzun eta zer kostatzen den.</p>
+  </div>
+  <div class="portada-base">
+    <p class="serif portada-linea">Gaztelaniaz edo euskaraz erantzungo dizugu.</p>
+    <a class="pildora" href="#asuntos">Gaiak ikusi</a>
+    <p class="serif portada-pie">Bulegoa Tolosan, aurretiko hitzorduarekin.</p>
+  </div>
+</section>
+
+<section class="intro" id="despacho" aria-labelledby="h-intro">
+  <h2 id="h-intro" class="intro-h" data-lineas>Tolosako bulego txiki bat</h2>
+  <div class="intro-txt">
+    <p class="serif intro-sub">Familientzat, langileentzat eta enpresa txikientzat</p>
+    <p class="serif" data-enciende>Tolosaldeko jendearen kontuak daramatzagu. Zer paper ekarri behar diren begiratzen duzu, idazten diguzu eta lehen kontsultarako eguna ematen dizugu.</p>
+  </div>
+  <figure class="intro-foto" data-panel><picture><source type="image/avif" srcset="fotos/udaletxea-500.avif 500w, fotos/udaletxea-900.avif 900w, fotos/udaletxea-1300.avif 1300w" sizes="(min-width: 760px) 29vw, 100vw"><img src="fotos/udaletxea-900.webp" srcset="fotos/udaletxea-500.webp 500w, fotos/udaletxea-900.webp 900w, fotos/udaletxea-1300.webp 1300w" sizes="(min-width: 760px) 29vw, 100vw" width="2830" height="4288" alt="Tolosako udaletxea, hiru arkuekin, zuri-beltzean, euria ari duen egun batean." loading="lazy" decoding="async"></picture></figure>
+  <div class="intro-marca"><svg class="marca marca-g" viewBox="0 0 48 30" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="3.6"><path d="M26.17 8.93A11 11 0 1 1 21.21 4.84"/><path d="M21.83 21.07A11 11 0 1 1 26.79 25.16"/></g></svg></div>
+  <a class="pildora pildora-negra intro-btn" href="#consulta">Eskatu lehen kontsulta</a>
+</section>
+
+<section class="asuntos" id="asuntos" aria-labelledby="h-asuntos">
+  <h2 id="h-asuntos" class="gigante" style="--largo:12" data-lineas>Daramatzagun gaiak</h2>
+  <div class="areas">
+    <article class="area" data-area>
+      <h3>Jaraunspenak eta testamentuak</h3>
+      <p class="serif">Jaraunspen bat onartzea edo ukatzea, anai-arreben artean banatzea eta testamentua egitea.</p>
+    </article>
+    <article class="area" data-area>
+      <h3>Banantzea eta dibortzioa</h3>
+      <p class="serif">Ados egon ala ez: hitzarmena, zaintza, pentsioa eta etxearekin zer gertatzen den.</p>
+    </article>
+    <article class="area" data-area>
+      <h3>Kaleratzeak eta lana</h3>
+      <p class="serif">Kaleratze-gutuna eta kitapena berrikusten ditugu, eta zor dizutena erreklamatzen dugu.</p>
+    </article>
+    <article class="area" data-area>
+      <h3>Kontratuak eta alokairuak</h3>
+      <p class="serif">Kontratua sinatu baino lehen irakurtzen dugu, eta beste aldeak betetzen ez badu lagunduko dizugu.</p>
+    </article>
+    <article class="area" data-area>
+      <h3>Isunak eta zehapenak</h3>
+      <p class="serif">Udalaren, trafikoko edo ogasuneko isunak errekurritzen ditugu, arrazoiak daudenean.</p>
+    </article>
+  </div>
+  <a class="pildora" href="#consulta">Kontsulta prestatu</a>
+</section>
+
+<section class="traer" id="traer" aria-labelledby="h-traer">
+  <h2 id="h-traer" data-lineas>Zer ekarri lehen hitzordura</h2>
+  <div class="rejilla">
+      <div class="celda" style="--i:0">
+        <h3 class="ola"><span class="sr">Herentzia</span><span class="ola-t" aria-hidden="true"><span class="pal"><span class="ch">H</span><span class="ch">e</span><span class="ch">r</span><span class="ch">e</span><span class="ch">n</span><span class="ch">t</span><span class="ch">z</span><span class="ch">i</span><span class="ch">a</span></span></span></h3>
+        <ul class="serif"><li>Heriotza-ziurtagiria</li><li>Azken borondateen ziurtagiria</li><li>Testamentua, halakorik badago</li><li>Etxeen eskriturak eta OHZren ordainagiriak</li><li>Bankuko kontuen laburpenak</li></ul>
+      </div>
+      <div class="celda" style="--i:1">
+        <h3 class="ola"><span class="sr">Banantzea edo dibortzioa</span><span class="ola-t" aria-hidden="true"><span class="pal"><span class="ch">B</span><span class="ch">a</span><span class="ch">n</span><span class="ch">a</span><span class="ch">n</span><span class="ch">t</span><span class="ch">z</span><span class="ch">e</span><span class="ch">a</span></span> <span class="pal"><span class="ch">e</span><span class="ch">d</span><span class="ch">o</span></span> <span class="pal"><span class="ch">d</span><span class="ch">i</span><span class="ch">b</span><span class="ch">o</span><span class="ch">r</span><span class="ch">t</span><span class="ch">z</span><span class="ch">i</span><span class="ch">o</span><span class="ch">a</span></span></span></h3>
+        <ul class="serif"><li>Familia-liburua</li><li>Ezkontza-ziurtagiria</li><li>Nominak edo azken errenta-aitorpena</li><li>Etxebizitzaren eskritura edo alokairu-kontratua</li></ul>
+      </div>
+      <div class="celda" style="--i:2">
+        <h3 class="ola"><span class="sr">Kaleratzea</span><span class="ola-t" aria-hidden="true"><span class="pal"><span class="ch">K</span><span class="ch">a</span><span class="ch">l</span><span class="ch">e</span><span class="ch">r</span><span class="ch">a</span><span class="ch">t</span><span class="ch">z</span><span class="ch">e</span><span class="ch">a</span></span></span></h3>
+        <ul class="serif"><li>Kaleratze-gutuna</li><li>Lan-kontratua</li><li>Azken hiru nominak</li><li>Kitapena sinatuta, baldin badago</li><li>Lan-bizitzaren txostena</li></ul>
+      </div>
+      <div class="celda" style="--i:3">
+        <h3 class="ola"><span class="sr">Kontratua edo alokairua</span><span class="ola-t" aria-hidden="true"><span class="pal"><span class="ch">K</span><span class="ch">o</span><span class="ch">n</span><span class="ch">t</span><span class="ch">r</span><span class="ch">a</span><span class="ch">t</span><span class="ch">u</span><span class="ch">a</span></span> <span class="pal"><span class="ch">e</span><span class="ch">d</span><span class="ch">o</span></span> <span class="pal"><span class="ch">a</span><span class="ch">l</span><span class="ch">o</span><span class="ch">k</span><span class="ch">a</span><span class="ch">i</span><span class="ch">r</span><span class="ch">u</span><span class="ch">a</span></span></span></h3>
+        <ul class="serif"><li>Sinatutako kontratua</li><li>Ordainagiriak edo ordainketen transferentziak</li><li>Mezu elektronikoak edo mezuak beste alderdiarekin</li></ul>
+      </div>
+      <div class="celda" style="--i:4">
+        <h3 class="ola"><span class="sr">Isuna edo zehapena</span><span class="ola-t" aria-hidden="true"><span class="pal"><span class="ch">I</span><span class="ch">s</span><span class="ch">u</span><span class="ch">n</span><span class="ch">a</span></span> <span class="pal"><span class="ch">e</span><span class="ch">d</span><span class="ch">o</span></span> <span class="pal"><span class="ch">z</span><span class="ch">e</span><span class="ch">h</span><span class="ch">a</span><span class="ch">p</span><span class="ch">e</span><span class="ch">n</span><span class="ch">a</span></span></span></h3>
+        <ul class="serif"><li>Isunaren jakinarazpena</li><li>Gutun-azala edo abisua, zein egunetan iritsi den adierazita</li><li>Egun horretako argazkiak edo paperak</li></ul>
+      </div>
+      <div class="celda" style="--i:5">
+        <h3 class="ola"><span class="sr">Kasu guztietan</span><span class="ola-t" aria-hidden="true"><span class="pal"><span class="ch">K</span><span class="ch">a</span><span class="ch">s</span><span class="ch">u</span></span> <span class="pal"><span class="ch">g</span><span class="ch">u</span><span class="ch">z</span><span class="ch">t</span><span class="ch">i</span><span class="ch">e</span><span class="ch">t</span><span class="ch">a</span><span class="ch">n</span></span></span></h3>
+        <p class="serif">Zure NANa eta epaitegiaren edo beste alderdiaren edozein gutun.</p>
+      </div>
+  </div>
+</section>
+
+<section class="lengua" aria-labelledby="h-lengua">
+  <div class="fondo" data-fondo><picture><source media="(max-width: 759px)" type="image/avif" srcset="fotos/tinglado-m-600.avif 600w, fotos/tinglado-m-900.avif 900w, fotos/tinglado-m-1300.avif 1300w" sizes="100vw"><source media="(max-width: 759px)" type="image/webp" srcset="fotos/tinglado-m-600.webp 600w, fotos/tinglado-m-900.webp 900w, fotos/tinglado-m-1300.webp 1300w" sizes="100vw"><source type="image/avif" srcset="fotos/tinglado-1280.avif 1280w, fotos/tinglado-1920.avif 1920w, fotos/tinglado-2560.avif 2560w, fotos/tinglado-3200.avif 3200w" sizes="100vw"><img src="fotos/tinglado-1920.webp" srcset="fotos/tinglado-1280.webp 1280w, fotos/tinglado-1920.webp 1920w, fotos/tinglado-2560.webp 2560w, fotos/tinglado-3200.webp 3200w" sizes="100vw" width="4475" height="2797" alt="Tolosako Zerkausia eta bere arkuak Oria ibaian islatuta, zuri-beltzean." loading="lazy" decoding="async"></picture></div>
+  <hr class="filete" data-filete>
+  <div class="lengua-in">
+    <h2 id="h-lengua" class="gigante" style="--largo:11" data-lineas>Euskaraz<br>edo<br>gaztelaniaz</h2>
+    <div class="lengua-der">
+      <hr class="filete" data-filete>
+      <p class="serif">Bilerak, idazkiak eta deiak, zuk aukeratutako hizkuntzan.</p>
+      <a class="pildora" href="es/" lang="es" hreflang="es">Gaztelaniaz irakurri</a>
+    </div>
+  </div>
+</section>
+
+<div class="pin">
+  <section class="banda" aria-label="Aldez aurretik hitzordua eskatuta ematen dugu arreta, astelehenetik ostiralera.">
+    <p class="serif banda-arriba">Aldez aurretik hitzordua eskatuta ematen dugu arreta, astelehenetik ostiralera.</p>
+    <div class="banda-fila">
+      <p class="serif banda-izq" lang="es" data-separa="-1"><span>En castellano</span></p>
+      <svg class="marca marca-banda" viewBox="0 0 48 30" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="3.6"><path d="M26.17 8.93A11 11 0 1 1 21.21 4.84"/><path d="M21.83 21.07A11 11 0 1 1 26.79 25.16"/></g></svg>
+      <p class="serif banda-der" lang="eu" data-separa="1"><span>Euskaraz</span></p>
+    </div>
+  </section>
+  <figure class="banda-foto"><picture><source media="(max-width: 759px)" type="image/avif" srcset="fotos/firma-m-600.avif 600w, fotos/firma-m-900.avif 900w, fotos/firma-m-1300.avif 1300w" sizes="100vw"><source media="(max-width: 759px)" type="image/webp" srcset="fotos/firma-m-600.webp 600w, fotos/firma-m-900.webp 900w, fotos/firma-m-1300.webp 1300w" sizes="100vw"><source type="image/avif" srcset="fotos/firma-1280.avif 1280w, fotos/firma-1920.avif 1920w, fotos/firma-2560.avif 2560w, fotos/firma-3200.avif 3200w" sizes="100vw"><img src="fotos/firma-1920.webp" srcset="fotos/firma-1280.webp 1280w, fotos/firma-1920.webp 1920w, fotos/firma-2560.webp 2560w, fotos/firma-3200.webp 3200w" sizes="100vw" width="5973" height="2489" alt="Zuri-beltzean, bi pertsona mahai baten gainean paper batzuk sinatzen ari dira." loading="lazy" decoding="async"></picture></figure>
+</div>
+
+<section class="consulta" id="consulta" aria-labelledby="h-consulta">
+  <figure class="consulta-foto" data-panel><picture><source type="image/avif" srcset="fotos/papeles-500.avif 500w, fotos/papeles-900.avif 900w, fotos/papeles-1300.avif 1300w" sizes="(min-width: 760px) 29vw, 100vw"><img src="fotos/papeles-900.webp" srcset="fotos/papeles-500.webp 500w, fotos/papeles-900.webp 900w, fotos/papeles-1300.webp 1300w" sizes="(min-width: 760px) 29vw, 100vw" width="2440" height="4000" alt="Luma estilografiko bat paper mordo baten gainean, zuri-beltzean." loading="lazy" decoding="async"></picture></figure>
+  <form class="herr" data-consulta onsubmit="return false">
+    <h2 id="h-consulta" class="ola consulta-h"><span class="sr">Lehenengo kontsulta deitu gabe</span><span class="ola-t" aria-hidden="true"><span class="pal"><span class="ch">L</span><span class="ch">e</span><span class="ch">h</span><span class="ch">e</span><span class="ch">n</span><span class="ch">e</span><span class="ch">n</span><span class="ch">g</span><span class="ch">o</span></span> <span class="pal"><span class="ch">k</span><span class="ch">o</span><span class="ch">n</span><span class="ch">t</span><span class="ch">s</span><span class="ch">u</span><span class="ch">l</span><span class="ch">t</span><span class="ch">a</span></span> <span class="pal"><span class="ch">d</span><span class="ch">e</span><span class="ch">i</span><span class="ch">t</span><span class="ch">u</span></span> <span class="pal"><span class="ch">g</span><span class="ch">a</span><span class="ch">b</span><span class="ch">e</span></span></span></h2>
+    <div class="consulta-der">
+      <p class="serif consulta-sub">Aukeratu gaia</p>
+      <p class="serif">Paperen zerrenda eta mezua ikusiko dituzu. WhatsApp edo posta bidez bidaltzen duzu eta egun bat ematen dizugu.</p>
+    </div>
+    <fieldset class="lista">
+      <legend class="sr">Aukeratu gaia</legend>
+      <label class="as"><input type="radio" name="asunto" value="her" checked><span class="as-n" aria-hidden="true">01</span><span class="as-t">Herentzia</span></label>
+          <label class="as"><input type="radio" name="asunto" value="div"><span class="as-n" aria-hidden="true">02</span><span class="as-t">Banantzea edo dibortzioa</span></label>
+          <label class="as"><input type="radio" name="asunto" value="des"><span class="as-n" aria-hidden="true">03</span><span class="as-t">Kaleratzea</span></label>
+          <label class="as"><input type="radio" name="asunto" value="con"><span class="as-n" aria-hidden="true">04</span><span class="as-t">Kontratua edo alokairua</span></label>
+          <label class="as"><input type="radio" name="asunto" value="mul"><span class="as-n" aria-hidden="true">05</span><span class="as-t">Isuna edo zehapena</span></label>
+    </fieldset>
+    <fieldset class="tengo">
+      <legend><h3>Markatu daukazuna</h3></legend>
+      <div class="docs" data-docs="her"><label class="doc"><input type="checkbox" name="doc-her" value="1"><span class="caja" aria-hidden="true"></span><span>Heriotza-ziurtagiria</span></label><label class="doc"><input type="checkbox" name="doc-her" value="2"><span class="caja" aria-hidden="true"></span><span>Azken borondateen ziurtagiria</span></label><label class="doc"><input type="checkbox" name="doc-her" value="3"><span class="caja" aria-hidden="true"></span><span>Testamentua, halakorik badago</span></label><label class="doc"><input type="checkbox" name="doc-her" value="4"><span class="caja" aria-hidden="true"></span><span>Etxeen eskriturak eta OHZren ordainagiriak</span></label><label class="doc"><input type="checkbox" name="doc-her" value="5"><span class="caja" aria-hidden="true"></span><span>Bankuko kontuen laburpenak</span></label></div>
+          <div class="docs" data-docs="div" hidden><label class="doc"><input type="checkbox" name="doc-div" value="1"><span class="caja" aria-hidden="true"></span><span>Familia-liburua</span></label><label class="doc"><input type="checkbox" name="doc-div" value="2"><span class="caja" aria-hidden="true"></span><span>Ezkontza-ziurtagiria</span></label><label class="doc"><input type="checkbox" name="doc-div" value="3"><span class="caja" aria-hidden="true"></span><span>Nominak edo azken errenta-aitorpena</span></label><label class="doc"><input type="checkbox" name="doc-div" value="4"><span class="caja" aria-hidden="true"></span><span>Etxebizitzaren eskritura edo alokairu-kontratua</span></label></div>
+          <div class="docs" data-docs="des" hidden><label class="doc"><input type="checkbox" name="doc-des" value="1"><span class="caja" aria-hidden="true"></span><span>Kaleratze-gutuna</span></label><label class="doc"><input type="checkbox" name="doc-des" value="2"><span class="caja" aria-hidden="true"></span><span>Lan-kontratua</span></label><label class="doc"><input type="checkbox" name="doc-des" value="3"><span class="caja" aria-hidden="true"></span><span>Azken hiru nominak</span></label><label class="doc"><input type="checkbox" name="doc-des" value="4"><span class="caja" aria-hidden="true"></span><span>Kitapena sinatuta, baldin badago</span></label><label class="doc"><input type="checkbox" name="doc-des" value="5"><span class="caja" aria-hidden="true"></span><span>Lan-bizitzaren txostena</span></label></div>
+          <div class="docs" data-docs="con" hidden><label class="doc"><input type="checkbox" name="doc-con" value="1"><span class="caja" aria-hidden="true"></span><span>Sinatutako kontratua</span></label><label class="doc"><input type="checkbox" name="doc-con" value="2"><span class="caja" aria-hidden="true"></span><span>Ordainagiriak edo ordainketen transferentziak</span></label><label class="doc"><input type="checkbox" name="doc-con" value="3"><span class="caja" aria-hidden="true"></span><span>Mezu elektronikoak edo mezuak beste alderdiarekin</span></label></div>
+          <div class="docs" data-docs="mul" hidden><label class="doc"><input type="checkbox" name="doc-mul" value="1"><span class="caja" aria-hidden="true"></span><span>Isunaren jakinarazpena</span></label><label class="doc"><input type="checkbox" name="doc-mul" value="2"><span class="caja" aria-hidden="true"></span><span>Gutun-azala edo abisua, zein egunetan iritsi den adierazita</span></label><label class="doc"><input type="checkbox" name="doc-mul" value="3"><span class="caja" aria-hidden="true"></span><span>Egun horretako argazkiak edo paperak</span></label></div>
+    </fieldset>
+    <div class="prefs">
+      <fieldset>
+        <legend>Zein hizkuntzatan?</legend>
+        <label class="op"><input type="radio" name="idioma" value="eu" checked><span>Euskara</span></label><label class="op"><input type="radio" name="idioma" value="es"><span>Gaztelania</span></label>
+      </fieldset>
+      <fieldset>
+        <legend>Noiz datorkizu hobeto?</legend>
+        <label class="op"><input type="radio" name="franja" value="man" checked><span>Goizean</span></label><label class="op"><input type="radio" name="franja" value="tar"><span>Arratsaldean</span></label>
+      </fieldset>
+    </div>
+    <div class="mensaje">
+      <h3>Zure mezua</h3>
+      <p class="escribiendo" data-escribiendo aria-hidden="true">Idazten...</p>
+      <div class="texto serif" data-mensaje aria-live="polite"><p>Kaixo, herentzia batengatik lehen kontsulta bat eskatu nahi nuen.</p><p>Oraindik ez dut paperik prest.</p><p>Nahiago dut kontsulta euskaraz izatea.</p><p>Goizean hobeto datorkit.</p><p>Mila esker.</p></div>
+    </div>
+    <div class="enviar">
+      <a class="pildora pildora-negra" href="https://wa.me/34600000000?text=Kaixo%2C%20herentzia%20batengatik%20lehen%20kontsulta%20bat%20eskatu%20nahi%20nuen.%0AOraindik%20ez%20dut%20paperik%20prest.%0ANahiago%20dut%20kontsulta%20euskaraz%20izatea.%0AGoizean%20hobeto%20datorkit.%0AMila%20esker." rel="noopener" data-wa>Bidali WhatsApp bidez</a>
+      <a class="enl" href="mailto:kaixo@itun.example?subject=Lehenengo%20kontsulta&amp;body=Kaixo%2C%20herentzia%20batengatik%20lehen%20kontsulta%20bat%20eskatu%20nahi%20nuen.%0AOraindik%20ez%20dut%20paperik%20prest.%0ANahiago%20dut%20kontsulta%20euskaraz%20izatea.%0AGoizean%20hobeto%20datorkit.%0AMila%20esker." data-mail>edo postaz</a>
+      <p class="serif o-llama">Nahiago duzu deitu? <a href="tel:+34943000000" class="pal">943 00 00 00</a>.</p>
+    </div>
+  </form>
+</section>
+
+<section class="cita" aria-labelledby="h-cita">
+  <div class="fondo" data-fondo><picture><source media="(max-width: 759px)" type="image/avif" srcset="fotos/arkupeak-m-600.avif 600w, fotos/arkupeak-m-900.avif 900w, fotos/arkupeak-m-1300.avif 1300w" sizes="100vw"><source media="(max-width: 759px)" type="image/webp" srcset="fotos/arkupeak-m-600.webp 600w, fotos/arkupeak-m-900.webp 900w, fotos/arkupeak-m-1300.webp 1300w" sizes="100vw"><source type="image/avif" srcset="fotos/arkupeak-1280.avif 1280w, fotos/arkupeak-1920.avif 1920w, fotos/arkupeak-2560.avif 2560w, fotos/arkupeak-3200.avif 3200w" sizes="100vw"><img src="fotos/arkupeak-1920.webp" srcset="fotos/arkupeak-1280.webp 1280w, fotos/arkupeak-1920.webp 1920w, fotos/arkupeak-2560.webp 2560w, fotos/arkupeak-3200.webp 3200w" sizes="100vw" width="4463" height="2479" alt="Tolosako Zerkausiko arkuak eta ibai ondoko egurrezko pasabidea, zuri-beltzean." loading="lazy" decoding="async"></picture></div>
+  <hr class="filete" data-filete>
+  <div class="lengua-in">
+    <h2 id="h-cita" class="gigante" style="--largo:6" data-lineas>Deitu edo idatzi</h2>
+    <div class="lengua-der">
+      <hr class="filete" data-filete>
+      <p class="serif">Deitu <a href="tel:+34943000000" class="pal">943 00 00 00</a> telefonora edo idatzi WhatsApp bidez eta lehen kontsultarako eguna emango dizugu.</p>
+      <p class="serif">Astelehenetik ostiralera, 9:00etatik 14:00etara eta 16:00etatik 19:00etara.</p>
+      <a class="pildora" href="tel:+34943000000">Deitu</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="pie" id="contacto">
+  <div class="pie-sup">
+    <svg class="marca marca-pie" viewBox="0 0 48 30" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="3.6"><path d="M26.17 8.93A11 11 0 1 1 21.21 4.84"/><path d="M21.83 21.07A11 11 0 1 1 26.79 25.16"/></g></svg>
+    <p class="serif">ITUN ABOKATUAK<br>Herentziak, familia, lana, kontratuak eta isunak, Tolosan.</p>
+  </div>
+  <div class="pie-cols" data-escalonado>
+    <div class="pie-col">
+      <h2>Helbidea</h2>
+      <p>Rondilla kalea 0<br>20400 Tolosa</p>
+    </div>
+    <div class="pie-col">
+      <h2>Kontaktua</h2>
+      <ul>
+        <li><a href="tel:+34943000000">943 00 00 00 <span class="fl" aria-hidden="true">→</span></a></li>
+        <li><a href="https://wa.me/34600000000" rel="noopener">WhatsApp 600 00 00 00 <span class="fl" aria-hidden="true">→</span></a></li>
+        <li><a href="mailto:kaixo@itun.example">kaixo@itun.example <span class="fl" aria-hidden="true">→</span></a></li>
+      </ul>
+    </div>
+    <div class="pie-col">
+      <h2>Ordutegia</h2>
+      <p>Astelehenetik ostiralera<br>9:00etatik 14:00etara eta 16:00etatik 19:00etara</p>
+      <p class="estado" data-estado aria-live="polite"></p>
+    </div>
+    <div class="pie-col pie-nav">
+      <h2>Orrialde honetan</h2>
+      <ul><li><a href="#despacho">Bulegoa <span class="fl" aria-hidden="true">→</span></a></li><li><a href="#asuntos">Gaiak <span class="fl" aria-hidden="true">→</span></a></li><li><a href="#traer">Zer ekarri <span class="fl" aria-hidden="true">→</span></a></li><li><a href="#consulta">Kontsulta <span class="fl" aria-hidden="true">→</span></a></li></ul>
+    </div>
+  </div>
+  <div class="pie-nota">
+    <p>Adibide-datuak. Itun asmatutako bulego bat da, eta webgune hau OI Studioren diseinuaren lagin bat da. Izena, helbidea, telefonoak, posta, ordutegia eta bulegoari buruz esaten den guztia asmatuta daude. Paperen zerrenda orientagarria da.</p>
+    <p>Argazki libreak: Sami Mlouhi, Joxemai, Krzysztof Golik eta Basotxerri (Wikimedia Commons, CC BY-SA), Romain Dancre eta Andres Vera (Unsplash). <a href="fotos/creditos.json">Argazkien kredituak</a></p>
+  </div>
+  <div class="pie-fin">
+    <p>© ITUN ABOKATUAK</p>
+    <p><a href="es/" lang="es" hreflang="es">Castellano</a></p>
+    <p><a href="fotos/creditos.json">Argazkien kredituak</a></p>
+    <p class="pie-firma">Diseinatzailea: <a class="firma" href="https://oiwebstudio.com/?utm_source=muestra-itun&amp;utm_medium=pie" target="_blank" rel="noopener">OI Studio</a></p>
+  </div>
+</footer>
+
+<script type="application/json" id="textos">{"lang":"eu","wa":"https://wa.me/34600000000","mail":"kaixo@itun.example","asunto_mail":"Lehenengo kontsulta","escribiendo":"Idazten...","inicio":{"her":"Kaixo, herentzia batengatik lehen kontsulta bat eskatu nahi nuen.","div":"Kaixo, lehen kontsulta bat eskatu nahi nuen banantze edo dibortzio batengatik.","des":"Kaixo, lehen kontsulta bat eskatu nahi nuen kaleratze batengatik.","con":"Kaixo, lehen kontsulta bat eskatu nahi nuen kontratu edo alokairu batengatik.","mul":"Kaixo, lehen kontsulta bat eskatu nahi nuen isun edo zigor batengatik."},"docs":{"her":["Heriotza-ziurtagiria","Azken borondateen ziurtagiria","Testamentua, halakorik badago","Etxeen eskriturak eta OHZren ordainagiriak","Bankuko kontuen laburpenak"],"div":["Familia-liburua","Ezkontza-ziurtagiria","Nominak edo azken errenta-aitorpena","Etxebizitzaren eskritura edo alokairu-kontratua"],"des":["Kaleratze-gutuna","Lan-kontratua","Azken hiru nominak","Kitapena sinatuta, baldin badago","Lan-bizitzaren txostena"],"con":["Sinatutako kontratua","Ordainagiriak edo ordainketen transferentziak","Mezu elektronikoak edo mezuak beste alderdiarekin"],"mul":["Isunaren jakinarazpena","Gutun-azala edo abisua, zein egunetan iritsi den adierazita","Egun horretako argazkiak edo paperak"]},"tengo":"Baditut paper hauek:","falta":"Oraindik falta zait:","nada":"Oraindik ez dut paperik prest.","eu":"Nahiago dut kontsulta euskaraz izatea.","es":"Nahiago dut kontsulta gaztelaniaz izatea.","man":"Goizean hobeto datorkit.","tar":"Arratsaldean hobeto datorkit.","gracias":"Mila esker.","est":{"a14":"Orain zabalik, 14:00ak arte.","a19":"Orain irekita, 19:00ak arte.","h9":"Orain itxita. Gaur 9:00etan irekiko dugu.","h16":"Orain itxita. Gaur 16:00etan irekiko dugu.","m9":"Orain itxita. Bihar 9:00etan irekiko dugu.","l9":"Orain itxita. Astelehenean 9:00etan irekiko dugu."},"abrir":"Ireki menua","cerrar":"Itxi menua"}</script>
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/SplitText.min.js"></script>
+<script src="js/anim-texto.js"></script>
+<script src="js/pagina.js"></script>
+</body>
+</html>

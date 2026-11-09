@@ -15,8 +15,19 @@ const ASSETS = path.join(WEB, "assets");
 const i = process.argv.indexOf("--solo");
 const solo = i > 0 ? process.argv[i + 1].split(",") : null;
 const forzar = process.argv.includes("--forzar");
+// Tarjetas de la galería «todas las muestras» (assets/sx/<id>-c.webp, 640×400): salen de la captura de ordenador, para todos los sectores
+async function tarjetas() {
+  fs.mkdirSync(path.join(ASSETS, "sx"), { recursive: true });
+  const todos = [...JSON.parse(fs.readFileSync(path.join(__dirname, "existentes.json"), "utf8")), ...nuevos()];
+  for (const s of todos) {
+    const desde = path.join(ASSETS, `${s.id}-desk.webp`), a = path.join(ASSETS, "sx", `${s.id}-c.webp`);
+    if (!fs.existsSync(desde) || (fs.existsSync(a) && !forzar && fs.statSync(a).mtimeMs > fs.statSync(desde).mtimeMs)) continue;
+    await sharp(desde).resize(640, 400, { fit: "cover", position: "top" }).webp({ quality: 78 }).toFile(a);
+    console.log("tarjeta", s.id, Math.round(fs.statSync(a).size / 1024) + " KB");
+  }
+}
 const lista = nuevos().filter((s) => (!solo || solo.includes(s.id)) && (forzar || !fs.existsSync(path.join(ASSETS, `${s.id}-desk.webp`))));
-if (!lista.length) { console.log("Nada que capturar (usa --forzar para rehacer)."); process.exit(0); }
+if (!lista.length) { console.log("Nada que capturar (usa --forzar para rehacer)."); tarjetas().then(() => process.exit(0)); return; }
 
 const TIPOS = { ".html": "text/html; charset=utf-8", ".css": "text/css", ".js": "text/javascript", ".mjs": "text/javascript", ".json": "application/json",
   ".svg": "image/svg+xml", ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".webp": "image/webp", ".avif": "image/avif",
@@ -58,5 +69,5 @@ servidor.listen(0, "127.0.0.1", () => {
       const kb = (f) => Math.round(fs.statSync(f).size / 1024) + " KB";
       console.log(s.id, "desk", kb(path.join(ASSETS, `${s.id}-desk.webp`)), kb(path.join(ASSETS, `${s.id}-desk.jpg`)), "· móvil", kb(path.join(ASSETS, "hero", `${s.id}-m.webp`)));
     }
-  }, "miniaturas sectores").then(() => servidor.close()).catch((e) => { console.error(e); servidor.close(); process.exit(1); });
+  }, "miniaturas sectores").then(tarjetas).then(() => servidor.close()).catch((e) => { console.error(e); servidor.close(); process.exit(1); });
 });

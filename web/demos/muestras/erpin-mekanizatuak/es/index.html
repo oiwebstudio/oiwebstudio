@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>ERPIN · Chapa y mecanizado en Ibarra (web de muestra)</title>
+<meta name="description" content="Web de muestra de OI Studio para un taller de chapa y mecanizado inventado: miras si tu pieza entra en las máquinas y mandas el presupuesto con el plano por WhatsApp o por correo.">
+<meta name="theme-color" content="#FFFFFF">
+<meta property="og:title" content="ERPIN · Chapa y mecanizado en Ibarra (web de muestra)">
+<meta property="og:description" content="Web de muestra de OI Studio para un taller de chapa y mecanizado inventado: miras si tu pieza entra en las máquinas y mandas el presupuesto con el plano por WhatsApp o por correo.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="../fotos/og-erpin.jpg">
+<link rel="alternate" hreflang="eu" href="../">
+<!--
+  MUESTRA «ERPIN» (OI Studio, 9/11/2026): taller de chapa y mecanizado INVENTADO para la pieza «¿Qué negocio tienes?» de oiwebstudio.com.
+  «Erpin» = vértice. Nombre, dirección, teléfonos, correo, horario, máquinas, medidas, plazos y certificado son de ejemplo. noindex.
+  Calco de COPREC (coprec.co.jp, n.º 01 del tablero muestras-industria-2026-11-07, elegida por Oier el 8/11): marco de plano con 1–8 y A–D
+  en los bordes, cabecera con el menú en celdas, nombre gigante de borde a borde, tres columnas (qué y dónde, procesos con [ ] y dirección),
+  tira de tres paneles con el mismo vídeo de la plegadora, barra de abajo como la pantalla de una máquina (fecha, hora, X/Y del ratón, C, S),
+  rótulos de sección en vertical a los lados, foto ancha + titular grande + texto, panel azul oscuro a todo el ancho, banda amarilla,
+  tarjetas con pestaña y foto en blanco y negro, banda azul (aquí, el «¿entra en nuestras máquinas?») y bloque de datos con la foto de la nave.
+  Lo que se toca reacciona: los [ ] de la portada marcan el proceso, el presupuesto dice si la pieza entra (medidores por proceso), da un plazo
+  orientativo y deja escrito el mensaje para WhatsApp o correo; el horario dice si está abierto con la hora de Gipuzkoa.
+  Letras: n.º 3 Panchang 600/800 (nombre, títulos, rótulos cortos y barra) + n.º 14 Switzer 400/600 (texto), autoalojadas en fuentes/.
+  Fotos: Unsplash (licencia de Unsplash): Cemrecan Yurtman, Morteza Mohammadi, Daulet Turubayev, Jelifer Maniago, set.sj.
+  Vídeo: Pexels (licencia de Pexels): Dominik Zítka. Detalle en fotos/creditos.json.
+  Movimiento: la portada entra con CSS desde el primer pintado; lo de abajo, con GSAP 3.13 + ScrollTrigger + SplitText (js/) + anim-texto.js
+  + pagina.js. Con «reducir movimiento» o sin JS, todo quieto y visible (el vídeo se queda en su primer fotograma).
+-->
+<link rel="preload" href="../fuentes/panchang-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fuentes/panchang-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fuentes/switzer-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../estilo.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<div class="marco" aria-hidden="true">
+  <div class="regla regla-arr ocho"><span><b>1</b></span><span><b>2</b></span><span><b>3</b></span><span><b>4</b></span><span><b>5</b></span><span><b>6</b></span><span><b>7</b></span><span><b>8</b></span></div><div class="regla regla-arr cuatro"><span><b>1</b></span><span><b>2</b></span><span><b>3</b></span><span><b>4</b></span></div>
+  <div class="regla regla-aba ocho"><span><b>1</b></span><span><b>2</b></span><span><b>3</b></span><span><b>4</b></span><span><b>5</b></span><span><b>6</b></span><span><b>7</b></span><span><b>8</b></span></div><div class="regla regla-aba cuatro"><span><b>1</b></span><span><b>2</b></span><span><b>3</b></span><span><b>4</b></span></div>
+  <div class="regla regla-izq"><span><b>A</b></span><span><b>B</b></span><span><b>C</b></span><span><b>D</b></span></div><div class="regla regla-der"><span><b>A</b></span><span><b>B</b></span><span><b>C</b></span><span><b>D</b></span></div>
+</div>
+
+<header class="cab">
+  <a class="logo" href="#contenido" aria-label="ERPIN">ERPIN</a>
+  <nav class="nav" aria-label="Menú"><ul><li><a href="#taller">Taller</a></li><li><a href="#maquinas">Máquinas</a></li><li><a href="#presupuesto">Presupuesto</a></li><li><a href="#donde">Dónde</a></li><li class="c-idioma"><a href="../" lang="eu" hreflang="eu"><span aria-hidden="true">EU</span><span class="sr">Euskaraz</span></a></li><li class="c-tel"><a href="tel:+34943000000">943 00 00 00</a></li></ul></nav>
+  <button class="hamb" type="button" aria-expanded="false" aria-controls="desplegable" aria-label="Menú"><span></span><span></span></button>
+</header>
+<nav class="desplegable" id="desplegable" aria-label="Menú"><ul><li><a href="#taller">Taller</a></li><li><a href="#maquinas">Máquinas</a></li><li><a href="#presupuesto">Presupuesto</a></li><li><a href="#donde">Dónde</a></li><li class="c-idioma"><a href="../" lang="eu" hreflang="eu"><span aria-hidden="true">EU</span><span class="sr">Euskaraz</span></a></li><li class="c-tel"><a href="tel:+34943000000">943 00 00 00</a></li></ul></nav>
+
+<main id="contenido">
+<section class="portada" data-portada aria-labelledby="h1">
+  <h1 id="h1" class="nombre"><span class="sr">ERPIN, chapa y mecanizado en Ibarra</span><span class="letras" aria-hidden="true"><span class="l"><span style="--i:0">E</span></span><span class="l"><span style="--i:1">R</span></span><span class="l"><span style="--i:2">P</span></span><span class="l"><span style="--i:3">I</span></span><span class="l"><span style="--i:4">N</span></span></span></h1>
+  <div class="ficha">
+    <p class="que entra" style="--d:.55s">Chapa y<br>mecanizado<br>Ibarra</p>
+    <ul class="procesos entra" style="--d:.7s" aria-label="Marca los procesos de tu pieza"><li><button type="button" class="proc" data-proc="laser" aria-pressed="false"><span class="corchete" aria-hidden="true"></span><span>Corte láser</span></button></li><li><button type="button" class="proc" data-proc="plegado" aria-pressed="false"><span class="corchete" aria-hidden="true"></span><span>Plegado</span></button></li><li><button type="button" class="proc" data-proc="cnc" aria-pressed="false"><span class="corchete" aria-hidden="true"></span><span>Mecanizado CNC</span></button></li><li><button type="button" class="proc" data-proc="sold" aria-pressed="false"><span class="corchete" aria-hidden="true"></span><span>Soldadura</span></button></li></ul>
+    <p class="dir entra" style="--d:.85s">Industrialdea 0<br>20400 Ibarra<br>Gipuzkoa<br><a href="tel:+34943000000">943 00 00 00</a></p>
+  </div>
+  <div class="tira">
+    <picture><source media="(max-width: 700px)" type="image/avif" srcset="../fotos/tira-m-1036.avif"><source media="(max-width: 700px)" type="image/webp" srcset="../fotos/tira-m-1036.webp"><source type="image/avif" srcset="../fotos/tira-1366.avif 1366w, ../fotos/tira-2732.avif 2732w" sizes="96vw"><img src="../fotos/tira-1366.webp" srcset="../fotos/tira-1366.webp 1366w, ../fotos/tira-2732.webp 2732w" sizes="96vw" width="2732" height="780" alt="Una plegadora dobla una chapa de acero. Es el mismo vídeo en tres paneles." fetchpriority="high" decoding="async"></picture>
+    <video muted loop playsinline autoplay preload="auto" aria-hidden="true" tabindex="-1" data-video>
+      <source media="(max-width: 700px)" src="../fotos/tira-1036.webm" type="video/webm">
+      <source media="(max-width: 700px)" src="../fotos/tira-1036.mp4" type="video/mp4">
+      <source src="../fotos/tira-2732.webm" type="video/webm">
+      <source src="../fotos/tira-2732.mp4" type="video/mp4">
+    </video>
+    <script>(function(){var v=document.querySelector("[data-video]");if(matchMedia("(prefers-reduced-motion: reduce)").matches){v.removeAttribute("autoplay");v.pause();v.hidden=true}})();</script>
+    <i class="tapa t1" aria-hidden="true"></i><i class="tapa t2" aria-hidden="true"></i><i class="tapa t3" aria-hidden="true"></i>
+  </div>
+</section>
+
+<section class="sec taller" id="taller" aria-labelledby="h-taller">
+  <div class="lado izq" aria-hidden="true"><span>Taller</span></div><div class="lado der" aria-hidden="true"><span>Taller</span></div>
+  <div class="col">
+    <h2 id="h-taller" class="grande" data-lineas>Todo en la misma nave</h2>
+    <figure class="ancha" data-panel="foto"><picture><source type="image/avif" srcset="../fotos/taller-800.avif 800w, ../fotos/taller-1200.avif 1200w, ../fotos/taller-1700.avif 1700w, ../fotos/taller-2400.avif 2400w" sizes="(min-width: 1100px) 64vw, 92vw"><img src="../fotos/taller-1200.webp" srcset="../fotos/taller-800.webp 800w, ../fotos/taller-1200.webp 1200w, ../fotos/taller-1700.webp 1700w, ../fotos/taller-2400.webp 2400w" sizes="(min-width: 1100px) 64vw, 92vw" width="3840" height="2160" alt="Cabezal de corte láser sobre una chapa de acero, con chispas." loading="lazy" decoding="async"></picture></figure>
+    <div class="dos">
+      <h3 class="grande" data-lineas>Envía el plano</h3>
+      <div>
+        <p data-enciende>Te decimos si la pieza entra en nuestras máquinas, cuánto cuesta y cuándo estará lista. Cortamos, plegamos, mecanizamos y soldamos en nuestro taller.</p>
+        <a class="btn" href="#presupuesto"><span>Pedir presupuesto</span><span class="chev" aria-hidden="true">&gt;</span></a>
+      </div>
+    </div>
+  </div>
+  <figure class="panel-osc" data-panel="foto"><div class="pista-foto" data-pista="8"><picture><source type="image/avif" srcset="../fotos/acero-800.avif 800w, ../fotos/acero-1400.avif 1400w, ../fotos/acero-2000.avif 2000w, ../fotos/acero-3100.avif 3100w" sizes="104vw"><img src="../fotos/acero-1400.webp" srcset="../fotos/acero-800.webp 800w, ../fotos/acero-1400.webp 1400w, ../fotos/acero-2000.webp 2000w, ../fotos/acero-3100.webp 3100w" sizes="104vw" width="3100" height="1409" alt="Bobinas de chapa de acero apiladas en un almacén." loading="lazy" decoding="async"></picture></div><figcaption><i class="tri" aria-hidden="true"></i><span>Acero, inoxidable y aluminio</span></figcaption></figure>
+</section>
+
+<section class="amarilla" aria-labelledby="h-am">
+  <div class="lado izq" aria-hidden="true"><span>Plano</span></div><div class="lado der" aria-hidden="true"><span>Plano</span></div>
+  <div class="col">
+    <h2 id="h-am" data-lineas>Antes de pedir presupuesto</h2>
+    <ul class="am-lista" data-escalonado><li>El plano en PDF, DXF o STEP. Si no hay plano, una foto con medidas.</li><li>Material, espesor y cuántas piezas.</li><li>Para cuándo la necesitas.</li></ul>
+    <div class="am-pie">
+      <a class="btn" href="#presupuesto"><span>Preparar el mensaje</span><span class="chev" aria-hidden="true">&gt;</span></a>
+      <p class="sello-logo" aria-hidden="true"><b>ERPIN</b><span>Chapa y mecanizado</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="sec maquinas" id="maquinas" aria-labelledby="h-maq">
+  <div class="lado izq" aria-hidden="true"><span>Máquinas</span></div><div class="lado der" aria-hidden="true"><span>Máquinas</span></div>
+  <div class="col">
+    <div class="cabeza"><h2 id="h-maq" data-lineas>Máquinas y medidas</h2><div><p>La pieza más grande que cabe en cada máquina. Si la tuya es más grande, pregúntanos igual.</p><p class="nota-ej">Datos de ejemplo: máquinas y medidas.</p></div></div>
+    <ul class="tarjetas" data-escalonado>
+          <li class="tarjeta">
+            <span class="pestana">Fibra 6&nbsp;<span class="u">kW</span></span>
+            <div class="t-foto"><picture><source type="image/avif" srcset="../fotos/laser-480.avif 480w, ../fotos/laser-800.avif 800w" sizes="(min-width: 1100px) 230px, (min-width: 700px) 22vw, 44vw"><img src="../fotos/laser-480.webp" srcset="../fotos/laser-480.webp 480w, ../fotos/laser-800.webp 800w" sizes="(min-width: 1100px) 230px, (min-width: 700px) 22vw, 44vw" width="2290" height="2160" alt="Cabezal láser cortando ranuras en una chapa." loading="lazy" decoding="async"></picture></div>
+            <h3>Corte láser</h3>
+            <p>Mesa de 3000 × 1500 mm. Acero hasta 25 mm, inoxidable hasta 20 y aluminio hasta 15.</p>
+          </li>
+          <li class="tarjeta">
+            <span class="pestana">Plegadora 135&nbsp;<span class="u">t</span></span>
+            <div class="t-foto"><picture><source type="image/avif" srcset="../fotos/plegado-480.avif 480w, ../fotos/plegado-800.avif 800w" sizes="(min-width: 1100px) 230px, (min-width: 700px) 22vw, 44vw"><img src="../fotos/plegado-480.webp" srcset="../fotos/plegado-480.webp 480w, ../fotos/plegado-800.webp 800w" sizes="(min-width: 1100px) 230px, (min-width: 700px) 22vw, 44vw" width="3949" height="3725" alt="Una mano con guante mete una chapa en la plegadora." loading="lazy" decoding="async"></picture></div>
+            <h3>Plegado</h3>
+            <p>Piezas de hasta 3000 mm de largo. Acero hasta 8 mm, inoxidable hasta 6 y aluminio hasta 8.</p>
+          </li>
+          <li class="tarjeta">
+            <span class="pestana">3 ejes y torno</span>
+            <div class="t-foto"><picture><source type="image/avif" srcset="../fotos/cnc-480.avif 480w, ../fotos/cnc-800.avif 800w" sizes="(min-width: 1100px) 230px, (min-width: 700px) 22vw, 44vw"><img src="../fotos/cnc-480.webp" srcset="../fotos/cnc-480.webp 480w, ../fotos/cnc-800.webp 800w" sizes="(min-width: 1100px) 230px, (min-width: 700px) 22vw, 44vw" width="3263" height="3078" alt="Fresa de un centro de mecanizado trabajando una pieza de aluminio." loading="lazy" decoding="async"></picture></div>
+            <h3>Mecanizado CNC</h3>
+            <p>Fresado hasta 1000 × 500 × 500 mm. Torneado hasta 300 mm de diámetro.</p>
+          </li>
+          <li class="tarjeta">
+            <span class="pestana">MIG, MAG y TIG</span>
+            <div class="t-foto"><picture><source type="image/avif" srcset="../fotos/soldadura-480.avif 480w, ../fotos/soldadura-800.avif 800w" sizes="(min-width: 1100px) 230px, (min-width: 700px) 22vw, 44vw"><img src="../fotos/soldadura-480.webp" srcset="../fotos/soldadura-480.webp 480w, ../fotos/soldadura-800.webp 800w" sizes="(min-width: 1100px) 230px, (min-width: 700px) 22vw, 44vw" width="2290" height="2160" alt="Soldadura de un bastidor de acero, con chispas." loading="lazy" decoding="async"></picture></div>
+            <h3>Soldadura</h3>
+            <p>Acero desde 1 mm, inoxidable desde 0,8 y aluminio desde 1,5. Piezas sueltas y conjuntos.</p>
+          </li>
+    </ul>
+  </div>
+</section>
+
+<section class="azul" id="presupuesto" aria-labelledby="h-pre">
+  <div class="lado izq" aria-hidden="true"><span>Presupuesto</span></div><div class="lado der" aria-hidden="true"><span>Presupuesto</span></div>
+  <div class="col">
+    <div class="cabeza"><h2 id="h-pre" data-lineas>¿Entra en nuestras máquinas?</h2><p>Elige proceso, material, espesor y cuántas piezas. Te decimos si entra y te dejamos el mensaje escrito.</p></div>
+    <form class="calc" data-calc onsubmit="return false" novalidate>
+      <div class="mandos">
+        <fieldset class="f-proc"><legend>Proceso</legend>
+          <div class="opcs">
+            <label class="opc"><input class="corchete" type="checkbox" name="proc" value="laser"><span>Corte láser</span></label>
+            <label class="opc"><input class="corchete" type="checkbox" name="proc" value="plegado"><span>Plegado</span></label>
+            <label class="opc"><input class="corchete" type="checkbox" name="proc" value="cnc"><span>Mecanizado CNC</span></label>
+            <label class="opc"><input class="corchete" type="checkbox" name="proc" value="sold"><span>Soldadura</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="f-mat"><legend>Material</legend>
+          <div class="opcs">
+            <label class="opc"><input class="corchete" type="radio" name="mat" value="acero" checked><span>Acero</span></label>
+            <label class="opc"><input class="corchete" type="radio" name="mat" value="inox"><span>Inoxidable</span></label>
+            <label class="opc"><input class="corchete" type="radio" name="mat" value="alu"><span>Aluminio</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="f-esp"><legend>Espesor</legend>
+          <div class="esp"><output data-esp-out for="esp">3 mm</output><input id="esp" type="range" name="esp" min="0" max="15" step="1" value="5" aria-label="Espesor" aria-valuetext="3 mm"></div>
+          <div class="esp-escala" aria-hidden="true"><span>0,5</span><span>30 mm</span></div>
+        </fieldset>
+        <fieldset class="f-cant"><legend>Cantidad</legend>
+          <div class="cant"><button type="button" data-menos aria-label="Una pieza menos">−</button><input type="number" name="cant" inputmode="numeric" min="1" max="99999" value="10" aria-label="Cantidad"><button type="button" data-mas aria-label="Una pieza más">+</button><span data-cant-ud>piezas</span></div>
+        </fieldset>
+        <label class="f-nombre"><span>Tu nombre o empresa (si quieres)</span><input type="text" name="nombre" maxlength="60" autocomplete="organization"></label>
+      </div>
+      <div class="pantalla" data-panel="lado">
+        <h3 id="h-res">Resultado</h3>
+        <p class="veredicto" data-veredicto aria-live="polite">Elige al menos un proceso.</p>
+        <ul class="medidores" data-medidores>
+            <li class="med" data-med="laser">
+              <span class="med-nom">Corte láser</span><span class="med-lim" data-lim>hasta 25 mm</span><span class="med-est" data-est></span>
+              <span class="med-regla" aria-hidden="true"><i class="med-rango" data-rango style="left:1.67%;width:81.67%"></i><span class="med-marca" data-marca style="transform:translateX(10.00%)"><i></i></span></span>
+            </li>
+            <li class="med" data-med="plegado">
+              <span class="med-nom">Plegado</span><span class="med-lim" data-lim>hasta 8 mm</span><span class="med-est" data-est></span>
+              <span class="med-regla" aria-hidden="true"><i class="med-rango" data-rango style="left:1.67%;width:25.00%"></i><span class="med-marca" data-marca style="transform:translateX(10.00%)"><i></i></span></span>
+            </li>
+            <li class="med" data-med="cnc">
+              <span class="med-nom">Mecanizado CNC</span><span class="med-lim" data-lim>desde 0,5 mm</span><span class="med-est" data-est></span>
+              <span class="med-regla" aria-hidden="true"><i class="med-rango" data-rango style="left:1.67%;width:98.33%"></i><span class="med-marca" data-marca style="transform:translateX(10.00%)"><i></i></span></span>
+            </li>
+            <li class="med" data-med="sold">
+              <span class="med-nom">Soldadura</span><span class="med-lim" data-lim>desde 1 mm</span><span class="med-est" data-est></span>
+              <span class="med-regla" aria-hidden="true"><i class="med-rango" data-rango style="left:3.33%;width:96.67%"></i><span class="med-marca" data-marca style="transform:translateX(10.00%)"><i></i></span></span>
+            </li>
+        </ul>
+        <p class="plazo"><span>Plazo orientativo</span><b data-plazo>De 3 a 5 días laborables</b></p>
+        <div class="msg">
+          <h4>Tu mensaje</h4>
+          <div class="msg-caja" data-msg><span>Hola, ERPIN. Quería presupuesto para esta pieza:</span><span>Material: Acero, 3 mm</span><span>Cantidad: 10 piezas</span><span>Os mando el plano ahora.</span></div>
+          <p class="escribiendo" data-escribiendo aria-hidden="true">Escribiendo…</p>
+        </div>
+        <div class="acciones">
+          <a class="btn btn-blanco" data-wa href="https://wa.me/34600000000?text=Hola%2C%20ERPIN.%20Quer%C3%ADa%20presupuesto%20para%20esta%20pieza%3A%0AMaterial%3A%20Acero%2C%203%20mm%0ACantidad%3A%2010%20piezas%0AOs%20mando%20el%20plano%20ahora." target="_blank" rel="noopener"><span>Enviar por WhatsApp</span><span class="chev" aria-hidden="true">&gt;</span></a>
+          <a class="enl" data-correo href="mailto:info@erpin.example?subject=Presupuesto%20de%20una%20pieza&amp;body=Hola%2C%20ERPIN.%20Quer%C3%ADa%20presupuesto%20para%20esta%20pieza%3A%0AMaterial%3A%20Acero%2C%203%20mm%0ACantidad%3A%2010%20piezas%0AOs%20mando%20el%20plano%20ahora.">o por correo</a>
+        </div>
+        <p class="pista">En WhatsApp, manda el plano justo después del mensaje. Por correo, adjúntalo.</p>
+        <p class="ej">Datos de ejemplo: dirección, teléfonos, correo, horario, máquinas, medidas, plazos y certificado.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="sec donde" id="donde" aria-labelledby="h-donde">
+  <div class="lado izq" aria-hidden="true"><span>Ibarra</span></div><div class="lado der" aria-hidden="true"><span>Ibarra</span></div>
+  <div class="col">
+    <h2 id="h-donde" data-lineas>En el polígono de Ibarra</h2>
+    <figure class="ancha" data-panel="foto"><picture><source type="image/avif" srcset="../fotos/nave-800.avif 800w, ../fotos/nave-1200.avif 1200w, ../fotos/nave-1700.avif 1700w, ../fotos/nave-2400.avif 2400w" sizes="(min-width: 1100px) 64vw, 92vw"><img src="../fotos/nave-1200.webp" srcset="../fotos/nave-800.webp 800w, ../fotos/nave-1200.webp 1200w, ../fotos/nave-1700.webp 1700w, ../fotos/nave-2400.webp 2400w" sizes="(min-width: 1100px) 64vw, 92vw" width="5000" height="2632" alt="Esquina de una nave industrial blanca contra el cielo azul." loading="lazy" decoding="async"></picture></figure>
+    <div class="datos">
+      <p class="sello-logo grande" aria-hidden="true"><b>ERPIN</b><span>Chapa y mecanizado / Ibarra</span></p>
+      <div>
+        <dl data-escalonado>
+          <div><dt>Dirección</dt><dd>Industrialdea 0, 20400 Ibarra (Gipuzkoa)</dd></div>
+          <div><dt>Teléfono</dt><dd><a href="tel:+34943000000">943 00 00 00</a></dd></div>
+          <div><dt>WhatsApp</dt><dd><a href="https://wa.me/34600000000" target="_blank" rel="noopener">600 00 00 00</a></dd></div>
+          <div><dt>Correo</dt><dd><a href="mailto:info@erpin.example">info@erpin.example</a></dd></div>
+          <div><dt>Horario</dt><dd>De lunes a viernes, de 7:00 a 15:00<span class="estado" data-estado></span></dd></div>
+          <div><dt>Certificado</dt><dd>ISO 9001 (ejemplo)</dd></div>
+        </dl>
+        <div class="acciones">
+          <a class="btn" href="tel:+34943000000"><span>Llamar</span><span class="chev" aria-hidden="true">&gt;</span></a>
+          <a class="enl" href="https://wa.me/34600000000" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="pie">
+  <p>Muestra de diseño de OI Studio. ERPIN no existe: el nombre y todos sus datos son inventados.</p>
+  <p>Fotos y vídeo de ejemplo de Unsplash y Pexels. Autores y licencias: <a href="../fotos/creditos.json">creditos.json</a>.</p>
+  <p><a href="../" lang="eu" hreflang="eu">Euskaraz</a> · Diseñado por <a class="firma" href="https://oiwebstudio.com/" target="_blank" rel="noopener">OI Studio</a></p>
+</footer>
+
+<aside class="barra" aria-label="Fecha, hora y posición del ratón">
+  <span class="b-c b-fecha" data-fecha></span><span class="b-c b-hora" data-hora></span><span class="b-c b-x" data-x aria-hidden="true">X = 0</span><span class="b-c b-y" data-y aria-hidden="true">Y = 0</span><span class="b-c b-cc" data-c aria-hidden="true">C = 0</span><span class="b-c b-s" data-s aria-hidden="true">S = 0</span>
+  <span class="b-der" aria-hidden="true">Chapa y mecanizado / Ibarra</span>
+  <a class="b-llamar" href="tel:+34943000000">Llamar</a>
+</aside>
+
+<script type="application/json" id="textos">{"lang":"es","p":{"laser":"Corte láser","plegado":"Plegado","cnc":"Mecanizado CNC","sold":"Soldadura"},"mat":{"acero":"Acero","inox":"Inoxidable","alu":"Aluminio"},"dentro":"Cabe","fuera":"No cabe","hasta":"hasta {n} mm","desde":"desde {n} mm","res_vacio":"Elige al menos un proceso.","res_entra":"La pieza entra en nuestras máquinas","res_parte":"Una parte no entra. Pregúntanos de todas formas.","res_no":"No entra en nuestras máquinas","plazo":["De 3 a 5 días laborables","De 1 a 2 semanas","De 2 a 3 semanas","Te llamamos para planificar la serie"],"msg_hola":"Hola, ERPIN. Quería presupuesto para esta pieza:","msg_proceso":"Proceso","msg_material":"Material","msg_cantidad":"Cantidad","msg_nombre":"Nombre o empresa","msg_plano":"Os mando el plano ahora.","cant_1":"1 pieza","cant_n":"{n} piezas","pieza":"pieza","piezas":"piezas","asunto":"Presupuesto de una pieza","estado_abierto":"Ahora abierto, hasta las 15:00","estado_manana":"Ahora cerrado. Abrimos mañana a las 7:00","estado_hoy":"Ahora cerrado. Abrimos hoy a las 7:00","estado_lunes":"Ahora cerrado. Abrimos el lunes a las 7:00","menu":"Menú","cerrar":"Cerrar"}</script>
+<script type="application/json" id="datos">{"CAP":{"laser":{"acero":[0.5,25],"inox":[0.5,20],"alu":[0.5,15]},"plegado":{"acero":[0.5,8],"inox":[0.5,6],"alu":[0.5,8]},"cnc":{"acero":[0.5,null],"inox":[0.5,null],"alu":[0.5,null]},"sold":{"acero":[1,null],"inox":[0.8,null],"alu":[1.5,null]}},"ESP":[0.5,0.8,1,1.5,2,3,4,5,6,8,10,12,15,20,25,30],"ESCALA":30,"WA":"https://wa.me/34600000000","CORREO":"info@erpin.example"}</script>
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/SplitText.min.js"></script>
+<script src="../js/anim-texto.js"></script>
+<script src="../js/pagina.js"></script>
+</body>
+</html>

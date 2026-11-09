@@ -76,5 +76,96 @@
    "Si ya te toca la revisión",
    "Gafas de ejemplo con su precio"
   ]
+ },
+ {
+  "id": "itun",
+  "nombre": "ITUN",
+  "carpeta": "itun-abokatuak",
+  "slug": "abogados",
+  "chip": "Abogados",
+  "k": "Despacho de abogados en Tolosa",
+  "lleva": [
+   "Primera consulta sin llamar",
+   "Qué papeles traer según el asunto",
+   "El mensaje, ya escrito para WhatsApp"
+  ]
+ },
+ {
+  "id": "lerro",
+  "nombre": "LERRO",
+  "carpeta": "lerro-akademia",
+  "slug": "academia",
+  "chip": "Academia",
+  "k": "Academia y autoescuela",
+  "lleva": [
+   "Cuándo empieza el próximo grupo",
+   "Plazas libres en cada grupo",
+   "Apuntarse por WhatsApp sin llamar"
+  ]
+ },
+ {
+  "id": "agiri",
+  "nombre": "AGIRI",
+  "carpeta": "agiri-aholkularitza",
+  "slug": "asesoria",
+  "chip": "Asesoría",
+  "k": "Asesoría y gestoría de Tolosa",
+  "lleva": [
+   "Los papeles que pide cada trámite",
+   "Cuánto falta para cada plazo de Hacienda",
+   "Cita por WhatsApp, con el mensaje ya escrito"
+  ]
+ },
+ {
+  "id": "leiho",
+  "nombre": "LEIHO",
+  "carpeta": "leiho-hotela",
+  "slug": "hotel",
+  "chip": "Hotel",
+  "k": "Hotel pequeño en el casco viejo",
+  "lleva": [
+   "Precio por noche y total al momento",
+   "Las habitaciones, con su precio",
+   "Qué hay cerca, en minutos andando"
+  ]
+ },
+ {
+  "id": "aihen",
+  "nombre": "AIHEN",
+  "carpeta": "aihen-txakolindegia",
+  "slug": "bodega",
+  "chip": "Bodega",
+  "k": "Bodega de txakoli en Asteasu",
+  "lleva": [
+   "Visita con cata, sin llamar",
+   "Prepara tu caja de botellas",
+   "Con qué comer cada txakoli"
+  ]
+ },
+ {
+  "id": "orea",
+  "nombre": "OREA",
+  "carpeta": "orea-okindegia",
+  "slug": "panaderia",
+  "chip": "Panadería",
+  "k": "Panadería y pastelería",
+  "lleva": [
+   "Encarga la tarta y recógela sin esperar",
+   "Lo que sale hoy del horno, y a qué hora",
+   "Abierto o cerrado en este momento"
+  ]
+ },
+ {
+  "id": "erpin",
+  "nombre": "ERPIN",
+  "carpeta": "erpin-mekanizatuak",
+  "slug": "industria",
+  "chip": "Industria",
+  "k": "Chapa y mecanizado en Ibarra",
+  "lleva": [
+   "Mira si tu pieza entra en las máquinas",
+   "Presupuesto con tu plano, por WhatsApp o correo",
+   "Máquinas, medidas y plazos a la vista"
+  ]
  }
 ]

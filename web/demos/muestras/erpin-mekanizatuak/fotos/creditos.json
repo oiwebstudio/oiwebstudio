@@ -1,0 +1,66 @@
+{
+ "_leeme": "Fotos y vídeo de la muestra ERPIN (9/11/2026). Son de ejemplo, de Unsplash (licencia de Unsplash) y Pexels (licencia de Pexels): no son de ninguna empresa. Recortadas, tratadas de color, redimensionadas y convertidas a AVIF, WebP, MP4 y WebM.",
+ "taller": {
+  "autor": "Cemrecan Yurtman",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-close-up-of-a-machine-cutting-a-piece-of-metal-CxGLY283rWs",
+  "uso": "Taller: cabezal de corte láser sobre la chapa, con chispas (foto ancha bajo «Todo en la misma nave»)",
+  "cambios": "Recortada a 1.778, redimensionada y convertida a AVIF y WebP"
+ },
+ "acero": {
+  "autor": "Morteza Mohammadi",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/rolls-of-steel-are-lined-up-in-a-warehouse--kWkoUkFyp0",
+  "uso": "Panel oscuro a todo el ancho: bobinas de acero, pasadas a dos tintas azules (como el vídeo azul de la referencia). Recortada para dejar fuera una etiqueta con texto",
+  "cambios": "Recortada a 2.2, pasada a dos tintas azules, redimensionada y convertida a AVIF y WebP"
+ },
+ "laser": {
+  "autor": "Cemrecan Yurtman",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-close-up-of-a-machine-cutting-a-piece-of-metal-d0-dqCkmnuk",
+  "uso": "Tarjeta CORTE LÁSER, en blanco y negro",
+  "cambios": "Recortada a 1.06, pasada a blanco y negro, redimensionada y convertida a AVIF y WebP"
+ },
+ "plegado": {
+  "autor": "Daulet Turubayev",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-man-wearing-red-gloves-is-working-on-a-machine-Di1e1Hnr1Us",
+  "uso": "Tarjeta PLEGADO, en blanco y negro",
+  "cambios": "Recortada a 1.06, pasada a blanco y negro, redimensionada y convertida a AVIF y WebP"
+ },
+ "cnc": {
+  "autor": "Jelifer Maniago",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-machine-that-is-cutting-a-piece-of-metal-8MBTn3Z71zI",
+  "uso": "Tarjeta MECANIZADO CNC, en blanco y negro",
+  "cambios": "Recortada a 1.06, pasada a blanco y negro, redimensionada y convertida a AVIF y WebP"
+ },
+ "soldadura": {
+  "autor": "Cemrecan Yurtman",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/welder-working-on-a-piece-of-metal-in-a-factory-JpzMc-FMUes",
+  "uso": "Tarjeta SOLDADURA, en blanco y negro",
+  "cambios": "Recortada a 1.06, pasada a blanco y negro, redimensionada y convertida a AVIF y WebP"
+ },
+ "nave": {
+  "autor": "set.sj",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/exterior-of-a-building-with-a-bright-blue-sky-ulJ5X4OVLws",
+  "uso": "Fachada de nave blanca contra el cielo (bloque de datos, como el edificio de la referencia)",
+  "cambios": "Recortada a 1.9, redimensionada y convertida a AVIF y WebP"
+ },
+ "video": {
+  "autor": "Dominik Zítka",
+  "licencia": "Licencia de Pexels (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://www.pexels.com/video/industrial-metal-bending-process-close-up-31751361/",
+  "uso": "Portada: plegadora doblando una chapa, repetida en tres paneles (tira-2732 para el ordenador, tira-1036 para el móvil) y su primer fotograma como póster (tira, tira-m)",
+  "cambios": "Recortada, color algo apagado, sin sonido, tres paneles en una sola pista; MP4 (H.264) y WebM (VP9)"
+ },
+ "og-erpin": {
+  "autor": "Dominik Zítka",
+  "licencia": "Licencia de Pexels (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://www.pexels.com/video/industrial-metal-bending-process-close-up-31751361/",
+  "uso": "Imagen para compartir el enlace (og:image)",
+  "cambios": "Recorte 1200x630 del primer fotograma del vídeo"
+ }
+}

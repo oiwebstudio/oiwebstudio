@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Orea · Panadería y pastelería en Tolosa (web de muestra)</title>
+<meta name="description" content="Muestra de web para una panadería de Tolosa: lo que sale hoy del horno, si está abierto ahora y el encargo por WhatsApp.">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="Orea · Panadería y pastelería en Tolosa (web de muestra)">
+<meta property="og:description" content="Muestra de web para una panadería de Tolosa: lo que sale hoy del horno, si está abierto ahora y el encargo por WhatsApp.">
+<meta property="og:type" content="website">
+<link rel="alternate" hreflang="eu" href="../">
+<!--
+  MUESTRA «OREA» (OI Studio, 8/11/2026): panadería y pastelería INVENTADA en Tolosa para la pieza «¿Qué negocio tienes?»
+  de oiwebstudio.com. «Orea» = la masa. Son de ejemplo: nombre, dirección (Korreo kalea 9), teléfono 943 00 00 00,
+  WhatsApp 600 00 00 00, horario, horas del horno, piezas, tartas, precios y lo que se cuenta de la panadería (lo dice la
+  nota del pie). noindex.
+  Calco de la referencia que eligió Oier el 8/11: n.º 01, LUNE CROISSANTERIE (lunecroissanterie.com) — todo en negro;
+  cabecera mínima (nombre pequeño a la izquierda, tres enlaces con un círculo delante a la derecha) y la pestaña vertical
+  «Menú» con el rombo pegada al borde izquierdo; portada con la llamada en dos líneas escalonadas («ENCARGA / HOY») y UNA
+  pieza sobre negro con su reflejo; al bajar, las letras del nombre (O, R, E, A) gigantes en contorno, una por bloque:
+  O con la foto de plato cortada, la foto pequeña en blanco y negro pegada al borde, la frase grande y el párrafo con el
+  botón de caja; R con la foto a todo el ancho; E con la lista de rayita + nombre + línea (aquí, las horas del horno);
+  A con las fotos verticales escalonadas (aquí, las piezas que se tocan para el encargo, con puntos en el móvil).
+  Cambios frente a la referencia: la cabecera no se queda fija (no pisa el texto al bajar); textos grises a #BDBDBD como
+  mínimo; títulos en mayúsculas; nada en inglés.
+  Lo que hace: abierto o cerrado según la hora real de Tolosa; lo que sale hoy del horno y a qué hora, con «recién salido»
+  o «sale dentro de X minutos» según la hora real (de noche, lo de mañana); encargo para WhatsApp (piezas y cantidades,
+  tarta con sabor, tamaño y mensaje, día y hora de recogida dentro del horario, con un día de margen para las tartas) y el
+  mensaje escrito. No se envía nada a ningún sitio: el botón abre WhatsApp con el texto.
+  Letra: 17 Archivo (variable en peso y anchura), autoalojada en fuentes/. Una sola familia (la referencia usa solo DIN).
+  Fotos: Pexels (licencia de Pexels): ready made, Pranjall Kumar, Narmin Aslanli, Barbaros Gültekin, Travel with Lenses, Jytte Elfferich, Amanda Hemphill, Luxinate Fynt, Pixabay. Detalle en fotos/creditos.json.
+  Movimiento: la portada entra con CSS desde el primer pintado; lo de abajo, con GSAP 3.13 + ScrollTrigger + SplitText
+  (js/) + anim-texto.js + pagina.js. Con «reducir movimiento» o sin JS, todo quieto y visible.
+-->
+<link rel="preload" href="../fuentes/archivo.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../estilo.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="cab">
+  <a class="logo" href="#contenido" aria-label="Orea">OREA</a>
+  <nav class="cab-nav" aria-label="Menú"><a href="#labea"><i></i>Horno de hoy</a><a href="#enkargua"><i></i>Encargar</a><a href="tel:+34943000000"><i></i>943 00 00 00</a><a class="idioma" href="../" lang="eu" hreflang="eu">Euskaraz</a></nav>
+  <button type="button" class="menu-btn" data-menu-btn aria-expanded="false" aria-controls="menu"><span data-menu-txt>Menú</span><svg class="rombo" viewBox="0 0 34 34" aria-hidden="true" focusable="false"><path d="M17 2 32 17 17 32 2 17Z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9.5 9.5 17 17 24.5 9.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+</header>
+<button type="button" class="pestana" data-menu-btn aria-expanded="false" aria-controls="menu"><svg class="rombo" viewBox="0 0 34 34" aria-hidden="true" focusable="false"><path d="M17 2 32 17 17 32 2 17Z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9.5 9.5 17 17 24.5 9.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><span>Menú</span></button>
+<div class="menu" id="menu" data-menu hidden>
+  <nav aria-label="Menú">
+    <a href="#labea">Horno de hoy</a>
+    <a href="#enkargua">Encargar</a>
+    <a href="#non">Dirección y horario</a>
+  </nav>
+  <p class="menu-pie"><a href="tel:+34943000000">943 00 00 00</a><a href="https://wa.me/34600000000" rel="noopener">WhatsApp</a><a class="" href="../" lang="eu" hreflang="eu">Euskaraz</a></p>
+  <button type="button" class="menu-cerrar" data-menu-cerrar>Cerrar el menú</button>
+</div>
+
+<main id="contenido">
+<section class="portada" data-portada aria-labelledby="h1">
+  <h1 id="h1"><span class="sr">Orea, panadería y pastelería en Tolosa. </span><a href="#enkargua"><span class="l1">ENCARGA</span> <span class="l2">HOY</span></a></h1>
+  <p class="estado" data-estado aria-live="polite" hidden></p>
+  <div class="port-foto"><picture><source type="image/avif" srcset="../fotos/portada-700.avif 700w, ../fotos/portada-1100.avif 1100w, ../fotos/portada-1600.avif 1600w, ../fotos/portada-2200.avif 2200w" sizes="(min-width: 700px) 139vh, 110vw"><img src="../fotos/portada-1100.webp" srcset="../fotos/portada-700.webp 700w, ../fotos/portada-1100.webp 1100w, ../fotos/portada-1600.webp 1600w, ../fotos/portada-2200.webp 2200w" sizes="(min-width: 700px) 139vh, 110vw" width="2200" height="2700" alt="Cruasán sobre una superficie negra que lo refleja" fetchpriority="high" decoding="async"></picture></div>
+</section>
+
+<section class="sec-o" aria-labelledby="h-o">
+  <span class="letra letra-o" aria-hidden="true"><span data-pista="-30">O</span></span>
+  <figure class="o-f1" data-foto><picture><source type="image/avif" srcset="../fotos/o-plato-600.avif 600w, ../fotos/o-plato-1100.avif 1100w, ../fotos/o-plato-1600.avif 1600w" sizes="(min-width: 700px) 38vw, 86vw"><img src="../fotos/o-plato-1100.webp" srcset="../fotos/o-plato-600.webp 600w, ../fotos/o-plato-1100.webp 1100w, ../fotos/o-plato-1600.webp 1600w" sizes="(min-width: 700px) 38vw, 86vw" width="2400" height="2000" alt="Dos porciones de tarta de chocolate en un plato negro" loading="lazy" decoding="async"></picture></figure>
+  <figure class="o-f2" data-foto><picture><source type="image/avif" srcset="../fotos/o-obrador-400.avif 400w, ../fotos/o-obrador-800.avif 800w" sizes="(min-width: 700px) 14vw, 34vw"><img src="../fotos/o-obrador-800.webp" srcset="../fotos/o-obrador-400.webp 400w, ../fotos/o-obrador-800.webp 800w" sizes="(min-width: 700px) 14vw, 34vw" width="1000" height="1500" alt="Bollos de masa reposando antes de entrar al horno" loading="lazy" decoding="async"></picture></figure>
+  <div class="o-txt">
+    <h2 class="frase o-h2" id="h-o" data-lineas>Orea hace pan y tartas cada mañana en Tolosa.</h2>
+    <div class="o-col">
+      <p class="txt" data-enciende>Somos una panadería pequeña en la parte vieja. Encarga por WhatsApp y recógelo a la hora que elijas, sin hacer cola.</p>
+      <a class="btn-caja" href="#enkargua">Encargar</a>
+    </div>
+  </div>
+</section>
+
+<div class="sec-r">
+  <span class="letra letra-r" aria-hidden="true"><span data-pista="30">R</span></span>
+  <div class="r-foto" data-foto><picture><source type="image/avif" srcset="../fotos/r-fresas-800.avif 800w, ../fotos/r-fresas-1400.avif 1400w, ../fotos/r-fresas-2000.avif 2000w, ../fotos/r-fresas-2880.avif 2880w" sizes="100vw"><img src="../fotos/r-fresas-1400.webp" srcset="../fotos/r-fresas-800.webp 800w, ../fotos/r-fresas-1400.webp 1400w, ../fotos/r-fresas-2000.webp 2000w, ../fotos/r-fresas-2880.webp 2880w" sizes="100vw" width="2880" height="1370" alt="Cruasán relleno de nata y fresas, con azúcar glas" loading="lazy" decoding="async"></picture></div>
+</div>
+
+<section class="sec-e" id="labea" aria-labelledby="h-e">
+  <span class="letra letra-e" aria-hidden="true"><span data-pista="-30">E</span></span>
+  <div class="e-cab">
+    <h2 class="frase" id="h-e" data-lineas>Las horas del horno</h2>
+    <p class="fecha" data-fecha hidden></p>
+  </div>
+  <ul class="lista horno" data-horno data-escalonado>
+      <li data-n="1"><span class="h-nom">Primera hornada de pan</span><span class="h-st"><time data-t>7:00</time><span class="h-est" data-est></span></span></li>
+      <li data-n="2"><span class="h-nom">Cruasanes</span><span class="h-st"><time data-t>8:00</time><span class="h-est" data-est></span></span></li>
+      <li data-n="3"><span class="h-nom">Tarta de almendra</span><span class="h-st"><time data-t>11:00</time><span class="h-est" data-est></span></span></li>
+      <li data-n="4"><span class="h-nom">Segunda hornada de pan</span><span class="h-st"><time data-t>12:30</time><span class="h-est" data-est></span></span></li>
+      <li data-n="5"><span class="h-nom">Pan de la tarde</span><span class="h-st"><time data-t>17:30</time><span class="h-est" data-est></span></span></li>
+  </ul>
+</section>
+
+<section class="sec-a" id="enkargua" aria-labelledby="h-a">
+  <span class="letra letra-a" aria-hidden="true"><span data-pista="30">A</span></span>
+  <div class="a-cab">
+    <h2 class="frase" id="h-a" data-lineas>Tu encargo</h2>
+    <p class="txt" id="a-p">Toca las piezas, elige cuándo pasas y mándalo por WhatsApp. Te lo dejamos en una bolsa con tu nombre.</p>
+  </div>
+  <ul class="piezas" data-piezas data-escalonado>
+      <li><button type="button" class="pieza" data-pieza="barra" data-euros="1.2" data-nombre="Barra">
+        <span class="pieza-foto"><picture><source type="image/avif" srcset="../fotos/pieza-barra-450.avif 450w, ../fotos/pieza-barra-900.avif 900w" sizes="(min-width: 1000px) 47vw, (min-width: 700px) 60vw, 74vw"><img src="../fotos/pieza-barra-900.webp" srcset="../fotos/pieza-barra-450.webp 450w, ../fotos/pieza-barra-900.webp 900w" sizes="(min-width: 1000px) 47vw, (min-width: 700px) 60vw, 74vw" width="900" height="1200" alt="Barra de pan sobre un fondo negro con harina" loading="lazy" decoding="async"></picture><span class="pieza-n" data-n aria-hidden="true"></span></span>
+        <span class="pieza-nom">Barra</span>
+        <span class="pieza-pr">1,20 €</span>
+      </button></li>
+      <li><button type="button" class="pieza" data-pieza="hogaza" data-euros="4.2" data-nombre="Pan de masa madre">
+        <span class="pieza-foto"><picture><source type="image/avif" srcset="../fotos/pieza-hogaza-450.avif 450w, ../fotos/pieza-hogaza-900.avif 900w" sizes="(min-width: 1000px) 47vw, (min-width: 700px) 60vw, 74vw"><img src="../fotos/pieza-hogaza-900.webp" srcset="../fotos/pieza-hogaza-450.webp 450w, ../fotos/pieza-hogaza-900.webp 900w" sizes="(min-width: 1000px) 47vw, (min-width: 700px) 60vw, 74vw" width="900" height="1200" alt="Hogaza oscura sobre una mesa negra" loading="lazy" decoding="async"></picture><span class="pieza-n" data-n aria-hidden="true"></span></span>
+        <span class="pieza-nom">Pan de masa madre</span>
+        <span class="pieza-pr">4,20 €</span>
+      </button></li>
+      <li><button type="button" class="pieza" data-pieza="rustico" data-euros="3.6" data-nombre="Pan rústico">
+        <span class="pieza-foto"><picture><source type="image/avif" srcset="../fotos/pieza-rustico-450.avif 450w, ../fotos/pieza-rustico-900.avif 900w" sizes="(min-width: 1000px) 47vw, (min-width: 700px) 60vw, 74vw"><img src="../fotos/pieza-rustico-900.webp" srcset="../fotos/pieza-rustico-450.webp 450w, ../fotos/pieza-rustico-900.webp 900w" sizes="(min-width: 1000px) 47vw, (min-width: 700px) 60vw, 74vw" width="900" height="1200" alt="Pan rústico redondo con harina alrededor" loading="lazy" decoding="async"></picture><span class="pieza-n" data-n aria-hidden="true"></span></span>
+        <span class="pieza-nom">Pan rústico</span>
+        <span class="pieza-pr">3,60 €</span>
+      </button></li>
+      <li><button type="button" class="pieza" data-pieza="cruasan" data-euros="1.6" data-nombre="Cruasán de mantequilla">
+        <span class="pieza-foto"><picture><source type="image/avif" srcset="../fotos/pieza-cruasan-450.avif 450w, ../fotos/pieza-cruasan-900.avif 900w" sizes="(min-width: 1000px) 47vw, (min-width: 700px) 60vw, 74vw"><img src="../fotos/pieza-cruasan-900.webp" srcset="../fotos/pieza-cruasan-450.webp 450w, ../fotos/pieza-cruasan-900.webp 900w" sizes="(min-width: 1000px) 47vw, (min-width: 700px) 60vw, 74vw" width="900" height="1200" alt="Cruasán con azúcar glas sobre una piedra oscura" loading="lazy" decoding="async"></picture><span class="pieza-n" data-n aria-hidden="true"></span></span>
+        <span class="pieza-nom">Cruasán de mantequilla</span>
+        <span class="pieza-pr">1,60 €</span>
+      </button></li>
+      <li><button type="button" class="pieza" data-pieza="txokolatea" data-euros="2.4" data-nombre="Cruasán de chocolate y plátano">
+        <span class="pieza-foto"><picture><source type="image/avif" srcset="../fotos/pieza-txokolatea-450.avif 450w, ../fotos/pieza-txokolatea-900.avif 900w" sizes="(min-width: 1000px) 47vw, (min-width: 700px) 60vw, 74vw"><img src="../fotos/pieza-txokolatea-900.webp" srcset="../fotos/pieza-txokolatea-450.webp 450w, ../fotos/pieza-txokolatea-900.webp 900w" sizes="(min-width: 1000px) 47vw, (min-width: 700px) 60vw, 74vw" width="900" height="1200" alt="Cruasán con chocolate y rodajas de plátano" loading="lazy" decoding="async"></picture><span class="pieza-n" data-n aria-hidden="true"></span></span>
+        <span class="pieza-nom">Cruasán de chocolate y plátano</span>
+        <span class="pieza-pr">2,40 €</span>
+      </button></li>
+      <li><button type="button" class="pieza" data-pieza="almendra" data-euros="18" data-nombre="Tarta de almendra">
+        <span class="pieza-foto"><picture><source type="image/avif" srcset="../fotos/pieza-almendra-450.avif 450w, ../fotos/pieza-almendra-900.avif 900w" sizes="(min-width: 1000px) 47vw, (min-width: 700px) 60vw, 74vw"><img src="../fotos/pieza-almendra-900.webp" srcset="../fotos/pieza-almendra-450.webp 450w, ../fotos/pieza-almendra-900.webp 900w" sizes="(min-width: 1000px) 47vw, (min-width: 700px) 60vw, 74vw" width="900" height="1200" alt="Tarta de almendra vista de cerca" loading="lazy" decoding="async"></picture><span class="pieza-n" data-n aria-hidden="true"></span></span>
+        <span class="pieza-nom">Tarta de almendra</span>
+        <span class="pieza-pr">18 €</span>
+      </button></li>
+  </ul>
+  <p class="puntos" data-puntos aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></p>
+  <p class="sr" data-anuncio aria-live="polite"></p>
+  <div class="a-grid">
+    <div class="tarta" data-panel>
+      <h3>Tarta</h3>
+      <fieldset class="grupo"><legend>Sabor</legend><div class="cajas"><label class="caja"><input type="radio" name="sabor" value="" checked><span>Sin tarta</span></label><label class="caja"><input type="radio" name="sabor" value="choco"><span>Chocolate</span></label><label class="caja"><input type="radio" name="sabor" value="queso"><span>Queso</span></label><label class="caja"><input type="radio" name="sabor" value="fresa"><span>Nata con fresas</span></label></div></fieldset>
+      <fieldset class="grupo" data-tam disabled><legend>Tamaño</legend><div class="cajas"><label class="caja"><input type="radio" name="tam" value="6"><span>6 raciones<small>18 €</small></span></label><label class="caja"><input type="radio" name="tam" value="8" checked><span>8 raciones<small>24 €</small></span></label><label class="caja"><input type="radio" name="tam" value="12"><span>12 raciones<small>34 €</small></span></label></div></fieldset>
+      <label class="campo" data-msg-campo><span>Mensaje en la tarta</span><input type="text" maxlength="24" autocomplete="off" placeholder="Zorionak, Ane" data-msg disabled></label>
+      <p class="nota-t" data-nota-t>Las tartas se encargan con un día de antelación.</p>
+      <p class="tarta-msg" data-tarta-msg aria-hidden="true"></p>
+    </div>
+    <div class="bolsa" data-panel>
+      <h3>Día y hora para recogerlo</h3>
+      <div class="cajas dias" data-dias role="radiogroup" aria-label="Día"></div>
+      <label class="campo" data-campo-hora hidden><span>Hora</span><select data-hora></select></label>
+      <h3 class="bolsa-h">En tu bolsa</h3>
+      <p class="vacio" data-vacio>Todavía está vacía. Toca alguna pieza o elige una tarta.</p>
+      <ul class="lineas" data-lineas-enc></ul>
+      <p class="total" data-total hidden><span>Total</span><b data-total-n>0 €</b></p>
+      <a class="btn-blanco" href="https://wa.me/34600000000" rel="noopener" data-wa>Enviar por WhatsApp</a>
+      <p class="aviso" data-aviso aria-live="polite"></p>
+      <div class="mensaje" data-mensaje-caja hidden>
+        <h4>Mensaje que se enviará</h4>
+        <p class="escribiendo" data-escribiendo aria-hidden="true">Escribiendo…</p>
+        <p class="texto" data-mensaje aria-live="polite"></p>
+      </div>
+      <p class="o-llama">O llama al <a href="tel:+34943000000">943 00 00 00</a>.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="pie" id="non">
+  <div class="pie-col">
+    <h2 class="pie-h">KORREO KALEA 9, TOLOSA</h2>
+    <p><a href="tel:+34943000000">943 00 00 00</a><a href="https://wa.me/34600000000" rel="noopener">WhatsApp 600 00 00 00</a></p>
+  </div>
+  <div class="pie-col">
+    <p class="pie-horas">Lunes a viernes: 7:30–14:00 y 17:00–20:00<br>Sábado: 8:00–14:00<br>Domingo: 8:30–13:00</p>
+  </div>
+  <div class="pie-col pie-nav">
+    <a href="#labea">Horno de hoy</a><a href="#enkargua">Encargar</a><a class="" href="../" lang="eu" hreflang="eu">Euskaraz</a>
+  </div>
+  <div class="pie-bajo">
+    <p class="nota-datos">Web de muestra: Orea no existe. Son inventados el nombre, la dirección, los teléfonos, el horario, las horas del horno, las piezas, las tartas y su plazo, los precios y lo que se cuenta de la panadería.</p>
+    <p>Fotos de ejemplo de Pexels: ready made, Pranjall Kumar, Narmin Aslanli, Barbaros Gültekin, Travel with Lenses, Jytte Elfferich, Amanda Hemphill, Luxinate Fynt, Pixabay. <a href="../fotos/creditos.json">creditos.json</a></p>
+    <p>Diseñado por <a class="firma" href="https://oiwebstudio.com/?utm_source=muestra-orea&amp;utm_medium=pie" target="_blank" rel="noopener">OI Studio</a></p>
+  </div>
+</footer>
+
+<a class="barra-enc" href="#enkargua" data-barra hidden><span><b>Tu encargo</b> <span data-barra-n></span></span><span class="be-ver">Ver el encargo</span></a>
+
+<script type="application/json" id="textos">{"lang":"es","hoy":"hoy","manana":"mañana","dias":["domingo","lunes","martes","miércoles","jueves","viernes","sábado"],"est":{"a840":"Ahora abierto, hasta las 14:00","a1200":"Ahora abierto, hasta las 20:00","a780":"Ahora abierto, hasta las 13:00","h1020":"Ahora cerrado, abrimos hoy a las 17:00","h450":"Ahora cerrado, abrimos hoy a las 07:30","h480":"Ahora cerrado, abrimos hoy a las 08:00","h510":"Ahora cerrado, abrimos hoy a las 08:30","m450":"Ahora cerrado, abrimos mañana a las 07:30","m480":"Ahora cerrado, abrimos mañana a las 08:00","m510":"Ahora cerrado, abrimos mañana a las 08:30"},"st":{"salio":"Ya está en el mostrador","recien":"Recién salido del horno","pronto":"Sale dentro de 25 minutos"},"horno":{"0":[[450,1],[510,2],[600,3]],"1":[[420,1],[480,2],[660,3],[750,4],[1050,5]],"2":[[420,1],[480,2],[660,3],[750,4],[1050,5]],"3":[[420,1],[480,2],[660,3],[750,4],[1050,5]],"4":[[420,1],[480,2],[660,3],[750,4],[1050,5]],"5":[[420,1],[480,2],[660,3],[750,4],[1050,5]],"6":[[420,1],[480,2],[660,3],[750,4]]},"sabores":{"choco":"Chocolate","queso":"Queso","fresa":"Nata con fresas"},"tamanos":{"6":{"txt":"6 raciones","euros":18},"8":{"txt":"8 raciones","euros":24},"12":{"txt":"12 raciones","euros":34}},"tarta":"Tarta","wa":"https://wa.me/34600000000","wa_hola":"Hola, Orea. Quiero hacer este encargo:","wa_mensaje":"Mensaje","wa_recoger":"Para recoger:","wa_gracias":"Gracias.","aviso_vacio":"Primero elige alguna pieza o una tarta.","menos":"Quitar uno","mas":"Añadir uno","abrir":"Abrir el menú","cerrar":"Cerrar el menú"}</script>
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/SplitText.min.js"></script>
+<script src="../js/anim-texto.js"></script>
+<script src="../js/pagina.js"></script>
+</body>
+</html>

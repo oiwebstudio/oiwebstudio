@@ -3,9 +3,16 @@
 const path = require("path");
 const fs = require("fs");
 const LETRAS = ["a", "b", "c", "d"];
+// Textos de la galería «todas las muestras» que va debajo de las pestañas (9/11/2026, Oier: «que la gente vea rápidamente los demos»)
+const UI = {
+  sx_todas_h: "Todas las muestras",
+  sx_todas_p: "Toca una y se abre entera, lista para probar.",
+  sx_todas_mas: "Ver todas",
+  sx_todas_menos: "Ver menos",
+};
 function nuevos() { return JSON.parse(fs.readFileSync(path.join(__dirname, "nuevos.json"), "utf8")); }
 function textosES() {
-  const o = {};
+  const o = { ...UI };
   for (const s of nuevos()) {
     o[`sx_c_${s.slug}`] = s.chip;
     o[`sx_k_${s.slug}`] = s.k;
@@ -13,4 +20,4 @@ function textosES() {
   }
   return o;
 }
-module.exports = { nuevos, textosES, LETRAS };
+module.exports = { nuevos, textosES, LETRAS, UI };

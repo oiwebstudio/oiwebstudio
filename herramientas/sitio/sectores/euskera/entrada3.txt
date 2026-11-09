@@ -1,0 +1,39 @@
+sx_todas_h	Todas las muestras
+sx_todas_p	Toca una y se abre entera, lista para probar.
+sx_todas_mas	Ver todas
+sx_todas_menos	Ver menos
+sx_c_abogados	Abogados
+sx_k_abogados	Despacho de abogados en Tolosa
+sx_abogados_a	Primera consulta sin llamar
+sx_abogados_b	Qué papeles traer según el asunto
+sx_abogados_c	El mensaje, ya escrito para WhatsApp
+sx_c_academia	Academia
+sx_k_academia	Academia y autoescuela
+sx_academia_a	Cuándo empieza el próximo grupo
+sx_academia_b	Plazas libres en cada curso
+sx_academia_c	Apuntarse por WhatsApp sin llamar
+sx_c_asesoria	Asesoría
+sx_k_asesoria	Asesoría y gestoría de Tolosa
+sx_asesoria_a	Qué papeles pide cada trámite
+sx_asesoria_b	Los plazos de Hacienda, contados desde hoy
+sx_asesoria_c	Cita por WhatsApp, con el mensaje escrito
+sx_c_hotel	Hotel
+sx_k_hotel	Hotel pequeño en el casco viejo
+sx_hotel_a	Precio por noche y total al momento
+sx_hotel_b	Las habitaciones, con su precio
+sx_hotel_c	Qué hay cerca, en minutos andando
+sx_c_bodega	Bodega
+sx_k_bodega	Txakoli de Asteasu
+sx_bodega_a	Visita con cata, sin llamar
+sx_bodega_b	Arma tu caja de botellas
+sx_bodega_c	Cada txakoli, con qué comerlo
+sx_c_panaderia	Panadería
+sx_k_panaderia	Panadería y pastelería
+sx_panaderia_a	Encarga la tarta y recógela sin esperar
+sx_panaderia_b	Lo que sale hoy del horno, y a qué hora
+sx_panaderia_c	Si está abierto ahora mismo
+sx_c_industria	Industria
+sx_k_industria	Chapa y mecanizado en Ibarra
+sx_industria_a	Mira si tu pieza entra en las máquinas
+sx_industria_b	Presupuesto con tu plano, por WhatsApp o correo
+sx_industria_c	Máquinas, medidas y plazos a la vista

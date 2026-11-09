@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>ITUN · Abogados en Tolosa (web de muestra)</title>
+<meta name="description" content="Web de muestra de OI Studio para un despacho de abogados inventado: eliges el asunto, te dice qué papeles traer y te deja escrita la petición de consulta para WhatsApp o correo.">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="ITUN · Abogados en Tolosa (web de muestra)">
+<meta property="og:description" content="Web de muestra de OI Studio para un despacho de abogados inventado: eliges el asunto, te dice qué papeles traer y te deja escrita la petición de consulta para WhatsApp o correo.">
+<meta property="og:type" content="website">
+<link rel="alternate" hreflang="eu" href="../">
+<!--
+  MUESTRA «ITUN» (OI Studio, 8/11/2026): despacho de abogados INVENTADO en Tolosa para la pieza «¿Qué negocio tienes?» de oiwebstudio.com.
+  «Itun» = pacto, acuerdo. Buscado el 8/11 (buscadores, OpenStreetMap: despachos y notarías de Gipuzkoa): ningún despacho con ese nombre.
+  Son de ejemplo (lo dice también la nota del pie): el nombre, la dirección (Rondilla kalea 0, Tolosa), los teléfonos, el correo,
+  el horario y lo que se cuenta del despacho. La lista de papeles es orientativa. noindex.
+  Calco de la referencia que eligió Oier el 8/11: n.º 08, LEX POLITICA (lexpolitica.com). Portada: edificio con peso en blanco y negro,
+  a sangre y con velo negro (aquí el Palacio de Justicia de Donostia), titular de dos líneas en grotesca blanca enorme a media altura,
+  a la derecha un filete y un párrafo corto en serif, abajo una línea, un único botón de borde fino, otro filete a todo el ancho y una
+  frase normal (sin la tríada ni la etiqueta de la referencia). Debajo, el mismo ritmo: tres columnas blancas con foto alta; bloque negro
+  con el titular gigante y los asuntos que se apilan al bajar (el que se lee, encendido); rejilla blanca de 3 × 2 con títulos que caen
+  en ola (allí «resultados»; aquí qué traer); foto a sangre con agua (el Tinglado de Tolosa en el Oria) y titular gigante; franja negra
+  con la marca en el centro y dos frases que se separan con el scroll; foto a sangre; tres columnas con la lista numerada (aquí la
+  consulta); foto de arcos con la última llamada; pie negro en cuatro columnas.
+  Lo que hace: primera consulta sin llamar (eliges el asunto, marcas los papeles que ya tienes, idioma y mañana o tarde → el mensaje
+  sale escrito para WhatsApp o correo); qué papeles traer según el asunto; los asuntos en castellano y en euskera; abierto o cerrado
+  según la hora real de Tolosa.
+  Letras: 14 Switzer (titulares, en lugar de la Helvetica Neue de la referencia) y 11 Erode (texto, en lugar de su Heldane Text),
+  autoalojadas en fuentes/. Sin cursivas.
+  Fotos: Wikimedia Commons (CC BY-SA: Sami Mlouhi, Joxemai, Krzysztof Golik, Basotxerri) y Unsplash (Romain Dancre, Andres Vera),
+  todas en blanco y negro; detalle en fotos/creditos.json. Ninguna es de un despacho real ni lleva marca de agua.
+  Movimiento: cabecera, foto y titular de la portada entran con CSS desde el primer pintado; lo de abajo, con GSAP 3.13 + ScrollTrigger
+  + SplitText (js/) + anim-texto.js + pagina.js, por tiempo al asomar; los títulos de la rejilla caen en ola con animate(); las dos frases
+  de la franja negra corren de lado con el scroll. Con «reducir movimiento» o sin JS, todo quieto y visible.
+  Generada con _local/demos/itun-generador/gen.mjs (no editar este HTML a mano).
+-->
+<link rel="preload" href="../fuentes/switzer-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fuentes/erode-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../estilo.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="cab">
+  <a class="logo" href="#contenido"><svg class="marca" viewBox="0 0 48 30" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="3.6"><path d="M26.17 8.93A11 11 0 1 1 21.21 4.84"/><path d="M21.83 21.07A11 11 0 1 1 26.79 25.16"/></g></svg><span class="logo-t">ITUN ABOKATUAK</span><span class="sr">Itun Abokatuak, inicio</span></a>
+  <nav class="cab-nav" aria-label="Menú">
+    <ul><li><a href="#despacho">Despacho</a></li><li><a href="#asuntos">Asuntos</a></li><li><a href="#traer">Qué traer</a></li><li><a href="#consulta">Consulta</a></li><li><a href="#contacto">Contacto</a></li><li><a class="idioma" href="../" lang="eu" hreflang="eu"><span aria-hidden="true">EU</span><span class="sr">Euskaraz</span></a></li></ul>
+  </nav>
+  <button class="hamb" type="button" aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir el menú"><svg viewBox="0 0 28 12" aria-hidden="true" focusable="false"><path class="l1" d="M0 1h28"/><path class="l2" d="M0 11h28"/></svg></button>
+</header>
+
+<div class="menu-movil" id="menu-movil" hidden>
+  <ul><li><a href="#despacho">Despacho</a></li><li><a href="#asuntos">Asuntos</a></li><li><a href="#traer">Qué traer</a></li><li><a href="#consulta">Consulta</a></li><li><a href="#contacto">Contacto</a></li></ul>
+  <p><a href="tel:+34943000000">943 00 00 00</a></p>
+  <p><a href="../" lang="eu" hreflang="eu">Euskaraz</a></p>
+</div>
+
+<main id="contenido">
+<section class="portada" data-portada aria-labelledby="h-portada">
+  <div class="portada-foto"><picture><source media="(max-width: 759px)" type="image/avif" srcset="../fotos/portada-m-600.avif 600w, ../fotos/portada-m-900.avif 900w, ../fotos/portada-m-1300.avif 1300w" sizes="100vw"><source media="(max-width: 759px)" type="image/webp" srcset="../fotos/portada-m-600.webp 600w, ../fotos/portada-m-900.webp 900w, ../fotos/portada-m-1300.webp 1300w" sizes="100vw"><source type="image/avif" srcset="../fotos/portada-1280.avif 1280w, ../fotos/portada-1920.avif 1920w, ../fotos/portada-2560.avif 2560w" sizes="100vw"><img src="../fotos/portada-1920.webp" srcset="../fotos/portada-1280.webp 1280w, ../fotos/portada-1920.webp 1920w, ../fotos/portada-2560.webp 2560w" sizes="100vw" width="3024" height="1890" alt="Fachada del Palacio de Justicia de Donostia de noche, en blanco y negro: frontón, columnas y banderas." fetchpriority="high" decoding="async"></picture></div>
+  <h1 class="portada-h" id="h-portada" style="--largo:8"><span class="sr">Abogados en Tolosa</span><span aria-hidden="true"><span class="pal"><span class="le"><span style="--i:0">A</span></span><span class="le"><span style="--i:1">b</span></span><span class="le"><span style="--i:2">o</span></span><span class="le"><span style="--i:3">g</span></span><span class="le"><span style="--i:4">a</span></span><span class="le"><span style="--i:5">d</span></span><span class="le"><span style="--i:6">o</span></span><span class="le"><span style="--i:7">s</span></span></span><br><span class="pal"><span class="le"><span style="--i:8">e</span></span><span class="le"><span style="--i:9">n</span></span></span> <span class="pal"><span class="le"><span style="--i:10">T</span></span><span class="le"><span style="--i:11">o</span></span><span class="le"><span style="--i:12">l</span></span><span class="le"><span style="--i:13">o</span></span><span class="le"><span style="--i:14">s</span></span><span class="le"><span style="--i:15">a</span></span></span></span></h1>
+  <div class="portada-der">
+    <a class="portada-tel" href="tel:+34943000000">Llama al <span class="pal">943 00 00 00</span></a>
+    <p class="serif">Herencias, separaciones, despidos, contratos y multas. Antes de empezar te decimos qué opciones tienes y lo que cuesta.</p>
+  </div>
+  <div class="portada-base">
+    <p class="serif portada-linea">Te atendemos en castellano o en euskera.</p>
+    <a class="pildora" href="#asuntos">Ver los asuntos</a>
+    <p class="serif portada-pie">Oficina en Tolosa, con cita previa.</p>
+  </div>
+</section>
+
+<section class="intro" id="despacho" aria-labelledby="h-intro">
+  <h2 id="h-intro" class="intro-h" data-lineas>Un despacho pequeño de Tolosa</h2>
+  <div class="intro-txt">
+    <p class="serif intro-sub">Para familias, trabajadores y pequeñas empresas</p>
+    <p class="serif" data-enciende>Llevamos asuntos de gente de Tolosaldea. Miras qué papeles hay que traer, nos escribes y te damos día para la primera consulta.</p>
+  </div>
+  <figure class="intro-foto" data-panel><picture><source type="image/avif" srcset="../fotos/udaletxea-500.avif 500w, ../fotos/udaletxea-900.avif 900w, ../fotos/udaletxea-1300.avif 1300w" sizes="(min-width: 760px) 29vw, 100vw"><img src="../fotos/udaletxea-900.webp" srcset="../fotos/udaletxea-500.webp 500w, ../fotos/udaletxea-900.webp 900w, ../fotos/udaletxea-1300.webp 1300w" sizes="(min-width: 760px) 29vw, 100vw" width="2830" height="4288" alt="Ayuntamiento de Tolosa con sus tres arcos, en blanco y negro, un día de lluvia." loading="lazy" decoding="async"></picture></figure>
+  <div class="intro-marca"><svg class="marca marca-g" viewBox="0 0 48 30" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="3.6"><path d="M26.17 8.93A11 11 0 1 1 21.21 4.84"/><path d="M21.83 21.07A11 11 0 1 1 26.79 25.16"/></g></svg></div>
+  <a class="pildora pildora-negra intro-btn" href="#consulta">Pide la primera consulta</a>
+</section>
+
+<section class="asuntos" id="asuntos" aria-labelledby="h-asuntos">
+  <h2 id="h-asuntos" class="gigante" style="--largo:8" data-lineas>Asuntos que llevamos</h2>
+  <div class="areas">
+    <article class="area" data-area>
+      <h3>Herencias y testamentos</h3>
+      <p class="serif">Aceptar o rechazar una herencia, repartirla entre hermanos y hacer el testamento.</p>
+    </article>
+    <article class="area" data-area>
+      <h3>Separación y divorcio</h3>
+      <p class="serif">De mutuo acuerdo o no: el convenio, la custodia, la pensión y qué pasa con la casa.</p>
+    </article>
+    <article class="area" data-area>
+      <h3>Despidos y trabajo</h3>
+      <p class="serif">Revisamos la carta de despido y el finiquito, y reclamamos lo que te deban.</p>
+    </article>
+    <article class="area" data-area>
+      <h3>Contratos y alquileres</h3>
+      <p class="serif">Leemos el contrato antes de que firmes y te ayudamos si la otra parte no cumple.</p>
+    </article>
+    <article class="area" data-area>
+      <h3>Multas y sanciones</h3>
+      <p class="serif">Recurrimos multas del ayuntamiento, de tráfico o de Hacienda cuando hay motivos.</p>
+    </article>
+  </div>
+  <a class="pildora" href="#consulta">Prepara la consulta</a>
+</section>
+
+<section class="traer" id="traer" aria-labelledby="h-traer">
+  <h2 id="h-traer" data-lineas>Qué traer a la primera cita</h2>
+  <div class="rejilla">
+      <div class="celda" style="--i:0">
+        <h3 class="ola"><span class="sr">Herencia</span><span class="ola-t" aria-hidden="true"><span class="pal"><span class="ch">H</span><span class="ch">e</span><span class="ch">r</span><span class="ch">e</span><span class="ch">n</span><span class="ch">c</span><span class="ch">i</span><span class="ch">a</span></span></span></h3>
+        <ul class="serif"><li>Certificado de defunción</li><li>Certificado de últimas voluntades</li><li>Testamento, si lo hay</li><li>Escrituras de las casas y recibos del IBI</li><li>Extractos de las cuentas del banco</li></ul>
+      </div>
+      <div class="celda" style="--i:1">
+        <h3 class="ola"><span class="sr">Separación o divorcio</span><span class="ola-t" aria-hidden="true"><span class="pal"><span class="ch">S</span><span class="ch">e</span><span class="ch">p</span><span class="ch">a</span><span class="ch">r</span><span class="ch">a</span><span class="ch">c</span><span class="ch">i</span><span class="ch">ó</span><span class="ch">n</span></span> <span class="pal"><span class="ch">o</span></span> <span class="pal"><span class="ch">d</span><span class="ch">i</span><span class="ch">v</span><span class="ch">o</span><span class="ch">r</span><span class="ch">c</span><span class="ch">i</span><span class="ch">o</span></span></span></h3>
+        <ul class="serif"><li>Libro de familia</li><li>Certificado de matrimonio</li><li>Nóminas o la última declaración de la renta</li><li>Escritura o contrato de alquiler de la vivienda</li></ul>
+      </div>
+      <div class="celda" style="--i:2">
+        <h3 class="ola"><span class="sr">Despido</span><span class="ola-t" aria-hidden="true"><span class="pal"><span class="ch">D</span><span class="ch">e</span><span class="ch">s</span><span class="ch">p</span><span class="ch">i</span><span class="ch">d</span><span class="ch">o</span></span></span></h3>
+        <ul class="serif"><li>Carta de despido</li><li>Contrato de trabajo</li><li>Las tres últimas nóminas</li><li>Finiquito firmado, si lo hay</li><li>Informe de vida laboral</li></ul>
+      </div>
+      <div class="celda" style="--i:3">
+        <h3 class="ola"><span class="sr">Contrato o alquiler</span><span class="ola-t" aria-hidden="true"><span class="pal"><span class="ch">C</span><span class="ch">o</span><span class="ch">n</span><span class="ch">t</span><span class="ch">r</span><span class="ch">a</span><span class="ch">t</span><span class="ch">o</span></span> <span class="pal"><span class="ch">o</span></span> <span class="pal"><span class="ch">a</span><span class="ch">l</span><span class="ch">q</span><span class="ch">u</span><span class="ch">i</span><span class="ch">l</span><span class="ch">e</span><span class="ch">r</span></span></span></h3>
+        <ul class="serif"><li>El contrato firmado</li><li>Recibos o transferencias de los pagos</li><li>Correos electrónicos o mensajes con la otra parte</li></ul>
+      </div>
+      <div class="celda" style="--i:4">
+        <h3 class="ola"><span class="sr">Multa o sanción</span><span class="ola-t" aria-hidden="true"><span class="pal"><span class="ch">M</span><span class="ch">u</span><span class="ch">l</span><span class="ch">t</span><span class="ch">a</span></span> <span class="pal"><span class="ch">o</span></span> <span class="pal"><span class="ch">s</span><span class="ch">a</span><span class="ch">n</span><span class="ch">c</span><span class="ch">i</span><span class="ch">ó</span><span class="ch">n</span></span></span></h3>
+        <ul class="serif"><li>La notificación de la multa</li><li>El sobre o el aviso con la fecha en que llegó</li><li>Fotos o papeles de ese día</li></ul>
+      </div>
+      <div class="celda" style="--i:5">
+        <h3 class="ola"><span class="sr">En todos los casos</span><span class="ola-t" aria-hidden="true"><span class="pal"><span class="ch">E</span><span class="ch">n</span></span> <span class="pal"><span class="ch">t</span><span class="ch">o</span><span class="ch">d</span><span class="ch">o</span><span class="ch">s</span></span> <span class="pal"><span class="ch">l</span><span class="ch">o</span><span class="ch">s</span></span> <span class="pal"><span class="ch">c</span><span class="ch">a</span><span class="ch">s</span><span class="ch">o</span><span class="ch">s</span></span></span></h3>
+        <p class="serif">Tu DNI y cualquier carta del juzgado o de la otra parte.</p>
+      </div>
+  </div>
+</section>
+
+<section class="lengua" aria-labelledby="h-lengua">
+  <div class="fondo" data-fondo><picture><source media="(max-width: 759px)" type="image/avif" srcset="../fotos/tinglado-m-600.avif 600w, ../fotos/tinglado-m-900.avif 900w, ../fotos/tinglado-m-1300.avif 1300w" sizes="100vw"><source media="(max-width: 759px)" type="image/webp" srcset="../fotos/tinglado-m-600.webp 600w, ../fotos/tinglado-m-900.webp 900w, ../fotos/tinglado-m-1300.webp 1300w" sizes="100vw"><source type="image/avif" srcset="../fotos/tinglado-1280.avif 1280w, ../fotos/tinglado-1920.avif 1920w, ../fotos/tinglado-2560.avif 2560w, ../fotos/tinglado-3200.avif 3200w" sizes="100vw"><img src="../fotos/tinglado-1920.webp" srcset="../fotos/tinglado-1280.webp 1280w, ../fotos/tinglado-1920.webp 1920w, ../fotos/tinglado-2560.webp 2560w, ../fotos/tinglado-3200.webp 3200w" sizes="100vw" width="4475" height="2797" alt="El Tinglado de Tolosa y sus arcos reflejados en el río Oria, en blanco y negro." loading="lazy" decoding="async"></picture></div>
+  <hr class="filete" data-filete>
+  <div class="lengua-in">
+    <h2 id="h-lengua" class="gigante" style="--largo:10" data-lineas>En euskera<br>o en<br>castellano</h2>
+    <div class="lengua-der">
+      <hr class="filete" data-filete>
+      <p class="serif">Las reuniones, los escritos y las llamadas, en el idioma que tú elijas.</p>
+      <a class="pildora" href="../" lang="eu" hreflang="eu">Leer en euskera</a>
+    </div>
+  </div>
+</section>
+
+<div class="pin">
+  <section class="banda" aria-label="Atendemos con cita previa, de lunes a viernes.">
+    <p class="serif banda-arriba">Atendemos con cita previa, de lunes a viernes.</p>
+    <div class="banda-fila">
+      <p class="serif banda-izq" lang="es" data-separa="-1"><span>En castellano</span></p>
+      <svg class="marca marca-banda" viewBox="0 0 48 30" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="3.6"><path d="M26.17 8.93A11 11 0 1 1 21.21 4.84"/><path d="M21.83 21.07A11 11 0 1 1 26.79 25.16"/></g></svg>
+      <p class="serif banda-der" lang="eu" data-separa="1"><span>Euskaraz</span></p>
+    </div>
+  </section>
+  <figure class="banda-foto"><picture><source media="(max-width: 759px)" type="image/avif" srcset="../fotos/firma-m-600.avif 600w, ../fotos/firma-m-900.avif 900w, ../fotos/firma-m-1300.avif 1300w" sizes="100vw"><source media="(max-width: 759px)" type="image/webp" srcset="../fotos/firma-m-600.webp 600w, ../fotos/firma-m-900.webp 900w, ../fotos/firma-m-1300.webp 1300w" sizes="100vw"><source type="image/avif" srcset="../fotos/firma-1280.avif 1280w, ../fotos/firma-1920.avif 1920w, ../fotos/firma-2560.avif 2560w, ../fotos/firma-3200.avif 3200w" sizes="100vw"><img src="../fotos/firma-1920.webp" srcset="../fotos/firma-1280.webp 1280w, ../fotos/firma-1920.webp 1920w, ../fotos/firma-2560.webp 2560w, ../fotos/firma-3200.webp 3200w" sizes="100vw" width="5973" height="2489" alt="En blanco y negro, dos personas firman unos papeles sobre una mesa." loading="lazy" decoding="async"></picture></figure>
+</div>
+
+<section class="consulta" id="consulta" aria-labelledby="h-consulta">
+  <figure class="consulta-foto" data-panel><picture><source type="image/avif" srcset="../fotos/papeles-500.avif 500w, ../fotos/papeles-900.avif 900w, ../fotos/papeles-1300.avif 1300w" sizes="(min-width: 760px) 29vw, 100vw"><img src="../fotos/papeles-900.webp" srcset="../fotos/papeles-500.webp 500w, ../fotos/papeles-900.webp 900w, ../fotos/papeles-1300.webp 1300w" sizes="(min-width: 760px) 29vw, 100vw" width="2440" height="4000" alt="Una pluma estilográfica sobre un montón de papeles, en blanco y negro." loading="lazy" decoding="async"></picture></figure>
+  <form class="herr" data-consulta onsubmit="return false">
+    <h2 id="h-consulta" class="ola consulta-h"><span class="sr">Primera consulta sin llamar</span><span class="ola-t" aria-hidden="true"><span class="pal"><span class="ch">P</span><span class="ch">r</span><span class="ch">i</span><span class="ch">m</span><span class="ch">e</span><span class="ch">r</span><span class="ch">a</span></span> <span class="pal"><span class="ch">c</span><span class="ch">o</span><span class="ch">n</span><span class="ch">s</span><span class="ch">u</span><span class="ch">l</span><span class="ch">t</span><span class="ch">a</span></span> <span class="pal"><span class="ch">s</span><span class="ch">i</span><span class="ch">n</span></span> <span class="pal"><span class="ch">l</span><span class="ch">l</span><span class="ch">a</span><span class="ch">m</span><span class="ch">a</span><span class="ch">r</span></span></span></h2>
+    <div class="consulta-der">
+      <p class="serif consulta-sub">Elige el asunto</p>
+      <p class="serif">Verás la lista de papeles y el mensaje ya escrito. Lo envías por WhatsApp o por correo y te damos día.</p>
+    </div>
+    <fieldset class="lista">
+      <legend class="sr">Elige el asunto</legend>
+      <label class="as"><input type="radio" name="asunto" value="her" checked><span class="as-n" aria-hidden="true">01</span><span class="as-t">Herencia</span></label>
+          <label class="as"><input type="radio" name="asunto" value="div"><span class="as-n" aria-hidden="true">02</span><span class="as-t">Separación o divorcio</span></label>
+          <label class="as"><input type="radio" name="asunto" value="des"><span class="as-n" aria-hidden="true">03</span><span class="as-t">Despido</span></label>
+          <label class="as"><input type="radio" name="asunto" value="con"><span class="as-n" aria-hidden="true">04</span><span class="as-t">Contrato o alquiler</span></label>
+          <label class="as"><input type="radio" name="asunto" value="mul"><span class="as-n" aria-hidden="true">05</span><span class="as-t">Multa o sanción</span></label>
+    </fieldset>
+    <fieldset class="tengo">
+      <legend><h3>Marca lo que ya tienes</h3></legend>
+      <div class="docs" data-docs="her"><label class="doc"><input type="checkbox" name="doc-her" value="1"><span class="caja" aria-hidden="true"></span><span>Certificado de defunción</span></label><label class="doc"><input type="checkbox" name="doc-her" value="2"><span class="caja" aria-hidden="true"></span><span>Certificado de últimas voluntades</span></label><label class="doc"><input type="checkbox" name="doc-her" value="3"><span class="caja" aria-hidden="true"></span><span>Testamento, si lo hay</span></label><label class="doc"><input type="checkbox" name="doc-her" value="4"><span class="caja" aria-hidden="true"></span><span>Escrituras de las casas y recibos del IBI</span></label><label class="doc"><input type="checkbox" name="doc-her" value="5"><span class="caja" aria-hidden="true"></span><span>Extractos de las cuentas del banco</span></label></div>
+          <div class="docs" data-docs="div" hidden><label class="doc"><input type="checkbox" name="doc-div" value="1"><span class="caja" aria-hidden="true"></span><span>Libro de familia</span></label><label class="doc"><input type="checkbox" name="doc-div" value="2"><span class="caja" aria-hidden="true"></span><span>Certificado de matrimonio</span></label><label class="doc"><input type="checkbox" name="doc-div" value="3"><span class="caja" aria-hidden="true"></span><span>Nóminas o la última declaración de la renta</span></label><label class="doc"><input type="checkbox" name="doc-div" value="4"><span class="caja" aria-hidden="true"></span><span>Escritura o contrato de alquiler de la vivienda</span></label></div>
+          <div class="docs" data-docs="des" hidden><label class="doc"><input type="checkbox" name="doc-des" value="1"><span class="caja" aria-hidden="true"></span><span>Carta de despido</span></label><label class="doc"><input type="checkbox" name="doc-des" value="2"><span class="caja" aria-hidden="true"></span><span>Contrato de trabajo</span></label><label class="doc"><input type="checkbox" name="doc-des" value="3"><span class="caja" aria-hidden="true"></span><span>Las tres últimas nóminas</span></label><label class="doc"><input type="checkbox" name="doc-des" value="4"><span class="caja" aria-hidden="true"></span><span>Finiquito firmado, si lo hay</span></label><label class="doc"><input type="checkbox" name="doc-des" value="5"><span class="caja" aria-hidden="true"></span><span>Informe de vida laboral</span></label></div>
+          <div class="docs" data-docs="con" hidden><label class="doc"><input type="checkbox" name="doc-con" value="1"><span class="caja" aria-hidden="true"></span><span>El contrato firmado</span></label><label class="doc"><input type="checkbox" name="doc-con" value="2"><span class="caja" aria-hidden="true"></span><span>Recibos o transferencias de los pagos</span></label><label class="doc"><input type="checkbox" name="doc-con" value="3"><span class="caja" aria-hidden="true"></span><span>Correos electrónicos o mensajes con la otra parte</span></label></div>
+          <div class="docs" data-docs="mul" hidden><label class="doc"><input type="checkbox" name="doc-mul" value="1"><span class="caja" aria-hidden="true"></span><span>La notificación de la multa</span></label><label class="doc"><input type="checkbox" name="doc-mul" value="2"><span class="caja" aria-hidden="true"></span><span>El sobre o el aviso con la fecha en que llegó</span></label><label class="doc"><input type="checkbox" name="doc-mul" value="3"><span class="caja" aria-hidden="true"></span><span>Fotos o papeles de ese día</span></label></div>
+    </fieldset>
+    <div class="prefs">
+      <fieldset>
+        <legend>¿En qué idioma?</legend>
+        <label class="op"><input type="radio" name="idioma" value="eu"><span>Euskera</span></label><label class="op"><input type="radio" name="idioma" value="es" checked><span>Castellano</span></label>
+      </fieldset>
+      <fieldset>
+        <legend>¿Cuándo te viene mejor?</legend>
+        <label class="op"><input type="radio" name="franja" value="man" checked><span>Por la mañana</span></label><label class="op"><input type="radio" name="franja" value="tar"><span>Por la tarde</span></label>
+      </fieldset>
+    </div>
+    <div class="mensaje">
+      <h3>Tu mensaje</h3>
+      <p class="escribiendo" data-escribiendo aria-hidden="true">Escribiendo…</p>
+      <div class="texto serif" data-mensaje aria-live="polite"><p>Hola, quería pedir una primera consulta por una herencia.</p><p>Todavía no tengo ningún papel preparado.</p><p>Prefiero que la consulta sea en castellano.</p><p>Me viene mejor por la mañana.</p><p>Gracias.</p></div>
+    </div>
+    <div class="enviar">
+      <a class="pildora pildora-negra" href="https://wa.me/34600000000?text=Hola%2C%20quer%C3%ADa%20pedir%20una%20primera%20consulta%20por%20una%20herencia.%0ATodav%C3%ADa%20no%20tengo%20ning%C3%BAn%20papel%20preparado.%0APrefiero%20que%20la%20consulta%20sea%20en%20castellano.%0AMe%20viene%20mejor%20por%20la%20ma%C3%B1ana.%0AGracias." rel="noopener" data-wa>Enviar por WhatsApp</a>
+      <a class="enl" href="mailto:kaixo@itun.example?subject=Primera%20consulta&amp;body=Hola%2C%20quer%C3%ADa%20pedir%20una%20primera%20consulta%20por%20una%20herencia.%0ATodav%C3%ADa%20no%20tengo%20ning%C3%BAn%20papel%20preparado.%0APrefiero%20que%20la%20consulta%20sea%20en%20castellano.%0AMe%20viene%20mejor%20por%20la%20ma%C3%B1ana.%0AGracias." data-mail>o por correo</a>
+      <p class="serif o-llama">¿Prefieres llamar? <a href="tel:+34943000000" class="pal">943 00 00 00</a>.</p>
+    </div>
+  </form>
+</section>
+
+<section class="cita" aria-labelledby="h-cita">
+  <div class="fondo" data-fondo><picture><source media="(max-width: 759px)" type="image/avif" srcset="../fotos/arkupeak-m-600.avif 600w, ../fotos/arkupeak-m-900.avif 900w, ../fotos/arkupeak-m-1300.avif 1300w" sizes="100vw"><source media="(max-width: 759px)" type="image/webp" srcset="../fotos/arkupeak-m-600.webp 600w, ../fotos/arkupeak-m-900.webp 900w, ../fotos/arkupeak-m-1300.webp 1300w" sizes="100vw"><source type="image/avif" srcset="../fotos/arkupeak-1280.avif 1280w, ../fotos/arkupeak-1920.avif 1920w, ../fotos/arkupeak-2560.avif 2560w, ../fotos/arkupeak-3200.avif 3200w" sizes="100vw"><img src="../fotos/arkupeak-1920.webp" srcset="../fotos/arkupeak-1280.webp 1280w, ../fotos/arkupeak-1920.webp 1920w, ../fotos/arkupeak-2560.webp 2560w, ../fotos/arkupeak-3200.webp 3200w" sizes="100vw" width="4463" height="2479" alt="Arcos del Tinglado de Tolosa y la pasarela de madera junto al río, en blanco y negro." loading="lazy" decoding="async"></picture></div>
+  <hr class="filete" data-filete>
+  <div class="lengua-in">
+    <h2 id="h-cita" class="gigante" style="--largo:7" data-lineas>Llama o escribe</h2>
+    <div class="lengua-der">
+      <hr class="filete" data-filete>
+      <p class="serif">Llámanos al <a href="tel:+34943000000" class="pal">943 00 00 00</a> o escríbenos por WhatsApp y te damos día para la primera consulta.</p>
+      <p class="serif">De lunes a viernes, de 9:00 a 14:00 y de 16:00 a 19:00.</p>
+      <a class="pildora" href="tel:+34943000000">Llamar</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="pie" id="contacto">
+  <div class="pie-sup">
+    <svg class="marca marca-pie" viewBox="0 0 48 30" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="3.6"><path d="M26.17 8.93A11 11 0 1 1 21.21 4.84"/><path d="M21.83 21.07A11 11 0 1 1 26.79 25.16"/></g></svg>
+    <p class="serif">ITUN ABOKATUAK<br>Herencias, familia, trabajo, contratos y multas, en Tolosa.</p>
+  </div>
+  <div class="pie-cols" data-escalonado>
+    <div class="pie-col">
+      <h2>Dirección</h2>
+      <p>Rondilla kalea 0<br>20400 Tolosa</p>
+    </div>
+    <div class="pie-col">
+      <h2>Contacto</h2>
+      <ul>
+        <li><a href="tel:+34943000000">943 00 00 00 <span class="fl" aria-hidden="true">→</span></a></li>
+        <li><a href="https://wa.me/34600000000" rel="noopener">WhatsApp 600 00 00 00 <span class="fl" aria-hidden="true">→</span></a></li>
+        <li><a href="mailto:kaixo@itun.example">kaixo@itun.example <span class="fl" aria-hidden="true">→</span></a></li>
+      </ul>
+    </div>
+    <div class="pie-col">
+      <h2>Horario</h2>
+      <p>De lunes a viernes<br>De 9:00 a 14:00 y de 16:00 a 19:00</p>
+      <p class="estado" data-estado aria-live="polite"></p>
+    </div>
+    <div class="pie-col pie-nav">
+      <h2>En esta página</h2>
+      <ul><li><a href="#despacho">Despacho <span class="fl" aria-hidden="true">→</span></a></li><li><a href="#asuntos">Asuntos <span class="fl" aria-hidden="true">→</span></a></li><li><a href="#traer">Qué traer <span class="fl" aria-hidden="true">→</span></a></li><li><a href="#consulta">Consulta <span class="fl" aria-hidden="true">→</span></a></li></ul>
+    </div>
+  </div>
+  <div class="pie-nota">
+    <p>Datos de ejemplo. Itun es un despacho inventado y esta web es una muestra de diseño de OI Studio. Son inventados el nombre, la dirección, los teléfonos, el correo, el horario y todo lo que se dice sobre el despacho. La lista de papeles es orientativa.</p>
+    <p>Fotos libres: Sami Mlouhi, Joxemai, Krzysztof Golik y Basotxerri (Wikimedia Commons, CC BY-SA), Romain Dancre y Andres Vera (Unsplash). <a href="../fotos/creditos.json">Créditos de las fotos</a></p>
+  </div>
+  <div class="pie-fin">
+    <p>© ITUN ABOKATUAK</p>
+    <p><a href="../" lang="eu" hreflang="eu">Euskaraz</a></p>
+    <p><a href="../fotos/creditos.json">Créditos de las fotos</a></p>
+    <p class="pie-firma">Diseñado por <a class="firma" href="https://oiwebstudio.com/?utm_source=muestra-itun&amp;utm_medium=pie" target="_blank" rel="noopener">OI Studio</a></p>
+  </div>
+</footer>
+
+<script type="application/json" id="textos">{"lang":"es","wa":"https://wa.me/34600000000","mail":"kaixo@itun.example","asunto_mail":"Primera consulta","escribiendo":"Escribiendo…","inicio":{"her":"Hola, quería pedir una primera consulta por una herencia.","div":"Hola, quería pedir una primera consulta por una separación o un divorcio.","des":"Hola, quería pedir una primera consulta por un despido.","con":"Hola, quería pedir una primera consulta por un contrato o un alquiler.","mul":"Hola, quería pedir una primera consulta por una multa o una sanción."},"docs":{"her":["Certificado de defunción","Certificado de últimas voluntades","Testamento, si lo hay","Escrituras de las casas y recibos del IBI","Extractos de las cuentas del banco"],"div":["Libro de familia","Certificado de matrimonio","Nóminas o la última declaración de la renta","Escritura o contrato de alquiler de la vivienda"],"des":["Carta de despido","Contrato de trabajo","Las tres últimas nóminas","Finiquito firmado, si lo hay","Informe de vida laboral"],"con":["El contrato firmado","Recibos o transferencias de los pagos","Correos electrónicos o mensajes con la otra parte"],"mul":["La notificación de la multa","El sobre o el aviso con la fecha en que llegó","Fotos o papeles de ese día"]},"tengo":"Ya tengo estos papeles:","falta":"Todavía me falta:","nada":"Todavía no tengo ningún papel preparado.","eu":"Prefiero que la consulta sea en euskera.","es":"Prefiero que la consulta sea en castellano.","man":"Me viene mejor por la mañana.","tar":"Me viene mejor por la tarde.","gracias":"Gracias.","est":{"a14":"Ahora abierto, hasta las 14:00.","a19":"Ahora abierto, hasta las 19:00.","h9":"Ahora cerrado. Abrimos hoy a las 9:00.","h16":"Ahora cerrado. Abrimos hoy a las 16:00.","m9":"Ahora cerrado. Abrimos mañana a las 9:00.","l9":"Ahora cerrado. Abrimos el lunes a las 9:00."},"abrir":"Abrir el menú","cerrar":"Cerrar el menú"}</script>
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/SplitText.min.js"></script>
+<script src="../js/anim-texto.js"></script>
+<script src="../js/pagina.js"></script>
+</body>
+</html>

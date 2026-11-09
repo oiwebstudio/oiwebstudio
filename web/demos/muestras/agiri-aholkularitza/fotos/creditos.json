@@ -1,0 +1,55 @@
+{
+ "_leeme": "Fotos de la muestra AGIRI (asesoría inventada, 8/11/2026). Son fotos de ejemplo de bancos libres, no de ninguna asesoría real. Originales mirados enteros: sin marca de agua. Recortadas, pasadas a gris y tramadas en puntos blancos y negros (difusión de error), como la portada de la referencia; sin datos de ubicación.",
+ "portada": {
+  "autor": "Darin Wicentowich",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/two-women-sit-on-a-stone-wall-admiring-snow-capped-mountains-UUzToR-Q29I",
+  "original": "3600 × 2310",
+  "uso": "portada a todo el ancho (escritorio)",
+  "cambios": "recortada a 3600 × 1385, pasada a gris y tramada en 428 × 165 puntos blancos y negros"
+ },
+ "portada-m": {
+  "autor": "Darin Wicentowich",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/two-women-sit-on-a-stone-wall-admiring-snow-capped-mountains-UUzToR-Q29I",
+  "original": "3600 × 2310",
+  "uso": "portada a todo el ancho (móvil)",
+  "cambios": "recortada a 1447 × 2010, pasada a gris y tramada en 130 × 181 puntos blancos y negros"
+ },
+ "sello": {
+  "autor": "5snake5",
+  "titulo": "Stempel, Stempelkissen, Stempelfarbe.jpg",
+  "licencia": "CC0 (dominio público; se cita igualmente)",
+  "fuente": "https://commons.wikimedia.org/wiki/File:Stempel,_Stempelkissen,_Stempelfarbe.jpg",
+  "original": "4588 × 3171",
+  "uso": "foto pequeña de la sección de autónomos y empresas",
+  "cambios": "recortada a 2600 × 2600, pasada a gris y tramada en 120 × 120 puntos blancos y negros"
+ },
+ "reloj": {
+  "autor": "Dietmar Rabich",
+  "titulo": "Dülmen, Kirchspiel, ehem. Sondermunitionslager Visbeck, \"What if\" -- 2023 -- 6686 (kreativ 2).jpg",
+  "licencia": "CC BY-SA 4.0 (atribución obligatoria; la versión tramada se comparte con la misma licencia)",
+  "fuente": "https://commons.wikimedia.org/wiki/File:D%C3%BClmen,_Kirchspiel,_ehem._Sondermunitionslager_Visbeck,_%22What_if%22_--_2023_--_6686_(kreativ_2).jpg",
+  "original": "4318 × 4318",
+  "uso": "foto pequeña de la sección de particulares",
+  "cambios": "recortada a 3368 × 3368, pasada a gris y tramada en 120 × 120 puntos blancos y negros"
+ },
+ "grabado": {
+  "autor": "Genaro Pérez Villaamil / Alphonse Bichebois / Adolphe Jean-Baptiste Bayot",
+  "titulo": "1850, España artística y monumental, vistas y descripción de los sitios y monumentos más notables de españa, vol 3, Hermita de San Estevan y vista de Tolosa en Guipúzcoa.jpg",
+  "licencia": "Public domain (dominio público; se cita igualmente)",
+  "fuente": "https://commons.wikimedia.org/wiki/File:1850,_Espa%C3%B1a_art%C3%ADstica_y_monumental,_vistas_y_descripci%C3%B3n_de_los_sitios_y_monumentos_m%C3%A1s_notables_de_espa%C3%B1a,_vol_3,_Hermita_de_San_Estevan_y_vista_de_Tolosa_en_Guip%C3%BAzcoa.jpg",
+  "original": "4176 × 2790",
+  "uso": "foto grande de los plazos, con las dos fichas encima",
+  "cambios": "recortada a 2628 × 2190, pasada a gris y tramada en 270 × 225 puntos blancos y negros"
+ },
+ "puente": {
+  "autor": "Krzysztof Golik",
+  "titulo": "Naparzubia in Tolosa (1).jpg",
+  "licencia": "CC BY-SA 4.0 (atribución obligatoria; la versión tramada se comparte con la misma licencia)",
+  "fuente": "https://commons.wikimedia.org/wiki/File:Naparzubia_in_Tolosa_(1).jpg",
+  "original": "5784 × 3535",
+  "uso": "foto ancha que se desliza de lado al bajar",
+  "cambios": "recortada a 4049 × 1266, pasada a gris y tramada en 440 × 138 puntos blancos y negros"
+ }
+}

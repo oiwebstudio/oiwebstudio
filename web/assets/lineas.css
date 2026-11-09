@@ -623,3 +623,51 @@ html.js:not(.js-l3) .rm ~ .rm{display:none;}
 
 .ch__mas{margin:18px 0 0;}
 @media(max-width:860px){.ch__mas{order:7;}}
+
+/* Galería «todas las muestras» debajo de ¿Qué negocio tienes? (9/11/2026, Oier: «que la gente vea rápidamente los demos»).
+   La monta herramientas/sitio/sectores/gen.cjs; la entrada escalonada y «Ver todas» van en assets/piezas.js. */
+.sx-t{margin-top:clamp(56px,7vw,96px);}
+.sx-t__cab{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px;margin:0 0 24px;padding-top:24px;border-top:1px solid var(--border);}
+.sx-t__h{margin:0;display:flex;align-items:flex-start;gap:8px;font-family:var(--font-serif);font-weight:500;font-size:clamp(26px,2.6vw,36px);line-height:1;text-transform:uppercase;color:var(--ink);letter-spacing:-.01em;}
+.sx-t__num{font:600 14px/1 var(--font-sans);color:var(--terra-link);letter-spacing:0;}
+.sx-t__p{margin:0;font-size:16px;color:var(--text-muted);}
+.sx-t__g{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:30px 20px;}
+.sx-c{display:block;color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent;}
+.sx-c__img{position:relative;display:block;border-radius:12px;overflow:hidden;background:var(--bg-subtle);box-shadow:0 0 0 1px var(--border),0 18px 36px -26px rgba(25,23,18,.45);transition:transform .45s cubic-bezier(.2,.75,.25,1),box-shadow .45s cubic-bezier(.2,.75,.25,1);}
+.sx-c__img img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top;transition:transform .7s cubic-bezier(.2,.75,.25,1);}
+.sx-c__abre{position:absolute;left:12px;bottom:12px;padding:9px 13px;border-radius:999px;background:var(--ink);color:#fff;font:600 13px/1 var(--font-sans);opacity:0;transform:translateY(8px);transition:opacity .3s ease,transform .4s cubic-bezier(.2,.75,.25,1);}
+.sx-c__pie{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:13px 2px 0;}
+.sx-c__n{font-family:var(--font-serif);font-weight:500;font-size:19px;line-height:1.1;text-transform:uppercase;color:var(--ink);}
+.sx-c__s{font-size:14px;color:var(--text-muted);white-space:nowrap;}
+@media (hover:hover){
+  .sx-c:hover .sx-c__img{transform:translateY(-4px);box-shadow:0 0 0 1px var(--border-strong),0 28px 46px -24px rgba(25,23,18,.5);}
+  .sx-c:hover .sx-c__img img{transform:scale(1.035);}
+  .sx-c:hover .sx-c__abre{opacity:1;transform:none;}
+}
+.sx-c:active .sx-c__img{transform:scale(.98);transition-duration:.15s;}
+.sx-c:focus-visible{outline:none;}
+.sx-c:focus-visible .sx-c__img{box-shadow:0 0 0 2px var(--ink);}
+.sx-c:focus-visible .sx-c__abre{opacity:1;transform:none;}
+.sx-t__mas{display:flex;margin:36px auto 0;appearance:none;border:0;cursor:pointer;padding:15px 28px;border-radius:999px;background:#fff;color:var(--ink);font:600 15px/1 var(--font-sans);box-shadow:inset 0 0 0 1px var(--ink);transition:background-color .25s,color .25s;}
+.sx-t__mas[hidden]{display:none;}
+.sx-t__mas:hover{background:var(--ink);color:#fff;}
+.sx-t__mas:focus-visible{outline:2px solid var(--ink);outline-offset:3px;}
+.js .sx-t:not(.is-abierta) .sx-t__i:nth-child(n+9){display:none;}
+@media (max-width:1000px){
+  .sx-t__g{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .js .sx-t:not(.is-abierta) .sx-t__i:nth-child(n+7){display:none;}
+}
+@media (max-width:700px){
+  .sx-t__cab{margin-bottom:18px;padding-top:20px;}
+  .sx-t__p{font-size:15px;}
+  .sx-t__g{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 12px;}
+  .sx-c__img{border-radius:9px;}
+  .sx-c__pie{flex-direction:column;align-items:flex-start;gap:3px;padding-top:9px;}
+  .sx-c__n{font-size:16px;}
+  .sx-c__s{font-size:13px;}
+  .sx-c__abre{display:none;}
+  .sx-t__mas{width:100%;justify-content:center;margin-top:26px;min-height:48px;align-items:center;}
+}
+@media (prefers-reduced-motion:reduce){.sx-c__img,.sx-c__img img,.sx-c__abre{transition:none;}}
+.js .sx-t__g.mv .sx-t__i{opacity:0;transform:translateY(24px);transition:opacity .6s ease var(--d,0ms),transform .9s cubic-bezier(.2,.75,.25,1) var(--d,0ms);}
+.js .sx-t__g.mv .sx-t__i.is-in{opacity:1;transform:none;}

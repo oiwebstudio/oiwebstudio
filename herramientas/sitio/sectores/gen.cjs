@@ -7,7 +7,7 @@
 // Uso: node herramientas/sitio/sectores/gen.cjs [--check]
 const fs = require("fs");
 const path = require("path");
-const { nuevos, LETRAS } = require("./textos.cjs");
+const { nuevos, LETRAS, UI } = require("./textos.cjs");
 const { I18N } = require("./diccionario.cjs");
 
 const RAIZ = path.resolve(__dirname, "../../..");
@@ -74,6 +74,28 @@ const paneles = lista.map((s, i) => {
 </div>`;
 }).join("\n");
 
+// Galería «todas las muestras» (9/11/2026): cada tarjeta abre la muestra de un toque. Orden variado: uno de cada grupo por turnos.
+const GRUPOS = [ORDEN.slice(0, 6), ORDEN.slice(6, 15), ORDEN.slice(15, 19), ORDEN.slice(19, 23), ORDEN.slice(23, 25), ORDEN.slice(25)];
+const galeria = [];
+for (let r = 0; GRUPOS.some((g) => g.length > r); r++) for (const g of GRUPOS) if (g[r] && sectores[g[r]]) galeria.push(sectores[g[r]]);
+const uiES = (k) => esc(UI[k]);
+for (const k of Object.keys(UI)) if (!EU_NUEVOS[k]) avisos.push("euskera " + k);
+const tarjetas = galeria.map((s) => {
+  const card = fs.existsSync(path.join(WEB, `assets/sx/${s.id}-c.webp`)) ? `assets/sx/${s.id}-c.webp` : (avisos.push(`${s.nombre}: sin tarjeta (pasa miniaturas.cjs)`), `assets/${s.id}-desk.webp`);
+  return `<li class="sx-t__i"><a class="sx-c" href="${s.enlace}" target="_blank" rel="noopener"><span class="sx-c__img"><img src="${card}" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">${esc(s.nombre)}</span><span class="sx-c__s" data-t="${s.chip.key}">${esc(s.chip.es)}</span></span></a></li>`;
+}).join("\n");
+const galeriaHTML = (abierta) => `<div class="sx-t${abierta ? " is-abierta" : ""}">
+<div class="sx-t__cab reveal">
+<h3 class="sx-t__h"><span data-t="sx_todas_h">${uiES("sx_todas_h")}</span><span class="sx-t__num">${galeria.length}</span></h3>
+<p class="sx-t__p" data-t="sx_todas_p">${uiES("sx_todas_p")}</p>
+</div>
+<ul class="sx-t__g" id="sx-todas">
+${tarjetas}
+</ul>
+${abierta ? "" : `<button type="button" class="sx-t__mas" aria-controls="sx-todas" aria-expanded="false" hidden><span data-t="sx_todas_mas">${uiES("sx_todas_mas")}</span><span data-t="sx_todas_menos" hidden>${uiES("sx_todas_menos")}</span></button>`}
+</div>
+`;
+
 let cambios = 0;
 for (const pag of PAGINAS) {
   const f = path.join(WEB, pag);
@@ -87,7 +109,7 @@ for (const pag of PAGINAS) {
   const cFin = sec.indexOf("</div>", c1);
   const p0 = sec.indexOf('<div class="sx__caja reveal">');
   if (c0 < 0 || p0 < 0) { avisos.push(`${pag}: estructura de #tu-sector distinta`); continue; }
-  const nueva = sec.slice(0, c1) + "\n" + chips + "\n" + sec.slice(cFin, p0) + '<div class="sx__caja reveal">\n' + paneles + "\n</div>\n</div>\n";
+  const nueva = sec.slice(0, c1) + "\n" + chips + "\n" + sec.slice(cFin, p0) + '<div class="sx__caja reveal">\n' + paneles + "\n</div>\n" + galeriaHTML(pag === "trabajos.html") + "</div>\n";
   if (nueva !== sec) {
     cambios++;
     if (!CHECK) fs.writeFileSync(f, h.slice(0, a) + nueva + h.slice(b));
@@ -98,7 +120,7 @@ for (const pag of PAGINAS) {
 const I0 = "  // sx-sectores-nuevos (lo escribe herramientas/sitio/sectores/gen.cjs; euskera de Itzultzaile Neuronala en sectores/eu.json)";
 const I1 = "  // /sx-sectores-nuevos";
 let src = fs.readFileSync(I18N, "utf8");
-const lineas = lista.filter((s) => s.nuevo).flatMap((s) => [s.chip, s.k, ...s.lleva]).map((x) => `  ${x.key}: ${JSON.stringify(x.eu)},`);
+const lineas = [...Object.keys(UI).map((k) => ({ key: k, eu: EU_NUEVOS[k] || null })), ...lista.filter((s) => s.nuevo).flatMap((s) => [s.chip, s.k, ...s.lleva])].map((x) => `  ${x.key}: ${JSON.stringify(x.eu)},`);
 const bloque = [I0, ...lineas, I1].join("\n");
 if (src.includes(I0)) src = src.slice(0, src.indexOf(I0)) + bloque + src.slice(src.indexOf(I1) + I1.length);
 else {

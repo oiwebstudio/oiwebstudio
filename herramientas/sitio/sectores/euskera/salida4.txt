@@ -1,0 +1,8 @@
+sx_academia_b	Plaza libreak talde bakoitzean
+sx_asesoria_a	Izapide bakoitzak eskatzen dituen paperak
+sx_asesoria_b	Zenbat falta den Ogasunaren epe bakoitzerako
+sx_asesoria_c	Hitzordua WhatsApp bidez, mezua idatzita dagoela
+sx_k_bodega	Asteasuko txakolin upategia
+sx_bodega_b	Prestatu zure botila-kaxa
+sx_bodega_c	Txakolin bakoitza zerekin jan
+sx_panaderia_c	Une honetan irekita edo itxita

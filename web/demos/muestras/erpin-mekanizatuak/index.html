@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>ERPIN · Txapa eta mekanizazioa Ibarran (laginaren webgunea)</title>
+<meta name="description" content="OI Studio-ren erakusketa-webgunea, asmatutako txapa- eta mekanizazio-tailer baterako: zure pieza makinetan sartzen den begiratzen duzu, eta aurrekontua planoarekin bidaltzen duzu WhatsApp edo posta bidez.">
+<meta name="theme-color" content="#FFFFFF">
+<meta property="og:title" content="ERPIN · Txapa eta mekanizazioa Ibarran (laginaren webgunea)">
+<meta property="og:description" content="OI Studio-ren erakusketa-webgunea, asmatutako txapa- eta mekanizazio-tailer baterako: zure pieza makinetan sartzen den begiratzen duzu, eta aurrekontua planoarekin bidaltzen duzu WhatsApp edo posta bidez.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="fotos/og-erpin.jpg">
+<link rel="alternate" hreflang="es" href="es/">
+<!--
+  MUESTRA «ERPIN» (OI Studio, 9/11/2026): taller de chapa y mecanizado INVENTADO para la pieza «¿Qué negocio tienes?» de oiwebstudio.com.
+  «Erpin» = vértice. Nombre, dirección, teléfonos, correo, horario, máquinas, medidas, plazos y certificado son de ejemplo. noindex.
+  Calco de COPREC (coprec.co.jp, n.º 01 del tablero muestras-industria-2026-11-07, elegida por Oier el 8/11): marco de plano con 1–8 y A–D
+  en los bordes, cabecera con el menú en celdas, nombre gigante de borde a borde, tres columnas (qué y dónde, procesos con [ ] y dirección),
+  tira de tres paneles con el mismo vídeo de la plegadora, barra de abajo como la pantalla de una máquina (fecha, hora, X/Y del ratón, C, S),
+  rótulos de sección en vertical a los lados, foto ancha + titular grande + texto, panel azul oscuro a todo el ancho, banda amarilla,
+  tarjetas con pestaña y foto en blanco y negro, banda azul (aquí, el «¿entra en nuestras máquinas?») y bloque de datos con la foto de la nave.
+  Lo que se toca reacciona: los [ ] de la portada marcan el proceso, el presupuesto dice si la pieza entra (medidores por proceso), da un plazo
+  orientativo y deja escrito el mensaje para WhatsApp o correo; el horario dice si está abierto con la hora de Gipuzkoa.
+  Letras: n.º 3 Panchang 600/800 (nombre, títulos, rótulos cortos y barra) + n.º 14 Switzer 400/600 (texto), autoalojadas en fuentes/.
+  Fotos: Unsplash (licencia de Unsplash): Cemrecan Yurtman, Morteza Mohammadi, Daulet Turubayev, Jelifer Maniago, set.sj.
+  Vídeo: Pexels (licencia de Pexels): Dominik Zítka. Detalle en fotos/creditos.json.
+  Movimiento: la portada entra con CSS desde el primer pintado; lo de abajo, con GSAP 3.13 + ScrollTrigger + SplitText (js/) + anim-texto.js
+  + pagina.js. Con «reducir movimiento» o sin JS, todo quieto y visible (el vídeo se queda en su primer fotograma).
+-->
+<link rel="preload" href="fuentes/panchang-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fuentes/panchang-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fuentes/switzer-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="estilo.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="saltar" href="#contenido">Edukira joan</a>
+
+<div class="marco" aria-hidden="true">
+  <div class="regla regla-arr ocho"><span><b>1</b></span><span><b>2</b></span><span><b>3</b></span><span><b>4</b></span><span><b>5</b></span><span><b>6</b></span><span><b>7</b></span><span><b>8</b></span></div><div class="regla regla-arr cuatro"><span><b>1</b></span><span><b>2</b></span><span><b>3</b></span><span><b>4</b></span></div>
+  <div class="regla regla-aba ocho"><span><b>1</b></span><span><b>2</b></span><span><b>3</b></span><span><b>4</b></span><span><b>5</b></span><span><b>6</b></span><span><b>7</b></span><span><b>8</b></span></div><div class="regla regla-aba cuatro"><span><b>1</b></span><span><b>2</b></span><span><b>3</b></span><span><b>4</b></span></div>
+  <div class="regla regla-izq"><span><b>A</b></span><span><b>B</b></span><span><b>C</b></span><span><b>D</b></span></div><div class="regla regla-der"><span><b>A</b></span><span><b>B</b></span><span><b>C</b></span><span><b>D</b></span></div>
+</div>
+
+<header class="cab">
+  <a class="logo" href="#contenido" aria-label="ERPIN">ERPIN</a>
+  <nav class="nav" aria-label="Menua"><ul><li><a href="#taller">Tailerra</a></li><li><a href="#maquinas">Makinak</a></li><li><a href="#presupuesto">Aurrekontua</a></li><li><a href="#donde">Non</a></li><li class="c-idioma"><a href="es/" lang="es" hreflang="es"><span aria-hidden="true">ES</span><span class="sr">Gaztelaniaz</span></a></li><li class="c-tel"><a href="tel:+34943000000">943 00 00 00</a></li></ul></nav>
+  <button class="hamb" type="button" aria-expanded="false" aria-controls="desplegable" aria-label="Menua"><span></span><span></span></button>
+</header>
+<nav class="desplegable" id="desplegable" aria-label="Menua"><ul><li><a href="#taller">Tailerra</a></li><li><a href="#maquinas">Makinak</a></li><li><a href="#presupuesto">Aurrekontua</a></li><li><a href="#donde">Non</a></li><li class="c-idioma"><a href="es/" lang="es" hreflang="es"><span aria-hidden="true">ES</span><span class="sr">Gaztelaniaz</span></a></li><li class="c-tel"><a href="tel:+34943000000">943 00 00 00</a></li></ul></nav>
+
+<main id="contenido">
+<section class="portada" data-portada aria-labelledby="h1">
+  <h1 id="h1" class="nombre"><span class="sr">ERPIN, txapa eta mekanizazioa Ibarran</span><span class="letras" aria-hidden="true"><span class="l"><span style="--i:0">E</span></span><span class="l"><span style="--i:1">R</span></span><span class="l"><span style="--i:2">P</span></span><span class="l"><span style="--i:3">I</span></span><span class="l"><span style="--i:4">N</span></span></span></h1>
+  <div class="ficha">
+    <p class="que entra" style="--d:.55s">Txapa eta<br>mekanizazioa<br>Ibarra</p>
+    <ul class="procesos entra" style="--d:.7s" aria-label="Markatu zure piezaren prozesuak"><li><button type="button" class="proc" data-proc="laser" aria-pressed="false"><span class="corchete" aria-hidden="true"></span><span>Laser mozketa</span></button></li><li><button type="button" class="proc" data-proc="plegado" aria-pressed="false"><span class="corchete" aria-hidden="true"></span><span>Tolestea</span></button></li><li><button type="button" class="proc" data-proc="cnc" aria-pressed="false"><span class="corchete" aria-hidden="true"></span><span>CNC mekanizazioa</span></button></li><li><button type="button" class="proc" data-proc="sold" aria-pressed="false"><span class="corchete" aria-hidden="true"></span><span>Soldadura</span></button></li></ul>
+    <p class="dir entra" style="--d:.85s">Industrialdea 0<br>20400 Ibarra<br>Gipuzkoa<br><a href="tel:+34943000000">943 00 00 00</a></p>
+  </div>
+  <div class="tira">
+    <picture><source media="(max-width: 700px)" type="image/avif" srcset="fotos/tira-m-1036.avif"><source media="(max-width: 700px)" type="image/webp" srcset="fotos/tira-m-1036.webp"><source type="image/avif" srcset="fotos/tira-1366.avif 1366w, fotos/tira-2732.avif 2732w" sizes="96vw"><img src="fotos/tira-1366.webp" srcset="fotos/tira-1366.webp 1366w, fotos/tira-2732.webp 2732w" sizes="96vw" width="2732" height="780" alt="Tolesteko makina batek altzairuzko xafla bat tolesten du. Bideo bera da, hiru paneletan." fetchpriority="high" decoding="async"></picture>
+    <video muted loop playsinline autoplay preload="auto" aria-hidden="true" tabindex="-1" data-video>
+      <source media="(max-width: 700px)" src="fotos/tira-1036.webm" type="video/webm">
+      <source media="(max-width: 700px)" src="fotos/tira-1036.mp4" type="video/mp4">
+      <source src="fotos/tira-2732.webm" type="video/webm">
+      <source src="fotos/tira-2732.mp4" type="video/mp4">
+    </video>
+    <script>(function(){var v=document.querySelector("[data-video]");if(matchMedia("(prefers-reduced-motion: reduce)").matches){v.removeAttribute("autoplay");v.pause();v.hidden=true}})();</script>
+    <i class="tapa t1" aria-hidden="true"></i><i class="tapa t2" aria-hidden="true"></i><i class="tapa t3" aria-hidden="true"></i>
+  </div>
+</section>
+
+<section class="sec taller" id="taller" aria-labelledby="h-taller">
+  <div class="lado izq" aria-hidden="true"><span>Tailerra</span></div><div class="lado der" aria-hidden="true"><span>Tailerra</span></div>
+  <div class="col">
+    <h2 id="h-taller" class="grande" data-lineas>Dena nabe berean</h2>
+    <figure class="ancha" data-panel="foto"><picture><source type="image/avif" srcset="fotos/taller-800.avif 800w, fotos/taller-1200.avif 1200w, fotos/taller-1700.avif 1700w, fotos/taller-2400.avif 2400w" sizes="(min-width: 1100px) 64vw, 92vw"><img src="fotos/taller-1200.webp" srcset="fotos/taller-800.webp 800w, fotos/taller-1200.webp 1200w, fotos/taller-1700.webp 1700w, fotos/taller-2400.webp 2400w" sizes="(min-width: 1100px) 64vw, 92vw" width="3840" height="2160" alt="Laser bidezko ebaketa-burua altzairuzko xafla baten gainean, txinpartekin." loading="lazy" decoding="async"></picture></figure>
+    <div class="dos">
+      <h3 class="grande" data-lineas>Bidali planoa</h3>
+      <div>
+        <p data-enciende>Pieza gure makinetan sartzen den, zenbat kostatzen den eta noiz egongo den prest esango dizugu. Moztu, tolestu, mekanizatu eta soldatu egiten dugu gure tailerrean.</p>
+        <a class="btn" href="#presupuesto"><span>Aurrekontua eskatu</span><span class="chev" aria-hidden="true">&gt;</span></a>
+      </div>
+    </div>
+  </div>
+  <figure class="panel-osc" data-panel="foto"><div class="pista-foto" data-pista="8"><picture><source type="image/avif" srcset="fotos/acero-800.avif 800w, fotos/acero-1400.avif 1400w, fotos/acero-2000.avif 2000w, fotos/acero-3100.avif 3100w" sizes="104vw"><img src="fotos/acero-1400.webp" srcset="fotos/acero-800.webp 800w, fotos/acero-1400.webp 1400w, fotos/acero-2000.webp 2000w, fotos/acero-3100.webp 3100w" sizes="104vw" width="3100" height="1409" alt="Altzairuzko txapazko bobinak biltegi batean pilatuta." loading="lazy" decoding="async"></picture></div><figcaption><i class="tri" aria-hidden="true"></i><span>Altzairua, herdoilgaitza eta aluminioa</span></figcaption></figure>
+</section>
+
+<section class="amarilla" aria-labelledby="h-am">
+  <div class="lado izq" aria-hidden="true"><span>Planoa</span></div><div class="lado der" aria-hidden="true"><span>Planoa</span></div>
+  <div class="col">
+    <h2 id="h-am" data-lineas>Aurrekontua eskatu aurretik</h2>
+    <ul class="am-lista" data-escalonado><li>Planoa PDF, DXF edo STEP formatuan. Planorik ez badago, argazki bat neurriekin.</li><li>Materiala, lodiera eta zenbat pieza.</li><li>Noizko behar duzu?</li></ul>
+    <div class="am-pie">
+      <a class="btn" href="#presupuesto"><span>Mezua prestatu</span><span class="chev" aria-hidden="true">&gt;</span></a>
+      <p class="sello-logo" aria-hidden="true"><b>ERPIN</b><span>Txapa eta mekanizazioa</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="sec maquinas" id="maquinas" aria-labelledby="h-maq">
+  <div class="lado izq" aria-hidden="true"><span>Makinak</span></div><div class="lado der" aria-hidden="true"><span>Makinak</span></div>
+  <div class="col">
+    <div class="cabeza"><h2 id="h-maq" data-lineas>Makinak eta neurriak</h2><div><p>Makina bakoitzean sar daitekeen piezarik handiena. Zurea handiagoa bada, galdetu guri ere.</p><p class="nota-ej">Adibide-datuak: makinak eta neurriak.</p></div></div>
+    <ul class="tarjetas" data-escalonado>
+          <li class="tarjeta">
+            <span class="pestana">6&nbsp;<span class="u">kW</span>-eko zuntza</span>
+            <div class="t-foto"><picture><source type="image/avif" srcset="fotos/laser-480.avif 480w, fotos/laser-800.avif 800w" sizes="(min-width: 1100px) 230px, (min-width: 700px) 22vw, 44vw"><img src="fotos/laser-480.webp" srcset="fotos/laser-480.webp 480w, fotos/laser-800.webp 800w" sizes="(min-width: 1100px) 230px, (min-width: 700px) 22vw, 44vw" width="2290" height="2160" alt="Laser burua txapa batean artekak ebakitzen." loading="lazy" decoding="async"></picture></div>
+            <h3>Laser mozketa</h3>
+            <p>3000 × 1500 mm-ko mahaia. 25 mm-rainoko altzairua, 20rainoko herdoilgaitza eta 15erainoko aluminioa.</p>
+          </li>
+          <li class="tarjeta">
+            <span class="pestana">135&nbsp;<span class="u">t</span> tolesteko makina</span>
+            <div class="t-foto"><picture><source type="image/avif" srcset="fotos/plegado-480.avif 480w, fotos/plegado-800.avif 800w" sizes="(min-width: 1100px) 230px, (min-width: 700px) 22vw, 44vw"><img src="fotos/plegado-480.webp" srcset="fotos/plegado-480.webp 480w, fotos/plegado-800.webp 800w" sizes="(min-width: 1100px) 230px, (min-width: 700px) 22vw, 44vw" width="3949" height="3725" alt="Eskularrua duen esku batek txapa bat tolesteko makinan sartzen du." loading="lazy" decoding="async"></picture></div>
+            <h3>Tolestea</h3>
+            <p>3000 mm arteko luzera duten piezak. 8 mm-rainoko altzairua, 6 mm-rainoko herdoilgaitza eta 8 mm-rainoko aluminioa.</p>
+          </li>
+          <li class="tarjeta">
+            <span class="pestana">3 ardatz eta tornua</span>
+            <div class="t-foto"><picture><source type="image/avif" srcset="fotos/cnc-480.avif 480w, fotos/cnc-800.avif 800w" sizes="(min-width: 1100px) 230px, (min-width: 700px) 22vw, 44vw"><img src="fotos/cnc-480.webp" srcset="fotos/cnc-480.webp 480w, fotos/cnc-800.webp 800w" sizes="(min-width: 1100px) 230px, (min-width: 700px) 22vw, 44vw" width="3263" height="3078" alt="Mekanizazio-zentro bateko fresa, aluminiozko pieza bat lantzen." loading="lazy" decoding="async"></picture></div>
+            <h3>CNC mekanizazioa</h3>
+            <p>1000 × 500 × 500 mm-rainoko fresaketa. 300 mm-ko diametrorainoko torneaketa.</p>
+          </li>
+          <li class="tarjeta">
+            <span class="pestana">MIG, MAG eta TIG</span>
+            <div class="t-foto"><picture><source type="image/avif" srcset="fotos/soldadura-480.avif 480w, fotos/soldadura-800.avif 800w" sizes="(min-width: 1100px) 230px, (min-width: 700px) 22vw, 44vw"><img src="fotos/soldadura-480.webp" srcset="fotos/soldadura-480.webp 480w, fotos/soldadura-800.webp 800w" sizes="(min-width: 1100px) 230px, (min-width: 700px) 22vw, 44vw" width="2290" height="2160" alt="Altzairuzko bastidore baten soldadura, txinpartekin." loading="lazy" decoding="async"></picture></div>
+            <h3>Soldadura</h3>
+            <p>Altzairua 1 mm-tik aurrera, herdoilgaitza 0,8 mm-tik aurrera eta aluminioa 1,5 mm-tik aurrera. Pieza solteak eta multzoak.</p>
+          </li>
+    </ul>
+  </div>
+</section>
+
+<section class="azul" id="presupuesto" aria-labelledby="h-pre">
+  <div class="lado izq" aria-hidden="true"><span>Aurrekontua</span></div><div class="lado der" aria-hidden="true"><span>Aurrekontua</span></div>
+  <div class="col">
+    <div class="cabeza"><h2 id="h-pre" data-lineas>Gure makinetan sartzen da?</h2><p>Aukeratu prozesua, materiala, lodiera eta zenbat pieza. Sartzen bada esango dizugu, eta mezua idatzita utziko dizugu.</p></div>
+    <form class="calc" data-calc onsubmit="return false" novalidate>
+      <div class="mandos">
+        <fieldset class="f-proc"><legend>Prozesua</legend>
+          <div class="opcs">
+            <label class="opc"><input class="corchete" type="checkbox" name="proc" value="laser"><span>Laser mozketa</span></label>
+            <label class="opc"><input class="corchete" type="checkbox" name="proc" value="plegado"><span>Tolestea</span></label>
+            <label class="opc"><input class="corchete" type="checkbox" name="proc" value="cnc"><span>CNC mekanizazioa</span></label>
+            <label class="opc"><input class="corchete" type="checkbox" name="proc" value="sold"><span>Soldadura</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="f-mat"><legend>Materiala</legend>
+          <div class="opcs">
+            <label class="opc"><input class="corchete" type="radio" name="mat" value="acero" checked><span>Altzairua</span></label>
+            <label class="opc"><input class="corchete" type="radio" name="mat" value="inox"><span>Herdoilgaitza</span></label>
+            <label class="opc"><input class="corchete" type="radio" name="mat" value="alu"><span>Aluminioa</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="f-esp"><legend>Lodiera</legend>
+          <div class="esp"><output data-esp-out for="esp">3 mm</output><input id="esp" type="range" name="esp" min="0" max="15" step="1" value="5" aria-label="Lodiera" aria-valuetext="3 mm"></div>
+          <div class="esp-escala" aria-hidden="true"><span>0,5</span><span>30 mm</span></div>
+        </fieldset>
+        <fieldset class="f-cant"><legend>Kopurua</legend>
+          <div class="cant"><button type="button" data-menos aria-label="Pieza bat gutxiago">−</button><input type="number" name="cant" inputmode="numeric" min="1" max="99999" value="10" aria-label="Kopurua"><button type="button" data-mas aria-label="Beste pieza bat">+</button><span data-cant-ud>pieza</span></div>
+        </fieldset>
+        <label class="f-nombre"><span>Zure izena edo enpresa (nahi baduzu)</span><input type="text" name="nombre" maxlength="60" autocomplete="organization"></label>
+      </div>
+      <div class="pantalla" data-panel="lado">
+        <h3 id="h-res">Emaitza</h3>
+        <p class="veredicto" data-veredicto aria-live="polite">Aukeratu gutxienez prozesu bat.</p>
+        <ul class="medidores" data-medidores>
+            <li class="med" data-med="laser">
+              <span class="med-nom">Laser mozketa</span><span class="med-lim" data-lim>25 mm arte</span><span class="med-est" data-est></span>
+              <span class="med-regla" aria-hidden="true"><i class="med-rango" data-rango style="left:1.67%;width:81.67%"></i><span class="med-marca" data-marca style="transform:translateX(10.00%)"><i></i></span></span>
+            </li>
+            <li class="med" data-med="plegado">
+              <span class="med-nom">Tolestea</span><span class="med-lim" data-lim>8 mm arte</span><span class="med-est" data-est></span>
+              <span class="med-regla" aria-hidden="true"><i class="med-rango" data-rango style="left:1.67%;width:25.00%"></i><span class="med-marca" data-marca style="transform:translateX(10.00%)"><i></i></span></span>
+            </li>
+            <li class="med" data-med="cnc">
+              <span class="med-nom">CNC mekanizazioa</span><span class="med-lim" data-lim>0,5 mm-tik aurrera</span><span class="med-est" data-est></span>
+              <span class="med-regla" aria-hidden="true"><i class="med-rango" data-rango style="left:1.67%;width:98.33%"></i><span class="med-marca" data-marca style="transform:translateX(10.00%)"><i></i></span></span>
+            </li>
+            <li class="med" data-med="sold">
+              <span class="med-nom">Soldadura</span><span class="med-lim" data-lim>1 mm-tik aurrera</span><span class="med-est" data-est></span>
+              <span class="med-regla" aria-hidden="true"><i class="med-rango" data-rango style="left:3.33%;width:96.67%"></i><span class="med-marca" data-marca style="transform:translateX(10.00%)"><i></i></span></span>
+            </li>
+        </ul>
+        <p class="plazo"><span>Gutxi gorabeherako epea</span><b data-plazo>3-5 lanegun</b></p>
+        <div class="msg">
+          <h4>Zure mezua</h4>
+          <div class="msg-caja" data-msg><span>Kaixo, ERPIN. Pieza honetarako aurrekontua nahi nuen:</span><span>Materiala: Altzairua, 3 mm</span><span>Kopurua: 10 pieza</span><span>Planoa bidaliko dizuet orain.</span></div>
+          <p class="escribiendo" data-escribiendo aria-hidden="true">Idazten...</p>
+        </div>
+        <div class="acciones">
+          <a class="btn btn-blanco" data-wa href="https://wa.me/34600000000?text=Kaixo%2C%20ERPIN.%20Pieza%20honetarako%20aurrekontua%20nahi%20nuen%3A%0AMateriala%3A%20Altzairua%2C%203%20mm%0AKopurua%3A%2010%20pieza%0APlanoa%20bidaliko%20dizuet%20orain." target="_blank" rel="noopener"><span>Bidali WhatsApp bidez</span><span class="chev" aria-hidden="true">&gt;</span></a>
+          <a class="enl" data-correo href="mailto:info@erpin.example?subject=Pieza%20baten%20aurrekontua&amp;body=Kaixo%2C%20ERPIN.%20Pieza%20honetarako%20aurrekontua%20nahi%20nuen%3A%0AMateriala%3A%20Altzairua%2C%203%20mm%0AKopurua%3A%2010%20pieza%0APlanoa%20bidaliko%20dizuet%20orain.">edo postaz</a>
+        </div>
+        <p class="pista">WhatsAppen, bidali planoa mezuaren ondoren. Postaz, erantsi.</p>
+        <p class="ej">Adibide datuak: helbidea, telefonoak, posta, ordutegia, makinak, neurriak, epeak eta ziurtagiria.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="sec donde" id="donde" aria-labelledby="h-donde">
+  <div class="lado izq" aria-hidden="true"><span>Ibarra</span></div><div class="lado der" aria-hidden="true"><span>Ibarra</span></div>
+  <div class="col">
+    <h2 id="h-donde" data-lineas>Ibarrako poligonoan</h2>
+    <figure class="ancha" data-panel="foto"><picture><source type="image/avif" srcset="fotos/nave-800.avif 800w, fotos/nave-1200.avif 1200w, fotos/nave-1700.avif 1700w, fotos/nave-2400.avif 2400w" sizes="(min-width: 1100px) 64vw, 92vw"><img src="fotos/nave-1200.webp" srcset="fotos/nave-800.webp 800w, fotos/nave-1200.webp 1200w, fotos/nave-1700.webp 1700w, fotos/nave-2400.webp 2400w" sizes="(min-width: 1100px) 64vw, 92vw" width="5000" height="2632" alt="Industria-nabe zuri baten izkina, zeru urdinaren kontra." loading="lazy" decoding="async"></picture></figure>
+    <div class="datos">
+      <p class="sello-logo grande" aria-hidden="true"><b>ERPIN</b><span>Txapa eta mekanizazioa / Ibarra</span></p>
+      <div>
+        <dl data-escalonado>
+          <div><dt>Helbidea</dt><dd>Industrialdea 0, 20400 Ibarra (Gipuzkoa)</dd></div>
+          <div><dt>Telefonoa</dt><dd><a href="tel:+34943000000">943 00 00 00</a></dd></div>
+          <div><dt>WhatsApp</dt><dd><a href="https://wa.me/34600000000" target="_blank" rel="noopener">600 00 00 00</a></dd></div>
+          <div><dt>Posta</dt><dd><a href="mailto:info@erpin.example">info@erpin.example</a></dd></div>
+          <div><dt>Ordutegia</dt><dd>Astelehenetik ostiralera, 7:00etatik 15:00etara<span class="estado" data-estado></span></dd></div>
+          <div><dt>Ziurtagiria</dt><dd>ISO 9001 (adibidea)</dd></div>
+        </dl>
+        <div class="acciones">
+          <a class="btn" href="tel:+34943000000"><span>Deitu</span><span class="chev" aria-hidden="true">&gt;</span></a>
+          <a class="enl" href="https://wa.me/34600000000" target="_blank" rel="noopener">Idatzi WhatsApp bidez</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="pie">
+  <p>OI Studioren diseinu-erakusketa. ERPIN ez da existitzen: izena eta bere datu guztiak asmatuak dira.</p>
+  <p>Unsplash eta Pexelsen adibideko argazkiak eta bideoa. Egileak eta lizentziak: <a href="fotos/creditos.json">creditos.json</a>.</p>
+  <p><a href="es/" lang="es" hreflang="es">Gaztelaniaz</a> · Diseinatzailea: <a class="firma" href="https://oiwebstudio.com/" target="_blank" rel="noopener">OI Studio</a></p>
+</footer>
+
+<aside class="barra" aria-label="Saguaren data, ordua eta posizioa">
+  <span class="b-c b-fecha" data-fecha></span><span class="b-c b-hora" data-hora></span><span class="b-c b-x" data-x aria-hidden="true">X = 0</span><span class="b-c b-y" data-y aria-hidden="true">Y = 0</span><span class="b-c b-cc" data-c aria-hidden="true">C = 0</span><span class="b-c b-s" data-s aria-hidden="true">S = 0</span>
+  <span class="b-der" aria-hidden="true">Txapa eta mekanizazioa / Ibarra</span>
+  <a class="b-llamar" href="tel:+34943000000">Deitu</a>
+</aside>
+
+<script type="application/json" id="textos">{"lang":"eu","p":{"laser":"Laser mozketa","plegado":"Tolestea","cnc":"CNC mekanizazioa","sold":"Soldadura"},"mat":{"acero":"Altzairua","inox":"Herdoilgaitza","alu":"Aluminioa"},"dentro":"Egin daiteke","fuera":"Ezin da","hasta":"{n} mm arte","desde":"{n} mm-tik aurrera","res_vacio":"Aukeratu gutxienez prozesu bat.","res_entra":"Pieza gure makinetan sartzen da","res_parte":"Zati bat ez da sartzen. Galde iezaguzu, hala ere.","res_no":"Ez da gure makinetan sartzen","plazo":["3-5 lanegun","1 eta 2 aste artean","2-3 aste","Seriea planifikatzeko deitzen dizugu"],"msg_hola":"Kaixo, ERPIN. Pieza honetarako aurrekontua nahi nuen:","msg_proceso":"Prozesua","msg_material":"Materiala","msg_cantidad":"Kopurua","msg_nombre":"Izena edo enpresa","msg_plano":"Planoa bidaliko dizuet orain.","cant_1":"pieza 1","cant_n":"{n} pieza","pieza":"pieza","piezas":"pieza","asunto":"Pieza baten aurrekontua","estado_abierto":"Orain irekita, 15:00ak arte","estado_manana":"Orain itxita. Bihar 7:00etan irekiko dugu","estado_hoy":"Orain itxita. Gaur 7:00etan irekiko dugu","estado_lunes":"Orain itxita. Astelehenean 7:00etan irekiko dugu","menu":"Menua","cerrar":"Itxi"}</script>
+<script type="application/json" id="datos">{"CAP":{"laser":{"acero":[0.5,25],"inox":[0.5,20],"alu":[0.5,15]},"plegado":{"acero":[0.5,8],"inox":[0.5,6],"alu":[0.5,8]},"cnc":{"acero":[0.5,null],"inox":[0.5,null],"alu":[0.5,null]},"sold":{"acero":[1,null],"inox":[0.8,null],"alu":[1.5,null]}},"ESP":[0.5,0.8,1,1.5,2,3,4,5,6,8,10,12,15,20,25,30],"ESCALA":30,"WA":"https://wa.me/34600000000","CORREO":"info@erpin.example"}</script>
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/SplitText.min.js"></script>
+<script src="js/anim-texto.js"></script>
+<script src="js/pagina.js"></script>
+</body>
+</html>

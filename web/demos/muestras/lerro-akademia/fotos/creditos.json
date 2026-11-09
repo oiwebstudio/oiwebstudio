@@ -1,0 +1,75 @@
+{
+ "_leeme": "Fotos de la muestra LERRO (academia y autoescuela inventada, 8/11/2026). Todas son fotos de ejemplo de Unsplash: no son de ninguna academia ni autoescuela real. Originales mirados enteros: sin marca de agua. Recortadas, redimensionadas y pasadas a AVIF y WebP sin metadatos (herramientas/diseno/imagenes.mjs). El cartel «SPEAKING CLUB» del collage no es una foto: está hecho con HTML y CSS.",
+ "apuntes": {
+  "autor": "Yen Vu",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/an-open-notebook-filled-with-handwritten-text-3NXtW3eXI2k",
+  "original": "6000 × 3376",
+  "uso": "collage de la portada: apuntes de ejemplo",
+  "cambios": "bajada a 3200 px de ancho, recortada a 2401 × 1801, redimensionada y pasada a AVIF y WebP"
+ },
+ "ejercicios": {
+  "autor": "Chris Liverani",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/red-pencil-on-top-of-mathematical-quiz-paper-rD2dc_2S3i0",
+  "original": "3024 × 4032",
+  "uso": "collage de la portada: hoja de ejercicios corregida",
+  "cambios": "bajada a 3024 px de ancho, recortada a 3024 × 4032, redimensionada y pasada a AVIF y WebP"
+ },
+ "senal": {
+  "autor": "Paule Knete",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/white-and-red-arrow-sign-qKKjDFPCts8",
+  "original": "3359 × 3359",
+  "uso": "collage de la portada: señal de tráfico (carné B)",
+  "cambios": "bajada a 3200 px de ancho, recortada a 3200 × 2000, redimensionada y pasada a AVIF y WebP"
+ },
+ "estudiante": {
+  "autor": "Julio Lopez",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/young-woman-wearing-headphones-studying-at-desk-Imz-pn2LMbg",
+  "original": "6461 × 4307",
+  "uso": "collage de la portada: alumna estudiando",
+  "cambios": "bajada a 3200 px de ancho, recortada a 2133 × 2133, redimensionada y pasada a AVIF y WebP"
+ },
+ "profesora": {
+  "autor": "blue sky",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-young-woman-writes-on-a-whiteboard-5SHYEe7ndlQ",
+  "original": "4256 × 2832",
+  "uso": "collage de la portada: profesora en la pizarra",
+  "cambios": "bajada a 3200 px de ancho, recortada a 2129 × 2129, redimensionada y pasada a AVIF y WebP"
+ },
+ "coche-clase": {
+  "autor": "Mira Kireeva",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/man-in-black-shirt-driving-car-GXA2XiAsko8",
+  "original": "6240 × 4160",
+  "uso": "collage de la portada: clase práctica de conducir",
+  "cambios": "bajada a 3200 px de ancho, recortada a 3200 × 2133, redimensionada y pasada a AVIF y WebP"
+ },
+ "tarjetas": {
+  "autor": "Debbie Moore",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/white-printer-paper-with-number-7icpa3w9l0E",
+  "original": "3024 × 3024",
+  "uso": "banda de INGLÉS B2",
+  "cambios": "bajada a 3024 px de ancho, recortada a 3024 × 2016, redimensionada y pasada a AVIF y WebP"
+ },
+ "coche": {
+  "autor": "David Emrich",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/two-men-sitting-inside-vehicle-LcSpQ36Q2us",
+  "original": "4240 × 2832",
+  "uso": "banda de CARNÉ B",
+  "cambios": "bajada a 3200 px de ancho, recortada a 3200 × 2133, redimensionada y pasada a AVIF y WebP"
+ },
+ "formulas": {
+  "autor": "Luka Savcic",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/silver-and-white-round-analog-watch-beside-white-printer-paper-evixqxe715k",
+  "original": "6000 × 4000",
+  "uso": "banda de REPASO DE BACHILLERATO",
+  "cambios": "bajada a 3200 px de ancho, recortada a 3200 × 2133, redimensionada y pasada a AVIF y WebP"
+ }
+}

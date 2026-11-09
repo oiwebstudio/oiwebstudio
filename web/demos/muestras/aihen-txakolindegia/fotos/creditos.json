@@ -1,0 +1,99 @@
+{
+ "_leeme": "Fotos de la muestra AIHEN (txakolindegi inventado, 8/11/2026). Son fotos libres de ejemplo de Unsplash: ninguna es de una bodega real ni de sus vinos. Originales mirados enteros: sin marca de agua. Recortadas, redimensionadas y guardadas en AVIF y WebP sin datos de ubicación (herramientas/diseno/imagenes.mjs). La botella y las piezas de la portada no son una foto: están dibujadas a mano en SVG para esta muestra.",
+ "copa": {
+  "autor": "Big Dodzy",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/clear-wine-glass-with-yellow-liquid-saw2ahar17s",
+  "original": "5989 × 3993",
+  "uso": "banda a sangre tras la frase grande (donde la referencia pone la mano con la botella ante el monte)",
+  "cambios": "recortada a 5989 × 2852, redimensionada y guardada en AVIF y WebP"
+ },
+ "copa-m": {
+  "autor": "Big Dodzy",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/clear-wine-glass-with-yellow-liquid-saw2ahar17s",
+  "original": "5989 × 3993",
+  "uso": "lo mismo en el móvil",
+  "cambios": "recortada a 4392 × 3993, redimensionada y guardada en AVIF y WebP"
+ },
+ "paisaia": {
+  "autor": "Sebastian S",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/green-rolling-hills-with-distant-blue-mountains-and-scattered-buildings-KkIVJyimvEs",
+  "original": "5184 × 2920",
+  "uso": "foto que crece al bajar, con la banda de coordenadas encima (la del lago y la torre en la referencia)",
+  "cambios": "recortada a 5184 × 2728, redimensionada y guardada en AVIF y WebP"
+ },
+ "paisaia-m": {
+  "autor": "Sebastian S",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/green-rolling-hills-with-distant-blue-mountains-and-scattered-buildings-KkIVJyimvEs",
+  "original": "5184 × 2920",
+  "uso": "lo mismo en el móvil",
+  "cambios": "recortada a 3650 × 2920, redimensionada y guardada en AVIF y WebP"
+ },
+ "kupelak": {
+  "autor": "Tamara Malaniy",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/brown-wooden-barrels-on-brown-brick-wall-jyii09cghJE",
+  "original": "5616 × 3744",
+  "uso": "fondo oscuro de la visita (las barricas de «Esperienze e ospitalità»)",
+  "cambios": "recortada a 5616 × 3510, algo oscurecida, redimensionada y guardada en AVIF y WebP"
+ },
+ "kupelak-m": {
+  "autor": "Tamara Malaniy",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/brown-wooden-barrels-on-brown-brick-wall-jyii09cghJE",
+  "original": "5616 × 3744",
+  "uso": "lo mismo en el móvil",
+  "cambios": "recortada a 2696 × 3744, algo oscurecida, redimensionada y guardada en AVIF y WebP"
+ },
+ "mahatsa": {
+  "autor": "Ben Stein",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-bunch-of-green-grapes-on-a-vine-4NKvtd5MLmw",
+  "original": "4096 × 2730",
+  "uso": "foto pequeña dentro de la frase grande",
+  "cambios": "recortada a 1021 × 1502, redimensionada y guardada en AVIF y WebP"
+ },
+ "edalontzia": {
+  "autor": "Thomas Martinsen",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/selective-focus-photography-of-clear-glass-wine-glass-Eo9ZNtEUH_Y",
+  "original": "5338 × 3559",
+  "uso": "foto pequeña dentro de la frase grande",
+  "cambios": "recortada a 1331 × 1957, redimensionada y guardada en AVIF y WebP"
+ },
+ "ladera": {
+  "autor": "Sebastian S",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/green-rolling-hills-with-distant-blue-mountains-and-scattered-buildings-KkIVJyimvEs",
+  "original": "5184 × 2920",
+  "uso": "foto pequeña dentro de la frase grande",
+  "cambios": "recortada a 4380 × 2920, redimensionada y guardada en AVIF y WebP"
+ },
+ "antxoak": {
+  "autor": "Yoav Hornung",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/cooked-fish-on-plate-8-IpqsggI1s",
+  "original": "6000 × 4000",
+  "uso": "con qué comer el txakoli blanco (anchoas)",
+  "cambios": "recortada a 4500 × 3000, redimensionada y guardada en AVIF y WebP"
+ },
+ "arraina": {
+  "autor": "Jan Ledermann",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-bunch-of-fish-are-cooking-on-a-grill-WdonRS-57pI",
+  "original": "6192 × 4128",
+  "uso": "con qué comer el txakoli sobre lías (pescado a la brasa)",
+  "cambios": "recortada a 6192 × 4128, redimensionada y guardada en AVIF y WebP"
+ },
+ "gazta": {
+  "autor": "Eder Pozo Pérez",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-row-of-cheeses-sitting-on-top-of-a-wooden-shelf-OoPpd2N1wg8",
+  "original": "4093 × 2718",
+  "uso": "con qué comer el rosado (queso de oveja)",
+  "cambios": "recortada a 4077 × 2718, redimensionada y guardada en AVIF y WebP"
+ }
+}

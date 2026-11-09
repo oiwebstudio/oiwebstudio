@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>LERRO · Akademia eta autoeskola Tolosan (erakusketa-webgunea)</title>
+<meta name="description" content="OI Studioko erakusketa-webgunea akademia eta autoeskola asmatu baterako: datozen asteetan hasten diren taldeak, goizeko edo arratsaldeko ordutegia eta WhatsApp bidez izena ematea, deitu gabe.">
+<meta name="theme-color" content="#FFFFFF">
+<meta property="og:title" content="LERRO · Akademia eta autoeskola Tolosan (erakusketa-webgunea)">
+<meta property="og:description" content="OI Studioko erakusketa-webgunea akademia eta autoeskola asmatu baterako: datozen asteetan hasten diren taldeak, goizeko edo arratsaldeko ordutegia eta WhatsApp bidez izena ematea, deitu gabe.">
+<meta property="og:type" content="website">
+<link rel="alternate" hreflang="es" href="es/">
+<!--
+  MUESTRA «LERRO» (OI Studio, 8/11/2026): academia y autoescuela INVENTADA para la pieza «¿Qué negocio tienes?» de oiwebstudio.com.
+  «Lerro» = línea, renglón. Son de ejemplo (lo dicen la línea bajo las plazas libres y la nota bajo el botón de WhatsApp): el nombre, el teléfono, el WhatsApp,
+  los tres cursos, los horarios, las fechas de los grupos, las plazas, el cartel «SPEAKING CLUB» del collage y las opiniones. noindex.
+  Calco de la referencia que eligió Oier el 8/11: n.º 13, SHILLINGTON (shillingtoneducation.com) — fondo blanco, logo redondo
+  y negro a la izquierda del titular, titular de tres renglones en grotesca neutra negra (aquí en mayúsculas, regla de la casa),
+  collage de piezas sueltas solapadas con trabajos del alumnado y etiquetas en píldora, botón lila de matrícula + menú en círculo,
+  tira gris con texto pequeño, palabra gigante que se escribe sola, bandas de curso a todo el ancho (lila, rosa y marino) con
+  titular, texto, botón negro en píldora y foto a la derecha, titular gigante + carrusel con flechas redondas, «Want to chat?» y pie
+  con titular gigante y enlaces en tres columnas. Fuera, por su «que_no_copiar»: la burbuja de chat flotante y las fichas que
+  imitan una aplicación de mensajería. Fuera también: la etiqueta pequeña encima de cada curso, las cifras y el boletín.
+  Lo que hace: eliges curso y horario y sale cuándo empieza el próximo grupo (calculado desde el día de hoy, hora de Madrid),
+  las plazas libres (de ejemplo, siempre las mismas para cada grupo) y el mensaje de WhatsApp ya escrito. No se envía nada a ningún sitio.
+  Letra del catálogo (_local/material/letras): 13 Satoshi (400 y 700), autoalojada en fuentes/. Sin cursiva.
+  Fotos: Unsplash (licencia de Unsplash): Yen Vu, Chris Liverani, Paule Knete, Julio Lopez, blue sky, Mira Kireeva, Debbie Moore, David Emrich, Luka Savcic. Detalle en fotos/creditos.json.
+  Movimiento: el titular, el logo y el collage entran con CSS desde el primer pintado; lo de abajo, con GSAP 3.13 + ScrollTrigger +
+  SplitText (js/) + anim-texto.js + pagina.js. Con «reducir movimiento» o sin JS, todo quieto y visible.
+-->
+<link rel="preload" href="fuentes/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fuentes/satoshi.css">
+<link rel="stylesheet" href="estilo.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="saltar" href="#contenido">Edukira joan</a>
+
+<header class="ctrl" data-ctrl>
+  <a class="ctrl-txt" href="es/" lang="es" hreflang="es"><span aria-hidden="true">ES</span><span class="sr">Castellano</span></a>
+  <a class="pildora" href="#izena-eman">IZENA EMAN</a>
+  <a class="circ" href="#harremana" aria-controls="panel" aria-expanded="false" data-menu-abrir><span class="hamb" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">Menua</span></a>
+</header>
+
+<div class="panel" id="panel" role="dialog" aria-modal="true" aria-label="Webguneko menua" hidden data-panel-menu>
+  <div class="panel-cab">
+    <span class="logo logo-p" aria-hidden="true"><span>LERRO</span></span>
+    <button class="circ" type="button" data-menu-cerrar><span class="aspa" aria-hidden="true"><i></i><i></i></span><span class="sr">Itxi</span></button>
+  </div>
+  <ul class="panel-lista">
+    <li><a href="#ikastaroak">IKASTAROAK</a></li>
+    <li><a href="#izena-eman">NOIZ HASIKO ZARA?</a></li>
+    <li><a href="#iritziak">IRITZIAK</a></li>
+    <li><a href="#harremana">KONTAKTUA</a></li>
+  </ul>
+  <p class="panel-pie"><a href="tel:+34943000000">943 00 00 00</a><a href="https://wa.me/34600000000" rel="noopener" data-wa>WhatsApp</a><a href="es/" lang="es" hreflang="es">Castellano</a></p>
+</div>
+
+<main>
+<section class="portada" id="arriba" data-portada aria-labelledby="h1">
+  <div class="portada-tit">
+    <a class="logo" href="#arriba" aria-label="LERRO"><span>LERRO</span></a>
+    <h1 id="h1"><span class="sr">Akademia eta autoeskola Tolosan.</span><span class="h1-v" aria-hidden="true"><span class="ln ln1"><span class="pw"><span class="ch" style="--i:0">A</span><span class="ch" style="--i:1">K</span><span class="ch" style="--i:2">A</span><span class="ch" style="--i:3">D</span><span class="ch" style="--i:4">E</span><span class="ch" style="--i:5">M</span><span class="ch" style="--i:6">I</span><span class="ch" style="--i:7">A</span></span></span> <span class="ln ln2"><span class="pw"><span class="ch" style="--i:8">E</span><span class="ch" style="--i:9">T</span><span class="ch" style="--i:10">A</span></span> <span class="pw"><span class="ch" style="--i:11">A</span><span class="ch" style="--i:12">U</span><span class="ch" style="--i:13">T</span><span class="ch" style="--i:14">O</span><span class="ch" style="--i:15">E</span><span class="ch" style="--i:16">S</span><span class="ch" style="--i:17">K</span><span class="ch" style="--i:18">O</span><span class="ch" style="--i:19">L</span><span class="ch" style="--i:20">A</span></span></span> <span class="ln ln3"><span class="pw"><span class="ch" style="--i:21">T</span><span class="ch" style="--i:22">O</span><span class="ch" style="--i:23">L</span><span class="ch" style="--i:24">O</span><span class="ch" style="--i:25">S</span><span class="ch" style="--i:26">A</span><span class="ch" style="--i:27">N</span><span class="ch" style="--i:28">.</span></span></span></span></h1>
+  </div>
+  <div class="collage" data-collage>
+    <figure class="pz pz-apuntes" style="--d:0"><picture><source type="image/avif" srcset="fotos/apuntes-480.avif 480w, fotos/apuntes-800.avif 800w, fotos/apuntes-1200.avif 1200w" sizes="(min-width: 760px) 24vw, 32vw"><img src="fotos/apuntes-1200.webp" srcset="fotos/apuntes-480.webp 480w, fotos/apuntes-800.webp 800w, fotos/apuntes-1200.webp 1200w" sizes="(min-width: 760px) 24vw, 32vw" width="2401" height="1801" alt="Koaderno batean eskuz idatzitako apunteak, horiz azpimarratutako esaldiekin." fetchpriority="high" decoding="async"></picture></figure>
+    <div class="pz pz-cartel" style="--d:1" role="img" aria-label="Ingelesezko elkarrizketa-klubaren kartela, ikasleek egina.">
+      <span class="cap cap-1" data-capa></span><span class="cap cap-2" data-capa></span><span class="cap cap-3" data-capa></span>
+      <span class="cartel-t" aria-hidden="true">SPEAKING<br>CLUB</span>
+      <span class="cartel-s" aria-hidden="true">LERRO<br>B2</span>
+    </div>
+    <figure class="pz pz-senal" style="--d:2"><picture><source type="image/avif" srcset="fotos/senal-480.avif 480w, fotos/senal-800.avif 800w, fotos/senal-1200.avif 1200w" sizes="(min-width: 760px) 26vw, 28vw"><img src="fotos/senal-1200.webp" srcset="fotos/senal-480.webp 480w, fotos/senal-800.webp 800w, fotos/senal-1200.webp 1200w" sizes="(min-width: 760px) 26vw, 28vw" width="3200" height="2000" alt="Trafiko-seinale triangeluar bat, bi gezirekin, bata gorantz eta bestea beherantz." loading="lazy" decoding="async"></picture></figure>
+    <figure class="pz pz-estudiante" style="--d:3" data-turno-foto><picture><source type="image/avif" srcset="fotos/estudiante-480.avif 480w, fotos/estudiante-800.avif 800w, fotos/estudiante-1200.avif 1200w" sizes="(min-width: 760px) 16vw, 26vw"><img src="fotos/estudiante-1200.webp" srcset="fotos/estudiante-480.webp 480w, fotos/estudiante-800.webp 800w, fotos/estudiante-1200.webp 1200w" sizes="(min-width: 760px) 16vw, 26vw" width="2133" height="2133" alt="Kaskoak dituen ikasle batek bere apunteak ordenagailuaren aurrean azpimarratu ditu." loading="lazy" decoding="async"></picture></figure>
+    <template data-alterna><picture><source type="image/avif" srcset="fotos/coche-clase-480.avif 480w, fotos/coche-clase-800.avif 800w, fotos/coche-clase-1200.avif 1200w" sizes="(min-width: 760px) 16vw, 26vw"><img src="fotos/coche-clase-1200.webp" srcset="fotos/coche-clase-480.webp 480w, fotos/coche-clase-800.webp 800w, fotos/coche-clase-1200.webp 1200w" sizes="(min-width: 760px) 16vw, 26vw" width="3200" height="2133" alt="Ikasle batek gidatzen ikasten du." loading="lazy" decoding="async"></picture></template>
+    <figure class="pz pz-profesora" style="--d:4"><picture><source type="image/avif" srcset="fotos/profesora-480.avif 480w, fotos/profesora-800.avif 800w, fotos/profesora-1200.avif 1200w" sizes="(min-width: 760px) 15vw, 24vw"><img src="fotos/profesora-1200.webp" srcset="fotos/profesora-480.webp 480w, fotos/profesora-800.webp 800w, fotos/profesora-1200.webp 1200w" sizes="(min-width: 760px) 15vw, 24vw" width="2129" height="2129" alt="Irakasle bat arbel zurian idazten ari da." loading="lazy" decoding="async"></picture></figure>
+    <figure class="pz pz-ejercicios" style="--d:5"><picture><source type="image/avif" srcset="fotos/ejercicios-480.avif 480w, fotos/ejercicios-800.avif 800w, fotos/ejercicios-1200.avif 1200w" sizes="(min-width: 760px) 17vw, 26vw"><img src="fotos/ejercicios-1200.webp" srcset="fotos/ejercicios-480.webp 480w, fotos/ejercicios-800.webp 800w, fotos/ejercicios-1200.webp 1200w" sizes="(min-width: 760px) 17vw, 26vw" width="3024" height="4032" alt="Biderketa orri bat, arkatz gorri batekin zuzendua." loading="lazy" decoding="async"></picture></figure>
+    <span class="tag tag-1" style="--d:6" aria-hidden="true">INGELESA B2</span>
+    <span class="tag tag-2" style="--d:7" aria-hidden="true">B TXARTELA</span>
+    <span class="tag tag-3" style="--d:8" aria-hidden="true">BATXILERGOKO ERREPASOA</span>
+    <svg class="lazo" viewBox="0 0 300 120" aria-hidden="true"><path pathLength="1" d="M58 88c-40-6-52-38-12-58C92 6 214 4 262 26c40 18 30 56-26 70-60 15-158 12-196-6-22-11-24-24-8-36"/></svg>
+  </div>
+</section>
+
+<a class="tira" href="#izena-eman" aria-label="Eman izena WhatsApp bidez">
+  <span class="tira-in" data-pista="22" aria-hidden="true"><span>GOIZEKO ETA ARRATSALDEKO TALDEAK</span><span class="tira-sub">EMAN IZENA WHATSAPP BIDEZ</span><span>GOIZEKO ETA ARRATSALDEKO TALDEAK</span><span class="tira-sub">EMAN IZENA WHATSAPP BIDEZ</span><span>GOIZEKO ETA ARRATSALDEKO TALDEAK</span><span class="tira-sub">EMAN IZENA WHATSAPP BIDEZ</span><span>GOIZEKO ETA ARRATSALDEKO TALDEAK</span><span class="tira-sub">EMAN IZENA WHATSAPP BIDEZ</span><span>GOIZEKO ETA ARRATSALDEKO TALDEAK</span><span class="tira-sub">EMAN IZENA WHATSAPP BIDEZ</span><span>GOIZEKO ETA ARRATSALDEKO TALDEAK</span><span class="tira-sub">EMAN IZENA WHATSAPP BIDEZ</span></span>
+</a>
+
+<section class="teclea" id="contenido" aria-labelledby="h-cursos">
+  <h2 id="h-cursos" class="sr">Ikastaroak</h2>
+  <p class="teclea-p" aria-hidden="true"><span data-teclea>INGELESA B2.</span><span class="cursor"></span></p>
+</section>
+
+<div id="ikastaroak" class="cursos">
+<section class="curso c-lila" id="ingles" aria-labelledby="h-ingles" data-curso>
+  <h3 id="h-ingles" class="curso-h" data-lineas>INGELESA B2</h3>
+  <div class="curso-cuerpo">
+    <div class="curso-txt">
+      <p class="curso-p">B2ko azterketa ofiziala prestatzeko talde txikiak.</p>
+      <p class="curso-det"><span>Goizez edo arratsaldez</span><span class="curso-prox" data-prox="ingles">Talde berriak lau astean behin.</span></p>
+      <p class="curso-btn"><a class="btn" href="#izena-eman" data-elegir="ingles">AUKERATU IKASTARO HAU</a></p>
+    </div>
+    <figure class="curso-foto" data-foto><picture><source type="image/avif" srcset="fotos/tarjetas-640.avif 640w, fotos/tarjetas-960.avif 960w, fotos/tarjetas-1400.avif 1400w, fotos/tarjetas-1800.avif 1800w, fotos/tarjetas-2400.avif 2400w" sizes="(min-width: 900px) 56vw, 100vw"><img src="fotos/tarjetas-1400.webp" srcset="fotos/tarjetas-640.webp 640w, fotos/tarjetas-960.webp 960w, fotos/tarjetas-1400.webp 1400w, fotos/tarjetas-1800.webp 1800w, fotos/tarjetas-2400.webp 2400w" sizes="(min-width: 900px) 56vw, 100vw" width="3024" height="2016" alt="Ingelesezko hiztegi-txartelak egurrezko mahai baten gainean." loading="lazy" decoding="async"></picture></figure>
+  </div>
+</section>
+<section class="curso c-rosa" id="carne" aria-labelledby="h-carne" data-curso>
+  <h3 id="h-carne" class="curso-h" data-lineas>B TXARTELA</h3>
+  <div class="curso-cuerpo">
+    <div class="curso-txt">
+      <p class="curso-p">Teorikoa ikasgelan eta praktikoak Tolosaldeko errepideetan.</p>
+      <p class="curso-det"><span>Goizez edo arratsaldez</span><span class="curso-prox" data-prox="carne">Talde berriak bi astean behin.</span></p>
+      <p class="curso-btn"><a class="btn" href="#izena-eman" data-elegir="carne">AUKERATU IKASTARO HAU</a></p>
+    </div>
+    <figure class="curso-foto" data-foto><picture><source type="image/avif" srcset="fotos/coche-640.avif 640w, fotos/coche-960.avif 960w, fotos/coche-1400.avif 1400w, fotos/coche-1800.avif 1800w, fotos/coche-2400.avif 2400w" sizes="(min-width: 900px) 56vw, 100vw"><img src="fotos/coche-1400.webp" srcset="fotos/coche-640.webp 640w, fotos/coche-960.webp 960w, fotos/coche-1400.webp 1400w, fotos/coche-1800.webp 1800w, fotos/coche-2400.webp 2400w" sizes="(min-width: 900px) 56vw, 100vw" width="3200" height="2133" alt="Ikasle bat eta bere irakaslea auto baten aurreko eserlekuetan." loading="lazy" decoding="async"></picture></figure>
+  </div>
+</section>
+<section class="curso c-marino" id="repaso" aria-labelledby="h-repaso" data-curso>
+  <h3 id="h-repaso" class="curso-h" data-lineas>BATXILERGOKO ERREPASOA</h3>
+  <div class="curso-cuerpo">
+    <div class="curso-txt">
+      <p class="curso-p">Lehen eta bigarren mailako matematika, fisika eta kimika.</p>
+      <p class="curso-det"><span>Goizez edo arratsaldez</span><span class="curso-prox" data-prox="repaso">Talde berriak lau astean behin.</span></p>
+      <p class="curso-btn"><a class="btn" href="#izena-eman" data-elegir="repaso">AUKERATU IKASTARO HAU</a></p>
+    </div>
+    <figure class="curso-foto" data-foto><picture><source type="image/avif" srcset="fotos/formulas-640.avif 640w, fotos/formulas-960.avif 960w, fotos/formulas-1400.avif 1400w, fotos/formulas-1800.avif 1800w, fotos/formulas-2400.avif 2400w" sizes="(min-width: 900px) 56vw, 100vw"><img src="fotos/formulas-1400.webp" srcset="fotos/formulas-640.webp 640w, fotos/formulas-960.webp 960w, fotos/formulas-1400.webp 1400w, fotos/formulas-1800.webp 1800w, fotos/formulas-2400.webp 2400w" sizes="(min-width: 900px) 56vw, 100vw" width="3200" height="2133" alt="Deribatuen ariketak orri koadrikulatu batean, kronometro batekin eta goma batekin." loading="lazy" decoding="async"></picture></figure>
+  </div>
+</section>
+</div>
+
+<section class="opis" id="iritziak" aria-labelledby="h-opi">
+  <div class="opis-cab">
+    <h2 id="h-opi" class="gigante" data-lineas>IKASLEEN IRITZIAK</h2>
+  </div>
+  <div class="carr">
+    <div class="carr-nav">
+      <button type="button" class="flecha" data-carr-ant aria-label="Aurreko iritzia"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 6l-6 6 6 6"/></svg></button>
+      <button type="button" class="flecha" data-carr-sig aria-label="Hurrengo iritzia"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6l6 6-6 6"/></svg></button>
+    </div>
+    <ul class="carr-pista" data-carr tabindex="0" aria-label="Iritziak">
+    <li class="op">
+      <h3 class="op-n">ANE G.</h3>
+      <p class="op-c">INGELESA B2</p>
+      <blockquote class="op-q op-lila"><p>«B2 atera nuen lehenengora. Klasean asko hitz egiten da eta dena zuzentzen dizute.»</p></blockquote>
+    </li>
+    <li class="op">
+      <h3 class="op-n">JON M.</h3>
+      <p class="op-c">B TXARTELA</p>
+      <blockquote class="op-q op-rosa"><p>«Arratsaldean egin nuen teorikoa, lanetik irtetean.»</p></blockquote>
+    </li>
+    <li class="op">
+      <h3 class="op-n">MAIALEN A.</h3>
+      <p class="op-c">BATXILERGOKO ERREPASOA</p>
+      <blockquote class="op-q op-marino"><p>«Bigarren mailako matematikak ateratzen zaizkit azkenean.»</p></blockquote>
+    </li>
+    <li class="op">
+      <h3 class="op-n">ITZIAR L.</h3>
+      <p class="op-c">BATXILERGOKO ERREPASOA</p>
+      <blockquote class="op-q op-amarillo"><p>«Alaba larunbat goizetan joaten da eta pozik dago.»</p></blockquote>
+    </li>
+    </ul>
+  </div>
+</section>
+
+<section class="emp" id="izena-eman" aria-labelledby="h-emp">
+  <h2 id="h-emp" class="gigante" data-lineas>NOIZ HASIKO ZARA?</h2>
+  <div class="emp-col">
+    <p class="emp-p" data-enciende>Aukeratu ikastaroa eta ordutegia. Hurrengo taldea noiz hasten den esaten dizugu, eta mezua idatzita ateratzen da.</p>
+    <form class="elige" data-elige onsubmit="return false">
+      <fieldset class="grupo">
+        <legend>IKASTAROA</legend>
+        <div class="opcs"><label class="opc"><input type="radio" name="curso" value="ingles" checked><span>INGELESA B2</span></label><label class="opc"><input type="radio" name="curso" value="carne"><span>B TXARTELA</span></label><label class="opc"><input type="radio" name="curso" value="repaso"><span>BATXILERGOKO ERREPASOA</span></label></div>
+      </fieldset>
+      <fieldset class="grupo">
+        <legend>ORDUTEGIA</legend>
+        <div class="opcs"><label class="opc"><input type="radio" name="turno" value="m"><span>GOIZEZ</span></label><label class="opc"><input type="radio" name="turno" value="t" checked><span>ARRATSALDEZ</span></label></div>
+      </fieldset>
+      <div class="res" aria-live="polite">
+        <p class="res-sinjs" data-sinjs>Idatz iezaguzu <a href="https://wa.me/34600000000" rel="noopener">WhatsApp</a> bidez zer ikastaro nahi duzun eta goizeko edo arratsaldeko ordutegia nahiago baduzu.</p>
+        <div class="res-js" data-res hidden>
+          <p class="res-fecha"><span>Hurrengo taldea:</span> <strong data-fecha></strong></p>
+          <p class="res-hora" data-hora></p>
+          <p class="res-plazas"><span class="cuadros" data-cuadros aria-hidden="true"></span><span data-plazas></span><span class="res-ej">Data eta plaza hauek adibide dira.</span></p>
+        </div>
+      </div>
+      <div class="msg" data-msg hidden>
+        <h3 class="msg-h">ZURE MEZUA</h3>
+        <p class="escribiendo" data-escribiendo aria-hidden="true">Idazten...</p>
+        <p class="msg-txt" data-mensaje></p>
+      </div>
+      <p class="enviar"><a class="btn" href="https://wa.me/34600000000" rel="noopener" data-wa data-wa-res>BIDALI WHATSAPP BIDEZ</a></p>
+      <p class="o-llama">edo deitu <a href="tel:+34943000000">943 00 00 00</a> telefonora</p>
+      <p class="nota">LERRO asmatutako negozioa da. Adibide datuak: telefonoa, WhatsApp, ikastaroak, ordutegiak, datak, plazak, kartela eta iritziak.</p>
+    </form>
+  </div>
+</section>
+<a class="pildora pildora-movil" href="#izena-eman" data-pildora-movil>IZENA EMAN</a>
+</main>
+
+<footer class="pie" id="harremana" aria-labelledby="h-pie">
+  <h2 id="h-pie" class="gigante" data-lineas>DEITU EDO IDATZI</h2>
+  <div class="pie-col">
+    <p class="pie-grande"><a href="tel:+34943000000">943 00 00 00</a><a href="https://wa.me/34600000000" rel="noopener" data-wa>WhatsApp</a></p>
+    <div class="pie-enl" data-escalonado>
+      <ul>
+        <li><a href="#ingles">INGELESA B2</a></li><li><a href="#carne">B TXARTELA</a></li><li><a href="#repaso">BATXILERGOKO ERREPASOA</a></li>
+        <li><a href="#izena-eman">NOIZ HASIKO ZARA?</a></li>
+      </ul>
+      <ul>
+        <li><a href="tel:+34943000000">943 00 00 00</a></li>
+        <li><a href="https://wa.me/34600000000" rel="noopener" data-wa>WhatsApp</a></li>
+        <li><span>Tolosa, Gipuzkoa</span></li>
+      </ul>
+      <ul>
+        <li><a href="es/" lang="es" hreflang="es">Castellano</a></li>
+        <li><a href="fotos/creditos.json">Adibide argazkiak: egileak eta lizentziak</a></li>
+        <li><span>Diseinatzailea: <a class="firma" href="https://oiwebstudio.com/?utm_source=muestra-lerro&amp;utm_medium=pie" target="_blank" rel="noopener">OI Studio</a></span></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script type="application/json" id="textos">{"lang":"eu","meses":["urtarrila","otsaila","martxoa","apirila","maiatza","ekaina","uztaila","abuztua","iraila","urria","azaroa","abendua"],"meses_de":["urtarrilaren","otsailaren","martxoaren","apirilaren","maiatzaren","ekainaren","uztailaren","abuztuaren","irailaren","urriaren","azaroaren","abenduaren"],"dias":["astelehena","asteartea","asteazkena","osteguna","ostirala","larunbata","igandea"],"prox":"Hurrengo taldea:","cursos":{"ingles":"INGELESA B2","carne":"B TXARTELA","repaso":"BATXILERGOKO ERREPASOA"},"horas":{"ingles_m":"Astelehen eta asteazkenetan, 10:00etatik 11:30era.","ingles_t":"Astearte eta ostegunetan, 18:00etatik 19:30era.","carne_m":"Teorikoa astelehenetik ostegunera, 10:00etatik 11:00etara.","carne_t":"Teorikoa astelehenetik ostegunera, 19:00etatik 20:00etara.","repaso_m":"Larunbatetan, 10:00etatik 12:00etara.","repaso_t":"Astelehen eta asteazkenetan, 17:00etatik 18:30era."},"wa":{"ingles_m":"Kaixo, B2 ingelesean izena eman nahiko nuke, goizeko taldean.","ingles_t":"Kaixo, B2 ingelesean izena eman nahiko nuke, arratsaldeko taldean.","carne_m":"Kaixo, B txartelean izena eman nahi nuke, goizeko taldean.","carne_t":"Kaixo, B txartelean izena eman nahiko nuke, arratsaldeko taldean.","repaso_m":"Kaixo, batxilergoko errepasoan izena eman nahi nuke, goizeko taldean.","repaso_t":"Kaixo, batxilergoko errepasoan izena eman nahiko nuke, arratsaldeko taldean."},"wa_pregunta":"Plaza bat gordeko didazue?","plazas":{"6":"{n} plaza libre geratzen dira 6ko talde batean.","8":"{n} plaza libre geratzen dira 8ko talde batean.","10":"{n} plaza libre geratzen dira 10eko talde batean.","1_6":"Plaza libre 1 geratzen da 6ko talde batean.","1_8":"Plaza libre 1 geratzen da 8ko talde batean.","1_10":"Plaza libre 1 geratzen da 10eko talde batean."},"wa_url":"https://wa.me/34600000000"}</script>
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/SplitText.min.js"></script>
+<script src="js/anim-texto.js"></script>
+<script src="js/pagina.js"></script>
+</body>
+</html>

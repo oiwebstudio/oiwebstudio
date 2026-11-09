@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>LERRO · Academia y autoescuela en Tolosa (web de muestra)</title>
+<meta name="description" content="Web de muestra de OI Studio para una academia y autoescuela inventada: grupos que empiezan en las próximas semanas, horario de mañana o de tarde y apuntarse por WhatsApp sin llamar.">
+<meta name="theme-color" content="#FFFFFF">
+<meta property="og:title" content="LERRO · Academia y autoescuela en Tolosa (web de muestra)">
+<meta property="og:description" content="Web de muestra de OI Studio para una academia y autoescuela inventada: grupos que empiezan en las próximas semanas, horario de mañana o de tarde y apuntarse por WhatsApp sin llamar.">
+<meta property="og:type" content="website">
+<link rel="alternate" hreflang="eu" href="../">
+<!--
+  MUESTRA «LERRO» (OI Studio, 8/11/2026): academia y autoescuela INVENTADA para la pieza «¿Qué negocio tienes?» de oiwebstudio.com.
+  «Lerro» = línea, renglón. Son de ejemplo (lo dicen la línea bajo las plazas libres y la nota bajo el botón de WhatsApp): el nombre, el teléfono, el WhatsApp,
+  los tres cursos, los horarios, las fechas de los grupos, las plazas, el cartel «SPEAKING CLUB» del collage y las opiniones. noindex.
+  Calco de la referencia que eligió Oier el 8/11: n.º 13, SHILLINGTON (shillingtoneducation.com) — fondo blanco, logo redondo
+  y negro a la izquierda del titular, titular de tres renglones en grotesca neutra negra (aquí en mayúsculas, regla de la casa),
+  collage de piezas sueltas solapadas con trabajos del alumnado y etiquetas en píldora, botón lila de matrícula + menú en círculo,
+  tira gris con texto pequeño, palabra gigante que se escribe sola, bandas de curso a todo el ancho (lila, rosa y marino) con
+  titular, texto, botón negro en píldora y foto a la derecha, titular gigante + carrusel con flechas redondas, «Want to chat?» y pie
+  con titular gigante y enlaces en tres columnas. Fuera, por su «que_no_copiar»: la burbuja de chat flotante y las fichas que
+  imitan una aplicación de mensajería. Fuera también: la etiqueta pequeña encima de cada curso, las cifras y el boletín.
+  Lo que hace: eliges curso y horario y sale cuándo empieza el próximo grupo (calculado desde el día de hoy, hora de Madrid),
+  las plazas libres (de ejemplo, siempre las mismas para cada grupo) y el mensaje de WhatsApp ya escrito. No se envía nada a ningún sitio.
+  Letra del catálogo (_local/material/letras): 13 Satoshi (400 y 700), autoalojada en fuentes/. Sin cursiva.
+  Fotos: Unsplash (licencia de Unsplash): Yen Vu, Chris Liverani, Paule Knete, Julio Lopez, blue sky, Mira Kireeva, Debbie Moore, David Emrich, Luka Savcic. Detalle en fotos/creditos.json.
+  Movimiento: el titular, el logo y el collage entran con CSS desde el primer pintado; lo de abajo, con GSAP 3.13 + ScrollTrigger +
+  SplitText (js/) + anim-texto.js + pagina.js. Con «reducir movimiento» o sin JS, todo quieto y visible.
+-->
+<link rel="preload" href="../fuentes/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../fuentes/satoshi.css">
+<link rel="stylesheet" href="../estilo.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="ctrl" data-ctrl>
+  <a class="ctrl-txt" href="../" lang="eu" hreflang="eu"><span aria-hidden="true">EU</span><span class="sr">Euskaraz</span></a>
+  <a class="pildora" href="#apuntate">APÚNTATE</a>
+  <a class="circ" href="#contacto" aria-controls="panel" aria-expanded="false" data-menu-abrir><span class="hamb" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">Menú</span></a>
+</header>
+
+<div class="panel" id="panel" role="dialog" aria-modal="true" aria-label="Menú de la web" hidden data-panel-menu>
+  <div class="panel-cab">
+    <span class="logo logo-p" aria-hidden="true"><span>LERRO</span></span>
+    <button class="circ" type="button" data-menu-cerrar><span class="aspa" aria-hidden="true"><i></i><i></i></span><span class="sr">Cerrar</span></button>
+  </div>
+  <ul class="panel-lista">
+    <li><a href="#cursos">CURSOS</a></li>
+    <li><a href="#apuntate">¿CUÁNDO EMPIEZAS?</a></li>
+    <li><a href="#opiniones">OPINIONES</a></li>
+    <li><a href="#contacto">CONTACTO</a></li>
+  </ul>
+  <p class="panel-pie"><a href="tel:+34943000000">943 00 00 00</a><a href="https://wa.me/34600000000" rel="noopener" data-wa>WhatsApp</a><a href="../" lang="eu" hreflang="eu">Euskaraz</a></p>
+</div>
+
+<main>
+<section class="portada" id="arriba" data-portada aria-labelledby="h1">
+  <div class="portada-tit">
+    <a class="logo" href="#arriba" aria-label="LERRO"><span>LERRO</span></a>
+    <h1 id="h1"><span class="sr">Academia y autoescuela en Tolosa.</span><span class="h1-v" aria-hidden="true"><span class="ln ln1"><span class="pw"><span class="ch" style="--i:0">A</span><span class="ch" style="--i:1">C</span><span class="ch" style="--i:2">A</span><span class="ch" style="--i:3">D</span><span class="ch" style="--i:4">E</span><span class="ch" style="--i:5">M</span><span class="ch" style="--i:6">I</span><span class="ch" style="--i:7">A</span></span></span> <span class="ln ln2"><span class="pw"><span class="ch" style="--i:8">Y</span></span> <span class="pw"><span class="ch" style="--i:9">A</span><span class="ch" style="--i:10">U</span><span class="ch" style="--i:11">T</span><span class="ch" style="--i:12">O</span><span class="ch" style="--i:13">E</span><span class="ch" style="--i:14">S</span><span class="ch" style="--i:15">C</span><span class="ch" style="--i:16">U</span><span class="ch" style="--i:17">E</span><span class="ch" style="--i:18">L</span><span class="ch" style="--i:19">A</span></span></span> <span class="ln ln3"><span class="pw"><span class="ch" style="--i:20">E</span><span class="ch" style="--i:21">N</span></span> <span class="pw"><span class="ch" style="--i:22">T</span><span class="ch" style="--i:23">O</span><span class="ch" style="--i:24">L</span><span class="ch" style="--i:25">O</span><span class="ch" style="--i:26">S</span><span class="ch" style="--i:27">A</span><span class="ch" style="--i:28">.</span></span></span></span></h1>
+  </div>
+  <div class="collage" data-collage>
+    <figure class="pz pz-apuntes" style="--d:0"><picture><source type="image/avif" srcset="../fotos/apuntes-480.avif 480w, ../fotos/apuntes-800.avif 800w, ../fotos/apuntes-1200.avif 1200w" sizes="(min-width: 760px) 24vw, 32vw"><img src="../fotos/apuntes-1200.webp" srcset="../fotos/apuntes-480.webp 480w, ../fotos/apuntes-800.webp 800w, ../fotos/apuntes-1200.webp 1200w" sizes="(min-width: 760px) 24vw, 32vw" width="2401" height="1801" alt="Apuntes escritos a mano en un cuaderno, con frases subrayadas en amarillo." fetchpriority="high" decoding="async"></picture></figure>
+    <div class="pz pz-cartel" style="--d:1" role="img" aria-label="Cartel del club de conversación en inglés, hecho por el alumnado.">
+      <span class="cap cap-1" data-capa></span><span class="cap cap-2" data-capa></span><span class="cap cap-3" data-capa></span>
+      <span class="cartel-t" aria-hidden="true">SPEAKING<br>CLUB</span>
+      <span class="cartel-s" aria-hidden="true">LERRO<br>B2</span>
+    </div>
+    <figure class="pz pz-senal" style="--d:2"><picture><source type="image/avif" srcset="../fotos/senal-480.avif 480w, ../fotos/senal-800.avif 800w, ../fotos/senal-1200.avif 1200w" sizes="(min-width: 760px) 26vw, 28vw"><img src="../fotos/senal-1200.webp" srcset="../fotos/senal-480.webp 480w, ../fotos/senal-800.webp 800w, ../fotos/senal-1200.webp 1200w" sizes="(min-width: 760px) 26vw, 28vw" width="3200" height="2000" alt="Una señal de tráfico triangular con dos flechas, una hacia arriba y otra hacia abajo." loading="lazy" decoding="async"></picture></figure>
+    <figure class="pz pz-estudiante" style="--d:3" data-turno-foto><picture><source type="image/avif" srcset="../fotos/estudiante-480.avif 480w, ../fotos/estudiante-800.avif 800w, ../fotos/estudiante-1200.avif 1200w" sizes="(min-width: 760px) 16vw, 26vw"><img src="../fotos/estudiante-1200.webp" srcset="../fotos/estudiante-480.webp 480w, ../fotos/estudiante-800.webp 800w, ../fotos/estudiante-1200.webp 1200w" sizes="(min-width: 760px) 16vw, 26vw" width="2133" height="2133" alt="Una alumna con cascos subraya sus apuntes delante del ordenador." loading="lazy" decoding="async"></picture></figure>
+    <template data-alterna><picture><source type="image/avif" srcset="../fotos/coche-clase-480.avif 480w, ../fotos/coche-clase-800.avif 800w, ../fotos/coche-clase-1200.avif 1200w" sizes="(min-width: 760px) 16vw, 26vw"><img src="../fotos/coche-clase-1200.webp" srcset="../fotos/coche-clase-480.webp 480w, ../fotos/coche-clase-800.webp 800w, ../fotos/coche-clase-1200.webp 1200w" sizes="(min-width: 760px) 16vw, 26vw" width="3200" height="2133" alt="Una alumna aprende a conducir." loading="lazy" decoding="async"></picture></template>
+    <figure class="pz pz-profesora" style="--d:4"><picture><source type="image/avif" srcset="../fotos/profesora-480.avif 480w, ../fotos/profesora-800.avif 800w, ../fotos/profesora-1200.avif 1200w" sizes="(min-width: 760px) 15vw, 24vw"><img src="../fotos/profesora-1200.webp" srcset="../fotos/profesora-480.webp 480w, ../fotos/profesora-800.webp 800w, ../fotos/profesora-1200.webp 1200w" sizes="(min-width: 760px) 15vw, 24vw" width="2129" height="2129" alt="Una profesora escribe en la pizarra blanca." loading="lazy" decoding="async"></picture></figure>
+    <figure class="pz pz-ejercicios" style="--d:5"><picture><source type="image/avif" srcset="../fotos/ejercicios-480.avif 480w, ../fotos/ejercicios-800.avif 800w, ../fotos/ejercicios-1200.avif 1200w" sizes="(min-width: 760px) 17vw, 26vw"><img src="../fotos/ejercicios-1200.webp" srcset="../fotos/ejercicios-480.webp 480w, ../fotos/ejercicios-800.webp 800w, ../fotos/ejercicios-1200.webp 1200w" sizes="(min-width: 760px) 17vw, 26vw" width="3024" height="4032" alt="Una hoja de multiplicaciones corregida con un lápiz rojo." loading="lazy" decoding="async"></picture></figure>
+    <span class="tag tag-1" style="--d:6" aria-hidden="true">INGLÉS B2</span>
+    <span class="tag tag-2" style="--d:7" aria-hidden="true">CARNÉ B</span>
+    <span class="tag tag-3" style="--d:8" aria-hidden="true">REPASO DE BACHILLERATO</span>
+    <svg class="lazo" viewBox="0 0 300 120" aria-hidden="true"><path pathLength="1" d="M58 88c-40-6-52-38-12-58C92 6 214 4 262 26c40 18 30 56-26 70-60 15-158 12-196-6-22-11-24-24-8-36"/></svg>
+  </div>
+</section>
+
+<a class="tira" href="#apuntate" aria-label="Apúntate por WhatsApp">
+  <span class="tira-in" data-pista="22" aria-hidden="true"><span>GRUPOS DE MAÑANA Y DE TARDE</span><span class="tira-sub">APÚNTATE POR WHATSAPP</span><span>GRUPOS DE MAÑANA Y DE TARDE</span><span class="tira-sub">APÚNTATE POR WHATSAPP</span><span>GRUPOS DE MAÑANA Y DE TARDE</span><span class="tira-sub">APÚNTATE POR WHATSAPP</span><span>GRUPOS DE MAÑANA Y DE TARDE</span><span class="tira-sub">APÚNTATE POR WHATSAPP</span><span>GRUPOS DE MAÑANA Y DE TARDE</span><span class="tira-sub">APÚNTATE POR WHATSAPP</span><span>GRUPOS DE MAÑANA Y DE TARDE</span><span class="tira-sub">APÚNTATE POR WHATSAPP</span></span>
+</a>
+
+<section class="teclea" id="contenido" aria-labelledby="h-cursos">
+  <h2 id="h-cursos" class="sr">Cursos</h2>
+  <p class="teclea-p" aria-hidden="true"><span data-teclea>INGLÉS B2.</span><span class="cursor"></span></p>
+</section>
+
+<div id="cursos" class="cursos">
+<section class="curso c-lila" id="ingles" aria-labelledby="h-ingles" data-curso>
+  <h3 id="h-ingles" class="curso-h" data-lineas>INGLÉS B2</h3>
+  <div class="curso-cuerpo">
+    <div class="curso-txt">
+      <p class="curso-p">Grupos pequeños para preparar el examen oficial de B2.</p>
+      <p class="curso-det"><span>Mañana o tarde</span><span class="curso-prox" data-prox="ingles">Grupos nuevos cada cuatro semanas.</span></p>
+      <p class="curso-btn"><a class="btn" href="#apuntate" data-elegir="ingles">ELEGIR ESTE CURSO</a></p>
+    </div>
+    <figure class="curso-foto" data-foto><picture><source type="image/avif" srcset="../fotos/tarjetas-640.avif 640w, ../fotos/tarjetas-960.avif 960w, ../fotos/tarjetas-1400.avif 1400w, ../fotos/tarjetas-1800.avif 1800w, ../fotos/tarjetas-2400.avif 2400w" sizes="(min-width: 900px) 56vw, 100vw"><img src="../fotos/tarjetas-1400.webp" srcset="../fotos/tarjetas-640.webp 640w, ../fotos/tarjetas-960.webp 960w, ../fotos/tarjetas-1400.webp 1400w, ../fotos/tarjetas-1800.webp 1800w, ../fotos/tarjetas-2400.webp 2400w" sizes="(min-width: 900px) 56vw, 100vw" width="3024" height="2016" alt="Tarjetas de vocabulario en inglés sobre una mesa de madera." loading="lazy" decoding="async"></picture></figure>
+  </div>
+</section>
+<section class="curso c-rosa" id="carne" aria-labelledby="h-carne" data-curso>
+  <h3 id="h-carne" class="curso-h" data-lineas>CARNÉ B</h3>
+  <div class="curso-cuerpo">
+    <div class="curso-txt">
+      <p class="curso-p">Teórica en el aula y prácticas por las carreteras de Tolosaldea.</p>
+      <p class="curso-det"><span>Mañana o tarde</span><span class="curso-prox" data-prox="carne">Grupos nuevos cada dos semanas.</span></p>
+      <p class="curso-btn"><a class="btn" href="#apuntate" data-elegir="carne">ELEGIR ESTE CURSO</a></p>
+    </div>
+    <figure class="curso-foto" data-foto><picture><source type="image/avif" srcset="../fotos/coche-640.avif 640w, ../fotos/coche-960.avif 960w, ../fotos/coche-1400.avif 1400w, ../fotos/coche-1800.avif 1800w, ../fotos/coche-2400.avif 2400w" sizes="(min-width: 900px) 56vw, 100vw"><img src="../fotos/coche-1400.webp" srcset="../fotos/coche-640.webp 640w, ../fotos/coche-960.webp 960w, ../fotos/coche-1400.webp 1400w, ../fotos/coche-1800.webp 1800w, ../fotos/coche-2400.webp 2400w" sizes="(min-width: 900px) 56vw, 100vw" width="3200" height="2133" alt="Un alumno y su profesor en los asientos delanteros de un coche." loading="lazy" decoding="async"></picture></figure>
+  </div>
+</section>
+<section class="curso c-marino" id="repaso" aria-labelledby="h-repaso" data-curso>
+  <h3 id="h-repaso" class="curso-h" data-lineas>REPASO DE BACHILLERATO</h3>
+  <div class="curso-cuerpo">
+    <div class="curso-txt">
+      <p class="curso-p">Matemáticas, física y química de primero y segundo.</p>
+      <p class="curso-det"><span>Mañana o tarde</span><span class="curso-prox" data-prox="repaso">Grupos nuevos cada cuatro semanas.</span></p>
+      <p class="curso-btn"><a class="btn" href="#apuntate" data-elegir="repaso">ELEGIR ESTE CURSO</a></p>
+    </div>
+    <figure class="curso-foto" data-foto><picture><source type="image/avif" srcset="../fotos/formulas-640.avif 640w, ../fotos/formulas-960.avif 960w, ../fotos/formulas-1400.avif 1400w, ../fotos/formulas-1800.avif 1800w, ../fotos/formulas-2400.avif 2400w" sizes="(min-width: 900px) 56vw, 100vw"><img src="../fotos/formulas-1400.webp" srcset="../fotos/formulas-640.webp 640w, ../fotos/formulas-960.webp 960w, ../fotos/formulas-1400.webp 1400w, ../fotos/formulas-1800.webp 1800w, ../fotos/formulas-2400.webp 2400w" sizes="(min-width: 900px) 56vw, 100vw" width="3200" height="2133" alt="Ejercicios de derivadas en una hoja cuadriculada, con un cronómetro y una goma." loading="lazy" decoding="async"></picture></figure>
+  </div>
+</section>
+</div>
+
+<section class="opis" id="opiniones" aria-labelledby="h-opi">
+  <div class="opis-cab">
+    <h2 id="h-opi" class="gigante" data-lineas>OPINIONES DEL ALUMNADO</h2>
+  </div>
+  <div class="carr">
+    <div class="carr-nav">
+      <button type="button" class="flecha" data-carr-ant aria-label="Opinión anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 6l-6 6 6 6"/></svg></button>
+      <button type="button" class="flecha" data-carr-sig aria-label="Opinión siguiente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6l6 6-6 6"/></svg></button>
+    </div>
+    <ul class="carr-pista" data-carr tabindex="0" aria-label="Opiniones">
+    <li class="op">
+      <h3 class="op-n">ANE G.</h3>
+      <p class="op-c">INGLÉS B2</p>
+      <blockquote class="op-q op-lila"><p>«Saqué el B2 a la primera. En clase se habla mucho y te corrigen todo.»</p></blockquote>
+    </li>
+    <li class="op">
+      <h3 class="op-n">JON M.</h3>
+      <p class="op-c">CARNÉ B</p>
+      <blockquote class="op-q op-rosa"><p>«Hice la teórica por la tarde, al salir del trabajo.»</p></blockquote>
+    </li>
+    <li class="op">
+      <h3 class="op-n">MAIALEN A.</h3>
+      <p class="op-c">REPASO DE BACHILLERATO</p>
+      <blockquote class="op-q op-marino"><p>«Las matemáticas de segundo por fin me salen.»</p></blockquote>
+    </li>
+    <li class="op">
+      <h3 class="op-n">ITZIAR L.</h3>
+      <p class="op-c">REPASO DE BACHILLERATO</p>
+      <blockquote class="op-q op-amarillo"><p>«Mi hija va los sábados por la mañana y está contenta.»</p></blockquote>
+    </li>
+    </ul>
+  </div>
+</section>
+
+<section class="emp" id="apuntate" aria-labelledby="h-emp">
+  <h2 id="h-emp" class="gigante" data-lineas>¿CUÁNDO EMPIEZAS?</h2>
+  <div class="emp-col">
+    <p class="emp-p" data-enciende>Elige curso y horario. Te decimos cuándo empieza el próximo grupo y el mensaje sale escrito.</p>
+    <form class="elige" data-elige onsubmit="return false">
+      <fieldset class="grupo">
+        <legend>CURSO</legend>
+        <div class="opcs"><label class="opc"><input type="radio" name="curso" value="ingles" checked><span>INGLÉS B2</span></label><label class="opc"><input type="radio" name="curso" value="carne"><span>CARNÉ B</span></label><label class="opc"><input type="radio" name="curso" value="repaso"><span>REPASO DE BACHILLERATO</span></label></div>
+      </fieldset>
+      <fieldset class="grupo">
+        <legend>HORARIO</legend>
+        <div class="opcs"><label class="opc"><input type="radio" name="turno" value="m"><span>MAÑANA</span></label><label class="opc"><input type="radio" name="turno" value="t" checked><span>TARDE</span></label></div>
+      </fieldset>
+      <div class="res" aria-live="polite">
+        <p class="res-sinjs" data-sinjs>Escríbenos por <a href="https://wa.me/34600000000" rel="noopener">WhatsApp</a> qué curso quieres y si prefieres el horario de mañana o el de tarde.</p>
+        <div class="res-js" data-res hidden>
+          <p class="res-fecha"><span>Próximo grupo:</span> <strong data-fecha></strong></p>
+          <p class="res-hora" data-hora></p>
+          <p class="res-plazas"><span class="cuadros" data-cuadros aria-hidden="true"></span><span data-plazas></span><span class="res-ej">Estas fechas y plazas son un ejemplo.</span></p>
+        </div>
+      </div>
+      <div class="msg" data-msg hidden>
+        <h3 class="msg-h">TU MENSAJE</h3>
+        <p class="escribiendo" data-escribiendo aria-hidden="true">Escribiendo…</p>
+        <p class="msg-txt" data-mensaje></p>
+      </div>
+      <p class="enviar"><a class="btn" href="https://wa.me/34600000000" rel="noopener" data-wa data-wa-res>ENVIAR POR WHATSAPP</a></p>
+      <p class="o-llama">o llama al <a href="tel:+34943000000">943 00 00 00</a></p>
+      <p class="nota">LERRO es un negocio inventado. Datos de ejemplo: teléfono, WhatsApp, cursos, horarios, fechas, plazas, cartel y opiniones.</p>
+    </form>
+  </div>
+</section>
+<a class="pildora pildora-movil" href="#apuntate" data-pildora-movil>APÚNTATE</a>
+</main>
+
+<footer class="pie" id="contacto" aria-labelledby="h-pie">
+  <h2 id="h-pie" class="gigante" data-lineas>LLAMA O ESCRIBE</h2>
+  <div class="pie-col">
+    <p class="pie-grande"><a href="tel:+34943000000">943 00 00 00</a><a href="https://wa.me/34600000000" rel="noopener" data-wa>WhatsApp</a></p>
+    <div class="pie-enl" data-escalonado>
+      <ul>
+        <li><a href="#ingles">INGLÉS B2</a></li><li><a href="#carne">CARNÉ B</a></li><li><a href="#repaso">REPASO DE BACHILLERATO</a></li>
+        <li><a href="#apuntate">¿CUÁNDO EMPIEZAS?</a></li>
+      </ul>
+      <ul>
+        <li><a href="tel:+34943000000">943 00 00 00</a></li>
+        <li><a href="https://wa.me/34600000000" rel="noopener" data-wa>WhatsApp</a></li>
+        <li><span>Tolosa, Gipuzkoa</span></li>
+      </ul>
+      <ul>
+        <li><a href="../" lang="eu" hreflang="eu">Euskaraz</a></li>
+        <li><a href="../fotos/creditos.json">Fotos de ejemplo: autores y licencias</a></li>
+        <li><span>Diseñado por <a class="firma" href="https://oiwebstudio.com/?utm_source=muestra-lerro&amp;utm_medium=pie" target="_blank" rel="noopener">OI Studio</a></span></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script type="application/json" id="textos">{"lang":"es","meses":["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"],"dias":["lunes","martes","miércoles","jueves","viernes","sábado","domingo"],"prox":"Próximo grupo:","cursos":{"ingles":"INGLÉS B2","carne":"CARNÉ B","repaso":"REPASO DE BACHILLERATO"},"horas":{"ingles_m":"Lunes y miércoles, de 10:00 a 11:30.","ingles_t":"Martes y jueves, de 18:00 a 19:30.","carne_m":"Teórica de lunes a jueves, de 10:00 a 11:00.","carne_t":"Teórica de lunes a jueves, de 19:00 a 20:00.","repaso_m":"Sábados, de 10:00 a 12:00.","repaso_t":"Lunes y miércoles, de 17:00 a 18:30."},"wa":{"ingles_m":"Hola, me gustaría apuntarme a Inglés B2, en el grupo de las mañanas.","ingles_t":"Hola, me gustaría apuntarme a Inglés B2, en el grupo de tarde.","carne_m":"Hola, me gustaría apuntarme al carné B, en el grupo de las mañanas.","carne_t":"Hola, me gustaría apuntarme al carné B, en el grupo de tarde.","repaso_m":"Hola, me gustaría apuntarme al repaso de bachillerato, en el grupo de las mañanas.","repaso_t":"Hola, me gustaría apuntarme al repaso de bachillerato, en el grupo de tarde."},"wa_pregunta":"¿Me guardáis una plaza?","plazas":{"6":"Quedan {n} plazas libres en un grupo de 6.","8":"Quedan {n} plazas libres en un grupo de 8.","10":"Quedan {n} plazas libres en un grupo de 10.","1_6":"Queda 1 plaza libre en un grupo de 6.","1_8":"Queda 1 plaza libre en un grupo de 8.","1_10":"Queda 1 plaza libre en un grupo de 10."},"wa_url":"https://wa.me/34600000000"}</script>
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/SplitText.min.js"></script>
+<script src="../js/anim-texto.js"></script>
+<script src="../js/pagina.js"></script>
+</body>
+</html>
