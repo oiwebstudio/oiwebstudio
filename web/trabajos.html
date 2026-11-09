@@ -53,7 +53,7 @@
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/gloock-400.woff2" crossorigin/>
 <link rel="stylesheet" href="/assets/fuentes.css?v=1"/>
 <link rel="stylesheet" href="assets/styles.css?v=33"/>
-<link rel="stylesheet" href="assets/lineas.css?v=16"/>
+<link rel="stylesheet" href="assets/lineas.css?v=17"/>
 <script>if(location.protocol==='http:'&&/(^|\.)oiwebstudio\.com$/.test(location.hostname))location.replace('https://'+location.host+location.pathname+location.search+location.hash);document.documentElement.classList.add('js');</script>
 <style>
   /* Moodboard editorial: capturas planas sobre lienzo crema, con paletas y etiquetas mono */
@@ -360,6 +360,55 @@
 </div>
 </div></section>
 
+<!-- ¿QUÉ NEGOCIO TIENES? (9/11/2026): todas las muestras de sector, abiertas, después de los casos reales. Lo escribe herramientas/sitio/sectores/gen.cjs; JS en assets/piezas.js -->
+<section class="l3 sv sx" id="tu-sector" aria-labelledby="sx-h">
+<div class="container">
+<h2 class="tt" id="sx-h" data-t="sx_h">¿Qué negocio tienes?</h2>
+<p class="sx__lede reveal" data-t="sx_lede">Toca el tuyo y mira una muestra hecha para tu sector, en ordenador y en móvil.</p>
+<span class="sv-vh" id="sx-elige" data-t="sx_elige">Elige tu sector</span>
+<div class="sx-t is-abierta">
+<div class="sx-f reveal" role="group" aria-labelledby="sx-elige" hidden>
+<button type="button" data-g="*" aria-pressed="true"><span data-t="sx_g_todos">Todos</span><b>25</b></button>
+<button type="button" data-g="comer" aria-pressed="false"><span data-t="sx_g_comer">Comer y beber</span><b>6</b></button>
+<button type="button" data-g="cuidado" aria-pressed="false"><span data-t="sx_g_cuidado">Cuidado y salud</span><b>7</b></button>
+<button type="button" data-g="tiendas" aria-pressed="false"><span data-t="sx_g_tiendas">Tiendas</span><b>3</b></button>
+<button type="button" data-g="casa" aria-pressed="false"><span data-t="sx_g_casa">Casa y oficios</span><b>4</b></button>
+<button type="button" data-g="dormir" aria-pressed="false"><span data-t="sx_g_dormir">Alojamiento</span><b>2</b></button>
+<button type="button" data-g="despachos" aria-pressed="false"><span data-t="sx_g_despachos">Despachos y clases</span><b>3</b></button>
+</div>
+<ul class="sx-t__g" id="sx-todas">
+<li class="sx-t__i" data-g="comer"><a class="sx-c" href="demos/muestras/hauspo-jatetxea/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/hauspo-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">HAUSPO</span><span class="sx-c__s" data-t="sx_c1">Restaurante</span></span></a></li>
+<li class="sx-t__i" data-g="cuidado"><a class="sx-c" href="demos/muestras/orrazkera-ileapaindegia/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/orrazkera-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">ORRAZKERA</span><span class="sx-c__s" data-t="sx_c3">Peluquería</span></span></a></li>
+<li class="sx-t__i" data-g="tiendas"><a class="sx-c" href="demos/muestras/artile-arropa/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/artile-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">ARTILE</span><span class="sx-c__s" data-t="sx_c8">Tienda</span></span></a></li>
+<li class="sx-t__i" data-g="casa"><a class="sx-c" href="demos/muestras/torloju-tailerra/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/torloju-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">TORLOJU</span><span class="sx-c__s" data-t="sx_c5">Taller</span></span></a></li>
+<li class="sx-t__i" data-g="dormir"><a class="sx-c" href="demos/muestras/zidor-landetxea/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/zidor-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">ZIDOR</span><span class="sx-c__s" data-t="sx_c_casarural">Casa rural</span></span></a></li>
+<li class="sx-t__i" data-g="despachos"><a class="sx-c" href="demos/muestras/itun-abokatuak/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/itun-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">ITUN</span><span class="sx-c__s" data-t="sx_c_abogados">Abogados</span></span></a></li>
+<li class="sx-t__i" data-g="comer"><a class="sx-c" href="demos/muestras/ahamen-taberna/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/ahamen-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">AHAMEN</span><span class="sx-c__s" data-t="sx_c2">Bar</span></span></a></li>
+<li class="sx-t__i" data-g="cuidado"><a class="sx-c" href="demos/muestras/bigun-estetika/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/bigun-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">BIGUN</span><span class="sx-c__s" data-t="sx_c4">Estética</span></span></a></li>
+<li class="sx-t__i" data-g="tiendas"><a class="sx-c" href="demos/muestras/txilar-loradenda/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/txilar-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">TXILAR</span><span class="sx-c__s" data-t="sx_c_floristeria">Floristería</span></span></a></li>
+<li class="sx-t__i" data-g="casa"><a class="sx-c" href="demos/muestras/lauza-eraikuntzak/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/lauza-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">LAUZA</span><span class="sx-c__s" data-t="sx_c_reformas">Construcción</span></span></a></li>
+<li class="sx-t__i" data-g="dormir"><a class="sx-c" href="demos/muestras/leiho-hotela/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/leiho-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">LEIHO</span><span class="sx-c__s" data-t="sx_c_hotel">Hotel</span></span></a></li>
+<li class="sx-t__i" data-g="despachos"><a class="sx-c" href="demos/muestras/agiri-aholkularitza/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/agiri-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">AGIRI</span><span class="sx-c__s" data-t="sx_c_asesoria">Asesoría</span></span></a></li>
+<li class="sx-t__i" data-g="comer"><a class="sx-c" href="demos/muestras/malda-sagardotegia/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/malda-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">MALDA</span><span class="sx-c__s" data-t="sx_c_sidreria">Sidrería</span></span></a></li>
+<li class="sx-t__i" data-g="cuidado"><a class="sx-c" href="demos/muestras/suspertu-gimnasioa/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/suspertu-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">SUSPERTU</span><span class="sx-c__s" data-t="sx_c_gimnasio">Gimnasio</span></span></a></li>
+<li class="sx-t__i" data-g="tiendas"><a class="sx-c" href="demos/muestras/uztai-bitxidenda/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/uztai-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">UZTAI</span><span class="sx-c__s" data-t="sx_c_joyeria">Joyería</span></span></a></li>
+<li class="sx-t__i" data-g="casa"><a class="sx-c" href="demos/muestras/hari-instalazioak/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/hari-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">HARI</span><span class="sx-c__s" data-t="sx_c_instalador">Instalador</span></span></a></li>
+<li class="sx-t__i" data-g="despachos"><a class="sx-c" href="demos/muestras/lerro-akademia/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/lerro-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">LERRO</span><span class="sx-c__s" data-t="sx_c_academia">Academia</span></span></a></li>
+<li class="sx-t__i" data-g="comer"><a class="sx-c" href="demos/muestras/orea-okindegia/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/orea-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">OREA</span><span class="sx-c__s" data-t="sx_c_panaderia">Panadería</span></span></a></li>
+<li class="sx-t__i" data-g="cuidado"><a class="sx-c" href="demos/muestras/urdin-hortz-klinika/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/urdin-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">URDIN</span><span class="sx-c__s" data-t="sx_c6">Dentista</span></span></a></li>
+<li class="sx-t__i" data-g="casa"><a class="sx-c" href="demos/muestras/erpin-mekanizatuak/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/erpin-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">ERPIN</span><span class="sx-c__s" data-t="sx_c_industria">Industria</span></span></a></li>
+<li class="sx-t__i" data-g="comer"><a class="sx-c" href="demos/muestras/gantxo-harategia/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/gantxo-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">GANTXO</span><span class="sx-c__s" data-t="sx_c_carniceria">Carnicería</span></span></a></li>
+<li class="sx-t__i" data-g="cuidado"><a class="sx-c" href="demos/muestras/arin-fisioterapia/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/arin-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">ARIN</span><span class="sx-c__s" data-t="sx_c7">Fisioterapia</span></span></a></li>
+<li class="sx-t__i" data-g="comer"><a class="sx-c" href="demos/muestras/aihen-txakolindegia/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/aihen-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">AIHEN</span><span class="sx-c__s" data-t="sx_c_bodega">Bodega</span></span></a></li>
+<li class="sx-t__i" data-g="cuidado"><a class="sx-c" href="demos/muestras/behako-optika/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/behako-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">BEHAKO</span><span class="sx-c__s" data-t="sx_c_optica">Óptica</span></span></a></li>
+<li class="sx-t__i" data-g="cuidado"><a class="sx-c" href="demos/muestras/atzapar-albaitaritza/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/atzapar-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">ATZAPAR</span><span class="sx-c__s" data-t="sx_c_veterinaria">Veterinaria</span></span></a></li>
+</ul>
+
+</div>
+<p class="sx__nota" data-t="sx_nota">Marcas inventadas: son muestras mías.</p>
+</div>
+</section>
+
 <!-- Los dos casos de clientes, en vivo (assets/vivas.js). errotatxo.com se abre de verdad
      dentro del móvil al tocarlo (no antes: así no pesa ni atrapa el scroll).
      aberricasarural.com no se deja abrir dentro de otra página (X-Frame-Options),
@@ -615,427 +664,6 @@
 </div>
 </section>
 
-<!-- ¿QUÉ NEGOCIO TIENES? (copia de la portada, 7/11/2026: el menú «Webs» lleva aquí; Oier aprobó la idea W2 el 6/11): tocas tu sector y cambia la muestra, en ordenador y en móvil. JS en assets/piezas.js -->
-<section class="l3 sv sx" id="tu-sector" aria-labelledby="sx-h">
-<div class="container">
-<h2 class="tt" id="sx-h" data-t="sx_h">¿Qué negocio tienes?</h2>
-<p class="sx__lede reveal" data-t="sx_lede">Toca el tuyo y mira una muestra hecha para tu sector, en ordenador y en móvil.</p>
-<span class="sv-vh" id="sx-elige" data-t="sx_elige">Elige tu sector</span>
-<div class="sx__chips reveal" role="tablist" aria-labelledby="sx-elige">
-<button type="button" role="tab" id="sx-t1" aria-controls="sx-p1" aria-selected="true" class="is-on"><span data-t="sx_c1">Restaurante</span></button>
-<button type="button" role="tab" id="sx-t2" aria-controls="sx-p2" aria-selected="false" tabindex="-1"><span data-t="sx_c2">Bar</span></button>
-<button type="button" role="tab" id="sx-t3" aria-controls="sx-p3" aria-selected="false" tabindex="-1"><span data-t="sx_c_sidreria">Sidrería</span></button>
-<button type="button" role="tab" id="sx-t4" aria-controls="sx-p4" aria-selected="false" tabindex="-1"><span data-t="sx_c_panaderia">Panadería</span></button>
-<button type="button" role="tab" id="sx-t5" aria-controls="sx-p5" aria-selected="false" tabindex="-1"><span data-t="sx_c_carniceria">Carnicería</span></button>
-<button type="button" role="tab" id="sx-t6" aria-controls="sx-p6" aria-selected="false" tabindex="-1"><span data-t="sx_c_bodega">Bodega</span></button>
-<button type="button" role="tab" id="sx-t7" aria-controls="sx-p7" aria-selected="false" tabindex="-1"><span data-t="sx_c3">Peluquería</span></button>
-<button type="button" role="tab" id="sx-t8" aria-controls="sx-p8" aria-selected="false" tabindex="-1"><span data-t="sx_c4">Estética</span></button>
-<button type="button" role="tab" id="sx-t9" aria-controls="sx-p9" aria-selected="false" tabindex="-1"><span data-t="sx_c_gimnasio">Gimnasio</span></button>
-<button type="button" role="tab" id="sx-t10" aria-controls="sx-p10" aria-selected="false" tabindex="-1"><span data-t="sx_c6">Dentista</span></button>
-<button type="button" role="tab" id="sx-t11" aria-controls="sx-p11" aria-selected="false" tabindex="-1"><span data-t="sx_c7">Fisioterapia</span></button>
-<button type="button" role="tab" id="sx-t12" aria-controls="sx-p12" aria-selected="false" tabindex="-1"><span data-t="sx_c_optica">Óptica</span></button>
-<button type="button" role="tab" id="sx-t13" aria-controls="sx-p13" aria-selected="false" tabindex="-1"><span data-t="sx_c_veterinaria">Veterinaria</span></button>
-<button type="button" role="tab" id="sx-t14" aria-controls="sx-p14" aria-selected="false" tabindex="-1"><span data-t="sx_c8">Tienda</span></button>
-<button type="button" role="tab" id="sx-t15" aria-controls="sx-p15" aria-selected="false" tabindex="-1"><span data-t="sx_c_floristeria">Floristería</span></button>
-<button type="button" role="tab" id="sx-t16" aria-controls="sx-p16" aria-selected="false" tabindex="-1"><span data-t="sx_c_joyeria">Joyería</span></button>
-<button type="button" role="tab" id="sx-t17" aria-controls="sx-p17" aria-selected="false" tabindex="-1"><span data-t="sx_c5">Taller</span></button>
-<button type="button" role="tab" id="sx-t18" aria-controls="sx-p18" aria-selected="false" tabindex="-1"><span data-t="sx_c_reformas">Construcción</span></button>
-<button type="button" role="tab" id="sx-t19" aria-controls="sx-p19" aria-selected="false" tabindex="-1"><span data-t="sx_c_instalador">Instalador</span></button>
-<button type="button" role="tab" id="sx-t20" aria-controls="sx-p20" aria-selected="false" tabindex="-1"><span data-t="sx_c_industria">Industria</span></button>
-<button type="button" role="tab" id="sx-t21" aria-controls="sx-p21" aria-selected="false" tabindex="-1"><span data-t="sx_c_casarural">Casa rural</span></button>
-<button type="button" role="tab" id="sx-t22" aria-controls="sx-p22" aria-selected="false" tabindex="-1"><span data-t="sx_c_hotel">Hotel</span></button>
-<button type="button" role="tab" id="sx-t23" aria-controls="sx-p23" aria-selected="false" tabindex="-1"><span data-t="sx_c_abogados">Abogados</span></button>
-<button type="button" role="tab" id="sx-t24" aria-controls="sx-p24" aria-selected="false" tabindex="-1"><span data-t="sx_c_asesoria">Asesoría</span></button>
-<button type="button" role="tab" id="sx-t25" aria-controls="sx-p25" aria-selected="false" tabindex="-1"><span data-t="sx_c_academia">Academia</span></button>
-</div>
-<div class="sx__caja reveal">
-<div class="sx__p" id="sx-p1" role="tabpanel" aria-labelledby="sx-t1">
-<div class="sx__esc">
-<div class="sx__win"><div class="sx__bar"><i></i><i></i><i></i><span>hauspo-jatetxea</span></div><picture><source srcset="assets/hauspo-desk.webp" type="image/webp"/><img src="assets/hauspo-desk.jpg" alt="HAUSPO" width="900" height="562" loading="lazy" decoding="async"/></picture></div>
-<div class="sx__tel"><img src="assets/hero/hauspo-m.webp" alt="" width="480" height="1013" loading="lazy" decoding="async"/></div>
-</div>
-<div class="sx__txt">
-<p class="sx__k" data-t="sx_k1">Restaurante en Tolosaldea</p>
-<h3 class="sx__n">HAUSPO</h3>
-<p class="sx__inc" data-t="sx_inc">Qué lleva</p>
-<ul class="sx__l"><li data-t="sx_1a">La carta con precios y alérgenos</li><li data-t="sx_1b">Menús de grupo y reservas</li><li data-t="sx_1c">Un aviso de abierto ahora, según la hora</li></ul>
-<div class="sx__acc"><a class="l3-btn" href="demos/muestras/hauspo-jatetxea/es/" target="_blank" rel="noopener" data-t="sx_ver">Ver la muestra</a><a class="l3-a" href="contacto.html" data-t="sx_pedir">Quiero una así</a></div>
-<p class="sx__nota" data-t="sx_nota">Marcas inventadas: son muestras mías.</p>
-</div>
-</div>
-<div class="sx__p" id="sx-p2" role="tabpanel" aria-labelledby="sx-t2" hidden>
-<div class="sx__esc">
-<div class="sx__win"><div class="sx__bar"><i></i><i></i><i></i><span>ahamen-taberna</span></div><picture><source srcset="assets/ahamen-desk.webp" type="image/webp"/><img src="assets/ahamen-desk.jpg" alt="AHAMEN" width="900" height="562" loading="lazy" decoding="async"/></picture></div>
-<div class="sx__tel"><img src="assets/hero/ahamen-m.webp" alt="" width="480" height="1013" loading="lazy" decoding="async"/></div>
-</div>
-<div class="sx__txt">
-<p class="sx__k" data-t="sx_k2">Taberna de pintxos</p>
-<h3 class="sx__n">AHAMEN</h3>
-<p class="sx__inc" data-t="sx_inc">Qué lleva</p>
-<ul class="sx__l"><li data-t="sx_2a">Los pintxos, con fotos</li><li data-t="sx_2b">Reservar mesa desde el móvil</li><li data-t="sx_2c">En euskera y en castellano</li></ul>
-<div class="sx__acc"><a class="l3-btn" href="demos/muestras/ahamen-taberna/es/" target="_blank" rel="noopener" data-t="sx_ver">Ver la muestra</a><a class="l3-a" href="contacto.html" data-t="sx_pedir">Quiero una así</a></div>
-<p class="sx__nota" data-t="sx_nota">Marcas inventadas: son muestras mías.</p>
-</div>
-</div>
-<div class="sx__p" id="sx-p3" role="tabpanel" aria-labelledby="sx-t3" hidden>
-<div class="sx__esc">
-<div class="sx__win"><div class="sx__bar"><i></i><i></i><i></i><span>malda-sagardotegia</span></div><picture><source srcset="assets/malda-desk.webp" type="image/webp"/><img src="assets/malda-desk.jpg" alt="MALDA" width="900" height="562" loading="lazy" decoding="async"/></picture></div>
-<div class="sx__tel"><img src="assets/hero/malda-m.webp" alt="" width="480" height="1013" loading="lazy" decoding="async"/></div>
-</div>
-<div class="sx__txt">
-<p class="sx__k" data-t="sx_k_sidreria">Sidrería y asador</p>
-<h3 class="sx__n">MALDA</h3>
-<p class="sx__inc" data-t="sx_inc">Qué lleva</p>
-<ul class="sx__l"><li data-t="sx_sidreria_a">Reservar mesa sin llamar</li><li data-t="sx_sidreria_b">El menú sidrería y la carta, al día</li><li data-t="sx_sidreria_c">Los días que faltan para el txotx</li></ul>
-<div class="sx__acc"><a class="l3-btn" href="demos/muestras/malda-sagardotegia/es/" target="_blank" rel="noopener" data-t="sx_ver">Ver la muestra</a><a class="l3-a" href="contacto.html" data-t="sx_pedir">Quiero una así</a></div>
-<p class="sx__nota" data-t="sx_nota">Marcas inventadas: son muestras mías.</p>
-</div>
-</div>
-<div class="sx__p" id="sx-p4" role="tabpanel" aria-labelledby="sx-t4" hidden>
-<div class="sx__esc">
-<div class="sx__win"><div class="sx__bar"><i></i><i></i><i></i><span>orea-okindegia</span></div><picture><source srcset="assets/orea-desk.webp" type="image/webp"/><img src="assets/orea-desk.jpg" alt="OREA" width="900" height="562" loading="lazy" decoding="async"/></picture></div>
-<div class="sx__tel"><img src="assets/hero/orea-m.webp" alt="" width="480" height="1013" loading="lazy" decoding="async"/></div>
-</div>
-<div class="sx__txt">
-<p class="sx__k" data-t="sx_k_panaderia">Panadería y pastelería</p>
-<h3 class="sx__n">OREA</h3>
-<p class="sx__inc" data-t="sx_inc">Qué lleva</p>
-<ul class="sx__l"><li data-t="sx_panaderia_a">Encarga la tarta y recógela sin esperar</li><li data-t="sx_panaderia_b">Lo que sale hoy del horno, y a qué hora</li><li data-t="sx_panaderia_c">Abierto o cerrado en este momento</li></ul>
-<div class="sx__acc"><a class="l3-btn" href="demos/muestras/orea-okindegia/es/" target="_blank" rel="noopener" data-t="sx_ver">Ver la muestra</a><a class="l3-a" href="contacto.html" data-t="sx_pedir">Quiero una así</a></div>
-<p class="sx__nota" data-t="sx_nota">Marcas inventadas: son muestras mías.</p>
-</div>
-</div>
-<div class="sx__p" id="sx-p5" role="tabpanel" aria-labelledby="sx-t5" hidden>
-<div class="sx__esc">
-<div class="sx__win"><div class="sx__bar"><i></i><i></i><i></i><span>gantxo-harategia</span></div><picture><source srcset="assets/gantxo-desk.webp" type="image/webp"/><img src="assets/gantxo-desk.jpg" alt="GANTXO" width="900" height="562" loading="lazy" decoding="async"/></picture></div>
-<div class="sx__tel"><img src="assets/hero/gantxo-m.webp" alt="" width="480" height="1013" loading="lazy" decoding="async"/></div>
-</div>
-<div class="sx__txt">
-<p class="sx__k" data-t="sx_k_carniceria">Carnicería de Tolosa</p>
-<h3 class="sx__n">GANTXO</h3>
-<p class="sx__inc" data-t="sx_inc">Qué lleva</p>
-<ul class="sx__l"><li data-t="sx_carniceria_a">Tu pedido se suma pieza a pieza</li><li data-t="sx_carniceria_b">Recogerlo a la hora que elijas</li><li data-t="sx_carniceria_c">Abierto o cerrado, según la hora</li></ul>
-<div class="sx__acc"><a class="l3-btn" href="demos/muestras/gantxo-harategia/es/" target="_blank" rel="noopener" data-t="sx_ver">Ver la muestra</a><a class="l3-a" href="contacto.html" data-t="sx_pedir">Quiero una así</a></div>
-<p class="sx__nota" data-t="sx_nota">Marcas inventadas: son muestras mías.</p>
-</div>
-</div>
-<div class="sx__p" id="sx-p6" role="tabpanel" aria-labelledby="sx-t6" hidden>
-<div class="sx__esc">
-<div class="sx__win"><div class="sx__bar"><i></i><i></i><i></i><span>aihen-txakolindegia</span></div><picture><source srcset="assets/aihen-desk.webp" type="image/webp"/><img src="assets/aihen-desk.jpg" alt="AIHEN" width="900" height="562" loading="lazy" decoding="async"/></picture></div>
-<div class="sx__tel"><img src="assets/hero/aihen-m.webp" alt="" width="480" height="1013" loading="lazy" decoding="async"/></div>
-</div>
-<div class="sx__txt">
-<p class="sx__k" data-t="sx_k_bodega">Bodega de txakoli en Asteasu</p>
-<h3 class="sx__n">AIHEN</h3>
-<p class="sx__inc" data-t="sx_inc">Qué lleva</p>
-<ul class="sx__l"><li data-t="sx_bodega_a">Visita con cata, sin llamar</li><li data-t="sx_bodega_b">Prepara tu caja de botellas</li><li data-t="sx_bodega_c">Con qué comer cada txakoli</li></ul>
-<div class="sx__acc"><a class="l3-btn" href="demos/muestras/aihen-txakolindegia/es/" target="_blank" rel="noopener" data-t="sx_ver">Ver la muestra</a><a class="l3-a" href="contacto.html" data-t="sx_pedir">Quiero una así</a></div>
-<p class="sx__nota" data-t="sx_nota">Marcas inventadas: son muestras mías.</p>
-</div>
-</div>
-<div class="sx__p" id="sx-p7" role="tabpanel" aria-labelledby="sx-t7" hidden>
-<div class="sx__esc">
-<div class="sx__win"><div class="sx__bar"><i></i><i></i><i></i><span>orrazkera-ileapaindegia</span></div><picture><source srcset="assets/orrazkera-desk.webp" type="image/webp"/><img src="assets/orrazkera-desk.jpg" alt="ORRAZKERA" width="900" height="562" loading="lazy" decoding="async"/></picture></div>
-<div class="sx__tel"><img src="assets/hero/orrazkera-m.webp" alt="" width="480" height="1013" loading="lazy" decoding="async"/></div>
-</div>
-<div class="sx__txt">
-<p class="sx__k" data-t="sx_k3">Peluquería en Tolosa</p>
-<h3 class="sx__n">ORRAZKERA</h3>
-<p class="sx__inc" data-t="sx_inc">Qué lleva</p>
-<ul class="sx__l"><li data-t="sx_3a">Servicios y precios claros</li><li data-t="sx_3b">Las peluqueras y sus trabajos</li><li data-t="sx_cita">Pedir cita con un solo toque</li></ul>
-<div class="sx__acc"><a class="l3-btn" href="demos/muestras/orrazkera-ileapaindegia/es/" target="_blank" rel="noopener" data-t="sx_ver">Ver la muestra</a><a class="l3-a" href="contacto.html" data-t="sx_pedir">Quiero una así</a></div>
-<p class="sx__nota" data-t="sx_nota">Marcas inventadas: son muestras mías.</p>
-</div>
-</div>
-<div class="sx__p" id="sx-p8" role="tabpanel" aria-labelledby="sx-t8" hidden>
-<div class="sx__esc">
-<div class="sx__win"><div class="sx__bar"><i></i><i></i><i></i><span>bigun-estetika</span></div><picture><source srcset="assets/bigun-desk.webp" type="image/webp"/><img src="assets/bigun-desk.jpg" alt="BIGUN" width="900" height="562" loading="lazy" decoding="async"/></picture></div>
-<div class="sx__tel"><img src="assets/hero/bigun-m.webp" alt="" width="480" height="1013" loading="lazy" decoding="async"/></div>
-</div>
-<div class="sx__txt">
-<p class="sx__k" data-t="sx_k4">Centro de estética</p>
-<h3 class="sx__n">BIGUN</h3>
-<p class="sx__inc" data-t="sx_inc">Qué lleva</p>
-<ul class="sx__l"><li data-t="sx_4a">Tratamientos y bonos</li><li data-t="sx_4b">El horario siempre al día</li><li data-t="sx_4c">Cita sin tener que llamar</li></ul>
-<div class="sx__acc"><a class="l3-btn" href="demos/muestras/bigun-estetika/es/" target="_blank" rel="noopener" data-t="sx_ver">Ver la muestra</a><a class="l3-a" href="contacto.html" data-t="sx_pedir">Quiero una así</a></div>
-<p class="sx__nota" data-t="sx_nota">Marcas inventadas: son muestras mías.</p>
-</div>
-</div>
-<div class="sx__p" id="sx-p9" role="tabpanel" aria-labelledby="sx-t9" hidden>
-<div class="sx__esc">
-<div class="sx__win"><div class="sx__bar"><i></i><i></i><i></i><span>suspertu-gimnasioa</span></div><picture><source srcset="assets/suspertu-desk.webp" type="image/webp"/><img src="assets/suspertu-desk.jpg" alt="SUSPERTU" width="900" height="562" loading="lazy" decoding="async"/></picture></div>
-<div class="sx__tel"><img src="assets/hero/suspertu-m.webp" alt="" width="480" height="1013" loading="lazy" decoding="async"/></div>
-</div>
-<div class="sx__txt">
-<p class="sx__k" data-t="sx_k_gimnasio">Entrenamiento, yoga y pilates</p>
-<h3 class="sx__n">SUSPERTU</h3>
-<p class="sx__inc" data-t="sx_inc">Qué lleva</p>
-<ul class="sx__l"><li data-t="sx_gimnasio_a">Reserva tu primera clase sin llamar</li><li data-t="sx_gimnasio_b">El horario de la semana, con plazas libres</li><li data-t="sx_gimnasio_c">El precio de cada clase, según cuántos días entrenes</li></ul>
-<div class="sx__acc"><a class="l3-btn" href="demos/muestras/suspertu-gimnasioa/es/" target="_blank" rel="noopener" data-t="sx_ver">Ver la muestra</a><a class="l3-a" href="contacto.html" data-t="sx_pedir">Quiero una así</a></div>
-<p class="sx__nota" data-t="sx_nota">Marcas inventadas: son muestras mías.</p>
-</div>
-</div>
-<div class="sx__p" id="sx-p10" role="tabpanel" aria-labelledby="sx-t10" hidden>
-<div class="sx__esc">
-<div class="sx__win"><div class="sx__bar"><i></i><i></i><i></i><span>urdin-hortz-klinika</span></div><picture><source srcset="assets/urdin-desk.webp" type="image/webp"/><img src="assets/urdin-desk.jpg" alt="URDIN" width="900" height="562" loading="lazy" decoding="async"/></picture></div>
-<div class="sx__tel"><img src="assets/hero/urdin-m.webp" alt="" width="480" height="1013" loading="lazy" decoding="async"/></div>
-</div>
-<div class="sx__txt">
-<p class="sx__k" data-t="sx_k6">Clínica dental</p>
-<h3 class="sx__n">URDIN</h3>
-<p class="sx__inc" data-t="sx_inc">Qué lleva</p>
-<ul class="sx__l"><li data-t="sx_6a">La primera visita y las urgencias, a la vista</li><li data-t="sx_6b">Tratamientos explicados con claridad</li><li data-t="sx_6c">Pedir cita o escribir por WhatsApp</li></ul>
-<div class="sx__acc"><a class="l3-btn" href="demos/muestras/urdin-hortz-klinika/es/" target="_blank" rel="noopener" data-t="sx_ver">Ver la muestra</a><a class="l3-a" href="contacto.html" data-t="sx_pedir">Quiero una así</a></div>
-<p class="sx__nota" data-t="sx_nota">Marcas inventadas: son muestras mías.</p>
-</div>
-</div>
-<div class="sx__p" id="sx-p11" role="tabpanel" aria-labelledby="sx-t11" hidden>
-<div class="sx__esc">
-<div class="sx__win"><div class="sx__bar"><i></i><i></i><i></i><span>arin-fisioterapia</span></div><picture><source srcset="assets/arin-desk.webp" type="image/webp"/><img src="assets/arin-desk.jpg" alt="ARIN" width="900" height="562" loading="lazy" decoding="async"/></picture></div>
-<div class="sx__tel"><img src="assets/hero/arin-m.webp" alt="" width="480" height="1013" loading="lazy" decoding="async"/></div>
-</div>
-<div class="sx__txt">
-<p class="sx__k" data-t="sx_k7">Fisioterapia</p>
-<h3 class="sx__n">ARIN</h3>
-<p class="sx__inc" data-t="sx_inc">Qué lleva</p>
-<ul class="sx__l"><li data-t="sx_7a">Un mapa del cuerpo para elegir dónde duele</li><li data-t="sx_7b">Técnicas y fisioterapeutas</li><li data-t="sx_cita">Pedir cita con un solo toque</li></ul>
-<div class="sx__acc"><a class="l3-btn" href="demos/muestras/arin-fisioterapia/" target="_blank" rel="noopener" data-t="sx_ver">Ver la muestra</a><a class="l3-a" href="contacto.html" data-t="sx_pedir">Quiero una así</a></div>
-<p class="sx__nota" data-t="sx_nota">Marcas inventadas: son muestras mías.</p>
-</div>
-</div>
-<div class="sx__p" id="sx-p12" role="tabpanel" aria-labelledby="sx-t12" hidden>
-<div class="sx__esc">
-<div class="sx__win"><div class="sx__bar"><i></i><i></i><i></i><span>behako-optika</span></div><picture><source srcset="assets/behako-desk.webp" type="image/webp"/><img src="assets/behako-desk.jpg" alt="BEHAKO" width="900" height="562" loading="lazy" decoding="async"/></picture></div>
-<div class="sx__tel"><img src="assets/hero/behako-m.webp" alt="" width="480" height="1013" loading="lazy" decoding="async"/></div>
-</div>
-<div class="sx__txt">
-<p class="sx__k" data-t="sx_k_optica">Óptica de Tolosa</p>
-<h3 class="sx__n">BEHAKO</h3>
-<p class="sx__inc" data-t="sx_inc">Qué lleva</p>
-<ul class="sx__l"><li data-t="sx_optica_a">Cita para graduarte la vista sin llamar</li><li data-t="sx_optica_b">Si ya te toca la revisión</li><li data-t="sx_optica_c">Gafas de ejemplo con su precio</li></ul>
-<div class="sx__acc"><a class="l3-btn" href="demos/muestras/behako-optika/es/" target="_blank" rel="noopener" data-t="sx_ver">Ver la muestra</a><a class="l3-a" href="contacto.html" data-t="sx_pedir">Quiero una así</a></div>
-<p class="sx__nota" data-t="sx_nota">Marcas inventadas: son muestras mías.</p>
-</div>
-</div>
-<div class="sx__p" id="sx-p13" role="tabpanel" aria-labelledby="sx-t13" hidden>
-<div class="sx__esc">
-<div class="sx__win"><div class="sx__bar"><i></i><i></i><i></i><span>atzapar-albaitaritza</span></div><picture><source srcset="assets/atzapar-desk.webp" type="image/webp"/><img src="assets/atzapar-desk.jpg" alt="ATZAPAR" width="900" height="562" loading="lazy" decoding="async"/></picture></div>
-<div class="sx__tel"><img src="assets/hero/atzapar-m.webp" alt="" width="480" height="1013" loading="lazy" decoding="async"/></div>
-</div>
-<div class="sx__txt">
-<p class="sx__k" data-t="sx_k_veterinaria">Clínica veterinaria en Tolosa</p>
-<h3 class="sx__n">ATZAPAR</h3>
-<p class="sx__inc" data-t="sx_inc">Qué lleva</p>
-<ul class="sx__l"><li data-t="sx_veterinaria_a">Cita sin llamar, con el mensaje escrito</li><li data-t="sx_veterinaria_b">Urgencias a un toque</li><li data-t="sx_veterinaria_c">La fecha de la próxima vacuna</li></ul>
-<div class="sx__acc"><a class="l3-btn" href="demos/muestras/atzapar-albaitaritza/es/" target="_blank" rel="noopener" data-t="sx_ver">Ver la muestra</a><a class="l3-a" href="contacto.html" data-t="sx_pedir">Quiero una así</a></div>
-<p class="sx__nota" data-t="sx_nota">Marcas inventadas: son muestras mías.</p>
-</div>
-</div>
-<div class="sx__p" id="sx-p14" role="tabpanel" aria-labelledby="sx-t14" hidden>
-<div class="sx__esc">
-<div class="sx__win"><div class="sx__bar"><i></i><i></i><i></i><span>artile-arropa</span></div><picture><source srcset="assets/artile-desk.webp" type="image/webp"/><img src="assets/artile-desk.jpg" alt="ARTILE" width="900" height="562" loading="lazy" decoding="async"/></picture></div>
-<div class="sx__tel"><img src="assets/hero/artile-m.webp" alt="" width="480" height="1013" loading="lazy" decoding="async"/></div>
-</div>
-<div class="sx__txt">
-<p class="sx__k" data-t="sx_k8">Tienda de ropa</p>
-<h3 class="sx__n">ARTILE</h3>
-<p class="sx__inc" data-t="sx_inc">Qué lleva</p>
-<ul class="sx__l"><li data-t="sx_8a">Las novedades de la temporada</li><li data-t="sx_8b">Arreglos y horario</li><li data-t="sx_8c">Preguntar por una prenda por WhatsApp</li></ul>
-<div class="sx__acc"><a class="l3-btn" href="demos/muestras/artile-arropa/es/" target="_blank" rel="noopener" data-t="sx_ver">Ver la muestra</a><a class="l3-a" href="contacto.html" data-t="sx_pedir">Quiero una así</a></div>
-<p class="sx__nota" data-t="sx_nota">Marcas inventadas: son muestras mías.</p>
-</div>
-</div>
-<div class="sx__p" id="sx-p15" role="tabpanel" aria-labelledby="sx-t15" hidden>
-<div class="sx__esc">
-<div class="sx__win"><div class="sx__bar"><i></i><i></i><i></i><span>txilar-loradenda</span></div><picture><source srcset="assets/txilar-desk.webp" type="image/webp"/><img src="assets/txilar-desk.jpg" alt="TXILAR" width="900" height="562" loading="lazy" decoding="async"/></picture></div>
-<div class="sx__tel"><img src="assets/hero/txilar-m.webp" alt="" width="480" height="1013" loading="lazy" decoding="async"/></div>
-</div>
-<div class="sx__txt">
-<p class="sx__k" data-t="sx_k_floristeria">Floristería de Tolosa</p>
-<h3 class="sx__n">TXILAR</h3>
-<p class="sx__inc" data-t="sx_inc">Qué lleva</p>
-<ul class="sx__l"><li data-t="sx_floristeria_a">Un ramo para hoy o para el día que quieras</li><li data-t="sx_floristeria_b">Recogerlo o que te lo lleven a casa</li><li data-t="sx_floristeria_c">Bodas y eventos, con cita por WhatsApp</li></ul>
-<div class="sx__acc"><a class="l3-btn" href="demos/muestras/txilar-loradenda/es/" target="_blank" rel="noopener" data-t="sx_ver">Ver la muestra</a><a class="l3-a" href="contacto.html" data-t="sx_pedir">Quiero una así</a></div>
-<p class="sx__nota" data-t="sx_nota">Marcas inventadas: son muestras mías.</p>
-</div>
-</div>
-<div class="sx__p" id="sx-p16" role="tabpanel" aria-labelledby="sx-t16" hidden>
-<div class="sx__esc">
-<div class="sx__win"><div class="sx__bar"><i></i><i></i><i></i><span>uztai-bitxidenda</span></div><picture><source srcset="assets/uztai-desk.webp" type="image/webp"/><img src="assets/uztai-desk.jpg" alt="UZTAI" width="900" height="562" loading="lazy" decoding="async"/></picture></div>
-<div class="sx__tel"><img src="assets/hero/uztai-m.webp" alt="" width="480" height="1013" loading="lazy" decoding="async"/></div>
-</div>
-<div class="sx__txt">
-<p class="sx__k" data-t="sx_k_joyeria">Joyería y taller en Tolosa</p>
-<h3 class="sx__n">UZTAI</h3>
-<p class="sx__inc" data-t="sx_inc">Qué lleva</p>
-<ul class="sx__l"><li data-t="sx_joyeria_a">Piezas con su precio, para reservarlas</li><li data-t="sx_joyeria_b">Tu anillo de boda, con su talla y su grabado</li><li data-t="sx_joyeria_c">Arreglos y limpieza, con su precio</li></ul>
-<div class="sx__acc"><a class="l3-btn" href="demos/muestras/uztai-bitxidenda/es/" target="_blank" rel="noopener" data-t="sx_ver">Ver la muestra</a><a class="l3-a" href="contacto.html" data-t="sx_pedir">Quiero una así</a></div>
-<p class="sx__nota" data-t="sx_nota">Marcas inventadas: son muestras mías.</p>
-</div>
-</div>
-<div class="sx__p" id="sx-p17" role="tabpanel" aria-labelledby="sx-t17" hidden>
-<div class="sx__esc">
-<div class="sx__win"><div class="sx__bar"><i></i><i></i><i></i><span>torloju-tailerra</span></div><picture><source srcset="assets/torloju-desk.webp" type="image/webp"/><img src="assets/torloju-desk.jpg" alt="TORLOJU" width="900" height="562" loading="lazy" decoding="async"/></picture></div>
-<div class="sx__tel"><img src="assets/hero/torloju-m.webp" alt="" width="480" height="1013" loading="lazy" decoding="async"/></div>
-</div>
-<div class="sx__txt">
-<p class="sx__k" data-t="sx_k5">Taller mecánico</p>
-<h3 class="sx__n">TORLOJU</h3>
-<p class="sx__inc" data-t="sx_inc">Qué lleva</p>
-<ul class="sx__l"><li data-t="sx_5a">Presupuesto en un minuto</li><li data-t="sx_5b">Abierto o cerrado, según la hora</li><li data-t="sx_5c">Llamar o escribir por WhatsApp con un solo toque</li></ul>
-<div class="sx__acc"><a class="l3-btn" href="demos/muestras/torloju-tailerra/es/" target="_blank" rel="noopener" data-t="sx_ver">Ver la muestra</a><a class="l3-a" href="contacto.html" data-t="sx_pedir">Quiero una así</a></div>
-<p class="sx__nota" data-t="sx_nota">Marcas inventadas: son muestras mías.</p>
-</div>
-</div>
-<div class="sx__p" id="sx-p18" role="tabpanel" aria-labelledby="sx-t18" hidden>
-<div class="sx__esc">
-<div class="sx__win"><div class="sx__bar"><i></i><i></i><i></i><span>lauza-eraikuntzak</span></div><picture><source srcset="assets/lauza-desk.webp" type="image/webp"/><img src="assets/lauza-desk.jpg" alt="LAUZA" width="900" height="562" loading="lazy" decoding="async"/></picture></div>
-<div class="sx__tel"><img src="assets/hero/lauza-m.webp" alt="" width="480" height="1013" loading="lazy" decoding="async"/></div>
-</div>
-<div class="sx__txt">
-<p class="sx__k" data-t="sx_k_reformas">Reformas y casas nuevas</p>
-<h3 class="sx__n">LAUZA</h3>
-<p class="sx__inc" data-t="sx_inc">Qué lleva</p>
-<ul class="sx__l"><li data-t="sx_reformas_a">Precio orientativo de tu reforma en un minuto</li><li data-t="sx_reformas_b">Obras terminadas, con foto y plazo</li><li data-t="sx_reformas_c">El presupuesto, por WhatsApp</li></ul>
-<div class="sx__acc"><a class="l3-btn" href="demos/muestras/lauza-eraikuntzak/es/" target="_blank" rel="noopener" data-t="sx_ver">Ver la muestra</a><a class="l3-a" href="contacto.html" data-t="sx_pedir">Quiero una así</a></div>
-<p class="sx__nota" data-t="sx_nota">Marcas inventadas: son muestras mías.</p>
-</div>
-</div>
-<div class="sx__p" id="sx-p19" role="tabpanel" aria-labelledby="sx-t19" hidden>
-<div class="sx__esc">
-<div class="sx__win"><div class="sx__bar"><i></i><i></i><i></i><span>hari-instalazioak</span></div><picture><source srcset="assets/hari-desk.webp" type="image/webp"/><img src="assets/hari-desk.jpg" alt="HARI" width="900" height="562" loading="lazy" decoding="async"/></picture></div>
-<div class="sx__tel"><img src="assets/hero/hari-m.webp" alt="" width="480" height="1013" loading="lazy" decoding="async"/></div>
-</div>
-<div class="sx__txt">
-<p class="sx__k" data-t="sx_k_instalador">Luz, agua y calefacción</p>
-<h3 class="sx__n">HARI</h3>
-<p class="sx__inc" data-t="sx_inc">Qué lleva</p>
-<ul class="sx__l"><li data-t="sx_instalador_a">Avisar de una avería con un toque</li><li data-t="sx_instalador_b">A qué hora llegan a tu pueblo</li><li data-t="sx_instalador_c">Revisiones y boletines por WhatsApp</li></ul>
-<div class="sx__acc"><a class="l3-btn" href="demos/muestras/hari-instalazioak/es/" target="_blank" rel="noopener" data-t="sx_ver">Ver la muestra</a><a class="l3-a" href="contacto.html" data-t="sx_pedir">Quiero una así</a></div>
-<p class="sx__nota" data-t="sx_nota">Marcas inventadas: son muestras mías.</p>
-</div>
-</div>
-<div class="sx__p" id="sx-p20" role="tabpanel" aria-labelledby="sx-t20" hidden>
-<div class="sx__esc">
-<div class="sx__win"><div class="sx__bar"><i></i><i></i><i></i><span>erpin-mekanizatuak</span></div><picture><source srcset="assets/erpin-desk.webp" type="image/webp"/><img src="assets/erpin-desk.jpg" alt="ERPIN" width="900" height="562" loading="lazy" decoding="async"/></picture></div>
-<div class="sx__tel"><img src="assets/hero/erpin-m.webp" alt="" width="480" height="1013" loading="lazy" decoding="async"/></div>
-</div>
-<div class="sx__txt">
-<p class="sx__k" data-t="sx_k_industria">Chapa y mecanizado en Ibarra</p>
-<h3 class="sx__n">ERPIN</h3>
-<p class="sx__inc" data-t="sx_inc">Qué lleva</p>
-<ul class="sx__l"><li data-t="sx_industria_a">Mira si tu pieza entra en las máquinas</li><li data-t="sx_industria_b">Presupuesto con tu plano, por WhatsApp o correo</li><li data-t="sx_industria_c">Máquinas, medidas y plazos a la vista</li></ul>
-<div class="sx__acc"><a class="l3-btn" href="demos/muestras/erpin-mekanizatuak/es/" target="_blank" rel="noopener" data-t="sx_ver">Ver la muestra</a><a class="l3-a" href="contacto.html" data-t="sx_pedir">Quiero una así</a></div>
-<p class="sx__nota" data-t="sx_nota">Marcas inventadas: son muestras mías.</p>
-</div>
-</div>
-<div class="sx__p" id="sx-p21" role="tabpanel" aria-labelledby="sx-t21" hidden>
-<div class="sx__esc">
-<div class="sx__win"><div class="sx__bar"><i></i><i></i><i></i><span>zidor-landetxea</span></div><picture><source srcset="assets/zidor-desk.webp" type="image/webp"/><img src="assets/zidor-desk.jpg" alt="ZIDOR" width="900" height="562" loading="lazy" decoding="async"/></picture></div>
-<div class="sx__tel"><img src="assets/hero/zidor-m.webp" alt="" width="480" height="1013" loading="lazy" decoding="async"/></div>
-</div>
-<div class="sx__txt">
-<p class="sx__k" data-t="sx_k_casarural">Casa rural al pie del Txindoki</p>
-<h3 class="sx__n">ZIDOR</h3>
-<p class="sx__inc" data-t="sx_inc">Qué lleva</p>
-<ul class="sx__l"><li data-t="sx_casarural_a">Las noches libres, en el calendario</li><li data-t="sx_casarural_b">Reserva directa, sin comisiones</li><li data-t="sx_casarural_c">Qué hacer cerca</li></ul>
-<div class="sx__acc"><a class="l3-btn" href="demos/muestras/zidor-landetxea/es/" target="_blank" rel="noopener" data-t="sx_ver">Ver la muestra</a><a class="l3-a" href="contacto.html" data-t="sx_pedir">Quiero una así</a></div>
-<p class="sx__nota" data-t="sx_nota">Marcas inventadas: son muestras mías.</p>
-</div>
-</div>
-<div class="sx__p" id="sx-p22" role="tabpanel" aria-labelledby="sx-t22" hidden>
-<div class="sx__esc">
-<div class="sx__win"><div class="sx__bar"><i></i><i></i><i></i><span>leiho-hotela</span></div><picture><source srcset="assets/leiho-desk.webp" type="image/webp"/><img src="assets/leiho-desk.jpg" alt="LEIHO" width="900" height="562" loading="lazy" decoding="async"/></picture></div>
-<div class="sx__tel"><img src="assets/hero/leiho-m.webp" alt="" width="480" height="1013" loading="lazy" decoding="async"/></div>
-</div>
-<div class="sx__txt">
-<p class="sx__k" data-t="sx_k_hotel">Hotel pequeño en el casco viejo</p>
-<h3 class="sx__n">LEIHO</h3>
-<p class="sx__inc" data-t="sx_inc">Qué lleva</p>
-<ul class="sx__l"><li data-t="sx_hotel_a">Precio por noche y total al momento</li><li data-t="sx_hotel_b">Las habitaciones, con su precio</li><li data-t="sx_hotel_c">Qué hay cerca, en minutos andando</li></ul>
-<div class="sx__acc"><a class="l3-btn" href="demos/muestras/leiho-hotela/es/" target="_blank" rel="noopener" data-t="sx_ver">Ver la muestra</a><a class="l3-a" href="contacto.html" data-t="sx_pedir">Quiero una así</a></div>
-<p class="sx__nota" data-t="sx_nota">Marcas inventadas: son muestras mías.</p>
-</div>
-</div>
-<div class="sx__p" id="sx-p23" role="tabpanel" aria-labelledby="sx-t23" hidden>
-<div class="sx__esc">
-<div class="sx__win"><div class="sx__bar"><i></i><i></i><i></i><span>itun-abokatuak</span></div><picture><source srcset="assets/itun-desk.webp" type="image/webp"/><img src="assets/itun-desk.jpg" alt="ITUN" width="900" height="562" loading="lazy" decoding="async"/></picture></div>
-<div class="sx__tel"><img src="assets/hero/itun-m.webp" alt="" width="480" height="1013" loading="lazy" decoding="async"/></div>
-</div>
-<div class="sx__txt">
-<p class="sx__k" data-t="sx_k_abogados">Despacho de abogados en Tolosa</p>
-<h3 class="sx__n">ITUN</h3>
-<p class="sx__inc" data-t="sx_inc">Qué lleva</p>
-<ul class="sx__l"><li data-t="sx_abogados_a">Primera consulta sin llamar</li><li data-t="sx_abogados_b">Qué papeles traer según el asunto</li><li data-t="sx_abogados_c">El mensaje, ya escrito para WhatsApp</li></ul>
-<div class="sx__acc"><a class="l3-btn" href="demos/muestras/itun-abokatuak/es/" target="_blank" rel="noopener" data-t="sx_ver">Ver la muestra</a><a class="l3-a" href="contacto.html" data-t="sx_pedir">Quiero una así</a></div>
-<p class="sx__nota" data-t="sx_nota">Marcas inventadas: son muestras mías.</p>
-</div>
-</div>
-<div class="sx__p" id="sx-p24" role="tabpanel" aria-labelledby="sx-t24" hidden>
-<div class="sx__esc">
-<div class="sx__win"><div class="sx__bar"><i></i><i></i><i></i><span>agiri-aholkularitza</span></div><picture><source srcset="assets/agiri-desk.webp" type="image/webp"/><img src="assets/agiri-desk.jpg" alt="AGIRI" width="900" height="562" loading="lazy" decoding="async"/></picture></div>
-<div class="sx__tel"><img src="assets/hero/agiri-m.webp" alt="" width="480" height="1013" loading="lazy" decoding="async"/></div>
-</div>
-<div class="sx__txt">
-<p class="sx__k" data-t="sx_k_asesoria">Asesoría y gestoría de Tolosa</p>
-<h3 class="sx__n">AGIRI</h3>
-<p class="sx__inc" data-t="sx_inc">Qué lleva</p>
-<ul class="sx__l"><li data-t="sx_asesoria_a">Los papeles que pide cada trámite</li><li data-t="sx_asesoria_b">Cuánto falta para cada plazo de Hacienda</li><li data-t="sx_asesoria_c">Cita por WhatsApp, con el mensaje ya escrito</li></ul>
-<div class="sx__acc"><a class="l3-btn" href="demos/muestras/agiri-aholkularitza/es/" target="_blank" rel="noopener" data-t="sx_ver">Ver la muestra</a><a class="l3-a" href="contacto.html" data-t="sx_pedir">Quiero una así</a></div>
-<p class="sx__nota" data-t="sx_nota">Marcas inventadas: son muestras mías.</p>
-</div>
-</div>
-<div class="sx__p" id="sx-p25" role="tabpanel" aria-labelledby="sx-t25" hidden>
-<div class="sx__esc">
-<div class="sx__win"><div class="sx__bar"><i></i><i></i><i></i><span>lerro-akademia</span></div><picture><source srcset="assets/lerro-desk.webp" type="image/webp"/><img src="assets/lerro-desk.jpg" alt="LERRO" width="900" height="562" loading="lazy" decoding="async"/></picture></div>
-<div class="sx__tel"><img src="assets/hero/lerro-m.webp" alt="" width="480" height="1013" loading="lazy" decoding="async"/></div>
-</div>
-<div class="sx__txt">
-<p class="sx__k" data-t="sx_k_academia">Academia y autoescuela</p>
-<h3 class="sx__n">LERRO</h3>
-<p class="sx__inc" data-t="sx_inc">Qué lleva</p>
-<ul class="sx__l"><li data-t="sx_academia_a">Cuándo empieza el próximo grupo</li><li data-t="sx_academia_b">Plazas libres en cada grupo</li><li data-t="sx_academia_c">Apuntarse por WhatsApp sin llamar</li></ul>
-<div class="sx__acc"><a class="l3-btn" href="demos/muestras/lerro-akademia/es/" target="_blank" rel="noopener" data-t="sx_ver">Ver la muestra</a><a class="l3-a" href="contacto.html" data-t="sx_pedir">Quiero una así</a></div>
-<p class="sx__nota" data-t="sx_nota">Marcas inventadas: son muestras mías.</p>
-</div>
-</div>
-</div>
-<div class="sx-t is-abierta">
-<div class="sx-t__cab reveal">
-<h3 class="sx-t__h"><span data-t="sx_todas_h">Todas las muestras</span><span class="sx-t__num">25</span></h3>
-<p class="sx-t__p" data-t="sx_todas_p">Toca una y se abre entera, lista para probar.</p>
-</div>
-<ul class="sx-t__g" id="sx-todas">
-<li class="sx-t__i"><a class="sx-c" href="demos/muestras/hauspo-jatetxea/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/hauspo-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">HAUSPO</span><span class="sx-c__s" data-t="sx_c1">Restaurante</span></span></a></li>
-<li class="sx-t__i"><a class="sx-c" href="demos/muestras/orrazkera-ileapaindegia/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/orrazkera-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">ORRAZKERA</span><span class="sx-c__s" data-t="sx_c3">Peluquería</span></span></a></li>
-<li class="sx-t__i"><a class="sx-c" href="demos/muestras/artile-arropa/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/artile-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">ARTILE</span><span class="sx-c__s" data-t="sx_c8">Tienda</span></span></a></li>
-<li class="sx-t__i"><a class="sx-c" href="demos/muestras/torloju-tailerra/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/torloju-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">TORLOJU</span><span class="sx-c__s" data-t="sx_c5">Taller</span></span></a></li>
-<li class="sx-t__i"><a class="sx-c" href="demos/muestras/zidor-landetxea/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/zidor-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">ZIDOR</span><span class="sx-c__s" data-t="sx_c_casarural">Casa rural</span></span></a></li>
-<li class="sx-t__i"><a class="sx-c" href="demos/muestras/itun-abokatuak/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/itun-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">ITUN</span><span class="sx-c__s" data-t="sx_c_abogados">Abogados</span></span></a></li>
-<li class="sx-t__i"><a class="sx-c" href="demos/muestras/ahamen-taberna/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/ahamen-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">AHAMEN</span><span class="sx-c__s" data-t="sx_c2">Bar</span></span></a></li>
-<li class="sx-t__i"><a class="sx-c" href="demos/muestras/bigun-estetika/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/bigun-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">BIGUN</span><span class="sx-c__s" data-t="sx_c4">Estética</span></span></a></li>
-<li class="sx-t__i"><a class="sx-c" href="demos/muestras/txilar-loradenda/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/txilar-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">TXILAR</span><span class="sx-c__s" data-t="sx_c_floristeria">Floristería</span></span></a></li>
-<li class="sx-t__i"><a class="sx-c" href="demos/muestras/lauza-eraikuntzak/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/lauza-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">LAUZA</span><span class="sx-c__s" data-t="sx_c_reformas">Construcción</span></span></a></li>
-<li class="sx-t__i"><a class="sx-c" href="demos/muestras/leiho-hotela/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/leiho-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">LEIHO</span><span class="sx-c__s" data-t="sx_c_hotel">Hotel</span></span></a></li>
-<li class="sx-t__i"><a class="sx-c" href="demos/muestras/agiri-aholkularitza/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/agiri-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">AGIRI</span><span class="sx-c__s" data-t="sx_c_asesoria">Asesoría</span></span></a></li>
-<li class="sx-t__i"><a class="sx-c" href="demos/muestras/malda-sagardotegia/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/malda-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">MALDA</span><span class="sx-c__s" data-t="sx_c_sidreria">Sidrería</span></span></a></li>
-<li class="sx-t__i"><a class="sx-c" href="demos/muestras/suspertu-gimnasioa/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/suspertu-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">SUSPERTU</span><span class="sx-c__s" data-t="sx_c_gimnasio">Gimnasio</span></span></a></li>
-<li class="sx-t__i"><a class="sx-c" href="demos/muestras/uztai-bitxidenda/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/uztai-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">UZTAI</span><span class="sx-c__s" data-t="sx_c_joyeria">Joyería</span></span></a></li>
-<li class="sx-t__i"><a class="sx-c" href="demos/muestras/hari-instalazioak/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/hari-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">HARI</span><span class="sx-c__s" data-t="sx_c_instalador">Instalador</span></span></a></li>
-<li class="sx-t__i"><a class="sx-c" href="demos/muestras/lerro-akademia/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/lerro-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">LERRO</span><span class="sx-c__s" data-t="sx_c_academia">Academia</span></span></a></li>
-<li class="sx-t__i"><a class="sx-c" href="demos/muestras/orea-okindegia/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/orea-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">OREA</span><span class="sx-c__s" data-t="sx_c_panaderia">Panadería</span></span></a></li>
-<li class="sx-t__i"><a class="sx-c" href="demos/muestras/urdin-hortz-klinika/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/urdin-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">URDIN</span><span class="sx-c__s" data-t="sx_c6">Dentista</span></span></a></li>
-<li class="sx-t__i"><a class="sx-c" href="demos/muestras/erpin-mekanizatuak/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/erpin-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">ERPIN</span><span class="sx-c__s" data-t="sx_c_industria">Industria</span></span></a></li>
-<li class="sx-t__i"><a class="sx-c" href="demos/muestras/gantxo-harategia/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/gantxo-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">GANTXO</span><span class="sx-c__s" data-t="sx_c_carniceria">Carnicería</span></span></a></li>
-<li class="sx-t__i"><a class="sx-c" href="demos/muestras/arin-fisioterapia/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/arin-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">ARIN</span><span class="sx-c__s" data-t="sx_c7">Fisioterapia</span></span></a></li>
-<li class="sx-t__i"><a class="sx-c" href="demos/muestras/aihen-txakolindegia/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/aihen-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">AIHEN</span><span class="sx-c__s" data-t="sx_c_bodega">Bodega</span></span></a></li>
-<li class="sx-t__i"><a class="sx-c" href="demos/muestras/behako-optika/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/behako-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">BEHAKO</span><span class="sx-c__s" data-t="sx_c_optica">Óptica</span></span></a></li>
-<li class="sx-t__i"><a class="sx-c" href="demos/muestras/atzapar-albaitaritza/es/" target="_blank" rel="noopener"><span class="sx-c__img"><img src="assets/sx/atzapar-c.webp" alt="" width="640" height="400" loading="lazy" decoding="async"/><span class="sx-c__abre" aria-hidden="true" data-t="sx_ver">Ver la muestra</span></span><span class="sx-c__pie"><span class="sx-c__n">ATZAPAR</span><span class="sx-c__s" data-t="sx_c_veterinaria">Veterinaria</span></span></a></li>
-</ul>
-
-</div>
-</div>
-</section>
 
 <section class="section dark-section cta" style="margin-top:40px;">
 <div class="container">
@@ -1129,10 +757,10 @@
 <div class="footer__mark" aria-hidden="true">OI STUDIO</div>
 </footer>
 
-<script src="assets/i18n.js?v=45"></script>
+<script src="assets/i18n.js?v=46"></script>
 <script src="assets/main.js?v=21"></script>
 <script src="assets/lineas.js?v=6" defer></script>
-<script src="assets/piezas.js?v=3" defer></script>
+<script src="assets/piezas.js?v=4" defer></script>
 <script src="assets/vivas.js?v=1"></script>
 <script>
 /* Filtros de Trabajos: tipo (todo, casos reales, muestras) y sector. Sin JS se ve todo. */
