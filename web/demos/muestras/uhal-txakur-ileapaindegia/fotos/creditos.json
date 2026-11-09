@@ -1,0 +1,57 @@
+{
+ "_leeme": "Fotos de la muestra UHAL (9/11/2026). Todas son fotos de ejemplo de Unsplash (licencia de Unsplash: uso libre, también comercial, sin atribución obligatoria; se cita igualmente en el pie y aquí). Son perros, no peluquerías reales. La portada va con el perro sin teñir (solo lo gris del fondo, suave); las demás, teñidas en un solo tono granate con _local/demos/uhal-generador/tono.cjs. Recortadas y convertidas a AVIF y WebP con herramientas/diseno/imagenes.mjs (sin metadatos); guion: _local/demos/uhal-generador/fotos.mjs.",
+ "portada-vizsla": {
+  "ficheros": "portada-d, portada-m",
+  "autor": "John Spence",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/brown-short-coated-dog-on-gray-textile-KCqT_1BDNzQ",
+  "original": "3439×2232",
+  "uso": "Portada (escritorio 16:10 y móvil 9:16)",
+  "cambios": "Recortada; el perro y la madera SIN teñir; solo lo gris (la cama) teñido suave hacia el granate y oscurecido para que se lea el nombre (fondoSuave en tono.cjs)"
+ },
+ "corto": {
+  "ficheros": "pelo-corto",
+  "autor": "Nicolás Pinilla",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/a-brown-dog-with-a-collar-looking-up-uDYNz1YjYbc",
+  "original": "4128×5160",
+  "uso": "¿Qué perro vas a traer?: pelo corto",
+  "cambios": "Teñida en un solo tono; el fondo negro pasa a granate oscuro"
+ },
+ "largo-golden": {
+  "ficheros": "pelo-largo",
+  "autor": "Faber Leonardo",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/a-close-up-of-a-dog-looking-at-the-camera-Fl5EtN4Z-i8",
+  "original": "6000×4000",
+  "uso": "¿Qué perro vas a traer?: pelo largo",
+  "cambios": "Recortada 4:5 y teñida en un solo tono"
+ },
+ "rizado": {
+  "ficheros": "pelo-rizado",
+  "autor": "Thijs Scheper",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/a-close-up-of-a-dog-with-its-tongue-out-y2JT9BaFWB0",
+  "original": "6000×4000",
+  "uso": "¿Qué perro vas a traer?: pelo rizado",
+  "cambios": "Recortada 4:5 y teñida en un solo tono"
+ },
+ "duro": {
+  "ficheros": "pelo-duro",
+  "autor": "Tamas Pap",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/brown-and-black-long-coated-small-dog-on-white-textile-jm9Vi4jZD-U",
+  "original": "5912×4912",
+  "uso": "¿Qué perro vas a traer?: pelo duro",
+  "cambios": "Recortada 4:5 y teñida en un solo tono"
+ },
+ "recogida": {
+  "ficheros": "recogida",
+  "autor": "Dan Robinson",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/a-brown-dog-laying-on-top-of-a-couch-RwTrUbO99qU",
+  "original": "3024×3024",
+  "uso": "Te avisamos cuando esté listo",
+  "cambios": "Recortada 4:5 y teñida en un solo tono"
+ }
+}

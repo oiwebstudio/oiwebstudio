@@ -1,0 +1,216 @@
+/* LORRATZ · muestra de clínica de podología (OI Studio, 9/11/2026)
+   Calco de ME DERMATOLOGY (me-dermatology.com), referencia n.º 10 elegida por Oier (muestras-podologia-nutricion-2026-11-07):
+   negro a pantalla completa, foto en blanco y negro muy contrastada en primerísimo plano, monograma blanco en didona en el centro con el
+   nombre debajo; franja con foto pálida, dos columnas de texto, mosaico de fotos B/N con rótulo blanco (2 + 3), caja negra con etiqueta de
+   borde fino, enlace subrayado centrado y pie sobre foto pálida. Medidas tomadas de la web real a 1440 px y pasadas a vw.
+   Letras: 27 Bodoni Moda (en lugar del monograma dibujado y de Prata) + 14 Switzer (en lugar de Inter, que está en la lista negra). */
+
+@font-face{font-family:'Bodoni Moda';font-style:normal;font-weight:500 800;font-display:swap;src:url('fuentes/bodoni-moda-500_800.woff2') format('woff2');}
+@font-face{font-family:'Switzer';font-style:normal;font-weight:400;font-display:swap;src:url('fuentes/switzer-400.woff2') format('woff2');}
+@font-face{font-family:'Switzer';font-style:normal;font-weight:600;font-display:swap;src:url('fuentes/switzer-600.woff2') format('woff2');}
+
+:root{
+  --negro:#000000;
+  --caja:#111111;          /* la caja negra de «Dans les médias» */
+  --blanco:#FFFFFF;
+  --tinta:#141414;
+  --gris:#5C5C5C;          /* texto secundario sobre blanco (6,6:1) */
+  --gris-osc:#A6A6A6;      /* texto secundario sobre negro (8,5:1) */
+  --raya:#3A3A3A;          /* filete dentro de la caja negra */
+  --m:clamp(18px,4.17vw,60px);          /* margen del mosaico y de la caja (60 px a 1440) */
+  --m2:clamp(18px,11.8vw,170px);        /* margen de los textos (170 px a 1440) */
+  --t-0:clamp(1rem,.97rem + .15vw,1.0625rem);
+  --t-p:clamp(.94rem,.92rem + .1vw,1rem);
+  --t-h2:clamp(1.9rem,1.25rem + 2vw,2.85rem);        /* titulares (45 px a 1440, como Prata en la referencia) */
+  --t-grande:clamp(1.35rem,1.05rem + 1vw,1.9rem);    /* columna de texto grande (30 px a 1440) */
+  --t-losa:clamp(1.3rem,1.05rem + .9vw,1.9rem);      /* rótulos del mosaico */
+  --ease:cubic-bezier(.2,.75,.25,1);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;-webkit-tap-highlight-color:transparent;scroll-padding-top:24px}
+a,button,[role="button"],input,select,textarea,summary,label{-webkit-tap-highlight-color:transparent}
+:focus:not(:focus-visible){outline:none}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--blanco);color:var(--tinta);font:400 var(--t-0)/1.6 'Switzer',system-ui,sans-serif;overflow-x:clip}
+img{display:block;max-width:100%;height:auto}
+picture{display:block}
+h1,h2,h3,h4{margin:0;font-family:'Bodoni Moda',Georgia,serif;font-weight:500;font-variation-settings:"opsz" 28;text-transform:uppercase;line-height:1.12;letter-spacing:.01em;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+ul,ol{margin:0;padding:0;list-style:none}
+button,input{font:inherit;color:inherit}
+fieldset{margin:0;padding:0;border:0;min-width:0}
+legend{padding:0}
+.sr{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.saltar{position:absolute;left:12px;top:-60px;z-index:200;background:var(--blanco);color:var(--negro);padding:10px 14px;text-decoration:none}
+.saltar:focus{top:12px}
+
+/* ---------- botones: rectángulos sencillos ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;border:0;background:var(--negro);color:var(--blanco);
+  font:600 .82rem/1.2 'Switzer',sans-serif;text-transform:uppercase;letter-spacing:.08em;text-decoration:none;cursor:pointer;text-align:center;
+  transition:transform .16s var(--ease),background-color .2s var(--ease),color .2s var(--ease)}
+.btn svg{width:19px;height:19px;flex:none}
+.btn:active{transform:scale(.97)}
+.btn-blanco{background:var(--blanco);color:var(--negro)}
+@media (hover:hover) and (pointer:fine){
+  .btn:hover{background:#333}
+  .btn-blanco:hover{background:#DADADA}
+}
+
+/* ---------- cabecera: sobre la portada, no se queda fija ---------- */
+.cab{position:absolute;inset:0 0 auto 0;z-index:20;display:flex;align-items:center;justify-content:flex-end;gap:20px;padding:clamp(14px,4.4vw,64px) var(--m) 0;color:#D0D0D0}
+.cab a{text-decoration:none}
+/* solo «Menú» pequeño arriba a la derecha (revisor 9/11): la portada queda foto y monograma, como la referencia */
+.cab-menu{display:inline-flex;align-items:center;min-height:44px;margin:0;padding:0 2px;border:0;background:none;cursor:pointer;color:var(--blanco);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase}
+.cab-menu:active{transform:scale(.97)}
+.menu{position:fixed;inset:0;z-index:30;display:none;flex-direction:column;justify-content:center;gap:28px;padding:80px var(--m) 40px;background:var(--negro);color:var(--blanco)}
+.menu.abierto{display:flex}
+.menu ul{display:grid;gap:6px}
+.menu ul a{display:block;padding:6px 0;font:500 2rem/1.15 'Bodoni Moda',serif;text-transform:uppercase;text-decoration:none}
+.menu p a{display:inline-flex;min-height:44px;align-items:center;color:var(--gris-osc);letter-spacing:.1em}
+.menu .menu-idioma a{color:var(--blanco);text-decoration:underline;text-underline-offset:4px}
+@media (hover:hover) and (pointer:fine){.menu a:hover{color:var(--gris-osc)}}
+.menu-abierto .cab-menu{position:fixed;top:clamp(14px,4.4vw,64px);right:var(--m);z-index:40}
+
+
+/* ---------- portada: negro, foto B/N a sangre, monograma en el centro ---------- */
+.portada{position:relative;height:100vh;height:100svh;min-height:560px;background:var(--negro);color:var(--blanco);overflow:hidden;display:grid;place-items:center}
+.portada-foto{position:absolute;inset:0}
+.portada::before{content:"";position:absolute;inset:0 0 auto 0;height:clamp(110px,22vh,190px);z-index:1;background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,0));pointer-events:none}
+.portada-foto .pf,.portada-foto img{width:100%;height:100%}
+.portada-foto img{object-fit:cover;object-position:50% 50%}
+.portada-txt{position:relative;z-index:2;text-shadow:0 2px 28px rgba(0,0,0,.35);display:flex;flex-direction:column;align-items:center;text-align:center;margin-top:-4vh;font-weight:500}
+.portada-h1{display:flex;flex-direction:column;align-items:center;font-weight:500}
+.mono{display:inline-flex;align-items:flex-end;font:500 clamp(118px,18vw,270px)/.8 'Bodoni Moda',serif;letter-spacing:0;text-transform:none;font-variation-settings:"opsz" 96}
+.mono .m-o{font-size:.56em;margin-left:-.2em;line-height:.9;transform:translateY(-.02em)}
+.nombre{margin-top:clamp(22px,2.6vw,38px);font:500 clamp(1.25rem,.9rem + 1.1vw,1.85rem)/1 'Bodoni Moda',serif;letter-spacing:.16em;padding-left:.16em}
+.espec{margin-top:10px;font:400 12px/1.2 'Switzer',sans-serif;letter-spacing:.24em;padding-left:.24em;text-transform:uppercase;color:#B5B5B5}
+
+/* entrada de la portada: CSS desde el primer pintado (solo transform y opacity) */
+@media (prefers-reduced-motion:no-preference){
+  .portada-foto img{animation:foto 2.6s var(--ease) both}
+  .mono span{display:inline-block;animation:sube 1.5s var(--ease) both}
+  .mono .m-l{animation-delay:.25s}
+  .mono .m-o{animation-name:sube-o;animation-delay:.45s}
+  .nombre{animation:sube-n 1.2s var(--ease) .85s both}
+  .espec{animation:sube-n 1.2s var(--ease) 1.05s both}
+  .cab{animation:aparece 1.2s var(--ease) 1.2s both}
+}
+@keyframes foto{from{opacity:0;transform:scale(1.07)}to{opacity:1;transform:none}}
+@keyframes sube{from{opacity:0;transform:translateY(28%)}to{opacity:1;transform:none}}
+@keyframes sube-o{from{opacity:0;transform:translateY(40%)}to{opacity:1;transform:translateY(-.02em)}}
+@keyframes sube-n{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes aparece{from{opacity:0}to{opacity:1}}
+
+/* ---------- franja pálida: titular a la izquierda, párrafo a la derecha ---------- */
+.intro{position:relative;margin-top:clamp(56px,7vw,100px);min-height:clamp(380px,45.5vw,660px);display:grid;align-items:center;overflow:hidden}
+.intro-foto{position:absolute;inset:0}
+.intro-foto picture,.intro-foto img{width:100%;height:100%}
+.intro-foto img{object-fit:cover}
+.intro-in{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,6vw,90px);padding:60px var(--m2);align-items:start}
+.intro h2{font-size:var(--t-h2);max-width:12ch}
+.intro p{font-size:var(--t-p);max-width:44ch;color:var(--tinta)}
+
+/* ---------- dos columnas: texto pequeño y texto grande ---------- */
+.pisada{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(28px,10vw,150px);padding:clamp(70px,9vw,130px) var(--m2) clamp(60px,8vw,110px);align-items:start}
+.pisada h2{font-size:var(--t-h2);margin-bottom:28px;max-width:14ch}
+.pisada-a p{font-size:var(--t-p);max-width:none;color:var(--gris)}
+.pisada .grande{font:500 var(--t-grande)/1.45 'Bodoni Moda',serif;color:var(--tinta);margin-bottom:34px}
+.pisada-b{padding-top:clamp(0px,6vw,90px)}
+
+/* ---------- ¿qué te pasa?: mosaico de fotos B/N, 2 grandes + 3 ---------- */
+.zer{padding:0 var(--m)}
+.zer-cab{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,6vw,90px);align-items:end;padding:0 0 clamp(26px,3vw,40px)}
+.zer h2{font-size:var(--t-h2)}
+.zer-cab p{font-size:var(--t-p);color:var(--gris);max-width:46ch}
+.losas{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(10px,1.4vw,20px)}
+.losa{grid-column:span 2}
+.losa.grande{grid-column:span 3}
+.losa-b{position:relative;display:block;width:100%;padding:0;border:0;background:var(--negro);cursor:pointer;overflow:hidden;aspect-ratio:1.22;color:var(--blanco)}
+.losa.grande .losa-b{aspect-ratio:1.51}
+.losa-b picture,.losa-b img{width:100%;height:100%}
+.losa-b img{object-fit:cover;transition:transform .9s var(--ease),opacity .45s var(--ease)}
+.losa-t{position:absolute;inset:0;display:grid;place-items:center;padding:16px;font:500 var(--t-losa)/1.15 'Bodoni Moda',serif;font-variation-settings:"opsz" 28;text-transform:uppercase;letter-spacing:.04em;text-align:center;text-shadow:0 1px 18px rgba(0,0,0,.45)}
+.losa-b::after{content:"";position:absolute;inset:clamp(10px,1.2vw,16px);border:1px solid var(--blanco);opacity:0;transform:scale(1.03);transition:opacity .35s var(--ease),transform .45s var(--ease);pointer-events:none}
+.losa-b[aria-pressed="true"]::after{opacity:1;transform:none}
+.losas.elegido .losa-b[aria-pressed="false"] img{opacity:.55}
+.losa-b:active{transform:scale(.985)}
+@media (hover:hover) and (pointer:fine){
+  .losa-b:hover img{transform:scale(1.045)}
+  .losas.elegido .losa-b[aria-pressed="false"]:hover img{opacity:.85}
+}
+
+/* ---------- pide cita: titular y caja negra (la de «Dans les médias») ---------- */
+.cita{padding:clamp(70px,8vw,110px) var(--m) 0}
+.cita h2{font-size:var(--t-h2);margin-bottom:clamp(20px,2vw,28px)}
+.tarjeta{background:var(--caja);color:var(--blanco);padding:clamp(26px,3.8vw,55px) clamp(20px,7.6vw,110px) clamp(30px,3.8vw,55px)}
+.t-arriba{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.t-prob{font-size:var(--t-p);color:var(--gris-osc)}
+.t-min{flex:none;border:1px solid var(--blanco);padding:8px 14px;font:600 .9rem/1 'Switzer',sans-serif;font-variant-numeric:tabular-nums}
+.t-trat{padding:clamp(22px,2.4vw,34px) 0 clamp(20px,2vw,28px);border-bottom:1px solid var(--raya);overflow:hidden}
+.t-tit{font:600 clamp(1.05rem,.95rem + .45vw,1.3rem)/1.3 'Switzer',sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.t-tit [data-t-tit]{display:inline-block}
+.t-p{margin-top:10px;font-size:var(--t-p);color:#D2D2D2;max-width:62ch}
+.t-abajo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px);padding-top:clamp(24px,2.6vw,36px)}
+.t-dias legend{font:600 1rem/1.3 'Switzer',sans-serif;margin-bottom:14px}
+.opcs{display:flex;flex-wrap:wrap;gap:8px}
+.turnos{margin-top:14px}
+.opc{position:relative;display:inline-flex}
+.opc input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}
+.opc span{display:inline-flex;align-items:center;min-height:44px;padding:0 11px;border-bottom:1px solid var(--raya);background:#1C1C1C;font-size:.9rem;transition:background-color .2s var(--ease),color .2s var(--ease)}
+.opc input:checked+span{background:var(--blanco);color:var(--negro)}
+.opc input:focus-visible+span{outline:2px solid var(--blanco);outline-offset:2px}
+.opc input:disabled+span{opacity:.35}
+@media (hover:hover) and (pointer:fine){.opc input:not(:checked):hover+span{background:#2A2A2A}}
+.msg-tit{font:600 1rem/1.3 'Switzer',sans-serif;margin-bottom:12px}
+.msg{padding:16px 18px;background:#1C1C1C;font-size:.92rem;line-height:1.55;color:#E8E8E8;margin-bottom:18px;min-height:7.5em}
+.confirma{margin-top:12px;font-size:.86rem;color:var(--gris-osc)}
+.llamar{text-align:center;padding:clamp(34px,4vw,56px) 0 clamp(70px,8vw,110px)}
+.llamar a{display:inline-flex;align-items:center;min-height:44px;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;text-underline-offset:4px}
+
+/* ---------- pie sobre foto pálida ---------- */
+.pie{position:relative;color:var(--tinta);overflow:hidden}
+.pie-foto{position:absolute;inset:0}
+.pie-foto picture,.pie-foto img{width:100%;height:100%}
+.pie-foto img{object-fit:cover}
+.pie-in,.pie-abajo{position:relative}
+.pie-in{display:grid;grid-template-columns:1.1fr 1fr 1.2fr 1.3fr;gap:clamp(24px,4vw,60px);padding:clamp(60px,6vw,90px) var(--m2) 30px}
+.pie h2{font:400 1rem/1.3 'Switzer',sans-serif;text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px}
+.pie .h-sig{margin-top:22px}
+.pie-col p,.pie-col li{font-size:.9rem}
+.pie-col a{display:inline-flex;align-items:center;min-height:32px;text-decoration:none}
+@media (hover:hover) and (pointer:fine){.pie-col a:hover{text-decoration:underline;text-underline-offset:3px}}
+.mono-pie{font-size:76px;color:var(--negro)}
+.pie-nombre{margin-top:10px;font:500 1rem/1 'Bodoni Moda',serif;letter-spacing:.16em}
+.pie-ahora{margin-top:12px;font-size:.86rem;color:var(--gris)}
+.hor li{display:grid;gap:2px;padding:6px 0;border-bottom:1px solid rgba(0,0,0,.14)}
+.hor li span:first-child{color:var(--gris)}
+.hor li.hoy span:first-child{color:var(--tinta);font-weight:600}
+.pie-abajo{display:grid;gap:8px;padding:24px var(--m2) 34px;font-size:.8rem;color:var(--gris);border-top:1px solid rgba(0,0,0,.12);margin:0}
+.pie-abajo a{color:var(--tinta);display:inline-flex;align-items:center;min-height:32px;text-underline-offset:3px}
+
+/* ---------- móvil ---------- */
+@media (max-width:700px){.portada-foto img{object-position:50% 80%}}
+@media (max-width:759px){
+  .intro-in,.pisada,.zer-cab,.t-abajo{grid-template-columns:1fr}
+  .intro-in{padding:56px var(--m)}
+  .intro h2,.pisada h2{max-width:none}
+  .pisada{padding-left:var(--m);padding-right:var(--m);gap:30px}
+  .pisada-b{padding-top:0}
+  .pisada .btn{width:100%}
+  .losas{grid-template-columns:1fr}
+  .losa,.losa.grande{grid-column:auto}
+  .losa-b,.losa.grande .losa-b{aspect-ratio:1.5}
+  .t-arriba{align-items:flex-start}
+  .tarjeta .btn{width:100%;padding:0 14px;letter-spacing:.04em;font-size:.76rem}
+  .pie-in{grid-template-columns:1fr 1fr;padding-left:var(--m);padding-right:var(--m)}
+  .pie-marca{grid-column:1/-1}
+  .pie-col a,.pie-abajo a{min-height:44px}
+  .pie-abajo{padding-left:var(--m);padding-right:var(--m)}
+}
+@media (max-width:420px){.pie-in{grid-template-columns:1fr}}
+
+/* sin JS o con «reducir movimiento»: todo quieto y visible (nada se esconde en el CSS) */
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}

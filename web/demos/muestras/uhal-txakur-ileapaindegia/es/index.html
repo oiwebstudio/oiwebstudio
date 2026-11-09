@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Uhal, peluquería canina en Tolosa</title>
+<meta name="description" content="Peluquería canina en Tolosa. Elige su tamaño y su pelo y te sale el precio, el tiempo que tardamos y el mensaje para pedir cita.">
+<meta name="theme-color" content="#5a2a22">
+<meta property="og:title" content="Uhal, peluquería canina en Tolosa">
+<meta property="og:description" content="Peluquería canina en Tolosa. Elige su tamaño y su pelo y te sale el precio, el tiempo que tardamos y el mensaje para pedir cita.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="../fotos/portada-d-1280.webp">
+<link rel="alternate" hreflang="eu" href="../">
+<!--
+  MUESTRA «UHAL» (OI Studio, 9/11/2026): peluquería canina INVENTADA en Tolosa para la pieza «¿Qué negocio tienes?» de oiwebstudio.com.
+  «Uhal» = correa (la de la foto de portada). Dirección, teléfonos, horario, precios, tiempos, horas de entrega y mensajes son de
+  ejemplo (lo dice la nota del pie, una vez). noindex.
+  Calco de THE DOG HOTEL (lámina de Pixels Unleashed en Pinterest, sin web viva), referencia n.º 16 del tablero
+  muestras-peluqueria-canina-2026-11-07 que eligió Oier: foto a sangre tono sobre tono (perro, pared y suelo del mismo color; aquí
+  un vizsla de pelo rojizo natural delante de una puerta de madera, con solo lo gris teñido suave, fondoSuave en tono.cjs; las demás fotos,
+  teñidas a un solo tono con tono.cjs), nombre en serif clásica blanca centrada con una línea
+  en mayúsculas de la misma letra debajo (con las rayas a los lados en escritorio, como la lámina; pedido del revisor el 9/11), cabecera transparente con el texto pequeño a la izquierda, dos
+  enlaces y un botón blanco rectangular a la derecha; debajo, secciones blancas con los títulos en serif granate. Fuera la fila de tres
+  fichas con icono de la lámina (que_no_copiar).
+  Letra: n.º 31 Brygada 1918 500/700 en todo, como la lámina (una sola serif clásica). Sin cursiva.
+  Fotos: Unsplash (licencia de Unsplash): John Spence, Nicolás Pinilla, Faber Leonardo, Thijs Scheper, Tamas Pap, Dan Robinson. Detalle en fotos/creditos.json.
+  Movimiento: la portada entra con CSS desde el primer pintado; lo de abajo, con GSAP 3.13 + ScrollTrigger + SplitText (js/)
+  + anim-texto.js + pagina.js. Con «reducir movimiento» o sin JS, todo quieto y visible.
+-->
+<link rel="preload" href="../fuentes/brygada-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../estilo.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="saltar" href="#cita">Saltar al contenido</a>
+
+<header class="cab">
+  <a class="logo" href="#contenido">Peluquería canina</a>
+  <nav class="nav" aria-label="Menú">
+    <a href="#precios">Precios</a>
+    <a href="#recogida">Recogida</a>
+    <a class="boton" href="#cita">Pedir cita</a>
+    <a class="idioma " href="../" lang="eu" hreflang="eu"><span aria-hidden="true">EU</span><span class="sr">Euskaraz</span></a>
+  </nav>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-movil" data-menu-btn>Menú</button>
+</header>
+<div class="menu-movil" id="menu-movil" data-menu hidden>
+  <div class="menu-cab"><span class="logo">Peluquería canina</span><button class="menu-btn" type="button" data-menu-cerrar>Cerrar</button></div>
+  <nav aria-label="Menú"><ul><li><a href="#cita">Pedir cita</a></li><li><a href="#precios">Precios</a></li><li><a href="#recogida">Recogida</a></li><li><a href="#contacto">Contacto</a></li></ul></nav>
+  <p class="menu-pie"><a href="tel:+34943000000">943 00 00 00</a><a class="idioma " href="../" lang="eu" hreflang="eu"><span aria-hidden="true">EU</span><span class="sr">Euskaraz</span></a></p>
+</div>
+
+<main id="contenido">
+<section class="portada" data-portada>
+  <div class="portada-foto"><picture><source media="(max-width: 699px)" type="image/avif" srcset="../fotos/portada-m-600.avif 600w, ../fotos/portada-m-900.avif 900w, ../fotos/portada-m-1200.avif 1200w" sizes="100vw"><source media="(max-width: 699px)" type="image/webp" srcset="../fotos/portada-m-600.webp 600w, ../fotos/portada-m-900.webp 900w, ../fotos/portada-m-1200.webp 1200w" sizes="100vw"><source type="image/avif" srcset="../fotos/portada-d-1280.avif 1280w, ../fotos/portada-d-1920.avif 1920w, ../fotos/portada-d-2560.avif 2560w" sizes="100vw"><img src="../fotos/portada-d-1920.webp" srcset="../fotos/portada-d-1280.webp 1280w, ../fotos/portada-d-1920.webp 1920w, ../fotos/portada-d-2560.webp 2560w" sizes="100vw" width="2560" height="1600" alt="Un perro de pelo rojizo tumbado en su cama, delante de una puerta de madera" fetchpriority="high" decoding="async"></picture></div>
+  <div class="portada-txt">
+    <h1 class="nombre"><span class="sr">Uhal. Uhal, peluquería canina en Tolosa</span><span class="letras" aria-hidden="true"><span class="l" style="--i:0">U</span><span class="l" style="--i:1">H</span><span class="l" style="--i:2">A</span><span class="l" style="--i:3">L</span></span></h1>
+    <p class="sub">Baño, corte y deslanado en Tolosa</p>
+  </div>
+</section>
+
+<section class="sec cita" id="cita" aria-labelledby="h-cita">
+  <div class="cab-sec">
+    <h2 id="h-cita" data-lineas>¿Qué perro vas a traer?</h2>
+    <p>Elige su tamaño, su pelo y lo que necesita. Te sale el precio, el tiempo que tardamos y el mensaje para pedir cita.</p>
+  </div>
+  <div class="cita-grid">
+    <div class="marco" data-panel><div class="foto-pelo" data-foto-pelo="corto" aria-hidden="true"><picture><source type="image/avif" srcset="../fotos/pelo-corto-600.avif 600w, ../fotos/pelo-corto-900.avif 900w, ../fotos/pelo-corto-1200.avif 1200w" sizes="(min-width: 900px) 84vw, 180vw"><img src="../fotos/pelo-corto-900.webp" srcset="../fotos/pelo-corto-600.webp 600w, ../fotos/pelo-corto-900.webp 900w, ../fotos/pelo-corto-1200.webp 1200w" sizes="(min-width: 900px) 84vw, 180vw" width="1200" height="1500" alt="Un teckel de pelo corto mira hacia arriba" loading="lazy" decoding="async"></picture></div><div class="foto-pelo activa" data-foto-pelo="largo"><picture><source type="image/avif" srcset="../fotos/pelo-largo-600.avif 600w, ../fotos/pelo-largo-900.avif 900w, ../fotos/pelo-largo-1200.avif 1200w" sizes="(min-width: 900px) 84vw, 180vw"><img src="../fotos/pelo-largo-900.webp" srcset="../fotos/pelo-largo-600.webp 600w, ../fotos/pelo-largo-900.webp 900w, ../fotos/pelo-largo-1200.webp 1200w" sizes="(min-width: 900px) 84vw, 180vw" width="1200" height="1500" alt="Un golden de pelo largo mira a cámara" loading="lazy" decoding="async"></picture></div><div class="foto-pelo" data-foto-pelo="rizado" aria-hidden="true"><picture><source type="image/avif" srcset="../fotos/pelo-rizado-600.avif 600w, ../fotos/pelo-rizado-900.avif 900w, ../fotos/pelo-rizado-1200.avif 1200w" sizes="(min-width: 900px) 84vw, 180vw"><img src="../fotos/pelo-rizado-900.webp" srcset="../fotos/pelo-rizado-600.webp 600w, ../fotos/pelo-rizado-900.webp 900w, ../fotos/pelo-rizado-1200.webp 1200w" sizes="(min-width: 900px) 84vw, 180vw" width="1200" height="1500" alt="Un perro de pelo rizado con la lengua fuera" loading="lazy" decoding="async"></picture></div><div class="foto-pelo" data-foto-pelo="duro" aria-hidden="true"><picture><source type="image/avif" srcset="../fotos/pelo-duro-600.avif 600w, ../fotos/pelo-duro-900.avif 900w, ../fotos/pelo-duro-1200.avif 1200w" sizes="(min-width: 900px) 84vw, 180vw"><img src="../fotos/pelo-duro-900.webp" srcset="../fotos/pelo-duro-600.webp 600w, ../fotos/pelo-duro-900.webp 900w, ../fotos/pelo-duro-1200.webp 1200w" sizes="(min-width: 900px) 84vw, 180vw" width="1200" height="1500" alt="Un perro pequeño de pelo duro, tumbado" loading="lazy" decoding="async"></picture></div></div>
+    <form class="calc" data-calc onsubmit="return false">
+      <fieldset><legend>Tamaño</legend><div class="ops ops-3"><label class="op"><input type="radio" name="tam" value="peq" data-nombre="Pequeño"><span class="op-t">Pequeño<small>Hasta 10 kg</small></span></label><label class="op"><input type="radio" name="tam" value="med" checked data-nombre="Mediano"><span class="op-t">Mediano<small>De 10 a 25 kg</small></span></label><label class="op"><input type="radio" name="tam" value="gra" data-nombre="Grande"><span class="op-t">Grande<small>Más de 25 kg</small></span></label></div></fieldset>
+      <fieldset><legend>Pelo</legend><div class="ops ops-4"><label class="op"><input type="radio" name="pelo" value="corto" data-nombre="Corto"><span class="op-t">Corto</span></label><label class="op"><input type="radio" name="pelo" value="largo" checked data-nombre="Largo"><span class="op-t">Largo</span></label><label class="op"><input type="radio" name="pelo" value="rizado" data-nombre="Rizado"><span class="op-t">Rizado</span></label><label class="op"><input type="radio" name="pelo" value="duro" data-nombre="Duro"><span class="op-t">Duro</span></label></div></fieldset>
+      <fieldset><legend>Servicio</legend><div class="ops ops-3 ops-serv"><label class="op"><input type="radio" name="serv" value="bano" data-nombre="Baño"><span class="op-t">Baño</span></label><label class="op"><input type="radio" name="serv" value="corte" checked data-nombre="Baño y corte"><span class="op-t">Baño y corte</span></label><label class="op"><input type="radio" name="serv" value="deslanado" data-nombre="Deslanado"><span class="op-t">Deslanado</span></label></div>
+        <p class="aviso" data-aviso-rizado aria-live="polite" hidden>El pelo rizado casi no suelta pelo: para él suele ir mejor el baño y el corte.</p></fieldset>
+      <div class="fila2">
+        <div class="campo"><label for="nombre">Cómo se llama</label><input id="nombre" type="text" maxlength="24" autocomplete="off" placeholder="Su nombre" data-nombre></div>
+        <fieldset><legend>¿Cómo quieres que te avisemos?</legend><div class="ops ops-2"><label class="op"><input type="radio" name="aviso" value="wa" checked><span class="op-t">Por WhatsApp</span></label><label class="op"><input type="radio" name="aviso" value="tel"><span class="op-t">Con una llamada</span></label></div></fieldset>
+      </div>
+      <fieldset><legend>¿A qué hora lo traerás?</legend><div class="ops ops-5"><label class="op"><input type="radio" name="hora" value="09:00"><span class="op-t">09:00</span></label><label class="op"><input type="radio" name="hora" value="10:00" checked><span class="op-t">10:00</span></label><label class="op"><input type="radio" name="hora" value="11:00"><span class="op-t">11:00</span></label><label class="op"><input type="radio" name="hora" value="15:30"><span class="op-t">15:30</span></label><label class="op"><input type="radio" name="hora" value="16:30"><span class="op-t">16:30</span></label></div></fieldset>
+    </form>
+  </div>
+  <div class="resultado" id="resultado" data-panel>
+    <div class="cifras">
+      <p class="precio"><span class="r-lbl">Precio orientativo</span><b><span data-precio>45</span> €</b></p>
+      <p class="tiempo"><span class="r-lbl">Tiempo</span><b data-tiempo>2 h</b><span class="listo" data-listo aria-live="polite"></span></p>
+    </div>
+    <div class="mensaje">
+      <p class="burbuja" data-msg></p>
+      <p><a class="boton oscuro" href="https://wa.me/34600000000" rel="noopener" target="_blank" data-wa>Pedir cita por WhatsApp</a></p>
+      <p class="o">O llama al <a href="tel:+34943000000">943 00 00 00</a></p>
+    </div>
+  </div>
+  <p class="nota">Si tiene nudos o hace falta más tiempo, te lo decimos antes de empezar. Aquí no se paga nada.</p>
+</section>
+
+<section class="sec precios" id="precios" aria-labelledby="h-pre">
+  <div class="pre-cab">
+    <h2 id="h-pre" data-lineas>Baño, corte y deslanado</h2>
+    <p>Precios por tamaño. Elige uno y lo pasamos a la cita.</p>
+  </div>
+  <div class="tabla-envoltura" data-panel>
+    <table class="tabla">
+      <thead><tr><td></td><th scope="col" data-col="peq">Pequeño<small>Hasta 10 kg</small></th><th scope="col" data-col="med">Mediano<small>De 10 a 25 kg</small></th><th scope="col" data-col="gra">Grande<small>Más de 25 kg</small></th></tr></thead>
+      <tbody data-escalonado>
+        <tr data-fila="bano">
+          <th scope="row"><h3>Baño</h3><p>Champú, secado, cepillado, uñas y oídos.</p></th>
+          <td><button type="button" class="celda" data-serv="bano" data-tam="peq" data-t="Pequeño" aria-label="Baño, Pequeño: 20 €">20 €</button></td><td><button type="button" class="celda" data-serv="bano" data-tam="med" data-t="Mediano" aria-label="Baño, Mediano: 26 €">26 €</button></td><td><button type="button" class="celda" data-serv="bano" data-tam="gra" data-t="Grande" aria-label="Baño, Grande: 34 €">34 €</button></td>
+        </tr>
+        <tr data-fila="corte">
+          <th scope="row"><h3>Baño y corte</h3><p>El baño y el corte, a tijera o a máquina.</p></th>
+          <td><button type="button" class="celda" data-serv="corte" data-tam="peq" data-t="Pequeño" aria-label="Baño y corte, Pequeño: 32 €">32 €</button></td><td><button type="button" class="celda" data-serv="corte" data-tam="med" data-t="Mediano" aria-label="Baño y corte, Mediano: 40 €">40 €</button></td><td><button type="button" class="celda" data-serv="corte" data-tam="gra" data-t="Grande" aria-label="Baño y corte, Grande: 52 €">52 €</button></td>
+        </tr>
+        <tr data-fila="deslanado">
+          <th scope="row"><h3>Deslanado</h3><p>Le quitaremos el pelo muerto y lo bañaremos.</p></th>
+          <td><button type="button" class="celda" data-serv="deslanado" data-tam="peq" data-t="Pequeño" aria-label="Deslanado, Pequeño: 30 €">30 €</button></td><td><button type="button" class="celda" data-serv="deslanado" data-tam="med" data-t="Mediano" aria-label="Deslanado, Mediano: 38 €">38 €</button></td><td><button type="button" class="celda" data-serv="deslanado" data-tam="gra" data-t="Grande" aria-label="Deslanado, Grande: 50 €">50 €</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="nota">Pelo largo o duro, 5 euros más; rizado, 8 euros más.</p>
+</section>
+
+<section class="sec recogida" id="recogida" aria-labelledby="h-rec">
+  <div class="rec-foto" data-panel><picture><source type="image/avif" srcset="../fotos/recogida-600.avif 600w, ../fotos/recogida-900.avif 900w, ../fotos/recogida-1200.avif 1200w" sizes="(min-width: 900px) 80vw, 180vw"><img src="../fotos/recogida-900.webp" srcset="../fotos/recogida-600.webp 600w, ../fotos/recogida-900.webp 900w, ../fotos/recogida-1200.webp 1200w" sizes="(min-width: 900px) 80vw, 180vw" width="1200" height="1500" alt="Un setter descansa la cabeza en un sofá" loading="lazy" decoding="async"></picture></div>
+  <div class="rec-txt">
+    <h2 id="h-rec" data-lineas>Te avisamos cuando esté listo</h2>
+    <p data-enciende>Cuando acabamos, te escribimos por WhatsApp o te llamamos, como prefieras. Vienes a por él cuando te venga bien.</p>
+    <fieldset><legend class="sr">¿Cómo quieres que te avisemos?</legend><div class="ops ops-2"><label class="op"><input type="radio" name="aviso2" value="wa" checked><span class="op-t">Por WhatsApp</span></label><label class="op"><input type="radio" name="aviso2" value="tel"><span class="op-t">Con una llamada</span></label></div></fieldset>
+    <div class="aviso-demo" data-aviso-demo aria-live="polite">
+      <div class="chat" data-chat>
+        <p class="chat-cab">Uhal</p>
+        <p class="chat-escribe" data-escribe>escribiendo…</p>
+        <p class="chat-msg" data-chat-msg><span data-chat-txt></span><small>ahora</small></p>
+      </div>
+      <div class="llamada" data-llamada hidden>
+        <p class="llamada-tit">Llamada de Uhal</p>
+        <p class="llamada-tel">943 00 00 00</p>
+        <p>Te llamamos en cuanto acabamos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contacto" id="contacto" aria-labelledby="h-con">
+  <h2 id="h-con" data-lineas>En la avenida de Navarra de Tolosa</h2>
+  <p>Nafarroa etorbidea 14, Tolosa</p>
+  <p>De lunes a viernes, de 09:00 a 13:30 y de 15:30 a 19:30.<br>Sábados, de 09:00 a 13:00. Domingos, cerrado.</p>
+  <p class="estado" data-estado></p>
+  <p class="con-acc"><a class="boton" href="#cita">Pedir cita</a><a class="tel" href="tel:+34943000000">943 00 00 00</a></p>
+</section>
+</main>
+
+<footer class="pie">
+  <p class="nota-datos">Datos de ejemplo: Uhal no existe. La dirección, los teléfonos, el horario, los precios, los tiempos, las horas de entrega y los mensajes son inventados.</p>
+  <p>Fotos de Unsplash; las de los tipos de pelo y la recogida, teñidas en un solo color para esta muestra: John Spence, Nicolás Pinilla, Faber Leonardo, Thijs Scheper, Tamas Pap, Dan Robinson. <a href="../fotos/creditos.json">creditos.json</a></p>
+  <p class="pie-fila"><span>Diseñado por <a class="firma" href="https://oiwebstudio.com/?utm_source=muestra-uhal&amp;utm_medium=pie" target="_blank" rel="noopener">OI Studio</a></span><a class="idioma pie-idioma" href="../" lang="eu" hreflang="eu"><span aria-hidden="true">EU</span><span class="sr">Euskaraz</span></a></p>
+</footer>
+
+<script type="application/json" id="textos">{"lang":"es","wa":"https://wa.me/34600000000","PRECIO":{"bano":[20,26,34],"corte":[32,40,52],"deslanado":[30,38,50]},"EXTRA":{"corto":0,"largo":5,"rizado":8,"duro":5},"MIN":{"bano":[45,60,75],"corte":[90,105,120],"deslanado":[75,90,120]},"MIN_PELO":{"corto":0,"largo":15,"rizado":30,"duro":15},"r_listo":"Listo hacia las 12:30.","r_listo_tarde":"Listo a partir de las 15:30.","tu_perro":"Tu perro","wa_hola":"Hola, Uhal. Quiero pedir cita.","wa_perro":"Perro","wa_tam":"Tamaño","wa_pelo":"Pelo","wa_serv":"Servicio","wa_hora":"Hora","wa_av_wa":"Avisadme por WhatsApp cuando el perro esté listo.","wa_av_tel":"Llamadme cuando el perro esté listo.","rec_msg":"Listo para recoger. Te esperamos hasta las 19:30.","est_ab_1330":"Ahora abierto, hasta las 13:30.","est_ab_1930":"Ahora abierto, hasta las 19:30.","est_ab_1300":"Ahora abierto, hasta las 13:00.","est_ce_tarde":"Ahora cerrado. Abrimos a las 15:30.","est_ce_hoy":"Ahora cerrado. Abrimos hoy a las 09:00.","est_ce_manana":"Ahora cerrado. Abrimos mañana a las 09:00.","est_ce_lunes":"Ahora cerrado. Abrimos el lunes a las 09:00.","menu":"Menú","cerrar":"Cerrar"}</script>
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/SplitText.min.js"></script>
+<script src="../js/anim-texto.js"></script>
+<script src="../js/pagina.js"></script>
+</body>
+</html>

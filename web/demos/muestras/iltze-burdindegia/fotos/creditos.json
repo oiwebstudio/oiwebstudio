@@ -1,0 +1,131 @@
+{
+ "nota": "Fotos de ejemplo de Unsplash; no son de ninguna tienda. Muestra ILTZE BURDINDEGIA (OI Studio, 9/11/2026).",
+ "fotos": [
+  {
+   "archivo": "p-denda-*.avif/webp",
+   "uso": "pase 1",
+   "autor": "Artem Korolev",
+   "perfil": "https://unsplash.com/@artemisss666",
+   "foto": "https://unsplash.com/photos/a-cluttered-hardware-store-with-shelves-full-of-boxes-UHXBNCK7Hu4",
+   "licencia": "Unsplash License (https://unsplash.com/license)",
+   "original": "3024×4032"
+  },
+  {
+   "archivo": "p-tiraderak-*.avif/webp",
+   "uso": "pase 2",
+   "autor": "Tony Litvyak",
+   "perfil": "https://unsplash.com/@justatony",
+   "foto": "https://unsplash.com/photos/a-group-of-wooden-drawers-QlmorzA-Kao",
+   "licencia": "Unsplash License (https://unsplash.com/license)",
+   "original": "4142×5178"
+  },
+  {
+   "archivo": "p-iltzeak-*.avif/webp",
+   "uso": "pase 3",
+   "autor": "Hal Gatewood",
+   "perfil": "https://unsplash.com/@halacious",
+   "foto": "https://unsplash.com/photos/gray-nails-on-clear-container-CcibUsMTIFU",
+   "licencia": "Unsplash License (https://unsplash.com/license)",
+   "original": "5184×3456"
+  },
+  {
+   "archivo": "p-zorrozkailua-*.avif/webp",
+   "uso": "pase 4",
+   "autor": "Balaji sundaram",
+   "perfil": "https://unsplash.com/@balaji619",
+   "foto": "https://unsplash.com/photos/gray-equipment-ByuZfzv4si0",
+   "licencia": "Unsplash License (https://unsplash.com/license)",
+   "original": "4496×3000"
+  },
+  {
+   "archivo": "p-torlojuak-*.avif/webp",
+   "uso": "pase 5",
+   "autor": "Simon Kadula",
+   "perfil": "https://unsplash.com/@simonkadula",
+   "foto": "https://unsplash.com/photos/a-pile-of-metal-screws-that-are-stacked-on-top-of-each-other-TnlsqwNhbCA",
+   "licencia": "Unsplash License (https://unsplash.com/license)",
+   "original": "5760×3840"
+  },
+  {
+   "archivo": "p-tresnak-*.avif/webp",
+   "uso": "pase 6",
+   "autor": "Anton Savinov",
+   "perfil": "https://unsplash.com/@tonchik",
+   "foto": "https://unsplash.com/photos/a-bunch-of-tools-hanging-up-on-a-wall-2Qlj2Gaft7w",
+   "licencia": "Unsplash License (https://unsplash.com/license)",
+   "original": "6000×4000"
+  },
+  {
+   "archivo": "m-giltza-*.avif/webp",
+   "uso": "mostrador",
+   "autor": "Jozsef Hocza",
+   "perfil": "https://unsplash.com/@hocza",
+   "foto": "https://unsplash.com/photos/three-silver-keys-y5N2HDwagVw",
+   "licencia": "Unsplash License (https://unsplash.com/license)",
+   "original": "3821×3024"
+  },
+  {
+   "archivo": "m-segurtasuna-*.avif/webp",
+   "uso": "mostrador",
+   "autor": "Basil James",
+   "perfil": "https://unsplash.com/@the_photoman",
+   "foto": "https://unsplash.com/photos/gray-stainless-steel-padlock-iC4BsZQaREg",
+   "licencia": "Unsplash License (https://unsplash.com/license)",
+   "original": "3264×2448"
+  },
+  {
+   "archivo": "m-zaharra-*.avif/webp",
+   "uso": "mostrador",
+   "autor": "Everyday basics",
+   "perfil": "https://unsplash.com/@zanardi",
+   "foto": "https://unsplash.com/photos/black-and-silver-skeleton-key-GJY1eAw6tn8",
+   "licencia": "Unsplash License (https://unsplash.com/license)",
+   "original": "3922×5874"
+  },
+  {
+   "archivo": "m-labana-*.avif/webp",
+   "uso": "mostrador",
+   "autor": "Blend Archive",
+   "perfil": "https://unsplash.com/@blendarchive",
+   "foto": "https://unsplash.com/photos/a-couple-of-knives-sitting-next-to-each-other-a-gx6boq6cU",
+   "licencia": "Unsplash License (https://unsplash.com/license)",
+   "original": "3000×4000"
+  },
+  {
+   "archivo": "m-artaziak-*.avif/webp",
+   "uso": "mostrador",
+   "autor": "Gabriel Mihalcea",
+   "perfil": "https://unsplash.com/@lovelyscape",
+   "foto": "https://unsplash.com/photos/a-pair-of-scissors-sitting-on-top-of-a-white-table-5KJzOlsDvVw",
+   "licencia": "Unsplash License (https://unsplash.com/license)",
+   "original": "5568×3712"
+  },
+  {
+   "archivo": "m-zerra-*.avif/webp",
+   "uso": "mostrador",
+   "autor": "Valentin Vlasov",
+   "perfil": "https://unsplash.com/@aga4ar",
+   "foto": "https://unsplash.com/photos/a-black-and-white-photo-of-a-gear-wheel-cx0FDPMpILs",
+   "licencia": "Unsplash License (https://unsplash.com/license)",
+   "original": "2268×4032"
+  },
+  {
+   "archivo": "m-aizkora-*.avif/webp",
+   "uso": "mostrador",
+   "autor": "Brands&People",
+   "perfil": "https://unsplash.com/@brandsandpeople",
+   "foto": "https://unsplash.com/photos/brown-wooden-cross-on-white-background-xDDBpKCM7vk",
+   "licencia": "Unsplash License (https://unsplash.com/license)",
+   "original": "3606×2400"
+  },
+  {
+   "archivo": "m-kirtena-*.avif/webp",
+   "uso": "mostrador",
+   "autor": "Wisnu Amaludin",
+   "perfil": "https://unsplash.com/@ciwis",
+   "foto": "https://unsplash.com/photos/a-hammer-with-a-wooden-handle-on-a-white-surface-0V_Da1pHqEk",
+   "licencia": "Unsplash License (https://unsplash.com/license)",
+   "original": "3840×2160"
+  }
+ ]
+}

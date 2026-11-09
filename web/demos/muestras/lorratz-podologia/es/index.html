@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Lorratz, podología en Tolosa (muestra)</title>
+<meta name="description" content="Clínica de podología de ejemplo en Tolosa: uña encarnada, durezas, plantillas, dolor al andar y pie diabético. Pide cita por WhatsApp.">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="Lorratz, podología en Tolosa (muestra)">
+<meta property="og:description" content="Clínica de podología de ejemplo en Tolosa: uña encarnada, durezas, plantillas, dolor al andar y pie diabético. Pide cita por WhatsApp.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="../fotos/og-lorratz.jpg">
+<link rel="alternate" hreflang="eu" href="../">
+<!--
+  MUESTRA «LORRATZ» (OI Studio, 9/11/2026): clínica de podología INVENTADA para la pieza «¿Qué negocio tienes?» de oiwebstudio.com.
+  «Lorratz» = rastro, huella de los pasos. Nombre, dirección, teléfonos, horario, tratamientos, minutos de cada sesión, cómo es el estudio de la
+  pisada y la forma de pedir cita son de ejemplo. noindex.
+  Calco de la referencia n.º 10 que eligió Oier: ME DERMATOLOGY (me-dermatology.com), carpeta muestras-podologia-nutricion-2026-11-07.
+  Portada: negro a pantalla completa, foto en blanco y negro muy contrastada del cuerpo en primerísimo plano (aquí el tobillo y el empeine) y
+  el monograma blanco en una didona en el centro, con el nombre debajo; solo «Menú» pequeño arriba a la derecha (revisor 9/11). Después, como la referencia:
+  franja con foto pálida (titular a la izquierda, párrafo a la derecha), dos columnas de texto (pequeño y grande), mosaico de fotos en blanco y
+  negro con el rótulo blanco en el centro (2 grandes + 3), titular y caja negra con la etiqueta en caja de borde fino, enlace subrayado centrado
+  y pie sobre foto pálida. Lo que hace: «¿Qué te pasa?» (el mosaico) → tratamiento, minutos y el WhatsApp escrito con el día y el turno.
+  Letras: 27 Bodoni Moda (monograma, nombre, titulares y rótulos) + 14 Switzer (texto, menú y botones), autoalojadas en fuentes/.
+  Fotos: Unsplash (licencia de Unsplash), pasadas a blanco y negro; detalle en fotos/creditos.json.
+  Movimiento: portada con CSS desde el primer pintado; lo de abajo con GSAP 3.13 + ScrollTrigger + SplitText (js/) + anim-texto.js + pagina.js.
+  Con «reducir movimiento» o sin JS, todo quieto y visible. Es una muestra: no se envía nada a ningún sitio (los mensajes se abren en WhatsApp).
+-->
+<link rel="preload" href="../fuentes/bodoni-moda-500_800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fuentes/switzer-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../estilo.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<!-- cabecera (revisor 9/11): solo «Menú» arriba a la derecha, como la referencia; enlaces, idioma y teléfono dentro del panel -->
+<header class="cab">
+  <button class="cab-menu" type="button" aria-expanded="false" aria-controls="menu">Menú</button>
+  <nav class="menu" id="menu" aria-label="Menú">
+    <ul><li><a href="#zer">Qué te pasa</a></li><li><a href="#oinatza">Pisada</a></li><li><a href="#hitzordua">Pedir cita</a></li><li><a href="#non">Dónde estamos</a></li></ul>
+    <p class="menu-idioma"><a href="../" lang="eu" hreflang="eu">Euskaraz</a></p>
+    <p><a href="tel:+34943000000">943 00 00 00</a></p>
+  </nav>
+</header>
+
+<main id="contenido">
+<section class="portada" aria-labelledby="h1">
+  <div class="portada-foto"><picture class="pf"><source media="(max-width: 700px)" type="image/avif" srcset="../fotos/portada-m-600.avif 600w, ../fotos/portada-m-1000.avif 1000w" sizes="100vw"><source media="(max-width: 700px)" type="image/webp" srcset="../fotos/portada-m-600.webp 600w, ../fotos/portada-m-1000.webp 1000w" sizes="100vw"><source type="image/avif" srcset="../fotos/portada-1280.avif 1280w, ../fotos/portada-1920.avif 1920w, ../fotos/portada-2800.avif 2800w" sizes="100vw"><img src="../fotos/portada-1920.webp" srcset="../fotos/portada-1280.webp 1280w, ../fotos/portada-1920.webp 1920w, ../fotos/portada-2800.webp 2800w" sizes="100vw" width="2800" height="1750" alt="Tobillo y empeine de un pie descalzo, en blanco y negro sobre fondo negro" fetchpriority="high" decoding="async"></picture></div>
+  <div class="portada-txt">
+    <h1 id="h1" class="portada-h1">
+      <span class="mono " aria-hidden="true"><span class="m-l">L</span><span class="m-o">o</span></span>
+      <span class="nombre" aria-hidden="true">LORRATZ</span>
+      <span class="sr">Lorratz, clínica de podología en Tolosa</span>
+    </h1>
+    <p class="espec" aria-hidden="true">Podología en Tolosa</p>
+  </div>
+</section>
+
+<section class="intro" aria-labelledby="h-intro">
+  <div class="intro-foto" aria-hidden="true"><picture><source type="image/avif" srcset="../fotos/aparra-1280.avif 1280w, ../fotos/aparra-1920.avif 1920w, ../fotos/aparra-2560.avif 2560w" sizes="100vw"><img src="../fotos/aparra-1920.webp" srcset="../fotos/aparra-1280.webp 1280w, ../fotos/aparra-1920.webp 1920w, ../fotos/aparra-2560.webp 2560w" sizes="100vw" width="3869" height="1759" alt="" loading="lazy" decoding="async"></picture></div>
+  <div class="intro-in">
+    <h2 id="h-intro" data-lineas>Dinos qué te pasa y verás tu tratamiento</h2>
+  </div>
+</section>
+
+<section class="pisada" id="oinatza" aria-labelledby="h-pisada">
+  <div class="pisada-a">
+    <h2 id="h-pisada" data-lineas>Estudio de la pisada y plantillas</h2>
+    <p>Caminas sobre una plataforma y tomamos el molde de tu pie.</p>
+  </div>
+  <div class="pisada-b">
+    <p class="grande" data-enciende>Hacemos las plantillas con el molde de tu pie y te las probamos en la consulta antes de que te las lleves.</p>
+    <a class="btn" href="#hitzordua" data-elige="plantillas">Pide el estudio de tu pisada</a>
+  </div>
+</section>
+
+<section class="zer" id="zer" aria-labelledby="h-zer">
+  <div class="zer-cab">
+    <h2 id="h-zer" data-lineas>¿Qué te pasa?</h2>
+    <p>Elige lo que te pasa y verás qué tratamiento es, cuánto dura la sesión y el mensaje de WhatsApp ya escrito.</p>
+  </div>
+  <ul class="losas">
+      <li class="losa grande" data-panel="foto"><button type="button" class="losa-b" data-prob="una" aria-pressed="true" aria-controls="tarjeta">
+        <picture><source type="image/avif" srcset="../fotos/azazkala-640.avif 640w, ../fotos/azazkala-960.avif 960w, ../fotos/azazkala-1300.avif 1300w" sizes="(min-width: 760px) 46vw, 92vw"><img src="../fotos/azazkala-960.webp" srcset="../fotos/azazkala-640.webp 640w, ../fotos/azazkala-960.webp 960w, ../fotos/azazkala-1300.webp 1300w" sizes="(min-width: 760px) 46vw, 92vw" width="4000" height="2667" alt="Dedo gordo del pie y su uña, muy de cerca" loading="lazy" decoding="async"></picture>
+        <span class="losa-t">Uña encarnada</span></button></li>
+      <li class="losa grande" data-panel="foto"><button type="button" class="losa-b" data-prob="durezas" aria-pressed="false" aria-controls="tarjeta">
+        <picture><source type="image/avif" srcset="../fotos/oin-zolak-640.avif 640w, ../fotos/oin-zolak-960.avif 960w, ../fotos/oin-zolak-1300.avif 1300w" sizes="(min-width: 760px) 46vw, 92vw"><img src="../fotos/oin-zolak-960.webp" srcset="../fotos/oin-zolak-640.webp 640w, ../fotos/oin-zolak-960.webp 960w, ../fotos/oin-zolak-1300.webp 1300w" sizes="(min-width: 760px) 46vw, 92vw" width="3573" height="2366" alt="La planta de dos pies descalzos, en blanco y negro" loading="lazy" decoding="async"></picture>
+        <span class="losa-t">Durezas y callos</span></button></li>
+      <li class="losa " data-panel="foto"><button type="button" class="losa-b" data-prob="plantillas" aria-pressed="false" aria-controls="tarjeta">
+        <picture><source type="image/avif" srcset="../fotos/lorratza-hondarrean-480.avif 480w, ../fotos/lorratza-hondarrean-720.avif 720w, ../fotos/lorratza-hondarrean-960.avif 960w" sizes="(min-width: 760px) 30vw, 92vw"><img src="../fotos/lorratza-hondarrean-720.webp" srcset="../fotos/lorratza-hondarrean-480.webp 480w, ../fotos/lorratza-hondarrean-720.webp 720w, ../fotos/lorratza-hondarrean-960.webp 960w" sizes="(min-width: 760px) 30vw, 92vw" width="3254" height="2667" alt="Huella de un pie en la arena" loading="lazy" decoding="async"></picture>
+        <span class="losa-t">Plantillas</span></button></li>
+      <li class="losa " data-panel="foto"><button type="button" class="losa-b" data-prob="dolor" aria-pressed="false" aria-controls="tarjeta">
+        <picture><source type="image/avif" srcset="../fotos/oinez-kalean-480.avif 480w, ../fotos/oinez-kalean-720.avif 720w, ../fotos/oinez-kalean-960.avif 960w" sizes="(min-width: 760px) 30vw, 92vw"><img src="../fotos/oinez-kalean-720.webp" srcset="../fotos/oinez-kalean-480.webp 480w, ../fotos/oinez-kalean-720.webp 720w, ../fotos/oinez-kalean-960.webp 960w" sizes="(min-width: 760px) 30vw, 92vw" width="3254" height="2667" alt="Pies con zapatos caminando por una acera" loading="lazy" decoding="async"></picture>
+        <span class="losa-t">Dolor al andar</span></button></li>
+      <li class="losa " data-panel="foto"><button type="button" class="losa-b" data-prob="diabetico" aria-pressed="false" aria-controls="tarjeta">
+        <picture><source type="image/avif" srcset="../fotos/oin-zola-480.avif 480w, ../fotos/oin-zola-720.avif 720w, ../fotos/oin-zola-960.avif 960w" sizes="(min-width: 760px) 30vw, 92vw"><img src="../fotos/oin-zola-720.webp" srcset="../fotos/oin-zola-480.webp 480w, ../fotos/oin-zola-720.webp 720w, ../fotos/oin-zola-960.webp 960w" sizes="(min-width: 760px) 30vw, 92vw" width="3904" height="3200" alt="Planta de un pie descalzo sobre fondo negro" loading="lazy" decoding="async"></picture>
+        <span class="losa-t">Pie diabético</span></button></li>
+  </ul>
+</section>
+
+<section class="cita" id="hitzordua" aria-labelledby="h-cita">
+  <h2 id="h-cita" data-lineas>Pide cita sin llamar</h2>
+  <form class="tarjeta" id="tarjeta" data-cita onsubmit="return false" data-panel="sube">
+    <div class="t-arriba">
+      <p class="t-prob" data-t-prob>Uña encarnada</p>
+      <p class="t-min"><span data-t-min>45</span> min</p>
+    </div>
+    <div class="t-trat" aria-live="polite">
+      <h3 class="t-tit"><span class="sr">Tratamiento: </span><span data-t-tit>Tratamiento de la uña encarnada</span></h3>
+      <p class="t-p" data-t-p>Quitamos el trozo de uña que se clava y curamos la herida. Si vuelve a pasar, te explicamos la cirugía de la uña.</p>
+    </div>
+    <div class="t-abajo">
+      <fieldset class="t-dias">
+        <legend>¿Qué día te viene bien?</legend>
+        <div class="opcs dias" data-dias><label class="opc"><input type="radio" name="dia" value="1" data-t="Lunes" checked><span>Lunes</span></label><label class="opc"><input type="radio" name="dia" value="2" data-t="Martes"><span>Martes</span></label><label class="opc"><input type="radio" name="dia" value="3" data-t="Miércoles"><span>Miércoles</span></label><label class="opc"><input type="radio" name="dia" value="4" data-t="Jueves"><span>Jueves</span></label><label class="opc"><input type="radio" name="dia" value="5" data-t="Viernes"><span>Viernes</span></label></div>
+        <div class="opcs turnos"><label class="opc"><input type="radio" name="turno" value="m" data-t="Por la mañana" checked><span>Por la mañana</span></label><label class="opc"><input type="radio" name="turno" value="t" data-t="Por la tarde"><span>Por la tarde</span></label></div>
+      </fieldset>
+      <div class="t-msg">
+        <p class="msg-tit">Tu mensaje</p>
+        <p class="msg" data-msg aria-live="polite">Hola, quiero pedir cita en Lorratz.<br>Lo que me pasa: Uña encarnada<br>Tratamiento: Tratamiento de la uña encarnada (45 min)<br>Día: Lunes (por la mañana)</p>
+        <a class="btn btn-blanco" href="https://wa.me/34600000000?text=Hola%2C%20quiero%20pedir%20cita%20en%20Lorratz.%0ALo%20que%20me%20pasa%3A%20U%C3%B1a%20encarnada%0ATratamiento%3A%20Tratamiento%20de%20la%20u%C3%B1a%20encarnada%20(45%20min)%0AD%C3%ADa%3A%20Lunes%20(por%20la%20ma%C3%B1ana)" rel="noopener" data-wa><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-3.8A8 8 0 1 1 8 19z"/><path d="M9 9.5c.3 2 2.2 4.2 4.6 5l1.2-1.2 1.9.9"/></svg>Abrir WhatsApp con el mensaje</a>
+        <p class="confirma">Te contestamos por WhatsApp para darte la hora.</p>
+      </div>
+    </div>
+  </form>
+  <p class="llamar"><a href="tel:+34943000000">¿Prefieres llamar? 943 00 00 00</a></p>
+</section>
+</main>
+
+<footer class="pie" id="non">
+  <div class="pie-foto" aria-hidden="true"><picture><source type="image/avif" srcset="../fotos/lorratzak-1280.avif 1280w, ../fotos/lorratzak-1920.avif 1920w, ../fotos/lorratzak-2643.avif 2643w" sizes="100vw"><img src="../fotos/lorratzak-1920.webp" srcset="../fotos/lorratzak-1280.webp 1280w, ../fotos/lorratzak-1920.webp 1920w, ../fotos/lorratzak-2643.webp 2643w" sizes="100vw" width="2643" height="1101" alt="" loading="lazy" decoding="async"></picture></div>
+  <div class="pie-in">
+    <div class="pie-col pie-marca"><span class="mono mono-pie" aria-hidden="true"><span class="m-l">L</span><span class="m-o">o</span></span><p class="pie-nombre">LORRATZ</p><p class="pie-ahora" data-ahora></p></div>
+    <div class="pie-col"><h2>Menú</h2><ul><li><a href="#zer">Qué te pasa</a></li><li><a href="#oinatza">Pisada</a></li><li><a href="#hitzordua">Pedir cita</a></li><li><a href="#non">Dónde estamos</a></li><li><a href="../" lang="eu" hreflang="eu">Euskaraz</a></li></ul></div>
+    <div class="pie-col"><h2>Dónde estamos</h2><p>Korreo kalea 0, Tolosa</p><h2 class="h-sig">Teléfono</h2><ul><li><a href="tel:+34943000000">943 00 00 00</a></li><li><a href="https://wa.me/34600000000" rel="noopener">WhatsApp 600 00 00 00</a></li></ul></div>
+    <div class="pie-col"><h2>Horario</h2>
+      <ul class="hor" data-escalonado>
+        <li data-dias="1,2,3,4,5"><span>De lunes a viernes</span><span>9:00–13:30 y 15:30–19:30</span></li>
+        <li data-dias="6,0"><span>Sábado y domingo</span><span>Cerrado</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="pie-abajo">
+    <p>Datos de ejemplo: Lorratz no existe. El nombre, la dirección, los teléfonos, el horario, los tratamientos, lo que dura cada sesión, cómo se hace el estudio de la pisada y la forma de pedir cita son inventados.</p>
+    <p>Fotos de ejemplo de Unsplash, en blanco y negro: <a href="../fotos/creditos.json">creditos.json</a></p>
+    <p class="firma">Diseñado por <a href="https://oiwebstudio.com/">OI Studio</a></p>
+  </div>
+</footer>
+
+<script type="application/json" id="textos">{"lang":"es","menu":"Menú","cerrar":"Cerrar el menú","hoy":"hoy","dias":["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"],"manana":"Por la mañana","tarde":"Por la tarde","wa_hola":"Hola, quiero pedir cita en Lorratz.","wa_que":"Lo que me pasa","wa_trat":"Tratamiento","wa_dia":"Día","minutos":"min","abierto":"Ahora está abierto","cerrado":"Ahora está cerrado","H":{"0":[],"1":[[540,810],[930,1170]],"2":[[540,810],[930,1170]],"3":[[540,810],[930,1170]],"4":[[540,810],[930,1170]],"5":[[540,810],[930,1170]],"6":[]},"WA":"https://wa.me/34600000000","prob":{"una":{"n":"Uña encarnada","t":"Tratamiento de la uña encarnada","p":"Quitamos el trozo de uña que se clava y curamos la herida. Si vuelve a pasar, te explicamos la cirugía de la uña.","min":45},"durezas":{"n":"Durezas y callos","t":"Quiropodia","p":"Te quitamos las durezas y los callos, y te cortamos y limamos las uñas.","min":40},"plantillas":{"n":"Plantillas","t":"Estudio de la pisada y plantillas","p":"Miramos cómo pisas, tomamos el molde de tu pie y quedamos otro día para probar las plantillas.","min":60},"dolor":{"n":"Dolor al andar","t":"Exploración del pie","p":"Buscamos de dónde viene el dolor: miramos el pie, el tobillo y tu forma de andar.","min":45},"diabetico":{"n":"Pie diabético","t":"Revisión del pie diabético","p":"Miramos la sensibilidad, la circulación, la piel y las uñas, y te decimos cada cuánto tienes que volver.","min":40}}}</script>
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/SplitText.min.js"></script>
+<script src="../js/anim-texto.js"></script>
+<script src="../js/pagina.js"></script>
+</body>
+</html>

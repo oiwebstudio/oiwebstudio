@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Uhal, txakurren ile-apainketa Tolosan</title>
+<meta name="description" content="Txakurren ile-apainketa Tolosan. Aukeratu tamaina eta ilea, eta prezioa, zenbat denbora behar dugun eta mezua aterako zaizu hitzordua eskatzeko.">
+<meta name="theme-color" content="#5a2a22">
+<meta property="og:title" content="Uhal, txakurren ile-apainketa Tolosan">
+<meta property="og:description" content="Txakurren ile-apainketa Tolosan. Aukeratu tamaina eta ilea, eta prezioa, zenbat denbora behar dugun eta mezua aterako zaizu hitzordua eskatzeko.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="fotos/portada-d-1280.webp">
+<link rel="alternate" hreflang="es" href="es/">
+<!--
+  MUESTRA «UHAL» (OI Studio, 9/11/2026): peluquería canina INVENTADA en Tolosa para la pieza «¿Qué negocio tienes?» de oiwebstudio.com.
+  «Uhal» = correa (la de la foto de portada). Dirección, teléfonos, horario, precios, tiempos, horas de entrega y mensajes son de
+  ejemplo (lo dice la nota del pie, una vez). noindex.
+  Calco de THE DOG HOTEL (lámina de Pixels Unleashed en Pinterest, sin web viva), referencia n.º 16 del tablero
+  muestras-peluqueria-canina-2026-11-07 que eligió Oier: foto a sangre tono sobre tono (perro, pared y suelo del mismo color; aquí
+  un vizsla de pelo rojizo natural delante de una puerta de madera, con solo lo gris teñido suave, fondoSuave en tono.cjs; las demás fotos,
+  teñidas a un solo tono con tono.cjs), nombre en serif clásica blanca centrada con una línea
+  en mayúsculas de la misma letra debajo (con las rayas a los lados en escritorio, como la lámina; pedido del revisor el 9/11), cabecera transparente con el texto pequeño a la izquierda, dos
+  enlaces y un botón blanco rectangular a la derecha; debajo, secciones blancas con los títulos en serif granate. Fuera la fila de tres
+  fichas con icono de la lámina (que_no_copiar).
+  Letra: n.º 31 Brygada 1918 500/700 en todo, como la lámina (una sola serif clásica). Sin cursiva.
+  Fotos: Unsplash (licencia de Unsplash): John Spence, Nicolás Pinilla, Faber Leonardo, Thijs Scheper, Tamas Pap, Dan Robinson. Detalle en fotos/creditos.json.
+  Movimiento: la portada entra con CSS desde el primer pintado; lo de abajo, con GSAP 3.13 + ScrollTrigger + SplitText (js/)
+  + anim-texto.js + pagina.js. Con «reducir movimiento» o sin JS, todo quieto y visible.
+-->
+<link rel="preload" href="fuentes/brygada-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="estilo.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="saltar" href="#cita">Edukira joan</a>
+
+<header class="cab">
+  <a class="logo" href="#contenido">Txakurren ile-apainketa</a>
+  <nav class="nav" aria-label="Menua">
+    <a href="#precios">Prezioak</a>
+    <a href="#recogida">Bilketa</a>
+    <a class="boton" href="#cita">Hitzordua eskatu</a>
+    <a class="idioma " href="es/" lang="es" hreflang="es"><span aria-hidden="true">ES</span><span class="sr">Gaztelaniaz</span></a>
+  </nav>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-movil" data-menu-btn>Menua</button>
+</header>
+<div class="menu-movil" id="menu-movil" data-menu hidden>
+  <div class="menu-cab"><span class="logo">Txakurren ile-apainketa</span><button class="menu-btn" type="button" data-menu-cerrar>Itxi</button></div>
+  <nav aria-label="Menua"><ul><li><a href="#cita">Hitzordua eskatu</a></li><li><a href="#precios">Prezioak</a></li><li><a href="#recogida">Bilketa</a></li><li><a href="#contacto">Kontaktua</a></li></ul></nav>
+  <p class="menu-pie"><a href="tel:+34943000000">943 00 00 00</a><a class="idioma " href="es/" lang="es" hreflang="es"><span aria-hidden="true">ES</span><span class="sr">Gaztelaniaz</span></a></p>
+</div>
+
+<main id="contenido">
+<section class="portada" data-portada>
+  <div class="portada-foto"><picture><source media="(max-width: 699px)" type="image/avif" srcset="fotos/portada-m-600.avif 600w, fotos/portada-m-900.avif 900w, fotos/portada-m-1200.avif 1200w" sizes="100vw"><source media="(max-width: 699px)" type="image/webp" srcset="fotos/portada-m-600.webp 600w, fotos/portada-m-900.webp 900w, fotos/portada-m-1200.webp 1200w" sizes="100vw"><source type="image/avif" srcset="fotos/portada-d-1280.avif 1280w, fotos/portada-d-1920.avif 1920w, fotos/portada-d-2560.avif 2560w" sizes="100vw"><img src="fotos/portada-d-1920.webp" srcset="fotos/portada-d-1280.webp 1280w, fotos/portada-d-1920.webp 1920w, fotos/portada-d-2560.webp 2560w" sizes="100vw" width="2560" height="1600" alt="Ile gorrixkako txakur bat ohean etzanda, egurrezko ate baten aurrean" fetchpriority="high" decoding="async"></picture></div>
+  <div class="portada-txt">
+    <h1 class="nombre"><span class="sr">Uhal. Uhal, txakurren ile-apainketa Tolosan</span><span class="letras" aria-hidden="true"><span class="l" style="--i:0">U</span><span class="l" style="--i:1">H</span><span class="l" style="--i:2">A</span><span class="l" style="--i:3">L</span></span></h1>
+    <p class="sub">Bainatu, moztu eta ile hila kendu Tolosan</p>
+  </div>
+</section>
+
+<section class="sec cita" id="cita" aria-labelledby="h-cita">
+  <div class="cab-sec">
+    <h2 id="h-cita" data-lineas>Zein txakur ekarriko duzu?</h2>
+    <p>Aukeratu tamaina, ilea eta behar duena. Prezioa, behar dugun denbora eta hitzordua eskatzeko mezua ateratzen zaizkizu.</p>
+  </div>
+  <div class="cita-grid">
+    <div class="marco" data-panel><div class="foto-pelo" data-foto-pelo="corto" aria-hidden="true"><picture><source type="image/avif" srcset="fotos/pelo-corto-600.avif 600w, fotos/pelo-corto-900.avif 900w, fotos/pelo-corto-1200.avif 1200w" sizes="(min-width: 900px) 84vw, 180vw"><img src="fotos/pelo-corto-900.webp" srcset="fotos/pelo-corto-600.webp 600w, fotos/pelo-corto-900.webp 900w, fotos/pelo-corto-1200.webp 1200w" sizes="(min-width: 900px) 84vw, 180vw" width="1200" height="1500" alt="Ile motzeko tekkel bat gora begira dago" loading="lazy" decoding="async"></picture></div><div class="foto-pelo activa" data-foto-pelo="largo"><picture><source type="image/avif" srcset="fotos/pelo-largo-600.avif 600w, fotos/pelo-largo-900.avif 900w, fotos/pelo-largo-1200.avif 1200w" sizes="(min-width: 900px) 84vw, 180vw"><img src="fotos/pelo-largo-900.webp" srcset="fotos/pelo-largo-600.webp 600w, fotos/pelo-largo-900.webp 900w, fotos/pelo-largo-1200.webp 1200w" sizes="(min-width: 900px) 84vw, 180vw" width="1200" height="1500" alt="Ile luzeko golden bat kamerari begira" loading="lazy" decoding="async"></picture></div><div class="foto-pelo" data-foto-pelo="rizado" aria-hidden="true"><picture><source type="image/avif" srcset="fotos/pelo-rizado-600.avif 600w, fotos/pelo-rizado-900.avif 900w, fotos/pelo-rizado-1200.avif 1200w" sizes="(min-width: 900px) 84vw, 180vw"><img src="fotos/pelo-rizado-900.webp" srcset="fotos/pelo-rizado-600.webp 600w, fotos/pelo-rizado-900.webp 900w, fotos/pelo-rizado-1200.webp 1200w" sizes="(min-width: 900px) 84vw, 180vw" width="1200" height="1500" alt="Txakur ile-kizkur bat mihia kanpoan duela" loading="lazy" decoding="async"></picture></div><div class="foto-pelo" data-foto-pelo="duro" aria-hidden="true"><picture><source type="image/avif" srcset="fotos/pelo-duro-600.avif 600w, fotos/pelo-duro-900.avif 900w, fotos/pelo-duro-1200.avif 1200w" sizes="(min-width: 900px) 84vw, 180vw"><img src="fotos/pelo-duro-900.webp" srcset="fotos/pelo-duro-600.webp 600w, fotos/pelo-duro-900.webp 900w, fotos/pelo-duro-1200.webp 1200w" sizes="(min-width: 900px) 84vw, 180vw" width="1200" height="1500" alt="Txakur txiki bat, ile gogorrekoa, etzanda." loading="lazy" decoding="async"></picture></div></div>
+    <form class="calc" data-calc onsubmit="return false">
+      <fieldset><legend>Tamaina</legend><div class="ops ops-3"><label class="op"><input type="radio" name="tam" value="peq" data-nombre="Txikia"><span class="op-t">Txikia<small>10 kg arte</small></span></label><label class="op"><input type="radio" name="tam" value="med" checked data-nombre="Ertaina"><span class="op-t">Ertaina<small>10-25 kg</small></span></label><label class="op"><input type="radio" name="tam" value="gra" data-nombre="Handia"><span class="op-t">Handia<small>25 kg-tik gora</small></span></label></div></fieldset>
+      <fieldset><legend>Ilea</legend><div class="ops ops-4"><label class="op"><input type="radio" name="pelo" value="corto" data-nombre="Laburra"><span class="op-t">Laburra</span></label><label class="op"><input type="radio" name="pelo" value="largo" checked data-nombre="Luzea"><span class="op-t">Luzea</span></label><label class="op"><input type="radio" name="pelo" value="rizado" data-nombre="Kizkurra"><span class="op-t">Kizkurra</span></label><label class="op"><input type="radio" name="pelo" value="duro" data-nombre="Gogorra"><span class="op-t">Gogorra</span></label></div></fieldset>
+      <fieldset><legend>Zerbitzua</legend><div class="ops ops-3 ops-serv"><label class="op"><input type="radio" name="serv" value="bano" data-nombre="Bainua"><span class="op-t">Bainua</span></label><label class="op"><input type="radio" name="serv" value="corte" checked data-nombre="Bainua eta ebaketa"><span class="op-t">Bainua eta ebaketa</span></label><label class="op"><input type="radio" name="serv" value="deslanado" data-nombre="Ile hila kentzea"><span class="op-t">Ile hila kentzea</span></label></div>
+        <p class="aviso" data-aviso-rizado aria-live="polite" hidden>Ile kizkurrak ia ez du ilerik askatzen: harentzat hobeto joaten da bainua eta ebaketa.</p></fieldset>
+      <div class="fila2">
+        <div class="campo"><label for="nombre">Nola du izena?</label><input id="nombre" type="text" maxlength="24" autocomplete="off" placeholder="Izena" data-nombre></div>
+        <fieldset><legend>Nola nahi duzu abisatzea?</legend><div class="ops ops-2"><label class="op"><input type="radio" name="aviso" value="wa" checked><span class="op-t">WhatsApp bidez</span></label><label class="op"><input type="radio" name="aviso" value="tel"><span class="op-t">Dei batekin</span></label></div></fieldset>
+      </div>
+      <fieldset><legend>Zer ordutan ekarriko duzu?</legend><div class="ops ops-5"><label class="op"><input type="radio" name="hora" value="09:00"><span class="op-t">09:00</span></label><label class="op"><input type="radio" name="hora" value="10:00" checked><span class="op-t">10:00</span></label><label class="op"><input type="radio" name="hora" value="11:00"><span class="op-t">11:00</span></label><label class="op"><input type="radio" name="hora" value="15:30"><span class="op-t">15:30</span></label><label class="op"><input type="radio" name="hora" value="16:30"><span class="op-t">16:30</span></label></div></fieldset>
+    </form>
+  </div>
+  <div class="resultado" id="resultado" data-panel>
+    <div class="cifras">
+      <p class="precio"><span class="r-lbl">Prezio orientagarria</span><b><span data-precio>45</span> €</b></p>
+      <p class="tiempo"><span class="r-lbl">Denbora</span><b data-tiempo>2 h</b><span class="listo" data-listo aria-live="polite"></span></p>
+    </div>
+    <div class="mensaje">
+      <p class="burbuja" data-msg></p>
+      <p><a class="boton oscuro" href="https://wa.me/34600000000" rel="noopener" target="_blank" data-wa>Hitzordua eskatu WhatsApp bidez</a></p>
+      <p class="o">Edo deitu <a href="tel:+34943000000">943 00 00 00</a></p>
+    </div>
+  </div>
+  <p class="nota">Korapilorik badu edo denbora gehiago behar bada, hasi aurretik esango dizugu. Hemen ez da ezer ordaintzen.</p>
+</section>
+
+<section class="sec precios" id="precios" aria-labelledby="h-pre">
+  <div class="pre-cab">
+    <h2 id="h-pre" data-lineas>Bainatu, moztu eta ile hila kendu</h2>
+    <p>Prezioak tamainaren arabera. Aukeratu bat eta hitzordura pasatuko dugu.</p>
+  </div>
+  <div class="tabla-envoltura" data-panel>
+    <table class="tabla">
+      <thead><tr><td></td><th scope="col" data-col="peq">Txikia<small>10 kg arte</small></th><th scope="col" data-col="med">Ertaina<small>10-25 kg</small></th><th scope="col" data-col="gra">Handia<small>25 kg-tik gora</small></th></tr></thead>
+      <tbody data-escalonado>
+        <tr data-fila="bano">
+          <th scope="row"><h3>Bainua</h3><p>Xanpua, lehortzea, eskuilatzea, azazkalak eta belarriak.</p></th>
+          <td><button type="button" class="celda" data-serv="bano" data-tam="peq" data-t="Txikia" aria-label="Bainua, Txikia: 20 €">20 €</button></td><td><button type="button" class="celda" data-serv="bano" data-tam="med" data-t="Ertaina" aria-label="Bainua, Ertaina: 26 €">26 €</button></td><td><button type="button" class="celda" data-serv="bano" data-tam="gra" data-t="Handia" aria-label="Bainua, Handia: 34 €">34 €</button></td>
+        </tr>
+        <tr data-fila="corte">
+          <th scope="row"><h3>Bainua eta ebaketa</h3><p>Bainua eta ebaketa, guraizez edo makinaz.</p></th>
+          <td><button type="button" class="celda" data-serv="corte" data-tam="peq" data-t="Txikia" aria-label="Bainua eta ebaketa, Txikia: 32 €">32 €</button></td><td><button type="button" class="celda" data-serv="corte" data-tam="med" data-t="Ertaina" aria-label="Bainua eta ebaketa, Ertaina: 40 €">40 €</button></td><td><button type="button" class="celda" data-serv="corte" data-tam="gra" data-t="Handia" aria-label="Bainua eta ebaketa, Handia: 52 €">52 €</button></td>
+        </tr>
+        <tr data-fila="deslanado">
+          <th scope="row"><h3>Ile hila kentzea</h3><p>Ile hila kendu eta bainatu egingo dugu.</p></th>
+          <td><button type="button" class="celda" data-serv="deslanado" data-tam="peq" data-t="Txikia" aria-label="Ile hila kentzea, Txikia: 30 €">30 €</button></td><td><button type="button" class="celda" data-serv="deslanado" data-tam="med" data-t="Ertaina" aria-label="Ile hila kentzea, Ertaina: 38 €">38 €</button></td><td><button type="button" class="celda" data-serv="deslanado" data-tam="gra" data-t="Handia" aria-label="Ile hila kentzea, Handia: 50 €">50 €</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="nota">Ile luzea edo gogorra, 5 euro gehiago; kizkurra, 8 euro gehiago.</p>
+</section>
+
+<section class="sec recogida" id="recogida" aria-labelledby="h-rec">
+  <div class="rec-foto" data-panel><picture><source type="image/avif" srcset="fotos/recogida-600.avif 600w, fotos/recogida-900.avif 900w, fotos/recogida-1200.avif 1200w" sizes="(min-width: 900px) 80vw, 180vw"><img src="fotos/recogida-900.webp" srcset="fotos/recogida-600.webp 600w, fotos/recogida-900.webp 900w, fotos/recogida-1200.webp 1200w" sizes="(min-width: 900px) 80vw, 180vw" width="1200" height="1500" alt="Setter batek sofa batean pausatzen du burua" loading="lazy" decoding="async"></picture></div>
+  <div class="rec-txt">
+    <h2 id="h-rec" data-lineas>Prest dagoenean abisatuko dizugu</h2>
+    <p data-enciende>Amaitzen dugunean, WhatsApp bidez idatzi edo deituko dizugu, nahiago duzun bezala. Ondo datorkizunean etortzen zara haren bila.</p>
+    <fieldset><legend class="sr">Nola nahi duzu abisatzea?</legend><div class="ops ops-2"><label class="op"><input type="radio" name="aviso2" value="wa" checked><span class="op-t">WhatsApp bidez</span></label><label class="op"><input type="radio" name="aviso2" value="tel"><span class="op-t">Dei batekin</span></label></div></fieldset>
+    <div class="aviso-demo" data-aviso-demo aria-live="polite">
+      <div class="chat" data-chat>
+        <p class="chat-cab">Uhal</p>
+        <p class="chat-escribe" data-escribe>idazten...</p>
+        <p class="chat-msg" data-chat-msg><span data-chat-txt></span><small>orain</small></p>
+      </div>
+      <div class="llamada" data-llamada hidden>
+        <p class="llamada-tit">Uhalen deia</p>
+        <p class="llamada-tel">943 00 00 00</p>
+        <p>Bukatu bezain laster deituko dizugu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contacto" id="contacto" aria-labelledby="h-con">
+  <h2 id="h-con" data-lineas>Tolosako Nafarroa etorbidean</h2>
+  <p>Nafarroa etorbidea 14, Tolosa</p>
+  <p>Astelehenetik ostiralera, 09:00etatik 13:30era eta 15:30etik 19:30era.<br>Larunbatetan, 09:00etatik 13:00etara. Igandeetan, itxita.</p>
+  <p class="estado" data-estado></p>
+  <p class="con-acc"><a class="boton" href="#cita">Hitzordua eskatu</a><a class="tel" href="tel:+34943000000">943 00 00 00</a></p>
+</section>
+</main>
+
+<footer class="pie">
+  <p class="nota-datos">Adibide datuak: Uhal ez da existitzen. Helbidea, telefonoak, ordutegia, prezioak, denborak, entrega-orduak eta mezuak asmatuak dira.</p>
+  <p>Unsplash-en argazkiak; ile motenak eta bilketarenak, kolore bakarrean tindatuak erakusketa honetarako: John Spence, Nicolás Pinilla, Faber Leonardo, Thijs Scheper, Tamas Pap, Dan Robinson. <a href="fotos/creditos.json">creditos.json</a></p>
+  <p class="pie-fila"><span>Diseinatzailea: <a class="firma" href="https://oiwebstudio.com/?utm_source=muestra-uhal&amp;utm_medium=pie" target="_blank" rel="noopener">OI Studio</a></span><a class="idioma pie-idioma" href="es/" lang="es" hreflang="es"><span aria-hidden="true">ES</span><span class="sr">Gaztelaniaz</span></a></p>
+</footer>
+
+<script type="application/json" id="textos">{"lang":"eu","wa":"https://wa.me/34600000000","PRECIO":{"bano":[20,26,34],"corte":[32,40,52],"deslanado":[30,38,50]},"EXTRA":{"corto":0,"largo":5,"rizado":8,"duro":5},"MIN":{"bano":[45,60,75],"corte":[90,105,120],"deslanado":[75,90,120]},"MIN_PELO":{"corto":0,"largo":15,"rizado":30,"duro":15},"r_listo":"12:30ak aldera prest.","r_listo_tarde":"15:30etatik aurrera prest.","tu_perro":"Zure txakurra","wa_hola":"Kaixo, Uhal. Hitzordua eskatu nahi dut.","wa_perro":"Txakurra","wa_tam":"Tamaina","wa_pelo":"Ilea","wa_serv":"Zerbitzua","wa_hora":"Ordua","wa_av_wa":"Abisatu WhatsApp bidez txakurra prest dagoenean.","wa_av_tel":"Deitu txakurra prest dagoenean.","rec_msg":"Jasotzeko prest. 19:30ak arte itxarongo zaitugu.","est_ab_1330":"Orain irekita, 13:30ak arte.","est_ab_1930":"Orain irekita, 19:30ak arte.","est_ab_1300":"Orain irekita, 13:00ak arte.","est_ce_tarde":"Orain itxita. 15:30ean irekiko dugu.","est_ce_hoy":"Orain itxita. Gaur 09:00etan irekiko dugu.","est_ce_manana":"Orain itxita. Bihar 09:00etan irekiko dugu.","est_ce_lunes":"Orain itxita. Astelehenean irekiko dugu, 09:00etan.","menu":"Menua","cerrar":"Itxi"}</script>
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/SplitText.min.js"></script>
+<script src="js/anim-texto.js"></script>
+<script src="js/pagina.js"></script>
+</body>
+</html>
