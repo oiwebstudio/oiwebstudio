@@ -1,0 +1,2 @@
+sx_gimnasio_c	Klase bakoitzaren prezioa, zenbat egunetan entrenatzen duzun
+sx_veterinaria_c	Hurrengo txertoaren data

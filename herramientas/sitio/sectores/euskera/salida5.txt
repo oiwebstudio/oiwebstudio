@@ -1,0 +1,20 @@
+sx_c_floristeria	Loradenda
+sx_k_floristeria	Tolosako loradenda
+sx_floristeria_a	Sorta bat gaurko edo nahi duzun egunerako
+sx_floristeria_b	Jaso edo etxera eraman
+sx_floristeria_c	Ezkontzak eta ekitaldiak, hitzordua WhatsApp bidez
+sx_c_gimnasio	Gimnasioa
+sx_k_gimnasio	Entrenamendua, yoga eta pilates
+sx_gimnasio_a	Lehen proba mota deitu gabe
+sx_gimnasio_b	Asteko ordutegia, leku libreekin
+sx_gimnasio_c	Zenbat ateratzen den eskola bakoitza, egunen arabera
+sx_c_joyeria	Bitxiak
+sx_k_joyeria	Bitxigintza eta tailerra Tolosan
+sx_joyeria_a	Piezak beren prezioarekin, erreserbatzeko
+sx_joyeria_b	Zure aliantza bere tailarekin eta grabatuarekin
+sx_joyeria_c	Konponketak eta garbiketa, prezio honekin:
+sx_c_veterinaria	Albaitaritza
+sx_k_veterinaria	Albaitaritza klinika Tolosan
+sx_veterinaria_a	Hitzordua deitu gabe, mezua idatzita
+sx_veterinaria_b	Larrialdiak ukitu batera
+sx_veterinaria_c	Noiz tokatzen zaizu hurrengo txertoa?

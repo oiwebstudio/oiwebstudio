@@ -167,5 +167,57 @@
    "Presupuesto con tu plano, por WhatsApp o correo",
    "Máquinas, medidas y plazos a la vista"
   ]
+ },
+ {
+  "id": "txilar",
+  "nombre": "TXILAR",
+  "carpeta": "txilar-loradenda",
+  "slug": "floristeria",
+  "chip": "Floristería",
+  "k": "Floristería de Tolosa",
+  "lleva": [
+   "Un ramo para hoy o para el día que quieras",
+   "Recogerlo o que te lo lleven a casa",
+   "Bodas y eventos, con cita por WhatsApp"
+  ]
+ },
+ {
+  "id": "suspertu",
+  "nombre": "SUSPERTU",
+  "carpeta": "suspertu-gimnasioa",
+  "slug": "gimnasio",
+  "chip": "Gimnasio",
+  "k": "Entrenamiento, yoga y pilates",
+  "lleva": [
+   "Reserva tu primera clase sin llamar",
+   "El horario de la semana, con plazas libres",
+   "El precio de cada clase, según cuántos días entrenes"
+  ]
+ },
+ {
+  "id": "uztai",
+  "nombre": "UZTAI",
+  "carpeta": "uztai-bitxidenda",
+  "slug": "joyeria",
+  "chip": "Joyería",
+  "k": "Joyería y taller en Tolosa",
+  "lleva": [
+   "Piezas con su precio, para reservarlas",
+   "Tu anillo de boda, con su talla y su grabado",
+   "Arreglos y limpieza, con su precio"
+  ]
+ },
+ {
+  "id": "atzapar",
+  "nombre": "ATZAPAR",
+  "carpeta": "atzapar-albaitaritza",
+  "slug": "veterinaria",
+  "chip": "Veterinaria",
+  "k": "Clínica veterinaria en Tolosa",
+  "lleva": [
+   "Cita sin llamar, con el mensaje escrito",
+   "Urgencias a un toque",
+   "La fecha de la próxima vacuna"
+  ]
  }
 ]

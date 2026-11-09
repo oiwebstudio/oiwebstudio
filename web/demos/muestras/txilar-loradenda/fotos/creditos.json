@@ -1,0 +1,111 @@
+{
+ "_leeme": "Fotos de la muestra TXILAR LORAK (9/11/2026). Todas son fotos de ejemplo de Unsplash (licencia de Unsplash: uso libre, también comercial, sin atribución obligatoria; se cita igualmente en el pie de cada foto y aquí). No son de ninguna floristería real; se recortaron una etiqueta de cerveza y una pegatina con logo. Recortadas y convertidas a AVIF y WebP con herramientas/diseno/imagenes.mjs (sin metadatos); el guion está en _local/demos/txilar-generador/fotos.mjs. Originales de 2000 a 5976 px de ancho.",
+ "lorategia": {
+  "ficheros": "s-lorategia-d, s-lorategia-m",
+  "autor": "Jeffrey Hamilton",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/red-flowers-with-green-leaves-pBRepD_XcFM",
+  "original": "5184×3456",
+  "uso": "Portada, foto 1/6: rosas rojas en un jardín (desde el 9/11)",
+  "cambios": "Recortada"
+ },
+ "mahaia": {
+  "ficheros": "s-mahaia-d, s-mahaia-m",
+  "autor": "José León",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/a-row-of-wine-glasses-sitting-on-top-of-a-wooden-table-efjNhdPEHj4",
+  "original": "4000×5791",
+  "uso": "Portada, foto 3/6: mesa de boda",
+  "cambios": "Recortada (escritorio y móvil) dejando fuera una copa con la etiqueta de una marca de cerveza"
+ },
+ "eskuz": {
+  "ficheros": "s-eskuz-d, s-eskuz-m",
+  "autor": "mohsen ameri",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/person-holding-bouquet-of-red-roses-7K6bBe6eIIQ",
+  "original": "3840×5760",
+  "uso": "Portada, foto 2/6 (mitad derecha): ramo de rosas de mano en mano",
+  "cambios": "Recortada"
+ },
+ "txilarra": {
+  "ficheros": "s-txilarra-d, s-txilarra-m",
+  "autor": "Heike Trautmann",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/purple-flowers-in-tilt-shift-lens-w9vJk2M8zdE",
+  "original": "5976×3984",
+  "uso": "Portada, foto 4/6: brezo (txilar)",
+  "cambios": "Recortada; un poco más de saturación (×1,15) y contraste (×1,08) el 9/11"
+ },
+ "afaria": {
+  "ficheros": "s-afaria-d, s-afaria-m",
+  "autor": "Kari Bjorn Photography",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/a-bunch-of-flowers-that-are-sitting-on-a-table-lHZNEhc47Qk",
+  "original": "2000×3000",
+  "uso": "Portada, foto 5/6 (mitad derecha): flores en una mesa",
+  "cambios": "Recortada"
+ },
+ "zuriak": {
+  "ficheros": "s-zuriak-d, s-zuriak-m",
+  "autor": "Egor Myznik",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/white-and-green-flower-bouquet-T5VLwMWN1yE",
+  "original": "4547×3026",
+  "uso": "Portada, foto 6/6: ramo blanco",
+  "cambios": "Recortada"
+ },
+ "o-urtebetetzea": {
+  "ficheros": "o-urtebetetzea",
+  "autor": "Carrie Beth Williams",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/person-holding-bouquet-of-flowers-s3AFTBZ3cnc",
+  "original": "3456×5184",
+  "uso": "Encargo, «Cumpleaños»",
+  "cambios": "Recortada a 3:4"
+ },
+ "o-urteurrena": {
+  "ficheros": "o-urteurrena",
+  "autor": "Sergey Utkin",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/a-beautiful-bouquet-of-purple-roses-wrapped-in-pink-paper-3gpf4_9fA9o",
+  "original": "5184×3888",
+  "uso": "Encargo, «Aniversario»",
+  "cambios": "Recortada a 3:4"
+ },
+ "o-dolumina": {
+  "ficheros": "o-dolumina",
+  "autor": "flower club",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/a-bouquet-of-flowers-sitting-on-top-of-a-table-f2TScMFFzfY",
+  "original": "3024×4032",
+  "uso": "Encargo, «Condolencias»",
+  "cambios": "Recortada a 3:4 dejando fuera una pegatina con el logo de una tienda"
+ },
+ "ontziak": {
+  "ficheros": "s-ontziak-d, s-ontziak-m",
+  "autor": "Alisa Anton",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/pink-roses-and-peony-buds-AiTE9NFQZ3I",
+  "original": "5760×3840",
+  "uso": "Ya no se usa (9/11): la portada 1/6 es ahora «lorategia». Sus ficheros s-ontziak-* siguen en esta carpeta hasta que se decida borrarlos.",
+  "cambios": "Recortada"
+ },
+ "o-baizergatik": {
+  "ficheros": "o-baizergatik",
+  "autor": "Debby Hudson",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/red-tulip-flowers-bouquet-on-brown-wooden-pallet-VO7p_CgTylQ",
+  "original": "4000×2650",
+  "uso": "Encargo, «Sin motivo»",
+  "cambios": "Recortada a 3:4"
+ },
+ "ezteiak": {
+  "ficheros": "ezteiak-d, ezteiak-m",
+  "autor": "Cody  Chan",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/dining-table-setting-7jgtAhJkjwk",
+  "original": "4000×6000",
+  "uso": "Foto a todo el ancho antes de «Bodas y eventos»",
+  "cambios": "Recortada"
+ }
+}

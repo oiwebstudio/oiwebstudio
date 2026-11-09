@@ -1,0 +1,2 @@
+sx_gimnasio_c	El precio de cada clase, según cuántos días entrenes
+sx_veterinaria_c	La fecha de la próxima vacuna
