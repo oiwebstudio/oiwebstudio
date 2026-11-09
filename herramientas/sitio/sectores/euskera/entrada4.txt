@@ -1,0 +1,8 @@
+sx_academia_b	Plazas libres en cada grupo
+sx_asesoria_a	Los papeles que pide cada trámite
+sx_asesoria_b	Cuánto falta para cada plazo de Hacienda
+sx_asesoria_c	Cita por WhatsApp, con el mensaje ya escrito
+sx_k_bodega	Bodega de txakoli en Asteasu
+sx_bodega_b	Prepara tu caja de botellas
+sx_bodega_c	Con qué comer cada txakoli
+sx_panaderia_c	Abierto o cerrado en este momento

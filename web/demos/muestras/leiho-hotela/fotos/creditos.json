@@ -1,0 +1,102 @@
+{
+ "_leeme": "Fotos de la muestra LEIHO (hotel inventado del casco viejo de Tolosa, 8/11/2026). Son fotos libres de ejemplo: las habitaciones, la sala, la escalera y la portada son de Unsplash y ninguna es de un hotel real; las dos de Tolosa (Plaza Zaharra y plaza Berdura) son de Wikimedia Commons con licencia CC0. Originales mirados enteros: sin marca de agua. Recortadas, con un tono algo más cálido y apagado (como la referencia), redimensionadas y guardadas en AVIF y WebP sin datos de ubicación (herramientas/diseno/imagenes.mjs).",
+ "portada": {
+  "autor": "Clay Banks",
+  "licencia": "Licencia de Unsplash (uso libre, también comercial, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/teal-living-room-with-striped-sofa-and-large-windows-bkRFra3gCEg",
+  "original": "3400 × 2267",
+  "uso": "portada a sangre (donde la referencia pone el vídeo del salón)",
+  "cambios": "recortada a 3400 × 2125, tono algo más cálido y menos saturado, redimensionada y guardada en AVIF y WebP"
+ },
+ "portada-m": {
+  "autor": "Clay Banks",
+  "licencia": "Licencia de Unsplash (uso libre, también comercial, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/teal-living-room-with-striped-sofa-and-large-windows-bkRFra3gCEg",
+  "original": "3400 × 2267",
+  "uso": "portada en el móvil (recorte vertical de la misma foto, centrado en la ventana del medio)",
+  "cambios": "recortada a 1043 × 2267, tono algo más cálido y menos saturado, redimensionada y guardada en AVIF y WebP"
+ },
+ "sala": {
+  "autor": "Haberdoedas",
+  "licencia": "Licencia de Unsplash (uso libre, también comercial, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/cozy-living-room-with-stylish-windows-and-decor-TCqV5Vbgevw",
+  "original": "6869 × 5152",
+  "uso": "ventana redondeada que se abre bajo la primera frase (fuera el cuadro famoso del borde derecho)",
+  "cambios": "recortada a 3780 × 2520, tono algo más cálido y menos saturado, redimensionada y guardada en AVIF y WebP"
+ },
+ "sala-m": {
+  "autor": "Haberdoedas",
+  "licencia": "Licencia de Unsplash (uso libre, también comercial, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/cozy-living-room-with-stylish-windows-and-decor-TCqV5Vbgevw",
+  "original": "6869 × 5152",
+  "uso": "lo mismo en el móvil",
+  "cambios": "recortada a 2520 × 3150, tono algo más cálido y menos saturado, redimensionada y guardada en AVIF y WebP"
+ },
+ "hab1": {
+  "autor": "Anastasia Mezenina",
+  "licencia": "Licencia de Unsplash (uso libre, también comercial, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/white-pillows-99OHVytUzy8",
+  "original": "3024 × 4032",
+  "uso": "habitación individual (alta)",
+  "cambios": "recortada a 3024 × 3510, tono algo más cálido y menos saturado, redimensionada y guardada en AVIF y WebP"
+ },
+ "hab2": {
+  "autor": "Clay Banks",
+  "licencia": "Licencia de Unsplash (uso libre, también comercial, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-cozy-bedroom-has-drinks-on-a-table-ghN8sI7MDpM",
+  "original": "3361 × 2241",
+  "uso": "habitación doble (baja)",
+  "cambios": "recortada a 2898 × 2241, tono algo más cálido y menos saturado, redimensionada y guardada en AVIF y WebP"
+ },
+ "hab3": {
+  "autor": "Clay Banks",
+  "licencia": "Licencia de Unsplash (uso libre, también comercial, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/bedroom-with-bed-and-floral-wallpaper-SEnVV0000Z8",
+  "original": "3400 × 2267",
+  "uso": "habitación doble al río (baja)",
+  "cambios": "recortada a 2932 × 2267, tono algo más cálido y menos saturado, redimensionada y guardada en AVIF y WebP"
+ },
+ "hab4": {
+  "autor": "Clay Banks",
+  "licencia": "Licencia de Unsplash (uso libre, también comercial, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-bedroom-with-a-bed-and-a-chair-in-it-QB5IPPxIOyY",
+  "original": "3200 × 2133",
+  "uso": "buhardilla (alta)",
+  "cambios": "recortada a 1838 × 2133, tono algo más cálido y menos saturado, redimensionada y guardada en AVIF y WebP"
+ },
+ "escalera": {
+  "autor": "Jones Lee",
+  "licencia": "Licencia de Unsplash (uso libre, también comercial, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/wooden-staircase-with-curved-railing-indoors-4AxK0I68FbI",
+  "original": "4800 × 3200",
+  "uso": "foto alta con las esquinas de arriba redondeadas (donde la referencia pone al anfitrión)",
+  "cambios": "recortada a 1845 × 2800, tono algo más cálido y menos saturado, redimensionada y guardada en AVIF y WebP"
+ },
+ "berdura": {
+  "autor": "Zarateman",
+  "licencia": "CC0 (dominio público; no obliga a citar, se cita igualmente)",
+  "fuente": "https://commons.wikimedia.org/wiki/File:Tolosa_-_Plaza_Verdura_2.jpg",
+  "titulo": "Tolosa - Plaza Verdura 2.jpg",
+  "original": "3000 × 2250",
+  "uso": "ventana redondeada de la sección clara (fuera el quiosco con anuncios y la gente del banco)",
+  "cambios": "recortada a 2633 × 1755, tono algo más cálido y menos saturado, redimensionada y guardada en AVIF y WebP"
+ },
+ "berdura-m": {
+  "autor": "Zarateman",
+  "licencia": "CC0 (dominio público; no obliga a citar, se cita igualmente)",
+  "fuente": "https://commons.wikimedia.org/wiki/File:Tolosa_-_Plaza_Verdura_2.jpg",
+  "titulo": "Tolosa - Plaza Verdura 2.jpg",
+  "original": "3000 × 2250",
+  "uso": "lo mismo en el móvil",
+  "cambios": "recortada a 1404 × 1755, tono algo más cálido y menos saturado, redimensionada y guardada en AVIF y WebP"
+ },
+ "plaza": {
+  "autor": "Iñaki LL",
+  "licencia": "CC0 (dominio público; no obliga a citar, se cita igualmente)",
+  "fuente": "https://commons.wikimedia.org/wiki/File:Tolosako_Plaza_Zaharra_2.jpg",
+  "titulo": "Tolosako Plaza Zaharra 2.jpg",
+  "original": "4032 × 3016",
+  "uso": "foto alta junto al casco viejo (donde la referencia pone la fachada amarilla de Graz); fuera el coche de abajo",
+  "cambios": "recortada a 1949 × 2262, tono algo más cálido y menos saturado, redimensionada y guardada en AVIF y WebP"
+ }
+}

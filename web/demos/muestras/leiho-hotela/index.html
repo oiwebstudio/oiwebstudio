@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>LEIHO · Hotel txikia Tolosan (erakusketa-webgunea)</title>
+<meta name="description" content="Tolosako alde zaharrean asmatutako hotel baterako OI Studioren erakusketa-webgunea: logelak beren prezioarekin ikusten dituzu, datak aukeratzen dituzu eta WhatsApparako idatzizko eskaera ateratzen zaizu.">
+<meta name="theme-color" content="#0e1201">
+<meta property="og:title" content="LEIHO · Hotel txikia Tolosan (erakusketa-webgunea)">
+<meta property="og:description" content="Tolosako alde zaharrean asmatutako hotel baterako OI Studioren erakusketa-webgunea: logelak beren prezioarekin ikusten dituzu, datak aukeratzen dituzu eta WhatsApparako idatzizko eskaera ateratzen zaizu.">
+<meta property="og:type" content="website">
+<link rel="alternate" hreflang="es" href="es/">
+<!--
+  MUESTRA «LEIHO» (OI Studio, 8/11/2026): hotel pequeño INVENTADO en el casco viejo de Tolosa para la pieza «¿Qué negocio tienes?»
+  de oiwebstudio.com. «Leiho» = ventana. Buscado el 8/11 (OpenStreetMap: 522 alojamientos de Gipuzkoa; Yahoo): ningún alojamiento
+  con ese nombre. Son de ejemplo (lo dice la nota del pie): el nombre, la dirección (Kale Nagusia 0, Tolosa), los teléfonos, el correo,
+  las habitaciones con sus medidas, plazas y precios, los horarios, lo que se cuenta de la casa y los minutos andando. Reales: los sitios
+  de Tolosa (plaza Berdura, Santa María, Zerkausia/Tinglado, TOPIC, estación de tren) y el mercado de los sábados. noindex.
+  Calco de la referencia que eligió Oier el 8/11: n.º 05, CASA MOMO (casamomo.at). Portada: fondo casi negro con el nombre en dos
+  palabras; entre ellas se abre una ventana redondeada con la foto que crece hasta llenar la pantalla, y las palabras se van a las
+  esquinas (LEIHO arriba a la izquierda, HOTELA abajo a la derecha) en una serif ancha color crema; abajo a la izquierda, una línea de
+  qué es y un botón pequeño; arriba a la derecha, tres enlaces y «Reservar» en un recuadro crema. Su «que_no_copiar»: el menú va sobre
+  una franja oscura, no en letra fina directamente sobre la foto. Debajo, el mismo ritmo: frase grande que se enciende palabra a palabra
+  con la primera palabra a la izquierda; foto en ventana redondeada; rejilla de habitaciones a dos columnas desfasadas (alta/baja) con
+  medidas y plazas; bloque con titular gigante y foto alta redondeada arriba (allí el anfitrión; aquí la llegada); dibujo de una ventana
+  en línea fina con el titular encima; frase clara y foto redondeada; tres tarjetas de colores (oscura, teja, clara) con dibujo y número
+  (allí la filosofía; aquí la reserva); banda que corre de lado y tarjetas en fila (allí opiniones; aquí lo que hay cerca andando);
+  titular gigante con texto y foto alta (allí «Locations»); pie teja con tres columnas y el nombre gigante que corre de lado.
+  Cambios de la casa: títulos y menú en mayúsculas, sin cursivas, sin recuadro azul al tocar; la cabecera que se queda arriba al bajar
+  lleva fondo propio (oscuro o claro según la sección) para que el nombre no pise el texto; el teja de la tarjeta 2 y del pie, algo más
+  oscuro (#a6552c) para que el texto crema pase el contraste AA.
+  Lo que hace: reservar directo sin comisiones (llegada, noches, personas y habitación → precio por noche y total, y la solicitud
+  escrita para WhatsApp); ver las habitaciones con su precio orientativo («Reservar esta» la deja elegida); qué hay cerca andando.
+  Letras: n.º 6 Stardom (el nombre, en lugar de la EL PACRE de la referencia) y n.º 14 Switzer (todo lo demás, en lugar de su
+  Lay Grotesk), autoalojadas en fuentes/.
+  Fotos: Unsplash (Clay Banks, Haberdoedas, Anastasia Mezenina, Jones Lee) y Wikimedia Commons CC0 (Iñaki LL, Zarateman);
+  detalle en fotos/creditos.json. Ninguna es de un hotel real ni lleva marca de agua.
+  Movimiento: la portada entra con CSS desde el primer pintado; lo de abajo, con GSAP 3.13 + ScrollTrigger + SplitText (js/) +
+  anim-texto.js + pagina.js, por tiempo al asomar; atados al scroll solo la banda «Cerca andando», la fila de tarjetas (en el
+  ordenador) y el nombre gigante del pie. Con «reducir movimiento» o sin JS, todo quieto y visible.
+  Generada con _local/demos/leiho-generador/gen.mjs (no editar este HTML a mano).
+-->
+<link rel="preload" href="fuentes/stardom-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fuentes/switzer-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="estilo.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="saltar" href="#contenido">Edukira joan</a>
+
+<header class="cab en-portada" data-cab>
+  <a class="logo" href="#contenido"><span aria-hidden="true">LEIHO HOTELA</span><span class="sr">Leiho Hotela, hasiera</span></a>
+  <nav class="cab-nav" aria-label="Menua">
+    <ul class="cab-enl"><li><a href="#habitaciones">Logelak</a></li><li><a href="#cerca">Hurbil</a></li><li><a href="#contacto">Kontaktua</a></li><li><a class="idioma" href="es/" lang="es" hreflang="es"><span aria-hidden="true">ES</span><span class="sr">Castellano</span></a></li></ul>
+    <a class="btn btn-crema cab-res" href="#reserva">Erreserbatu <span aria-hidden="true">↗</span></a>
+  </nav>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-movil" aria-label="Ireki menua">Menua</button>
+</header>
+
+<div class="menu-movil" id="menu-movil" hidden>
+  <ul><li><a href="#habitaciones">Logelak</a></li><li><a href="#cerca">Hurbil</a></li><li><a href="#contacto">Kontaktua</a></li><li><a href="#reserva">Erreserbatu</a></li></ul>
+  <p><a href="tel:+34943000000">943 00 00 00</a></p>
+  <p><a href="es/" lang="es" hreflang="es">Castellano</a></p>
+</div>
+
+<main id="contenido">
+<section class="portada" data-portada aria-labelledby="h-portada">
+  <div class="portada-foto"><picture><source media="(max-width: 759px)" type="image/avif" srcset="fotos/portada-m-600.avif 600w, fotos/portada-m-1043.avif 1043w" sizes="100vw"><source media="(max-width: 759px)" type="image/webp" srcset="fotos/portada-m-600.webp 600w, fotos/portada-m-1043.webp 1043w" sizes="100vw"><source type="image/avif" srcset="fotos/portada-1280.avif 1280w, fotos/portada-1920.avif 1920w, fotos/portada-2560.avif 2560w, fotos/portada-3400.avif 3400w" sizes="100vw"><img src="fotos/portada-1920.webp" srcset="fotos/portada-1280.webp 1280w, fotos/portada-1920.webp 1920w, fotos/portada-2560.webp 2560w, fotos/portada-3400.webp 3400w" sizes="100vw" width="3400" height="2125" alt="Pareta urdin berdexkako egongela, sofa marraduna, belusezko besaulkia eta zuhaitzetara ematen duten leihateak dituena." fetchpriority="high" decoding="async"></picture><div class="velo"></div><div class="oscurece" data-velo></div></div>
+  <h1 class="portada-h" id="h-portada"><span class="sr">LEIHO HOTELA</span><span class="pal p1" aria-hidden="true"><span class="le"><span style="--i:0">L</span></span><span class="le"><span style="--i:1">E</span></span><span class="le"><span style="--i:2">I</span></span><span class="le"><span style="--i:3">H</span></span><span class="le"><span style="--i:4">O</span></span></span><span class="pal p2" aria-hidden="true"><span class="le"><span style="--i:5">H</span></span><span class="le"><span style="--i:6">O</span></span><span class="le"><span style="--i:7">T</span></span><span class="le"><span style="--i:8">E</span></span><span class="le"><span style="--i:9">L</span></span><span class="le"><span style="--i:10">A</span></span></span></h1>
+  <div class="portada-base">
+    <p class="portada-linea">Tolosako alde zaharreko hotel txikia</p>
+    <a class="btn btn-crema" href="#reserva">Erreserbatu <span aria-hidden="true">↗</span></a>
+  </div>
+</section>
+
+<div class="sobre">
+<section class="frase oscuro" data-tono="oscuro" aria-label="Tolosako alde zaharreko hotel txikia">
+  <p class="frase-t" data-enciende><span class="f1">Kale</span> Nagusiko etxe zahar bat, Oria ibaia eta azokako plaza bi minutura oinez dituena.</p>
+  <figure class="ventana" data-crece><picture><source media="(max-width: 759px)" type="image/avif" srcset="fotos/sala-m-600.avif 600w, fotos/sala-m-900.avif 900w, fotos/sala-m-1300.avif 1300w" sizes="100vw"><source media="(max-width: 759px)" type="image/webp" srcset="fotos/sala-m-600.webp 600w, fotos/sala-m-900.webp 900w, fotos/sala-m-1300.webp 1300w" sizes="100vw"><source type="image/avif" srcset="fotos/sala-960.avif 960w, fotos/sala-1600.avif 1600w, fotos/sala-2400.avif 2400w, fotos/sala-3200.avif 3200w" sizes="(min-width: 760px) 93vw, 100vw"><img src="fotos/sala-1600.webp" srcset="fotos/sala-960.webp 960w, fotos/sala-1600.webp 1600w, fotos/sala-2400.webp 2400w, fotos/sala-3200.webp 3200w" sizes="(min-width: 760px) 93vw, 100vw" width="3780" height="2520" alt="Lorez margotutako papera, sofa bat, besaulki bat eta hiru leiho altu dituen gela." loading="lazy" decoding="async"></picture><figcaption class="etiqueta">Aretoa</figcaption></figure>
+</section>
+
+<section class="habs oscuro" id="habitaciones" data-tono="oscuro" aria-labelledby="h-habs">
+  <div class="habs-cab">
+    <p class="cuenta"><span class="cuenta-n">4</span><span class="cuenta-t">logelak</span></p>
+    <h2 id="h-habs" data-lineas>Logelak</h2>
+  </div>
+  <ul class="habs-rej">
+    <li class="hab alta" style="--i:0">
+      <a class="hab-foto" href="#reserva" data-elegir="hab1" tabindex="-1" aria-hidden="true"><picture><source type="image/avif" srcset="fotos/hab1-500.avif 500w, fotos/hab1-900.avif 900w, fotos/hab1-1400.avif 1400w" sizes="(min-width: 760px) 46vw, 100vw"><img src="fotos/hab1-900.webp" srcset="fotos/hab1-500.webp 500w, fotos/hab1-900.webp 900w, fotos/hab1-1400.webp 1400w" sizes="(min-width: 760px) 46vw, 100vw" width="3024" height="3510" alt="Ohea leiho baten ondoan, gortina berdeekin eta arratsaldeko argiarekin." loading="lazy" decoding="async"></picture></a>
+      <div class="hab-pie">
+        <h3>Banakakoa</h3>
+        <ul class="datos">
+          <li><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><span>12 m²</span></li>
+          <li><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4" r="2.2" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M3.5 15v-3.2a4.5 4.5 0 0 1 9 0V15" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><span class="sr">pertsona 1</span><span aria-hidden="true">1</span></li>
+        </ul>
+      </div>
+      <div class="hab-pie hab-pie2">
+        <p class="hab-precio"><strong>58 €</strong> Gau bakoitzeko</p>
+        <a class="enl" href="#reserva" data-elegir="hab1">Erreserbatu hau<span class="sr">: Banakakoa</span></a>
+      </div>
+    </li>
+    <li class="hab baja" style="--i:1">
+      <a class="hab-foto" href="#reserva" data-elegir="hab2" tabindex="-1" aria-hidden="true"><picture><source type="image/avif" srcset="fotos/hab2-500.avif 500w, fotos/hab2-900.avif 900w, fotos/hab2-1400.avif 1400w" sizes="(min-width: 760px) 46vw, 100vw"><img src="fotos/hab2-900.webp" srcset="fotos/hab2-500.webp 500w, fotos/hab2-900.webp 900w, fotos/hab2-1400.webp 1400w" sizes="(min-width: 760px) 46vw, 100vw" width="2898" height="2241" alt="Zokalo urdina, egurrezko ohea eta laranja-zukua duen mahai biribila." loading="lazy" decoding="async"></picture></a>
+      <div class="hab-pie">
+        <h3>Bikoitza</h3>
+        <ul class="datos">
+          <li><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><span>16 m²</span></li>
+          <li><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4" r="2.2" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M3.5 15v-3.2a4.5 4.5 0 0 1 9 0V15" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><span class="sr">2 pertsona</span><span aria-hidden="true">2</span></li>
+        </ul>
+      </div>
+      <div class="hab-pie hab-pie2">
+        <p class="hab-precio"><strong>78 €</strong> Gau bakoitzeko</p>
+        <a class="enl" href="#reserva" data-elegir="hab2">Erreserbatu hau<span class="sr">: Bikoitza</span></a>
+      </div>
+    </li>
+    <li class="hab baja" style="--i:2">
+      <a class="hab-foto" href="#reserva" data-elegir="hab3" tabindex="-1" aria-hidden="true"><picture><source type="image/avif" srcset="fotos/hab3-500.avif 500w, fotos/hab3-900.avif 900w, fotos/hab3-1400.avif 1400w" sizes="(min-width: 760px) 46vw, 100vw"><img src="fotos/hab3-900.webp" srcset="fotos/hab3-500.webp 500w, fotos/hab3-900.webp 900w, fotos/hab3-1400.webp 1400w" sizes="(min-width: 760px) 46vw, 100vw" width="2932" height="2267" alt="Ohe handia kuxinekin, bi lanpara eta bi leiho gortina argiekin." loading="lazy" decoding="async"></picture></a>
+      <div class="hab-pie">
+        <h3>Bikoitza ibaira begira</h3>
+        <ul class="datos">
+          <li><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><span>20 m²</span></li>
+          <li><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4" r="2.2" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M3.5 15v-3.2a4.5 4.5 0 0 1 9 0V15" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><span class="sr">2 pertsona</span><span aria-hidden="true">2</span></li>
+        </ul>
+      </div>
+      <div class="hab-pie hab-pie2">
+        <p class="hab-precio"><strong>92 €</strong> Gau bakoitzeko</p>
+        <a class="enl" href="#reserva" data-elegir="hab3">Erreserbatu hau<span class="sr">: Bikoitza ibaira begira</span></a>
+      </div>
+    </li>
+    <li class="hab alta" style="--i:3">
+      <a class="hab-foto" href="#reserva" data-elegir="hab4" tabindex="-1" aria-hidden="true"><picture><source type="image/avif" srcset="fotos/hab4-500.avif 500w, fotos/hab4-900.avif 900w, fotos/hab4-1400.avif 1400w" sizes="(min-width: 760px) 46vw, 100vw"><img src="fotos/hab4-900.webp" srcset="fotos/hab4-500.webp 500w, fotos/hab4-900.webp 900w, fotos/hab4-1400.webp 1400w" sizes="(min-width: 760px) 46vw, 100vw" width="1838" height="2133" alt="Sabai okertua, burdinazko ohea, aulki bat eta egurrezko zorua dituen ganbara." loading="lazy" decoding="async"></picture></a>
+      <div class="hab-pie">
+        <h3>Ganbara</h3>
+        <ul class="datos">
+          <li><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><span>26 m²</span></li>
+          <li><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4" r="2.2" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M3.5 15v-3.2a4.5 4.5 0 0 1 9 0V15" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><span class="sr">3 pertsona gehienez</span><span aria-hidden="true">3</span></li>
+        </ul>
+      </div>
+      <div class="hab-pie hab-pie2">
+        <p class="hab-precio"><strong>110 €</strong> Gau bakoitzeko</p>
+        <a class="enl" href="#reserva" data-elegir="hab4">Erreserbatu hau<span class="sr">: Ganbara</span></a>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<section class="tarde oscuro" data-tono="oscuro" aria-labelledby="h-tarde">
+  <h2 id="h-tarde" class="gigante" data-lineas>Berandu zatoz?</h2>
+  <div class="tarde-txt">
+    <p data-enciende>Sarrera 14:00etatik 21:00etara eta irteera 11:00ak arte.</p>
+    <p>Beranduago iristen bazara, idatzi eta giltza prest utziko dizugu.</p>
+    <a class="btn btn-crema" href="https://wa.me/34600000000?text=Kaixo%2C%20erreserba%20bat%20daukat%20Leihon%20eta%2021%3A00ak%20baino%20beranduago%20iritsiko%20naiz." rel="noopener">WhatsApp bidez abisatu</a>
+  </div>
+  <figure class="tarde-foto" data-panel><picture><source type="image/avif" srcset="fotos/escalera-500.avif 500w, fotos/escalera-900.avif 900w, fotos/escalera-1400.avif 1400w" sizes="(min-width: 760px) 46vw, 100vw"><img src="fotos/escalera-900.webp" srcset="fotos/escalera-500.webp 500w, fotos/escalera-900.webp 900w, fotos/escalera-1400.webp 1400w" sizes="(min-width: 760px) 46vw, 100vw" width="1845" height="2800" alt="Egurrezko eskailera, baranda okerrekoa, goitik ikusita, arku baten azpian." loading="lazy" decoding="async"></picture></figure>
+</section>
+
+<section class="leiho oscuro" data-tono="oscuro" aria-labelledby="h-leiho">
+  <div class="leiho-dib" data-dibujo><svg class="ventana-dib" viewBox="0 0 460 680" aria-hidden="true" focusable="false">
+  <g class="cristales">
+    <path d="M24 24h96l-14 150H24z"/><path d="M136 24h188l-26 120c-46-22-90-22-136 0z"/><path d="M340 24h96v150h-82z"/>
+    <path d="M24 196h52v350H24z"/><path d="M384 196h52v350h-52z"/>
+    <path d="M98 246a132 132 0 0 1 120-108v408H98z"/><path d="M242 138a132 132 0 0 1 120 108v300H242z"/>
+  </g>
+  <g class="lineas" fill="none" stroke="currentColor" stroke-width="1.2">
+    <path d="M10 10h440v550H10z"/><path d="M24 24h96l-14 150H24zM136 24h188l-26 120c-46-22-90-22-136 0zM340 24h96v150h-82z"/>
+    <path d="M24 196h52v350H24zM384 196h52v350h-52z"/>
+    <path d="M86 560V250a144 144 0 0 1 288 0v310"/><path d="M98 546V250a132 132 0 0 1 264 0v296z"/><path d="M230 118v442M98 380h264"/>
+    <path d="M0 590h460v70H0z"/>
+  </g>
+</svg></div>
+  <h2 id="h-leiho" class="leiho-h" data-lineas>Ibairako eta kalerako leihoak</h2>
+</section>
+
+<section class="frase claro" data-tono="claro" aria-label="Berdura plaza">
+  <p class="frase-t" data-enciende><span class="f1">Larunbat</span> goizetan azoka dago Zerkausian eta Berdura plazan, etxe ondoan.</p>
+  <figure class="ventana" data-crece><picture><source media="(max-width: 759px)" type="image/avif" srcset="fotos/berdura-m-600.avif 600w, fotos/berdura-m-900.avif 900w, fotos/berdura-m-1404.avif 1404w" sizes="100vw"><source media="(max-width: 759px)" type="image/webp" srcset="fotos/berdura-m-600.webp 600w, fotos/berdura-m-900.webp 900w, fotos/berdura-m-1404.webp 1404w" sizes="100vw"><source type="image/avif" srcset="fotos/berdura-960.avif 960w, fotos/berdura-1600.avif 1600w, fotos/berdura-2633.avif 2633w" sizes="(min-width: 760px) 93vw, 100vw"><img src="fotos/berdura-1600.webp" srcset="fotos/berdura-960.webp 960w, fotos/berdura-1600.webp 1600w, fotos/berdura-2633.webp 2633w" sizes="(min-width: 760px) 93vw, 100vw" width="2633" height="1755" alt="Tolosako Berdura plaza, burdinazko eta kristalezko teilatuarekin eta harrizko arkupeekin." loading="lazy" decoding="async"></picture><figcaption class="etiqueta">Berdura plaza</figcaption></figure>
+</section>
+
+<section class="reserva claro" id="reserva" data-tono="claro" aria-labelledby="h-reserva">
+  <div class="res-cab">
+    <h2 id="h-reserva" data-lineas>Komisiorik gabeko erreserba</h2>
+    <p>Datak eta logela aukeratzen dituzu, eta zure eskaera WhatsApp bidez iristen zaigu. Guk erantzungo dizugu.</p>
+  </div>
+  <form class="paneles" data-reserva onsubmit="return false">
+    <div class="panel p1" role="group" aria-labelledby="h-p1" style="--i:0">
+      <div class="panel-top"><svg class="dib" viewBox="0 0 120 120" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1"><circle cx="60" cy="58" r="56"/><circle cx="38" cy="80" r="34"/><circle cx="24" cy="94" r="20"/><circle cx="15" cy="103" r="11"/></g></svg><span class="num" aria-hidden="true">1</span></div>
+      <h3 id="h-p1">Datak</h3>
+      <label class="campo"><span class="campo-l">Iristea</span><input type="date" name="llegada" data-llegada></label>
+      <div class="campo"><span class="campo-l" id="l-noches">Gauak</span>
+        <div class="paso" role="group" aria-labelledby="l-noches"><button type="button" data-paso="noches" data-d="-1" aria-label="Gau bat gutxiago">−</button><output data-noches aria-live="polite">2</output><button type="button" data-paso="noches" data-d="1" aria-label="Gau bat gehiago">+</button></div>
+      </div>
+      <p class="campo salida"><span class="campo-l">Irteera</span><span data-salida>—</span></p>
+    </div>
+    <div class="panel p2" role="group" aria-labelledby="h-p2" style="--i:1">
+      <div class="panel-top"><svg class="dib" viewBox="0 0 120 120" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1"><circle cx="60" cy="60" r="17"/><path d="M84.0 60.0L118.0 60.0"/><path d="M83.4 65.3L108.7 71.1"/><path d="M81.6 70.4L112.3 85.2"/><path d="M78.8 75.0L99.1 91.2"/><path d="M75.0 78.8L96.2 105.3"/><path d="M70.4 81.6L81.7 105.0"/><path d="M65.3 83.4L72.9 116.5"/><path d="M60.0 84.0L60.0 110.0"/><path d="M54.7 83.4L47.1 116.5"/><path d="M49.6 81.6L38.3 105.0"/><path d="M45.0 78.8L23.8 105.3"/><path d="M41.2 75.0L20.9 91.2"/><path d="M38.4 70.4L7.7 85.2"/><path d="M36.6 65.3L11.3 71.1"/><path d="M36.0 60.0L2.0 60.0"/><path d="M36.6 54.7L11.3 48.9"/><path d="M38.4 49.6L7.7 34.8"/><path d="M41.2 45.0L20.9 28.8"/><path d="M45.0 41.2L23.8 14.7"/><path d="M49.6 38.4L38.3 15.0"/><path d="M54.7 36.6L47.1 3.5"/><path d="M60.0 36.0L60.0 10.0"/><path d="M65.3 36.6L72.9 3.5"/><path d="M70.4 38.4L81.7 15.0"/><path d="M75.0 41.2L96.2 14.7"/><path d="M78.8 45.0L99.1 28.8"/><path d="M81.6 49.6L112.3 34.8"/><path d="M83.4 54.7L108.7 48.9"/></g></svg><span class="num" aria-hidden="true">2</span></div>
+      <h3 id="h-p2">Gela</h3>
+      <div class="campo"><span class="campo-l" id="l-personas">Pertsonak</span>
+        <div class="paso" role="group" aria-labelledby="l-personas"><button type="button" data-paso="personas" data-d="-1" aria-label="Pertsona bat gutxiago">−</button><output data-personas aria-live="polite">2</output><button type="button" data-paso="personas" data-d="1" aria-label="Pertsona bat gehiago">+</button></div>
+      </div>
+      <fieldset class="ops">
+        <legend class="sr">Gela</legend>
+          <label class="op-hab" data-cap="1"><input type="radio" name="hab" value="hab1"><span class="op-n">Banakakoa</span><span class="op-p">58 €</span><span class="op-cap">pertsona 1</span></label>
+          <label class="op-hab" data-cap="2"><input type="radio" name="hab" value="hab2" checked><span class="op-n">Bikoitza</span><span class="op-p">78 €</span><span class="op-cap">2 pertsona</span></label>
+          <label class="op-hab" data-cap="2"><input type="radio" name="hab" value="hab3"><span class="op-n">Bikoitza ibaira begira</span><span class="op-p">92 €</span><span class="op-cap">2 pertsona</span></label>
+          <label class="op-hab" data-cap="3"><input type="radio" name="hab" value="hab4"><span class="op-n">Ganbara</span><span class="op-p">110 €</span><span class="op-cap">3 pertsona gehienez</span></label>
+      </fieldset>
+    </div>
+    <div class="panel p3" role="group" aria-labelledby="h-p3" style="--i:2">
+      <div class="panel-top"><svg class="dib" viewBox="0 0 90 120" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1"><path d="M2 2h86v104H2z"/><path d="M14 104V46a31 31 0 0 1 62 0v58"/><path d="M45 15v89M14 62h62"/><path d="M2 46h12M76 46h12"/><path d="M0 108h90v10H0z"/></g></svg><span class="num" aria-hidden="true">3</span></div>
+      <h3 id="h-p3">Zure eskaera</h3>
+      <div class="cuentas" aria-live="polite">
+        <p class="c-noche"><strong><span data-precio>78</span> €</strong><span>Gau baten prezioa</span></p>
+        <p class="c-total"><span data-noches-t>2 gau</span> · <strong><span data-total>156</span> €</strong> <span>Guztira, gutxi gorabehera</span></p>
+      </div>
+      <div class="mensaje">
+        <p class="escribiendo" data-escribiendo aria-hidden="true">Idazten...</p>
+        <div class="texto" data-mensaje><p>Kaixo, Leihon erreserbatu nahi dut.</p><p>Gela: Bikoitza</p><p>Pertsonak: 2</p><p>Gutxi gorabeherako prezioa: 156 € guztira</p><p>Baieztatuko didazue lekurik dagoen?</p></div>
+        <p class="sinjs">Idatz iezaguzu WhatsApp bidez nahi dituzun datak eta gela.</p>
+      </div>
+      <a class="btn btn-oscuro" href="https://wa.me/34600000000?text=Kaixo%2C%20Leihon%20erreserbatu%20nahi%20dut.%0AGela%3A%20Bikoitza%0APertsonak%3A%202%0AGutxi%20gorabeherako%20prezioa%3A%20156%20%E2%82%AC%20guztira%0ABaieztatuko%20didazue%20lekurik%20dagoen%3F" rel="noopener" data-wa>Bidali WhatsApp bidez</a>
+      <p class="o-llama">Edo deitu <a href="tel:+34943000000">943 00 00 00</a> telefonora</p>
+    </div>
+  </form>
+</section>
+
+<section class="cerca claro" id="cerca" data-tono="claro" aria-labelledby="h-cerca">
+  <div class="pista-marco">
+    <div class="pista" data-pista="28"><h2 id="h-cerca">Oinez gertu</h2><span class="pista-n" aria-hidden="true">5</span><span class="pista-r" aria-hidden="true">Oinez gertu</span><span class="pista-n" aria-hidden="true">5</span><span class="pista-r" aria-hidden="true">Oinez gertu</span><span class="pista-n" aria-hidden="true">5</span></div>
+  </div>
+  <div class="sitios-marco" data-fila tabindex="0" aria-label="Lekuak etxetik gertu, minutuak oinez">
+    <ul class="sitios">
+      <li class="sitio" style="--i:0">
+        <p class="sitio-top"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="9" cy="2.6" r="1.6" fill="currentColor"/><path d="M6.2 15l1.6-4.6 2 2V15M5 8.6l1.4-3.3 3-.2 1.6 2.6 2 .7M7.8 10.4l.9-4.9" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>1 min</span></p>
+        <p class="sitio-p">Arkupeak eta kristalezko teilatua. Larunbatetan, loreak eta landareak.</p>
+        <h3>Berdura plaza</h3>
+      </li>
+      <li class="sitio" style="--i:1">
+        <p class="sitio-top"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="9" cy="2.6" r="1.6" fill="currentColor"/><path d="M6.2 15l1.6-4.6 2 2V15M5 8.6l1.4-3.3 3-.2 1.6 2.6 2 .7M7.8 10.4l.9-4.9" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>2 min</span></p>
+        <p class="sitio-p">Alde zaharreko eliza handia.</p>
+        <h3>Santa Maria eliza</h3>
+      </li>
+      <li class="sitio" style="--i:2">
+        <p class="sitio-top"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="9" cy="2.6" r="1.6" fill="currentColor"/><path d="M6.2 15l1.6-4.6 2 2V15M5 8.6l1.4-3.3 3-.2 1.6 2.6 2 .7M7.8 10.4l.9-4.9" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>3 min</span></p>
+        <p class="sitio-p">Ibaiaren ondoko merkatu estalia. Larunbatetan, barazki eta gazta postuak.</p>
+        <h3>Zerkausia</h3>
+      </li>
+      <li class="sitio" style="--i:3">
+        <p class="sitio-top"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="9" cy="2.6" r="1.6" fill="currentColor"/><path d="M6.2 15l1.6-4.6 2 2V15M5 8.6l1.4-3.3 3-.2 1.6 2.6 2 .7M7.8 10.4l.9-4.9" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>4 min</span></p>
+        <p class="sitio-p">Tolosako txotxongilo zentroa, Euskal Herria plazan.</p>
+        <h3>TOPIC</h3>
+      </li>
+      <li class="sitio" style="--i:4">
+        <p class="sitio-top"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="9" cy="2.6" r="1.6" fill="currentColor"/><path d="M6.2 15l1.6-4.6 2 2V15M5 8.6l1.4-3.3 3-.2 1.6 2.6 2 .7M7.8 10.4l.9-4.9" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>12 min</span></p>
+        <p class="sitio-p">Donostiarako eta Beasainerako aldiriko trenak.</p>
+        <h3>Tren-geltokia</h3>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="donde claro" data-tono="claro" aria-labelledby="h-donde">
+  <h2 id="h-donde" class="gigante" data-lineas>Alde zaharra</h2>
+  <div class="donde-txt">
+    <p data-enciende>Etxea Kale Nagusian dago, Plaza Zaharraren eta ibaiaren artean. Tren-geltokitik oinez iristen da.</p>
+    <p class="dir">Kale Nagusia 0, 20400 Tolosa</p>
+    <div class="donde-acc"><a class="btn btn-oscuro" href="#reserva">Erreserbatu <span aria-hidden="true">↗</span></a><a class="enl" href="https://www.openstreetmap.org/search?query=Kale%20Nagusia%2C%20Tolosa" rel="noopener">Ikusi kalea mapan</a></div>
+  </div>
+  <figure class="donde-foto" data-panel><picture><source type="image/avif" srcset="fotos/plaza-500.avif 500w, fotos/plaza-900.avif 900w, fotos/plaza-1400.avif 1400w" sizes="(min-width: 760px) 46vw, 100vw"><img src="fotos/plaza-900.webp" srcset="fotos/plaza-500.webp 500w, fotos/plaza-900.webp 900w, fotos/plaza-1400.webp 1400w" sizes="(min-width: 760px) 46vw, 100vw" width="1949" height="2262" alt="Koloretako etxeak balkoiekin eta beirazko begiratoki batekin Tolosako Plaza Zaharrean." loading="lazy" decoding="async"></picture></figure>
+</section>
+</div>
+</main>
+
+<footer class="pie" id="contacto" data-tono="teja">
+  <div class="pie-cols">
+    <div class="pie-col">
+      <h2>Menua</h2>
+      <ul><li><a href="#habitaciones">Logelak</a></li><li><a href="#cerca">Hurbil</a></li><li><a href="#reserva">Erreserbatu</a></li></ul>
+    </div>
+    <div class="pie-col">
+      <h2>Helbidea</h2>
+      <p>Kale Nagusia 0<br>20400 Tolosa</p>
+      <ul><li><a href="https://www.openstreetmap.org/search?query=Kale%20Nagusia%2C%20Tolosa" rel="noopener">Ikusi kalea mapan</a></li></ul>
+    </div>
+    <div class="pie-col pie-der">
+      <h2>Kontaktua</h2>
+      <ul>
+        <li><a href="tel:+34943000000">943 00 00 00</a></li>
+        <li><a href="https://wa.me/34600000000" rel="noopener">WhatsApp 600 00 00 00</a></li>
+        <li><a href="mailto:kaixo@leiho.example">kaixo@leiho.example</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="pie-nombre" aria-hidden="true"><p data-pista="22"><span>LEIHO HOTELA</span> <span>LEIHO HOTELA</span> <span>LEIHO HOTELA</span></p></div>
+  <div class="pie-nota">
+    <p>OI Studioko erakusketa-webgunea. Leiho asmatutako hotela da. Adibide datuak: izena, helbidea, telefonoak, posta, logelak beren neurri eta prezioekin, ordutegiak, etxeaz kontatzen dena eta oinez doazen minutuak. Ez dago benetako hotel bateko argazkirik.</p>
+  </div>
+  <div class="pie-fin">
+    <p>© LEIHO HOTELA</p>
+    <p><a href="es/" lang="es" hreflang="es">Castellano</a></p>
+    <p><a href="fotos/creditos.json">Adibide argazkiak: egileak eta lizentziak</a></p>
+    <p class="pie-firma">Diseinatzailea: <a class="firma" href="https://oiwebstudio.com/?utm_source=muestra-leiho&amp;utm_medium=pie" target="_blank" rel="noopener">OI Studio</a></p>
+  </div>
+</footer>
+
+<script type="application/json" id="textos">{"lang":"eu","wa":"https://wa.me/34600000000","escribiendo":"Idazten...","habs":[{"id":"hab1","n":"Banakakoa","cap":1,"precio":58},{"id":"hab2","n":"Bikoitza","cap":2,"precio":78},{"id":"hab3","n":"Bikoitza ibaira begira","cap":2,"precio":92},{"id":"hab4","n":"Ganbara","cap":3,"precio":110}],"noches_1":"Gau bat","noches_2":"2 gau","elige":"Aukeratu iritsiera-eguna","hola":"Kaixo, Leihon erreserbatu nahi dut.","l_hab":"Gela:","l_llegada":"Iristea:","l_salida":"Irteera:","l_personas":"Pertsonak:","l_precio":"Gutxi gorabeherako prezioa:","en_total":"guztira","pregunta":"Baieztatuko didazue lekurik dagoen?","precio_noche":"Gau baten prezioa","abrir":"Ireki menua","cerrar":"Itxi menua"}</script>
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/SplitText.min.js"></script>
+<script src="js/anim-texto.js"></script>
+<script src="js/pagina.js"></script>
+</body>
+</html>

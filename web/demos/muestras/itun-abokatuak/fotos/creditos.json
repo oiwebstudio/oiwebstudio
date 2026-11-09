@@ -1,0 +1,90 @@
+{
+ "_leeme": "Fotos de la muestra ITUN (despacho de abogados inventado, 8/11/2026). Son fotos libres de ejemplo: los edificios son públicos (Palacio de Justicia de Donostia, ayuntamiento y Tinglado de Tolosa) y las de papeles son de Unsplash; ninguna es de un despacho real. Originales mirados enteros: sin marca de agua. Pasadas a blanco y negro, recortadas, redimensionadas y guardadas en AVIF y WebP sin datos de ubicación (herramientas/diseno/imagenes.mjs). Las de Wikimedia Commons con licencia CC BY-SA: estas versiones en blanco y negro se comparten con la misma licencia.",
+ "portada": {
+  "autor": "Sami Mlouhi",
+  "licencia": "CC BY-SA 4.0 (atribución obligatoria; esta versión se comparte con la misma licencia)",
+  "fuente": "https://commons.wikimedia.org/wiki/File:Palacio_de_Justicia,_San_Sebastian-Donostia_photo1.jpg",
+  "titulo": "Palacio de Justicia, San Sebastian-Donostia photo1.jpg",
+  "original": "3024 × 4032",
+  "uso": "portada a sangre en el ordenador (como el Capitolio de la referencia), con velo negro encima",
+  "cambios": "pasada a blanco y negro, recortada a 3024 × 1890, redimensionada y guardada en AVIF y WebP"
+ },
+ "portada-m": {
+  "autor": "Sami Mlouhi",
+  "licencia": "CC BY-SA 4.0 (atribución obligatoria; esta versión se comparte con la misma licencia)",
+  "fuente": "https://commons.wikimedia.org/wiki/File:Palacio_de_Justicia,_San_Sebastian-Donostia_photo1.jpg",
+  "titulo": "Palacio de Justicia, San Sebastian-Donostia photo1.jpg",
+  "original": "3024 × 4032",
+  "uso": "portada en el móvil (recorte vertical de la misma foto)",
+  "cambios": "pasada a blanco y negro, recortada a 2258 × 4032, redimensionada y guardada en AVIF y WebP"
+ },
+ "udaletxea": {
+  "autor": "Joxemai",
+  "licencia": "CC BY-SA 3.0 (atribución obligatoria; esta versión se comparte con la misma licencia)",
+  "fuente": "https://commons.wikimedia.org/wiki/File:Tolosa_udaletxea_001.jpg",
+  "titulo": "Tolosa udaletxea 001.jpg",
+  "original": "3216 × 4288",
+  "uso": "foto alta a la derecha del texto del despacho (donde la referencia pone al equipo ante el Capitolio)",
+  "cambios": "pasada a blanco y negro, recortada a 2830 × 4288, redimensionada y guardada en AVIF y WebP"
+ },
+ "tinglado": {
+  "autor": "Krzysztof Golik",
+  "licencia": "CC BY-SA 4.0 (atribución obligatoria; esta versión se comparte con la misma licencia)",
+  "fuente": "https://commons.wikimedia.org/wiki/File:Mercado_del_Tinglado_in_Tolosa_(1).jpg",
+  "titulo": "Mercado del Tinglado in Tolosa (1).jpg",
+  "original": "7645 × 2797",
+  "uso": "fondo de «en euskera o en castellano» (donde la referencia pone el monumento a Lincoln reflejado en el agua)",
+  "cambios": "pasada a blanco y negro, recortada a 4475 × 2797, redimensionada y guardada en AVIF y WebP"
+ },
+ "tinglado-m": {
+  "autor": "Krzysztof Golik",
+  "licencia": "CC BY-SA 4.0 (atribución obligatoria; esta versión se comparte con la misma licencia)",
+  "fuente": "https://commons.wikimedia.org/wiki/File:Mercado_del_Tinglado_in_Tolosa_(1).jpg",
+  "titulo": "Mercado del Tinglado in Tolosa (1).jpg",
+  "original": "7645 × 2797",
+  "uso": "lo mismo en el móvil (recorte vertical)",
+  "cambios": "pasada a blanco y negro, recortada a 1734 × 2797, redimensionada y guardada en AVIF y WebP"
+ },
+ "firma": {
+  "autor": "Romain Dancre",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/person-in-orange-long-sleeve-shirt-writing-on-white-paper-doplSDELX7E",
+  "original": "5973 × 4480",
+  "uso": "banda a sangre bajo la franja negra (donde la referencia pone la reunión)",
+  "cambios": "pasada a blanco y negro, recortada a 5973 × 2489, redimensionada y guardada en AVIF y WebP"
+ },
+ "firma-m": {
+  "autor": "Romain Dancre",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/person-in-orange-long-sleeve-shirt-writing-on-white-paper-doplSDELX7E",
+  "original": "5973 × 4480",
+  "uso": "lo mismo en el móvil",
+  "cambios": "pasada a blanco y negro, recortada a 5152 × 4480, redimensionada y guardada en AVIF y WebP"
+ },
+ "papeles": {
+  "autor": "Andres Vera",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-pen-sitting-on-top-of-a-pile-of-papers-OJbjBsNIwjk",
+  "original": "6000 × 4000",
+  "uso": "foto alta junto a la consulta (donde la referencia pone a tres socios)",
+  "cambios": "pasada a blanco y negro, recortada a 2440 × 4000, redimensionada y guardada en AVIF y WebP"
+ },
+ "arkupeak": {
+  "autor": "Basotxerri",
+  "licencia": "CC BY-SA 4.0 (atribución obligatoria; esta versión se comparte con la misma licencia)",
+  "fuente": "https://commons.wikimedia.org/wiki/File:Tolosa_-_Mercado_del_Tinglado_-_Zerkausia_01.jpg",
+  "titulo": "Tolosa - Mercado del Tinglado - Zerkausia 01.jpg",
+  "original": "4463 × 3351",
+  "uso": "fondo de la última llamada a pedir cita (donde la referencia pone columnas de mármol)",
+  "cambios": "pasada a blanco y negro, recortada a 4463 × 2479, redimensionada y guardada en AVIF y WebP"
+ },
+ "arkupeak-m": {
+  "autor": "Basotxerri",
+  "licencia": "CC BY-SA 4.0 (atribución obligatoria; esta versión se comparte con la misma licencia)",
+  "fuente": "https://commons.wikimedia.org/wiki/File:Tolosa_-_Mercado_del_Tinglado_-_Zerkausia_01.jpg",
+  "titulo": "Tolosa - Mercado del Tinglado - Zerkausia 01.jpg",
+  "original": "4463 × 3351",
+  "uso": "lo mismo en el móvil",
+  "cambios": "pasada a blanco y negro, recortada a 1745 × 2815, redimensionada y guardada en AVIF y WebP"
+ }
+}

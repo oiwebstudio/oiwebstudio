@@ -79,6 +79,46 @@
     }, { passive: true });
   })();
 
+  /* ---------------------------------------------------------------- W2b · Todas las muestras (9/11/2026)
+     Las tarjetas entran fila a fila al asomar (solo transform y opacity, por CSS); «Ver todas» abre el resto.
+     Sin JS o con movimiento reducido se ven todas, quietas. */
+  (function () {
+    var raiz = document.querySelector('#tu-sector .sx-t');
+    if (!raiz) return;
+    var rejilla = raiz.querySelector('.sx-t__g');
+    var items = [].slice.call(raiz.querySelectorAll('.sx-t__i'));
+    var boton = raiz.querySelector('.sx-t__mas');
+    function columnas() { return getComputedStyle(rejilla).gridTemplateColumns.split(' ').length || 1; }
+    var io = null;
+    if (!quieto && 'IntersectionObserver' in window) {
+      rejilla.classList.add('mv');
+      io = new IntersectionObserver(function (es) {
+        var n = columnas();
+        es.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          var li = e.target, j = items.indexOf(li);
+          li.style.setProperty('--d', ((j % n) * 75) + 'ms');
+          li.classList.add('is-in');
+          io.unobserve(li);
+        });
+      }, { rootMargin: '0px 0px -6% 0px' });
+      items.forEach(function (li) { io.observe(li); });
+    }
+    if (!boton) return;
+    var mas = boton.children[0], menos = boton.children[1];
+    boton.hidden = false;
+    boton.addEventListener('click', function () {
+      var abrir = !raiz.classList.contains('is-abierta');
+      raiz.classList.toggle('is-abierta', abrir);
+      boton.setAttribute('aria-expanded', abrir ? 'true' : 'false');
+      mas.hidden = abrir; menos.hidden = !abrir;
+      if (!abrir) {
+        var r = raiz.getBoundingClientRect();
+        if (r.top < 0) raiz.scrollIntoView({ block: 'start', behavior: quieto ? 'auto' : 'smooth' });
+      }
+    });
+  })();
+
   /* ---------------------------------------------------------------- A1 · Chat de ejemplo */
   (function () {
     var raiz = document.getElementById('prueba-el-asistente');

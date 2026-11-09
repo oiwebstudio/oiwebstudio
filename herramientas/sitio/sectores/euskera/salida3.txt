@@ -1,0 +1,39 @@
+sx_todas_h	Lagin guztiak
+sx_todas_p	Bat ukitu eta osorik irekitzen da, probatzeko prest.
+sx_todas_mas	Ikusi guztiak
+sx_todas_menos	Ikusi gutxiago
+sx_c_abogados	Abokatuak
+sx_k_abogados	Abokatuen bulegoa Tolosan
+sx_abogados_a	Lehenengo kontsulta deitu gabe
+sx_abogados_b	Zer paper ekarri gaiaren arabera
+sx_abogados_c	Mezua WhatsApp-erako idatzita dago
+sx_c_academia	Akademia
+sx_k_academia	Akademia eta autoeskola
+sx_academia_a	Hurrengo taldea noiz hasiko den
+sx_academia_b	Plaza libreak ikasturte bakoitzean
+sx_academia_c	WhatsApp bidez izena ematea, deitu gabe
+sx_c_asesoria	Aholkularitza
+sx_k_asesoria	Tolosako aholkularitza eta gestoria
+sx_asesoria_a	Zer paper eskatzen ditu izapide bakoitzak?
+sx_asesoria_b	Ogasunaren epeak, gaurtik aurrera
+sx_asesoria_c	Hitzordua WhatsApp bidez, idatzizko mezuarekin
+sx_c_hotel	Hotela
+sx_k_hotel	Hotel txikia alde zaharrean
+sx_hotel_a	Gaueko prezioa eta guztizkoa momentuan
+sx_hotel_b	Logelak, beren prezioarekin
+sx_hotel_c	Zer dago gertu, minututan oinez
+sx_c_bodega	Upeltegia
+sx_k_bodega	Asteasuko txakolina
+sx_bodega_a	Bisita dastaketarekin, deitu gabe
+sx_bodega_b	Arma ezazu zure botila-kaxa
+sx_bodega_c	Txakolin bakoitza, zerekin jan
+sx_c_panaderia	Okindegia
+sx_k_panaderia	Okindegia eta gozotegia
+sx_panaderia_a	Tarta enkargatu eta jaso ezazu zain egon gabe
+sx_panaderia_b	Gaur labetik ateratzen dena, eta zer ordutan
+sx_panaderia_c	Oraintxe bertan irekita badago
+sx_c_industria	Industria
+sx_k_industria	Txapa eta mekanizazioa Ibarran
+sx_industria_a	Begiratu zure pieza makinetan sartzen den
+sx_industria_b	Aurrekontua zure planoarekin, WhatsApp edo posta bidez
+sx_industria_c	Makinak, neurriak eta epeak agerian

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>AIHEN · Txakoli hecho en Asteasu: visitas con cata y cajas (web de muestra)</title>
+<meta name="description" content="Web de muestra de OI Studio para un txakolindegi inventado: reservar la visita con cata, armar una caja para recoger o enviar y ver cada txakoli con su nota de cata.">
+<meta name="theme-color" content="#DFD9D2">
+<meta property="og:title" content="AIHEN · Txakoli hecho en Asteasu: visitas con cata y cajas (web de muestra)">
+<meta property="og:description" content="Web de muestra de OI Studio para un txakolindegi inventado: reservar la visita con cata, armar una caja para recoger o enviar y ver cada txakoli con su nota de cata.">
+<meta property="og:type" content="website">
+<link rel="alternate" hreflang="eu" href="../">
+<!--
+  MUESTRA «AIHEN» (OI Studio, 8/11/2026): txakolindegi INVENTADO en Asteasu (Tolosaldea) para la pieza «¿Qué negocio tienes?»
+  de oiwebstudio.com. «Aihen» = sarmiento, vid. Comprobado el 8/11 que no es ninguna de las 31 bodegas de la D.O. Getariako Txakolina
+  (getariakotxakolina.eus) ni sale en OpenStreetMap. noindex.
+  Son de ejemplo (lo dice la nota bajo la visita y el pie): nombre, dirección (Aihen baserria, 20159 Asteasu), teléfono, WhatsApp,
+  precios (visita 15 €, con comida 40 €, botellas 11/15/12 €, envío 8 €), días y horas de visita, comida, envíos, los tres txakolis
+  (AIHEN, MAREA, ARRATS), sus notas de cata y con qué comerlos. Las coordenadas de la banda son las reales de Asteasu, Larraul y Zizurkil.
+  Calco de la referencia n.º 03 que eligió Oier el 8/11: CANTINA KETTMEIR (kettmeir.com) — fondo gris cálido liso, titular en
+  serif condensada azul marino de lado a lado, debajo la botella en equilibrio sobre una escultura de piezas (aquí de la casa:
+  tapa de barrica, piedra de la costa, tabla de txalaparta, flotador de cristal con su red, corcho y duela) sobre una repisa de
+  piedra, flecha de bajar en un óvalo a la derecha; cabecera con el logo a la izquierda y el menú en serif pequeña en línea;
+  frase grande con fotos pequeñas entre las palabras; banda de foto a sangre; títulos condensados en dos líneas desplazadas,
+  texto centrado y enlace con flecha en óvalo; foto que crece al bajar con una banda de coordenadas que corre de lado; foto
+  oscura de barricas con el título en claro; lista con rayas finas, círculo, columna pequeña, título y flecha que se abre (la de
+  K-NEWS); pie con enlaces a dos columnas, logo y dirección en condensada en el centro.
+  Fuera, a propósito: el lema en latín y el botón flotante de accesibilidad («que_no_copiar»), la cursiva de la frase grande y del
+  pie (regla de la casa: sin cursiva de acento), el aviso de edad que tapa la web al entrar (aquí la edad se pide al pedir la caja),
+  el boletín y las noticias.
+  Lo que hace: elegir día de visita (viernes y sábados de las próximas cuatro semanas, desde hoy), personas y con o sin comida →
+  precio orientativo y mensaje de WhatsApp escrito; abrir cada txakoli (nota de cata y con qué comerlo) y sumar botellas a la caja
+  (se dibuja la caja), recoger o enviar → total orientativo y mensaje; el envío pide marcar «18 años o más». No se envía nada.
+  Letras del catálogo (_local/material/letras): 07 Melodrama (700) para el titular, los títulos y la dirección, y 30 Libre Caslon
+  Display (400) para el texto, autoalojadas en fuentes/. Sin cursiva en ninguna parte.
+  Fotos: ver fotos/creditos.json (Unsplash, con autor y licencia). El bodegón de la portada está dibujado en SVG (no es una foto).
+  Movimiento: el titular y el bodegón entran con CSS desde el primer pintado; lo de abajo, con GSAP 3.13 + ScrollTrigger +
+  SplitText (js/) + anim-texto.js + pagina.js. Con «reducir movimiento» o sin JS, todo quieto y visible.
+-->
+<link rel="preload" href="../fuentes/melodrama-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fuentes/libre-caslon-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../fuentes/melodrama.css">
+<link rel="stylesheet" href="../fuentes/libre-caslon.css">
+<link rel="stylesheet" href="../estilo.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body class="l-es">
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="cab" data-cab>
+  <button class="menu-btn" type="button" aria-controls="panel" aria-expanded="false" data-menu-abrir><span class="hamb" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">Menú</span></button>
+  <a class="marca" href="#arriba"><svg class="marca-dib" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="M20 3c0 4 3 5 6 4"/><circle cx="14" cy="13" r="4.2"/><circle cx="23" cy="13" r="4.2"/><circle cx="18.5" cy="20.5" r="4.2"/><circle cx="27.5" cy="20.5" r="4.2"/><circle cx="23" cy="28" r="4.2"/><circle cx="18.5" cy="35" r="3.4"/></svg><span class="marca-t">AIHEN</span></a>
+  <nav class="cab-nav" aria-label="Menú de la web">
+    <a href="#bisita">Visita y cata</a><a href="#txakolinak">Los txakolis</a><a href="#kutxak">Cajas</a><a href="#harremana">Contacto</a><a class="tel" href="tel:+34943000000">943 00 00 00</a><span class="idiomas "><span class="idioma-act" aria-current="true" lang="es">ES</span><a href="../" lang="eu" hreflang="eu"><span aria-hidden="true">EU</span><span class="sr">Euskaraz</span></a></span>
+  </nav>
+  <span class="idiomas idiomas-movil"><span class="idioma-act" aria-current="true" lang="es">ES</span><a href="../" lang="eu" hreflang="eu"><span aria-hidden="true">EU</span><span class="sr">Euskaraz</span></a></span>
+</header>
+
+<div class="panel" id="panel" role="dialog" aria-modal="true" aria-label="Menú de la web" hidden data-panel-menu>
+  <div class="panel-cab">
+    <button class="menu-btn" type="button" data-menu-cerrar><span class="aspa" aria-hidden="true"><i></i><i></i></span><span class="sr">Cerrar</span></button>
+    <span class="marca-t">AIHEN</span>
+    <span class="idiomas "><span class="idioma-act" aria-current="true" lang="es">ES</span><a href="../" lang="eu" hreflang="eu"><span aria-hidden="true">EU</span><span class="sr">Euskaraz</span></a></span>
+  </div>
+  <ul class="panel-lista">
+    <li><a href="#bisita">Visita y cata</a></li>
+    <li><a href="#txakolinak">Los txakolis</a></li>
+    <li><a href="#kutxak">Cajas</a></li>
+    <li><a href="#harremana">Contacto</a></li>
+  </ul>
+  <p class="panel-tel"><a href="tel:+34943000000">943 00 00 00</a><a href="https://wa.me/34600000000" rel="noopener" data-wa>WhatsApp</a></p>
+</div>
+
+<main>
+<section class="portada" id="arriba" aria-labelledby="h1" data-portada>
+  <h1 id="h1" class="portada-h1"><span class="sr">Txakoli hecho en Asteasu</span><span class="letras" aria-hidden="true" data-h1><span class="pal"><span class="l" style="--i:0">T</span><span class="l" style="--i:1">X</span><span class="l" style="--i:2">A</span><span class="l" style="--i:3">K</span><span class="l" style="--i:4">O</span><span class="l" style="--i:5">L</span><span class="l" style="--i:6">I</span></span> <span class="pal"><span class="l" style="--i:7">H</span><span class="l" style="--i:8">E</span><span class="l" style="--i:9">C</span><span class="l" style="--i:10">H</span><span class="l" style="--i:11">O</span></span> <span class="pal"><span class="l" style="--i:12">E</span><span class="l" style="--i:13">N</span></span> <span class="pal"><span class="l" style="--i:14">A</span><span class="l" style="--i:15">S</span><span class="l" style="--i:16">T</span><span class="l" style="--i:17">E</span><span class="l" style="--i:18">A</span><span class="l" style="--i:19">S</span><span class="l" style="--i:20">U</span></span></span></h1>
+  <div class="bodegon" role="img" aria-label="Una botella de txakoli en equilibrio sobre trozos de barrica, una piedra de la costa y una tabla de txalaparta." data-bodegon><div class="pieza p-sombras" style="left:0.000%;top:85.714%;width:100.000%;height:14.286%"><div class="pieza-in"><svg viewBox="0 600 460 100" aria-hidden="true" focusable="false">
+    <defs><filter id="bs" x="-20%" y="-200%" width="140%" height="500%"><feGaussianBlur stdDeviation="6"/></filter><filter id="bs2" x="-20%" y="-200%" width="140%" height="500%"><feGaussianBlur stdDeviation="2.2"/></filter></defs>
+    <ellipse cx="225" cy="688" rx="200" ry="9" fill="#2a2420" opacity=".22" filter="url(#bs)"/>
+    <ellipse cx="140" cy="687" rx="70" ry="4" fill="#2a2420" opacity=".35" filter="url(#bs2)"/>
+    <ellipse cx="305" cy="689" rx="60" ry="4" fill="#2a2420" opacity=".35" filter="url(#bs2)"/></svg></div></div>
+<div class="pieza p-tapa" style="left:8.696%;top:72.000%;width:43.478%;height:26.857%"><div class="pieza-in"><svg viewBox="40 504 200 188" aria-hidden="true" focusable="false">
+    <defs>
+      <radialGradient id="tp-c" cx=".38" cy=".34" r=".75"><stop offset="0" stop-color="#e2b466"/><stop offset=".55" stop-color="#c38d3d"/><stop offset="1" stop-color="#93622a"/></radialGradient>
+      <linearGradient id="tp-k" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6e4a1d"/><stop offset=".6" stop-color="#9a6a2c"/><stop offset="1" stop-color="#7b5221"/></linearGradient>
+      <linearGradient id="tp-l" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#2b1a08" stop-opacity=".28"/></linearGradient>
+      <clipPath id="tp-cl"><circle cx="135" cy="598" r="87"/></clipPath>
+      <filter id="tp-v" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.006 0.16" numOctaves="3" seed="11" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0.25  0 0 0 0 0.15  0 0 0 0 0.05  0 0 0 0.8800000000000001 -0.22000000000000003" result="v"/><feComposite in="v" in2="SourceGraphic" operator="in" result="vv"/><feBlend in="SourceGraphic" in2="vv" mode="multiply"/></filter>
+    </defs>
+    <ellipse cx="149" cy="598" rx="86" ry="88" fill="url(#tp-k)" filter="url(#tp-v)"/>
+    <g filter="url(#tp-v)"><circle cx="135" cy="598" r="88" fill="url(#tp-c)"/></g>
+    <g clip-path="url(#tp-cl)" stroke="#5e3f17" stroke-linecap="round">
+      <path d="M77 500v200M106 500v200M135 500v200M164 500v200M193 500v200" stroke-width="1.3" opacity=".42"/>
+      <path d="M78 500v200M107 500v200M136 500v200M165 500v200M194 500v200" stroke="#f3cf8c" stroke-width=".8" opacity=".35"/>
+    </g>
+    <circle cx="135" cy="598" r="80.5" fill="none" stroke="#5e3f17" stroke-width="2.2" opacity=".32"/>
+    <circle cx="135" cy="598" r="86" fill="none" stroke="#4d3311" stroke-width="3.4" opacity=".45"/>
+    <circle cx="135" cy="598" r="88" fill="url(#tp-l)"/></svg></div></div>
+<div class="pieza p-harria" style="left:45.217%;top:73.429%;width:42.609%;height:25.714%"><div class="pieza-in"><svg viewBox="208 514 196 180" aria-hidden="true" focusable="false">
+    <defs>
+      <radialGradient id="hr-c" cx=".36" cy=".3" r=".8"><stop offset="0" stop-color="#f1ece3"/><stop offset=".5" stop-color="#d3cbbe"/><stop offset="1" stop-color="#a39b8e"/></radialGradient>
+      <filter id="hr-g" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="21" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0.2  0 0 0 0 0.2  0 0 0 0 0.22  0 0 0 0.48 -0.192" result="v"/><feComposite in="v" in2="SourceGraphic" operator="in" result="vv"/><feBlend in="SourceGraphic" in2="vv" mode="multiply"/></filter>
+    </defs>
+    <path d="M305 520c52 0 93 34 95 84 2 46-30 84-92 85-63 1-96-36-95-82 1-52 40-87 92-87z" fill="url(#hr-c)" filter="url(#hr-g)"/>
+    <path d="M232 640c18 34 50 47 84 46 38-1 66-17 79-44-16 22-44 34-80 35-37 1-66-12-83-37z" fill="#7d766b" opacity=".28"/></svg></div></div>
+<div class="pieza p-bola" style="left:42.609%;top:91.714%;width:11.304%;height:7.143%"><div class="pieza-in"><svg viewBox="196 642 52 50" aria-hidden="true" focusable="false">
+    <defs><radialGradient id="bl-c" cx=".35" cy=".3" r=".75"><stop offset="0" stop-color="#5b7bb8"/><stop offset=".55" stop-color="#22396a"/><stop offset="1" stop-color="#0e1b36"/></radialGradient></defs>
+    <circle cx="222" cy="667" r="22" fill="url(#bl-c)"/>
+    <ellipse cx="214" cy="657" rx="6" ry="4" fill="#fff" opacity=".28"/></svg></div></div>
+<div class="pieza p-makila" style="left:63.478%;top:80.857%;width:17.826%;height:18.286%"><div class="pieza-in"><svg viewBox="292 566 82 128" aria-hidden="true" focusable="false">
+    <defs><linearGradient id="mk-c" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0f1f3f"/><stop offset=".35" stop-color="#3a5896"/><stop offset=".6" stop-color="#22396a"/><stop offset="1" stop-color="#0c1830"/></linearGradient></defs>
+    <g transform="rotate(-22 330 630)"><rect x="315" y="568" width="30" height="128" rx="15" fill="url(#mk-c)"/><ellipse cx="330" cy="583" rx="15" ry="7" fill="#4b69a6" opacity=".9"/></g></svg></div></div>
+<div class="pieza p-ohola" style="left:11.304%;top:65.429%;width:64.348%;height:8.857%"><div class="pieza-in"><svg viewBox="52 458 296 62" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="oh-c" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1e2c4"/><stop offset=".25" stop-color="#e3cfa8"/><stop offset="1" stop-color="#bfa47a"/></linearGradient>
+      <filter id="oh-v" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.22 0.012" numOctaves="3" seed="5" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0.25  0 0 0 0 0.15  0 0 0 0 0.05  0 0 0 0.7040000000000001 -0.17600000000000002" result="v"/><feComposite in="v" in2="SourceGraphic" operator="in" result="vv"/><feBlend in="SourceGraphic" in2="vv" mode="multiply"/></filter>
+    </defs>
+    <g transform="rotate(3.6 200 490)">
+      <rect x="58" y="472" width="282" height="36" rx="3" fill="url(#oh-c)" filter="url(#oh-v)"/>
+      <rect x="58" y="472" width="282" height="3" rx="1.5" fill="#fff" opacity=".45"/>
+      <rect x="58" y="472" width="7" height="36" rx="2" fill="#a48a62" opacity=".8"/>
+      <path d="M70 486c60-4 120 3 190-1s60 3 76 1M70 496c50 3 110-3 170 1s70-2 96 0" fill="none" stroke="#9c825a" stroke-width=".9" opacity=".45"/>
+    </g></svg></div></div>
+<div class="pieza p-harri-luzea" style="left:22.609%;top:60.571%;width:32.609%;height:7.714%"><div class="pieza-in"><svg viewBox="104 424 150 54" aria-hidden="true" focusable="false">
+    <defs><linearGradient id="hl-c" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4f1eb"/><stop offset=".45" stop-color="#d7d2c9"/><stop offset="1" stop-color="#9d978d"/></linearGradient>
+    <filter id="hl-g" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="2" seed="33" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0.2  0 0 0 0 0.2  0 0 0 0 0.22  0 0 0 0.64 -0.256" result="v"/><feComposite in="v" in2="SourceGraphic" operator="in" result="vv"/><feBlend in="SourceGraphic" in2="vv" mode="multiply"/></filter></defs>
+    <rect x="112" y="430" width="136" height="42" rx="21" fill="url(#hl-c)" filter="url(#hl-g)"/>
+    <ellipse cx="133" cy="451" rx="13" ry="20" fill="#e9e5dd" stroke="#b9b3a9" stroke-width="1"/>
+    <path d="M158 440c18 6 30 2 46 9s28 4 38 10" fill="none" stroke="#8f897f" stroke-width=".8" opacity=".35"/></svg></div></div>
+<div class="pieza p-bola-sarea" style="left:26.957%;top:46.000%;width:23.478%;height:16.000%"><div class="pieza-in"><svg viewBox="124 322 108 112" aria-hidden="true" focusable="false">
+    <defs>
+      <radialGradient id="sb-c" cx=".34" cy=".3" r=".8"><stop offset="0" stop-color="#7fb0bf"/><stop offset=".45" stop-color="#2f6577"/><stop offset="1" stop-color="#0f3140"/></radialGradient>
+      <radialGradient id="sb-l" cx=".7" cy=".78" r=".45"><stop offset="0" stop-color="#bfe6e8" stop-opacity=".55"/><stop offset="1" stop-color="#bfe6e8" stop-opacity="0"/></radialGradient>
+      <clipPath id="sb-cl"><circle cx="178" cy="380" r="50"/></clipPath>
+    </defs>
+    <circle cx="178" cy="380" r="50" fill="url(#sb-c)"/>
+    <circle cx="178" cy="380" r="50" fill="url(#sb-l)"/>
+    <g clip-path="url(#sb-cl)" fill="none" stroke-linecap="round"><g transform="rotate(32 178 380)">
+      <g stroke="#3d3222" stroke-width="2.4" opacity=".35" transform="translate(1.2 1.4)">
+        <ellipse cx="178" cy="380" rx="13" ry="50"/><ellipse cx="178" cy="380" rx="33" ry="50"/><ellipse cx="178" cy="380" rx="47" ry="50"/>
+        <ellipse cx="178" cy="380" rx="50" ry="15"/><ellipse cx="178" cy="380" rx="50" ry="37"/>
+      </g>
+      <g stroke="#e6d6b2" stroke-width="1.7">
+        <ellipse cx="178" cy="380" rx="13" ry="50"/><ellipse cx="178" cy="380" rx="33" ry="50"/><ellipse cx="178" cy="380" rx="47" ry="50"/>
+        <ellipse cx="178" cy="380" rx="50" ry="15"/><ellipse cx="178" cy="380" rx="50" ry="37"/>
+      </g>
+    </g></g>
+    <ellipse cx="161" cy="356" rx="10" ry="6.5" fill="#fff" opacity=".55" transform="rotate(-28 161 356)"/>
+    <circle cx="178" cy="331" r="3.4" fill="#d9c8a2" stroke="#8a7650" stroke-width=".8"/></svg></div></div>
+<div class="pieza p-kortxoa" style="left:35.217%;top:42.000%;width:7.391%;height:6.000%"><div class="pieza-in"><svg viewBox="162 294 34 42" aria-hidden="true" focusable="false">
+    <defs><linearGradient id="kx-c" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8f6a3e"/><stop offset=".4" stop-color="#d0a978"/><stop offset="1" stop-color="#94703f"/></linearGradient>
+    <filter id="kx-g" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="9" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0.2  0 0 0 0 0.2  0 0 0 0 0.22  0 0 0 1.2 -0.48" result="v"/><feComposite in="v" in2="SourceGraphic" operator="in" result="vv"/><feBlend in="SourceGraphic" in2="vv" mode="multiply"/></filter></defs>
+    <rect x="166" y="300" width="25" height="32" rx="3" fill="url(#kx-c)" filter="url(#kx-g)"/>
+    <ellipse cx="178.5" cy="300.5" rx="12.5" ry="4" fill="#c79f6c" filter="url(#kx-g)"/></svg></div></div>
+<div class="pieza p-duela" style="left:53.043%;top:53.714%;width:41.304%;height:16.571%"><div class="pieza-in"><svg viewBox="244 376 190 116" aria-hidden="true" focusable="false">
+    <defs><linearGradient id="du-c" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c8913f"/><stop offset=".5" stop-color="#a87230"/><stop offset="1" stop-color="#7a4f1f"/></linearGradient>
+    <filter id="du-v" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.03 0.05" numOctaves="3" seed="17" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0.25  0 0 0 0 0.15  0 0 0 0 0.05  0 0 0 0.77 -0.1925" result="v"/><feComposite in="v" in2="SourceGraphic" operator="in" result="vv"/><feBlend in="SourceGraphic" in2="vv" mode="multiply"/></filter></defs>
+    <path d="M256 468 Q 330 428 412 388 L 424 406 Q 344 444 270 484 Z" fill="url(#du-c)" filter="url(#du-v)"/>
+    <path d="M256 468 Q 330 428 412 388" fill="none" stroke="#f0c47c" stroke-width="1.4" opacity=".55"/>
+    <path d="M412 388 L424 406" stroke="#5a3a16" stroke-width="3" opacity=".6"/></svg></div></div>
+<div class="pieza p-botila" style="left:8.696%;top:8.571%;width:89.130%;height:57.143%"><div class="pieza-in"><svg viewBox="40 60 410 400" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="bt-c" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#07170f"/><stop offset=".1" stop-color="#173e2a"/><stop offset=".27" stop-color="#2f6b49"/><stop offset=".42" stop-color="#1b4a32"/><stop offset=".72" stop-color="#0f2b1c"/><stop offset=".9" stop-color="#081710"/><stop offset="1" stop-color="#1f4a34"/></linearGradient>
+      <linearGradient id="bt-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".12" stop-color="#fff" stop-opacity=".55"/><stop offset=".85" stop-color="#fff" stop-opacity=".5"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+      <linearGradient id="bt-e" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5a4f3d" stop-opacity=".45"/><stop offset=".22" stop-color="#5a4f3d" stop-opacity="0"/><stop offset=".7" stop-color="#5a4f3d" stop-opacity=".05"/><stop offset="1" stop-color="#3a3222" stop-opacity=".55"/></linearGradient>
+      <linearGradient id="bt-k" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0c1830"/><stop offset=".3" stop-color="#3f5f9e"/><stop offset=".55" stop-color="#1d3360"/><stop offset="1" stop-color="#0a1428"/></linearGradient>
+      <filter id="bt-p" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0.2  0 0 0 0 0.2  0 0 0 0 0.22  0 0 0 0.4 -0.16000000000000003" result="v"/><feComposite in="v" in2="SourceGraphic" operator="in" result="vv"/><feBlend in="SourceGraphic" in2="vv" mode="multiply"/></filter>
+    </defs>
+    <g transform="translate(400 410) rotate(-46) scale(1.08)">
+      <path d="M-39-7Q-39 0-32 0H32Q39 0 39-7V-228C39-272 15-300 13-344V-411L15-413V-424Q15-430 9-430H-9Q-15-430-15-424V-413L-13-411V-344C-15-300-39-272-39-228Z" fill="url(#bt-c)"/>
+      <path d="M-27-14V-226C-27-262-13-288-9-320" fill="none" stroke="url(#bt-b)" stroke-width="4.2" stroke-linecap="round" opacity=".8"/>
+      <path d="M27-20V-220" stroke="#9fd0b4" stroke-width="2" opacity=".18" stroke-linecap="round"/>
+      <path d="M-39-7Q-39 0-32 0H32Q39 0 39-7V-10H-39Z" fill="#030b07" opacity=".55"/>
+      <g filter="url(#bt-p)"><rect x="-39" y="-176" width="78" height="128" fill="#efe7d8"/></g>
+      <rect x="-39" y="-176" width="78" height="128" fill="url(#bt-e)"/>
+      <rect x="-39" y="-176" width="78" height="1.4" fill="#13294b" opacity=".75"/>
+      <rect x="-39" y="-49.4" width="78" height="1.4" fill="#13294b" opacity=".75"/>
+      <text x="0" y="-111" text-anchor="middle" font-family="Melodrama, serif" font-weight="700" font-size="25" letter-spacing="1.5" fill="#13294b">AIHEN</text>
+      <text x="0" y="-94" text-anchor="middle" font-family="'Libre Caslon Display', serif" font-size="7.4" letter-spacing="2.4" fill="#13294b">TXAKOLINA</text>
+      <path d="M-14-84H14" stroke="#13294b" stroke-width=".7" opacity=".7"/>
+      <text x="0" y="-64" text-anchor="middle" font-family="'Libre Caslon Display', serif" font-size="6.4" letter-spacing="2.2" fill="#13294b">ASTEASU</text>
+      <path d="M-15-430H15V-424L15-413L13.5-411V-372C13.5-366 11-364 9-364H-9C-11-364-13.5-366-13.5-372V-411L-15-413V-424Z" fill="url(#bt-k)"/>
+      <rect x="-13.5" y="-380" width="27" height="1.2" fill="#9fb4dc" opacity=".55"/>
+      <rect x="-15" y="-430" width="30" height="2.4" fill="#5f7fbf" opacity=".7"/>
+    </g></svg></div></div></div>
+  <div class="repisa" aria-hidden="true"></div>
+  <a class="bajar" href="#contenido"><span class="sr">Bajar a la página</span><span class="bajar-o" aria-hidden="true"><svg viewBox="0 0 16 40" aria-hidden="true" focusable="false"><path d="M8 1v36M1.5 30 8 37.5 14.5 30"/></svg></span></a>
+</section>
+
+<section class="frase-sec" id="contenido">
+  <p class="frase" data-frase><span class="w">Hacemos</span> <span class="w">txakoli</span> <span class="w">en</span> <span class="w">Asteasu</span> <span class="w">con</span> <span class="w">la</span> <span class="w">uva</span> <span class="mini mini-mahatsa" aria-hidden="true"><picture><source type="image/avif" srcset="../fotos/mahatsa-160.avif 160w, ../fotos/mahatsa-320.avif 320w" sizes="120px"><img src="../fotos/mahatsa-320.webp" srcset="../fotos/mahatsa-160.webp 160w, ../fotos/mahatsa-320.webp 320w" sizes="120px" width="1021" height="1502" alt="" loading="lazy" decoding="async"></picture></span> <span class="w">de</span> <span class="w">nuestra</span> <span class="w">ladera.</span> <span class="mini mini-ladera" aria-hidden="true"><picture><source type="image/avif" srcset="../fotos/ladera-240.avif 240w, ../fotos/ladera-480.avif 480w" sizes="120px"><img src="../fotos/ladera-480.webp" srcset="../fotos/ladera-240.webp 240w, ../fotos/ladera-480.webp 480w" sizes="120px" width="4380" height="2920" alt="" loading="lazy" decoding="async"></picture></span> <span class="w">Lo</span> <span class="w">pruebas</span> <span class="w">aquí</span> <span class="mini mini-edalontzia" aria-hidden="true"><picture><source type="image/avif" srcset="../fotos/edalontzia-160.avif 160w, ../fotos/edalontzia-320.avif 320w" sizes="120px"><img src="../fotos/edalontzia-320.webp" srcset="../fotos/edalontzia-160.webp 160w, ../fotos/edalontzia-320.webp 320w" sizes="120px" width="1331" height="1957" alt="" loading="lazy" decoding="async"></picture></span> <span class="w">y</span> <span class="w">te</span> <span class="w">lo</span> <span class="w">llevas</span> <span class="w">a</span> <span class="w">casa.</span></p>
+</section>
+
+<figure class="banda-foto" data-banda><picture><source media="(max-width: 700px)" type="image/avif" srcset="../fotos/copa-m-600.avif 600w, ../fotos/copa-m-900.avif 900w, ../fotos/copa-m-1300.avif 1300w" sizes="100vw"><source media="(max-width: 700px)" type="image/webp" srcset="../fotos/copa-m-600.webp 600w, ../fotos/copa-m-900.webp 900w, ../fotos/copa-m-1300.webp 1300w" sizes="100vw"><source type="image/avif" srcset="../fotos/copa-800.avif 800w, ../fotos/copa-1400.avif 1400w, ../fotos/copa-2000.avif 2000w, ../fotos/copa-2800.avif 2800w, ../fotos/copa-3600.avif 3600w" sizes="100vw"><img src="../fotos/copa-1400.webp" srcset="../fotos/copa-800.webp 800w, ../fotos/copa-1400.webp 1400w, ../fotos/copa-2000.webp 2000w, ../fotos/copa-2800.webp 2800w, ../fotos/copa-3600.webp 3600w" sizes="100vw" width="5989" height="2852" alt="Una mano mueve una copa de vino blanco." loading="lazy" decoding="async"></picture></figure>
+
+<section class="intro-vinos" aria-labelledby="h-vinos">
+  <h2 id="h-vinos" class="h2 h2-a" data-lineas><span class="l1">Tres txakolis</span> <span class="l2">de la misma viña</span></h2>
+  <p class="texto-c">Un blanco del año, uno sobre lías y un rosado. En la lista tienes la nota de cata de cada uno y con qué comerlo.</p>
+  <a class="ovalo " href="#txakolinak"><span class="ovalo-o" aria-hidden="true"><svg viewBox="0 0 40 16" aria-hidden="true" focusable="false"><path d="M1 8h36M30 1.5 37.5 8 30 14.5"/></svg></span><span class="ovalo-t">Ver los txakolis</span></a>
+</section>
+
+<div class="crece">
+  <figure class="crece-foto" data-crece>
+    <picture><source media="(max-width: 700px)" type="image/avif" srcset="../fotos/paisaia-m-600.avif 600w, ../fotos/paisaia-m-900.avif 900w, ../fotos/paisaia-m-1300.avif 1300w" sizes="100vw"><source media="(max-width: 700px)" type="image/webp" srcset="../fotos/paisaia-m-600.webp 600w, ../fotos/paisaia-m-900.webp 900w, ../fotos/paisaia-m-1300.webp 1300w" sizes="100vw"><source type="image/avif" srcset="../fotos/paisaia-800.avif 800w, ../fotos/paisaia-1400.avif 1400w, ../fotos/paisaia-2000.avif 2000w, ../fotos/paisaia-2800.avif 2800w" sizes="100vw"><img src="../fotos/paisaia-1400.webp" srcset="../fotos/paisaia-800.webp 800w, ../fotos/paisaia-1400.webp 1400w, ../fotos/paisaia-2000.webp 2000w, ../fotos/paisaia-2800.webp 2800w" sizes="100vw" width="5184" height="2728" alt="Prados verdes y un caserío, con montes azules al fondo." loading="lazy" decoding="async"></picture>
+    <div class="coords" aria-hidden="true"><p class="coords-pista" data-pista="34">ASTEASU 43°11’34”N 2°05’43”W · LARRAUL 43°11’17”N 2°06’09”W · ZIZURKIL 43°11’57”N 2°04’27”W · ASTEASU 43°11’34”N 2°05’43”W · LARRAUL 43°11’17”N 2°06’09”W · ZIZURKIL 43°11’57”N 2°04’27”W · ASTEASU 43°11’34”N 2°05’43”W · LARRAUL 43°11’17”N 2°06’09”W · ZIZURKIL 43°11’57”N 2°04’27”W · </p></div>
+  </figure>
+</div>
+
+<section class="visita" id="bisita" aria-labelledby="h-visita">
+  <h2 id="h-visita" class="h2 h2-b" data-lineas><span class="l1">Visita</span> <span class="l2">y cata</span></h2>
+  <p class="texto-c" data-enciende>Os enseñamos la viña y la bodega, y probáis los tres txakolis. Elige el día, cuántos sois y si os quedáis a comer.</p>
+  <form class="elige" data-visita onsubmit="return false">
+    <div class="elige-col">
+      <fieldset class="campo campo-dia">
+        <legend class="et">Día</legend>
+        <p class="sinjs" data-sinjs>Escríbenos el día por <a href="https://wa.me/34600000000" rel="noopener">WhatsApp</a>.</p>
+        <ul class="dias" data-dias></ul>
+      </fieldset>
+      <fieldset class="campo campo-pers">
+        <legend class="et">Personas</legend>
+        <div class="paso" data-paso hidden><button type="button" data-menos-p aria-label="Una persona menos">−</button><output class="num" data-pers aria-live="polite">2</output><button type="button" data-mas-p aria-label="Una persona más">+</button></div>
+      </fieldset>
+      <fieldset class="campo campo-modo">
+        <legend class="et">Visita</legend>
+        <label class="opcion"><input type="radio" name="modo" value="sin" checked data-modo><i class="punto" aria-hidden="true"></i><span class="op-t">Visita y cata</span><span class="op-p">15 euros por persona</span></label>
+        <label class="opcion"><input type="radio" name="modo" value="con" data-modo><i class="punto" aria-hidden="true"></i><span class="op-t">Visita, cata y comida</span><span class="op-p">40 euros por persona</span></label>
+      </fieldset>
+    </div>
+    <div class="elige-res">
+      <h3 class="res-h">Precio orientativo</h3>
+      <p class="total" data-v-total aria-live="polite">En total, unos 30 euros.</p>
+      <p class="aviso" data-v-aviso aria-live="polite"></p>
+      <p class="edad">La cata es solo para mayores de 18 años.</p>
+      <div class="mensaje">
+        <h3 class="res-h">Tu mensaje</h3>
+        <p class="escribiendo" data-escribiendo aria-hidden="true">Escribiendo…</p>
+        <p class="msg" data-v-msg aria-live="polite"></p>
+      </div>
+      <p class="enviar"><a class="btn" href="https://wa.me/34600000000" rel="noopener" data-v-wa><span class="btn-o" aria-hidden="true"><svg viewBox="0 0 40 16" aria-hidden="true" focusable="false"><path d="M1 8h36M30 1.5 37.5 8 30 14.5"/></svg></span><span>Enviar por WhatsApp</span></a></p>
+      <p class="o-llama">o llama al <a href="tel:+34943000000">943 00 00 00</a></p>
+      <p class="nota">Datos de ejemplo: dirección, teléfono, WhatsApp, precios, días de visita, envíos y los tres txakolis.</p>
+    </div>
+  </form>
+</section>
+
+<section class="oscura" id="kutxak" aria-labelledby="h-kutxak">
+  <div class="oscura-foto" data-oscura><picture><source media="(max-width: 700px)" type="image/avif" srcset="../fotos/kupelak-m-600.avif 600w, ../fotos/kupelak-m-900.avif 900w, ../fotos/kupelak-m-1300.avif 1300w" sizes="100vw"><source media="(max-width: 700px)" type="image/webp" srcset="../fotos/kupelak-m-600.webp 600w, ../fotos/kupelak-m-900.webp 900w, ../fotos/kupelak-m-1300.webp 1300w" sizes="100vw"><source type="image/avif" srcset="../fotos/kupelak-800.avif 800w, ../fotos/kupelak-1400.avif 1400w, ../fotos/kupelak-2000.avif 2000w, ../fotos/kupelak-2800.avif 2800w" sizes="100vw"><img src="../fotos/kupelak-1400.webp" srcset="../fotos/kupelak-800.webp 800w, ../fotos/kupelak-1400.webp 1400w, ../fotos/kupelak-2000.webp 2000w, ../fotos/kupelak-2800.webp 2800w" sizes="100vw" width="5616" height="3510" alt="Barricas de roble tumbadas en una bodega oscura." loading="lazy" decoding="async"></picture></div>
+  <div class="oscura-txt">
+    <h2 id="h-kutxak" class="h2 h2-c" data-lineas><span class="l1">Cajas para</span> <span class="l2">llevar o enviar</span></h2>
+    <p>Elige las botellas que quieras para tu caja. La recoges en la bodega o te la enviamos.</p>
+    <a class="ovalo ovalo-claro" href="#txakolinak"><span class="ovalo-o" aria-hidden="true"><svg viewBox="0 0 40 16" aria-hidden="true" focusable="false"><path d="M1 8h36M30 1.5 37.5 8 30 14.5"/></svg></span><span class="ovalo-t">Preparar la caja</span></a>
+  </div>
+</section>
+
+<section class="lista" id="txakolinak" aria-labelledby="h-lista">
+  <div class="lista-cab">
+    <h2 id="h-lista" class="h2 h2-d" data-lineas>Los txakolis</h2>
+    <a class="ovalo ovalo-pild" href="#kutxa" data-a-caja hidden><span class="ovalo-o" aria-hidden="true"><svg viewBox="0 0 40 16" aria-hidden="true" focusable="false"><path d="M1 8h36M30 1.5 37.5 8 30 14.5"/></svg></span><span class="ovalo-t">Tu caja</span><span class="cuenta" data-cuenta>0</span></a>
+  </div>
+  <ul class="vinos" data-vinos data-escalonado>
+    <li class="vino" data-vino="1" data-precio="11" data-nombre="AIHEN">
+      <div class="vino-fila">
+        <h3 class="vino-h"><button class="vino-abrir" type="button" aria-expanded="true" aria-controls="ardoa-1" data-abrir><i class="punto" aria-hidden="true"></i><span class="vino-tipo">Blanco del año</span><span class="vino-nombre">AIHEN</span><span class="vino-flecha" aria-hidden="true"><svg viewBox="0 0 16 40" aria-hidden="true" focusable="false"><path d="M8 1v36M1.5 30 8 37.5 14.5 30"/></svg></span></button></h3>
+        <p class="vino-precio">11 €</p>
+        <div class="paso paso-b" data-paso hidden>
+          <button type="button" data-menos aria-label="Una botella menos: AIHEN">−</button><output class="num" data-n aria-live="polite">0</output><button type="button" data-mas aria-label="Una botella más: AIHEN">+</button>
+        </div>
+      </div>
+      <div class="vino-mas" id="ardoa-1" data-detalle>
+        <div class="vino-txt">
+          <p class="vino-nota">Fresco y con un punto de aguja. Huele a manzana verde y a limón.</p>
+          <p class="vino-con">Con anchoas, gildas y marisco.</p>
+        </div>
+        <figure class="vino-foto"><picture><source type="image/avif" srcset="../fotos/antxoak-480.avif 480w, ../fotos/antxoak-800.avif 800w, ../fotos/antxoak-1200.avif 1200w" sizes="(min-width: 900px) 24vw, 88vw"><img src="../fotos/antxoak-1200.webp" srcset="../fotos/antxoak-480.webp 480w, ../fotos/antxoak-800.webp 800w, ../fotos/antxoak-1200.webp 1200w" sizes="(min-width: 900px) 24vw, 88vw" width="4500" height="3000" alt="Anchoas en aceite en una fuente blanca." loading="lazy" decoding="async"></picture></figure>
+      </div>
+    </li>
+    <li class="vino" data-vino="2" data-precio="15" data-nombre="MAREA">
+      <div class="vino-fila">
+        <h3 class="vino-h"><button class="vino-abrir" type="button" aria-expanded="true" aria-controls="ardoa-2" data-abrir><i class="punto" aria-hidden="true"></i><span class="vino-tipo">Blanco con sus lías</span><span class="vino-nombre">MAREA</span><span class="vino-flecha" aria-hidden="true"><svg viewBox="0 0 16 40" aria-hidden="true" focusable="false"><path d="M8 1v36M1.5 30 8 37.5 14.5 30"/></svg></span></button></h3>
+        <p class="vino-precio">15 €</p>
+        <div class="paso paso-b" data-paso hidden>
+          <button type="button" data-menos aria-label="Una botella menos: MAREA">−</button><output class="num" data-n aria-live="polite">0</output><button type="button" data-mas aria-label="Una botella más: MAREA">+</button>
+        </div>
+      </div>
+      <div class="vino-mas" id="ardoa-2" data-detalle>
+        <div class="vino-txt">
+          <p class="vino-nota">Pasa unos meses con sus lías. Es más redondo, con aroma de fruta blanca madura.</p>
+          <p class="vino-con">Con pescado a la brasa.</p>
+        </div>
+        <figure class="vino-foto"><picture><source type="image/avif" srcset="../fotos/arraina-480.avif 480w, ../fotos/arraina-800.avif 800w, ../fotos/arraina-1200.avif 1200w" sizes="(min-width: 900px) 24vw, 88vw"><img src="../fotos/arraina-1200.webp" srcset="../fotos/arraina-480.webp 480w, ../fotos/arraina-800.webp 800w, ../fotos/arraina-1200.webp 1200w" sizes="(min-width: 900px) 24vw, 88vw" width="6192" height="4128" alt="Pescado y guindillas en la parrilla, con humo." loading="lazy" decoding="async"></picture></figure>
+      </div>
+    </li>
+    <li class="vino" data-vino="3" data-precio="12" data-nombre="ARRATS">
+      <div class="vino-fila">
+        <h3 class="vino-h"><button class="vino-abrir" type="button" aria-expanded="true" aria-controls="ardoa-3" data-abrir><i class="punto" aria-hidden="true"></i><span class="vino-tipo">Vino rosado</span><span class="vino-nombre">ARRATS</span><span class="vino-flecha" aria-hidden="true"><svg viewBox="0 0 16 40" aria-hidden="true" focusable="false"><path d="M8 1v36M1.5 30 8 37.5 14.5 30"/></svg></span></button></h3>
+        <p class="vino-precio">12 €</p>
+        <div class="paso paso-b" data-paso hidden>
+          <button type="button" data-menos aria-label="Una botella menos: ARRATS">−</button><output class="num" data-n aria-live="polite">0</output><button type="button" data-mas aria-label="Una botella más: ARRATS">+</button>
+        </div>
+      </div>
+      <div class="vino-mas" id="ardoa-3" data-detalle>
+        <div class="vino-txt">
+          <p class="vino-nota">Ligero, con fresa y frambuesa. Mejor muy frío.</p>
+          <p class="vino-con">Con queso de oveja y embutido.</p>
+        </div>
+        <figure class="vino-foto"><picture><source type="image/avif" srcset="../fotos/gazta-480.avif 480w, ../fotos/gazta-800.avif 800w, ../fotos/gazta-1200.avif 1200w" sizes="(min-width: 900px) 24vw, 88vw"><img src="../fotos/gazta-1200.webp" srcset="../fotos/gazta-480.webp 480w, ../fotos/gazta-800.webp 800w, ../fotos/gazta-1200.webp 1200w" sizes="(min-width: 900px) 24vw, 88vw" width="4077" height="2718" alt="Quesos de oveja curándose en una balda de madera." loading="lazy" decoding="async"></picture></figure>
+      </div>
+    </li>
+  </ul>
+  <p class="sinjs caja-sinjs" data-sinjs>Dinos por <a href="https://wa.me/34600000000" rel="noopener">WhatsApp</a> qué botellas quieres.</p>
+  <div class="caja" id="kutxa" data-caja hidden>
+    <div class="caja-izq">
+      <h3 class="h3">Tu caja</h3>
+      <div class="caja-dib" data-caja-dib aria-hidden="true"></div>
+      <p class="caja-vacia" data-caja-vacia>Todavía no has elegido botellas. Pulsa + en la lista.</p>
+      <ul class="caja-lineas" data-caja-lineas aria-live="polite"></ul>
+    </div>
+    <div class="caja-der">
+      <fieldset class="campo">
+        <legend class="et">Entrega</legend>
+        <label class="opcion"><input type="radio" name="entrega" value="recoger" checked data-entrega><i class="punto" aria-hidden="true"></i><span class="op-t">Voy a buscarla a la bodega</span></label>
+        <label class="opcion"><input type="radio" name="entrega" value="enviar" data-entrega><i class="punto" aria-hidden="true"></i><span class="op-t">Enviádmela a casa</span><span class="op-p">Envío: unos 8 euros</span></label>
+      </fieldset>
+      <p class="total" data-c-total aria-live="polite"></p>
+      <p class="edad">Solo vendemos alcohol a mayores de 18 años.</p>
+      <label class="mayor"><input type="checkbox" data-mayor><i class="caja-check" aria-hidden="true"></i><span>Tengo 18 años o más.</span></label>
+      <div class="mensaje">
+        <h3 class="res-h">Tu mensaje</h3>
+        <p class="escribiendo" data-escribiendo aria-hidden="true">Escribiendo…</p>
+        <p class="msg" data-c-msg aria-live="polite"></p>
+      </div>
+      <p class="enviar"><a class="btn" href="https://wa.me/34600000000" rel="noopener" data-c-wa><span class="btn-o" aria-hidden="true"><svg viewBox="0 0 40 16" aria-hidden="true" focusable="false"><path d="M1 8h36M30 1.5 37.5 8 30 14.5"/></svg></span><span>Enviar por WhatsApp</span></a></p>
+      <p class="aviso" data-c-aviso aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="pie" id="harremana">
+  <div class="pie-grid">
+    <nav class="pie-nav" aria-label="Menú">
+      <ul data-escalonado>
+        <li><a href="#bisita">Visita y cata</a></li>
+        <li><a href="#txakolinak">Los txakolis</a></li>
+        <li><a href="#kutxak">Cajas</a></li>
+        <li><a href="#arriba">AIHEN</a></li>
+      </ul>
+      <span class="idiomas idiomas-pie"><span class="idioma-act" aria-current="true" lang="es">ES</span><a href="../" lang="eu" hreflang="eu"><span aria-hidden="true">EU</span><span class="sr">Euskaraz</span></a></span>
+    </nav>
+    <div class="pie-centro">
+      <svg class="marca-dib" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="M20 3c0 4 3 5 6 4"/><circle cx="14" cy="13" r="4.2"/><circle cx="23" cy="13" r="4.2"/><circle cx="18.5" cy="20.5" r="4.2"/><circle cx="27.5" cy="20.5" r="4.2"/><circle cx="23" cy="28" r="4.2"/><circle cx="18.5" cy="35" r="3.4"/></svg>
+      <p class="pie-dir">Aihen baserria<br>Asteasu<br>Gipuzkoa</p>
+    </div>
+    <div class="pie-der">
+      <p class="pie-pide">Pide la visita o la caja por WhatsApp, o llámanos.</p>
+      <p class="pie-tel"><a href="tel:+34943000000">943 00 00 00</a></p>
+      <a class="ovalo " href="https://wa.me/34600000000" rel="noopener" data-wa><span class="ovalo-o" aria-hidden="true"><svg viewBox="0 0 40 16" aria-hidden="true" focusable="false"><path d="M1 8h36M30 1.5 37.5 8 30 14.5"/></svg></span><span class="ovalo-t">WhatsApp</span></a>
+    </div>
+  </div>
+  <div class="pie-legal">
+    <p>AIHEN es una bodega inventada: esta web es una muestra de OI Studio.</p>
+    <p><a href="../fotos/creditos.json">Fotos de ejemplo: autores y licencias</a></p>
+    <p>Diseñado por <a class="firma" href="https://oiwebstudio.com/?utm_source=muestra-aihen&amp;utm_medium=pie" target="_blank" rel="noopener">OI Studio</a></p>
+  </div>
+</footer>
+
+<script type="application/json" id="textos">{"lang":"es","dias":["lunes","martes","miércoles","jueves","viernes","sábado","domingo"],"meses":["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"],"mesesGen":["urtarrilaren","otsailaren","martxoaren","apirilaren","maiatzaren","ekainaren","uztailaren","abuztuaren","irailaren","urriaren","azaroaren","abenduaren"],"sufijos":["1ean","2an","3an","4an","5ean","6an","7an","8an","9an","10ean","11n","12an","13an","14an","15ean","16an","17an","18an","19an","20an","21ean","22an","23an","24an","25ean","26an","27an","28an","29an","30ean","31n"],"precio":{"sin":15,"con":40,"envio":8,"v":[11,15,12]},"nombres":["AIHEN","MAREA","ARRATS"],"wa":"https://wa.me/34600000000","total":"En total, unos {t} euros.","envio":"Envío: unos 8 euros.","sin_dia":"Elige un día.","aviso_muchos":"Para más de doce personas, llámanos.","falta_edad":"Marca que tienes 18 años o más para enviarlo.","caja_vacia":"Todavía no has elegido botellas. Pulsa + en la lista.","sin_comida":"Visita y cata","con_comida":"Visita, cata y comida","recoger":"Voy a buscarla a la bodega","enviar":"Enviádmela a casa","wa_visita_hola":"Hola, queremos visitar la bodega.","wa_dia":"Día","wa_personas":"Personas","wa_visita":"Visita","wa_pregunta_visita":"¿Hay sitio ese día?","wa_caja_hola":"Hola, quiero esta caja de txakoli.","wa_entrega":"Entrega","wa_pregunta_caja":"¿Cuándo la tendríais lista?","botellas":"Botellas"}</script>
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/SplitText.min.js"></script>
+<script src="../js/anim-texto.js"></script>
+<script src="../js/pagina.js"></script>
+</body>
+</html>
