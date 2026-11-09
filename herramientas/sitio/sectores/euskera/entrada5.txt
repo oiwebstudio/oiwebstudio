@@ -1,0 +1,20 @@
+sx_c_floristeria	Floristería
+sx_k_floristeria	Floristería de Tolosa
+sx_floristeria_a	Un ramo para hoy o para el día que quieras
+sx_floristeria_b	Recogerlo o que te lo lleven a casa
+sx_floristeria_c	Bodas y eventos, con cita por WhatsApp
+sx_c_gimnasio	Gimnasio
+sx_k_gimnasio	Entrenamiento, yoga y pilates
+sx_gimnasio_a	Primera clase de prueba sin llamar
+sx_gimnasio_b	El horario de la semana, con plazas libres
+sx_gimnasio_c	Cuánto sale cada clase, según los días
+sx_c_joyeria	Joyería
+sx_k_joyeria	Joyería y taller en Tolosa
+sx_joyeria_a	Piezas con su precio, para reservarlas
+sx_joyeria_b	Tu alianza con su talla y su grabado
+sx_joyeria_c	Arreglos y limpieza, con precio desde
+sx_c_veterinaria	Veterinaria
+sx_k_veterinaria	Clínica veterinaria en Tolosa
+sx_veterinaria_a	Cita sin llamar, con el mensaje escrito
+sx_veterinaria_b	Urgencias a un toque
+sx_veterinaria_c	Cuándo le toca la próxima vacuna

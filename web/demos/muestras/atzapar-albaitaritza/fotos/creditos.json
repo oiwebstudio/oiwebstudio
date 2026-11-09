@@ -1,0 +1,107 @@
+{
+ "_leeme": "Fotos de la muestra ATZAPAR (clínica veterinaria inventada, 9/11/2026). Son fotos libres de Unsplash puestas de ejemplo: ninguna es de una clínica real ni de sus clientes. Originales mirados enteros: sin marca de agua. Recortadas, redimensionadas y guardadas en AVIF y WebP sin datos de ubicación (herramientas/diseno/imagenes.mjs).",
+ "portada": {
+  "autor": "Vitaly Gariev",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-woman-sitting-on-a-bench-petting-a-dog-QX9qrtgAbYI",
+  "original": "6000 × 4000",
+  "uso": "portada a sangre en el ordenador (una mujer en un banco de la acera acaricia a su perro, como la de Kindred)",
+  "cambios": "recortada a 4000 × 2500, redimensionada y guardada en AVIF y WebP"
+ },
+ "portada-m": {
+  "autor": "Vitaly Gariev",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-woman-sitting-on-a-bench-petting-a-dog-QX9qrtgAbYI",
+  "original": "6000 × 4000",
+  "uso": "portada en el móvil (recorte vertical de la misma foto)",
+  "cambios": "recortada a 1334 × 2667, redimensionada y guardada en AVIF y WebP"
+ },
+ "portada-lausoa": {
+  "autor": "Vitaly Gariev",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-woman-sitting-on-a-bench-petting-a-dog-QX9qrtgAbYI",
+  "original": "6000 × 4000",
+  "uso": "la portada desenfocada, detrás de la lista de servicios",
+  "cambios": "recortada, desenfocada y oscurecida un poco (fondo detrás del texto), 1600 px de ancho"
+ },
+ "portada-m-lausoa": {
+  "autor": "Vitaly Gariev",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-woman-sitting-on-a-bench-petting-a-dog-QX9qrtgAbYI",
+  "original": "6000 × 4000",
+  "uso": "lo mismo en el móvil",
+  "cambios": "recortada, desenfocada y oscurecida un poco (fondo detrás del texto), 600 px de ancho"
+ },
+ "txakurra": {
+  "autor": "NordWood Themes",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/white-toy-poodle-photography-DqRXz74Qj6s",
+  "original": "3584 × 5376",
+  "uso": "elección «perro» de la cita (donde Kindred pone la foto del gato)",
+  "cambios": "recortada a 3548 × 5376, redimensionada y guardada en AVIF y WebP"
+ },
+ "katua": {
+  "autor": "ÁLVARO MENDOZA",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-calico-cat-sitting-on-a-white-background-seO4KFi0KvY",
+  "original": "4672 × 7008",
+  "uso": "elección «gato» de la cita",
+  "cambios": "recortada a 3960 × 6000, redimensionada y guardada en AVIF y WebP"
+ },
+ "untxia": {
+  "autor": "Tamas Tuzes-Katai",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/white-and-gray-rabbit-on-black-table-fLj1a73qCB0",
+  "original": "3542 × 4427",
+  "uso": "elección «otro» de la cita",
+  "cambios": "recortada a 2922 × 4427, redimensionada y guardada en AVIF y WebP"
+ },
+ "obalo-1": {
+  "autor": "Matt Richmond",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-happy-dog-smiles-with-its-tongue-out-Fj41wQV4Iw0",
+  "original": "3072 × 4608",
+  "uso": "óvalo junto a las vacunas (donde Kindred pone al equipo)",
+  "cambios": "recortada a 3072 × 3657, redimensionada y guardada en AVIF y WebP"
+ },
+ "obalo-2": {
+  "autor": "AcidFern",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-gray-and-white-cat-sitting-on-top-of-a-rock-3dejnak626k",
+  "original": "2912 × 4368",
+  "uso": "óvalo junto a las vacunas",
+  "cambios": "recortada a 2912 × 3467, redimensionada y guardada en AVIF y WebP"
+ },
+ "obalo-3": {
+  "autor": "NordWood Themes",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/beige-coated-dog-Z1-yorzKan8",
+  "original": "2989 × 4627",
+  "uso": "óvalo junto a las vacunas",
+  "cambios": "recortada a 2989 × 3558, redimensionada y guardada en AVIF y WebP"
+ },
+ "larrialdia": {
+  "autor": "Oliver",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/brown-and-white-short-coated-dog-lying-on-white-textile-tUE5JCPg0Co",
+  "original": "3072 × 2304",
+  "uso": "caja azul de urgencias (donde Kindred pone el dibujo de los planes)",
+  "cambios": "recortada a 3072 × 2276, redimensionada y guardada en AVIF y WebP"
+ },
+ "azkena": {
+  "autor": "Kristina Delp",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/white-long-coated-small-dog-on-blue-textile-a1RV_NZr5lc",
+  "original": "3089 × 2048",
+  "uso": "foto grande del final con la llamada a pedir cita (como «Be Kindred»)",
+  "cambios": "recortada a 3089 × 1188, redimensionada y guardada en AVIF y WebP"
+ },
+ "azkena-m": {
+  "autor": "Kristina Delp",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/white-long-coated-small-dog-on-blue-textile-a1RV_NZr5lc",
+  "original": "3089 × 2048",
+  "uso": "lo mismo en el móvil",
+  "cambios": "recortada a 1741 × 2048, redimensionada y guardada en AVIF y WebP"
+ }
+}

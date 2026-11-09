@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Atzapar · Clínica veterinaria en Tolosa (muestra)</title>
+<meta name="description" content="Muestra de clínica veterinaria en Tolosa: cita por WhatsApp, urgencias a un toque y aviso de la vacuna.">
+<meta name="theme-color" content="#FFFFFF">
+<meta property="og:title" content="Atzapar · Clínica veterinaria en Tolosa (muestra)">
+<meta property="og:description" content="Muestra de clínica veterinaria en Tolosa: cita por WhatsApp, urgencias a un toque y aviso de la vacuna.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="../fotos/og-atzapar.jpg">
+<link rel="alternate" hreflang="eu" href="../">
+<!--
+  MUESTRA «ATZAPAR» (OI Studio, 9/11/2026): clínica veterinaria INVENTADA para la pieza «¿Qué negocio tienes?» de oiwebstudio.com.
+  «Atzapar» = pata, zarpa. Nombre, dirección, teléfonos, horario, urgencias, servicios, forma de pedir cita y plazos son de ejemplo. noindex.
+  Calco de la referencia n.º 01 que eligió Oier el 8/11: KINDRED PET CARE (kindredpetcare.com, Areal.design). Portada: foto de acera a
+  sangre con gente y perro, cruz rosa + nombre enorme en grotesca negra blanca arriba y al centro, frase larga en serif a media altura con el
+  nombre en negrita, solo «Pedir cita» y el menú redondo arriba a la derecha; al bajar, la foto se desenfoca detrás de los servicios (en texto,
+  no en tarjetas de cristal: «que_no_copiar»). Después: titular rosa en serif, cajas melocotón escalonadas, foto alta y la marca de dos círculos;
+  frase grande que corre; panel crema con óvalos; caja azul marino; título centrado con dos columnas; foto grande redondeada; pie rosa.
+  Lo que hace: cita por WhatsApp (animal, motivo, día y turno → mensaje escrito), urgencias con el teléfono a un toque, aviso de la vacuna.
+  Letras: 17 Archivo (nombre, botones y texto) + 11 Erode 400 (titulares y frases), autoalojadas en fuentes/.
+  Fotos: Unsplash (licencia de Unsplash), detalle en fotos/creditos.json.
+  Movimiento: portada con CSS desde el primer pintado; lo de abajo con GSAP 3.13 + ScrollTrigger + SplitText (js/) + anim-texto.js + pagina.js.
+  Con «reducir movimiento» o sin JS, todo quieto y visible. Es una muestra: no se envía nada a ningún sitio (los mensajes se abren en WhatsApp).
+-->
+<link rel="preload" href="../fuentes/archivo-400_900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fuentes/erode-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../estilo.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="cab" data-cab>
+  <a class="cab-logo" href="#contenido" aria-label="ATZAPAR"><svg class="cruz" viewBox="0 0 10 10" aria-hidden="true"><path d="M3.6 0h2.8v3.6H10v2.8H6.4V10H3.6V6.4H0V3.6h3.6z"/></svg><b>ATZAPAR</b></a>
+  <div class="cab-acc">
+    <a class="redondo idioma" href="../" lang="eu" hreflang="eu"><span aria-hidden="true">EU</span><span class="sr">Euskaraz</span></a>
+    <a class="redondo tel-urg" href="tel:+34600000000"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></svg><span class="tel-txt">Urgencias<span class="sr">:</span> 600 00 00 00</span></a>
+    <a class="btn btn-marino cab-cita" href="#cita">Pedir cita</a>
+    <button class="redondo hamb" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menú"><span></span></button>
+  </div>
+  <nav class="menu" id="menu" aria-label="Menú">
+    <ul><li><a href="#cita">Cita</a></li><li><a href="#txertoak">Vacunas</a></li><li><a href="#larrialdiak">Urgencias</a></li><li><a href="#non">Dónde estamos</a></li></ul>
+    <p class="menu-tel"><a href="tel:+34943000000">Consulta · 943 00 00 00</a><a href="tel:+34600000000">Urgencias · 600 00 00 00</a></p>
+  </nav>
+</header>
+
+<main id="contenido">
+<section class="portada" data-portada aria-labelledby="h1">
+  <div class="fondo"><div class="fondo-in">
+    <picture class="nitida"><source media="(max-width: 700px)" type="image/avif" srcset="../fotos/portada-m-600.avif 600w, ../fotos/portada-m-900.avif 900w, ../fotos/portada-m-1334.avif 1334w" sizes="100vw"><source media="(max-width: 700px)" type="image/webp" srcset="../fotos/portada-m-600.webp 600w, ../fotos/portada-m-900.webp 900w, ../fotos/portada-m-1334.webp 1334w" sizes="100vw"><source type="image/avif" srcset="../fotos/portada-1280.avif 1280w, ../fotos/portada-1920.avif 1920w, ../fotos/portada-2560.avif 2560w, ../fotos/portada-3200.avif 3200w, ../fotos/portada-4000.avif 4000w" sizes="100vw"><img src="../fotos/portada-1920.webp" srcset="../fotos/portada-1280.webp 1280w, ../fotos/portada-1920.webp 1920w, ../fotos/portada-2560.webp 2560w, ../fotos/portada-3200.webp 3200w, ../fotos/portada-4000.webp 4000w" sizes="100vw" width="4000" height="2500" alt="Mujer sentada en un banco de la calle acariciando a su perro" fetchpriority="high" decoding="async"></picture>
+    <picture class="lausoa"><source media="(max-width: 700px)" type="image/avif" srcset="../fotos/portada-m-lausoa-600.avif 600w" sizes="100vw"><source media="(max-width: 700px)" type="image/webp" srcset="../fotos/portada-m-lausoa-600.webp 600w" sizes="100vw"><source type="image/avif" srcset="../fotos/portada-lausoa-960.avif 960w, ../fotos/portada-lausoa-1600.avif 1600w" sizes="100vw"><img src="../fotos/portada-lausoa-1600.webp" srcset="../fotos/portada-lausoa-960.webp 960w, ../fotos/portada-lausoa-1600.webp 1600w" sizes="100vw" width="1600" height="1000" alt="" loading="lazy" decoding="async"></picture>
+  </div></div>
+  <div class="portada-1">
+    <h1 id="h1" class="nombre"><svg class="cruz" viewBox="0 0 10 10" aria-hidden="true"><path d="M3.6 0h2.8v3.6H10v2.8H6.4V10H3.6V6.4H0V3.6h3.6z"/></svg><span class="letras" aria-hidden="true"><span style="--i:0">A</span><span style="--i:1">T</span><span style="--i:2">Z</span><span style="--i:3">A</span><span style="--i:4">P</span><span style="--i:5">A</span><span style="--i:6">R</span></span><span class="sr">Atzapar · Clínica veterinaria en Tolosa</span></h1>
+    <p class="portada-p"><b>Atzapar</b> es una clínica veterinaria en Tolosa. Vemos perros, gatos y otros animales de casa, y la cita se pide por WhatsApp, sin llamar.</p>
+  </div>
+  <div class="portada-2">
+    <h2 class="sr">En la consulta</h2>
+    <ul class="srv" data-escalonado>
+      <li><h3>Vacunas</h3><p>Vacunas, chip y desparasitación.</p></li>
+      <li><h3>Revisiones</h3><p>Una vez al año, o cuando lo veas raro.</p></li>
+      <li><h3>Cirugía</h3><p>Castraciones y operaciones con cita.</p></li>
+      <li><h3>Peluquería</h3><p>Baño, corte y uñas.</p></li>
+    </ul>
+    <div class="srv-cta">
+      <p data-enciende>Elige animal, motivo y día en un minuto.</p>
+      <a class="btn btn-marino btn-gr" href="#cita">Pedir cita</a>
+    </div>
+  </div>
+</section>
+
+<section class="cita" id="cita" aria-labelledby="h-cita">
+  <form class="cita-rej" data-cita onsubmit="return false">
+    <div class="cita-tit">
+      <h2 id="h-cita" data-lineas>Pide cita sin llamar</h2>
+      <p>Elige quién viene, a qué y qué día. El mensaje sale escrito: solo tienes que enviarlo.</p>
+    </div>
+    <fieldset class="caja caja-a" data-panel="sube">
+      <legend><span class="h3">¿Quién viene?</span></legend>
+      <div class="opcs"><label class="opc"><input type="radio" name="animal" value="perro" data-t="Perro" checked><span>Perro</span></label><label class="opc"><input type="radio" name="animal" value="gato" data-t="Gato"><span>Gato</span></label><label class="opc"><input type="radio" name="animal" value="otro" data-t="Otro animal"><span>Otro animal</span></label></div>
+    </fieldset>
+    <fieldset class="caja caja-b" data-panel="sube">
+      <legend><span class="h3">¿Para qué es la cita?</span></legend>
+      <div class="opcs"><label class="opc"><input type="radio" name="motivo" value="vacuna" data-t="Vacuna"><span>Vacuna</span></label><label class="opc"><input type="radio" name="motivo" value="revision" data-t="Revisión" checked><span>Revisión</span></label><label class="opc"><input type="radio" name="motivo" value="malo" data-t="Está enfermo"><span>Está enfermo</span></label><label class="opc"><input type="radio" name="motivo" value="pelu" data-t="Peluquería"><span>Peluquería</span></label></div>
+      <p class="malo" data-malo hidden>Si es urgente, mejor llama: <a href="tel:+34600000000">600 00 00 00</a></p>
+    </fieldset>
+    <span class="marca cita-marca" aria-hidden="true"><span class="m1"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M4.2 1h1.6v3.2H9v1.6H5.8V9H4.2V5.8H1V4.2h3.2z" fill="currentColor"/></svg></span><span class="m2">A</span></span>
+    <div class="foto-animal" data-panel="foto"><div class="fa on" data-animal-foto="perro"><picture><source type="image/avif" srcset="../fotos/txakurra-480.avif 480w, ../fotos/txakurra-800.avif 800w, ../fotos/txakurra-1200.avif 1200w" sizes="(min-width: 900px) 28vw, 80vw"><img src="../fotos/txakurra-800.webp" srcset="../fotos/txakurra-480.webp 480w, ../fotos/txakurra-800.webp 800w, ../fotos/txakurra-1200.webp 1200w" sizes="(min-width: 900px) 28vw, 80vw" width="3548" height="5376" alt="Perro pequeño de pelo rizado blanco, sentado" loading="lazy" decoding="async"></picture></div><div class="fa" data-animal-foto="gato"><picture><source type="image/avif" srcset="../fotos/katua-480.avif 480w, ../fotos/katua-800.avif 800w, ../fotos/katua-1200.avif 1200w" sizes="(min-width: 900px) 28vw, 80vw"><img src="../fotos/katua-800.webp" srcset="../fotos/katua-480.webp 480w, ../fotos/katua-800.webp 800w, ../fotos/katua-1200.webp 1200w" sizes="(min-width: 900px) 28vw, 80vw" width="3960" height="6000" alt="Gata tricolor sentada, mirando a la cámara" loading="lazy" decoding="async"></picture></div><div class="fa" data-animal-foto="otro"><picture><source type="image/avif" srcset="../fotos/untxia-480.avif 480w, ../fotos/untxia-800.avif 800w, ../fotos/untxia-1200.avif 1200w" sizes="(min-width: 900px) 28vw, 80vw"><img src="../fotos/untxia-800.webp" srcset="../fotos/untxia-480.webp 480w, ../fotos/untxia-800.webp 800w, ../fotos/untxia-1200.webp 1200w" sizes="(min-width: 900px) 28vw, 80vw" width="2922" height="4427" alt="Conejo blanco con manchas grises" loading="lazy" decoding="async"></picture></div></div>
+    <fieldset class="caja caja-c" data-panel="sube">
+      <legend><span class="h3">¿Qué día?</span></legend>
+      <div class="opcs dias" data-dias><label class="opc dia"><input type="radio" name="dia" value="1" data-t="Lunes" checked><span>Lunes</span></label><label class="opc dia"><input type="radio" name="dia" value="2" data-t="Martes"><span>Martes</span></label><label class="opc dia"><input type="radio" name="dia" value="3" data-t="Miércoles"><span>Miércoles</span></label><label class="opc dia"><input type="radio" name="dia" value="4" data-t="Jueves"><span>Jueves</span></label><label class="opc dia"><input type="radio" name="dia" value="5" data-t="Viernes"><span>Viernes</span></label><label class="opc dia"><input type="radio" name="dia" value="6" data-t="Sábado"><span>Sábado</span></label></div>
+      <div class="opcs turnos"><label class="opc"><input type="radio" name="turno" value="m" data-t="Mañana" checked><span>Mañana</span></label><label class="opc"><input type="radio" name="turno" value="t" data-t="Tarde"><span>Tarde</span></label></div>
+      <div class="mensaje" aria-live="polite">
+        <p class="msg-tit">Tu mensaje</p>
+        <p class="msg" data-msg>Hola, quiero pedir cita.<br>Animal: Perro<br>Motivo de la visita: Revisión<br>Día: Lunes (mañana)</p>
+      </div>
+      <a class="btn btn-marino" href="https://wa.me/34600000000" rel="noopener" data-wa><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-3.8A8 8 0 1 1 8 19z"/><path d="M9 9.5c.3 2 2.2 4.2 4.6 5l1.2-1.2 1.9.9"/></svg>Enviar por WhatsApp</a>
+      <p class="confirma">Te contestamos para cerrar la hora.</p>
+    </fieldset>
+  </form>
+</section>
+
+<div class="banda" aria-hidden="true"><p data-pista="38">Perros, gatos y otros animales de casa</p></div>
+
+<div class="crema">
+<section class="vac" id="txertoak" aria-labelledby="h-vac">
+  <div class="vac-txt">
+    <h2 id="h-vac" data-lineas>¿Le toca ya la vacuna a tu animal?</h2>
+    <div class="vac-calc" data-vac>
+      <label class="vac-fila"><span>Última vacuna</span><input type="date" name="ultima" data-vac-fecha></label>
+      <p class="vac-fila"><span>Próxima vacuna</span><b class="vac-res" data-vac-res aria-live="polite">—</b></p>
+      <p class="vac-ya" data-vac-ya hidden>Ya le toca. Pide cita cuando quieras.</p>
+    </div>
+    <p class="vac-nota">La próxima se calcula un año después de la última. La fecha exacta te la damos en la consulta.</p>
+    <a class="btn btn-rosa" href="https://wa.me/34600000000" rel="noopener" data-wa-vac><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-3.8A8 8 0 1 1 8 19z"/><path d="M9 9.5c.3 2 2.2 4.2 4.6 5l1.2-1.2 1.9.9"/></svg>Avísame por WhatsApp</a>
+  </div>
+  <div class="ovalos">
+    <div class="ov ov1" data-panel="foto"><picture><source type="image/avif" srcset="../fotos/obalo-1-320.avif 320w, ../fotos/obalo-1-480.avif 480w, ../fotos/obalo-1-640.avif 640w" sizes="(min-width: 900px) 15vw, 30vw"><img src="../fotos/obalo-1-480.webp" srcset="../fotos/obalo-1-320.webp 320w, ../fotos/obalo-1-480.webp 480w, ../fotos/obalo-1-640.webp 640w" sizes="(min-width: 900px) 15vw, 30vw" width="3072" height="3657" alt="Perro blanco y negro con la lengua fuera" loading="lazy" decoding="async"></picture></div>
+    <div class="ov ov2" data-panel="foto"><picture><source type="image/avif" srcset="../fotos/obalo-2-320.avif 320w, ../fotos/obalo-2-480.avif 480w, ../fotos/obalo-2-640.avif 640w" sizes="(min-width: 900px) 15vw, 30vw"><img src="../fotos/obalo-2-480.webp" srcset="../fotos/obalo-2-320.webp 320w, ../fotos/obalo-2-480.webp 480w, ../fotos/obalo-2-640.webp 640w" sizes="(min-width: 900px) 15vw, 30vw" width="2912" height="3467" alt="Gato atigrado mirando hacia arriba" loading="lazy" decoding="async"></picture></div>
+    <div class="ov ov3" data-panel="foto"><picture><source type="image/avif" srcset="../fotos/obalo-3-320.avif 320w, ../fotos/obalo-3-480.avif 480w, ../fotos/obalo-3-640.avif 640w" sizes="(min-width: 900px) 15vw, 30vw"><img src="../fotos/obalo-3-480.webp" srcset="../fotos/obalo-3-320.webp 320w, ../fotos/obalo-3-480.webp 480w, ../fotos/obalo-3-640.webp 640w" sizes="(min-width: 900px) 15vw, 30vw" width="2989" height="3558" alt="Cachorro blanco de pelo rizado visto desde arriba" loading="lazy" decoding="async"></picture></div>
+  </div>
+</section>
+
+<section class="urg" id="larrialdiak" aria-labelledby="h-urg" data-panel="sube">
+  <div class="urg-txt">
+    <h2 id="h-urg" data-lineas>Urgencias</h2>
+    <p>Fuera de horario, llama a este número.</p>
+    <a class="urg-num" href="tel:+34600000000">600 00 00 00</a>
+  </div>
+  <div class="urg-foto"><picture><source type="image/avif" srcset="../fotos/larrialdia-600.avif 600w, ../fotos/larrialdia-900.avif 900w, ../fotos/larrialdia-1300.avif 1300w" sizes="(min-width: 900px) 34vw, 90vw"><img src="../fotos/larrialdia-900.webp" srcset="../fotos/larrialdia-600.webp 600w, ../fotos/larrialdia-900.webp 900w, ../fotos/larrialdia-1300.webp 1300w" sizes="(min-width: 900px) 34vw, 90vw" width="3072" height="2276" alt="Perro beagle dormido sobre una sábana blanca" loading="lazy" decoding="async"></picture></div>
+  <a class="btn btn-claro urg-btn" href="tel:+34600000000"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></svg>Llamar ahora</a>
+</section>
+</div>
+
+<section class="non" id="non" aria-labelledby="h-non">
+  <h2 id="h-non" data-lineas>En el centro de Tolosa</h2>
+  <div class="non-cols" data-escalonado>
+    <div><h3>Dirección</h3><p>Kale Nagusia 0, 20400 Tolosa</p></div>
+    <div><h3>Teléfono y WhatsApp</h3><p><a href="tel:+34943000000">Consulta · 943 00 00 00</a><br><a href="https://wa.me/34600000000" rel="noopener">WhatsApp · 600 00 00 00</a></p></div>
+  </div>
+</section>
+
+<section class="final" aria-labelledby="h-fin">
+  <div class="final-foto" data-panel="foto"><picture class="ff"><source media="(max-width: 700px)" type="image/avif" srcset="../fotos/azkena-m-600.avif 600w, ../fotos/azkena-m-900.avif 900w, ../fotos/azkena-m-1300.avif 1300w" sizes="100vw"><source media="(max-width: 700px)" type="image/webp" srcset="../fotos/azkena-m-600.webp 600w, ../fotos/azkena-m-900.webp 900w, ../fotos/azkena-m-1300.webp 1300w" sizes="100vw"><source type="image/avif" srcset="../fotos/azkena-1280.avif 1280w, ../fotos/azkena-1920.avif 1920w, ../fotos/azkena-2560.avif 2560w, ../fotos/azkena-3089.avif 3089w" sizes="100vw"><img src="../fotos/azkena-1920.webp" srcset="../fotos/azkena-1280.webp 1280w, ../fotos/azkena-1920.webp 1920w, ../fotos/azkena-2560.webp 2560w, ../fotos/azkena-3089.webp 3089w" sizes="100vw" width="3089" height="1188" alt="Perro blanco de pelo largo tumbado sobre una manta azul" loading="lazy" decoding="async"></picture></div>
+  <div class="final-txt">
+    <h2 id="h-fin" data-lineas>La cita, por WhatsApp</h2>
+    <p>Te contestamos el mismo día.</p>
+    <div class="final-acc"><span class="mas-c" aria-hidden="true"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M4.2 1h1.6v3.2H9v1.6H5.8V9H4.2V5.8H1V4.2h3.2z" fill="currentColor"/></svg></span><a class="btn btn-marino btn-gr" href="#cita">Pedir cita</a></div>
+  </div>
+</section>
+</main>
+
+<footer class="pie">
+  <div class="pie-arriba">
+    <a class="pie-logo" href="#contenido" aria-label="ATZAPAR"><svg class="cruz" viewBox="0 0 10 10" aria-hidden="true"><path d="M3.6 0h2.8v3.6H10v2.8H6.4V10H3.6V6.4H0V3.6h3.6z"/></svg><b>A</b></a>
+    <nav class="pie-menu" aria-labelledby="h-pmenu"><h2 id="h-pmenu">Menú</h2><ul><li><a href="#cita">Cita</a></li><li><a href="#txertoak">Vacunas</a></li><li><a href="#larrialdiak">Urgencias</a></li><li><a href="#non">Dónde estamos</a></li><li><a href="../" lang="eu" hreflang="eu">Euskaraz</a></li></ul></nav>
+    <div class="pie-dir"><h2>Dirección</h2><p>Kale Nagusia 0, 20400 Tolosa</p></div>
+  </div>
+  <div class="pie-medio">
+    <div class="pie-hor"><h2>Horario</h2>
+      <ul data-escalonado>
+          <li data-dias="1,2,3,4,5"><span class="h">9:30–13:30 y 16:00–20:00</span><span class="d">Lunes – Viernes</span></li>
+          <li data-dias="6"><span class="h">10:00–13:30</span><span class="d">Sábado</span></li>
+          <li data-dias="0"><span class="h">Cerrado</span><span class="d">Domingo</span></li>
+      </ul>
+    </div>
+    <div class="pie-tels">
+      <a href="tel:+34943000000"><span>Consulta</span>943 00 00 00</a>
+      <a href="tel:+34600000000"><span>Urgencias · WhatsApp</span>600 00 00 00</a>
+    </div>
+  </div>
+  <div class="pie-abajo">
+    <p>Web de muestra hecha por OI Studio. Atzapar no existe. Datos de ejemplo: nombre, dirección, teléfonos, horario, urgencias, servicios, forma de pedir cita, plazo de respuesta y plazo de las vacunas.</p>
+    <p>Fotos de ejemplo de Unsplash (licencia de Unsplash): Vitaly Gariev, NordWood Themes, Álvaro Mendoza, Tamas Tuzes-Katai, Matt Richmond, AcidFern, Oliver y Kristina Delp. <a href="../fotos/creditos.json">creditos.json</a></p>
+    <p class="firma">Diseñado por <a href="https://oiwebstudio.com/">OI Studio</a></p>
+  </div>
+</footer>
+
+<script type="application/json" id="textos">{"lang":"es","menu":"Menú","cerrar":"Cerrar","hoy":"hoy","dias":["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"],"meses":["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],"manana":"Mañana","tarde":"Tarde","wa_hola":"Hola, quiero pedir cita.","wa_animal":"Animal","wa_motivo":"Motivo de la visita","wa_dia":"Día","wa_vac_hola":"Hola, ¿me avisáis cuando le toque la vacuna?","wa_vac_ultima":"Última vacuna","vac_ya":"Ya le toca. Pide cita cuando quieras.","H":{"0":[],"1":[[570,810],[960,1200]],"2":[[570,810],[960,1200]],"3":[[570,810],[960,1200]],"4":[[570,810],[960,1200]],"5":[[570,810],[960,1200]],"6":[[600,810]]},"WA":"https://wa.me/34600000000"}</script>
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/SplitText.min.js"></script>
+<script src="../js/anim-texto.js"></script>
+<script src="../js/pagina.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+{
+ "_leeme": "Fotos de la muestra UZTAI (joyería inventada, 9/11/2026). Todas son fotos de ejemplo de Unsplash (licencia de Unsplash: uso libre, también comercial, sin atribución obligatoria; se cita igualmente). No son de UZTAI ni de ninguna joyería real; las piezas que se ven no son productos a la venta. Originales mirados a tamaño completo: sin marca de agua ni logos (se descartó una con logo de Harley-Davidson). Recortadas, pasadas a blanco y negro donde lo pide la referencia, y convertidas a AVIF y WebP sin metadatos con herramientas/diseno/imagenes.mjs; guion en _local/demos/uztai-generador/fotos.mjs.",
+ "t-grabatua": {
+  "autor": "Dithira Hettiarachchi",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/a-close-up-of-a-ring-on-a-table-9xTAmDGnMzk",
+  "uso": "Taller: grabados (color)",
+  "original": "2433x4587"
+ },
+ "uztai-txikiak": {
+  "autor": "Gabrielle Henderson",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/grayscale-photography-of-woman-wearing-hoop-earring-tKNB4iW3GT8",
+  "uso": "Pieza: aros pequeños (blanco y negro)",
+  "original": "2304x3456"
+ },
+ "portada-belarria": {
+  "autor": "Rizky Sabriansyah",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/woman-with-silver-heart-earring-x9pEaf5zRiw",
+  "uso": "Portada, derecha (blanco y negro)",
+  "original": "4000x6000"
+ },
+ "lepokoa": {
+  "autor": "Yoad Shejtman",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/a-person-with-a-necklace-YcvI7i-RFMo",
+  "uso": "Pieza: collar de cuentas (blanco y negro)",
+  "original": "4024x6048"
+ },
+ "katea": {
+  "autor": "Oscar Ramirez",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/a-silver-chain-with-a-tag-attached-to-it-EaeBomOdvj8",
+  "uso": "Pieza: cadena con chapa (blanco y negro)",
+  "original": "4000x6000"
+ },
+ "portada-eraztuna": {
+  "autor": "Doris Schmidt",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/a-silver-ring-sitting-on-top-of-a-rock-g6nXAI2DWR0",
+  "uso": "Portada, izquierda (blanco y negro). Encuadre alejado: el papel del fondo se amplía por arriba, la derecha y abajo con su propio tono (fotos.mjs, amplia); el anillo, la piedra y la sombra son los de la foto.",
+  "original": "3024x3423"
+ },
+ "olatuak": {
+  "autor": "Oscar Ramirez",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/a-pair-of-silver-earrings-sitting-on-top-of-a-white-surface-dBYavr5vhco",
+  "uso": "Pieza: pendientes ola (blanco y negro)",
+  "original": "3679x5519"
+ },
+ "meheak": {
+  "autor": "Wendy Winarno",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/two-silver-colored-rings-Ig20t15fTPw",
+  "uso": "Pieza: dos anillos finos (blanco y negro)",
+  "original": "4000x4751"
+ },
+ "marraztua": {
+  "autor": "Matt Brett",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/silver-and-black-ring-on-brown-wooden-table-DB-QKV60wAo",
+  "uso": "Pieza: anillo labrado (blanco y negro)",
+  "original": "4050x5062"
+ },
+ "t-konponketa": {
+  "autor": "Tahlia Doyle",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/person-holding-black-and-silver-pen-u0EzgwA-F38",
+  "uso": "Taller: arreglos (color)",
+  "original": "2340x4160"
+ },
+ "t-soldadura": {
+  "autor": "Amy Vann",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/a-person-cutting-a-cake-85-6iMn5L8g",
+  "uso": "Taller: soldar cadenas (color; recortada la lija con letras y la taza)",
+  "original": "3679x5518"
+ },
+ "t-garbiketa": {
+  "autor": "COPPERTIST WU",
+  "licencia": "Licencia de Unsplash",
+  "fuente": "https://unsplash.com/photos/a-silver-chain-on-a-brown-leather-surface-piJ3vxOzOLQ",
+  "uso": "Taller: limpieza y brillo (color)",
+  "original": "4672x7008"
+ }
+}

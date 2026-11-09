@@ -1,0 +1,5 @@
+sx_gimnasio_a	Erreserbatu zure lehen klasea deitu gabe
+sx_gimnasio_c	Klase bakoitzaren prezioa, datozen egunen arabera
+sx_joyeria_b	Zure ezkontza-eraztuna, bere tailarekin eta grabatuarekin
+sx_joyeria_c	Konponketak eta garbiketa, bere prezioarekin
+sx_veterinaria_c	Noiz jo hurrengo txertoa

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Suspertu · Entrenamendu pertsonala, indarra, pilates eta yoga Tolosan (erakusketa webgunea)</title>
+<meta name="description" content="Tolosako entrenamendu estudio baterako web lagina: asteko ordutegia plaza libreekin, tarifak eta proba klasea WhatsApp bidez.">
+<meta name="theme-color" content="#646463">
+<meta property="og:title" content="Suspertu · Entrenamendu pertsonala, indarra, pilates eta yoga Tolosan (erakusketa webgunea)">
+<meta property="og:description" content="Tolosako entrenamendu estudio baterako web lagina: asteko ordutegia plaza libreekin, tarifak eta proba klasea WhatsApp bidez.">
+<meta property="og:type" content="website">
+<link rel="alternate" hreflang="es" href="es/">
+<!--
+  MUESTRA «SUSPERTU» (OI Studio, 9/11/2026): estudio de entrenamiento INVENTADO en Tolosa (entrenamiento personal, fuerza,
+  pilates y yoga) para la pieza «¿Qué negocio tienes?» de oiwebstudio.com. «Suspertu» = reanimarse, recobrar fuerzas.
+  Son de ejemplo (lo dice la nota del pie): nombre, dirección (Nafarroa etorbidea 14), teléfono 943 00 00 00, WhatsApp 600 00 00 00,
+  horario, clases y horas, plazas libres, el máximo de seis por clase, precios, la primera clase gratis, las cifras de la
+  semana y la opinión de Miren. noindex.
+  Calco de la referencia que eligió Oier el 8/11: n.º 13, COACHEDBY CLUB (coachedbyclub.be) — foto de estudio del grupo, de
+  frente y con luz, sobre gris claro a sangre con el nombre gigante blanco de lado a lado por encima de las cabezas (la parte
+  alta, oscurecida para que el nombre se lea); titular de dos líneas
+  en condensada blanca abajo a la izquierda y dos botones rectangulares a la derecha; cabecera de texto pequeño con «Menú», el
+  nombre en el centro y los enlaces; frase gigante oscura partida por una foto cuadrada en blanco y negro; lista gigante que
+  gira como una rueda al bajar (allí las ciudades; aquí las próximas clases desde la hora real); bloque rojo fijo con cifras
+  que cambian al bajar; opinión en condensada sobre foto oscura; nombre gigante con la foto encima y «Anterior / Siguiente»
+  (allí los entrenadores; aquí las actividades y su horario de la semana); bloque oscuro con el texto fijo y fotos que
+  pasan (aquí, las tarifas); foto movida con la última llamada gigante; pie oscuro con el nombre gigante.
+  Sin copiar (que_no_copiar y reglas de la casa): la firma manuscrita «Club», la cinta de logos «Trusted by» y las fotos de
+  antes y después. La cabecera no es fija (no pisa el texto al bajar).
+  Lo que hace: las clases de los próximos siete días desde la fecha y la hora reales de Tolosa, con plazas libres de ejemplo;
+  eliges actividad y franja, tocas una clase y sale el mensaje de WhatsApp escrito (wa.me, no se envía nada solo); las
+  próximas clases en la rueda (se tocan y llevan al mensaje); las cifras de la semana se cuentan con ese horario; tarifas
+  con «¿cuántos días vas a venir?» que marca el bono y lo que sale cada clase.
+  Letras: 17 Archivo (variable; titulares al 62 % de anchura, como la Bebas Neue de la referencia) y 13 Satoshi (texto, como
+  su DM Sans). Autoalojadas en fuentes/.
+  Fotos: Unsplash (licencia de Unsplash): April Laugh, Lisa Marie Theck, Sven Mieke, Helena Lemaire, Ahmet Kurt, Rafik Wahba, frank minjarez, Limor Zellermayer, LOGAN WEAVER. Detalle en fotos/creditos.json.
+  Movimiento: la portada entra con CSS desde el primer pintado; lo de abajo, con GSAP 3.13 + ScrollTrigger + SplitText (js/)
+  + anim-texto.js + pagina.js. Con «reducir movimiento» o sin JS, todo quieto y visible.
+-->
+<link rel="preload" href="fuentes/archivo.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fuentes/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="estilo.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="saltar" href="#contenido">Edukira joan</a>
+
+<header class="cab">
+  <button type="button" class="menu-btn" data-menu-btn aria-expanded="false" aria-controls="menu">Menua</button>
+  <a class="logo" href="#contenido">SUSPERTU</a>
+  <nav class="cab-nav" aria-label="Menua"><a href="#ordutegia">Ordutegia<span class="badge" data-badge hidden></span></a><a href="#prezioak">Tarifak</a><a href="tel:+34943000000">943 00 00 00</a><a class="idioma" href="es/" lang="es" hreflang="es">Castellano</a></nav>
+</header>
+<div class="menu" id="menu" data-menu hidden>
+  <nav aria-label="Menua">
+    <a href="#ordutegia">Ordutegia</a>
+    <a href="#prezioak">Tarifak</a>
+    <a href="#non">Tolosa</a>
+    <a class="enrojo" href="#ordutegia">Klasea erreserbatu</a>
+  </nav>
+  <p class="menu-pie"><a href="tel:+34943000000">943 00 00 00</a><a href="https://wa.me/34600000000" rel="noopener">WhatsApp</a><a class="" href="es/" lang="es" hreflang="es">Castellano</a></p>
+  <button type="button" class="menu-cerrar" data-menu-cerrar>Itxi</button>
+</div>
+
+<main id="contenido">
+<section class="portada" data-portada aria-labelledby="h1">
+  <p class="nombre" aria-hidden="true"><span class="nl" style="--i:0">S</span><span class="nl" style="--i:1">U</span><span class="nl" style="--i:2">S</span><span class="nl" style="--i:3">P</span><span class="nl" style="--i:4">E</span><span class="nl" style="--i:5">R</span><span class="nl" style="--i:6">T</span><span class="nl" style="--i:7">U</span></p>
+  <div class="port-foto"><picture><source type="image/avif" srcset="fotos/portada-800.avif 800w, fotos/portada-1400.avif 1400w, fotos/portada-2000.avif 2000w, fotos/portada-2880.avif 2880w, fotos/portada-3600.avif 3600w" sizes="(min-width: 700px) 200vw, 100vw"><img src="fotos/portada-1400.webp" srcset="fotos/portada-800.webp 800w, fotos/portada-1400.webp 1400w, fotos/portada-2000.webp 2000w, fotos/portada-2880.webp 2880w, fotos/portada-3600.webp 3600w" sizes="(min-width: 700px) 200vw, 100vw" width="5760" height="3072" alt="Kirolerako arropa daramaten lau emakume, pareta gris argi baten aurrean, irribarrez." fetchpriority="high" decoding="async"></picture></div>
+  <div class="port-pie">
+    <h1 id="h1"><span class="sr">Suspertu, Tolosan: </span><span class="l"><span>ENTRENAMENDU PERTSONALA</span></span> <span class="l"><span>ETA ESKOLAK TOLOSAN</span></span></h1>
+    <p class="btns port-btns"><a class="btn btn-rojo" href="#ordutegia">Lehenengo klasea erreserbatzea</a><a class="btn btn-claro" href="#prezioak">Tarifak ikusi</a></p>
+  </div>
+</section>
+
+<section class="frase" aria-labelledby="h-frase">
+  <h2 id="h-frase"><span class="fa" data-lineas>SEIKO TALDEAK,</span> <span class="fb" data-lineas>BAT GEHIAGO ERE EZ.</span></h2>
+  <figure class="frase-foto" data-sube><picture><source type="image/avif" srcset="fotos/frase-400.avif 400w, fotos/frase-700.avif 700w, fotos/frase-1200.avif 1200w" sizes="(min-width: 700px) 40vw, 90vw"><img src="fotos/frase-700.webp" srcset="fotos/frase-400.webp 400w, fotos/frase-700.webp 700w, fotos/frase-1200.webp 1200w" sizes="(min-width: 700px) 40vw, 90vw" width="1200" height="1200" alt="Gizon batek bi pisu altxatzen ditu banku batean etzanda." loading="lazy" decoding="async"></picture></figure>
+  <p class="lado frase-lado">Entrenamendu estudioa Tolosan</p>
+  <p class="frase-btn"><a class="btn btn-oscuro" href="#ordutegia">Ordutegia ikusi</a></p>
+</section>
+
+<section class="rueda" data-rueda-sec aria-labelledby="h-rueda">
+  <div class="rueda-pin">
+    <h2 class="lado rueda-lado" id="h-rueda">Hurrengo klaseak</h2>
+    <p class="lado rueda-toca">Bat ukitu erreserbatzeko:</p>
+    <ol class="rueda-lista" data-rueda><li><a class="rueda-it" href="#ordutegia">INDARRA</a></li><li><a class="rueda-it" href="#ordutegia">PILATES</a></li><li><a class="rueda-it" href="#ordutegia">YOGA</a></li><li><a class="rueda-it" href="#ordutegia">PERTSONALA</a></li></ol>
+    <p class="rueda-btn"><a class="btn btn-oscuro" href="#ordutegia">Ordutegia ikusi</a></p>
+  </div>
+</section>
+
+<section class="rojo" data-rojo aria-labelledby="h-rojo">
+  <div class="rojo-pin">
+    <h2 id="h-rojo" data-lineas>HURRENGO ZAZPI EGUNETAN</h2>
+    <p class="lado rojo-lado">Aste honetan</p>
+    <div class="cifras" data-cifras>
+      <div class="cifra" data-cifra="clases" hidden><b data-n>0</b><span>ASTE HONETAN GERATZEN DIREN KLASEAK</span></div>
+      <div class="cifra" data-cifra="plazas" hidden><b data-n>0</b><span>PLAZA LIBREAK</span></div>
+      <div class="cifra" data-cifra="max"><b data-n>6</b><span>PERTSONAK GEHIENEZ KLASE BAKOITZEAN</span></div>
+      <div class="cifra" data-cifra="prueba"><b data-n>0 €</b><span>LEHENENGO KLASEA</span></div>
+    </div>
+    <p class="btns rojo-btns"><a class="btn btn-claro" href="#ordutegia">Lehenengo klasea erreserbatzea</a><a class="btn btn-borde" href="#prezioak">Tarifak ikusi</a></p>
+    <span class="rojo-barra" aria-hidden="true"><i data-rojo-barra></i></span>
+  </div>
+</section>
+
+<figure class="opinion">
+  <div class="op-foto"><picture><source type="image/avif" srcset="fotos/opinion-800.avif 800w, fotos/opinion-1400.avif 1400w, fotos/opinion-2000.avif 2000w, fotos/opinion-3200.avif 3200w" sizes="(min-width: 700px) 200vw, 100vw"><img src="fotos/opinion-1400.webp" srcset="fotos/opinion-800.webp 800w, fotos/opinion-1400.webp 1400w, fotos/opinion-2000.webp 2000w, fotos/opinion-3200.webp 3200w" sizes="(min-width: 700px) 200vw, 100vw" width="3200" height="1800" alt="Indar klase bat barrekin gimnasio batean." loading="lazy" decoding="async"></picture></div>
+  <blockquote><p data-enciende>Urteak zeramatzan kirolik egin gabe. Astean bi indar-klaserekin hasi nintzen eta orain yogara nator. Jarrera bakoitza zuzentzen didate eta inoiz ez gara sei baino gehiago.</p></blockquote>
+  <figcaption>Miren, Ibarrakoa</figcaption>
+  <p class="btns op-btns"><a class="btn btn-claro" href="#ordutegia">Lehenengo klasea erreserbatzea</a><a class="btn btn-borde" href="tel:+34943000000">Deitu</a></p>
+</figure>
+
+<section class="horario" id="ordutegia" data-horario aria-labelledby="h-hor">
+  <div class="act" data-act>
+    <p class="act-desc" data-act-desc aria-live="polite">50 minutu eta sei leku</p>
+    <p class="act-nom" aria-hidden="true"><span data-act-nom>INDARRA</span></p>
+    <div class="act-fotos" data-act-fotos data-panel>
+      <div class="act-foto on" data-act-foto="fuerza"><picture><source type="image/avif" srcset="fotos/act-fuerza-500.avif 500w, fotos/act-fuerza-1000.avif 1000w" sizes="(min-width: 700px) 36vw, 64vw"><img src="fotos/act-fuerza-1000.webp" srcset="fotos/act-fuerza-500.webp 500w, fotos/act-fuerza-1000.webp 1000w" sizes="(min-width: 700px) 36vw, 64vw" width="1000" height="1333" alt="Beltzez jantzitako emakume batek pisu errusiar bati eusten dio." loading="lazy" decoding="async"></picture></div>
+      <div class="act-foto" data-act-foto="pilates"><picture><source type="image/avif" srcset="fotos/act-pilates-500.avif 500w, fotos/act-pilates-1000.avif 1000w" sizes="(min-width: 700px) 36vw, 64vw"><img src="fotos/act-pilates-1000.webp" srcset="fotos/act-pilates-500.webp 500w, fotos/act-pilates-1000.webp 1000w" sizes="(min-width: 700px) 36vw, 64vw" width="1000" height="1333" alt="Beltzez jantzitako emakume bat pilates egiten ari da makina batean." loading="lazy" decoding="async"></picture></div>
+      <div class="act-foto" data-act-foto="yoga"><picture><source type="image/avif" srcset="fotos/act-yoga-500.avif 500w, fotos/act-yoga-1000.avif 1000w" sizes="(min-width: 700px) 36vw, 64vw"><img src="fotos/act-yoga-1000.webp" srcset="fotos/act-yoga-500.webp 500w, fotos/act-yoga-1000.webp 1000w" sizes="(min-width: 700px) 36vw, 64vw" width="1000" height="1333" alt="Beltzez jantzitako emakume bat, orpoen gainean eserita estudio bateko lurrean." loading="lazy" decoding="async"></picture></div>
+      <div class="act-foto" data-act-foto="personal"><picture><source type="image/avif" srcset="fotos/act-personal-500.avif 500w, fotos/act-personal-1000.avif 1000w" sizes="(min-width: 700px) 36vw, 64vw"><img src="fotos/act-personal-1000.webp" srcset="fotos/act-personal-500.webp 500w, fotos/act-personal-1000.webp 1000w" sizes="(min-width: 700px) 36vw, 64vw" width="1000" height="1333" alt="Entrenatzaile batek emakume bat zuzendu du pilates makina batean etzanda." loading="lazy" decoding="async"></picture></div>
+    </div>
+    <h2 class="lado act-lado" id="h-hor">Asteko ordutegia</h2>
+    <p class="act-cuenta" aria-hidden="true"><span data-act-i>01</span> / 04</p>
+    <p class="act-nav"><button type="button" data-act-prev>Aurrekoa</button><span class="act-desliza">Besteak ikusteko irristatu</span><button type="button" class="sig" data-act-next>Hurrengoa</button></p>
+  </div>
+  <div class="semana-caja" data-panel>
+    <fieldset class="opcs franjas"><legend>Zer ordutan datorkizu ondo?</legend><div class="opcs-fila"><label class="opc"><input type="radio" name="franja" value="todo" checked><span>Egun osoa</span></label><label class="opc"><input type="radio" name="franja" value="m"><span>12:00ak baino lehen</span></label><label class="opc"><input type="radio" name="franja" value="md"><span>12:00etatik 16:00etara</span></label><label class="opc"><input type="radio" name="franja" value="t"><span>16:00etatik aurrera</span></label></div></fieldset>
+    <div class="semana" data-semana>
+      <div class="sin-js"><p><b>INDARRA</b> astelehena, asteazkena, ostirala: 07:15 · asteartea, osteguna: 13:15 · astelehena, asteartea, asteazkena, osteguna: 19:00 · larunbata: 10:00</p><p><b>PILATES</b> astelehena, asteazkena, ostirala: 09:30 · asteartea, osteguna: 14:00 · astelehena, asteartea, asteazkena, osteguna: 20:00 · larunbata: 11:15</p><p><b>YOGA</b> asteartea, osteguna: 09:30 · asteazkena: 13:30 · astelehena, asteazkena: 18:00 · ostirala: 19:00 · larunbata: 09:00</p><p><b>PERTSONALA</b> astelehena, asteartea, asteazkena, osteguna, ostirala: 08:30 · astelehena, asteartea, asteazkena, osteguna, ostirala: 12:00 · astelehena, asteartea, asteazkena, osteguna, ostirala: 16:30 · larunbata: 11:30</p><p>Aste honetako plaza libreak ikusteko JavaScript behar da. 943 00 00 00 telefonora ere dei dezakezu.</p></div>
+    </div>
+    <div class="mensaje" data-mensaje>
+      <h3>WhatsApp-erako mezua</h3>
+      <p class="msg-vacio" data-msg-vacio>Aukeratu ordutegiko ordu bat eta mezua idatzita utziko dizugu.</p>
+      <label class="campo"><span>Zure izena (nahi baduzu)</span><input type="text" maxlength="30" autocomplete="given-name" placeholder="Ane" data-msg-nombre></label>
+      <p class="escribiendo" data-escribiendo aria-hidden="true" hidden>Idazten...</p>
+      <p class="msg-texto" data-msg-texto aria-live="polite" hidden></p>
+      <p class="btns msg-btns"><a class="btn btn-oscuro" href="https://wa.me/34600000000" rel="noopener" data-wa>Bidali WhatsApp bidez</a><a class="btn btn-borde-o" href="tel:+34943000000">Deitu · 943 00 00 00</a></p>
+      <p class="msg-nota">WhatsApp irekiko da mezu idatziarekin. Ez da ezer bidaltzen zuk agindu arte.</p>
+    </div>
+  </div>
+</section>
+
+<section class="tarifas" id="prezioak" data-tarifas aria-labelledby="h-tar">
+  <div class="tar-pin">
+    <h2 id="h-tar" data-lineas>HEMEN ENTRENATZEA ZER KOSTATZEN DEN</h2>
+    <p class="tar-p">Lehen klasea doakoa da. Gero, aukeratu zenbat eskola nahi dituzun hilean.</p>
+    <fieldset class="opcs tar-dias"><legend>Astean zenbat egunetan etorriko zara?</legend><div class="opcs-fila"><label class="opc"><input type="radio" name="dias" value="1"><span>Bat</span></label><label class="opc"><input type="radio" name="dias" value="2" checked><span>Bi</span></label><label class="opc"><input type="radio" name="dias" value="3"><span>Hiru edo gehiago</span></label></div></fieldset>
+    <ul class="precios" data-precios data-escalonado>
+        <li data-precio="p_prueba"><span class="pr-nom">LEHENENGO KLASEA</span><span class="pr-v">DOHAINIK</span></li>
+        <li data-precio="p_4" data-dias="1"><span class="pr-nom">4 KLASE HILEAN</span><span class="pr-v">45 €</span></li>
+        <li data-precio="p_8" data-dias="2"><span class="pr-nom">8 KLASE HILEAN</span><span class="pr-v">70 €</span></li>
+        <li data-precio="p_ilim" data-dias="3"><span class="pr-nom">HILEKO MUGARIK GABEKO KLASEAK</span><span class="pr-v">85 €</span></li>
+        <li data-precio="p_pers"><span class="pr-nom">ENTRENAMENDU PERTSONALEKO SAIO BAT</span><span class="pr-v">40 €</span></li>
+        <li data-precio="p_pers5"><span class="pr-nom">ENTRENAMENDU PERTSONALEKO BOST SAIO</span><span class="pr-v">180 €</span></li>
+    </ul>
+    <p class="tar-sale" data-sale aria-live="polite"></p>
+    <p class="btns tar-btns"><a class="btn btn-claro" href="#ordutegia">Lehenengo klasea erreserbatzea</a><a class="btn btn-borde" href="tel:+34943000000">Deitu</a></p>
+  </div>
+  <div class="flots" aria-hidden="true">
+    <figure class="flot" style="--x:6;--y:24" data-flot="-18"><picture><source type="image/avif" srcset="fotos/flot-f1-320.avif 320w, fotos/flot-f1-640.avif 640w" sizes="(min-width: 700px) 40vw, 90vw"><img src="fotos/flot-f1-640.webp" srcset="fotos/flot-f1-320.webp 320w, fotos/flot-f1-640.webp 640w" sizes="(min-width: 700px) 40vw, 90vw" width="640" height="800" alt="" loading="lazy" decoding="async"></picture><figcaption><b>50</b> min</figcaption></figure>
+    <figure class="flot" style="--x:81;--y:34" data-flot="-34"><picture><source type="image/avif" srcset="fotos/flot-f2-320.avif 320w, fotos/flot-f2-640.avif 640w" sizes="(min-width: 700px) 40vw, 90vw"><img src="fotos/flot-f2-640.webp" srcset="fotos/flot-f2-320.webp 320w, fotos/flot-f2-640.webp 640w" sizes="(min-width: 700px) 40vw, 90vw" width="640" height="800" alt="" loading="lazy" decoding="async"></picture><figcaption><b>55</b> min</figcaption></figure>
+    <figure class="flot" style="--x:9;--y:66" data-flot="-24"><picture><source type="image/avif" srcset="fotos/flot-f4-320.avif 320w, fotos/flot-f4-640.avif 640w" sizes="(min-width: 700px) 40vw, 90vw"><img src="fotos/flot-f4-640.webp" srcset="fotos/flot-f4-320.webp 320w, fotos/flot-f4-640.webp 640w" sizes="(min-width: 700px) 40vw, 90vw" width="640" height="800" alt="" loading="lazy" decoding="async"></picture><figcaption><b>60</b> min</figcaption></figure>
+  </div>
+</section>
+
+<section class="final" aria-labelledby="h-fin">
+  <div class="fin-foto"><picture><source type="image/avif" srcset="fotos/final-800.avif 800w, fotos/final-1400.avif 1400w, fotos/final-2000.avif 2000w, fotos/final-2560.avif 2560w" sizes="(min-width: 700px) 200vw, 100vw"><img src="fotos/final-1400.webp" srcset="fotos/final-800.webp 800w, fotos/final-1400.webp 1400w, fotos/final-2000.webp 2000w, fotos/final-2560.webp 2560w" sizes="(min-width: 700px) 200vw, 100vw" width="2560" height="1600" alt="Pertsona bat bi pisu errusiarrekin dabil, argazki mugitua." loading="lazy" decoding="async"></picture></div>
+  <h2 id="h-fin" data-lineas><span>LEHENENGO KLASEA</span> <span>EZ DA ORDAINTZEN</span></h2>
+  <p class="btns fin-btns"><a class="btn btn-rojo" href="#ordutegia">Lehenengo klasea erreserbatzea</a></p>
+</section>
+<a class="barra" href="#ordutegia" data-barra hidden>Lehenengo klasea erreserbatzea</a>
+</main>
+
+<footer class="pie" id="non">
+  <p class="pie-nombre" aria-hidden="true"><span data-pista="4"><span>S</span><span>U</span><span>S</span><span>P</span><span>E</span><span>R</span><span>T</span><span>U</span></span></p>
+  <div class="pie-cols" data-panel>
+    <ul>
+      <li><a href="#ordutegia">ORDUTEGIA</a></li>
+      <li><a href="#prezioak">TARIFAK</a></li>
+      <li><a class="" href="es/" lang="es" hreflang="es">Castellano</a></li>
+    </ul>
+    <ul>
+      <li>NAFARROA ETORBIDEA 14</li>
+      <li>TOLOSA</li>
+      <li><a href="tel:+34943000000">943 00 00 00</a></li>
+      <li><a href="https://wa.me/34600000000" rel="noopener">WHATSAPP 600 00 00 00</a></li>
+    </ul>
+    <ul>
+      <li>ASTELEHENETIK OSTIRALERA, 07:00ETATIK 21:30ERA</li>
+      <li>LARUNBATETAN, 09:00ETATIK 13:00ETARA</li>
+      <li>IGANDEETAN, ITXITA</li>
+      <li><a class="enrojo" href="#ordutegia">KLASEA ERRESERBATU</a></li>
+    </ul>
+  </div>
+  <div class="pie-bajo">
+    <p class="nota-datos">Erakusketa-webgunea: Suspertu ez da existitzen. Izena, helbidea, telefonoak, ordutegia, klaseak, orduak eta iraupena, plaza libreak, gehienez sei pertsona klase bakoitzean, prezioak, lehen klasea doan, asteko zifrak eta Mirenen iritzia asmatu ditugu.</p>
+    <p>Unsplash-en adibideko argazkiak: April Laugh, Lisa Marie Theck, Sven Mieke, Helena Lemaire, Ahmet Kurt, Rafik Wahba, frank minjarez, Limor Zellermayer, LOGAN WEAVER. <a href="fotos/creditos.json">creditos.json</a></p>
+    <p>Diseinatzailea: <a class="firma" href="https://oiwebstudio.com/?utm_source=muestra-suspertu&amp;utm_medium=pie" target="_blank" rel="noopener">OI Studio</a></p>
+  </div>
+</footer>
+
+<script type="application/json" id="textos">{"lang":"eu","wa":"https://wa.me/34600000000","tel":"943 00 00 00","nombre":"Suspertu","act":[{"id":"fuerza","dur":50,"aforo":6,"nom":"INDARRA","largo":"Indarra","desc":"50 minutu eta sei leku"},{"id":"pilates","dur":55,"aforo":6,"nom":"PILATES","largo":"Pilates","desc":"55 minutu eta sei leku"},{"id":"yoga","dur":60,"aforo":6,"nom":"YOGA","largo":"Yoga","desc":"60 minutu eta sei leku"},{"id":"personal","dur":60,"aforo":1,"nom":"PERTSONALA","largo":"Entrenamendu pertsonala","desc":"Entrenamendu pertsonala: 60 minutu, zuk bakarrik"}],"clases":[["fuerza",[1,3,5],"07:15"],["fuerza",[2,4],"13:15"],["fuerza",[1,2,3,4],"19:00"],["fuerza",[6],"10:00"],["pilates",[1,3,5],"09:30"],["pilates",[2,4],"14:00"],["pilates",[1,2,3,4],"20:00"],["pilates",[6],"11:15"],["yoga",[2,4],"09:30"],["yoga",[3],"13:30"],["yoga",[1,3],"18:00"],["yoga",[5],"19:00"],["yoga",[6],"09:00"],["personal",[1,2,3,4,5],"08:30"],["personal",[1,2,3,4,5],"12:00"],["personal",[1,2,3,4,5],"16:30"],["personal",[6],"11:30"]],"dias":["igandea","astelehena","asteartea","asteazkena","osteguna","ostirala","larunbata"],"hoy":"gaur","manana":"bihar","libres1":"Plaza 1 geratzen da","libresN":"3 plaza geratzen dira","completa":"Ez dago plazarik","sinClases":"Aste honetan ez da jarduera honetako eskolarik gelditzen ordu horretan. Saiatu beste ordu batekin.","mas":"Eta gehiago ordutegian","msg":{"hola":"Kaixo, klase bat probatu nahi dut.","clase":"Jarduera:","dia":"Eguna:","hora":"Ordua:","nombre":"Izena:"},"precios":[{"k":"p_prueba","v":null},{"k":"p_4","v":45,"clases":4,"dias":1},{"k":"p_8","v":70,"clases":8,"dias":2},{"k":"p_ilim","v":85,"clases":12,"dias":3},{"k":"p_pers","v":40},{"k":"p_pers5","v":180}],"sale":"Klasea 8,75 eurotan ateratzen zaizu.","badge":"Geratzen diren gaurko eskolak","menu":"Menua","cerrar":"Itxi"}</script>
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/SplitText.min.js"></script>
+<script src="js/anim-texto.js"></script>
+<script src="js/pagina.js"></script>
+</body>
+</html>

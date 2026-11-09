@@ -1,0 +1,5 @@
+sx_gimnasio_a	Reserva tu primera clase sin llamar
+sx_gimnasio_c	El precio de cada clase, según los días que vengas
+sx_joyeria_b	Tu anillo de boda, con su talla y su grabado
+sx_joyeria_c	Arreglos y limpieza, con su precio
+sx_veterinaria_c	Cuándo toca la próxima vacuna
