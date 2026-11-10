@@ -1,0 +1,1 @@
+rv_p	Una peluquería inventada con su agenda funcionando. Pide una cita como si fueras un cliente y luego mira cómo le llega al dueño, sin contraseña.

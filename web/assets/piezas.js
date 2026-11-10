@@ -109,6 +109,20 @@
     });
   })();
 
+  /* ---------------------------------------------------------------- Reservas: pruébalas (10/11/2026) · los dos móviles entran al asomar */
+  (function () {
+    var caja = document.querySelector('#reservas-demo .rv__tels');
+    if (!caja || quieto || !('IntersectionObserver' in window)) return;
+    var tels = [].slice.call(caja.querySelectorAll('.rv__tel'));
+    caja.classList.add('mv');
+    var io = new IntersectionObserver(function (es) {
+      if (!es[0].isIntersecting) return;
+      tels.forEach(function (t, i) { t.style.setProperty('--d', (i * 140) + 'ms'); t.classList.add('is-in'); });
+      io.disconnect();
+    }, { rootMargin: '0px 0px -10% 0px' });
+    io.observe(caja);
+  })();
+
   /* ---------------------------------------------------------------- A1 · Chat de ejemplo */
   (function () {
     var raiz = document.getElementById('prueba-el-asistente');
