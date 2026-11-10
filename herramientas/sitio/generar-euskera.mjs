@@ -62,7 +62,7 @@ const META = {
   "trabajos.html": {
     title: "Webgune adibideak negozio lokalentzat | OI Studio",
     // 26/10/2026, nueve muestras (HAUSPO), con Itzultzaile Neuronala tal cual.
-    desc: "Tolosan egindako webguneak: bi kasu erreal (Errotatxo eta A.Berri, bere iritziarekin) eta bederatzi lagin nabigagarri tokiko negozioetarako.",
+    desc: "Tolosan egindako webguneak: bi kasu erreal (Errotatxo eta A.Berri, bere iritziarekin) eta 36 lagin nabigagarri tokiko negozioetarako.",
   },
   "sobre-mi.html": {
     title: "Oier Irastorza, web diseinatzailea Tolosan | OI Studio",

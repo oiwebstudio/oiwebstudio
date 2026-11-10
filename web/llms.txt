@@ -15,16 +15,16 @@
 - Perfiles en directorios: Cylex (https://www.cylex.es/tolosa/oi-studio-14671616.html).
 - Propuesta: gratuita y en 48 horas. Se puede ver una muestra con tu negocio antes de pagar.
 
-## Precios (cerrados, IVA no incluido; tarifa del 25/10/2026, productos del 26/10/2026)
+## Precios (cerrados, IVA no incluido; tarifa vigente, revisada el 10/11/2026)
 
-Se paga una sola vez, al final, cuando el trabajo está terminado y publicado. Las webs incluyen el primer año de dominio y alojamiento. El dominio se registra a nombre del cliente. Lo ya presupuestado o aceptado antes se respeta.
+Se paga una sola vez, al final, cuando el trabajo está terminado y publicado. El dominio y el alojamiento van dentro de la cuota de 28 €/mes que lleva cada web. El dominio se registra a nombre del cliente. Lo ya presupuestado o aceptado antes se respeta.
 
 OI Studio ofrece tres líneas de servicio: webs, automatizaciones y branding. Todos los precios son sin IVA, con pago al final y sin permanencia. Garantía de las webs: primero se prepara una muestra de la web; si al negocio no le gusta, no paga nada; si sigue, paga al final, con todo funcionando.
 
 1. Webs: web de una página 420 €; web con secciones 540 €; tienda online 880 €. La presencia en Google (120 €) se añade a cualquiera: ficha de Google Business Profile completa (categorías, horario, servicios, zonas, descripción en castellano y euskera, fotos), QR de reseñas, Bing Places y Apple Maps con los mismos datos, y una página con cómo ven al negocio Google y las IAs, antes y después. No se promete ningún puesto concreto en Google ni que una IA nombre al negocio. Detalle: https://oiwebstudio.com/seo-posicionamiento-google.html
 
 2. Automatizaciones, en ramas. En cada una se dice qué parte hace la IA.
-- Reservas y citas (sin IA): agenda de citas para la web que ya tienes, 160 €; web + reservas, 580 €; web + reservas + presencia en Google (restaurante, casa rural o negocio con citas), 740 €. Todas con la cuota única de 28 €/mes (agenda: hasta 2 personas; 8 €/mes por cada persona más). Sin comisión por reserva. Los avisos van por correo; por WhatsApp o SMS, de momento no.
+- Reservas y citas (sin IA): agenda de citas sola, para la web que ya tienes, 160 € + 20 €/mes con 1 profesional (+8 €/mes por cada profesional más); web + reservas, 580 € + 28 €/mes; web + reservas + presencia en Google (restaurante, casa rural o negocio con citas), 740 € + 28 €/mes. Sin comisión por reserva. Los avisos van por correo; por WhatsApp o SMS, de momento no.
 - Google y las IAs (con IA): dentro de la presencia en Google (120 €) y de la cuota; una IA con buscador responde a las preguntas que haría un cliente y se compara con la ficha y la web.
 - Reseñas respondidas (con IA): dentro de la cuota única de 28 €/mes; la IA redacta el borrador, Oier lo revisa y, con el visto bueno del dueño, lo publica en su ficha.
 - Las citas online automáticas no se ofrecen de momento a consultas de salud: para ellas, botón «Pedir cita» al programa que ya usen o a una llamada.
@@ -54,7 +54,7 @@ Fuera de Gipuzkoa trabaja a distancia, con el mismo precio: [toda España](https
 - [Dominio, alojamiento y correo profesional](https://oiwebstudio.com/dominio-alojamiento-correo-profesional.html): dominio a nombre del cliente, alojamiento con https y correo con el dominio (Google Workspace, Microsoft 365 o reenvío), con SPF, DKIM y DMARC.
 - [Programación web a medida](https://oiwebstudio.com/programacion-web-a-medida-gipuzkoa.html): reservas con reglas propias, paneles, calculadoras y conexiones; no hace apps para tiendas de aplicaciones.
 - [Citas y reservas online sin comisiones](https://oiwebstudio.com/reservas-online-sin-comisiones.html): página de citas con el nombre del negocio y panel en el móvil, para negocios que trabajan con cita (peluquería, barbería, estética y uñas, peluquería canina, masajes, talleres, asesorías y gestorías, clases particulares); de momento no para consultas de salud. Solo agenda: 160 € + 20 €/mes con 1 profesional (+8 €/mes por cada profesional más). Web bonita + agenda: 580 € + 28 €/mes. Web + agenda + presencia en Google: 740 € + 28 €/mes. Sin IVA, pago al final, sin comisión ni permanencia.
-- [Trabajos](https://oiwebstudio.com/trabajos.html): webs publicadas, una por sector.
+- [Trabajos](https://oiwebstudio.com/trabajos.html): dos webs publicadas para clientes reales (Errotatxo y A.Berri) y 36 muestras navegables con marcas inventadas, para distintos sectores.
 - [Caso real: Errotatxo](https://oiwebstudio.com/caso-errotatxo.html): la web de una panadería de Tolosa con tres tiendas, en castellano y euskera.
 - [Caso real: A.Berri, casa rural en Getaria](https://oiwebstudio.com/caso-a-berri.html): web con reservas, panel para los dueños y tres idiomas; con la opinión de la dueña (5 estrellas).
 - [Zonas](https://oiwebstudio.com/zonas.html): diseño web en los municipios de Gipuzkoa.
@@ -84,7 +84,7 @@ Fuera de Gipuzkoa trabaja a distancia, con el mismo precio: [toda España](https
 - [Cómo crear la web de tu negocio paso a paso](https://oiwebstudio.com/como-crear-pagina-web-negocio-paso-a-paso.html): Guía práctica para crear la página web de un negocio local: qué preparar, dominio, alojamiento, estructura, publicar y que Google la encuentre.
 - [Landing page o web completa: cuál necesita tu negocio](https://oiwebstudio.com/landing-page-o-web-completa.html): Diferencias entre una landing page y una web completa, cuándo basta una página, cuándo hacen falta varias y cómo decidirlo sin pagar de más.
 - [Página web para autónomos: qué necesitas, qué incluir y cuánto cuesta](https://oiwebstudio.com/pagina-web-para-autonomos.html): Qué debe tener la web de un autónomo, cuándo compensa una landing y cuándo una web completa, qué datos legales incluir y cuánto cuesta en 2026.
-- [Ayudas y subvenciones para tu página web en Gipuzkoa](https://oiwebstudio.com/ayudas-subvenciones-pagina-web-gipuzkoa.html): 13 abiertas a 4/10/2026 (imagen digital en Andoain, 80–100 %; euskera en la web en Irun, Tolosa, Villabona, Urretxu, Legazpi, Beasain, Hernani, Bergara y Ordizia; irun.market; Eibar) y las que se convocan cada año.
+- [Ayudas y subvenciones para tu página web en Gipuzkoa](https://oiwebstudio.com/ayudas-subvenciones-pagina-web-gipuzkoa.html): 6 abiertas según la revisión del 1/11/2026 (euskera en la web en Beasain, Hernani, Bergara y Ordizia; irun.market en Irun; diagnóstico de innovación comercial gratis de la Cámara de Gipuzkoa) y las que se convocan cada año.
 - [Cómo elegir diseñador web en Gipuzkoa](https://oiwebstudio.com/como-elegir-disenador-web-gipuzkoa.html)
 - [Precio de un diseño web profesional](https://oiwebstudio.com/precio-diseno-web-profesional.html)
 - [Cuánto cuesta una tienda online para un pequeño comercio](https://oiwebstudio.com/cuanto-cuesta-tienda-online-pequeno-comercio.html)
