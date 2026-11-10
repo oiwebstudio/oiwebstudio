@@ -271,5 +271,31 @@
    "Una clase para probar, por WhatsApp y sin llamar",
    "Cuánto falta para el festival de fin de curso"
   ]
+ },
+ {
+  "id": "irri",
+  "nombre": "IRRI",
+  "carpeta": "irri-hortz-klinika",
+  "slug": "dentista",
+  "chip": "Dentista",
+  "k": "Clínica dental en Tolosa",
+  "lleva": [
+   "Cita sin llamar, con el WhatsApp ya escrito",
+   "Dinos qué te pasa: cuánto dura y qué traer",
+   "Urgencias hoy, a un toque"
+  ]
+ },
+ {
+  "id": "malgu",
+  "nombre": "MALGU",
+  "carpeta": "malgu-fisioterapia",
+  "slug": "fisioterapia",
+  "chip": "Fisioterapia",
+  "k": "Fisioterapia en Tolosa",
+  "lleva": [
+   "Dinos dónde te duele: el tratamiento y las sesiones",
+   "La primera cita por WhatsApp, sin llamar",
+   "Ejercicios para casa con su reloj"
+  ]
  }
 ]

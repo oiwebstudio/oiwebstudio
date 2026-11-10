@@ -1,0 +1,115 @@
+{
+ "_leeme": "Fotos de la muestra MALGU (clínica de fisioterapia inventada, 10/11/2026). Son fotos libres de Unsplash puestas de ejemplo: ninguna es de una clínica real ni de sus pacientes. Originales mirados enteros: sin marca de agua. Recortadas, con el color algo apagado y cálido, redimensionadas y guardadas en AVIF y WebP sin datos de ubicación (herramientas/diseno/imagenes.mjs).",
+ "portada": {
+  "autor": "Sasun Bughdaryan",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/hands-embracing-a-womans-back-v4KVuvBEBYk",
+  "original": "5616 × 3744",
+  "uso": "portada en el ordenador: manos de fisio sobre la espalda, fondo oscuro liso",
+  "cambios": "recortada a 3991 × 1814 (de la descarga de 4000 × 2667), color algo apagado y cálido, redimensionada y guardada en AVIF y WebP"
+ },
+ "portada-m": {
+  "autor": "Sasun Bughdaryan",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/hands-embracing-a-womans-back-v4KVuvBEBYk",
+  "original": "5616 × 3744",
+  "uso": "portada en el móvil (recorte vertical de la misma foto)",
+  "cambios": "recortada a 2187 × 2667 (de la descarga de 4000 × 2667), color algo apagado y cálido, redimensionada y guardada en AVIF y WebP"
+ },
+ "intro": {
+  "autor": "Paige Madison",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/hand-resting-on-persons-lower-back-during-massage-0d6R1iCh1SE",
+  "original": "6000 × 4000",
+  "uso": "tarjeta alta y desvaída detrás de la frase grande",
+  "cambios": "recortada a 1494 × 2667 (de la descarga de 4000 × 2667), color algo apagado y cálido, redimensionada y guardada en AVIF y WebP"
+ },
+ "bizkarra": {
+  "autor": "Benjamin Wedemeyer",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/person-in-black-and-white-striped-long-sleeve-shirt-t_29wZLpYwg",
+  "original": "4800 × 3200",
+  "uso": "¿dónde te duele?: ESPALDA",
+  "cambios": "recortada a 2559 × 2187 (de la descarga de 4000 × 2667), color algo apagado y cálido, redimensionada y guardada en AVIF y WebP"
+ },
+ "lepoa": {
+  "autor": "GMB Fitness",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-woman-with-her-back-to-the-camera-Rtczb9jxBtk",
+  "original": "4896 × 3264",
+  "uso": "¿dónde te duele?: CUELLO (recortado sin el enchufe de la pared)",
+  "cambios": "recortada a 2310 × 1974 (de la descarga de 4000 × 2667), color algo apagado y cálido, redimensionada y guardada en AVIF y WebP"
+ },
+ "sorbalda": {
+  "autor": "Sincerely Media",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/person-massaging-shoulder-in-white-shirt-wGFibXDQlBI",
+  "original": "5472 × 3648",
+  "uso": "¿dónde te duele?: HOMBRO",
+  "cambios": "recortada a 2497 × 2134 (de la descarga de 4000 × 2667), color algo apagado y cálido, redimensionada y guardada en AVIF y WebP"
+ },
+ "belauna": {
+  "autor": "yury kirillov",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-man-getting-his-leg-examined-by-a-doctor-pbUWW-CBoqY",
+  "original": "3701 × 2468",
+  "uso": "¿dónde te duele?: RODILLA (recortado a la rodilla y las manos, sin marcas de ropa)",
+  "cambios": "recortada a 1444 × 1234 (de la descarga de 3701 × 2468), color algo apagado y cálido, redimensionada y guardada en AVIF y WebP"
+ },
+ "kirola": {
+  "autor": "wyyz",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-woman-standing-in-a-park-with-her-back-to-the-camera-nR3YxusnjIc",
+  "original": "3160 × 3501",
+  "uso": "¿dónde te duele?: DEPORTE",
+  "cambios": "recortada a 2540 × 2171 (de la descarga de 3160 × 3501), color algo apagado y cálido, redimensionada y guardada en AVIF y WebP"
+ },
+ "haurdunaldia": {
+  "autor": "João Paulo de Souza Oliveira",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/pregnant-woman-in-white-shirt-and-black-skirt-PtgU157MUyg",
+  "original": "3456 × 3456",
+  "uso": "¿dónde te duele?: EMBARAZO",
+  "cambios": "recortada a 3235 × 2765 (de la descarga de 3456 × 3456), color algo apagado y cálido, redimensionada y guardada en AVIF y WebP"
+ },
+ "ariketak": {
+  "autor": "Margaret Young",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/woman-in-white-tank-top-doing-yoga-pose-Pf3DJ-Nweco",
+  "original": "4480 × 6720",
+  "uso": "fondo del bloque de ejercicios para casa",
+  "cambios": "recortada a 4000 × 4000 (de la descarga de 4000 × 6000), color algo apagado y cálido, redimensionada y guardada en AVIF y WebP"
+ },
+ "etxean": {
+  "autor": "Kari Shea",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/woman-in-black-t-shirt-and-black-pants-lying-on-black-yoga-mat-qa1wvrlWCio",
+  "original": "3648 × 5472",
+  "uso": "tarjeta alta de «Pedir cita» (recortada sin el portátil)",
+  "cambios": "recortada a 1926 × 3010 (de la descarga de 3648 × 5472), color algo apagado y cálido, redimensionada y guardada en AVIF y WebP"
+ },
+ "terapia-eskuz": {
+  "autor": "Edward Muntinga",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/hands-pressing-back-in-massage-8qwYA4INVCk",
+  "original": "6016 × 4016",
+  "uso": "en la clínica: TERAPIA MANUAL",
+  "cambios": "recortada a 2996 × 2270 (de la descarga de 4000 × 2670), color algo apagado y cálido, redimensionada y guardada en AVIF y WebP"
+ },
+ "ariketa-gidatua": {
+  "autor": "Sincerely Media",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/a-man-and-a-woman-standing-next-to-each-other-CexT3n-04iw",
+  "original": "5472 × 3648",
+  "uso": "en la clínica: EJERCICIO GUIADO",
+  "cambios": "recortada a 3345 × 2534 (de la descarga de 4000 × 2667), color algo apagado y cálido, redimensionada y guardada en AVIF y WebP"
+ },
+ "osteopatia": {
+  "autor": "Toa Heftiba",
+  "licencia": "Licencia de Unsplash (uso libre, sin atribución obligatoria; se cita igualmente)",
+  "fuente": "https://unsplash.com/photos/person-massaging-the-back-of-a-woman-hBLf2nvp-Yc",
+  "original": "3936 × 2624",
+  "uso": "en la clínica: OSTEOPATÍA",
+  "cambios": "recortada a 3291 × 2493 (de la descarga de 3936 × 2624), color algo apagado y cálido, redimensionada y guardada en AVIF y WebP"
+ }
+}

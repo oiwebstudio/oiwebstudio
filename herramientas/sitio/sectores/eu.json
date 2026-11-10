@@ -123,5 +123,15 @@
  "rv_t1": "Zure bezeroak ikusten duena",
  "rv_t2": "Zuk ikusten duzuna",
  "rv_nota": "Ile-apaindegi asmatua: egiten duzuna ordu erdian ezabatzen da.",
- "rv_p": "Ile-apaindegi asmatu bat, agenda martxan duela. Eskatu hitzordua bezero bat bazina bezala, eta gero begiratu nola iristen zaion jabeari, pasahitzik gabe."
+ "rv_p": "Ile-apaindegi asmatu bat, agenda martxan duela. Eskatu hitzordua bezero bat bazina bezala, eta gero begiratu nola iristen zaion jabeari, pasahitzik gabe.",
+ "sx_c_dentista": "Dentista",
+ "sx_k_dentista": "Hortz klinika Tolosan",
+ "sx_dentista_a": "Hitzordua deitu gabe, WhatsAppa idatzita",
+ "sx_dentista_b": "Esaiguzu zer gertatzen zaizun: zenbat irauten duen eta zer ekarri",
+ "sx_dentista_c": "Larrialdiak gaur, ukitu batera",
+ "sx_c_fisioterapia": "Fisioterapia",
+ "sx_k_fisioterapia": "Fisioterapia Tolosan",
+ "sx_fisioterapia_b": "WhatsApp bidezko lehen hitzordua, deitu gabe",
+ "sx_fisioterapia_c": "Etxerako ariketak erlojuarekin",
+ "sx_fisioterapia_a": "Esaiguzu non duzun mina: tratamendua eta saioak"
 }
