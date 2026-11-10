@@ -297,5 +297,18 @@
    "La primera cita por WhatsApp, sin llamar",
    "Ejercicios para casa con su reloj"
   ]
+ },
+ {
+  "id": "zehatz",
+  "nombre": "ZEHATZ",
+  "carpeta": "zehatz-tailerra",
+  "slug": "taller",
+  "chip": "Taller",
+  "k": "Taller de coches en Villabona",
+  "lleva": [
+   "Qué miramos, cuánto tarda y cuánto cuesta",
+   "Presupuesto antes de tocar nada",
+   "Te avisamos por WhatsApp cuando esté listo"
+  ]
  }
 ]

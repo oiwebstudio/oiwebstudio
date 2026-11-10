@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Zehatz, auto tailerra Villabonan</title>
+<meta name="description" content="Mekanika, IAT eta pneumatikoak Villabonan. Ezer ukitu aurretik aurrekontua eta WhatsApp bidez abisatzea autoa prest dagoenean.">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:title" content="Zehatz, auto tailerra Villabonan">
+<meta property="og:description" content="Mekanika, IAT eta pneumatikoak Villabonan. Ezer ukitu aurretik aurrekontua eta WhatsApp bidez abisatzea autoa prest dagoenean.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="fotos/portada-d-1280.webp">
+<link rel="alternate" hreflang="es" href="es/">
+<!--
+  MUESTRA «ZEHATZ» (OI Studio, 10/11/2026): taller de coches INVENTADO en Villabona (Tolosaldea) para la pieza «¿Qué negocio tienes?»
+  de oiwebstudio.com. Sustituye a TORLOJU. «Zehatz» = exacto, preciso. Nombre, dirección, teléfonos, horario, servicios, lo que se revisa
+  y cuánto suele llevar, el presupuesto con sus precios y los mensajes son de ejemplo (lo dice la nota del pie, una vez). noindex.
+  Calco de LUNAZ (lunaz.design), referencia n.º 13 del tablero muestras-taller-2026-11-10 que eligió Oier el 10/11: franja blanca con
+  el nombre espaciado y el menú pequeño; portada a sangre de un coche en una nave blanca con la palabra grande abajo a la izquierda,
+  una línea y «—— enlace»; frase centrada; párrafo a la izquierda; tira de tres fotos; banda de foto que se mueve; fichas de dos en
+  dos con el nombre abajo a la izquierda; título a la izquierda y rejilla de cuadrados de 4; botones en caja fina; foto de cierre de
+  un coche de perfil; pie blanco con columnas. Sin la serif cursiva de la referencia ni sus etiquetas encima de los títulos.
+  Nada de la referencia se ha copiado: ni código, ni textos, ni fotos, ni logo, ni letras (ver el LEEME del generador).
+  Letra: n.º 17 Archivo (variable en anchura), autoalojada. Fotos: Unsplash y Pexels (con sus licencias): Artem Podrez, Priscilla Du Preez, Adem Percem, The DK Photography, Nigel Tadyanehondo, Sincerely Media, Nik, Kate Ibragimova, Erik Mclean, Benjamin Brunner, Jimmy Nilsson Masth, Dmitriy Demidov, Mustafa Sheikhmouss, Sasun Bughdaryan, Christian Buehner, Nina Mercado, Eric Prouzet, LouisMoto, Ali Kaan Uçar, Mike Bird.
+  Detalle en fotos/creditos.json. Movimiento: la portada entra con CSS desde el primer pintado; lo de abajo, con GSAP 3.13 +
+  ScrollTrigger + SplitText (js/) + anim-texto.js + pagina.js. Con «reducir movimiento» o sin JS, todo quieto y visible.
+-->
+<link rel="preload" href="fuentes/archivo-400_900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<a class="saltar" href="#pasa">Edukira joan</a>
+
+<header class="cab">
+  <p class="logo"><a href="#contenido">ZEHATZ</a></p>
+  <nav class="nav" aria-label="Menua"><ul><li><a href="#pasa">Zer gertatzen zaio autoari?</a></li><li><a href="#taller">Tailerra</a></li><li><a href="#presupuesto">Aurrekontua</a></li><li><a href="#contacto">Kontaktua</a></li><li><a href="tel:+34943000000">943 00 00 00</a></li><li><a class="idioma " href="es/" lang="es" hreflang="es"><span aria-hidden="true">ES</span><span class="sr">Gaztelaniaz</span></a></li></ul></nav>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-movil" data-menu-btn>Menua</button>
+</header>
+<div class="menu-movil" id="menu-movil" data-menu hidden>
+  <div class="menu-cab"><span class="logo">ZEHATZ</span><button class="menu-btn" type="button" data-menu-cerrar>Itxi</button></div>
+  <nav aria-label="Menua"><ul><li><a href="#pasa">Zer gertatzen zaio autoari?</a></li><li><a href="#taller">Tailerra</a></li><li><a href="#presupuesto">Aurrekontua</a></li><li><a href="#contacto">Kontaktua</a></li></ul></nav>
+  <p class="menu-pie"><a href="tel:+34943000000">943 00 00 00</a><a class="idioma " href="es/" lang="es" hreflang="es"><span aria-hidden="true">ES</span><span class="sr">Gaztelaniaz</span></a></p>
+</div>
+
+<main id="contenido">
+<section class="portada" aria-labelledby="h-portada">
+  <picture><source media="(max-width: 699px)" type="image/avif" srcset="fotos/portada-m-600.avif 600w, fotos/portada-m-900.avif 900w, fotos/portada-m-1200.avif 1200w" sizes="100vw"><source media="(max-width: 699px)" type="image/webp" srcset="fotos/portada-m-600.webp 600w, fotos/portada-m-900.webp 900w, fotos/portada-m-1200.webp 1200w" sizes="100vw"><source type="image/avif" srcset="fotos/portada-d-1280.avif 1280w, fotos/portada-d-1920.avif 1920w, fotos/portada-d-2880.avif 2880w" sizes="200vw"><img src="fotos/portada-d-1920.webp" srcset="fotos/portada-d-1280.webp 1280w, fotos/portada-d-1920.webp 1920w, fotos/portada-d-2880.webp 2880w" sizes="200vw" width="2880" height="1680" alt="Orotako ibilgailu zuri bat jasogailura igota, tailer zuri eta argitsu batean" fetchpriority="high" decoding="async"></picture>
+  <div class="portada-txt">
+    <h1 id="h-portada">ZEHATZ.<span class="sr"> Autoen tailerra Villabonan</span></h1>
+    <p class="sub" aria-hidden="true">Autoen tailerra Villabonan</p>
+    <a class="descubre" href="#pasa">Zer gertatzen zaio zure autoari?</a>
+  </div>
+</section>
+
+<p class="lema">Mekanika, IAT eta pneumatikoak Zubimusun, autobidearen ondoan.</p>
+<p class="intro" data-enciende>Ezer ukitu aurretik, zer duen eta zenbat balio duen esaten dizugu. Baietz esaten badiguzu, konponduko dugu. Prest dagoenean, WhatsApp bidez abisatuko dizugu.</p>
+
+<div class="tira" data-tira>
+  <figure><picture><source type="image/avif" srcset="fotos/t1-540.avif 540w, fotos/t1-1080.avif 1080w" sizes="(min-width: 700px) 67vw, 100vw"><img src="fotos/t1-1080.webp" srcset="fotos/t1-540.webp 540w, fotos/t1-1080.webp 1080w" sizes="(min-width: 700px) 67vw, 100vw" width="1080" height="1350" alt="Atzeko pilotua piztuta eta karga-kablea auto zuri batean" loading="lazy" decoding="async"></picture></figure>
+  <figure><picture><source type="image/avif" srcset="fotos/t2-540.avif 540w, fotos/t2-1080.avif 1080w" sizes="(min-width: 700px) 67vw, 100vw"><img src="fotos/t2-1080.webp" srcset="fotos/t2-540.webp 540w, fotos/t2-1080.webp 1080w" sizes="(min-width: 700px) 67vw, 100vw" width="1080" height="1350" alt="Auto bat, nabe baten barruan zorro zuri batekin estalita" loading="lazy" decoding="async"></picture></figure>
+  <figure><picture><source type="image/avif" srcset="fotos/t3-540.avif 540w, fotos/t3-1080.avif 1080w" sizes="(min-width: 700px) 67vw, 100vw"><img src="fotos/t3-1080.webp" srcset="fotos/t3-540.webp 540w, fotos/t3-1080.webp 1080w" sizes="(min-width: 700px) 67vw, 100vw" width="1080" height="1350" alt="Jasogailura igotako auto baten diskoa eta balazta-matxarda" loading="lazy" decoding="async"></picture></figure>
+</div>
+
+<div class="banda" aria-hidden="true">
+  <div class="pista" data-pista="15"><picture><source media="(max-width: 699px)" type="image/avif" srcset="fotos/banda-m-600.avif 600w, fotos/banda-m-1200.avif 1200w" sizes="236vw"><source media="(max-width: 699px)" type="image/webp" srcset="fotos/banda-m-600.webp 600w, fotos/banda-m-1200.webp 1200w" sizes="236vw"><source type="image/avif" srcset="fotos/banda-d-1500.avif 1500w, fotos/banda-d-2992.avif 2992w" sizes="236vw"><img src="fotos/banda-d-2992.webp" srcset="fotos/banda-d-1500.webp 1500w, fotos/banda-d-2992.webp 2992w" sizes="236vw" width="2992" height="864" alt="" loading="lazy" decoding="async"></picture></div>
+</div>
+
+<section class="pasa" id="pasa" aria-labelledby="h-pasa">
+  <div class="cabeza">
+    <h2 id="h-pasa" data-lineas>Zer gertatzen zaio zure autoari?</h2>
+    <p>Ukitu zer nabaritzen duzun eta esaten dizugu zer begiratzen dugun eta zenbat denbora behar izaten duen.</p>
+  </div>
+  <ul class="fichas" data-fichas>
+      <li><button class="ficha" type="button" aria-pressed="false" aria-controls="elegido" data-motivo="ruido">
+        <picture><source type="image/avif" srcset="fotos/f-ruido-714.avif 714w, fotos/f-ruido-1428.avif 1428w" sizes="(min-width: 700px) 100vw, 100vw"><img src="fotos/f-ruido-1428.webp" srcset="fotos/f-ruido-714.webp 714w, fotos/f-ruido-1428.webp 1428w" sizes="(min-width: 700px) 100vw, 100vw" width="1428" height="1124" alt="Esku batzuk aliketa batzuekin auto baten motorrean" loading="lazy" decoding="async"></picture>
+        <span class="ficha-pie"><span class="ficha-nom">Zarata arraroa</span><span class="ficha-precio">30 €-tik aurrera</span><span class="ficha-ver">Ikusi</span></span>
+      </button></li>
+      <li><button class="ficha" type="button" aria-pressed="false" aria-controls="elegido" data-motivo="testigo">
+        <picture><source type="image/avif" srcset="fotos/f-testigo-714.avif 714w, fotos/f-testigo-1428.avif 1428w" sizes="(min-width: 700px) 100vw, 100vw"><img src="fotos/f-testigo-1428.webp" srcset="fotos/f-testigo-714.webp 714w, fotos/f-testigo-1428.webp 1428w" sizes="(min-width: 700px) 100vw, 100vw" width="1428" height="1124" alt="Bi abisu-argi piztuta dituen auto baten koadroa" loading="lazy" decoding="async"></picture>
+        <span class="ficha-pie"><span class="ficha-nom">Matxura-argia</span><span class="ficha-precio">35 €-tik aurrera</span><span class="ficha-ver">Ikusi</span></span>
+      </button></li>
+      <li><button class="ficha" type="button" aria-pressed="false" aria-controls="elegido" data-motivo="revision">
+        <picture><source type="image/avif" srcset="fotos/f-revision-714.avif 714w, fotos/f-revision-1428.avif 1428w" sizes="(min-width: 700px) 100vw, 100vw"><img src="fotos/f-revision-1428.webp" srcset="fotos/f-revision-714.webp 714w, fotos/f-revision-1428.webp 1428w" sizes="(min-width: 700px) 100vw, 100vw" width="1428" height="1124" alt="Mekanikari bat kotxe baten motorra aztertzen ari da, kapota irekita duela" loading="lazy" decoding="async"></picture>
+        <span class="ficha-pie"><span class="ficha-nom">Berrikuspena</span><span class="ficha-precio">120 €-tik aurrera</span><span class="ficha-ver">Ikusi</span></span>
+      </button></li>
+      <li><button class="ficha" type="button" aria-pressed="false" aria-controls="elegido" data-motivo="itv">
+        <picture><source type="image/avif" srcset="fotos/f-itv-714.avif 714w, fotos/f-itv-1428.avif 1428w" sizes="(min-width: 700px) 100vw, 100vw"><img src="fotos/f-itv-1428.webp" srcset="fotos/f-itv-714.webp 714w, fotos/f-itv-1428.webp 1428w" sizes="(min-width: 700px) 100vw, 100vw" width="1428" height="1124" alt="Auto zuri baten aurreko faroa tailerrean" loading="lazy" decoding="async"></picture>
+        <span class="ficha-pie"><span class="ficha-nom">IAT</span><span class="ficha-precio">40 €-tik aurrera</span><span class="ficha-ver">Ikusi</span></span>
+      </button></li>
+      <li><button class="ficha" type="button" aria-pressed="false" aria-controls="elegido" data-motivo="frenos">
+        <picture><source type="image/avif" srcset="fotos/f-frenos-714.avif 714w, fotos/f-frenos-1428.avif 1428w" sizes="(min-width: 700px) 100vw, 100vw"><img src="fotos/f-frenos-1428.webp" srcset="fotos/f-frenos-714.webp 714w, fotos/f-frenos-1428.webp 1428w" sizes="(min-width: 700px) 100vw, 100vw" width="1428" height="1124" alt="Diskoa eta balazta-matxarda hurbiletik" loading="lazy" decoding="async"></picture>
+        <span class="ficha-pie"><span class="ficha-nom">Balaztak</span><span class="ficha-precio">90 €-tik aurrera</span><span class="ficha-ver">Ikusi</span></span>
+      </button></li>
+      <li><button class="ficha" type="button" aria-pressed="false" aria-controls="elegido" data-motivo="neumaticos">
+        <picture><source type="image/avif" srcset="fotos/f-neumaticos-714.avif 714w, fotos/f-neumaticos-1428.avif 1428w" sizes="(min-width: 700px) 100vw, 100vw"><img src="fotos/f-neumaticos-1428.webp" srcset="fotos/f-neumaticos-714.webp 714w, fotos/f-neumaticos-1428.webp 1428w" sizes="(min-width: 700px) 100vw, 100vw" width="1428" height="1124" alt="Eskularruak dituzten bi eskuk auto baten gurpilari eusten diote" loading="lazy" decoding="async"></picture>
+        <span class="ficha-pie"><span class="ficha-nom">Pneumatikoak</span><span class="ficha-precio">55 €tik aurrera, gurpil bakoitzeko</span><span class="ficha-ver">Ikusi</span></span>
+      </button></li>
+  </ul>
+  <div class="elegido" id="elegido" data-elegido tabindex="-1">
+    <div class="que" aria-live="polite">
+      <h3 data-el-tit>Aukeratu goian zer nabaritzen duzun.</h3>
+      <div data-el-datos hidden>
+        <div class="dato"><b>Zer begiratzen dugun</b><p data-el-q></p></div>
+        <div class="dato"><b>Zenbat denbora behar izaten duen</b><p data-el-d></p></div>
+        <div class="dato"><b>Prezio orientagarria</b><p data-el-p></p></div>
+      </div>
+    </div>
+    <form class="formu" data-formu onsubmit="return false">
+      <div class="campo"><label for="matricula">Matrikula</label><input id="matricula" type="text" maxlength="12" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="1234 ABC" data-matricula></div>
+      <div class="campo"><label for="modelo">Marka eta modeloa</label><input id="modelo" type="text" maxlength="40" autocomplete="off" data-modelo></div>
+      <p class="mensaje" aria-live="polite"><b>Zure mezua</b><span data-mensaje></span></p>
+      <p class="acc"><a class="caja llena" href="https://wa.me/34600000000" rel="noopener" target="_blank" data-wa>Bidali WhatsApp bidez</a><span class="o">Edo deitu <a href="tel:+34943000000">943 00 00 00</a></span></p>
+    </form>
+  </div>
+</section>
+
+<section class="taller" id="taller" aria-labelledby="h-taller">
+  <div class="cabeza"><h2 id="h-taller" data-lineas>Tailerrean</h2></div>
+  <ul class="rejilla" data-escalonado>
+    <li><picture><source type="image/avif" srcset="fotos/g1-400.avif 400w, fotos/g1-800.avif 800w" sizes="(min-width: 700px) 50vw, 50vw"><img src="fotos/g1-800.webp" srcset="fotos/g1-400.webp 400w, fotos/g1-800.webp 800w" sizes="(min-width: 700px) 50vw, 50vw" width="800" height="800" alt="Atzealde ilun baten gainean zirkuluan jarritako giltza finkoak" loading="lazy" decoding="async"></picture></li>
+    <li><picture><source type="image/avif" srcset="fotos/g2-400.avif 400w, fotos/g2-800.avif 800w" sizes="(min-width: 700px) 50vw, 50vw"><img src="fotos/g2-800.webp" srcset="fotos/g2-400.webp 400w, fotos/g2-800.webp 800w" sizes="(min-width: 700px) 50vw, 50vw" width="800" height="800" alt="Mekanikari batek linterna batekin begiratzen dio motorrari" loading="lazy" decoding="async"></picture></li>
+    <li><picture><source type="image/avif" srcset="fotos/g3-400.avif 400w, fotos/g3-800.avif 800w" sizes="(min-width: 700px) 50vw, 50vw"><img src="fotos/g3-800.webp" srcset="fotos/g3-400.webp 400w, fotos/g3-800.webp 800w" sizes="(min-width: 700px) 50vw, 50vw" width="800" height="800" alt="Esku batek motorraren torloju bat estutu du karraka-giltza batekin" loading="lazy" decoding="async"></picture></li>
+    <li><picture><source type="image/avif" srcset="fotos/g4-400.avif 400w, fotos/g4-800.avif 800w" sizes="(min-width: 700px) 50vw, 50vw"><img src="fotos/g4-800.webp" srcset="fotos/g4-400.webp 400w, fotos/g4-800.webp 800w" sizes="(min-width: 700px) 50vw, 50vw" width="800" height="800" alt="Eskuak koipearekin, motorraren barruan giltza batekin lanean" loading="lazy" decoding="async"></picture></li>
+    <li><picture><source type="image/avif" srcset="fotos/g5-400.avif 400w, fotos/g5-800.avif 800w" sizes="(min-width: 700px) 50vw, 50vw"><img src="fotos/g5-800.webp" srcset="fotos/g5-400.webp 400w, fotos/g5-800.webp 800w" sizes="(min-width: 700px) 50vw, 50vw" width="800" height="800" alt="Tailerreko horman zintzilikatutako giltza finkoak" loading="lazy" decoding="async"></picture></li>
+    <li><picture><source type="image/avif" srcset="fotos/g6-400.avif 400w, fotos/g6-800.avif 800w" sizes="(min-width: 700px) 50vw, 50vw"><img src="fotos/g6-800.webp" srcset="fotos/g6-400.webp 400w, fotos/g6-800.webp 800w" sizes="(min-width: 700px) 50vw, 50vw" width="800" height="800" alt="Auto baten motorra gertutik ikusita" loading="lazy" decoding="async"></picture></li>
+    <li><picture><source type="image/avif" srcset="fotos/g7-400.avif 400w, fotos/g7-800.avif 800w" sizes="(min-width: 700px) 50vw, 50vw"><img src="fotos/g7-800.webp" srcset="fotos/g7-400.webp 400w, fotos/g7-800.webp 800w" sizes="(min-width: 700px) 50vw, 50vw" width="800" height="800" alt="Tailerreko zoruan irekita dagoen erreminta-kaxa" loading="lazy" decoding="async"></picture></li>
+    <li><picture><source type="image/avif" srcset="fotos/g8-400.avif 400w, fotos/g8-800.avif 800w" sizes="(min-width: 700px) 50vw, 50vw"><img src="fotos/g8-800.webp" srcset="fotos/g8-400.webp 400w, fotos/g8-800.webp 800w" sizes="(min-width: 700px) 50vw, 50vw" width="800" height="800" alt="Bi lanpararen azpian erremintak zintzilik dituen lan-bankua" loading="lazy" decoding="async"></picture></li>
+  </ul>
+  <p class="centro"><a class="caja" href="https://wa.me/34600000000?text=Autoa%20tailerrera%20eraman%20nahi%20dut.%20Noiz%20eraman%20dezaket%20autoa%3F" rel="noopener" target="_blank">Hitzordua eskatu</a></p>
+</section>
+
+<section class="presu" id="presupuesto" aria-labelledby="h-presu">
+  <div class="cabeza">
+    <h2 id="h-presu" data-lineas>Aurrekontua ezer ukitu aurretik</h2>
+    <p data-enciende>WhatsApp bidez bidaltzen dizugu pieza eta lan-ordu bakoitzarekin. Ez gara hasiko erantzuten duzun arte.</p>
+    <a class="caja" href="https://wa.me/34600000000?text=Autoa%20tailerrera%20eraman%20nahi%20dut.%20Noiz%20eraman%20dezaket%20autoa%3F" rel="noopener" target="_blank">Aurrekontua eskatu</a>
+  </div>
+  <div class="chat" data-chat>
+    <p class="chat-tit"><span>Horrela iristen zaizu</span><span>WhatsApp</span></p>
+    <div class="burbujas" data-burbujas aria-live="polite">
+      <div class="burbuja"><span class="quien">Zehatz</span>1234 ABC matrikula duen autoaren aurrekontua<table><tbody><tr><td>Aurreko balazta-pastillak</td><td>62 €</td></tr><tr><td>Aurreko balazta-diskoak</td><td>118 €</td></tr><tr><td>Eskulana, ordu eta erdi</td><td>66 €</td></tr><tr><td>Guztira, BEZarekin</td><td>246 €</td></tr></tbody></table><span class="hora" data-hora></span></div>
+    </div>
+    <div class="botones" data-botones><button class="caja llena" type="button" data-resp="si">Bai, aurrera</button><button class="caja" type="button" data-resp="pensar">Pentsatuko dut</button></div>
+    <p class="otra" data-otra hidden><button type="button" data-otra-btn>Berriro hasi</button></p>
+  </div>
+</section>
+
+<figure class="fin" data-fin>
+  <picture><source media="(max-width: 699px)" type="image/avif" srcset="fotos/fin-m-600.avif 600w, fotos/fin-m-1200.avif 1200w" sizes="100vw"><source media="(max-width: 699px)" type="image/webp" srcset="fotos/fin-m-600.webp 600w, fotos/fin-m-1200.webp 1200w" sizes="100vw"><source type="image/avif" srcset="fotos/fin-d-1440.avif 1440w, fotos/fin-d-2880.avif 2880w" sizes="200vw"><img src="fotos/fin-d-2880.webp" srcset="fotos/fin-d-1440.webp 1440w, fotos/fin-d-2880.webp 2880w" sizes="200vw" width="2880" height="1440" alt="Soslaiko kotxe gris zilar bat, egunargiz aparkatuta" loading="lazy" decoding="async"></picture>
+</figure>
+<p class="fin-cita"><span>Kontaiguzu zer gertatzen zaion eta eguna emango dizugu ekartzeko.</span><a class="caja llena" href="#pasa">Hitzordua eskatu</a></p>
+</main>
+
+<footer class="pie" id="contacto">
+  <div class="pie-arriba">
+    <div><p class="logo">ZEHATZ</p><p class="logo-sub">Autoen tailerra Villabonan</p></div>
+    <div><h2>Tailerra</h2><p>Zubimusu industrialdea 7<br>Villabona</p></div>
+    <div><h2>Ordutegia</h2><p>Astelehenetik ostiralera, 08:00etatik 13:00etara eta 15:00etatik 19:00etara.<br>Larunbat eta igandeetan, itxita.</p><p class="estado" data-estado></p></div>
+    <div><h2>Kontaktua</h2><p><a href="tel:+34943000000">943 00 00 00</a><br><a href="https://wa.me/34600000000" rel="noopener" target="_blank">WhatsApp 600 00 00 00</a></p></div>
+  </div>
+  <div class="pie-legal">
+    <p class="nota-datos">Adibide datuak: Zehatz tailerra ez da existitzen. Helbidea, telefonoak, ordutegia, zerbitzuak, berrikusten dena, zenbat eraman ohi duen, prezio orientagarriak, aurrekontua eta mezuak asmatuak dira. Argazkiak irudi-bankuetakoak dira eta ez dira tailer honetakoak.</p>
+    <p>Unsplash eta Pexelsen argazkiak: Artem Podrez, Priscilla Du Preez, Adem Percem, The DK Photography, Nigel Tadyanehondo, Sincerely Media, Nik, Kate Ibragimova, Erik Mclean, Benjamin Brunner, Jimmy Nilsson Masth, Dmitriy Demidov, Mustafa Sheikhmouss, Sasun Bughdaryan, Christian Buehner, Nina Mercado, Eric Prouzet, LouisMoto, Ali Kaan Uçar, Mike Bird. <a href="fotos/creditos.json">creditos.json</a></p>
+    <p><a class="idioma pie-idioma" href="es/" lang="es" hreflang="es"><span aria-hidden="true">ES</span><span class="sr">Gaztelaniaz</span></a></p>
+  </div>
+</footer>
+
+<script type="application/json" id="textos">{"lang":"eu","motivos":{"ruido":{"t":"Zarata arraroa","q":"Zurekin probatuko dugu errepidean eta jasogailura igoko dugu nondik ateratzen den ikusteko.","d":"Ordubete aurkitzeko.","p":"30 €-tik aurrera","m":"Nire autoak zarata arraroa egiten du."},"testigo":{"t":"Matxura-argia","q":"Matxura diagnostiko-makinarekin irakurtzen dugu, eta ezer ukitu aurretik zer den esaten dizugu.","d":"Ordu erdi.","p":"35 €-tik aurrera","m":"Matxura-argi bat piztu zait koadroan."},"revision":{"t":"Berrikuspena","q":"Olioa, iragazkiak, likidoak, uhalak, argiak eta balaztak, autoaren liburuak eskatzen duenaren arabera.","d":"Goiz bat.","p":"120 €-tik aurrera","m":"Nire autoak azterketa pasatu behar du."},"itv":{"t":"IAT","q":"Argiak, balaztak, pneumatikoak, lasaierak eta keak: dena aztertuko dugu IAT baino lehen.","d":"Ordubete.","p":"40 €-tik aurrera","m":"Nire autoari IATa pasatzea tokatzen zaio."},"frenos":{"t":"Balaztak","q":"Pastillak, diskoak eta balazta-likidoa. Gastatutako piezak erakutsiko dizkizugu.","d":"Goiz bat.","p":"90 €-tik aurrera","m":"Nire autoaren balaztei begiratzea nahi dut."},"neumaticos":{"t":"Pneumatikoak","q":"Aldatzea, orekatzea eta lerrokatzea. Daramazunei zenbat geratzen zaien esaten dizugu.","d":"Ordubete, hitzorduarekin.","p":"55 €tik aurrera, gurpil bakoitzeko","m":"Autoko pneumatikoak aldatu behar ditut."}},"m_nada":"Autoa tailerrera eraman nahi dut.","wa_hola":"Kaixo.","wa_mat":"Matrikula:","wa_mod":"Autoa:","wa_cuando":"Noiz eraman dezaket autoa?","f_elige":"Aukeratu goian zer nabaritzen duzun.","yo_si":"Aurrera.","yo_pensar":"Pentsatuko dut.","resp_empezamos":"Lanean hasten gara. Prest dagoenean abisatuko dizugu.","resp_pensar":"Ondo da. Ez dugu ezer ukituko zuk esan arte.","escribiendo":"idazten...","listo_13":"Prest dago. 13:00ak arte pasa zaitezke haren bila.","listo_19":"Prest dago. 19:00ak arte pasa zaitezke haren bila.","listo_15":"Prest dago. 15:00etatik aurrera pasa zaitezke haren bila.","listo_hoy":"Prest dago. Haren bila joan zaitezke gaur 08:00etatik aurrera.","listo_manana":"Prest dago. Bihar 08:00etatik pasa zaitezke haren bila.","listo_lunes":"Prest dago. Astelehenean pasa zaitezke haren bila, 08:00etatik aurrera.","de_zehatz":"Zehatz","de_tu":"Zu","est_ab_13":"Orain irekita, 13:00ak arte.","est_ab_19":"Orain irekita, 19:00ak arte.","est_ce_tarde":"Orain itxita. 15:00etan irekiko dugu.","est_ce_hoy":"Orain itxita. Gaur 08:00etan irekiko dugu.","est_ce_manana":"Orain itxita. Bihar 08:00etan irekiko dugu.","est_ce_lunes":"Orain itxita. Astelehenean irekiko dugu, 08:00etan."}</script>
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/SplitText.min.js"></script>
+<script src="js/anim-texto.js"></script>
+<script src="js/pagina.js"></script>
+<!-- oi-firma · lo pone herramientas/sitio/firma-muestras/firma.cjs (no editar a mano) -->
+<style id="oi-firma-css">
+.oi-firma{display:block;margin:0;padding:0;background:#121110;color:#ece7de;text-align:left;font:400 15px/1.5 "Switzer",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased;position:relative;z-index:1;clear:both;border-top:1px solid rgba(236,231,222,.08)}
+.oi-firma *{box-sizing:border-box}
+.oi-firma .oi-firma__in{max-width:1180px;margin:0 auto;padding:48px 32px 40px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:36px 56px;align-items:end}
+.oi-firma .oi-firma__marca{margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.oi-firma .oi-firma__por{margin:0;font-weight:500;font-size:11px;line-height:1;letter-spacing:.2em;text-transform:uppercase;color:#8f877b}
+.oi-firma a.oi-firma__logo{display:inline-flex;align-items:center;min-height:44px;align-self:flex-start;margin:0;padding:0;color:#fff;text-decoration:none;font-weight:700;font-size:clamp(30px,3.4vw,44px);line-height:.95;letter-spacing:.04em;text-transform:uppercase;-webkit-tap-highlight-color:transparent;transition:opacity .2s ease}
+.oi-firma .oi-firma__lema{margin:0;font-weight:400;font-size:15px;line-height:1.4;color:#cfc8bc;text-transform:none;letter-spacing:0}
+.oi-firma .oi-firma__datos{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(4,auto);gap:0 36px}
+.oi-firma .oi-firma__datos li{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+.oi-firma .oi-firma__datos li::before,.oi-firma .oi-firma__datos li::marker{content:none}
+.oi-firma .oi-firma__k{font-weight:500;font-size:11px;line-height:1;letter-spacing:.18em;text-transform:uppercase;color:#8f877b}
+.oi-firma .oi-firma__datos a{display:inline-flex;align-items:center;min-height:32px;color:#ece7de;text-decoration:none;font-weight:500;font-size:15px;line-height:1.3;text-transform:none;letter-spacing:0;border-bottom:1px solid rgba(236,231,222,.22);transition:border-color .2s ease,color .2s ease;-webkit-tap-highlight-color:transparent}
+.oi-firma .oi-firma__pie{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px;margin:0;padding:22px 0 0;border-top:1px solid rgba(236,231,222,.12)}
+.oi-firma .oi-firma__nota{margin:0;font-weight:400;font-size:13.5px;line-height:1.4;color:#8f877b;text-transform:none;letter-spacing:0}
+.oi-firma a.oi-firma__cta{display:inline-flex;align-items:center;gap:10px;min-height:46px;margin:0;padding:0 22px;border-radius:999px;background:#ece7de;color:#121110;text-decoration:none;font-weight:600;font-size:14.5px;line-height:1;letter-spacing:0;text-transform:none;transition:background-color .2s ease,transform .15s ease;-webkit-tap-highlight-color:transparent}
+.oi-firma a.oi-firma__cta svg{width:16px;height:16px;flex:none}
+@media (hover:hover) and (pointer:fine){.oi-firma a.oi-firma__logo:hover{opacity:.82}.oi-firma .oi-firma__datos a:hover{border-color:#ece7de;color:#fff}.oi-firma a.oi-firma__cta:hover{background:#fff}}
+.oi-firma a.oi-firma__cta:active{transform:scale(.97)}
+.oi-firma a:focus{outline:none}
+.oi-firma a:focus-visible{outline:2px solid #ece7de;outline-offset:4px}
+.oi-firma .oi-firma__sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.oi-firma.oi-firma--mv .oi-firma__in>*{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .9s cubic-bezier(.2,.75,.25,1)}
+.oi-firma.oi-firma--mv .oi-firma__in>*:nth-child(2){transition-delay:.08s}
+.oi-firma.oi-firma--mv .oi-firma__in>*:nth-child(3){transition-delay:.16s}
+.oi-firma.oi-firma--in .oi-firma__in>*{opacity:1;transform:none}
+@media (max-width:980px){.oi-firma .oi-firma__in{grid-template-columns:1fr;align-items:start;gap:32px}.oi-firma .oi-firma__datos{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 24px}}
+@media (max-width:600px){.oi-firma .oi-firma__in{padding:40px 20px 32px}.oi-firma .oi-firma__datos{grid-template-columns:1fr 1fr;gap:18px 20px}.oi-firma .oi-firma__datos li:nth-child(n+3){grid-column:1/-1}.oi-firma .oi-firma__datos a{align-self:flex-start}.oi-firma .oi-firma__datos a{min-height:44px;font-size:16px}.oi-firma a.oi-firma__cta{width:100%;justify-content:center;min-height:50px}}
+@media (prefers-reduced-motion:reduce){.oi-firma.oi-firma--mv .oi-firma__in>*{opacity:1;transform:none;transition:none}.oi-firma a{transition:none}}
+</style>
+<aside class="oi-firma" id="oi-firma" aria-label="Nork egin du webgune hau">
+<div class="oi-firma__in">
+<div class="oi-firma__marca">
+<p class="oi-firma__por">Diseinatzailea:</p>
+<a class="oi-firma__logo" href="https://oiwebstudio.com/?utm_source=muestra-zehatz&amp;utm_medium=pie" target="_blank" rel="noopener">OI STUDIO<span class="oi-firma__sr"> (beste erlaitz batean irekitzen da)</span></a>
+<p class="oi-firma__lema">Gipuzkoako negozioetarako web diseinua · Oier Irastorza</p>
+</div>
+<ul class="oi-firma__datos">
+<li><span class="oi-firma__k">Telefonoa</span><a href="tel:+34611497409">611 49 74 09</a></li>
+<li><span class="oi-firma__k">WhatsApp</span><a href="https://wa.me/34611497409?text=Kaixo%2C%20Oier.%20Zure%20lagin%20bat%20ikusi%20dut%20eta%20horrelako%20webgune%20bat%20interesatzen%20zait." target="_blank" rel="noopener">611 49 74 09<span class="oi-firma__sr"> (beste erlaitz batean irekitzen da)</span></a></li>
+<li><span class="oi-firma__k">Posta</span><a href="mailto:contactoiwebstudio@gmail.com">contactoiwebstudio@gmail.com</a></li>
+<li><span class="oi-firma__k">Web</span><a href="https://oiwebstudio.com/?utm_source=muestra-zehatz&amp;utm_medium=pie" target="_blank" rel="noopener">oiwebstudio.com<span class="oi-firma__sr"> (beste erlaitz batean irekitzen da)</span></a></li>
+</ul>
+<div class="oi-firma__pie">
+<p class="oi-firma__nota">Webgune hau OI Studiok egindako adibide bat da.</p>
+<a class="oi-firma__cta" href="https://wa.me/34611497409?text=Kaixo%2C%20Oier.%20Zure%20lagin%20bat%20ikusi%20dut%20eta%20horrelako%20webgune%20bat%20interesatzen%20zait." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>Horrelako webgune bat nahi dut<span class="oi-firma__sr"> (beste erlaitz batean irekitzen da)</span></a>
+</div>
+</div>
+</aside>
+<script>(function(){var f=document.getElementById("oi-firma");if(!f||!("IntersectionObserver" in window)||matchMedia("(prefers-reduced-motion: reduce)").matches)return;f.classList.add("oi-firma--mv");var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){f.classList.add("oi-firma--in");o.disconnect();}},{rootMargin:"0px 0px -8% 0px"});o.observe(f);})();</script>
+<!-- /oi-firma -->
+</body>
+</html>

@@ -1,0 +1,5 @@
+sx_c_taller	Taller
+sx_k_taller	Taller de coches en Villabona
+sx_taller_a	Qué miramos, cuánto tarda y cuánto cuesta
+sx_taller_b	Presupuesto antes de tocar nada
+sx_taller_c	Te avisamos por WhatsApp cuando esté listo
