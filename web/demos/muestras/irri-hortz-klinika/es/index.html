@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Irri, clínica dental en Tolosa</title>
+<meta name="description" content="Clínica dental en el centro de Tolosa. Cita por WhatsApp sin llamar y urgencias el mismo día.">
+<meta name="theme-color" content="#f4efe7">
+<meta property="og:title" content="Irri, clínica dental en Tolosa">
+<meta property="og:description" content="Clínica dental en el centro de Tolosa. Cita por WhatsApp sin llamar y urgencias el mismo día.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="../fotos/portada-d-1280.webp">
+<link rel="alternate" hreflang="eu" href="../">
+<!--
+  MUESTRA «IRRI» (OI Studio, 10/11/2026): clínica dental INVENTADA en Tolosa para la pieza «¿Qué negocio tienes?» de oiwebstudio.com.
+  «Irri» = risa. Nombre, dirección, teléfonos, horario, duraciones, qué traer, tratamientos y mensajes son de ejemplo (lo dice la
+  nota del pie, una vez). noindex. Sustituye a URDIN (web/demos/muestras/urdin-hortz-klinika/), que no se toca.
+  Composición calcada de la referencia n.º 02 del tablero muestras-dentista-2026-11-10 que eligió Oier el 10/11 (una clínica
+  dental de Quebec): foto a sangre de dos caras sonriendo cortadas por el borde, titular grande en blanco abajo a la izquierda,
+  el nombre en tres líneas pequeñas arriba, tres enlaces con «+» a media altura, botones redondeados arriba a la derecha (menú y
+  cita), la foto que sigue bajo el texto y un botón blanco; después texto grande a la izquierda con foto a la derecha, banda de
+  sonrisa con fotos pequeñas que flotan, lista de tratamientos (foto 4:5 + nombre enorme + botón), dos columnas con raya y el pie
+  azul con foto. Ni código, ni textos, ni fotos, ni logo, ni letra de la referencia: todo es nuestro (ver LEEME del generador).
+  Letra: n.º 13 Satoshi 400/700 (de nuestra biblioteca; la referencia usa una grotesca de pago). Fotos: Unsplash (licencia de
+  Unsplash): Vince Fleming, Katarzyna Zygnerska, Ozkan Guner, Greg Rosenke, Kouji Tsuru, Vitaly Gariev, gabriel barreto, Gunjan Patel, Caroline Badran. Detalle en fotos/creditos.json.
+  Movimiento: la portada entra con CSS desde el primer pintado; lo de abajo, con GSAP 3.13 + ScrollTrigger + SplitText (js/)
+  + anim-texto.js + pagina.js. Con «reducir movimiento» o sin JS, todo quieto y visible.
+-->
+<link rel="preload" href="../fuentes/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../estilo.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="cab">
+  <a class="pill idioma" href="../" lang="eu" hreflang="eu"><span aria-hidden="true">EU</span><span class="sr">Euskaraz</span></a>
+  <button class="pill" type="button" aria-expanded="false" aria-controls="panel" data-menu-btn><span class="sr">Abrir el menú: </span>Menú</button>
+  <a class="pill cuad" href="#cita" aria-label="Pedir cita sin llamar"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="5.5" width="16" height="14.5" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 3.5v4M16 3.5v4M4 10h16M9.5 15h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></a>
+</header>
+
+<div class="velo" data-velo hidden></div>
+<div class="panel" id="panel" role="dialog" aria-modal="true" aria-label="Menú" data-panel-menu hidden>
+  <button class="pill cuad cerrar" type="button" data-menu-cerrar aria-label="Cerrar"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+  <nav aria-label="Menú">
+    <ul class="panel-nav">
+      <li><a href="#cita" data-cierra>Pedir cita</a></li>
+      <li><a href="#que" data-cierra>¿Qué te pasa?</a><ul class="sub"><li><a href="#f-mina" data-cierra>Dolor</a></li><li><a href="#f-hortzoiak" data-cierra>Sangrado de encías</a></li><li><a href="#f-hautsia" data-cierra>Diente roto</a></li><li><a href="#f-azterketa" data-cierra>Revisión y limpieza</a></li><li><a href="#f-inplanteak" data-cierra>Implantes</a></li><li><a href="#f-ortodontzia" data-cierra>Ortodoncia invisible</a></li></ul></li>
+      <li><a href="#urgencias" data-cierra>Urgencias hoy</a></li>
+      <li><a href="#donde" data-cierra>Dónde estamos</a></li>
+    </ul>
+  </nav>
+  <div class="panel-datos">
+    <div><p class="k">Clínica</p><p>Kale Nagusia 14<br>20400 Tolosa</p></div>
+    <div><p class="k">Contacto</p><p>Teléfono <a href="tel:+34943000000">943 00 00 00</a><br>WhatsApp <a href="https://wa.me/34600000000" target="_blank" rel="noopener">600 00 00 00</a></p></div>
+    <p><a class="subr" href="../" lang="eu" hreflang="eu"><span aria-hidden="true">EU</span><span class="sr">Euskaraz</span></a></p>
+  </div>
+</div>
+
+<main id="contenido">
+<section class="portada" data-portada aria-labelledby="h1">
+  <div class="portada-foto"><picture><source media="(max-width: 699px)" type="image/avif" srcset="../fotos/portada-m-600.avif 600w, ../fotos/portada-m-1015.avif 1015w" sizes="100vw"><source media="(max-width: 699px)" type="image/webp" srcset="../fotos/portada-m-600.webp 600w, ../fotos/portada-m-1015.webp 1015w" sizes="100vw"><source type="image/avif" srcset="../fotos/portada-d-1280.avif 1280w, ../fotos/portada-d-1920.avif 1920w, ../fotos/portada-d-2880.avif 2880w" sizes="200vw"><img src="../fotos/portada-d-1920.webp" srcset="../fotos/portada-d-1280.webp 1280w, ../fotos/portada-d-1920.webp 1920w, ../fotos/portada-d-2880.webp 2880w" sizes="200vw" width="2880" height="2304" alt="Una chica riéndose y, delante, un chico desenfocado" fetchpriority="high" decoding="async"></picture></div>
+  <a class="logo" href="#contenido" aria-label="IRRI"><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M9.2 5.2c-3.1 0-5.2 2.6-5.2 6.4 0 2.9 1 4.9 2 7.3 1.1 2.9 1.4 8 3.6 8 2.3 0 2-6.1 6.4-6.1s4.1 6.1 6.4 6.1c2.2 0 2.5-5.1 3.6-8 1-2.4 2-4.4 2-7.3 0-3.8-2.1-6.4-5.2-6.4-2.6 0-4.1 1.5-6.8 1.5S11.8 5.2 9.2 5.2z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></a>
+  <p class="marca"><span>IRRI</span><span>Clínica dental</span><span>Tolosa</span></p>
+  <ul class="mas-fila">
+    <li><a href="#cita"><svg class="mas" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.2"/></svg>Pedir cita</a></li>
+    <li><a href="#que"><svg class="mas" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.2"/></svg>¿Qué te pasa?</a></li>
+    <li><a href="#urgencias"><svg class="mas" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.2"/></svg>Urgencias hoy</a></li>
+  </ul>
+  <h1 id="h1" class="titular"><span class="l"><span style="--i:0">Clínica dental</span></span> <span class="l"><span style="--i:1">en el centro</span></span> <span class="l"><span style="--i:2">de Tolosa</span></span></h1>
+  <div class="portada-sigue">
+    <p>Revisiones, limpiezas, empastes, implantes y ortodoncia invisible en la calle Mayor. La cita se pide por WhatsApp, sin llamar.</p>
+    <p><a class="pill" href="#cita">Pedir cita</a></p>
+  </div>
+</section>
+
+<section class="sobre" id="sobre">
+  <p class="grande" data-enciende>Dinos qué te pasa y te contamos, antes de venir, cuánto dura la visita y qué tienes que traer.</p>
+  <div class="sobre-foto" data-foto><picture><source type="image/avif" srcset="../fotos/aulkia-600.avif 600w, ../fotos/aulkia-900.avif 900w, ../fotos/aulkia-1200.avif 1200w" sizes="(min-width: 900px) 80vw, 200vw"><img src="../fotos/aulkia-1200.webp" srcset="../fotos/aulkia-600.webp 600w, ../fotos/aulkia-900.webp 900w, ../fotos/aulkia-1200.webp 1200w" sizes="(min-width: 900px) 80vw, 200vw" width="1200" height="1500" alt="Un sillón de dentista junto a la ventana" loading="lazy" decoding="async"></picture></div>
+  <div class="sobre-pie">
+    <p>Es orientativo. En la consulta lo miramos contigo y te damos el presupuesto por escrito antes de empezar.</p>
+    <p><a class="pill azul" href="#que">Elige lo que te pasa</a></p>
+  </div>
+</section>
+
+<section class="banda" aria-hidden="true">
+  <div class="banda-foto"><picture><source media="(max-width: 699px)" type="image/avif" srcset="../fotos/irria-m-600.avif 600w, ../fotos/irria-m-900.avif 900w, ../fotos/irria-m-1200.avif 1200w" sizes="200vw"><source media="(max-width: 699px)" type="image/webp" srcset="../fotos/irria-m-600.webp 600w, ../fotos/irria-m-900.webp 900w, ../fotos/irria-m-1200.webp 1200w" sizes="200vw"><source type="image/avif" srcset="../fotos/irria-d-1280.avif 1280w, ../fotos/irria-d-1920.avif 1920w, ../fotos/irria-d-2880.avif 2880w" sizes="200vw"><img src="../fotos/irria-d-1920.webp" srcset="../fotos/irria-d-1280.webp 1280w, ../fotos/irria-d-1920.webp 1920w, ../fotos/irria-d-2880.webp 2880w" sizes="200vw" width="2880" height="1440" alt="" loading="lazy" decoding="async"></picture></div>
+  <div class="flota f1" data-flota="-18"><picture><source type="image/avif" srcset="../fotos/aulkiak-450.avif 450w, ../fotos/aulkiak-900.avif 900w" sizes="(min-width: 700px) 480px, 300px"><img src="../fotos/aulkiak-900.webp" srcset="../fotos/aulkiak-450.webp 450w, ../fotos/aulkiak-900.webp 900w" sizes="(min-width: 700px) 480px, 300px" width="900" height="1125" alt="Sillones de madera en una sala de espera" loading="lazy" decoding="async"></picture></div>
+  <div class="flota f2" data-flota="14"><picture><source type="image/avif" srcset="../fotos/itxarongela-450.avif 450w, ../fotos/itxarongela-900.avif 900w" sizes="(min-width: 700px) 560px, 340px"><img src="../fotos/itxarongela-900.webp" srcset="../fotos/itxarongela-450.webp 450w, ../fotos/itxarongela-900.webp 900w" sizes="(min-width: 700px) 560px, 340px" width="900" height="1125" alt="Sillas blancas en fila en una sala de espera" loading="lazy" decoding="async"></picture></div>
+</section>
+
+<section class="que" id="que" aria-labelledby="h-que">
+  <div class="que-cab">
+    <h2 id="h-que" data-lineas>¿Qué te pasa?</h2>
+    <div class="que-txt"><p>Toca lo tuyo: verás cuánto dura la primera visita, qué traer y el mensaje para pedir cita ya escrito.</p></div>
+  </div>
+  <ul class="filas">
+      <li class="fila" id="f-mina" data-fila>
+        <div class="f-cab">
+          <div class="f-foto" data-foto><picture><source type="image/avif" srcset="../fotos/t-mina-500.avif 500w, ../fotos/t-mina-1000.avif 1000w" sizes="(min-width: 700px) 300px, 200vw"><img src="../fotos/t-mina-1000.webp" srcset="../fotos/t-mina-500.webp 500w, ../fotos/t-mina-1000.webp 1000w" sizes="(min-width: 700px) 300px, 200vw" width="1000" height="1250" alt="" loading="lazy" decoding="async"></picture></div>
+          <h3 class="f-nom" id="n-mina">Dolor</h3>
+          <button class="pill f-btn" type="button" aria-expanded="false" aria-controls="i-mina" data-abrir><span data-txt>Ver</span></button>
+        </div>
+        <div class="f-info" id="i-mina" role="region" aria-labelledby="n-mina" hidden>
+          <div class="f-in">
+            <dl><div><dt>Duración</dt><dd>Unos 30 minutos.</dd></div><div><dt>Trae</dt><dd>La lista de las medicinas que tomas y las radiografías que tengas.</dd></div></dl>
+            <p class="f-x">Si el dolor no te deja dormir, pide una cita de urgencia para hoy. <a href="#urgencias">Ver urgencias de hoy</a></p>
+            <p><a class="pill azul" href="https://wa.me/34600000000?text=Hola%2C%20quiero%20pedir%20cita%20en%20la%20cl%C3%ADnica%20Irri.%20Motivo%3A%20Dolor." target="_blank" rel="noopener">Pedir cita para esto</a></p>
+          </div>
+        </div>
+      </li>
+      <li class="fila" id="f-hortzoiak" data-fila>
+        <div class="f-cab">
+          <div class="f-foto" data-foto><picture><source type="image/avif" srcset="../fotos/t-hortzoiak-500.avif 500w, ../fotos/t-hortzoiak-1000.avif 1000w" sizes="(min-width: 700px) 300px, 200vw"><img src="../fotos/t-hortzoiak-1000.webp" srcset="../fotos/t-hortzoiak-500.webp 500w, ../fotos/t-hortzoiak-1000.webp 1000w" sizes="(min-width: 700px) 300px, 200vw" width="1000" height="1250" alt="" loading="lazy" decoding="async"></picture></div>
+          <h3 class="f-nom" id="n-hortzoiak">Sangrado de encías</h3>
+          <button class="pill f-btn" type="button" aria-expanded="false" aria-controls="i-hortzoiak" data-abrir><span data-txt>Ver</span></button>
+        </div>
+        <div class="f-info" id="i-hortzoiak" role="region" aria-labelledby="n-hortzoiak" hidden>
+          <div class="f-in">
+            <dl><div><dt>Duración</dt><dd>Unos 45 minutos.</dd></div><div><dt>Trae</dt><dd>La lista de las medicinas que tomas.</dd></div></dl>
+            
+            <p><a class="pill azul" href="https://wa.me/34600000000?text=Hola%2C%20quiero%20pedir%20cita%20en%20la%20cl%C3%ADnica%20Irri.%20Motivo%3A%20Sangrado%20de%20enc%C3%ADas." target="_blank" rel="noopener">Pedir cita para esto</a></p>
+          </div>
+        </div>
+      </li>
+      <li class="fila" id="f-hautsia" data-fila>
+        <div class="f-cab">
+          <div class="f-foto" data-foto><picture><source type="image/avif" srcset="../fotos/t-hautsia-500.avif 500w, ../fotos/t-hautsia-1000.avif 1000w" sizes="(min-width: 700px) 300px, 200vw"><img src="../fotos/t-hautsia-1000.webp" srcset="../fotos/t-hautsia-500.webp 500w, ../fotos/t-hautsia-1000.webp 1000w" sizes="(min-width: 700px) 300px, 200vw" width="1000" height="1250" alt="" loading="lazy" decoding="async"></picture></div>
+          <h3 class="f-nom" id="n-hautsia">Diente roto</h3>
+          <button class="pill f-btn" type="button" aria-expanded="false" aria-controls="i-hautsia" data-abrir><span data-txt>Ver</span></button>
+        </div>
+        <div class="f-info" id="i-hautsia" role="region" aria-labelledby="n-hautsia" hidden>
+          <div class="f-in">
+            <dl><div><dt>Duración</dt><dd>Entre 30 y 60 minutos.</dd></div><div><dt>Trae</dt><dd>El trozo de diente, si lo tienes.</dd></div></dl>
+            <p class="f-x">Si duele mucho o sangra, pide una cita de urgencia para hoy. <a href="#urgencias">Ver urgencias de hoy</a></p>
+            <p><a class="pill azul" href="https://wa.me/34600000000?text=Hola%2C%20quiero%20pedir%20cita%20en%20la%20cl%C3%ADnica%20Irri.%20Motivo%3A%20Diente%20roto." target="_blank" rel="noopener">Pedir cita para esto</a></p>
+          </div>
+        </div>
+      </li>
+      <li class="fila" id="f-azterketa" data-fila>
+        <div class="f-cab">
+          <div class="f-foto" data-foto><picture><source type="image/avif" srcset="../fotos/t-azterketa-500.avif 500w, ../fotos/t-azterketa-1000.avif 1000w" sizes="(min-width: 700px) 300px, 200vw"><img src="../fotos/t-azterketa-1000.webp" srcset="../fotos/t-azterketa-500.webp 500w, ../fotos/t-azterketa-1000.webp 1000w" sizes="(min-width: 700px) 300px, 200vw" width="1000" height="1250" alt="" loading="lazy" decoding="async"></picture></div>
+          <h3 class="f-nom" id="n-azterketa">Revisión y limpieza</h3>
+          <button class="pill f-btn" type="button" aria-expanded="false" aria-controls="i-azterketa" data-abrir><span data-txt>Ver</span></button>
+        </div>
+        <div class="f-info" id="i-azterketa" role="region" aria-labelledby="n-azterketa" hidden>
+          <div class="f-in">
+            <dl><div><dt>Duración</dt><dd>Unos 40 minutos.</dd></div><div><dt>Trae</dt><dd>Nada. Si tienes una radiografía de los dos últimos años, tráela.</dd></div></dl>
+            
+            <p><a class="pill azul" href="https://wa.me/34600000000?text=Hola%2C%20quiero%20pedir%20cita%20en%20la%20cl%C3%ADnica%20Irri.%20Motivo%3A%20Revisi%C3%B3n%20y%20limpieza." target="_blank" rel="noopener">Pedir cita para esto</a></p>
+          </div>
+        </div>
+      </li>
+      <li class="fila" id="f-inplanteak" data-fila>
+        <div class="f-cab">
+          <div class="f-foto" data-foto><picture><source type="image/avif" srcset="../fotos/t-inplanteak-500.avif 500w, ../fotos/t-inplanteak-1000.avif 1000w" sizes="(min-width: 700px) 300px, 200vw"><img src="../fotos/t-inplanteak-1000.webp" srcset="../fotos/t-inplanteak-500.webp 500w, ../fotos/t-inplanteak-1000.webp 1000w" sizes="(min-width: 700px) 300px, 200vw" width="1000" height="1250" alt="" loading="lazy" decoding="async"></picture></div>
+          <h3 class="f-nom" id="n-inplanteak">Implantes</h3>
+          <button class="pill f-btn" type="button" aria-expanded="false" aria-controls="i-inplanteak" data-abrir><span data-txt>Ver</span></button>
+        </div>
+        <div class="f-info" id="i-inplanteak" role="region" aria-labelledby="n-inplanteak" hidden>
+          <div class="f-in">
+            <dl><div><dt>Duración</dt><dd>Unos 45 minutos.</dd></div><div><dt>Trae</dt><dd>Los informes y las radiografías que tengas.</dd></div></dl>
+            <p class="f-x">Te damos el presupuesto por escrito antes de empezar.</p>
+            <p><a class="pill azul" href="https://wa.me/34600000000?text=Hola%2C%20quiero%20pedir%20cita%20en%20la%20cl%C3%ADnica%20Irri.%20Motivo%3A%20Implantes." target="_blank" rel="noopener">Pedir cita para esto</a></p>
+          </div>
+        </div>
+      </li>
+      <li class="fila" id="f-ortodontzia" data-fila>
+        <div class="f-cab">
+          <div class="f-foto" data-foto><picture><source type="image/avif" srcset="../fotos/t-ortodontzia-500.avif 500w, ../fotos/t-ortodontzia-1000.avif 1000w" sizes="(min-width: 700px) 300px, 200vw"><img src="../fotos/t-ortodontzia-1000.webp" srcset="../fotos/t-ortodontzia-500.webp 500w, ../fotos/t-ortodontzia-1000.webp 1000w" sizes="(min-width: 700px) 300px, 200vw" width="1000" height="1250" alt="" loading="lazy" decoding="async"></picture></div>
+          <h3 class="f-nom" id="n-ortodontzia">Ortodoncia invisible</h3>
+          <button class="pill f-btn" type="button" aria-expanded="false" aria-controls="i-ortodontzia" data-abrir><span data-txt>Ver</span></button>
+        </div>
+        <div class="f-info" id="i-ortodontzia" role="region" aria-labelledby="n-ortodontzia" hidden>
+          <div class="f-in">
+            <dl><div><dt>Duración</dt><dd>Unos 45 minutos.</dd></div><div><dt>Trae</dt><dd>Nada. Hacemos fotos y un escáner de la boca, sin moldes.</dd></div></dl>
+            
+            <p><a class="pill azul" href="https://wa.me/34600000000?text=Hola%2C%20quiero%20pedir%20cita%20en%20la%20cl%C3%ADnica%20Irri.%20Motivo%3A%20Ortodoncia%20invisible." target="_blank" rel="noopener">Pedir cita para esto</a></p>
+          </div>
+        </div>
+      </li>
+  </ul>
+</section>
+
+<section class="dos" aria-label="Cita sin llamar · Urgencias hoy">
+  <div class="col" id="cita">
+    <h2 data-lineas>Cita sin llamar</h2>
+    <p class="col-p">Elige tres cosas y te dejamos el mensaje de WhatsApp escrito. Te contestamos con el día y la hora.</p>
+    <form class="cita" data-cita onsubmit="return false">
+      <fieldset><legend>Para qué</legend><div class="ops" data-escalonado><label class="op"><input type="radio" name="motivo" value="rev" data-nombre="Revisión" checked><span>Revisión</span></label><label class="op"><input type="radio" name="motivo" value="limp" data-nombre="Limpieza"><span>Limpieza</span></label><label class="op"><input type="radio" name="motivo" value="urg" data-nombre="Urgencia"><span>Urgencia</span></label></div></fieldset>
+      <fieldset><legend>Cuándo te viene mejor</legend><div class="ops" data-escalonado><label class="op"><input type="radio" name="franja" value="man" data-nombre="Por la mañana"><span>Por la mañana</span></label><label class="op"><input type="radio" name="franja" value="tar" data-nombre="Por la tarde"><span>Por la tarde</span></label><label class="op"><input type="radio" name="franja" value="igual" data-nombre="Me da igual" checked><span>Me da igual</span></label></div></fieldset>
+      <fieldset><legend>Qué semana</legend><div class="ops" data-escalonado><label class="op"><input type="radio" name="semana" value="esta" data-nombre="Esta semana" checked><span>Esta semana</span></label><label class="op"><input type="radio" name="semana" value="otra" data-nombre="La semana que viene"><span>La semana que viene</span></label></div></fieldset>
+      <p class="aviso" data-aviso aria-live="polite"></p>
+      <div class="campo"><label for="nombre">Tu nombre (si quieres)</label><input id="nombre" type="text" maxlength="40" autocomplete="given-name" data-tu-nombre></div>
+      <div class="mensaje"><p class="k">Tu mensaje</p><p class="msg" data-msg aria-live="polite">Hola, quiero pedir cita en la clínica Irri.</p></div>
+      <p><a class="pill azul" href="https://wa.me/34600000000?text=Hola%2C%20quiero%20pedir%20cita%20en%20la%20cl%C3%ADnica%20Irri." target="_blank" rel="noopener" data-wa-cita>Enviar por WhatsApp</a></p>
+      <p class="nota">Se abre WhatsApp con el mensaje. Lo envías tú.</p>
+    </form>
+    <div class="col-foto" data-foto><picture><source type="image/avif" srcset="../fotos/zita-450.avif 450w, ../fotos/zita-900.avif 900w" sizes="(min-width: 700px) 440px, 360px"><img src="../fotos/zita-900.webp" srcset="../fotos/zita-450.webp 450w, ../fotos/zita-900.webp 900w" sizes="(min-width: 700px) 440px, 360px" width="900" height="1125" alt="Una chica sonriendo" loading="lazy" decoding="async"></picture></div>
+  </div>
+  <div class="col" id="urgencias">
+    <h2 data-lineas>Urgencias hoy</h2>
+    <p class="estado" data-estado aria-live="polite"></p>
+    <p class="col-p">Si te duele mucho, se te ha roto un diente o tienes la cara hinchada, llama y te decimos si podemos verte hoy.</p>
+    <p class="acc" data-urg-acc>
+      <a class="pill oscuro" href="tel:+34943000000" data-urg-1>Llamar ahora · 943 00 00 00</a>
+      <a class="subr" href="https://wa.me/34600000000?text=Hola%2C%20tengo%20una%20urgencia%20dental.%20%C2%BFMe%20pod%C3%A9is%20ver%20hoy%3F" target="_blank" rel="noopener" data-urg-2>O escribe por WhatsApp</a>
+    </p>
+    <p class="grave">Si es grave (un golpe fuerte en la cara, fiebre o te cuesta tragar), llama al 112.</p>
+    <div class="col-foto" data-foto><picture><source type="image/avif" srcset="../fotos/larria-450.avif 450w, ../fotos/larria-900.avif 900w" sizes="(min-width: 700px) 440px, 360px"><img src="../fotos/larria-900.webp" srcset="../fotos/larria-450.webp 450w, ../fotos/larria-900.webp 900w" sizes="(min-width: 700px) 440px, 360px" width="900" height="1125" alt="Una mujer sonriendo de cerca" loading="lazy" decoding="async"></picture></div>
+  </div>
+</section>
+</main>
+
+<footer class="pie" id="donde">
+  <div class="pie-foto" data-foto><picture><source type="image/avif" srcset="../fotos/irakurlea-500.avif 500w, ../fotos/irakurlea-1000.avif 1000w" sizes="(min-width: 900px) 560px, 200vw"><img src="../fotos/irakurlea-1000.webp" srcset="../fotos/irakurlea-500.webp 500w, ../fotos/irakurlea-1000.webp 1000w" sizes="(min-width: 900px) 560px, 200vw" width="1000" height="1250" alt="Una mujer leyendo en un sillón" loading="lazy" decoding="async"></picture></div>
+  <div class="pie-cols">
+    <div><h2 class="k">Tratamientos</h2><ul class="pie-trat"><li><a href="#f-mina">Dolor</a></li><li><a href="#f-hortzoiak">Sangrado de encías</a></li><li><a href="#f-hautsia">Diente roto</a></li><li><a href="#f-azterketa">Revisión y limpieza</a></li><li><a href="#f-inplanteak">Implantes</a></li><li><a href="#f-ortodontzia">Ortodoncia invisible</a></li></ul></div>
+    <div><h2 class="k">Clínica</h2><p>Kale Nagusia 14<br>20400 Tolosa</p><h2 class="k">Horario</h2><p>De lunes a jueves, de 9:00 a 13:30 y de 15:00 a 20:00.<br>Viernes, de 9:00 a 15:00.<br>Sábado y domingo, cerrado.</p></div>
+    <div><h2 class="k">Contacto</h2><p class="pie-tel">Teléfono <a href="tel:+34943000000">943 00 00 00</a></p><p class="pie-tel">WhatsApp <a href="https://wa.me/34600000000" target="_blank" rel="noopener">600 00 00 00</a></p><p><a class="pill" href="#cita">Pedir cita</a></p></div>
+  </div>
+  <div class="pie-fin">
+    <p class="marca pie-marca"><span>IRRI</span><span>Clínica dental</span><span>Tolosa</span></p>
+    <div class="pie-legal">
+      <p class="nota-datos">Datos de ejemplo: la clínica Irri no existe. La dirección, los teléfonos, el horario, las duraciones, lo que hay que traer y los textos son inventados. Las fotos son de Unsplash y no son de pacientes ni de ninguna clínica.</p>
+      <p>Fotos de Unsplash: Vince Fleming, Katarzyna Zygnerska, Ozkan Guner, Greg Rosenke, Kouji Tsuru, Vitaly Gariev, gabriel barreto, Gunjan Patel, Caroline Badran. <a href="../fotos/creditos.json">creditos.json</a></p>
+      <p><a class="subr pie-idioma" href="../" lang="eu" hreflang="eu"><span aria-hidden="true">EU</span><span class="sr">Euskaraz</span></a></p>
+    </div>
+  </div>
+</footer>
+
+<script type="application/json" id="textos">{"lang":"es","ver":"Ver","cerrar":"Cerrar","wa_hola":"Hola, quiero pedir cita en la clínica Irri.","wa_motivo":"Motivo:","wa_franja":"Me viene mejor:","wa_semana":"Semana:","wa_nombre":"Mi nombre:","wa_urg":"Hola, tengo una urgencia dental. ¿Me podéis ver hoy?","aviso_semana":"Esta semana ya no quedan horas de consulta. Te lo pedimos para la semana que viene.","aviso_urg":"Si es para hoy, llama: es más rápido.","est_ab_1330":"Abierto ahora, hasta las 13:30.","est_ab_1500":"Abierto ahora, hasta las 15:00.","est_ab_2000":"Abierto ahora, hasta las 20:00.","est_abre_900":"Hoy abrimos a las 9:00.","est_abre_1500":"Hoy abrimos a las 15:00.","est_cerrado_man":"Ahora está cerrado. Mañana abrimos a las 9:00: escríbenos y te llamamos al abrir.","est_cerrado_lun":"Ahora está cerrado. El lunes abrimos a las 9:00: escríbenos y te llamamos al abrir.","btn_llamar":"Llamar ahora","btn_aviso":"Escribir por WhatsApp","urg_o_wa":"O escribe por WhatsApp","urg_o_tel":"O llama al","tel":"943 00 00 00"}</script>
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/SplitText.min.js"></script>
+<script src="../js/anim-texto.js"></script>
+<script src="../js/pagina.js"></script>
+<!-- oi-firma · lo pone herramientas/sitio/firma-muestras/firma.cjs (no editar a mano) -->
+<style id="oi-firma-css">
+.oi-firma{display:block;margin:0;padding:0;background:#121110;color:#ece7de;text-align:left;font:400 15px/1.5 "Switzer",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased;position:relative;z-index:1;clear:both;border-top:1px solid rgba(236,231,222,.08)}
+.oi-firma *{box-sizing:border-box}
+.oi-firma .oi-firma__in{max-width:1180px;margin:0 auto;padding:48px 32px 40px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:36px 56px;align-items:end}
+.oi-firma .oi-firma__marca{margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.oi-firma .oi-firma__por{margin:0;font-weight:500;font-size:11px;line-height:1;letter-spacing:.2em;text-transform:uppercase;color:#8f877b}
+.oi-firma a.oi-firma__logo{display:inline-flex;align-items:center;min-height:44px;align-self:flex-start;margin:0;padding:0;color:#fff;text-decoration:none;font-weight:700;font-size:clamp(30px,3.4vw,44px);line-height:.95;letter-spacing:.04em;text-transform:uppercase;-webkit-tap-highlight-color:transparent;transition:opacity .2s ease}
+.oi-firma .oi-firma__lema{margin:0;font-weight:400;font-size:15px;line-height:1.4;color:#cfc8bc;text-transform:none;letter-spacing:0}
+.oi-firma .oi-firma__datos{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(4,auto);gap:0 36px}
+.oi-firma .oi-firma__datos li{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+.oi-firma .oi-firma__datos li::before,.oi-firma .oi-firma__datos li::marker{content:none}
+.oi-firma .oi-firma__k{font-weight:500;font-size:11px;line-height:1;letter-spacing:.18em;text-transform:uppercase;color:#8f877b}
+.oi-firma .oi-firma__datos a{display:inline-flex;align-items:center;min-height:32px;color:#ece7de;text-decoration:none;font-weight:500;font-size:15px;line-height:1.3;text-transform:none;letter-spacing:0;border-bottom:1px solid rgba(236,231,222,.22);transition:border-color .2s ease,color .2s ease;-webkit-tap-highlight-color:transparent}
+.oi-firma .oi-firma__pie{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px;margin:0;padding:22px 0 0;border-top:1px solid rgba(236,231,222,.12)}
+.oi-firma .oi-firma__nota{margin:0;font-weight:400;font-size:13.5px;line-height:1.4;color:#8f877b;text-transform:none;letter-spacing:0}
+.oi-firma a.oi-firma__cta{display:inline-flex;align-items:center;gap:10px;min-height:46px;margin:0;padding:0 22px;border-radius:999px;background:#ece7de;color:#121110;text-decoration:none;font-weight:600;font-size:14.5px;line-height:1;letter-spacing:0;text-transform:none;transition:background-color .2s ease,transform .15s ease;-webkit-tap-highlight-color:transparent}
+.oi-firma a.oi-firma__cta svg{width:16px;height:16px;flex:none}
+@media (hover:hover) and (pointer:fine){.oi-firma a.oi-firma__logo:hover{opacity:.82}.oi-firma .oi-firma__datos a:hover{border-color:#ece7de;color:#fff}.oi-firma a.oi-firma__cta:hover{background:#fff}}
+.oi-firma a.oi-firma__cta:active{transform:scale(.97)}
+.oi-firma a:focus{outline:none}
+.oi-firma a:focus-visible{outline:2px solid #ece7de;outline-offset:4px}
+.oi-firma .oi-firma__sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.oi-firma.oi-firma--mv .oi-firma__in>*{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .9s cubic-bezier(.2,.75,.25,1)}
+.oi-firma.oi-firma--mv .oi-firma__in>*:nth-child(2){transition-delay:.08s}
+.oi-firma.oi-firma--mv .oi-firma__in>*:nth-child(3){transition-delay:.16s}
+.oi-firma.oi-firma--in .oi-firma__in>*{opacity:1;transform:none}
+@media (max-width:980px){.oi-firma .oi-firma__in{grid-template-columns:1fr;align-items:start;gap:32px}.oi-firma .oi-firma__datos{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 24px}}
+@media (max-width:600px){.oi-firma .oi-firma__in{padding:40px 20px 32px}.oi-firma .oi-firma__datos{grid-template-columns:1fr 1fr;gap:18px 20px}.oi-firma .oi-firma__datos li:nth-child(n+3){grid-column:1/-1}.oi-firma .oi-firma__datos a{align-self:flex-start}.oi-firma .oi-firma__datos a{min-height:44px;font-size:16px}.oi-firma a.oi-firma__cta{width:100%;justify-content:center;min-height:50px}}
+@media (prefers-reduced-motion:reduce){.oi-firma.oi-firma--mv .oi-firma__in>*{opacity:1;transform:none;transition:none}.oi-firma a{transition:none}}
+</style>
+<aside class="oi-firma" id="oi-firma" aria-label="Quién ha hecho esta web">
+<div class="oi-firma__in">
+<div class="oi-firma__marca">
+<p class="oi-firma__por">Diseñado por</p>
+<a class="oi-firma__logo" href="https://oiwebstudio.com/?utm_source=muestra-irri&amp;utm_medium=pie" target="_blank" rel="noopener">OI STUDIO<span class="oi-firma__sr"> (se abre en otra pestaña)</span></a>
+<p class="oi-firma__lema">Diseño web para negocios en Gipuzkoa · Oier Irastorza</p>
+</div>
+<ul class="oi-firma__datos">
+<li><span class="oi-firma__k">Teléfono</span><a href="tel:+34611497409">611 49 74 09</a></li>
+<li><span class="oi-firma__k">WhatsApp</span><a href="https://wa.me/34611497409?text=Hola%2C%20Oier.%20He%20visto%20una%20de%20tus%20muestras%20y%20me%20interesa%20una%20web%20as%C3%AD." target="_blank" rel="noopener">611 49 74 09<span class="oi-firma__sr"> (se abre en otra pestaña)</span></a></li>
+<li><span class="oi-firma__k">Correo</span><a href="mailto:contactoiwebstudio@gmail.com">contactoiwebstudio@gmail.com</a></li>
+<li><span class="oi-firma__k">Web</span><a href="https://oiwebstudio.com/?utm_source=muestra-irri&amp;utm_medium=pie" target="_blank" rel="noopener">oiwebstudio.com<span class="oi-firma__sr"> (se abre en otra pestaña)</span></a></li>
+</ul>
+<div class="oi-firma__pie">
+<p class="oi-firma__nota">Esta web es un ejemplo hecho por OI Studio.</p>
+<a class="oi-firma__cta" href="https://wa.me/34611497409?text=Hola%2C%20Oier.%20He%20visto%20una%20de%20tus%20muestras%20y%20me%20interesa%20una%20web%20as%C3%AD." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>Quiero una web así<span class="oi-firma__sr"> (se abre en otra pestaña)</span></a>
+</div>
+</div>
+</aside>
+<script>(function(){var f=document.getElementById("oi-firma");if(!f||!("IntersectionObserver" in window)||matchMedia("(prefers-reduced-motion: reduce)").matches)return;f.classList.add("oi-firma--mv");var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){f.classList.add("oi-firma--in");o.disconnect();}},{rootMargin:"0px 0px -8% 0px"});o.observe(f);})();</script>
+<!-- /oi-firma -->
+</body>
+</html>

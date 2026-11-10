@@ -1,0 +1,10 @@
+sx_c_dentista	Dentista
+sx_k_dentista	Clínica dental en Tolosa
+sx_dentista_a	Cita sin llamar, con el WhatsApp ya escrito
+sx_dentista_b	Dinos qué te pasa: cuánto dura y qué traer
+sx_dentista_c	Urgencias hoy, a un toque
+sx_c_fisioterapia	Fisioterapia
+sx_k_fisioterapia	Fisioterapia en Tolosa
+sx_fisioterapia_a	Dinos dónde te duele: tratamiento y sesiones
+sx_fisioterapia_b	La primera cita por WhatsApp, sin llamar
+sx_fisioterapia_c	Ejercicios para casa con su reloj

@@ -1,0 +1,104 @@
+{
+ "licencia": "Licencia de Unsplash (https://unsplash.com/license): uso gratuito, sin atribución obligatoria; se acredita igualmente.",
+ "nota": "Fotos de banco: no son pacientes ni el local de ninguna clínica. Recortadas y pasadas a AVIF/WebP sin metadatos.",
+ "fotos": [
+  {
+   "fichero": "portada",
+   "uso": "Portada (dos amigas sonriendo)",
+   "autor": "Omar Lopez",
+   "enlace": "https://unsplash.com/photos/smiling-woman-in-white-tank-top-5ET774XBx6I",
+   "original": "5184x3456"
+  },
+  {
+   "fichero": "recepcion",
+   "uso": "Junto al texto grande (mueble con maceta)",
+   "autor": "Liana Mikah",
+   "enlace": "https://unsplash.com/photos/green-plant-on-white-cabinet-HstwCJX0jT4",
+   "original": "6720x4480"
+  },
+  {
+   "fichero": "irria",
+   "uso": "Banda a sangre (sonrisa)",
+   "autor": "Ozkan Guner",
+   "enlace": "https://unsplash.com/photos/a-close-up-of-a-persons-mouth-7Mut2WMWttA",
+   "original": "3148x2303"
+  },
+  {
+   "fichero": "aulkia",
+   "uso": "Foto pequeña sobre la banda (sillón)",
+   "autor": "Katarzyna Zygnerska",
+   "enlace": "https://unsplash.com/photos/a-white-dental-chair-in-a-room-with-a-window-44jaETSVX2I",
+   "original": "3477x5215"
+  },
+  {
+   "fichero": "itxarongela",
+   "uso": "Foto pequeña sobre la banda (sala de espera)",
+   "autor": "Kouji Tsuru",
+   "enlace": "https://unsplash.com/photos/row-of-white-chairs-with-wooden-frames-0aIa9xeeW78",
+   "original": "3912x5868"
+  },
+  {
+   "fichero": "t-mina",
+   "uso": "¿Qué te pasa? · Dolor",
+   "autor": "Vitaly Gariev",
+   "enlace": "https://unsplash.com/photos/smiling-man-with-beard-and-mole-5Gp9POoERoQ",
+   "original": "2160x3840"
+  },
+  {
+   "fichero": "t-hortzoiak",
+   "uso": "¿Qué te pasa? · Sangrado de encías",
+   "autor": "Vitaly Gariev",
+   "enlace": "https://unsplash.com/photos/smiling-woman-with-curly-hair-_NWWfqiQKsU",
+   "original": "2160x3840"
+  },
+  {
+   "fichero": "t-hautsia",
+   "uso": "¿Qué te pasa? · Diente roto",
+   "autor": "Andriyko Podilnyk",
+   "enlace": "https://unsplash.com/photos/boy-in-blue-collared-shirt-NBomAZpsaXc",
+   "original": "4000x6000"
+  },
+  {
+   "fichero": "t-azterketa",
+   "uso": "¿Qué te pasa? · Revisión y limpieza",
+   "autor": "gabriel barreto",
+   "enlace": "https://unsplash.com/photos/smiling-boy-in-blue-shirt-Qi3InXyqlEo",
+   "original": "3456x5184"
+  },
+  {
+   "fichero": "t-inplanteak",
+   "uso": "¿Qué te pasa? · Implantes",
+   "autor": "Gunjan Patel",
+   "enlace": "https://unsplash.com/photos/man-in-blue-collared-shirt-CjgimEQxwRo",
+   "original": "3456x5184"
+  },
+  {
+   "fichero": "t-ortodontzia",
+   "uso": "¿Qué te pasa? · Ortodoncia invisible",
+   "autor": "Vitaly Gariev",
+   "enlace": "https://unsplash.com/photos/person-with-wide-smile-close-up-6AuTvwe8yhk",
+   "original": "2160x3840"
+  },
+  {
+   "fichero": "zita",
+   "uso": "Columna Cita sin llamar",
+   "autor": "Vitaly Gariev",
+   "enlace": "https://unsplash.com/photos/young-woman-smiling-with-light-makeup-v9tBjeSX6oU",
+   "original": "3840x2160"
+  },
+  {
+   "fichero": "larria",
+   "uso": "Columna Urgencias hoy",
+   "autor": "Vitaly Gariev",
+   "enlace": "https://unsplash.com/photos/smiling-woman-with-blonde-hair-XeiSQluI9Gg",
+   "original": "2160x3840"
+  },
+  {
+   "fichero": "irakurlea",
+   "uso": "Pie",
+   "autor": "Caroline Badran",
+   "enlace": "https://unsplash.com/photos/woman-reading-a-book-in-a-modern-armchair-4dLKoASYgIk",
+   "original": "8320x12480"
+  }
+ ]
+}

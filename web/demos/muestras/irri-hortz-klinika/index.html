@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Irri, hortz-klinika Tolosan</title>
+<meta name="description" content="Hortz klinika Tolosako zentroan. Hitzordua WhatsApp bidez deitu gabe eta larrialdiak egun berean.">
+<meta name="theme-color" content="#f4efe7">
+<meta property="og:title" content="Irri, hortz-klinika Tolosan">
+<meta property="og:description" content="Hortz klinika Tolosako zentroan. Hitzordua WhatsApp bidez deitu gabe eta larrialdiak egun berean.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="fotos/portada-d-1280.webp">
+<link rel="alternate" hreflang="es" href="es/">
+<!--
+  MUESTRA «IRRI» (OI Studio, 10/11/2026): clínica dental INVENTADA en Tolosa para la pieza «¿Qué negocio tienes?» de oiwebstudio.com.
+  «Irri» = risa. Nombre, dirección, teléfonos, horario, duraciones, qué traer, tratamientos y mensajes son de ejemplo (lo dice la
+  nota del pie, una vez). noindex. Sustituye a URDIN (web/demos/muestras/urdin-hortz-klinika/), que no se toca.
+  Composición calcada de la referencia n.º 02 del tablero muestras-dentista-2026-11-10 que eligió Oier el 10/11 (una clínica
+  dental de Quebec): foto a sangre de dos caras sonriendo cortadas por el borde, titular grande en blanco abajo a la izquierda,
+  el nombre en tres líneas pequeñas arriba, tres enlaces con «+» a media altura, botones redondeados arriba a la derecha (menú y
+  cita), la foto que sigue bajo el texto y un botón blanco; después texto grande a la izquierda con foto a la derecha, banda de
+  sonrisa con fotos pequeñas que flotan, lista de tratamientos (foto 4:5 + nombre enorme + botón), dos columnas con raya y el pie
+  azul con foto. Ni código, ni textos, ni fotos, ni logo, ni letra de la referencia: todo es nuestro (ver LEEME del generador).
+  Letra: n.º 13 Satoshi 400/700 (de nuestra biblioteca; la referencia usa una grotesca de pago). Fotos: Unsplash (licencia de
+  Unsplash): Vince Fleming, Katarzyna Zygnerska, Ozkan Guner, Greg Rosenke, Kouji Tsuru, Vitaly Gariev, gabriel barreto, Gunjan Patel, Caroline Badran. Detalle en fotos/creditos.json.
+  Movimiento: la portada entra con CSS desde el primer pintado; lo de abajo, con GSAP 3.13 + ScrollTrigger + SplitText (js/)
+  + anim-texto.js + pagina.js. Con «reducir movimiento» o sin JS, todo quieto y visible.
+-->
+<link rel="preload" href="fuentes/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="estilo.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="saltar" href="#contenido">Edukira joan</a>
+
+<header class="cab">
+  <a class="pill idioma" href="es/" lang="es" hreflang="es"><span aria-hidden="true">ES</span><span class="sr">Gaztelaniaz</span></a>
+  <button class="pill" type="button" aria-expanded="false" aria-controls="panel" data-menu-btn><span class="sr">Ireki menua: </span>Menua</button>
+  <a class="pill cuad" href="#cita" aria-label="Hitzordua eskatu deitu gabe"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="5.5" width="16" height="14.5" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 3.5v4M16 3.5v4M4 10h16M9.5 15h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></a>
+</header>
+
+<div class="velo" data-velo hidden></div>
+<div class="panel" id="panel" role="dialog" aria-modal="true" aria-label="Menua" data-panel-menu hidden>
+  <button class="pill cuad cerrar" type="button" data-menu-cerrar aria-label="Itxi"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+  <nav aria-label="Menua">
+    <ul class="panel-nav">
+      <li><a href="#cita" data-cierra>Hitzordua eskatu</a></li>
+      <li><a href="#que" data-cierra>Zer duzu?</a><ul class="sub"><li><a href="#f-mina" data-cierra>Mina</a></li><li><a href="#f-hortzoiak" data-cierra>Pentzeetako odol-jarioa</a></li><li><a href="#f-hautsia" data-cierra>Hortza hautsita</a></li><li><a href="#f-azterketa" data-cierra>Berrikuspena eta garbiketa</a></li><li><a href="#f-inplanteak" data-cierra>Inplanteak</a></li><li><a href="#f-ortodontzia" data-cierra>Ortodontzia ikusezina</a></li></ul></li>
+      <li><a href="#urgencias" data-cierra>Larrialdiak gaur</a></li>
+      <li><a href="#donde" data-cierra>Non gauden</a></li>
+    </ul>
+  </nav>
+  <div class="panel-datos">
+    <div><p class="k">Klinika</p><p>Kale Nagusia 14<br>20400 Tolosa</p></div>
+    <div><p class="k">Kontaktua</p><p>Telefonoa <a href="tel:+34943000000">943 00 00 00</a><br>WhatsApp <a href="https://wa.me/34600000000" target="_blank" rel="noopener">600 00 00 00</a></p></div>
+    <p><a class="subr" href="es/" lang="es" hreflang="es"><span aria-hidden="true">ES</span><span class="sr">Gaztelaniaz</span></a></p>
+  </div>
+</div>
+
+<main id="contenido">
+<section class="portada" data-portada aria-labelledby="h1">
+  <div class="portada-foto"><picture><source media="(max-width: 699px)" type="image/avif" srcset="fotos/portada-m-600.avif 600w, fotos/portada-m-1015.avif 1015w" sizes="100vw"><source media="(max-width: 699px)" type="image/webp" srcset="fotos/portada-m-600.webp 600w, fotos/portada-m-1015.webp 1015w" sizes="100vw"><source type="image/avif" srcset="fotos/portada-d-1280.avif 1280w, fotos/portada-d-1920.avif 1920w, fotos/portada-d-2880.avif 2880w" sizes="200vw"><img src="fotos/portada-d-1920.webp" srcset="fotos/portada-d-1280.webp 1280w, fotos/portada-d-1920.webp 1920w, fotos/portada-d-2880.webp 2880w" sizes="200vw" width="2880" height="2304" alt="Neska bat barrez eta, aurrean, mutil bat gaizki fokatuta" fetchpriority="high" decoding="async"></picture></div>
+  <a class="logo" href="#contenido" aria-label="IRRI"><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M9.2 5.2c-3.1 0-5.2 2.6-5.2 6.4 0 2.9 1 4.9 2 7.3 1.1 2.9 1.4 8 3.6 8 2.3 0 2-6.1 6.4-6.1s4.1 6.1 6.4 6.1c2.2 0 2.5-5.1 3.6-8 1-2.4 2-4.4 2-7.3 0-3.8-2.1-6.4-5.2-6.4-2.6 0-4.1 1.5-6.8 1.5S11.8 5.2 9.2 5.2z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></a>
+  <p class="marca"><span>IRRI</span><span>Hortz-klinika</span><span>Tolosa</span></p>
+  <ul class="mas-fila">
+    <li><a href="#cita"><svg class="mas" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.2"/></svg>Hitzordua eskatu</a></li>
+    <li><a href="#que"><svg class="mas" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.2"/></svg>Zer duzu?</a></li>
+    <li><a href="#urgencias"><svg class="mas" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.2"/></svg>Larrialdiak gaur</a></li>
+  </ul>
+  <h1 id="h1" class="titular"><span class="l"><span style="--i:0">Hortz klinika</span></span> <span class="l"><span style="--i:1">Tolosako</span></span> <span class="l"><span style="--i:2">zentroan</span></span></h1>
+  <div class="portada-sigue">
+    <p>Kale Nagusiko berrikuspenak, garbiketak, enpasteak, inplanteak eta ortodontzia ikusezina. Hitzordua WhatsApp bidez eskatzen da, deitu gabe.</p>
+    <p><a class="pill" href="#cita">Hitzordua eskatu</a></p>
+  </div>
+</section>
+
+<section class="sobre" id="sobre">
+  <p class="grande" data-enciende>Esaiguzu zer gertatzen zaizun eta, etorri aurretik, esango dizugu zenbat irauten duen bisitak eta zer ekarri behar duzun.</p>
+  <div class="sobre-foto" data-foto><picture><source type="image/avif" srcset="fotos/aulkia-600.avif 600w, fotos/aulkia-900.avif 900w, fotos/aulkia-1200.avif 1200w" sizes="(min-width: 900px) 80vw, 200vw"><img src="fotos/aulkia-1200.webp" srcset="fotos/aulkia-600.webp 600w, fotos/aulkia-900.webp 900w, fotos/aulkia-1200.webp 1200w" sizes="(min-width: 900px) 80vw, 200vw" width="1200" height="1500" alt="Dentista-besaulki bat leiho ondoan" loading="lazy" decoding="async"></picture></div>
+  <div class="sobre-pie">
+    <p>Orientagarria da. Kontsultan zurekin begiratzen dugu eta hasi aurretik aurrekontua idatziz ematen dizugu.</p>
+    <p><a class="pill azul" href="#que">Aukeratu zer gertatzen zaizun</a></p>
+  </div>
+</section>
+
+<section class="banda" aria-hidden="true">
+  <div class="banda-foto"><picture><source media="(max-width: 699px)" type="image/avif" srcset="fotos/irria-m-600.avif 600w, fotos/irria-m-900.avif 900w, fotos/irria-m-1200.avif 1200w" sizes="200vw"><source media="(max-width: 699px)" type="image/webp" srcset="fotos/irria-m-600.webp 600w, fotos/irria-m-900.webp 900w, fotos/irria-m-1200.webp 1200w" sizes="200vw"><source type="image/avif" srcset="fotos/irria-d-1280.avif 1280w, fotos/irria-d-1920.avif 1920w, fotos/irria-d-2880.avif 2880w" sizes="200vw"><img src="fotos/irria-d-1920.webp" srcset="fotos/irria-d-1280.webp 1280w, fotos/irria-d-1920.webp 1920w, fotos/irria-d-2880.webp 2880w" sizes="200vw" width="2880" height="1440" alt="" loading="lazy" decoding="async"></picture></div>
+  <div class="flota f1" data-flota="-18"><picture><source type="image/avif" srcset="fotos/aulkiak-450.avif 450w, fotos/aulkiak-900.avif 900w" sizes="(min-width: 700px) 480px, 300px"><img src="fotos/aulkiak-900.webp" srcset="fotos/aulkiak-450.webp 450w, fotos/aulkiak-900.webp 900w" sizes="(min-width: 700px) 480px, 300px" width="900" height="1125" alt="Egurrezko besaulkiak itxarongela batean" loading="lazy" decoding="async"></picture></div>
+  <div class="flota f2" data-flota="14"><picture><source type="image/avif" srcset="fotos/itxarongela-450.avif 450w, fotos/itxarongela-900.avif 900w" sizes="(min-width: 700px) 560px, 340px"><img src="fotos/itxarongela-900.webp" srcset="fotos/itxarongela-450.webp 450w, fotos/itxarongela-900.webp 900w" sizes="(min-width: 700px) 560px, 340px" width="900" height="1125" alt="Aulki zuriak ilaran itxarongela batean" loading="lazy" decoding="async"></picture></div>
+</section>
+
+<section class="que" id="que" aria-labelledby="h-que">
+  <div class="que-cab">
+    <h2 id="h-que" data-lineas>Zer duzu?</h2>
+    <div class="que-txt"><p>Ukitu zurea: ikusiko duzu zenbat irauten duen lehen bisitak, zer ekarri eta mezua hitzordua eskatzeko jada idatzita.</p></div>
+  </div>
+  <ul class="filas">
+      <li class="fila" id="f-mina" data-fila>
+        <div class="f-cab">
+          <div class="f-foto" data-foto><picture><source type="image/avif" srcset="fotos/t-mina-500.avif 500w, fotos/t-mina-1000.avif 1000w" sizes="(min-width: 700px) 300px, 200vw"><img src="fotos/t-mina-1000.webp" srcset="fotos/t-mina-500.webp 500w, fotos/t-mina-1000.webp 1000w" sizes="(min-width: 700px) 300px, 200vw" width="1000" height="1250" alt="" loading="lazy" decoding="async"></picture></div>
+          <h3 class="f-nom" id="n-mina">Mina</h3>
+          <button class="pill f-btn" type="button" aria-expanded="false" aria-controls="i-mina" data-abrir><span data-txt>Ikusi</span></button>
+        </div>
+        <div class="f-info" id="i-mina" role="region" aria-labelledby="n-mina" hidden>
+          <div class="f-in">
+            <dl><div><dt>Iraupena</dt><dd>30 minutu inguru.</dd></div><div><dt>Ekarri</dt><dd>Hartzen dituzun botiken zerrenda eta erradiografiak.</dd></div></dl>
+            <p class="f-x">Minak lo egiten uzten ez badizu, eskatu larrialdiko hitzordu bat gaurko. <a href="#urgencias">Ikusi gaurko larrialdiak</a></p>
+            <p><a class="pill azul" href="https://wa.me/34600000000?text=Kaixo%2C%20hitzordua%20eskatu%20nahi%20dut%20Irri%20klinikan.%20Arrazoia%3A%20Mina." target="_blank" rel="noopener">Horretarako hitzordua eskatu</a></p>
+          </div>
+        </div>
+      </li>
+      <li class="fila" id="f-hortzoiak" data-fila>
+        <div class="f-cab">
+          <div class="f-foto" data-foto><picture><source type="image/avif" srcset="fotos/t-hortzoiak-500.avif 500w, fotos/t-hortzoiak-1000.avif 1000w" sizes="(min-width: 700px) 300px, 200vw"><img src="fotos/t-hortzoiak-1000.webp" srcset="fotos/t-hortzoiak-500.webp 500w, fotos/t-hortzoiak-1000.webp 1000w" sizes="(min-width: 700px) 300px, 200vw" width="1000" height="1250" alt="" loading="lazy" decoding="async"></picture></div>
+          <h3 class="f-nom" id="n-hortzoiak">Pentzeetako odol-jarioa</h3>
+          <button class="pill f-btn" type="button" aria-expanded="false" aria-controls="i-hortzoiak" data-abrir><span data-txt>Ikusi</span></button>
+        </div>
+        <div class="f-info" id="i-hortzoiak" role="region" aria-labelledby="n-hortzoiak" hidden>
+          <div class="f-in">
+            <dl><div><dt>Iraupena</dt><dd>45 minutu inguru.</dd></div><div><dt>Ekarri</dt><dd>Hartzen dituzun botiken zerrenda.</dd></div></dl>
+            
+            <p><a class="pill azul" href="https://wa.me/34600000000?text=Kaixo%2C%20hitzordua%20eskatu%20nahi%20dut%20Irri%20klinikan.%20Arrazoia%3A%20Pentzeetako%20odol-jarioa." target="_blank" rel="noopener">Horretarako hitzordua eskatu</a></p>
+          </div>
+        </div>
+      </li>
+      <li class="fila" id="f-hautsia" data-fila>
+        <div class="f-cab">
+          <div class="f-foto" data-foto><picture><source type="image/avif" srcset="fotos/t-hautsia-500.avif 500w, fotos/t-hautsia-1000.avif 1000w" sizes="(min-width: 700px) 300px, 200vw"><img src="fotos/t-hautsia-1000.webp" srcset="fotos/t-hautsia-500.webp 500w, fotos/t-hautsia-1000.webp 1000w" sizes="(min-width: 700px) 300px, 200vw" width="1000" height="1250" alt="" loading="lazy" decoding="async"></picture></div>
+          <h3 class="f-nom" id="n-hautsia">Hortza hautsita</h3>
+          <button class="pill f-btn" type="button" aria-expanded="false" aria-controls="i-hautsia" data-abrir><span data-txt>Ikusi</span></button>
+        </div>
+        <div class="f-info" id="i-hautsia" role="region" aria-labelledby="n-hautsia" hidden>
+          <div class="f-in">
+            <dl><div><dt>Iraupena</dt><dd>30-60 minutu.</dd></div><div><dt>Ekarri</dt><dd>Hortz zatia, baduzu.</dd></div></dl>
+            <p class="f-x">Min handia edo odola dariola badago, eskatu premiazko hitzordua gaurko. <a href="#urgencias">Ikusi gaurko larrialdiak</a></p>
+            <p><a class="pill azul" href="https://wa.me/34600000000?text=Kaixo%2C%20hitzordua%20eskatu%20nahi%20dut%20Irri%20klinikan.%20Arrazoia%3A%20Hortza%20hautsita." target="_blank" rel="noopener">Horretarako hitzordua eskatu</a></p>
+          </div>
+        </div>
+      </li>
+      <li class="fila" id="f-azterketa" data-fila>
+        <div class="f-cab">
+          <div class="f-foto" data-foto><picture><source type="image/avif" srcset="fotos/t-azterketa-500.avif 500w, fotos/t-azterketa-1000.avif 1000w" sizes="(min-width: 700px) 300px, 200vw"><img src="fotos/t-azterketa-1000.webp" srcset="fotos/t-azterketa-500.webp 500w, fotos/t-azterketa-1000.webp 1000w" sizes="(min-width: 700px) 300px, 200vw" width="1000" height="1250" alt="" loading="lazy" decoding="async"></picture></div>
+          <h3 class="f-nom" id="n-azterketa">Berrikuspena eta garbiketa</h3>
+          <button class="pill f-btn" type="button" aria-expanded="false" aria-controls="i-azterketa" data-abrir><span data-txt>Ikusi</span></button>
+        </div>
+        <div class="f-info" id="i-azterketa" role="region" aria-labelledby="n-azterketa" hidden>
+          <div class="f-in">
+            <dl><div><dt>Iraupena</dt><dd>40 minutu inguru.</dd></div><div><dt>Ekarri</dt><dd>Ezer ez. Azken bi urteetako erradiografia baduzu, ekarri.</dd></div></dl>
+            
+            <p><a class="pill azul" href="https://wa.me/34600000000?text=Kaixo%2C%20hitzordua%20eskatu%20nahi%20dut%20Irri%20klinikan.%20Arrazoia%3A%20Berrikuspena%20eta%20garbiketa." target="_blank" rel="noopener">Horretarako hitzordua eskatu</a></p>
+          </div>
+        </div>
+      </li>
+      <li class="fila" id="f-inplanteak" data-fila>
+        <div class="f-cab">
+          <div class="f-foto" data-foto><picture><source type="image/avif" srcset="fotos/t-inplanteak-500.avif 500w, fotos/t-inplanteak-1000.avif 1000w" sizes="(min-width: 700px) 300px, 200vw"><img src="fotos/t-inplanteak-1000.webp" srcset="fotos/t-inplanteak-500.webp 500w, fotos/t-inplanteak-1000.webp 1000w" sizes="(min-width: 700px) 300px, 200vw" width="1000" height="1250" alt="" loading="lazy" decoding="async"></picture></div>
+          <h3 class="f-nom" id="n-inplanteak">Inplanteak</h3>
+          <button class="pill f-btn" type="button" aria-expanded="false" aria-controls="i-inplanteak" data-abrir><span data-txt>Ikusi</span></button>
+        </div>
+        <div class="f-info" id="i-inplanteak" role="region" aria-labelledby="n-inplanteak" hidden>
+          <div class="f-in">
+            <dl><div><dt>Iraupena</dt><dd>45 minutu inguru.</dd></div><div><dt>Ekarri</dt><dd>Dituzun txostenak eta erradiografiak.</dd></div></dl>
+            <p class="f-x">Aurrekontua idatziz emango dizugu hasi aurretik.</p>
+            <p><a class="pill azul" href="https://wa.me/34600000000?text=Kaixo%2C%20hitzordua%20eskatu%20nahi%20dut%20Irri%20klinikan.%20Arrazoia%3A%20Inplanteak." target="_blank" rel="noopener">Horretarako hitzordua eskatu</a></p>
+          </div>
+        </div>
+      </li>
+      <li class="fila" id="f-ortodontzia" data-fila>
+        <div class="f-cab">
+          <div class="f-foto" data-foto><picture><source type="image/avif" srcset="fotos/t-ortodontzia-500.avif 500w, fotos/t-ortodontzia-1000.avif 1000w" sizes="(min-width: 700px) 300px, 200vw"><img src="fotos/t-ortodontzia-1000.webp" srcset="fotos/t-ortodontzia-500.webp 500w, fotos/t-ortodontzia-1000.webp 1000w" sizes="(min-width: 700px) 300px, 200vw" width="1000" height="1250" alt="" loading="lazy" decoding="async"></picture></div>
+          <h3 class="f-nom" id="n-ortodontzia">Ortodontzia ikusezina</h3>
+          <button class="pill f-btn" type="button" aria-expanded="false" aria-controls="i-ortodontzia" data-abrir><span data-txt>Ikusi</span></button>
+        </div>
+        <div class="f-info" id="i-ortodontzia" role="region" aria-labelledby="n-ortodontzia" hidden>
+          <div class="f-in">
+            <dl><div><dt>Iraupena</dt><dd>45 minutu inguru.</dd></div><div><dt>Ekarri</dt><dd>Ezer ez. Argazkiak eta eskaner bat egiten ditugu ahotik, molderik gabe.</dd></div></dl>
+            
+            <p><a class="pill azul" href="https://wa.me/34600000000?text=Kaixo%2C%20hitzordua%20eskatu%20nahi%20dut%20Irri%20klinikan.%20Arrazoia%3A%20Ortodontzia%20ikusezina." target="_blank" rel="noopener">Horretarako hitzordua eskatu</a></p>
+          </div>
+        </div>
+      </li>
+  </ul>
+</section>
+
+<section class="dos" aria-label="Hitzordua deitu gabe · Larrialdiak gaur">
+  <div class="col" id="cita">
+    <h2 data-lineas>Hitzordua deitu gabe</h2>
+    <p class="col-p">Aukeratu hiru gauza eta WhatsAppeko mezua idatzita utziko dizugu. Egunarekin eta orduarekin erantzungo dizugu.</p>
+    <form class="cita" data-cita onsubmit="return false">
+      <fieldset><legend>Zertarako</legend><div class="ops" data-escalonado><label class="op"><input type="radio" name="motivo" value="rev" data-nombre="Berrikuspena" checked><span>Berrikuspena</span></label><label class="op"><input type="radio" name="motivo" value="limp" data-nombre="Garbiketa"><span>Garbiketa</span></label><label class="op"><input type="radio" name="motivo" value="urg" data-nombre="Urgentzia"><span>Urgentzia</span></label></div></fieldset>
+      <fieldset><legend>Noiz datorkizu hobeto?</legend><div class="ops" data-escalonado><label class="op"><input type="radio" name="franja" value="man" data-nombre="Goizean"><span>Goizean</span></label><label class="op"><input type="radio" name="franja" value="tar" data-nombre="Arratsaldean"><span>Arratsaldean</span></label><label class="op"><input type="radio" name="franja" value="igual" data-nombre="Berdin zait" checked><span>Berdin zait</span></label></div></fieldset>
+      <fieldset><legend>Ze aste</legend><div class="ops" data-escalonado><label class="op"><input type="radio" name="semana" value="esta" data-nombre="Aste honetan" checked><span>Aste honetan</span></label><label class="op"><input type="radio" name="semana" value="otra" data-nombre="Datorren astean"><span>Datorren astean</span></label></div></fieldset>
+      <p class="aviso" data-aviso aria-live="polite"></p>
+      <div class="campo"><label for="nombre">Zure izena (nahi baduzu)</label><input id="nombre" type="text" maxlength="40" autocomplete="given-name" data-tu-nombre></div>
+      <div class="mensaje"><p class="k">Zure mezua</p><p class="msg" data-msg aria-live="polite">Kaixo, hitzordua eskatu nahi dut Irri klinikan.</p></div>
+      <p><a class="pill azul" href="https://wa.me/34600000000?text=Kaixo%2C%20hitzordua%20eskatu%20nahi%20dut%20Irri%20klinikan." target="_blank" rel="noopener" data-wa-cita>Bidali WhatsApp bidez</a></p>
+      <p class="nota">WhatsApp irekitzen da mezuarekin. Zuk bidaltzen duzu.</p>
+    </form>
+    <div class="col-foto" data-foto><picture><source type="image/avif" srcset="fotos/zita-450.avif 450w, fotos/zita-900.avif 900w" sizes="(min-width: 700px) 440px, 360px"><img src="fotos/zita-900.webp" srcset="fotos/zita-450.webp 450w, fotos/zita-900.webp 900w" sizes="(min-width: 700px) 440px, 360px" width="900" height="1125" alt="Neska bat irribarrez" loading="lazy" decoding="async"></picture></div>
+  </div>
+  <div class="col" id="urgencias">
+    <h2 data-lineas>Larrialdiak gaur</h2>
+    <p class="estado" data-estado aria-live="polite"></p>
+    <p class="col-p">Min handia baduzu, hortz bat hautsi zaizu edo aurpegia handituta daukazu, deitu eta esango dizugu ea gaur ikus zaitzakegun.</p>
+    <p class="acc" data-urg-acc>
+      <a class="pill oscuro" href="tel:+34943000000" data-urg-1>Deitu orain · 943 00 00 00</a>
+      <a class="subr" href="https://wa.me/34600000000?text=Kaixo%2C%20hortzetako%20larrialdi%20bat%20dut.%20Gaur%20ikusiko%20nauzue%3F" target="_blank" rel="noopener" data-urg-2>Edo idatzi WhatsApp bidez</a>
+    </p>
+    <p class="grave">Larria bada (kolpe handia aurpegian, sukarra edo irenstea kostatzen zaizu), deitu 112ra.</p>
+    <div class="col-foto" data-foto><picture><source type="image/avif" srcset="fotos/larria-450.avif 450w, fotos/larria-900.avif 900w" sizes="(min-width: 700px) 440px, 360px"><img src="fotos/larria-900.webp" srcset="fotos/larria-450.webp 450w, fotos/larria-900.webp 900w" sizes="(min-width: 700px) 440px, 360px" width="900" height="1125" alt="Emakume bat hurbiletik irribarrez" loading="lazy" decoding="async"></picture></div>
+  </div>
+</section>
+</main>
+
+<footer class="pie" id="donde">
+  <div class="pie-foto" data-foto><picture><source type="image/avif" srcset="fotos/irakurlea-500.avif 500w, fotos/irakurlea-1000.avif 1000w" sizes="(min-width: 900px) 560px, 200vw"><img src="fotos/irakurlea-1000.webp" srcset="fotos/irakurlea-500.webp 500w, fotos/irakurlea-1000.webp 1000w" sizes="(min-width: 900px) 560px, 200vw" width="1000" height="1250" alt="Emakume bat besaulki batean irakurtzen" loading="lazy" decoding="async"></picture></div>
+  <div class="pie-cols">
+    <div><h2 class="k">Tratamenduak</h2><ul class="pie-trat"><li><a href="#f-mina">Mina</a></li><li><a href="#f-hortzoiak">Pentzeetako odol-jarioa</a></li><li><a href="#f-hautsia">Hortza hautsita</a></li><li><a href="#f-azterketa">Berrikuspena eta garbiketa</a></li><li><a href="#f-inplanteak">Inplanteak</a></li><li><a href="#f-ortodontzia">Ortodontzia ikusezina</a></li></ul></div>
+    <div><h2 class="k">Klinika</h2><p>Kale Nagusia 14<br>20400 Tolosa</p><h2 class="k">Ordutegia</h2><p>Astelehenetik ostegunera, 9:00etatik 13:30era eta 15:00etatik 20:00etara.<br>Ostiraletan, 9:00etatik 15:00etara.<br>Larunbata eta igandea, itxita.</p></div>
+    <div><h2 class="k">Kontaktua</h2><p class="pie-tel">Telefonoa <a href="tel:+34943000000">943 00 00 00</a></p><p class="pie-tel">WhatsApp <a href="https://wa.me/34600000000" target="_blank" rel="noopener">600 00 00 00</a></p><p><a class="pill" href="#cita">Hitzordua eskatu</a></p></div>
+  </div>
+  <div class="pie-fin">
+    <p class="marca pie-marca"><span>IRRI</span><span>Hortz-klinika</span><span>Tolosa</span></p>
+    <div class="pie-legal">
+      <p class="nota-datos">Adibide-datuak: Irri klinika ez da existitzen. Helbidea, telefonoak, ordutegia, iraupena, ekarri beharrekoa eta testuak asmatuak dira. Argazkiak Unsplashenak dira, eta ez dira pazienteenak, ezta inongo klinikarenak ere.</p>
+      <p>Unsplashen argazkiak: Vince Fleming, Katarzyna Zygnerska, Ozkan Guner, Greg Rosenke, Kouji Tsuru, Vitaly Gariev, gabriel barreto, Gunjan Patel, Caroline Badran. <a href="fotos/creditos.json">creditos.json</a></p>
+      <p><a class="subr pie-idioma" href="es/" lang="es" hreflang="es"><span aria-hidden="true">ES</span><span class="sr">Gaztelaniaz</span></a></p>
+    </div>
+  </div>
+</footer>
+
+<script type="application/json" id="textos">{"lang":"eu","ver":"Ikusi","cerrar":"Itxi","wa_hola":"Kaixo, hitzordua eskatu nahi dut Irri klinikan.","wa_motivo":"Arrazoia:","wa_franja":"Hobeto datorkit:","wa_semana":"Astea:","wa_nombre":"Nire izena:","wa_urg":"Kaixo, hortzetako larrialdi bat dut. Gaur ikusiko nauzue?","aviso_semana":"Aste honetan ez dago kontsulta-ordurik. Datorren asterako eskatuko dizugu.","aviso_urg":"Gaurko bada, deitu: azkarragoa da.","est_ab_1330":"Orain irekita, 13:30ak arte.","est_ab_1500":"Orain irekita, 15:00ak arte.","est_ab_2000":"Orain irekita, 20:00ak arte.","est_abre_900":"Gaur 9:00etan irekiko dugu.","est_abre_1500":"Gaur 15:00etan irekiko dugu.","est_cerrado_man":"Orain itxita dago. Bihar 9:00etan irekiko dugu: idatzi eta irekitzean deituko dizugu.","est_cerrado_lun":"Orain itxita dago. Astelehenean 9:00etan irekiko dugu: idatzi eta irekitzean deituko dizugu.","btn_llamar":"Deitu orain","btn_aviso":"Idatzi WhatsApp bidez","urg_o_wa":"Edo idatzi WhatsApp bidez","urg_o_tel":"Edo deitu","tel":"943 00 00 00"}</script>
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/SplitText.min.js"></script>
+<script src="js/anim-texto.js"></script>
+<script src="js/pagina.js"></script>
+<!-- oi-firma · lo pone herramientas/sitio/firma-muestras/firma.cjs (no editar a mano) -->
+<style id="oi-firma-css">
+.oi-firma{display:block;margin:0;padding:0;background:#121110;color:#ece7de;text-align:left;font:400 15px/1.5 "Switzer",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased;position:relative;z-index:1;clear:both;border-top:1px solid rgba(236,231,222,.08)}
+.oi-firma *{box-sizing:border-box}
+.oi-firma .oi-firma__in{max-width:1180px;margin:0 auto;padding:48px 32px 40px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:36px 56px;align-items:end}
+.oi-firma .oi-firma__marca{margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.oi-firma .oi-firma__por{margin:0;font-weight:500;font-size:11px;line-height:1;letter-spacing:.2em;text-transform:uppercase;color:#8f877b}
+.oi-firma a.oi-firma__logo{display:inline-flex;align-items:center;min-height:44px;align-self:flex-start;margin:0;padding:0;color:#fff;text-decoration:none;font-weight:700;font-size:clamp(30px,3.4vw,44px);line-height:.95;letter-spacing:.04em;text-transform:uppercase;-webkit-tap-highlight-color:transparent;transition:opacity .2s ease}
+.oi-firma .oi-firma__lema{margin:0;font-weight:400;font-size:15px;line-height:1.4;color:#cfc8bc;text-transform:none;letter-spacing:0}
+.oi-firma .oi-firma__datos{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(4,auto);gap:0 36px}
+.oi-firma .oi-firma__datos li{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+.oi-firma .oi-firma__datos li::before,.oi-firma .oi-firma__datos li::marker{content:none}
+.oi-firma .oi-firma__k{font-weight:500;font-size:11px;line-height:1;letter-spacing:.18em;text-transform:uppercase;color:#8f877b}
+.oi-firma .oi-firma__datos a{display:inline-flex;align-items:center;min-height:32px;color:#ece7de;text-decoration:none;font-weight:500;font-size:15px;line-height:1.3;text-transform:none;letter-spacing:0;border-bottom:1px solid rgba(236,231,222,.22);transition:border-color .2s ease,color .2s ease;-webkit-tap-highlight-color:transparent}
+.oi-firma .oi-firma__pie{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px;margin:0;padding:22px 0 0;border-top:1px solid rgba(236,231,222,.12)}
+.oi-firma .oi-firma__nota{margin:0;font-weight:400;font-size:13.5px;line-height:1.4;color:#8f877b;text-transform:none;letter-spacing:0}
+.oi-firma a.oi-firma__cta{display:inline-flex;align-items:center;gap:10px;min-height:46px;margin:0;padding:0 22px;border-radius:999px;background:#ece7de;color:#121110;text-decoration:none;font-weight:600;font-size:14.5px;line-height:1;letter-spacing:0;text-transform:none;transition:background-color .2s ease,transform .15s ease;-webkit-tap-highlight-color:transparent}
+.oi-firma a.oi-firma__cta svg{width:16px;height:16px;flex:none}
+@media (hover:hover) and (pointer:fine){.oi-firma a.oi-firma__logo:hover{opacity:.82}.oi-firma .oi-firma__datos a:hover{border-color:#ece7de;color:#fff}.oi-firma a.oi-firma__cta:hover{background:#fff}}
+.oi-firma a.oi-firma__cta:active{transform:scale(.97)}
+.oi-firma a:focus{outline:none}
+.oi-firma a:focus-visible{outline:2px solid #ece7de;outline-offset:4px}
+.oi-firma .oi-firma__sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.oi-firma.oi-firma--mv .oi-firma__in>*{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .9s cubic-bezier(.2,.75,.25,1)}
+.oi-firma.oi-firma--mv .oi-firma__in>*:nth-child(2){transition-delay:.08s}
+.oi-firma.oi-firma--mv .oi-firma__in>*:nth-child(3){transition-delay:.16s}
+.oi-firma.oi-firma--in .oi-firma__in>*{opacity:1;transform:none}
+@media (max-width:980px){.oi-firma .oi-firma__in{grid-template-columns:1fr;align-items:start;gap:32px}.oi-firma .oi-firma__datos{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 24px}}
+@media (max-width:600px){.oi-firma .oi-firma__in{padding:40px 20px 32px}.oi-firma .oi-firma__datos{grid-template-columns:1fr 1fr;gap:18px 20px}.oi-firma .oi-firma__datos li:nth-child(n+3){grid-column:1/-1}.oi-firma .oi-firma__datos a{align-self:flex-start}.oi-firma .oi-firma__datos a{min-height:44px;font-size:16px}.oi-firma a.oi-firma__cta{width:100%;justify-content:center;min-height:50px}}
+@media (prefers-reduced-motion:reduce){.oi-firma.oi-firma--mv .oi-firma__in>*{opacity:1;transform:none;transition:none}.oi-firma a{transition:none}}
+</style>
+<aside class="oi-firma" id="oi-firma" aria-label="Nork egin du webgune hau">
+<div class="oi-firma__in">
+<div class="oi-firma__marca">
+<p class="oi-firma__por">Diseinatzailea:</p>
+<a class="oi-firma__logo" href="https://oiwebstudio.com/?utm_source=muestra-irri&amp;utm_medium=pie" target="_blank" rel="noopener">OI STUDIO<span class="oi-firma__sr"> (beste erlaitz batean irekitzen da)</span></a>
+<p class="oi-firma__lema">Gipuzkoako negozioetarako web diseinua · Oier Irastorza</p>
+</div>
+<ul class="oi-firma__datos">
+<li><span class="oi-firma__k">Telefonoa</span><a href="tel:+34611497409">611 49 74 09</a></li>
+<li><span class="oi-firma__k">WhatsApp</span><a href="https://wa.me/34611497409?text=Kaixo%2C%20Oier.%20Zure%20lagin%20bat%20ikusi%20dut%20eta%20horrelako%20webgune%20bat%20interesatzen%20zait." target="_blank" rel="noopener">611 49 74 09<span class="oi-firma__sr"> (beste erlaitz batean irekitzen da)</span></a></li>
+<li><span class="oi-firma__k">Posta</span><a href="mailto:contactoiwebstudio@gmail.com">contactoiwebstudio@gmail.com</a></li>
+<li><span class="oi-firma__k">Web</span><a href="https://oiwebstudio.com/?utm_source=muestra-irri&amp;utm_medium=pie" target="_blank" rel="noopener">oiwebstudio.com<span class="oi-firma__sr"> (beste erlaitz batean irekitzen da)</span></a></li>
+</ul>
+<div class="oi-firma__pie">
+<p class="oi-firma__nota">Webgune hau OI Studiok egindako adibide bat da.</p>
+<a class="oi-firma__cta" href="https://wa.me/34611497409?text=Kaixo%2C%20Oier.%20Zure%20lagin%20bat%20ikusi%20dut%20eta%20horrelako%20webgune%20bat%20interesatzen%20zait." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>Horrelako webgune bat nahi dut<span class="oi-firma__sr"> (beste erlaitz batean irekitzen da)</span></a>
+</div>
+</div>
+</aside>
+<script>(function(){var f=document.getElementById("oi-firma");if(!f||!("IntersectionObserver" in window)||matchMedia("(prefers-reduced-motion: reduce)").matches)return;f.classList.add("oi-firma--mv");var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){f.classList.add("oi-firma--in");o.disconnect();}},{rootMargin:"0px 0px -8% 0px"});o.observe(f);})();</script>
+<!-- /oi-firma -->
+</body>
+</html>
