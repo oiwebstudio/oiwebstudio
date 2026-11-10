@@ -1,7 +1,12 @@
 {
  "por": "Diseinatzailea:",
- "lema": "Gipuzkoako negozioetarako webguneak",
- "pregunta": "Horrelako webgune bat nahi duzu zure negoziorako?",
  "aria": "Nork egin du webgune hau",
- "nueva": "beste erlaitz batean irekitzen da"
+ "nueva": "beste erlaitz batean irekitzen da",
+ "lema": "Gipuzkoako negozioetarako web diseinua",
+ "telefono": "Telefonoa",
+ "correo": "Posta",
+ "web": "Web",
+ "cta": "Horrelako webgune bat nahi dut",
+ "wa_msg": "Kaixo, Oier. Zure lagin bat ikusi dut eta horrelako webgune bat interesatzen zait.",
+ "nota": "Webgune hau OI Studiok egindako adibide bat da."
 }

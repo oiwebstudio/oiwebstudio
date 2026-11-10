@@ -1,0 +1,7 @@
+lema	Gipuzkoako negozioetarako web diseinua
+nota	Webgune hau OI Studiok egindako erakusketa bat da.
+telefono	Telefonoa
+correo	Posta
+web	Web
+cta	Horrelako webgune bat nahi dut
+wa_msg	Kaixo, Oier. Zure lagin bat ikusi dut eta horrelako webgune bat interesatzen zait.

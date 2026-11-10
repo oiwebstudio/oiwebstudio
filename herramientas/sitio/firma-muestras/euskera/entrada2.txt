@@ -1,0 +1,7 @@
+lema	Diseño web para negocios en Gipuzkoa
+nota	Esta web es una muestra hecha por OI Studio.
+telefono	Teléfono
+correo	Correo
+web	Web
+cta	Quiero una web así
+wa_msg	Hola, Oier. He visto una de tus muestras y me interesa una web así.
