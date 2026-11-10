@@ -1,0 +1,5 @@
+sx_c_taller	Tailerra
+sx_k_taller	Autoen tailerra Villabonan
+sx_taller_a	Zer begiratzen dugun, zenbat denbora eta zenbat balio duen
+sx_taller_b	Aurrekontua ezer ukitu aurretik
+sx_taller_c	WhatsApp bidez abisatuko dizugu prest dagoenean

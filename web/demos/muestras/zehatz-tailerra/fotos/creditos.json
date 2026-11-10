@@ -1,0 +1,205 @@
+{
+ "_nota": "Fotos de Unsplash (licencia de Unsplash) y de Pexels (licencia de Pexels): uso comercial permitido, sin atribución obligatoria; se cita igualmente. No son de ningún taller real ni de este negocio de ejemplo. Bajadas el 10/11/2026.",
+ "fotos": [
+  {
+   "archivo": "portada",
+   "autor": "Artem Podrez",
+   "fuente": "Pexels",
+   "perfil": "https://www.pexels.com/@artempodrez/",
+   "foto": "https://www.pexels.com/photo/white-car-in-a-garage-for-check-up-8986138/",
+   "licencia": "Pexels License (https://www.pexels.com/license/)",
+   "original": "6240×4160",
+   "cambios": "recorte y marcas desenfocadas"
+  },
+  {
+   "archivo": "t1",
+   "autor": "Priscilla Du Preez",
+   "fuente": "Unsplash",
+   "perfil": "https://unsplash.com/@priscilladupreez",
+   "foto": "https://unsplash.com/photos/the-tail-light-of-a-white-car-in-a-garage-9mmyKMBBIy4",
+   "licencia": "Unsplash License (https://unsplash.com/license)",
+   "original": "5472×3648",
+   "cambios": "recorte"
+  },
+  {
+   "archivo": "t2",
+   "autor": "Adem Percem",
+   "fuente": "Unsplash",
+   "perfil": "https://unsplash.com/@adempercem",
+   "foto": "https://unsplash.com/photos/two-cars-covered-in-white-sheets-indoors-xE7xiFmhf3M",
+   "licencia": "Unsplash License (https://unsplash.com/license)",
+   "original": "4600×2936",
+   "cambios": "recorte"
+  },
+  {
+   "archivo": "t3",
+   "autor": "The DK Photography",
+   "fuente": "Unsplash",
+   "perfil": "https://unsplash.com/@deepain108",
+   "foto": "https://unsplash.com/photos/gray-and-brown-round-metal-tool-fwnTOncjeB0",
+   "licencia": "Unsplash License (https://unsplash.com/license)",
+   "original": "6936×9248",
+   "cambios": "recorte"
+  },
+  {
+   "archivo": "banda",
+   "autor": "Nigel Tadyanehondo",
+   "fuente": "Unsplash",
+   "perfil": "https://unsplash.com/@undefined",
+   "foto": "https://unsplash.com/photos/Ub-bXndVp3A",
+   "licencia": "Unsplash License (https://unsplash.com/license)",
+   "original": "undefined×undefined",
+   "cambios": "recorte"
+  },
+  {
+   "archivo": "f-ruido",
+   "autor": "Sincerely Media",
+   "fuente": "Unsplash",
+   "perfil": "https://unsplash.com/@sincerelymedia",
+   "foto": "https://unsplash.com/photos/a-man-is-working-on-a-car-engine-hAQk9odokMU",
+   "licencia": "Unsplash License (https://unsplash.com/license)",
+   "original": "5184×3456",
+   "cambios": "recorte y marcas desenfocadas"
+  },
+  {
+   "archivo": "f-testigo",
+   "autor": "Nik",
+   "fuente": "Unsplash",
+   "perfil": "https://unsplash.com/@helloimnik",
+   "foto": "https://unsplash.com/photos/white-and-blue-analog-gauge-Oeslu9GH2cM",
+   "licencia": "Unsplash License (https://unsplash.com/license)",
+   "original": "3826×2586",
+   "cambios": "recorte"
+  },
+  {
+   "archivo": "f-revision",
+   "autor": "Kate Ibragimova",
+   "fuente": "Unsplash",
+   "perfil": "https://unsplash.com/@kateibragimova",
+   "foto": "https://unsplash.com/photos/bEGTsOCnHro",
+   "licencia": "Unsplash License (https://unsplash.com/license)",
+   "original": "6000×3375",
+   "cambios": "recorte"
+  },
+  {
+   "archivo": "f-itv",
+   "autor": "Erik Mclean",
+   "fuente": "Unsplash",
+   "perfil": "https://unsplash.com/@introspectivedsgn",
+   "foto": "https://unsplash.com/photos/white-sports-car-in-a-workshop-eTPqjGhynkI",
+   "licencia": "Unsplash License (https://unsplash.com/license)",
+   "original": "4240×2832",
+   "cambios": "recorte"
+  },
+  {
+   "archivo": "f-frenos",
+   "autor": "Benjamin Brunner",
+   "fuente": "Unsplash",
+   "perfil": "https://unsplash.com/@ben_brunner",
+   "foto": "https://unsplash.com/photos/white-and-silver-round-device-al01Ad0f_KI",
+   "licencia": "Unsplash License (https://unsplash.com/license)",
+   "original": "6000×4000",
+   "cambios": "recorte"
+  },
+  {
+   "archivo": "f-neumaticos",
+   "autor": "Jimmy Nilsson Masth",
+   "fuente": "Unsplash",
+   "perfil": "https://unsplash.com/@jimmynilssonmasth",
+   "foto": "https://unsplash.com/photos/a-man-working-on-a-tire-in-a-garage-9uHal2Dd9aE",
+   "licencia": "Unsplash License (https://unsplash.com/license)",
+   "original": "5398×3599",
+   "cambios": "recorte y marcas desenfocadas"
+  },
+  {
+   "archivo": "g1",
+   "autor": "Dmitriy Demidov",
+   "fuente": "Unsplash",
+   "perfil": "https://unsplash.com/@fotograw",
+   "foto": "https://unsplash.com/photos/a-group-of-wrenches-arranged-in-a-circle-iuuJC_pjLU0",
+   "licencia": "Unsplash License (https://unsplash.com/license)",
+   "original": "6000×4000",
+   "cambios": "recorte"
+  },
+  {
+   "archivo": "g2",
+   "autor": "Mustafa Sheikhmouss",
+   "fuente": "Unsplash",
+   "perfil": "https://unsplash.com/@xalo_mustafa",
+   "foto": "https://unsplash.com/photos/mechanic-inspecting-car-engine-in-workshop-3G7GwAbPRE0",
+   "licencia": "Unsplash License (https://unsplash.com/license)",
+   "original": "6000×4000",
+   "cambios": "recorte"
+  },
+  {
+   "archivo": "g3",
+   "autor": "Sasun Bughdaryan",
+   "fuente": "Unsplash",
+   "perfil": "https://unsplash.com/@sasun1990",
+   "foto": "https://unsplash.com/photos/9gB7APNSquE",
+   "licencia": "Unsplash License (https://unsplash.com/license)",
+   "original": "5616×3744",
+   "cambios": "recorte"
+  },
+  {
+   "archivo": "g4",
+   "autor": "Christian Buehner",
+   "fuente": "Unsplash",
+   "perfil": "https://unsplash.com/@christianbuehner",
+   "foto": "https://unsplash.com/photos/Fd6osyVbtG4",
+   "licencia": "Unsplash License (https://unsplash.com/license)",
+   "original": "11648×8736",
+   "cambios": "recorte"
+  },
+  {
+   "archivo": "g5",
+   "autor": "Nina Mercado",
+   "fuente": "Unsplash",
+   "perfil": "https://unsplash.com/@nina_mercado",
+   "foto": "https://unsplash.com/photos/e9YFrEBWit8",
+   "licencia": "Unsplash License (https://unsplash.com/license)",
+   "original": "6720×4480",
+   "cambios": "recorte"
+  },
+  {
+   "archivo": "g6",
+   "autor": "Eric Prouzet",
+   "fuente": "Unsplash",
+   "perfil": "https://unsplash.com/@eprouzet",
+   "foto": "https://unsplash.com/photos/a-close-up-of-a-engine-of-a-car-8DKsb8Wkgyk",
+   "licencia": "Unsplash License (https://unsplash.com/license)",
+   "original": "6001×4000",
+   "cambios": "recorte y marcas desenfocadas"
+  },
+  {
+   "archivo": "g7",
+   "autor": "LouisMoto",
+   "fuente": "Unsplash",
+   "perfil": "https://unsplash.com/@louismotorrad",
+   "foto": "https://unsplash.com/photos/a-tool-kit-with-tools-in-it-sitting-on-a-table-m4XS2ACf85k",
+   "licencia": "Unsplash License (https://unsplash.com/license)",
+   "original": "7360×4912",
+   "cambios": "recorte"
+  },
+  {
+   "archivo": "g8",
+   "autor": "Ali Kaan Uçar",
+   "fuente": "Unsplash",
+   "perfil": "https://unsplash.com/@alik04",
+   "foto": "https://unsplash.com/photos/workbench-with-tools-and-lamps-j8UApawyq_c",
+   "licencia": "Unsplash License (https://unsplash.com/license)",
+   "original": "5497×4122",
+   "cambios": "recorte"
+  },
+  {
+   "archivo": "fin",
+   "autor": "Mike Bird",
+   "fuente": "Pexels",
+   "perfil": "https://www.pexels.com/@mikebird/",
+   "foto": "https://www.pexels.com/photo/side-view-of-a-silver-ford-focus-27138970/",
+   "licencia": "Pexels License (https://www.pexels.com/license/)",
+   "original": "6000×4000",
+   "cambios": "recorte y marcas desenfocadas"
+  }
+ ]
+}
