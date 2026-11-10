@@ -1,7 +1,12 @@
 {
  "por": "Diseñado por",
- "lema": "Webs para negocios en Gipuzkoa",
- "pregunta": "¿Quieres una web así para tu negocio?",
+ "lema": "Diseño web para negocios en Gipuzkoa",
  "aria": "Quién ha hecho esta web",
- "nueva": "se abre en otra pestaña"
+ "nueva": "se abre en otra pestaña",
+ "nota": "Esta web es un ejemplo hecho por OI Studio.",
+ "telefono": "Teléfono",
+ "correo": "Correo",
+ "web": "Web",
+ "cta": "Quiero una web así",
+ "wa_msg": "Hola, Oier. He visto una de tus muestras y me interesa una web así."
 }
