@@ -696,3 +696,40 @@ html.js:not(.js-l3) .rm ~ .rm{display:none;}
   .sx-f button{padding:10px 14px;font-size:14.5px;min-height:44px;}
 }
 @media (prefers-reduced-motion:reduce){.sx-f button,.sx-f button b{transition:none;}}
+
+/* Reservas: pruébalas (10/11/2026): peluquería de la demo de Agenda OI justo debajo de la portada, con el panel sin contraseña */
+.rv{padding:clamp(56px,7vw,96px) 0;background:var(--bg-subtle);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.rv__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center;}
+.rv h2.tt{margin-bottom:16px;}
+.rv__p{font-size:18px;line-height:1.55;color:var(--text-muted);margin:0 0 26px;max-width:44ch;}
+.rv__btns{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 18px;}
+.rv__mas{margin:0 0 10px;}
+.rv .btn--soft{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink);}
+@media (hover:hover){.rv .btn--soft:hover{background:var(--ink);color:#fff;}}
+.rv__nota{margin:0;font-size:13.5px;color:var(--text-muted);}
+.rv__tels{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.4vw,28px);max-width:560px;justify-self:center;width:100%;}
+.rv__tel{display:block;color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent;}
+.rv__tel--pan{margin-top:56px;}
+.rv__pant{display:block;border:7px solid #191712;border-radius:30px;overflow:hidden;background:#191712;aspect-ratio:600/1200;box-shadow:0 30px 60px -30px rgba(25,23,18,.45);transition:transform .45s cubic-bezier(.2,.75,.25,1),box-shadow .45s cubic-bezier(.2,.75,.25,1);}
+.rv__pant img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;border-radius:23px;}
+.rv__cap{display:block;margin-top:14px;font-weight:600;font-size:14.5px;text-transform:uppercase;letter-spacing:.02em;color:var(--ink);text-align:center;}
+@media (hover:hover){.rv__tel:hover .rv__pant{transform:translateY(-6px);box-shadow:0 40px 70px -30px rgba(25,23,18,.5);}}
+.rv__tel:active .rv__pant{transform:scale(.98);transition-duration:.15s;}
+.rv__tel:focus-visible{outline:none;}
+.rv__tel:focus-visible .rv__pant{box-shadow:0 0 0 3px var(--ink);}
+.js .rv__tels.mv .rv__tel{opacity:0;transform:translateY(32px);transition:opacity .7s ease var(--d,0ms),transform 1s cubic-bezier(.2,.75,.25,1) var(--d,0ms);}
+.js .rv__tels.mv .rv__tel.is-in{opacity:1;transform:none;}
+@media (max-width:860px){
+  .rv__grid{grid-template-columns:1fr;}
+  .rv__tels{max-width:440px;}
+  .rv__p{font-size:16.5px;}
+}
+@media (max-width:520px){
+  .rv__btns .btn{width:100%;justify-content:center;}
+  .rv__tels{gap:14px;}
+  .rv__tel--pan{margin-top:36px;}
+  .rv__pant{border-width:5px;border-radius:22px;}
+  .rv__pant img{border-radius:17px;}
+  .rv__cap{font-size:12.5px;}
+}
+@media (prefers-reduced-motion:reduce){.rv__pant{transition:none;}.js .rv__tels.mv .rv__tel{opacity:1;transform:none;transition:none;}}

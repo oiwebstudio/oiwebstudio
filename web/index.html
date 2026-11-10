@@ -151,7 +151,7 @@
 <link rel="stylesheet" href="assets/styles.css?v=33"/>
 <link rel="stylesheet" href="assets/portada.css?v=32"/>
 <style>.hx__lede{max-width:34em}.hx__lede a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}.hx__lede a:hover{color:var(--ink)}</style>
-<link rel="stylesheet" href="assets/lineas.css?v=17"/>
+<link rel="stylesheet" href="assets/lineas.css?v=18"/>
 <script>if(location.protocol==='http:'&&/(^|\.)oiwebstudio\.com$/.test(location.hostname))location.replace('https://'+location.host+location.pathname+location.search+location.hash);document.documentElement.classList.add('js');</script>
 <link rel="preload" as="image" type="image/avif" href="/assets/hero/mano-520.avif" imagesrcset="/assets/hero/mano-520.avif 520w, /assets/hero/mano-900.avif 900w" imagesizes="(max-width: 760px) 340px, 480px" fetchpriority="high"/>
 </head>
@@ -308,6 +308,7 @@
 <nav class="atajos" aria-labelledby="atajos-t">
 <div class="container atajos__in">
 <span id="atajos-t" class="sr-only" data-t="at_t">En esta página</span>
+<a href="#reservas-demo"><span data-t="nav_reservas">Reservas</span></a>
 <a href="#tu-sector"><span data-t="at_muestras">Muestras</span></a>
 <a href="#lineas"><span data-t="foot_servicios">Servicios</span></a>
 <a href="#trabajos"><span data-t="at_trabajos">Trabajos</span></a>
@@ -317,6 +318,26 @@
 <a href="#faq"><span data-t="at_faq">Preguntas</span></a>
 </div>
 </nav>
+
+<!-- RESERVAS: PRUÉBALAS (10/11/2026, Oier: «lo de las reservas ponlo más a mano… lo de la peluquería ponlo arriba y el panel sin contraseña»). Peluquería de la demo de Agenda OI; el panel entra sin contraseña (/panel/demo/salon-demo). -->
+<section class="rv" id="reservas-demo" aria-labelledby="rv-h">
+<div class="container rv__grid">
+<div class="rv__txt">
+<h2 class="tt" id="rv-h" data-t="rv_h">Reservas sin comisiones: pruébalas</h2>
+<p class="rv__p reveal" data-t="rv_p">Una peluquería inventada con su agenda funcionando. Pide una cita como si fueras un cliente y luego mira cómo le llega al dueño, sin contraseña.</p>
+<div class="rv__btns reveal">
+<a class="btn btn--accent btn--lg" href="https://agenda-oi-demo.oi-studio-web.workers.dev/s/salon-demo" target="_blank" rel="noopener"><span data-t="rv_cli">Pedir una cita</span></a>
+<a class="btn btn--soft btn--lg" href="https://agenda-oi-demo.oi-studio-web.workers.dev/panel/demo/salon-demo" target="_blank" rel="noopener"><span data-t="rv_pan">Ver el panel del dueño</span></a>
+</div>
+<p class="rv__mas reveal"><a class="l3-a" href="reservas-online-sin-comisiones.html" data-t="rv_mas">Precio y cómo funciona</a></p>
+<p class="rv__nota" data-t="rv_nota">Peluquería inventada: lo que hagas se borra solo en media hora.</p>
+</div>
+<div class="rv__tels">
+<a class="rv__tel rv__tel--cli" href="https://agenda-oi-demo.oi-studio-web.workers.dev/s/salon-demo" target="_blank" rel="noopener"><span class="rv__pant"><picture><source srcset="assets/agenda/home-cliente.webp" type="image/webp"/><img src="assets/agenda/home-cliente.jpg" alt="Página de citas de la peluquería en el móvil: el cliente elige persona y servicio" width="600" height="1200" loading="lazy" decoding="async"/></picture></span><span class="rv__cap" data-t="rv_t1">Lo que ve tu cliente</span></a>
+<a class="rv__tel rv__tel--pan" href="https://agenda-oi-demo.oi-studio-web.workers.dev/panel/demo/salon-demo" target="_blank" rel="noopener"><span class="rv__pant"><picture><source srcset="assets/agenda/home-panel.webp" type="image/webp"/><img src="assets/agenda/home-panel.jpg" alt="Panel del dueño en el móvil: las citas de hoy, el hueco libre y la siguiente cita" width="600" height="1200" loading="lazy" decoding="async"/></picture></span><span class="rv__cap" data-t="rv_t2">Lo que ves tú</span></a>
+</div>
+</div>
+</section>
 
 <!-- ¿QUÉ NEGOCIO TIENES? (9/11/2026, Oier: «muéstralos mejor, están muy abajo»): todas las muestras de sector justo debajo de la portada, con filtros por tipo de negocio. Lo escribe herramientas/sitio/sectores/gen.cjs; JS en assets/piezas.js -->
 <section class="l3 sv sx" id="tu-sector" aria-labelledby="sx-h">
@@ -810,7 +831,7 @@
 <div class="footer__mark" aria-hidden="true">OI STUDIO</div>
 </footer>
 
-<script src="assets/i18n.js?v=47"></script>
+<script src="assets/i18n.js?v=48"></script>
 <script src="assets/main.js?v=21"></script>
 <script src="assets/prueba.js?v=4"></script>
 <script src="assets/interactivos.js?v=1" defer></script>
@@ -818,7 +839,7 @@
 <script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
 <script src="/assets/vendor/SplitText.min.js" defer></script>
 <script src="assets/lineas.js?v=6" defer></script>
-<script src="assets/piezas.js?v=4" defer></script>
+<script src="assets/piezas.js?v=5" defer></script>
 <script>
 (function(){
   /* Hero: el titular entra palabra a palabra y el móvil va enseñando las muestras */

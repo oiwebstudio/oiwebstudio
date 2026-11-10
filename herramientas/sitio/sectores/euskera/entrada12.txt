@@ -1,0 +1,8 @@
+rv_h	Reservas sin comisiones: pruébalas
+rv_p	Una peluquería de ejemplo con su agenda funcionando. Pide una cita como si fueras un cliente y luego mira cómo le llega al dueño, sin contraseña.
+rv_cli	Pedir una cita
+rv_pan	Ver el panel del dueño
+rv_mas	Precio y cómo funciona
+rv_t1	Lo que ve tu cliente
+rv_t2	Lo que ves tú
+rv_nota	Peluquería inventada: lo que hagas se borra solo en media hora.

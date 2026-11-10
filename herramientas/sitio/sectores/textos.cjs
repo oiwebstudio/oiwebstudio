@@ -18,6 +18,15 @@ const UI = {
   sx_g_dormir: "Alojamiento",
   sx_g_despachos: "Despachos y clases",
   at_muestras: "Muestras",
+  // 10/11 (Oier: «lo de las reservas ponlo más a mano… lo de la peluquería ponlo arriba y el panel sin contraseña»): bloque #reservas-demo de la portada
+  rv_h: "Reservas sin comisiones: pruébalas",
+  rv_p: "Una peluquería inventada con su agenda funcionando. Pide una cita como si fueras un cliente y luego mira cómo le llega al dueño, sin contraseña.",
+  rv_cli: "Pedir una cita",
+  rv_pan: "Ver el panel del dueño",
+  rv_mas: "Precio y cómo funciona",
+  rv_t1: "Lo que ve tu cliente",
+  rv_t2: "Lo que ves tú",
+  rv_nota: "Peluquería inventada: lo que hagas se borra solo en media hora.",
 };
 function nuevos() { return JSON.parse(fs.readFileSync(path.join(__dirname, "nuevos.json"), "utf8")); }
 function textosES() {
