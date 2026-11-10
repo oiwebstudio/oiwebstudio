@@ -633,3 +633,6 @@ a,button,[role="button"],input,select,textarea,summary,label{-webkit-tap-highlig
 .legal ul{margin:10px 0 0 20px}
 .legal a{color:var(--azul)}
 .curso p i{font:italic 400 1em Karla,sans-serif;opacity:.75;margin-right:4px}
+
+/* solo dos fotos de platos (10/11: fuera parrillada y verduras) */
+@media(min-width:900px){.platos--dos{grid-template-columns:repeat(2,1fr);max-width:620px}}
