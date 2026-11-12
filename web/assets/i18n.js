@@ -823,6 +823,7 @@ const EU = {
   fm_llamar: "Deitu",
   fm_email: "Emaila",
   fm_hablamos: "Hitz egingo dugu?",
+  fm_ia: "Hitz egin IArekin",
   pro_c_hecho: "Eginda ✓",
   caso2_h: "A.Berri, landetxea Getarian",
   caso2_p: "Erreserbak bere webgunetik, hiru hizkuntzatan.",

@@ -1,0 +1,2 @@
+fm_ia	Hitz egin IArekin
+fm_ia_aria	Txata adimen artifizialarekin ireki

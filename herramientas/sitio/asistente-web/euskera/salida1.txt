@@ -1,0 +1,2 @@
+fm_ia	IAri egindako galdera
+fm_ia_aria	Txata adimen artifizialarekin ireki

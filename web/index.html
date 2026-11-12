@@ -831,7 +831,7 @@
 <div class="footer__mark" aria-hidden="true">OI STUDIO</div>
 </footer>
 
-<script src="assets/i18n.js?v=50"></script>
+<script src="assets/i18n.js?v=51"></script>
 <script src="assets/main.js?v=21"></script>
 <script src="assets/prueba.js?v=4"></script>
 <script src="assets/interactivos.js?v=1" defer></script>
@@ -1079,15 +1079,20 @@
 .fmenu__item{position:absolute;right:5px;bottom:5px;height:50px;display:flex;align-items:center;gap:10px;padding:0 8px 0 18px;border-radius:999px;text-decoration:none;white-space:nowrap;font-size:14.5px;font-weight:600;letter-spacing:-.005em;box-shadow:0 10px 24px -12px rgba(9,10,15,.55),0 2px 6px rgba(9,10,15,.12);opacity:0;pointer-events:none;transform-origin:right center;transform:translateY(calc(var(--y) + 14px)) scale(.9);transition:transform .2s var(--ease),opacity .14s ease}
 .fmenu__ic{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.18);flex:none}
 .fmenu__ic svg{width:19px;height:19px}
-.fmenu__item[data-i="1"]{--y:-66px;background:#25d366;color:#083d2b}
+/* 12/11 (Oier: «ponlo»): el chat con IA va el primero, pegado al botón; los demás suben un puesto */
+button.fmenu__item{border:none;font:inherit;font-size:14.5px;font-weight:600;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.fmenu__item[data-i="0"]{--y:-66px;background:#fbf9f4;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink),0 10px 24px -12px rgba(9,10,15,.55)}
+.fmenu__item[data-i="0"] .fmenu__ic{background:var(--ink);color:#fbf9f4}
+.fmenu__item[data-i="1"]{--y:-126px;background:#25d366;color:#083d2b}
 .fmenu__item[data-i="1"] .fmenu__ic{background:rgba(255,255,255,.4)}
-.fmenu__item[data-i="2"]{--y:-126px;background:var(--ink);color:#f6f1e7}
-.fmenu__item[data-i="3"]{--y:-186px;background:#b56c28;color:#fff}
-.fmenu__item[data-i="4"]{--y:-246px;background:linear-gradient(135deg,#f58529,#dd2a7b 55%,#8134af);color:#fff}
+.fmenu__item[data-i="2"]{--y:-186px;background:var(--ink);color:#f6f1e7}
+.fmenu__item[data-i="3"]{--y:-246px;background:#b56c28;color:#fff}
+.fmenu__item[data-i="4"]{--y:-306px;background:linear-gradient(135deg,#f58529,#dd2a7b 55%,#8134af);color:#fff}
 .fmenu.is-open .fmenu__item{opacity:1;pointer-events:auto;transform:translateY(var(--y));transition:transform .34s var(--ease),opacity .2s ease}
-.fmenu.is-open .fmenu__item[data-i="2"]{transition-delay:.04s}
-.fmenu.is-open .fmenu__item[data-i="3"]{transition-delay:.08s}
-.fmenu.is-open .fmenu__item[data-i="4"]{transition-delay:.12s}
+.fmenu.is-open .fmenu__item[data-i="1"]{transition-delay:.04s}
+.fmenu.is-open .fmenu__item[data-i="2"]{transition-delay:.08s}
+.fmenu.is-open .fmenu__item[data-i="3"]{transition-delay:.12s}
+.fmenu.is-open .fmenu__item[data-i="4"]{transition-delay:.16s}
 @media (hover:hover) and (pointer:fine){.fmenu.is-open .fmenu__item:hover{transform:translateY(var(--y)) translateX(-4px);transition-delay:0s}}
 .fmenu.is-open .fmenu__item:active{transform:translateY(var(--y)) scale(.97);transition-duration:.12s;transition-delay:0s}
 .fmenu__item:focus-visible{outline:3px solid var(--terra);outline-offset:3px}
@@ -1104,6 +1109,9 @@
 </style>
 <div class="fmenu" id="fmenu">
 <span class="fmenu__hint" aria-hidden="true" data-t="fm_hablamos">¿Hablamos?</span>
+<button class="fmenu__item fmenu__item--ia" data-i="0" type="button" aria-label="Abrir el chat con inteligencia artificial">
+<span class="fmenu__lbl" data-t="fm_ia">Habla con la IA</span><span class="fmenu__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8.5 10.5h.01M12 10.5h.01M15.5 10.5h.01" stroke-width="2.6"/></svg></span>
+</button>
 <a class="fmenu__item fmenu__item--wa" data-i="1" href="https://wa.me/34611497409?text=Hola%2C%20vengo%20de%20tu%20web%20y%20quiero%20informaci%C3%B3n%20para%20la%20web%20de%20mi%20negocio." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
 <span class="fmenu__lbl">WhatsApp</span><span class="fmenu__ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2.05 22l5.27-1.38c1.45.79 3.08 1.21 4.72 1.21 5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.05-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29z"/></svg></span>
 </a>
@@ -1138,6 +1146,14 @@
     var open = menu.classList.toggle('is-open');
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     toggle.setAttribute('aria-label', open ? 'Cerrar menú de contacto' : 'Abrir menú de contacto');
+  });
+  /* Chat con IA (proyectos/asistente-ia): cierra el menú y abre el chat; si aún no ha cargado, se abre al cargar */
+  var ia = menu.querySelector('.fmenu__item--ia');
+  if (ia) ia.addEventListener('click', function(){
+    menu.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded','false');
+    toggle.setAttribute('aria-label','Abrir menú de contacto');
+    if (window.OIAsistente) window.OIAsistente.abrir();
   });
   document.addEventListener('click', function(e){
     if (menu.classList.contains('is-open') && !menu.contains(e.target)) {
@@ -1197,5 +1213,6 @@
 })();
 </script>
 <script src="/assets/analitica.js?v=1" defer></script>
+<script src="/assets/js/oi-asistente.js?v=1" data-api="https://oi-asistente.oi-studio-web.workers.dev" data-negocio="oiwebstudio" data-boton="no" defer></script>
 </body>
 </html>
