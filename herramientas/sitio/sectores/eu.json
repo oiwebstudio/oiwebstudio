@@ -11,10 +11,6 @@
  "sx_instalador_a": "Matxura baten berri eman ukitu batekin",
  "sx_instalador_c": "WhatsApp bidezko berrikuspenak eta buletinak",
  "sx_c_casarural": "Landetxea",
- "sx_k_casarural": "Txindokiren oinean dagoen landetxea",
- "sx_casarural_a": "Gau libreak, egutegian",
- "sx_casarural_b": "Zuzeneko erreserba, komisiorik gabe",
- "sx_casarural_c": "Zer egin gertu",
  "sx_c_carniceria": "Harategia",
  "sx_carniceria_b": "Aukeratzen duzun orduan jasotzea",
  "sx_carniceria_c": "Irekia edo itxia, orduaren arabera",
@@ -138,5 +134,9 @@
  "sx_k_gimnasio": "Gimnasioa Tolosan",
  "sx_gimnasio_a": "Erreserbatu zure lehen klasea deitu gabe",
  "sx_gimnasio_b": "Asteko ordutegia, leku libreekin",
- "sx_gimnasio_c": "Kuota, entrenatzen duzun egunen arabera"
+ "sx_gimnasio_c": "Kuota, entrenatzen duzun egunen arabera",
+ "sx_k_casarural": "Landetxea Altzon",
+ "sx_casarural_a": "Gau libreak, egutegian agerian",
+ "sx_casarural_b": "Erreserba zuzena WhatsApp bidez, komisiorik gabe",
+ "sx_casarural_c": "Zer egin inguruan, eguzkia egiten duen edo euria egiten duen"
 }

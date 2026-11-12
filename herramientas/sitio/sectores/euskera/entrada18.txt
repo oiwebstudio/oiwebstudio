@@ -1,0 +1,4 @@
+sx_k_casarural	Casa rural en Altzo
+sx_casarural_a	Las noches libres, a la vista en el calendario
+sx_casarural_b	Reserva directa por WhatsApp, sin comisiones
+sx_casarural_c	Qué hacer cerca, si hace sol o si llueve
