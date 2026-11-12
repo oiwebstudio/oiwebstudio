@@ -182,16 +182,16 @@
   ]
  },
  {
-  "id": "suspertu",
-  "nombre": "SUSPERTU",
-  "carpeta": "suspertu-gimnasioa",
+  "id": "tinko",
+  "nombre": "TINKO",
+  "carpeta": "tinko-gimnasioa",
   "slug": "gimnasio",
   "chip": "Gimnasio",
-  "k": "Entrenamiento, yoga y pilates",
+  "k": "Gimnasio en Tolosa",
   "lleva": [
    "Reserva tu primera clase sin llamar",
-   "El horario de la semana, con plazas libres",
-   "El precio de cada clase, según cuántos días entrenes"
+   "El horario de la semana con plazas libres",
+   "La cuota según los días que entrenas"
   ]
  },
  {

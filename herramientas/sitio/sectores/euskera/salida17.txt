@@ -1,0 +1,4 @@
+sx_k_gimnasio	Gimnasioa Tolosan
+sx_gimnasio_a	Erreserbatu zure lehen klasea deitu gabe
+sx_gimnasio_b	Asteko ordutegia, leku libreekin
+sx_gimnasio_c	Kuota, entrenatzen duzun egunen arabera
