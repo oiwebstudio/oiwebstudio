@@ -1,0 +1,77 @@
+{
+ "_que_es": "Fotos de la muestra TINKO (gimnasio inventado). Todas de Unsplash, licencia de Unsplash (https://unsplash.com/license): uso gratis, también comercial, sin pedir permiso. Recortadas y con marcas de equipamiento tapadas (ver _local/demos/tinko-generador/fotos.mjs).",
+ "fotos": [
+  {
+   "archivo": "sala",
+   "uso": "portada (escritorio)",
+   "autor": "Rick Barrett",
+   "enlace": "https://unsplash.com/photos/a-gym-filled-with-lots-of-machines-and-weights-1RNQ11ZODJM",
+   "id": "1RNQ11ZODJM",
+   "licencia": "Unsplash License"
+  },
+  {
+   "archivo": "kettlebell",
+   "uso": "bloque oscuro del final",
+   "autor": "Rick Barrett",
+   "enlace": "https://unsplash.com/photos/woman-in-black-tank-top-and-black-leggings-standing-on-white-floor-d6gfjQmCL7E",
+   "id": "d6gfjQmCL7E",
+   "licencia": "Unsplash License"
+  },
+  {
+   "archivo": "funtzionala",
+   "uso": "cuota «Sala de fuerza»",
+   "autor": "Moment PTP",
+   "enlace": "https://unsplash.com/photos/a-gym-filled-with-machines-and-equipment-Ca8FQMjEJ3g",
+   "id": "Ca8FQMjEJ3g",
+   "licencia": "Unsplash License"
+  },
+  {
+   "archivo": "taldea",
+   "uso": "cuota «Sala y clases»",
+   "autor": "bruce mars",
+   "enlace": "https://unsplash.com/photos/group-of-women-exercise-using-dumbbells-y0SMHt74yqc",
+   "id": "y0SMHt74yqc",
+   "licencia": "Unsplash License"
+  },
+  {
+   "archivo": "indarra",
+   "uso": "actividad «Fuerza»",
+   "autor": "ELIAS VICARIO",
+   "enlace": "https://unsplash.com/photos/woman-in-black-sports-bra-and-black-shorts-holding-gray-metal-bar-_S9Wu33Isfw",
+   "id": "_S9Wu33Isfw",
+   "licencia": "Unsplash License"
+  },
+  {
+   "archivo": "sokak",
+   "uso": "actividad «Funcional»",
+   "autor": "Vitaly Gariev",
+   "enlace": "https://unsplash.com/photos/man-and-woman-exercising-with-battle-ropes-GS72CPB_JgE",
+   "id": "GS72CPB_JgE",
+   "licencia": "Unsplash License"
+  },
+  {
+   "archivo": "zikloa",
+   "uso": "actividad «Ciclo»",
+   "autor": "Trust \"Tru\" Katsande",
+   "enlace": "https://unsplash.com/photos/women-taking-exercise-on-black-stationary-bikes-in-front-of-gray-concrete-wall-A_ftsTh53lM",
+   "id": "A_ftsTh53lM",
+   "licencia": "Unsplash License"
+  },
+  {
+   "archivo": "pilatesa",
+   "uso": "actividad «Pilates»",
+   "autor": "Ahmet Kurt",
+   "enlace": "https://unsplash.com/photos/a-room-filled-with-lots-of-different-types-of-equipment-2sXYx7sd-kg",
+   "id": "2sXYx7sd-kg",
+   "licencia": "Unsplash License"
+  },
+  {
+   "archivo": "eraztunak",
+   "uso": "portada (móvil)",
+   "autor": "Julien Dumas",
+   "enlace": "https://unsplash.com/photos/white-pendant-lamp-turned-on-during-daytime-uH8JDWuxFX8",
+   "id": "uH8JDWuxFX8",
+   "licencia": "Unsplash License"
+  }
+ ]
+}

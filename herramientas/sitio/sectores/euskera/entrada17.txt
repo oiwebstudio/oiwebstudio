@@ -1,0 +1,4 @@
+sx_k_gimnasio	Gimnasio en Tolosa
+sx_gimnasio_a	Reserva tu primera clase sin llamar
+sx_gimnasio_b	El horario de la semana con plazas libres
+sx_gimnasio_c	La cuota según los días que entrenas

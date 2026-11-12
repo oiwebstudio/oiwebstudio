@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Tinko, gimnasioa Tolosan (lagina)</title>
+<meta name="description" content="Gimnasioa Tolosan indar-gelarekin eta klaseak talde txikietan. Erreserbatu zure lehen klasea eta begiratu asteko plaza libreak.">
+<meta name="theme-color" content="#10131f">
+<meta property="og:title" content="Tinko, gimnasioa Tolosan (lagina)">
+<meta property="og:description" content="Gimnasioa Tolosan indar-gelarekin eta klaseak talde txikietan. Erreserbatu zure lehen klasea eta begiratu asteko plaza libreak.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="fotos/portada-d-1280.webp">
+<link rel="alternate" hreflang="es" href="es/">
+<!--
+  MUESTRA «TINKO» (OI Studio, 12/11/2026): gimnasio INVENTADO en Tolosa para la pieza «¿Qué negocio tienes?» de oiwebstudio.com.
+  Sustituye a SUSPERTU. «Tinko» = firme, sólido. Nombre, dirección, teléfonos, horario, clases, plazas, cuotas, primera clase gratis
+  y opiniones son de ejemplo (lo dice la nota del pie, una vez). noindex.
+  Calco de composición de XNRGY (xnrgyclub.com), referencia n.º 09 del tablero muestras-gimnasio-2026-11-11 que eligió Oier:
+  portada con la nave a sangre y en penumbra, dos palabras gigantes en grotesca fina en esquinas opuestas (arriba a la izquierda y
+  abajo a la derecha sobre un bloque azul noche que baja hasta la sección siguiente), el texto en mono a la derecha y dos botones
+  rectangulares abajo a la izquierda; fondo gris claro con la retícula de cuatro columnas en líneas finas; dos fichas grandes con foto,
+  título, línea en mono y dos botones; cuatro columnas con foto, línea azul, título, texto y enlace subrayado; bloque partido azul
+  noche / negro con el cartel en tabla; banda de palabras gigantes que corre con el scroll y tarjetas blancas con filete azul arriba;
+  cierre oscuro con foto pequeña en vertical, otra banda y dos botones; pie oscuro con enlaces grandes. Sin copiar su código, textos,
+  fotos, logo ni la burbuja de WhatsApp (su «que_no_copiar»).
+  Letras: n.º 14 Switzer 400/600 (titulares y nombre, como la Neue Helvetica de la referencia) y n.º 38 IBM Plex Mono 400/600
+  (texto, menú y botones, como la Space Mono de la referencia). Autoalojadas en fuentes/.
+  Fotos: Unsplash (licencia de Unsplash): Rick Barrett, Moment PTP, bruce mars, ELIAS VICARIO, Vitaly Gariev, Trust "Tru" Katsande, Ahmet Kurt, Julien Dumas. Detalle en fotos/creditos.json.
+  Movimiento: la portada entra con CSS desde el primer pintado; lo de abajo, con GSAP 3.13 + ScrollTrigger + SplitText (js/)
+  + anim-texto.js + pagina.js. Con «reducir movimiento» o sin JS, todo quieto y visible.
+-->
+<link rel="preload" href="fuentes/switzer-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fuentes/ibm-plex-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="estilo.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="saltar" href="#cuotas">Edukira joan</a>
+
+<header class="cab" data-cab>
+  <a class="logo" href="#contenido" aria-label="TINKO, Gimnasioa · Tolosa">TINKO</a>
+  <nav class="nav" aria-label="Menua"><ul><li><a href="#horario">Ordutegia</a></li><li><a href="#cuotas">Kuotak</a></li><li><a href="#actividades">Jarduerak</a></li><li><a href="#contacto">Kontaktua</a></li></ul></nav>
+  <span class="sep" aria-hidden="true"></span>
+  <a class="idioma cab-idioma" href="es/" lang="es" hreflang="es"><span aria-hidden="true">ES</span><span class="sr">Gaztelaniaz</span></a>
+  <a class="btn borde cab-tel" href="tel:+34943000000">943 00 00 00</a>
+  <a class="btn cab-primera" href="#horario">Lehen klasea</a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-movil" data-menu-btn><span class="rayas" aria-hidden="true"></span>Menua</button>
+</header>
+<div class="menu-movil" id="menu-movil" data-menu hidden>
+  <div class="menu-cab"><span class="logo">TINKO</span><button class="menu-btn" type="button" data-menu-cerrar>Itxi</button></div>
+  <nav aria-label="Menua"><ul><li><a href="#horario">Ordutegia</a></li><li><a href="#cuotas">Kuotak</a></li><li><a href="#actividades">Jarduerak</a></li><li><a href="#contacto">Kontaktua</a></li></ul></nav>
+  <p class="menu-pie"><a href="tel:+34943000000">943 00 00 00</a><a class="idioma " href="es/" lang="es" hreflang="es"><span aria-hidden="true">ES</span><span class="sr">Gaztelaniaz</span></a></p>
+</div>
+
+<main id="contenido">
+<div class="rejilla" aria-hidden="true"><span></span><span></span><span></span></div>
+
+<section class="portada" data-portada aria-labelledby="h1">
+  <picture class="portada-foto"><source media="(max-width: 699px)" type="image/avif" srcset="fotos/portada-m-600.avif 600w, fotos/portada-m-900.avif 900w, fotos/portada-m-1200.avif 1200w" sizes="100vw"><source media="(max-width: 699px)" type="image/webp" srcset="fotos/portada-m-600.webp 600w, fotos/portada-m-900.webp 900w, fotos/portada-m-1200.webp 1200w" sizes="100vw"><source type="image/avif" srcset="fotos/portada-d-1280.avif 1280w, fotos/portada-d-1920.avif 1920w, fotos/portada-d-2880.avif 2880w" sizes="200vw"><img src="fotos/portada-d-1920.webp" srcset="fotos/portada-d-1280.webp 1280w, fotos/portada-d-1920.webp 1920w, fotos/portada-d-2880.webp 2880w" sizes="200vw" width="2880" height="1800" alt="Indar-gela hutsa eta ilunpetan, habe beltzezko sabai baten azpian eserlekuak eta mankuernak dituena." fetchpriority="high" decoding="async"></picture>
+  <div class="bloque" aria-hidden="true"></div>
+  <h1 id="h1"><span class="w1">TINKO</span> <span class="w2">GIMNASIOA</span></h1>
+  <p class="portada-p">Gimnasioa Tolosan. Indar-gela 06:30etik zabalik, eta funtzional, ziklo eta pilates klaseak talde txikietan.</p>
+  <p class="portada-btns btns"><a class="btn" href="#horario">Klasea erreserbatu</a><a class="btn borde claro" href="#horario">Ikusi ordutegia</a></p>
+</section>
+
+<section class="sec cuotas" id="cuotas" aria-labelledby="h-cuo">
+  <h2 id="h-cuo" data-lineas>Kuota, entrenatzen duzun egunen arabera</h2>
+  <p class="entradilla">Matrikula doan da eta hilero alda dezakezu kuota.</p>
+  <fieldset class="dias-cuota"><legend>Asteko egunak</legend><div class="opciones"><label class="op"><input type="radio" name="dias" value="1" data-nombre="egun 1"><span>egun 1</span></label><label class="op"><input type="radio" name="dias" value="2" data-nombre="2 egun"><span>2 egun</span></label><label class="op"><input type="radio" name="dias" value="3" data-nombre="3 egun" checked><span>3 egun</span></label><label class="op"><input type="radio" name="dias" value="libre" data-nombre="Egunero"><span>Egunero</span></label></div></fieldset>
+  <div class="planes" data-escalonado>
+      <article class="plan" data-plan="sala" data-p1="25" data-p2="32" data-p3="38" data-plibre="44" data-nombre="Indar-gela">
+        <picture class="plan-foto"><source type="image/avif" srcset="fotos/c-sala-700.avif 700w, fotos/c-sala-1050.avif 1050w, fotos/c-sala-1400.avif 1400w" sizes="(min-width: 700px) 92vw, 180vw"><img src="fotos/c-sala-1050.webp" srcset="fotos/c-sala-700.webp 700w, fotos/c-sala-1050.webp 1050w, fotos/c-sala-1400.webp 1400w" sizes="(min-width: 700px) 92vw, 180vw" width="1400" height="1050" alt="Entrenamendu funtzionalerako eremua, diskoz betetako lera batekin." loading="lazy" decoding="async"></picture>
+        <h3>Indar-gela</h3>
+        <p class="meta">Barrak, diskoak eta makinak · <span class="precio">Hileko kuota: <b data-precio>38</b> €</span></p>
+        <p class="btns"><a class="btn" href="https://wa.me/34600000000" target="_blank" rel="noopener" data-wa-plan>Izena eman</a><a class="btn borde" href="#horario">Ikusi ordutegia</a></p>
+      </article>
+      <article class="plan" data-plan="clases" data-p1="35" data-p2="45" data-p3="55" data-plibre="65" data-nombre="Aretoa eta klaseak">
+        <picture class="plan-foto"><source type="image/avif" srcset="fotos/c-klaseak-700.avif 700w, fotos/c-klaseak-1050.avif 1050w, fotos/c-klaseak-1400.avif 1400w" sizes="(min-width: 700px) 92vw, 180vw"><img src="fotos/c-klaseak-1050.webp" srcset="fotos/c-klaseak-700.webp 700w, fotos/c-klaseak-1050.webp 1050w, fotos/c-klaseak-1400.webp 1400w" sizes="(min-width: 700px) 92vw, 180vw" width="1400" height="1050" alt="Taldeko klasea, adreiluzko gela batean mankuernak dituena." loading="lazy" decoding="async"></picture>
+        <h3>Aretoa eta klaseak</h3>
+        <p class="meta">Funtzionala, zikloa eta pilateak · <span class="precio">Hileko kuota: <b data-precio>55</b> €</span></p>
+        <p class="btns"><a class="btn" href="https://wa.me/34600000000" target="_blank" rel="noopener" data-wa-plan>Izena eman</a><a class="btn borde" href="#horario">Ikusi ordutegia</a></p>
+      </article>
+  </div>
+</section>
+
+<section class="sec actividades" id="actividades" aria-labelledby="h-act">
+  <h2 id="h-act" data-lineas>Indarra, funtzionala, zikloa eta pilateak</h2>
+  <div class="acts" data-escalonado>
+      <article class="act">
+        <picture class="act-foto"><source type="image/avif" srcset="fotos/j-indarra-480.avif 480w, fotos/j-indarra-720.avif 720w, fotos/j-indarra-960.avif 960w" sizes="(min-width: 700px) 46vw, 92vw"><img src="fotos/j-indarra-720.webp" srcset="fotos/j-indarra-480.webp 480w, fotos/j-indarra-720.webp 720w, fotos/j-indarra-960.webp 960w" sizes="(min-width: 700px) 46vw, 92vw" width="960" height="720" alt="Emakume bat barra bat altxatzen rack batean diskoekin." loading="lazy" decoding="async"></picture>
+        <p class="meta">Aretoa · monitorea arratsaldean</p>
+        <h3>Indarra</h3>
+        <p>Lehen asteetarako plan bat prestatu eta ariketa bakoitza erakutsiko dizugu.</p>
+        <a class="sub" href="#horario" data-ver-act="fuerza">Indar-klaseen ordutegia</a>
+      </article>
+      <article class="act">
+        <picture class="act-foto"><source type="image/avif" srcset="fotos/j-sokak-480.avif 480w, fotos/j-sokak-720.avif 720w, fotos/j-sokak-960.avif 960w" sizes="(min-width: 700px) 46vw, 92vw"><img src="fotos/j-sokak-720.webp" srcset="fotos/j-sokak-480.webp 480w, fotos/j-sokak-720.webp 720w, fotos/j-sokak-960.webp 960w" sizes="(min-width: 700px) 46vw, 92vw" width="960" height="720" alt="Bi pertsona bataila-sokekin entrenatzen." loading="lazy" decoding="async"></picture>
+        <p class="meta">Zortziko taldeak</p>
+        <h3>Funtzionala</h3>
+        <p>45 minutuko zirkuituak kettlebellekin, sokekin eta jauzi-kaxoiarekin.</p>
+        <a class="sub" href="#horario" data-ver-act="funcional">Funtzional-eskolen ordutegia</a>
+      </article>
+      <article class="act">
+        <picture class="act-foto"><source type="image/avif" srcset="fotos/j-zikloa-480.avif 480w, fotos/j-zikloa-720.avif 720w, fotos/j-zikloa-960.avif 960w" sizes="(min-width: 700px) 46vw, 92vw"><img src="fotos/j-zikloa-720.webp" srcset="fotos/j-zikloa-480.webp 480w, fotos/j-zikloa-720.webp 720w, fotos/j-zikloa-960.webp 960w" sizes="(min-width: 700px) 46vw, 92vw" width="960" height="720" alt="Bizikleta estatikoetan pedalei eragiten." loading="lazy" decoding="async"></picture>
+        <p class="meta">Hamabi bizikleta</p>
+        <h3>Zikloa</h3>
+        <p>45 minutuko saioak musikarekin. Bakoitzak bere erritmoan pedalei eragiten die.</p>
+        <a class="sub" href="#horario" data-ver-act="ciclo">Zikloko eskolen ordutegia</a>
+      </article>
+      <article class="act">
+        <picture class="act-foto"><source type="image/avif" srcset="fotos/j-pilatesa-480.avif 480w, fotos/j-pilatesa-720.avif 720w, fotos/j-pilatesa-960.avif 960w" sizes="(min-width: 700px) 46vw, 92vw"><img src="fotos/j-pilatesa-720.webp" srcset="fotos/j-pilatesa-480.webp 480w, fotos/j-pilatesa-720.webp 720w, fotos/j-pilatesa-960.webp 960w" sizes="(min-width: 700px) 46vw, 92vw" width="960" height="720" alt="Pilate-makina estudio zuri batean." loading="lazy" decoding="async"></picture>
+        <p class="meta">Pilates makinarekin · seiko taldeak</p>
+        <h3>Pilates</h3>
+        <p>Makinako pilateak bizkarrerako eta posturarako.</p>
+        <a class="sub" href="#horario" data-ver-act="pilates">Pilates klaseen ordutegia</a>
+      </article>
+  </div>
+</section>
+
+<section class="horario" id="horario" aria-labelledby="h-hor">
+  <div class="hor-izq">
+    <h2 id="h-hor" data-lineas>Asteko ordutegia</h2>
+    <p class="entradilla" data-enciende>Aukeratu eguna eta eskola. WhatsApp bidez idazten dizugu plaza baieztatzeko.</p>
+    <fieldset class="dias-hor"><legend class="sr">Asteko eguna</legend><div class="opciones"><label class="op"><input type="radio" name="dia" value="1"><span>Astelehena</span></label><label class="op"><input type="radio" name="dia" value="2"><span>Asteartea</span></label><label class="op"><input type="radio" name="dia" value="3"><span>Asteazkena</span></label><label class="op"><input type="radio" name="dia" value="4"><span>Osteguna</span></label><label class="op"><input type="radio" name="dia" value="5"><span>Ostirala</span></label><label class="op"><input type="radio" name="dia" value="6"><span>Larunbata</span></label></div></fieldset>
+    <fieldset class="filtro"><legend class="sr">Jarduera</legend><div class="opciones"><label class="op"><input type="radio" name="act" value="todas" checked><span>Guztiak</span></label><label class="op"><input type="radio" name="act" value="fuerza"><span>Indarra</span></label><label class="op"><input type="radio" name="act" value="funcional"><span>Funtzionala</span></label><label class="op"><input type="radio" name="act" value="ciclo"><span>Zikloa</span></label><label class="op"><input type="radio" name="act" value="pilates"><span>Pilates</span></label></div></fieldset>
+    <p class="btns"><a class="btn" href="https://wa.me/34600000000" target="_blank" rel="noopener" data-wa-clase>Erreserbatu WhatsApp bidez</a><a class="enlace" href="https://www.openstreetmap.org/#map=16/43.1366/-2.0786" target="_blank" rel="noopener">Nola iritsi</a></p>
+  </div>
+  <div class="hor-der">
+    <div class="cartel" data-panel>
+      <div class="cartel-cab"><span class="logo">TINKO</span><span class="cartel-fecha">Asteko ordutegia</span></div>
+      <p class="cartel-sobre" data-sobre aria-live="polite"></p>
+      <p class="cartel-dia" data-dia-nombre>Astelehena</p>
+      <div class="tabla">
+        <p class="tabla-cab" aria-hidden="true"><span>Ordua · Klasea</span><span>Plazak</span></p>
+        <ul class="filas" data-filas aria-label="Asteko ordutegia"></ul>
+        <p class="vacio" data-vacio hidden>Egun horretan ez dago jarduera honetako eskolarik.</p>
+        <p class="vacio" data-aviso hidden>Igandean itxita dago. Hau asteleheneko ordutegia da.</p>
+      </div>
+      <div class="cartel-pie"><p>TINKO · Larramendi kalea 12<br>Tolosa</p><a class="pildora" href="https://wa.me/34600000000" target="_blank" rel="noopener" data-pildora>Aukeratu klase bat</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="opiniones" id="opiniones" aria-labelledby="h-op">
+  <h2 id="h-op" class="banda"><span class="sr">Bazkideen iritziak</span><span class="pista" data-pista="30" aria-hidden="true"><span>Bazkideen iritziak</span><span class="punto" aria-hidden="true"></span><span>Bazkideen iritziak</span><span class="punto" aria-hidden="true"></span><span>Bazkideen iritziak</span><span class="punto" aria-hidden="true"></span><span>Bazkideen iritziak</span><span class="punto" aria-hidden="true"></span><span>Bazkideen iritziak</span><span class="punto" aria-hidden="true"></span></span></h2>
+  <div class="opis" data-escalonado>
+      <figure class="opi"><span class="comillas" aria-hidden="true">&ldquo;</span><blockquote><p>Ziklo bat probatzera etorri naiz eta geratu egin naiz. Goizeko zazpietan beti dago lekua.</p></blockquote><figcaption>Irati, Ibarra</figcaption></figure>
+      <figure class="opi"><span class="comillas" aria-hidden="true">&ldquo;</span><blockquote><p>Pilatesetan sei gara, asko jota, eta monitoreak bakoitza zuzentzen du.</p></blockquote><figcaption>Josu, Tolosa</figcaption></figure>
+      <figure class="opi"><span class="comillas" aria-hidden="true">&ldquo;</span><blockquote><p>Aurreko gaua mugikorretik erreserbatzen dut eta klasera zuzenean iristen naiz.</p></blockquote><figcaption>Maite, Alegia</figcaption></figure>
+  </div>
+</section>
+
+<section class="cierre" aria-labelledby="h-cta">
+  <picture class="cierre-foto"><source type="image/avif" srcset="fotos/kettlebell-300.avif 300w, fotos/kettlebell-600.avif 600w" sizes="200px"><img src="fotos/kettlebell-300.webp" srcset="fotos/kettlebell-300.webp 300w, fotos/kettlebell-600.webp 600w" sizes="200px" width="600" height="840" alt="Emakumea bi kettlebellekin argi bertikalak dituen gela batean." loading="lazy" decoding="async"></picture>
+  <h2 id="h-cta" class="banda clara"><span class="sr">Probatu klase bat</span><span class="pista" data-pista="30" aria-hidden="true"><span>Probatu klase bat</span><span class="punto" aria-hidden="true"></span><span>Probatu klase bat</span><span class="punto" aria-hidden="true"></span><span>Probatu klase bat</span><span class="punto" aria-hidden="true"></span><span>Probatu klase bat</span><span class="punto" aria-hidden="true"></span><span>Probatu klase bat</span><span class="punto" aria-hidden="true"></span></span></h2>
+  <p class="entradilla">Lehen klasea doakoa da. Aukeratu eguna eta plaza gordeko dizugu.</p>
+  <p class="btns centro"><a class="btn" href="#horario">Klasea erreserbatu</a><a class="btn borde claro" href="tel:+34943000000">Deitu 943 00 00 00</a></p>
+</section>
+</main>
+
+<footer class="pie" id="contacto">
+  <div class="pie-rejilla">
+    <div class="pie-datos" data-panel>
+      <p class="logo">TINKO</p>
+      <p>Zalantzarik bai? Idatzi edo deitu, egunean bertan erantzungo dizugu.</p>
+      <p>Larramendi kalea 12, Tolosa<br>Astelehenetik ostiralera, 06:30etik 22:00etara<br>Larunbatetan, 09:00etatik 14:00etara</p>
+      <p class="estado" data-estado></p>
+      <p class="contacto"><a href="tel:+34943000000">943 00 00 00</a><br><a href="https://wa.me/34600000000" target="_blank" rel="noopener">WhatsApp 600 00 00 00</a></p>
+    </div>
+    <ul class="pie-nav"><li><a href="#horario">Ordutegia</a></li><li><a href="#cuotas">Kuotak</a></li><li><a href="#actividades">Jarduerak</a></li></ul>
+    <ul class="pie-nav"><li><a href="#opiniones">Iritziak</a></li><li><a href="https://www.openstreetmap.org/#map=16/43.1366/-2.0786" target="_blank" rel="noopener">Nola iritsi</a></li><li><a class="idioma pie-idioma-grande" href="es/" lang="es" hreflang="es"><span aria-hidden="true">Gaztelaniaz</span><span class="sr">Gaztelaniaz</span></a></li></ul>
+  </div>
+  <div class="pie-legal">
+    <p class="nota-datos">Adibide datuak: Tinko asmatutako gimnasioa da. Izena, helbidea, telefonoak, ordutegia, klaseak, plazak, kuotak, lehen klasea doan eta iritziak asmatuak dira.</p>
+    <p>Unsplashen argazkiak: Rick Barrett, Moment PTP, bruce mars, ELIAS VICARIO, Vitaly Gariev, Trust &quot;Tru&quot; Katsande, Ahmet Kurt, Julien Dumas. <a href="fotos/creditos.json">creditos.json</a></p>
+    
+  </div>
+</footer>
+
+<a class="btn flota" href="#horario" data-flota tabindex="-1" aria-hidden="true">Lehen klasea</a>
+
+<script type="application/json" id="textos">{"lang":"eu","horario":{"1":[["07:00","funcional"],["09:30","pilates"],["13:15","ciclo"],["18:00","fuerza"],["19:00","funcional"],["20:00","pilates"]],"2":[["07:00","ciclo"],["09:30","pilates"],["18:00","funcional"],["19:00","ciclo"],["20:00","fuerza"]],"3":[["07:00","funcional"],["09:30","pilates"],["13:15","ciclo"],["18:00","fuerza"],["19:00","funcional"],["20:00","pilates"]],"4":[["07:00","ciclo"],["09:30","pilates"],["18:00","funcional"],["19:00","ciclo"],["20:00","fuerza"]],"5":[["07:00","funcional"],["09:30","pilates"],["18:00","ciclo"],["19:00","funcional"]],"6":[["10:00","funcional"],["11:00","pilates"],["12:00","ciclo"]]},"abre":{"lv":["06:30","22:00"],"s":["09:00","14:00"]},"cap":{"fuerza":6,"funcional":8,"ciclo":12,"pilates":6},"act":{"fuerza":"Indarra","funcional":"Funtzionala","ciclo":"Zikloa","pilates":"Pilates"},"dias":["Astelehena","Asteartea","Asteazkena","Osteguna","Ostirala","Larunbata"],"hor_hoy":"Gaur","hor_manana":"Bihar","hor_cerrado":"Igandean itxita dago. Hau asteleheneko ordutegia da.","hor_libres":"3 plaza libre geratzen dira","hor_libre1":"Plaza libre 1 geratzen da","hor_completa":"Plaza librerik gabe","hor_pasada":"Klasea hasi da","hor_ninguna":"Egun horretan ez dago jarduera honetako eskolarik.","hor_elige":"Aukeratu klase bat","hor_reservar":"Erreserbatu","wa_hola":"Kaixo, nire lehen eskola erreserbatu nahi dut Tinkoan.","wa_clase":"Klasea","wa_dia":"Eguna","wa_cuota":"Kaixo, Tinkorekin apuntatu nahi dut.","wa_plan":"Kuota","wa_dias":"Asteko egunak","est_ab":"Orain zabalik, 22:00ak arte","est_ce_hoy":"Orain itxita. Gaur 06:30ean irekiko dugu.","est_ce_manana":"Orain itxita. Bihar 06:30ean irekiko dugu.","est_ce_lunes":"Orain itxita. Astelehenean irekiko dugu, 06:30ean","menu":"Menua","cerrar":"Itxi"}</script>
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/SplitText.min.js"></script>
+<script src="js/anim-texto.js"></script>
+<script src="js/pagina.js"></script>
+<!-- oi-firma · lo pone herramientas/sitio/firma-muestras/firma.cjs (no editar a mano) -->
+<style id="oi-firma-css">
+.oi-firma{display:block;margin:0;padding:0;background:#121110;color:#ece7de;text-align:left;font:400 15px/1.5 "Switzer",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased;position:relative;z-index:1;clear:both;border-top:1px solid rgba(236,231,222,.08)}
+.oi-firma *{box-sizing:border-box}
+.oi-firma .oi-firma__in{max-width:1180px;margin:0 auto;padding:48px 32px 40px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:36px 56px;align-items:end}
+.oi-firma .oi-firma__marca{margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.oi-firma .oi-firma__por{margin:0;font-weight:500;font-size:11px;line-height:1;letter-spacing:.2em;text-transform:uppercase;color:#8f877b}
+.oi-firma a.oi-firma__logo{display:inline-flex;align-items:center;min-height:44px;align-self:flex-start;margin:0;padding:0;color:#fff;text-decoration:none;font-weight:700;font-size:clamp(30px,3.4vw,44px);line-height:.95;letter-spacing:.04em;text-transform:uppercase;-webkit-tap-highlight-color:transparent;transition:opacity .2s ease}
+.oi-firma .oi-firma__lema{margin:0;font-weight:400;font-size:15px;line-height:1.4;color:#cfc8bc;text-transform:none;letter-spacing:0}
+.oi-firma .oi-firma__datos{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(4,auto);gap:0 36px}
+.oi-firma .oi-firma__datos li{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+.oi-firma .oi-firma__datos li::before,.oi-firma .oi-firma__datos li::marker{content:none}
+.oi-firma .oi-firma__k{font-weight:500;font-size:11px;line-height:1;letter-spacing:.18em;text-transform:uppercase;color:#8f877b}
+.oi-firma .oi-firma__datos a{display:inline-flex;align-items:center;min-height:32px;color:#ece7de;text-decoration:none;font-weight:500;font-size:15px;line-height:1.3;text-transform:none;letter-spacing:0;border-bottom:1px solid rgba(236,231,222,.22);transition:border-color .2s ease,color .2s ease;-webkit-tap-highlight-color:transparent}
+.oi-firma .oi-firma__pie{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px;margin:0;padding:22px 0 0;border-top:1px solid rgba(236,231,222,.12)}
+.oi-firma .oi-firma__nota{margin:0;font-weight:400;font-size:13.5px;line-height:1.4;color:#8f877b;text-transform:none;letter-spacing:0}
+.oi-firma a.oi-firma__cta{display:inline-flex;align-items:center;gap:10px;min-height:46px;margin:0;padding:0 22px;border-radius:999px;background:#ece7de;color:#121110;text-decoration:none;font-weight:600;font-size:14.5px;line-height:1;letter-spacing:0;text-transform:none;transition:background-color .2s ease,transform .15s ease;-webkit-tap-highlight-color:transparent}
+.oi-firma a.oi-firma__cta svg{width:16px;height:16px;flex:none}
+@media (hover:hover) and (pointer:fine){.oi-firma a.oi-firma__logo:hover{opacity:.82}.oi-firma .oi-firma__datos a:hover{border-color:#ece7de;color:#fff}.oi-firma a.oi-firma__cta:hover{background:#fff}}
+.oi-firma a.oi-firma__cta:active{transform:scale(.97)}
+.oi-firma a:focus{outline:none}
+.oi-firma a:focus-visible{outline:2px solid #ece7de;outline-offset:4px}
+.oi-firma .oi-firma__sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.oi-firma.oi-firma--mv .oi-firma__in>*{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .9s cubic-bezier(.2,.75,.25,1)}
+.oi-firma.oi-firma--mv .oi-firma__in>*:nth-child(2){transition-delay:.08s}
+.oi-firma.oi-firma--mv .oi-firma__in>*:nth-child(3){transition-delay:.16s}
+.oi-firma.oi-firma--in .oi-firma__in>*{opacity:1;transform:none}
+@media (max-width:980px){.oi-firma .oi-firma__in{grid-template-columns:1fr;align-items:start;gap:32px}.oi-firma .oi-firma__datos{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 24px}}
+@media (max-width:600px){.oi-firma .oi-firma__in{padding:40px 20px 32px}.oi-firma .oi-firma__datos{grid-template-columns:1fr 1fr;gap:18px 20px}.oi-firma .oi-firma__datos li:nth-child(n+3){grid-column:1/-1}.oi-firma .oi-firma__datos a{align-self:flex-start}.oi-firma .oi-firma__datos a{min-height:44px;font-size:16px}.oi-firma a.oi-firma__cta{width:100%;justify-content:center;min-height:50px}}
+@media (prefers-reduced-motion:reduce){.oi-firma.oi-firma--mv .oi-firma__in>*{opacity:1;transform:none;transition:none}.oi-firma a{transition:none}}
+</style>
+<aside class="oi-firma" id="oi-firma" aria-label="Nork egin du webgune hau">
+<div class="oi-firma__in">
+<div class="oi-firma__marca">
+<p class="oi-firma__por">Diseinatzailea:</p>
+<a class="oi-firma__logo" href="https://oiwebstudio.com/?utm_source=muestra-tinko&amp;utm_medium=pie" target="_blank" rel="noopener">OI STUDIO<span class="oi-firma__sr"> (beste erlaitz batean irekitzen da)</span></a>
+<p class="oi-firma__lema">Gipuzkoako negozioetarako web diseinua · Oier Irastorza</p>
+</div>
+<ul class="oi-firma__datos">
+<li><span class="oi-firma__k">Telefonoa</span><a href="tel:+34611497409">611 49 74 09</a></li>
+<li><span class="oi-firma__k">WhatsApp</span><a href="https://wa.me/34611497409?text=Kaixo%2C%20Oier.%20Zure%20lagin%20bat%20ikusi%20dut%20eta%20horrelako%20webgune%20bat%20interesatzen%20zait." target="_blank" rel="noopener">611 49 74 09<span class="oi-firma__sr"> (beste erlaitz batean irekitzen da)</span></a></li>
+<li><span class="oi-firma__k">Posta</span><a href="mailto:contactoiwebstudio@gmail.com">contactoiwebstudio@gmail.com</a></li>
+<li><span class="oi-firma__k">Web</span><a href="https://oiwebstudio.com/?utm_source=muestra-tinko&amp;utm_medium=pie" target="_blank" rel="noopener">oiwebstudio.com<span class="oi-firma__sr"> (beste erlaitz batean irekitzen da)</span></a></li>
+</ul>
+<div class="oi-firma__pie">
+<p class="oi-firma__nota">Webgune hau OI Studiok egindako adibide bat da.</p>
+<a class="oi-firma__cta" href="https://wa.me/34611497409?text=Kaixo%2C%20Oier.%20Zure%20lagin%20bat%20ikusi%20dut%20eta%20horrelako%20webgune%20bat%20interesatzen%20zait." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>Horrelako webgune bat nahi dut<span class="oi-firma__sr"> (beste erlaitz batean irekitzen da)</span></a>
+</div>
+</div>
+</aside>
+<script>(function(){var f=document.getElementById("oi-firma");if(!f||!("IntersectionObserver" in window)||matchMedia("(prefers-reduced-motion: reduce)").matches)return;f.classList.add("oi-firma--mv");var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){f.classList.add("oi-firma--in");o.disconnect();}},{rootMargin:"0px 0px -8% 0px"});o.observe(f);})();</script>
+<!-- /oi-firma -->
+</body>
+</html>

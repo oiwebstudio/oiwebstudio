@@ -74,8 +74,6 @@
  "sx_floristeria_b": "Jaso edo etxera eraman",
  "sx_floristeria_c": "Ezkontzak eta ekitaldiak, hitzordua WhatsApp bidez",
  "sx_c_gimnasio": "Gimnasioa",
- "sx_k_gimnasio": "Entrenamendua, yoga eta pilates",
- "sx_gimnasio_b": "Asteko ordutegia, leku libreekin",
  "sx_c_joyeria": "Bitxiak",
  "sx_k_joyeria": "Bitxigintza eta tailerra Tolosan",
  "sx_joyeria_a": "Piezak beren prezioarekin, erreserbatzeko",
@@ -83,10 +81,8 @@
  "sx_k_veterinaria": "Albaitaritza klinika Tolosan",
  "sx_veterinaria_a": "Hitzordua deitu gabe, mezua idatzita",
  "sx_veterinaria_b": "Larrialdiak ukitu batera",
- "sx_gimnasio_a": "Erreserbatu zure lehen klasea deitu gabe",
  "sx_joyeria_b": "Zure ezkontza-eraztuna, bere tailarekin eta grabatuarekin",
  "sx_joyeria_c": "Konponketak eta garbiketa, bere prezioarekin",
- "sx_gimnasio_c": "Klase bakoitzaren prezioa, zenbat egunetan entrenatzen duzun",
  "sx_veterinaria_c": "Hurrengo txertoaren data",
  "sx_g_todos": "Guztiak",
  "sx_g_comer": "Jan eta edan",
@@ -138,5 +134,9 @@
  "sx_k_taller": "Autoen tailerra Villabonan",
  "sx_taller_a": "Zer begiratzen dugun, zenbat denbora eta zenbat balio duen",
  "sx_taller_b": "Aurrekontua ezer ukitu aurretik",
- "sx_taller_c": "WhatsApp bidez abisatuko dizugu prest dagoenean"
+ "sx_taller_c": "WhatsApp bidez abisatuko dizugu prest dagoenean",
+ "sx_k_gimnasio": "Gimnasioa Tolosan",
+ "sx_gimnasio_a": "Erreserbatu zure lehen klasea deitu gabe",
+ "sx_gimnasio_b": "Asteko ordutegia, leku libreekin",
+ "sx_gimnasio_c": "Kuota, entrenatzen duzun egunen arabera"
 }
