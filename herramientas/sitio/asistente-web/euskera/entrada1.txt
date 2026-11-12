@@ -1,0 +1,2 @@
+fm_ia	Pregunta a la IA
+fm_ia_aria	Abrir el chat con inteligencia artificial

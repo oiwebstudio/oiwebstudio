@@ -1,0 +1,2 @@
+fm_ia	IA duen txata
+fm_ia_aria	Txata adimen artifizialarekin ireki

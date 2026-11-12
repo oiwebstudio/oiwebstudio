@@ -1,0 +1,2 @@
+fm_ia	Chat con IA
+fm_ia_aria	Abrir el chat con inteligencia artificial
