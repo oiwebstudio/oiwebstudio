@@ -1,0 +1,141 @@
+{
+ "muestra": "EZKI landetxea (negocio inventado, OI Studio, 12/11/2026)",
+ "nota": "Fotos de banco de ejemplo: no son de ninguna casa rural real ni de Altzo.",
+ "fotos": [
+  {
+   "archivo": "portada",
+   "uso": "portada",
+   "autor": "Arno Senoner",
+   "enlace": "https://unsplash.com/photos/white-concrete-house-surrounded-with-trees-4ubvEVChFP4",
+   "original": "6000×4000",
+   "licencia": "Licencia de Unsplash (https://unsplash.com/license)",
+   "tratamiento": "recortada, menos saturación y tono cálido"
+  },
+  {
+   "archivo": "larrea",
+   "uso": "La casa (fondo)",
+   "autor": "Polina Kocheva",
+   "enlace": "https://unsplash.com/photos/green-grass-field-with-brown-and-white-houses-on-top-of-mountain-during-daytime-AQpJo7OwC34",
+   "original": "4496×3000",
+   "licencia": "Licencia de Unsplash (https://unsplash.com/license)",
+   "tratamiento": "recortada, menos saturación y tono cálido"
+  },
+  {
+   "archivo": "ganbara",
+   "uso": "Habitación GANBARA",
+   "autor": "shche_ team",
+   "enlace": "https://unsplash.com/photos/brown-wooden-door-near-brown-woven-armchair-PFi1uWHh2dQ",
+   "original": "4000×6000",
+   "licencia": "Licencia de Unsplash (https://unsplash.com/license)",
+   "tratamiento": "recortada, menos saturación y tono cálido"
+  },
+  {
+   "archivo": "pagoa",
+   "uso": "Habitación PAGOA",
+   "autor": "Simona Sergi",
+   "enlace": "https://unsplash.com/photos/a-cozy-bedroom-with-a-wooden-headboard-and-patterned-bedding-_dbGjx7OkDQ",
+   "original": "4000×6000",
+   "licencia": "Licencia de Unsplash (https://unsplash.com/license)",
+   "tratamiento": "recortada, menos saturación y tono cálido"
+  },
+  {
+   "archivo": "haritza",
+   "uso": "Habitación HARITZA",
+   "autor": "Alessandro Guarino",
+   "enlace": "https://unsplash.com/photos/view-of-a-rural-landscape-through-an-open-window-9mrdIYR5fDE",
+   "original": "4672×7008",
+   "licencia": "Licencia de Unsplash (https://unsplash.com/license)",
+   "tratamiento": "recortada, menos saturación y tono cálido"
+  },
+  {
+   "archivo": "mahaia",
+   "uso": "Noches libres (fondo)",
+   "autor": "Brooke Lark",
+   "enlace": "https://unsplash.com/photos/two-white-ceramic-plates-on-brown-wooden-table-JkTv__BqmaA",
+   "original": "5716×3811",
+   "licencia": "Licencia de Unsplash (https://unsplash.com/license)",
+   "tratamiento": "recortada, menos saturación y tono cálido"
+  },
+  {
+   "archivo": "egongela",
+   "uso": "Precios (fondo)",
+   "autor": "Max Harlynking",
+   "enlace": "https://unsplash.com/photos/a-living-room-with-a-couch-and-a-large-window-cgP8sEQJYPI",
+   "original": "5568×3712",
+   "licencia": "Licencia de Unsplash (https://unsplash.com/license)",
+   "tratamiento": "recortada, menos saturación y tono cálido"
+  },
+  {
+   "archivo": "bizikleta",
+   "uso": "Qué hacer cerca (fondo)",
+   "autor": "snap wander",
+   "enlace": "https://unsplash.com/photos/bicycle-and-wheelbarrow-near-blooming-rose-bush-by-building-C0T3t6Kh0VQ",
+   "original": "5337×3648",
+   "licencia": "Licencia de Unsplash (https://unsplash.com/license)",
+   "tratamiento": "recortada, menos saturación y tono cálido"
+  },
+  {
+   "archivo": "ilunabarra",
+   "uso": "Menú (fondo)",
+   "autor": "T",
+   "enlace": "https://unsplash.com/photos/several-houses-nestled-among-trees-at-dusk-E9VZSjQUIPc",
+   "original": "2976×1984",
+   "licencia": "Licencia de Unsplash (https://unsplash.com/license)",
+   "tratamiento": "recortada, menos saturación y tono cálido"
+  },
+  {
+   "archivo": "g-behiak",
+   "uso": "Fotos",
+   "autor": "Polina Kocheva",
+   "enlace": "https://unsplash.com/photos/herd-of-cow-on-green-grass-field-during-daytime-qISddZhkwWg",
+   "original": "4496×3000",
+   "licencia": "Licencia de Unsplash (https://unsplash.com/license)",
+   "tratamiento": "recortada, menos saturación y tono cálido"
+  },
+  {
+   "archivo": "g-leihoa",
+   "uso": "Fotos",
+   "autor": "Sofie D.",
+   "enlace": "https://unsplash.com/photos/a-rustic-window-with-teal-shutters-and-tiled-roof-90OZUtFknHo",
+   "original": "4000×6000",
+   "licencia": "Licencia de Unsplash (https://unsplash.com/license)",
+   "tratamiento": "recortada, menos saturación y tono cálido"
+  },
+  {
+   "archivo": "g-gosaria",
+   "uso": "Fotos",
+   "autor": "Brooke Lark",
+   "enlace": "https://unsplash.com/photos/slice-fruits-on-plate-on-near-glass-cups-IDTEXXXfS44",
+   "original": "5707×3805",
+   "licencia": "Licencia de Unsplash (https://unsplash.com/license)",
+   "tratamiento": "recortada, menos saturación y tono cálido"
+  },
+  {
+   "archivo": "g-bordak",
+   "uso": "Fotos",
+   "autor": "T",
+   "enlace": "https://unsplash.com/photos/old-farm-buildings-covered-in-ivy-and-rust-pafevtHbTZ0",
+   "original": "6774×4492",
+   "licencia": "Licencia de Unsplash (https://unsplash.com/license)",
+   "tratamiento": "recortada, menos saturación y tono cálido"
+  },
+  {
+   "archivo": "g-atea",
+   "uso": "Fotos",
+   "autor": "Marion Mesbah",
+   "enlace": "https://unsplash.com/photos/a-red-door-on-a-white-wall-with-steps-gyWIBOqVL8Q",
+   "original": "3648×2736",
+   "licencia": "Licencia de Unsplash (https://unsplash.com/license)",
+   "tratamiento": "recortada, menos saturación y tono cálido"
+  },
+  {
+   "archivo": "g-sua",
+   "uso": "Fotos",
+   "autor": "Clay Banks",
+   "enlace": "https://unsplash.com/photos/living-room-with-stone-fireplace-patterned-rug-red-door-GRxzOdEUKVg",
+   "original": "3400×2267",
+   "licencia": "Licencia de Unsplash (https://unsplash.com/license)",
+   "tratamiento": "recortada, menos saturación y tono cálido"
+  }
+ ]
+}

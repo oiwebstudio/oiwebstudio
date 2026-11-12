@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Ezki landetxea · Casa rural en Altzo, junto a Tolosa</title>
+<meta name="description" content="Casa rural con tres habitaciones en Altzo, junto a Tolosa. Mira las noches libres y reserva directamente por WhatsApp.">
+<meta name="theme-color" content="#4b4843">
+<meta property="og:title" content="Ezki landetxea · Casa rural en Altzo, junto a Tolosa">
+<meta property="og:description" content="Casa rural con tres habitaciones en Altzo, junto a Tolosa. Mira las noches libres y reserva directamente por WhatsApp.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="../fotos/portada-d-1280.webp">
+<link rel="alternate" hreflang="eu" href="../">
+<!--
+  MUESTRA «EZKI» (OI Studio, 12/11/2026): casa rural INVENTADA en Altzo (Tolosaldea) para la pieza «¿Qué negocio tienes?» de
+  oiwebstudio.com. «Ezki» = tilo. Nombre, dirección, teléfonos, habitaciones, precios, noches libres, horas de entrada y salida,
+  tiempos en coche, sitio de la casa en el mapa y textos son de ejemplo (lo dice la nota del pie, una vez). noindex. Sustituye a ZIDOR
+  (web/demos/muestras/zidor-landetxea/), que no se toca.
+  Letras: n.º 7 Melodrama 500 (títulos) y 700 (el nombre en el marco) y n.º 13 Satoshi 400/700 (texto), de nuestra biblioteca.
+  Fotos: Unsplash (licencia de Unsplash): Arno Senoner, Polina Kocheva, shche_ team, Simona Sergi, Alessandro Guarino, Brooke Lark, Max Harlynking, snap wander, T, Sofie D., Marion Mesbah, Clay Banks. Detalle en fotos/creditos.json.
+  Croquis: datos © colaboradores de OpenStreetMap (ODbL), dibujado con herramientas/diseno/croquis.mjs.
+  Movimiento: la portada entra con CSS desde el primer pintado; lo de abajo, con GSAP 3.13 + ScrollTrigger + SplitText (js/)
+  + anim-texto.js + pagina.js. Con «reducir movimiento» o sin JS, todo quieto y visible.
+-->
+<link rel="preload" href="../fuentes/melodrama-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fuentes/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../estilo.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="cab" data-cab>
+  <button class="cab-btn" type="button" aria-expanded="false" aria-controls="menu" data-menu-btn><svg viewBox="0 0 24 16" aria-hidden="true" focusable="false"><path d="M0 1h24M0 8h24M0 15h24" stroke="currentColor" stroke-width="1.8"/></svg><span><span class="sr">Abrir el menú: </span>Menú</span></button>
+  <div class="cab-der"><a class="cab-btn cab-idioma" href="../" lang="eu" hreflang="eu"><span aria-hidden="true">EU</span><span class="sr">Euskaraz</span></a><a class="cab-btn" href="#gauak">Reservar</a></div>
+</header>
+
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menú" data-menu hidden>
+  <div class="menu-foto"><picture><source media="(max-width: 799px)" type="image/avif" srcset="../fotos/ilunabarra-m-600.avif 600w, ../fotos/ilunabarra-m-900.avif 900w, ../fotos/ilunabarra-m-1200.avif 1200w" sizes="100vw" width="1200" height="1600"><source media="(max-width: 799px)" type="image/webp" srcset="../fotos/ilunabarra-m-600.webp 600w, ../fotos/ilunabarra-m-900.webp 900w, ../fotos/ilunabarra-m-1200.webp 1200w" sizes="100vw" width="1200" height="1600"><source type="image/avif" srcset="../fotos/ilunabarra-d-1280.avif 1280w, ../fotos/ilunabarra-d-1920.avif 1920w, ../fotos/ilunabarra-d-2880.avif 2880w" sizes="100vw"><img src="../fotos/ilunabarra-d-1920.webp" srcset="../fotos/ilunabarra-d-1280.webp 1280w, ../fotos/ilunabarra-d-1920.webp 1920w, ../fotos/ilunabarra-d-2880.webp 2880w" sizes="100vw" width="2880" height="1800" alt="" loading="lazy" decoding="async"></picture></div>
+  <div class="menu-cab">
+    <button class="cab-btn" type="button" data-menu-cerrar><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.8"/></svg><span>Cerrar</span></button>
+    <a class="cab-btn" href="#gauak" data-cierra>Reservar</a>
+  </div>
+  <nav class="menu-nav" aria-label="Menú">
+    <ul><li><a href="#etxea" data-cierra>La casa</a></li><li><a href="#logelak" data-cierra>Habitaciones</a></li><li><a href="#gauak" data-cierra>Noches libres</a></li><li><a href="#prezioak" data-cierra>Precios</a></li><li><a href="#inguruan" data-cierra>Qué hacer cerca</a></li><li><a href="#harremana" data-cierra>Contacto</a></li><li><a href="#argazkiak" data-cierra>Fotos</a></li></ul>
+    <p class="menu-idioma"><span class="actual" aria-current="true">ES<span class="sr"> Gaztelaniaz</span></span><a class="" href="../" lang="eu" hreflang="eu"><span aria-hidden="true">EU</span><span class="sr">Euskaraz</span></a></p>
+  </nav>
+</div>
+
+<main id="contenido">
+<section class="portada" data-portada aria-labelledby="h1">
+  <div class="portada-foto"><picture><source media="(max-width: 799px)" type="image/avif" srcset="../fotos/portada-m-600.avif 600w, ../fotos/portada-m-900.avif 900w, ../fotos/portada-m-1200.avif 1200w" sizes="100vw" width="1200" height="2594"><source media="(max-width: 799px)" type="image/webp" srcset="../fotos/portada-m-600.webp 600w, ../fotos/portada-m-900.webp 900w, ../fotos/portada-m-1200.webp 1200w" sizes="100vw" width="1200" height="2594"><source type="image/avif" srcset="../fotos/portada-d-1280.avif 1280w, ../fotos/portada-d-1920.avif 1920w, ../fotos/portada-d-2880.avif 2880w" sizes="100vw"><img src="../fotos/portada-d-1920.webp" srcset="../fotos/portada-d-1280.webp 1280w, ../fotos/portada-d-1920.webp 1920w, ../fotos/portada-d-2880.webp 2880w" sizes="100vw" width="2880" height="1800" alt="Casa blanca con contraventanas oscuras, un árbol delante y hortensias junto a la pared" fetchpriority="high" decoding="async"></picture></div>
+  <div class="marco marco-portada"><p class="marco-nombre"><span class="mn" aria-hidden="true"><span style="--i:0">E</span><span style="--i:1">Z</span><span style="--i:2">K</span><span style="--i:3">I</span></span><span class="mn" aria-hidden="true"><span style="--i:4">L</span><span style="--i:5">A</span><span style="--i:6">N</span><span style="--i:7">D</span><span style="--i:8">E</span><span style="--i:9">T</span><span style="--i:10">X</span><span style="--i:11">E</span><span style="--i:12">A</span></span><span class="sr">EZKI LANDETXEA</span></p><p class="marco-lugar">ALTZO, GIPUZKOA</p></div>
+  <h1 class="portada-h1" id="h1"><span>Casa rural en Altzo,</span> <span>junto a Tolosa</span></h1>
+  <a class="ver-mas" href="#etxea"><span>Ver más</span><svg viewBox="0 0 40 10" aria-hidden="true" focusable="false"><path d="M1 1l19 8 19-8" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></a>
+</section>
+
+<section class="lamina" id="etxea" aria-labelledby="h-etxea">
+  <div class="lamina-foto" data-fondo><picture><source media="(max-width: 799px)" type="image/avif" srcset="../fotos/larrea-m-600.avif 600w, ../fotos/larrea-m-900.avif 900w, ../fotos/larrea-m-1200.avif 1200w" sizes="100vw" width="1200" height="1500"><source media="(max-width: 799px)" type="image/webp" srcset="../fotos/larrea-m-600.webp 600w, ../fotos/larrea-m-900.webp 900w, ../fotos/larrea-m-1200.webp 1200w" sizes="100vw" width="1200" height="1500"><source type="image/avif" srcset="../fotos/larrea-d-1280.avif 1280w, ../fotos/larrea-d-1920.avif 1920w, ../fotos/larrea-d-2880.avif 2880w" sizes="100vw"><img src="../fotos/larrea-d-1920.webp" srcset="../fotos/larrea-d-1280.webp 1280w, ../fotos/larrea-d-1920.webp 1920w, ../fotos/larrea-d-2880.webp 2880w" sizes="100vw" width="2880" height="1800" alt="Ladera verde con niebla y vacas que comen hierba" loading="lazy" decoding="async"></picture></div>
+  <div class="panel" data-panel>
+    <h2 class="caja" id="h-etxea" data-lineas>La casa</h2>
+    <p class="panel-p" data-enciende>Un caserío con tres habitaciones, cocina para todos y un prado delante. Tolosa está abajo, a diez minutos en coche.</p>
+    <p><a class="btn" href="#gauak">Mira las noches libres</a></p>
+  </div>
+</section>
+
+<section class="lamina habs" id="logelak" aria-labelledby="h-logelak">
+  <div class="panel solido" data-panel>
+    <h2 class="caja" id="h-logelak" data-lineas>Habitaciones</h2>
+    <p class="panel-p">Tres habitaciones dobles, cada una con su baño. Si venís en grupo, se alquila la casa entera.</p>
+  </div>
+  <ul class="hab-lista" data-escalonado>
+      <li class="hab" data-hab-li>
+        <div class="hab-foto"><picture><source type="image/avif" srcset="../fotos/ganbara-600.avif 600w, ../fotos/ganbara-900.avif 900w, ../fotos/ganbara-1200.avif 1200w" sizes="(min-width: 800px) 34vw, 100vw"><img src="../fotos/ganbara-1200.webp" srcset="../fotos/ganbara-600.webp 600w, ../fotos/ganbara-900.webp 900w, ../fotos/ganbara-1200.webp 1200w" sizes="(min-width: 800px) 34vw, 100vw" width="1200" height="1500" alt="Habitación blanca con suelo de madera, un biombo de mimbre y una cama baja" loading="lazy" decoding="async"></picture></div>
+        <div class="hab-txt">
+          <h3 class="hab-nom" id="n-ganbara">GANBARA</h3>
+          <button class="hab-mas" type="button" aria-expanded="false" aria-controls="i-ganbara" data-hab-mas>Más</button>
+          <div class="hab-info" id="i-ganbara" role="region" aria-labelledby="n-ganbara" hidden>
+            <p>La más grande, con suelo de madera.</p><p>Cama de 160 y baño con ducha.</p>
+            <p class="hab-precio">Desde 85 € la noche para dos personas.</p>
+            <p><a class="btn" href="#gauak" data-elige-hab="ganbara">Mira las noches libres</a></p>
+          </div>
+        </div>
+      </li>
+      <li class="hab" data-hab-li>
+        <div class="hab-foto"><picture><source type="image/avif" srcset="../fotos/pagoa-600.avif 600w, ../fotos/pagoa-900.avif 900w, ../fotos/pagoa-1200.avif 1200w" sizes="(min-width: 800px) 34vw, 100vw"><img src="../fotos/pagoa-1200.webp" srcset="../fotos/pagoa-600.webp 600w, ../fotos/pagoa-900.webp 900w, ../fotos/pagoa-1200.webp 1200w" sizes="(min-width: 800px) 34vw, 100vw" width="1200" height="1500" alt="Cama con cabecero de madera y cojines de tela escocesa junto a la ventana" loading="lazy" decoding="async"></picture></div>
+        <div class="hab-txt">
+          <h3 class="hab-nom" id="n-pagoa">PAGOA</h3>
+          <button class="hab-mas" type="button" aria-expanded="false" aria-controls="i-pagoa" data-hab-mas>Más</button>
+          <div class="hab-info" id="i-pagoa" role="region" aria-labelledby="n-pagoa" hidden>
+            <p>Cabecero de madera y ventana al prado.</p><p>Cama de 150 y baño con ducha.</p>
+            <p class="hab-precio">Desde 75 € la noche para dos personas.</p>
+            <p><a class="btn" href="#gauak" data-elige-hab="pagoa">Mira las noches libres</a></p>
+          </div>
+        </div>
+      </li>
+      <li class="hab" data-hab-li>
+        <div class="hab-foto"><picture><source type="image/avif" srcset="../fotos/haritza-600.avif 600w, ../fotos/haritza-900.avif 900w, ../fotos/haritza-1200.avif 1200w" sizes="(min-width: 800px) 34vw, 100vw"><img src="../fotos/haritza-1200.webp" srcset="../fotos/haritza-600.webp 600w, ../fotos/haritza-900.webp 900w, ../fotos/haritza-1200.webp 1200w" sizes="(min-width: 800px) 34vw, 100vw" width="1200" height="1500" alt="Ventana abierta de una habitación que da a los campos" loading="lazy" decoding="async"></picture></div>
+        <div class="hab-txt">
+          <h3 class="hab-nom" id="n-haritza">HARITZA</h3>
+          <button class="hab-mas" type="button" aria-expanded="false" aria-controls="i-haritza" data-hab-mas>Más</button>
+          <div class="hab-info" id="i-haritza" role="region" aria-labelledby="n-haritza" hidden>
+            <p>La ventana grande da al valle.</p><p>Cama de 180 y baño con bañera.</p>
+            <p class="hab-precio">Desde 80 € la noche para dos personas.</p>
+            <p><a class="btn" href="#gauak" data-elige-hab="haritza">Mira las noches libres</a></p>
+          </div>
+        </div>
+      </li>
+  </ul>
+</section>
+
+<section class="lamina gauak" id="gauak" aria-labelledby="h-gauak">
+  <div class="lamina-foto" data-fondo><picture><source media="(max-width: 799px)" type="image/avif" srcset="../fotos/mahaia-m-600.avif 600w, ../fotos/mahaia-m-900.avif 900w, ../fotos/mahaia-m-1200.avif 1200w" sizes="100vw" width="1200" height="1500"><source media="(max-width: 799px)" type="image/webp" srcset="../fotos/mahaia-m-600.webp 600w, ../fotos/mahaia-m-900.webp 900w, ../fotos/mahaia-m-1200.webp 1200w" sizes="100vw" width="1200" height="1500"><source type="image/avif" srcset="../fotos/mahaia-d-1280.avif 1280w, ../fotos/mahaia-d-1920.avif 1920w, ../fotos/mahaia-d-2880.avif 2880w" sizes="100vw"><img src="../fotos/mahaia-d-1920.webp" srcset="../fotos/mahaia-d-1280.webp 1280w, ../fotos/mahaia-d-1920.webp 1920w, ../fotos/mahaia-d-2880.webp 2880w" sizes="100vw" width="2880" height="1800" alt="Mesa de madera con platos y pan junto a una ventana" loading="lazy" decoding="async"></picture></div>
+  <div class="panel" data-panel>
+    <h2 class="caja" id="h-gauak" data-lineas>Noches libres</h2>
+    <p class="panel-p">Elige en el calendario el día que llegas y el día que te vas. Los días con una raya ya están cogidos.</p>
+    <form class="reserva" data-reserva onsubmit="return false">
+      <fieldset class="tabs"><legend class="sr">Habitación</legend><label class="tab"><input type="radio" name="hab" value="ganbara"><span>GANBARA</span></label><label class="tab"><input type="radio" name="hab" value="pagoa" checked><span>PAGOA</span></label><label class="tab"><input type="radio" name="hab" value="haritza"><span>HARITZA</span></label><label class="tab"><input type="radio" name="hab" value="casa"><span>Casa entera</span></label></fieldset>
+      <div class="cal" data-cal>
+        <noscript><p class="panel-p">Hola. Queremos dormir en Ezki. ¿Qué noches tenéis libres?</p></noscript>
+      </div>
+      <p class="aviso" data-aviso aria-live="polite"></p>
+      <div class="resumen">
+        <p class="res" data-res aria-live="polite"></p>
+        <p class="k">Mensaje que se enviará</p>
+        <p class="msg" data-msg>Hola. Queremos dormir en Ezki. ¿Qué noches tenéis libres?</p>
+      </div>
+      <p><a class="btn" href="https://wa.me/34600000000?text=Hola.%20Queremos%20dormir%20en%20Ezki.%20%C2%BFQu%C3%A9%20noches%20ten%C3%A9is%20libres%3F" target="_blank" rel="noopener" data-wa>Pedir por WhatsApp</a></p>
+      <p class="nota">O llama al <a href="tel:+34943000000">943 00 00 00</a>. Te contestamos nosotros, sin portales de por medio. No se paga nada hasta que lo confirmemos.</p>
+    </form>
+  </div>
+</section>
+
+<section class="lamina" id="prezioak" aria-labelledby="h-prezioak">
+  <div class="lamina-foto" data-fondo><picture><source media="(max-width: 799px)" type="image/avif" srcset="../fotos/egongela-m-600.avif 600w, ../fotos/egongela-m-900.avif 900w, ../fotos/egongela-m-1200.avif 1200w" sizes="100vw" width="1200" height="1500"><source media="(max-width: 799px)" type="image/webp" srcset="../fotos/egongela-m-600.webp 600w, ../fotos/egongela-m-900.webp 900w, ../fotos/egongela-m-1200.webp 1200w" sizes="100vw" width="1200" height="1500"><source type="image/avif" srcset="../fotos/egongela-d-1280.avif 1280w, ../fotos/egongela-d-1920.avif 1920w, ../fotos/egongela-d-2880.avif 2880w" sizes="100vw"><img src="../fotos/egongela-d-1920.webp" srcset="../fotos/egongela-d-1280.webp 1280w, ../fotos/egongela-d-1920.webp 1920w, ../fotos/egongela-d-2880.webp 2880w" sizes="100vw" width="2880" height="1800" alt="Sala con vigas de madera, un sofá y un ventanal" loading="lazy" decoding="async"></picture></div>
+  <div class="panel" data-panel>
+    <h2 class="caja" id="h-prezioak" data-lineas>Precios</h2>
+    <p class="panel-p">Precio por noche para dos personas. Reservando aquí no pagas comisión a ningún portal.</p>
+    <div class="precios"><div class="pr-bloque"><h3 class="pr-tit">De septiembre a junio</h3><ul data-escalonado><li>GANBARA – 85 €</li><li>PAGOA – 75 €</li><li>HARITZA – 80 €</li><li>CASA ENTERA – 220 €</li></ul></div><div class="pr-bloque"><h3 class="pr-tit">Julio y agosto</h3><ul data-escalonado><li>GANBARA – 105 €</li><li>PAGOA – 95 €</li><li>HARITZA – 100 €</li><li>CASA ENTERA – 280 €</li></ul></div></div>
+    <p class="panel-p">En julio y agosto, mínimo dos noches.</p>
+  </div>
+</section>
+
+<section class="lamina" id="inguruan" aria-labelledby="h-inguruan">
+  <div class="lamina-foto" data-fondo><picture><source media="(max-width: 799px)" type="image/avif" srcset="../fotos/bizikleta-m-600.avif 600w, ../fotos/bizikleta-m-900.avif 900w, ../fotos/bizikleta-m-1200.avif 1200w" sizes="100vw" width="1200" height="1500"><source media="(max-width: 799px)" type="image/webp" srcset="../fotos/bizikleta-m-600.webp 600w, ../fotos/bizikleta-m-900.webp 900w, ../fotos/bizikleta-m-1200.webp 1200w" sizes="100vw" width="1200" height="1500"><source type="image/avif" srcset="../fotos/bizikleta-d-1280.avif 1280w, ../fotos/bizikleta-d-1920.avif 1920w, ../fotos/bizikleta-d-2880.avif 2880w" sizes="100vw"><img src="../fotos/bizikleta-d-1920.webp" srcset="../fotos/bizikleta-d-1280.webp 1280w, ../fotos/bizikleta-d-1920.webp 1920w, ../fotos/bizikleta-d-2880.webp 2880w" sizes="100vw" width="2880" height="1800" alt="Bicicleta vieja apoyada en la pared de una casa con rosas rojas" loading="lazy" decoding="async"></picture></div>
+  <div class="panel" data-panel>
+    <h2 class="caja" id="h-inguruan" data-lineas>Qué hacer cerca</h2>
+    <p class="panel-p">Lo que recomendamos a quien viene, a menos de una hora en coche.</p>
+    <div class="tabs" role="tablist" aria-label="Qué hacer cerca" data-tabs>
+      <button class="tab-b" type="button" role="tab" id="t-sol" aria-selected="true" aria-controls="p-sol">Si hace sol</button>
+      <button class="tab-b" type="button" role="tab" id="t-lluvia" aria-selected="false" aria-controls="p-lluvia" tabindex="-1">Si llueve</button>
+    </div>
+    <div class="cerca" id="p-sol" role="tabpanel" aria-labelledby="t-sol"><ul data-escalonado><li><span>– Subir al Txindoki desde Larraitz</span> <span class="min">25 min en coche</span></li><li><span>– La vía verde del Leitzaran, a pie o en bici</span> <span class="min">20 min en coche</span></li><li><span>– El mercado del sábado en Tolosa</span> <span class="min">10 min en coche</span></li><li><span>– La playa de Zarautz</span> <span class="min">35 min en coche</span></li></ul></div>
+    <div class="cerca" id="p-lluvia" role="tabpanel" aria-labelledby="t-lluvia" hidden><ul><li><span>– El museo de títeres de Tolosa</span> <span class="min">10 min en coche</span></li><li><span>– El museo de la confitería Gorrotxategi, en Tolosa</span> <span class="min">10 min en coche</span></li><li><span>– Una sidrería en Astigarraga, de enero a abril</span> <span class="min">30 min en coche</span></li><li><span>– El Aquarium de Donostia</span> <span class="min">35 min en coche</span></li></ul></div>
+  </div>
+</section>
+
+<section class="lamina solida" id="harremana" aria-labelledby="h-harremana">
+  <div class="panel solido" data-panel>
+    <h2 class="caja" id="h-harremana" data-lineas>Contacto</h2>
+    <p class="panel-p">Ezki baserria, Altzo<br>20268 Altzo, Gipuzkoa</p>
+    <p class="panel-p">Teléfono <a href="tel:+34943000000">943 00 00 00</a><br>WhatsApp <a href="https://wa.me/34600000000" target="_blank" rel="noopener">600 00 00 00</a></p>
+    <p class="panel-p">La entrada es a partir de las 16:00. La salida, hasta las 12:00.</p>
+  </div>
+  <figure class="mapa" data-mapa>
+    <img src="../fotos/croquis.svg" width="1200" height="958" alt="Croquis de Tolosa y Altzo con el sitio de la casa" loading="lazy" decoding="async">
+    <span class="mapa-et" style="left:54.4%;top:17.0%" aria-hidden="true">TOLOSA</span><span class="mapa-et" style="left:44.2%;top:74.0%" aria-hidden="true">ALTZO</span>
+    <span class="mapa-casa" style="left:54.6%;top:64.8%" aria-hidden="true"><span class="mapa-marco">EZKI</span></span>
+  </figure>
+</section>
+
+<section class="lamina solida fotos" id="argazkiak" aria-labelledby="h-argazkiak">
+  <div class="panel solido" data-panel>
+    <h2 class="caja" id="h-argazkiak" data-lineas>Fotos</h2>
+  </div>
+  <ul class="rejilla" data-escalonado><li><button type="button" class="foto-b" data-foto="0" data-src="../fotos/g-behiak-1200.webp" aria-label="Ver la foto grande: Vacas tumbadas en un prado"><picture><source type="image/avif" srcset="../fotos/g-behiak-600.avif 600w, ../fotos/g-behiak-1200.avif 1200w" sizes="(min-width: 800px) 33vw, 50vw"><img src="../fotos/g-behiak-1200.webp" srcset="../fotos/g-behiak-600.webp 600w, ../fotos/g-behiak-1200.webp 1200w" sizes="(min-width: 800px) 33vw, 50vw" width="1200" height="900" alt="Vacas tumbadas en un prado" loading="lazy" decoding="async"></picture></button></li><li><button type="button" class="foto-b" data-foto="1" data-src="../fotos/g-leihoa-1200.webp" aria-label="Ver la foto grande: Ventana de madera con contraventanas verdes"><picture><source type="image/avif" srcset="../fotos/g-leihoa-600.avif 600w, ../fotos/g-leihoa-1200.avif 1200w" sizes="(min-width: 800px) 33vw, 50vw"><img src="../fotos/g-leihoa-1200.webp" srcset="../fotos/g-leihoa-600.webp 600w, ../fotos/g-leihoa-1200.webp 1200w" sizes="(min-width: 800px) 33vw, 50vw" width="1200" height="900" alt="Ventana de madera con contraventanas verdes" loading="lazy" decoding="async"></picture></button></li><li><button type="button" class="foto-b" data-foto="2" data-src="../fotos/g-gosaria-1200.webp" aria-label="Ver la foto grande: Desayuno con fruta y zumo en una mesa"><picture><source type="image/avif" srcset="../fotos/g-gosaria-600.avif 600w, ../fotos/g-gosaria-1200.avif 1200w" sizes="(min-width: 800px) 33vw, 50vw"><img src="../fotos/g-gosaria-1200.webp" srcset="../fotos/g-gosaria-600.webp 600w, ../fotos/g-gosaria-1200.webp 1200w" sizes="(min-width: 800px) 33vw, 50vw" width="1200" height="900" alt="Desayuno con fruta y zumo en una mesa" loading="lazy" decoding="async"></picture></button></li><li><button type="button" class="foto-b" data-foto="3" data-src="../fotos/g-bordak-1200.webp" aria-label="Ver la foto grande: Bordas cubiertas de hiedra en un prado"><picture><source type="image/avif" srcset="../fotos/g-bordak-600.avif 600w, ../fotos/g-bordak-1200.avif 1200w" sizes="(min-width: 800px) 33vw, 50vw"><img src="../fotos/g-bordak-1200.webp" srcset="../fotos/g-bordak-600.webp 600w, ../fotos/g-bordak-1200.webp 1200w" sizes="(min-width: 800px) 33vw, 50vw" width="1200" height="900" alt="Bordas cubiertas de hiedra en un prado" loading="lazy" decoding="async"></picture></button></li><li><button type="button" class="foto-b" data-foto="4" data-src="../fotos/g-atea-1200.webp" aria-label="Ver la foto grande: Puerta roja en una pared blanca"><picture><source type="image/avif" srcset="../fotos/g-atea-600.avif 600w, ../fotos/g-atea-1200.avif 1200w" sizes="(min-width: 800px) 33vw, 50vw"><img src="../fotos/g-atea-1200.webp" srcset="../fotos/g-atea-600.webp 600w, ../fotos/g-atea-1200.webp 1200w" sizes="(min-width: 800px) 33vw, 50vw" width="1200" height="900" alt="Puerta roja en una pared blanca" loading="lazy" decoding="async"></picture></button></li><li><button type="button" class="foto-b" data-foto="5" data-src="../fotos/g-sua-1200.webp" aria-label="Ver la foto grande: Sala con chimenea y una puerta roja"><picture><source type="image/avif" srcset="../fotos/g-sua-600.avif 600w, ../fotos/g-sua-1200.avif 1200w" sizes="(min-width: 800px) 33vw, 50vw"><img src="../fotos/g-sua-1200.webp" srcset="../fotos/g-sua-600.webp 600w, ../fotos/g-sua-1200.webp 1200w" sizes="(min-width: 800px) 33vw, 50vw" width="1200" height="900" alt="Sala con chimenea y una puerta roja" loading="lazy" decoding="async"></picture></button></li></ul>
+</section>
+</main>
+
+<footer class="pie">
+  <div class="pie-in">
+    <div class="marco marco-pie"><p class="marco-nombre"><span class="mn" aria-hidden="true"><span style="--i:0">E</span><span style="--i:1">Z</span><span style="--i:2">K</span><span style="--i:3">I</span></span><span class="mn" aria-hidden="true"><span style="--i:4">L</span><span style="--i:5">A</span><span style="--i:6">N</span><span style="--i:7">D</span><span style="--i:8">E</span><span style="--i:9">T</span><span style="--i:10">X</span><span style="--i:11">E</span><span style="--i:12">A</span></span><span class="sr">EZKI LANDETXEA</span></p><p class="marco-lugar">ALTZO, GIPUZKOA</p></div>
+    <div class="pie-col"><h2 class="pie-k">Contacto</h2><p>Ezki baserria, Altzo<br>20268 Altzo, Gipuzkoa</p><p><a href="tel:+34943000000">943 00 00 00</a></p><p><a href="https://wa.me/34600000000" target="_blank" rel="noopener">WhatsApp 600 00 00 00</a></p></div>
+    <nav class="pie-col" aria-label="Menú"><ul><li><a href="#etxea">La casa</a></li><li><a href="#logelak">Habitaciones</a></li><li><a href="#gauak">Noches libres</a></li><li><a href="#prezioak">Precios</a></li><li><a href="#inguruan">Qué hacer cerca</a></li><li><a href="#harremana">Contacto</a></li><li><a href="#argazkiak">Fotos</a></li></ul></nav>
+  </div>
+  <div class="pie-legal">
+    <p class="nota-datos">Datos de ejemplo: Ezki landetxea no existe. La dirección, los teléfonos, las habitaciones, los precios, las noches libres del calendario, las horas de entrada y salida, los tiempos en coche (aproximados), el sitio de la casa en el mapa y los textos son inventados. Las fotos son de Unsplash: no son de ninguna casa rural real.</p>
+    <p>Fotos de Unsplash: Arno Senoner, Polina Kocheva, shche_ team, Simona Sergi, Alessandro Guarino, Brooke Lark, Max Harlynking, snap wander, T, Sofie D., Marion Mesbah, Clay Banks. <a href="../fotos/creditos.json">creditos.json</a></p>
+    <p>Croquis hecho con datos de © colaboradores de OpenStreetMap.</p>
+    <p><a class="pie-idioma" href="../" lang="eu" hreflang="eu"><span aria-hidden="true">EU</span><span class="sr">Euskaraz</span></a></p>
+  </div>
+</footer>
+
+<dialog class="visor" data-visor aria-label="Fotos">
+  <img src="" alt="" width="1200" height="900" data-visor-img>
+  <button class="visor-b visor-x" type="button" data-visor-x aria-label="Cerrar"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.8"/></svg></button>
+  <button class="visor-b visor-ant" type="button" data-visor-ant aria-label="Foto anterior"><svg viewBox="0 0 12 22" aria-hidden="true" focusable="false"><path d="M11 1L1 11l10 10" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+  <button class="visor-b visor-sig" type="button" data-visor-sig aria-label="Foto siguiente"><svg viewBox="0 0 12 22" aria-hidden="true" focusable="false"><path d="M1 1l10 10L1 21" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+</dialog>
+
+<script type="application/json" id="textos">{"lang":"es","mas":"Más","cerrar":"Cerrar","elige_llegada":"Elige el día que llegas.","elige_salida":"Ahora elige el día que te vas.","cogido_medio":"Entre esos días hay una noche ocupada. Elige otro día para irte.","min_2":"En julio y agosto, mínimo dos noches.","res_n":"3 noches","res_1":"1 noche","res_total":"Total: 255 €","wa_n":"Hola. ¿Tenéis libre PAGOA? Llegada: 14/11. Salida: 17/11. Son 3 noches.","wa_1":"Hola. ¿Tenéis libre PAGOA? Llegada: 14/11. Salida: 15/11. Es una noche.","wa_sin":"Hola. Queremos dormir en Ezki. ¿Qué noches tenéis libres?","wa_casa":"la casa entera","etxe_osoa":"Casa entera","cal_ant":"Mes anterior","cal_sig":"Mes siguiente","meses":["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"],"dias":["lunes","martes","miércoles","jueves","viernes","sábado","domingo"],"habs":{"ganbara":{"nom":"GANBARA","b":85,"a":105},"pagoa":{"nom":"PAGOA","b":75,"a":95},"haritza":{"nom":"HARITZA","b":80,"a":100}},"casa":{"nom":"Casa entera","b":220,"a":280}}</script>
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<script src="../js/SplitText.min.js"></script>
+<script src="../js/anim-texto.js"></script>
+<script src="../js/pagina.js"></script>
+<!-- oi-firma · lo pone herramientas/sitio/firma-muestras/firma.cjs (no editar a mano) -->
+<style id="oi-firma-css">
+.oi-firma{display:block;margin:0;padding:0;background:#121110;color:#ece7de;text-align:left;font:400 15px/1.5 "Switzer",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased;position:relative;z-index:1;clear:both;border-top:1px solid rgba(236,231,222,.08)}
+.oi-firma *{box-sizing:border-box}
+.oi-firma .oi-firma__in{max-width:1180px;margin:0 auto;padding:48px 32px 40px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:36px 56px;align-items:end}
+.oi-firma .oi-firma__marca{margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.oi-firma .oi-firma__por{margin:0;font-weight:500;font-size:11px;line-height:1;letter-spacing:.2em;text-transform:uppercase;color:#8f877b}
+.oi-firma a.oi-firma__logo{display:inline-flex;align-items:center;min-height:44px;align-self:flex-start;margin:0;padding:0;color:#fff;text-decoration:none;font-weight:700;font-size:clamp(30px,3.4vw,44px);line-height:.95;letter-spacing:.04em;text-transform:uppercase;-webkit-tap-highlight-color:transparent;transition:opacity .2s ease}
+.oi-firma .oi-firma__lema{margin:0;font-weight:400;font-size:15px;line-height:1.4;color:#cfc8bc;text-transform:none;letter-spacing:0}
+.oi-firma .oi-firma__datos{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(4,auto);gap:0 36px}
+.oi-firma .oi-firma__datos li{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+.oi-firma .oi-firma__datos li::before,.oi-firma .oi-firma__datos li::marker{content:none}
+.oi-firma .oi-firma__k{font-weight:500;font-size:11px;line-height:1;letter-spacing:.18em;text-transform:uppercase;color:#8f877b}
+.oi-firma .oi-firma__datos a{display:inline-flex;align-items:center;min-height:32px;color:#ece7de;text-decoration:none;font-weight:500;font-size:15px;line-height:1.3;text-transform:none;letter-spacing:0;border-bottom:1px solid rgba(236,231,222,.22);transition:border-color .2s ease,color .2s ease;-webkit-tap-highlight-color:transparent}
+.oi-firma .oi-firma__pie{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px;margin:0;padding:22px 0 0;border-top:1px solid rgba(236,231,222,.12)}
+.oi-firma .oi-firma__nota{margin:0;font-weight:400;font-size:13.5px;line-height:1.4;color:#8f877b;text-transform:none;letter-spacing:0}
+.oi-firma a.oi-firma__cta{display:inline-flex;align-items:center;gap:10px;min-height:46px;margin:0;padding:0 22px;border-radius:999px;background:#ece7de;color:#121110;text-decoration:none;font-weight:600;font-size:14.5px;line-height:1;letter-spacing:0;text-transform:none;transition:background-color .2s ease,transform .15s ease;-webkit-tap-highlight-color:transparent}
+.oi-firma a.oi-firma__cta svg{width:16px;height:16px;flex:none}
+@media (hover:hover) and (pointer:fine){.oi-firma a.oi-firma__logo:hover{opacity:.82}.oi-firma .oi-firma__datos a:hover{border-color:#ece7de;color:#fff}.oi-firma a.oi-firma__cta:hover{background:#fff}}
+.oi-firma a.oi-firma__cta:active{transform:scale(.97)}
+.oi-firma a:focus{outline:none}
+.oi-firma a:focus-visible{outline:2px solid #ece7de;outline-offset:4px}
+.oi-firma .oi-firma__sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.oi-firma.oi-firma--mv .oi-firma__in>*{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .9s cubic-bezier(.2,.75,.25,1)}
+.oi-firma.oi-firma--mv .oi-firma__in>*:nth-child(2){transition-delay:.08s}
+.oi-firma.oi-firma--mv .oi-firma__in>*:nth-child(3){transition-delay:.16s}
+.oi-firma.oi-firma--in .oi-firma__in>*{opacity:1;transform:none}
+@media (max-width:980px){.oi-firma .oi-firma__in{grid-template-columns:1fr;align-items:start;gap:32px}.oi-firma .oi-firma__datos{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 24px}}
+@media (max-width:600px){.oi-firma .oi-firma__in{padding:40px 20px 32px}.oi-firma .oi-firma__datos{grid-template-columns:1fr 1fr;gap:18px 20px}.oi-firma .oi-firma__datos li:nth-child(n+3){grid-column:1/-1}.oi-firma .oi-firma__datos a{align-self:flex-start}.oi-firma .oi-firma__datos a{min-height:44px;font-size:16px}.oi-firma a.oi-firma__cta{width:100%;justify-content:center;min-height:50px}}
+@media (prefers-reduced-motion:reduce){.oi-firma.oi-firma--mv .oi-firma__in>*{opacity:1;transform:none;transition:none}.oi-firma a{transition:none}}
+</style>
+<aside class="oi-firma" id="oi-firma" aria-label="Quién ha hecho esta web">
+<div class="oi-firma__in">
+<div class="oi-firma__marca">
+<p class="oi-firma__por">Diseñado por</p>
+<a class="oi-firma__logo" href="https://oiwebstudio.com/?utm_source=muestra-ezki&amp;utm_medium=pie" target="_blank" rel="noopener">OI STUDIO<span class="oi-firma__sr"> (se abre en otra pestaña)</span></a>
+<p class="oi-firma__lema">Diseño web para negocios en Gipuzkoa · Oier Irastorza</p>
+</div>
+<ul class="oi-firma__datos">
+<li><span class="oi-firma__k">Teléfono</span><a href="tel:+34611497409">611 49 74 09</a></li>
+<li><span class="oi-firma__k">WhatsApp</span><a href="https://wa.me/34611497409?text=Hola%2C%20Oier.%20He%20visto%20una%20de%20tus%20muestras%20y%20me%20interesa%20una%20web%20as%C3%AD." target="_blank" rel="noopener">611 49 74 09<span class="oi-firma__sr"> (se abre en otra pestaña)</span></a></li>
+<li><span class="oi-firma__k">Correo</span><a href="mailto:contactoiwebstudio@gmail.com">contactoiwebstudio@gmail.com</a></li>
+<li><span class="oi-firma__k">Web</span><a href="https://oiwebstudio.com/?utm_source=muestra-ezki&amp;utm_medium=pie" target="_blank" rel="noopener">oiwebstudio.com<span class="oi-firma__sr"> (se abre en otra pestaña)</span></a></li>
+</ul>
+<div class="oi-firma__pie">
+<p class="oi-firma__nota">Esta web es un ejemplo hecho por OI Studio.</p>
+<a class="oi-firma__cta" href="https://wa.me/34611497409?text=Hola%2C%20Oier.%20He%20visto%20una%20de%20tus%20muestras%20y%20me%20interesa%20una%20web%20as%C3%AD." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>Quiero una web así<span class="oi-firma__sr"> (se abre en otra pestaña)</span></a>
+</div>
+</div>
+</aside>
+<script>(function(){var f=document.getElementById("oi-firma");if(!f||!("IntersectionObserver" in window)||matchMedia("(prefers-reduced-motion: reduce)").matches)return;f.classList.add("oi-firma--mv");var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){f.classList.add("oi-firma--in");o.disconnect();}},{rootMargin:"0px 0px -8% 0px"});o.observe(f);})();</script>
+<!-- /oi-firma -->
+</body>
+</html>

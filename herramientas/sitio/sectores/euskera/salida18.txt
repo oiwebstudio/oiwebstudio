@@ -1,0 +1,4 @@
+sx_k_casarural	Landetxea Altzon
+sx_casarural_a	Gau libreak, egutegian agerian
+sx_casarural_b	Erreserba zuzena WhatsApp bidez, komisiorik gabe
+sx_casarural_c	Zer egin inguruan, eguzkia egiten duen edo euria egiten duen

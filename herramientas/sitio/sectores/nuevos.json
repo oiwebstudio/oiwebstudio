@@ -39,16 +39,16 @@
   ]
  },
  {
-  "id": "zidor",
-  "nombre": "ZIDOR",
-  "carpeta": "zidor-landetxea",
+  "id": "ezki",
+  "nombre": "EZKI",
+  "carpeta": "ezki-landetxea",
   "slug": "casarural",
   "chip": "Casa rural",
-  "k": "Casa rural al pie del Txindoki",
+  "k": "Casa rural en Altzo",
   "lleva": [
-   "Las noches libres, en el calendario",
-   "Reserva directa, sin comisiones",
-   "Qué hacer cerca"
+   "Las noches libres, a la vista en el calendario",
+   "Reserva directa por WhatsApp, sin comisiones",
+   "Qué hacer cerca, si hace sol o si llueve"
   ]
  },
  {
