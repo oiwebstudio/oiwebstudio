@@ -15,11 +15,11 @@
   var T = eu ? {
     t: 'Cookieak',
     p: 'Google Analytics-en cookieak erabiltzen ditut zein orrialde bisitatzen diren jakiteko eta webgunea hobetzeko. Onartzen ez badituzu, ez da Googletik ezer kargatzen.',
-    si: 'Onartu', no: 'Baztertu', mas: 'Informazio gehiago'
+    si: 'Onartu', no: 'Baztertu', mas: 'Cookie-politika'
   } : {
     t: 'Cookies',
     p: 'Uso las cookies de Google Analytics solo para saber qué páginas se visitan y mejorar la web. Si no las aceptas, no se carga nada de Google.',
-    si: 'Aceptar', no: 'Rechazar', mas: 'Más información'
+    si: 'Aceptar', no: 'Rechazar', mas: 'Política de cookies'
   };
 
   var leer = function () { try { return localStorage.getItem(CLAVE); } catch (e) { return null; } };
