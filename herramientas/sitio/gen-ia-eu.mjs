@@ -61,6 +61,15 @@ const a = {
 <li>Erantzun gabeko erreseina txar bat hor geratzen da urteetan. Erantzun lasai batek, eztabaidatzen ez duenak, jendea zaintzen duzula erakusten du.</li>
 </ul>
 
+<h2 id="negozio-txikia">Automatizazioa adimen artifizialarekin negozio txikirako</h2>
+<p>Adimen artifizialeko automatizazio-proposamen asko ordainketa-aholkularitzatik eta asteetako proiektu batetik hasten dira. Taberna, ile-apaindegi edo landetxe batentzat horrek ez du zentzurik. Nik alderantziz egiten dut lan:</p>
+<ul class="check">
+<li><strong>Prezio itxia eta argitaratua:</strong> 120 eurotik gora (gehi BEZa).</li>
+<li><strong>Aldez aurretik ordaindu gabe:</strong> zure negozioari buruz Googlek eta adimen artifizial batek diotena doan erakutsiko dizut.</li>
+<li><strong>Amaieran ordaintzen da</strong>, funtzionatzen duenean.</li>
+<li><strong>Nirekin hitz egiten duzu</strong>, euskaraz edo gaztelaniaz, eta behar ez duzuna ere esaten dizut.</li>
+</ul>
+
 <h2 id="nola">Nola egiten dut lan</h2>
 <ol>
 <li>Hitz egiten dugu edo zure negoziotik pasatzen naiz, eta kontatzen didazu zerk kentzen dizun denbora.</li>
@@ -76,6 +85,9 @@ ${cta("Doan erakutsiko dizut zer dioen adimen artifizial batek zure negozioari b
     ["Zenbat balio du?", "Googlen eta adimen artifizialetan dagoen presentziak, 120 euro gehi BEZa behin. Erantzundako erreseinak zure webguneko 28 euroko hileko kuotaren barruan daude. Neurrira egindako zerbait behar baduzu, 24 orduko epean prezioa esango dizut."],
     ["Adimen artifizialak bakarrik erantzuten die nire bezeroei?", "Ez. Adimen artifizialak zirriborroak prestatzen ditu eta nik berrikusten ditut; ez da ezer argitaratzen zure oniritzirik gabe."],
     ["Euskaraz lan egiten duzu?", "Bai. Arreta euskaraz eta gaztelaniaz."],
+    /* 14/11/2026 (Itzultzaile): */
+    ["Nire negozioak adimen artifizialeko agente bat behar du?", "Ia inoiz ez hasieran. Adimen artifizialeko agente bat zereginak bakarrik egiten dituen programa bat da, adibidez, mezuak erantzutea edo erreserbak hartzea. Negozio txiki bati konpentsatu egiten dio, lehenago, Googleren fitxa, erantzundako erreseinak eta webgunean erreserbak izatea. Denbora kentzen dizunak justifikatzen badu, aztertu eta 24 orduko epean esango dizut prezioa."],
+    ["Zer desberdintasun dago honen eta adimen artifizialeko aholkularitza baten artean?", "Ez naizela aldez aurreko analisi bat kobratzen hasten. Doan erakutsiko dizut Googlek eta adimen artifizial batek zutaz diotena, gauza bat edo bi proposatzen dizkizut prezio itxiarekin, eta azkenean ordaintzen dituzu, funtzionatzen dutenean."],
   ],
   cierre: `<a href="${ES}.html" hreflang="es" lang="es">Orrialde hau gaztelaniaz dago.</a>`,
 };
