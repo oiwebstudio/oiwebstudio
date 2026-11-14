@@ -1,29 +1,34 @@
 /* «WEBS EN MOVIMIENTO» (14/11/2026, Oier: «añade esta animación en la sección de webs… lo más idéntico posible con nuestros colores»).
    Movimiento medido fotograma a fotograma en el vídeo de referencia: nueve tarjetas que se deslizan por una hélice fija
    (como una escalera de caracol) y dos palabras que se cruzan; al final, seis tarjetas forman una rejilla. Va atado al scroll.
+   14/11 tarde (Oier: «que se adecúe más a mi web y más lento por scroll»): fondo, letra de títulos (Gloock), botón y esquinas
+   redondeadas como en el resto de la página, y casi el doble de recorrido de scroll.
    El código está en helice.js. Con «reducir movimiento» se ve solo la rejilla. */
-.wm{--fondo:#e8e5de;position:relative;height:460vh;background:var(--fondo);color:#191712}
+.wm{--fondo:#fbf8f2;position:relative;height:760vh;background:var(--fondo);color:#191712}
 .wm__pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;perspective:1400px}
 .wm__sr{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.wm__w{position:absolute;left:0;top:0;margin:0;font-family:var(--font-sans);font-weight:500;text-transform:uppercase;letter-spacing:-.055em;line-height:1;white-space:nowrap;color:#191712;will-change:transform;z-index:1;transform-origin:0 0}
-.wm__cap{position:absolute;left:50%;top:0;width:24em;margin:0 0 0 -12em;font:500 10px/1.45 var(--font-mono);letter-spacing:.05em;text-transform:uppercase;text-align:center;color:#3d3a34;z-index:1;will-change:transform,opacity}
-.wm__pie{position:absolute;left:2.2vw;bottom:3.2vh;max-width:22em;margin:0;font:400 11px/1.4 var(--font-sans);color:#3d3a34;z-index:1}
-.wm__mas{position:absolute;right:max(2.2vw,88px);bottom:3.2vh;display:inline-flex;align-items:flex-end;min-height:44px;font:500 10px/1 var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:#191712;text-decoration:none;z-index:6}
-.wm__mas span{border-bottom:1px solid currentColor;padding-bottom:3px}
+.wm__w{position:absolute;left:0;top:0;margin:0;font-family:"Gloock",var(--font-serif);font-weight:400;text-transform:uppercase;letter-spacing:-.01em;line-height:1;white-space:nowrap;color:#191712;will-change:transform;z-index:1;transform-origin:0 0}
+.wm__cap{position:absolute;left:50%;top:0;width:24em;margin:0 0 0 -12em;font:600 12px/1.45 var(--font-sans);letter-spacing:.08em;text-transform:uppercase;text-align:center;color:#6b655a;z-index:1;will-change:transform,opacity}
+.wm__pie{position:absolute;left:2.2vw;bottom:3.2vh;max-width:26em;margin:0;font:400 14px/1.45 var(--font-sans);color:#6b655a;z-index:1}
+.wm__mas{position:absolute;right:max(2.2vw,88px);bottom:3.2vh;display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:999px;background:#191712;color:#fff;font:600 14px/1 var(--font-sans);letter-spacing:.02em;text-transform:uppercase;text-decoration:none;z-index:6;-webkit-tap-highlight-color:transparent}
 .wm__mas:focus-visible{outline:3px solid #c07a35;outline-offset:4px}
 /* escenario 3D: cuelga del centro de la ventana; la hélice se mueve con un solo transform */
 .wm__esc{position:absolute;left:50%;top:50%;width:0;height:0;z-index:3;pointer-events:none}
 .wm__hel{position:absolute;left:0;top:0;width:0;height:0;transform-style:preserve-3d;will-change:transform}
 .wm__hel i{position:absolute;left:0;top:0;background-repeat:no-repeat;background-color:#fff;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+/* esquinas redondeadas de cada tarjeta, como las del resto de la web (solo los trozos de los extremos) */
+.wm__hel i.es-izq{border-radius:var(--wm-r,14px) 0 0 var(--wm-r,14px)}
+.wm__hel i.es-der{border-radius:0 var(--wm-r,14px) var(--wm-r,14px) 0}
 /* rejilla final */
-.wm__g a{position:absolute;left:0;top:0;display:block;background:#fff center top/cover no-repeat;opacity:0;will-change:transform,opacity;z-index:4;pointer-events:none;-webkit-tap-highlight-color:transparent}
+.wm__g a{position:absolute;left:0;top:0;display:block;border-radius:14px;box-shadow:0 0 0 1px rgba(40,30,15,.1),0 24px 44px -26px rgba(60,45,20,.5);background:#fff center top/cover no-repeat;opacity:0;will-change:transform,opacity;z-index:4;pointer-events:none;-webkit-tap-highlight-color:transparent}
 .wm.is-lista .wm__g a{pointer-events:auto}
 .wm__g a:focus-visible{outline:3px solid #c07a35;outline-offset:4px}
 .wm__g span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 @media (max-width:760px){
-  .wm{height:420vh}
-  .wm__pie{left:16px;right:16px;bottom:68px;max-width:none;font-size:11px}
-  .wm__mas{right:84px;bottom:14px}
+  .wm{height:680vh}
+  .wm__pie{left:16px;right:16px;bottom:76px;max-width:none;font-size:13px}
+  .wm__g a{border-radius:10px}
+  .wm__mas{right:auto;left:16px;bottom:16px;height:46px}
 }
 /* sin JS o con «reducir movimiento»: rejilla quieta, sin tramo de scroll */
 html:not(.js) .wm,.wm.is-quieta{height:auto}
