@@ -1,0 +1,12 @@
+[
+ {"id":"errotatxo","nombre":"ERROTATXO","href":"caso-errotatxo.html","sector":"Panadería","clave":"sx_c_panaderia","abre":"Ver el caso completo","claveAbre":"caso_go","nueva":false},
+ {"id":"aberri","nombre":"A.BERRI","href":"caso-a-berri.html","sector":"Casa rural","clave":"sx_c_casarural","abre":"Ver el caso completo","claveAbre":"caso_go","nueva":false},
+ {"id":"etxea","nombre":"ETXEA","href":"/demos/muestras/etxea-inmobiliaria/","sector":"Inmobiliaria","clave":"tag_inm"},
+ {"id":"pedala","nombre":"PEDALA","href":"/demos/muestras/pedala-bizikletak/","sector":"Tienda de bicis","clave":"tag_bici"},
+ {"id":"ekhi","nombre":"EKHI","href":"/demos/muestras/ekhi-psikologia/","sector":"Psicología","clave":"tag_psi"},
+ {"id":"arin","nombre":"ARIN","href":"/demos/muestras/arin-fisioterapia/","sector":"Fisioterapia","clave":"tag_fis"},
+ {"id":"laino","nombre":"LAINO","href":"/demos/muestras/laino-argazkiak/","sector":"Fotografía","clave":"tag_foto"},
+ {"id":"hiria","nombre":"HIRIA","href":"/demos/muestras/hiria-etxebizitzak/","sector":"Inmobiliaria","clave":"tag_inm"},
+ {"id":"maila","nombre":"MAILA","href":"/demos/muestras/maila-eskailerak/","sector":"Carpintería","clave":"tag_carp"},
+ {"id":"gainetik","nombre":"GAINETIK","href":"/demos/muestras/gainetik-arkitektura/","sector":"Arquitectura","clave":"tag_arq"}
+]

@@ -1,0 +1,3 @@
+tra_lede	Webs hechas para negocios de aquí. Todas se pueden abrir y recorrer.
+tra_honesty	Errotatxo y A.Berri son webs publicadas para clientes. Las demás son muestras con nombre y datos inventados.
+wm_ver	Ver las webs

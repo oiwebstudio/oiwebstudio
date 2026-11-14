@@ -1,0 +1,3 @@
+tra_lede	Hemengo negozioetarako egindako webguneak. Denak ireki eta ibili daitezke.
+tra_honesty	Errotatxo eta A.Berri bezeroentzat argitaratutako webguneak dira. Gainerakoak izena eta asmatutako datuak dituzten laginak dira.
+wm_ver	Webguneak ikusi
