@@ -600,6 +600,8 @@ const EU = {
   pre_l2_nota: 'Erreserbekin edo txatbotarekin, hileko 28 €-ko mantentzea derrigorrezkoa da: martxan mantentzen ditu eta hilean 3 aldaketa arte barne hartzen ditu. Abisuak posta bidez doaz; WhatsApp edo SMS bidez nahi badituzu, neurrira prestatzen dizut.<br/><a href="reservas-online-sin-comisiones.html">Nola dabiltzan online erreserbak</a>',
   pre_l3_h: "Packak erreserbekin",
   pre_l3_p: "Web eta erreserbak komisiorik gabe, prezio itxiarekin. Dagoeneko webgunea baduzu, hitzorduen agenda 160 € + 20 €/hileko da profesional batekin (8 € gehiago hilean profesional bakoitzeko).",
+  // 14/11/2026: carta en idiomas (60 € + IVA, TARIFA), Itzultzaile Neuronala.
+  pre_carta: "<strong>Jatetxearen karta, hizkuntzetan:</strong> karta euskaraz, gaztelaniaz, frantsesez eta ingelesez, webgunean eta Googlen, 60 euroan (gehi BEZa), behin bakarrik. Plateren aldaketak hileko kuotaren barruan sartzen dira. <a href=\"ia-para-restaurantes-gipuzkoa.html#carta\">Horrela egiten da</a>.",
   k1_name: "Weba + erreserbak",
   k1_desc: "Barruan erreserbak edo hitzorduak dituen orrialde bat. Ile-apaindegi, bizargintza, estetika, tailer eta hitzordua duen edozein negoziotarako.",
   k1_l1: "Orrialde baten webguneko guztia",
