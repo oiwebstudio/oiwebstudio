@@ -1,0 +1,4 @@
+wm_frase	Mugimenduko diseinua
+wm_cap	Tolosan hemengo negozioetarako egindako webguneak
+wm_pie	Zure negozioaren webgunea nola gera daitekeen erakusteko asmatutako datuak eta izena duten laginak.
+wm_mas	Lagin guztiak ikusi
