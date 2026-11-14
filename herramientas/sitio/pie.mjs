@@ -21,6 +21,7 @@
  * Devuelve desde <div class="footer__grid"> hasta el cierre de footer__bottom.
  *
  * Uso (desde la raíz):  node herramientas/sitio/pie.mjs [--check]
+ * Después, siempre: node herramientas/sitio/marco-eu-sueltas.mjs (páginas en euskera sueltas, 14/11/2026).
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -85,6 +86,8 @@ ${grupo("foot_servicios", "Servicios", [
   li("reservas-online-sin-comisiones.html", "Reservas online sin comisiones", "ft_s5"),
   // 27/10/2026: oferta en tres líneas (webs · automatizaciones con IA · branding).
   li("automatizaciones.html", "Automatizaciones para negocios", "ft_auto"),
+  // 14/11/2026 (Oier: «ponlo»).
+  li("ia-para-negocios-gipuzkoa.html", "IA para negocios en Gipuzkoa", "ft_ia"),
   li("branding.html", "Branding y diseño de logos", "ft_brand"),
   // 7/11/2026: servicios nuevos (encargo de Dirección, como 375estudio sin vídeo, foto ni apps).
   li("diseno-grafico-gipuzkoa.html", "Diseño gráfico y catálogos", "ft_graf"),

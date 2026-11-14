@@ -335,6 +335,9 @@ const EU = {
   nav_inicio: "Hasiera",
   nav_sobre: "Niri buruz",
   nav_servicios: "Zerbitzuak",
+  // 14/11/2026: IA para negocios en el menú y el pie (Itzultzaile Neuronala).
+  nav_ia: "Negozioetarako adimen artifiziala",
+  ft_ia: "Negozioetarako adimen artifiziala Gipuzkoan",
   nav_trabajos: "Lanak",
   nav_precios: "Prezioak",
   nav_zonas: "Eremuak",
@@ -1346,7 +1349,7 @@ const EU = {
      castellano, que confunde a Google y a los lectores de pantalla). En esas
      páginas se oculta el selector y se fuerza el castellano.
      En cuanto se traduzca el cuerpo, el selector reaparece solo. */
-  const MARCO = 37;                      // claves de navegación + pie (menú nuevo: +4; SEO en menú y pie: +3)
+  const MARCO = 39;                      // claves de navegación + pie (menú nuevo: +4; SEO en menú y pie: +3; IA en menú y pie: +2, 14/11)
   const MINIMO_PROPIO = 12;              // claves propias que exigimos al cuerpo
   const traducibles = [...nodes].filter(el => EU[el.dataset.t] != null).length;
   const paginaTraducida = traducibles - MARCO >= MINIMO_PROPIO;
