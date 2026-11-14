@@ -14,7 +14,7 @@
 
   /* HÉLICE (unidades: ancho del escenario = 1): centro, cabeceo y alabeo del eje, radio, subida por radián, perspectiva, paso por tarjeta */
   var CX = 0.0026, CYE = -0.0222, CZ = -0.2799, CAB = -0.0348, ALA = 0.0532, R = 0.506, K = 0.1055, P = 0.6135, DL = 0.4837;
-  var ALTO = 0.18, TROZOS = 4;
+  var ALTO = 0.18, TROZOS = 4, HUECO = 0.965;      // HUECO: cada tarjeta ocupa el 96,5 % de su sitio, para que se vea separada de la siguiente
   /* avance s(t) cada 0,125 s desde t = 1,25 s; fuera de ese tramo la cinta no se ve */
   var S0 = 1.25, SD = 0.125, SV = [7.967,7.638,7.309,6.981,6.652,6.309,5.981,5.61,5.173,4.741,4.37,4.06,3.77,3.44,3.022,2.531,2.081,1.738,1.489,1.241,0.873,0.431,0.007,-0.386,-0.73,-0.997,-1.199,-1.361,-1.483,-1.576,-1.659,-1.743,-1.844,-1.978,-2.145,-2.325,-2.498,-2.656,-2.817,-3.018,-3.279,-3.584,-3.881,-4.141,-4.388,-4.655,-4.961,-5.274,-5.586,-5.899,-6.211,-6.524,-6.836,-7.149,-7.461,-7.774,-8.086];
   function avance(T){
@@ -32,8 +32,10 @@
       var el = document.createElement('i');
       el.style.backgroundSize = (TROZOS * 100) + '% 100%';
       el.style.backgroundPosition = ((cara ? TROZOS - 1 - j : j) / (TROZOS - 1) * 100) + '% 0';   // por detrás, el trozo simétrico: la tarjeta se lee igual
+      var borde = j === 0 ? (cara ? 'es-der' : 'es-izq') : j === TROZOS - 1 ? (cara ? 'es-izq' : 'es-der') : '';   // esquinas redondeadas en los extremos de la tarjeta
+      if (borde) el.className = borde;
       hel.appendChild(el);
-      trozos.push({ el: el, id: id, a: (c - (N - 1) / 2 - 0.5 + (j + 0.5) / TROZOS) * DL, cara: cara });
+      trozos.push({ el: el, id: id, a: ((c - (N - 1) / 2) + ((j + 0.5) / TROZOS - 0.5) * HUECO) * DL, cara: cara });
     }
   });
   /* Las imágenes (unos 330 KB) solo se piden al acercarse a la sección */
@@ -81,8 +83,9 @@
     if (quieto) H = Math.max(H, 0);
     U = movil ? Math.min(H * 1.61, W * 1.75) : Math.min(W, H * 1.61);        // ancho del escenario (proporción 1,61)
     esc.style.perspective = (P * U) + 'px';
-    A.style.fontSize = B.style.fontSize = ((movil ? W : U) * (movil ? .088 : .056)) + 'px';
-    var ws = R * DL / TROZOS * U + 1, hs = ALTO * U, fi = Math.atan(K / R) * 180 / Math.PI;
+    A.style.fontSize = B.style.fontSize = ((movil ? W : U) * (movil ? .078 : .05)) + 'px';
+    hel.style.setProperty('--wm-r', (U * 0.009) + 'px');
+    var ws = R * DL * HUECO / TROZOS * U + 1, hs = ALTO * U, fi = Math.atan(K / R) * 180 / Math.PI;
     trozos.forEach(function(t){
       var s = t.el.style; s.width = ws + 'px'; s.height = hs + 'px'; s.margin = (-hs / 2) + 'px 0 0 ' + (-ws / 2) + 'px';
       s.transform = 'rotateY(' + t.a + 'rad) translate3d(0,' + (K * t.a * U) + 'px,' + (R * U) + 'px) skewY(' + fi + 'deg)' + (t.cara ? ' rotateY(180deg)' : '');
@@ -102,8 +105,8 @@
   function pintar(T){
     var EH = U / 1.61, yT = function(f){ return H / 2 + (f - .5) * EH; };
     var fuera = (movil && T > 6.4) ? (T - 6.4) * 1.6 : 0;      // en el móvil las palabras son más anchas que la pantalla: se empujan hasta fuera
-    A.style.transform = 'translate3d(' + ((val('aX', T) + fuera) * W) + 'px,' + yT(val('aY', T)) + 'px,0) scaleY(1.28)';
-    B.style.transform = 'translate3d(' + ((val('bX', T) - fuera) * W) + 'px,' + yT(val('bY', T)) + 'px,0) scaleY(1.28)';
+    A.style.transform = 'translate3d(' + ((val('aX', T) + fuera) * W) + 'px,' + yT(val('aY', T)) + 'px,0)';
+    B.style.transform = 'translate3d(' + ((val('bX', T) - fuera) * W) + 'px,' + yT(val('bY', T)) + 'px,0)';
     cap.style.transform = 'translate3d(0,' + yT(val('cY', T)) + 'px,0)';
     cap.style.opacity = val('cO', T);
 
