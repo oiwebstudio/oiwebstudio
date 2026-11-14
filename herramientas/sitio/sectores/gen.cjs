@@ -122,3 +122,6 @@ if (!CHECK) fs.writeFileSync(I18N, src);
 console.log(`${lista.length} sectores: ${lista.map((s) => s.nombre).join(", ")}`);
 console.log(`${CHECK ? "(--check) cambiarían" : "cambiadas"} ${cambios} páginas; i18n.js: ${lineas.length} textos en euskera de los nuevos`);
 if (avisos.length) console.log("AVISOS:\n- " + avisos.join("\n- "));
+
+// La sección «Diseño en movimiento» de trabajos.html enseña estas mismas tarjetas: se rehace con ellas (14/11/2026)
+try { require("../movimiento/gen.cjs"); } catch (e) { console.error("AVISO: no se pudo actualizar la rejilla de «Diseño en movimiento»:", e.message); }
