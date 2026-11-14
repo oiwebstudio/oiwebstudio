@@ -91,19 +91,34 @@ const zonasYSectores = `
 <li><a href="ia-para-casas-rurales-gipuzkoa.html">IA para casas rurales</a>: reservas sin comisión, reseñas en varios idiomas.</li>
 </ul>`;
 
+/* 14/11/2026: «automatización con IA» para el negocio pequeño y FAQ de agentes (análisis de la competencia del 14/11). */
+const negocioPequeno = (donde) => `
+<h2 id="negocio-pequeno">Automatización con IA para el negocio pequeño</h2>
+<p>Muchas propuestas de automatización con IA empiezan por una consultoría de pago y un proyecto de semanas. Para un bar, una peluquería o una casa rural${donde} eso no tiene sentido. Yo trabajo al revés:</p>
+<ul class="check">
+<li><strong>Precio cerrado y publicado</strong>, desde 120 € + IVA.</li>
+<li><strong>Sin estudio previo de pago:</strong> lo que dicen de tu negocio Google y una IA te lo enseño gratis.</li>
+<li><strong>Se paga al final</strong>, cuando funciona.</li>
+<li><strong>Hablas conmigo</strong>, en euskera o en castellano, y te digo también qué no necesitas.</li>
+</ul>`;
+const faqAgentes = (zona) => [
+  ["¿Necesita mi negocio un agente de IA?", `Casi nunca al principio. Un agente de IA es un programa que hace tareas solo, como contestar mensajes o coger reservas. A un negocio pequeño${zona} suele compensarle antes tener bien la ficha de Google, las reseñas contestadas y las reservas en la web. Si lo que te quita tiempo lo justifica, lo estudio y te digo el precio en 24 horas.`],
+  ["¿En qué se diferencia de una consultoría de IA?", "En que no empiezo cobrando un estudio. Te enseño gratis lo que dicen de ti Google y una IA, te propongo una o dos cosas con precio cerrado y pagas al final, cuando funcionan."],
+];
+
 export const ARTICULOS_IA = [
 /* ------------------------------------------------------------------ 1 · general */
 {
   slug: "ia-para-negocios-gipuzkoa",
   fecha: FECHA,
   bodyClass: "ia-pg",
-  title: "IA para negocios en Gipuzkoa: soluciones adaptadas a cada empresa",
+  title: "IA y automatización para negocios pequeños en Gipuzkoa",
   headline: "IA para negocios en Gipuzkoa: soluciones adaptadas a cada empresa, con precio cerrado",
-  desc: "Soluciones de IA adaptadas a cada negocio de Gipuzkoa: Google y las IAs, reseñas respondidas y reservas. Qué hace la IA y qué hago yo, con precio cerrado.",
+  desc: "IA y automatización para negocios pequeños de Gipuzkoa: Google y las IAs, reseñas respondidas y reservas. Qué hace la IA y qué hago yo, a precio cerrado.",
   ogdesc: "Soluciones de IA adaptadas a cada negocio de Gipuzkoa: Google y las IAs, reseñas respondidas y reservas, con precio cerrado.",
   keywords: "ia para negocios gipuzkoa, inteligencia artificial pymes gipuzkoa, automatizaciones con ia gipuzkoa, ia para pequeños negocios, agencia ia gipuzkoa, responder reseñas con ia",
   crumb: "IA para negocios en Gipuzkoa",
-  h1: "IA para negocios en Gipuzkoa",
+  h1: "IA y automatización para negocios en Gipuzkoa",
   lede: `${FRASE} Miro qué le quita tiempo a tu negocio y monto la IA para eso. Y te digo siempre qué parte hace la IA y qué parte hago yo, desde Tolosa, en euskera o en castellano.`,
   img: "stock/art-seo-local", min: 6,
   area: ["Gipuzkoa", "Tolosaldea", "Donostia / San Sebastián"],
@@ -113,6 +128,7 @@ export const ARTICULOS_IA = [
 ${tablaSoluciones([["<strong>Carta en idiomas</strong> (restaurantes)", "Tu carta en euskera, castellano, francés e inglés, en la web y en Google", "La IA traduce; el euskera pasa por Itzultzaile y lo reviso todo yo", "60 €, una vez. Los cambios de platos, dentro de la cuota"]])}
 <p>No te prometo ningún puesto en Google ni que una IA te nombre. Lo que sí hago es que tus datos estén bien y digan lo mismo en todas partes, que es lo que leen Google y las IAs.</p>
 ${avisoIA}
+${negocioPequeno("")}
 ${pasos}
 ${porQueResenas}
 ${aMedida([EJ.whatsapp, EJ.telefono, EJ.presupuestos, EJ.facturas])}
@@ -125,6 +141,7 @@ ${zonasYSectores}
     ["¿La IA contesta sola a mis clientes?", "No. En lo que monto, la IA prepara borradores y los reviso yo; no se publica nada sin tu visto bueno. Si algún día pones un asistente que contesta solo, tiene que avisar de que es una IA."],
     ["¿Trabajas en euskera?", "Sí. Atiendo en euskera y en castellano, y los textos en euskera los paso siempre por Itzultzaile, el traductor neuronal del Gobierno Vasco, antes de revisarlos."],
     ["¿Me sirve si mi web no la has hecho tú?", "Sí. La presencia en Google y en las IAs se hace sobre cualquier web. Para las reseñas respondidas sin una web mía, te digo el precio en 24 horas."],
+    ...faqAgentes(""),
   ],
   cierre: `Sigue leyendo: <a href="inteligencia-artificial-negocio-pequeno.html">inteligencia artificial para un negocio pequeño: qué funciona hoy</a>, <a href="que-automatizar-negocio-pequeno.html">qué automatizar en un negocio pequeño</a> y <a href="automatizaciones.html">automatizaciones para negocios en Gipuzkoa</a>.`,
 },
@@ -172,13 +189,13 @@ ${cta("¿Paso por tu negocio?", "Dime cuándo te va bien y te enseño en tu móv
   slug: "ia-para-negocios-donostia",
   fecha: FECHA,
   bodyClass: "ia-pg",
-  title: "IA para negocios en Donostia: soluciones para el negocio pequeño",
+  title: "Automatización con IA en Donostia para el negocio pequeño",
   headline: "IA para negocios en Donostia / San Sebastián: soluciones para el negocio pequeño, con turistas e idiomas",
-  desc: "IA para el negocio pequeño de Donostia: reseñas en el idioma del cliente, cómo te ven Google y las IAs, carta en idiomas y reservas. Con precio cerrado.",
+  desc: "Automatización con IA para el negocio pequeño de Donostia: reseñas en el idioma del cliente, Google y las IAs, carta en idiomas y reservas. Precio cerrado.",
   ogdesc: "Para el bar, la tienda o el alojamiento de Donostia: reseñas en el idioma del cliente, Google y las IAs, y reservas, con precio cerrado.",
   keywords: "ia para negocios donostia, inteligencia artificial san sebastian, agencia ia donostia, automatizaciones donostia, responder reseñas en ingles frances, ia para pymes donostia",
   crumb: "IA para negocios en Donostia",
-  h1: "IA para negocios en Donostia",
+  h1: "IA y automatización para negocios en Donostia",
   lede: `${FRASE} Muchas propuestas de IA están pensadas para empresas con departamento propio. Yo trabajo con el negocio pequeño de Donostia: el bar de la Parte Vieja, la tienda de Gros, la peluquería de Amara o el alojamiento del Antiguo.`,
   img: "hauspo-desk", min: 5,
   area: ["Donostia / San Sebastián", "Donostialdea"],
@@ -195,6 +212,7 @@ ${avisoIA}
 <p>Quien está eligiendo dónde cenar esta noche lee las últimas opiniones y cómo contestas. Una respuesta en su idioma le dice que allí le van a entender.</p>
 ${porQueResenasCorto}
 ${figura("hauspo-desk", "hauspo · muestra", "Muestra de web de restaurante HAUSPO Jatetxea, con reservas", "HAUSPO, una de mis muestras de restaurante: web con reservas de mesa, sin IA en las reservas.")}
+${negocioPequeno(" de la Parte Vieja o de Gros")}
 ${pasos}
 ${aMedida([EJ.whatsapp, EJ.telefono, EJ.preguntas])}
 ${cta("Te enseño lo que dice una IA de tu negocio", "Por WhatsApp o por videollamada: te mando lo que contesta a las preguntas de un cliente y cómo se arregla lo que falla.", "Pídemelo")}
@@ -204,6 +222,7 @@ ${cta("Te enseño lo que dice una IA de tu negocio", "Por WhatsApp o por videoll
     ["¿Contestas las reseñas en inglés y en francés?", "Sí: la IA prepara el borrador en el idioma de quien escribió, yo lo reviso y tú dices «vale» antes de que se publique. En euskera, el texto pasa por Itzultzaile."],
     ["¿Cuánto cuesta?", "La presencia en Google y en las IAs, 120 € + IVA una vez; la carta en idiomas, 60 € + IVA; las reseñas respondidas, dentro de la cuota de 28 €/mes de tu web. Lo que no está en la lista, te digo el precio en 24 horas."],
     ["¿Me garantizas que una IA me recomiende?", "No, nadie puede garantizarlo. Lo que hago es que tus datos estén bien y digan lo mismo en tu ficha, tu web y los directorios, que es lo que leen."],
+    ...faqAgentes(" de Donostia"),
   ],
   cierre: `Sigue leyendo: <a href="ia-para-negocios-gipuzkoa.html">IA para negocios en Gipuzkoa</a>, <a href="ia-para-restaurantes-gipuzkoa.html">IA para restaurantes y bares</a> y <a href="zonas/donostia-san-sebastian.html">diseño web en Donostia</a>.`,
 },
