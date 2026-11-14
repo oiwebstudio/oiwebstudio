@@ -12,6 +12,7 @@
  * nuevo sin tocarlos.
  *
  * Uso (desde la raíz):  node herramientas/sitio/menu.mjs [--check]
+ * Después, siempre: node herramientas/sitio/marco-eu-sueltas.mjs (páginas en euskera sueltas, 14/11/2026).
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -29,6 +30,8 @@ const PRINCIPAL = [
 const MAS = [
   // 7/11/2026: índice de servicios (diseño gráfico, imprenta, rotulación, dominio y correo…).
   ["servicios", "servicios.html", "nav_servicios", "Servicios"],
+  // 14/11/2026 (Oier: «ponlo»): IA para negocios en Gipuzkoa.
+  ["ia", "ia-para-negocios-gipuzkoa.html", "nav_ia", "IA para negocios"],
   ["sobre", "sobre-mi.html", "nav_sobre", "Sobre mí"],
   ["reservas", "reservas-online-sin-comisiones.html", "nav_reservas", "Reservas"],
   ["seo", "seo-posicionamiento-google.html", "nav_seo", "SEO"],
@@ -51,6 +54,9 @@ function seccionDe(rel, guias) {
     "servicios.html": "servicios", "diseno-grafico-gipuzkoa.html": "servicios", "catalogos-diseno-gipuzkoa.html": "servicios",
     "carteleria-rotulacion-gipuzkoa.html": "servicios", "gestion-imprenta-gipuzkoa.html": "servicios",
     "dominio-alojamiento-correo-profesional.html": "servicios", "programacion-web-a-medida-gipuzkoa.html": "servicios",
+    "ia-para-negocios-gipuzkoa.html": "ia", "ia-para-negocios-tolosa.html": "ia", "ia-para-negocios-donostia.html": "ia",
+    "ia-para-restaurantes-gipuzkoa.html": "ia", "ia-para-peluquerias-estetica-gipuzkoa.html": "ia", "ia-para-casas-rurales-gipuzkoa.html": "ia",
+    "adimen-artifiziala-negozioentzat-gipuzkoa.html": "ia", "adimen-artifiziala-negozioentzat-tolosa.html": "ia",
   }[rel];
   if (fijo) return fijo;
   if (guias.has(rel)) return "articulos";
