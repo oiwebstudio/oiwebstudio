@@ -1,0 +1,4 @@
+wm_frase	Diseño en movimiento
+wm_cap	Webs hechas en Tolosa para negocios de aquí
+wm_pie	Muestras con nombre y datos inventados para enseñar cómo puede quedar la web de tu negocio.
+wm_mas	Ver todas las muestras
