@@ -239,7 +239,7 @@ ${factDist}
 <div>
 <div class="zhead"><span class="k">${esc(d.comarca)}</span><h2>Qué necesita un negocio de ${esc(nombre)}</h2></div>
 <p>${esc(d.contexto)}${d.contextoHtml ? " " + d.contextoHtml : ""}</p>
-<p class="zmas">Además de la web, diseño tu <a href="../branding.html">logo e identidad de marca</a> y te monto <a href="../automatizaciones.html">automatizaciones para tu negocio</a>, como las reservas y las citas.</p>
+${d.parrafoHtml ? "<p>" + d.parrafoHtml + "</p>" + String.fromCharCode(10) : ""}<p class="zmas">Además de la web, diseño tu <a href="../branding.html">logo e identidad de marca</a> y te monto <a href="../automatizaciones.html">automatizaciones para tu negocio</a>, como las reservas y las citas.</p>
 <p class="zpull">${esc(d.gancho)}</p>
 </div>
 <div>
