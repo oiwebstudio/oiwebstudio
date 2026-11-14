@@ -28,7 +28,7 @@
   }
 
   /* Tarjetas de la cinta, en orden. Las seis primeras de la galería ocupan los puestos 1, 2, 5 / 3, 8, 7, como en la referencia */
-  var IDS = ['irri','ezki','malda','hauspo','tinko','orea','txilar','zehatz','behako'];
+  var IDS = ['errotatxo','aberri','malda','hauspo','tinko','orea','txilar','zehatz','behako'];      // abren la cinta las dos webs publicadas para clientes
   var N = IDS.length, trozos = [];
   IDS.forEach(function(id, c){
     for (var j = 0; j < TROZOS; j++) for (var cara = 0; cara < 2; cara++) {
