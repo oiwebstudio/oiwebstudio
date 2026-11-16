@@ -47,7 +47,7 @@ const aMedida = (ejemplos) => `
 <ul>
 ${ejemplos.map((e) => `<li>${e}</li>`).join("\n")}
 </ul>
-<p>Estas te las monto para tu caso: no son un programa ya hecho. Antes te digo si de verdad te compensa, se prueban contigo y no pagas nada hasta que funcionan.</p>`;
+<p>Estas te las monto para tu caso: no son un programa ya hecho. Antes te digo si de verdad te compensa, se prueban contigo y no pagas nada hasta que funcionan. Si prefieres pensarlo antes por tu cuenta, en <a href="que-automatizar-negocio-pequeno.html">qué automatizar en un negocio pequeño</a> repaso tarea por tarea cuáles compensan y cuáles no.</p>`;
 
 const EJ = {
   whatsapp: "<strong>Un WhatsApp que contesta lo de siempre</strong> (horario, precios, cómo reservar) con el asistente de IA que ya trae WhatsApp Business. Pasa a una persona lo que no sabe y avisa de que es una IA.",
