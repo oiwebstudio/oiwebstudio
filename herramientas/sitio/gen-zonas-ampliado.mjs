@@ -639,7 +639,7 @@ ${d.hechos.map(([b, s]) => `<div class="zfact"><b>${esc(b)}</b><span>${esc(s)}</
 <div class="zsplit">
 <div>
 <div class="zhead"><span class="k">${esc(d.k)}</span><h2>${esc(d.h2)}</h2></div>
-${d.texto.map((p) => `<p>${esc(p)}</p>`).join("\n")}
+${d.texto.map((p) => `<p>${esc(p)}</p>`).join("\n")}${(d.parrafoHtml || []).map((p) => `\n<p>${p}</p>`).join("")}
 <p class="zpull">${esc(d.pull)}</p>
 </div>
 <div>

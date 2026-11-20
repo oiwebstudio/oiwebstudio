@@ -70,6 +70,10 @@ export const ESPANA = [
       "Álava tiene a Vitoria-Gasteiz, capital de Euskadi, con comercio, servicios e industria, y alrededor territorios muy distintos: la Llanada con su tejido industrial y agroalimentario, la Rioja Alavesa con bodegas y enoturismo —Laguardia, Elciego—, Añana con sus salinas y el valle de Ayala. Una bodega, un alojamiento rural y una tienda de barrio en Vitoria buscan en Google de maneras distintas, y la web tiene que estar escrita para cada una.",
       "Trabajo a distancia: videollamada, WhatsApp y un enlace privado para revisar la web mientras se construye. Para bodegas y alojamientos, la información práctica —visitas, reservas, cómo llegar— va al frente y en más de un idioma si tu visitante lo pide.",
     ],
+    parrafoHtml: [
+      "En la Rioja Alavesa, quien busca una bodega para visitar o un sitio donde dormir en Laguardia, Elciego, Labastida o Samaniego suele venir de fuera (de Bilbao, de Vitoria, de Logroño o del extranjero) y decide desde el móvil: qué visitas hay, a qué hora y cómo se reserva. Si tu web no lo deja claro en un vistazo, esa visita acaba en otra bodega. Para un alojamiento, mira el caso de <a href=\"caso-a-berri.html\">A.Berri, una casa rural de Getaria</a>, con reservas por solicitud y la web en castellano, euskera e inglés; y si quieres que te reserven sin intermediarios, las <a href=\"reservas-online-sin-comisiones.html\">reservas online sin comisiones</a>.",
+      "En Vitoria-Gasteiz el caso es otro: se busca igual como Vitoria que como Gasteiz, y el vecino mira por barrio (Casco Viejo, Ensanche, Lakua, Salburua, Zabalgana). La web tiene que decir dónde estás con los dos nombres y con el barrio, y si tienes bar o restaurante, enseñar la carta y el horario sin obligar a descargar nada: lo cuento en la guía de <a href=\"web-para-restaurante-hosteleria.html\">web para restaurante y hostelería</a>.",
+    ],
     pull: REMOTO,
     sectores: ["Bodegas y enoturismo", "Hostelería y alojamiento rural", "Comercio y servicios en Vitoria-Gasteiz", "Industria y agroalimentación", "Oficios y reformas"],
     faq: [
