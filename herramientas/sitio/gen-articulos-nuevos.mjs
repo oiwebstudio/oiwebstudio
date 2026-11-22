@@ -18,9 +18,13 @@ import { ARTICULOS_B } from "./articulos-octubre-b.mjs";
 import { ARTICULOS_C } from "./articulos-octubre-c.mjs";
 import { ARTICULOS_NOV } from "./articulos-noviembre.mjs";
 import { ARTICULOS_IA, ldServicio } from "./articulos-ia.mjs";
+import { ARTICULOS_AGENTES } from "./articulos-agentes.mjs";
 
 const WEB = path.resolve("web");
-const TODOS = [...ARTICULOS_A, ...ARTICULOS_B, ...ARTICULOS_C, ...ARTICULOS_NOV, ...ARTICULOS_IA];
+/* 22/11/2026: un artículo con `publicar` (AAAA-MM-DD) no sale hasta ese día; con --borrador sale ya, para verlo. */
+const HOY_ISO = new Date().toISOString().slice(0, 10);
+const listo = (a) => !a.publicar || a.publicar <= HOY_ISO || process.argv.includes("--borrador");
+const TODOS = [...ARTICULOS_A, ...ARTICULOS_B, ...ARTICULOS_C, ...ARTICULOS_NOV, ...ARTICULOS_IA, ...ARTICULOS_AGENTES].filter(listo);
 const REHACER = process.argv.includes("--rehacer");
 const NUEVAS = TODOS.filter((a) => REHACER || !fs.existsSync(path.join(WEB, `${a.slug}.html`)));
 const rd = (f) => fs.readFileSync(path.join(WEB, f), "utf8");
@@ -50,6 +54,9 @@ const HUB = {
   "ia-para-restaurantes-gipuzkoa": { cat: "Por sector", tag: "Restaurantes", img: "hauspo-desk", alt: "Muestra de web de restaurante HAUSPO con reservas", h2: "IA para restaurantes y bares: reseñas, carta y reservas", p: "Reseñas contestadas con tu tono, carta en cuatro idiomas, Google y las IAs y reservas de mesa sin comisión." },
   "ia-para-peluquerias-estetica-gipuzkoa": { cat: "Por sector", tag: "Peluquerías", img: "stock/sec-pelu-1", alt: "Interior de una peluquería", h2: "IA para peluquerías y centros de estética", p: "Citas online sin IA y sin comisión, reseñas contestadas y lo que dice de ti una IA." },
   "ia-para-casas-rurales-gipuzkoa": { cat: "Por sector", tag: "Casas rurales", img: "aberri-desk", alt: "Web de la casa rural A.Berri de Getaria", h2: "IA para casas rurales: reservas propias y reseñas", p: "Reservas sin comisión con calendario, reseñas en el idioma del huésped y cómo te ven Google y las IAs." },
+  /* Agentes de IA (22/11/2026; se publican el 29/11) */
+  "agentes-ia-empresas-gipuzkoa": { cat: "Automatizaciones", tag: "Agentes de IA", img: "stock/art-seo-local", alt: "Persona usando el móvil en un comercio", h2: "Agentes de IA para empresas en Gipuzkoa: cuándo compensan", p: "Qué es un agente, en qué se diferencia de un chatbot, cuáles compensan en un negocio pequeño, cuánto cuestan y la ley. Con uno para probar." },
+  "como-funciona-oi-studio-agentes-ia": { cat: "Automatizaciones", tag: "Caso propio", img: "stock/art-seo-local", alt: "Persona trabajando con el ordenador", h2: "Cómo funciona OI Studio con 36 agentes de IA", p: "Qué hace la IA, qué decido yo y qué ha fallado en un estudio que funciona con agentes. Lo que te sirve para tu negocio." },
 };
 
 /* Enlaces «Sigue leyendo» de cada guía nueva. */
@@ -75,6 +82,8 @@ const REL = {
   "ia-para-restaurantes-gipuzkoa": ["ia-para-negocios-gipuzkoa", "web-para-restaurante-hosteleria", "conseguir-resenas-google-negocio-local"],
   "ia-para-peluquerias-estetica-gipuzkoa": ["ia-para-negocios-gipuzkoa", "web-para-peluqueria-centro-estetica", "conseguir-resenas-google-negocio-local"],
   "ia-para-casas-rurales-gipuzkoa": ["ia-para-negocios-gipuzkoa", "google-business-profile-guia", "conseguir-resenas-google-negocio-local"],
+  "agentes-ia-empresas-gipuzkoa": ["como-funciona-oi-studio-agentes-ia", "ia-para-negocios-gipuzkoa", "inteligencia-artificial-negocio-pequeno"],
+  "como-funciona-oi-studio-agentes-ia": ["agentes-ia-empresas-gipuzkoa", "ia-para-negocios-gipuzkoa", "que-automatizar-negocio-pequeno"],
 };
 
 /* Y las guías ya publicadas que enlazan hacia las nuevas (se añade una tarjeta al final). */
@@ -137,6 +146,10 @@ for (const a of NUEVAS) {
     h = h.replace("<body>", `<body class="${a.bodyClass}">`);
     h = h.replace("</head>", "<style>.ia-pg .art-hero h1,.ia-pg .art h2,.ia-pg .cta-band h3{text-transform:uppercase;letter-spacing:0;}</style>\n</head>");
     h = h.replace('"@graph": [', '"@graph": [\n    ' + JSON.stringify(ldServicio(a)) + ",");
+  }
+  if (a.asistente) {
+    /* Asistente con IA de la web, sin botón flotante: lo abre el botón «Habla con la IA» de la página. */
+    h = h.replace("</body>", '<script src="/assets/js/oi-asistente.js?v=1" data-api="https://oi-asistente.oi-studio-web.workers.dev" data-negocio="oiwebstudio" data-boton="no" defer></script>\n</body>');
   }
   h = conservarRelacionados(ruta, h);
   fs.writeFileSync(ruta, h);
