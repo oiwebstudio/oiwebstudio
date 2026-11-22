@@ -56,7 +56,7 @@ function seccionDe(rel, guias) {
     "dominio-alojamiento-correo-profesional.html": "servicios", "programacion-web-a-medida-gipuzkoa.html": "servicios",
     "ia-para-negocios-gipuzkoa.html": "ia", "ia-para-negocios-tolosa.html": "ia", "ia-para-negocios-donostia.html": "ia",
     "ia-para-restaurantes-gipuzkoa.html": "ia", "ia-para-peluquerias-estetica-gipuzkoa.html": "ia", "ia-para-casas-rurales-gipuzkoa.html": "ia",
-    "adimen-artifiziala-negozioentzat-gipuzkoa.html": "ia", "adimen-artifiziala-negozioentzat-tolosa.html": "ia",
+    "adimen-artifiziala-negozioentzat-gipuzkoa.html": "ia", "adimen-artifiziala-negozioentzat-tolosa.html": "ia", "agentes-ia-empresas-gipuzkoa.html": "ia", "como-funciona-oi-studio-agentes-ia.html": "ia",
   }[rel];
   if (fijo) return fijo;
   if (guias.has(rel)) return "articulos";

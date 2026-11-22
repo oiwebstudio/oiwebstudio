@@ -11,7 +11,7 @@
  */
 import { consejo, cta, tabla } from "./gen-articulos-nacionales.mjs";
 
-const FECHA = "2026-11-29";
+const FECHA = "2026-11-22";
 const FRASE = "Ofrecemos soluciones de IA adaptadas a cada empresa.";
 const PROBAR = `<a href="#probar" onclick="if(window.OIAsistente){window.OIAsistente.abrir();return false;}">«Habla con la IA»</a>`;
 
@@ -19,7 +19,7 @@ export const ARTICULOS_AGENTES = [
 /* ------------------------------------------------------------------ 1 · agentes */
 {
   slug: "agentes-ia-empresas-gipuzkoa",
-  fecha: FECHA, publicar: FECHA, asistente: true,
+  fecha: FECHA, publicar: FECHA, asistente: true, globo: true,
   bodyClass: "ia-pg",
   title: "Agentes de IA para empresas en Gipuzkoa: cuándo compensan",
   headline: "Agentes de IA para empresas en Gipuzkoa: qué son, cuándo compensan y cuánto cuestan",
@@ -52,6 +52,7 @@ ${tabla(["", "Chatbot", "Agente de IA"], [
 <p><button type="button" class="btn btn--accent" onclick="window.OIAsistente&&window.OIAsistente.abrir()">Habla con la IA</button></p>
 
 <h2 id="los-mios">Los agentes que uso yo cada día</h2>
+<div class="ia-cifras"><div><b data-cuenta="36">36</b><span>agentes de IA</span></div><div><b data-cuenta="11">11</b><span>departamentos</span></div><div><b data-cuenta="1">1</b><span>persona que decide</span></div></div>
 <p>OI Studio funciona con <strong>36 agentes de IA repartidos en 11 departamentos</strong>: comercial, diseño, SEO, administración, posventa, seguridad… Uno busca negocios con la web vieja, otro revisa cada diseño antes de que lo vea nadie, otro mira el SEO cada mañana y hay uno por cada cliente en obra. Un bot de Telegram me transcribe los audios y los apunta donde toca.</p>
 <p>La regla que no se salta: <strong>ningún agente manda nada a un cliente sin que yo lo vea y diga «sí»</strong>. Lo cuento entero, con lo que ha fallado, en <a href="como-funciona-oi-studio-agentes-ia.html">cómo funciona OI Studio con agentes de IA</a>.</p>
 
@@ -108,7 +109,7 @@ ${cta("¿Te compensaría un agente de IA?", "Cuéntame qué te quita tiempo y te
 /* ------------------------------------------------------------------ 2 · caso propio */
 {
   slug: "como-funciona-oi-studio-agentes-ia",
-  fecha: FECHA, publicar: FECHA, asistente: true,
+  fecha: FECHA, publicar: FECHA, asistente: true, globo: true,
   bodyClass: "ia-pg",
   title: "Cómo funciona OI Studio con 36 agentes de IA",
   headline: "Cómo funciona OI Studio con 36 agentes de IA: qué hace la IA, qué hago yo y qué ha fallado",
@@ -123,6 +124,8 @@ ${cta("¿Te compensaría un agente de IA?", "Cuéntame qué te quita tiempo y te
   cuerpo: `
 <h2 id="por-que">Por qué lo monté así</h2>
 <p>Hago webs y automatizaciones desde Tolosa, solo, con unas pocas horas al día. No me daba para buscar clientes, diseñar, mirar el SEO, llevar las cuentas y atender a quien ya tiene su web. En lugar de dejar cosas sin hacer, monté el estudio como una empresa con departamentos, y en cada departamento, agentes de IA con un trabajo concreto.</p>
+
+<div class="ia-cifras"><div><b data-cuenta="36">36</b><span>agentes de IA</span></div><div><b data-cuenta="11">11</b><span>departamentos</span></div><div><b data-cuenta="1">1</b><span>persona que decide</span></div></div>
 
 <h2 id="organigrama">El organigrama</h2>
 ${tabla(["Departamento", "Qué hacen sus agentes"], [

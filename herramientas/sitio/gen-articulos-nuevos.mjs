@@ -118,6 +118,11 @@ const RECIPROCO = {
   "web-para-peluqueria-centro-estetica": ["ia-para-peluquerias-estetica-gipuzkoa"],
   "seo-local-tolosa-google-maps": ["ia-para-negocios-tolosa"],
   "diseno-web-donostia-agencia-o-freelance": ["ia-para-negocios-donostia"],
+  /* Agentes de IA (22/11/2026). */
+  "ia-para-negocios-gipuzkoa": ["agentes-ia-empresas-gipuzkoa", "como-funciona-oi-studio-agentes-ia"],
+  "inteligencia-artificial-negocio-pequeno": ["agentes-ia-empresas-gipuzkoa"],
+  "que-automatizar-negocio-pequeno": ["como-funciona-oi-studio-agentes-ia"],
+  "ia-para-negocios-donostia": ["agentes-ia-empresas-gipuzkoa"],
 };
 
 const INI = "<!-- RELACIONADOS:inicio -->", FIN = "<!-- RELACIONADOS:fin -->";
@@ -146,6 +151,31 @@ for (const a of NUEVAS) {
     h = h.replace("<body>", `<body class="${a.bodyClass}">`);
     h = h.replace("</head>", "<style>.ia-pg .art-hero h1,.ia-pg .art h2,.ia-pg .cta-band h3{text-transform:uppercase;letter-spacing:0;}</style>\n</head>");
     h = h.replace('"@graph": [', '"@graph": [\n    ' + JSON.stringify(ldServicio(a)) + ",");
+  }
+  if (a.globo) {
+    /* 22/11/2026 (Oier: «bolas del mundo y animaciones muy pros»): globo 3D bajo la entradilla y cifras que cuentan. */
+    const CSS = `<style>
+.art-hero .ia-globo{position:relative;width:min(560px,100%);aspect-ratio:1;margin:26px auto -12%;opacity:0;transform:translateY(26px) scale(.96);animation:iaGloboIn 1.5s cubic-bezier(.2,.75,.25,1) .1s forwards;-webkit-mask-image:linear-gradient(#000 58%,transparent 90%);mask-image:linear-gradient(#000 58%,transparent 90%);}
+.ia-globo canvas{width:100%;height:100%;display:block;cursor:grab;touch-action:pan-y;}
+.ia-globo.is-arrastrando canvas{cursor:grabbing;}
+.ia-globo__lbl{position:absolute;position-anchor:--cobe-tolosa;bottom:anchor(top);left:anchor(center);transform:translate(-50%,-8px);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;background:var(--ink);color:#fff;padding:5px 10px;border-radius:999px;opacity:var(--cobe-visible-tolosa,0);transition:opacity .5s;pointer-events:none;white-space:nowrap;}
+@supports not (position-anchor:--a){.ia-globo__lbl{display:none;}}
+.ia-globo--sin-webgl{display:none;}
+@keyframes iaGloboIn{to{opacity:1;transform:none;}}
+.ia-cifras{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:30px 0 34px;}
+.ia-cifras>div{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:22px 18px;}
+.ia-cifras.ia-anim>div{opacity:0;transform:translateY(18px);transition:opacity .9s ease,transform 1s cubic-bezier(.2,.75,.25,1);}
+.ia-cifras.ia-anim.is-visto>div{opacity:1;transform:none;}
+.ia-cifras.ia-anim>div:nth-child(2){transition-delay:.12s;}
+.ia-cifras.ia-anim>div:nth-child(3){transition-delay:.24s;}
+.ia-cifras b{display:block;font-family:"Fraunces",serif;font-weight:500;font-size:clamp(40px,7vw,64px);line-height:1;color:var(--ink);font-variant-numeric:tabular-nums;}
+.ia-cifras span{display:block;margin-top:10px;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);}
+@media(max-width:600px){.ia-cifras{gap:8px;}.ia-cifras>div{padding:16px 12px;}.ia-cifras span{font-size:11px;}}
+@media(prefers-reduced-motion:reduce){.art-hero .ia-globo{animation:none;opacity:1;transform:none;}}
+</style>`;
+    h = h.replace("</head>", CSS + "\n</head>");
+    h = h.replace(/(<p class="lede">[\s\S]*?<\/p>)/, '$1\n<div class="ia-globo" aria-hidden="true"><canvas></canvas><span class="ia-globo__lbl">Tolosa</span></div>');
+    h = h.replace("</body>", '<script type="module" src="/assets/globo-ia.js?v=1"></script>\n</body>');
   }
   if (a.asistente) {
     /* Asistente con IA de la web, sin botón flotante: lo abre el botón «Habla con la IA» de la página. */
