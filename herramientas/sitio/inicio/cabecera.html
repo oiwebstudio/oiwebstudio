@@ -1,0 +1,72 @@
+<!-- INICIO: titular, pregunta al asistente y fila de webs que se arrastra. Lo escribe herramientas/sitio/inicio/gen.cjs desde cabecera.html: no se edita aquí -->
+<header class="hero hx ini">
+<div class="ini__cab">
+<h1 class="hx__h1" data-t="hero_h1"><span class="hx__l1">Digitalizo negocios</span> <em class="hx__l2">con webs bonitas, automatizaciones y marca.</em></h1>
+<script>
+/* El titular se trocea aquí, antes de pintarse: si no, se ve entero, desaparece y vuelve a entrar */
+  function trocearTitular(){
+    var h = document.querySelector('.hx__h1');
+    if (!h || h.querySelector('.hx__w')) return;
+    var n = 0;
+    Array.prototype.forEach.call(h.querySelectorAll('.hx__l1, .hx__l2'), function(linea){
+      var palabras = linea.textContent.trim().split(/\s+/);
+      linea.textContent = '';
+      palabras.forEach(function(p, j){
+        var w = document.createElement('span');
+        w.className = 'hx__w';
+        w.style.setProperty('--i', n++);
+        w.textContent = p;
+        linea.appendChild(w);
+        if (j < palabras.length - 1) linea.appendChild(document.createTextNode(' '));
+      });
+    });
+  }
+  trocearTitular();
+</script>
+<form class="ini__preg" id="iniPreg" action="contacto.html">
+<label class="sr-only" for="iniCampo" data-t="ini_lbl">Pregunta al asistente de OI Studio</label>
+<span class="ini__ph" aria-hidden="true"><span id="iniPh" data-t="ini_ph0">Pregúntame lo que quieras.</span></span>
+<input class="ini__campo" id="iniCampo" type="text" maxlength="300" autocomplete="off" autocapitalize="sentences" enterkeyhint="send"/>
+<button class="ini__ir" type="submit"><span class="sr-only" data-t="ini_ir">Preguntar</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button>
+</form>
+<p class="ini__ia" data-t="ini_ia">Contesta al momento el asistente de IA de OI Studio.</p>
+<!-- Textos que usa assets/inicio.js (aquí para que la versión en euskera los traduzca con el diccionario) -->
+<template id="iniTx"><span data-k="f1" data-t="ini_f1">¿Cuánto cuesta una web?</span><span data-k="f2" data-t="ini_f2">¿Me haces una muestra gratis?</span><span data-k="f3" data-t="ini_f3">¿Puedo tener reservas sin comisiones?</span><span data-k="f4" data-t="ini_f4">¿Cuánto tardas en hacerla?</span><span data-k="f5" data-t="ini_f5">¿La web va también en euskera?</span><span data-k="nc" data-t="ini_nc">El asistente no contesta ahora mismo.</span><span data-k="nw" data-t="ini_nw">Escríbeme por WhatsApp</span><span data-k="cb" data-t="ini_cb">Pedir llamada</span><span data-k="ch" data-t="ini_ch">Elige una hora para la llamada.</span><span data-k="m1" data-t="ini_m1">Hola, Oier. Me gustaría una llamada de 15 minutos.</span><span data-k="mn" data-t="ini_mn">Mi negocio</span></template>
+</div>
+
+<div class="ini__fila" id="iniFila">
+<ul class="ini__pista" id="iniPista">
+<!--TARJETAS-->
+</ul>
+</div>
+
+<!-- Debajo de la fila (Oier 23/11: «esta sección no me gusta… igual lo mejor es pedir reservas»): se pide una llamada con día y hora -->
+<div class="container ini__bajo">
+<div class="ini__txt">
+<p class="ini__tit" data-t="ini_cita_t">Cuéntamelo en 15&nbsp;minutos</p>
+<p class="hx__lede reveal" data-t="hero_quien">Para negocios de <a href="zonas/tolosa.html">Tolosa</a>, Tolosaldea, <a href="zonas/donostia-san-sebastian.html">Donostia</a> y el resto de Gipuzkoa hago webs a medida, automatizaciones y marca, en castellano y euskera. OI Studio es un estudio de diseño web de Tolosa con una sola persona detrás, Oier Irastorza. Precio cerrado, muestra gratis antes de decidir y pago al final.</p>
+<ul class="ini__datos reveal">
+<li><a href="contacto.html"><b data-t="hx_c1t">PROPUESTA EN 48&nbsp;H.</b><span data-t="hx_c1s">Diseño y precio cerrado, sin compromiso.</span></a></li>
+<li><a href="precios.html"><b data-t="hx_c2t">PAGAS AL FINAL.</b><span data-t="hx_c2s">Cuando tu web ya está publicada.</span></a></li>
+</ul>
+<p class="ini__conf reveal"><a href="trabajos.html"><span class="hx__caras" aria-hidden="true"><img decoding="async" loading="lazy" src="assets/hero/errotatxo-av.webp" alt="" width="40" height="40"/><img decoding="async" loading="lazy" src="assets/hero/aberri-av.webp" alt="" width="40" height="40"/></span><span data-t="hx_conf">Errotatxo y A.Berri ya tienen la suya.</span></a></p>
+</div>
+
+<form class="ini__cita reveal" id="iniCita" action="https://wa.me/34611497409" target="_blank" rel="noopener">
+<p class="ini__cita-t" data-t="ini_cita_s">Elige día y hora y te llamo.</p>
+<fieldset class="ini__grupo" id="iniGDia"><legend data-t="ini_cita_d">Día</legend><div class="ini__ops" id="iniDias"></div></fieldset>
+<fieldset class="ini__grupo" id="iniGHora"><legend data-t="ini_cita_h">Hora</legend><div class="ini__ops" id="iniHoras">
+<label class="ini__op"><input type="radio" name="hora" value="17:00"/><span>17:00</span></label>
+<label class="ini__op"><input type="radio" name="hora" value="17:30"/><span>17:30</span></label>
+<label class="ini__op"><input type="radio" name="hora" value="18:00"/><span>18:00</span></label>
+<label class="ini__op"><input type="radio" name="hora" value="18:30"/><span>18:30</span></label>
+<label class="ini__op"><input type="radio" name="hora" value="19:00"/><span>19:00</span></label>
+<label class="ini__op"><input type="radio" name="hora" value="19:30"/><span>19:30</span></label>
+</div></fieldset>
+<label class="ini__neg"><span data-t="ini_cita_n">Tu negocio <i>(si quieres)</i></span><input type="text" id="iniNeg" maxlength="60" autocomplete="organization"/></label>
+<button class="hx__btn hx__btn--negro ini__pedir" type="submit"><span id="iniPedirT" data-t="ini_cita_b">Pedir la llamada por WhatsApp</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+<p class="ini__aviso" id="iniAviso" role="status"><span data-t="ini_cita_c">Se abre WhatsApp con el mensaje ya escrito y ahí te confirmo la hora.</span> <span data-t="hero_gar">Si no te gusta la muestra de tu web, no pagas nada.</span></p>
+<p class="ini__otros"><a href="contacto.html" data-t="btn_presupuesto">Solicitar presupuesto</a><a href="trabajos.html" data-t="btn_vertrabajos">Ver trabajos</a></p>
+</form>
+</div>
+</header>

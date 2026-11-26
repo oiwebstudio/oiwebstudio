@@ -1,0 +1,6 @@
+f13	El martes, 3 de enero.
+f14	El jueves, 5 de agosto.
+f15	El viernes, 6 de diciembre.
+f16	Viernes, 10 de enero.
+f17	Jueves, 20 de agosto.
+f18	Lunes, 21 de diciembre.

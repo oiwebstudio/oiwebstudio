@@ -1,0 +1,4 @@
+ini_ia	OI Studioko adimen artifizialeko laguntzaileak berehala erantzuten dizu.
+ini_cita_t	Kontaidazu 15 minutuko dei batean.
+ini_cita_c	WhatsApp irekitzen da mezua idatzita dagoela. WhatsApp bidez ordua baieztatzen dizut.
+ini_ch	Aukeratu zer ordutan nahi duzun deitzea.

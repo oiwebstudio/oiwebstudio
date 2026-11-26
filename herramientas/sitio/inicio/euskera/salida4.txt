@@ -1,0 +1,6 @@
+f13	Urtarrilak 3, asteartea.
+f14	Abuztuak 5, osteguna.
+f15	Ostirala, abenduak 6.
+f16	Urtarrilak 10, ostirala.
+f17	Osteguna, abuztuak 20.
+f18	astelehena, abenduak 21.

@@ -1,0 +1,4 @@
+ini_ia	El asistente de inteligencia artificial de OI Studio te responde al instante.
+ini_cita_t	Cuéntamelo en una llamada de 15 minutos
+ini_cita_c	Se abre WhatsApp con el mensaje ya escrito. Te confirmo la hora por WhatsApp.
+ini_ch	Elige a qué hora quieres que te llame.

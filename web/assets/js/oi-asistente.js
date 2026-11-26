@@ -268,7 +268,7 @@
     cerrarBtn.addEventListener("click", cerrar);
     panel.addEventListener("keydown", function (e) { if (e.key === "Escape") { e.stopPropagation(); cerrar(); } });
 
-    api.abrir = abrir; api.cerrar = cerrar; api.alternar = function () { abierto ? cerrar() : abrir(); };
+    api.abrir = abrir; api.preguntar = function (q) { abrir(); enviar(q); }; api.cerrar = cerrar; api.alternar = function () { abierto ? cerrar() : abrir(); };
     cola.forEach(function (accion) { api[accion](); });
     cola = [];
     try { document.dispatchEvent(new CustomEvent("oiasistente:listo")); } catch (e) {}

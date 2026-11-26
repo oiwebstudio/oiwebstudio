@@ -153,7 +153,7 @@
 <style>.hx__lede{max-width:34em}.hx__lede a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}.hx__lede a:hover{color:var(--ink)}</style>
 <link rel="stylesheet" href="assets/lineas.css?v=18"/>
 <script>if(location.protocol==='http:'&&/(^|\.)oiwebstudio\.com$/.test(location.hostname))location.replace('https://'+location.host+location.pathname+location.search+location.hash);document.documentElement.classList.add('js');</script>
-<link rel="preload" as="image" type="image/avif" href="/assets/hero/mano-520.avif" imagesrcset="/assets/hero/mano-520.avif 520w, /assets/hero/mano-900.avif 900w" imagesizes="(max-width: 760px) 340px, 480px" fetchpriority="high"/>
+<link rel="stylesheet" href="assets/inicio.css?v=1"/>
 </head>
 <body>
 
@@ -219,12 +219,9 @@
 </div>
 </div>
 
-<!-- HERO: mano con el móvil y las muestras girando alrededor -->
-<header class="hero hx">
-<div class="container">
-<div class="hx__sello" aria-hidden="true">
-<svg viewBox="0 0 120 120"><defs><path id="hxCirc" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs><text><textPath href="#hxCirc" textLength="274" lengthAdjust="spacing" data-t="hx_sello">HECHO A MANO · DESDE TOLOSA · </textPath></text><path class="hx__estrella" d="M60 45 C61.6 55.5 64.5 58.4 75 60 C64.5 61.6 61.6 64.5 60 75 C58.4 64.5 55.5 61.6 45 60 C55.5 58.4 58.4 55.5 60 45Z"/></svg>
-</div>
+<!-- INICIO: titular, pregunta al asistente y fila de webs que se arrastra. Lo escribe herramientas/sitio/inicio/gen.cjs desde cabecera.html: no se edita aquí -->
+<header class="hero hx ini">
+<div class="ini__cab">
 <h1 class="hx__h1" data-t="hero_h1"><span class="hx__l1">Digitalizo negocios</span> <em class="hx__l2">con webs bonitas, automatizaciones y marca.</em></h1>
 <script>
 /* El titular se trocea aquí, antes de pintarse: si no, se ve entero, desaparece y vuelve a entrar */
@@ -247,79 +244,92 @@
   }
   trocearTitular();
 </script>
-<p class="hx__lede" data-t="hero_quien">Para negocios de <a href="zonas/tolosa.html">Tolosa</a>, Tolosaldea, <a href="zonas/donostia-san-sebastian.html">Donostia</a> y el resto de Gipuzkoa hago webs a medida, automatizaciones y marca, en castellano y euskera. OI Studio es un estudio de diseño web de Tolosa con una sola persona detrás, Oier Irastorza. Precio cerrado, muestra gratis antes de decidir y pago al final.</p>
-<div class="hx__acc">
-<a href="contacto.html" class="hx__btn hx__btn--negro"><span data-t="btn_presupuesto">Solicitar presupuesto</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-<a href="trabajos.html" class="hx__btn hx__btn--claro"><i aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></i><span data-t="btn_vertrabajos">Ver trabajos</span></a>
-</div>
-<p class="hx__mas"><a href="https://wa.me/34611497409" target="_blank" rel="noopener" data-t="hero_wa">Escríbeme por WhatsApp</a><span data-t="hero_gar">Si no te gusta la muestra de tu web, no pagas nada.</span></p>
-
-<div class="hx__escena">
-<svg class="hx__hilos" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true"><path d="M125 110 C 115 230, 190 300, 330 318"/><path d="M1080 230 C 1092 300, 1030 330, 880 338"/></svg>
-
-<a class="hx__tarjeta hx__tarjeta--izq" href="contacto.html">
-<span class="hx__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 10v4M8 7v10M12 4v16M16 8v8M20 11v2"/></svg></span>
-<b data-t="hx_c1t">PROPUESTA EN 48&nbsp;H.</b>
-<span data-t="hx_c1s">Diseño y precio cerrado, sin compromiso.</span>
-</a>
-<a class="hx__tarjeta hx__tarjeta--der" href="precios.html">
-<span class="hx__caras" aria-hidden="true"><img fetchpriority="low" decoding="async" src="assets/hero/etxea-c.webp" alt="" width="40" height="40"/><img fetchpriority="low" decoding="async" src="assets/hero/pedala-c.webp?v=2" alt="" width="40" height="40"/><img fetchpriority="low" decoding="async" src="assets/hero/ekhi-c.webp" alt="" width="40" height="40"/><i>+</i></span>
-<b data-t="hx_c2t">PAGAS AL FINAL.</b>
-<span data-t="hx_c2s">Cuando tu web ya está publicada.</span>
-</a>
-
-<div class="hx__3d">
-<div class="hx__anillo" id="hxAnillo" aria-hidden="true">
-<a class="hx__p hx__p--foto" href="/demos/muestras/etxea-inmobiliaria/" target="_blank" rel="noopener" tabindex="-1" data-k="etxea" style="--i:0"><img fetchpriority="low" decoding="async" src="assets/hero/etxea-c.webp" alt="" width="400" height="260"/></a>
-<a class="hx__p hx__p--vidrio" href="reservas-online-sin-comisiones.html" tabindex="-1" style="--i:1"><i style="--c:#5fb36b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></i><b data-t="hx_g1t">RESERVAS</b><span data-t="hx_g1s">Sin comisiones.</span></a>
-<a class="hx__p hx__p--foto" href="/demos/muestras/pedala-bizikletak/" target="_blank" rel="noopener" tabindex="-1" data-k="pedala" style="--i:2"><img fetchpriority="low" decoding="async" src="assets/hero/pedala-c.webp?v=2" alt="" width="400" height="260"/></a>
-<a class="hx__p hx__p--foto" href="/demos/muestras/ekhi-psikologia/" target="_blank" rel="noopener" tabindex="-1" data-k="ekhi" style="--i:3"><img fetchpriority="low" decoding="async" src="assets/hero/ekhi-c.webp" alt="" width="400" height="260"/></a>
-<a class="hx__p hx__p--vidrio" href="branding.html" tabindex="-1" style="--i:4"><i style="--c:#c07a35"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="9" r="5"/><rect x="11" y="11" width="9" height="9" rx="1"/></svg></i><b data-t="hx_g2t">BRANDING</b><span data-t="hx_g2s">Logo, colores y letras.</span></a>
-<a class="hx__p hx__p--foto" href="/demos/muestras/arin-fisioterapia/" target="_blank" rel="noopener" tabindex="-1" data-k="arin" style="--i:5"><img fetchpriority="low" decoding="async" src="assets/hero/arin-c.webp" alt="" width="400" height="260"/></a>
-<a class="hx__p hx__p--foto" href="/demos/muestras/laino-argazkiak/" target="_blank" rel="noopener" tabindex="-1" data-k="laino" style="--i:6"><img fetchpriority="low" decoding="async" src="assets/hero/laino-c.webp" alt="" width="400" height="260"/></a>
-<a class="hx__p hx__p--vidrio" href="seo-local-tolosa-google-maps.html" tabindex="-1" style="--i:7"><i style="--c:#f08a4b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></i><b>GOOGLE MAPS</b><span data-t="hx_g3s">Te encuentran a la primera.</span></a>
-<a class="hx__p hx__p--foto" href="/demos/muestras/gainetik-arkitektura/" target="_blank" rel="noopener" tabindex="-1" data-k="gainetik" style="--i:8"><img fetchpriority="low" decoding="async" src="assets/hero/gainetik-c.webp" alt="" width="400" height="260"/></a>
-<a class="hx__p hx__p--foto" href="/demos/muestras/hiria-etxebizitzak/" target="_blank" rel="noopener" tabindex="-1" data-k="hiria" style="--i:9"><img fetchpriority="low" decoding="async" src="assets/hero/hiria-c.webp" alt="" width="400" height="260"/></a>
-<a class="hx__p hx__p--vidrio" href="conseguir-resenas-google-negocio-local.html" tabindex="-1" style="--i:10"><i style="--c:#e6b422"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg></i><b data-t="hx_g4t">RESEÑAS</b><span data-t="hx_g4s">Más estrellas en Google.</span></a>
-<a class="hx__p hx__p--foto" href="/demos/muestras/maila-eskailerak/" target="_blank" rel="noopener" tabindex="-1" data-k="maila" style="--i:11"><img fetchpriority="low" decoding="async" src="assets/hero/maila-c.webp" alt="" width="400" height="260"/></a>
-</div>
-<a class="hx__mano" id="hxMano" href="/demos/muestras/etxea-inmobiliaria/" target="_blank" rel="noopener">
-<span class="hx__flota">
-<picture><source type="image/avif" srcset="assets/hero/mano-520.avif 520w, assets/hero/mano-900.avif 900w" sizes="(max-width: 760px) 340px, 480px"/><img class="hx__foto" src="assets/hero/mano-520.webp" srcset="assets/hero/mano-520.webp 520w, assets/hero/mano-900.webp 900w" sizes="(max-width: 760px) 340px, 480px" alt="" width="1457" height="1868" fetchpriority="high"/></picture>
-<span class="hx__pantalla" id="hxEnciende"><img id="hxPantalla" src="assets/hero/etxea-m.webp" alt="" width="480" height="1013"/><span class="hx__arranque" aria-hidden="true"><img src="assets/logo-nav-black.png" alt="" width="320" height="86"/></span><span class="hx__brillo" aria-hidden="true"></span></span>
-<span class="hx__isla" aria-hidden="true"></span>
-</span>
-<span class="sr-only" data-t="hx_ver">Ver esta muestra en vivo</span>
-</a>
+<form class="ini__preg" id="iniPreg" action="contacto.html">
+<label class="sr-only" for="iniCampo" data-t="ini_lbl">Pregunta al asistente de OI Studio</label>
+<span class="ini__ph" aria-hidden="true"><span id="iniPh" data-t="ini_ph0">Pregúntame lo que quieras.</span></span>
+<input class="ini__campo" id="iniCampo" type="text" maxlength="300" autocomplete="off" autocapitalize="sentences" enterkeyhint="send"/>
+<button class="ini__ir" type="submit"><span class="sr-only" data-t="ini_ir">Preguntar</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button>
+</form>
+<p class="ini__ia" data-t="ini_ia">Contesta al momento el asistente de IA de OI Studio.</p>
+<!-- Textos que usa assets/inicio.js (aquí para que la versión en euskera los traduzca con el diccionario) -->
+<template id="iniTx"><span data-k="f1" data-t="ini_f1">¿Cuánto cuesta una web?</span><span data-k="f2" data-t="ini_f2">¿Me haces una muestra gratis?</span><span data-k="f3" data-t="ini_f3">¿Puedo tener reservas sin comisiones?</span><span data-k="f4" data-t="ini_f4">¿Cuánto tardas en hacerla?</span><span data-k="f5" data-t="ini_f5">¿La web va también en euskera?</span><span data-k="nc" data-t="ini_nc">El asistente no contesta ahora mismo.</span><span data-k="nw" data-t="ini_nw">Escríbeme por WhatsApp</span><span data-k="cb" data-t="ini_cb">Pedir llamada</span><span data-k="ch" data-t="ini_ch">Elige una hora para la llamada.</span><span data-k="m1" data-t="ini_m1">Hola, Oier. Me gustaría una llamada de 15 minutos.</span><span data-k="mn" data-t="ini_mn">Mi negocio</span></template>
 </div>
 
-<a class="hx__pie hx__pie--izq" href="trabajos.html">
-<i class="hx__raya" aria-hidden="true"></i>
-<p data-t="hx_conf">Errotatxo y A.Berri ya tienen la suya.</p>
-<span class="hx__caras" aria-hidden="true"><img fetchpriority="low" decoding="async" src="assets/hero/errotatxo-av.webp" alt="" width="40" height="40"/><img fetchpriority="low" decoding="async" src="assets/hero/aberri-av.webp" alt="" width="40" height="40"/><i>+</i></span>
-</a>
-<div class="hx__pie hx__pie--der">
-<svg class="hx__chispa" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 C12.9 9.6 14.4 11.1 22 12 C14.4 12.9 12.9 14.4 12 22 C11.1 14.4 9.6 12.9 2 12 C9.6 11.1 11.1 9.6 12 2Z"/></svg>
-<p><i class="hx__raya" aria-hidden="true"></i><span data-t="hx_lema">Menos líos.<br/>Más visibilidad.</span></p>
+<div class="ini__fila" id="iniFila">
+<ul class="ini__pista" id="iniPista">
+<li class="ini__s"><a class="ini__c" href="demos/muestras/zirkin-dantza-eskola/es/" target="_blank" rel="noopener" data-id="zirkin" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/zirkin-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" fetchpriority="high"/><span class="ini__et"><span class="sr-only">ZIRKIN · </span><span data-t="sx_c_musica">Escuela de danza</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="demos/muestras/bigun-estetika/es/" target="_blank" rel="noopener" data-id="bigun" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/bigun-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" style="object-position:50% 13%" fetchpriority="high"/><span class="ini__et"><span class="sr-only">BIGUN · </span><span data-t="sx_c4">Estética</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="/demos/muestras/etxea-inmobiliaria/" target="_blank" rel="noopener" data-id="etxea" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/etxea-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" fetchpriority="high"/><span class="ini__et"><span class="sr-only">ETXEA · </span><span data-t="tag_inm">Inmobiliaria</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="demos/muestras/leiho-hotela/es/" target="_blank" rel="noopener" data-id="leiho" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/leiho-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" fetchpriority="auto"/><span class="ini__et"><span class="sr-only">LEIHO · </span><span data-t="sx_c_hotel">Hotel</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="demos/muestras/uztai-bitxidenda/es/" target="_blank" rel="noopener" data-id="uztai" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/uztai-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" fetchpriority="auto"/><span class="ini__et"><span class="sr-only">UZTAI · </span><span data-t="sx_c_joyeria">Joyería</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="demos/muestras/ahamen-taberna/es/" target="_blank" rel="noopener" data-id="ahamen" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/ahamen-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" fetchpriority="auto"/><span class="ini__et"><span class="sr-only">AHAMEN · </span><span data-t="sx_c2">Bar</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="demos/muestras/lauza-eraikuntzak/es/" target="_blank" rel="noopener" data-id="lauza" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/lauza-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" fetchpriority="auto"/><span class="ini__et"><span class="sr-only">LAUZA · </span><span data-t="sx_c_reformas">Construcción</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="demos/muestras/orea-okindegia/es/" target="_blank" rel="noopener" data-id="orea" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/orea-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" fetchpriority="auto"/><span class="ini__et"><span class="sr-only">OREA · </span><span data-t="sx_c_panaderia">Panadería</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="/demos/muestras/hiria-etxebizitzak/" target="_blank" rel="noopener" data-id="hiria" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/hiria-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" fetchpriority="auto"/><span class="ini__et"><span class="sr-only">HIRIA · </span><span data-t="tag_inm">Inmobiliaria</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="demos/muestras/artile-arropa/es/" target="_blank" rel="noopener" data-id="artile" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/artile-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" loading="lazy"/><span class="ini__et"><span class="sr-only">ARTILE · </span><span data-t="sx_c8">Tienda</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="caso-a-berri.html" data-id="aberri" data-r="4" draggable="false"><span class="ini__in"><img src="assets/aberri-mobile.webp" alt="" width="480" height="1013" decoding="async" draggable="false" loading="lazy"/><span class="ini__et"><span class="sr-only">A.BERRI · </span><span data-t="sx_c_casarural">Casa rural</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="demos/muestras/aihen-txakolindegia/es/" target="_blank" rel="noopener" data-id="aihen" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/aihen-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" loading="lazy"/><span class="ini__et"><span class="sr-only">AIHEN · </span><span data-t="sx_c_bodega">Bodega</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="demos/muestras/lorratz-podologia/es/" target="_blank" rel="noopener" data-id="lorratz" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/lorratz-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" loading="lazy"/><span class="ini__et"><span class="sr-only">LORRATZ · </span><span data-t="sx_c_podologia">Podología</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="demos/muestras/txilar-loradenda/es/" target="_blank" rel="noopener" data-id="txilar" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/txilar-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" loading="lazy"/><span class="ini__et"><span class="sr-only">TXILAR · </span><span data-t="sx_c_floristeria">Floristería</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="demos/muestras/behako-optika/es/" target="_blank" rel="noopener" data-id="behako" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/behako-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" loading="lazy"/><span class="ini__et"><span class="sr-only">BEHAKO · </span><span data-t="sx_c_optica">Óptica</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="demos/muestras/orrazkera-ileapaindegia/es/" target="_blank" rel="noopener" data-id="orrazkera" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/orrazkera-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" loading="lazy"/><span class="ini__et"><span class="sr-only">ORRAZKERA · </span><span data-t="sx_c3">Peluquería</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="demos/muestras/gantxo-harategia/es/" target="_blank" rel="noopener" data-id="gantxo" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/gantxo-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" loading="lazy"/><span class="ini__et"><span class="sr-only">GANTXO · </span><span data-t="sx_c_carniceria">Carnicería</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="caso-errotatxo.html" data-id="errotatxo" data-r="4" draggable="false"><span class="ini__in"><img src="assets/errotatxo-mobile.webp" alt="" width="480" height="1013" decoding="async" draggable="false" loading="lazy"/><span class="ini__et"><span class="sr-only">ERROTATXO · </span><span data-t="sx_c_panaderia">Panadería</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="demos/muestras/zehatz-tailerra/es/" target="_blank" rel="noopener" data-id="zehatz" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/zehatz-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" loading="lazy"/><span class="ini__et"><span class="sr-only">ZEHATZ · </span><span data-t="sx_c_taller">Taller</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="demos/muestras/hauspo-jatetxea/es/" target="_blank" rel="noopener" data-id="hauspo" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/hauspo-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" loading="lazy"/><span class="ini__et"><span class="sr-only">HAUSPO · </span><span data-t="sx_c1">Restaurante</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="demos/muestras/atzapar-albaitaritza/es/" target="_blank" rel="noopener" data-id="atzapar" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/atzapar-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" loading="lazy"/><span class="ini__et"><span class="sr-only">ATZAPAR · </span><span data-t="sx_c_veterinaria">Veterinaria</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="demos/muestras/lerro-akademia/es/" target="_blank" rel="noopener" data-id="lerro" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/lerro-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" loading="lazy"/><span class="ini__et"><span class="sr-only">LERRO · </span><span data-t="sx_c_academia">Academia</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="/demos/muestras/pedala-bizikletak/" target="_blank" rel="noopener" data-id="pedala" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/pedala-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" style="object-position:50% 13%" loading="lazy"/><span class="ini__et"><span class="sr-only">PEDALA · </span><span data-t="tag_bici">Tienda de bicis</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="/demos/muestras/ekhi-psikologia/" target="_blank" rel="noopener" data-id="ekhi" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/ekhi-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" style="object-position:50% 13%" loading="lazy"/><span class="ini__et"><span class="sr-only">EKHI · </span><span data-t="tag_psi">Psicología</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="demos/muestras/malda-sagardotegia/es/" target="_blank" rel="noopener" data-id="malda" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/malda-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" loading="lazy"/><span class="ini__et"><span class="sr-only">MALDA · </span><span data-t="sx_c_sidreria">Sidrería</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="demos/muestras/agiri-aholkularitza/es/" target="_blank" rel="noopener" data-id="agiri" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/agiri-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" loading="lazy"/><span class="ini__et"><span class="sr-only">AGIRI · </span><span data-t="sx_c_asesoria">Asesoría</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="/demos/muestras/maila-eskailerak/" target="_blank" rel="noopener" data-id="maila" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/maila-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" loading="lazy"/><span class="ini__et"><span class="sr-only">MAILA · </span><span data-t="tag_carp">Carpintería</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="demos/muestras/erpin-mekanizatuak/es/" target="_blank" rel="noopener" data-id="erpin" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/erpin-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" loading="lazy"/><span class="ini__et"><span class="sr-only">ERPIN · </span><span data-t="sx_c_industria">Industria</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="demos/muestras/iltze-burdindegia/es/" target="_blank" rel="noopener" data-id="iltze" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/iltze-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" loading="lazy"/><span class="ini__et"><span class="sr-only">ILTZE · </span><span data-t="sx_c_ferreteria">Ferretería</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="demos/muestras/malgu-fisioterapia/es/" target="_blank" rel="noopener" data-id="malgu" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/malgu-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" loading="lazy"/><span class="ini__et"><span class="sr-only">MALGU · </span><span data-t="sx_c_fisioterapia">Fisioterapia</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="demos/muestras/tinko-gimnasioa/es/" target="_blank" rel="noopener" data-id="tinko" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/tinko-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" loading="lazy"/><span class="ini__et"><span class="sr-only">TINKO · </span><span data-t="sx_c_gimnasio">Gimnasio</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="demos/muestras/ezki-landetxea/es/" target="_blank" rel="noopener" data-id="ezki" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/ezki-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" loading="lazy"/><span class="ini__et"><span class="sr-only">EZKI · </span><span data-t="sx_c_casarural">Casa rural</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="demos/muestras/irri-hortz-klinika/es/" target="_blank" rel="noopener" data-id="irri" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/irri-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" loading="lazy"/><span class="ini__et"><span class="sr-only">IRRI · </span><span data-t="sx_c_dentista">Dentista</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="demos/muestras/hari-instalazioak/es/" target="_blank" rel="noopener" data-id="hari" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/hari-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" loading="lazy"/><span class="ini__et"><span class="sr-only">HARI · </span><span data-t="sx_c_instalador">Instalador</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="demos/muestras/uhal-txakur-ileapaindegia/es/" target="_blank" rel="noopener" data-id="uhal" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/uhal-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" loading="lazy"/><span class="ini__et"><span class="sr-only">UHAL · </span><span data-t="sx_c_peluqueriacanina">Peluquería canina</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="demos/muestras/itun-abokatuak/es/" target="_blank" rel="noopener" data-id="itun" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/itun-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" loading="lazy"/><span class="ini__et"><span class="sr-only">ITUN · </span><span data-t="sx_c_abogados">Abogados</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="/demos/muestras/laino-argazkiak/" target="_blank" rel="noopener" data-id="laino" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/laino-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" loading="lazy"/><span class="ini__et"><span class="sr-only">LAINO · </span><span data-t="tag_foto">Fotografía</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="/demos/muestras/gainetik-arkitektura/" target="_blank" rel="noopener" data-id="gainetik" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/gainetik-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" loading="lazy"/><span class="ini__et"><span class="sr-only">GAINETIK · </span><span data-t="tag_arq">Arquitectura</span></span></span></a></li>
+<li class="ini__s"><a class="ini__c" href="/demos/muestras/arin-fisioterapia/" target="_blank" rel="noopener" data-id="arin" data-r="4" draggable="false"><span class="ini__in"><img src="assets/hero/arin-m.webp" alt="" width="480" height="1013" decoding="async" draggable="false" loading="lazy"/><span class="ini__et"><span class="sr-only">ARIN · </span><span data-t="tag_fis">Fisioterapia</span></span></span></a></li>
+</ul>
 </div>
+
+<!-- Debajo de la fila (Oier 23/11: «esta sección no me gusta… igual lo mejor es pedir reservas»): se pide una llamada con día y hora -->
+<div class="container ini__bajo">
+<div class="ini__txt">
+<p class="ini__tit" data-t="ini_cita_t">Cuéntamelo en 15&nbsp;minutos</p>
+<p class="hx__lede reveal" data-t="hero_quien">Para negocios de <a href="zonas/tolosa.html">Tolosa</a>, Tolosaldea, <a href="zonas/donostia-san-sebastian.html">Donostia</a> y el resto de Gipuzkoa hago webs a medida, automatizaciones y marca, en castellano y euskera. OI Studio es un estudio de diseño web de Tolosa con una sola persona detrás, Oier Irastorza. Precio cerrado, muestra gratis antes de decidir y pago al final.</p>
+<ul class="ini__datos reveal">
+<li><a href="contacto.html"><b data-t="hx_c1t">PROPUESTA EN 48&nbsp;H.</b><span data-t="hx_c1s">Diseño y precio cerrado, sin compromiso.</span></a></li>
+<li><a href="precios.html"><b data-t="hx_c2t">PAGAS AL FINAL.</b><span data-t="hx_c2s">Cuando tu web ya está publicada.</span></a></li>
+</ul>
+<p class="ini__conf reveal"><a href="trabajos.html"><span class="hx__caras" aria-hidden="true"><img decoding="async" loading="lazy" src="assets/hero/errotatxo-av.webp" alt="" width="40" height="40"/><img decoding="async" loading="lazy" src="assets/hero/aberri-av.webp" alt="" width="40" height="40"/></span><span data-t="hx_conf">Errotatxo y A.Berri ya tienen la suya.</span></a></p>
 </div>
+
+<form class="ini__cita reveal" id="iniCita" action="https://wa.me/34611497409" target="_blank" rel="noopener">
+<p class="ini__cita-t" data-t="ini_cita_s">Elige día y hora y te llamo.</p>
+<fieldset class="ini__grupo" id="iniGDia"><legend data-t="ini_cita_d">Día</legend><div class="ini__ops" id="iniDias"></div></fieldset>
+<fieldset class="ini__grupo" id="iniGHora"><legend data-t="ini_cita_h">Hora</legend><div class="ini__ops" id="iniHoras">
+<label class="ini__op"><input type="radio" name="hora" value="17:00"/><span>17:00</span></label>
+<label class="ini__op"><input type="radio" name="hora" value="17:30"/><span>17:30</span></label>
+<label class="ini__op"><input type="radio" name="hora" value="18:00"/><span>18:00</span></label>
+<label class="ini__op"><input type="radio" name="hora" value="18:30"/><span>18:30</span></label>
+<label class="ini__op"><input type="radio" name="hora" value="19:00"/><span>19:00</span></label>
+<label class="ini__op"><input type="radio" name="hora" value="19:30"/><span>19:30</span></label>
+</div></fieldset>
+<label class="ini__neg"><span data-t="ini_cita_n">Tu negocio <i>(si quieres)</i></span><input type="text" id="iniNeg" maxlength="60" autocomplete="organization"/></label>
+<button class="hx__btn hx__btn--negro ini__pedir" type="submit"><span id="iniPedirT" data-t="ini_cita_b">Pedir la llamada por WhatsApp</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+<p class="ini__aviso" id="iniAviso" role="status"><span data-t="ini_cita_c">Se abre WhatsApp con el mensaje ya escrito y ahí te confirmo la hora.</span> <span data-t="hero_gar">Si no te gusta la muestra de tu web, no pagas nada.</span></p>
+<p class="ini__otros"><a href="contacto.html" data-t="btn_presupuesto">Solicitar presupuesto</a><a href="trabajos.html" data-t="btn_vertrabajos">Ver trabajos</a></p>
+</form>
 </div>
 </header>
 
-<!-- Accesos a las partes de la portada -->
-<nav class="atajos" aria-labelledby="atajos-t">
-<div class="container atajos__in">
-<span id="atajos-t" class="sr-only" data-t="at_t">En esta página</span>
-<a href="#reservas-demo"><span data-t="nav_reservas">Reservas</span></a>
-<a href="#tu-sector"><span data-t="at_muestras">Muestras</span></a>
-<a href="#lineas"><span data-t="foot_servicios">Servicios</span></a>
-<a href="#trabajos"><span data-t="at_trabajos">Trabajos</span></a>
-<a href="#prueba"><span data-t="at_prueba">Mira tu web</span></a>
-<a href="#como-trabajo"><span data-t="at_como">Cómo trabajo</span></a>
-<a href="#precios"><span data-t="at_precios">Precios</span></a>
-<a href="#faq"><span data-t="at_faq">Preguntas</span></a>
-</div>
-</nav>
 
 <!-- RESERVAS: PRUÉBALAS (10/11/2026, Oier: «lo de las reservas ponlo más a mano… lo de la peluquería ponlo arriba y el panel sin contraseña»). Peluquería de la demo de Agenda OI; el panel entra sin contraseña (/panel/demo/salon-demo); publicada el 10/11. -->
 <section class="rv" id="reservas-demo" aria-labelledby="rv-h">
@@ -834,7 +844,7 @@
 <div class="footer__mark" aria-hidden="true">OI STUDIO</div>
 </footer>
 
-<script src="assets/i18n.js?v=57"></script>
+<script src="assets/i18n.js?v=58"></script>
 <script src="assets/main.js?v=21"></script>
 <script src="assets/prueba.js?v=4"></script>
 <script src="assets/interactivos.js?v=1" defer></script>
@@ -1216,6 +1226,7 @@ button.fmenu__item{border:none;font:inherit;font-size:14.5px;font-weight:600;cur
 })();
 </script>
 <script src="/assets/analitica.js?v=1" defer></script>
-<script src="/assets/js/oi-asistente.js?v=1" data-api="https://oi-asistente.oi-studio-web.workers.dev" data-negocio="oiwebstudio" data-boton="no" defer></script>
+<script src="/assets/js/oi-asistente.js?v=2" data-api="https://oi-asistente.oi-studio-web.workers.dev" data-negocio="oiwebstudio" data-boton="no" defer></script>
+<script src="assets/inicio.js?v=2" defer></script>
 </body>
 </html>

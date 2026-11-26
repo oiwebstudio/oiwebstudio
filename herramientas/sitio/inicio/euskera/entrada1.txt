@@ -1,0 +1,23 @@
+ini_lbl	Pregunta al asistente de OI Studio
+ini_ph0	Pregúntame lo que quieras.
+ini_ir	Preguntar
+ini_ia	Contesta al momento el asistente de IA de OI Studio.
+ini_cita_t	Cuéntamelo en 15 minutos
+ini_cita_s	Elige día y hora y te llamo.
+ini_cita_d	Día
+ini_cita_h	Hora
+ini_cita_n1	Tu negocio
+ini_cita_n2	(si quieres)
+ini_cita_b	Pedir la llamada por WhatsApp
+ini_cita_c	Se abre WhatsApp con el mensaje ya escrito y ahí te confirmo la hora.
+ini_f1	¿Cuánto cuesta una web?
+ini_f2	¿Me haces una muestra gratis?
+ini_f3	¿Puedo tener reservas sin comisiones?
+ini_f4	¿Cuánto tardas en hacerla?
+ini_f5	¿La web va también en euskera?
+ini_nc	El asistente no contesta ahora mismo.
+ini_nw	Escríbeme por WhatsApp
+ini_cb	Pedir llamada
+ini_ch	Elige una hora para la llamada.
+ini_m1	Hola, Oier. Me gustaría una llamada de 15 minutos.
+ini_mn	Mi negocio
