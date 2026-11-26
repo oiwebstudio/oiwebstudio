@@ -18,7 +18,7 @@ const SOLO = i > 0 ? process.argv[i + 1].split(",") : null;
 const T = { es: JSON.parse(fs.readFileSync(path.join(__dirname, "es.json"), "utf8")), eu: JSON.parse(fs.readFileSync(path.join(__dirname, "eu.json"), "utf8")) };
 for (const k of Object.keys(T.es)) if (!T.eu[k]) { console.error(`Falta el euskera de «${k}»: pasa itzuli.cjs`); process.exit(1); }
 
-const DATOS = { nombre: "Oier Irastorza", tel: "611 49 74 09", telHref: "tel:+34611497409", wa: "https://wa.me/34611497409", correo: "contactoiwebstudio@gmail.com", web: "oiwebstudio.com" };
+const DATOS = { nombre: "OI Studio", tel: "611 49 74 09", telHref: "tel:+34611497409", wa: "https://wa.me/34611497409", correo: "contactoiwebstudio@gmail.com", web: "oiwebstudio.com" };
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
 const CSS = `<style id="oi-firma-css">
@@ -66,7 +66,7 @@ ${CSS}
 <div class="oi-firma__marca">
 <p class="oi-firma__por">${esc(t.por)}</p>
 <a class="oi-firma__logo" href="${utm}" target="_blank" rel="noopener">OI STUDIO${nueva}</a>
-<p class="oi-firma__lema">${esc(t.lema)} · ${DATOS.nombre}</p>
+<p class="oi-firma__lema">${esc(t.lema)}</p>
 </div>
 <ul class="oi-firma__datos">
 <li><span class="oi-firma__k">${esc(t.telefono)}</span><a href="${DATOS.telHref}">${DATOS.tel}</a></li>

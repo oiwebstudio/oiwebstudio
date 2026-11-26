@@ -7,7 +7,7 @@
 - Nombre: OI Studio (también "OI Web Studio")
 - Web: https://oiwebstudio.com/
 - Base: Tolosa, Gipuzkoa (País Vasco, España). Trabaja en persona en Tolosaldea y en remoto en toda Gipuzkoa y el resto de España.
-- Qué es: un estudio de una sola persona, Oier Irastorza (viene de la ingeniería mecánica); quien te atiende es quien diseña y programa tu web. Más en https://oiwebstudio.com/sobre-mi.html
+- Qué es: un estudio de diseño web con método de ingeniería; quien te atiende es quien diseña y programa tu web. Más en https://oiwebstudio.com/sobre-mi.html
 - Lo que lo distingue: webs bonitas, con un diseño cuidado y hecho a medida para cada negocio. Lo práctico va incluido: se ven bien en el móvil, están preparadas para salir en Google y pueden llevar reservas online.
 - Idiomas: castellano y euskera (webs bilingües con páginas propias para cada idioma).
 - Contacto: WhatsApp y teléfono +34 611 49 74 09 · contactoiwebstudio@gmail.com · Instagram @oi.webstudio
@@ -26,7 +26,7 @@ OI Studio ofrece tres líneas de servicio: webs, automatizaciones y branding. To
 2. Automatizaciones, en ramas. En cada una se dice qué parte hace la IA.
 - Reservas y citas (sin IA): agenda de citas sola, para la web que ya tienes, 160 € + 20 €/mes con 1 profesional (+8 €/mes por cada profesional más); web + reservas, 580 € + 28 €/mes; web + reservas + presencia en Google (restaurante, casa rural o negocio con citas), 740 € + 28 €/mes. Sin comisión por reserva. Los avisos van por correo; por WhatsApp o SMS, de momento no.
 - Google y las IAs (con IA): dentro de la presencia en Google (120 €) y de la cuota; una IA con buscador responde a las preguntas que haría un cliente y se compara con la ficha y la web.
-- Reseñas respondidas (con IA): dentro de la cuota única de 28 €/mes; la IA redacta el borrador, Oier lo revisa y, con el visto bueno del dueño, lo publica en su ficha.
+- Reseñas respondidas (con IA): dentro de la cuota única de 28 €/mes; la IA redacta el borrador, el estudio lo revisa y, con el visto bueno del dueño, lo publica en su ficha.
 - Las citas online automáticas no se ofrecen de momento a consultas de salud: para ellas, botón «Pedir cita» al programa que ya usen o a una llamada.
 - Apps con las que se conecta hoy: WhatsApp (mensaje escrito), el correo del negocio, calendarios de Booking.com y Airbnb (iCal), Google Calendar y Calendario de Apple (con Agenda OI, iCal por persona), la ficha de Google Maps, el enlace de Instagram, Claude (Anthropic) y Cloudflare. A medida, con la cuenta del negocio y precio en 24 horas: calendarios (Google Calendar, Outlook, Calendly), cobros (Stripe, PayPal, Redsys y Bizum con el contrato del banco), facturas y hojas (Holded, Google Sheets, archivos Excel), tiendas (WooCommerce, Shopify, PrestaShop), correo a clientes (Mailchimp, Brevo), redes y avisos (página de Facebook, Telegram, Slack) y otras (Notion, Trello, Typeform, Google Forms, Google Drive, Dropbox).
 

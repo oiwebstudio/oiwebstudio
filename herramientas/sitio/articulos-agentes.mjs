@@ -52,7 +52,7 @@ ${tabla(["", "Chatbot", "Agente de IA"], [
 <p><button type="button" class="btn btn--accent" onclick="window.OIAsistente&&window.OIAsistente.abrir()">Habla con la IA</button></p>
 
 <h2 id="los-mios">Los agentes que uso yo cada día</h2>
-<div class="ia-cifras"><div><b data-cuenta="36">36</b><span>agentes de IA</span></div><div><b data-cuenta="11">11</b><span>departamentos</span></div><div><b data-cuenta="1">1</b><span>persona que decide</span></div></div>
+<div class="ia-cifras"><div><b data-cuenta="36">36</b><span>agentes de IA</span></div><div><b data-cuenta="11">11</b><span>departamentos</span></div><div><b data-cuenta="0">0</b><span>mensajes a clientes sin revisar</span></div></div>
 <p>OI Studio funciona con <strong>36 agentes de IA repartidos en 11 departamentos</strong>: comercial, diseño, SEO, administración, posventa, seguridad… Uno busca negocios con la web vieja, otro revisa cada diseño antes de que lo vea nadie, otro mira el SEO cada mañana y hay uno por cada cliente en obra. Un bot de Telegram me transcribe los audios y los apunta donde toca.</p>
 <p>La regla que no se salta: <strong>ningún agente manda nada a un cliente sin que yo lo vea y diga «sí»</strong>. Lo cuento entero, con lo que ha fallado, en <a href="como-funciona-oi-studio-agentes-ia.html">cómo funciona OI Studio con agentes de IA</a>.</p>
 
@@ -118,14 +118,14 @@ ${cta("¿Te compensaría un agente de IA?", "Cuéntame qué te quita tiempo y te
   keywords: "agentes de ia caso real, empresa con agentes de ia, como usar agentes de ia, automatizar negocio con ia, oi studio agentes",
   crumb: "OI Studio con agentes de IA",
   h1: "Cómo funciona OI Studio con agentes de IA",
-  lede: "Soy una sola persona y llevo el estudio con 36 agentes de IA repartidos en 11 departamentos. Te cuento cómo está montado, qué hace la IA, qué decido yo y, sobre todo, qué ha fallado, porque es lo que más te sirve si estás pensando en usar IA en tu negocio.",
+  lede: "Llevo el estudio con 36 agentes de IA repartidos en 11 departamentos. Te cuento cómo está montado, qué hace la IA, qué decido yo y, sobre todo, qué ha fallado, porque es lo que más te sirve si estás pensando en usar IA en tu negocio.",
   img: "stock/art-seo-local", min: 6,
   area: ["Gipuzkoa"],
   cuerpo: `
 <h2 id="por-que">Por qué lo monté así</h2>
-<p>Hago webs y automatizaciones desde Tolosa, solo, con unas pocas horas al día. No me daba para buscar clientes, diseñar, mirar el SEO, llevar las cuentas y atender a quien ya tiene su web. En lugar de dejar cosas sin hacer, monté el estudio como una empresa con departamentos, y en cada departamento, agentes de IA con un trabajo concreto.</p>
+<p>Hago webs y automatizaciones desde Tolosa con unas pocas horas al día. No me daba para buscar clientes, diseñar, mirar el SEO, llevar las cuentas y atender a quien ya tiene su web. En lugar de dejar cosas sin hacer, monté el estudio como una empresa con departamentos, y en cada departamento, agentes de IA con un trabajo concreto.</p>
 
-<div class="ia-cifras"><div><b data-cuenta="36">36</b><span>agentes de IA</span></div><div><b data-cuenta="11">11</b><span>departamentos</span></div><div><b data-cuenta="1">1</b><span>persona que decide</span></div></div>
+<div class="ia-cifras"><div><b data-cuenta="36">36</b><span>agentes de IA</span></div><div><b data-cuenta="11">11</b><span>departamentos</span></div><div><b data-cuenta="0">0</b><span>mensajes a clientes sin revisar</span></div></div>
 
 <h2 id="organigrama">El organigrama</h2>
 ${tabla(["Departamento", "Qué hacen sus agentes"], [

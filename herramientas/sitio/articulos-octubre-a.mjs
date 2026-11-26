@@ -187,7 +187,7 @@ ${tabla(["", "Agencia", "Freelance / estudio pequeño"], [
 
 <h2 id="cerca">¿Importa que esté en Donostia?</h2>
 <p>Menos de lo que parece. El trabajo se hace a distancia y las reuniones caben en una videollamada o en un café. Lo que sí ayuda a un negocio local es que quien hace la web conozca cómo busca la gente de la zona: los nombres de los barrios, cómo se llama cada cosa y qué se espera de un local de Gros, del Centro o de Egia.</p>
-<p>OI Studio es un estudio de una persona, con base en Tolosa, a unos 26 km de Donostia. Si quieres que la primera reunión sea en tu local, me acerco; si no, lo hacemos todo desde el móvil. Tienes los detalles en la <a href="zonas/donostia-san-sebastian.html">página de diseño web en Donostia</a>.</p>
+<p>OI Studio es un estudio de diseño web con base en Tolosa, a unos 26 km de Donostia. Si quieres que la primera reunión sea en tu local, me acerco; si no, lo hacemos todo desde el móvil. Tienes los detalles en la <a href="zonas/donostia-san-sebastian.html">página de diseño web en Donostia</a>.</p>
 
 ${figura("pedala-desk", "pedala · muestra", "Muestra de web de tienda de bicicletas con cartel en blanco y negro", "Una de mis muestras (marca inventada): un negocio de barrio con personalidad propia.")}
 

@@ -65,8 +65,8 @@ const META = {
     desc: "Tolosan egindako webguneak: bi kasu erreal (Errotatxo eta A.Berri, bere iritziarekin) eta 36 lagin nabigagarri tokiko negozioetarako.",
   },
   "sobre-mi.html": {
-    title: "Oier Irastorza, web diseinatzailea Tolosan | OI Studio",
-    desc: "Web diseinua eta garapena Tolosan: Oier Irastorza naiz, ingeniari mekanikoa, eta nik neuk egiten ditut Gipuzkoako tokiko negozioen webguneak, ingeniari metodoarekin.",
+    title: "OI Studio: web diseinua Tolosan ingeniaritza metodoarekin",
+    desc: "Web diseinua Tolosan Gipuzkoako tokiko negozioetarako, ingeniaritza metodoarekin: beti hitz egiten duzu zure webgunea eraikitzen duenarekin.",
   },
   // 21/10/2026, con Itzultzaile Neuronala («azterketa» → «berrikuspena», como en la página).
   "seo-posicionamiento-google.html": {
