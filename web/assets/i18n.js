@@ -669,7 +669,7 @@ const EU = {
   p4_l5: "Zuk zeuk gehitzen dituzu produktuak eta stocka",
   p4_l6: "Aukerako mantentzea: 28 €/hilean",
   pf7_q: "Eta internet bidez saldu nahi badut?",
-  pf7_a: "Horretarako dago Online Denda: 880 €, 50 produktu arte kargatuta, txartel eta Bizum bidezko ordainketa eta eskaera bakoitzaren abisua. Produktu gehiago badituzu, zuk igotzen dituzu zure paneletik edo nik kargatzen ditut, 1 € bakoitza. Kobrantza-komisioak (salmenta bakoitzeko % 1,5 inguru) ordainketa-pasabideak kobratzen ditu zuzenean. Dendaren kuota hilean 28 €-koa da, edozein webgunerena bezala.",
+  pf7_a: "Horretarako dago Online Denda: 880 €, 50 produktu arte kargatuta, txartel eta Bizum bidezko ordainketa eta eskaera bakoitzaren abisua. Produktu gehiago badituzu, zuk igotzen dituzu zure paneletik edo nik kargatzen ditut, 1 € bakoitza. Kobrantza-komisioak (salmenta bakoitzeko % 1,5 inguru) ordainketa-pasabideak kobratzen ditu zuzenean. Dendaren kuota hilean 40 €-koa da.",
 
   /* CTA index */
   cta_index_h: "Idatzi eta prezioa esango dizut",
@@ -1096,7 +1096,7 @@ const EU = {
   w1_desc: "Zure negozio guztia orrialde bakar batean.",
   w_pz: "Googleko presentzia aparte doa: bietako edozeini gehitu diezaiokezu 120 euroren truke. <a href=\"#presencia\">Zer biltzen duen</a>",
   tie_k: "Internet bidez saldu nahi duzu?",
-  tie_inc: "Webguneak sekzioak, 50 produktu kargatu arte, txartelarekin eta Bizum-ekin ordaintzea eta eskaera bakoitzaren abisua. Kuota: 28 €/hileko.",
+  tie_inc: "Webguneak sekzioak, 50 produktu kargatu arte, txartelarekin eta Bizum-ekin ordaintzea eta eskaera bakoitzaren abisua. Kuota: 40 €/hileko.",
   pm_pz_note: "aparte, edozein webgunetarako",
   k_pz: "Presentzia Googlen barne",
   pre_l3_nota: "Erreserba bakoitzaren abisua eta aurreko egunaren oroigarria postaz doaz. WhatsApp edo SMS bidez, oraingoz ez.<br/><a href=\"reservas-online-sin-comisiones.html\">Nola funtzionatzen dute online erreserbek</a>",

@@ -3,7 +3,7 @@
    Google 120, web de una página 420, web con secciones 540, tienda 880, packs con
    reservas 580/740/740. La presencia va aparte: se puede añadir (+120) a
    cualquiera de las dos webs; en los packs ya va incluida.
-   cuotas: desde el 27/10/2026, una sola de 28 €/mes (también con tienda). Las reservas solo van en un pack, y en
+   cuotas: desde el 27/10/2026, 28 €/mes; con tienda, 40 €/mes (Oier 26/11/2026). Las reservas solo van en un pack, y en
    un pack la cuota es obligatoria. Todo + IVA, pago único al final.
    Los importes son EXACTAMENTE los de precios.html: si cambia uno en la página,
    hay que cambiarlo aquí también, y en el JSON-LD de index.html.
@@ -24,7 +24,7 @@
     pack_restaurante: { precio: 740, web: true, reservas: true, secciones: true },
     pack_rural:       { precio: 740, web: true, reservas: true, secciones: true }
   };
-  var CUOTA = { mant: 28, mantTienda: 28, presencia: 28 }; /* 27/10/2026: una sola cuota de 28 €/mes */
+  var CUOTA = { mant: 28, mantTienda: 40, presencia: 28 }; /* 28 €/mes; tienda 40 €/mes desde el 26/11/2026 */
   var PRESENCIA_EXTRA = 120;
 
   var $ = function (id) { return document.getElementById(id); };
