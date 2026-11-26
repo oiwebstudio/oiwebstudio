@@ -6,7 +6,7 @@
 // Después de añadir una web a la página Webs hay que volver a ejecutarlo para que salga en la fila.
 const fs = require("fs"), path = require("path");
 const WEB = path.resolve(__dirname, "../../../web");
-const V_CSS = 1, V_JS = 2;   // subir al cambiar assets/inicio.css o assets/inicio.js
+const V_CSS = 2, V_JS = 2;   // subir al cambiar assets/inicio.css o assets/inicio.js
 
 // Orden de la fila (Oier 23/11: «pon otras webs más bonitas, como Bigun, la de inmobiliaria moderna y así»).
 // DELANTE: lo que se ve al abrir (la primera asoma cortada por la izquierda). DETRAS: lo que aparece al arrastrar

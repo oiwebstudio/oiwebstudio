@@ -117,6 +117,13 @@
   @media(min-width:900px){.tc{padding-bottom:56px}.tc__in>div{display:grid;grid-template-columns:1.08fr 1fr;column-gap:40px;align-items:end}.tc h1{grid-row:1/span 2}.tc__lede{margin-top:0}.tc__lede,.tc__nota{grid-column:2}}
   /* Con la hélice en marcha, la cabecera va encima de su primera pantalla: así al entrar ya asoman «Diseño en» y «movimiento» y no queda media pantalla vacía */
   .tc:has(+ .wm.is-viva){position:absolute;left:0;right:0;top:0;z-index:5;background:none}
+/* Hasta que helice.js arranca no se enseña la galería normal (se veía un momento y luego saltaba a la animación): la cabecera ya está en su sitio y el hueco es el de la primera pantalla. Si el script no llegara, la galería aparece a los 4 s, debajo de la cabecera */
+@media(prefers-reduced-motion:no-preference){
+.js .tc:has(+ .wm){position:absolute;left:0;right:0;top:0;z-index:5;background:none}
+.js .wm:not(.is-viva){min-height:100vh;min-height:100svh}
+.js .wm:not(.is-viva) .wm__pin{padding-top:440px;visibility:hidden;animation:wmSalva 0s linear 4s forwards}
+}
+@keyframes wmSalva{to{visibility:visible}}
   @media(prefers-reduced-motion:reduce){.js .tc *{animation:none!important}}
 </style>
 </head>

@@ -37,7 +37,11 @@
 .ini__et { position: absolute; left: 10px; bottom: 10px; max-width: calc(100% - 20px); padding: 6px 12px; border-radius: 999px; background: rgba(244,242,238,.94); font-size: 11px; font-weight: 600; line-height: 1.2; letter-spacing: .05em; text-transform: uppercase; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 /* Entrada: las tarjetas suben una a una desde el centro hacia los lados */
-.js .ini__fila.is-js .ini__in { opacity: 0; transform: translateY(46px); }
+/* Ocultas desde el primer pintado (no cuando llega el script): si no, se ven un momento, desaparecen y entonces entran.
+   Si el script no llegara, a los 4 s aparecen solas. */
+.js .ini__fila:not(.is-lista) .ini__in { opacity: 0; transform: translateY(46px); }
+.js .ini__fila:not(.is-js) .ini__in { animation: iniSalva .7s ease-out 4s both; }
+@keyframes iniSalva { to { opacity: 1; transform: none; } }
 .js .ini__fila.is-lista .ini__in { opacity: 1; transform: none; transition: opacity .7s ease-out, transform 1s cubic-bezier(.2,.75,.25,1); transition-delay: calc(var(--o, 0) * 70ms + .35s); }
 
 /* Al pasar por una tarjeta: crece con un rebote corto, las vecinas le hacen sitio y el titular se desenfoca */
@@ -106,7 +110,7 @@
 @media (prefers-reduced-motion: reduce) {
   .js .ini__preg, .js .ini__ia { animation: none !important; }
   .ini__op span { transition: none; }
-  .js .ini__fila.is-js .ini__in { opacity: 1; transform: none; transition: none !important; }
+  .js .ini__fila:not(.is-lista) .ini__in, .js .ini__fila.is-js .ini__in { opacity: 1; transform: none; transition: none !important; animation: none !important; }
   .ini__fila.is-viva .ini__s, .ini__fila.is-viva .ini__c { transition: none !important; }
   .ini__ph > span::after { animation: none; }
   .ini__cab { transition: none; }
