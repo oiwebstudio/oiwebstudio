@@ -91,8 +91,21 @@ jobs:
 
       - id: despliegue
         uses: actions/deploy-pages@v4
+        # 26/11/2026: falló 3 veces con «No artifacts named github-pages were found… re-run the deployment»
+        # aunque el artefacto estaba subido (GitHub tarda en verlo). Si falla, espera y lo intenta otra vez.
+        continue-on-error: true
         with:
           # 6/11/2026: GitHub Pages tardó más de 10 min (el límite por defecto) y el despliegue falló dos veces
+          timeout: 1800000
+
+      - name: Esperar antes de reintentar el despliegue
+        if: steps.despliegue.outcome == 'failure'
+        run: sleep 60
+
+      - id: despliegue2
+        if: steps.despliegue.outcome == 'failure'
+        uses: actions/deploy-pages@v4
+        with:
           timeout: 1800000
 
       - name: Avisar a IndexNow de las páginas cambiadas
