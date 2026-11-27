@@ -83,7 +83,8 @@
   var tc = sec.previousElementSibling && sec.previousElementSibling.classList.contains('tc') ? sec.previousElementSibling : null;
   function elegirT0(){
     if (!tc) return 0;
-    var abajo = 0; [].forEach.call(tc.querySelectorAll('h1,p'), function(e){ abajo = Math.max(abajo, e.getBoundingClientRect().bottom); });
+    var abajo = 0; [].forEach.call(tc.querySelectorAll('h1,p'), function(e){ var r = e.getBoundingClientRect(); if (r.height > 2) abajo = Math.max(abajo, r.bottom); });
+    if (!abajo) { var nv = document.querySelector('.nav'); abajo = nv ? nv.getBoundingClientRect().bottom : 0; }   // cabecera oculta (27/11): basta con librar el menú
     abajo += -sec.getBoundingClientRect().top + 28;                      // en coordenadas del escenario, con aire
     var EH = U / 1.61;
     for (var t = 2.4; t > 0; t -= .05) if (H / 2 + (val('aY', t) - .5) * EH >= abajo) return t;

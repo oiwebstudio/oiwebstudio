@@ -116,10 +116,12 @@
   @keyframes tcSube{from{opacity:0;transform:translateY(16px)}}
   @media(min-width:900px){.tc{padding-bottom:56px}.tc__in>div{display:grid;grid-template-columns:1.08fr 1fr;column-gap:40px;align-items:end}.tc h1{grid-row:1/span 2}.tc__lede{margin-top:0}.tc__lede,.tc__nota{grid-column:2}}
   /* Con la hélice en marcha, la cabecera va encima de su primera pantalla: así al entrar ya asoman «Diseño en» y «movimiento» y no queda media pantalla vacía */
-  .tc:has(+ .wm.is-viva){position:absolute;left:0;right:0;top:0;z-index:5;background:none}
+  .tc:has(+ .wm.is-viva){position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+  /* Oier 27/11: «yo quitaría esto y directo animación»: con la hélice, la cabecera solo queda para Google y lectores de pantalla; la nota de muestras va al final */
+  .tra-nota{background:#fbf8f2;padding:8px 24px 72px}.tra-nota p{max-width:1320px;margin:0 auto;font-size:14px;line-height:1.45;color:#6b655a}
 /* Hasta que helice.js arranca no se enseña la galería normal (se veía un momento y luego saltaba a la animación): la cabecera ya está en su sitio y el hueco es el de la primera pantalla. Si el script no llegara, la galería aparece a los 4 s, debajo de la cabecera */
 @media(prefers-reduced-motion:no-preference){
-.js .tc:has(+ .wm){position:absolute;left:0;right:0;top:0;z-index:5;background:none}
+.js .tc:has(+ .wm){position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
 .js .wm:not(.is-viva){min-height:100vh;min-height:100svh}
 .js .wm:not(.is-viva) .wm__pin{padding-top:440px;visibility:hidden;animation:wmSalva 0s linear 4s forwards}
 }
@@ -196,8 +198,6 @@
 <div>
 <h1 data-t="tra_h1">Webs que he hecho</h1>
 <script>/* El titular se trocea aquí, antes de pintarse: si no, se ve entero, desaparece y vuelve a entrar */(function(h){var n=0;(function t(e){[].slice.call(e.childNodes).forEach(function(c){if(c.nodeType===1)return t(c);if(c.nodeType!==3)return;var f=document.createDocumentFragment();c.textContent.split(/(\s+)/).forEach(function(p){if(!p)return;if(!p.trim())return f.appendChild(document.createTextNode(' '));var s=document.createElement('span');s.className='oi-w';s.style.setProperty('--i',n++);s.textContent=p;f.appendChild(s)});e.replaceChild(f,c)})})(h)})(document.currentScript.previousElementSibling)</script>
-<p class="tc__lede" data-t="tra_lede">Todas se pueden abrir y recorrer, como si fueran la web de tu negocio.</p>
-<p class="tc__nota" data-t="tra_honesty">Errotatxo y A.Berri son webs publicadas para clientes. Las demás son muestras con nombre y datos inventados.</p>
 </div>
 </div>
 </header>
@@ -253,6 +253,7 @@
 </ul>
 </div>
 </section>
+<div class="tra-nota"><p class="reveal" data-t="tra_honesty">Errotatxo y A.Berri son webs publicadas para clientes. Las demás son muestras con nombre y datos inventados.</p></div>
 
 <section class="section dark-section cta">
 <div class="container">
@@ -351,7 +352,7 @@
 <script src="assets/main.js?v=21" defer></script>
 <script src="assets/lineas.js?v=6" defer></script>
 <script src="assets/piezas.js?v=5" defer></script>
-<script src="assets/helice.js?v=5" defer></script>
+<script src="assets/helice.js?v=6" defer></script>
 
 
 <a class="wa-float" href="https://wa.me/34611497409?text=Hola%2C%20vengo%20de%20tu%20web%20y%20quiero%20informaci%C3%B3n%20para%20la%20web%20de%20mi%20negocio." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
