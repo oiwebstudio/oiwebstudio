@@ -76,7 +76,19 @@
     }
   }
 
-  var W, H, U, movil, cel, LA, LB, TMAX = 11.2;
+  var W, H, U, movil, cel, LA, LB, TMAX = 11.2, T0 = 0;
+  /* Arranque (Oier 27/11: «esto queda verde»): la hélice no empieza en cero, con medio escenario vacío bajo la cabecera, sino ya
+     en marcha: las dos palabras en medio y las primeras webs entrando. T0 es el punto más avanzado (hasta 2,4) en que «Diseño en»
+     queda por debajo de la cabecera; al cargar se llega a él con una entrada corta, medida por tiempo y no por scroll. */
+  var tc = sec.previousElementSibling && sec.previousElementSibling.classList.contains('tc') ? sec.previousElementSibling : null;
+  function elegirT0(){
+    if (!tc) return 0;
+    var abajo = 0; [].forEach.call(tc.querySelectorAll('h1,p'), function(e){ abajo = Math.max(abajo, e.getBoundingClientRect().bottom); });
+    abajo += -sec.getBoundingClientRect().top + 28;                      // en coordenadas del escenario, con aire
+    var EH = U / 1.61;
+    for (var t = 2.4; t > 0; t -= .05) if (H / 2 + (val('aY', t) - .5) * EH >= abajo) return t;
+    return 0;
+  }
   function medir(){
     W = pin.clientWidth; H = pin.clientHeight; movil = W < 760;
     U = movil ? Math.min(H * 1.61, W * 1.75) : Math.min(W, H * 1.61);        // ancho del escenario (proporción 1,61)
@@ -99,7 +111,8 @@
     });
     var total = y0 + Math.ceil(celdas.length / cols) * fila - gy;            // donde acaba la última fila
     LB = Math.max(0, total + (movil ? 40 : 72) - H);                          // lo que hay que bajar para verla entera
-    LA = H * (movil ? 5.8 : 6.6);                                             // recorrido del tramo animado
+    T0 = elegirT0();
+    LA = H * (movil ? 5.8 : 6.6) * (TMAX - T0) / TMAX;                        // recorrido del tramo animado (misma velocidad que antes)
     sec.style.height = (H + LA + LB) + 'px';
   }
 
@@ -134,18 +147,33 @@
     sec.classList.toggle('is-lista', T > 10.6);
   }
 
+  // entrada al cargar: retrasa la hélice hasta 1,5 «segundos de animación» y los recupera en 1,6 s reales, frenando al final
+  var ENT = 1.5, DUR = 1600, ent = 0;
   var pend = false;
+  function pintarYa(){
+    var r = sec.getBoundingClientRect();
+    if (r.bottom < -50 || r.top > innerHeight + 50) return;        // fuera de la vista: nada que pintar
+    var y = cl(-r.top, 0, LA + LB);
+    pintar(Math.max(0, T0 + Math.min(y / LA, 1) * (TMAX - T0) - ent), Math.max(0, y - LA));
+  }
   function alScroll(){
     if (pend) return; pend = true;
-    requestAnimationFrame(function(){
-      pend = false;
-      var r = sec.getBoundingClientRect();
-      if (r.bottom < -50 || r.top > innerHeight + 50) return;      // fuera de la vista: nada que pintar
-      var y = cl(-r.top, 0, LA + LB);
-      pintar(Math.min(y / LA, 1) * TMAX, Math.max(0, y - LA));
-    });
+    requestAnimationFrame(function(){ pend = false; pintarYa(); });
   }
-  medir(); pintar(0, 0); alScroll();
+  medir();
+  if (scrollY < 40 && T0 > 0) {
+    ent = ENT;
+    var ini = 0, paso = function(ts){
+      if (!ini) ini = ts;
+      var u = Math.min(1, (ts - ini) / DUR);
+      ent = ENT * Math.pow(1 - u, 3);                               // sale rápido y se posa despacio
+      pintarYa();
+      if (u < 1) requestAnimationFrame(paso);
+    };
+    requestAnimationFrame(paso);
+  }
+  pintar(0, 0); pintarYa();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ medir(); pintarYa(); });   // la cabecera cambia de alto al llegar la letra
   addEventListener('scroll', alScroll, { passive: true });
   addEventListener('resize', function(){ medir(); pend = false; alScroll(); });
 })();

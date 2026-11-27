@@ -526,7 +526,7 @@ const EU = {
   /* Página trabajos */
   tra_eyebrow: "Portfolioa",
   tra_h1: "Egin ditudan webguneak",
-  tra_lede: "Hemengo negozioetarako egindako webguneak. Denak ireki eta ibili daitezke.",
+  tra_lede: "Guztiak ireki eta ibili daitezke, zure negozioaren webgunea balira bezala.",
   tra_hint: "Kolorea gainetik pasatzean agertzen da — negozio batek weba estreinatzean bezala.",
   gal_eyebrow: "Galeria",
   gal_h2: "Zortzi pieza. Zortzi negozio.",
